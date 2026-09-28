@@ -1,0 +1,5 @@
+# Synthetic regression suites; no ONNX model download required.
+Pillow==12.3.0
+numpy==2.3.5
+openpyxl==3.1.5
+defusedxml==0.7.1

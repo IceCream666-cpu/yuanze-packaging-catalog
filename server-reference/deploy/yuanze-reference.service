@@ -1,0 +1,23 @@
+[Unit]
+Description=Yuanze internal reference catalog
+After=network.target
+[Service]
+Type=simple
+User=yuanze
+Group=yuanze
+WorkingDirectory=/opt/yuanze-reference/current
+Environment=YZ_STATE=/var/lib/yuanze-reference
+Environment=YZ_SECURE_COOKIE=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /opt/yuanze-reference/current/server.py --host 127.0.0.1 --port 4180
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/yuanze-reference
+[Install]
+WantedBy=multi-user.target

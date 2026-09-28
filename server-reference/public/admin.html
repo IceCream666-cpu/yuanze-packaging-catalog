@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#164B47">
+  <title>管理后台 · 源泽包材库</title>
+  <link rel="icon" type="image/svg+xml" href="/brand/yuanze-mark.svg">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body class="admin-page">
+  <a class="skip-link" href="#main">跳至管理内容</a>
+  <button type="button" class="sidebar-backdrop" data-sidebar-close aria-label="关闭侧栏" tabindex="-1" hidden></button>
+  <aside id="sidebar">
+    <div class="sidebar-top">
+    <a class="brand" href="/" aria-label="源泽工作空间首页"><svg class="brand-mark" viewBox="1200 264 152 171" role="img" aria-label="源泽标志"><image href="/brand/yuanze-brand-guide.png" width="1800" height="1520" /></svg><span class="brand-words">源泽 <small>ADMIN CONSOLE</small></span></a>
+      <button type="button" class="sidebar-close" data-sidebar-close aria-label="收起侧栏" title="收起侧栏" aria-controls="sidebar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16m7-11-3 3 3 3"/></svg></button>
+    </div>
+    <div class="workspace">包材库管理后台</div>
+    <nav aria-label="管理导航">
+      <button data-view="records" class="active">产品资料 <span>01</span></button>
+      <button data-view="taxonomy">分类与检索标签 <span>02</span></button>
+      <button data-view="settings">网站内容 <span>03</span></button>
+      <button data-view="samples">实物样品 <span>04</span></button>
+      <button data-view="plans">选型方案 <span>05</span></button>
+      <button data-view="users">员工与权限 <span>06</span></button>
+      <button data-view="imports">批量导入与导出 <span>07</span></button>
+      <button data-view="audit">修改记录 <span>08</span></button>
+    </nav>
+    <a class="business-link" href="/catalog">查看员工网站 ↗</a>
+    <div class="sidebar-note">独立管理员权限<small>修改留痕 · 历史版本 · 归档恢复</small></div>
+  </aside>
+  <div class="shell">
+    <header><button type="button" id="menuButton" class="sidebar-toggle" aria-label="收起侧栏" aria-controls="sidebar" aria-expanded="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16m7-11-3 3 3 3"/></svg><span class="sidebar-toggle-label">收起侧栏</span></button><span id="crumb">管理后台 / 产品资料</span><div><span id="account">正在验证权限…</span><button id="logout" class="quiet">退出</button></div></header>
+    <main id="main" aria-live="polite"><div class="empty">正在读取管理资料…</div></main>
+    <footer>源泽包材库管理后台 <span>保存后同步至员工网站；历史报价仅供参考</span></footer>
+  </div>
+  <dialog id="adminDialog" aria-labelledby="dialogTitle"><div id="dialogContent"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/admin.js"></script>
+</body>
+</html>

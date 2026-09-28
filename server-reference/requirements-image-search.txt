@@ -1,0 +1,4 @@
+# Optional private image similarity service. Python 3.11+; CPU only.
+numpy==2.2.6
+Pillow==12.3.0
+onnxruntime==1.30.0

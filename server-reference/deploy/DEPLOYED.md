@@ -1,0 +1,119 @@
+## 2026-09-29 员工会话无上限与账号管理核验（当前版本）
+
+当前 release `20260929-employee-accounts-v1`，上一版本 `20260929-login-reliability-v1`；修改 server.py 与 auth_sessions.py。员工会话默认 `YZ_EMPLOYEE_SESSION_LIMIT=0`，0 明确表示不设数量上限；生产无显式环境值覆盖。管理员仍为20，有效期8小时，改密/停用撤销和登录限速继续生效。员工账号总数本身没有软件数量上限。
+
+48项相关后端回归、4项独立员工账号HTTP生命周期测试通过。正式网站已经实际打开「员工与权限 → ＋ 创建账号」表单；本机受测 admin_store.py、public/admin.js 与生产文件 SHA 完全相同。未创建生产测试账号、未改变现有账号密码。
+
+发布前保存员工/管理员两份临时登录会话，服务切换后在不重新登录的条件下仍验证身份成功；域名/IP 的两种角色完整路由门禁通过。停服至恢复健康17.27秒，账号/产品/收藏/设置内容摘要完全一致。备份 `/opt/yuanze-reference/backups/employee-accounts-20260929`；仅回退代码时将 current 指回上一版本，保留状态数据库。证据在 `work/employee-accounts-20260929/`。
+
+已登录阿里云后查询得到明确结果「yuanzebeauty.com，未备案」。这部分公网接入故障需要完成备案，不能通过应用代码解除；未提交备案申请或修改云账号资料。
+
+---
+
+## 2026-09-29 登录可靠性修复（上一版本）
+
+02:22 CST 发布 `20260929-login-reliability-v1`，上一个代码版本为 `20260928-brand-refresh-v1`。替换 server.py、auth_sessions.py、public/api-client.js、public/login.js、public/login.html、public/app.js、public/admin.js 共 7 个文件。切换约 17.84 秒；账号、产品、编号、收藏及设置的内容摘要完全一致，未修改账号密码。
+
+持久会话在 `/var/lib/yuanze-reference/auth-sessions/sessions.sqlite`，目录 0700、文件 0600，属主 yuanze。首次升级需重新登录；之后常规重启保留尚未过期的会话。员工上限 500、管理员上限 20，满额拒绝新登录而不淘汰其他设备。限速和 8 小时有效期保持。认证存储错误返回 503；GET 有界重试，写操作不自动重放；附属接口失败不再使目录整体不可用。
+
+Caddy 实际运行用户执行强制配置检查：`/usr/local/lib/yuanze/release_gate.py`、`/usr/local/bin/yuanze-safe-reload`、`/etc/systemd/system/yuanze-web.service.d/login-routing-guard.conf`。正常启动/重载先检查证书权限与透明代理规则，拒绝认证路径改写；原 Caddyfile 内容未更改。
+
+42 项认证相关后端测试、18 项配置与路由门禁测试、25 组前端故障注入及既有前端回归通过；另在服务器依赖环境中对临时合成数据执行 4 项图片索引完整性测试通过。发布后服务器内网经严格 TLS/Host 验证域名和 IP 两种角色完整流程通过；Mac 公网 IP 两种角色通过；Safari 员工端 8,846 产品、Chrome 管理员端登录和刷新通过。域名公网 HTTP 仍收到阿里云备案拦截，部分 HTTPS 命令行请求连接重置，因此外部接入问题尚未关闭。
+
+备份：`/opt/yuanze-reference/backups/login-reliability-20260929`。回退只原子恢复 current 到上一个 release 并重启应用，保留现有业务数据库。部署脚本在健康、数据摘要、完整登录路由检查失败时自动回退；不得将旧数据库覆盖当前数据。详情见 `work/login-root-cause-20260929/ROOT_CAUSE.md`、`deployment-result.json`、`server-route-gate.json`、`public-ip-gate.json`、`browser-verification.json`。
+
+以下为历次发布记录，旧条目中的“当前”描述仅对应当时版本。
+
+---
+
+## 2026-09-29 新域名业务员入口修复
+
+统一入口为 https://bmt.yuanzebeauty.com/ 。线上 Caddy 曾将该域名根路径强制改写为 `/login`，业务员登录后应用又重定向至 `/`，形成 303 自循环。已移除这两行改写，保留证书、代理和应用按角色分流的逻辑。配置经校验后热加载，无须重启应用或修改账号与产品数据。
+
+修复前在新域名复现员工登录成功但首页连续 303 指向自身；修复后已验证员工首页 200、目录接口 200、管理员首页跳转 `/admin` 且后台 200、产品深链正常。Safari 已用员工账号在新域名实际登录并加载 8,846 条包材。
+
+证据：`work/domain-login-20260929/`。同时观测到部分公网请求返回阿里云备案拦截；Safari HTTPS 可访问。用户要求先不继续排查域名状态，因此本次验证不代表所有设备和网络均已通过。
+
+---
+
+# 已部署的源泽包材网站
+
+2026-09-28 补充复核发布 `20260928-gpt-followup-v1`。替换 `server.py`、`admin_imports.py`、`public/app.js`、`public/admin.js` 四个代码文件，修复收藏重复查询、图片文件名重复 URL 编码及导入错误定位。91 项后端测试与四套前端 DOM 回归通过。停服后保存数据库一致性快照，代码切换前后 11,006 条记录、8,001 个产品编号的摘要相同。账号、图片与业务数据保持原样；服务重启后需要重新登录。证据：`work/gpt-followup-20260928/deployment-result.json`、`final-backend-tests.log`、`frontend/` 及 `live-verification.json`。
+
+本次备份：`/opt/yuanze-reference/backups/20260928-before-gpt-followup`。代码回退目标：`/opt/yuanze-reference/releases/20260928-review-fixes-v1`；保持现有数据库，原子替换 `current` 链接并重启 `yuanze-reference`。发布脚本 `work/gpt-followup-20260928/deploy.py` 会在健康检查或文件/数据一致性验证失败时自动回退代码。
+
+2026-09-28 已发布并验证 `20260928-review-fixes-v1`，代码-only 升级，未改动数据库。内容来自《包材库网站审查报告》中已确认的问题：导入更新强制版本、导入写入移出会话锁、登录失败计数分离、显式关闭数据库连接、会话清理、收藏与方案按提交编号校验、导出转义统一、图片子目录兼容。发布前 82 项后端测试中 79 项通过（3 项图片索引完整性测试需要本机未安装的 onnxruntime），发布后线上图片检索实测返回 3,186 条排序结果；发布前后记录行摘要与产品编号表一致（11,006 条记录、8,001 个编号）。证据见 `work/review-fixes-20260928/`：`manifest.json`、`deploy.py`、`fix-results.json`、`frontend-results.json`、`test-results.log`、`live-verification.json`。本次回退：`/opt/yuanze-reference/backups/20260928-before-review-fixes` 保存了发布前的数据库快照与 `deployment.json`；确需回退时把 `current` 指回 `20260927-unified-login-v1` 并重启 `yuanze-reference`，无需恢复数据。
+
+2026-09-27 已发布并验证 `20260927-unified-login-v1`。公司统一入口：https://8.134.220.216/ 。业务员与管理员在同一页面输入各自账号，自动进入包材库或管理后台。账号和密码沿用原配置，凭据不写入代码与说明。
+
+## 运行配置
+
+- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20260929-employee-accounts-v1`
+- 上一代码版本：`/opt/yuanze-reference/releases/20260929-login-reliability-v1`
+- Python 环境：`/opt/yuanze-reference/venvs/admin-20260924`
+- 状态目录：`/var/lib/yuanze-reference`，由专用 `yuanze` 用户读写。
+- 服务：`yuanze-reference.service`、`yuanze-web.service`。
+- 服务覆盖配置：`/etc/systemd/system/yuanze-reference.service.d/image-search.conf`
+- HTTPS 配置：`/etc/yuanze-reference/Caddyfile`；IP 证书由 Caddy 自动续期；域名证书为手动安装，当前有效期至 2026-12-26，续期需单独维护。
+- 后端监听 `127.0.0.1:4180`，公网 HTTPS，HTTP 跳转 HTTPS。
+
+## 素材与功能
+
+本次新增 25 份来源（21 份 PDF、4 份 Excel）。原有 374 条记录完整保留，新增 10,632 条，在线共 11,006 条：8,001 条产品来源条目、2,867 条图册／图片线索、91 条独立工艺参考和 47 条原有其他资料。产品条目包含 OCR 待核对内容，不等于去重后的独立款式数。
+
+2,867 条图片线索包括全部 2,608 页 PDF 预览及 259 条表格图片卡片。整页可能包含多款产品，并未自动分割每个单品；搜到原页后可查看原图及关联产品条目。缺失参数留空，保留来源文件、页码与原始证据。原始 PDF 文件仍在本机素材目录，网站展示预览与提取资料。
+
+员工左侧可按类型、材质、容量区间、来源组合检索；顶部提供精确容量和瓶型等条件。员工只能查询和管理自己的选型，管理员可维护资料。独立工艺参考不自动套用单品价格、MOQ 或货期。业务 ERP 页面仍是虚构数据演示，未接入正式生产与财务。
+
+## 验证结果
+
+依据 `work/site-materials-20260924/live-verification.json` 及同目录发布日志：
+
+- HTTPS、员工与管理员登录、后台权限隔离通过；来源图片必须登录后访问。
+- 11,006 条记录在线；原有 374 条的内容、原始字段和版本均未被增量导入覆盖。
+- 图片索引 ready：3,175 张图片、3,186 条关联记录，0 待处理、0 失败。
+- 真实来源图查询进入对应结果前 3 名；这不代表一般查询准确率。
+- 一次目录请求压缩传输约 1.09 MB，读取与解析约 1.14 秒，仅为本次测量。
+- 生产验收未新增测试内容；可编辑性与原始证据保留在独立服务器副本中验证。
+
+## 备份与回退
+
+升级前一致性备份：`/opt/yuanze-reference/backups/20260927-before-materials`。备份在停止服务后使用 SQLite backup API 保存数据库，同时复制上传与状态文件。`deployment.json` 记录前后 release。升级未覆盖账号、管理员修改或业务数据。
+
+发布脚本为 `work/site-materials-20260924/remote_release.py`；服务器暂存副本位于 `/opt/yuanze-reference/staging/materials-20260927`。只执行一次的 `import_materials.py` 通过批次标记避免重复导入。不要用首次安装脚本升级已有站点。
+
+后续回退前重新备份当前状态。代码回退不自动恢复旧数据库；应保留上线后的新增修改。旧版本可能不能完整显示新增资料类型，且旧 release 缺少新媒体，需先核对 UI、媒体路径、索引及权限兼容性。确需恢复数据时，先评估上线后修改的影响，在停止写入后恢复指定一致性备份并修复文件属主。
+
+图片索引、上传和数据库均位于状态目录，不能随代码发布清空。不要把 `--local-preview` 用于公网服务。详细运维见 `../ADMIN_GUIDE.md`。
+
+## 2026-09-27 分页界面更新
+
+已更新员工端与管理端分页：数字页码、直接输入跳页、边界校验，以及仅作用于结果区的轻量动画；尊重系统减少动态效果设置。员工端另提供每页 20／40／80 条选项。翻页保留当前筛选与未提交输入。
+
+仅原子替换四个静态界面文件，未重启服务，未写入业务数据库。上线文件已与测试版本逐一核对，HTTPS 和权限隔离检查通过；证据见 `work/pagination-20260927/live-verification.json`。员工分页 10 组检查、原目录 9 组检查和后台 21 组检查通过。
+
+原静态文件备份：`/opt/yuanze-reference/backups/pagination-20260926-210519`。本次界面回退可将该备份中的四个文件原子恢复到当前 release 的 `public/`，无需恢复数据库。
+
+## 2026-09-27 产品编号与稳定性更新
+
+8,001 条包材产品来源记录已分配 `YZ-BC-000001` 至 `YZ-BC-008001`。编号独立保存在数据库，原内部 ID、原始资料、内容、版本和归档状态不变；新建包材自动续号，归档不回收编号。员工卡片、详情、表格及后台均显示同一编号，编号不可手动修改。完整编号精确匹配，支持大小写、全角字符和常见分隔符；不存在的完整编号返回零条。保留原内部 ID 检索。员工输入完整编号时会清除其他筛选，避免有效编号被旧筛选条件遮挡。
+
+员工分页中央新增页码输入框与“跳转”按钮，位于上一页和下一页之间。可按回车跳转，保留数字页码、每页条数、边界校验及减少动画支持。网址 `/?code=YZ-BC-000001` 可定位产品，未登录时在登录后继续定位；仅接受固定格式的内部编号。
+
+上线核验：11,006 条记录完整保留，8,001 个编号唯一，员工与管理员编号一致，5 个 UI 文件哈希与测试版本一致。68 项原后端测试、新增 1 项真实 HTTP 并发保护测试、员工分页 10 组和后台 28 组检查通过。全量编号前端检索另使用线上捕获目录验证，见 `work/product-codes-20260927/live-verification.json` 与 `live-search-tests.log`。
+
+故障期间 HTTPS 与 SSH 握手均超时；服务器于 06:18 重启后恢复，并非本轮工具发起重启。前一启动周期日志在 05:33 中断，没有找到明确 OOM、内核崩溃记录，根因尚未确认。已知服务器可用物理内存约 891 MiB，故障前无交换空间。现已启用 2 GiB 交换文件 `/var/lib/yuanze-swap/emergency.swap`，权限 0600，父目录 0700，写入 fstab，swappiness=10；原系统配置备份在 `/opt/yuanze-reference/backups/20260927-memory-safeguards`。
+
+程序移除无用的全量常驻目录副本，目录/后台列表/导出共用并发保护；繁忙时 GET 有限重试，POST 不自动重试。验证脚本改为逐行摘要并以一次性数据库验收，线上验证单元限制内存 192 MiB。图片索引及认证权限保持有效。
+
+本次一致性备份：`/opt/yuanze-reference/backups/20260927-before-product-codes`。发布脚本为 `work/product-codes-20260927/remote_codes.py`；数据库停写备份后才迁移并切换，原记录逐行摘要校验通过。后续回退应优先保留编号表及上线后的修改，不能直接覆盖当前数据库。
+
+## 2026-09-27 统一登录入口
+
+公司群只需分享 `https://8.134.220.216/`。未登录时统一显示账号、密码表单，不要求选择身份；登录后业务员进入包材库，管理员进入管理后台。已登录人员再次打开首页或登录页，也按当前账号角色进入对应工作空间。管理员通过“查看员工网站”进入 `/catalog`，产品编号深链仍可直接定位包材。
+
+沿用服务端角色认证、管理员权限隔离、会话失效和退出流程。现有账号与密码未变，更新重启后原会话需重新登录一次。未改动产品、报价、图片或业务记录。
+
+验证：原后端28项、新增登录HTTP7项、登录表单5组、后台界面28组通过。线上使用现有两类账号验证HTTPS、登录分流、已有会话跳转、退出、管理员查看员工端、产品深链及权限隔离。全部11,006条记录的逐行摘要在发布前后相同。证据位于 `work/unified-login-20260927/`。
+
+本次仅覆盖5个代码文件，新release复用原素材，数据库和上传目录保持原位。备份位于 `/opt/yuanze-reference/backups/20260927-before-unified-login`，含停写时的SQLite一致性快照和发布清单。回退只需将current恢复至上一release并重启 `yuanze-reference`；无需恢复数据库。发布脚本遇到健康检查失败会自动恢复上一代码版本。

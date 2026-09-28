@@ -1,0 +1,35 @@
+{
+	default_sni 8.134.220.216
+}
+
+8.134.220.216 {
+	tls {
+		issuer acme https://acme-v02.api.letsencrypt.org/directory {
+			profile shortlived
+		}
+	}
+	encode zstd gzip
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy no-referrer
+		X-Robots-Tag "noindex, nofollow"
+	}
+	reverse_proxy 127.0.0.1:4180 {
+		header_up Host {hostport}
+		header_up X-Forwarded-For {remote_host}
+	}
+}
+
+bmt.yuanzebeauty.com {
+    tls /etc/yuanze-reference/tls/bmt.yuanzebeauty.com.pem /etc/yuanze-reference/tls/bmt.yuanzebeauty.com.key
+    encode zstd gzip
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy no-referrer
+        X-Robots-Tag "noindex, nofollow"
+    }
+    reverse_proxy 127.0.0.1:4180 {
+        header_up Host {hostport}
+        header_up X-Forwarded-For {remote_host}
+    }
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#164B47">
+  <title>包材展示 · YUANZE</title>
+  <link rel="icon" type="image/svg+xml" href="/brand/yuanze-mark.svg">
+  <link rel="stylesheet" href="/client.css">
+</head>
+<body>
+  <header class="gallery-header">
+    <div class="brand"><img src="/brand/yuanze-mark.svg" width="44" height="44" alt="源泽"><div><strong>YUANZE</strong><span>COSMETICS</span></div></div>
+    <button id="logout" class="quiet" type="button">退出登录</button>
+  </header>
+  <main id="galleryMain">
+    <section class="intro" aria-labelledby="galleryTitle"><p>PACKAGING COLLECTION</p><h1 id="galleryTitle">包材展示</h1><span>让每一个想法，找到合适的形态。</span></section>
+    <p id="notice" class="notice" role="alert" hidden></p>
+    <div id="catalogStatus" class="catalog-status" role="status" aria-live="polite">正在加载…</div>
+    <div id="gallery" class="gallery" aria-label="包材图片"></div>
+    <div id="empty" class="empty" hidden><span aria-hidden="true">◇</span><h2>更多包材，即将呈现</h2><p>欢迎稍后再来看看。</p></div>
+    <div class="retry-wrap"><button id="retry" class="button" type="button" hidden>重新加载</button></div>
+    <nav id="pagination" class="pagination" aria-label="展示分页" hidden>
+      <button id="previous" class="button" type="button">上一页</button>
+      <span id="pageStatus" aria-live="polite"></span>
+      <button id="next" class="button" type="button">下一页</button>
+      <form id="jumpForm"><label for="pageNumber">跳至</label><input id="pageNumber" type="number" inputmode="numeric" min="1" step="1" aria-label="跳转页码" required><span>页</span><button class="button" type="submit">前往</button></form>
+    </nav>
+  </main>
+  <footer>YUANZE COSMETICS</footer>
+  <dialog id="preview" aria-label="包材图片预览">
+    <div class="preview-top"><span id="previewCapacity"></span><button id="closePreview" class="quiet" type="button" aria-label="关闭图片预览">关闭 ×</button></div>
+    <div class="preview-image-wrap"><img id="previewImage" alt="包材图片"><p id="previewError" hidden>图片暂时无法显示，请稍后再试。</p></div>
+    <div class="preview-controls"><button id="imagePrevious" class="button" type="button" aria-label="上一张图片">←</button><span id="imageStatus" aria-live="polite"></span><button id="imageNext" class="button" type="button" aria-label="下一张图片">→</button></div>
+  </dialog>
+  <script type="module" src="/client.js"></script>
+</body>
+</html>

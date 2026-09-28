@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#164B47">
+  <title>登录 · 源泽包材库</title>
+  <link rel="icon" type="image/svg+xml" href="/brand/yuanze-mark.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="login-story" aria-labelledby="loginStoryTitle">
+      <svg class="login-logo" viewBox="1198 262 367 174" role="img" aria-label="YUANZE 源泽"><image href="/brand/yuanze-brand-guide.png" width="1800" height="1520" /></svg>
+      <div class="login-story-copy">
+        <p class="login-kicker">YUANZE MATERIAL LIBRARY</p>
+        <h2 id="loginStoryTitle">从一个想法，<br>找到合适的包材。</h2>
+        <p>连接产品、材质与灵感，<br>让每一次选型都有据可循。</p>
+      </div>
+      <div class="login-story-foot"><span>广州源泽药业有限公司</span><span>INTERNAL WORKSPACE</span></div>
+    </section>
+    <section class="login-box" aria-labelledby="loginTitle">
+      <div class="login-form-intro"><p class="eyebrow">WELCOME TO YUANZE</p><h1 id="loginTitle">欢迎回到源泽</h1><p class="sub">你的包材选型工作空间</p></div>
+      <form id="loginForm" aria-describedby="loginHelp">
+        <label class="field">账号<input name="username" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="请输入公司分配的账号" required autofocus></label>
+        <div class="field login-password-field"><label for="loginPassword">密码</label><div class="login-password-wrap"><input id="loginPassword" name="password" type="password" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" aria-describedby="loginInputHint" placeholder="请输入密码" required><button id="togglePassword" type="button" aria-controls="loginPassword" aria-pressed="false">显示密码</button></div></div>
+        <p id="loginInputHint" class="login-input-hint" role="status" aria-live="polite" hidden></p>
+        <button class="btn primary" type="submit">进入工作空间 <span aria-hidden="true">↗</span></button>
+        <p class="login-error" role="alert" id="error"></p>
+      </form>
+      <p class="login-help" id="loginHelp">请使用分配给你的账号登录，<br>系统会自动进入对应的页面。</p>
+      <div class="login-form-footer">专属团队的选型资料库 <span aria-hidden="true">·</span> YUANZE</div>
+    </section>
+  </main>
+  <script type="module" src="/login.js"></script>
+</body>
+</html>

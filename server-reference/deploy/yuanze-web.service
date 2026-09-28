@@ -1,0 +1,22 @@
+[Unit]
+Description=Yuanze HTTPS web gateway
+After=network-online.target yuanze-reference.service
+Wants=network-online.target
+[Service]
+User=yuanze-web
+Group=yuanze-web
+Environment=XDG_DATA_HOME=/var/lib/yuanze-web
+Environment=XDG_CONFIG_HOME=/var/lib/yuanze-web
+ExecStart=/usr/local/bin/yuanze-caddy run --config /etc/yuanze-reference/Caddyfile --adapter caddyfile
+ExecReload=/usr/local/bin/yuanze-caddy reload --config /etc/yuanze-reference/Caddyfile --adapter caddyfile
+Restart=on-failure
+RestartSec=5
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/yuanze-web
+[Install]
+WantedBy=multi-user.target

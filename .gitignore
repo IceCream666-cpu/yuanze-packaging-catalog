@@ -1,0 +1,39 @@
+# Credentials and local configuration
+.secrets/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+auth.json
+admin-bootstrap.json
+known_hosts*
+*登录信息*
+
+# Private catalogue, live state, exports and investigation archives
+/server-reference/private/
+/server-reference/state/
+/work/
+/outputs/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.ses
+
+# Dependencies, caches and local tool metadata
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+.DS_Store
+.openai/
+.sites-runtime/
+*.log

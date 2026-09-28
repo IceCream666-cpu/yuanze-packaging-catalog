@@ -1,0 +1,13 @@
+{
+  "name": "baocai-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "包材库的本地前端回归测试",
+  "scripts": {
+    "test": "node tests/frontend/run.mjs",
+    "test:frontend": "node tests/frontend/run.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.1"
+  }
+}

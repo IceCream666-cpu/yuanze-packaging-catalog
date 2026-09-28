@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+/usr/bin/python3 /usr/local/lib/yuanze/release_gate.py config --caddyfile /etc/yuanze-reference/Caddyfile --caddy-bin /usr/local/bin/yuanze-caddy
+exec /usr/local/bin/yuanze-caddy reload --config /etc/yuanze-reference/Caddyfile --adapter caddyfile
