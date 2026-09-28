@@ -9,6 +9,10 @@
 - `tests/`：前端回归与版本库安全检查。
 - `scripts/verify.py`：统一验证入口。
 - `AGENTS.md`：每次修改的测试与提交要求。
+- [后端与数据库说明](docs/后端与数据库说明.md)：模块职责、三个数据库、线上只读检查结果及备份边界。
+- [Codex 与 Sites 选择说明](docs/Codex与Sites选择说明.md)：三种维护方式对比及本项目的适配限制。
+
+只读数据库检查：`python3 scripts/database_inventory.py --state <状态目录>`，不会自动创建数据库或执行迁移。**本地 `state/` 是早期空库，不是当前线上数据备份。**
 
 素材和本地状态已复制到 `server-reference/private/`、`server-reference/state/`，由 `.gitignore` 排除。密钥及登录信息仍保留在原工程的 `.secrets/`，未复制到新工程。旧 `work/`、`outputs/` 调查记录和导出表保留在原目录。
 
