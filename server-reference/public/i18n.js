@@ -1085,3 +1085,9 @@ registerTranslations({
 });
 
 registerTranslations({'既有样品编号保持不变。':'Existing sample IDs stay unchanged.','既有登录账号保持不变。':'Existing sign-in accounts stay unchanged.'});
+
+// Defaults also used by server-injected login settings; custom text stays original.
+registerTranslations({
+  '登录 · 源泽包材库 · 内部选型':'Sign in · Yuanze Packaging Library · Internal selection',
+  '你的包材选型库':'Your packaging selection library',
+});
