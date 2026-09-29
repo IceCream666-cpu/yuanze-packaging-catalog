@@ -58,7 +58,7 @@ function syncPreferences(){
   document.querySelectorAll('button[data-favorite]').forEach(button=>{
     if(!preferencesReady)return;
     const selected=prefs.favorites.includes(button.dataset.favorite);
-    if(button.classList.contains('favorite')){button.classList.toggle('on',selected);button.textContent=selected?'★':'☆';}
+    if(button.classList.contains('favorite')){button.classList.toggle('on',selected);button.textContent=selected?'★':'☆';button.setAttribute('aria-label',(selected?'取消收藏':'收藏')+(records.find(r=>r.id===button.dataset.favorite)?.name||''));}
     else button.textContent=selected?'取消收藏':'收藏此记录';
   });
 }

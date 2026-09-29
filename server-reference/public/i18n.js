@@ -890,12 +890,12 @@ const patterns = [
   [/^(.+)，可多选$/, (_,value) => `${t(value)}; select multiple`],
   [/^移除(.+)：(.+)$/, (_,label,value) => `Remove ${t(label)}: ${translateMessage(value)}`],
   [/^(资料|分区|类别|材质|容量|容量区间|瓶型|用途|报价|来源|图片状态)：(.+)$/, (_,label,value) => `${t(label)}: ${translateMessage(value)}`],
-  [/^(收藏|取消收藏)(.+)$/, (_,label,name) => `${t(label)} ${name}`],
+  [/^(收藏|取消收藏)([\s\S]+)$/, (_,label,name) => `${t(label)} ${name}`],
   [/^(备注|需求|日期／补充说明|样品费|开模费|检测计划|其他说明|其他补充)原文$/, (_,label) => `Original ${t(label).toLowerCase()}`],
   [/^本页已整理产品（(\d+)）$/, (_,count) => `Products extracted from this page (${count})`],
   [/^([^\n]+) · (\d+)项$/, (_,label,count) => `${label} · ${count} items`],
-  [/^查看(.+)$/, (_,name) => `View ${name}`],
-  [/^选择(.+)$/, (_,name) => `Select ${name}`],
+  [/^查看([\s\S]+)$/, (_,name) => `View ${name}`],
+  [/^选择([\s\S]+)$/, (_,name) => `Select ${name}`],
   [/^(包材图片|原图参考 \/ 待整理) · (\d+) 张$/, (_,kind,count) => `${t(kind)} · ${count} images`],
   [/^查看(.+)第 (\d+) 张：(.+)$/, (_,label,count,value) => `View ${t(label)} image ${count}: ${t(value)}`],
   [/^本次匹配图 · (.+)$/, (_,value) => `Matched image · ${t(value)}`],
@@ -1090,4 +1090,18 @@ registerTranslations({'既有样品编号保持不变。':'Existing sample IDs s
 registerTranslations({
   '登录 · 源泽包材库 · 内部选型':'Sign in · Yuanze Packaging Library · Internal selection',
   '你的包材选型库':'Your packaging selection library',
+});
+
+// Imported canonical aliases keep their original values in filters and records.
+registerTranslations({
+  '瓶':'Bottle',
+  '罐':'Jar',
+  '盖与配件':'Caps and accessories',
+  '膏霜瓶/罐':'Cream bottles / Jars',
+  '瓶罐包材':'Bottle and jar packaging',
+  '盖子':'Caps',
+  '塑料（未细分）':'Plastic (unspecified)',
+  '亚克力':'Acrylic',
+  '塑料':'Plastic',
+  '铝塑':'Aluminum-plastic',
 });
