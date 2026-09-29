@@ -295,7 +295,7 @@ class Handler(BaseHTTPRequestHandler):
             settings=STORE.read_admin('settings')
             page=(PUBLIC/'login.html').read_text().replace('登录 · 源泽包材库',html.escape('登录 · '+settings['siteTitle'])).replace('YUANZE · 源泽',html.escape(settings['englishName']+' · '+settings['brandName'])).replace('包材选型工作空间',html.escape(settings['catalogTitle']))
             return self.respond(200,page.encode(),'text/html; charset=utf-8')
-        if path in ['/login.js','/api-client.js','/style.css']:
+        if path in ['/login.js','/api-client.js','/style.css','/i18n.js','/i18n.css']:
             return self.file(PUBLIC/('login.html' if path in ['/login','/login.html'] else path[1:]), PUBLIC)
         if path in ['/brand/yuanze-brand-guide.png', '/brand/yuanze-mark.svg']:
             return self.file(PUBLIC/path.lstrip('/'), PUBLIC)
@@ -358,13 +358,17 @@ class Handler(BaseHTTPRequestHandler):
         if path in ['/client','/client.html','/client.js','/client.css']:
             return self.file(PUBLIC/('client.html' if path in ['/client','/client.html'] else path[1:]),PUBLIC)
         if path=='/api/client/catalog':
-            query=parse_qs(urlsplit(self.path).query)
             try:
+                query=parse_qs(urlsplit(self.path).query,max_num_fields=256)
                 page=int(query.get('page',['1'])[0]);size=int(query.get('pageSize',['24'])[0])
                 if page<1 or size<1:raise ValueError()
+                search=query.get('q',[''])[0]
+                filters={key:query.get(key,[]) for key in ('category','material','capacity','bottle','use','section')}
+                if len(search)>200 or any(len(values)>32 or any(len(value)>100 for value in values) for values in filters.values()):
+                    raise ValueError()
             except ValueError:
-                return self.respond(400,{'error':'页码格式不正确'})
-            return self.respond_catalog(lambda:CLIENT_CATALOG.catalog(page,size))
+                return self.respond(400,{'error':'检索参数格式不正确'})
+            return self.respond_catalog(lambda:CLIENT_CATALOG.catalog(page,size,q=search,filters=filters))
         if path.startswith('/client-media/'):
             try:asset=CLIENT_CATALOG.media(path[len('/client-media/'):])
             except ClientMediaBusy:return self.respond(429,{'error':'图片正在准备，请稍后重试'},extra={'Retry-After':'2'})

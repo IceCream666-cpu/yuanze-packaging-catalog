@@ -1,127 +1,268 @@
 import {requestJSON} from './api-client.js';
+import {t, getLanguage, onLanguageChange, installLanguageSwitch, registerTranslations} from './i18n.js';
 
 const $ = selector => document.querySelector(selector);
-let session = null, items = [], page = 1, pages = 1, busy = false;
-let previewItem = null, previewIndex = 0, previousFocus = null;
+const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const copy = {
+  '源泽':'YUANZE','广州源泽药业有限公司':'Guangzhou Yuanze Pharmaceutical Co., Ltd.',
+  '包材选型库':'Packaging catalogue','源泽包材库':'YUANZE packaging catalogue','包材导航':'Packaging navigation',
+  '跳至包材内容':'Skip to packaging','包材分区':'Application area','面部':'Face','身体／头部':'Body / Hair',
+  '可与材质、容量等条件联合检索':'Combine with material, capacity and other filters',
+  '分类浏览':'Browse categories','源泽 · 包材展厅':'YUANZE · Packaging showroom',
+  '让每一个想法，找到合适的形态。':'Find the right form for every idea.',
+  '包材展厅 / 包材选型库':'Showroom / Packaging catalogue','退出登录':'Log out',
+  '为每一种配方，找到合适的包装。':'The right packaging for every formula.',
+  '按材质、容量与瓶型，探索包材灵感。':'Explore packaging by material, capacity and bottle type.',
+  '开始选型':'Explore collection','精选包材':'Featured packaging',
+  '从产品编号到理想瓶型，轻松查找合适的包材。':'Find the right packaging by product code, shape and specification.',
+  '检索条件':'Search filters','检索包材':'Search packaging','搜索产品编号、材质、容量或用途':'Search product code, material, capacity or use',
+  '搜索':'Search','重置':'Reset','筛选项可多选，同一项满足任一条件，不同项同时满足。':'Select multiple options. Match any option within a filter, and all selected filters.',
+  '已选筛选':'Selected filters','筛选结果':'Search results','包材列表':'Packaging collection',
+  '正在加载…':'Loading…','清除筛选':'Clear filters','重新加载':'Retry','产品列表分页':'Catalogue pages',
+  '上一页':'Previous','下一页':'Next','跳至':'Jump to','跳转页码':'Page number','前往':'Go',
+  '包材详情':'Packaging details','关闭详情':'Close details','关闭':'Close','包材图片':'Packaging image',
+  '图片暂时无法显示，请稍后再试。':'This image is unavailable. Please try again later.',
+  '图片暂时无法显示':'Image currently unavailable','上一张图片':'Previous image','下一张图片':'Next image',
+  '产品规格':'Product specifications','收起侧栏':'Hide sidebar','展开侧栏':'Show sidebar','关闭侧栏':'Close sidebar',
+  '材质':'Material','容量':'Capacity','瓶型':'Bottle type','用途':'Uses','包材类型':'Category',
+  '净含量':'Net content','使用部位':'Application area','产品编号':'Product code','查看详情':'View details',
+  '全部分类':'All categories','不限材质':'All materials','不限容量':'All capacities','不限瓶型':'All bottle types','不限用途':'All uses',
+  '清空本项':'Clear selection','没有匹配的选项':'No matching options','查找{label}…':'Find {label}…','筛选{label}选项':'Search {label} options',
+  '{label}，可多选':'{label}, multiple selections allowed','移除{label}：{value}':'Remove {label}: {value}',
+  '查看{code}详情':'View details for {code}','第 {number} 张图片':'Image {number}',
+  '{count} 张图片':'{count} images','找到 {count} 款包材':'{count} packaging items',
+  '第 {start}–{end} 条 · 第 {page} / {pages} 页':'Items {start}–{end} · Page {page} / {pages}',
+  '第 {number} 页':'Page {number}','净含量：{capacity}':'Net content: {capacity}',
+  '暂无匹配的包材':'No matching packaging','试试调整搜索关键词或清除部分筛选条件。':'Try another keyword or remove a filter.',
+  '更多包材，即将呈现':'More packaging to discover soon','欢迎稍后再来看看。':'Please check back later.',
+  '暂时无法加载包材，请检查网络后重试。':'Unable to load the catalogue. Check your connection and try again.',
+  '暂时无法退出，请检查网络后重试。':'Unable to log out. Check your connection and try again.',
+  '暂时无法打开页面，请检查网络后重试。':'Unable to open the page. Check your connection and try again.',
+  '包材':'Packaging',
+};
+const categories = {'瓶类':'Bottles','罐与广口盒':'Jars & wide-mouth containers','软管':'Tubes','泵头与喷头':'Pumps & sprayers','盖与其他配件':'Caps & accessories','滴管与滴管瓶':'Droppers & dropper bottles','袋类':'Pouches','外包装':'Outer packaging','标签辅材':'Labels & accessories','套装':'Sets','其他':'Other'};
+const bottles = {'圆瓶':'Round bottle','方瓶':'Square bottle','异形瓶':'Shaped bottle','广口瓶':'Wide-mouth bottle','真空瓶':'Airless bottle','泡沫瓶':'Foam bottle','喷雾瓶':'Spray bottle','滴管瓶':'Dropper bottle','膏霜罐':'Cream jar','乳液瓶':'Lotion bottle','香水瓶':'Perfume bottle','滚珠瓶':'Roll-on bottle','安瓿瓶':'Ampoule'};
+const materials = {'玻璃':'Glass','PET':'PET','PETG':'PETG','PE':'PE','HDPE':'HDPE','LDPE':'LDPE','PP':'PP','PMMA':'PMMA','AS':'AS','ABS':'ABS','PS':'PS','PVC':'PVC','铝':'Aluminium','纸':'Paper','塑料（待细分）':'Plastic (unspecified)','硅胶':'Silicone','橡胶':'Rubber','不锈钢':'Stainless steel','无纺布':'Nonwoven fabric','铝塑复合':'Aluminium-plastic composite'};
+const uses = {'洁面':'Facial cleanser','卸妆':'Makeup remover','精华液':'Serum','爽肤水':'Toner','化妆水':'Skin toner','面霜':'Face cream','眼霜':'Eye cream','眼部精华':'Eye serum','面膜':'Face mask','唇部护理':'Lip care','防晒':'Sunscreen','粉底液':'Liquid foundation','底妆':'Base makeup','唇彩':'Lip colour','眉妆':'Brow makeup','睫毛产品':'Lash products','洗手液':'Hand wash','洗发水':'Shampoo','护发素':'Hair conditioner','发膜':'Hair mask','头皮护理':'Scalp care','头发造型':'Hair styling','染发':'Hair dye','沐浴露':'Body wash','身体乳':'Body lotion','身体霜':'Body cream','身体油':'Body oil','身体磨砂':'Body scrub','护手霜':'Hand cream','手足护理':'Hand & foot care','护足霜':'Foot cream','脱毛':'Hair removal','止汗除臭':'Deodorant','香水':'Perfume','身体香氛':'Body fragrance','香氛':'Fragrance','美甲':'Nail care','口腔护理':'Oral care','精油':'Essential oil','乳液':'Lotion','膏霜':'Cream','凝胶':'Gel','洗护':'Personal care','洗衣液':'Laundry detergent','家居清洁':'Household cleaning','水剂':'Water-based formulas','油剂':'Oil-based formulas','粉体':'Powder'};
+const specs = {'口径':'Neck diameter','瓶高':'Bottle height','高度':'Height','直径':'Diameter','底径':'Base diameter','长度':'Length','宽度':'Width','厚度':'Thickness','重量':'Weight','满口容量':'Brimful capacity'};
+registerTranslations(Object.fromEntries(Object.entries({...copy,...categories,...bottles,...materials,...uses,...specs}).map(([zh,en]) => [zh,{zh,en}])));
 
+const facetConfig = {
+  category:{source:'categories',label:'包材类型',values:categories},
+  section:{source:'sections',label:'包材分区',values:{face:'Face','body-head':'Body / Hair'}},
+  material:{source:'materials',label:'材质',placeholder:'不限材质',values:materials},
+  capacity:{source:'capacities',label:'容量',placeholder:'不限容量'},
+  bottle:{source:'bottleTypes',label:'瓶型',placeholder:'不限瓶型',values:bottles},
+  use:{source:'uses',label:'用途',placeholder:'不限用途',values:uses},
+};
+const selected = Object.fromEntries(Object.keys(facetConfig).map(key => [key,[]]));
+let session = null, items = [], facets = {}, heroItems = [], query = '', page = 1, pages = 1, total = 0;
+let busy = false, loaded = false, noticeKey = '', requestSequence = 0, controller = null, retryPage = 1;
+let previewItem = null, previewIndex = 0, previousFocus = null;
+let mobile = matchMedia('(max-width: 760px)').matches, sidebarOpen = !mobile;
+const capacityPattern = /^\d+(?:\.\d+)?\s*(?:mL|ml|L|g|kg)$/;
+const specPattern = /^\d+(?:\.\d+)?\s*(?:mm|cm|m|g|kg|mL|ml|L)$/;
+const known = (value, values) => typeof value === 'string' && Object.hasOwn(values, value) ? value : '';
+const safeArray = (value, values) => Array.isArray(value) ? [...new Set(value.map(item => known(item,values)).filter(Boolean))] : [];
 function imageURL(image) {
-  // Customer media is a separate server-side allowlist; never load original paths.
+  // Customer images always use opaque allowlisted URLs, never original paths.
   const value = typeof image?.url === 'string' ? image.url : '';
   return /^\/client-media\/[A-Za-z0-9_-]+\.(?:jpg|jpeg|png|webp)$/.test(value) ? value : '';
 }
-function capacityLabel(item) {return item.capacity ? `净含量：${item.capacity}` : '净含量：—';}
-function showNotice(message = '') {$('#notice').textContent = message; $('#notice').hidden = !message;}
+function safeItem(item) {
+  return {
+    id:typeof item?.id === 'string' ? item.id : '',
+    productCode:/^YZ-BC-\d{6,}$/.test(item?.productCode) ? item.productCode : '',
+    capacity:typeof item?.capacity === 'string' && capacityPattern.test(item.capacity) ? item.capacity : '',
+    category:known(item?.category,categories), bottleType:known(item?.bottleType,bottles),
+    materials:safeArray(item?.materials,materials), uses:safeArray(item?.uses,uses), sections:safeArray(item?.sections,facetConfig.section.values),
+    specifications:Array.isArray(item?.specifications) ? item.specifications.filter(spec => known(spec?.label,specs) && typeof spec.value === 'string' && specPattern.test(spec.value)).map(({label,value}) => ({label,value})) : [],
+    images:Array.isArray(item?.images) ? item.images.map(image => ({url:imageURL(image)})).filter(image => image.url) : [],
+  };
+}
+function safeFacets(input) {
+  return Object.fromEntries(Object.entries(facetConfig).map(([key,{source,values}]) => [key,values ? safeArray(input?.[source],values) : Array.isArray(input?.[source]) ? [...new Set(input[source].filter(value => typeof value === 'string' && capacityPattern.test(value)))] : []]));
+}
+function label(key, value) {return key === 'section' ? t(value === 'face' ? '面部' : '身体／头部') : t(value);}
+function joined(values) {return values.map(value => t(value)).join(getLanguage() === 'en' ? ', ' : '、');}
+function itemName(item) {return [t(item.bottleType || item.category || '包材'),item.capacity].filter(Boolean).join(' · ');}
+function hasFilters() {return Boolean(query || Object.values(selected).some(values => values.length));}
+function showNotice(key = '') {noticeKey = key;$('#notice').textContent = key ? t(key) : '';$('#notice').hidden = !key;}
 function setBusy(value) {
-  busy = value;
-  $('#gallery').setAttribute('aria-busy', String(value));
-  $('#previous').disabled = value || page <= 1;
-  $('#next').disabled = value || page >= pages;
+  busy = value;$('#gallery').setAttribute('aria-busy',String(value));
+  $('#previous').disabled = value || page <= 1;$('#next').disabled = value || page >= pages;
   $('#jumpForm').querySelectorAll('input,button').forEach(el => el.disabled = value);
+  $('#pageButtons').querySelectorAll('button').forEach(el => el.disabled = value);
   $('#retry').disabled = value;
+  renderStatus();
 }
-function showImageFailure(image, parent) {
-  image.hidden = true;
-  const note = document.createElement('p');
-  note.className = 'image-unavailable';
-  note.textContent = '图片暂时无法显示';
-  parent.append(note);
+function renderText() {
+  document.title = `${t('包材选型库')} · YUANZE`;
+  document.querySelectorAll('[data-client-text]').forEach(el => {el.textContent = t(el.dataset.clientText);});
+  document.querySelectorAll('[data-client-label]').forEach(el => {el.setAttribute('aria-label',t(el.dataset.clientLabel));});
+  document.querySelectorAll('[data-client-placeholder]').forEach(el => {el.placeholder = t(el.dataset.clientPlaceholder);});
+  showNotice(noticeKey);updateSidebar();
 }
-function loadWithRetry(image, url, onFailure, stillRelevant = () => image.isConnected) {
+function renderStatus() {
+  $('#resultCount').textContent = loaded ? t('找到 {count} 款包材',{count:total}) : '';
+  $('#catalogStatus').textContent = busy ? t('正在加载…') : total && loaded ? t('第 {start}–{end} 条 · 第 {page} / {pages} 页',{start:(page-1)*24+1,end:Math.min(page*24,total),page,pages}) : '';
+}
+function renderSidebar() {
+  $('#categorySidebar').innerHTML = `<button type="button" class="side-facet ${selected.category.length ? '' : 'active'}" data-all-categories aria-pressed="${!selected.category.length}"><span>${esc(t('全部分类'))}</span><span aria-hidden="true">›</span></button>` + (facets.category || []).map(value => `<button type="button" class="side-facet ${selected.category.includes(value) ? 'active' : ''}" data-category="${esc(value)}" aria-pressed="${selected.category.includes(value)}"><span>${esc(t(value))}</span><span aria-hidden="true">${selected.category.includes(value) ? '✓' : '›'}</span></button>`).join('');
+  document.querySelectorAll('[data-section]').forEach(button => {const active = selected.section.includes(button.dataset.section);button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
+  $('#allCatalog').classList.toggle('active',!hasFilters());
+}
+function renderFilters() {
+  const focused = document.activeElement;
+  const focusFacet = focused?.closest('.multi-filter')?.dataset.facet;
+  const focusValue = focused?.dataset.filter ? focused.value : null;
+  const focusSearch = focused?.matches('.multi-option-search');
+  const open = new Map([...document.querySelectorAll('.multi-filter')].map(el => [el.dataset.facet,{open:el.open,search:el.querySelector('.multi-option-search').value,scroll:el.querySelector('.multi-options').scrollTop}]));
+  $('#filterGrid').innerHTML = ['material','capacity','bottle','use'].map(key => {
+    const config = facetConfig[key], values = [...new Set([...(facets[key] || []),...selected[key]])];
+    const summary = selected[key].length ? selected[key].map(value => label(key,value)).join(getLanguage() === 'en' ? ', ' : '、') : t(config.placeholder);
+    return `<div class="filter-field"><span class="filter-field-label" id="facet-label-${key}">${esc(t(config.label))}</span><details class="multi-filter" data-facet="${key}"><summary aria-labelledby="facet-label-${key} facet-summary-${key}"><span class="multi-summary" id="facet-summary-${key}" title="${esc(summary)}">${esc(summary)}</span>${selected[key].length ? `<span class="multi-count">${selected[key].length}</span>` : ''}</summary><div class="multi-menu"><input type="search" class="multi-option-search" placeholder="${esc(t('查找{label}…',{label:t(config.label)}))}" aria-label="${esc(t('筛选{label}选项',{label:t(config.label)}))}"><button type="button" class="quiet" data-clear-facet="${key}">${esc(t('清空本项'))}</button><div class="multi-options" role="group" aria-label="${esc(t('{label}，可多选',{label:t(config.label)}))}">${values.map(value => `<label class="multi-option"><input type="checkbox" data-filter="${key}" value="${esc(value)}" ${selected[key].includes(value) ? 'checked' : ''}><span>${esc(label(key,value))}</span></label>`).join('')}</div><p class="multi-empty" hidden>${esc(t('没有匹配的选项'))}</p></div></details></div>`;
+  }).join('');
+  for (const el of document.querySelectorAll('.multi-filter')) {const saved = open.get(el.dataset.facet);if (saved) {el.open = saved.open;el.querySelector('.multi-option-search').value = saved.search;filterOptions(el.querySelector('.multi-option-search'));el.querySelector('.multi-options').scrollTop = saved.scroll;}}
+  if (focusFacet) {
+    const panel = [...document.querySelectorAll('.multi-filter')].find(el => el.dataset.facet === focusFacet);
+    const target = focusSearch ? panel?.querySelector('.multi-option-search') : focusValue !== null ? [...(panel?.querySelectorAll('[data-filter]') || [])].find(input => input.value === focusValue) : focused?.tagName === 'SUMMARY' ? panel?.querySelector('summary') : panel?.querySelector('[data-clear-facet]');
+    target?.focus({preventScroll:true});
+  }
+  const chips = Object.entries(selected).flatMap(([key,values]) => values.map(value => `<button type="button" class="filter-chip" data-clear-filter="${key}" data-filter-value="${esc(value)}" aria-label="${esc(t('移除{label}：{value}',{label:t(facetConfig[key].label),value:label(key,value)}))}">${esc(t(facetConfig[key].label))}: ${esc(label(key,value))}<span aria-hidden="true">×</span></button>`));
+  $('#activeFilters').innerHTML = chips.join('');$('#activeFilters').hidden = !chips.length;
+}
+function filterOptions(input) {
+  const panel = input.closest('.multi-filter'), value = input.value.trim().normalize('NFKC').toLowerCase();let count = 0;
+  panel.querySelectorAll('.multi-option').forEach(option => {option.hidden = !`${option.textContent} ${option.querySelector('input').value}`.normalize('NFKC').toLowerCase().includes(value);if (!option.hidden) count++;});
+  panel.querySelector('.multi-empty').hidden = count > 0;
+}
+function loadImage(image, url, stillRelevant = () => image.isConnected) {
   let attempts = 0;
-  image.addEventListener('error', () => {
-    if (attempts >= 3) {onFailure();return;}
-    attempts += 1;
-    const suffix = `?retry=${attempts}`;
-    setTimeout(() => {
-      if (stillRelevant()) image.src = url + suffix;
-    }, attempts * 1500);
+  image.addEventListener('error',() => {
+    if (attempts >= 2) {image.hidden = true;const parent = image.closest('.preview-image-wrap');if (parent) $('#previewError').hidden = false;else if (!image.parentElement.querySelector('.image-unavailable')) {const note = document.createElement('span');note.className = 'image-unavailable';note.textContent = t('图片暂时无法显示');image.parentElement.append(note);}return;}
+    attempts += 1;setTimeout(() => {if (stillRelevant()) image.src = `${url}?retry=${attempts}`;},attempts*1000);
   });
   image.src = url;
 }
-function render() {
-  const fragment = document.createDocumentFragment();
-  for (const item of items) {
-    const card = document.createElement('article'); card.className = 'gallery-card';
-    const button = document.createElement('button'); button.type = 'button'; button.className = 'photo-button';
-    button.setAttribute('aria-label', `查看包材图片，${capacityLabel(item)}`);
-    const img = document.createElement('img'); img.alt = '包材图片'; img.loading = 'lazy'; img.decoding = 'async';
-    loadWithRetry(img, item.images[0].url, () => showImageFailure(img, button));
-    button.append(img);
-    if (item.images.length > 1) {const count = document.createElement('span');count.className = 'image-count';count.textContent = `${item.images.length} 张图片`;button.append(count);}
-    button.addEventListener('click', () => openPreview(item, button));
-    const caption = document.createElement('p');caption.className = 'capacity';caption.textContent = capacityLabel(item);
-    card.append(button, caption);fragment.append(card);
-  }
-  $('#gallery').replaceChildren(fragment);
-  $('#empty').hidden = items.length !== 0;
-  $('#pagination').hidden = pages <= 1 || items.length === 0;
-  $('#pageStatus').textContent = `${page} / ${pages}`;
-  $('#pageNumber').value = page;$('#pageNumber').max = pages;
+function attachImages(parent) {parent.querySelectorAll('img[data-image-url]').forEach(image => {loadImage(image,image.dataset.imageUrl);image.removeAttribute('data-image-url');});}
+function renderHero() {
+  $('#showroomHero').hidden = hasFilters() || page > 1 || loaded && !heroItems.length;
+  $('#heroImages').innerHTML = heroItems.slice(0,3).map((item,index) => `<button type="button" class="showroom-object" data-hero="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(item.images[0].url)}" alt="${esc(itemName(item))}" loading="lazy"><span>${esc(item.productCode || item.capacity)}</span></button>`).join('');
+  attachImages($('#heroImages'));
+}
+function paginationItems() {
+  const visible = new Set([1,pages]);for (let n = Math.max(1,page-1);n <= Math.min(pages,page+1);n++) visible.add(n);
+  if (page <= 3) for (let n = 1;n <= Math.min(5,pages);n++) visible.add(n);
+  if (page >= pages-2) for (let n = Math.max(1,pages-4);n <= pages;n++) visible.add(n);
+  const output = [];for (const n of [...visible].sort((a,b) => a-b)) {if (output.length && n-output.at(-1) > 1) output.push('…');output.push(n);}return output;
+}
+function renderGallery() {
+  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(item.images[0].url)}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(itemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:item.capacity || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
+  attachImages($('#gallery'));
+  $('#empty').hidden = !loaded || items.length !== 0 || Boolean(noticeKey);
+  $('#emptyTitle').textContent = t(hasFilters() ? '暂无匹配的包材' : '更多包材，即将呈现');
+  $('#emptyText').textContent = t(hasFilters() ? '试试调整搜索关键词或清除部分筛选条件。' : '欢迎稍后再来看看。');
+  $('#emptyReset').hidden = !hasFilters();
+  $('#pagination').hidden = pages <= 1 || !items.length;
+  $('#pageStatus').textContent = `${page} / ${pages}`;$('#pageNumber').value = page;$('#pageNumber').max = pages;
+  $('#pageButtons').innerHTML = paginationItems().map(number => number === '…' ? '<span class="page-gap" aria-hidden="true">…</span>' : `<button type="button" class="button ${number === page ? 'current' : ''}" data-page="${number}" aria-label="${esc(t('第 {number} 页',{number}))}" ${number === page ? 'aria-current="page"' : ''}>${number}</button>`).join('');
+  renderHero();renderStatus();setBusy(busy);
 }
 async function loadCatalog(target = page, scroll = false) {
-  if (busy) return;
+  const sequence = ++requestSequence;controller?.abort();controller = new AbortController();retryPage = target;
   setBusy(true);showNotice();$('#retry').hidden = true;
-  $('#catalogStatus').textContent = '正在加载…';
+  const params = new URLSearchParams({page:String(target),pageSize:'24'});
+  if (query) params.set('q',query);
+  for (const [key,values] of Object.entries(selected)) values.forEach(value => params.append(key,value));
   try {
-    const data = await requestJSON(`/api/client/catalog?page=${target}&pageSize=24`);
-    if (!Array.isArray(data.items) || !Number.isInteger(data.page) || data.page < 1 || !Number.isInteger(data.pages) || data.pages < 1) throw Error('invalid catalogue');
-    items = data.items.map(item => ({
-      capacity: typeof item.capacity === 'string' ? item.capacity : '',
-      images: Array.isArray(item.images) ? item.images.map(image => ({url:imageURL(image)})).filter(image => image.url) : [],
-    })).filter(item => item.images.length > 0);
-    page = data.page;pages = data.pages;render();
-    $('#catalogStatus').textContent = '';
-    if (scroll) $('#galleryMain').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
+    const data = await requestJSON(`/api/client/catalog?${params}`,{signal:controller.signal});
+    if (sequence !== requestSequence) return;
+    if (!Array.isArray(data.items) || !Number.isInteger(data.page) || data.page < 1 || !Number.isInteger(data.pages) || data.pages < 1 || !Number.isInteger(data.total) || data.total < 0) throw Error('Invalid catalogue');
+    items = data.items.map(safeItem).filter(item => item.images.length);facets = safeFacets(data.facets);page = data.page;pages = data.pages;total = data.total;loaded = true;
+    if (!hasFilters() && page === 1) heroItems = items.slice(0,3);
+    renderSidebar();renderFilters();renderGallery();
+    if (scroll) $('#filters').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
   } catch (error) {
+    if (sequence !== requestSequence || error.name === 'AbortError') return;
     if (error.status === 401) {location.replace('/login');return;}
-    $('#catalogStatus').textContent = '';
-    showNotice('暂时无法加载包材图片，请检查网络后重试。');$('#retry').hidden = false;
-  } finally {setBusy(false);}
+    items = [];total = 0;showNotice('暂时无法加载包材，请检查网络后重试。');renderGallery();$('#retry').hidden = false;
+  } finally {if (sequence === requestSequence) setBusy(false);}
 }
-function updatePreview() {
-  const image = $('#previewImage');image.hidden = false;$('#previewError').hidden = true;
-  const currentImage = image.cloneNode();
-  currentImage.removeAttribute('src');
-  image.replaceWith(currentImage);
-  const url = previewItem.images[previewIndex].url;
-  loadWithRetry(currentImage, url, () => {currentImage.hidden = true;$('#previewError').hidden = false;},
-    () => previewItem && $('#previewImage') === currentImage && currentImage.isConnected);
-  $('#previewCapacity').textContent = capacityLabel(previewItem);
-  $('#imageStatus').textContent = `${previewIndex + 1} / ${previewItem.images.length}`;
-  $('#imagePrevious').disabled = previewIndex === 0;
-  $('#imageNext').disabled = previewIndex === previewItem.images.length - 1;
+function factHTML(labelText, value) {return `<div><dt>${esc(t(labelText))}</dt><dd>${esc(value || '—')}</dd></div>`;}
+function renderDetails(changeImage = false) {
+  if (!previewItem) return;
+  $('#detailCode').textContent = previewItem.productCode;$('#detailTitle').textContent = itemName(previewItem);
+  $('#detailTags').innerHTML = previewItem.materials.map(value => `<span class="tag material">${esc(t(value))}</span>`).join('');
+  $('#detailFacts').innerHTML = [factHTML('包材类型',t(previewItem.category)),factHTML('瓶型',t(previewItem.bottleType)),factHTML('净含量',previewItem.capacity),factHTML('材质',joined(previewItem.materials)),factHTML('用途',joined(previewItem.uses)),factHTML('使用部位',previewItem.sections.map(value => label('section',value)).join(getLanguage() === 'en' ? ', ' : '、'))].join('');
+  $('#specifications').hidden = !previewItem.specifications.length;
+  $('#detailSpecifications').innerHTML = previewItem.specifications.map(spec => factHTML(spec.label,spec.value)).join('');
+  $('#imageStatus').textContent = `${previewIndex+1} / ${previewItem.images.length}`;
+  $('#imagePrevious').disabled = previewIndex === 0;$('#imageNext').disabled = previewIndex === previewItem.images.length-1;
   $('.preview-controls').hidden = previewItem.images.length <= 1;
+  $('#imageThumbnails').hidden = previewItem.images.length <= 1;
+  $('#imageThumbnails').innerHTML = previewItem.images.map((image,index) => `<button type="button" data-image-index="${index}" aria-current="${index === previewIndex}" aria-label="${esc(t('第 {number} 张图片',{number:index+1}))}"><img src="${esc(image.url)}" loading="lazy" alt=""></button>`).join('');
+  if (changeImage) {
+    const old = $('#previewImage'), image = old.cloneNode();image.removeAttribute('src');image.hidden = false;old.replaceWith(image);$('#previewError').hidden = true;
+    loadImage(image,previewItem.images[previewIndex].url,() => previewItem && $('#previewImage') === image && image.isConnected);
+  }
+  $('#previewImage').alt = `${itemName(previewItem)} · ${t('第 {number} 张图片',{number:previewIndex+1})}`;
 }
-function openPreview(item, source) {previewItem = item;previewIndex = 0;previousFocus = source;updatePreview();$('#preview').showModal();}
-function moveImage(delta) {if (!previewItem) return;previewIndex = Math.max(0,Math.min(previewItem.images.length - 1,previewIndex + delta));updatePreview();}
-$('#closePreview').addEventListener('click', () => $('#preview').close());
-$('#preview').addEventListener('close', () => {$('#previewImage').removeAttribute('src');previewItem = null;previousFocus?.focus();});
-$('#preview').addEventListener('click', event => {if (event.target === $('#preview')) $('#preview').close();});
-$('#preview').addEventListener('keydown', event => {if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {event.preventDefault();moveImage(event.key === 'ArrowLeft' ? -1 : 1);}});
-$('#imagePrevious').addEventListener('click', () => moveImage(-1));
-$('#imageNext').addEventListener('click', () => moveImage(1));
-$('#previous').addEventListener('click', () => {if (page > 1) loadCatalog(page - 1,true);});
-$('#next').addEventListener('click', () => {if (page < pages) loadCatalog(page + 1,true);});
-$('#jumpForm').addEventListener('submit', event => {event.preventDefault();const target = Number($('#pageNumber').value);if (Number.isInteger(target) && target >= 1 && target <= pages && target !== page) loadCatalog(target,true);});
-$('#retry').addEventListener('click', () => session ? loadCatalog() : init());
-$('#logout').addEventListener('click', async () => {
+function openPreview(item, source) {if (!item) return;previewItem = item;previewIndex = 0;previousFocus = source;renderDetails(true);$('#preview').showModal();}
+function moveImage(delta) {if (!previewItem) return;previewIndex = Math.max(0,Math.min(previewItem.images.length-1,previewIndex+delta));renderDetails(true);}
+function updateSidebar() {
+  document.body.classList.toggle('menu-open',mobile && sidebarOpen);document.body.classList.toggle('sidebar-collapsed',!mobile && !sidebarOpen);
+  $('#sidebarBackdrop').hidden = !mobile || !sidebarOpen;$('#menuButton').setAttribute('aria-expanded',String(sidebarOpen));
+  const text = t(sidebarOpen ? '收起侧栏' : '展开侧栏');$('#menuLabel').textContent = text;$('#menuButton').setAttribute('aria-label',text);
+  document.body.style.overflow = mobile && sidebarOpen ? 'hidden' : '';
+}
+function closeMobileSidebar() {if (mobile) {sidebarOpen = false;updateSidebar();}}
+function applyFilters() {query = $('#query').value.trim();renderSidebar();renderFilters();closeMobileSidebar();loadCatalog(1);}
+function toggleFacet(key, value) {selected[key] = selected[key].includes(value) ? selected[key].filter(item => item !== value) : [...selected[key],value];applyFilters();}
+function reset() {for (const key of Object.keys(selected)) selected[key] = [];query = '';$('#query').value = '';applyFilters();}
+$('#searchForm').addEventListener('submit',event => {event.preventDefault();applyFilters();});
+$('#reset').addEventListener('click',reset);$('#emptyReset').addEventListener('click',reset);$('#allCatalog').addEventListener('click',reset);
+$('#browse').addEventListener('click',() => {$('#filters').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});$('#query').focus({preventScroll:true});});
+document.addEventListener('change',event => {const key = event.target.dataset.filter;if (facetConfig[key]) {const value = event.target.value;toggleFacet(key,value);const input = [...document.querySelectorAll('[data-filter]')].find(input => input.dataset.filter === key && input.value === value);input?.focus({preventScroll:true});}});
+document.addEventListener('input',event => {if (event.target.matches('.multi-option-search')) filterOptions(event.target);});
+document.addEventListener('click',event => {
+  const button = event.target.closest('button');
+  if (button?.dataset.detail !== undefined) openPreview(items[Number(button.dataset.detail)],button);
+  else if (button?.dataset.hero !== undefined) openPreview(heroItems[Number(button.dataset.hero)],button);
+  else if (button?.dataset.section) toggleFacet('section',button.dataset.section);
+  else if (button?.dataset.category) toggleFacet('category',button.dataset.category);
+  else if (button?.hasAttribute('data-all-categories')) {selected.category = [];applyFilters();}
+  else if (button?.dataset.clearFilter) toggleFacet(button.dataset.clearFilter,button.dataset.filterValue);
+  else if (button?.dataset.clearFacet) {selected[button.dataset.clearFacet] = [];applyFilters();}
+  else if (button?.dataset.page && !busy) loadCatalog(Number(button.dataset.page),true);
+  else if (button?.dataset.imageIndex !== undefined && previewItem) {previewIndex = Number(button.dataset.imageIndex);renderDetails(true);}
+  const summary = event.target.closest('.multi-filter summary');
+  for (const panel of document.querySelectorAll('.multi-filter[open]')) if (summary && panel !== summary.parentElement || !event.target.closest('.multi-filter')) panel.open = false;
+});
+document.addEventListener('keydown',event => {if (event.key !== 'Escape') return;const panel = event.target.closest('.multi-filter[open]');if (panel) {panel.open = false;panel.querySelector('summary').focus();}else if (mobile && sidebarOpen) {closeMobileSidebar();$('#menuButton').focus();}});
+$('#menuButton').addEventListener('click',() => {sidebarOpen = !sidebarOpen;updateSidebar();});
+$('#sidebarClose').addEventListener('click',() => {sidebarOpen = false;updateSidebar();$('#menuButton').focus();});$('#sidebarBackdrop').addEventListener('click',closeMobileSidebar);
+matchMedia('(max-width: 760px)').addEventListener?.('change',event => {mobile = event.matches;sidebarOpen = !mobile;updateSidebar();});
+$('#closePreview').addEventListener('click',() => $('#preview').close());
+$('#preview').addEventListener('close',() => {const code = previewItem?.productCode;$('#previewImage').removeAttribute('src');previewItem = null;if (previousFocus?.isConnected) previousFocus.focus();else {[...document.querySelectorAll('.photo-button')].find(button => items[Number(button.dataset.detail)]?.productCode === code)?.focus();}});
+$('#preview').addEventListener('click',event => {if (event.target === $('#preview')) $('#preview').close();});
+$('#preview').addEventListener('keydown',event => {if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {event.preventDefault();moveImage(event.key === 'ArrowLeft' ? -1 : 1);}});
+$('#imagePrevious').addEventListener('click',() => moveImage(-1));$('#imageNext').addEventListener('click',() => moveImage(1));
+$('#previous').addEventListener('click',() => {if (!busy && page > 1) loadCatalog(page-1,true);});$('#next').addEventListener('click',() => {if (!busy && page < pages) loadCatalog(page+1,true);});
+$('#jumpForm').addEventListener('submit',event => {event.preventDefault();const target = Number($('#pageNumber').value);if (!busy && Number.isInteger(target) && target >= 1 && target <= pages && target !== page) loadCatalog(target,true);});
+$('#retry').addEventListener('click',() => session ? loadCatalog(retryPage) : init());
+$('#logout').addEventListener('click',async () => {
   $('#logout').disabled = true;showNotice();
-  try {
-    if (!session) session = await requestJSON('/api/session');
-    await requestJSON('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':session.csrf || ''},body:'{}'});
-    location.replace('/login');
-  } catch (error) {if (error.status === 401) location.replace('/login');else showNotice('暂时无法退出，请检查网络后重试。');}
+  try {if (!session) session = await requestJSON('/api/session');await requestJSON('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':session.csrf || ''},body:'{}'});location.replace('/login');}
+  catch (error) {if (error.status === 401) location.replace('/login');else showNotice('暂时无法退出，请检查网络后重试。');}
   finally {$('#logout').disabled = false;}
 });
+onLanguageChange(() => {renderText();renderSidebar();renderFilters();renderGallery();renderDetails();});
+installLanguageSwitch($('#languageSwitch'));
+renderText();renderSidebar();renderFilters();renderStatus();
 async function init() {
   $('#retry').hidden = true;showNotice();
-  try {
-    session = await requestJSON('/api/session');
-    if (!['client','admin'].includes(session.role)) {location.replace('/');return;}
-    await loadCatalog();
-  } catch (error) {
-    if (error.status === 401) {location.replace('/login');return;}
-    session = null;$('#catalogStatus').textContent = '';showNotice('暂时无法打开页面，请检查网络后重试。');$('#retry').hidden = false;
-  }
+  try {session = await requestJSON('/api/session');if (!['client','admin'].includes(session.role)) {location.replace('/');return;}await loadCatalog();}
+  catch (error) {if (error.status === 401) {location.replace('/login');return;}session = null;$('#catalogStatus').textContent = '';showNotice('暂时无法打开页面，请检查网络后重试。');$('#retry').hidden = false;}
 }
 init();

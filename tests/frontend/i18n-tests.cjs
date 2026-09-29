@@ -1,0 +1,63 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const {JSDOM,VirtualConsole}=require('jsdom');
+const {evaluateBrowserModule}=require('./module-loader.cjs');
+const root=path.resolve(__dirname,'../../server-reference/public')+path.sep;
+const checks=[];
+function make(file,language='zh'){
+ const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>{if(!e.message.includes('navigation'))errors.push(e.message)});
+ const dom=new JSDOM(fs.readFileSync(root+file,'utf8'),{url:'https://catalog.test/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
+ const w=dom.window;w.localStorage.setItem('yuanze-language',language);w.AbortController=AbortController;w.DOMException=DOMException;w.TypeError=TypeError;w.matchMedia=()=>({matches:false,addEventListener(){}});w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=function(){};w.HTMLDialogElement.prototype.showModal=function(){this.open=true};w.HTMLDialogElement.prototype.close=function(){this.open=false};w.confirm=()=>true;
+ return {dom,w,d:w.document,errors};
+}
+const respond=value=>new Response(JSON.stringify(value),{headers:{'Content-Type':'application/json'}});
+const tick=()=>new Promise(resolve=>setTimeout(resolve,0));
+async function until(test,label){for(let n=0;n<300;n++){if(test())return;await new Promise(resolve=>setTimeout(resolve,5));}throw Error('Timeout: '+label)}
+const product={id:'原始-001',productCode:'YZ-BC-000001',kind:'package',version:1,name:'面霜',category:'瓶类',materials:['玻璃'],bottleType:'圆瓶',capacityMl:50,uses:['面霜'],supplierRaw:'源泽',quoteRaw:'含税价格',description:'产品说明',images:[],productDetails:[{label:'口径',value:'规格说明',sourceField:'specificationRaw',evidence:'来源原文'}]};
+async function main(){
+ let p=make('login.html','en');await evaluateBrowserModule(p.dom,root+'login.js');
+ assert.equal(p.d.documentElement.lang,'en');assert.equal(p.d.title,'Sign in · Yuanze Packaging Library');assert.match(p.d.querySelector('#loginTitle').textContent,/Welcome/);assert.equal(p.d.querySelector('[name=username]').placeholder,'Enter your assigned account');
+ const username=p.d.querySelector('[name=username]'),password=p.d.querySelector('[name=password]');username.value='公司Ａ账号';password.value=' Secret保留 ';password.dispatchEvent(new p.w.Event('input',{bubbles:true}));await tick();assert.match(p.d.querySelector('#loginInputHint').textContent,/whitespace/);assert.match(p.d.querySelector('#loginInputHint').textContent,/full-width/);
+ const switcher=p.d.querySelector('[data-language-switch]');switcher.click();await tick();assert.equal(p.w.localStorage.getItem('yuanze-language'),'zh');assert.equal(username.value,'公司Ａ账号');assert.equal(password.value,' Secret保留 ');assert.equal(p.d.documentElement.lang,'zh-CN');assert.equal(p.d.querySelector('#loginTitle').textContent,'欢迎回到源泽');
+ switcher.click();p.d.querySelector('#togglePassword').click();await tick();assert.equal(password.type,'text');assert.equal(p.d.querySelector('#togglePassword').textContent,'Hide password');assert.equal(switcher.type,'button');assert.equal(switcher.getAttribute('aria-label'),'Switch to Chinese');assert.deepEqual(p.errors,[]);p.dom.window.close();checks.push('Persisted language localizes login, metadata, placeholders and live hints without replacing credentials or handlers');
+ p=make('index.html','en');p.w.fetch=async url=>respond(url==='/api/session'?{role:'employee',username:'面霜',csrf:'token'}:url==='/api/catalog'?{records:[product,{...product,id:'原始-002',productCode:'YZ-BC-000002',name:'精华液',quoteHeader:'乳液'}],settings:{}}:url==='/api/preferences'?{favorites:[]}:{available:false});
+ await evaluateBrowserModule(p.dom,root+'app.js');await until(()=>p.d.querySelector('.card'),'employee cards');await tick();
+ assert.equal(p.d.querySelector('.card-title').textContent,'面霜');assert.equal(p.d.querySelector('#account').textContent,'面霜');assert.match(p.d.querySelector('.tags').textContent,/Bottles/);assert.match(p.d.querySelector('.tags').textContent,/Glass/);assert.match(p.d.querySelector('#searchForm').textContent,/Search/);
+ const query=p.d.querySelector('#query');query.value='Unsaved 查询';query.dispatchEvent(new p.w.Event('input',{bubbles:true}));
+ const glass=p.d.querySelector('[data-filter=material][value="玻璃"]');assert.ok(glass);assert.equal(glass.closest('label').querySelector('.label').textContent,'Glass');
+ p.d.querySelector('[data-language-switch]').click();await tick();assert.equal(p.d.querySelector('#query'),query);assert.equal(query.value,'Unsaved 查询');assert.equal(glass.value,'玻璃');assert.equal(glass.closest('label').querySelector('.label').textContent,'玻璃');
+ p.d.querySelector('[data-language-switch]').click();p.d.querySelector('.card-title').click();await tick();assert.equal(p.d.querySelector('#modal').open,true);assert.equal(p.d.querySelector('.dialog-head h2').textContent,'面霜');assert.match(p.d.querySelector('.dialog-content').textContent,/Product specifications/);assert.match(p.d.querySelector('.dialog-content').textContent,/源泽/);assert.match(p.d.querySelector('.dialog-content').textContent,/规格说明/);
+ p.d.querySelector('[data-close]').click();p.d.querySelector('#query').value='';p.d.querySelector('#query').dispatchEvent(new p.w.Event('input',{bubbles:true}));
+ for(const id of ['原始-001','原始-002']){const checkbox=p.d.querySelector(`[data-select="${id}"]`);checkbox.checked=true;checkbox.dispatchEvent(new p.w.Event('change',{bubbles:true}));await tick();}
+ p.d.querySelector('[data-action=compare]').click();await tick();const comparison=p.d.querySelector('.compare-grid');assert.ok(comparison);assert.match(comparison.textContent,/面霜/);assert.match(comparison.textContent,/精华液/);assert.match(comparison.textContent,/源泽/);assert.match(comparison.textContent,/乳液/);assert.match(comparison.textContent,/Bottles/);
+ assert.equal(product.materials[0],'玻璃');assert.equal(product.name,'面霜');assert.deepEqual(p.errors,[]);p.dom.window.close();checks.push('Employee taxonomy and dynamic product details translate while source names, quotes, values, filter keys and unsaved search input stay unchanged');
+ p=make('admin.html','en');let saved;
+ p.w.fetch=async(url,options)=>respond(url==='/api/session'?{role:'admin',username:'fixture',csrf:'token'}:url==='/api/admin/records'?(options.method==='POST'?(saved=JSON.parse(options.body),{ok:true}):{items:[product]}):url==='/api/admin/taxonomy'?{value:{},version:0}:url==='/api/admin/search-status'?{available:false}:{items:[]});
+ await evaluateBrowserModule(p.dom,root+'admin.js');await until(()=>p.d.querySelector('[data-edit-record]'),'admin cards');await tick();assert.equal(p.d.querySelector('.table-name').textContent,'面霜');assert.match(p.d.querySelector('#main').textContent,/Products/);assert.match(p.d.querySelector('.table-wrap').textContent,/Glass/);
+ p.d.querySelector('[data-edit-record]').click();await tick();const form=p.d.querySelector('#recordForm'),name=form.elements.name,material=form.elements.materials;name.value='未保存产品';name.dispatchEvent(new p.w.Event('input',{bubbles:true}));const raw=form.elements.description;raw.value='未保存说明';raw.dispatchEvent(new p.w.Event('input',{bubbles:true}));const detail=form.querySelector('[data-detail-field=value]');assert.equal(detail.value,'规格说明');assert.equal(form.querySelector('[data-detail-field=evidence]').value,'来源原文');detail.value='未保存规格';detail.dispatchEvent(new p.w.Event('input',{bubbles:true}));p.d.querySelector('[data-editor-tab=details]').click();
+ p.d.querySelector('[data-language-switch]').click();await tick();assert.equal(p.d.querySelector('#recordForm'),form);assert.equal(name.value,'未保存产品');assert.equal(material.value,'玻璃');assert.equal(raw.value,'未保存说明');assert.equal(detail.value,'未保存规格');assert.equal(p.d.querySelector('#panel-details').hidden,false);assert.equal(p.d.querySelector('#adminDialog').open,true);
+ p.d.querySelector('[data-language-switch]').click();await tick();assert.equal(p.d.querySelector('[data-editor-tab=details]').textContent,'Product specifications');assert.equal(form.elements.kind.value,'package');assert.equal(form.querySelector('[data-detail-field=sourceField]').value,'specificationRaw');assert.match(p.d.querySelector('[data-detail-field=label]').getAttribute('aria-label'),/Specification 1/);
+ form.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await until(()=>saved,'saved product');assert.equal(saved.record.name,'未保存产品');assert.equal(saved.record.description,'未保存说明');assert.equal(saved.record.materials[0],'玻璃');assert.equal(saved.record.productDetails[0].value,'未保存规格');assert.equal(saved.record.productDetails[0].sourceField,'specificationRaw');assert.equal(saved.record.quoteRaw,'含税价格');assert.equal(saved.record.supplierRaw,'源泽');assert.equal(saved.record.id,'原始-001');assert.deepEqual(p.errors,[]);p.dom.window.close();checks.push('Admin open editor preserves draft values, tab, dialog, canonical select values and posted business payload through both language directions');
+ p=make('login.html');const module=await evaluateBrowserModule(p.dom,root+'i18n.js');const i18n=module.namespace;
+ p.d.body.insertAdjacentHTML('beforeend','<div id="fixture"><button id="handler">保存</button><select><option>玻璃</option></select><p data-i18n-skip>面霜</p><textarea>产品说明</textarea><input value="产品名称" placeholder="请输入密码"><span id="dynamic">第 2 / 4 页 · 显示 21–40 条，共 80 条</span></div>');let clicked=0;p.d.querySelector('#handler').onclick=()=>clicked++;i18n.startLocalization();i18n.setLanguage('en');await tick();assert.equal(p.d.querySelector('#fixture option').textContent,'Glass');assert.equal(p.d.querySelector('#fixture option').value,'玻璃');assert.equal(p.d.querySelector('#fixture textarea').value,'产品说明');assert.match(p.d.querySelector('#dynamic').textContent,/Showing 21–40 of 80/);p.d.querySelector('#handler').click();assert.equal(clicked,1);
+ p.d.querySelector('#dynamic').textContent='正在保存…';await tick();assert.equal(p.d.querySelector('#dynamic').textContent,'Saving…');i18n.setLanguage('zh');await tick();assert.equal(p.d.querySelector('#dynamic').textContent,'正在保存…');assert.equal(p.d.querySelector('#fixture option').textContent,'玻璃');assert.equal(p.d.querySelector('[data-i18n-skip]').textContent,'面霜');p.dom.window.close();checks.push('Incremental localization is reversible for new messages and preserves implicit option values, source text, textareas and event listeners');
+ const originalSnapshot=JSON.stringify(product);
+ for(const page of ['index.html','admin.html']){
+  for(const language of ['zh','en']){
+   p=make(page,language);const isAdmin=page==='admin.html';
+   const other={...product,id:'other',productCode:'YZ-BC-000009',name:'洗发水',category:'软管',materials:['PP'],bottleType:'异形瓶',uses:['洗发水'],description:'',supplierRaw:'',quoteRaw:''};
+   let posts=0;p.w.fetch=async(url,options={})=>{if(options.method==='POST')posts++;return respond(url==='/api/session'?{role:isAdmin?'admin':'employee',username:'fixture',csrf:'token'}:url==='/api/catalog'?{records:[product,other],settings:{}}:url==='/api/admin/records'?{items:[product,other]}:url==='/api/preferences'?{favorites:[]}:url==='/api/admin/taxonomy'?{value:{},version:0}:{available:false});};
+   await evaluateBrowserModule(p.dom,root+(isAdmin?'admin.js':'app.js'));await until(()=>p.d.querySelector(isAdmin?'#filterForm':'#searchForm'),'search ready');
+   for(const queryText of ['玻璃','Glass','圆瓶','Round bottle','面霜','Face cream','瓶类','Bottles']){
+    const search=p.d.querySelector(isAdmin?'#filterForm':'#searchForm');search.elements.query.value=queryText;search.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await tick();
+    const results=p.d.querySelectorAll(isAdmin?'.table-name':'.card-title');assert.equal(results.length,1,`${page} ${language}: ${queryText}`);assert.equal(results[0].textContent,'面霜');
+   }
+   p.d.querySelector('[data-language-switch]').click();await tick();
+   const search=p.d.querySelector(isAdmin?'#filterForm':'#searchForm');search.elements.query.value='Glass';search.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await tick();assert.equal(p.d.querySelectorAll(isAdmin?'.table-name':'.card-title').length,1);assert.equal(posts,0);assert.equal(JSON.stringify(product),originalSnapshot);assert.deepEqual(p.errors,[]);p.dom.window.close();
+  }
+ }
+ checks.push('Employee and admin search match Chinese and English material, shape, use and category terms in either UI language without writes or source mutations');
+ console.log(JSON.stringify({passed:true,checks,liveWebsiteRequests:0},null,2));
+}
+main().catch(error=>{console.error(error);process.exitCode=1});

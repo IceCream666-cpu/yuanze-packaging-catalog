@@ -1,5 +1,7 @@
+import {t,translateMessage,translateValue,getLanguage,onLanguageChange,startLocalization,localize} from './i18n.js';
 import {requestJSON} from './api-client.js';
 
+startLocalization({container:document.querySelector('.login-box')});
 function loginDestination(role, search = location.search) {
   if (role === 'client') return '/client';
   const code = (new URLSearchParams(search).get('code') || '').toUpperCase();
@@ -13,15 +15,17 @@ const usernameInput = loginForm.elements.username;
 const passwordInput = loginForm.elements.password;
 const togglePassword = document.querySelector('#togglePassword');
 const inputHint = document.querySelector('#loginInputHint');
-let capsLock = false;
+let capsLock = false, extraInputHint = '';
+onLanguageChange(()=>checkLoginInput(extraInputHint));
 function checkLoginInput(extra = '') {
+  extraInputHint = extra;
   const notes = [];
   if (/[\u200B-\u200D\u2060\uFEFF]/u.test(usernameInput.value + passwordInput.value)) notes.push('输入中含有不可见字符，请清空后重新复制账号或密码。');
   if (passwordInput.value && passwordInput.value !== passwordInput.value.trim()) notes.push('密码首尾有空白，请确认是否复制了多余空格。');
   if (/[\uFF01-\uFF5E]/u.test(usernameInput.value)) notes.push('账号中含有全角字符，请使用英文输入法。');
   if (capsLock) notes.push('大写锁定已开启，请核对字母大小写。');
   if (extra) notes.push(extra);
-  inputHint.textContent = notes.join(' ');
+  inputHint.textContent = notes.map(translateMessage).join(' ');
   inputHint.hidden = !notes.length;
 }
 function setPasswordVisible(visible) {

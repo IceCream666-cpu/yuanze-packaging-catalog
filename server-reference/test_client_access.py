@@ -2,6 +2,7 @@
 from contextlib import redirect_stdout
 import http.client, io, json, secrets, tempfile, threading, time, unittest
 from pathlib import Path
+from urllib.parse import urlencode
 from unittest.mock import patch
 from PIL import Image, PngImagePlugin
 from client_catalog import safe_capacity
@@ -17,7 +18,14 @@ class ClientAccess(unittest.TestCase):
         Image.new('RGB',(100,150),'#164b47').save(private/'media/supplier-secret.png',pnginfo=meta)
         Image.new('RGB',(50,50),'white').save(private/'media/unapproved.png')
         image={'path':'media/supplier-secret.png','role':'product','missing':False,'clientVisible':True}
+        self.image=image
         records=[{'id':'INTERNAL-1','name':'PRIVATE-NAME','kind':'package','capacityMl':100,
+            'category':'瓶','bottleType':'喷雾瓶','materials':['PET','PRIVATE-MATERIAL'],'uses':['爽肤水','PRIVATE-USE'],
+            'description':'PRIVATE-DESCRIPTION','model':'PRIVATE-MODEL','specificationRaw':'PRIVATE-SPECIFICATION',
+            'productDetails':[{'label':'口径','value':'24 mm','sourceField':'specificationRaw'},
+                              {'label':'高度','value':'100 mm PRIVATE-SUPPLIER'},
+                              {'label':'厚度','value':'9.99','sourceField':'quoteRaw'},
+                              {'label':'PRIVATE-LABEL','value':'PRIVATE-VALUE'}],
             'supplierRaw':'PRIVATE-SUPPLIER','unitPrice':9.99,'quoteRaw':'PRIVATE-QUOTE','images':[image,{'path':'media/unapproved.png','role':'product'}]},
             {'id':'INTERNAL-2','name':'hidden','kind':'package','images':[{'path':'media/unapproved.png'}]},
             {'id':'INTERNAL-3','name':'source','kind':'source_page','images':[image]}]
@@ -40,18 +48,78 @@ class ClientAccess(unittest.TestCase):
     def login(self,username='client-test'):
         code,headers,raw=self.req('/api/login',{'username':username,'password':PASSWORD});self.assertEqual(code,200,raw)
         self.cookie=headers['Set-Cookie'].split(';')[0];session=json.loads(self.req('/api/session')[2]);self.csrf=session['csrf'];return session
-    def catalog(self):
-        code,_,raw=self.req('/api/client/catalog');self.assertEqual(code,200,raw);return json.loads(raw)
+    def catalog(self,query=None):
+        code,_,raw=self.req('/api/client/catalog'+('?' + urlencode(query,doseq=True) if query else ''))
+        self.assertEqual(code,200,raw);return json.loads(raw)
     def test_projection_opaque_ids_and_pagination(self):
         self.assertEqual(self.req('/api/client/catalog')[0],401);self.assertEqual(self.login()['role'],'client')
-        catalog=self.catalog();self.assertEqual(set(catalog),{'items','page','pages','total'});self.assertEqual(catalog['total'],1)
-        item=catalog['items'][0];self.assertEqual(set(item),{'id','capacity','images'});self.assertEqual(item['capacity'],'100 mL')
+        catalog=self.catalog();self.assertEqual(set(catalog),{'items','page','pages','total','facets'});self.assertEqual(catalog['total'],1)
+        item=catalog['items'][0]
+        self.assertEqual(set(item),{'id','productCode','name','capacity','capacityMl','category','bottleType','materials','uses','sections','specifications','images'})
+        self.assertEqual(item['capacity'],'100 mL');self.assertEqual(item['capacityMl'],100)
+        self.assertEqual(item['name'],'喷雾瓶 · 100 mL');self.assertEqual(item['category'],'瓶类')
+        self.assertEqual(item['bottleType'],'喷雾瓶');self.assertEqual(item['materials'],['PET'])
+        self.assertEqual(item['uses'],['爽肤水']);self.assertEqual(item['sections'],['face'])
+        self.assertEqual(item['specifications'],[{'label':'口径','value':'24 mm'}])
+        self.assertEqual(item['productCode'],server.STORE.read_admin('records',id='INTERNAL-1')['productCode'])
+        self.assertEqual(catalog['facets'],{'categories':['瓶类'],'materials':['PET'],'capacities':['100 mL'],
+                                          'bottleTypes':['喷雾瓶'],'uses':['爽肤水'],'sections':['face']})
         self.assertEqual(len(item['images']),1);self.assertEqual(set(item['images'][0]),{'url'})
         self.assertRegex(item['images'][0]['url'],r'^/client-media/[a-f0-9]{64}\.jpg$')
         for secret in ['INTERNAL','supplier','PRIVATE','price','quote','raw','source','9.99']:
             self.assertNotIn(secret,json.dumps(catalog))
         for query in ['page=-1','page=bad','pageSize=0']:self.assertEqual(self.req('/api/client/catalog?'+query)[0],400)
         self.assertEqual(json.loads(self.req('/api/client/catalog?page=999&pageSize=999')[2])['page'],1)
+    def test_search_filters_paging_and_no_private_search_or_facets(self):
+        for record in [
+            {'id':'INTERNAL-4','name':'PRIVATE-CREAM','kind':'package','category':'罐','bottleType':'膏霜罐',
+             'capacityMl':50,'materials':['玻璃'],'uses':['面霜'],'images':[self.image]},
+            {'id':'INTERNAL-5','name':'PRIVATE-BODY','kind':'package','category':'瓶类','bottleType':'圆瓶',
+             'capacityMl':100,'materials':['PP'],'uses':['身体乳'],'images':[self.image]},
+            {'id':'INTERNAL-6','name':'PRIVATE-SERUM','kind':'package','category':'滴管','bottleType':'滴管瓶',
+             'capacityMl':30,'materials':['玻璃'],'uses':['精华液'],'images':[self.image]},
+            {'id':'INTERNAL-7','name':'PRIVATE-UNAPPROVED','kind':'package','category':'软管',
+             'materials':['铝'],'uses':['洗发水'],'images':[{'path':self.image['path']}]},
+        ]:
+            server.STORE.mutate('records','save',{'id':record['id'],'version':0,'record':record},'admin')
+        self.login()
+        for q in ['喷雾瓶','spray','toner','PET','100ml PET','100 毫升 spray']:
+            with self.subTest(q=q):
+                result=self.catalog({'q':q});self.assertEqual(result['total'],1)
+                self.assertEqual(result['items'][0]['name'],'喷雾瓶 · 100 mL')
+        self.assertEqual(self.catalog({'q':'serum'})['items'][0]['uses'],['精华液'])
+        code=self.catalog({'q':'serum'})['items'][0]['productCode']
+        self.assertEqual(self.catalog({'q':code.lower()})['total'],1)
+        for q in ['PRIVATE','INTERNAL','9.99','supplier','quote','unapproved']:
+            with self.subTest(q=q):self.assertEqual(self.catalog({'q':q})['total'],0)
+        self.assertEqual(self.catalog({'material':['PET','玻璃']})['total'],3)
+        self.assertEqual(self.catalog({'material':['PET','玻璃'],'category':'瓶类'})['total'],1)
+        self.assertEqual(self.catalog({'material':['PET','玻璃'],'use':['面霜','精华液']})['total'],2)
+        self.assertEqual(self.catalog({'capacity':'100 mL','section':'body-head'})['items'][0]['materials'],['PP'])
+        self.assertEqual(self.catalog({'bottle':'膏霜罐'})['items'][0]['capacityMl'],50)
+        self.assertEqual(self.catalog({'q':'spray','material':'玻璃'})['total'],0)
+        all_items=self.catalog()['items'];first=self.catalog({'pageSize':2});second=self.catalog({'pageSize':2,'page':2})
+        self.assertEqual((first['total'],first['pages'],first['page']),(4,2,1))
+        self.assertEqual(first['items']+second['items'],all_items)
+        self.assertEqual(self.catalog({'pageSize':2,'page':999})['page'],2)
+        empty=self.catalog({'material':'PRIVATE'})
+        self.assertEqual((empty['total'],empty['pages'],empty['page'],empty['items']),(0,1,1,[]))
+        self.assertEqual(empty['facets'],first['facets'])
+        self.assertNotIn('铝',first['facets']['materials']);self.assertNotIn('软管',first['facets']['categories'])
+        for query in [{'q':'x'*201},{'material':['PET']*33},{'use':'x'*101}]:
+            self.assertEqual(self.req('/api/client/catalog?'+urlencode(query,doseq=True))[0],400)
+    def test_shared_translation_assets_are_public_without_employee_scripts(self):
+        public=Path(self.temp.name)/'public';public.mkdir()
+        for filename in ['i18n.js','i18n.css']:(public/filename).write_text('shared translation asset')
+        with patch.object(server,'PUBLIC',public):
+            for authenticated in [False,True]:
+                if authenticated:self.login()
+                for path in ['/i18n.js','/i18n.css']:
+                    with self.subTest(path=path,authenticated=authenticated):
+                        status,_,body=self.req(path)
+                        self.assertEqual(status,200);self.assertEqual(body,b'shared translation asset')
+            self.assertEqual(self.req('/app.js')[0],403)
+            self.assertEqual(self.req('/catalog-taxonomy.js')[0],403)
     def test_get_head_post_alt_verbs_fail_closed(self):
         self.login()
         paths=['/api/catalog','/api/admin/records','/api/admin/users','/api/admin/export','/api/image-search/status',
@@ -82,7 +150,9 @@ class ClientAccess(unittest.TestCase):
         self.assertEqual(self.req(url,method='HEAD')[0],200)
         record=server.STORE.read_admin('records',id='INTERNAL-1');record['images'][0]['clientVisible']=False
         saved=server.STORE.mutate('records','save',{'id':record['id'],'version':record['version'],'record':{'images':record['images']}},'admin')
-        self.assertEqual(self.req(url)[0],404);self.assertEqual(self.catalog()['total'],0)
+        self.assertEqual(self.req(url)[0],404)
+        revoked=self.catalog();self.assertEqual(revoked['total'],0)
+        self.assertTrue(all(not values for values in revoked['facets'].values()))
         saved['images'][0]['clientVisible']=True
         saved=server.STORE.mutate('records','save',{'id':saved['id'],'version':saved['version'],'record':{'images':saved['images']}},'admin')
         self.assertEqual(self.req(url)[0],200)

@@ -1,3 +1,4 @@
+import {t,onLanguageChange} from './i18n.js';
 // One sidebar controller shared by the employee and administrator workspaces.
 const sidebar=document.querySelector('#sidebar');
 const toggle=document.querySelector('#menuButton');
@@ -17,7 +18,7 @@ function syncSidebar(){
   sidebar.inert=!visible;
   sidebar.setAttribute('aria-hidden',String(!visible));
   toggle.setAttribute('aria-expanded',String(visible));
-  const label=visible?'收起侧栏':'显示侧栏';
+  const label=t(visible?'收起侧栏':'显示侧栏');
   toggle.setAttribute('aria-label',label);
   toggle.title=label;
   const text=toggle.querySelector('.sidebar-toggle-label');
@@ -52,3 +53,5 @@ document.addEventListener('keydown',event=>{
 });
 mobile?.addEventListener?.('change',()=>{mobileOpen=false;syncSidebar();});
 syncSidebar();
+
+onLanguageChange(syncSidebar);
