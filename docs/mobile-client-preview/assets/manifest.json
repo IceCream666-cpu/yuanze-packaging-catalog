@@ -1,0 +1,101 @@
+{
+  "receivedAt": "2026-09-30",
+  "files": [
+    {
+      "path": "certificates/gmpc-en.pdf",
+      "sha256": "6f7ae0d2cfdb0ec15addaf682eb2948f890c8380aaad3ff4f27aac4e07c5e0f1",
+      "bytes": 283549,
+      "originalName": "GMPC 英文版证书(3).pdf",
+      "originalSha256": "6f7ae0d2cfdb0ec15addaf682eb2948f890c8380aaad3ff4f27aac4e07c5e0f1",
+      "kind": "unchanged-original"
+    },
+    {
+      "path": "certificates/gmpc-en.png",
+      "sha256": "e893225993633f9ae6b73963a2fc28b16095be2e3fd8e9d133e8fbd9c5f7bcf0",
+      "bytes": 385420,
+      "kind": "faithful-pdf-render",
+      "sourcePdf": "certificates/gmpc-en.pdf",
+      "width": 990,
+      "height": 1400
+    },
+    {
+      "path": "certificates/gmpc-zh.pdf",
+      "sha256": "7ce0468424a4dd1f8686f9c5a32633160935f1008815408a41057db4b6b5a951",
+      "bytes": 327506,
+      "originalName": "GMPC 中文版证书.pdf",
+      "originalSha256": "7ce0468424a4dd1f8686f9c5a32633160935f1008815408a41057db4b6b5a951",
+      "kind": "unchanged-original"
+    },
+    {
+      "path": "certificates/gmpc-zh.png",
+      "sha256": "69ac1d75717da4717976f627eb61d75c65cc4ebe670239c4afd2bdc0b372caef",
+      "bytes": 351782,
+      "kind": "faithful-pdf-render",
+      "sourcePdf": "certificates/gmpc-zh.pdf",
+      "width": 990,
+      "height": 1400
+    },
+    {
+      "path": "certificates/iso22716-en.pdf",
+      "sha256": "0a9f7e3bc90a1622cd726916032cc18aa6095bb171500b0a6a745e1139d7bc02",
+      "bytes": 285186,
+      "originalName": "ISO 22716英文版证书(4).pdf",
+      "originalSha256": "0a9f7e3bc90a1622cd726916032cc18aa6095bb171500b0a6a745e1139d7bc02",
+      "kind": "unchanged-original"
+    },
+    {
+      "path": "certificates/iso22716-en.png",
+      "sha256": "c0e5e58e8834b3411681bfd22a8f2b7a7f9782c0652c0f694afc8331deae40cb",
+      "bytes": 378281,
+      "kind": "faithful-pdf-render",
+      "sourcePdf": "certificates/iso22716-en.pdf",
+      "width": 990,
+      "height": 1400
+    },
+    {
+      "path": "certificates/iso22716-zh.pdf",
+      "sha256": "e05f80ff3a06e01aa63957f1f5e61b424af08cf9b09adb182c9f5ffe968fb86f",
+      "bytes": 327493,
+      "originalName": "ISO22716 中文版证书.pdf",
+      "originalSha256": "e05f80ff3a06e01aa63957f1f5e61b424af08cf9b09adb182c9f5ffe968fb86f",
+      "kind": "unchanged-original"
+    },
+    {
+      "path": "certificates/iso22716-zh.png",
+      "sha256": "a52d0606cfa05da829710ba645f98f43edc9fc67cfdbd651f7c67af91c711680",
+      "bytes": 352385,
+      "kind": "faithful-pdf-render",
+      "sourcePdf": "certificates/iso22716-zh.pdf",
+      "width": 990,
+      "height": 1400
+    },
+    {
+      "path": "reception.png",
+      "sha256": "9f32b34e37731637fba6fb0c6dcbeb274779432d80c0086e583151a0c2a63e40",
+      "bytes": 1223532,
+      "originalName": "大门(1).png",
+      "originalSha256": "9f32b34e37731637fba6fb0c6dcbeb274779432d80c0086e583151a0c2a63e40",
+      "kind": "unchanged-original",
+      "width": 1471,
+      "height": 1069
+    },
+    {
+      "path": "showroom.png",
+      "sha256": "922c7b8a397ef1055289f9a206c9ac86c6d83b455c81c8e1f0df70609cedcc2c",
+      "bytes": 1980858,
+      "originalName": "展厅(1).png",
+      "originalSha256": "922c7b8a397ef1055289f9a206c9ac86c6d83b455c81c8e1f0df70609cedcc2c",
+      "kind": "unchanged-original",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "path": "yuanze-mark.svg",
+      "sha256": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62",
+      "bytes": 297269,
+      "originalName": "yuanze-mark.svg",
+      "originalSha256": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62",
+      "kind": "unchanged-original"
+    }
+  ]
+}
