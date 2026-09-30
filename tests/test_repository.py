@@ -31,5 +31,21 @@ class RepositoryBoundaries(unittest.TestCase):
             self.assertIn(result.returncode, (0, 1), result.stderr)
             self.assertEqual(result.stdout, '', 'Ignored files were force-added to Git')
 
+    def test_history_does_not_publish_previously_removed_private_files(self):
+        # A clean working tree is insufficient: push also transfers older commits.
+        commits = subprocess.run(['git', 'rev-list', '--all'], cwd=ROOT,
+                                 capture_output=True, text=True, check=True)
+        historical_paths = set()
+        for commit in commits.stdout.splitlines():
+            tree = subprocess.run(['git', 'ls-tree', '-r', '-z', '--name-only', commit],
+                                  cwd=ROOT, capture_output=True, text=True, check=True)
+            historical_paths.update(name for name in tree.stdout.split('\0') if name)
+        if historical_paths:
+            checked = subprocess.run(['git', 'check-ignore', '--no-index', '--stdin', '-z'],
+                                     cwd=ROOT, input='\0'.join(sorted(historical_paths))+'\0',
+                                     text=True, capture_output=True)
+            self.assertIn(checked.returncode, (0, 1), checked.stderr)
+            self.assertEqual(checked.stdout, '', 'Private or runtime paths exist in Git history')
+
 if __name__ == '__main__':
     unittest.main()

@@ -12,12 +12,13 @@
 - [后端与数据库说明](docs/后端与数据库说明.md)：模块职责、三个数据库、线上只读检查结果及备份边界。
 - [Codex 与 Sites 选择说明](docs/Codex与Sites选择说明.md)：三种维护方式对比及本项目的适配限制。
 - [客户目录与中英文界面](docs/客户目录与中英文界面.md)：三端切换、客户展示范围和验收边界。
+- [跨设备接续开发](docs/跨设备接续开发.md)：私有仓库、首次克隆、素材交接、发布边界和待开发的手机客户展厅方案。
 
 只读数据库检查：`python3 scripts/database_inventory.py --state <状态目录>`，不会自动创建数据库或执行迁移。**本地 `state/` 是早期空库，不是当前线上数据备份。**
 
 素材和本地状态已复制到 `server-reference/private/`、`server-reference/state/`，由 `.gitignore` 排除。密钥及登录信息仍保留在原工程的 `.secrets/`，未复制到新工程。旧 `work/`、`outputs/` 调查记录和导出表保留在原目录。
 
-Git 记录代码和测试，可用于代码回滚；数据库、素材和上传图片需要单独备份，不能依靠 Git 恢复。当前没有配置远程仓库。
+Git 记录代码和测试，可用于代码回滚；数据库、素材和上传图片需要单独备份，不能依靠 Git 恢复。项目私有仓库：<https://github.com/IceCream666-cpu/yuanze-packaging-catalog>；具体接续步骤见上方交接说明。
 
 ## 验证
 
