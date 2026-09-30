@@ -539,8 +539,13 @@ class Handler(BaseHTTPRequestHandler):
             s=self.session()
             if not s: return self.respond(401,{'error':'请先登录'})
             if not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),s['csrf']): return self.respond(403,{'error':'页面已失效，请刷新重试'})
-            if s['role']=='client' and path!='/api/logout':
+            if s['role']=='client' and path not in ['/api/logout','/api/client/image-search']:
                 return self.respond(403,{'error':'此账号仅可浏览客户展示页'})
+            if path=='/api/client/image-search':
+                if s['role'] not in ['client','admin']:
+                    return self.respond(403,{'error':'此功能仅供客户展示页使用'})
+                result=IMAGE_SEARCH.search_request(lambda: self.body(MAX_REQUEST_BYTES))
+                return self.respond(200,CLIENT_CATALOG.image_search_results(result.get('matches',[])))
             if path=='/api/image-search':
                 return self.respond(200,IMAGE_SEARCH.search_request(lambda: self.body(MAX_REQUEST_BYTES)))
             if path.startswith('/api/admin/'):

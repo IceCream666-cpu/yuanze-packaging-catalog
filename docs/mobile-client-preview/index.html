@@ -11,21 +11,22 @@
 </head>
 <body>
   <p class="preview-label" data-copy="preview">手机首页预览 · 尚未上线</p>
-  <div class="mobile-shell" id="home">
+  <div class="mobile-shell">
     <header class="brand-header">
-      <a class="brand" href="#home" aria-label="YUANZE">
+      <a class="brand" href="#/home" data-page-link="home" aria-label="YUANZE">
         <img src="assets/yuanze-mark.svg" width="30" height="34" alt="">
         <span>YUANZE<small>COSMETICS</small></span>
       </a>
       <button class="language-button" id="language-toggle" type="button" data-copy="language" data-aria="languageLabel">English</button>
     </header>
-    <main>
+    <main class="page-stack">
+      <div id="page-home" class="page-panel" data-page="home" aria-label="首页" tabindex="-1">
       <section class="intro">
         <p class="eyebrow" data-copy="tagline">研发 · 配方 · 包材</p>
         <h1 data-copy="headline">从产品构想，
 到品牌呈现。</h1>
         <p class="intro-copy" data-copy="summary">为全球品牌提供护肤、身体护理、洗护发与防晒产品的研发及制造服务。</p>
-        <div class="actions"><a class="primary-action" href="#packaging" data-copy="explore">探索包材</a><a class="text-action" href="#about" data-copy="aboutLink">了解源泽</a></div>
+        <div class="actions"><a class="primary-action" href="#/products" data-page-link="products" data-copy="explore">探索包材</a><a class="text-action" href="#about" data-copy="aboutLink">了解源泽</a></div>
       </section>
       <figure class="showroom-figure reveal">
         <button type="button" class="photo-button" data-photo="showroom" data-aria="showroomEnlarge" aria-label="放大查看源泽产品展厅"><img src="assets/showroom.png" width="1448" height="1086" data-alt="showroomAlt" alt="源泽产品展厅，陈列护肤及化妆品产品的展示空间" fetchpriority="high"></button>
@@ -48,11 +49,18 @@
         <article class="certificate-card"><button type="button" class="photo-button" data-certificate="iso22716" data-aria="iso22716Enlarge" aria-label="放大查看 ISO 22716 证书"><img data-certificate-image="iso22716" src="assets/certificates/iso22716-zh.png" alt="ISO 22716 中文证书" loading="lazy"></button><h3>ISO 22716</h3><p class="caption" data-certificate-number="iso22716"></p><p class="caption" data-certificate-date="iso22716"></p><a class="certificate-pdf" data-certificate-pdf="iso22716" href="assets/certificates/iso22716-zh.pdf" target="_blank" rel="noopener noreferrer" data-copy="openPdf">查看原始 PDF</a></article>
         <article class="certificate-card"><button type="button" class="photo-button" data-certificate="gmpc" data-aria="gmpcEnlarge" aria-label="放大查看 GMPC 证书"><img data-certificate-image="gmpc" src="assets/certificates/gmpc-zh.png" alt="GMPC 中文证书" loading="lazy"></button><h3>GMPC</h3><p class="caption" data-certificate-number="gmpc"></p><p class="caption" data-certificate-date="gmpc"></p><a class="certificate-pdf" data-certificate-pdf="gmpc" href="assets/certificates/gmpc-zh.pdf" target="_blank" rel="noopener noreferrer" data-copy="openPdf">查看原始 PDF</a></article>
       </div></section>
-      <section class="section packaging reveal" id="packaging"><p class="eyebrow">PACKAGING COLLECTION</p><h2 data-copy="packagingTitle">为下一款产品，找到合适的包材</h2><p data-copy="packagingCopy">按材质、容量、瓶型与用途探索包材，逐步完善您的产品方案。</p><a class="primary-action" href="https://bmt.yuanzebeauty.com/" target="_blank" rel="noopener noreferrer" data-copy="packagingButton">进入包材展厅</a><p class="caption" data-copy="packagingHint">打开现有网站，需使用客户账号登录</p></section>
-      <section class="section contact reveal" id="contact"><p class="eyebrow">LET’S CREATE TOGETHER</p><h2 data-copy="contactTitle">聊聊您的下一款产品</h2><p data-copy="contactCopy">研发、OEM／ODM 或包材选型，我们期待了解您的需求。</p><p class="pending-contact" data-copy="contactPending">专属业务员与公司统一接待联系方式待补充</p></section>
       <footer data-copy="footer">广州源泽药业有限公司</footer>
+      </div>
+      <div id="page-products" class="page-panel products-panel" data-page="products" aria-label="产品" tabindex="-1" hidden>
+        <iframe id="catalog-frame" title="包材选型库" data-src="/client?showroom=1" referrerpolicy="same-origin"></iframe>
+      </div>
+      <div id="page-contact" class="page-panel" data-page="contact" aria-label="联系" tabindex="-1" hidden>
+      <section class="section contact reveal" id="contact"><p class="eyebrow">LET’S CREATE TOGETHER</p><h2 data-copy="contactTitle">聊聊您的下一款产品</h2><p data-copy="contactCopy">研发、OEM／ODM 或包材选型，我们期待了解您的需求。</p><div class="contact-card"><span class="contact-monogram" aria-hidden="true">Y</span><div><h3 data-copy="receptionTeam">源泽 · 客户接待</h3><p class="caption" data-copy="contactPending">专属业务员与公司统一接待联系方式待补充</p></div></div></section>
+      <section class="section inquiry-section"><p class="eyebrow">YOUR SELECTION</p><h2 data-copy="inquiryTitle">您的意向清单</h2><p class="caption" data-copy="inquiryHint">可在产品页选择多款包材，再将清单交给业务员咨询。</p><div id="inquiry-items" class="inquiry-items"></div><p id="inquiry-empty" data-copy="inquiryEmpty">还未选择包材</p><a class="text-action" href="#/products" data-page-link="products" data-copy="continueSelection">继续选型</a><label class="inquiry-note-label" for="inquiry-note" data-copy="inquiryNote">补充您的需求</label><textarea id="inquiry-note" rows="4" maxlength="2000" data-placeholder="inquiryPlaceholder" placeholder="例如：需要的容量、数量、使用产品或定制要求"></textarea><button id="copy-inquiry" class="primary-action" type="button" data-copy="copyInquiry">复制咨询清单</button><p id="inquiry-status" role="status" class="caption"></p><p class="caption" data-copy="inquiryLocal">清单仅保留在本次浏览中；复制后可自行发送给业务员。</p></section>
+      <footer data-copy="footer">广州源泽药业有限公司</footer>
+      </div>
     </main>
-    <nav class="bottom-nav" data-aria="navLabel" aria-label="主导航"><a href="#home" aria-current="page" data-copy="home">首页</a><a href="#packaging" data-copy="products">产品</a><a href="#contact" data-copy="contact">联系</a></nav>
+    <nav class="bottom-nav" data-aria="navLabel" aria-label="主导航"><a href="#/home" data-page-link="home" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-7v-7h-4v7H3Z"/></svg><span data-copy="home">首页</span></a><a href="#/products" data-page-link="products"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-copy="products">产品</span></a><a href="#/contact" data-page-link="contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a3 3 0 0 1-3 3H9l-6 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z"/><path d="M7 8h10M7 12h6"/></svg><span data-copy="contact">联系</span></a></nav>
   </div>
   <dialog id="photo-dialog" aria-label="Photo viewer"><button id="close-photo" type="button" data-copy="close">关闭大图</button><img id="expanded-photo" alt=""><p id="photo-caption"></p></dialog>
 </body>

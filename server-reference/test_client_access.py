@@ -184,5 +184,83 @@ class ClientAccess(unittest.TestCase):
         self.assertEqual(safe_capacity({'productDetails':[{'label':'净含量','value':'50g ￥3'}]}),'')
         self.assertEqual(safe_capacity({'specificationRaw':'100ml price3'}),'')
 
+    def test_customer_image_search_checks_login_csrf_origin_roles_and_body_limit(self):
+        path='/api/client/image-search'
+        with patch.object(server.IMAGE_SEARCH,'search_request',return_value={'matches':[]}) as search:
+            self.assertEqual(self.req(path,{'image':'x'})[0],401)
+            self.login();csrf=self.csrf;self.csrf='wrong'
+            self.assertEqual(self.req(path,{'image':'x'})[0],403);self.csrf=csrf
+            connection=http.client.HTTPConnection(self.host)
+            connection.request('POST',path,body='{}',headers={'Origin':'https://elsewhere.invalid',
+                'Cookie':self.cookie,'X-CSRF-Token':self.csrf})
+            response=connection.getresponse();self.assertEqual(response.status,403);response.read();connection.close()
+            search.assert_not_called()
+            self.assertEqual(self.req(path,{'image':'x'})[0],200)
+            self.login('employee');self.assertEqual(self.req(path,{'image':'x'})[0],403)
+            self.login('admin');self.assertEqual(self.req(path,{'image':'x'})[0],200)
+            self.assertEqual(search.call_count,2)
+        self.login()
+        def read_upload(read_body):
+            read_body()
+            return {'matches':[]}
+        with patch.object(server.IMAGE_SEARCH,'search_request',side_effect=read_upload), patch.object(server,'MAX_REQUEST_BYTES',8):
+            self.assertEqual(self.req(path,{'image':'too-large'})[0],400)
+        self.assertEqual(self.req(path,method='GET')[0],403)
+
+    def test_customer_image_search_only_projects_current_approved_matched_images(self):
+        self.login()
+        raw_matches=[
+            {'record_id':'INTERNAL-2','image_path':'media/unapproved.png','score':1,'supplier':'PRIVATE'},
+            {'record_id':'INTERNAL-1','image_path':'media/unapproved.png','score':.99},
+            {'record_id':'INTERNAL-3','image_path':self.image['path'],'score':.98},
+            {'record_id':'INTERNAL-1','image_path':self.image['path'],'score':.90,'quoteRaw':'PRIVATE-QUOTE'},
+            {'record_id':'INTERNAL-1','image_path':self.image['path'],'score':.80},
+            None, {'record_id':[], 'image_path':{}},
+        ]
+        with patch.object(server.IMAGE_SEARCH,'search_request',return_value={
+            'matches':raw_matches,'indexed_records':9876,'indexed_images':8765,'private':'PRIVATE'}):
+            status,_,raw=self.req('/api/client/image-search',{'image':'image-test'})
+        self.assertEqual(status,200,raw);result=json.loads(raw)
+        self.assertEqual(result,self.catalog())
+        self.assertEqual(result['total'],1)
+        for forbidden in ('INTERNAL','supplier','PRIVATE','price','quote','source','image_path','score','9876','8765'):
+            self.assertNotIn(forbidden,raw.decode())
+        url=result['items'][0]['images'][0]['url']
+        self.assertEqual(self.req(url)[0],200)
+        # A private best-match on a record must not reveal its separate public image.
+        self.assertEqual(server.CLIENT_CATALOG.image_search_results(raw_matches[:3])['total'],0)
+
+    def test_customer_image_search_revocation_during_inference_is_effective(self):
+        self.login()
+        match={'record_id':'INTERNAL-1','image_path':self.image['path'],'score':1}
+        def revoke_during_search(read_body):
+            read_body()
+            record=server.STORE.read_admin('records',id='INTERNAL-1')
+            record['images'][0]['clientVisible']=False
+            server.STORE.mutate('records','save',{'id':record['id'],'version':record['version'],
+                'record':{'images':record['images']}},'admin')
+            return {'matches':[match]}
+        with patch.object(server.IMAGE_SEARCH,'search_request',side_effect=revoke_during_search):
+            status,_,raw=self.req('/api/client/image-search',{'image':'image-test'})
+        self.assertEqual(status,200,raw);self.assertEqual(json.loads(raw)['total'],0)
+        record=server.STORE.read_admin('records',id='INTERNAL-1')
+        record['images'][0]['clientVisible']=True
+        saved=server.STORE.mutate('records','save',{'id':record['id'],'version':record['version'],
+            'record':{'images':record['images']}},'admin')
+        server.STORE.mutate('records','archive',{'id':saved['id'],'version':saved['version']},'admin')
+        self.assertEqual(server.CLIENT_CATALOG.image_search_results([match])['total'],0)
+
+    def test_customer_image_search_keeps_rank_and_caps_only_public_results(self):
+        matches=[]
+        for number in range(50):
+            record={'id':f'ORDER-{number:03}','name':'Synthetic image-search test','kind':'package','capacityMl':number+1,'images':[self.image]}
+            server.STORE.mutate('records','save',{'id':record['id'],'version':0,'record':record},'admin')
+            matches.insert(0,{'record_id':record['id'],'image_path':self.image['path']})
+        matches.insert(0,{'record_id':'INTERNAL-2','image_path':'media/unapproved.png'})
+        result=server.CLIENT_CATALOG.image_search_results(matches,limit=500)
+        self.assertEqual((result['page'],result['pages'],result['total']),(1,1,48))
+        self.assertEqual([item['capacityMl'] for item in result['items']],list(range(50,2,-1)))
+        self.assertEqual(server.CLIENT_CATALOG.image_search_results(None)['total'],0)
+
 if __name__=='__main__':
     with redirect_stdout(io.StringIO()):unittest.main()

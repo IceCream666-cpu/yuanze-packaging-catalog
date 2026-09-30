@@ -6,10 +6,53 @@
   const photo = document.getElementById('expanded-photo');
   const photoCaption = document.getElementById('photo-caption');
   const closePhoto = document.getElementById('close-photo');
+  const frame = document.getElementById('catalog-frame');
+  const pages = ['home', 'products', 'contact'];
+  let activePage = '';
+  let shortlist = [];
+  let inquiryStatus = '';
   let language = 'zh';
   let selectedPhoto = null;
   let photoTrigger = null;
-  try { if (localStorage.getItem('yuanze-mobile-preview-language') === 'en') language = 'en'; } catch (_) {}
+  try { if ((localStorage.getItem('yuanze-language') || localStorage.getItem('yuanze-mobile-preview-language')) === 'en') language = 'en'; } catch (_) {}
+
+  function notifyLanguage() {
+    if (frame.hasAttribute('src')) frame.contentWindow?.postMessage({type:'yuanze-language', language}, location.origin);
+  }
+
+  function renderInquiry() {
+    const copy = content[language], box = document.getElementById('inquiry-items');
+    box.replaceChildren();
+    shortlist.forEach(item => {
+      const row = document.createElement('div');
+      const code = document.createElement('strong');
+      const capacity = document.createElement('span');
+      code.textContent = item.productCode;
+      capacity.textContent = `${copy.inquiryCapacity}: ${item.capacity || '—'}`;
+      row.append(code, capacity); box.append(row);
+    });
+    document.getElementById('inquiry-empty').hidden = shortlist.length > 0;
+    document.getElementById('inquiry-status').textContent = inquiryStatus ? copy[inquiryStatus] : '';
+  }
+
+  function showPage(name, focus = false) {
+    const next = pages.includes(name) ? name : 'home';
+    if (activePage === next) return;
+    activePage = next;
+    document.querySelectorAll('[data-page]').forEach(panel => { panel.hidden = panel.dataset.page !== next; });
+    document.querySelectorAll('.bottom-nav [data-page-link]').forEach(link => {
+      if (link.dataset.pageLink === next) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    if (next === 'products' && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
+    if (focus) document.getElementById(`page-${next}`).focus({preventScroll:true});
+  }
+
+  function navigate(name) {
+    const hash = `#/${name}`;
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    showPage(name, true);
+  }
 
   function assetFor(id) {
     if (content.images[id]) return content.images[id];
@@ -23,6 +66,9 @@
     document.querySelectorAll('[data-copy]').forEach(node => { node.textContent = copy[node.dataset.copy]; });
     document.querySelectorAll('[data-alt]').forEach(node => { node.alt = copy[node.dataset.alt]; });
     document.querySelectorAll('[data-aria]').forEach(node => { node.setAttribute('aria-label', copy[node.dataset.aria]); });
+    document.querySelectorAll('[data-placeholder]').forEach(node => { node.placeholder = copy[node.dataset.placeholder]; });
+    document.querySelectorAll('[data-page]').forEach(node => { node.setAttribute('aria-label',copy[node.dataset.page]); });
+    frame.title = copy.products;
     document.querySelectorAll('[data-capability]').forEach(node => { node.textContent = copy.capabilities[Number(node.dataset.capability)]; });
     document.querySelectorAll('[data-certificate-image]').forEach(node => {
       const id = node.dataset.certificateImage;
@@ -41,12 +87,33 @@
       photoCaption.textContent = copy[`${selectedPhoto}Caption`];
       dialog.setAttribute('aria-label', copy[`${selectedPhoto}Caption`]);
     }
+    renderInquiry();
+    notifyLanguage();
   }
 
-  toggle.addEventListener('click', () => {
-    language = language === 'zh' ? 'en' : 'zh';
-    try { localStorage.setItem('yuanze-mobile-preview-language', language); } catch (_) {}
+  function setLanguage(value) {
+    language = value;
+    try { localStorage.setItem('yuanze-mobile-preview-language', language); localStorage.setItem('yuanze-language', language); } catch (_) {}
     translate();
+  }
+  toggle.addEventListener('click', () => setLanguage(language === 'zh' ? 'en' : 'zh'));
+  frame.addEventListener('load', notifyLanguage);
+  window.addEventListener('message', event => {
+    if (event.origin !== location.origin || event.source !== frame.contentWindow || !event.data) return;
+    if (event.data.type === 'yuanze-language' && ['zh','en'].includes(event.data.language) && language !== event.data.language) setLanguage(event.data.language);
+    if (event.data.type === 'yuanze-contact') navigate('contact');
+    if (event.data.type === 'yuanze-shortlist' && Array.isArray(event.data.items)) {
+      const seen = new Set();
+      shortlist = event.data.items.filter(item => item && /^YZ-BC-\d{6,}$/.test(item.productCode) && !seen.has(item.productCode) && seen.add(item.productCode)).slice(0,100).map(item => ({productCode:item.productCode,capacity:typeof item.capacity === 'string' && /^\d+(?:\.\d+)?\s*(?:mL|ml|L|g|kg)$/.test(item.capacity) ? item.capacity : ''}));
+      inquiryStatus = ''; renderInquiry();
+    }
+  });
+  document.getElementById('copy-inquiry').addEventListener('click', async () => {
+    const copy = content[language];
+    const lines = [copy.inquiryTitle, ...shortlist.map(item => `${item.productCode} · ${item.capacity || '—'}`), document.getElementById('inquiry-note').value.trim()].filter(Boolean);
+    try { await navigator.clipboard.writeText(lines.join('\n')); inquiryStatus = 'inquiryCopied'; }
+    catch (_) { inquiryStatus = 'inquiryCopyFailed'; }
+    renderInquiry();
   });
   document.querySelectorAll('[data-photo], [data-certificate]').forEach(button => button.addEventListener('click', () => {
     selectedPhoto = button.dataset.photo || button.dataset.certificate;
@@ -62,12 +129,15 @@
     selectedPhoto = null;
     if (photoTrigger) photoTrigger.focus();
   });
-  document.querySelectorAll('.bottom-nav a').forEach(link => link.addEventListener('click', () => {
-    document.querySelectorAll('.bottom-nav a').forEach(item => item.removeAttribute('aria-current'));
-    link.setAttribute('aria-current', 'page');
+  document.querySelectorAll('[data-page-link]').forEach(link => link.addEventListener('click', event => {
+    event.preventDefault(); navigate(link.dataset.pageLink);
   }));
+  document.querySelector('[data-copy="aboutLink"]').addEventListener('click', event => {event.preventDefault(); document.getElementById('about').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});});
+  window.addEventListener('popstate', () => showPage(location.hash.slice(2), true));
+  window.addEventListener('hashchange', () => showPage(location.hash.slice(2), true));
 
   translate();
+  showPage(location.hash.slice(2));
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }

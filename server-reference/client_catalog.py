@@ -351,6 +351,59 @@ class ClientCatalog:
         return {'items': entries[(page - 1) * page_size:page * page_size], 'page': page,
                 'pages': pages, 'total': total, 'facets': facets}
 
+    def image_search_results(self, matches, limit=48):
+        """Project ranked matches only after rechecking each matched image.
+
+        Search indices contain private images and may outlive an approval edit.
+        A public image elsewhere on the same record does not authorize the
+        matched image. Never return index counts, scores, paths or raw IDs.
+        """
+        matches = matches if isinstance(matches, list) else []
+        candidates = [(match.get('record_id'), match.get('image_path')) for match in matches
+                      if isinstance(match, dict) and isinstance(match.get('record_id'), str)
+                      and isinstance(match.get('image_path'), str)]
+        requested = {record_id for record_id, _ in candidates}
+        records = {}
+        with self.store.connection() as conn:
+            # The approval predicate bounds parsing to customer-visible records.
+            # Re-read after the slower inference, not from an index snapshot.
+            rows = conn.execute('''SELECT r.id,r.content,pc.product_code FROM admin_records AS r
+                LEFT JOIN admin_product_codes AS pc ON pc.record_id=r.id
+                WHERE r.archived=0 AND json_extract(r.content,'$.kind')='package'
+                  AND EXISTS (SELECT 1 FROM json_each(r.content,'$.images') AS image
+                              WHERE json_extract(image.value,'$.clientVisible')=1
+                                AND json_type(image.value,'$.clientVisible')='true')''')
+            for row in rows:
+                if row['id'] in requested:
+                    record = json.loads(row['content'])
+                    paths = self.approved_images(record)
+                    if paths:
+                        records[row['id']] = (record, row['product_code'], paths)
+        entries, mappings, seen = [], [], set()
+        for record_id, matched_path in candidates:
+            if record_id in seen or record_id not in records:
+                continue
+            record, product_code, paths = records[record_id]
+            if matched_path not in paths:
+                continue
+            seen.add(record_id)
+            ordered_paths = [matched_path, *(path for path in paths if path != matched_path)]
+            images = []
+            for path in ordered_paths:
+                token = self.opaque('image', record_id, path) + '.jpg'
+                mappings.append((token, record_id, path))
+                images.append({'url': '/client-media/' + token})
+            entries.append({'id': self.opaque('record', record_id),
+                            **project_record(record, product_code), 'images': images})
+            if len(entries) >= max(1, min(48, limit)):
+                break
+        if mappings:
+            with self.store.connection(True) as conn:
+                conn.executemany('INSERT OR IGNORE INTO client_media_map VALUES(?,?,?)', mappings)
+        facets = {key: sorted({value for item in entries for value in facet_values(item, field)})
+                  for key, field in FACETS.values()}
+        return {'items': entries, 'page': 1, 'pages': 1, 'total': len(entries), 'facets': facets}
+
     def media(self, token):
         # Optional image dependencies must not prevent employee login/startup.
         try:
