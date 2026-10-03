@@ -517,6 +517,8 @@ class Handler(BaseHTTPRequestHandler):
         if not path.is_relative_to(base) or not path.is_file(): return self.respond(404,{'error':'页面或文件不存在'})
         ctype=mimetypes.guess_type(path.name)[0] or 'application/octet-stream'
         if path.suffix in ['.js','.mjs']: ctype='text/javascript'
+        # Minimal Linux installations may omit WebP from their system MIME map.
+        if path.suffix.lower()=='.webp': ctype='image/webp'
         return self.respond(200,path.read_bytes(),ctype,extra)
     def do_POST(self):
         if not self.valid_host(): return self.respond(403,{'error':'访问地址无效'})

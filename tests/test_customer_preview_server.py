@@ -94,6 +94,14 @@ class CustomerPreviewServerTests(unittest.TestCase):
         self.assertEqual(headers['X-Frame-Options'], 'SAMEORIGIN')
         self.assertEqual(self.server.server_address[0], '127.0.0.1')
 
+    def test_poster_mime_without_system_webp_registration(self):
+        with patch.object(preview.mimetypes, 'guess_type', return_value=(None, None)):
+            for name in ['poster-001-full.webp', 'poster-001-thumb.webp']:
+                status, headers, body = self.request('/assets/posters/' + name)
+                self.assertEqual(status, 200)
+                self.assertEqual(headers['Content-Type'], 'image/webp')
+                self.assertIn(b'WEBP', body)
+
     def test_multiselect_intersection_search_codes_and_pagination(self):
         body = json.loads(self.request('/api/client/catalog?material=PET&material=PE&section=face')[2])
         self.assertEqual([i['productCode'] for i in body['items']], ['YZ-BC-000001'])

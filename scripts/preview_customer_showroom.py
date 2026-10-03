@@ -250,7 +250,8 @@ class PreviewHandler(BaseHTTPRequestHandler):
             # Preview has no user database. Exit returns to the clearly labelled draft.
             self.send_response(303); self.send_header('Location', '/'); self.end_headers(); return
         if target and target.is_file():
-            return self.respond(200, target.read_bytes(), mimetypes.guess_type(target.name)[0] or 'application/octet-stream')
+            mime = 'image/webp' if target.suffix.lower() == '.webp' else mimetypes.guess_type(target.name)[0] or 'application/octet-stream'
+            return self.respond(200, target.read_bytes(), mime)
         return self.respond(404, {'error': 'Not found'})
 
     def do_POST(self):

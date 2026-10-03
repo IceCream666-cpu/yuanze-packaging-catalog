@@ -161,6 +161,16 @@ class ShowroomRoutes(unittest.TestCase):
             self.assertEqual(status, 200); self.assertEqual(headers['Content-Length'], str(len(body)))
             self.assertEqual(head, b'')
 
+    def test_webp_mime_does_not_depend_on_the_host_mime_database(self):
+        self.login()
+        with patch.object(server.mimetypes, 'guess_type', return_value=(None, None)):
+            for path in self.poster_paths:
+                for method in ['GET', 'HEAD']:
+                    status, headers, _ = self.req('/showroom/' + path, method=method)
+                    self.assertEqual(status, 200)
+                    self.assertEqual(headers['Content-Type'], 'image/webp')
+                    self.assertEqual(headers['X-Content-Type-Options'], 'nosniff')
+
     def test_employee_unchanged_and_customer_resources_denied(self):
         self.login('employee')
         self.assertEqual(self.req('/')[2], b'EMPLOYEE CATALOGUE')
