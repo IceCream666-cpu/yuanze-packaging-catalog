@@ -1,16 +1,54 @@
-## 2026-09-29 员工会话无上限与账号管理核验（当前版本）
+# 源泽包材库发布记录
 
-当前 release `20260929-employee-accounts-v1`，上一版本 `20260929-login-reliability-v1`；修改 server.py 与 auth_sessions.py。员工会话默认 `YZ_EMPLOYEE_SESSION_LIMIT=0`，0 明确表示不设数量上限；生产无显式环境值覆盖。管理员仍为20，有效期8小时，改密/停用撤销和登录限速继续生效。员工账号总数本身没有软件数量上限。
+## 2026-10-04 客户公司展厅与手机／PC 响应式界面（当前版本）
+
+北京时间 2026-10-04 00:24 已发布 `20261003-customer-showroom-v1`，Git 提交 `aef53cb47d2f340e027c5993868a7925cfa194ca`。release 名称沿用 2026-10-03 的准备日期，实际切换日期为 2026-10-04。
+
+- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20261003-customer-showroom-v1`。
+- 上一代码：`/opt/yuanze-reference/releases/20260929-client-bilingual-login`，发布前通过 SSH 核对。
+- 一致性备份：`/opt/yuanze-reference/backups/customer-showroom-20261003`。
+- 21 个文件的摘要与候选文件一致，切换耗时 17.04 秒；8 张业务表内容摘要前后一致，三种角色在切换前建立的会话切换后继续有效。
+
+### 已上线内容
+
+客户账号从统一登录入口进入 `/client` 公司展厅；首页、产品、联系为三个独立视图，各页内部可滚动。手机宽度 ≤760px 使用底部导航，PC >760px 使用顶部导航及宽版多列产品布局。公司介绍、展厅与前台照片、ISO / GMPC 中英文证书共用语言切换。
+
+产品分页复用 `/client/products` 的客户安全目录：编号搜索、多选分类、图片检索、多图详情、分页跳转、网格／列表、收藏、意向清单、最多四款对比及公开字段 CSV 导出。客户接口不返回供应商、采购价、完整报价、原始来源或内部图片路径。公司资源位于认证保护的 `/showroom/*`，所需产品页面只开放同源嵌入，不放宽其他页面的嵌入保护。
+
+员工和管理员继续使用既有账号、工作区及业务权限，未因新增客户展厅改变登录分流。当前客户获批范围为 12 条产品、12 张图片，未自动批准整个员工图库。
+
+收藏、意向清单和对比仍为本次页面内存状态；联系页可填写需求和复制咨询内容。公司接待联系方式、业务员名片、专属邀请链接、真实询盘接收及自动派单尚未接入，不显示虚构联系人或提交成功记录。两端维护入口见 [客户端档案](../../docs/客户端档案.md) 和 [业务端档案](../../docs/业务端档案.md)，后续可通过对话指定档案中的页面或功能修改。
+
+### 本次验证范围
+
+- 本地 19 项根目录测试、152 项后端测试、18 项部署测试及全部前端测试通过。
+- 手机 390px、PC 1280px 的本地浏览器检查通过；正式站点浏览器自动化连续超时，未完成线上点击验收；本地响应式截图已保存，不将其作为线上截图。
+- 服务器三角色登录、响应头、客户安全图片、产品编号、三个实际有数据维度的多选、分页以及真实客户搜图全部通过。
+- 域名与 IP 的公网员工／管理员 8 项流程全部通过，TLS 证书和主机名采用严格验证且正常。本次公网检查未复现 2026-09-29 的历史网络故障；下方旧网络事件只记录其发生当时的情况，不代表当前故障。
+- 本机经公网域名执行三角色及客户完整接口验证通过：公司素材登录保护、14 项私有路由阻断、12 张获批图、编号、分页、多选及真实图片查询。证据 `work/customer-showroom-20261003/public-client-result.json`；同目录保存公网路由门禁报告。
+- 21 个文件摘要、8 张业务表内容摘要及三角色既有会话的前后检查通过；不能将测试通过解释为全量产品参数或图片均经过人工审核。
+
+### 本次回退
+
+先核对本次备份和当前状态；如需仅回退代码，将 `current` 原子指回 `/opt/yuanze-reference/releases/20260929-client-bilingual-login`，重启 `yuanze-reference.service` 后重新验证三种角色、健康检查及域名／IP 路由。保留 `/var/lib/yuanze-reference`，不恢复旧数据库覆盖上线后的产品、图片、账号或员工操作。上一版本支持客户角色；禁止回退至不识别客户角色的更早代码。
+
+以下为历史发布记录；其中数量、测试结果、网络状况与“当前”表述均对应当时的事件。当前运行版本以上方本次记录和下方更新后的“运行配置”为准。
+
+---
+
+## 2026-09-29 员工会话无上限与账号管理核验（历史版本）
+
+该次 release 为 `20260929-employee-accounts-v1`，其上一版本为 `20260929-login-reliability-v1`；修改 server.py 与 auth_sessions.py。员工会话默认 `YZ_EMPLOYEE_SESSION_LIMIT=0`，0 明确表示不设数量上限；当次检查生产无显式环境值覆盖。管理员仍为20，有效期8小时，改密/停用撤销和登录限速继续生效。员工账号总数本身没有软件数量上限。
 
 48项相关后端回归、4项独立员工账号HTTP生命周期测试通过。正式网站已经实际打开「员工与权限 → ＋ 创建账号」表单；本机受测 admin_store.py、public/admin.js 与生产文件 SHA 完全相同。未创建生产测试账号、未改变现有账号密码。
 
 发布前保存员工/管理员两份临时登录会话，服务切换后在不重新登录的条件下仍验证身份成功；域名/IP 的两种角色完整路由门禁通过。停服至恢复健康17.27秒，账号/产品/收藏/设置内容摘要完全一致。备份 `/opt/yuanze-reference/backups/employee-accounts-20260929`；仅回退代码时将 current 指回上一版本，保留状态数据库。证据在 `work/employee-accounts-20260929/`。
 
-已登录阿里云后查询得到明确结果「yuanzebeauty.com，未备案」。这部分公网接入故障需要完成备案，不能通过应用代码解除；未提交备案申请或修改云账号资料。
+当日登录阿里云后查询得到明确结果「yuanzebeauty.com，未备案」，记录了当时的公网接入问题；当次未提交备案申请或修改云账号资料。此项不是 2026-10-04 的当前域名状态结论，本次公网验证见顶部。
 
 ---
 
-## 2026-09-29 登录可靠性修复（上一版本）
+## 2026-09-29 登录可靠性修复（历史版本）
 
 02:22 CST 发布 `20260929-login-reliability-v1`，上一个代码版本为 `20260928-brand-refresh-v1`。替换 server.py、auth_sessions.py、public/api-client.js、public/login.js、public/login.html、public/app.js、public/admin.js 共 7 个文件。切换约 17.84 秒；账号、产品、编号、收藏及设置的内容摘要完全一致，未修改账号密码。
 
@@ -48,8 +86,8 @@ Caddy 实际运行用户执行强制配置检查：`/usr/local/lib/yuanze/releas
 
 ## 运行配置
 
-- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20260929-employee-accounts-v1`
-- 上一代码版本：`/opt/yuanze-reference/releases/20260929-login-reliability-v1`
+- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20261003-customer-showroom-v1`
+- 上一代码版本：`/opt/yuanze-reference/releases/20260929-client-bilingual-login`
 - Python 环境：`/opt/yuanze-reference/venvs/admin-20260924`
 - 状态目录：`/var/lib/yuanze-reference`，由专用 `yuanze` 用户读写。
 - 服务：`yuanze-reference.service`、`yuanze-web.service`。
