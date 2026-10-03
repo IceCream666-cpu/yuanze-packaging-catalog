@@ -18,9 +18,9 @@ preview = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(preview)
 
 
-def image_bytes():
+def image_bytes(format='JPEG'):
     output = io.BytesIO()
-    Image.new('RGB', (32, 32), 'teal').save(output, format='JPEG')
+    Image.new('RGB', (32, 32), 'teal').save(output, format=format)
     return output.getvalue()
 
 
@@ -47,11 +47,17 @@ class CustomerPreviewServerTests(unittest.TestCase):
         (self.root / 'server-reference/public/client.html').write_text('<h1>Customer products</h1>')
         (self.root / 'server-reference/public/admin.html').write_text('PRIVATE ADMIN')
         draft = self.root / 'docs/mobile-client-preview'
-        (draft / 'assets').mkdir(parents=True)
+        (draft / 'assets/posters').mkdir(parents=True)
         (draft / 'index.html').write_text('<h1>Draft showroom</h1>')
+        (draft / 'product-posters.js').write_text('window.YuanzeProductPosters = {};')
         (draft / 'assets/showroom.png').write_bytes(image_bytes())
-        (draft / 'assets/manifest.json').write_text(json.dumps({'files': [{'path': 'showroom.png'}]}))
+        (draft / 'assets/posters/poster-001-full.webp').write_bytes(image_bytes('WEBP'))
+        (draft / 'assets/posters/poster-001-thumb.webp').write_bytes(image_bytes('WEBP'))
+        (draft / 'assets/manifest.json').write_text(json.dumps({'files': [{'path': path} for path in
+            ['showroom.png', 'posters/poster-001-full.webp', 'posters/poster-001-thumb.webp']]}))
         (draft / 'secret.txt').write_text('PRIVATE FILE')
+        (draft / 'unlisted.js').write_text('PRIVATE SCRIPT')
+        (draft / 'assets/posters/unlisted.webp').write_bytes(b'PRIVATE POSTER')
         self.server = preview.PreviewServer(self.root, port=0)
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
@@ -106,11 +112,31 @@ class CustomerPreviewServerTests(unittest.TestCase):
         self.assertEqual(self.request('/client-media/' + self.token)[0], 200)
         for path in ['/admin', '/admin.html', '/api/catalog', '/private/catalog.json', '/api/admin/records',
                      '/assets/manifest.json', '/secret.txt', '/%2e%2e/secret.txt', '/assets/%2e%2e/secret.txt',
+                     '/unlisted.js', '/assets/posters/unlisted.webp', '/assets/posters/%2e%2e/manifest.json',
                      '/client-media/' + 'b' * 64 + '.jpg']:
             with self.subTest(path=path):
                 status, _, data = self.request(path)
                 self.assertEqual(status, 404)
                 self.assertNotIn(b'PRIVATE', data)
+
+    def test_poster_script_and_images_have_correct_mime_and_remain_same_origin(self):
+        for path, mime in [('/product-posters.js', 'text/javascript'),
+                           ('/assets/posters/poster-001-full.webp', 'image/webp'),
+                           ('/assets/posters/poster-001-thumb.webp', 'image/webp')]:
+            with self.subTest(path=path):
+                status, headers, body = self.request(path)
+                self.assertEqual(status, 200)
+                self.assertEqual(headers['Content-Type'], mime)
+                self.assertEqual(headers['Cross-Origin-Resource-Policy'], 'same-origin')
+                self.assertEqual(headers['Cache-Control'], 'no-store')
+                self.assertGreater(len(body), 0)
+                status, head_headers, head = self.request(path, method='HEAD')
+                self.assertEqual(status, 200)
+                self.assertEqual(head_headers['Content-Length'], str(len(body)))
+                self.assertEqual(head, b'')
+                for request_headers in [{'Host': 'evil.test'}, {'Origin': 'https://evil.test'},
+                                        {'Sec-Fetch-Site': 'cross-site'}]:
+                    self.assertEqual(self.request(path, headers=request_headers)[0], 403)
 
     def test_reject_host_rebinding_and_cross_origin_requests(self):
         for headers in [{'Host': 'evil.test'}, {'Origin': 'https://evil.test'}, {'Sec-Fetch-Site': 'cross-site'}]:

@@ -11,7 +11,7 @@ function setup(language = 'zh', blockedStorage = false, options = {}) {
   const errors = [], virtualConsole = new VirtualConsole();
   virtualConsole.on('jsdomError',error => {if (!error.message.includes('Not implemented: navigation')) errors.push(error.message);});
   const html = fs.readFileSync(path.join(base,'index.html'),'utf8').replace('data-mode="preview"',`data-mode="${options.mode || 'preview'}"`);
-  const dom = new JSDOM(html, {url:'http://localhost/',runScripts:'outside-only',virtualConsole});
+  const dom = new JSDOM(html, {url:'http://localhost/'+(options.hash || ''),runScripts:'outside-only',virtualConsole});
   const {window} = dom;
   window.fetch = options.fetch || (async () => {throw Error('Unexpected fetch');});
   if (blockedStorage) Object.defineProperty(window,'localStorage',{get(){throw new Error('unavailable');}});
@@ -19,6 +19,7 @@ function setup(language = 'zh', blockedStorage = false, options = {}) {
   window.HTMLDialogElement.prototype.showModal = function(){this.open=true;};
   window.HTMLDialogElement.prototype.close = function(){this.open=false;this.dispatchEvent(new window.Event('close'));};
   window.eval(fs.readFileSync(path.join(base,'company-content.js'),'utf8'));
+  window.eval(fs.readFileSync(path.join(base,'product-posters.js'),'utf8'));
   const source = fs.readFileSync(path.join(base,'preview.js'),'utf8');
   if (options.navigation) {
     // Execute the unchanged shell with a location adapter to verify navigation
@@ -28,6 +29,159 @@ function setup(language = 'zh', blockedStorage = false, options = {}) {
   } else window.eval(source);
   return {dom,window,document:window.document,errors};
 }
+
+function historyChange(window, action) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(Error('Expected a browser history event')), 1000);
+    window.addEventListener('popstate', () => {clearTimeout(timer);resolve();}, {once:true});
+    action();
+  });
+}
+
+test('poster landing shows every supplied thumbnail without loading the catalogue or full artwork', () => {
+  const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
+  const data=window.YuanzeProductPosters, frame=document.getElementById('catalog-frame');
+  assert.equal(data.items.length,31);
+  assert.equal(document.getElementById('poster-view').hidden,false);
+  assert.equal(document.getElementById('catalog-view').hidden,true);
+  assert.equal(frame.hasAttribute('src'),false);
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,data.items.length);
+  assert.equal(document.querySelectorAll('[data-poster-category]').length,data.categories.length+1);
+  assert.match(document.getElementById('poster-count').textContent,/31/);
+  assert.equal(document.getElementById('expanded-photo').hasAttribute('src'),false);
+  for(const item of data.items) {
+    const image=document.querySelector(`[data-poster-card="${item.id}"] img`);
+    assert.equal(image.getAttribute('src'),item.thumbnail);
+    assert.equal(image.loading,'lazy');
+    assert.equal(image.decoding,'async');
+    assert.equal(image.alt,item.title.zh);
+    assert.equal(document.querySelector(`img[src="${item.src}"]`),null);
+  }
+  const scripts=Array.from(document.querySelectorAll('script'),script=>script.getAttribute('src'));
+  assert(scripts.indexOf('product-posters.js')<scripts.indexOf('preview.js'));
+  assert.equal(document.querySelector('script[src="product-posters.js"]').defer,true);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('poster category buttons filter cards, counts and translated labels without loading packaging', () => {
+  const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
+  for(const category of window.YuanzeProductPosters.categories) {
+    const button=document.querySelector(`[data-poster-category="${category.id}"]`);
+    button.click();
+    const items=window.YuanzeProductPosters.items.filter(item=>item.category===category.id);
+    assert.equal(window.location.hash,`#/products?category=${category.id}`);
+    assert.equal(button.getAttribute('aria-pressed'),'true');
+    assert.equal(document.querySelectorAll('[data-poster-category][aria-pressed=true]').length,1);
+    assert.deepEqual(Array.from(document.querySelectorAll('[data-poster-card]:not([hidden])'),card=>card.dataset.posterCard),Array.from(items,item=>item.id));
+    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 31 张`);
+  }
+  const hash=window.location.hash;
+  document.getElementById('language-toggle').click();
+  assert.equal(window.location.hash,hash);
+  assert.equal(document.querySelector('[data-poster-category=sets]').textContent,'Care sets');
+  assert.equal(document.querySelector('[data-poster-category=sets]').getAttribute('aria-pressed'),'true');
+  assert.match(document.getElementById('poster-count').textContent,/posters/);
+  document.querySelector('[data-poster-category=all]').click();
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,31);
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('poster viewer respects category bounds, keyboard navigation and language while retaining its route', async () => {
+  const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
+  document.querySelector('[data-poster-category=face]').click();
+  const items=window.YuanzeProductPosters.items.filter(item=>item.category==='face');
+  const dialog=document.getElementById('photo-dialog'), image=document.getElementById('expanded-photo');
+  const previous=document.getElementById('previous-poster'), next=document.getElementById('next-poster');
+  document.querySelector(`[data-poster-image="${items[0].id}"]`).click();
+  assert.equal(dialog.open,true);assert.equal(image.getAttribute('src'),items[0].src);assert.equal(previous.disabled,true);
+  assert.equal(document.activeElement,document.getElementById('close-photo'));
+  next.click();
+  assert.equal(image.getAttribute('src'),items[1].src);
+  const hash=window.location.hash;
+  document.getElementById('photo-language-toggle').click();
+  assert.equal(dialog.open,true);assert.equal(window.location.hash,hash);
+  assert.equal(document.getElementById('photo-caption').textContent,items[1].title.en);
+  assert.equal(document.querySelector('[data-poster-category=face]').getAttribute('aria-pressed'),'true');
+  assert.equal(previous.textContent,'Previous');
+  dialog.dispatchEvent(new window.KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));
+  assert.equal(image.getAttribute('src'),items[0].src);assert.equal(previous.disabled,true);
+  for(let i=1;i<items.length;i++) next.click();
+  assert.equal(image.getAttribute('src'),items.at(-1).src);assert.equal(next.disabled,true);
+  dialog.dispatchEvent(new window.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));
+  assert.equal(image.getAttribute('src'),items.at(-1).src);
+  assert.equal(document.getElementById('poster-position').textContent,`${items.length} / ${items.length}`);
+  await historyChange(window,()=>document.getElementById('close-photo').click());
+  assert.equal(dialog.open,false);assert.equal(window.location.hash,'#/products?category=face');
+  assert.equal(document.activeElement,document.querySelector(`[data-poster-image="${items.at(-1).id}"]`));
+  assert.equal(image.hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('browser Back and Forward restore poster, category and catalogue without recreating its window', async () => {
+  const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
+  const frame=document.getElementById('catalog-frame'),dialog=document.getElementById('photo-dialog');
+  document.querySelector('[data-poster-category=hair]').click();
+  const first=document.querySelector('[data-poster-card]:not([hidden]) button');
+  first.click();
+  const posterHash=window.location.hash;
+  document.querySelector('#poster-controls [data-copy=enterCatalog]').click();
+  assert.equal(window.location.hash,'#/products/catalog');assert.equal(dialog.open,false);
+  const child=frame.contentWindow;child.selectionState='preserved';
+  await historyChange(window,()=>window.history.back());
+  assert.equal(window.location.hash,posterHash);assert.equal(dialog.open,true);
+  assert.equal(document.querySelector('[data-poster-category=hair]').getAttribute('aria-pressed'),'true');
+  await historyChange(window,()=>window.history.forward());
+  assert.equal(window.location.hash,'#/products/catalog');assert.equal(dialog.open,false);
+  assert.equal(frame.contentWindow,child);assert.equal(child.selectionState,'preserved');
+  await historyChange(window,()=>window.history.back());
+  await historyChange(window,()=>dialog.dispatchEvent(new window.Event('cancel',{cancelable:true})));
+  assert.equal(dialog.open,false);assert.equal(window.location.hash,'#/products?category=hair');
+  await historyChange(window,()=>window.history.back());
+  assert.equal(document.querySelector('[data-poster-category=all]').getAttribute('aria-pressed'),'true');
+  await historyChange(window,()=>window.history.forward());
+  assert.equal(document.querySelector('[data-poster-category=hair]').getAttribute('aria-pressed'),'true');
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('direct catalogue and poster links work, and contact continues directly to the mounted catalogue', () => {
+  const {dom,window,document,errors} = setup('en',false,{hash:'#/products/catalog'});
+  const frame=document.getElementById('catalog-frame'),child=frame.contentWindow;
+  assert.equal(frame.getAttribute('src'),'/client/products?showroom=1');
+  assert.equal(document.getElementById('catalog-view').hidden,false);
+  assert.equal(document.querySelector('.top-nav [data-page-link=products]').getAttribute('aria-current'),'page');
+  document.querySelector('.bottom-nav [data-page-link=contact]').click();
+  document.querySelector('[data-copy=continueSelection]').click();
+  assert.equal(window.location.hash,'#/products/catalog');assert.equal(frame.contentWindow,child);
+  document.getElementById('language-toggle').click();assert.equal(window.location.hash,'#/products/catalog');
+  assert.deepEqual(errors,[]);dom.window.close();
+  const direct=setup('en',false,{hash:'#/products?category=face&poster=poster-001'});
+  assert.equal(direct.document.getElementById('photo-dialog').open,true);
+  direct.document.getElementById('close-photo').click();
+  assert.equal(direct.window.location.hash,'#/products?category=face');
+  assert.equal(direct.document.getElementById('photo-dialog').open,false);
+  assert.equal(direct.document.getElementById('catalog-frame').hasAttribute('src'),false);
+  direct.dom.window.close();
+});
+
+test('unrecognised poster routes and unavailable artwork leave navigation and packaging accessible', () => {
+  const {dom,window,document,errors} = setup('zh',false,{hash:'#/products?category=unknown&poster=missing'});
+  assert.equal(document.querySelector('[data-poster-category=all]').getAttribute('aria-pressed'),'true');
+  assert.equal(document.getElementById('photo-dialog').open,false);
+  const card=document.querySelector('[data-poster-card]');
+  card.querySelector('img').dispatchEvent(new window.Event('error'));
+  assert.equal(card.querySelector('.poster-image-error').hidden,false);
+  card.querySelector('button').click();
+  const photo=document.getElementById('expanded-photo');
+  photo.dispatchEvent(new window.Event('error'));
+  assert.equal(document.getElementById('photo-error').hidden,false);
+  document.getElementById('next-poster').click();
+  assert.equal(document.getElementById('photo-error').hidden,true);assert.equal(photo.hidden,false);
+  document.querySelector('#poster-controls [data-copy=enterCatalog]').click();
+  assert.equal(document.getElementById('catalog-frame').getAttribute('src'),'/client/products?showroom=1');
+  assert.equal(document.getElementById('photo-dialog').open,false);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
 
 test('company material preserves the supplied original and maps photos to correct sections', () => {
   const {dom,window,document} = setup();
@@ -92,7 +246,7 @@ test('blocked browser storage does not prevent translations or certificate acces
   dom.window.close();
 });
 
-test('bottom navigation switches independent pages, preserves mounted catalogue and supports history', () => {
+test('bottom navigation opens posters first, mounts catalogue on demand and preserves it across all views', () => {
   const {dom,window,document} = setup();
   const panel = name => document.getElementById('page-'+name);
   const tab = name => document.querySelector('.bottom-nav [data-page-link='+name+']');
@@ -106,14 +260,25 @@ test('bottom navigation switches independent pages, preserves mounted catalogue 
   assert.equal(window.location.hash,'#/products');
   assert.equal(panel('home').hidden,true);
   assert.equal(panel('products').hidden,false);
+  assert.equal(frame.hasAttribute('src'),false);
+  assert.equal(document.getElementById('poster-view').hidden,false);
+  document.querySelector('[data-copy=enterCatalog]').click();
+  assert.equal(window.location.hash,'#/products/catalog');
   assert.equal(frame.getAttribute('src'),'/client/products?showroom=1');
+  assert.equal(document.getElementById('poster-view').hidden,true);
   const childWindow=frame.contentWindow;
+  childWindow.selectionState={search:'100 mL',page:2,shortlist:['YZ-BC-000001']};
   panel('home').scrollTop=240;
   tab('contact').click();
   assert.equal(panel('products').hidden,true);
   assert.equal(panel('contact').hidden,false);
   tab('products').click();
   assert.equal(frame.contentWindow,childWindow);
+  assert.equal(document.getElementById('poster-view').hidden,false);
+  document.querySelector('[data-copy=enterCatalog]').click();
+  assert.equal(frame.contentWindow.selectionState.search,'100 mL');
+  assert.equal(frame.contentWindow.selectionState.page,2);
+  assert.deepEqual(frame.contentWindow.selectionState.shortlist,['YZ-BC-000001']);
   assert.equal(panel('home').scrollTop,240);
   window.history.replaceState(null,'','#/home');
   window.dispatchEvent(new window.PopStateEvent('popstate'));
@@ -131,6 +296,10 @@ test('desktop header and mobile bottom navigation share the same independent pag
   const frame = document.getElementById('catalog-frame');
   top('products').click();
   assert.equal(document.getElementById('page-products').hidden,false);
+  assert.equal(top('products').getAttribute('aria-current'),'page');
+  assert.equal(bottom('products').getAttribute('aria-current'),'page');
+  assert.equal(frame.hasAttribute('src'),false);
+  document.querySelector('[data-product-view=catalog]').click();
   assert.equal(top('products').getAttribute('aria-current'),'page');
   assert.equal(bottom('products').getAttribute('aria-current'),'page');
   const child=frame.contentWindow;
@@ -199,6 +368,7 @@ test('only the trusted catalogue frame can request Home or fixed top-level login
   const navigation=[];
   const {dom,window,document,errors}=setup('zh',false,{mode:'production',navigation});
   document.querySelector('.top-nav [data-page-link=products]').click();
+  document.querySelector('[data-product-view=catalog]').click();
   const frame=document.getElementById('catalog-frame'),child=frame.contentWindow;
   const send=(origin,source,type,extra={})=>window.dispatchEvent(new window.MessageEvent('message',{origin,source,data:{type,...extra}}));
   send('https://attacker.invalid',child,'yuanze-home');assert.equal(document.getElementById('page-products').hidden,false);
@@ -213,6 +383,7 @@ test('only the trusted catalogue frame can request Home or fixed top-level login
 test('contact accepts only allowlisted shortlist fields from the catalogue frame and safely copies an enquiry', async () => {
   const {dom,window,document} = setup();
   document.querySelector('.bottom-nav [data-page-link=products]').click();
+  document.querySelector('[data-product-view=catalog]').click();
   const frame=document.getElementById('catalog-frame');
   const data={type:'yuanze-shortlist',items:[{productCode:'YZ-BC-000001',capacity:'100 mL',supplier:'PRIVATE SUPPLIER',price:'PRIVATE PRICE'},{productCode:'YZ-BC-000002',capacity:'<img src=x>'},{productCode:'<script>',capacity:'20 mL'}]};
   const send=(origin,source,payload=data)=>window.dispatchEvent(new window.MessageEvent('message',{origin,source,data:payload}));

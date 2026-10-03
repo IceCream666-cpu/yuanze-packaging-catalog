@@ -33,6 +33,11 @@ class ShowroomBuild(unittest.TestCase):
 
     def test_bundle_only_contains_reviewed_material_and_relocated_urls(self):
         files = builder.expected_files(); manifest = json.loads(files['bundle-manifest.json'])
+        assets = json.loads((builder.SOURCE / 'assets/manifest.json').read_text())
+        self.assertEqual(set(builder.ENTRYPOINTS),
+                         {'index.html', 'preview.css', 'preview.js', 'company-content.js', 'product-posters.js'})
+        self.assertEqual(set(files), set(builder.ENTRYPOINTS) |
+                         {'assets/' + entry['path'] for entry in assets['files']} | {'bundle-manifest.json'})
         self.assertEqual(manifest['schema'], 1)
         self.assertEqual(set(manifest['files']), set(files) - {'bundle-manifest.json'})
         for name, entry in manifest['files'].items():
@@ -40,12 +45,29 @@ class ShowroomBuild(unittest.TestCase):
             self.assertEqual(len(files[name]), entry['bytes'])
         html = files['index.html'].decode()
         for value in ['data-mode="production"', 'data-src="/client/products?showroom=1"',
-                      'src="/showroom/company-content.js"', 'href="/showroom/preview.css"']:
+                      'src="/showroom/company-content.js"', 'src="/showroom/product-posters.js"',
+                      'href="/showroom/preview.css"']:
             self.assertIn(value, html)
         self.assertIn("'/showroom/assets/", files['company-content.js'].decode())
+        posters = files['product-posters.js'].decode()
+        self.assertIn('"/showroom/assets/posters/', posters)
+        self.assertNotIn('"assets/', posters)
+        self.assertNotIn("'assets/", posters)
         for name in ['catalog.json', 'auth.json', 'preview_customer_showroom.py', 'assets/manifest.json']:
             self.assertNotIn(name, files)
         self.assertEqual(len([name for name in files if name.endswith('.pdf')]), 4)
+        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 62)
+
+    def test_poster_paths_are_relocated_without_changing_metadata(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp); (source / 'assets').mkdir()
+            for name in builder.ENTRYPOINTS:
+                (source / name).write_text('<html></html>' if name == 'index.html' else '')
+            (source / 'assets/manifest.json').write_text('{"files":[]}')
+            content = 'window.YuanzeProductPosters = {src: "assets/posters/full.webp", thumbnail: \'assets/posters/thumb.webp\', title: "Poster"};'
+            (source / 'product-posters.js').write_text(content)
+            actual = builder.expected_files(source)['product-posters.js'].decode()
+            self.assertEqual(actual, content.replace('"assets/', '"/showroom/assets/').replace("'assets/", "'/showroom/assets/"))
 
     def test_asset_checksums_and_manifest_paths_validated_before_build(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -75,6 +97,7 @@ class ShowroomRoutes(unittest.TestCase):
                            'client.css': 'client styles', 'login.html': 'LOGIN'}.items():
             (public / name).write_text(text)
         builder.build(destination=public / 'showroom')
+        self.poster_paths = ['assets/posters/poster-001.webp', 'assets/posters/poster-001-thumb.webp']
         self.public = public
         patcher = patch.object(server, 'PUBLIC', public)
         patcher.start(); self.addCleanup(patcher.stop)
@@ -84,13 +107,16 @@ class ShowroomRoutes(unittest.TestCase):
             status, headers, _ = self.req(path)
             self.assertEqual(status, 303); self.assertEqual(headers['Location'], '/login')
         for path in ['/showroom/index.html', '/showroom/preview.js', '/showroom/assets/showroom.png',
-                     '/showroom/assets/certificates/gmpc-en.pdf']:
+                     '/showroom/assets/certificates/gmpc-en.pdf', '/showroom/product-posters.js',
+                     *['/showroom/' + poster for poster in self.poster_paths]]:
             for method in ['GET', 'HEAD']:
                 status, headers, body = self.req(path, method=method)
                 self.assertEqual(status, 401); self.assertEqual(headers['Cache-Control'], 'no-store')
                 self.assertNotIn(b'%PDF', body)
+                self.assertNotIn(b'WEBP', body)
         self.login(); self.assertEqual(self.req('/api/logout', {})[0], 200)
         self.assertEqual(self.req('/showroom/assets/reception.png')[0], 401)
+        self.assertEqual(self.req('/showroom/' + self.poster_paths[0])[0], 401)
 
     def test_client_admin_routes_and_framing_only_on_products_page(self):
         for username in ['client-test', 'admin']:
@@ -110,6 +136,13 @@ class ShowroomRoutes(unittest.TestCase):
             self.assertNotIn("frame-ancestors 'none'", headers['Content-Security-Policy'])
             _, headers, _ = self.req('/client.js')
             self.assertEqual(headers['X-Frame-Options'], 'DENY')
+            for path in ['product-posters.js', *self.poster_paths]:
+                status, headers, body = self.req('/showroom/' + path)
+                self.assertEqual(status, 200)
+                self.assertGreater(len(body), 0)
+                self.assertEqual(headers['Cache-Control'], 'no-store')
+                self.assertEqual(headers['X-Content-Type-Options'], 'nosniff')
+                self.assertNotIn('Access-Control-Allow-Origin', headers)
         _, headers, _ = self.req('/admin')
         self.assertEqual(headers['X-Frame-Options'], 'DENY')
         self.assertIn("frame-ancestors 'none'", headers['Content-Security-Policy'])
@@ -118,7 +151,9 @@ class ShowroomRoutes(unittest.TestCase):
         self.login()
         for path, mime in [('assets/certificates/iso22716-zh.pdf', 'application/pdf'),
                            ('assets/certificates/gmpc-en.png', 'image/png'),
-                           ('preview.css', 'text/css'), ('company-content.js', 'text/javascript')]:
+                           ('preview.css', 'text/css'), ('company-content.js', 'text/javascript'),
+                           ('product-posters.js', 'text/javascript'),
+                           *[(poster, 'image/webp') for poster in self.poster_paths]]:
             status, headers, body = self.req('/showroom/' + path)
             self.assertEqual(status, 200); self.assertEqual(headers['Content-Type'], mime)
             self.assertGreater(len(body), 0)
@@ -130,8 +165,10 @@ class ShowroomRoutes(unittest.TestCase):
         self.login('employee')
         self.assertEqual(self.req('/')[2], b'EMPLOYEE CATALOGUE')
         for path in ['/client', '/client/products', '/showroom/index.html',
-                     '/showroom/assets/showroom.png', '/showroom/assets/certificates/gmpc-en.pdf']:
-            self.assertEqual(self.req(path)[0], 403, path)
+                     '/showroom/assets/showroom.png', '/showroom/assets/certificates/gmpc-en.pdf',
+                     '/showroom/product-posters.js', *['/showroom/' + poster for poster in self.poster_paths]]:
+            for method in ['GET', 'HEAD']:
+                self.assertEqual(self.req(path, method=method)[0], 403, path)
         self.assertEqual(self.req('/x/../showroom/index.html')[0], 404)
         self.assertEqual(self.req('/x/%2e%2e/showroom/assets/showroom.png')[0], 404)
         for path in ['/./admin.html', '/%2e/admin.html', '/./admin.js', '/./showroom/index.html',
@@ -149,19 +186,26 @@ class ShowroomRoutes(unittest.TestCase):
         self.login(); directory = self.public / 'showroom'
         (directory / 'private.json').write_text('PRIVATE')
         (directory / 'assets/unlisted.pdf').write_bytes(b'%PDF PRIVATE')
+        (directory / 'assets/posters/unlisted.webp').write_bytes(b'PRIVATE POSTER')
+        (directory / 'unlisted.js').write_text('PRIVATE SCRIPT')
         (directory / 'assets/symlink.pdf').symlink_to(self.public / 'admin.html')
         manifest_path = directory / 'bundle-manifest.json'
         manifest = json.loads(manifest_path.read_text())
         manifest['files']['assets/symlink.pdf'] = {'sha256': '0'*64, 'bytes': 0}
+        # A manifest cannot extend the reviewed script entrypoint allowlist.
+        manifest['files']['unlisted.js'] = {'sha256': '0'*64, 'bytes': 0}
         manifest_path.write_text(json.dumps(manifest))
         for path in ['bundle-manifest.json', 'private.json', 'assets/manifest.json', 'assets/unlisted.pdf',
-                     'assets/symlink.pdf', '../admin.html', '%2e%2e/admin.html', 'assets/%2e%2e/%2e%2e/admin.html']:
+                     'assets/posters/unlisted.webp', 'unlisted.js', 'assets/symlink.pdf', '../admin.html',
+                     '%2e%2e/admin.html', 'assets/%2e%2e/%2e%2e/admin.html']:
             status, _, body = self.req('/showroom/' + path)
             self.assertEqual(status, 404, path); self.assertNotIn(b'PRIVATE', body)
         for malformed in ['broken', '[]', '{"schema":1,"files":null}']:
             manifest_path.write_text(malformed)
             self.assertEqual(self.req('/client')[0], 404)
             self.assertEqual(self.req('/showroom/assets/showroom.png')[0], 404)
+            self.assertEqual(self.req('/showroom/product-posters.js')[0], 404)
+            self.assertEqual(self.req('/showroom/' + self.poster_paths[0])[0], 404)
         self.assertEqual(self.req('/client/products')[0], 200)
 
 

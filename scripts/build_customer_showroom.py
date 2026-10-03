@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the authenticated customer company pages from the reviewed preview.
 
-Only the four frontend entrypoints and checksum-verified company assets are
+Only the reviewed frontend entrypoints and checksum-verified company assets are
 included. Catalogue snapshots, local credentials and preview servers are never
 copied. Run --check in verification to detect a stale deployment bundle.
 """
@@ -15,7 +15,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'docs/mobile-client-preview'
 DESTINATION = ROOT / 'server-reference/public/showroom'
-ENTRYPOINTS = ('index.html', 'preview.css', 'preview.js', 'company-content.js')
+ENTRYPOINTS = ('index.html', 'preview.css', 'preview.js', 'company-content.js', 'product-posters.js')
 ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 
 
@@ -45,8 +45,8 @@ def expected_files(source=SOURCE):
             # This stable route is the original safe customer catalogue, embedded
             # as the separate Products page instead of recursively loading Home.
             text = text.replace('/client?showroom=1', '/client/products?showroom=1')
-        elif name == 'company-content.js':
-            # Preserve the supplied company content and translations byte-for-byte
+        elif name in {'company-content.js', 'product-posters.js'}:
+            # Preserve the reviewed content and translations byte-for-byte
             # apart from relocatable media references.
             text = text.replace("'assets/", "'/showroom/assets/").replace('"assets/', '"/showroom/assets/')
         files[name] = text.encode('utf-8')

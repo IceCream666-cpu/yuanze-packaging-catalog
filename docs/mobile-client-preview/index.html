@@ -7,6 +7,7 @@
   <title>YUANZE · 手机客户展厅预览</title>
   <link rel="stylesheet" href="preview.css">
   <script defer src="company-content.js"></script>
+  <script defer src="product-posters.js"></script>
   <script defer src="preview.js"></script>
 </head>
 <body>
@@ -58,16 +59,27 @@
       <footer data-copy="footer">广州源泽药业有限公司</footer>
       </div>
       <div id="page-products" class="page-panel products-panel" data-page="products" aria-label="产品" tabindex="-1" hidden>
-        <iframe id="catalog-frame" title="包材选型库" data-src="/client/products?showroom=1" referrerpolicy="same-origin"></iframe>
+        <nav class="product-switcher" data-aria="productViews" aria-label="产品浏览方式">
+          <a href="#/products" data-page-link="products" data-product-view="posters" data-copy="posterTab" aria-current="page">产品海报</a>
+          <a href="#/products/catalog" data-page-link="products/catalog" data-product-view="catalog" data-copy="catalogTab">包材选型</a>
+        </nav>
+        <section id="poster-view" class="poster-view" aria-labelledby="poster-heading">
+          <div class="poster-intro">
+            <div><p class="eyebrow">YUANZE · PRODUCT GALLERY</p><h1 id="poster-heading" data-copy="posterTitle">优质产品海报</h1><p data-copy="posterDescription">精选产品系列，点开查看完整海报。</p><p class="poster-note" data-copy="posterNote">包材规格请进入包材选型查看。</p></div>
+            <a class="primary-action" href="#/products/catalog" data-page-link="products/catalog" data-copy="enterCatalog">进入包材选型</a>
+          </div>
+          <div class="poster-browser"><div id="poster-categories" class="poster-categories" data-aria="posterCategories" aria-label="海报类别"></div><p id="poster-count" class="poster-count" role="status" aria-live="polite"></p><div id="poster-grid" class="poster-grid"></div></div>
+        </section>
+        <div id="catalog-view" class="catalog-view" hidden><iframe id="catalog-frame" title="包材选型库" data-src="/client/products?showroom=1" referrerpolicy="same-origin"></iframe></div>
       </div>
       <div id="page-contact" class="page-panel" data-page="contact" aria-label="联系" tabindex="-1" hidden>
       <section class="section contact reveal" id="contact"><p class="eyebrow">LET’S CREATE TOGETHER</p><h2 data-copy="contactTitle">聊聊您的下一款产品</h2><p data-copy="contactCopy">研发、OEM／ODM 或包材选型，我们期待了解您的需求。</p><div class="contact-card"><span class="contact-monogram" aria-hidden="true">Y</span><div><h3 data-copy="receptionTeam">源泽 · 客户接待</h3><p class="caption" data-copy="contactPending">专属业务员与公司统一接待联系方式待补充</p></div></div></section>
-      <section class="section inquiry-section"><p class="eyebrow">YOUR SELECTION</p><h2 data-copy="inquiryTitle">您的意向清单</h2><p class="caption" data-copy="inquiryHint">可在产品页选择多款包材，再将清单交给业务员咨询。</p><div id="inquiry-items" class="inquiry-items"></div><p id="inquiry-empty" data-copy="inquiryEmpty">还未选择包材</p><a class="text-action" href="#/products" data-page-link="products" data-copy="continueSelection">继续选型</a><label class="inquiry-note-label" for="inquiry-note" data-copy="inquiryNote">补充您的需求</label><textarea id="inquiry-note" rows="4" maxlength="2000" data-placeholder="inquiryPlaceholder" placeholder="例如：需要的容量、数量、使用产品或定制要求"></textarea><button id="copy-inquiry" class="primary-action" type="button" data-copy="copyInquiry">复制咨询清单</button><p id="inquiry-status" role="status" class="caption"></p><p class="caption" data-copy="inquiryLocal">清单仅保留在本次浏览中；复制后可自行发送给业务员。</p></section>
+      <section class="section inquiry-section"><p class="eyebrow">YOUR SELECTION</p><h2 data-copy="inquiryTitle">您的意向清单</h2><p class="caption" data-copy="inquiryHint">可在产品页选择多款包材，再将清单交给业务员咨询。</p><div id="inquiry-items" class="inquiry-items"></div><p id="inquiry-empty" data-copy="inquiryEmpty">还未选择包材</p><a class="text-action" href="#/products/catalog" data-page-link="products/catalog" data-copy="continueSelection">继续选型</a><label class="inquiry-note-label" for="inquiry-note" data-copy="inquiryNote">补充您的需求</label><textarea id="inquiry-note" rows="4" maxlength="2000" data-placeholder="inquiryPlaceholder" placeholder="例如：需要的容量、数量、使用产品或定制要求"></textarea><button id="copy-inquiry" class="primary-action" type="button" data-copy="copyInquiry">复制咨询清单</button><p id="inquiry-status" role="status" class="caption"></p><p class="caption" data-copy="inquiryLocal">清单仅保留在本次浏览中；复制后可自行发送给业务员。</p></section>
       <footer data-copy="footer">广州源泽药业有限公司</footer>
       </div>
     </main>
     <nav class="bottom-nav" data-page-navigation data-aria="navLabel" aria-label="主导航"><a href="#/home" data-page-link="home" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-7v-7h-4v7H3Z"/></svg><span data-copy="home">首页</span></a><a href="#/products" data-page-link="products"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-copy="products">产品</span></a><a href="#/contact" data-page-link="contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a3 3 0 0 1-3 3H9l-6 4V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z"/><path d="M7 8h10M7 12h6"/></svg><span data-copy="contact">联系</span></a></nav>
   </div>
-  <dialog id="photo-dialog" aria-label="Photo viewer"><button id="close-photo" type="button" data-copy="close">关闭大图</button><img id="expanded-photo" alt=""><p id="photo-caption"></p></dialog>
+  <dialog id="photo-dialog" aria-label="Photo viewer"><div class="photo-toolbar"><span id="poster-position" role="status" hidden></span><button id="photo-language-toggle" type="button" data-copy="language" data-aria="languageLabel">English</button><button id="close-photo" type="button" data-copy="close">关闭大图</button></div><img id="expanded-photo" alt=""><p id="photo-error" role="status" data-copy="posterImageError" hidden>图片暂时无法加载，请稍后重试。</p><p id="photo-caption"></p><div id="poster-controls" class="poster-controls" hidden><div class="poster-paging"><button id="previous-poster" type="button" data-copy="previousPoster">上一张</button><button id="next-poster" type="button" data-copy="nextPoster">下一张</button></div><a class="primary-action" href="#/products/catalog" data-page-link="products/catalog" data-copy="enterCatalog">进入包材选型</a></div></dialog>
 </body>
 </html>

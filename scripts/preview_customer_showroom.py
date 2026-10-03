@@ -33,7 +33,8 @@ PUBLIC = {'/client': 'client.html', '/client.html': 'client.html', '/client/prod
           '/api-client.js': 'api-client.js', '/i18n.js': 'i18n.js',
           '/i18n.css': 'i18n.css', '/brand/yuanze-mark.svg': 'brand/yuanze-mark.svg'}
 DRAFT = {'/': 'index.html', '/index.html': 'index.html', '/preview.css': 'preview.css',
-         '/preview.js': 'preview.js', '/company-content.js': 'company-content.js'}
+         '/preview.js': 'preview.js', '/company-content.js': 'company-content.js',
+         '/product-posters.js': 'product-posters.js'}
 
 
 def within(base, path):

@@ -44,7 +44,7 @@ def showroom_asset(relative):
     """Only deterministic build outputs may be served as customer company files."""
     if not isinstance(relative,str) or '\\' in relative or '..' in relative.split('/'):
         return None
-    entrypoints={'index.html','preview.js','preview.css','company-content.js'}
+    entrypoints={'index.html','preview.js','preview.css','company-content.js','product-posters.js'}
     if relative not in entrypoints and not re.fullmatch(r'assets/[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)',relative):
         return None
     directory=PUBLIC/'showroom'

@@ -1,0 +1,638 @@
+{
+  "receivedAt": "2026-10-04",
+  "archiveCount": 3,
+  "inputImageCount": 33,
+  "uniqueImageCount": 31,
+  "items": [
+    {
+      "id": "poster-001",
+      "category": "face",
+      "title": {
+        "zh": "胶原水凝胶面膜 · 青绿",
+        "en": "Collagen hydrogel mask · Teal"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "01_collagen_mask_teal_liaose.png",
+        "sha256": "2265bf65c664950a56fd80c21480f5123fde04749f9fc5896f879ee791276fd0",
+        "bytes": 1505814,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "087c1dfa726a57b81b1edcaee7bea8e1be2ec75743f12146a29e509a23bd853a"
+      },
+      "duplicates": [],
+      "image": "posters/poster-001.webp",
+      "thumbnail": "posters/poster-001-thumb.webp"
+    },
+    {
+      "id": "poster-002",
+      "category": "face",
+      "title": {
+        "zh": "胶原水凝胶面膜 · 紫色",
+        "en": "Collagen hydrogel mask · Purple"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "02_collagen_mask_purple_liaose.png",
+        "sha256": "d41810485d219c5757eb870ed8e7163be4cd3ec9b06f368c79c546fae1ba9d0a",
+        "bytes": 1480022,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "471c2ac8c7733d1696726587a2cad230e4d4ad36ee83263e3347c2d6476fe23d"
+      },
+      "duplicates": [],
+      "image": "posters/poster-002.webp",
+      "thumbnail": "posters/poster-002-thumb.webp"
+    },
+    {
+      "id": "poster-003",
+      "category": "face",
+      "title": {
+        "zh": "胶原水凝胶面膜 · 黄色",
+        "en": "Collagen hydrogel mask · Yellow"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "03_collagen_mask_yellow_liaose.png",
+        "sha256": "1a4b99f9c060e6826edb956811631caf8449d68b467ee1665dc2656c91ff4fff",
+        "bytes": 1458587,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "ba3fb0baa36c3f03bfe6d2e1699e429e97cd49627f8566f0cfa5896d67d4cc8c"
+      },
+      "duplicates": [],
+      "image": "posters/poster-003.webp",
+      "thumbnail": "posters/poster-003-thumb.webp"
+    },
+    {
+      "id": "poster-004",
+      "category": "hair",
+      "title": {
+        "zh": "护发油系列",
+        "en": "Hair oil collection"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "04_hair_oil_trio_liaose.png",
+        "sha256": "421384a5a376d1ca3a3e751799b615965a0c6e862f443194ed90b74640926d66",
+        "bytes": 1632164,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "7b4e45ffb4ac8f9081f61131baedc21043bb4d44f22228e8a9aa9d7863c3f91f"
+      },
+      "duplicates": [],
+      "image": "posters/poster-004.webp",
+      "thumbnail": "posters/poster-004-thumb.webp"
+    },
+    {
+      "id": "poster-005",
+      "category": "sets",
+      "title": {
+        "zh": "WHT Glow 护理礼盒",
+        "en": "WHT Glow care gift set"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "05_wht_glow_gift_set_liaose.png",
+        "sha256": "f7f57d436e2e2990dd2461ccca3714416be53a54e120f7330a470b8265384898",
+        "bytes": 1759578,
+        "width": 1122,
+        "height": 1402,
+        "pixelsHash": "20c41855000bb3e26be82183027b6840c6369b0baf6dd8c211e24583af97e829"
+      },
+      "duplicates": [
+        {
+          "archive": "liaose_2_Logo_Updated_Images.zip",
+          "member": "liaose_WHT_Glow_Gift_Set.png"
+        }
+      ],
+      "image": "posters/poster-005.webp",
+      "thumbnail": "posters/poster-005-thumb.webp"
+    },
+    {
+      "id": "poster-006",
+      "category": "fragrance",
+      "title": {
+        "zh": "Lunéo Dawn 香水",
+        "en": "Lunéo Dawn perfume"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "06_luneo_dawn_perfume_liaose.png",
+        "sha256": "0c9cc332941fa21a606d35ef42fc703065418fa5f2d96dc135f9525fee8910ed",
+        "bytes": 1897924,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "8d745da11aced7cb687fde90d7b9e39aea2d20c172909d5b6e2322e75430020e"
+      },
+      "duplicates": [
+        {
+          "archive": "liaose_2_Logo_Updated_Images.zip",
+          "member": "liaose_Luneo_Dawn_Perfume.png"
+        }
+      ],
+      "image": "posters/poster-006.webp",
+      "thumbnail": "posters/poster-006-thumb.webp"
+    },
+    {
+      "id": "poster-007",
+      "category": "fragrance",
+      "title": {
+        "zh": "Noiré Glow 香水",
+        "en": "Noiré Glow perfume"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "07_noire_glow_perfume_liaose.png",
+        "sha256": "441855a1edd191028ace95f10d01b01303914128a57b399ae3025eef9d0ac63d",
+        "bytes": 1515019,
+        "width": 1122,
+        "height": 1402,
+        "pixelsHash": "68b45db765a154c250bf9182c5d697ec26b76a5288c2bdf06cce5e1aec5a1504"
+      },
+      "duplicates": [],
+      "image": "posters/poster-007.webp",
+      "thumbnail": "posters/poster-007-thumb.webp"
+    },
+    {
+      "id": "poster-008",
+      "category": "oral",
+      "title": {
+        "zh": "牙膏系列",
+        "en": "Toothpaste collection"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "08_whitening_toothpaste_liaose.png",
+        "sha256": "1b5c33c6b99e380050165fde3cbfb144ea42f7cafe9130b0b7c49fc252058e87",
+        "bytes": 1841990,
+        "width": 1122,
+        "height": 1402,
+        "pixelsHash": "b7db3141e5a295854053041f4ab95c518bf353c478ea26e16468643b20648415"
+      },
+      "duplicates": [],
+      "image": "posters/poster-008.webp",
+      "thumbnail": "posters/poster-008-thumb.webp"
+    },
+    {
+      "id": "poster-009",
+      "category": "face",
+      "title": {
+        "zh": "精华液系列",
+        "en": "Serum collection"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "09_serum_trio_liaose.png",
+        "sha256": "e8baec53be4bd3c864cad803ce0f030d99f80758ff3b327a35ee85b7c8025cfc",
+        "bytes": 1537302,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "ffae442055a46d6fda442d6d7e917045d5dbc1c18ae3d90ef29aadeaf2580e29"
+      },
+      "duplicates": [],
+      "image": "posters/poster-009.webp",
+      "thumbnail": "posters/poster-009-thumb.webp"
+    },
+    {
+      "id": "poster-010",
+      "category": "face",
+      "title": {
+        "zh": "PDRN 胶囊面霜",
+        "en": "PDRN capsule cream"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "10_pdrn_capsule_cream_liaose.png",
+        "sha256": "eac355dcdc14e74f22241093429cc675adb6ee8a5119b01b878e993b6bd3a65d",
+        "bytes": 2151987,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "df86d997ac25a157853993d6e76471a4657decc04fd81ee0e289e1358ff75f17"
+      },
+      "duplicates": [],
+      "image": "posters/poster-010.webp",
+      "thumbnail": "posters/poster-010-thumb.webp"
+    },
+    {
+      "id": "poster-011",
+      "category": "sets",
+      "title": {
+        "zh": "Pink Cloud 身体护理套装",
+        "en": "Pink Cloud body care set"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "11_pink_cloud_body_care_set_liaose.png",
+        "sha256": "fe61745b5ab23c3e5111774f9e08c241ac1acd103e0ef2e36114a707cb48dd80",
+        "bytes": 1876621,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "0b30b88c9238188946452bbcbea75926f5d34e9ef097bb75b43f02885c7a5e16"
+      },
+      "duplicates": [],
+      "image": "posters/poster-011.webp",
+      "thumbnail": "posters/poster-011-thumb.webp"
+    },
+    {
+      "id": "poster-012",
+      "category": "body",
+      "title": {
+        "zh": "身体磨砂膏 · 黄粉",
+        "en": "Body scrub · Yellow & pink"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "12_scrub_yellow_pink_liaose.png",
+        "sha256": "17ea275a5a0c56983f07fc6fa5406bf65be4eb3ee8cdcf2095fccd8f88e81ba6",
+        "bytes": 1599103,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "ae70f632e06061e8833a1c6ebfcc6c8ee1d64ba182c4ea8d9e9c1d15c99f4554"
+      },
+      "duplicates": [],
+      "image": "posters/poster-012.webp",
+      "thumbnail": "posters/poster-012-thumb.webp"
+    },
+    {
+      "id": "poster-013",
+      "category": "body",
+      "title": {
+        "zh": "身体磨砂膏 · 珊瑚青绿",
+        "en": "Body scrub · Coral & aqua"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "13_scrub_coral_teal_liaose.png",
+        "sha256": "deb1cb370348ac8ec8dd5f32b5003662496b49a84792e1cc8bd90142ff52b972",
+        "bytes": 2097215,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "5b11c9b796c0d6ce0317cb681a2e09d929ad5f1dae3ebc8c30de767fd7a8d743"
+      },
+      "duplicates": [],
+      "image": "posters/poster-013.webp",
+      "thumbnail": "posters/poster-013-thumb.webp"
+    },
+    {
+      "id": "poster-014",
+      "category": "body",
+      "title": {
+        "zh": "身体磨砂系列",
+        "en": "Body scrub collection"
+      },
+      "source": {
+        "archive": "liaose_14_Logo_Updated_Images.zip",
+        "member": "14_body_scrub_collection_liaose.png",
+        "sha256": "fbcdb8a3802edc0187ba3e7ce1e79b739555e6f7c7fcace873a5ebb5332e1577",
+        "bytes": 2076894,
+        "width": 1600,
+        "height": 983,
+        "pixelsHash": "f2ca7ca9464f2c4e7aeec1ebbccc44943c7ad3c679e1c936d2f10b25c27913f3"
+      },
+      "duplicates": [],
+      "image": "posters/poster-014.webp",
+      "thumbnail": "posters/poster-014-thumb.webp"
+    },
+    {
+      "id": "poster-015",
+      "category": "hair",
+      "title": {
+        "zh": "洗发水",
+        "en": "Shampoo"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "01_HEAD_头部护理/01_Shampoo_洗发水.png",
+        "sha256": "87961a7596787022819abcaaebac03375360ee5736faaf33bbebcda299f9daff",
+        "bytes": 2274003,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "2cba428fbc991864bf5b3ef7d776cb0474b16958df4145f22a79918b23579573"
+      },
+      "duplicates": [],
+      "image": "posters/poster-015.webp",
+      "thumbnail": "posters/poster-015-thumb.webp"
+    },
+    {
+      "id": "poster-016",
+      "category": "hair",
+      "title": {
+        "zh": "护发素",
+        "en": "Conditioner"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "01_HEAD_头部护理/02_Conditioner_护发素.png",
+        "sha256": "f17e7ddb8e1b80ee8865ae95cda2a8508f14602120786c927aac08596d81cf8f",
+        "bytes": 2176389,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "99feda33b2d71c75954f8486e3b5b35f529bcae86b27350ccac75e4122babad4"
+      },
+      "duplicates": [],
+      "image": "posters/poster-016.webp",
+      "thumbnail": "posters/poster-016-thumb.webp"
+    },
+    {
+      "id": "poster-017",
+      "category": "hair",
+      "title": {
+        "zh": "发膜",
+        "en": "Hair mask"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "01_HEAD_头部护理/03_Hair_Mask_发膜.png",
+        "sha256": "15b4f976e1c7425a71ecc5fbfa71829afae1e7d9879542d4025dd78e06d61817",
+        "bytes": 2223657,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "16803a274578b3b9f5fc7cd4f3da163e7a2de631f106031e94feb12830c1756e"
+      },
+      "duplicates": [],
+      "image": "posters/poster-017.webp",
+      "thumbnail": "posters/poster-017-thumb.webp"
+    },
+    {
+      "id": "poster-018",
+      "category": "hair",
+      "title": {
+        "zh": "头发精华",
+        "en": "Hair serum"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "01_HEAD_头部护理/04_Hair_Serum_头发精华.png",
+        "sha256": "f0a07046682e64b1789f219473352f40fb575ff15a298ab4c13087b18c228626",
+        "bytes": 2109918,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "7a99d08556f169356a15992cfa14106f323a9ca33700964608a0f01bafb0f51d"
+      },
+      "duplicates": [],
+      "image": "posters/poster-018.webp",
+      "thumbnail": "posters/poster-018-thumb.webp"
+    },
+    {
+      "id": "poster-019",
+      "category": "hair",
+      "title": {
+        "zh": "护发油",
+        "en": "Hair oil"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "01_HEAD_头部护理/05_Hair_Oil_护发油.png",
+        "sha256": "312392f338bdb689f5990d8a4c3dfcbb99cddacce67b1736f7dba21448b3f2a6",
+        "bytes": 2223844,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "0e3098ee06f490b243da9235fce003796bde837c68b81dd65063acbcc33aa5a9"
+      },
+      "duplicates": [],
+      "image": "posters/poster-019.webp",
+      "thumbnail": "posters/poster-019-thumb.webp"
+    },
+    {
+      "id": "poster-020",
+      "category": "face",
+      "title": {
+        "zh": "面部精华",
+        "en": "Facial serum"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/06_Facial_Serum_面部精华.png",
+        "sha256": "34da791b220a7605761c29247404a6499d22651f98bb99fa5c8927ca17c86d59",
+        "bytes": 2328989,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "4f2ca8e280ca1e2795279c211742c506476011eb2bad2e5518ce49759777a093"
+      },
+      "duplicates": [],
+      "image": "posters/poster-020.webp",
+      "thumbnail": "posters/poster-020-thumb.webp"
+    },
+    {
+      "id": "poster-021",
+      "category": "face",
+      "title": {
+        "zh": "洁面产品",
+        "en": "Cleanser"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/07_Cleanser_洁面产品.png",
+        "sha256": "68836bd82934c8f36763fcd30a3eb757a54f464dfa39989d96b5d22567416afa",
+        "bytes": 2206690,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "078feb5cd435eefde069d3fa403e81c7a043cc3339d8dfd58fa9b5e1298d17b4"
+      },
+      "duplicates": [],
+      "image": "posters/poster-021.webp",
+      "thumbnail": "posters/poster-021-thumb.webp"
+    },
+    {
+      "id": "poster-022",
+      "category": "face",
+      "title": {
+        "zh": "爽肤水",
+        "en": "Toner"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/08_Toner_爽肤水.png",
+        "sha256": "3eb4f47f31d6882b889eb645e535a48a4631fae254864e0c48095a52378a0616",
+        "bytes": 2329543,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "da1ba2fae6287a8fed47223d5f90d05489d436cd23a3075202d5f5ff7e1490fa"
+      },
+      "duplicates": [],
+      "image": "posters/poster-022.webp",
+      "thumbnail": "posters/poster-022-thumb.webp"
+    },
+    {
+      "id": "poster-023",
+      "category": "face",
+      "title": {
+        "zh": "面部乳液",
+        "en": "Facial lotion"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/09_Facial_Lotion_面部乳液.png",
+        "sha256": "cf7de8ceb2fcb45df210af0b85480399d7043039c0ae879ef84ee828c1860220",
+        "bytes": 2313965,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "75361526756d0b25bdc723a554a0ed1901028e23d8541e20ac107b8eedea7a75"
+      },
+      "duplicates": [],
+      "image": "posters/poster-023.webp",
+      "thumbnail": "posters/poster-023-thumb.webp"
+    },
+    {
+      "id": "poster-024",
+      "category": "face",
+      "title": {
+        "zh": "面霜",
+        "en": "Face cream"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/10_Face_Cream_面霜.png",
+        "sha256": "9df043f0edb313f9c43460123ebeebec76f69c59fff860dd54625f8d3e077d02",
+        "bytes": 2316957,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "364be113bd8aaeeb0baaaaab70e5f832f8ab57cdff56675d82faa45b567015bb"
+      },
+      "duplicates": [],
+      "image": "posters/poster-024.webp",
+      "thumbnail": "posters/poster-024-thumb.webp"
+    },
+    {
+      "id": "poster-025",
+      "category": "face",
+      "title": {
+        "zh": "面膜",
+        "en": "Face mask"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/11_Face_Mask_面膜.png",
+        "sha256": "1abe9adfefb8daba00d038c7b5a4474933a240562cb5d9103d3d0138b07b929c",
+        "bytes": 2257284,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "ac32640f090a4b5a151d5bab76d705f8cef8979ba6dca95c162d5376041c9339"
+      },
+      "duplicates": [],
+      "image": "posters/poster-025.webp",
+      "thumbnail": "posters/poster-025-thumb.webp"
+    },
+    {
+      "id": "poster-026",
+      "category": "face",
+      "title": {
+        "zh": "防晒产品",
+        "en": "Sunscreen"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "02_FACE_面部护理/12_Sunscreen_防晒产品.png",
+        "sha256": "d73e06bc14f74021038a5f91210bf13db9a74eb799d40d171f347afd80fc487b",
+        "bytes": 2221394,
+        "width": 1672,
+        "height": 940,
+        "pixelsHash": "581052921ef23952522be6dc57b892def4346a3a21e4d3075b39da7cc966c522"
+      },
+      "duplicates": [],
+      "image": "posters/poster-026.webp",
+      "thumbnail": "posters/poster-026-thumb.webp"
+    },
+    {
+      "id": "poster-027",
+      "category": "body",
+      "title": {
+        "zh": "沐浴露",
+        "en": "Body wash"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "03_BODY_身体护理/13_Body_Wash_沐浴露.png",
+        "sha256": "00531d28760ce99bdd85c6d8659ea16d919f22508bd2d10fcf528c547911a103",
+        "bytes": 2183857,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "4833558c0ace8879ff0b17f9c06921cc58de945c49e1b9619749fc53d05e3427"
+      },
+      "duplicates": [],
+      "image": "posters/poster-027.webp",
+      "thumbnail": "posters/poster-027-thumb.webp"
+    },
+    {
+      "id": "poster-028",
+      "category": "body",
+      "title": {
+        "zh": "身体乳",
+        "en": "Body lotion"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "03_BODY_身体护理/14_Body_Lotion_身体乳.png",
+        "sha256": "140a9bfa0dc267e82cd424177568b54fa581ddc307128f2586245960537e759d",
+        "bytes": 2093359,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "7eb169831bec87223009b277440967a01a7098d1de4d095801ba4a004e5fd4ba"
+      },
+      "duplicates": [],
+      "image": "posters/poster-028.webp",
+      "thumbnail": "posters/poster-028-thumb.webp"
+    },
+    {
+      "id": "poster-029",
+      "category": "body",
+      "title": {
+        "zh": "身体霜",
+        "en": "Body cream"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "03_BODY_身体护理/15_Body_Cream_身体霜.png",
+        "sha256": "759059e16bc7dd84d4250c821aefb465cbe592e2bb8731ec4d4a585f72bcf70a",
+        "bytes": 2143740,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "c539f180536fb90aaa175cd3f4c9f3c7f0d80780b2ecaaef01c3c031d665786b"
+      },
+      "duplicates": [],
+      "image": "posters/poster-029.webp",
+      "thumbnail": "posters/poster-029-thumb.webp"
+    },
+    {
+      "id": "poster-030",
+      "category": "body",
+      "title": {
+        "zh": "身体磨砂膏",
+        "en": "Body scrub"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "03_BODY_身体护理/16_Body_Scrub_身体磨砂膏.png",
+        "sha256": "0bf765166c7f29f786930eae08b12a8636f8587552932a08d0a369fbc53c5b0f",
+        "bytes": 2272763,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "b9fcd274206f1a5190267f899475775f3560a87708c5b373cec48f820e5df0c7"
+      },
+      "duplicates": [],
+      "image": "posters/poster-030.webp",
+      "thumbnail": "posters/poster-030-thumb.webp"
+    },
+    {
+      "id": "poster-031",
+      "category": "body",
+      "title": {
+        "zh": "身体护理油",
+        "en": "Body oil"
+      },
+      "source": {
+        "archive": "liaose_17_Product_Posters.zip",
+        "member": "03_BODY_身体护理/17_Body_Oil_身体护理油.png",
+        "sha256": "8090f09c13c0d648e4bf360902e0d8bcb52ac854023d4274d8689f5d50150b70",
+        "bytes": 2202881,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "f479ffea301fd8598b7d068606b98415dd6b290ac288363bfc8141891f2dc540"
+      },
+      "duplicates": [],
+      "image": "posters/poster-031.webp",
+      "thumbnail": "posters/poster-031-thumb.webp"
+    }
+  ]
+}
