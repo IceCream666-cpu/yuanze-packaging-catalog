@@ -1,6 +1,25 @@
 # 源泽包材库发布记录
 
-## 2026-10-04 客户公司展厅与手机／PC 响应式界面（当前版本）
+## 2026-10-04 客户优质产品海报（当前版本）
+
+北京时间 2026-10-04 03:40 完成发布 `20261004-product-posters-v2`，03:42 完成公网验证；源码提交 `bc5ebdf5a10a16321f061a18e48607cd17231545`，海报功能提交 `9867fbe3b975845e014b6bf21588224c89c4e15d`。
+
+- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20261004-product-posters-v2`。
+- 上一代码：`/opt/yuanze-reference/releases/20261003-customer-showroom-v1`。
+- 一致性备份：`/opt/yuanze-reference/backups/product-posters-20261004-v2`。80 文件 SHA 核验通过，应用切换 16.65 秒，三角色原有会话仍有效，8 张业务表内容摘要一致。
+- 新增 31 张海报（33 张输入，2 张完全重复），6 类，中英文标题、懒加载缩略图、大图翻看和包材入口。`/client#/products` 默认海报；`#/products/catalog` 复用原客户选型功能。手机底栏／PC 顶栏规则不变，iframe 只在首次选型时加载，切页保留筛选与清单。
+- 海报资源受登录与发布清单保护；没有修改账号、密码、数据库、供应商／价格隔离、客户包材图片批准范围或 Caddy 配置。来源清单在 `docs/产品海报素材清单.json`，不作为客户资源发布。
+- 首次 `v1` 因目标 Linux MIME 数据库不识别 WebP，图片错误返回 `application/octet-stream`，门禁拒绝后自动回退。现由应用明确返回 `image/webp`，新增模拟系统 MIME 缺失的生产与本机预览测试，复测后发布 `v2`；失败 release 与备份保留用于诊断。
+- 本地 22 根测试、154 后端测试、18 部署测试及全部前端通过（17 项展厅交互）；素材尺寸／完整原像素、来源去重、脚本路径构建与匿名／员工拒绝均覆盖。
+- 手机390px／PC1280px本地浏览器已验证分类、放大、翻看、中英文、包材跳转与选型状态。正式站点浏览器自动打开超时；未将本地截图称为线上截图。
+- 公网域名／IP 员工、管理员完整登录门禁通过；域名三角色客户接口验证通过，包含31张缩略图、高清图抽查、素材权限、12条获批包材查询、编号检索、3个有数据维度多选、分页、真实客户搜图及14项私有路由阻断。
+- 证据：`work/product-posters-20261004-v2/server-validation-summary.json`、`public-route-gate.json`、`public-client-result.json`。文件不含凭据，工作目录不提交 Git。
+
+回退时只将 `current` 原子指向上一公司展厅 release，重启应用并检查三角色及公网路由。保留 `/var/lib/yuanze-reference` 的当前数据库、账号、图片和会话；不得恢复备份覆盖上线后的业务修改。
+
+---
+
+## 2026-10-04 客户公司展厅与手机／PC 响应式界面（历史版本）
 
 北京时间 2026-10-04 00:24 已发布 `20261003-customer-showroom-v1`，Git 提交 `aef53cb47d2f340e027c5993868a7925cfa194ca`。release 名称沿用 2026-10-03 的准备日期，实际切换日期为 2026-10-04。
 
@@ -86,7 +105,7 @@ Caddy 实际运行用户执行强制配置检查：`/usr/local/lib/yuanze/releas
 
 ## 运行配置
 
-- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20261003-customer-showroom-v1`
+- 当前代码：`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20261004-product-posters-v2`
 - 上一代码版本：`/opt/yuanze-reference/releases/20260929-client-bilingual-login`
 - Python 环境：`/opt/yuanze-reference/venvs/admin-20260924`
 - 状态目录：`/var/lib/yuanze-reference`，由专用 `yuanze` 用户读写。
