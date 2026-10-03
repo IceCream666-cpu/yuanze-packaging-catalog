@@ -1,0 +1,66 @@
+{
+  "files": {
+    "assets/certificates/gmpc-en.pdf": {
+      "bytes": 283549,
+      "sha256": "6f7ae0d2cfdb0ec15addaf682eb2948f890c8380aaad3ff4f27aac4e07c5e0f1"
+    },
+    "assets/certificates/gmpc-en.png": {
+      "bytes": 385420,
+      "sha256": "e893225993633f9ae6b73963a2fc28b16095be2e3fd8e9d133e8fbd9c5f7bcf0"
+    },
+    "assets/certificates/gmpc-zh.pdf": {
+      "bytes": 327506,
+      "sha256": "7ce0468424a4dd1f8686f9c5a32633160935f1008815408a41057db4b6b5a951"
+    },
+    "assets/certificates/gmpc-zh.png": {
+      "bytes": 351782,
+      "sha256": "69ac1d75717da4717976f627eb61d75c65cc4ebe670239c4afd2bdc0b372caef"
+    },
+    "assets/certificates/iso22716-en.pdf": {
+      "bytes": 285186,
+      "sha256": "0a9f7e3bc90a1622cd726916032cc18aa6095bb171500b0a6a745e1139d7bc02"
+    },
+    "assets/certificates/iso22716-en.png": {
+      "bytes": 378281,
+      "sha256": "c0e5e58e8834b3411681bfd22a8f2b7a7f9782c0652c0f694afc8331deae40cb"
+    },
+    "assets/certificates/iso22716-zh.pdf": {
+      "bytes": 327493,
+      "sha256": "e05f80ff3a06e01aa63957f1f5e61b424af08cf9b09adb182c9f5ffe968fb86f"
+    },
+    "assets/certificates/iso22716-zh.png": {
+      "bytes": 352385,
+      "sha256": "a52d0606cfa05da829710ba645f98f43edc9fc67cfdbd651f7c67af91c711680"
+    },
+    "assets/reception.png": {
+      "bytes": 1223532,
+      "sha256": "9f32b34e37731637fba6fb0c6dcbeb274779432d80c0086e583151a0c2a63e40"
+    },
+    "assets/showroom.png": {
+      "bytes": 1980858,
+      "sha256": "922c7b8a397ef1055289f9a206c9ac86c6d83b455c81c8e1f0df70609cedcc2c"
+    },
+    "assets/yuanze-mark.svg": {
+      "bytes": 297269,
+      "sha256": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62"
+    },
+    "company-content.js": {
+      "bytes": 10084,
+      "sha256": "3721d520d623d9ff905b9f1031d5e9073007df3f172916e9131a51c3d5a4b0dc"
+    },
+    "index.html": {
+      "bytes": 9417,
+      "sha256": "fecde6394490756f8f3020d6fc8cf7b1419506812619f57ed52da0d12932b346"
+    },
+    "preview.css": {
+      "bytes": 14601,
+      "sha256": "608de1f71ebab3d6f62b2bf9090890276040180f4439848b521070a7d2ca9653"
+    },
+    "preview.js": {
+      "bytes": 10398,
+      "sha256": "2e7745f006232f83d7ad8056eb9d3344a4e776233e06b34f92a08b7904203c84"
+    }
+  },
+  "schema": 1,
+  "source": "docs/mobile-client-preview"
+}

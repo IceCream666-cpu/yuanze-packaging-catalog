@@ -38,6 +38,24 @@ UPLOADS = None
 IMPORTS = {}
 IMPORT_GATE = threading.Lock()
 CATALOG_RESPONSE_GATE = threading.Lock()
+DEFAULT_CSP = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+def showroom_asset(relative):
+    """Only deterministic build outputs may be served as customer company files."""
+    if not isinstance(relative,str) or '\\' in relative or '..' in relative.split('/'):
+        return None
+    entrypoints={'index.html','preview.js','preview.css','company-content.js'}
+    if relative not in entrypoints and not re.fullmatch(r'assets/[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)',relative):
+        return None
+    directory=PUBLIC/'showroom'
+    try:
+        manifest=json.loads((directory/'bundle-manifest.json').read_text())
+        if not isinstance(manifest,dict) or manifest.get('schema')!=1 or not isinstance(manifest.get('files'),dict) or relative not in manifest['files']:
+            return None
+    except (OSError,ValueError,TypeError):
+        return None
+    target=(directory/relative).resolve()
+    return target if target.is_relative_to(directory.resolve()) and target.is_file() else None
 
 class AuthStorageUnavailable(Exception):
     pass
@@ -198,7 +216,7 @@ class Handler(BaseHTTPRequestHandler):
         if self.command!='HEAD': self.wfile.write(body)
     def response_headers(self,code,length,ctype,extra=None):
         self.send_response(code)
-        for k,v in {'Content-Type':ctype,'Content-Length':str(length),'Cache-Control':'no-store','X-Request-ID':self.request_id,'X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY','Referrer-Policy':'no-referrer','Content-Security-Policy':"default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",**(extra or {})}.items(): self.send_header(k,v)
+        for k,v in {'Content-Type':ctype,'Content-Length':str(length),'Cache-Control':'no-store','X-Request-ID':self.request_id,'X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY','Referrer-Policy':'no-referrer','Content-Security-Policy':DEFAULT_CSP,**(extra or {})}.items(): self.send_header(k,v)
         self.end_headers()
     def respond_export(self):
         if not CATALOG_RESPONSE_GATE.acquire(blocking=False):
@@ -285,6 +303,11 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         if not self.valid_host(): return self.respond(403,{'error':'访问地址无效'})
         path=unquote(urlsplit(self.path).path)
+        # Reject alternate spellings before route/role selection. Otherwise a
+        # staff request such as /./admin.html or /x/../showroom/file could reach generic static
+        # serving instead of the customer-only showroom boundary.
+        if any(part in {'.','..'} for part in path.split('/')) or '//' in path or '\\' in path or '\x00' in path:
+            return self.respond(404,{'error':'页面或文件不存在'})
         if path=='/healthz': return self.respond(200,{'status':'ok'})
         if path in ['/login','/login.html']:
             s=self.session()
@@ -301,13 +324,15 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(PUBLIC/path.lstrip('/'), PUBLIC)
         s=self.session()
         if not s:
-            if path.startswith(('/api/','/media/','/uploads/','/client-media/')): return self.respond(401,{'error':'请先登录'})
+            if path.startswith(('/api/','/media/','/uploads/','/client-media/','/showroom/')): return self.respond(401,{'error':'请先登录'})
             # Only a validated internal product code may survive the login step.
             code=parse_qs(urlsplit(self.path).query).get('code',[''])[0].upper()
             destination='/login?code='+quote(code) if path in ['/','/index.html','/catalog'] and re.fullmatch(r'YZ-BC-[0-9]{6,}',code) else '/login'
             return self.respond(303,b'','text/plain',{'Location':destination})
-        if s['role']=='client' or (s['role']=='admin' and (path in ['/client','/client.html','/client.js','/client.css','/api/client/catalog'] or path.startswith('/client-media/'))):
+        customer_route=path in ['/client','/client.html','/client/products','/client.js','/client.css','/api/client/catalog'] or path.startswith(('/client-media/','/showroom/'))
+        if s['role']=='client' or (s['role']=='admin' and customer_route):
             return self.client_get(path,s)
+        if customer_route:return self.respond(403,{'error':'此页面仅供客户账号及管理员预览'})
         if path in ['/','/index.html'] and s['role']=='admin':
             # The shared company link opens each account's workspace. Explicit
             # product links and /catalog remain available for staff-view browsing.
@@ -355,8 +380,17 @@ class Handler(BaseHTTPRequestHandler):
             return self.respond(303,b'','text/plain',{'Location':'/client'})
         if path=='/api/session':
             return self.respond(200,{'username':session['username'],'csrf':session['csrf'],'role':'client'})
-        if path in ['/client','/client.html','/client.js','/client.css']:
-            return self.file(PUBLIC/('client.html' if path in ['/client','/client.html'] else path[1:]),PUBLIC)
+        if path in ['/client','/client.html'] or path.startswith('/showroom/'):
+            relative='index.html' if path in ['/client','/client.html'] else path[len('/showroom/'):]
+            asset=showroom_asset(relative)
+            if asset is None:return self.respond(404,{'error':'客户展示资料暂不可用'})
+            extra={'Content-Security-Policy':DEFAULT_CSP+"; frame-src 'self'"} if relative=='index.html' else None
+            return self.file(asset,PUBLIC/'showroom',extra)
+        if path=='/client/products':
+            return self.file(PUBLIC/'client.html',PUBLIC,{'X-Frame-Options':'SAMEORIGIN',
+                'Content-Security-Policy':DEFAULT_CSP.replace("frame-ancestors 'none'","frame-ancestors 'self'")})
+        if path in ['/client.js','/client.css']:
+            return self.file(PUBLIC/path[1:],PUBLIC)
         if path=='/api/client/catalog':
             try:
                 query=parse_qs(urlsplit(self.path).query,max_num_fields=256)
@@ -478,12 +512,12 @@ class Handler(BaseHTTPRequestHandler):
         result=STORE.mutate(resource,action,payload,actor)
         if resource=='records':IMAGE_SEARCH.refresh()
         return self.respond(200,result)
-    def file(self,path,base):
+    def file(self,path,base,extra=None):
         path=path.resolve();base=base.resolve()
         if not path.is_relative_to(base) or not path.is_file(): return self.respond(404,{'error':'页面或文件不存在'})
         ctype=mimetypes.guess_type(path.name)[0] or 'application/octet-stream'
         if path.suffix in ['.js','.mjs']: ctype='text/javascript'
-        return self.respond(200,path.read_bytes(),ctype)
+        return self.respond(200,path.read_bytes(),ctype,extra)
     def do_POST(self):
         if not self.valid_host(): return self.respond(403,{'error':'访问地址无效'})
         path=urlsplit(self.path).path

@@ -101,6 +101,7 @@ class CustomerPreviewServerTests(unittest.TestCase):
     def test_file_allowlist_media_and_path_traversal(self):
         self.assertEqual(self.request('/')[0], 200)
         self.assertEqual(self.request('/client?showroom=1')[0], 200)
+        self.assertEqual(self.request('/client/products?showroom=1')[0], 200)
         self.assertEqual(self.request('/assets/showroom.png')[0], 200)
         self.assertEqual(self.request('/client-media/' + self.token)[0], 200)
         for path in ['/admin', '/admin.html', '/api/catalog', '/private/catalog.json', '/api/admin/records',

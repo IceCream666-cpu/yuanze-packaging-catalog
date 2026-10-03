@@ -28,7 +28,7 @@ from image_search import (Embedder, MAX_REQUEST_BYTES, SearchBusy, SearchUnavail
 
 TOKEN = re.compile(r'[a-f0-9]{64}')
 MEDIA = re.compile(r'/client-media/([a-f0-9]{64}\.jpg)')
-PUBLIC = {'/client': 'client.html', '/client.html': 'client.html',
+PUBLIC = {'/client': 'client.html', '/client.html': 'client.html', '/client/products': 'client.html',
           '/client.js': 'client.js', '/client.css': 'client.css',
           '/api-client.js': 'api-client.js', '/i18n.js': 'i18n.js',
           '/i18n.css': 'i18n.css', '/brand/yuanze-mark.svg': 'brand/yuanze-mark.svg'}

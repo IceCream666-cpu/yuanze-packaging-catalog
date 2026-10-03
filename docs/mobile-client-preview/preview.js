@@ -7,6 +7,9 @@
   const photoCaption = document.getElementById('photo-caption');
   const closePhoto = document.getElementById('close-photo');
   const frame = document.getElementById('catalog-frame');
+  const production = document.documentElement.dataset.mode === 'production';
+  const logout = document.getElementById('showroom-logout');
+  const sessionMessage = document.getElementById('session-message');
   const pages = ['home', 'products', 'contact'];
   let activePage = '';
   let shortlist = [];
@@ -14,6 +17,10 @@
   let language = 'zh';
   let selectedPhoto = null;
   let photoTrigger = null;
+  let loggingOut = false;
+  let logoutFailed = false;
+  document.querySelector('.preview-label').hidden = production;
+  logout.hidden = !production;
   try { if ((localStorage.getItem('yuanze-language') || localStorage.getItem('yuanze-mobile-preview-language')) === 'en') language = 'en'; } catch (_) {}
 
   function notifyLanguage() {
@@ -40,7 +47,7 @@
     if (activePage === next) return;
     activePage = next;
     document.querySelectorAll('[data-page]').forEach(panel => { panel.hidden = panel.dataset.page !== next; });
-    document.querySelectorAll('.bottom-nav [data-page-link]').forEach(link => {
+    document.querySelectorAll('[data-page-navigation] [data-page-link]').forEach(link => {
       if (link.dataset.pageLink === next) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
@@ -62,7 +69,7 @@
   function translate() {
     const copy = content[language];
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
-    document.title = language === 'zh' ? 'YUANZE · 手机客户展厅预览' : 'YUANZE · Mobile showroom preview';
+    document.title = production ? copy.title : copy.previewTitle;
     document.querySelectorAll('[data-copy]').forEach(node => { node.textContent = copy[node.dataset.copy]; });
     document.querySelectorAll('[data-alt]').forEach(node => { node.alt = copy[node.dataset.alt]; });
     document.querySelectorAll('[data-aria]').forEach(node => { node.setAttribute('aria-label', copy[node.dataset.aria]); });
@@ -88,8 +95,38 @@
       dialog.setAttribute('aria-label', copy[`${selectedPhoto}Caption`]);
     }
     renderInquiry();
+    renderSession();
     notifyLanguage();
   }
+
+  function renderSession() {
+    logout.disabled = loggingOut;
+    logout.textContent = content[language][loggingOut ? 'loggingOut' : 'logout'];
+    sessionMessage.hidden = !logoutFailed;
+    sessionMessage.textContent = logoutFailed ? content[language].logoutError : '';
+  }
+
+  logout.addEventListener('click', async () => {
+    if (!production || loggingOut) return;
+    loggingOut = true; logoutFailed = false; renderSession();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    const options = {credentials:'same-origin', cache:'no-store', redirect:'error', signal:controller.signal, headers:{Accept:'application/json'}};
+    try {
+      // Obtain current CSRF at the moment of logout. Never store credentials in
+      // the bundle, and do not automatically replay the POST after a timeout.
+      const sessionResponse = await fetch('/api/session', options);
+      if (sessionResponse.status === 401) { location.replace('/login'); return; }
+      if (!sessionResponse.ok) throw Error('Session unavailable');
+      const session = await sessionResponse.json();
+      if (typeof session.csrf !== 'string' || !session.csrf) throw Error('Missing CSRF');
+      const response = await fetch('/api/logout', {...options,method:'POST',headers:{...options.headers,'Content-Type':'application/json','X-CSRF-Token':session.csrf},body:'{}'});
+      if (response.status === 401) { location.replace('/login'); return; }
+      if (!response.ok || (await response.json()).ok !== true) throw Error('Logout unavailable');
+      location.replace('/login');
+    } catch (_) { logoutFailed = true; }
+    finally { clearTimeout(timer); loggingOut = false; renderSession(); }
+  });
 
   function setLanguage(value) {
     language = value;
@@ -100,6 +137,8 @@
   frame.addEventListener('load', notifyLanguage);
   window.addEventListener('message', event => {
     if (event.origin !== location.origin || event.source !== frame.contentWindow || !event.data) return;
+    if (event.data.type === 'yuanze-home') {navigate('home');return;}
+    if (event.data.type === 'yuanze-auth-required') {location.replace('/login');return;}
     if (event.data.type === 'yuanze-language' && ['zh','en'].includes(event.data.language) && language !== event.data.language) setLanguage(event.data.language);
     if (event.data.type === 'yuanze-contact') navigate('contact');
     if (event.data.type === 'yuanze-shortlist' && Array.isArray(event.data.items)) {

@@ -100,8 +100,25 @@ async function main(){
   assert.equal(p.d.querySelector('#filterToggleCount').textContent,'2');p.d.querySelector('#filterToggle').click();assert.equal(p.d.querySelector('#filterGrid').hidden,true);assert.equal(p.d.querySelector('#activeFilters').hidden,false);assert.equal(p.d.querySelectorAll('[data-filter="material"]:checked').length,2);
   p.w.dispatchEvent(new p.w.MessageEvent('message',{origin:'https://catalog.test',source:p.parent,data:{type:'yuanze-language',language:'en'}}));assert.match(p.d.querySelector('#filterToggle').textContent,/Filters/);assert.equal(p.d.querySelector('#filterGrid').hidden,true);
   p.d.querySelector('#filterToggle').click();assert.equal(p.d.querySelectorAll('[data-filter="material"]:checked').length,2);assert.equal(p.d.querySelector('#filterToggle').getAttribute('aria-expanded'),'true');
-  const brandClick=new p.w.MouseEvent('click',{bubbles:true,cancelable:true});p.d.querySelector('.brand').dispatchEvent(brandClick);assert.equal(brandClick.defaultPrevented,true);await until(()=>p.d.querySelector('#gallery').getAttribute('aria-busy')==='false','brand reset');assert.equal(p.d.querySelectorAll('[data-filter]:checked').length,0);assert.equal(p.w.location.search,'?showroom=1');assert.equal(p.d.querySelector('#filterToggleCount').hidden,true);
-  p.dom.window.close();checks.push('Embedded mobile filters collapse initially, preserve multiselections and visible chips across toggle/language changes, and sidebar brand remains inside showroom');
+  const brandClick=new p.w.MouseEvent('click',{bubbles:true,cancelable:true}),beforeBrand=p.calls.length;p.d.querySelector('.brand').dispatchEvent(brandClick);assert.equal(brandClick.defaultPrevented,true);assert.equal(p.messages.at(-1).message.type,'yuanze-home');assert.equal(p.messages.at(-1).origin,'https://catalog.test');assert.equal(p.d.querySelector('.brand').target,'_top');assert.equal(p.calls.length,beforeBrand);assert.equal(p.d.querySelectorAll('[data-filter]:checked').length,2);assert.equal(p.w.location.search,'?showroom=1');assert.equal(p.d.querySelector('#filterToggleCount').textContent,'2');
+  p.dom.window.close();checks.push('Embedded mobile filters preserve multiselections and visible chips, and sidebar brand requests parent Home without destroying catalogue state');
+
+  for(const stage of ['session','catalogue','image','logout','role']){
+    p=create({embedded:true});
+    if(stage==='session'||stage==='role'){
+      p.w.fetch=async()=>stage==='session'?response({error:'PRIVATE AUTH ERROR'},401):response({role:'employee',csrf:'fixture'});
+      await evaluateBrowserModule(p.dom,path.join(root,'client.js'));
+    }else{
+      await p.start();
+      if(stage==='catalogue'){p.w.fetch=async()=>response({error:'PRIVATE AUTH ERROR'},401);p.submit('searchForm');}
+      if(stage==='image'){p.setImageResponse(async()=>response({error:'PRIVATE AUTH ERROR'},401));Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[new p.w.File(['image'],'bottle.png',{type:'image/png'})]});p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');}
+      if(stage==='logout'){p.w.fetch=async()=>response({error:'PRIVATE AUTH ERROR'},401);p.d.querySelector('#logout').click();}
+    }
+    await until(()=>p.messages.some(message=>message.message.type==='yuanze-auth-required'),'parent auth navigation '+stage);
+    assert.ok(p.messages.filter(message=>message.message.type==='yuanze-auth-required').every(message=>message.origin==='https://catalog.test'));
+    assert.equal(p.w.location.pathname,'/client');assert.doesNotMatch(p.d.body.textContent,/PRIVATE AUTH ERROR/);assert.deepEqual(p.errors,[]);p.dom.window.close();
+  }
+  checks.push('Embedded initial session, catalogue, image search, logout and wrong-role failures request top-level login instead of framing login pages');
 
   p=create();await p.start();p.d.querySelector('#imageSearchOpen').click();
   Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[new p.w.File(['svg'],'bottle.svg',{type:'image/svg+xml'})]});p.submit('imageSearchForm');assert.equal(p.d.querySelector('#imageSearchError').hidden,false);assert.equal(p.calls.filter(call=>call.url==='/api/client/image-search').length,0);

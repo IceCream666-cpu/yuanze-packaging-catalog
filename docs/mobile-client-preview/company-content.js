@@ -1,4 +1,4 @@
-/* User-supplied company material. Draft preview, not a production content endpoint. */
+/* User-supplied company material shared by the preview and authenticated showroom. */
 window.YuanzeCompanyContent = {
   suppliedAt: '2026-09-30',
   status: 'design-preview',
@@ -30,6 +30,11 @@ window.YuanzeCompanyContent = {
     }
   },
   zh: {
+    title: 'YUANZE · 客户展厅',
+    previewTitle: 'YUANZE · 客户展厅预览',
+    logout: '退出登录',
+    loggingOut: '正在退出…',
+    logoutError: '暂时无法退出，请检查网络后重试。',
     receptionTeam: '源泽 · 客户接待',
     inquiryTitle: '您的意向清单',
     inquiryHint: '可在产品页选择多款包材，再将清单交给业务员咨询。',
@@ -88,6 +93,11 @@ window.YuanzeCompanyContent = {
     footer: '广州源泽药业有限公司'
   },
   en: {
+    title: 'YUANZE · Customer showroom',
+    previewTitle: 'YUANZE · Customer showroom preview',
+    logout: 'Log out',
+    loggingOut: 'Logging out…',
+    logoutError: 'Unable to log out. Check your connection and try again.',
     receptionTeam: 'YUANZE · Customer team',
     inquiryTitle: 'Your shortlist',
     inquiryHint: 'Select packaging on the Products page and share your shortlist with your sales representative.',

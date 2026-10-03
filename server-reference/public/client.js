@@ -222,7 +222,7 @@ async function loadCatalog(target = page, scroll = false) {
     if (scroll) scrollToFilters();
   } catch (error) {
     if (sequence !== requestSequence || error.name === 'AbortError') return;
-    if (error.status === 401) {location.replace('/login');return;}
+    if (error.status === 401) {navigateToLogin();return;}
     items = [];total = 0;showNotice('暂时无法加载包材，请检查网络后重试。');renderGallery();$('#retry').hidden = false;
   } finally {if (sequence === requestSequence) setBusy(false);}
 }
@@ -292,14 +292,20 @@ $('#jumpForm').addEventListener('submit',event => {event.preventDefault();const 
 $('#retry').addEventListener('click',() => session ? loadCatalog(retryPage) : init());
 $('#logout').addEventListener('click',async () => {
   $('#logout').disabled = true;showNotice();
-  try {if (!session) session = await requestJSON('/api/session');await requestJSON('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':session.csrf || ''},body:'{}'});location.replace('/login');}
-  catch (error) {if (error.status === 401) location.replace('/login');else showNotice('暂时无法退出，请检查网络后重试。');}
+  try {if (!session) session = await requestJSON('/api/session');await requestJSON('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':session.csrf || ''},body:'{}'});navigateToLogin();}
+  catch (error) {if (error.status === 401) navigateToLogin();else showNotice('暂时无法退出，请检查网络后重试。');}
   finally {$('#logout').disabled = false;}
 });
 
 function scrollToFilters() {$('#filters').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});}
 function itemKey(item) {return item.productCode || item.id || item.images[0]?.url;}
 function notifyParent(message) {if (embedded && window.parent !== window) window.parent.postMessage(message,location.origin);}
+function navigateToLogin() {
+  // Login and the showroom shell intentionally deny framing. The shell must
+  // navigate its own top-level page when this embedded catalogue loses auth.
+  if (embedded && window.parent !== window) notifyParent({type:'yuanze-auth-required'});
+  else location.replace('/login');
+}
 function notifyShortlist() {notifyParent({type:'yuanze-shortlist',items:[...shortlist.values()].map(item => ({productCode:item.productCode,capacity:item.capacity}))});}
 function itemActions(item, index) {
   const key = itemKey(item);
@@ -390,13 +396,13 @@ async function searchImage(event) {
     requestSequence++;controller?.abort();showNotice();$('#retry').hidden = true;setBusy(false);renderLocalCollection(1);$('#imageSearchDialog').close();scrollToFilters();
   } catch (error) {
     if (request !== imageRequest || error.name === 'AbortError') return;
-    if (error.status === 401) {location.replace('/login');return;}
+    if (error.status === 401) {navigateToLogin();return;}
     $('#imageSearchError').textContent = t('暂时无法搜图，请稍后重试。');$('#imageSearchError').hidden = false;
   } finally {if (request === imageRequest) {imageController = null;renderTools();}}
 }
 $('#favoritesView').addEventListener('click',() => changeCollection('favourites'));
 $('#filterToggle').addEventListener('click',() => {filtersExpanded = !filtersExpanded;renderFilterToggle();});
-if (embedded) $('.brand').addEventListener('click',event => {event.preventDefault();collection = 'catalog';cancelImageSearch();reset();});
+if (embedded) $('.brand').addEventListener('click',event => {if (window.parent === window) return;event.preventDefault();closeMobileSidebar();notifyParent({type:'yuanze-home'});});
 $('#shortlistView').addEventListener('click',() => changeCollection('shortlist'));
 $('#catalogReturn').addEventListener('click',() => changeCollection('catalog'));
 $('#pageSize').addEventListener('change',() => {const value = Number($('#pageSize').value);if ([12,24,48].includes(value)) {pageSize = value;loadCatalog(1);}});
@@ -428,7 +434,7 @@ installLanguageSwitch($('#languageSwitch'));
 renderText();renderSidebar();renderFilters();renderStatus();
 async function init() {
   $('#retry').hidden = true;showNotice();
-  try {session = await requestJSON('/api/session');if (!['client','admin'].includes(session.role)) {location.replace('/');return;}await loadCatalog();}
-  catch (error) {if (error.status === 401) {location.replace('/login');return;}session = null;$('#catalogStatus').textContent = '';showNotice('暂时无法打开页面，请检查网络后重试。');$('#retry').hidden = false;}
+  try {session = await requestJSON('/api/session');if (!['client','admin'].includes(session.role)) {if (embedded && window.parent !== window) navigateToLogin();else location.replace('/');return;}await loadCatalog();}
+  catch (error) {if (error.status === 401) {navigateToLogin();return;}session = null;$('#catalogStatus').textContent = '';showNotice('暂时无法打开页面，请检查网络后重试。');$('#retry').hidden = false;}
 }
 init();
