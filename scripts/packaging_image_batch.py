@@ -13,6 +13,7 @@ import json
 import os
 from pathlib import Path
 import sys
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPES = {'single_product', 'same_style_variants', 'source_page', 'unresolved'}
@@ -105,6 +106,19 @@ def unchanged_product(before, after):
             == {k: v for k, v in after.items() if k not in ignored})
 
 
+def wait_for_index_idle(browser, gate, timeout=180):
+    # Index inference shares the upload semaphore. Keep the production resource
+    # limit and wait for the existing background job instead of weakening it.
+    deadline = time.monotonic() + timeout
+    while True:
+        _, body = gate.expect_status(browser, '/api/image-search/status', 200)
+        if not json.loads(body).get('building'):
+            return
+        if time.monotonic() >= deadline:
+            raise TimeoutError('Image index remained busy; resume this manifest later')
+        time.sleep(2)
+
+
 def publish(manifest, credentials, origin):
     spec = importlib.util.spec_from_file_location('image_batch_gate', ROOT / 'server-reference/deploy/release_gate.py')
     gate = importlib.util.module_from_spec(spec)
@@ -131,6 +145,7 @@ def publish(manifest, credentials, origin):
         count = 0
         for edit in edits:
             if not edit.get('uploaded'):
+                wait_for_index_idle(browser, gate)
                 raw = Path(edit['outputFile']).read_bytes()
                 image = 'data:image/png;base64,' + base64.b64encode(raw).decode('ascii')
                 _, body = gate.expect_status(browser, '/api/admin/uploads', 201, {'image': image})

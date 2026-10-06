@@ -2,6 +2,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import Mock, patch
 
 SPEC = importlib.util.spec_from_file_location('packaging_batch', Path(__file__).parents[1] / 'scripts/packaging_image_batch.py')
 batch = importlib.util.module_from_spec(SPEC)
@@ -66,6 +67,19 @@ class PackagingImageBatchTests(unittest.TestCase):
     def test_review_and_checksums_are_required_before_upload(self):
         with self.assertRaises(ValueError):
             batch.validate_edit({'status': 'generated', 'qa': {}})
+
+    def test_upload_waits_for_index_without_bypassing_limits(self):
+        gate = Mock()
+        gate.expect_status.side_effect = [(None, b'{"building":true}'), (None, b'{"building":false}')]
+        with patch.object(batch.time, 'sleep') as sleep:
+            batch.wait_for_index_idle(object(), gate)
+        self.assertEqual(gate.expect_status.call_count, 2)
+        sleep.assert_called_once_with(2)
+        gate.expect_status.side_effect = None
+        gate.expect_status.return_value = (None, b'{"building":true}')
+        with patch.object(batch.time, 'monotonic', side_effect=[0, 181]):
+            with self.assertRaises(TimeoutError):
+                batch.wait_for_index_idle(object(), gate)
 
 
 if __name__ == '__main__':
