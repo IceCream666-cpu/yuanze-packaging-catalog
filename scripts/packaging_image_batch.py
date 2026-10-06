@@ -97,6 +97,10 @@ def image_patch(record, edit, uploaded):
     for image in images:
         if image.get('path') == edit['sourcePath']:
             image['clientVisible'] = False
+            if edit['scope'] == 'same_style_variants' and image.get('imageScope') == 'single_product':
+                # A legacy single scope on a paired photo must not outrank its
+                # correctly scoped replacement. Retain the original as evidence.
+                image['role'] = 'reference'
     return {'action': 'images', 'id': record['id'], 'version': record['version'], 'images': [fresh, *images]}
 
 

@@ -36,6 +36,15 @@ class PackagingImageBatchTests(unittest.TestCase):
         self.record['images'][0]['clientVisible'] = False
         self.assertFalse(batch.image_patch(self.record, self.edit, self.upload)['images'][0]['clientVisible'])
 
+    def test_series_replacement_is_not_hidden_by_legacy_single_original(self):
+        self.record['images'][0]['imageScope'] = 'single_product'
+        self.edit['scope'] = 'same_style_variants'
+        patch = batch.image_patch(self.record, self.edit, self.upload)
+        self.assertEqual(patch['images'][0]['role'], 'product')
+        self.assertEqual(patch['images'][1]['role'], 'reference')
+        self.assertEqual(patch['images'][1]['path'], 'media/source.png')
+        self.assertEqual(self.record['images'][0]['role'], 'supplier')
+
     def test_repeat_missing_source_and_gallery_overflow_do_not_duplicate_or_drop(self):
         self.record['images'].append(self.upload)
         self.assertIsNone(batch.image_patch(self.record, self.edit, self.upload))
