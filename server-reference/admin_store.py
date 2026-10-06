@@ -530,8 +530,11 @@ class AdminStore:
                                 for k in ('cell', 'sourceCell', 'imageId', 'mapping'))), originals[0])
                 image = deepcopy(original)
             elif UPLOAD_RE.fullmatch(path) and c.execute('SELECT 1 FROM admin_uploads WHERE path=?', (path,)).fetchone():
+                scope = item.get('imageScope', 'single_product')
+                if scope not in {'single_product', 'same_style_variants', 'source_page', 'unresolved'}:
+                    raise AdminError('图片范围无效')
                 image = {'path': path, 'mapping': 'admin-upload', 'missing': False,
-                         'imageScope': 'single_product'}
+                         'imageScope': scope}
             else:
                 raise AdminError('图片必须来自原始资料或已上传的图片')
             role = item.get('role', image.get('role', 'product'))
@@ -628,6 +631,12 @@ class AdminStore:
             out = self._normalized_record(c, data, before)
             out['id'] = rid
             archived = row['archived'] if row else 0
+        elif action == 'images':
+            if set(data) - {'id', 'version', 'images'} or 'images' not in data:
+                raise AdminError('图片更新只能包含记录 ID、版本和图片')
+            out = json.loads(row['content'])
+            out['images'] = self._images(c, data['images'])
+            archived = row['archived']
         elif action in ('archive', 'unarchive'):
             out = json.loads(row['content'])
             archived = int(action == 'archive')

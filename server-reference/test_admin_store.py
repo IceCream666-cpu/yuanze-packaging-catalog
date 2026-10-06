@@ -70,6 +70,39 @@ class AdminStoreTests(unittest.TestCase):
         self.save('records', {'id': 'ORIGINAL-1', 'version': 4}, 'unarchive')
         self.assertEqual(len(self.store.catalog()['records']), 1)
 
+    def test_image_only_update_preserves_all_other_fields_and_checks_version(self):
+        before = self.store.read_admin('records', 'ORIGINAL-1')
+        images = [{**before['images'][0], 'caption': '原图保留'}]
+        after = self.save('records', {'id': before['id'], 'version': before['version'], 'images': images}, 'images')
+        excluded = {'images', 'version', 'updated'}
+        self.assertEqual({k: v for k, v in before.items() if k not in excluded},
+                         {k: v for k, v in after.items() if k not in excluded})
+        self.assertEqual(after['version'], before['version'] + 1)
+        self.assertEqual(after['images'][0]['caption'], '原图保留')
+        with self.assertRaises(ConflictError):
+            self.save('records', {'id': before['id'], 'version': before['version'], 'images': images}, 'images')
+        with self.assertRaises(AdminError):
+            self.save('records', {'id': before['id'], 'version': after['version'], 'images': images, 'quoteRaw': '改价'}, 'images')
+        with self.assertRaises(AdminError):
+            self.save('records', {'id': before['id'], 'version': after['version']}, 'images')
+        self.assertEqual(self.store.read_admin('records', before['id']), after)
+
+    def test_uploaded_image_keeps_reference_scope_and_cannot_promote_original_page(self):
+        path = 'uploads/' + 'a' * 32 + '.jpg'
+        (self.state / 'uploads').mkdir(exist_ok=True)
+        (self.state / path).write_bytes(b'fixture')
+        self.store.register_upload(path, 'admin')
+        for scope in ('single_product', 'same_style_variants', 'source_page', 'unresolved'):
+            with self.store.connection() as c:
+                image = self.store._images(c, [{'path': path, 'imageScope': scope}])[0]
+            self.assertEqual(image['imageScope'], scope)
+            self.assertFalse(image['clientVisible'])
+        with self.store.connection() as c:
+            with self.assertRaises(AdminError):
+                self.store._images(c, [{'path': path, 'imageScope': 'not-a-scope'}])
+            original = self.store._images(c, [{'path': 'media/photo.jpg', 'imageScope': 'single_product'}])[0]
+            self.assertNotEqual(original.get('imageScope'), 'single_product')
+
     def test_atomic_bulk_preview_freezes_versions_and_create(self):
         preview = self.store.bulk_preview([
             {'id': 'ORIGINAL-1', 'version': 1, 'quoteRaw': '1.20'},
