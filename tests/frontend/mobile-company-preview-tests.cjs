@@ -38,6 +38,24 @@ function historyChange(window, action) {
   });
 }
 
+test('expertise labels show service models before scripts load and after language changes', () => {
+  const expected = ['OEM', 'ODM', 'OBM', 'private label'];
+  const markup = new JSDOM(fs.readFileSync(path.join(base, 'index.html'), 'utf8'));
+  const labels = document => Array.from(document.querySelectorAll('[data-capability]'), node => node.textContent);
+  assert.deepEqual(labels(markup.window.document), expected);
+  markup.window.close();
+  for (const language of ['zh', 'en']) {
+    const {dom, document, errors} = setup(language);
+    assert.deepEqual(labels(document), expected);
+    document.getElementById('language-toggle').click();
+    assert.deepEqual(labels(document), expected);
+    document.getElementById('language-toggle').click();
+    assert.deepEqual(labels(document), expected);
+    assert.deepEqual(errors, []);
+    dom.window.close();
+  }
+});
+
 test('poster landing shows every active thumbnail without loading the catalogue or full artwork', () => {
   const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
   const data=window.YuanzeProductPosters, frame=document.getElementById('catalog-frame');
