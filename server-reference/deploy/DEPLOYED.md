@@ -222,3 +222,10 @@ Caddy 实际运行用户执行强制配置检查：`/usr/local/lib/yuanze/releas
 正式验证通过服务器 TCP 地址覆盖并保留域名 Host、TLS SNI 与证书检查，不等于公网 DNS／接入网络验证。本机直连 `/login` 仍连接重置；手机／PC 截图来自本地，不称为线上点击验收。
 
 备份：`/opt/yuanze-reference/backups/posters-add-20261007`，含旧海报 JS、旧 bundle 清单、Caddy 与服务有效配置、发布清单。服务器执行记录：`/opt/yuanze-reference/staging/posters-add-20261007`；本地证据：`work/posters-add-20261007/`。回退先核对当前文件仍等于本次候选摘要，再原子恢复旧 JS、旧 bundle；并发变化时停止覆盖。新图保留以防已打开页面请求，不恢复任何数据库或业务上传图片。远程 `deploy-static.py --rollback` 提供此受保护回退流程；未知执行结果先运行本地 `inspect-status.py`，不盲目重试。
+# 同款归并与规格标注（2026-10-07）
+
+本次发布已核验：`/opt/yuanze-reference/releases/20261007-product-groups-v1`，实现提交 `687d80ea03043f2a867a547dabc383966bc1111d`；上一release `/opt/yuanze-reference/releases/20261006-warm-images-v1`，备份 `/opt/yuanze-reference/backups/20261007-product-groups-v1`。执行时复制current，仅替换员工 `app.js`、`style.css`、`product-groups.js`、`product-group-data.js`，保留其他发布资产。切换20.33秒，三角色既有会话保留，8张业务表内容摘要一致，客户目录仍12条。
+
+252组覆盖831条原记录；6张系列图的23个关联已核验，原图和非图片字段保留。229个多规格组尚未完成逐瓶映射和标图，不能称全库完成。全量本地测试与7项发布安全回归通过。域名/IP门禁及资源摘要检查使用服务器直连原Host/SNI和严格TLS，不作为公网浏览器验收。
+
+私有部署报告位于本次聊天 `work/group-release/bundles/20261007-product-groups-v1/reports.json`。回退只恢复本次员工静态文件或在确认没有后续代码发布后切回上一release；不得用旧数据库覆盖业务数据，也不得覆盖另一聊天后续海报/图片修改。详见 `docs/同款归并与规格标注-20261007.md`。
