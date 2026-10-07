@@ -1,5 +1,14 @@
 # 源泽包材库发布记录
 
+## 2026-10-07 16:46 客户首页业务标签
+
+- 在 `/opt/yuanze-reference/releases/20261007-product-groups-v1` 上完成静态小更新，源码提交 `4352604`：`OUR EXPERTISE` 四项为 `OEM`、`ODM`、`OBM`、`private label`，中英文一致，保留原布局和其他公司内容。
+- 发布范围仅 `public/showroom/index.html`、`company-content.js`、`bundle-manifest.json`。候选从实际线上文件执行计数校验的文字替换，清单仅合并这两个入口的摘要和字节数，其余记录原样保留；未重启服务、切换 release 或修改业务数据。
+- 本地 37 根测试、157 后端、18 部署及全部前端检查通过（展厅 20 项）；390px 手机／1280px 电脑本地浏览器核对标签与语言切换通过。服务器三角色验证、客户／管理员 HTTP 内容摘要与标签、MIME、清单不公开及角色边界通过，三文件摘要复核一致。
+- 配置门禁和域名／IP 登录路由门禁通过；采用服务器 TCP 地址覆盖，保留 Host、TLS SNI 和严格证书验证。本机公网登录页请求未成功，未完成公网浏览器点击验收。
+- 备份 `/opt/yuanze-reference/backups/expertise-labels-20261007-v2`；服务器暂存 `/opt/yuanze-reference/staging/expertise-labels-20261007-v2`；本地验证记录 `work/expertise-labels-20261007-v2/remote-status.json`。回退先核对每个目标仍等于本次候选摘要，按备份恢复原 uid/gid、权限及文件内容；发现并发变化即停止，不能恢复旧数据库。
+- 首次候选在预检发现 release 已被另一项更新切换，尚未写入即停止；v2 重新读取最新基线后发布。首次报告的回退冲突为预检路径重复校验 release 的结果，非文件写入或回退失败；旧 release 三文件仍匹配其发布前摘要。
+
 ## 2026-10-06 包材图片优化与待核对参考图（当前版本）
 
 - 当前 release：`/opt/yuanze-reference/releases/20261006-warm-images-v1`，源码 `9bddb3eca48adb803f1ac5e2c9c5b3a9a31fddd1`。上一代码：`/opt/yuanze-reference/releases/20261004-product-posters-v2`；一致性备份：`/opt/yuanze-reference/backups/warm-images-20261006-v1`。
