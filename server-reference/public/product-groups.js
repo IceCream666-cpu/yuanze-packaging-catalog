@@ -1,0 +1,91 @@
+// Only this reviewed manifest defines visual families. Shared images, names and
+// catalogue pages are never enough to merge records automatically.
+export function createProductGroupIndex(records, reviewedGroups) {
+  const known = new Map(records.map(record => [record.id, record]));
+  const index = new Map();
+  for (const definition of reviewedGroups || []) {
+    if (!definition || !Array.isArray(definition.recordIds)) continue;
+    const members = [...new Set(definition.recordIds)].map(id => known.get(id))
+      .filter(record => record?.kind === 'package' && !index.has(record.id));
+    if (!members.length) continue;
+    const ids = new Set(members.map(record => record.id));
+    const specs = (Array.isArray(definition.specs) ? definition.specs : [])
+      .filter(spec => spec && typeof spec.label === 'string' && spec.label.trim())
+      .map(spec => ({label: spec.label.trim(), recordIds: (spec.recordIds || []).filter(id => ids.has(id))}))
+      .filter(spec => spec.recordIds.length);
+    const capacities = [...new Set(members.flatMap(record => record._capacities ||
+      (Number(record.capacityMl) > 0 ? [Number(record.capacityMl)] : [])))];
+    const primary = definition.primaryImage;
+    const primaryImage = primary ? {role: 'product', imageScope: 'same_style_variants',
+      ...(typeof primary === 'string' ? {path: primary} : primary)} : null;
+    const group = {id: definition.id || members[0].id, name: definition.name || members[0].name,
+      records: members, specs, capacities, primaryImage, imageMappingPending: definition.imageMappingPending === true,
+      imageAliases: definition.imageAliases && typeof definition.imageAliases === 'object' && !Array.isArray(definition.imageAliases)
+        ? {...definition.imageAliases} : {},
+      multiSpec: new Set(specs.map(spec => spec.label)).size > 1 || capacities.length > 1};
+    if (members.length < 2 && !group.multiSpec) continue;
+    for (const record of members) index.set(record.id, group);
+  }
+  return index;
+}
+
+// Call after SKU filtering/sorting. The first matching SKU remains the selected
+// record, so exact-number lookup, image rank, and favourites retain their meaning.
+export function groupProducts(matchingRecords, index) {
+  const result = [], displayed = new Map();
+  for (const record of matchingRecords) {
+    const group = index.get(record.id);
+    if (!group) { result.push(record); continue; }
+    if (displayed.has(group)) { displayed.get(group)._matchedRecords.push(record); continue; }
+    const item = {...record, _group: group, _matchedRecords: [record]};
+    displayed.set(group, item);
+    result.push(item);
+  }
+  return result;
+}
+
+export function groupRecordSpec(record, index) {
+  const group = index.get(record.id);
+  const labels = group?.specs.filter(spec => spec.recordIds.includes(record.id)).map(spec => spec.label) || [];
+  return [...new Set(labels)].join(' / ') || (record._capacities ||
+    (Number(record.capacityMl) > 0 ? [Number(record.capacityMl)] : [])).map(value => `${value} mL`).join(' / ') ||
+    record.specificationRaw || record.model || '';
+}
+
+// Dedupe presentation by resolved path while keeping every source association
+// (including its unmodified image metadata) available in the detail view.
+export function groupGalleryImages(record, index, pathForImage) {
+  const group = index.get(record.id), images = new Map(), available = new Map(), entries = [];
+  function add(image, owner) {
+    const value = typeof image === 'string' ? {path: image} : image;
+    if (!value || value.missing || !(value.path || value.file)) return;
+    const path = pathForImage(value);
+    if (!available.has(path)) available.set(path, value);
+    entries.push({path, value, owner});
+  }
+  if (group?.primaryImage) add(group.primaryImage);
+  for (const member of group?.records || [record]) for (const image of member.images || []) add(image, member);
+  const aliases = new Map(Object.entries(group?.imageAliases || {})
+    .filter(([from, to]) => from.trim() && typeof to === 'string' && to.trim())
+    .map(([from, to]) => [pathForImage(from), pathForImage(to)]));
+  function retainedPath(original) {
+    const seen = new Set([original]);
+    let path = original;
+    while (aliases.has(path)) {
+      const target = aliases.get(path);
+      // A missing/cross-group target never removes an existing picture.
+      if (!available.has(target)) break;
+      if (seen.has(target)) return original;
+      seen.add(target); path = target;
+    }
+    return path;
+  }
+  for (const {path, value, owner} of entries) {
+    const retained = retainedPath(path);
+    if (!images.has(retained)) images.set(retained, {...available.get(retained), _groupSources: [], _groupPaths: []});
+    const image = images.get(retained);
+    if (!image._groupPaths.includes(path)) image._groupPaths.push(path);
+    if (owner) image._groupSources.push({recordId: owner.id, image: value});
+  }
+  return [...images.values()];
+}
