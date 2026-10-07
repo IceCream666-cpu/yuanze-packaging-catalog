@@ -38,16 +38,16 @@ function historyChange(window, action) {
   });
 }
 
-test('poster landing shows every supplied thumbnail without loading the catalogue or full artwork', () => {
+test('poster landing shows every active thumbnail without loading the catalogue or full artwork', () => {
   const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
   const data=window.YuanzeProductPosters, frame=document.getElementById('catalog-frame');
-  assert.equal(data.items.length,41);
+  assert.equal(data.items.length,24);
   assert.equal(document.getElementById('poster-view').hidden,false);
   assert.equal(document.getElementById('catalog-view').hidden,true);
   assert.equal(frame.hasAttribute('src'),false);
   assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,data.items.length);
   assert.equal(document.querySelectorAll('[data-poster-category]').length,data.categories.length+1);
-  assert.match(document.getElementById('poster-count').textContent,/41/);
+  assert.match(document.getElementById('poster-count').textContent,/24/);
   assert.equal(document.getElementById('expanded-photo').hasAttribute('src'),false);
   for(const item of data.items) {
     const image=document.querySelector(`[data-poster-card="${item.id}"] img`);
@@ -73,7 +73,7 @@ test('poster category buttons filter cards, counts and translated labels without
     assert.equal(button.getAttribute('aria-pressed'),'true');
     assert.equal(document.querySelectorAll('[data-poster-category][aria-pressed=true]').length,1);
     assert.deepEqual(Array.from(document.querySelectorAll('[data-poster-card]:not([hidden])'),card=>card.dataset.posterCard),Array.from(items,item=>item.id));
-    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 41 张`);
+    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 24 张`);
   }
   const hash=window.location.hash;
   document.getElementById('language-toggle').click();
@@ -82,7 +82,7 @@ test('poster category buttons filter cards, counts and translated labels without
   assert.equal(document.querySelector('[data-poster-category=sets]').getAttribute('aria-pressed'),'true');
   assert.match(document.getElementById('poster-count').textContent,/posters/);
   document.querySelector('[data-poster-category=all]').click();
-  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,41);
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,24);
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   assert.deepEqual(errors,[]);dom.window.close();
 });
@@ -186,6 +186,25 @@ test('new attachment poster deep link opens the body artwork and preserves its E
   document.getElementById('close-photo').click();
   assert.equal(window.location.hash,'#/products?category=body');
   assert.equal(document.querySelector('[data-poster-category=body]').getAttribute('aria-pressed'),'true');
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('a removed poster deep link cannot load its artwork and still allows browsing retained body posters', () => {
+  const {dom,window,document,errors}=setup('zh',false,{hash:'#/products?category=body&poster=poster-028'});
+  assert.equal(document.getElementById('poster-view').hidden,false);
+  assert.equal(document.querySelector('[data-poster-category=body]').getAttribute('aria-pressed'),'true');
+  assert.equal(document.querySelector('[data-poster-card=poster-028]'),null);
+  assert.equal(document.getElementById('photo-dialog').open,false);
+  assert.equal(document.getElementById('expanded-photo').hasAttribute('src'),false);
+  assert.equal(document.querySelector('img[src*="poster-028"]'),null);
+  document.querySelector('[data-poster-image=poster-032]').click();
+  assert.equal(document.getElementById('photo-dialog').open,true);
+  assert.equal(document.getElementById('expanded-photo').getAttribute('src'),'assets/posters/poster-032.webp');
+  assert.equal(window.location.hash,'#/products?category=body&poster=poster-032');
+  document.getElementById('next-poster').click();
+  assert.equal(document.getElementById('expanded-photo').getAttribute('src'),'assets/posters/poster-033.webp');
+  assert.equal(window.location.hash,'#/products?category=body&poster=poster-033');
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   assert.deepEqual(errors,[]);dom.window.close();
 });

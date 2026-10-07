@@ -56,7 +56,7 @@ class ShowroomBuild(unittest.TestCase):
         for name in ['catalog.json', 'auth.json', 'preview_customer_showroom.py', 'assets/manifest.json']:
             self.assertNotIn(name, files)
         self.assertEqual(len([name for name in files if name.endswith('.pdf')]), 4)
-        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 82)
+        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 48)
 
     def test_poster_paths_are_relocated_without_changing_metadata(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -148,6 +148,22 @@ class ShowroomRoutes(unittest.TestCase):
         _, headers, _ = self.req('/admin')
         self.assertEqual(headers['X-Frame-Options'], 'DENY')
         self.assertIn("frame-ancestors 'none'", headers['Content-Security-Policy'])
+
+    def test_removed_poster_artwork_and_thumbnails_are_absent_for_clients_and_admins(self):
+        removed_paths = [f'assets/posters/poster-{index:03d}{suffix}.webp'
+                         for index in range(15, 32) for suffix in ('', '-thumb')]
+        manifest = json.loads((self.public / 'showroom/bundle-manifest.json').read_text())
+        for path in removed_paths:
+            self.assertNotIn(path, manifest['files'])
+            self.assertFalse((self.public / 'showroom' / path).exists())
+        for username in ['client-test', 'admin']:
+            self.login(username)
+            for path in removed_paths:
+                with self.subTest(username=username, path=path):
+                    for method in ['GET', 'HEAD']:
+                        status, _, body = self.req('/showroom/' + path, method=method)
+                        self.assertEqual(status, 404)
+                        self.assertNotIn(b'WEBP', body)
 
     def test_pdf_images_and_script_mime_and_head(self):
         self.login()

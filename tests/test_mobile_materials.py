@@ -61,10 +61,13 @@ class CompanyMaterials(unittest.TestCase):
         archived_ids = {f'poster-{index:03d}' for index in range(1, 32)}
         attachment_ids = {f'poster-{index:03d}' for index in range(32, 42)}
         expected_ids = archived_ids | attachment_ids
+        removed_ids = {f'poster-{index:03d}' for index in range(15, 32)}
+        active_ids = expected_ids - removed_ids
+        self.assertEqual((report['activeImageCount'], report['removedImageCount']), (24, 17))
         self.assertEqual(len(report['items']), 41)
         self.assertEqual({item['id'] for item in report['items']}, expected_ids)
-        self.assertEqual(len(catalog['items']), 41)
-        self.assertEqual({item['id'] for item in catalog['items']}, expected_ids)
+        self.assertEqual(len(catalog['items']), 24)
+        self.assertEqual({item['id'] for item in catalog['items']}, active_ids)
         customer_items = {item['id']: item for item in catalog['items']}
         self.assertEqual(len(catalog['categories']), len({category['id'] for category in catalog['categories']}))
         category_ids = {category['id'] for category in catalog['categories']}
@@ -74,7 +77,7 @@ class CompanyMaterials(unittest.TestCase):
 
         entries = {item['path']: item for item in manifest['files']}
         expected_poster_paths = {f'posters/{poster_id}{suffix}.webp'
-                                 for poster_id in expected_ids for suffix in ('', '-thumb')}
+                                 for poster_id in active_ids for suffix in ('', '-thumb')}
         self.assertEqual(set(entries), COMPANY_PATHS | expected_poster_paths)
         sources, hashes, pixel_hashes, archives = set(), set(), set(), set()
         archived_posters, attached_posters, attachments = set(), set(), set()
@@ -115,6 +118,20 @@ class CompanyMaterials(unittest.TestCase):
                         archives.add(occurrence['archive'])
                 self.assertEqual(item['image'], f"posters/{item['id']}.webp")
                 self.assertEqual(item['thumbnail'], f"posters/{item['id']}-thumb.webp")
+                self.assertIn(item['category'], category_ids)
+                self.assertEqual(set(item['title']), {'zh', 'en'})
+                self.assertTrue(all(value.strip() for value in item['title'].values()))
+                if item['id'] in removed_ids:
+                    self.assertEqual(item['removedAt'], '2026-10-07')
+                    self.assertEqual(item['removalReason'], '用户要求删除同系列女性模特横版海报')
+                    self.assertNotIn(item['id'], customer_items)
+                    for name in (item['image'], item['thumbnail']):
+                        self.assertNotIn(name, entries)
+                        self.assertFalse((ASSETS / name).exists())
+                        self.assertFalse((ASSETS / name).is_symlink())
+                    continue
+                self.assertNotIn('removedAt', item)
+                self.assertNotIn('removalReason', item)
                 customer = customer_items[item['id']]
                 self.assertEqual(set(customer), {'id', 'category', 'title', 'src', 'thumbnail', 'width', 'height'})
                 self.assertIn(customer['category'], category_ids)
