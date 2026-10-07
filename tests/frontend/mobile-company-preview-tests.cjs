@@ -41,13 +41,13 @@ function historyChange(window, action) {
 test('poster landing shows every supplied thumbnail without loading the catalogue or full artwork', () => {
   const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
   const data=window.YuanzeProductPosters, frame=document.getElementById('catalog-frame');
-  assert.equal(data.items.length,31);
+  assert.equal(data.items.length,41);
   assert.equal(document.getElementById('poster-view').hidden,false);
   assert.equal(document.getElementById('catalog-view').hidden,true);
   assert.equal(frame.hasAttribute('src'),false);
   assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,data.items.length);
   assert.equal(document.querySelectorAll('[data-poster-category]').length,data.categories.length+1);
-  assert.match(document.getElementById('poster-count').textContent,/31/);
+  assert.match(document.getElementById('poster-count').textContent,/41/);
   assert.equal(document.getElementById('expanded-photo').hasAttribute('src'),false);
   for(const item of data.items) {
     const image=document.querySelector(`[data-poster-card="${item.id}"] img`);
@@ -73,7 +73,7 @@ test('poster category buttons filter cards, counts and translated labels without
     assert.equal(button.getAttribute('aria-pressed'),'true');
     assert.equal(document.querySelectorAll('[data-poster-category][aria-pressed=true]').length,1);
     assert.deepEqual(Array.from(document.querySelectorAll('[data-poster-card]:not([hidden])'),card=>card.dataset.posterCard),Array.from(items,item=>item.id));
-    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 31 张`);
+    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 41 张`);
   }
   const hash=window.location.hash;
   document.getElementById('language-toggle').click();
@@ -82,7 +82,7 @@ test('poster category buttons filter cards, counts and translated labels without
   assert.equal(document.querySelector('[data-poster-category=sets]').getAttribute('aria-pressed'),'true');
   assert.match(document.getElementById('poster-count').textContent,/posters/);
   document.querySelector('[data-poster-category=all]').click();
-  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,31);
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,41);
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   assert.deepEqual(errors,[]);dom.window.close();
 });
@@ -162,6 +162,32 @@ test('direct catalogue and poster links work, and contact continues directly to 
   assert.equal(direct.document.getElementById('photo-dialog').open,false);
   assert.equal(direct.document.getElementById('catalog-frame').hasAttribute('src'),false);
   direct.dom.window.close();
+});
+
+test('new attachment poster deep link opens the body artwork and preserves its English caption and category', () => {
+  const hash='#/products?category=body&poster=poster-041';
+  const {dom,window,document,errors}=setup('zh',false,{hash});
+  const item=window.YuanzeProductPosters.items.find(poster=>poster.id==='poster-041');
+  assert(item);assert.equal(item.category,'body');
+  assert.equal(document.querySelector('[data-poster-category=body]').getAttribute('aria-pressed'),'true');
+  assert.equal(document.querySelector('[data-poster-card=poster-041]').hidden,false);
+  assert.equal(document.querySelector('[data-poster-card=poster-001]').hidden,true);
+  assert.equal(document.getElementById('photo-dialog').open,true);
+  assert.equal(document.getElementById('expanded-photo').getAttribute('src'),'assets/posters/poster-041.webp');
+  assert.equal(document.getElementById('photo-caption').textContent,'liaose 果酸精油身体磨砂膏');
+  assert.equal(document.getElementById('next-poster').disabled,true);
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  document.getElementById('photo-language-toggle').click();
+  assert.equal(document.getElementById('photo-caption').textContent,'liaose AHA & essential oil body scrub');
+  assert.equal(document.getElementById('expanded-photo').alt,'liaose AHA & essential oil body scrub');
+  assert.equal(document.getElementById('expanded-photo').getAttribute('src'),'assets/posters/poster-041.webp');
+  assert.equal(document.querySelector('[data-poster-category=body]').textContent,'Body care');
+  assert.equal(window.location.hash,hash);
+  document.getElementById('close-photo').click();
+  assert.equal(window.location.hash,'#/products?category=body');
+  assert.equal(document.querySelector('[data-poster-category=body]').getAttribute('aria-pressed'),'true');
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
 });
 
 test('unrecognised poster routes and unavailable artwork leave navigation and packaging accessible', () => {

@@ -56,7 +56,7 @@ class ShowroomBuild(unittest.TestCase):
         for name in ['catalog.json', 'auth.json', 'preview_customer_showroom.py', 'assets/manifest.json']:
             self.assertNotIn(name, files)
         self.assertEqual(len([name for name in files if name.endswith('.pdf')]), 4)
-        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 62)
+        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 82)
 
     def test_poster_paths_are_relocated_without_changing_metadata(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -97,7 +97,9 @@ class ShowroomRoutes(unittest.TestCase):
                            'client.css': 'client styles', 'login.html': 'LOGIN'}.items():
             (public / name).write_text(text)
         builder.build(destination=public / 'showroom')
-        self.poster_paths = ['assets/posters/poster-001.webp', 'assets/posters/poster-001-thumb.webp']
+        self.poster_paths = [f'assets/posters/{poster}{suffix}.webp'
+                             for poster in ('poster-001', 'poster-032', 'poster-041')
+                             for suffix in ('', '-thumb')]
         self.public = public
         patcher = patch.object(server, 'PUBLIC', public)
         patcher.start(); self.addCleanup(patcher.stop)

@@ -1,8 +1,8 @@
 {
   "receivedAt": "2026-10-04",
   "archiveCount": 3,
-  "inputImageCount": 33,
-  "uniqueImageCount": 31,
+  "inputImageCount": 43,
+  "uniqueImageCount": 41,
   "items": [
     {
       "id": "poster-001",
@@ -633,6 +633,218 @@
       "duplicates": [],
       "image": "posters/poster-031.webp",
       "thumbnail": "posters/poster-031-thumb.webp"
+    },
+    {
+      "id": "poster-032",
+      "category": "body",
+      "title": {
+        "zh": "liaose 氨基酸沐浴露",
+        "en": "liaose amino acid body wash"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "ebbc7f847bdfba6040f481bde3b0bcfe.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "d165fc08474d71ce54befbaceffab757bcb4ae0158f27c5a302175c8bc3af392",
+        "bytes": 1693711,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "657f4ab215a3ee81f40ce22354592dafebd028dfa92336765425e144c1932c0c"
+      },
+      "duplicates": [],
+      "image": "posters/poster-032.webp",
+      "thumbnail": "posters/poster-032-thumb.webp"
+    },
+    {
+      "id": "poster-033",
+      "category": "body",
+      "title": {
+        "zh": "liaose 茶树沐浴露",
+        "en": "liaose tea tree body wash"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "fde0ab144425bcb01b0a554ca31c7f81.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "49bb8d49ac218abf4383c6ed04d9d17f82daecad3b5d6af65b351f678dea520c",
+        "bytes": 1446686,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "7f56c63044a1496e7661a2ce0ac0fdf6c8e39538e036ecc5b60135507bde8a19"
+      },
+      "duplicates": [],
+      "image": "posters/poster-033.webp",
+      "thumbnail": "posters/poster-033-thumb.webp"
+    },
+    {
+      "id": "poster-034",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 山茶花护发素",
+        "en": "liaose camellia conditioner"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "07f51e16709e7e0f651de49e685e0010.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "568016343d9f46b821078775814ed7f2408dc59a4a3c2d2f35c314256b40c5ce",
+        "bytes": 1582419,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "3de1e459087bc697158a8f6534d27bee26b9f0ce202f3a5a02a31070fb27a4c4"
+      },
+      "duplicates": [],
+      "image": "posters/poster-034.webp",
+      "thumbnail": "posters/poster-034-thumb.webp"
+    },
+    {
+      "id": "poster-035",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 植萃沐浴礼盒",
+        "en": "liaose botanical bath gift set"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "bac4d1827a4b4f6202365b9cdc41e692.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "66311707e94b04a013f420022ffdf4835e6b4a34bab5f1780cee137b22203038",
+        "bytes": 1788258,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "c89eb2d232a10bad28480c2679643c445ffba9416efe36a79130b4fd418f1fd0"
+      },
+      "duplicates": [],
+      "image": "posters/poster-035.webp",
+      "thumbnail": "posters/poster-035-thumb.webp"
+    },
+    {
+      "id": "poster-036",
+      "category": "face",
+      "title": {
+        "zh": "liaose 真空瓶系列 · 紫黄",
+        "en": "liaose airless packaging · Lilac & yellow"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "61326494a6a8ea335125e4556fb32e55.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "3b7c17dc331e51c48907655222583fa5bca3c1adec49074c98afcdf2d74637f7",
+        "bytes": 1346666,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "cb91a9d5c6aaf393fd8cd8014a394429b602e4f4240b3b7364724d0a91325379"
+      },
+      "duplicates": [],
+      "image": "posters/poster-036.webp",
+      "thumbnail": "posters/poster-036-thumb.webp"
+    },
+    {
+      "id": "poster-037",
+      "category": "body",
+      "title": {
+        "zh": "liaose 木兰乳香护手油",
+        "en": "liaose magnolia & frankincense hand oil"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "908a0eedaed7f8546768caf5f3f00324.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "66dbf42d443b019255067e305ac2f7bc03f6ffd20f72eef623b61b77d68b227c",
+        "bytes": 1768309,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "45a1e451b519d8adbf19b1b45324d51bdee23f2723cd07379d545b032dec7645"
+      },
+      "duplicates": [],
+      "image": "posters/poster-037.webp",
+      "thumbnail": "posters/poster-037-thumb.webp"
+    },
+    {
+      "id": "poster-038",
+      "category": "face",
+      "title": {
+        "zh": "liaose 玻尿酸舒缓面霜",
+        "en": "liaose hyaluronic acid soothing cream"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "46bee7fde45358b3c81a1b7abef3533b.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "b94c51f4d788e11a6aaed1b500c9fcd5a814d53c7d7e9909258e5fe96a244b09",
+        "bytes": 1234090,
+        "width": 1254,
+        "height": 1254,
+        "pixelsHash": "92eb5e65a3b1b716364e83aa7ee51a9d16c8da6f57fc06e4d072c23c65d50435"
+      },
+      "duplicates": [],
+      "image": "posters/poster-038.webp",
+      "thumbnail": "posters/poster-038-thumb.webp"
+    },
+    {
+      "id": "poster-039",
+      "category": "face",
+      "title": {
+        "zh": "liaose 面部护理系列",
+        "en": "liaose face care collection"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "cd748836aad9ae3d3a85903a07e1f8c4.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "a1d5c39ce61a0a1a68d78a482098a2bdd7416eee39f0da3242c01853d2edaeb4",
+        "bytes": 1713219,
+        "width": 1672,
+        "height": 941,
+        "pixelsHash": "71a90bf09bf26e6fef25c2f9fea9375b7a4efcc0fcfdb223be9a8c10096b8d1b"
+      },
+      "duplicates": [],
+      "image": "posters/poster-039.webp",
+      "thumbnail": "posters/poster-039-thumb.webp"
+    },
+    {
+      "id": "poster-040",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 樱花香氛护理礼盒",
+        "en": "liaose cherry blossom fragrance gift set"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "f311aeebccb224658cb5d9915af73d1a.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "c17e738eb44bb468a9a8a708127ddedca8cf4b5fde18f668349d5904d320aefb",
+        "bytes": 2180290,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "f16623f8a3d213553db5995c70d04c1f381e639ce9910ba4e84a5b090665198f"
+      },
+      "duplicates": [],
+      "image": "posters/poster-040.webp",
+      "thumbnail": "posters/poster-040-thumb.webp"
+    },
+    {
+      "id": "poster-041",
+      "category": "body",
+      "title": {
+        "zh": "liaose 果酸精油身体磨砂膏",
+        "en": "liaose AHA & essential oil body scrub"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "4a7bdfc8b674bf90678bf22acf481add.png",
+        "receivedAt": "2026-10-07",
+        "sha256": "473efc762d02a0b455fae06e06adc8eee8992eb471b73e4fb6be759faf7f0ddd",
+        "bytes": 1819390,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "93a359bcb4ecf1256f871891c6ec0489103c266c69e8c6f65c8f977e8120bdeb"
+      },
+      "duplicates": [],
+      "image": "posters/poster-041.webp",
+      "thumbnail": "posters/poster-041-thumb.webp"
     }
-  ]
+  ],
+  "updatedAt": "2026-10-07",
+  "directImageCount": 10
 }

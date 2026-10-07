@@ -56,11 +56,14 @@ class CompanyMaterials(unittest.TestCase):
                                   (PREVIEW / 'product-posters.js').read_text(), re.DOTALL)
         self.assertIsNotNone(assignment, 'Poster data must be a standalone JSON-compatible assignment')
         catalog = json.loads(assignment[1])
-        self.assertEqual((report['archiveCount'], report['inputImageCount'], report['uniqueImageCount']), (3, 33, 31))
-        expected_ids = {f'poster-{index:03d}' for index in range(1, 32)}
-        self.assertEqual(len(report['items']), 31)
+        self.assertEqual((report['archiveCount'], report['directImageCount'],
+                          report['inputImageCount'], report['uniqueImageCount']), (3, 10, 43, 41))
+        archived_ids = {f'poster-{index:03d}' for index in range(1, 32)}
+        attachment_ids = {f'poster-{index:03d}' for index in range(32, 42)}
+        expected_ids = archived_ids | attachment_ids
+        self.assertEqual(len(report['items']), 41)
         self.assertEqual({item['id'] for item in report['items']}, expected_ids)
-        self.assertEqual(len(catalog['items']), 31)
+        self.assertEqual(len(catalog['items']), 41)
         self.assertEqual({item['id'] for item in catalog['items']}, expected_ids)
         customer_items = {item['id']: item for item in catalog['items']}
         self.assertEqual(len(catalog['categories']), len({category['id'] for category in catalog['categories']}))
@@ -73,7 +76,8 @@ class CompanyMaterials(unittest.TestCase):
         expected_poster_paths = {f'posters/{poster_id}{suffix}.webp'
                                  for poster_id in expected_ids for suffix in ('', '-thumb')}
         self.assertEqual(set(entries), COMPANY_PATHS | expected_poster_paths)
-        sources, hashes, archives = set(), set(), set()
+        sources, hashes, pixel_hashes, archives = set(), set(), set(), set()
+        archived_posters, attached_posters, attachments = set(), set(), set()
         for item in report['items']:
             with self.subTest(poster=item['id']):
                 source = item['source']
@@ -81,14 +85,34 @@ class CompanyMaterials(unittest.TestCase):
                 self.assertRegex(source['pixelsHash'], r'^[a-f0-9]{64}$')
                 self.assertNotIn(source['sha256'], hashes)
                 hashes.add(source['sha256'])
+                self.assertNotIn(source['pixelsHash'], pixel_hashes)
+                pixel_hashes.add(source['pixelsHash'])
                 self.assertGreater(source['bytes'], 0)
                 self.assertGreater(source['width'], 0)
                 self.assertGreater(source['height'], 0)
-                for occurrence in [source, *item['duplicates']]:
-                    origin = (occurrence['archive'], occurrence['member'])
+                if item['id'] in attachment_ids:
+                    attached_posters.add(item['id'])
+                    self.assertEqual(source['kind'], 'attachment')
+                    self.assertEqual(source['receivedAt'], '2026-10-07')
+                    self.assertTrue(source['filename'].strip())
+                    self.assertEqual(Path(source['filename']).name, source['filename'])
+                    self.assertNotIn('archive', source)
+                    self.assertNotIn('member', source)
+                    self.assertEqual(item['duplicates'], [])
+                    origin = ('attachment', source['receivedAt'], source['filename'])
                     self.assertNotIn(origin, sources)
                     sources.add(origin)
-                    archives.add(occurrence['archive'])
+                    attachments.add(origin)
+                else:
+                    archived_posters.add(item['id'])
+                    self.assertNotIn('kind', source)
+                    for occurrence in [source, *item['duplicates']]:
+                        self.assertTrue(occurrence['archive'].strip())
+                        self.assertTrue(occurrence['member'].strip())
+                        origin = ('archive', occurrence['archive'], occurrence['member'])
+                        self.assertNotIn(origin, sources)
+                        sources.add(origin)
+                        archives.add(occurrence['archive'])
                 self.assertEqual(item['image'], f"posters/{item['id']}.webp")
                 self.assertEqual(item['thumbnail'], f"posters/{item['id']}-thumb.webp")
                 customer = customer_items[item['id']]
@@ -127,6 +151,10 @@ class CompanyMaterials(unittest.TestCase):
                 self.assertEqual(thumb['sourceImage'], item['image'])
         self.assertEqual(len(sources), report['inputImageCount'])
         self.assertEqual(len(archives), report['archiveCount'])
+        self.assertEqual(len(attachments), report['directImageCount'])
+        self.assertEqual(archived_posters, archived_ids)
+        self.assertEqual(attached_posters, attachment_ids)
+        self.assertEqual(len(sources - attachments), 33)
 
 
 if __name__ == '__main__':

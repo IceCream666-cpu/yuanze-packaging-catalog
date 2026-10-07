@@ -404,6 +404,126 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-031-thumb.webp",
       "width": 1672,
       "height": 941
+    },
+    {
+      "id": "poster-032",
+      "category": "body",
+      "title": {
+        "zh": "liaose 氨基酸沐浴露",
+        "en": "liaose amino acid body wash"
+      },
+      "src": "assets/posters/poster-032.webp",
+      "thumbnail": "assets/posters/poster-032-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-033",
+      "category": "body",
+      "title": {
+        "zh": "liaose 茶树沐浴露",
+        "en": "liaose tea tree body wash"
+      },
+      "src": "assets/posters/poster-033.webp",
+      "thumbnail": "assets/posters/poster-033-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-034",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 山茶花护发素",
+        "en": "liaose camellia conditioner"
+      },
+      "src": "assets/posters/poster-034.webp",
+      "thumbnail": "assets/posters/poster-034-thumb.webp",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "id": "poster-035",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 植萃沐浴礼盒",
+        "en": "liaose botanical bath gift set"
+      },
+      "src": "assets/posters/poster-035.webp",
+      "thumbnail": "assets/posters/poster-035-thumb.webp",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "id": "poster-036",
+      "category": "face",
+      "title": {
+        "zh": "liaose 真空瓶系列 · 紫黄",
+        "en": "liaose airless packaging · Lilac & yellow"
+      },
+      "src": "assets/posters/poster-036.webp",
+      "thumbnail": "assets/posters/poster-036-thumb.webp",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "id": "poster-037",
+      "category": "body",
+      "title": {
+        "zh": "liaose 木兰乳香护手油",
+        "en": "liaose magnolia & frankincense hand oil"
+      },
+      "src": "assets/posters/poster-037.webp",
+      "thumbnail": "assets/posters/poster-037-thumb.webp",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "id": "poster-038",
+      "category": "face",
+      "title": {
+        "zh": "liaose 玻尿酸舒缓面霜",
+        "en": "liaose hyaluronic acid soothing cream"
+      },
+      "src": "assets/posters/poster-038.webp",
+      "thumbnail": "assets/posters/poster-038-thumb.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "poster-039",
+      "category": "face",
+      "title": {
+        "zh": "liaose 面部护理系列",
+        "en": "liaose face care collection"
+      },
+      "src": "assets/posters/poster-039.webp",
+      "thumbnail": "assets/posters/poster-039-thumb.webp",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "poster-040",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 樱花香氛护理礼盒",
+        "en": "liaose cherry blossom fragrance gift set"
+      },
+      "src": "assets/posters/poster-040.webp",
+      "thumbnail": "assets/posters/poster-040-thumb.webp",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "id": "poster-041",
+      "category": "body",
+      "title": {
+        "zh": "liaose 果酸精油身体磨砂膏",
+        "en": "liaose AHA & essential oil body scrub"
+      },
+      "src": "assets/posters/poster-041.webp",
+      "thumbnail": "assets/posters/poster-041-thumb.webp",
+      "width": 1086,
+      "height": 1448
     }
   ]
 };
