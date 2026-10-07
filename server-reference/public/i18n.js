@@ -1,5 +1,6 @@
 // Interface translations only. Product/source text and form values remain canonical.
 const dictionary = new Map(Object.entries({
+  "下载图片": "Download image",
   "搜索": "Search",
   "查询": "Search",
   "重置": "Reset",

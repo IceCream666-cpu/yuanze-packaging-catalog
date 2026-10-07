@@ -224,6 +224,8 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     p.d.querySelector('.card-title').click();
     assert.equal(p.d.querySelector('#detailPhoto img').getAttribute('src'),'/media/30.jpg');
     assert.equal(p.d.querySelector('#originalImageLink').getAttribute('href'),'/media/30.jpg');
+    assert.equal(p.d.querySelector('#downloadImageLink').getAttribute('href'),'/media/30.jpg?download=YZ-BC-000014-1.jpg');
+    assert.equal(p.d.querySelector('#downloadImageLink').download,'YZ-BC-000014-1.jpg');
     assert.equal(p.d.querySelectorAll('#imageAssociations .group-image-source').length,4);
     const external={id:'external-only',kind:'package',images:[{path:'media/outside.jpg'}]};
     const scoped=p.w.groupTest.createProductGroupIndex([...all,external],[{...group,imageAliases:{'media/50.jpg':'media/outside.jpg'}}]);

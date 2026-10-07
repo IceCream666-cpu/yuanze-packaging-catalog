@@ -142,6 +142,30 @@ class ClientAccess(unittest.TestCase):
         self.assertEqual(self.req('/api/logout',{})[0],200);self.assertEqual(self.req('/api/client/catalog')[0],401)
         self.login('admin');self.assertEqual(self.catalog()['total'],1);self.assertEqual(self.req('/api/catalog')[0],200)
         self.login('employee');self.assertEqual(self.req('/api/catalog')[0],200);self.assertEqual(self.req('/api/admin/users')[0],403)
+    def test_image_downloads_keep_role_and_approval_checks(self):
+        query='?download=YZ-BC-000001-1.jpg'
+        self.assertEqual(self.req('/media/supplier-secret.png'+query)[0],401)
+        self.login()
+        url=self.catalog()['items'][0]['images'][0]['url']
+        code,headers,raw=self.req(url+query)
+        self.assertEqual(code,200)
+        self.assertEqual(headers['Content-Type'],'image/jpeg')
+        self.assertEqual(headers['Content-Disposition'],'attachment; filename="YZ-BC-000001-1.jpg"')
+        self.assertNotIn(b'PRIVATE-SUPPLIER',raw)
+        self.assertNotIn('Content-Disposition',self.req(url)[1])
+        for path in ['/media/supplier-secret.png','/media/unapproved.png','/uploads/unapproved.jpg']:
+            self.assertEqual(self.req(path+query)[0],403)
+        _,headers,_=self.req(url+'?download=invalid%0D%0AX-Evil%3Ayes')
+        self.assertEqual(headers['Content-Disposition'],'attachment; filename="yuanze-image.jpg"')
+        saved=server.STORE.read_admin('records',id='INTERNAL-1')
+        saved['images'][0]['clientVisible']=False
+        server.STORE.mutate('records','save',{'id':saved['id'],'version':saved['version'],'record':{'images':saved['images']}},'admin')
+        self.assertEqual(self.req(url+query)[0],404)
+        self.login('employee')
+        code,headers,_=self.req('/media/supplier-secret.png?download=YZ-BC-000001-1.png')
+        self.assertEqual(code,200)
+        self.assertEqual(headers['Content-Disposition'],'attachment; filename="YZ-BC-000001-1.png"')
+
     def test_reencoding_and_immediate_cached_image_revocation(self):
         self.login();url=self.catalog()['items'][0]['images'][0]['url']
         code,headers,raw=self.req(url);self.assertEqual(code,200);self.assertEqual(headers['Content-Type'],'image/jpeg')

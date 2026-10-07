@@ -241,16 +241,16 @@
       "sha256": "1add65a02cd2ce8c3a2def13f89837bc707fd374e3045a68433361d30a4b9afc"
     },
     "index.html": {
-      "bytes": 11566,
-      "sha256": "3489e2ba7c8719d96008b4727192074f3eba74da010b4408656d4df7171702b7"
+      "bytes": 11635,
+      "sha256": "c0b7cf678046a08d6575343eeee1f31b9e82a5380c38bdaaf5c749163746fb2c"
     },
     "preview.css": {
-      "bytes": 19591,
-      "sha256": "903623bd027ed31f115d168992aac9d583c65ef34e9039ce5637353cd10702f7"
+      "bytes": 19800,
+      "sha256": "745398b99bc84980291399a4fdc405682055c64ee08739893d5e0c81be1e092d"
     },
     "preview.js": {
-      "bytes": 18275,
-      "sha256": "343e7a9507a0e5a33a8b27bede8ab8c30f87e9dfcd87717f88602cdc56a8e036"
+      "bytes": 18593,
+      "sha256": "1aed3dbbda99a1da5f9d5a0c3ae869cfcb27b887cbe82f8e6453973141281742"
     },
     "product-posters.js": {
       "bytes": 8964,

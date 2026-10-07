@@ -691,3 +691,5 @@ details.multi-filter[open] { z-index: 4; }
   .group-selector { padding: 12px; }
   .group-record-count { display: inline-block; }
 }
+
+.image-download{margin:12px 0;display:inline-flex}

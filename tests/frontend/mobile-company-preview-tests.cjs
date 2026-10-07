@@ -473,3 +473,33 @@ test('contact accepts only allowlisted shortlist fields from the catalogue frame
   assert.equal(document.getElementById('page-contact').hidden,false);
   dom.window.close();
 });
+
+
+test('every company photo, certificate and active poster has a matching download', () => {
+  const {dom,window,document,errors}=setup();
+  const link=document.getElementById('photo-download');
+  for(const button of document.querySelectorAll('[data-photo], [data-certificate]')) {
+    button.click();
+    const src=document.getElementById('expanded-photo').getAttribute('src');
+    assert.equal(link.getAttribute('href'),src+'?download='+encodeURIComponent(link.download));
+    assert.equal(link.hidden,false);
+    assert.equal(link.textContent,'下载图片');
+    document.getElementById('photo-language-toggle').click();
+    assert.equal(link.textContent,'Download image');
+    assert.equal(link.getAttribute('href'),document.getElementById('expanded-photo').getAttribute('src')+'?download='+encodeURIComponent(link.download));
+    document.getElementById('photo-language-toggle').click();
+    document.getElementById('close-photo').click();
+  }
+  for(const item of window.YuanzeProductPosters.items) {
+    window.location.hash='#/products?poster='+encodeURIComponent(item.id);
+    window.dispatchEvent(new window.HashChangeEvent('hashchange'));
+    if(document.getElementById('expanded-photo').getAttribute('src')!==item.src) {
+      document.querySelector('[data-poster-open="'+item.id+'"]')?.click();
+    }
+    // The viewer uses the full artwork rather than the card thumbnail.
+    assert.equal(link.getAttribute('href'),item.src+'?download='+encodeURIComponent(link.download));
+    assert.doesNotMatch(link.getAttribute('href'),/-thumb/);
+  }
+  assert.deepEqual(errors,[]);
+  dom.window.close();
+});

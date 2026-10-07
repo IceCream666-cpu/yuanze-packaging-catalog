@@ -20,6 +20,7 @@ const copy = {
   '已选筛选':'Selected filters','筛选结果':'Search results','包材列表':'Packaging collection',
   '正在加载…':'Loading…','清除筛选':'Clear filters','重新加载':'Retry','产品列表分页':'Catalogue pages',
   '上一页':'Previous','下一页':'Next','跳至':'Jump to','跳转页码':'Page number','前往':'Go',
+  '下载图片':'Download image',
   '包材详情':'Packaging details','关闭详情':'Close details','关闭':'Close','包材图片':'Packaging image',
   '图片暂时无法显示，请稍后再试。':'This image is unavailable. Please try again later.',
   '图片暂时无法显示':'Image currently unavailable','上一张图片':'Previous image','下一张图片':'Next image',
@@ -243,6 +244,10 @@ function renderDetails(changeImage = false) {
     const old = $('#previewImage'), image = old.cloneNode();image.removeAttribute('src');image.hidden = false;old.replaceWith(image);$('#previewError').hidden = true;
     loadImage(image,previewItem.images[previewIndex].url,() => previewItem && $('#previewImage') === image && image.isConnected);
   }
+  const download=$('#imageDownload');
+  const filename=`${previewItem.productCode||'yuanze-image'}-${previewIndex+1}.jpg`;
+  download.href=`${previewItem.images[previewIndex].url}?download=${encodeURIComponent(filename)}`;
+  download.download=filename;download.hidden=false;
   $('#previewImage').alt = `${itemName(previewItem)} · ${t('第 {number} 张图片',{number:previewIndex+1})}`;
   $('#detailActions').innerHTML = itemActions(previewItem,'preview');
 }

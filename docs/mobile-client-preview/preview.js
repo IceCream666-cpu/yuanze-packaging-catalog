@@ -169,6 +169,11 @@
     const poster = posters.items.find(item => item.id === selectedPoster);
     const asset = poster || (selectedPhoto ? assetFor(selectedPhoto) : null);
     if (!asset) return;
+    const download=document.getElementById('photo-download');
+    const filename='yuanze-'+asset.src.split('/').pop();
+    download.href=asset.src+'?download='+encodeURIComponent(filename);
+    download.download=filename;download.hidden=false;
+    download.textContent=language==='en'?'Download image':'下载图片';
     // Avoid restarting an image request when the language alone changes.
     if (photo.getAttribute('src') !== asset.src) {
       photoError.hidden = true; photo.hidden = false; photo.src = asset.src;

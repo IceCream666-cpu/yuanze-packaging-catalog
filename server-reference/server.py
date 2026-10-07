@@ -407,7 +407,7 @@ class Handler(BaseHTTPRequestHandler):
             try:asset=CLIENT_CATALOG.media(path[len('/client-media/'):])
             except ClientMediaBusy:return self.respond(429,{'error':'图片正在准备，请稍后重试'},extra={'Retry-After':'2'})
             if asset is None:return self.respond(404,{'error':'图片不存在'})
-            return self.respond(200,asset.read_bytes(),'image/jpeg')
+            return self.respond(200,asset.read_bytes(),'image/jpeg',self.image_download_headers('image/jpeg'))
         return self.respond(403,{'error':'此账号仅可访问客户展示页'})
 
     def unsupported_method(self):
@@ -512,6 +512,17 @@ class Handler(BaseHTTPRequestHandler):
         result=STORE.mutate(resource,action,payload,actor)
         if resource=='records':IMAGE_SEARCH.refresh()
         return self.respond(200,result)
+    def image_download_headers(self,content_type):
+        if not content_type.startswith('image/'):
+            return {}
+        values=parse_qs(urlsplit(self.path).query).get('download',[])
+        if not values:
+            return {}
+        filename=values[0]
+        extensions={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','image/svg+xml':'svg'}
+        if len(filename)>100 or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*\.(?:jpg|jpeg|png|webp|gif|svg)',filename):
+            filename='yuanze-image.'+extensions.get(content_type,'jpg')
+        return {'Content-Disposition':'attachment; filename="'+filename+'"'}
     def file(self,path,base,extra=None):
         path=path.resolve();base=base.resolve()
         if not path.is_relative_to(base) or not path.is_file(): return self.respond(404,{'error':'页面或文件不存在'})
@@ -519,7 +530,7 @@ class Handler(BaseHTTPRequestHandler):
         if path.suffix in ['.js','.mjs']: ctype='text/javascript'
         # Minimal Linux installations may omit WebP from their system MIME map.
         if path.suffix.lower()=='.webp': ctype='image/webp'
-        return self.respond(200,path.read_bytes(),ctype,extra)
+        return self.respond(200,path.read_bytes(),ctype,{**(extra or {}),**self.image_download_headers(ctype)})
     def do_POST(self):
         if not self.valid_host(): return self.respond(403,{'error':'访问地址无效'})
         path=urlsplit(self.path).path
