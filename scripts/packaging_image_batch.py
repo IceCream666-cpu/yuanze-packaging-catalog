@@ -123,6 +123,24 @@ def wait_for_index_idle(browser, gate, timeout=180):
         time.sleep(2)
 
 
+def upload_when_ready(browser, gate, image, attempts=15):
+    # A background index can acquire the shared slot after the idle check.
+    # HTTP 429 is rejected before the upload body is read, so retry only that
+    # explicit busy response; never retry ambiguous transport/server failures.
+    for attempt in range(attempts):
+        wait_for_index_idle(browser, gate)
+        status, headers, body = browser.request('/api/admin/uploads', {'image': image})
+        if status == 201:
+            return json.loads(body)['image']
+        if status != 429 or attempt + 1 == attempts:
+            raise RuntimeError(f'Image upload returned HTTP {status}; resume manifest later')
+        try:
+            delay = float(headers.get('Retry-After', 2))
+        except (TypeError, ValueError):
+            delay = 2
+        time.sleep(min(30, max(2, delay)))
+
+
 def publish(manifest, credentials, origin):
     spec = importlib.util.spec_from_file_location('image_batch_gate', ROOT / 'server-reference/deploy/release_gate.py')
     gate = importlib.util.module_from_spec(spec)
@@ -149,11 +167,9 @@ def publish(manifest, credentials, origin):
         count = 0
         for edit in edits:
             if not edit.get('uploaded'):
-                wait_for_index_idle(browser, gate)
                 raw = Path(edit['outputFile']).read_bytes()
                 image = 'data:image/png;base64,' + base64.b64encode(raw).decode('ascii')
-                _, body = gate.expect_status(browser, '/api/admin/uploads', 201, {'image': image})
-                edit['uploaded'] = json.loads(body)['image']
+                edit['uploaded'] = upload_when_ready(browser, gate, image)
                 write_private(path, state)
             saved = edit.setdefault('publishedRecords', [])
             matches = [r for r in records.values() if not r.get('archived') and r.get('kind') in {'package', 'source_page'}

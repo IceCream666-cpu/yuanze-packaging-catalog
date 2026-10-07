@@ -77,6 +77,31 @@ class PackagingImageBatchTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             batch.validate_edit({'status': 'generated', 'qa': {}})
 
+    def test_busy_upload_retries_without_retrying_other_failures(self):
+        browser, gate = Mock(), Mock()
+        gate.expect_status.return_value = (None, b'{"building":false}')
+        browser.request.side_effect = [(429, {'Retry-After': '3'}, b'{}'),
+                                      (201, {}, b'{"image":{"path":"uploads/a.jpg"}}')]
+        with patch.object(batch.time, 'sleep') as sleep:
+            self.assertEqual(batch.upload_when_ready(browser, gate, 'data'), {'path': 'uploads/a.jpg'})
+        sleep.assert_called_once_with(3)
+        self.assertEqual(browser.request.call_count, 2)
+        browser.request.reset_mock()
+        browser.request.side_effect = [(500, {}, b'{}')]
+        with self.assertRaises(RuntimeError):
+            batch.upload_when_ready(browser, gate, 'data')
+        self.assertEqual(browser.request.call_count, 1)
+
+    def test_busy_upload_retry_is_bounded(self):
+        browser, gate = Mock(), Mock()
+        gate.expect_status.return_value = (None, b'{"building":false}')
+        browser.request.return_value = (429, {'Retry-After': 'invalid'}, b'{}')
+        with patch.object(batch.time, 'sleep') as sleep:
+            with self.assertRaises(RuntimeError):
+                batch.upload_when_ready(browser, gate, 'data', attempts=3)
+        self.assertEqual(browser.request.call_count, 3)
+        self.assertEqual(sleep.call_count, 2)
+
     def test_upload_waits_for_index_without_bypassing_limits(self):
         gate = Mock()
         gate.expect_status.side_effect = [(None, b'{"building":true}'), (None, b'{"building":false}')]
