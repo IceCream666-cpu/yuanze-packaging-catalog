@@ -289,5 +289,55 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     assert.deepEqual(p.errors,[]);
     checks.push('Each reviewed SKU matches only its own size labels despite mixed OCR/quote text; mL and g aliases, exact compound sizes, correct selected quotes/CSV, multi-size OR filters and ungrouped search remain intact');
   } finally {p.dom.window.close();}
+  const revised = polluted.map((r,index)=>({...r,version:99,specificationRaw:index===2?'旧字段150ml':'旧字段30ml'}));
+  revised[0]={...revised[0],capacityMl:80,specificationOverride:{label:'80 mL',sourceField:'capacityMl'}};
+  revised[1]={...revised[1],specificationRaw:'80 g',specificationOverride:{label:'80 g',sourceField:'specificationRaw'}};
+  revised[3]={...revised[3],specificationRaw:'',specificationOverride:{label:'规格待补充',sourceField:'specificationRaw'}};
+  p=await open('',{...group,name:'同款喷雾瓶'},revised);
+  try {
+    const records=p.w.groupTest.getRecords(),before=JSON.stringify(records),manifest=JSON.stringify(group);
+    const effective=p.w.groupTest.getIndex().get('group-0');
+    assert.deepEqual(Array.from(effective.specs,s=>({label:s.label,recordIds:Array.from(s.recordIds)})),[
+      {label:'30 mL',recordIds:['group-2']},{label:'80 mL',recordIds:['group-0']},
+      {label:'80 g',recordIds:['group-1']},{label:'规格待补充',recordIds:['group-3']}
+    ]);
+    assert.match(p.d.querySelector('.card .tags').textContent,/30 mL.*80 mL.*80 g.*规格待补充/);
+    for(const [query,ids] of [['80ml',['group-0']],['80g',['group-1']],['30ml',['group-2']],
+                             ['50ml',[]],['150ml',[]],['10ml',[]]]) {
+      search(p,'同款喷雾瓶 '+query);
+      assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),ids,query);
+    }
+    search(p,'同款喷雾瓶 80ml');p.d.querySelector('.card-title').click();
+    assert.equal(p.d.querySelector('.group-option.active strong').textContent,'80 mL');
+    assert.match(p.d.querySelector('.pricing-section').textContent,/独立报价-0/);
+    p.d.querySelector('.group-option[data-detail="group-1"]').click();
+    assert.equal(p.d.querySelector('.group-option.active strong').textContent,'80 g');
+    assert.match(p.d.querySelector('.pricing-section').textContent,/独立报价-1/);
+    p.d.querySelector('.group-option[data-detail="group-3"]').click();
+    assert.equal(p.d.querySelector('.group-option.active strong').textContent,'规格待补充');
+    p.d.querySelector('#modal').close();
+    p.d.querySelector('[data-action=export]').click();
+    const csv=await new Promise((resolve,reject)=>{const reader=new p.w.FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsText(p.downloads[0]);});
+    assert.match(csv,/group-0/);assert.doesNotMatch(csv,/group-1|group-2|group-3/);
+    const merged=p.w.groupTest.createProductGroupIndex(records.map(r=>r.id==='group-0'?{...r,specificationOverride:{label:'30 mL',sourceField:'capacityMl'}}:r),[group]);
+    assert.deepEqual(Array.from(merged.get('group-0').specs.find(s=>s.label==='30 mL').recordIds).sort(),['group-0','group-2']);
+    for(const invalid of [null,'80 mL',{label:'80 mL',sourceField:'searchText'},{label:'',sourceField:'capacityMl'}]) {
+      const index=p.w.groupTest.createProductGroupIndex([{...family[0],specificationOverride:invalid},...family.slice(1)],[group]);
+      assert.deepEqual(Array.from(index.get('group-0').specs.find(s=>s.recordIds.includes('group-0')).recordIds),['group-0','group-2']);
+    }
+    assert.equal(JSON.stringify(records),before);assert.equal(JSON.stringify(group),manifest);
+    assert.deepEqual(p.errors,[]);
+    checks.push('Server-owned specification overrides update card tags, each SKU button and exact size search together, preserve siblings/quotes/CSV, and never use record version or OCR as an override');
+  } finally {p.dom.window.close();}
+  p=await open('',{...group,recordIds:['group-3'],specs:[{label:'30 mL',recordIds:['group-3']},{label:'50 mL',recordIds:['group-3']}]},[revised[3]]);
+  try {
+    assert.equal(p.w.groupTest.getIndex().has('group-3'),true);
+    assert.match(p.d.querySelector('.card .tags').textContent,/规格待补充/);
+    for(const query of ['30ml','50ml','150ml']) {search(p,query);assert.equal(p.w.groupTest.filtered().length,0);}
+    reset(p);p.d.querySelector('.card-title').click();
+    assert.equal(p.d.querySelector('.group-option.active strong').textContent,'规格待补充');
+    assert.deepEqual(p.errors,[]);
+    checks.push('Reloading a cleared single-SKU group keeps its explicit unknown specification and cannot fall back to old reviewed labels or mixed OCR');
+  } finally {p.dom.window.close();}
   console.log(JSON.stringify({passed:true,checks,liveWebsiteRequests:0},null,2));
 })().catch(error=>{console.error(error);process.exitCode=1;});

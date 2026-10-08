@@ -127,6 +127,8 @@ class FakeSite(BaseHTTPRequestHandler):
                 destination = '/?code=' + gate.CODE if '?code=' in self.path else ('/admin' if role == 'admin' else '/')
                 return self.reply(303, headers={'Location': destination})
             return self.reply(200, b'<html><script type="module" src="/login.js"></script></html>')
+        if path == '/admin/tools' and self.server.mode == 'anonymous_tools':
+            return self.reply(200, b'<script src="/admin.js"></script>')
         if not role:
             if path.startswith('/api/'):
                 return self.reply(401, {'error': 'login required'})
@@ -140,12 +142,22 @@ class FakeSite(BaseHTTPRequestHandler):
             return self.reply(200, {'role': role, 'username': role, 'csrf': 'SENSITIVE_CSRF'})
         if path == '/api/catalog':
             return self.reply(200, {'records': [{'id': 'one'}]})
+        if path == '/admin/tools' and self.server.mode == 'tools_privilege_escalation':
+            return self.reply(200, b'<script src="/admin.js"></script>')
         if path.startswith('/admin') or path.startswith('/api/admin/'):
             if role != 'admin' and self.server.mode != 'privilege_escalation':
                 return self.reply(403, {'error': 'not admin'})
             if path.startswith('/api/'):
                 return self.reply(200, {'value': {'siteTitle': 'Test'}})
-            return self.reply(200, b'<script src="/admin.js"></script>')
+            if path == '/admin/tools':
+                if self.server.mode == 'missing_tools':
+                    return self.reply(404)
+                if self.server.mode == 'wrong_tools_workspace':
+                    return self.reply(200, b'<script src="/app.js"></script>')
+                return self.reply(200, b'<script src="/admin.js"></script>')
+            if self.server.mode == 'legacy_admin_workspace':
+                return self.reply(200, b'<script src="/admin.js"></script>')
+            return self.reply(200, b'<script src="/app.js"></script>')
         if path == '/' and role == 'admin' and '?code=' not in self.path:
             return self.reply(303, headers={'Location': '/admin'})
         return self.reply(200, b'<script src="/app.js"></script>')
@@ -223,6 +235,26 @@ class RouteTests(unittest.TestCase):
         self.server.mode = 'privilege_escalation'
         with self.assertRaises(gate.GateFailure):
             self.run_role()
+
+    def test_admin_lands_in_catalogue_and_tools_remain_a_separate_workspace(self):
+        for mode in ('legacy_admin_workspace', 'missing_tools', 'wrong_tools_workspace'):
+            with self.subTest(mode=mode):
+                self.server.mode = mode
+                with self.assertRaises(gate.GateFailure):
+                    self.run_role('admin')
+                self.assertEqual(self.server.sessions, set())
+
+    def test_employee_cannot_access_tools_even_if_other_admin_routes_are_protected(self):
+        self.server.mode = 'tools_privilege_escalation'
+        with self.assertRaisesRegex(gate.GateFailure, '/admin/tools returned HTTP 200, expected 403'):
+            self.run_role('employee')
+        self.assertEqual(self.server.sessions, set())
+
+    def test_anonymous_tools_exposure_is_rejected_before_login(self):
+        self.server.mode = 'anonymous_tools'
+        with self.assertRaises(gate.GateFailure):
+            self.run_role('admin')
+        self.assertEqual(self.server.sessions, set())
 
     def test_cli_failure_redacts_credentials_cookie_csrf_response(self):
         with tempfile.TemporaryDirectory() as temporary:

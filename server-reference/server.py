@@ -343,9 +343,10 @@ class Handler(BaseHTTPRequestHandler):
         if path.startswith('/api/admin/'):
             if s['role']!='admin': return self.respond(403,{'error':'仅管理员可以维护资料'})
             return self.admin_get(path)
-        if path in ['/admin','/admin.html','/admin.js','/admin.css']:
+        if path in ['/admin','/admin.html','/admin/tools','/admin.js','/admin.css']:
             if s['role']!='admin': return self.respond(403,{'error':'仅管理员可以进入后台'})
-            return self.file(PUBLIC/('admin.html' if path in ['/admin','/admin.html'] else path[1:]),PUBLIC)
+            filename='index.html' if path in ['/admin','/admin.html'] else 'admin.html' if path=='/admin/tools' else path[1:]
+            return self.file(PUBLIC/filename,PUBLIC)
         if path=='/api/catalog': return self.respond_catalog(STORE.catalog)
         if path=='/api/image-search/status': return self.respond(200,IMAGE_SEARCH.status())
         if path=='/api/preferences':
@@ -424,13 +425,17 @@ class Handler(BaseHTTPRequestHandler):
 
     def admin_get(self,path):
         resource=path[len('/api/admin/'):]
-        query=parse_qs(urlsplit(self.path).query)
         try:
+            query=parse_qs(urlsplit(self.path).query,keep_blank_values=True,max_num_fields=256)
             if resource=='search-status':return self.respond(200,IMAGE_SEARCH.status())
             if resource=='import/template':return self.respond(200,template_csv(),'text/csv; charset=utf-8',{'Content-Disposition':'attachment; filename="packaging-import-template.csv"'})
             if resource=='export':
                 return self.respond_export()
             if resource=='records':
+                if 'id' in query:
+                    ids=query['id']
+                    if len(ids)!=1 or not ids[0].strip():raise ValueError('请选择一条记录')
+                    return self.respond(200,{'item':STORE.read_admin('records',id=ids[0])})
                 return self.respond_catalog(lambda:{'items':STORE.read_admin('records')})
             value=STORE.read_admin(resource,id=query.get('id',[None])[0] if resource=='audit' else None)
             if resource in ['settings','taxonomy']:

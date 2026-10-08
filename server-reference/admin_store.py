@@ -7,6 +7,7 @@ returned by the read, audit, or export APIs.
 from contextlib import contextmanager
 from copy import deepcopy
 from datetime import datetime, timezone
+from decimal import Decimal
 import hashlib
 import hmac
 import json
@@ -15,6 +16,7 @@ from pathlib import Path
 import re
 import secrets
 import sqlite3
+import unicodedata
 
 
 class AdminError(ValueError):
@@ -54,7 +56,7 @@ TEXT_FIELDS = RAW_FIELDS | {
     'quoteHeader', 'sourceNote',
 }
 RECORD_FIELDS = TEXT_FIELDS | {'materials', 'uses', 'capacityMl', 'unitPrice', 'currency',
-                              'validUntil', 'images', 'uncertainties', 'productDetails'}
+                              'validUntil', 'images', 'uncertainties', 'productDetails', 'bodyAreas'}
 KINDS = {'package', 'uncertain', 'semi_finished', 'service', 'requirement',
          'source_page', 'process_rule'}
 ROLES = {'admin', 'employee', 'client'}
@@ -126,6 +128,36 @@ def number(value, label):
     if isinstance(value, bool) or not isinstance(value, (float, int)) or not math.isfinite(value) or value < 0 or value > 1e12:
         raise AdminError(label + '必须是有效的非负数，未知时请留空')
     return value
+
+
+def specification_override(previous, current):
+    """A future explicit field edit may replace a reviewed SKU label, never its OCR."""
+    if not previous:
+        return None
+    capacity_changed = previous.get('capacityMl') != current.get('capacityMl')
+    raw_changed = (previous.get('specificationRaw') or '') != (current.get('specificationRaw') or '')
+    if not capacity_changed and not raw_changed:
+        return previous.get('specificationOverride')
+    raw = (current.get('specificationRaw') or '').strip()
+    capacity = current.get('capacityMl')
+    if capacity_changed and raw_changed and raw and capacity is not None and capacity > 0:
+        normalized = unicodedata.normalize('NFKC', raw)
+        compound = re.search(r'\d\s*(?:ml|毫升|l|升)?\s*[-~～至–—/+×x]\s*\d', normalized, re.I)
+        values = {float(value) * (1000 if unit.lower() in {'l', '升'} else 1)
+                  for value, unit in re.findall(r'(\d+(?:\.\d+)?)\s*(ml|毫升|l(?![a-z])|升)', normalized, re.I)}
+        if compound or len(values) != 1:
+            raise AdminError('规格说明无法与容量（mL）直接核对；克重、复合或未确认规格请将容量留空')
+        if not math.isclose(next(iter(values)), capacity, rel_tol=1e-9, abs_tol=1e-9):
+            raise AdminError('规格说明与容量（mL）不一致，请核对后保存')
+    # A raw-only edit must not inherit an old numeric value, and vice versa.
+    if raw_changed and (raw or not capacity_changed):
+        return {'label': raw or '规格待补充', 'sourceField': 'specificationRaw'}
+    if capacity is not None and capacity > 0:
+        value = format(Decimal(str(capacity)), 'f')
+        label = (value.rstrip('0').rstrip('.') if '.' in value else value) + ' mL'
+    else:
+        label = '规格待补充'
+    return {'label': label, 'sourceField': 'capacityMl'}
 
 
 def checked_id(value):
@@ -565,7 +597,9 @@ class AdminStore:
                 original = {'workbook': '管理员录入', 'sheet': '', 'row': ''}
             if field in candidate and candidate[field] != original:
                 raise AdminError('原始来源资料不可覆盖，请使用来源补充说明')
-        ignored = {'id', 'productCode', 'version', 'archived', 'created', 'updated', 'searchText', 'action', 'record'} | IMMUTABLE_RECORD_FIELDS
+        if 'specificationOverride' in candidate and candidate['specificationOverride'] != old.get('specificationOverride'):
+            raise AdminError('规格覆盖标记由服务器维护，请修改规格说明或容量')
+        ignored = {'id', 'productCode', 'version', 'archived', 'created', 'updated', 'searchText', 'action', 'record', 'specificationOverride'} | IMMUTABLE_RECORD_FIELDS
         if set(candidate) - RECORD_FIELDS - ignored:
             raise AdminError('包含不支持的产品字段：' + ','.join(sorted(set(candidate) - RECORD_FIELDS - ignored)))
         for key in TEXT_FIELDS:
@@ -581,6 +615,12 @@ class AdminStore:
         for key in ('materials', 'uses', 'uncertainties'):
             if key in candidate:
                 out[key] = text_list(candidate[key])
+        if 'bodyAreas' in candidate:
+            areas = candidate['bodyAreas']
+            if not isinstance(areas, list) or len(areas) > 3 or any(
+                    not isinstance(area, str) or area not in {'face', 'body', 'head'} for area in areas):
+                raise AdminError('护理部位必须为面部、身体、头部的列表，且不能超过 3 项')
+            out['bodyAreas'] = list(dict.fromkeys(areas))
         if 'productDetails' in candidate:
             out['productDetails'] = product_details(candidate['productDetails'])
         out.setdefault('productDetails', [])
@@ -609,7 +649,7 @@ class AdminStore:
         out.setdefault('validUntil', None)
         out.setdefault('uncertainties', [])
         out['searchText'] = ' '.join(str(out.get(key) or '') if not isinstance(out.get(key), list)
-                                     else ' '.join(map(str, out[key])) for key in sorted(RECORD_FIELDS - {'images', 'productDetails'}))
+                                     else ' '.join(map(str, out[key])) for key in sorted(RECORD_FIELDS - {'images', 'productDetails', 'bodyAreas'}))
         out['searchText'] += ' ' + ' '.join(' '.join(item.get(key, '') for key in ('label', 'value', 'evidence'))
                                           for item in out['productDetails'])
         return out
@@ -629,6 +669,9 @@ class AdminStore:
         timestamp = now()
         if action == 'save':
             out = self._normalized_record(c, data, before)
+            override = specification_override(before, out)
+            if override is not None:
+                out['specificationOverride'] = override
             out['id'] = rid
             archived = row['archived'] if row else 0
         elif action == 'images':
@@ -650,6 +693,9 @@ class AdminStore:
                 raise AdminError('历史版本不存在', 404)
             preserved = {k: v for k, v in before.items() if k in IMMUTABLE_RECORD_FIELDS or k == 'productCode'}
             historical = json.loads(old[0])
+            # Only the trusted audit snapshot can restore this server-owned field.
+            if 'specificationOverride' in historical:
+                preserved['specificationOverride'] = deepcopy(historical['specificationOverride'])
             # Older history can predate numbering (or predate the record first
             # becoming a package). Its projected code never changes the mapping.
             historical.pop('productCode', None)
@@ -846,6 +892,9 @@ class AdminStore:
                             item['version'] = 0
                     expected_version(item, row['version'] if row else 0)
                     normalized = self._normalized_record(c, item, self._record(row))
+                    # Validate the same specification constraints before import
+                    # confirmation. Only the eventual save persists the marker.
+                    specification_override(self._record(row), normalized)
                     # IDs and versions are frozen by the preview, so commit cannot
                     # silently turn a conflicting existing record into a new record.
                     rid = rid or ('YZ-NEW-' + secrets.token_hex(6).upper())

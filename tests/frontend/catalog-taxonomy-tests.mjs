@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 const file=new URL('../../server-reference/public/catalog-taxonomy.js',import.meta.url);
 const mod=await import('data:text/javascript;base64,'+fs.readFileSync(file).toString('base64'));
-const {recordUses,recordSections,usageOptions}=mod;
+const {recordUses,recordSections,recordBodySections,usageOptions}=mod;
 const has=(record,value)=>recordUses(record).includes(value);
 
 test('specific cosmetic and body product names classify with clear regions',()=>{
@@ -66,4 +66,60 @@ test('usage options contain common categories plus maintained custom values',()=
 test('invalid inputs safely return empty record classifications',()=>{
   for(const value of [null,undefined,3,'洗手液']){assert.deepEqual(recordUses(value),[]);assert.deepEqual(recordSections(value),[]);}
   assert.ok(usageOptions(null).includes('精华液'));
+});
+
+test('three-area navigation separates body care from hair and scalp care',()=>{
+  for(const name of ['500ml洗手液瓶','沐浴露','护手霜','身体乳','body wash','foot cream','hair removal cream']) {
+    assert.deepEqual(recordBodySections({name}),['body'],name);
+    assert.deepEqual(recordSections({name}),['body-head'],name);
+  }
+  for(const name of ['洗发水','护发素','发膜','头皮精华','头部护理','hair serum','scalp care','hair conditioner']) {
+    assert.deepEqual(recordBodySections({name}),['head'],name);
+    assert.deepEqual(recordSections({name}),['body-head'],name);
+  }
+  for(const name of ['面霜','面部精华','眼部精华','facial serum']) assert.deepEqual(recordBodySections({name}),['face'],name);
+});
+
+test('three-area navigation leaves generic products and packaging head names unassigned',()=>{
+  for(const name of ['精华液','serum','乳液','精油','防晒','洗护','PET圆瓶','pump head','spray head']) {
+    assert.deepEqual(recordBodySections({name}),[],name);
+  }
+});
+
+test('explicit body areas are validated, deduplicated and combined without mutating the record',()=>{
+  const record={name:'沐浴露',bodyAreas:['head','face','head','body','unknown',null,{},'FACE']};
+  const before=JSON.stringify(record);
+  assert.deepEqual(recordBodySections(record),['face','body','head']);
+  assert.equal(JSON.stringify(record),before);
+  assert.deepEqual(recordSections(record),['body-head']);
+  assert.deepEqual(recordBodySections({bodyAreas:['head','face']}),['face','head']);
+  for(const bodyAreas of ['face',null,{},true,['unknown',42]]) assert.deepEqual(recordBodySections({bodyAreas}),[]);
+  assert.deepEqual(recordBodySections({uses:['面部精华','沐浴露','头皮精华']}),['face','body','head']);
+});
+
+test('three-area inference retains negation boundaries and independently maintained areas',()=>{
+  assert.deepEqual(recordBodySections({name:'不适用洗发水、沐浴露；用于面部精华'}),['face']);
+  assert.deepEqual(recordBodySections({name:'not for face, scalp; body lotion'}),['body']);
+  assert.deepEqual(recordBodySections({name:'头部（不适用）；身体专用'}),['body']);
+  assert.deepEqual(recordBodySections({name:'用于身体而非头部'}),['body']);
+  assert.deepEqual(recordBodySections({name:'Not only face but also scalp serum'}),['face','head']);
+  assert.deepEqual(recordBodySections({name:'不用于面部；沐浴露',bodyAreas:['face']}),['face','body']);
+});
+
+test('three-area inference accepts scoped usage fields while excluding source OCR and captions',()=>{
+  const record={name:'PET圆瓶',remarksRaw:'面部精华',description:'身体护理',source:{workbook:'洗发水图册.pdf'},
+    extraRaw:'头皮护理',images:[{caption:'洗发水',imageScope:'source_page'}],
+    rawCells:{C:'沐浴露',original:{source_ocr_excerpt:'面部精华'},fieldEvidence:{uses:{text:'头皮精华'}}}};
+  const before=JSON.stringify(record);
+  assert.deepEqual(recordBodySections(record),[]);
+  assert.deepEqual(recordBodySections({...record,bodyAreas:['head']}),['head']);
+  assert.equal(JSON.stringify(record),before);
+  assert.deepEqual(recordBodySections({rawCells:{用途:'沐浴露',original:{适用部位:{value:'头皮',cell:'G12'}}},
+    productDetails:[{label:'用途',value:'面霜',sourceField:'uses'}]}),['face','body','head']);
+  assert.deepEqual(recordBodySections({rawCells:{用途:{value:'沐浴露',scope:'page'}},
+    productDetails:[{label:'用途',value:'洗发水',sourceField:'remarksRaw'}]}),[]);
+  assert.deepEqual(recordBodySections({name:'图册整页 / 洗发水和面霜'}),[]);
+  for(const value of [null,undefined,3,'洗发水',{kind:'source_page',name:'洗发水',bodyAreas:['face','body','head']}]) {
+    assert.deepEqual(recordBodySections(value),[]);
+  }
 });

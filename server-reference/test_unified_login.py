@@ -38,7 +38,7 @@ class UnifiedLogin(unittest.TestCase):
         self.assertEqual(body, (server.PUBLIC / filename).read_bytes(), path)
 
     def test_logged_out_links_share_the_same_login_page(self):
-        for path in ('/', '/index.html', '/catalog', '/admin', '/admin.html'):
+        for path in ('/', '/index.html', '/catalog', '/admin', '/admin.html', '/admin/tools'):
             with self.subTest(path=path):
                 self.assert_redirect(path, '/login')
         status, _, login = self.req('/login')
@@ -59,7 +59,9 @@ class UnifiedLogin(unittest.TestCase):
         self.sign_in('admin')
         for path in ('/', '/index.html', '/login', '/login.html'):
             self.assert_redirect(path, '/admin')
-        self.assert_page('/admin', 'admin.html')
+        self.assert_page('/admin', 'index.html')
+        self.assert_page('/admin.html', 'index.html')
+        self.assert_page('/admin/tools', 'admin.html')
         self.assert_page('/catalog', 'index.html')
         self.assertEqual(self.req('/api/admin/users')[0], 200)
 
@@ -100,7 +102,7 @@ class UnifiedLogin(unittest.TestCase):
         self.assertEqual(body['role'], 'employee')
         self.cookie = headers['Set-Cookie'].split(';')[0]
         self.csrf = self.req('/api/session')[2]['csrf']
-        for path in ('/admin', '/admin.html', '/admin.js', '/admin.css',
+        for path in ('/admin', '/admin.html', '/admin/tools', '/admin.js', '/admin.css',
                      '/api/admin/records', '/api/admin/users', '/api/admin/export'):
             self.assertEqual(self.req(path)[0], 403, path)
         self.assertEqual(self.req('/api/admin/users', {

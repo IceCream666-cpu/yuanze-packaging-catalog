@@ -323,6 +323,7 @@ def role_gate(origin, role, credentials, timeout=20, allow_local_http=False, con
     try:
         client.document('/', b'login.js', '/login')
         client.document('/admin', b'login.js', '/login')
+        client.document('/admin/tools', b'login.js', '/login')
         client.document('/?code=' + CODE, b'login.js', '/login?code=' + CODE)
         expect_status(client, '/api/session', 401)
         expect_status(client, '/api/catalog', 401)
@@ -344,7 +345,7 @@ def role_gate(origin, role, credentials, timeout=20, allow_local_http=False, con
         require(isinstance(client.csrf, str) and client.csrf, 'session is missing CSRF token')
         checks.append('login_and_session')
         destination = '/' if role == 'employee' else '/admin'
-        marker = b'app.js' if role == 'employee' else b'admin.js'
+        marker = b'app.js'
         client.document('/', marker, destination)
         client.document('/login', marker, destination)
         # Request the destination again, with a mobile browser identity, like refresh.
@@ -356,9 +357,11 @@ def role_gate(origin, role, credentials, timeout=20, allow_local_http=False, con
             records = json.loads(body).get('records')
             require(isinstance(records, list) and len(records) > 0, 'catalogue is empty or invalid')
             expect_status(client, '/admin', 403)
+            expect_status(client, '/admin/tools', 403)
             expect_status(client, '/api/admin/settings', 403)
             checks.append('catalogue_and_employee_role_boundary')
         else:
+            client.document('/admin/tools', b'admin.js', '/admin/tools')
             _, body = expect_status(client, '/api/admin/settings', 200)
             require(isinstance(json.loads(body).get('value'), dict), 'admin API response is invalid')
             checks.append('admin_workspace_and_api')

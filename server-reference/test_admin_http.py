@@ -2,6 +2,7 @@ import base64
 import json
 import threading
 import time
+from urllib.parse import urlencode
 from unittest.mock import patch
 from test_http import HTTP
 from test_server import server
@@ -46,12 +47,78 @@ class Administration(HTTP):
         self.assertEqual(self.req('/api/admin/records')[0],401)
         self.employee_login()
         self.assertEqual(self.req('/api/session')[2]['role'],'employee')
-        for path in ['/admin','/admin.html','/admin.js','/api/admin/records','/api/admin/users','/api/admin/export']:
+        for path in ['/admin','/admin.html','/admin/tools','/admin.js','/api/admin/records','/api/admin/users','/api/admin/export']:
             self.assertEqual(self.req(path)[0],403,path)
         for path in ['/api/admin/records','/api/admin/users','/api/admin/uploads','/api/samples']:
             self.assertEqual(self.req(path,{'invalid':'x'*120000})[0],403,path)
         self.assertEqual(self.req('/api/catalog')[0],200)
         self.assertEqual(self.req('/api/preferences',{'favorites':[]})[0],200)
+
+    def test_single_record_lookup_is_exact_and_independent_of_full_catalogue(self):
+        self.login()
+        original=server.STORE.read_admin('records',id='TEST-BOTTLE-1')
+        other=server.STORE.mutate('records','save',{'id':'TEST-BOTTLE-2','version':0,
+            'record':{'name':original['name'],'capacityMl':50}},'review_admin')
+        path='/api/admin/records?'+urlencode({'id':original['id']})
+        # Opening one product must not load or wait for a complete catalogue response.
+        with server.CATALOG_RESPONSE_GATE:
+            with patch.object(server.STORE,'read_admin',wraps=server.STORE.read_admin) as read:
+                code,_,body=self.req(path)
+                self.assertEqual((code,body),(200,{'item':original}))
+                read.assert_called_once_with('records',id=original['id'])
+        all_records=self.req('/api/admin/records')[2]
+        self.assertEqual(set(all_records),{'items'})
+        self.assertEqual({row['id'] for row in all_records['items']},{original['id'],other['id']})
+        for query,status in [('id=',400),('id=%20',400),
+                             ('id=TEST-BOTTLE-1&id=TEST-BOTTLE-2',400),
+                             ('id=missing',404),('id=TEST-BOTTLE',404),
+                             ('id=TEST-BOTTLE-1%27%20OR%201%3D1',404)]:
+            with self.subTest(query=query):
+                code,_,body=self.req('/api/admin/records?'+query)
+                self.assertEqual(code,status)
+                self.assertNotIn('items',body)
+                self.assertNotIn('item',body)
+
+    def test_single_record_edit_preserves_other_record_code_and_version_checks(self):
+        self.login()
+        other=server.STORE.mutate('records','save',{'id':'TEST-BOTTLE-2','version':0,
+            'record':{'name':'独立规格','capacityMl':50}},'review_admin')
+        path='/api/admin/records?'+urlencode({'id':'TEST-BOTTLE-1'})
+        original=self.req(path)[2]['item']
+        update={'action':'save','id':original['id'],'version':original['version'],
+                'record':{'name':'编辑选中规格','bodyAreas':['head','body','head']}}
+        self.assertEqual(self.req('/api/admin/records',update,csrf=False)[0],403)
+        self.assertEqual(self.req(path)[2]['item'],original)
+        code,_,saved=self.req('/api/admin/records',update)
+        self.assertEqual(code,200,saved)
+        self.assertEqual(saved['productCode'],original['productCode'])
+        self.assertEqual(saved['id'],original['id'])
+        self.assertEqual(saved['version'],original['version']+1)
+        self.assertEqual(saved['bodyAreas'],['head','body'])
+        self.assertEqual(self.req(path)[2],{'item':saved})
+        self.assertEqual(self.req('/api/admin/records',update)[0],409)
+        no_version={key:value for key,value in update.items() if key!='version'}
+        self.assertEqual(self.req('/api/admin/records',no_version)[0],409)
+        self.assertEqual(self.req(path)[2]['item'],saved)
+        self.assertEqual(self.req('/api/admin/records?'+urlencode({'id':other['id']}))[2]['item'],other)
+
+    def test_single_record_and_tools_keep_all_role_boundaries(self):
+        path='/api/admin/records?id=TEST-BOTTLE-1'
+        self.assertEqual(self.req(path)[0],401)
+        self.assertEqual(self.req('/admin/tools')[0],303)
+        self.employee_login()
+        self.assertEqual(self.req(path)[0],403)
+        self.assertEqual(self.req('/admin/tools')[0],403)
+        server.STORE.mutate('users','save',{'id':'review_client','version':0,
+            'password':self.password,'role':'client'},'review_admin')
+        code,headers,_=self.req('/api/login',{'username':'review_client','password':self.password})
+        self.assertEqual(code,200)
+        self.cookie=headers['Set-Cookie'].split(';')[0]
+        self.csrf=self.req('/api/session')[2]['csrf']
+        for route in ('/admin','/admin.html','/admin/tools','/admin.js','/admin.css',path):
+            self.assertEqual(self.req(route)[0],403,route)
+        self.assertEqual(self.req('/api/admin/records',{'action':'save','id':'TEST-BOTTLE-1',
+            'version':1,'record':{'name':'禁止客户编辑'}})[0],403)
 
     def test_product_edit_archive_restore_conflict_and_catalog_sync(self):
         self.login()

@@ -70,6 +70,51 @@ class AdminStoreTests(unittest.TestCase):
         self.save('records', {'id': 'ORIGINAL-1', 'version': 4}, 'unarchive')
         self.assertEqual(len(self.store.catalog()['records']), 1)
 
+    def test_body_areas_are_optional_validated_deduplicated_and_preserved(self):
+        original = self.store.read_admin('records', 'ORIGINAL-1')
+        self.assertNotIn('bodyAreas', original)
+        unchanged = self.save('records', {'id': original['id'], 'version': original['version'],
+                                          'record': {'name': original['name']}})
+        self.assertNotIn('bodyAreas', unchanged)
+        tagged = self.save('records', {'id': original['id'], 'version': unchanged['version'],
+                                      'record': {'bodyAreas': ['body', 'face', 'body']}})
+        self.assertEqual(tagged['bodyAreas'], ['body', 'face'])
+        self.assertEqual(tagged['productCode'], original['productCode'])
+        excluded = {'bodyAreas', 'version', 'updated'}
+        self.assertEqual({key: value for key, value in unchanged.items() if key not in excluded},
+                         {key: value for key, value in tagged.items() if key not in excluded})
+        edited = self.save('records', {'id': original['id'], 'version': tagged['version'],
+                                      'record': {'name': '普通编辑保留护理部位'}})
+        self.assertEqual(edited['bodyAreas'], ['body', 'face'])
+        all_areas = self.save('records', {'id': original['id'], 'version': edited['version'],
+                                         'record': {'bodyAreas': ['face', 'body', 'head']}})
+        self.assertEqual(all_areas['bodyAreas'], ['face', 'body', 'head'])
+        cleared = self.save('records', {'id': original['id'], 'version': all_areas['version'],
+                                       'record': {'bodyAreas': []}})
+        self.assertEqual(cleared['bodyAreas'], [])
+        again = AdminStore(self.state, self.private, credentials('yuanze'), self.base)
+        self.assertEqual(again.read_admin('records', original['id'])['bodyAreas'], [])
+
+    def test_invalid_body_areas_reject_without_partial_write(self):
+        original = self.store.read_admin('records', 'ORIGINAL-1')
+        for value in (None, 'face', {'face': True}, ['Face'], ['body-head'], ['face '],
+                      [True], [None], [{}], [['face']], ['face', 'body', 'head', 'face']):
+            with self.subTest(value=value):
+                with self.assertRaises(AdminError) as rejected:
+                    self.save('records', {'id': original['id'], 'version': original['version'],
+                                          'record': {'name': '无效写入', 'bodyAreas': value}})
+                self.assertEqual(rejected.exception.status, 400)
+                self.assertEqual(self.store.read_admin('records', original['id']), original)
+
+    def test_body_areas_stay_out_of_client_projection(self):
+        from client_catalog import project_record
+        before = self.store.read_admin('records', 'ORIGINAL-1')
+        after = self.save('records', {'id': before['id'], 'version': before['version'],
+                                     'record': {'bodyAreas': ['face', 'head']}})
+        self.assertEqual(project_record(after, after['productCode']),
+                         project_record(before, before['productCode']))
+        self.assertNotIn('bodyAreas', project_record(after, after['productCode']))
+
     def test_image_only_update_preserves_all_other_fields_and_checks_version(self):
         before = self.store.read_admin('records', 'ORIGINAL-1')
         images = [{**before['images'][0], 'caption': '原图保留'}]
@@ -86,6 +131,87 @@ class AdminStoreTests(unittest.TestCase):
         with self.assertRaises(AdminError):
             self.save('records', {'id': before['id'], 'version': after['version']}, 'images')
         self.assertEqual(self.store.read_admin('records', before['id']), after)
+
+    def test_specification_override_tracks_explicit_field_changes_and_persists(self):
+        record = self.store.read_admin('records', 'ORIGINAL-1')
+        self.assertNotIn('specificationOverride', record)
+        for changes in ({'name': '仅改名称'}, {'quoteRaw': '新报价'}, {'bodyAreas': ['body']},
+                        {'specificationRaw': '', 'capacityMl': None}):
+            record = self.save('records', {'id': record['id'], 'version': record['version'], 'record': changes})
+            self.assertNotIn('specificationOverride', record)
+        record = self.save('records', {'id': record['id'], 'version': record['version'],
+                                      'record': {'capacityMl': 30}})
+        self.assertEqual(record['specificationOverride'], {'label': '30 mL', 'sourceField': 'capacityMl'})
+        record = self.save('records', {'id': record['id'], 'version': record['version'],
+                                      'record': {'specificationRaw': '50-15g'}})
+        self.assertEqual(record['specificationOverride'], {'label': '50-15g', 'sourceField': 'specificationRaw'})
+        self.assertEqual(record['capacityMl'], 30)  # Original numeric evidence is retained.
+        record = self.save('records', {'id': record['id'], 'version': record['version'],
+                                      'record': {'capacityMl': 80.125}})
+        self.assertEqual(record['specificationOverride'], {'label': '80.125 mL', 'sourceField': 'capacityMl'})
+        unchanged = self.save('records', {'id': record['id'], 'version': record['version'], 'record': record})
+        self.assertEqual(unchanged['specificationOverride'], record['specificationOverride'])
+        after_image = self.save('records', {'id': record['id'], 'version': unchanged['version'],
+                                           'images': unchanged['images']}, 'images')
+        self.assertEqual(after_image['specificationOverride'], record['specificationOverride'])
+        again = AdminStore(self.state, self.private, credentials('yuanze'), self.base)
+        self.assertEqual(again.read_admin('records', record['id'])['specificationOverride'], record['specificationOverride'])
+        from client_catalog import project_record
+        self.assertNotIn('specificationOverride', project_record(after_image, after_image['productCode']))
+
+    def test_specification_override_cannot_be_forged_and_is_absent_on_create(self):
+        before = self.store.read_admin('records', 'ORIGINAL-1')
+        forged = {'label': '999 mL', 'sourceField': 'capacityMl'}
+        for changes in ({'specificationOverride': forged}, {'capacityMl': 50, 'specificationOverride': forged}):
+            with self.assertRaises(AdminError):
+                self.save('records', {'id': before['id'], 'version': before['version'], 'record': changes})
+            self.assertEqual(self.store.read_admin('records', before['id']), before)
+        with self.assertRaises(AdminError):
+            self.save('records', {'version': 0, 'record': {'name': '伪造新产品', 'specificationOverride': forged}})
+        created = self.save('records', {'version': 0, 'record': {'name': '新增产品', 'capacityMl': 50, 'specificationRaw': '50 mL'}})
+        self.assertNotIn('specificationOverride', created)
+
+    def test_specification_override_clear_and_restoring_history_do_not_reuse_stale_labels(self):
+        record = self.save('records', {'id': 'ORIGINAL-1', 'version': 1,
+                                      'record': {'capacityMl': 30, 'specificationRaw': '30 mL'}})
+        initial = next(item for item in self.store.read_admin('audit') if item['action'] == 'initial')
+        revised = next(item for item in self.store.read_admin('audit') if item['action'] == 'save')
+        record = self.save('records', {'id': record['id'], 'version': record['version'], 'record': {'specificationRaw': ''}})
+        self.assertEqual(record['specificationOverride'], {'label': '规格待补充', 'sourceField': 'specificationRaw'})
+        self.assertEqual(record['capacityMl'], 30)
+        record = self.save('records', {'id': record['id'], 'version': record['version'], 'record': {'capacityMl': None}})
+        self.assertEqual(record['specificationOverride'], {'label': '规格待补充', 'sourceField': 'capacityMl'})
+        restored = self.save('records', {'id': record['id'], 'version': record['version'], 'revision': revised['id']}, 'restore')
+        self.assertEqual(restored['specificationOverride'], {'label': '30 mL', 'sourceField': 'specificationRaw'})
+        restored = self.save('records', {'id': record['id'], 'version': restored['version'], 'revision': initial['id']}, 'restore')
+        self.assertNotIn('specificationOverride', restored)
+        self.assertNotIn('capacityMl', restored)
+
+    def test_simultaneous_specification_fields_require_compatible_explicit_capacity(self):
+        before = self.store.read_admin('records', 'ORIGINAL-1')
+        for raw, capacity in (('80 mL', 30), ('30g', 30), ('50-15g', 50), ('30/50ml', 50),
+                              ('30ml / 50ml', 30), ('容量待确认', 30), ('1L', 500)):
+            with self.subTest(raw=raw, capacity=capacity):
+                payload = {'id': before['id'], 'version': before['version'],
+                           'record': {'specificationRaw': raw, 'capacityMl': capacity}}
+                with self.assertRaises(AdminError):
+                    self.save('records', payload)
+                self.assertFalse(self.store.bulk_preview([payload])['valid'])
+                self.assertEqual(self.store.read_admin('records', before['id']), before)
+        record = self.save('records', {'id': before['id'], 'version': before['version'],
+                                      'record': {'specificationRaw': '容量：８０ ｍＬ；口径24mm', 'capacityMl': 80}})
+        self.assertEqual(record['specificationOverride']['sourceField'], 'specificationRaw')
+        record = self.save('records', {'id': record['id'], 'version': record['version'],
+                                      'record': {'specificationRaw': '1L', 'capacityMl': 1000}})
+        self.assertEqual(record['specificationOverride']['label'], '1L')
+        record = self.save('records', {'id': record['id'], 'version': record['version'],
+                                      'record': {'specificationRaw': '50-15g', 'capacityMl': None}})
+        self.assertEqual(record['specificationOverride']['label'], '50-15g')
+        preview = self.store.bulk_preview([{'id': record['id'], 'version': record['version'],
+                                          'record': {'specificationRaw': '60 mL', 'capacityMl': 60}}])
+        self.assertTrue(preview['valid'], preview['errors'])
+        saved = self.store.bulk_save(preview['rows'], 'admin')['records'][0]
+        self.assertEqual(saved['specificationOverride'], {'label': '60 mL', 'sourceField': 'specificationRaw'})
 
     def test_uploaded_image_keeps_reference_scope_and_cannot_promote_original_page(self):
         path = 'uploads/' + 'a' * 32 + '.jpg'

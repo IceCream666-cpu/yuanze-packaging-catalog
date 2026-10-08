@@ -9,10 +9,23 @@ export function createProductGroupIndex(records, reviewedGroups) {
       .filter(record => record?.kind === 'package' && !index.has(record.id));
     if (!members.length) continue;
     const ids = new Set(members.map(record => record.id));
+    const overrides = new Map(members.flatMap(record => {
+      const override = record.specificationOverride;
+      return override && ['capacityMl', 'specificationRaw'].includes(override.sourceField)
+        && typeof override.label === 'string' && override.label.trim()
+        ? [[record.id, override.label.trim()]] : [];
+    }));
     const specs = (Array.isArray(definition.specs) ? definition.specs : [])
       .filter(spec => spec && typeof spec.label === 'string' && spec.label.trim())
-      .map(spec => ({label: spec.label.trim(), recordIds: (spec.recordIds || []).filter(id => ids.has(id))}))
+      .map(spec => ({label: spec.label.trim(), recordIds: (spec.recordIds || []).filter(id => ids.has(id) && !overrides.has(id))}))
       .filter(spec => spec.recordIds.length);
+    // Each override replaces only this SKU's reviewed labels. The manifest and
+    // sibling SKU associations remain untouched, including shared old labels.
+    for (const [id, label] of overrides) {
+      const spec = specs.find(item => item.label === label);
+      if (spec) spec.recordIds.push(id);
+      else specs.push({label, recordIds: [id]});
+    }
     const capacities = [...new Set(members.flatMap(record => record._capacities ||
       (Number(record.capacityMl) > 0 ? [Number(record.capacityMl)] : [])))];
     const primary = definition.primaryImage;
@@ -23,7 +36,9 @@ export function createProductGroupIndex(records, reviewedGroups) {
       imageAliases: definition.imageAliases && typeof definition.imageAliases === 'object' && !Array.isArray(definition.imageAliases)
         ? {...definition.imageAliases} : {},
       multiSpec: new Set(specs.map(spec => spec.label)).size > 1 || capacities.length > 1};
-    if (members.length < 2 && !group.multiSpec) continue;
+    // Keep explicitly edited single-SKU groups scoped even when their size was
+    // cleared, so old page OCR cannot become the size-search fallback.
+    if (members.length < 2 && !group.multiSpec && !overrides.size) continue;
     for (const record of members) index.set(record.id, group);
   }
   return index;

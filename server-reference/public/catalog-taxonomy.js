@@ -53,6 +53,14 @@ const SECTION_RULES = [
   ['face', /面部|脸部|眼部|唇部|\b(?:face|facial)\b/giu],
   ['body-head', /身体|全身|躯干|手部|手足|足部|脚部|头部|头皮|头发|\b(?:body|scalp|hair|hands?|foot|feet)\b/giu],
 ];
+const BODY_SECTIONS = ['face', 'body', 'head'];
+const HEAD_USES = new Set(['洗发水', '护发素', '发膜', '头皮护理', '头发造型', '染发']);
+const BODY_SECTION_RULES = [
+  SECTION_RULES[0],
+  ['body', /身体|全身|躯干|手部|手足|足部|脚部|\b(?:body|hands?|foot|feet)\b/giu],
+  // A pump head and body-hair removal are not evidence of scalp/hair care.
+  ['head', /头部|头皮|头发|\b(?:scalp|hair(?!\s+removal\b))\b/giu],
+];
 const NEGATIVE_BEFORE = /(?:不(?:适用|适合|用于|供|可(?:以)?(?:用|装|盛|灌)|能(?:用|装)|推荐|支持|建议)|避免用于|禁(?:止)?(?:用|装)|不得(?:用|装)|\bnot\s+(?:suitable\s+|intended\s+)?for\b|\bnot\s+(?:suitable|applicable)\b|\bdo\s+not\s+use\b)/iu;
 const NEGATIVE_IMMEDIATE = /(?:而非|并非|非|不是|无用途为|\bnot\s+)\s*$/iu;
 const SHARED_MARKER = /图册整页|整页(?:参考|共用)|共用参考|共享参考|原页(?:共用|参考)|source[ -]page\s+reference/iu;
@@ -155,6 +163,22 @@ export function recordSections(record) {
   if (!isProduct(record)) return [];
   const sections=inferred(record).sections;
   return ['face','body-head'].filter(section=>sections.has(section));
+}
+
+/** Three independent body areas; maintained areas and positive product evidence form a union. */
+export function recordBodySections(record) {
+  if (!isProduct(record)) return [];
+  const maintained = Array.isArray(record.bodyAreas) ? record.bodyAreas : [];
+  const sections = new Set(maintained.filter(section => BODY_SECTIONS.includes(section)));
+  const sources = scopedSources(record);
+  for (const [label, expression, section] of RULES) {
+    if (!section || !sources.some(source => positiveMatch(source, expression))) continue;
+    sections.add(section === 'face' ? 'face' : HEAD_USES.has(label) ? 'head' : 'body');
+  }
+  for (const [section, expression] of BODY_SECTION_RULES) {
+    if (sources.some(source => positiveMatch(source, expression))) sections.add(section);
+  }
+  return BODY_SECTIONS.filter(section => sections.has(section));
 }
 
 /** Common choices plus all actual maintained/inferred values from active packages. */
