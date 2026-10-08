@@ -23,7 +23,7 @@ async function until(test, message) {
   const end = Date.now()+4000;
   while (!test()) {if(Date.now()>end) throw Error('Timeout: '+message); await new Promise(r=>setTimeout(r,5));}
 }
-async function open(search = '', reviewedGroup = group) {
+async function open(search = '', reviewedGroup = group, fixtureRecords = sourceRecords) {
   const errors = [], posts = [], downloads = [], console = new VirtualConsole();
   console.on('jsdomError', error => errors.push(error.message));
   const dom = new JSDOM(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), {
@@ -40,14 +40,14 @@ async function open(search = '', reviewedGroup = group) {
   w.fetch=async (url, options={}) => {
     if(options.method==='POST') posts.push({path:url, body:JSON.parse(options.body)});
     const body=url==='/api/session'?{role:'employee',username:'test-employee',csrf:'fixture'}:
-      url==='/api/catalog'?{records:sourceRecords,settings:{}}:
+      url==='/api/catalog'?{records:fixtureRecords,settings:{}}:
       url==='/api/preferences'?{favorites:['group-3']}:
       url==='/api/image-search/status'?{available:true,indexed_records:27,indexed_images:3}:{ok:true};
     return new Response(JSON.stringify(body), {status:200,headers:{'Content-Type':'application/json'}});
   };
   // Import/evaluate the real module graph. Only fixture data and browser I/O are supplied.
   await evaluateBrowserModule(dom, path.join(root,'app.js'),
-    `\nreviewedProductGroups.splice(0,reviewedProductGroups.length,${JSON.stringify(reviewedGroup)});\nwindow.groupTest={imageSearch, filtered, displayed, render, groupGalleryImages, createProductGroupIndex, groupProducts, imagePath, getIndex:()=>productGroupIndex, getRecords:()=>records};`);
+    `\nreviewedProductGroups.splice(0,reviewedProductGroups.length,...${JSON.stringify(Array.isArray(reviewedGroup)?reviewedGroup:[reviewedGroup])});\nwindow.groupTest={imageSearch, filtered, displayed, render, groupGalleryImages, createProductGroupIndex, groupProducts, imagePath, getIndex:()=>productGroupIndex, getRecords:()=>records};`);
   await until(()=>d.querySelector('#searchForm')&&d.querySelector('#favCount').textContent==='1','catalogue and preferences');
   return {dom,w,d,errors,posts,downloads};
 }
@@ -235,6 +235,59 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     assert.equal(JSON.stringify(all),original);
     assert.deepEqual(p.errors,[]);
     checks.push('Reviewed image aliases deduplicate only within a group, preserve every original association and exact primary/search path, and retain images when targets are missing or cyclic');
+  } finally {p.dom.window.close();}
+  const polluted=family.map(r=>({...r,name:'同款喷雾瓶',searchText:'整页OCR：10ml、30ml、50ml、150ml',
+    extraRaw:'10ml给客户报价0.6元；30ml给客户报价1.6元；50ml给客户报价1.7元'}));
+  const weight=[30,50].map((n,i)=>({id:`weight-${i}`,kind:'package',name:'JJ-8003',
+    specificationRaw:`${n}g`,quoteRaw:`克重报价-${n}`,searchText:'整页规格：30g、50g、150g'}));
+  const compound=['50-15g','50-20g'].map((spec,i)=>({id:`compound-${i}`,kind:'package',name:'复合规格瓶',
+    specificationRaw:spec,searchText:'整页规格：50-15g、50-20g'}));
+  const litre=['800ml','1L'].map((spec,i)=>({id:`litre-${i}`,kind:'package',name:'Pe化工瓶',
+    specificationRaw:spec,searchText:'整页规格：800ml、1L'}));
+  const reviewed=[{...group,name:'同款喷雾瓶'},
+    {id:'weight-family',name:'JJ-8003',recordIds:weight.map(r=>r.id),specs:weight.map((r,i)=>({label:`${[30,50][i]} g`,recordIds:[r.id]}))},
+    {id:'compound-family',name:'复合规格瓶',recordIds:compound.map(r=>r.id),specs:compound.map(r=>({label:r.specificationRaw,recordIds:[r.id]}))},
+    {id:'litre-family',name:'Pe化工瓶',recordIds:litre.map(r=>r.id),specs:litre.map(r=>({label:r.specificationRaw,recordIds:[r.id]}))}];
+  // This ungrouped item intentionally retains full-text OCR search semantics.
+  const unreviewed={id:'unreviewed',kind:'package',name:'未归并原始资料',searchText:'原文30ml与30g'};
+  p=await open('',reviewed,[...polluted,...weight,...compound,...litre,unreviewed]);
+  try {
+    for(const query of ['30ml','30 mL','30毫升','３０ ＭＬ']){
+      search(p,'同款喷雾瓶 '+query);
+      assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['group-0','group-2']);
+      assert.equal(p.d.querySelectorAll('.card').length,1);
+      assert.equal(p.d.querySelector('.card-title').dataset.detail,'group-0');
+    }
+    search(p,'同款喷雾瓶 50ml');
+    assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['group-1','group-3']);
+    p.d.querySelector('.card-title').click();
+    assert.equal(p.d.querySelector('.group-option.active').dataset.detail,'group-1');
+    assert.match(p.d.querySelector('.pricing-section').textContent,/独立报价-1/);
+    p.d.querySelector('#modal').close();
+    p.d.querySelector('[data-action=export]').click();
+    const csv=await new Promise((resolve,reject)=>{const reader=new p.w.FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsText(p.downloads[0]);});
+    assert.match(csv,/group-1/);assert.match(csv,/group-3/);assert.doesNotMatch(csv,/group-0|group-2/);
+    for(const query of ['10ml','150ml','30g']){
+      search(p,'同款喷雾瓶 '+query);
+      assert.equal(p.w.groupTest.displayed().length,0);
+    }
+    for(const query of ['30g','30 g','30克','３０ Ｇ']){
+      search(p,'JJ-8003 '+query);
+      assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['weight-0']);
+      assert.equal(p.d.querySelectorAll('.card').length,1);
+    }
+    search(p,'JJ-8003 50 g');assert.equal(p.d.querySelector('.card-title').dataset.detail,'weight-1');
+    search(p,'JJ-8003 150g');assert.equal(p.w.groupTest.displayed().length,0);
+    search(p,'复合规格瓶 50-20g');assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['compound-1']);
+    search(p,'Pe化工瓶 1L');assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['litre-1']);
+    search(p,'未归并原始资料 30ml');assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['unreviewed']);
+    search(p,'未归并原始资料 30 g');assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['unreviewed']);
+    reset(p);p.d.querySelector('[data-filter="capacity"][value="30"]').click();
+    p.d.querySelector('[data-filter="capacity"][value="50"]').click();
+    assert.equal(p.w.groupTest.displayed().length,1);
+    assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['group-0','group-1','group-2','group-3']);
+    assert.deepEqual(p.errors,[]);
+    checks.push('Each reviewed SKU matches only its own size labels despite mixed OCR/quote text; mL and g aliases, exact compound sizes, correct selected quotes/CSV, multi-size OR filters and ungrouped search remain intact');
   } finally {p.dom.window.close();}
   console.log(JSON.stringify({passed:true,checks,liveWebsiteRequests:0},null,2));
 })().catch(error=>{console.error(error);process.exitCode=1;});
