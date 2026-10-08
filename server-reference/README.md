@@ -42,4 +42,4 @@
 
 服务端分页需要 Python 现有依赖和 Node.js 22+（`node` 在 PATH，或配置 `NODE_BIN`）。私有查询工作进程从 SQLite 生成目录、复用浏览器相同的查询逻辑；它不对外监听端口，不使用外部模型或图片 API。没有 Node 时会话返回 `catalogPaging=false`，旧全库路径可用。
 
-`YZ_STATE/image-thumbnails/` 和既有 `client-media-cache/` 保存可重建衍生图，不属于产品数据，不提交 Git。列表的 `thumb=1` 不改变原图及下载；静态文件和图片使用 `private, no-cache`／ETag，敏感图片的授权检查先于 304。JSON、HTML、登录和会话仍为 no-store。GET／HEAD 可复用 HTTP/1.1 上游连接，POST 关闭连接；正式 Nginx 拟启用 HTTP/2 和独立 keepalive upstream。发布时先检查 Node 可执行、预热索引和三角色安全边界，数据库、账号、上传及原图保持。验收见 `../docs/手机端加载优化-20261009.md`。
+`YZ_STATE/image-thumbnails/` 和既有 `client-media-cache/` 保存可重建衍生图，不属于产品数据，不提交 Git。列表的 `thumb=1` 不改变原图及下载；静态文件和图片使用 `private, no-cache`／ETag，敏感图片的授权检查先于 304。JSON、HTML、登录和会话仍为 no-store。GET／HEAD 可复用 HTTP/1.1 上游连接，POST 关闭连接；正式 Nginx 已启用 HTTP/2 和独立 keepalive upstream。发布时先检查 Node 可执行、预热索引和三角色安全边界，数据库、账号、上传及原图保持。验收见 `../docs/手机端加载优化-20261009.md`。
