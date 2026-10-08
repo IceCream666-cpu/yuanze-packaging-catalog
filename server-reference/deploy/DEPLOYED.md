@@ -1,5 +1,15 @@
 # 源泽包材库发布记录
 
+## 2026-10-08 跨工程客户图片统一同步及五张轮播（已上线）
+
+- 北京时间 2026-10-08 19:02 完成图片统一同步验收。新主机 `47.79.233.3`、release `/opt/yuanze-reference/releases/20261008-admin-workspace-v1` 保持；本次图片批准通过管理员 API、CSRF、版本锁及审计完成，400 条记录仅变更指定客户图片批准，新增 443 个关联并取消 1 个旧版关联。客户目录为 614 款／666 个展示关联／529 张不同优化图。所有相关批次均纳入，包含当日新增 50 张和 6 张规格标注图。
+- 400 条更新结果、最终目标图片列表与其他字段逐项一致，666 个客户图片 HTTP／JPEG 检查全部通过；23 张衍生图覆盖 8 个批次及 20 张另行复查图，内容摘要、RGB、尺寸及元数据检查通过。权限边界、客户安全字段、目录稳定与会话退出通过。验证经实际服务器回环保留正式域名和严格 TLS，未声称公网浏览器逐图验收。私有证据：`work/all-project-client-image-sync-20261008/application.json`、`verification.json`、`after.json`。
+- 五张 liaose 轮播已于 18:02 单独上线：追加 5 个无损 WebP、更新 4 个展厅入口与 bundle 清单，共 10 个静态文件；108 个其他文件与 Nginx 配置保持，没有服务重启或 release 切换。原 24 张海报、6 分类和主动移除的 17 张保持。全部目标摘要、像素、权限与域名回环／旧 IP 公网登录路由通过；严格 TLS 的正式域名 SSH 隧道 Chrome 完成 390／1280px、中英文、五张背景共 20 组显示及轮播／暂停／选型导航验收。
+- 轮播备份 `/opt/yuanze-reference/backups/client-banner-sync-20261008`，回执 `work/all-project-client-image-sync-20261008/banner-result.json`。静态文件回退先核对当前摘要，按备份恢复对应目标及权限；图片批准回退另按私有计划、旧标记与产品当前版本执行，只撤销本轮变化。发现后续修改必须合并保留，不能整库恢复或覆盖新数据。
+- 本地同步工具提交 `51f97371`；27 项专用测试及全套 97 根／169 后端／21 部署／全部前端验证通过。轮播源文件、测试、发布状态与两端档案随本轮后续提交保存，私有运行数据不入库。
+- 连接恢复：原 SSH 超时后，远端仍完成全部 400 条结果保存；唯一 `BrokenPipeError` 发生在最后的进度输出。复用此前已授权的连接信息恢复严格指纹直连，确认旧进程退出并取回 400 份结果，逐项比对后执行完整只读线上核验，没有重复提交产品。原失败状态保存在 `resume-result.json`，恢复说明在 `application.json` 的 `transportRecovery`，没有篡改原传输失败记录。
+- 用户授权同类网站维护故障时主动复用已有连接凭据及已登录的阿里云 Workbench。已通过该控制台实际执行 `readlink -f /opt/yuanze-reference/current`，返回本次正式 release，确认工具可操作这个备用终端；凭据值、会话令牌与临时终端地址不记录在档案中。
+
 ## 2026-10-08 管理员共用包材工作区与原位编辑（已上线）
 
 - 正式主机 `47.79.233.3`，源码提交 `23194719706e3a577603c336df00f3aadba03672`；`/opt/yuanze-reference/current` → `/opt/yuanze-reference/releases/20261008-admin-workspace-v1`。上一代码为 `/opt/yuanze-reference/releases/20261007-product-groups-v1`；本次一致性备份为 `/opt/yuanze-reference/backups/20261008-admin-workspace-v1-retry1`。17:16（北京时间）复核应用、Nginx 和健康检查正常，10 个发布文件摘要及保留树指纹全部一致。

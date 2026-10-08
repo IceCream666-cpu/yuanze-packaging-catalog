@@ -15,6 +15,27 @@ COMPANY_PATHS = {'reception.png', 'showroom.png', 'yuanze-mark.svg'} | {
     for certificate in ('gmpc-en', 'gmpc-zh', 'iso22716-en', 'iso22716-zh')
     for extension in ('pdf', 'png')
 }
+# Fingerprints come from the five PNGs the user approved in liaose轮播背景-v2,
+# independently of the generated WebP manifest. A format conversion must not
+# replace, crop or repaint any of their pixels.
+BANNER_SOURCES = {
+    '01-pdrn-capsule-cream': ((1983, 793),
+        '3818fa904548b7791ecd376c26e1c869b7170afa617eaa4e9f7f7a4bc0d5b5c3',
+        '0e0f4fcd65ead3a2e5ec8631fe39bdd36687439731e1e0ed760a9c7e4e643f5b'),
+    '02-body-care-collection': ((2089, 753),
+        '86d3a2c22df77a685a5156bed158f26a94b9d24f76207b3abae1e3d005c44ab1',
+        '498cdb0f59ab7afc12220aa0f7d83f934642678753e579ec116605cda6e8962e'),
+    '03-cherry-blossom-gift-set': ((2048, 768),
+        '87f24d77d3be6bcee56110e54c32ce64a7762c67a3f701f65369dcaace166ede',
+        '5b2164119407bc5b58b0d001b80b65244492570523adf4eb0def947f6d3dbfde'),
+    '04-hand-care-collection': ((2048, 768),
+        '6c1fdc30a0a101568a55fd8af0cbad8c3046f46a216e876711e721bf9058971a',
+        '86d6af779261ec9fdc71c462ae7c354eb4a711186feb6bf60be1091a2130b792'),
+    '05-daylight-still': ((1983, 793),
+        'eb960f954ece99683107325c1cf50e2b8cb5558d4d4dd2dca26f31ce7313ecd8',
+        '17ba5afd2e75474540c93b2a23f5084bba048a72232dbdeddec43fe49ed9b4cd'),
+}
+BANNER_PATHS = {f'poster-banners/{name}.webp' for name in BANNER_SOURCES}
 
 
 class CompanyMaterials(unittest.TestCase):
@@ -35,7 +56,7 @@ class CompanyMaterials(unittest.TestCase):
                 elif item['kind'] == 'faithful-pdf-render':
                     self.assertTrue((ASSETS / item['sourcePdf']).is_file())
                 else:
-                    self.assertIn(item['kind'], {'poster-lossless', 'poster-thumbnail'})
+                    self.assertIn(item['kind'], {'poster-lossless', 'poster-thumbnail', 'banner-lossless'})
                 if path.suffix in {'.png', '.webp'}:
                     with Image.open(path) as image:
                         self.assertEqual(image.size, (item['width'], item['height']))
@@ -78,7 +99,7 @@ class CompanyMaterials(unittest.TestCase):
         entries = {item['path']: item for item in manifest['files']}
         expected_poster_paths = {f'posters/{poster_id}{suffix}.webp'
                                  for poster_id in active_ids for suffix in ('', '-thumb')}
-        self.assertEqual(set(entries), COMPANY_PATHS | expected_poster_paths)
+        self.assertEqual(set(entries), COMPANY_PATHS | expected_poster_paths | BANNER_PATHS)
         sources, hashes, pixel_hashes, archives = set(), set(), set(), set()
         archived_posters, attached_posters, attachments = set(), set(), set()
         for item in report['items']:
@@ -172,6 +193,28 @@ class CompanyMaterials(unittest.TestCase):
         self.assertEqual(archived_posters, archived_ids)
         self.assertEqual(attached_posters, attachment_ids)
         self.assertEqual(len(sources - attachments), 33)
+
+    def test_banner_webps_preserve_the_five_approved_pngs_without_resizing_or_metadata(self):
+        manifest = json.loads((ASSETS / 'manifest.json').read_text())
+        report = json.loads((ROOT / 'docs/客户端轮播背景清单.json').read_text())
+        entries = {item['path']: item for item in manifest['files'] if item['kind'] == 'banner-lossless'}
+        self.assertEqual(set(entries), BANNER_PATHS)
+        self.assertEqual(len(report['files']), 5)
+        self.assertEqual({item['path']: item for item in report['files']}, entries)
+        for name, (dimensions, source_hash, pixels_hash) in BANNER_SOURCES.items():
+            with self.subTest(banner=name):
+                entry = entries[f'poster-banners/{name}.webp']
+                self.assertEqual(entry['originalName'], name + '.png')
+                self.assertEqual(entry['originalSha256'], source_hash)
+                self.assertEqual(entry['originalPixelsSha256'], pixels_hash)
+                self.assertEqual((entry['width'], entry['height']), dimensions)
+                with Image.open(ASSETS / entry['path']) as image:
+                    self.assertEqual(image.format, 'WEBP')
+                    self.assertEqual(image.size, dimensions)
+                    self.assertFalse(getattr(image, 'is_animated', False))
+                    self.assertFalse(image.getexif())
+                    self.assertFalse({'exif', 'xmp', 'icc_profile'}.intersection(image.info))
+                    self.assertEqual(hashlib.sha256(image.convert('RGB').tobytes()).hexdigest(), pixels_hash)
 
 
 if __name__ == '__main__':

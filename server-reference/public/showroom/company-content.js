@@ -29,6 +29,13 @@ window.YuanzeCompanyContent = {
       }
     }
   },
+  posterBanners: [
+    {id:'pdrn-capsule-cream', src:'/showroom/assets/poster-banners/01-pdrn-capsule-cream.webp', width:1983, height:793, title:{zh:'liaose · PDRN 胶囊面霜', en:'liaose · PDRN CAPSULE CREAM'}},
+    {id:'body-care-collection', src:'/showroom/assets/poster-banners/02-body-care-collection.webp', width:2089, height:753, title:{zh:'liaose · 身体护理系列：薰衣草双瓶、茶树及氨基酸沐浴露、精油磨砂膏', en:'liaose · THE BODY CARE DUO · TEA TREE BODY WASH · AMINO ACID BODY WASH · AHA & ESSENTIAL OIL BODY SCRUB'}},
+    {id:'cherry-blossom-gift-set', src:'/showroom/assets/poster-banners/03-cherry-blossom-gift-set.webp', width:2048, height:768, title:{zh:'liaose · 樱花香氛护理礼盒', en:'liaose · CHERRY BLOSSOM FRAGRANCE GIFT SET'}},
+    {id:'hand-care-collection', src:'/showroom/assets/poster-banners/04-hand-care-collection.webp', width:2048, height:768, title:{zh:'liaose · 香氛洗手液与玉兰乳香护手油', en:'liaose · FRAGRANCED HAND WASH · MAGNOLIA & FRANKINCENSE HAND OIL'}},
+    {id:'daylight-still', src:'/showroom/assets/poster-banners/05-daylight-still.webp', width:1983, height:793, title:{zh:'liaose · DAYLIGHT 香水与 STILL 草本空间喷雾', en:'liaose · DAYLIGHT · STILL · EAU DE PARFUM · HERBAL ROOM SPRAY'}}
+  ],
   zh: {
     title: 'YUANZE · 客户展厅',
     previewTitle: 'YUANZE · 客户展厅预览',
@@ -61,6 +68,12 @@ window.YuanzeCompanyContent = {
     posterTitle: '优质产品海报',
     posterDescription: '精选产品系列，点开查看完整海报。',
     posterNote: '包材规格请进入包材选型查看。',
+    bannerLabel: '产品系列轮播',
+    previousBanner: '上一张背景图',
+    nextBanner: '下一张背景图',
+    pauseBanner: '暂停轮播',
+    resumeBanner: '继续轮播',
+    bannerImageError: '背景图暂时无法加载，可切换下一张。',
     posterCategories: '海报类别',
     allPosters: '全部',
     posterCount: '{count} 张海报 · 共 {total} 张',
@@ -140,6 +153,12 @@ window.YuanzeCompanyContent = {
     posterTitle: 'Product inspiration',
     posterDescription: 'Explore selected product collections. Open a poster to see it in full.',
     posterNote: 'Explore packaging selection for formats and specifications.',
+    bannerLabel: 'Product collection carousel',
+    previousBanner: 'Previous banner',
+    nextBanner: 'Next banner',
+    pauseBanner: 'Pause slideshow',
+    resumeBanner: 'Resume slideshow',
+    bannerImageError: 'This background is unavailable. Try the next slide.',
     posterCategories: 'Poster categories',
     allPosters: 'All',
     posterCount: '{count} posters · {total} total',

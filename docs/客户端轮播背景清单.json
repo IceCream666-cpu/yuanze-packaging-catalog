@@ -1,0 +1,65 @@
+{
+  "approvedAt": "2026-10-08",
+  "approval": "用户确认后明确要求上线网站",
+  "generator": "内置 image_gen",
+  "layoutReference": "用户提供的 liaose CUSTOM PACKAGING 横版图",
+  "displayAspectRatio": "4:1 on desktop; full image on smaller screens",
+  "processing": "PNG to lossless WebP only; no crop, rescale or pixel edits",
+  "files": [
+    {
+      "path": "poster-banners/01-pdrn-capsule-cream.webp",
+      "sha256": "2bd8465ff3d2cc329bcd2bdb40ae50c8d3dcbb612aefd57eace6ab1258dbb887",
+      "bytes": 1135590,
+      "originalName": "01-pdrn-capsule-cream.png",
+      "originalSha256": "3818fa904548b7791ecd376c26e1c869b7170afa617eaa4e9f7f7a4bc0d5b5c3",
+      "originalPixelsSha256": "0e0f4fcd65ead3a2e5ec8631fe39bdd36687439731e1e0ed760a9c7e4e643f5b",
+      "kind": "banner-lossless",
+      "width": 1983,
+      "height": 793
+    },
+    {
+      "path": "poster-banners/02-body-care-collection.webp",
+      "sha256": "59253e74ad06d925d417cc604962b40f744d63d27c557bf6afd9e0d3480adc0c",
+      "bytes": 1206400,
+      "originalName": "02-body-care-collection.png",
+      "originalSha256": "86d3a2c22df77a685a5156bed158f26a94b9d24f76207b3abae1e3d005c44ab1",
+      "originalPixelsSha256": "498cdb0f59ab7afc12220aa0f7d83f934642678753e579ec116605cda6e8962e",
+      "kind": "banner-lossless",
+      "width": 2089,
+      "height": 753
+    },
+    {
+      "path": "poster-banners/03-cherry-blossom-gift-set.webp",
+      "sha256": "e184ab973465ccd4aa9f6d61ec03c7351aae5603b286fc4e340ee4724486849f",
+      "bytes": 1296508,
+      "originalName": "03-cherry-blossom-gift-set.png",
+      "originalSha256": "87f24d77d3be6bcee56110e54c32ce64a7762c67a3f701f65369dcaace166ede",
+      "originalPixelsSha256": "5b2164119407bc5b58b0d001b80b65244492570523adf4eb0def947f6d3dbfde",
+      "kind": "banner-lossless",
+      "width": 2048,
+      "height": 768
+    },
+    {
+      "path": "poster-banners/04-hand-care-collection.webp",
+      "sha256": "e598813a94800c4a91aaa80ac28bd469e99b0160fe442564cba13a58e1e8b464",
+      "bytes": 1155548,
+      "originalName": "04-hand-care-collection.png",
+      "originalSha256": "6c1fdc30a0a101568a55fd8af0cbad8c3046f46a216e876711e721bf9058971a",
+      "originalPixelsSha256": "86d6af779261ec9fdc71c462ae7c354eb4a711186feb6bf60be1091a2130b792",
+      "kind": "banner-lossless",
+      "width": 2048,
+      "height": 768
+    },
+    {
+      "path": "poster-banners/05-daylight-still.webp",
+      "sha256": "25c47724ca6dba3c298100e6e60a7f64ae2860a8128f382ab73e5ec6c234f9cf",
+      "bytes": 1252680,
+      "originalName": "05-daylight-still.png",
+      "originalSha256": "eb960f954ece99683107325c1cf50e2b8cb5558d4d4dd2dca26f31ce7313ecd8",
+      "originalPixelsSha256": "17ba5afd2e75474540c93b2a23f5084bba048a72232dbdeddec43fe49ed9b4cd",
+      "kind": "banner-lossless",
+      "width": 1983,
+      "height": 793
+    }
+  ]
+}

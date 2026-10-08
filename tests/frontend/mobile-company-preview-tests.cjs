@@ -6,6 +6,55 @@ const vm = require('node:vm');
 const {JSDOM,VirtualConsole} = require('jsdom');
 const base = path.resolve(__dirname, '../../docs/mobile-client-preview');
 const original = 'We research, develop, and manufacture skincare, body care, hair care, and sun protection products for brands and retailers in over 30 countries worldwide. Our products are FDA-registered and certified to ISO 22716 and GMPC standards, with a formulation science foundation built on 14 years of experience. From your first private label line to millions of retail items, you need only partner with one trusted collaborator.';
+const bannerFiles = ['01-pdrn-capsule-cream', '02-body-care-collection', '03-cherry-blossom-gift-set', '04-hand-care-collection', '05-daylight-still'];
+
+// Drive elapsed time and browser visibility through public browser APIs so the
+// carousel can be tested without exposing its implementation or waiting 6 s.
+function bannerEnvironment(window, options) {
+  let now=0, nextTimer=1, hidden=Boolean(options.hidden), visible=options.visible!==false;
+  const timers=new Map(), observers=new Set(), mediaListeners=new Set();
+  window.setTimeout=(callback,delay=0,...args)=>{
+    const id=nextTimer++;
+    timers.set(id,{at:now+Math.max(0,Number(delay)||0),callback,args});
+    return id;
+  };
+  window.clearTimeout=id=>timers.delete(id);
+  Object.defineProperty(window.document,'hidden',{configurable:true,get:()=>hidden});
+  Object.defineProperty(window.document,'visibilityState',{configurable:true,get:()=>hidden?'hidden':'visible'});
+  const media={matches:Boolean(options.reducedMotion),media:'(prefers-reduced-motion: reduce)',
+    addEventListener(type,callback){if(type==='change')mediaListeners.add(callback);},
+    removeEventListener(type,callback){if(type==='change')mediaListeners.delete(callback);},
+    addListener(callback){mediaListeners.add(callback);},removeListener(callback){mediaListeners.delete(callback);}};
+  window.matchMedia=()=>media;
+  window.IntersectionObserver=class {
+    constructor(callback){this.callback=callback;this.targets=new Set();observers.add(this);}
+    observe(target){this.targets.add(target);this.callback([{target,isIntersecting:visible,intersectionRatio:visible?1:0}]);}
+    unobserve(target){this.targets.delete(target);}
+    disconnect(){this.targets.clear();observers.delete(this);}
+  };
+  return {
+    advance(milliseconds){
+      const end=now+milliseconds;
+      let calls=0;
+      while(true){
+        const pending=Array.from(timers).filter(([,timer])=>timer.at<=end).sort((a,b)=>a[1].at-b[1].at||a[0]-b[0])[0];
+        if(!pending)break;
+        assert(++calls<1000,'Timer loop did not settle');
+        const [id,timer]=pending;now=timer.at;timers.delete(id);timer.callback(...timer.args);
+      }
+      now=end;
+    },
+    setHidden(value){hidden=value;window.document.dispatchEvent(new window.Event('visibilitychange'));},
+    setVisible(value){
+      visible=value;
+      for(const observer of observers){
+        const entries=Array.from(observer.targets).filter(target=>target.id==='poster-banner').map(target=>({target,isIntersecting:value,intersectionRatio:value?1:0}));
+        if(entries.length)observer.callback(entries);
+      }
+    },
+    setReducedMotion(value){media.matches=value;for(const callback of mediaListeners)callback({matches:value,media:media.media});},
+  };
+}
 
 function setup(language = 'zh', blockedStorage = false, options = {}) {
   const errors = [], virtualConsole = new VirtualConsole();
@@ -13,7 +62,9 @@ function setup(language = 'zh', blockedStorage = false, options = {}) {
   const html = fs.readFileSync(path.join(base,'index.html'),'utf8').replace('data-mode="preview"',`data-mode="${options.mode || 'preview'}"`);
   const dom = new JSDOM(html, {url:'http://localhost/'+(options.hash || ''),runScripts:'outside-only',virtualConsole});
   const {window} = dom;
+  if(options.legacyBanner)window.document.getElementById('poster-banner').remove();
   window.fetch = options.fetch || (async () => {throw Error('Unexpected fetch');});
+  const banner=options.banner ? bannerEnvironment(window,options.banner) : null;
   if (blockedStorage) Object.defineProperty(window,'localStorage',{get(){throw new Error('unavailable');}});
   else window.localStorage.setItem('yuanze-mobile-preview-language',language);
   window.HTMLDialogElement.prototype.showModal = function(){this.open=true;};
@@ -27,7 +78,7 @@ function setup(language = 'zh', blockedStorage = false, options = {}) {
     const location = {get origin(){return window.location.origin;},get hash(){return window.location.hash;},replace:url=>options.navigation.push(url)};
     vm.runInNewContext(source,{window,document:window.document,location,history:window.history,localStorage:window.localStorage,navigator:window.navigator,fetch:window.fetch,AbortController:window.AbortController,setTimeout:window.setTimeout.bind(window),clearTimeout:window.clearTimeout.bind(window)});
   } else window.eval(source);
-  return {dom,window,document:window.document,errors};
+  return {dom,window,document:window.document,errors,banner};
 }
 
 function historyChange(window, action) {
@@ -54,6 +105,149 @@ test('expertise labels show service models before scripts load and after languag
     assert.deepEqual(errors, []);
     dom.window.close();
   }
+});
+
+function activeBanner(document) {
+  const slides=Array.from(document.querySelectorAll('img[data-banner-slide][aria-hidden="false"]'));
+  assert.equal(slides.length,1,'Exactly one background is current');
+  assert.equal(slides[0].parentElement.classList.contains('is-active'),true);
+  assert.equal(slides[0].parentElement.getAttribute('aria-hidden'),'false');
+  for(const image of document.querySelectorAll('img[data-banner-slide][aria-hidden="true"]')){
+    assert.equal(image.parentElement.getAttribute('aria-hidden'),'true','Inactive labelled groups must also leave the accessibility tree');
+  }
+  return Number(slides[0].dataset.bannerSlide);
+}
+
+test('legacy markup without the banner keeps poster viewing, downloads, languages and navigation usable', async () => {
+  const {dom,window,document,errors}=setup('zh',false,{hash:'#/products',legacyBanner:true});
+  assert.equal(document.getElementById('poster-banner'),null);
+  assert.equal(document.querySelectorAll('[data-poster-card]').length,24);
+  assert.equal(document.getElementById('poster-view').hidden,false);
+  document.querySelector('[data-poster-image=poster-001]').click();
+  assert.equal(document.getElementById('photo-dialog').open,true);
+  assert.equal(document.getElementById('expanded-photo').getAttribute('src'),'assets/posters/poster-001.webp');
+  const download=document.getElementById('photo-download');
+  assert.equal(download.hidden,false);
+  assert.equal(download.getAttribute('href'),'assets/posters/poster-001.webp?download=yuanze-poster-001.webp');
+  assert.equal(download.download,'yuanze-poster-001.webp');
+  document.getElementById('photo-language-toggle').click();
+  assert.equal(download.textContent,'Download image');
+  assert.equal(document.getElementById('photo-caption').textContent,'Collagen hydrogel mask · Teal');
+  await historyChange(window,()=>document.getElementById('close-photo').click());
+  assert.equal(document.getElementById('photo-dialog').open,false);
+  document.querySelector('[data-product-view=catalog]').click();
+  const frame=document.getElementById('catalog-frame'),child=frame.contentWindow;
+  assert.equal(frame.getAttribute('src'),'/client/products?showroom=1');
+  document.querySelector('.bottom-nav [data-page-link=home]').click();
+  assert.equal(document.getElementById('page-home').hidden,false);
+  document.querySelector('.bottom-nav [data-page-link=products]').click();
+  assert.equal(document.getElementById('poster-view').hidden,false);
+  assert.equal(frame.contentWindow,child);
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,24);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('the five banner images load only when selected on the poster page and do not enter the poster catalogue', () => {
+  const {dom,window,document,errors,banner}=setup('zh',false,{banner:{}});
+  const slides=Array.from(document.querySelectorAll('img[data-banner-slide]'));
+  assert.equal(slides.length,5);
+  assert.deepEqual(slides.map(image=>image.dataset.bannerSlide),['0','1','2','3','4']);
+  assert.deepEqual(slides.map(image=>image.dataset.src),bannerFiles.map(name=>`assets/poster-banners/${name}.webp`));
+  assert.equal(slides.some(image=>image.hasAttribute('src')),false);
+  assert.equal(window.YuanzeProductPosters.items.length,24);
+  banner.advance(18000);
+  assert.equal(slides.some(image=>image.hasAttribute('src')),false);
+  document.querySelector('.bottom-nav [data-page-link=products]').click();
+  assert.equal(activeBanner(document),0);
+  assert.equal(document.getElementById('banner-position').textContent,'1 / 5');
+  assert.equal(slides[0].getAttribute('src'),'assets/poster-banners/01-pdrn-capsule-cream.webp');
+  assert.equal(slides.slice(1).some(image=>image.hasAttribute('src')),false);
+  assert.equal(document.querySelectorAll('[data-poster-card]').length,24);
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('banner rotation waits six seconds, resets after manual selection, wraps and keeps pause across language changes', () => {
+  const {dom,window,document,errors,banner}=setup('zh',false,{hash:'#/products',banner:{}});
+  const previous=document.getElementById('banner-previous'),next=document.getElementById('banner-next'),toggle=document.getElementById('banner-toggle');
+  assert.equal(activeBanner(document),0);
+  banner.advance(5999);assert.equal(activeBanner(document),0);
+  banner.advance(1);assert.equal(activeBanner(document),1);
+  banner.advance(3000);previous.click();assert.equal(activeBanner(document),0);
+  banner.advance(5999);assert.equal(activeBanner(document),0);
+  banner.advance(1);assert.equal(activeBanner(document),1);
+  previous.click();previous.click();assert.equal(activeBanner(document),4);
+  assert.equal(document.getElementById('banner-position').textContent,'5 / 5');
+  next.click();assert.equal(activeBanner(document),0);
+  toggle.click();
+  assert.match(toggle.textContent,/继续|播放/);
+  banner.advance(60000);assert.equal(activeBanner(document),0);
+  const previousLabel=previous.getAttribute('aria-label'),nextLabel=next.getAttribute('aria-label');
+  assert(previousLabel);assert(nextLabel);
+  document.getElementById('language-toggle').click();
+  const current=document.querySelector('img[data-banner-slide="0"]');
+  assert.equal(current.alt,window.YuanzeCompanyContent.posterBanners[0].title.en);
+  assert.notEqual(previous.getAttribute('aria-label'),previousLabel);
+  assert.notEqual(next.getAttribute('aria-label'),nextLabel);
+  assert.match(toggle.textContent,/resume|play|continue/i);
+  banner.advance(6000);assert.equal(activeBanner(document),0);
+  toggle.click();banner.advance(6000);assert.equal(activeBanner(document),1);
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('banner automatic rotation suspends while the tab, banner, page, catalogue or poster dialog is not visible', async () => {
+  const {dom,window,document,errors,banner}=setup('zh',false,{hash:'#/products',banner:{}});
+  banner.advance(2000);
+  banner.setHidden(true);banner.advance(60000);assert.equal(activeBanner(document),0);
+  banner.setHidden(false);banner.advance(6000);assert.equal(activeBanner(document),1);
+  banner.setVisible(false);banner.advance(60000);assert.equal(activeBanner(document),1);
+  banner.setVisible(true);banner.advance(6000);assert.equal(activeBanner(document),2);
+  document.querySelector('.bottom-nav [data-page-link=home]').click();
+  banner.advance(60000);assert.equal(activeBanner(document),2);
+  document.querySelector('.bottom-nav [data-page-link=products]').click();
+  banner.advance(6000);assert.equal(activeBanner(document),3);
+  document.querySelector('[data-product-view=catalog]').click();
+  banner.advance(60000);assert.equal(activeBanner(document),3);
+  document.querySelector('[data-product-view=posters]').click();
+  banner.advance(6000);assert.equal(activeBanner(document),4);
+  document.querySelector('[data-poster-image=poster-001]').click();
+  assert.equal(document.getElementById('photo-dialog').open,true);
+  banner.advance(60000);assert.equal(activeBanner(document),4);
+  await historyChange(window,()=>document.getElementById('close-photo').click());
+  assert.equal(document.getElementById('photo-dialog').open,false);
+  banner.advance(6000);assert.equal(activeBanner(document),0);
+  document.getElementById('banner-toggle').click();
+  document.querySelector('.bottom-nav [data-page-link=home]').click();banner.advance(6000);
+  document.querySelector('.bottom-nav [data-page-link=products]').click();
+  banner.setHidden(true);banner.setHidden(false);banner.setVisible(false);banner.setVisible(true);
+  banner.advance(18000);assert.equal(activeBanner(document),0);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('reduced motion starts paused while allowing manual selection and explicit automatic playback', () => {
+  const {dom,document,errors,banner}=setup('zh',false,{hash:'#/products',banner:{reducedMotion:true}});
+  const toggle=document.getElementById('banner-toggle');
+  assert.match(toggle.textContent,/继续|播放/);
+  banner.advance(60000);assert.equal(activeBanner(document),0);
+  document.getElementById('banner-next').click();assert.equal(activeBanner(document),1);
+  banner.advance(60000);assert.equal(activeBanner(document),1);
+  toggle.click();banner.advance(6000);assert.equal(activeBanner(document),2);
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('a failed banner shows its fallback and users can continue to an intact background', () => {
+  const {dom,window,document,errors}=setup('zh',false,{hash:'#/products',banner:{}});
+  const first=document.querySelector('img[data-banner-slide="0"]');
+  first.dispatchEvent(new window.Event('error'));
+  assert.equal(document.getElementById('banner-error').hidden,false);
+  assert(first.closest('.image-failed'));
+  document.getElementById('banner-next').click();
+  assert.equal(activeBanner(document),1);
+  assert.equal(document.getElementById('banner-error').hidden,true);
+  assert.equal(document.querySelector('img[data-banner-slide="1"]').getAttribute('src'),'assets/poster-banners/02-body-care-collection.webp');
+  assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
+  assert.deepEqual(errors,[]);dom.window.close();
 });
 
 test('poster landing shows every active thumbnail without loading the catalogue or full artwork', () => {

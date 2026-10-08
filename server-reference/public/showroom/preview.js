@@ -17,6 +17,19 @@
   const previousPoster = document.getElementById('previous-poster');
   const nextPoster = document.getElementById('next-poster');
   const photoError = document.getElementById('photo-error');
+  const banner = document.getElementById('poster-banner');
+  const bannerArt = document.getElementById('poster-banner-art');
+  const bannerPosition = document.getElementById('banner-position');
+  const bannerToggle = document.getElementById('banner-toggle');
+  const bannerError = document.getElementById('banner-error');
+  const banners = content.posterBanners || [];
+  const bannerSlides = [];
+  const reducedMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  let bannerIndex = 0;
+  let bannerPaused = reducedMotion.matches;
+  let bannerPauseChosen = false;
+  let bannerInView = true;
+  let bannerTimer = null;
   const production = document.documentElement.dataset.mode === 'production';
   const logout = document.getElementById('showroom-logout');
   const sessionMessage = document.getElementById('session-message');
@@ -34,6 +47,84 @@
   document.querySelector('.preview-label').hidden = production;
   logout.hidden = !production;
   try { if ((localStorage.getItem('yuanze-language') || localStorage.getItem('yuanze-mobile-preview-language')) === 'en') language = 'en'; } catch (_) {}
+
+  function scheduleBanner() {
+    if (bannerTimer !== null) window.clearTimeout(bannerTimer);
+    bannerTimer = null;
+    if (!banner || banners.length < 2 || bannerPaused || !bannerInView || document.hidden || dialog.open || activeRoute?.split('?')[0] !== 'products') return;
+    bannerTimer = window.setTimeout(() => {
+      showBanner(bannerIndex + 1);
+      scheduleBanner();
+    }, 6000);
+  }
+
+  function renderBanner() {
+    if (!banner || !banners.length) return;
+    const copy = content[language];
+    bannerSlides.forEach((slide, index) => {
+      const image = slide.querySelector('img');
+      const active = index === bannerIndex;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      image.setAttribute('aria-hidden', String(!active));
+      image.alt = banners[index].title[language];
+      slide.setAttribute('aria-label', `${index + 1} / ${banners.length}: ${image.alt}`);
+      if (active && activeRoute?.split('?')[0] === 'products' && !image.hasAttribute('src')) image.src = image.dataset.src;
+    });
+    bannerPosition.textContent = `${bannerIndex + 1} / ${banners.length}`;
+    bannerPosition.setAttribute('aria-live', bannerPaused ? 'polite' : 'off');
+    bannerToggle.textContent = copy[bannerPaused ? 'resumeBanner' : 'pauseBanner'];
+    bannerToggle.setAttribute('aria-pressed', String(bannerPaused));
+    bannerError.hidden = !bannerSlides[bannerIndex]?.classList.contains('image-failed');
+  }
+
+  function showBanner(index) {
+    if (!banners.length) return;
+    bannerIndex = (index + banners.length) % banners.length;
+    renderBanner();
+  }
+
+  function initializeBanner() {
+    if (!banner || !banners.length) return;
+    banners.forEach((item, index) => {
+      const slide = document.createElement('div');
+      slide.className = 'banner-slide';
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      const image = document.createElement('img');
+      image.dataset.bannerSlide = String(index);
+      image.dataset.src = item.src;
+      image.width = item.width; image.height = item.height;
+      image.decoding = 'async';
+      image.addEventListener('error', () => {
+        slide.classList.add('image-failed');
+        if (index === bannerIndex) renderBanner();
+      });
+      image.addEventListener('load', () => {
+        slide.classList.remove('image-failed');
+        if (index === bannerIndex) renderBanner();
+      });
+      slide.append(image); bannerArt.append(slide); bannerSlides.push(slide);
+    });
+    document.getElementById('banner-previous').addEventListener('click', () => { showBanner(bannerIndex - 1); scheduleBanner(); });
+    document.getElementById('banner-next').addEventListener('click', () => { showBanner(bannerIndex + 1); scheduleBanner(); });
+    bannerToggle.addEventListener('click', () => {
+      bannerPaused = !bannerPaused; bannerPauseChosen = true;
+      renderBanner(); scheduleBanner();
+    });
+    document.addEventListener('visibilitychange', scheduleBanner);
+    reducedMotion.addEventListener?.('change', event => {
+      if (!bannerPauseChosen) bannerPaused = event.matches;
+      renderBanner(); scheduleBanner();
+    });
+    if ('IntersectionObserver' in window) {
+      const observer = new window.IntersectionObserver(entries => {
+        bannerInView = entries.some(entry => entry.target === banner && entry.isIntersecting);
+        scheduleBanner();
+      }, {root:posterView, threshold:0});
+      observer.observe(banner);
+    }
+  }
 
   function notifyLanguage() {
     if (frame.hasAttribute('src')) frame.contentWindow?.postMessage({type:'yuanze-language', language}, location.origin);
@@ -109,6 +200,8 @@
       if (dialog.open) dialog.close();
     }
     if (focus && !dialog.open && (!closingPoster || !photoTrigger || photoTrigger.closest('[hidden]'))) document.getElementById(`page-${next}`).focus({preventScroll:true});
+    renderBanner();
+    scheduleBanner();
   }
 
   function navigate(route, options = {}) {
@@ -229,6 +322,7 @@
     document.querySelectorAll('[data-certificate-number]').forEach(node => { node.textContent = content.certificates[node.dataset.certificateNumber].number; });
     document.querySelectorAll('[data-certificate-date]').forEach(node => { node.textContent = `${copy.certificateExpiry} ${content.certificates[node.dataset.certificateDate].expiresAt}`; });
     renderPosters();
+    renderBanner();
     updatePhoto();
     renderInquiry();
     renderSession();
@@ -298,6 +392,7 @@
     updatePhoto();
     dialog.showModal();
     closePhoto.focus();
+    scheduleBanner();
   }));
   closePhoto.addEventListener('click', closeViewer);
   dialog.addEventListener('cancel', event => { event.preventDefault(); closeViewer(); });
@@ -313,6 +408,7 @@
     selectedPhoto = null;
     selectedPoster = null;
     if (photoTrigger && !photoTrigger.closest('[hidden]')) photoTrigger.focus();
+    scheduleBanner();
   });
   document.querySelectorAll('[data-page-link]').forEach(link => link.addEventListener('click', event => {
     event.preventDefault(); navigate(link.dataset.pageLink === 'products' ? posterRoute() : link.dataset.pageLink);
@@ -322,6 +418,7 @@
   window.addEventListener('hashchange', () => showPage(location.hash.slice(2), true));
 
   initializePosters();
+  initializeBanner();
   translate();
   showPage(location.hash.slice(2));
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

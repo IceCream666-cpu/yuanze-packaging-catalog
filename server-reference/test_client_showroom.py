@@ -10,6 +10,10 @@ import test_client_access as client_fixtures
 from test_server import server
 
 ROOT = Path(__file__).resolve().parents[1]
+BANNER_PATHS = [f'assets/poster-banners/{name}.webp' for name in (
+    '01-pdrn-capsule-cream', '02-body-care-collection', '03-cherry-blossom-gift-set',
+    '04-hand-care-collection', '05-daylight-still',
+)]
 spec = importlib.util.spec_from_file_location('build_customer_showroom', ROOT / 'scripts/build_customer_showroom.py')
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
@@ -57,6 +61,9 @@ class ShowroomBuild(unittest.TestCase):
             self.assertNotIn(name, files)
         self.assertEqual(len([name for name in files if name.endswith('.pdf')]), 4)
         self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 48)
+        self.assertEqual({name for name in files if name.startswith('assets/poster-banners/')}, set(BANNER_PATHS))
+        for path in BANNER_PATHS:
+            self.assertIn('/showroom/' + path, files['company-content.js'].decode())
 
     def test_poster_paths_are_relocated_without_changing_metadata(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -165,6 +172,28 @@ class ShowroomRoutes(unittest.TestCase):
                         self.assertEqual(status, 404)
                         self.assertNotIn(b'WEBP', body)
 
+    def test_five_banner_images_require_customer_or_admin_access_and_preserve_their_content(self):
+        for username, expected_status in [(None, 401), ('employee', 403), ('client-test', 200), ('admin', 200)]:
+            if username:
+                self.login(username)
+            for path in BANNER_PATHS:
+                with self.subTest(username=username, path=path):
+                    status, headers, body = self.req('/showroom/' + path)
+                    self.assertEqual(status, expected_status)
+                    self.assertEqual(headers['Cache-Control'], 'no-store')
+                    if expected_status == 200:
+                        self.assertEqual(headers['Content-Type'], 'image/webp')
+                        self.assertEqual(headers['X-Content-Type-Options'], 'nosniff')
+                        self.assertEqual(body, (builder.SOURCE / path).read_bytes())
+                    else:
+                        self.assertNotIn(b'WEBP', body)
+                    status, head_headers, head = self.req('/showroom/' + path, method='HEAD')
+                    self.assertEqual(status, expected_status)
+                    self.assertEqual(head, b'')
+                    if expected_status == 200:
+                        self.assertEqual(head_headers['Content-Type'], 'image/webp')
+                        self.assertEqual(head_headers['Content-Length'], str(len(body)))
+
     def test_pdf_images_and_script_mime_and_head(self):
         self.login()
         for path, mime in [('assets/certificates/iso22716-zh.pdf', 'application/pdf'),
@@ -215,6 +244,7 @@ class ShowroomRoutes(unittest.TestCase):
         (directory / 'private.json').write_text('PRIVATE')
         (directory / 'assets/unlisted.pdf').write_bytes(b'%PDF PRIVATE')
         (directory / 'assets/posters/unlisted.webp').write_bytes(b'PRIVATE POSTER')
+        (directory / 'assets/poster-banners/unlisted.webp').write_bytes(b'PRIVATE BANNER')
         (directory / 'unlisted.js').write_text('PRIVATE SCRIPT')
         (directory / 'assets/symlink.pdf').symlink_to(self.public / 'admin.html')
         manifest_path = directory / 'bundle-manifest.json'
@@ -224,7 +254,8 @@ class ShowroomRoutes(unittest.TestCase):
         manifest['files']['unlisted.js'] = {'sha256': '0'*64, 'bytes': 0}
         manifest_path.write_text(json.dumps(manifest))
         for path in ['bundle-manifest.json', 'private.json', 'assets/manifest.json', 'assets/unlisted.pdf',
-                     'assets/posters/unlisted.webp', 'unlisted.js', 'assets/symlink.pdf', '../admin.html',
+                     'assets/posters/unlisted.webp', 'assets/poster-banners/unlisted.webp',
+                     'unlisted.js', 'assets/symlink.pdf', '../admin.html',
                      '%2e%2e/admin.html', 'assets/%2e%2e/%2e%2e/admin.html']:
             status, _, body = self.req('/showroom/' + path)
             self.assertEqual(status, 404, path); self.assertNotIn(b'PRIVATE', body)

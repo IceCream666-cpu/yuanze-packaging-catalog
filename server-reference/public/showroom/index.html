@@ -64,9 +64,16 @@
           <a href="#/products/catalog" data-page-link="products/catalog" data-product-view="catalog" data-copy="catalogTab">包材选型</a>
         </nav>
         <section id="poster-view" class="poster-view" aria-labelledby="poster-heading">
-          <div class="poster-intro">
-            <div><p class="eyebrow">YUANZE · PRODUCT GALLERY</p><h1 id="poster-heading" data-copy="posterTitle">优质产品海报</h1><p data-copy="posterDescription">精选产品系列，点开查看完整海报。</p><p class="poster-note" data-copy="posterNote">包材规格请进入包材选型查看。</p></div>
+          <div id="poster-banner" class="poster-intro" role="region" aria-roledescription="carousel" data-aria="bannerLabel" aria-label="产品系列轮播">
+            <div class="poster-banner-copy"><p class="eyebrow">YUANZE · PRODUCT GALLERY</p><h1 id="poster-heading" data-copy="posterTitle">优质产品海报</h1><p data-copy="posterDescription">精选产品系列，点开查看完整海报。</p><p class="poster-note" data-copy="posterNote">包材规格请进入包材选型查看。</p></div>
+            <div id="poster-banner-art" class="poster-banner-art"><p id="banner-error" class="banner-error" data-copy="bannerImageError" hidden>背景图暂时无法加载，可切换下一张。</p></div>
             <a class="primary-action" href="#/products/catalog" data-page-link="products/catalog" data-copy="enterCatalog">进入包材选型</a>
+            <div class="banner-controls">
+              <button id="banner-previous" type="button" data-aria="previousBanner" aria-label="上一张背景图">‹</button>
+              <span id="banner-position" aria-live="off">1 / 5</span>
+              <button id="banner-next" type="button" data-aria="nextBanner" aria-label="下一张背景图">›</button>
+              <button id="banner-toggle" type="button" aria-pressed="false">暂停轮播</button>
+            </div>
           </div>
           <div class="poster-browser"><div id="poster-categories" class="poster-categories" data-aria="posterCategories" aria-label="海报类别"></div><p id="poster-count" class="poster-count" role="status" aria-live="polite"></p><div id="poster-grid" class="poster-grid"></div></div>
         </section>

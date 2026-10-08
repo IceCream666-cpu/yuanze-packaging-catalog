@@ -32,6 +32,26 @@
       "bytes": 352385,
       "sha256": "a52d0606cfa05da829710ba645f98f43edc9fc67cfdbd651f7c67af91c711680"
     },
+    "assets/poster-banners/01-pdrn-capsule-cream.webp": {
+      "bytes": 1135590,
+      "sha256": "2bd8465ff3d2cc329bcd2bdb40ae50c8d3dcbb612aefd57eace6ab1258dbb887"
+    },
+    "assets/poster-banners/02-body-care-collection.webp": {
+      "bytes": 1206400,
+      "sha256": "59253e74ad06d925d417cc604962b40f744d63d27c557bf6afd9e0d3480adc0c"
+    },
+    "assets/poster-banners/03-cherry-blossom-gift-set.webp": {
+      "bytes": 1296508,
+      "sha256": "e184ab973465ccd4aa9f6d61ec03c7351aae5603b286fc4e340ee4724486849f"
+    },
+    "assets/poster-banners/04-hand-care-collection.webp": {
+      "bytes": 1155548,
+      "sha256": "e598813a94800c4a91aaa80ac28bd469e99b0160fe442564cba13a58e1e8b464"
+    },
+    "assets/poster-banners/05-daylight-still.webp": {
+      "bytes": 1252680,
+      "sha256": "25c47724ca6dba3c298100e6e60a7f64ae2860a8128f382ab73e5ec6c234f9cf"
+    },
     "assets/posters/poster-001-thumb.webp": {
       "bytes": 36902,
       "sha256": "04ea78033c895e6a8b068e6c78228e288dca38942435a2bb163b57c7c15f4a88"
@@ -237,20 +257,20 @@
       "sha256": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62"
     },
     "company-content.js": {
-      "bytes": 11494,
-      "sha256": "1add65a02cd2ce8c3a2def13f89837bc707fd374e3045a68433361d30a4b9afc"
+      "bytes": 13340,
+      "sha256": "4d677e9fb6d44ac22aed4855324d731876a2ad222fe2de4975fb6763950abd04"
     },
     "index.html": {
-      "bytes": 11635,
-      "sha256": "c0b7cf678046a08d6575343eeee1f31b9e82a5380c38bdaaf5c749163746fb2c"
+      "bytes": 12468,
+      "sha256": "df271325b7639345eb06d7819cd7b9ca8802c230ac78bacbc0d5782bc45c6631"
     },
     "preview.css": {
-      "bytes": 19800,
-      "sha256": "745398b99bc84980291399a4fdc405682055c64ee08739893d5e0c81be1e092d"
+      "bytes": 22736,
+      "sha256": "365c2eb3dae7e923b141bc362074730e1eff70e9fd07d072003d590712ae0ec2"
     },
     "preview.js": {
-      "bytes": 18593,
-      "sha256": "1aed3dbbda99a1da5f9d5a0c3ae869cfcb27b887cbe82f8e6453973141281742"
+      "bytes": 22921,
+      "sha256": "8dfc9998a699f9e7b2015156ede0a19868e01da7c695e9db04b270c77a9346a0"
     },
     "product-posters.js": {
       "bytes": 8964,
