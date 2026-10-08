@@ -1,0 +1,33 @@
+{
+  "editedImages": 50,
+  "updatedRecords": 53,
+  "originalAssociationsKept": 53,
+  "sourceDuplicates": 0,
+  "nonImageFieldsUnchanged": true,
+  "customerPermissionsPreserved": true,
+  "threeRoleLogin": true,
+  "liveImagesDecode": true,
+  "originalFilesUnchanged": true,
+  "allNonImageFieldsUnchanged": 11858,
+  "customerCatalogueRecords": 224,
+  "customerRangeUnchanged": true,
+  "privateRoutesBlocked": true,
+  "customerImageSearch": true,
+  "employeeImageSearch": true,
+  "imageIndex": {
+    "available": true,
+    "state": "ready",
+    "indexed_images": 6173,
+    "indexed_records": 6908,
+    "pending_images": 0,
+    "failed_images": 0,
+    "building": false,
+    "model": "DINOv2-small · 瓶型结构优先"
+  },
+  "crossBatchDuplicates": 0,
+  "historicalSourcePathsChecked": 479,
+  "queueCounts": {
+    "published": 528,
+    "pending": 5236
+  }
+}
