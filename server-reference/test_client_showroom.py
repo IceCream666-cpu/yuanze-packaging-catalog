@@ -149,7 +149,8 @@ class ShowroomRoutes(unittest.TestCase):
                 status, headers, body = self.req('/showroom/' + path)
                 self.assertEqual(status, 200)
                 self.assertGreater(len(body), 0)
-                self.assertEqual(headers['Cache-Control'], 'no-store')
+                self.assertEqual(headers['Cache-Control'], 'private, no-cache')
+                self.assertIn('ETag', headers)
                 self.assertEqual(headers['X-Content-Type-Options'], 'nosniff')
                 self.assertNotIn('Access-Control-Allow-Origin', headers)
         _, headers, _ = self.req('/admin')
@@ -180,7 +181,7 @@ class ShowroomRoutes(unittest.TestCase):
                 with self.subTest(username=username, path=path):
                     status, headers, body = self.req('/showroom/' + path)
                     self.assertEqual(status, expected_status)
-                    self.assertEqual(headers['Cache-Control'], 'no-store')
+                    self.assertEqual(headers['Cache-Control'], 'private, no-cache' if expected_status == 200 else 'no-store')
                     if expected_status == 200:
                         self.assertEqual(headers['Content-Type'], 'image/webp')
                         self.assertEqual(headers['X-Content-Type-Options'], 'nosniff')

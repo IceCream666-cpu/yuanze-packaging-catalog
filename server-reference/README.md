@@ -36,3 +36,10 @@
 业务系统演示仍使用虚构数据，未接入正式配方、采购、生产、财务或旧 ERP。后台管理范围为自建包材库；组合审批与正式 ERP 对接仍待后续实施。
 
 员工会话数量默认不限（`YZ_EMPLOYEE_SESSION_LIMIT=0`）；员工账号由管理员在「员工与权限」创建、重置密码及停用。新建/重置密码12–300字符，现有内测密码不变。已登录阿里云查询确认 `yuanzebeauty.com` 未备案，需处理公网域名接入。
+
+
+## 2026-10-09 移动加载优化
+
+服务端分页需要 Python 现有依赖和 Node.js 22+（`node` 在 PATH，或配置 `NODE_BIN`）。私有查询工作进程从 SQLite 生成目录、复用浏览器相同的查询逻辑；它不对外监听端口，不使用外部模型或图片 API。没有 Node 时会话返回 `catalogPaging=false`，旧全库路径可用。
+
+`YZ_STATE/image-thumbnails/` 和既有 `client-media-cache/` 保存可重建衍生图，不属于产品数据，不提交 Git。列表的 `thumb=1` 不改变原图及下载；静态文件和图片使用 `private, no-cache`／ETag，敏感图片的授权检查先于 304。JSON、HTML、登录和会话仍为 no-store。GET／HEAD 可复用 HTTP/1.1 上游连接，POST 关闭连接；正式 Nginx 拟启用 HTTP/2 和独立 keepalive upstream。发布时先检查 Node 可执行、预热索引和三角色安全边界，数据库、账号、上传及原图保持。验收见 `../docs/手机端加载优化-20261009.md`。

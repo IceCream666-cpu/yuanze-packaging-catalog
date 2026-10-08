@@ -63,7 +63,7 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     assert.equal(p.d.querySelectorAll('.card').length,20);
     assert.equal(p.d.querySelectorAll('.card-title')[0].textContent,'香水喷雾瓶（多规格）');
     assert.match(p.d.querySelector('.results-top').textContent,/24.*27/s);
-    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/uploads/labelled.jpg');
+    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/uploads/labelled.jpg?thumb=1');
     assert.equal(p.d.querySelector('.image-count').textContent,'4 张图');
     assert.equal(p.d.querySelectorAll('.group-image-mapping-note').length,0);
     assert.equal(p.w.groupTest.getIndex().get('group-0').imageMappingPending,false);
@@ -123,7 +123,7 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     p.w.groupTest.render();
     assert.equal(p.d.querySelectorAll('.card').length,1);
     assert.equal(p.d.querySelector('.card-title').dataset.detail,'group-3');
-    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/media/shared.jpg');
+    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/media/shared.jpg?thumb=1');
     reset(p);
     p.d.querySelector('[data-view=favorites]').click();
     await until(()=>p.d.querySelector('.card-title')?.dataset.detail==='group-3','favorite filtered before grouping');
@@ -212,7 +212,7 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     assert.deepEqual(Array.from(images[0]._groupPaths),['/uploads/labelled.jpg','/media/shared.jpg','/media/30.jpg']);
     assert.equal(images[0]._groupSources.find(s=>s.image.path==='media/30.jpg').recordId,'group-0');
     assert.equal(images[0]._groupSources.find(s=>s.image.path==='media/30.jpg').image.imageScope,'single_product');
-    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/uploads/labelled.jpg');
+    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/uploads/labelled.jpg?thumb=1');
     assert.equal(p.d.querySelector('.image-count').textContent,'2 张图');
     p.d.querySelector('.card-title').click();
     assert.equal(p.d.querySelectorAll('.thumbnails button').length,2);
@@ -220,7 +220,7 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     p.d.querySelector('#modal').close();
     p.w.groupTest.imageSearch.matches=new p.w.Map([['group-0',{rank:0,image_path:'media/30.jpg'}]]);
     p.w.groupTest.render();
-    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/media/30.jpg');
+    assert.equal(p.d.querySelector('.photo img').getAttribute('src'),'/media/30.jpg?thumb=1');
     p.d.querySelector('.card-title').click();
     assert.equal(p.d.querySelector('#detailPhoto img').getAttribute('src'),'/media/30.jpg');
     assert.equal(p.d.querySelector('#originalImageLink').getAttribute('href'),'/media/30.jpg');

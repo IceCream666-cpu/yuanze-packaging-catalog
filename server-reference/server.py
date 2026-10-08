@@ -15,6 +15,8 @@ from admin_images import ManagedImageSearch, UploadManager
 from admin_imports import parse_import, template_csv, MAX_BODY_BYTES
 from auth_sessions import SessionStore, SessionLimit
 from client_catalog import ClientCatalog, ClientMediaBusy
+from media_derivatives import ThumbnailCache, ThumbnailBusy
+from catalog_pages import CatalogPages, CatalogBusy, search_options, internal_csv
 
 SUPPORTED_ROLES = {'employee', 'admin', 'client'}
 ROOT = Path(__file__).resolve().parent
@@ -35,6 +37,8 @@ IMAGE_SEARCH = None
 STORE = None
 CLIENT_CATALOG = None
 UPLOADS = None
+THUMBNAILS = None
+CATALOG_PAGES = None
 IMPORTS = {}
 IMPORT_GATE = threading.Lock()
 CATALOG_RESPONSE_GATE = threading.Lock()
@@ -112,7 +116,7 @@ def active_ids(values):
     return found
 
 def initialize():
-    global CATALOG, AUTH, IMAGE_SEARCH, STORE, UPLOADS, SESSION_STORE, CLIENT_CATALOG
+    global CATALOG, AUTH, IMAGE_SEARCH, STORE, UPLOADS, SESSION_STORE, CLIENT_CATALOG, THUMBNAILS, CATALOG_PAGES
     STATE.mkdir(parents=True, exist_ok=True)
     if (PRIVATE/'catalog.json').exists(): CATALOG=json.loads((PRIVATE/'catalog.json').read_text())
     AUTH=json.loads((STATE/'auth.json').read_text()) if (STATE/'auth.json').exists() else {}
@@ -127,7 +131,10 @@ def initialize():
     if IMAGE_SEARCH is not None and hasattr(IMAGE_SEARCH,'close'):
         IMAGE_SEARCH.close()
     STORE = AdminStore(STATE, PRIVATE, AUTH, CATALOG)
+    if CATALOG_PAGES is not None:CATALOG_PAGES.close()
+    CATALOG_PAGES = CatalogPages(STORE, ROOT)
     CLIENT_CATALOG = ClientCatalog(STORE, STATE, PRIVATE)
+    THUMBNAILS = ThumbnailCache(STATE)
     SESSION_STORE = SessionStore(STATE,
         employee_limit=int(os.environ.get('YZ_EMPLOYEE_SESSION_LIMIT','0')),
         admin_limit=int(os.environ.get('YZ_ADMIN_SESSION_LIMIT','20')))
@@ -179,6 +186,7 @@ def change_sample(sid, action, data, actor):
 
 class Handler(BaseHTTPRequestHandler):
     server_version='YuanzeReference'
+    protocol_version='HTTP/1.1'
     def setup(self):
         super().setup()
         self.connection.settimeout(30)
@@ -216,6 +224,11 @@ class Handler(BaseHTTPRequestHandler):
         if self.command!='HEAD': self.wfile.write(body)
     def response_headers(self,code,length,ctype,extra=None):
         self.send_response(code)
+        # POST rejections can occur before the body is read. Never reuse that
+        # upstream connection with unread credentials/body bytes on the socket.
+        if self.command not in {'GET','HEAD'}:
+            self.close_connection=True
+            self.send_header('Connection','close')
         for k,v in {'Content-Type':ctype,'Content-Length':str(length),'Cache-Control':'no-store','X-Request-ID':self.request_id,'X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY','Referrer-Policy':'no-referrer','Content-Security-Policy':DEFAULT_CSP,**(extra or {})}.items(): self.send_header(k,v)
         self.end_headers()
     def respond_export(self):
@@ -339,7 +352,7 @@ class Handler(BaseHTTPRequestHandler):
             code=parse_qs(urlsplit(self.path).query).get('code',[''])[0].upper()
             if not re.fullmatch(r'YZ-BC-[0-9]{6,}',code):
                 return self.respond(303,b'','text/plain',{'Location':'/admin'})
-        if path=='/api/session': return self.respond(200,{'username':s['username'],'csrf':s['csrf'],'local':LOCAL,'role':s['role']})
+        if path=='/api/session': return self.respond(200,{'username':s['username'],'csrf':s['csrf'],'local':LOCAL,'role':s['role'],'catalogPaging':bool(CATALOG_PAGES and CATALOG_PAGES.enabled)})
         if path.startswith('/api/admin/'):
             if s['role']!='admin': return self.respond(403,{'error':'仅管理员可以维护资料'})
             return self.admin_get(path)
@@ -348,6 +361,20 @@ class Handler(BaseHTTPRequestHandler):
             filename='index.html' if path in ['/admin','/admin.html'] else 'admin.html' if path=='/admin/tools' else path[1:]
             return self.file(PUBLIC/filename,PUBLIC)
         if path=='/api/catalog': return self.respond_catalog(STORE.catalog)
+        if path in ['/api/catalog/page','/api/catalog/records','/api/catalog/export']:
+            try:
+                if path=='/api/catalog/records':
+                    ids=parse_qs(urlsplit(self.path).query,max_num_fields=128).get('id',[])
+                    if not ids or len(ids)>128 or any(len(value)>200 for value in ids):raise ValueError()
+                    data=CATALOG_PAGES.request('records',ids=ids)
+                else:
+                    options=search_options(urlsplit(self.path).query,STORE,s['username'])
+                    data=CATALOG_PAGES.request('export' if path.endswith('/export') else 'query',options=options)
+                if path.endswith('/export'):
+                    return self.respond(200,internal_csv(data['records']),'text/csv; charset=utf-8',{'Content-Disposition':'attachment; filename="yuanze-packaging.csv"'})
+                return self.respond(200,data)
+            except (ValueError,TypeError):return self.respond(400,{'error':'检索参数格式不正确'})
+            except CatalogBusy:return self.respond(503,{'error':'目录索引正在准备，请稍后重试'},extra={'Retry-After':'2'})
         if path=='/api/image-search/status': return self.respond(200,IMAGE_SEARCH.status())
         if path=='/api/preferences':
             with db() as c: row=c.execute('SELECT content FROM preferences WHERE username=?',(s['username'],)).fetchone()
@@ -405,10 +432,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self.respond(400,{'error':'检索参数格式不正确'})
             return self.respond_catalog(lambda:CLIENT_CATALOG.catalog(page,size,q=search,filters=filters))
         if path.startswith('/client-media/'):
-            try:asset=CLIENT_CATALOG.media(path[len('/client-media/'):])
+            try:asset=CLIENT_CATALOG.media(path[len('/client-media/'):], thumbnail=self.wants_thumbnail())
             except ClientMediaBusy:return self.respond(429,{'error':'图片正在准备，请稍后重试'},extra={'Retry-After':'2'})
             if asset is None:return self.respond(404,{'error':'图片不存在'})
-            return self.respond(200,asset.read_bytes(),'image/jpeg',self.image_download_headers('image/jpeg'))
+            return self.file(asset,CLIENT_CATALOG.cache,thumbnail=False)
         return self.respond(403,{'error':'此账号仅可访问客户展示页'})
 
     def unsupported_method(self):
@@ -528,14 +555,35 @@ class Handler(BaseHTTPRequestHandler):
         if len(filename)>100 or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*\.(?:jpg|jpeg|png|webp|gif|svg)',filename):
             filename='yuanze-image.'+extensions.get(content_type,'jpg')
         return {'Content-Disposition':'attachment; filename="'+filename+'"'}
-    def file(self,path,base,extra=None):
+    def wants_thumbnail(self):
+        return parse_qs(urlsplit(self.path).query).get('thumb') == ['1']
+    def file(self,path,base,extra=None,thumbnail=True):
         path=path.resolve();base=base.resolve()
         if not path.is_relative_to(base) or not path.is_file(): return self.respond(404,{'error':'页面或文件不存在'})
         ctype=mimetypes.guess_type(path.name)[0] or 'application/octet-stream'
         if path.suffix in ['.js','.mjs']: ctype='text/javascript'
         # Minimal Linux installations may omit WebP from their system MIME map.
         if path.suffix.lower()=='.webp': ctype='image/webp'
-        return self.respond(200,path.read_bytes(),ctype,{**(extra or {}),**self.image_download_headers(ctype)})
+        if thumbnail and self.wants_thumbnail() and path.suffix.lower() in {'.png','.jpg','.jpeg','.webp','.gif'}:
+            try:asset=THUMBNAILS.get(path)
+            except ThumbnailBusy:return self.respond(429,{'error':'图片正在准备，请稍后重试'},extra={'Retry-After':'2'})
+            if asset is None:return self.respond(404,{'error':'图片不存在'})
+            return self.file(asset,THUMBNAILS.root,extra,thumbnail=False)
+        # Authentication, role selection and customer approval have already run.
+        # Revalidate on every reuse: revoked media must never get a cached 304.
+        cacheable=ctype.startswith('image/') or path.suffix.lower() in {'.css','.js','.mjs','.pdf','.woff','.woff2'}
+        with path.open('rb') as source:
+            stat=os.fstat(source.fileno())
+            headers={**(extra or {}),**self.image_download_headers(ctype)}
+            if cacheable:
+                etag='"'+hashlib.sha256(f'{path}:{stat.st_size}:{stat.st_mtime_ns}:{stat.st_ino}'.encode()).hexdigest()[:32]+'"'
+                headers.update({'Cache-Control':'private, no-cache','ETag':etag})
+                tags=self.headers.get('If-None-Match','').split(',')
+                if 'Content-Disposition' not in headers and any(tag.strip().removeprefix('W/') in {etag,'*'} for tag in tags):
+                    return self.respond(304,b'',ctype,headers)
+            self.response_headers(200,stat.st_size,ctype,headers)
+            if self.command!='HEAD':
+                while chunk:=source.read(65536):self.wfile.write(chunk)
     def do_POST(self):
         if not self.valid_host(): return self.respond(403,{'error':'访问地址无效'})
         path=urlsplit(self.path).path
@@ -656,5 +704,10 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--host',default='127.0.0.1');p.add_argument('--port',type=int,default=4180);p.add_argument('--local-preview',action='store_true');args=p.parse_args()
     LOCAL=args.local_preview
     if LOCAL and args.host not in ['127.0.0.1','::1']: raise SystemExit('Local preview must bind to loopback')
-    initialize();print(f'Yuanze reference listening on {args.host}:{args.port}',flush=True)
+    initialize()
+    if CATALOG_PAGES.enabled:
+        try:CATALOG_PAGES.warm()
+        except CatalogBusy:print('Catalogue warming deferred; authentication remains available',flush=True)
+    CLIENT_CATALOG.catalog(page_size=1)
+    print(f'Yuanze reference listening on {args.host}:{args.port}',flush=True)
     ThreadingHTTPServer((args.host,args.port),Handler).serve_forever()

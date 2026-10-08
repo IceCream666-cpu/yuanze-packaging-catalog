@@ -1,3 +1,6 @@
+from catalog_pages import catalog_revision
+import time
+from copy import deepcopy
 """Explicitly approved customer catalogue; private records never cross this boundary."""
 import hashlib
 import hmac
@@ -265,6 +268,10 @@ class ClientCatalog:
         if len(self.key) != 32:
             raise ValueError('Invalid customer media key')
         self.gate = threading.Lock()
+        self.snapshot_gate = threading.Lock()
+        self.snapshot = None
+        self.snapshot_revision = None
+        self.snapshot_time = 0
         # A first page may request many uncached images at once. Queue a small
         # number of conversions instead of failing the whole page immediately.
         self.waiters = threading.BoundedSemaphore(12)
@@ -306,9 +313,7 @@ class ClientCatalog:
             result.append(path)
         return result
 
-    def catalog(self, page=1, page_size=24, q='', filters=None):
-        page = max(1, page)
-        page_size = max(1, min(48, page_size))
+    def _projected_entries(self):
         entries, mappings = [], []
         # json_each applies the opt-in filter in SQLite, avoiding a full parsed
         # copy of the employee catalogue for every customer request.
@@ -341,6 +346,18 @@ class ClientCatalog:
         # the selected combination has zero matches. Never inspect raw fields.
         facets = {key: sorted({value for item in entries for value in facet_values(item, field)})
                   for key, field in FACETS.values()}
+        return entries, facets
+
+    def catalog(self, page=1, page_size=24, q='', filters=None):
+        page = max(1, page)
+        page_size = max(1, min(48, page_size))
+        revision=catalog_revision(self.store)
+        with self.snapshot_gate:
+            if self.snapshot is None or revision!=self.snapshot_revision or time.monotonic()-self.snapshot_time>15:
+                self.snapshot=self._projected_entries()
+                self.snapshot_revision=revision
+                self.snapshot_time=time.monotonic()
+            entries,facets=self.snapshot
         filters = filters or {}
         entries = [item for item in entries if matches_search(item, q) and
                    all(not filters.get(key) or set(filters[key]).intersection(facet_values(item, field))
@@ -348,7 +365,7 @@ class ClientCatalog:
         total = len(entries)
         pages = max(1, (total + page_size - 1) // page_size)
         page = min(page, pages)
-        return {'items': entries[(page - 1) * page_size:page * page_size], 'page': page,
+        return {'items': deepcopy(entries[(page - 1) * page_size:page * page_size]), 'page': page,
                 'pages': pages, 'total': total, 'facets': facets}
 
     def image_search_results(self, matches, limit=48):
@@ -404,7 +421,7 @@ class ClientCatalog:
                   for key, field in FACETS.values()}
         return {'items': entries, 'page': 1, 'pages': 1, 'total': len(entries), 'facets': facets}
 
-    def media(self, token):
+    def media(self, token, thumbnail=False):
         # Optional image dependencies must not prevent employee login/startup.
         try:
             from PIL import Image, ImageOps, UnidentifiedImageError
@@ -423,7 +440,9 @@ class ClientCatalog:
             return None
         stat = source.stat()
         fingerprint = hashlib.sha256(f'{stat.st_size}:{stat.st_mtime_ns}'.encode()).hexdigest()[:20]
-        target = self.cache / (token[:-4] + '-' + fingerprint + '.jpg')
+        edge, quality = (512, 78) if thumbnail else (1600, 88)
+        variant = '-thumb512-v1' if thumbnail else ''
+        target = self.cache / (token[:-4] + '-' + fingerprint + variant + '.jpg')
         if target.is_file():
             return target
         if not self.waiters.acquire(blocking=False):
@@ -439,15 +458,15 @@ class ClientCatalog:
             with Image.open(source) as original:
                 if original.width * original.height > 24_000_000 or original.width < 1 or original.height < 1:
                     return None
-                original.draft('RGB', (1600, 1600))
-                original.thumbnail((1600, 1600))
+                original.draft('RGB', (edge, edge))
+                original.thumbnail((edge, edge))
                 rendered = ImageOps.exif_transpose(original).convert('RGB')
                 # A fresh image has none of the original EXIF, comments, profiles
                 # or PNG text chunks, regardless of the original file format.
                 sanitized = Image.new('RGB', rendered.size, 'white')
                 sanitized.paste(rendered)
                 temporary = target.with_suffix('.' + secrets.token_hex(6) + '.tmp')
-                sanitized.save(temporary, format='JPEG', quality=88, optimize=True)
+                sanitized.save(temporary, format='JPEG', quality=quality, optimize=True)
                 temporary.chmod(0o600)
                 os.replace(temporary, target)
             return target

@@ -37,7 +37,7 @@ async function until(condition, label) {
   }
 }
 
-async function open({role = 'admin', hash = ''} = {}) {
+async function open({role = 'admin', hash = '', paging = false} = {}) {
   const errors = [], calls = [], records = new Map(fixtures.map(record => [record.id, clone(record)]));
   let favorites = ['workspace-0'], nextId = 1, saveFailure = 0;
   let liveSession = {role, username: `fixture-${role}`, csrf: 'workspace-csrf', authenticated: true};
@@ -54,6 +54,7 @@ async function open({role = 'admin', hash = ''} = {}) {
   w.HTMLDialogElement.prototype.showModal = function () {this.open = true;};
   w.HTMLDialogElement.prototype.close = function () {this.open = false;this.dispatchEvent(new w.Event('close'));};
   w.confirm = () => true;
+  const queryEngine=paging?(await evaluateBrowserModule(dom,path.join(root,'catalog-query.js'))).namespace:null;
   w.fetch = async (url, options = {}) => {
     const method = options.method || 'GET';
     const body = options.body ? JSON.parse(options.body) : undefined;
@@ -62,11 +63,20 @@ async function open({role = 'admin', hash = ''} = {}) {
       status, headers: {'Content-Type': 'application/json'},
     });
     if (url === '/api/session') return liveSession.authenticated
-      ? respond({role: liveSession.role, username: liveSession.username, csrf: liveSession.csrf})
+      ? respond({role: liveSession.role, username: liveSession.username, csrf: liveSession.csrf,catalogPaging:paging})
       : respond({error: '登录已过期，请重新登录。'}, 401);
     if (method === 'POST') {
       if (!liveSession.authenticated) return respond({error: '登录已过期，请重新登录。'}, 401);
       assert.equal(new Headers(options.headers).get('X-CSRF-Token'), liveSession.csrf, 'Write uses the current session CSRF token');
+    }
+    if(paging&&String(url).startsWith('/api/catalog/')){
+      const parsed=new URL(url,'https://catalog.test'),params=parsed.searchParams;
+      const index=queryEngine.prepareRecords({records:[...records.values()]},[reviewedGroup]);
+      if(parsed.pathname==='/api/catalog/records'){
+        const ids=new Set(params.getAll('id').flatMap(id=>index.productGroupIndex.get(id)?.records.map(r=>r.id)||[id]));
+        return respond({records:[...records.values()].filter(r=>ids.has(r.id))});
+      }
+      if(parsed.pathname==='/api/catalog/page')return respond({...queryEngine.queryPage(index,{q:params.get('q'),page:+params.get('page'),pageSize:+params.get('pageSize'),filters:Object.fromEntries(queryEngine.facetKeys.map(k=>[k,params.getAll(k)])),favorites:params.get('favorites')==='1',favoriteIds:favorites}),facets:queryEngine.catalogFacets(index.records),settings:{showBusinessDemo:false}});
     }
     if (url === '/api/catalog') return respond({records: [...records.values()], settings: {showBusinessDemo: false}});
     if (url === '/api/preferences') {
@@ -331,5 +341,20 @@ function injectClick(p, attribute, value) {
   }
   checks.push('Changing the logged-in account or losing the administrator role blocks saving before POST and retains the draft');
 
+  p=await open({paging:true,hash:'#records/workspace-spec-1'});
+  try{
+    await until(()=>p.d.querySelector('[data-editor-form]'),'unloaded paged hash editor');
+    assert.equal(p.d.querySelector('[data-editor-field="name"]').value,'独立规格瓶50ml');
+    editField(p,'name','修改后的50ml瓶');submitEditor(p);
+    await until(()=>!p.d.querySelector('[data-editor-form]')&&p.d.querySelector('#modal').textContent.includes('YZ-BC-800002'),'paged save detail');
+    assert(p.d.querySelector('#modal [data-detail="workspace-spec-0"]'),'Sibling specifications still available after refresh');
+    p.d.querySelector('#modal').close();search(p,'YZ-BC-800002');
+    await until(()=>p.d.querySelector('[data-record-id="workspace-spec-1"]'),'saved exact code');
+    assert.equal(p.d.querySelector('.card-title').dataset.detail,'workspace-spec-1');
+    click(p,'[data-edit-record="workspace-spec-1"]');await until(()=>p.d.querySelector('[data-editor-form]'),'updated paged editor');assert.equal(p.d.querySelector('[data-editor-field="name"]').value,'修改后的50ml瓶');
+    assert(!p.calls.some(call=>call.url==='/api/catalog'),'Admin paging never needs the full catalogue');
+    assert.equal(saves(p)[0].body.version,9);assert.equal(p.records.get('workspace-spec-1').version,10);
+    assert.deepEqual(p.errors,[]);checks.push('Server-paged admin deep links, saved versions, family details and exact-code refresh stay correct without a full catalogue download');
+  }finally{p.dom.window.close();}
   console.log(JSON.stringify({passed: true, checks, liveWebsiteRequests: 0}, null, 2));
 })().catch(error => {console.error(error);process.exitCode = 1;});

@@ -173,18 +173,19 @@ function filterOptions(input) {
   panel.querySelectorAll('.multi-option').forEach(option => {option.hidden = !`${option.textContent} ${option.querySelector('input').value}`.normalize('NFKC').toLowerCase().includes(value);if (!option.hidden) count++;});
   panel.querySelector('.multi-empty').hidden = count > 0;
 }
+const thumbnailURL=url=>url+'?thumb=1';
 function loadImage(image, url, stillRelevant = () => image.isConnected) {
   let attempts = 0;
   image.addEventListener('error',() => {
     if (attempts >= 2) {image.hidden = true;const parent = image.closest('.preview-image-wrap');if (parent) $('#previewError').hidden = false;else if (!image.parentElement.querySelector('.image-unavailable')) {const note = document.createElement('span');note.className = 'image-unavailable';note.textContent = t('图片暂时无法显示');image.parentElement.append(note);}return;}
-    attempts += 1;setTimeout(() => {if (stillRelevant()) image.src = `${url}?retry=${attempts}`;},attempts*1000);
+    attempts += 1;setTimeout(() => {if (stillRelevant()) image.src = `${url}${url.includes('?') ? '&' : '?'}retry=${attempts}`;},attempts*1000);
   });
   image.src = url;
 }
 function attachImages(parent) {parent.querySelectorAll('img[data-image-url]').forEach(image => {loadImage(image,image.dataset.imageUrl);image.removeAttribute('data-image-url');});}
 function renderHero() {
   $('#showroomHero').hidden = embedded || collection !== 'catalog' || hasFilters() || page > 1 || loaded && !heroItems.length;
-  $('#heroImages').innerHTML = heroItems.slice(0,3).map((item,index) => `<button type="button" class="showroom-object" data-hero="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(item.images[0].url)}" alt="${esc(itemName(item))}" loading="lazy"><span>${esc(item.productCode || item.capacity)}</span></button>`).join('');
+  $('#heroImages').innerHTML = heroItems.slice(0,3).map((item,index) => `<button type="button" class="showroom-object" data-hero="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}" loading="lazy"><span>${esc(item.productCode || item.capacity)}</span></button>`).join('');
   attachImages($('#heroImages'));
 }
 function paginationItems() {
@@ -194,7 +195,7 @@ function paginationItems() {
   const output = [];for (const n of [...visible].sort((a,b) => a-b)) {if (output.length && n-output.at(-1) > 1) output.push('…');output.push(n);}return output;
 }
 function renderGallery() {
-  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(item.images[0].url)}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(itemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:item.capacity || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
+  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(itemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:item.capacity || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
   attachImages($('#gallery'));
   $('#empty').hidden = !loaded || items.length !== 0 || Boolean(noticeKey);
   $('#emptyTitle').textContent = t(hasFilters() ? '暂无匹配的包材' : collection === 'favourites' ? '暂无收藏' : collection === 'shortlist' ? '意向清单为空' : '更多包材，即将呈现');
@@ -239,7 +240,7 @@ function renderDetails(changeImage = false) {
   $('#imagePrevious').disabled = previewIndex === 0;$('#imageNext').disabled = previewIndex === previewItem.images.length-1;
   $('.preview-controls').hidden = previewItem.images.length <= 1;
   $('#imageThumbnails').hidden = previewItem.images.length <= 1;
-  $('#imageThumbnails').innerHTML = previewItem.images.map((image,index) => `<button type="button" data-image-index="${index}" aria-current="${index === previewIndex}" aria-label="${esc(t('第 {number} 张图片',{number:index+1}))}"><img src="${esc(image.url)}" loading="lazy" alt=""></button>`).join('');
+  $('#imageThumbnails').innerHTML = previewItem.images.map((image,index) => `<button type="button" data-image-index="${index}" aria-current="${index === previewIndex}" aria-label="${esc(t('第 {number} 张图片',{number:index+1}))}"><img src="${esc(thumbnailURL(image.url))}" loading="lazy" alt=""></button>`).join('');
   if (changeImage) {
     const old = $('#previewImage'), image = old.cloneNode();image.removeAttribute('src');image.hidden = false;old.replaceWith(image);$('#previewError').hidden = true;
     loadImage(image,previewItem.images[previewIndex].url,() => previewItem && $('#previewImage') === image && image.isConnected);
@@ -367,7 +368,7 @@ function toggleItemAction(action,item) {
 function renderComparison() {
   const products = [...comparison.values()];
   const rows = [['产品编号',item => item.productCode],['包材类型',item => t(item.category)],['瓶型',item => t(item.bottleType)],['净含量',item => item.capacity],['材质',item => joined(item.materials)],['用途',item => joined(item.uses)],['使用部位',item => item.sections.map(value => label('section',value)).join(' / ')],...Object.keys(specs).filter(name => products.some(item => item.specifications.some(spec => spec.label === name))).map(name => [name,item => item.specifications.find(spec => spec.label === name)?.value])];
-  $('#compareTable').innerHTML = `<thead><tr><th scope="col">${esc(t('包材图片'))}</th>${products.map(item => `<th scope="col"><img src="${esc(item.images[0].url)}" alt="${esc(itemName(item))}"><span>${esc(itemName(item))}</span></th>`).join('')}</tr></thead><tbody>${rows.map(([name,value]) => `<tr><th scope="row">${esc(t(name))}</th>${products.map(item => `<td>${esc(value(item) || '—')}</td>`).join('')}</tr>`).join('')}</tbody>`;
+  $('#compareTable').innerHTML = `<thead><tr><th scope="col">${esc(t('包材图片'))}</th>${products.map(item => `<th scope="col"><img src="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}"><span>${esc(itemName(item))}</span></th>`).join('')}</tr></thead><tbody>${rows.map(([name,value]) => `<tr><th scope="row">${esc(t(name))}</th>${products.map(item => `<td>${esc(value(item) || '—')}</td>`).join('')}</tr>`).join('')}</tbody>`;
 }
 function csvText(products) {
   const headings = ['产品编号','包材类型','瓶型','净含量','材质','用途','使用部位',...Object.keys(specs)];

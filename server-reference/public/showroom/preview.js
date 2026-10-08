@@ -69,7 +69,10 @@
       image.setAttribute('aria-hidden', String(!active));
       image.alt = banners[index].title[language];
       slide.setAttribute('aria-label', `${index + 1} / ${banners.length}: ${image.alt}`);
-      if (active && activeRoute?.split('?')[0] === 'products' && !image.hasAttribute('src')) image.src = image.dataset.src;
+      if (active && activeRoute?.split('?')[0] === 'products') {
+        const source=image.dataset.src+(window.matchMedia?.('(max-width: 760px)').matches ? '?thumb=1' : '');
+        if(image.getAttribute('src')!==source)image.src=source;
+      }
     });
     bannerPosition.textContent = `${bannerIndex + 1} / ${banners.length}`;
     bannerPosition.setAttribute('aria-live', bannerPaused ? 'polite' : 'off');
@@ -113,6 +116,7 @@
       renderBanner(); scheduleBanner();
     });
     document.addEventListener('visibilitychange', scheduleBanner);
+    window.matchMedia?.('(max-width: 760px)').addEventListener?.('change', renderBanner);
     reducedMotion.addEventListener?.('change', event => {
       if (!bannerPauseChosen) bannerPaused = event.matches;
       renderBanner(); scheduleBanner();
