@@ -83,7 +83,7 @@ function pricingNotes(details) {
 }
 
 /** Return escaped, dependency-free HTML for the first section of a product. */
-export function renderPricing(record = {}) {
+export function pricingData(record = {}) {
   const details = detailRows(record), raw = lines(record.quoteRaw), custom = lines(record.customQuoteRaw);
   const confirmed = record.unitPrice !== null && record.unitPrice !== undefined && clean(record.unitPrice) !== ''
     ? clean(record.unitPrice) + (clean(record.currency) ? ' ' + clean(record.currency) : '') : '';
@@ -100,7 +100,7 @@ export function renderPricing(record = {}) {
   }
   const tax = explicitTax.length ? explicitTax.filter(row => row.value && !negativeTax(row.value))
     : unique(taxFallback).map(value => ({value}));
-  const bare = preferred(details, label => /^(?:裸瓶|瓶身|瓶体)(?:价格|单价|报价|价)$/.test(label), raw.filter(isBareBottlePrice));
+  const bare = Object.hasOwn(record,'bareBottlePrice') ? (clean(record.bareBottlePrice)?[{value:clean(record.bareBottlePrice)}]:[]) : preferred(details, label => /^(?:裸瓶|瓶身|瓶体)(?:价格|单价|报价|价)$/.test(label), raw.filter(isBareBottlePrice));
   const craftsmanship = preferred(details, label => /^(?:工艺|工艺说明|工艺价格|工艺费用|印刷工艺|印刷费用|历史工艺费用及条件)$/.test(label),
     clean(record.processRaw) ? [record.processRaw] : raw.filter(value => process.test(value) && !component.test(value)));
 
@@ -120,6 +120,11 @@ export function renderPricing(record = {}) {
     ['规格原文', clean(record.specificationRaw)], ['原始报价（含配置与分项）', clean(record.quoteRaw)],
     ['定制报价原文', clean(record.customQuoteRaw)],
   ].filter(([, value]) => value);
+  return {ordinary,tax,bare,craftsmanship,moq,lead,terms,components,customPrice,quoteOriginal,moqDetails,leadDetails};
+}
+
+export function renderPricing(record = {}) {
+  const {ordinary,tax,bare,craftsmanship,moq,lead,terms,components,customPrice,quoteOriginal,moqDetails,leadDetails}=pricingData(record);
   return `<section class="pricing-section" aria-label="价格与报价"><h3>价格与报价</h3><dl class="pricing-grid">${
     cell('普通／确认单价', ordinary)
   }${cell('含税价格', tax)}${cell('裸瓶价格', bare)}${cell('工艺', craftsmanship)}${

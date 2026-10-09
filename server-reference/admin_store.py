@@ -30,13 +30,21 @@ class ConflictError(AdminError):
         super().__init__(message, 409)
 
 
+DEFAULT_PROCESS_STANDARDS = [
+    {'id': key, 'name': name, 'englishName': en, 'price': None, 'unit': unit, 'moq': '', 'leadTime': ''}
+    for key,name,en,unit in [
+        ('silk','丝印','Screen printing','colour'), ('foil','烫金 / 烫银','Gold / silver foil','colour'),
+        ('injection','注塑色','Moulded colour','unit'), ('spray','喷涂','Spray coating','colour'),
+        ('frost','蒙砂','Frosting','unit'), ('bodyPlate','电镀瓶身','Body plating','unit'),
+        ('capPlate','电镀盖子','Cap plating','unit'), ('other','其他工艺','Other finish','unit')]]
+
 DEFAULT_SETTINGS = {
     'brandName': '源泽', 'englishName': 'YUANZE PACKAGING',
     'companyName': '广州源泽药业有限公司', 'siteTitle': '源泽包材库 · 内部选型',
     'catalogTitle': '包材选型库',
     'catalogSubtitle': '从原始询价资料中查找包材，保留图片、报价条件与来源。',
     'footerNote': '资料来自公司提供的询价记录表', 'announcement': '',
-    'processReference': '', 'showBusinessDemo': True,
+    'processReference': '', 'processStandards': DEFAULT_PROCESS_STANDARDS, 'showBusinessDemo': True,
 }
 DEFAULT_TAXONOMY = {
     'categories': ['瓶', '罐', '软管', '泵头', '盖子', '滴管', '彩盒', '套装', '其他'],
@@ -53,7 +61,7 @@ RAW_FIELDS = {
 }
 TEXT_FIELDS = RAW_FIELDS | {
     'name', 'kind', 'category', 'bottleType', 'series', 'model', 'description',
-    'quoteHeader', 'sourceNote',
+    'quoteHeader', 'sourceNote', 'bareBottlePrice', 'stockStatus',
 }
 RECORD_FIELDS = TEXT_FIELDS | {'materials', 'uses', 'capacityMl', 'unitPrice', 'currency',
                               'validUntil', 'images', 'uncertainties', 'productDetails', 'bodyAreas'}
@@ -97,6 +105,27 @@ def text_list(value, max_items=100):
     if not isinstance(value, list) or len(value) > max_items:
         raise AdminError('分类或标签必须为列表，且不能超过 100 项')
     return list(dict.fromkeys(text(x, 200, True) for x in value))
+
+
+def process_standards(value):
+    if not isinstance(value, list) or len(value) > 50:
+        raise AdminError('工艺标准必须为列表，且不能超过 50 项')
+    result, seen = [], set()
+    for item in value:
+        if not isinstance(item, dict) or set(item) - {'id','name','englishName','price','unit','moq','leadTime'}:
+            raise AdminError('工艺标准格式不正确')
+        rid = text(item.get('id',''), 80, True)
+        if not re.fullmatch(r'[A-Za-z0-9_-]+', rid) or rid in seen:
+            raise AdminError('工艺编号必须唯一且只含字母、数字、下划线或横线')
+        seen.add(rid)
+        unit = item.get('unit', 'unit')
+        if unit not in ('unit','colour'):
+            raise AdminError('费用单位须为每个或每色')
+        result.append({'id':rid,'name':text(item.get('name',''),80,True),
+                       'englishName':text(item.get('englishName',''),120),
+                       'price':number(item.get('price'), '工艺价格'), 'unit':unit,
+                       'moq':text(item.get('moq',''),200), 'leadTime':text(item.get('leadTime',''),200)})
+    return result
 
 
 def product_details(value):
@@ -423,7 +452,10 @@ class AdminStore:
 
     def _config(self, c, resource):
         r = c.execute('SELECT * FROM admin_config WHERE resource=?', (resource,)).fetchone()
-        return {**json.loads(r['content']), 'version': r['version']}
+        value = json.loads(r['content'])
+        if resource == 'settings':
+            value.setdefault('processStandards', deepcopy(DEFAULT_PROCESS_STANDARDS))
+        return {**value, 'version': r['version']}
 
     def _entity(self, c, resource, row):
         if not row:
@@ -608,6 +640,8 @@ class AdminStore:
                 if value is None and key not in ('name', 'kind'):
                     value = ''
                 out[key] = text(value, 10000 if key.endswith('Raw') or key == 'description' else 1000)
+        if 'stockStatus' in candidate and out['stockStatus'] not in ('','yes','no','unknown'):
+            raise AdminError('现货状态须为 yes、no 或 unknown')
         if not out.get('name'):
             raise AdminError('请填写产品名称')
         if out.setdefault('kind', 'package') not in KINDS:
@@ -624,6 +658,14 @@ class AdminStore:
         if 'productDetails' in candidate:
             out['productDetails'] = product_details(candidate['productDetails'])
         out.setdefault('productDetails', [])
+        if previous and out['productDetails'] == old.get('productDetails', []):
+            changed_patterns = [pattern for field,pattern in [
+                ('materials',r'材质|材料'),('specificationRaw',r'规格|容量|净含量'),
+                ('moqRaw',r'MOQ|起订|最小订购'),('leadTimeRaw',r'货期|交期|周期'),('uses',r'用途|通常用于')]
+                if field in candidate and out.get(field) != old.get(field)]
+            if changed_patterns:
+                out['productDetails'] = [row for row in out['productDetails']
+                    if not any(re.search(pattern,row.get('label',''),re.I) for pattern in changed_patterns)]
         for key in ('capacityMl', 'unitPrice'):
             if key in candidate:
                 out[key] = number(candidate[key], '容量' if key == 'capacityMl' else '单价')
@@ -773,6 +815,8 @@ class AdminStore:
                 continue
             if resource == 'taxonomy':
                 out[key] = text_list(val)
+            elif key == 'processStandards':
+                out[key] = process_standards(val)
             elif key == 'showBusinessDemo':
                 if type(val) is not bool:
                     raise AdminError('显示状态必须为是或否')
@@ -847,6 +891,8 @@ class AdminStore:
         with self.connection(True) as c:
             self._actor(c, actor)
             if resource == 'records':
+                if action == 'bulk':
+                    return self._bulk_change(c, data, actor)
                 return self._save_record(c, action, data, actor)
             if resource == 'users':
                 return self._save_user(c, action, data, actor)
@@ -855,6 +901,43 @@ class AdminStore:
             if resource in ('samples', 'plans'):
                 return self._save_entity(c, resource, action, data, actor)
             raise AdminError('管理项目不存在', 404)
+
+    def _bulk_change(self, c, data, actor):
+        items, operation = data.get('items'), data.get('operation')
+        if not isinstance(items, list) or not 1 <= len(items) <= 500:
+            raise AdminError('每次批量操作需要 1–500 条记录')
+        if operation not in ('save','archive','unarchive'):
+            raise AdminError('批量操作无效')
+        patch = data.get('patch', {})
+        allowed = {'bareBottlePrice','materials','materialRaw','specificationRaw','capacityMl','moqRaw','leadTimeRaw','uses','stockStatus'}
+        if not isinstance(patch, dict) or set(patch) - allowed or (operation == 'save' and not patch):
+            raise AdminError('请选择需要修改的产品字段')
+        seen, output = set(), []
+        # All saves and their audit entries share one transaction. Any stale
+        # version, absent record or invalid value rolls back the entire batch.
+        for item in items:
+            if not isinstance(item, dict) or set(item) != {'id','version'} or not isinstance(item['id'], str) or item['id'] in seen:
+                raise AdminError('批量记录编号或版本无效')
+            seen.add(item['id'])
+            rid = writable_id(c, item['id'])
+            row = c.execute(RECORD_SELECT + ' WHERE r.id=?', (rid,)).fetchone()
+            if not row:
+                raise AdminError('批量操作包含不存在的产品',404)
+            before = self._record(row)
+            change = deepcopy(patch)
+            if operation == 'save':
+                # Remove superseded extracted copies, while retaining immutable
+                # rawCells, source evidence and the previous audit revision.
+                patterns = []
+                for field, pattern in [('materials',r'材质|材料'),('specificationRaw',r'规格|容量|净含量'),
+                                       ('moqRaw',r'MOQ|起订|最小订购'),('leadTimeRaw',r'货期|交期|周期'),('uses',r'用途|通常用于')]:
+                    if field in change:
+                        patterns.append(pattern)
+                if patterns:
+                    change['productDetails'] = [d for d in before.get('productDetails',[])
+                        if not any(re.search(p,d.get('label',''),re.I) for p in patterns)]
+            output.append(self._save_record(c, operation, {'id':rid,'version':item['version'],'record':change}, actor))
+        return {'items': output, 'count': len(output)}
 
     def _bulk_rows(self, rows):
         if not isinstance(rows, list) or not 1 <= len(rows) <= 5000:

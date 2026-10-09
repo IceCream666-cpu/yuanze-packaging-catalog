@@ -9,6 +9,40 @@ from test_server import server
 
 
 class Administration(HTTP):
+    def test_bulk_records_real_route_csrf_conflict_and_permissions(self):
+        self.login()
+        old=self.req('/api/admin/records')[2]['items'][0]
+        request={'action':'bulk','operation':'save','items':[{'id':old['id'],'version':old['version']}],
+                 'patch':{'bareBottlePrice':'1.8元','moqRaw':'5000'}}
+        self.assertEqual(self.req('/api/admin/records',request,csrf=False)[0],403)
+        code,_,result=self.req('/api/admin/records',request)
+        self.assertEqual(code,200,result)
+        self.assertEqual(result['count'],1)
+        self.assertEqual(result['items'][0]['bareBottlePrice'],'1.8元')
+        self.assertEqual(result['items'][0]['productCode'],old['productCode'])
+        self.assertEqual(self.req('/api/admin/records',request)[0],409)
+        self.employee_login()
+        self.assertEqual(self.req('/api/admin/records',request)[0],403)
+
+    def test_process_prices_real_route_and_customer_asset_boundary(self):
+        self.login()
+        settings=self.req('/api/admin/settings')[2]
+        rows=settings['value']['processStandards'];rows[0]['price']=0.13
+        code,_,saved=self.req('/api/admin/settings',{'action':'save','version':settings['version'],
+             'value':{'processStandards':rows}})
+        self.assertEqual(code,200,saved)
+        self.assertEqual(saved['processStandards'][0]['price'],0.13)
+        self.assertEqual(self.req('/product-detail.css')[0],200)
+        self.assertEqual(self.req('/product-detail-facts.js')[0],200)
+        server.STORE.mutate('users','save',{'id':'detail_client','version':0,'password':self.password,'role':'client'},'review_admin')
+        _,headers,_=self.req('/api/login',{'username':'detail_client','password':self.password})
+        self.cookie=headers['Set-Cookie'].split(';')[0]
+        for route in ('/product-detail.css','/product-detail-facts.js'):
+            self.assertEqual(self.req(route)[0],200)
+        for route in ('/product-pricing.js','/product-detail-view.js','/admin-product-tools.js','/api/admin/settings'):
+            self.assertEqual(self.req(route)[0],403)
+
+
     def test_catalog_response_gate_rejects_before_loading_and_recovers(self):
         self.login()
         cookie=self.cookie

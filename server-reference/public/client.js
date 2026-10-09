@@ -1,3 +1,4 @@
+import {factRows} from './product-detail-facts.js';
 import {requestJSON} from './api-client.js';
 import {t, getLanguage, setLanguage, onLanguageChange, installLanguageSwitch, registerTranslations} from './i18n.js';
 
@@ -233,9 +234,9 @@ function renderDetails(changeImage = false) {
   if (!previewItem) return;
   $('#detailCode').textContent = previewItem.productCode;$('#detailTitle').textContent = itemName(previewItem);
   $('#detailTags').innerHTML = previewItem.materials.map(value => `<span class="tag material">${esc(t(value))}</span>`).join('');
-  $('#detailFacts').innerHTML = [factHTML('包材类型',t(previewItem.category)),factHTML('瓶型',t(previewItem.bottleType)),factHTML('净含量',previewItem.capacity),factHTML('材质',joined(previewItem.materials)),factHTML('用途',joined(previewItem.uses)),factHTML('使用部位',previewItem.sections.map(value => label('section',value)).join(getLanguage() === 'en' ? ', ' : '、'))].join('');
+  $('#detailFacts').innerHTML = factRows({material:joined(previewItem.materials),spec:previewItem.capacity,uses:joined(previewItem.uses)},{client:true});
   $('#specifications').hidden = !previewItem.specifications.length;
-  $('#detailSpecifications').innerHTML = previewItem.specifications.map(spec => factHTML(spec.label,spec.value)).join('');
+  $('#detailSpecifications').innerHTML = previewItem.specifications.filter(spec=>! /^(材质|材料|规格|容量|净含量|用途|通常用于)$/.test(spec.label)).map(spec => factHTML(spec.label,spec.value)).join('');
   $('#imageStatus').textContent = `${previewIndex+1} / ${previewItem.images.length}`;
   $('#imagePrevious').disabled = previewIndex === 0;$('#imageNext').disabled = previewIndex === previewItem.images.length-1;
   $('.preview-controls').hidden = previewItem.images.length <= 1;

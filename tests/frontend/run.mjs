@@ -3,6 +3,7 @@ import {fileURLToPath} from 'node:url';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const suites = [
+  ['--experimental-vm-modules','--test','tests/frontend/product-detail-release-tests.cjs'],
   ['--experimental-vm-modules', 'tests/frontend/paged-catalog-tests.cjs'],
   ['--experimental-vm-modules', 'tests/frontend/catalog-editor-tests.cjs'],
   ['--experimental-vm-modules', 'tests/frontend/admin-workspace-tests.cjs'],

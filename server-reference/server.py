@@ -331,7 +331,7 @@ class Handler(BaseHTTPRequestHandler):
             settings=STORE.read_admin('settings')
             page=(PUBLIC/'login.html').read_text().replace('登录 · 源泽包材库',html.escape('登录 · '+settings['siteTitle'])).replace('YUANZE · 源泽',html.escape(settings['englishName']+' · '+settings['brandName'])).replace('包材选型工作空间',html.escape(settings['catalogTitle']))
             return self.respond(200,page.encode(),'text/html; charset=utf-8')
-        if path in ['/login.js','/api-client.js','/style.css','/i18n.js','/i18n.css']:
+        if path in ['/login.js','/api-client.js','/style.css','/i18n.js','/i18n.css','/product-detail-facts.js','/product-detail.css']:
             return self.file(PUBLIC/('login.html' if path in ['/login','/login.html'] else path[1:]), PUBLIC)
         if path in ['/brand/yuanze-brand-guide.png', '/brand/yuanze-mark.svg']:
             return self.file(PUBLIC/path.lstrip('/'), PUBLIC)
