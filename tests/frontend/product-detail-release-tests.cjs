@@ -8,6 +8,23 @@ async function setup(){const dom=new JSDOM('<body><main id="detail"></main></bod
 const record={id:'synthetic',productCode:'YZ-BC-990001',kind:'package',quoteRaw:'裸瓶价格1.8元',specificationRaw:'50g',moqRaw:'5000',leadTimeRaw:'20天',uses:['面霜'],supplierRaw:'PRIVATE SUPPLIER',contactRaw:'PRIVATE CONTACT',productDetails:[{label:'裸瓶报价',value:'1.8元'}]};
 test('production detail matches compact prototype and keeps source-private data outside main fields',async()=>{const e=await setup();try{e.doc.querySelector('main').innerHTML=e.view.compactDetail(record);const d=e.doc;assert.match(d.querySelector('.pd-price-value').textContent,/1\.80/);assert.deepEqual([...d.querySelectorAll('.pd-facts dt')].map(n=>n.textContent),['材质','规格','MOQ · 起订量','货期','通常用于']);assert.equal(d.querySelector('.pd-facts dd').textContent,'');assert.equal(d.querySelectorAll('tbody tr').length,9);assert.doesNotMatch(d.querySelector('main').textContent,/PRIVATE|0\.10|0\.20|0\.50/);assert.equal(d.querySelector('.pd-facts').textContent.match(/5000/g).length,1);}finally{e.close();}});
 test('explicit cleared bare price suppresses historical fallbacks',async()=>{const e=await setup();try{assert.equal(e.view.coreFacts({...record,bareBottlePrice:''}).bare,'');assert.equal(e.view.coreFacts({...record,bareBottlePrice:'2.5元'}).bare,'2.5元');}finally{e.close();}});
+test('all source quotations remain available in the price section without treating an ordinary quote as bare',async()=>{
+ const e=await setup();try{
+  const input={...record,quoteRaw:'1.35',bareBottlePrice:'',customQuoteRaw:'定制盖含泵头2.30元/套'};
+  e.doc.querySelector('main').innerHTML=e.view.compactDetail(input);
+  assert.equal(e.doc.querySelector('.pd-price-value').textContent,'—');
+  assert.doesNotMatch(e.doc.querySelector('.pd-reference-quotes').textContent,/普通参考报价/);
+  assert.match(e.doc.querySelector('.pd-source-quote').textContent,/1.35/);
+  assert.match(e.doc.querySelector('.pd-source-quote').textContent,/2.30元\/套/);
+  assert.equal(e.doc.querySelector('.pd-estimate-value'),null);
+  assert.ok(e.doc.querySelector('.pd-reference-quotes').compareDocumentPosition(e.doc.querySelector('.pd-facts'))&4);
+  assert.doesNotMatch(e.doc.querySelector('.pd-reference-quotes').textContent,/PRIVATE/);
+  const normalized={...input,bareBottlePrice:'1.35元',customQuoteRaw:''};
+  e.doc.querySelector('main').innerHTML=e.view.compactDetail(normalized);
+  assert.equal(e.doc.querySelector('.pd-reference-price'),null,'Do not repeat the identical already-confirmed bare amount as ordinary');
+  assert.match(e.doc.querySelector('.pd-source-quote').textContent,/1.35/,'Original evidence remains available');
+ }finally{e.close();}
+});
 test('material facts use explicit materials and do not mistake a mixed source printing fee for material',async()=>{
  const e=await setup();try{
   for(const [materialRaw,expected] of [['丝印单色单面0.1',''],['PET','PET'],['PET瓶，丝印单色单面0.1','PET'],['丝印0.1；PET + PP','PET / PP'],['PETG+烫金0.2','PETG'],['贴纸0.1，电镀铝色0.2',''],['待确认',''],['/','']]){
