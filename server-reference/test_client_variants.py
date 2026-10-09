@@ -15,7 +15,7 @@ from test_admin_store import credentials
 SOURCE_IDS = ('YZ-S01-R0012', 'YZ-S01-R0013')
 CODES = ('YZ-BC-000009', 'YZ-BC-000010')
 SAFE_FIELDS = {'id', 'productCode', 'name', 'capacity', 'capacityMl', 'category',
-               'bottleType', 'materials', 'uses', 'sections', 'specifications', 'images'}
+               'bottleType', 'materials', 'uses', 'referenceUses', 'sections', 'specifications', 'images'}
 
 
 class ClientVariantTests(unittest.TestCase):

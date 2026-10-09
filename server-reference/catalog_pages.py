@@ -111,7 +111,7 @@ class CatalogPages:
 
 def internal_csv(records):
     kinds={'package':'包材','source_page':'图册与图片线索','process_rule':'工艺与价格参考','semi_finished':'料体与半成品','service':'检测与服务','requirement':'需求资料','uncertain':'待分类'}
-    headers=['产品编号','内部记录ID','名称','类型','材料原文','规格原文','供应商原文','报价口径','普通报价原文','普通起订数量','普通交期','定制报价原文','定制起订数量','定制交期','样品费原文','开模费原文','来源']
+    headers=['产品编号','内部记录ID','名称','类型','材料原文','规格原文','供应商原文','报价口径','普通报价原文','普通起订数量','普通交期','定制报价原文','定制起订数量','定制交期','样品费原文','开模费原文','来源','资料用途','参考用途（选型参考）']
     fields=['productCode','id','name','kind','materialRaw','specificationRaw','supplierRaw','quoteHeader','quoteRaw','moqRaw','leadTimeRaw','customQuoteRaw','customMoqRaw','customLeadTimeRaw','sampleFeeRaw','moldFeeRaw']
     output=io.StringIO();output.write('\ufeff');writer=csv.writer(output);writer.writerow(headers)
     def safe(value):
@@ -120,6 +120,12 @@ def internal_csv(records):
     for record in records:
         source=record.get('source') or {};file=str(source.get('workbook') or '')
         note=record.get('sourceNote') or (f'{file} · 第 {source["page"]} 页' if source.get('page') else (file+' · ' if file else '')+str(source.get('sheet') or '原始表格')+' · 第 '+str(source.get('row','?'))+' 行') if source or record.get('sourceNote') else '管理员维护'
-        row=[kinds.get(record.get('kind'),'待分类') if k=='kind' else record.get(k) for k in fields]+[note]
+        # The worker supplies derived display values for this employee report.
+        # Keep the report heading distinct from the editable import-template
+        # field, whose missing/automatic/disabled states carry write intent.
+        def usage_text(key):
+            values = record.get(key)
+            return ' / '.join(value for value in values if isinstance(value, str)) if isinstance(values, list) else ''
+        row=[kinds.get(record.get('kind'),'待分类') if k=='kind' else record.get(k) for k in fields]+[note,usage_text('uses'),usage_text('referenceUses')]
         writer.writerow([safe(v) for v in row])
     return output.getvalue().encode('utf-8')

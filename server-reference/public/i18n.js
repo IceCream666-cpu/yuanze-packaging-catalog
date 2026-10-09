@@ -842,7 +842,7 @@ registerTranslations({
   "登录已过期。你的输入仍保留，请在新窗口重新登录后再保存。": "Your session has expired. Your input is retained. Sign in in a new window, then save again.",
   "确定从本产品移除此图片吗？历史版本中的图片关联仍会保留。": "Remove this image from the product? The image association will remain in historical versions.",
   "确定恢复为所选历史版本吗？当前内容将保留在历史中，恢复后的产品会作为新版本保存。": "Restore this version? Current content will remain in history, and the restored product will be saved as a new version.",
-  "筛选项均可多选：同一项满足任一条件，不同项同时满足。用途依据已有名称和用途资料整理，未明确用途的包材可在全部资料中查找。": "All filters support multiple selections: any value within a filter, all filters together. Uses are based on existing names and descriptions. Find items with unspecified uses in All records.",
+  "筛选项均可多选：同一项满足任一条件，不同项同时满足。用途包含资料标注与单独标明的结构参考，同一包材可匹配多个用途；未明确用途的包材可在全部资料中查找。": "All filters support multiple selections: any value within a filter, all filters together. Uses include source labels and separately marked structure suggestions. One package can match several uses. Find items with unspecified uses in All records.",
   "管理员从包材详情登记实物样品并维护编号和位置。借出与归还、测试耗用、寄给客户分别记账。": "Administrators register physical samples from product details and maintain IDs and locations. Loans, returns, testing consumption and customer shipments are logged separately.",
   "系统会保留至少一个可用管理员，防止管理权限丢失。": "At least one active administrator is always retained to prevent loss of access.",
   "系统接口跳转异常，请稍后重试；请联系管理员检查网站配置。": "Unexpected API redirect. Try again later or ask an administrator to check the website configuration.",

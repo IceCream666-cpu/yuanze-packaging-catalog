@@ -18,8 +18,8 @@ for await (const line of input) {
       const requested=job.ids.map(value=>index.recordIdIndex.get(normalizeSearch(value))?.id||index.productCodeIndex.get(codeKey(value))?.id||value);const ids=new Set(requested.flatMap(id=>index.productGroupIndex.get(id)?.records.map(r=>r.id)||[id]));
       result={records:index.records.filter(r=>ids.has(r.id)).map(r=>Object.fromEntries(Object.entries(r).filter(([key])=>!key.startsWith('_'))))};
     } else if(job.action==='export') {
-      const fields=['id','productCode','name','kind','materialRaw','specificationRaw','supplierRaw','quoteHeader','quoteRaw','moqRaw','leadTimeRaw','customQuoteRaw','customMoqRaw','customLeadTimeRaw','sampleFeeRaw','moldFeeRaw','source','sourceNote'];
-      result={records:matchRecords(index,job.options).map(r=>Object.fromEntries(fields.map(k=>[k,r[k]])))};
+      const fields=['id','productCode','name','kind','materialRaw','specificationRaw','supplierRaw','quoteHeader','quoteRaw','moqRaw','leadTimeRaw','customQuoteRaw','customMoqRaw','customLeadTimeRaw','sampleFeeRaw','moldFeeRaw','source','sourceNote','uses','referenceUses'];
+      result={records:matchRecords(index,job.options).map(r=>Object.fromEntries(fields.map(k=>[k,k==='uses'?r._uses:k==='referenceUses'?r._referenceUses:r[k]])))};
     } else throw Error('Invalid operation');
     process.stdout.write(JSON.stringify(result)+'\n');
   } catch {process.stdout.write(JSON.stringify({error:'catalog_query_failed'})+'\n');}

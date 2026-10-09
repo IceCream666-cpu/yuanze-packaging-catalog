@@ -186,7 +186,61 @@ export function usageOptions(records) {
   const choices=RULES.map(([label])=>label);
   for (const record of Array.isArray(records) ? records : []) {
     if (!isProduct(record) || record.archived) continue;
-    choices.push(...recordUses(record));
+    choices.push(...recordSearchUses(record));
   }
   return unique(choices);
 }
+
+// A second, explicitly referential dimension. Never write these suggestions
+// into maintained uses or infer a body area from them. These exact structure
+// aliases mirror usage_references.py; parity tests cover their public contract.
+const REFERENCE_CATEGORIES = new Map([
+  ...['','瓶','瓶类','bottle','bottles'].map(value=>[value,'bottle']),
+  ...['软管','tube','tubes'].map(value=>[value,'tube']),
+  ...['罐','罐类','罐与广口盒','jar','jars'].map(value=>[value,'jar']),
+  ...['滴管与滴管瓶','滴管','dropper','droppers'].map(value=>[value,'dropper']),
+]);
+const REFERENCE_RULES = [
+  [['软管','tube','tubes'],'tube',['洁面','护手霜','身体乳']],
+  [['滴管瓶','精油滴管瓶','精华滴管瓶','dropper bottle'],'dropper',['精华液','精油']],
+  [['真空瓶','可替换真空瓶','airless bottle','airless'],'bottle',['精华液','乳液','面霜']],
+  [['乳液瓶','lotion bottle'],'bottle',['乳液','身体乳']],
+  [['泡沫瓶','慕斯瓶','foam bottle','foaming bottle','foam'],'bottle',['洁面','洗手液']],
+  [['喷雾瓶','spray bottle','spray'],'bottle',['爽肤水','身体香氛']],
+  [['膏霜罐','广口膏霜罐','广口罐','cream jar'],'jar',['面霜','身体霜']],
+  [['滚珠瓶','roll-on bottle','roller bottle','香水瓶','perfume bottle'],'bottle',['香水']],
+];
+const REFERENCE_BY_TYPE = new Map(REFERENCE_RULES.flatMap(([aliases,family,labels])=>aliases.map(alias=>[alias,{family,labels,ruleId:aliases[0]}])));
+const REFERENCE_BY_CATEGORY = {tube:{labels:['洁面','护手霜','身体乳'],ruleId:'软管'},jar:{labels:['面霜','身体霜'],ruleId:'膏霜罐'}};
+const SPECIAL_TUBE_USES = new Set(['唇彩','唇部护理','眼霜','眼部精华','口腔护理','眉妆','睫毛产品','美甲','染发','脱毛','家居清洁','洗衣液']);
+const structureKey = value=>asText(value).toLowerCase();
+
+export function referenceUseInfo(record) {
+  const empty={mode:'automatic',labels:[],ruleId:'',reason:''};
+  if(!isProduct(record))return empty;
+  const maintained=unique(Array.isArray(record.uses)?record.uses:typeof record.uses==='string'?[record.uses]:[]);
+  if(Object.hasOwn(record,'referenceUses'))return {...empty,mode:'manual',labels:unique(Array.isArray(record.referenceUses)?record.referenceUses:[]).filter(value=>!maintained.includes(value)),reason:'管理员维护的参考用途'};
+  const rawCategory=structureKey(record.category),category=rawCategory==='待细分'?'':rawCategory,type=structureKey(record.bottleType),family=REFERENCE_CATEGORIES.get(category);
+  if(!family)return empty;
+  let rule;
+  if(type){
+    rule=REFERENCE_BY_TYPE.get(type);
+    if(!rule||category&&family!==rule.family&&!(family==='bottle'&&rule.family==='dropper'))return empty;
+  }else rule=REFERENCE_BY_CATEGORY[family];
+  if(!rule||rule.ruleId==='软管'&&recordUses(record).some(value=>SPECIAL_TUBE_USES.has(value)))return empty;
+  return {...empty,labels:rule.labels.filter(value=>!maintained.includes(value)),ruleId:rule.ruleId,reason:'依据明确包材结构整理，具体适配待确认'};
+}
+
+export function recordReferenceUses(record) {return referenceUseInfo(record).labels;}
+export function recordSearchUses(record) {return unique([...recordUses(record),...recordReferenceUses(record)]);}
+
+const USAGE_SEARCH_ALIASES = {
+  '洁面':['洗面奶','洗颜','face wash','facial cleanser'],
+  '护手霜':['手霜','hand cream'],'身体乳':['body lotion'],
+  '精华液':['精华','精华露','精华素','serum'],'精油':['essential oil'],
+  '乳液':['lotion'],'面霜':['face cream','facial cream'],
+  '洗手液':['洗手慕斯','hand wash','hand soap'],
+  '爽肤水':['toner','facial toner'],'身体香氛':['身体喷雾','body mist','body fragrance'],
+  '身体霜':['身体润肤霜','body cream','body butter'],'香水':['perfume','eau de parfum','eau de toilette'],
+};
+export function usageSearchTerms(record) {return unique(recordSearchUses(record).flatMap(label=>[label,...(USAGE_SEARCH_ALIASES[label]||[])]));}

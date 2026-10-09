@@ -103,7 +103,7 @@ function safeVariant(item) {
     productCode:/^YZ-BC-\d{6,}$/.test(item?.productCode) ? item.productCode : '',
     capacity:typeof item?.capacity === 'string' && capacityPattern.test(item.capacity) ? item.capacity : '',
     category:known(item?.category,categories), bottleType:known(item?.bottleType,bottles),
-    materials:safeArray(item?.materials,materials), uses:safeArray(item?.uses,uses), sections:safeArray(item?.sections,facetConfig.section.values),
+    materials:safeArray(item?.materials,materials), uses:safeArray(item?.uses,uses), referenceUses:safeArray(item?.referenceUses,uses), sections:safeArray(item?.sections,facetConfig.section.values),
     specifications:Array.isArray(item?.specifications) ? item.specifications.filter(spec => known(spec?.label,specs) && typeof spec.value === 'string' && specPattern.test(spec.value)).map(({label,value}) => ({label,value})) : [],
     images:Array.isArray(item?.images) ? item.images.map(image => ({url:imageURL(image)})).filter(image => image.url) : [],
   };
@@ -207,7 +207,7 @@ function paginationItems() {
   const output = [];for (const n of [...visible].sort((a,b) => a-b)) {if (output.length && n-output.at(-1) > 1) output.push('…');output.push(n);}return output;
 }
 function renderGallery() {
-  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(catalogueItemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:itemCapacities(item) || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
+  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(catalogueItemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}${item.referenceUses.length?`<span class="reference-use-tag" title="${esc(joined(item.referenceUses))}">${esc(t('参考用途'))} · ${esc(joined(item.referenceUses.slice(0,2)))}${item.referenceUses.length>2?' +'+(item.referenceUses.length-2):''}</span>`:''}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:itemCapacities(item) || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
   attachImages($('#gallery'));
   $('#empty').hidden = !loaded || items.length !== 0 || Boolean(noticeKey);
   $('#emptyTitle').textContent = t(hasFilters() ? '暂无匹配的包材' : collection === 'favourites' ? '暂无收藏' : collection === 'shortlist' ? '意向清单为空' : '更多包材，即将呈现');
@@ -248,7 +248,7 @@ function renderDetails(changeImage = false) {
   const variants=previewItem.variants||[],selector=$('#detailVariants'),variantKey=JSON.stringify(variants.map(variant=>[variant.id,variant.capacity]));selector.hidden=variants.length<=1;
   if(selector.dataset.variantKey!==variantKey){selector.innerHTML=variants.map(variant=>`<button type="button" class="button" data-client-variant="${esc(variant.id)}">${esc(variant.capacity||variant.productCode)}</button>`).join('');selector.dataset.variantKey=variantKey;}
   selector.querySelectorAll('[data-client-variant]').forEach(button=>{const active=button.dataset.clientVariant===previewItem.id;button.setAttribute('aria-pressed',String(active));button.classList.toggle('active',active);});
-  $('#detailFacts').innerHTML = factRows({material:joined(previewItem.materials),spec:previewItem.capacity,uses:joined(previewItem.uses)},{client:true});
+  $('#detailFacts').innerHTML = factRows({material:joined(previewItem.materials),spec:previewItem.capacity,uses:joined(previewItem.uses),referenceUses:joined(previewItem.referenceUses)},{client:true});
   $('#specifications').hidden = !previewItem.specifications.length;
   $('#detailSpecifications').innerHTML = previewItem.specifications.filter(spec=>! /^(材质|材料|规格|容量|净含量|用途|通常用于)$/.test(spec.label)).map(spec => factHTML(spec.label,spec.value)).join('');
   $('#imageStatus').textContent = `${previewIndex+1} / ${previewItem.images.length}`;
@@ -349,7 +349,7 @@ function renderTools() {
   $('#imageSearchSubmit').disabled = Boolean(imageController);
   $('#imageSearchSubmit').textContent = t(imageController ? '正在加载…' : '查找相似包材');
 }
-function publicFacetValues(item) {return {category:[item.category],section:item.sections,material:item.materials,capacity:[item.capacity],bottle:[item.bottleType],use:item.uses};}
+function publicFacetValues(item) {return {category:[item.category],section:item.sections,material:item.materials,capacity:[item.capacity],bottle:[item.bottleType],use:[...new Set([...item.uses,...item.referenceUses])]};}
 function matchesLocal(item) {
   const values = publicFacetValues(item);
   if (Object.entries(selected).some(([key,choices]) => choices.length && !choices.some(value => values[key].includes(value)))) return false;
@@ -393,13 +393,13 @@ function toggleItemAction(action,item) {
 }
 function renderComparison() {
   const products = [...comparison.values()];
-  const rows = [['产品编号',item => item.productCode],['包材类型',item => t(item.category)],['瓶型',item => t(item.bottleType)],['净含量',item => item.capacity],['材质',item => joined(item.materials)],['用途',item => joined(item.uses)],['使用部位',item => item.sections.map(value => label('section',value)).join(' / ')],...Object.keys(specs).filter(name => products.some(item => item.specifications.some(spec => spec.label === name))).map(name => [name,item => item.specifications.find(spec => spec.label === name)?.value])];
+  const rows = [['产品编号',item => item.productCode],['包材类型',item => t(item.category)],['瓶型',item => t(item.bottleType)],['净含量',item => item.capacity],['材质',item => joined(item.materials)],['资料标注用途',item => joined(item.uses)],['结构参考用途',item => joined(item.referenceUses)],['使用部位',item => item.sections.map(value => label('section',value)).join(' / ')],...Object.keys(specs).filter(name => products.some(item => item.specifications.some(spec => spec.label === name))).map(name => [name,item => item.specifications.find(spec => spec.label === name)?.value])];
   $('#compareTable').innerHTML = `<thead><tr><th scope="col">${esc(t('包材图片'))}</th>${products.map(item => `<th scope="col"><img src="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}"><span>${esc(itemName(item))}</span></th>`).join('')}</tr></thead><tbody>${rows.map(([name,value]) => `<tr><th scope="row">${esc(t(name))}</th>${products.map(item => `<td>${esc(value(item) || '—')}</td>`).join('')}</tr>`).join('')}</tbody>`;
 }
 function csvText(products) {
-  const headings = ['产品编号','包材类型','瓶型','净含量','材质','用途','使用部位',...Object.keys(specs)];
+  const headings = ['产品编号','包材类型','瓶型','净含量','材质','资料标注用途','结构参考用途','使用部位',...Object.keys(specs)];
   const cell = value => `"${String(value ?? '').replace(/"/g,'""')}"`;
-  return '\uFEFF' + [headings.map(value => t(value)),...products.map(item => [item.productCode,t(item.category),t(item.bottleType),item.capacity,joined(item.materials),joined(item.uses),item.sections.map(value => label('section',value)).join(' / '),...Object.keys(specs).map(name => item.specifications.find(spec => spec.label === name)?.value || '')])].map(row => row.map(cell).join(',')).join('\r\n');
+  return '\uFEFF' + [headings.map(value => t(value)),...products.map(item => [item.productCode,t(item.category),t(item.bottleType),item.capacity,joined(item.materials),joined(item.uses),joined(item.referenceUses),item.sections.map(value => label('section',value)).join(' / '),...Object.keys(specs).map(name => item.specifications.find(spec => spec.label === name)?.value || '')])].map(row => row.map(cell).join(',')).join('\r\n');
 }
 function exportProducts(products,name) {
   if (!products.length) return;

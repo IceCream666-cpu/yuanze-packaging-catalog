@@ -55,15 +55,16 @@ class ClientAccess(unittest.TestCase):
         self.assertEqual(self.req('/api/client/catalog')[0],401);self.assertEqual(self.login()['role'],'client')
         catalog=self.catalog();self.assertEqual(set(catalog),{'items','page','pages','total','facets'});self.assertEqual(catalog['total'],1)
         item=catalog['items'][0]
-        self.assertEqual(set(item),{'id','productCode','name','capacity','capacityMl','category','bottleType','materials','uses','sections','specifications','images'})
+        self.assertEqual(set(item),{'id','productCode','name','capacity','capacityMl','category','bottleType','materials','uses','referenceUses','sections','specifications','images'})
         self.assertEqual(item['capacity'],'100 mL');self.assertEqual(item['capacityMl'],100)
         self.assertEqual(item['name'],'喷雾瓶 · 100 mL');self.assertEqual(item['category'],'瓶类')
         self.assertEqual(item['bottleType'],'喷雾瓶');self.assertEqual(item['materials'],['PET'])
         self.assertEqual(item['uses'],['爽肤水']);self.assertEqual(item['sections'],['face'])
+        self.assertEqual(item['referenceUses'],['身体香氛'])
         self.assertEqual(item['specifications'],[{'label':'口径','value':'24 mm'}])
         self.assertEqual(item['productCode'],server.STORE.read_admin('records',id='INTERNAL-1')['productCode'])
         self.assertEqual(catalog['facets'],{'categories':['瓶类'],'materials':['PET'],'capacities':['100 mL'],
-                                          'bottleTypes':['喷雾瓶'],'uses':['爽肤水'],'sections':['face']})
+                                          'bottleTypes':['喷雾瓶'],'uses':['爽肤水','身体香氛'],'sections':['face']})
         self.assertEqual(len(item['images']),1);self.assertEqual(set(item['images'][0]),{'url'})
         self.assertRegex(item['images'][0]['url'],r'^/client-media/[a-f0-9]{64}\.jpg$')
         for secret in ['INTERNAL','supplier','PRIVATE','price','quote','raw','source','9.99']:

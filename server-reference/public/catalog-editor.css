@@ -11,3 +11,5 @@
 .catalog-editor .catalog-editor-foot>div:first-child{min-width:0;flex:1 1 220px}
 .catalog-editor .catalog-editor-foot>div:last-child{flex:0 0 auto;white-space:nowrap}
 .catalog-editor .catalog-editor-foot span,.catalog-editor button span[data-editor-text]{display:inline}
+
+.catalog-editor-reference{display:grid;grid-template-columns:1fr;gap:11px;margin:0;border:1px solid var(--editor-line);border-radius:7px;padding:12px}.catalog-editor-reference legend{font-size:12px;color:var(--muted,#74856c);padding:0 4px}.catalog-editor-reference input:disabled{color:#63786b;background:#f5f7f1}.catalog-editor-reference small{display:block;font-size:11px}

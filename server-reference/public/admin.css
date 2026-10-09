@@ -103,3 +103,5 @@
 }
 
 .admin-bulk{background:#e5ede7;border:1px solid #dce4da;padding:16px;border-radius:10px;margin:16px 0}.admin-bulk .bulk-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}.admin-bulk input[type=checkbox]{width:17px;height:17px;accent-color:#164b47}.admin-bulk .checkbox-line{display:flex;gap:7px;align-items:center}.process-editor{margin-top:24px}.process-editor input,.process-editor select{min-width:100px;max-width:220px;width:100%}.process-editor td:first-child{min-width:180px}.process-editor input+input{margin-top:6px}.process-editor .table-wrap{overflow:auto}.process-editor>button{margin-top:12px}@media(max-width:700px){.admin-bulk .bulk-fields{grid-template-columns:1fr 1fr}}
+
+#adminDialog .reference-use-editor{display:grid;grid-template-columns:1fr 1fr;gap:12px;border:1px solid #dce4da;padding:14px;border-radius:7px}#adminDialog .reference-use-editor>.help{grid-column:1/-1}#adminDialog .reference-use-editor input:disabled{color:#63786b;background:#f5f7f1}.admin-bulk [data-bulk-reference-mode]{margin-bottom:7px}@media(max-width:600px){#adminDialog .reference-use-editor{grid-template-columns:1fr}}

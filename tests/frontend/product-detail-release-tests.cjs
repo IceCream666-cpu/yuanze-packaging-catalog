@@ -4,9 +4,9 @@ const path=require('node:path');
 const {JSDOM}=require('jsdom');
 const {evaluateBrowserModule}=require('./module-loader.cjs');
 const root=path.resolve(__dirname,'../../server-reference/public');
-async function setup(){const dom=new JSDOM('<body><main id="detail"></main></body>',{url:'https://synthetic.test/',runScripts:'outside-only'});const view=(await evaluateBrowserModule(dom,path.join(root,'product-detail-view.js'))).namespace;return {dom,doc:dom.window.document,view,close:()=>dom.window.close()};}
+async function setup(){const dom=new JSDOM('<body><main id="detail"></main></body>',{url:'https://synthetic.test/',runScripts:'outside-only'});const view=(await evaluateBrowserModule(dom,path.join(root,'product-detail-view.js'),"\nimport {setLanguage} from './i18n.js';globalThis.__setLanguage=setLanguage;")).namespace;return {dom,doc:dom.window.document,view,close:()=>dom.window.close()};}
 const record={id:'synthetic',productCode:'YZ-BC-990001',kind:'package',quoteRaw:'裸瓶价格1.8元',specificationRaw:'50g',moqRaw:'5000',leadTimeRaw:'20天',uses:['面霜'],supplierRaw:'PRIVATE SUPPLIER',contactRaw:'PRIVATE CONTACT',productDetails:[{label:'裸瓶报价',value:'1.8元'}]};
-test('production detail matches compact prototype and keeps source-private data outside main fields',async()=>{const e=await setup();try{e.doc.querySelector('main').innerHTML=e.view.compactDetail(record);const d=e.doc;assert.match(d.querySelector('.pd-price-value').textContent,/1\.80/);assert.deepEqual([...d.querySelectorAll('.pd-facts dt')].map(n=>n.textContent),['材质','规格','MOQ · 起订量','货期','通常用于']);assert.equal(d.querySelector('.pd-facts dd').textContent,'');assert.equal(d.querySelectorAll('tbody tr').length,9);assert.doesNotMatch(d.querySelector('main').textContent,/PRIVATE|0\.10|0\.20|0\.50/);assert.equal(d.querySelector('.pd-facts').textContent.match(/5000/g).length,1);}finally{e.close();}});
+test('production detail matches compact prototype and keeps source-private data outside main fields',async()=>{const e=await setup();try{e.doc.querySelector('main').innerHTML=e.view.compactDetail(record);const d=e.doc;assert.match(d.querySelector('.pd-price-value').textContent,/1\.80/);assert.deepEqual([...d.querySelectorAll('.pd-facts dt')].map(n=>n.textContent),['材质','规格','MOQ · 起订量','货期','资料标注用途']);assert.equal(d.querySelector('.pd-facts dd').textContent,'');assert.equal(d.querySelectorAll('tbody tr').length,9);assert.doesNotMatch(d.querySelector('main').textContent,/PRIVATE|0\.10|0\.20|0\.50/);assert.equal(d.querySelector('.pd-facts').textContent.match(/5000/g).length,1);}finally{e.close();}});
 test('explicit cleared bare price suppresses historical fallbacks',async()=>{const e=await setup();try{assert.equal(e.view.coreFacts({...record,bareBottlePrice:''}).bare,'');assert.equal(e.view.coreFacts({...record,bareBottlePrice:'2.5元'}).bare,'2.5元');}finally{e.close();}});
 test('all source quotations remain available in the price section without treating an ordinary quote as bare',async()=>{
  const e=await setup();try{
@@ -66,5 +66,56 @@ test('actual admin selection, confirmation, POST and conflict keep draft with no
   change('[data-select-page]',true);assert.equal(d.querySelector('#bulkCount').textContent,'2');change('[data-bulk-enable="bareBottlePrice"]',true);change('[data-bulk-value="bareBottlePrice"]','2.40元');
   d.querySelector('#bulkRecordsForm').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await wait(()=>posts.length===1&&d.querySelector('#bulkCount').textContent==='0');assert.equal(posts[0].body.action,'bulk');assert.deepEqual(posts[0].body.patch,{bareBottlePrice:'2.40元'});assert.equal(posts[0].body.items.length,2);assert.deepEqual(posts[0].body.items.map(x=>x.version),[1,1]);
   conflict=true;change('[data-select-page]',true);change('[data-bulk-enable="moqRaw"]',true);change('[data-bulk-value="moqRaw"]','1000');d.querySelector('#bulkRecordsForm').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await wait(()=>d.querySelector('#bulkRecordsForm [data-form-status]').classList.contains('error'));assert.equal(posts.length,2);assert.equal(d.querySelector('#bulkCount').textContent,'2');assert.equal(d.querySelector('[data-bulk-value="moqRaw"]').value,'1000');assert.equal(d.querySelector('#bulkRecordsForm button[type="submit"]').disabled,false);
+ }finally{dom.window.close();}
+});
+
+test('record evidence and structure suggestions remain distinct, including an explicitly disabled reference',async()=>{
+ const e=await setup();try{
+  const input={...record,name:'洗手液瓶',uses:[],bottleType:'膏霜罐'},before=JSON.stringify(input),facts=e.view.coreFacts(input);
+  assert.match(facts.uses,/洗手液/);assert.doesNotMatch(facts.uses,/面霜/);assert.match(facts.referenceUses,/面霜/);
+  e.doc.querySelector('main').innerHTML=e.view.compactDetail(input);const reference=e.doc.querySelector('.pd-reference-use');
+  assert.match(reference.textContent,/结构参考用途/);assert.match(reference.textContent,/根据包材结构整理，具体适配请与业务员确认/);assert.equal(JSON.stringify(input),before);
+  assert.equal(e.view.coreFacts({...input,referenceUses:[]}).referenceUses,'');
+  e.doc.querySelector('main').innerHTML=e.view.compactDetail({...input,referenceUses:[]});assert.equal(e.doc.querySelector('.pd-reference-use'),null);
+  e.dom.window.__setLanguage('en');
+  e.doc.querySelector('main').innerHTML=e.view.compactDetail({...input,referenceUses:['面霜','眼霜']});
+  assert.match(e.doc.querySelector('.pd-reference-use').textContent,/Uses to consider for this container/);assert.doesNotMatch(e.doc.querySelector('.pd-reference-use').textContent,/[\u3400-\u9fff]/);
+ }finally{e.close();}
+});
+test('reference batch fields and CSV serialization preserve automatic, manual and disabled states',async()=>{
+ const e=await setup();try{
+  const m=(await evaluateBrowserModule(e.dom,path.join(root,'admin-product-tools.js'))).namespace;
+  assert.equal(m.referenceCsvValue({}),'自动');assert.equal(m.referenceCsvValue({referenceUses:[]}),'[]');assert.equal(m.referenceCsvValue({referenceUses:['面霜','眼霜']}),'面霜、眼霜');
+  e.doc.querySelector('main').innerHTML=m.bulkPanel(2);const form=e.doc.querySelector('form'),check=form.querySelector('[data-bulk-enable="referenceUses"]'),mode=form.querySelector('[data-bulk-reference-mode]'),input=form.querySelector('[data-bulk-value="referenceUses"]');
+  assert.deepEqual(JSON.parse(JSON.stringify(m.bulkPatch(form))),{});check.checked=true;
+  assert.deepEqual(JSON.parse(JSON.stringify(m.bulkPatch(form))),{referenceUses:null});mode.value='disabled';assert.deepEqual(JSON.parse(JSON.stringify(m.bulkPatch(form))),{referenceUses:[]});
+  mode.value='manual';input.value='面霜，眼霜、面霜';assert.deepEqual(JSON.parse(JSON.stringify(m.bulkPatch(form))),{referenceUses:['面霜','眼霜']});
+  input.value='';assert.throws(()=>m.bulkPatch(form),/请选择|请填写/);assert.equal(m.referencePatch('automatic'),null);
+ }finally{e.close();}
+});
+
+test('administrator product and batch forms submit the selected reference state without rewriting uses',async()=>{
+ const fs=require('node:fs'),dom=new JSDOM(fs.readFileSync(path.join(root,'admin.html'),'utf8'),{url:'https://synthetic.test/admin/tools',runScripts:'outside-only',pretendToBeVisual:true});
+ const w=dom.window,d=w.document,posts=[],records=[{...record,name:'膏霜罐',version:1,bottleType:'膏霜罐',referenceUses:['面霜','眼霜'],images:[]}];
+ w.confirm=()=>true;w.matchMedia=()=>({matches:false,addEventListener(){}});w.HTMLElement.prototype.scrollIntoView=function(){};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
+ w.fetch=async(url,options={})=>{const body=options.body?JSON.parse(options.body):null;let out={};if(body)posts.push(body);
+  if(url==='/api/session')out={role:'admin',username:'qa',csrf:'qa-csrf'};
+  else if(url==='/api/admin/records'&&body){const patch=body.record||body.patch;Object.assign(records[0],patch);if(patch.referenceUses===null)delete records[0].referenceUses;records[0].version++;out={...records[0]};}
+  else if(url==='/api/admin/records')out={items:records};else if(url==='/api/admin/taxonomy')out={value:{},version:1};else if(url==='/api/admin/search-status')out={available:false};return new Response(JSON.stringify(out),{headers:{'Content-Type':'application/json'}});
+ };
+ const wait=async(fn)=>{for(let n=0;n<300;n++){if(fn())return;await new Promise(r=>setTimeout(r,5));}throw Error('Reference editor did not reach expected state');};
+ const change=(selector,value)=>{const el=d.querySelector(selector);if(el.type==='checkbox')el.checked=value;else el.value=value;el.dispatchEvent(new w.Event('change',{bubbles:true}));};
+ try{
+  await evaluateBrowserModule(dom,path.join(root,'admin.js'));await wait(()=>d.querySelector('[data-edit-record]'));
+  d.querySelector('[data-edit-record]').click();assert.equal(d.querySelector('[data-reference-mode]').value,'manual');change('[data-reference-mode]','automatic');assert.equal(d.querySelector('[data-reference-tags]').disabled,true);
+  d.querySelector('#recordForm').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await wait(()=>posts.length===1&&!d.querySelector('#adminDialog').open);
+  assert.equal(posts[0].record.referenceUses,null);assert.deepEqual(posts[0].record.uses,['面霜']);assert.ok(!('referenceUsesMode' in posts[0].record));
+  for(const [mode,value,expected] of [['disabled','',[]],['manual','护手霜，身体霜',['护手霜','身体霜']],['automatic','',null]]){
+   const before=posts.length;change('[data-select-page]',true);change('[data-bulk-enable="referenceUses"]',true);change('[data-bulk-reference-mode]',mode);
+   assert.equal(d.querySelector('[data-bulk-value="referenceUses"]').disabled,mode!=='manual');if(value)change('[data-bulk-value="referenceUses"]',value);
+   d.querySelector('#bulkRecordsForm').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await wait(()=>posts.length===before+1&&d.querySelector('#bulkCount').textContent==='0');
+   assert.deepEqual(posts.at(-1).patch,{referenceUses:expected});assert.deepEqual(records[0].uses,['面霜']);
+  }
+  const search=d.querySelector('#filterForm');search.elements.query.value='身体霜';search.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(d.querySelectorAll('[data-select-record]').length,1,'Admin search includes automatic reference labels');
  }finally{dom.window.close();}
 });

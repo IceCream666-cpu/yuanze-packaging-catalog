@@ -29,7 +29,7 @@ async function setup(records=[fixture()]) {
     calls.push({url,data:clone(data??null)});
     if(url.startsWith('/api/admin/records?id='))return {item:clone(db.get(decodeURIComponent(url.split('id=')[1])))};
     if(url==='/api/admin/uploads'){if(uploadError)throw uploadError;return {image:{path:'uploads/abcdef0123456789.jpg',role:'product',imageScope:'single_product',width:1600,height:1067}};}
-    if(url==='/api/admin/records'&&data){if(saveWait)await saveWait;if(saveError)throw saveError;const id=data.id||'new-record',old=db.get(id)||{id,version:0,productCode:'YZ-BC-000999',source:{workbook:'管理员录入'}};assert.equal(data.version,old.version);const value={...clone(old),...clone(data.record),id,version:old.version+1};db.set(id,value);return clone(value);}
+    if(url==='/api/admin/records'&&data){if(saveWait)await saveWait;if(saveError)throw saveError;const id=data.id||'new-record',old=db.get(id)||{id,version:0,productCode:'YZ-BC-000999',source:{workbook:'管理员录入'}};assert.equal(data.version,old.version);const value={...clone(old),...clone(data.record),id,version:old.version+1};if(data.record.referenceUses===null)delete value.referenceUses;db.set(id,value);return clone(value);}
     throw Error('Unexpected request '+url);
   };
   await evaluateBrowserModule(dom,entry,"\nimport {setLanguage} from './i18n.js';globalThis.__create=createCatalogEditor;globalThis.__setLanguage=setLanguage;");
@@ -95,6 +95,16 @@ async function main(){
 
   p=await setup();await p.editor.open(null);p.field('name','不保存的新产品');p.setAnswer(true);p.click('cancel');assert.equal(p.saved.length,0);assert.equal(p.calls.length,0);assert.equal(p.db.size,1);assert.equal(p.cancelled.length,1);p.cleanup();
   checks.push('Cancelling a new product performs no write and leaves the catalogue unchanged');
+  p=await setup([{...fixture(),bottleType:'膏霜罐'}]);await p.editor.open('series/30');
+  assert.equal(p.d.querySelector('[data-editor-reference-mode]').value,'automatic');assert.equal(p.d.querySelector('[data-editor-reference-tags]').disabled,true);
+  p.change('[data-editor-reference-mode]','disabled');p.click('save');await until(()=>p.saved.length,'disable reference');
+  assert.deepEqual(p.calls.at(-1).data.record,{referenceUses:[]});assert.deepEqual(p.saved[0].uses,['沐浴露']);assert.deepEqual(p.saved[0].productDetails,fixture().productDetails);p.cleanup();
+  p=await setup([{...fixture(),referenceUses:[]}]);await p.editor.open('series/30');p.change('[data-editor-reference-mode]','manual');
+  assert.equal(p.d.querySelector('[data-editor-reference-tags]').disabled,false);p.change('[data-editor-reference-tags]','面霜、眼霜，面霜');p.click('save');await until(()=>p.saved.length,'manual reference');
+  assert.deepEqual(p.calls.at(-1).data.record,{referenceUses:['面霜','眼霜']});p.cleanup();
+  p=await setup([{...fixture(),referenceUses:['面霜','眼霜']}]);await p.editor.open('series/30');p.change('[data-editor-reference-mode]','automatic');p.click('save');await until(()=>p.saved.length,'restore automatic reference');
+  assert.deepEqual(p.calls.at(-1).data.record,{referenceUses:null});assert.equal(Object.hasOwn(p.saved[0],'referenceUses'),false);p.cleanup();
+  checks.push('Reference uses have automatic, manual and disabled modes; versioned sparse saves preserve record evidence and restore automatic with an explicit null');
   console.log(JSON.stringify({passed:true,checks,liveWebsiteRequests:0},null,2));
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

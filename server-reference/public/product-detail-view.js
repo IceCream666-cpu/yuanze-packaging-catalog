@@ -1,3 +1,4 @@
+import {recordUses,recordReferenceUses} from './catalog-taxonomy.js';
 import {factRows,materialFact} from './product-detail-facts.js';
 import {t,registerTranslations,getLanguage,onLanguageChange} from './i18n.js';
 import {pricingData} from './product-pricing.js';
@@ -17,12 +18,12 @@ export const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<
 const clean=v=>{const s=v==null?'':String(v).trim();return /^(?:[/／—–\-]+|暂无|待补(?:充)?|待确认|待核对|未填写|未注明|null|N\/?A)$/i.test(s)?'':s;};
 const values=rows=>[...new Set(rows.map(row=>clean(row.value)).filter(Boolean))].join('\n');
 export function coreFacts(r={},spec=''){
- const p=pricingData(r);
+ const p=pricingData(r),confirmed=recordUses(r),references=recordReferenceUses(r).filter(value=>!confirmed.includes(value));
  return {bare:values(p.bare),terms:values(p.terms),tax:values(p.tax),
   material:materialFact(r),
   spec:clean(spec)||clean(r.specificationRaw)||(r.capacityMl==null?'':`${r.capacityMl} mL`),
   moq:clean(r.moqRaw)||values(p.moq),lead:clean(r.leadTimeRaw)||values(p.lead),
-  uses:(r.uses||r._uses||[]).join(' / '),stock:['yes','no'].includes(r.stockStatus)?r.stockStatus:'unknown'};
+  uses:confirmed.map(value=>t(value)).join(' / '),referenceUses:references.map(value=>t(value)).join(' / '),stock:['yes','no'].includes(r.stockStatus)?r.stockStatus:'unknown'};
 }
 // A single explicit CNY price can be estimated. Conditional, mixed-component,
 // tiered or foreign-currency text stays visible but is never silently added.

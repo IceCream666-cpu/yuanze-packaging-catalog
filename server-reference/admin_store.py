@@ -63,7 +63,7 @@ TEXT_FIELDS = RAW_FIELDS | {
     'name', 'kind', 'category', 'bottleType', 'series', 'model', 'description',
     'quoteHeader', 'sourceNote', 'bareBottlePrice', 'stockStatus',
 }
-RECORD_FIELDS = TEXT_FIELDS | {'materials', 'uses', 'capacityMl', 'unitPrice', 'currency',
+RECORD_FIELDS = TEXT_FIELDS | {'materials', 'uses', 'referenceUses', 'capacityMl', 'unitPrice', 'currency',
                               'validUntil', 'images', 'uncertainties', 'productDetails', 'bodyAreas'}
 KINDS = {'package', 'uncertain', 'semi_finished', 'service', 'requirement',
          'source_page', 'process_rule'}
@@ -649,6 +649,13 @@ class AdminStore:
         for key in ('materials', 'uses', 'uncertainties'):
             if key in candidate:
                 out[key] = text_list(candidate[key])
+        if 'referenceUses' in candidate:
+            # Only this new field uses null as a reset-to-automatic operation.
+            # Missing fields preserve the previous override; [] disables it.
+            if candidate['referenceUses'] is None:
+                out.pop('referenceUses', None)
+            else:
+                out['referenceUses'] = text_list(candidate['referenceUses'])
         if 'bodyAreas' in candidate:
             areas = candidate['bodyAreas']
             if not isinstance(areas, list) or len(areas) > 3 or any(
@@ -909,7 +916,7 @@ class AdminStore:
         if operation not in ('save','archive','unarchive'):
             raise AdminError('批量操作无效')
         patch = data.get('patch', {})
-        allowed = {'bareBottlePrice','materials','materialRaw','specificationRaw','capacityMl','moqRaw','leadTimeRaw','uses','stockStatus'}
+        allowed = {'bareBottlePrice','materials','materialRaw','specificationRaw','capacityMl','moqRaw','leadTimeRaw','uses','referenceUses','stockStatus'}
         if not isinstance(patch, dict) or set(patch) - allowed or (operation == 'save' and not patch):
             raise AdminError('请选择需要修改的产品字段')
         seen, output = set(), []
@@ -983,6 +990,10 @@ class AdminStore:
                     rid = rid or ('YZ-NEW-' + secrets.token_hex(6).upper())
                     normalized['id'] = rid
                     normalized['productCode'] = row['product_code'] if row else None
+                    # Preview normalizes full records. Preserve reset intent so
+                    # the later save removes an existing override as requested.
+                    if 'referenceUses' in candidate and candidate['referenceUses'] is None:
+                        normalized['referenceUses'] = None
                     clean_rows.append({'id': rid, 'version': item['version'], 'record': normalized})
                 except (AdminError, ValueError, TypeError) as exc:
                     errors.append({'row': index + 1, 'error': str(exc)})

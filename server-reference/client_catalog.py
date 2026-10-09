@@ -1,4 +1,5 @@
 from catalog_pages import catalog_revision
+from usage_references import reference_uses
 import time
 from copy import deepcopy
 """Explicitly approved customer catalogue; private records never cross this boundary."""
@@ -201,12 +202,14 @@ def project_record(record, product_code):
         if label in {'使用部位', '适用部位', '应用部位', 'body area', 'application area'} and trusted_source(detail, {'', 'uses'}):
             sections.extend(canonical_list(detail.get('value'), SECTIONS))
     uses = list(dict.fromkeys(uses))
+    reference = [value for value in canonical_list(reference_uses(record), USES) if value not in uses]
     sections = [section for section in SECTIONS if section in sections or SECTION_USES[section].intersection(uses)]
     capacity, capacity_ml = capacity_info(record)
     code = product_code if isinstance(product_code, str) and re.fullmatch(r'YZ-BC-[0-9]{6,}', product_code) else ''
     return {'productCode': code, 'name': ' · '.join(value for value in (bottle_type or category or '包材', capacity) if value),
             'capacity': capacity, 'capacityMl': capacity_ml, 'category': category, 'bottleType': bottle_type,
-            'materials': materials, 'uses': uses, 'sections': sections, 'specifications': safe_specifications(record)}
+            'materials': materials, 'uses': uses, 'referenceUses': reference,
+            'sections': sections, 'specifications': safe_specifications(record)}
 
 
 def search_text(item):
@@ -214,7 +217,7 @@ def search_text(item):
     # supplier, price and source probes cannot reveal whether a record exists.
     values = [item['productCode'], item['name'], item['capacity']]
     for fields, vocabulary in (([item['category']], CATEGORIES), ([item['bottleType']], BOTTLE_TYPES),
-                              (item['materials'], MATERIALS), (item['uses'], USES), (item['sections'], SECTIONS)):
+                              (item['materials'], MATERIALS), (facet_values(item, 'uses'), USES), (item['sections'], SECTIONS)):
         for field in fields:
             values.extend((field, *vocabulary.get(field, ())))
     for specification in item['specifications']:
@@ -250,6 +253,8 @@ CONFIRMED_VARIANTS = (('YZ-S01-R0012', 'YZ-BC-000009'),
 
 
 def facet_values(item, field):
+    if field == 'uses':
+        return list(dict.fromkeys(item.get('uses', []) + item.get('referenceUses', [])))
     value = item[field]
     return value if isinstance(value, list) else ([value] if value else [])
 

@@ -17,6 +17,16 @@ class Imports(unittest.TestCase):
         self.assertTrue(self.parse('名称,容量ml\nb,nan\n')['errors'])
     def test_template_is_header_only_and_no_product_is_invented(self):
         self.assertEqual(len(template_csv().decode('utf-8-sig').splitlines()),1)
+    def test_reference_uses_import_blank_reset_disable_and_multiple_values(self):
+        result=self.parse('名称,参考用途\n保留原值,\n恢复自动,自动\n关闭参考,[]\n多个用途,洁面、护手霜\nJSON数组,"[""面霜"",""身体乳""]"\n')
+        self.assertEqual(result['errors'],[])
+        self.assertNotIn('referenceUses',result['rows'][0])
+        self.assertIsNone(result['rows'][1]['referenceUses'])
+        self.assertEqual(result['rows'][2]['referenceUses'],[])
+        self.assertEqual(result['rows'][3]['referenceUses'],['洁面','护手霜'])
+        self.assertEqual(result['rows'][4]['referenceUses'],['面霜','身体乳'])
+        for value in ('[1]','[null]','[{}]','["""""" ]','[broken'):
+            self.assertTrue(self.parse('名称,参考用途\n坏值,"'+value.replace('"','""')+'"\n')['errors'])
     def test_source_rows_survive_blank_and_invalid_rows(self):
         result=self.parse('名称,容量ml\n\n第一条,30\n非法容量,nan\n\n第二条,50\n')
         self.assertEqual(result['sourceRows'],[3,6])

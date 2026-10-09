@@ -6,7 +6,7 @@ const {evaluateBrowserModule} = require('./module-loader.cjs');
 const root = path.resolve(__dirname,'../../server-reference/public');
 const checks = [];
 const facets = {categories:['瓶类','软管'],sections:['face','body-head'],materials:['PET','玻璃'],capacities:['100 mL','200 mL'],bottleTypes:['圆瓶','喷雾瓶'],uses:['精华液','洗手液']};
-const fixture = number => ({id:`opaque${number}`,productCode:`YZ-BC-${String(number).padStart(6,'0')}`,capacity:'100 mL',category:'瓶类',bottleType:'圆瓶',materials:['PET'],uses:['精华液'],sections:['face'],specifications:[{label:'口径',value:'24 mm'},{label:'供应商',value:'DO_NOT_SHOW_SUPPLIER'}],supplier:'DO_NOT_SHOW_SUPPLIER',price:'DO_NOT_SHOW_PRICE',name:'DO_NOT_SHOW_NAME',source:'DO_NOT_SHOW_SOURCE',images:[{url:`/client-media/item${number}.jpg`,original:'DO_NOT_SHOW_ORIGINAL'}]});
+const fixture = number => ({id:`opaque${number}`,productCode:`YZ-BC-${String(number).padStart(6,'0')}`,capacity:'100 mL',category:'瓶类',bottleType:'圆瓶',materials:['PET'],uses:['精华液'],referenceUses:['洗手液','DO_NOT_SHOW_USE'],sections:['face'],specifications:[{label:'口径',value:'24 mm'},{label:'供应商',value:'DO_NOT_SHOW_SUPPLIER'}],supplier:'DO_NOT_SHOW_SUPPLIER',price:'DO_NOT_SHOW_PRICE',name:'DO_NOT_SHOW_NAME',source:'DO_NOT_SHOW_SOURCE',images:[{url:`/client-media/item${number}.jpg`,original:'DO_NOT_SHOW_ORIGINAL'}]});
 const response = (value,status=200) => new Response(JSON.stringify(value),{status,headers:{'Content-Type':'application/json'}});
 async function until(fn,label) {for(let n=0;n<600;n++){if(fn())return;await new Promise(resolve=>setTimeout(resolve,5));}throw Error('Timeout: '+label);}
 function create({embedded=false,mobile=false}={}) {
@@ -60,7 +60,7 @@ async function main(){
 
   for(const [view,count] of [['favoritesView',1],['shortlistView',2]]){
     p.d.querySelector('#'+view).click();
-    for(const [query,expected] of [['100ml PET',count],['１００ 毫升，ＰＥＴ',count],['round bottle serum 100 mL',count],['face Neck diameter 24 mm',count],['100ml Glass',0],['200ml PET',0],['100ml PETG',0]]){
+    for(const [query,expected] of [['100ml PET',count],['hand wash',count],['１００ 毫升，ＰＥＴ',count],['round bottle serum 100 mL',count],['face Neck diameter 24 mm',count],['100ml Glass',0],['200ml PET',0],['100ml PETG',0]]){
       p.d.querySelector('#query').value=query;p.submit('searchForm');assert.equal(p.d.querySelectorAll('.gallery-card').length,expected,`${view}: ${query}`);
     }
     p.d.querySelector('#reset').click();
@@ -69,7 +69,7 @@ async function main(){
   checks.push('Local favourites and shortlist match separated capacity/material terms, bilingual aliases and dimensions in either UI language, without partial material matches');
 
   p.d.querySelector('#exportShortlist').click();const csv=await p.downloads.at(-1).text();
-  assert.match(csv,/YZ-BC-000001/);assert.match(csv,/YZ-BC-000006/);assert.match(csv,/24 mm/);
+  assert.match(csv,/YZ-BC-000001/);assert.match(csv,/YZ-BC-000006/);assert.match(csv,/24 mm/);assert.match(csv,/资料标注用途/);assert.match(csv,/结构参考用途/);assert.match(csv,/洗手液/);
   assert.doesNotMatch(csv,/DO_NOT_SHOW|供应商|价格|报价|opaque|client-media/);
   p.d.querySelector('#consultShortlist').click();assert.equal(p.d.querySelector('#consultDialog').open,true);assert.match(p.d.querySelector('#consultText').value,/YZ-BC-000006/);assert.doesNotMatch(p.d.querySelector('#consultText').value,/DO_NOT_SHOW/);p.d.querySelector('#consultClose').click();
   checks.push('Shortlist CSV and enquiry contain only public product codes, taxonomy and specifications');
@@ -78,7 +78,7 @@ async function main(){
   for(let index=0;index<5;index++)p.clickAction('compare',index);
   assert.equal(p.d.querySelector('#compareCount').textContent,'4 / 4');assert.match(p.d.querySelector('#notice').textContent,/最多可同时对比四款/);
   p.d.querySelector('#compareOpen').click();assert.equal(p.d.querySelector('#compareDialog').open,true);assert.equal(p.d.querySelectorAll('#compareTable thead th').length,5);
-  assert.match(p.d.querySelector('#compareTable').textContent,/YZ-BC-000004/);assert.doesNotMatch(p.d.querySelector('#compareTable').textContent,/YZ-BC-000005|DO_NOT_SHOW|供应商|价格|报价/);
+  assert.match(p.d.querySelector('#compareTable').textContent,/YZ-BC-000004/);assert.match(p.d.querySelector('#compareTable').textContent,/结构参考用途/);assert.match(p.d.querySelector('#compareTable').textContent,/洗手液/);assert.doesNotMatch(p.d.querySelector('#compareTable').textContent,/YZ-BC-000005|DO_NOT_SHOW|供应商|价格|报价/);
   p.d.querySelector('[data-language-switch]').click();assert.match(p.d.querySelector('#compareTable').textContent,/Neck diameter/);assert.doesNotMatch(p.d.body.textContent.replace(p.d.querySelector('[data-language-switch]').textContent,''),/[\u3400-\u9fff]/);
   assert.doesNotMatch(p.d.documentElement.outerHTML,/DO_NOT_SHOW/);assert.deepEqual(p.errors,[]);p.dom.window.close();
   checks.push('Comparison enforces a four-item limit and all added controls/details translate without disclosing raw supplier or price fields');

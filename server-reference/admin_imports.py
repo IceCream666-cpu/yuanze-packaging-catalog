@@ -15,7 +15,7 @@ MAX_ROWS = 2000
 FIELDS = {
     '记录编号':'id', '产品编号':'productCode', '版本':'version', '名称':'name', '资料类型':'kind',
     '分类':'category', '瓶型':'bottleType', '材质':'materials', '容量ml':'capacityMl',
-    '规格':'specificationRaw', '系列':'series', '型号':'model', '用途':'uses',
+    '规格':'specificationRaw', '系列':'series', '型号':'model', '用途':'uses', '参考用途':'referenceUses',
     '供应商':'supplierRaw', 'MOQ':'moqRaw', '单价':'quoteRaw', '货期':'leadTimeRaw',
     '报价口径':'quoteHeader', '定制报价':'customQuoteRaw', '定制MOQ':'customMoqRaw',
     '定制货期':'customLeadTimeRaw', '描述':'description', '备注':'remarksRaw',
@@ -122,7 +122,20 @@ def parse_import(data):
                     continue
                 value='' if value is None else str(value).strip()
                 if len(value)>10000: raise ValueError('单元格内容超过10000字')
-                if key in ('materials','uses'):
+                if key == 'referenceUses':
+                    # An empty cell makes no change to an existing override.
+                    if not value:
+                        continue
+                    if value.casefold() in ('自动', 'auto', 'automatic'):
+                        record[key] = None
+                    elif value.startswith('['):
+                        values = json.loads(value)
+                        if not isinstance(values, list) or any(not isinstance(x, str) or not x.strip() for x in values):
+                            raise ValueError('参考用途须为文字列表、[]或自动')
+                        record[key] = values
+                    else:
+                        record[key] = [x.strip() for x in re.split('[、,，;；|]', value) if x.strip()]
+                elif key in ('materials','uses'):
                     record[key]=[x.strip() for x in re.split('[、,，;；|]',value) if x.strip()]
                 elif key=='capacityMl':
                     record[key]=float(value) if value else None

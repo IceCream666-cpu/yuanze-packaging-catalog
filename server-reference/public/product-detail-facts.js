@@ -1,5 +1,5 @@
 import {t,registerTranslations} from './i18n.js';
-registerTranslations({'通常用于':'Typically used for','MOQ · 起订量':'MOQ'});
+registerTranslations({'通常用于':'Typically used for','MOQ · 起订量':'MOQ','资料标注用途':'Uses in product records','结构参考用途':'Uses to consider for this container','参考用途':'Reference uses','根据包材结构整理，具体适配请与业务员确认。':'Suggestions are based on the container structure. Confirm suitability with your sales representative.'});
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function explicitMaterials(value){
  // Historical material cells can contain printing fees. Only explicit material
@@ -23,5 +23,6 @@ export function materialFact(record={}){
  return [...new Set(materials)].join(' / ');
 }
 export function factRows(f,{client=false}={}){
- return [['材质',f.material],['规格',f.spec],['MOQ · 起订量',f.moq||''],['货期',f.lead||''],['通常用于',f.uses]].map(([label,value],i)=>`<div class="pd-fact${i===4?' pd-wide':''}"><dt>${esc(t(label))}</dt><dd data-i18n-skip>${esc(value)}</dd></div>`).join('');
+ const rows=[['材质',f.material],['规格',f.spec],...(!client?[['MOQ · 起订量',f.moq||''],['货期',f.lead||'']]:[]),['资料标注用途',f.uses]];
+ return rows.map(([label,value])=>`<div class="pd-fact${label==='资料标注用途'?' pd-wide':''}"><dt>${esc(t(label))}</dt><dd data-i18n-skip>${esc(value)}</dd></div>`).join('')+(f.referenceUses?`<div class="pd-fact pd-wide pd-reference-use"><dt>${esc(t('结构参考用途'))}</dt><dd data-i18n-skip>${esc(f.referenceUses)}</dd><p class="pd-use-note">${esc(t('根据包材结构整理，具体适配请与业务员确认。'))}</p></div>`:'');
 }

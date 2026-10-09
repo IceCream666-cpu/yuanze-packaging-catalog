@@ -1,5 +1,5 @@
 import {translateValue} from './i18n.js';
-import {recordUses,recordBodySections,usageOptions} from './catalog-taxonomy.js';
+import {recordUses,recordReferenceUses,recordSearchUses,usageSearchTerms,recordBodySections,usageOptions} from './catalog-taxonomy.js';
 import {createProductGroupIndex,groupProducts} from './product-groups.js';
 import {productImageStatus} from './image-policy.js';
 export const text=v=>typeof v==='string'?v:(v==null?'':JSON.stringify(v));
@@ -17,7 +17,7 @@ export function searchTerms(value){const chunks=normalizeSearch(value).match(/[\
 export function searchMatchers(value){return searchTerms(value).map(word=>/^[a-z0-9][a-z0-9._-]*$/.test(word)?{word,spec:/^\d+(?:[._-]\d+)*(?:ml|g|l)$/.test(word),re:new RegExp('(?:^|[^a-z0-9])'+word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![a-z0-9])')}:{word});}
 export function matchesText(record,matchers){return matchers.every(({word,re,spec})=>{const haystack=spec&&record._groupSpecSearch!==undefined?record._groupSpecSearch:record._search;return re?re.test(haystack):haystack.includes(word);});}
 export function inBand(value,band){if(!band)return true;const edges={'lt50':[0,50],'50-150':[50,150],'150-250':[150,250],'250-350':[250,350],'350-500':[350,500],'500-1000':[500,1000],'gte1000':[1000,Infinity]};const range=edges[band];return range&&value>=range[0]&&value<range[1];}
-export function prepareRecords(catalog, reviewedProductGroups){const records=catalog.records.map(r=>{const item={...r,name:text(r.name)||'名称待补'};item._uses=recordUses(item);item._sections=recordBodySections(item);item._sourceFile=text(r.source?.workbook||'');item._category=category(item);item._materials=materials(item);item._capacities=capacities(item);item._search=[item.productCode,item.id,item.name,item.searchText,item._sourceFile,item.bottleType,item.series,item.model,item.description,...(item.productDetails||[]).flatMap(d=>[d.label,d.value]),...item._uses,...item._sections.map(k=>sectionNames[k]),...Object.entries(item).filter(([k])=>k.endsWith('Raw')).map(([,v])=>text(v)),raw(item),supplier(item),quote(item),item._category,...item._materials,...item._capacities.map(v=>v+'ml')].map(text).join(' ');item._search=normalizeSearch(item._search+' '+[item._category,item.bottleType,...item._materials,...item._uses,...item._sections.map(k=>sectionNames[k])].map(value=>translateValue(value,'en')).join(' '));return item;});const productGroupIndex=createProductGroupIndex(records,reviewedProductGroups);for(const r of records){const group=productGroupIndex.get(r.id);if(!group)continue;
+export function prepareRecords(catalog, reviewedProductGroups){const records=catalog.records.map(r=>{const item={...r,name:text(r.name)||'名称待补'};item._uses=recordUses(item);item._referenceUses=recordReferenceUses(item).filter(value=>!item._uses.includes(value));item._searchUses=recordSearchUses(item);item._sections=recordBodySections(item);item._sourceFile=text(r.source?.workbook||'');item._category=category(item);item._materials=materials(item);item._capacities=capacities(item);item._search=[item.productCode,item.id,item.name,item.searchText,item._sourceFile,item.bottleType,item.series,item.model,item.description,...(item.productDetails||[]).flatMap(d=>[d.label,d.value]),...usageSearchTerms(item),...item._sections.map(k=>sectionNames[k]),...Object.entries(item).filter(([k])=>k.endsWith('Raw')).map(([,v])=>text(v)),raw(item),supplier(item),quote(item),item._category,...item._materials,...item._capacities.map(v=>v+'ml')].map(text).join(' ');item._search=normalizeSearch(item._search+' '+[item._category,item.bottleType,...item._materials,...usageSearchTerms(item),...item._sections.map(k=>sectionNames[k])].map(value=>translateValue(value,'en')).join(' '));return item;});const productGroupIndex=createProductGroupIndex(records,reviewedProductGroups);for(const r of records){const group=productGroupIndex.get(r.id);if(!group)continue;
 // A page's OCR or a historical quote may mention other sizes. Only this SKU's
 // reviewed labels determine its size matches, before the results are grouped.
 const labels=group.specs.filter(spec=>spec.recordIds.includes(r.id)).map(spec=>spec.label);
@@ -27,6 +27,8 @@ if(group.classification){
   if(!r.category || r.category==='待细分')r._category=group.classification.category;
   if(!r.bottleType)r.bottleType=group.classification.bottleType;
 }
+r._referenceUses=recordReferenceUses(r).filter(value=>!r._uses.includes(value));r._searchUses=recordSearchUses(r);
+r._search+=' '+normalizeSearch([...usageSearchTerms(r),...r._searchUses.map(value=>translateValue(value,'en'))].join(' '));
 if(labels.length)r._groupSpecSearch=normalizeSearch(labels.join(' '));
 else if(r._capacities.length)r._groupSpecSearch=normalizeSearch(r._capacities.map(value=>value+'ml').join(' '));
 r._search+=' '+normalizeSearch(group.name+' '+labels.join(' ')+' '+r._category+' '+r.bottleType+' '+translateValue(r.bottleType,'en'));}
@@ -44,11 +46,11 @@ export function matchRecords(index, options={}) {
   let rows=index.records.filter(r=>(!favorite||favorite.has(r.id))&&(!ranks||ranks.has(r.id))&&
     any('kind',[r.kind])&&any('section',r._sections)&&any('category',[r._category])&&any('material',r._materials)&&any('capacity',r._capacities)&&
     (!selected('capacityBand').length||r._capacities.some(v=>selected('capacityBand').some(b=>inBand(v,b))))&&
-    any('bottle',[r.bottleType])&&any('use',r._uses)&&any('quote',[quote(r)?'yes':'no'])&&any('source',[r._sourceFile])&&
+    any('bottle',[r.bottleType])&&any('use',r._searchUses)&&any('quote',[quote(r)?'yes':'no'])&&any('source',[r._sourceFile])&&
     (!selected('imageStatus').length||(r.kind==='package'&&any('imageStatus',[productImageStatus(r)])))&&
     (number||idRecord?r.id===lookup?.id:matchesText(r,matchers)));
   if(ranks)rows.sort((a,b)=>ranks.get(a.id)-ranks.get(b.id));
-  else if(words.length){const score=r=>words.reduce((v,w)=>v+(text(r.model).toLowerCase()===w?12:0)+(r.id.toLowerCase()===w?16:0)+(r.name.toLowerCase().includes(w)?3:0),0);rows=rows.map(r=>({r,score:score(r)})).sort((a,b)=>b.score-a.score).map(x=>x.r);}
+  else if(words.length||selected('use').length){const confirmed=r=>selected('use').some(value=>r._uses.includes(value))?1:0;const score=r=>words.reduce((v,w)=>v+(text(r.model).toLowerCase()===w?12:0)+(r.id.toLowerCase()===w?16:0)+(r.name.toLowerCase().includes(w)?3:0),0);rows=rows.map(r=>({r,score:score(r)})).sort((a,b)=>confirmed(b.r)-confirmed(a.r)||b.score-a.score).map(x=>x.r);}
   return rows;
 }
 export function catalogFacets(records) {
