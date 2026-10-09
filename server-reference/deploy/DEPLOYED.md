@@ -1,5 +1,12 @@
 # 源泽包材库发布记录
 
+## 2026-10-09 客户首页海报与 BBR 补充优化（已上线）
+
+- 北京时间 17:54 在同一 `20261009-mobile-response-v1` release 发布 `a4b0eb60` 的 73 个静态文件：70 个 512／1280 WebP 预览、三个入口／清单。119 个其他文件及 Nginx 配置摘要保持，8 张业务表摘要一致，无应用重启或 release 切换。
+- 正式主机已使用安装内核自带 BBR，HTTPS／SSH 新连接实测采用 bbr；保留 fq_codel。开机模块及 sysctl 配置保存并定向加载核验，没有安装内核或实际重启验收。持久配置工具 `persist_bbr.py` 对冲突／并发更改／失败和回退做保护，11 项回归通过。
+- 70 个线上预览摘要、解码和角色边界、三种账号登录、客户 614 款安全目录及原图附件通过；本机 Chrome 经现有代理验证首页、滚动海报、放大、中英文及包材选型。HTTP/2 保持。真实手机 4G／5G 尚未测速，不把变更网络路径后的秒数混为严格对照。
+- 全套 98 根／174 后端／32 部署及全部前端验证通过。静态备份 `/opt/yuanze-reference/backups/client-showroom-loading-20261009-v2`；传输备份 `/opt/yuanze-reference/backups/client-transfer-20261009-bbr`。完整测量、验证限制和分项回退见 [加载优化补充](../../docs/手机端加载优化-20261009.md#首页海报与传输算法补充2026-10-09已上线)。
+
 ## 2026-10-09 手机目录与服务器响应优化（已上线）
 
 - 正式域名 https://bmt.yuanzebeauty.com/，主机 47.79.233.3，current → `/opt/yuanze-reference/releases/20261009-mobile-response-v1`；源码 `3cad563429330b50f8f3766eec573ce91ebd54e0`。12 个运行文件及保留文件指纹通过，独立候选三角色与目标环境 73 项隔离回归通过后切换。备份 `/opt/yuanze-reference/backups/20261009-mobile-response-v1`；上一 release 为 `20261008-admin-workspace-v1`。
