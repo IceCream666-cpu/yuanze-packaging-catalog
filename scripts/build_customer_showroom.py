@@ -50,6 +50,17 @@ def expected_files(source=SOURCE):
             # apart from relocatable media references.
             text = text.replace("'assets/", "'/showroom/assets/").replace('"assets/', '"/showroom/assets/')
         files[name] = text.encode('utf-8')
+    # The login-protected HTML can paint without a second render-blocking CSS
+    # request. One deferred script preserves data-before-controller execution
+    # without waiting for three separate responses on mobile networks.
+    html = files['index.html'].decode('utf-8')
+    html = html.replace('<link rel="stylesheet" href="/showroom/preview.css">',
+                        '<style data-showroom-styles>' + files['preview.css'].decode('utf-8') + '</style>')
+    for entry in ('company-content.js', 'product-posters.js'):
+        html = html.replace(f'  <script defer src="/showroom/{entry}"></script>\n', '')
+    files['index.html'] = html.encode('utf-8')
+    files['preview.js'] = b'\n'.join(files[name] for name in
+                                   ('company-content.js', 'product-posters.js', 'preview.js'))
     manifest = json.loads(source_file(source, 'assets/manifest.json').read_text(encoding='utf-8'))
     for item in manifest['files']:
         name = item.get('path')

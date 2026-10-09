@@ -49,9 +49,14 @@ class ShowroomBuild(unittest.TestCase):
             self.assertEqual(len(files[name]), entry['bytes'])
         html = files['index.html'].decode()
         for value in ['data-mode="production"', 'data-src="/client/products?showroom=1"',
-                      'src="/showroom/company-content.js"', 'src="/showroom/product-posters.js"',
-                      'href="/showroom/preview.css"']:
+                      'src="/showroom/preview.js"', '<style data-showroom-styles>']:
             self.assertIn(value, html)
+        self.assertNotIn('src="/showroom/company-content.js"', html)
+        self.assertNotIn('src="/showroom/product-posters.js"', html)
+        self.assertNotIn('href="/showroom/preview.css"', html)
+        script = files['preview.js'].decode()
+        self.assertLess(script.index('window.YuanzeCompanyContent'), script.index('window.YuanzeProductPosters'))
+        self.assertLess(script.index('window.YuanzeProductPosters'), script.index("const content = window.YuanzeCompanyContent"))
         self.assertIn("'/showroom/assets/", files['company-content.js'].decode())
         posters = files['product-posters.js'].decode()
         self.assertIn('"/showroom/assets/posters/', posters)
@@ -208,6 +213,24 @@ class ShowroomRoutes(unittest.TestCase):
             status, headers, head = self.req('/showroom/' + path, method='HEAD')
             self.assertEqual(status, 200); self.assertEqual(headers['Content-Length'], str(len(body)))
             self.assertEqual(head, b'')
+
+    def test_preview_images_keep_role_and_session_boundaries(self):
+        paths = ['/showroom/assets/previews/showroom-512.webp',
+                 '/showroom/assets/previews/certificates/gmpc-en-1280.webp',
+                 '/showroom/assets/previews/posters/poster-001-512.webp']
+        for path in paths:
+            self.assertEqual(self.req(path)[0], 401)
+        self.login('employee')
+        for path in paths:
+            self.assertEqual(self.req(path)[0], 403)
+        for username in ['client-test', 'admin']:
+            self.login(username)
+            for path in paths:
+                status, headers, body = self.req(path)
+                self.assertEqual(status, 200)
+                self.assertEqual(headers['Content-Type'], 'image/webp')
+                self.assertEqual(headers['Cache-Control'], 'private, no-cache')
+                self.assertGreater(len(body), 0)
 
     def test_webp_mime_does_not_depend_on_the_host_mime_database(self):
         self.login()

@@ -44,6 +44,16 @@
   let photoTrigger = null;
   let loggingOut = false;
   let logoutFailed = false;
+  let posterObserver = null;
+  let viewerRequest = 0;
+
+  function previewURL(source, edge = 512) {
+    return source.replace(/assets\/(.+)\.(png|webp)$/, `assets/previews/$1-${edge}.webp`);
+  }
+
+  function loadPoster(image) {
+    if (image && !image.hasAttribute('src')) image.src = image.dataset.previewSrc;
+  }
   document.querySelector('.preview-label').hidden = production;
   logout.hidden = !production;
   try { if ((localStorage.getItem('yuanze-language') || localStorage.getItem('yuanze-mobile-preview-language')) === 'en') language = 'en'; } catch (_) {}
@@ -70,7 +80,7 @@
       image.alt = banners[index].title[language];
       slide.setAttribute('aria-label', `${index + 1} / ${banners.length}: ${image.alt}`);
       if (active && activeRoute?.split('?')[0] === 'products') {
-        const source=image.dataset.src+(window.matchMedia?.('(max-width: 760px)').matches ? '?thumb=1' : '');
+        const source=previewURL(image.dataset.src, window.matchMedia?.('(max-width: 760px)').matches ? 512 : 1280);
         if(image.getAttribute('src')!==source)image.src=source;
       }
     });
@@ -221,13 +231,23 @@
       button.addEventListener('click', () => navigate(posterRoute(category.id), {keepFocus:true}));
       posterCategories.append(button);
     });
+    if ('IntersectionObserver' in window) {
+      posterObserver = new window.IntersectionObserver(entries => {
+        if (activeRoute?.split('?')[0] !== 'products') return;
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.closest('[hidden]')) {
+            loadPoster(entry.target); posterObserver.unobserve(entry.target);
+          }
+        });
+      }, {root:posterView, rootMargin:'120px 0px', threshold:0});
+    }
     posters.items.forEach(item => {
       const card = document.createElement('article');
       card.className = 'poster-card'; card.dataset.posterCard = item.id;
       const button = document.createElement('button');
       button.type = 'button'; button.className = 'poster-card-button'; button.dataset.posterImage = item.id;
       const image = document.createElement('img');
-      image.src = item.thumbnail; image.width = item.width; image.height = item.height;
+      image.dataset.previewSrc = previewURL(item.src); image.width = item.width; image.height = item.height;
       image.loading = 'lazy'; image.decoding = 'async';
       const details = document.createElement('span'); details.className = 'poster-card-details';
       const title = document.createElement('strong'); title.dataset.posterTitle = item.id;
@@ -252,6 +272,12 @@
     posters.items.forEach(item => {
       const card = document.querySelector(`[data-poster-card="${item.id}"]`);
       card.hidden = posterCategory !== 'all' && item.category !== posterCategory;
+      const image = card.querySelector('img');
+      if (card.hidden || activeRoute?.split('?')[0] !== 'products') posterObserver?.unobserve(image);
+      else if (!image.hasAttribute('src')) {
+        if (posterObserver) posterObserver.observe(image);
+        else loadPoster(image);
+      }
       card.querySelector('strong').textContent = item.title[language];
       card.querySelector('img').alt = item.title[language];
       card.querySelector('button').setAttribute('aria-label', format('posterOpen', {title:item.title[language]}));
@@ -271,9 +297,18 @@
     download.href=asset.src+'?download='+encodeURIComponent(filename);
     download.download=filename;download.hidden=false;
     download.textContent=language==='en'?'Download image':'下载图片';
-    // Avoid restarting an image request when the language alone changes.
-    if (photo.getAttribute('src') !== asset.src) {
-      photoError.hidden = true; photo.hidden = false; photo.src = asset.src;
+    // A lightweight image appears first; a screen-sized preview then replaces it.
+    // Full original artwork is requested only through the download control.
+    if (photo.dataset.original !== asset.src) {
+      const request = ++viewerRequest;
+      photo.dataset.original = asset.src;
+      photoError.hidden = true; photo.hidden = false; photo.src = previewURL(asset.src);
+      const detailed = new window.Image();
+      detailed.onload = () => {
+        if (request === viewerRequest && photo.dataset.original === asset.src) photo.src = detailed.src;
+      };
+      // Keep the usable small image if the larger preview fails on a weak link.
+      detailed.src = previewURL(asset.src, 1280);
     }
     photo.alt = poster ? poster.title[language] : content[language][`${selectedPhoto}Alt`] || content[language][`${selectedPhoto}Caption`];
     photoCaption.textContent = poster ? poster.title[language] : content[language][`${selectedPhoto}Caption`];
@@ -317,7 +352,7 @@
     document.querySelectorAll('[data-certificate-image]').forEach(node => {
       const id = node.dataset.certificateImage;
       const asset = assetFor(id);
-      node.src = asset.src;
+      node.src = previewURL(asset.src);
       node.alt = copy[`${id}Caption`];
       node.width = asset.width;
       node.height = asset.height;
@@ -408,7 +443,7 @@
   nextPoster.addEventListener('click', () => movePoster(1));
   photo.addEventListener('error', () => { photo.hidden = true; photoError.hidden = false; });
   dialog.addEventListener('close', () => {
-    photo.removeAttribute('src');
+    ++viewerRequest; photo.removeAttribute('src'); delete photo.dataset.original;
     selectedPhoto = null;
     selectedPoster = null;
     if (photoTrigger && !photoTrigger.closest('[hidden]')) photoTrigger.focus();

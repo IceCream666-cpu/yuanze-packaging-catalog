@@ -39,6 +39,24 @@ BANNER_PATHS = {f'poster-banners/{name}.webp' for name in BANNER_SOURCES}
 
 
 class CompanyMaterials(unittest.TestCase):
+    def test_previews_have_a_size_budget_and_verified_originals(self):
+        manifest = json.loads((ASSETS / 'manifest.json').read_text())
+        entries = {item['path']: item for item in manifest['files']}
+        previews = [item for item in manifest['files'] if item['kind'] == 'showroom-preview']
+        self.assertEqual(len(previews), 70)
+        for item in previews:
+            with self.subTest(path=item['path']):
+                original = entries[item['source']]
+                self.assertEqual(item['sourceSha256'], original['sha256'])
+                self.assertLessEqual(max(item['width'], item['height']), item['maxEdge'])
+                self.assertLess(item['bytes'], 45_000 if item['maxEdge'] == 512 else 170_000)
+                self.assertAlmostEqual(item['width'] / item['height'],
+                                       original['width'] / original['height'], delta=.01)
+                with Image.open(ASSETS / item['path']) as image:
+                    self.assertEqual(image.mode, 'RGB')
+                    self.assertFalse(image.getexif())
+                    self.assertNotIn('icc_profile', image.info)
+
     def test_originals_and_pdf_renders_match_recorded_materials(self):
         manifest = json.loads((ASSETS / 'manifest.json').read_text())
         paths = set()
@@ -56,7 +74,7 @@ class CompanyMaterials(unittest.TestCase):
                 elif item['kind'] == 'faithful-pdf-render':
                     self.assertTrue((ASSETS / item['sourcePdf']).is_file())
                 else:
-                    self.assertIn(item['kind'], {'poster-lossless', 'poster-thumbnail', 'banner-lossless'})
+                    self.assertIn(item['kind'], {'poster-lossless', 'poster-thumbnail', 'banner-lossless', 'showroom-preview'})
                 if path.suffix in {'.png', '.webp'}:
                     with Image.open(path) as image:
                         self.assertEqual(image.size, (item['width'], item['height']))
@@ -99,7 +117,7 @@ class CompanyMaterials(unittest.TestCase):
         entries = {item['path']: item for item in manifest['files']}
         expected_poster_paths = {f'posters/{poster_id}{suffix}.webp'
                                  for poster_id in active_ids for suffix in ('', '-thumb')}
-        self.assertEqual(set(entries), COMPANY_PATHS | expected_poster_paths | BANNER_PATHS)
+        self.assertEqual({name for name,item in entries.items() if item['kind'] != 'showroom-preview'}, COMPANY_PATHS | expected_poster_paths | BANNER_PATHS)
         sources, hashes, pixel_hashes, archives = set(), set(), set(), set()
         archived_posters, attached_posters, attachments = set(), set(), set()
         for item in report['items']:
