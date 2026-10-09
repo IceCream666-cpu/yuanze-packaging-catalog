@@ -693,3 +693,10 @@ details.multi-filter[open] { z-index: 4; }
 }
 
 .image-download{margin:12px 0;display:inline-flex}
+
+/* Reviewed type viewports keep the original catalogue bitmap intact. */
+.photo:has(.image-viewport),.detail-photo:has(.image-viewport),.thumbnails button:has(.image-viewport) { container-type:size; }
+.image-viewport { display:inline-block; position:relative; overflow:hidden; width:min(100cqw,calc(100cqh * var(--crop-aspect))); height:auto; aspect-ratio:var(--crop-aspect); vertical-align:middle; }
+.photo .image-viewport img,.detail-photo .image-viewport img,.thumbnails .image-viewport img,.compare-grid .image-viewport img { position:absolute; top:var(--crop-top); left:var(--crop-left); width:var(--crop-width); height:auto; max-width:none; max-height:none; object-fit:fill; transform:none; transition:none; }
+.photo:has(.image-viewport),.detail-photo:has(.image-viewport) { text-align:center; }
+.compare-grid .image-viewport { width:min(100%,calc(140px * var(--crop-aspect))); height:auto; }

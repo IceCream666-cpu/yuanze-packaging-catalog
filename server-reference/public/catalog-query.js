@@ -21,9 +21,15 @@ export function prepareRecords(catalog, reviewedProductGroups){const records=cat
 // A page's OCR or a historical quote may mention other sizes. Only this SKU's
 // reviewed labels determine its size matches, before the results are grouped.
 const labels=group.specs.filter(spec=>spec.recordIds.includes(r.id)).map(spec=>spec.label);
+// Explicit, visually reviewed type hints fill gaps only; administrator edits
+// always take precedence, and the stored source record is never rewritten.
+if(group.classification){
+  if(!r.category || r.category==='待细分')r._category=group.classification.category;
+  if(!r.bottleType)r.bottleType=group.classification.bottleType;
+}
 if(labels.length)r._groupSpecSearch=normalizeSearch(labels.join(' '));
 else if(r._capacities.length)r._groupSpecSearch=normalizeSearch(r._capacities.map(value=>value+'ml').join(' '));
-r._search+=' '+normalizeSearch(group.name+' '+labels.join(' '));}
+r._search+=' '+normalizeSearch(group.name+' '+labels.join(' ')+' '+r._category+' '+r.bottleType+' '+translateValue(r.bottleType,'en'));}
 const productCodeIndex=new Map(records.filter(r=>r.productCode).map(r=>[codeKey(r.productCode),r]));const recordIdIndex=new Map(records.map(r=>[normalizeSearch(r.id).trim(),r]));return {records,productGroupIndex,productCodeIndex,recordIdIndex};}
 
 export const facetKeys=['kind','section','category','material','capacity','capacityBand','bottle','use','quote','source','imageStatus'];

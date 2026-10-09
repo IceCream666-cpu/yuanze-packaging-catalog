@@ -1,5 +1,6 @@
 // Only this reviewed manifest defines visual families. Shared images, names and
 // catalogue pages are never enough to merge records automatically.
+import {imageViewKey} from './image-viewport.js';
 export function createProductGroupIndex(records, reviewedGroups) {
   const known = new Map(records.map(record => [record.id, record]));
   const index = new Map();
@@ -35,10 +36,11 @@ export function createProductGroupIndex(records, reviewedGroups) {
       records: members, specs, capacities, primaryImage, imageMappingPending: definition.imageMappingPending === true,
       imageAliases: definition.imageAliases && typeof definition.imageAliases === 'object' && !Array.isArray(definition.imageAliases)
         ? {...definition.imageAliases} : {},
+      classification: definition.classification || null,
       multiSpec: new Set(specs.map(spec => spec.label)).size > 1 || capacities.length > 1};
     // Keep explicitly edited single-SKU groups scoped even when their size was
     // cleared, so old page OCR cannot become the size-search fallback.
-    if (members.length < 2 && !group.multiSpec && !overrides.size) continue;
+    if (members.length < 2 && !group.multiSpec && !overrides.size && !definition.classification) continue;
     for (const record of members) index.set(record.id, group);
   }
   return index;
@@ -97,8 +99,11 @@ export function groupGalleryImages(record, index, pathForImage) {
   }
   for (const {path, value, owner} of entries) {
     const retained = retainedPath(path);
-    if (!images.has(retained)) images.set(retained, {...available.get(retained), _groupSources: [], _groupPaths: []});
-    const image = images.get(retained);
+    // A type-specific viewport and its full catalogue page are separate views,
+    // even when both read the same file. Keep the original page for verification.
+    const key = imageViewKey(value, retained);
+    if (!images.has(key)) images.set(key, {...(value.displayCrop ? value : available.get(retained)), _groupSources: [], _groupPaths: []});
+    const image = images.get(key);
     if (!image._groupPaths.includes(path)) image._groupPaths.push(path);
     if (owner) image._groupSources.push({recordId: owner.id, image: value});
   }

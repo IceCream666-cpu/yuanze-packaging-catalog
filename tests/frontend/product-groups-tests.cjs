@@ -339,5 +339,69 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     assert.deepEqual(p.errors,[]);
     checks.push('Reloading a cleared single-SKU group keeps its explicit unknown specification and cannot fall back to old reviewed labels or mixed OCR');
   } finally {p.dom.window.close();}
+
+  const typedSource=fs.readFileSync(path.join(root,'product-type-group-data.js'),'utf8');
+  const typedManifest=JSON.parse(typedSource.slice(typedSource.indexOf('[{'),typedSource.lastIndexOf(']')+1));
+  const typed=typedManifest.filter(g=>g.id.startsWith('typed-pdf07-0090-'));
+  assert.equal(typed.length,2);
+  assert.deepEqual(typed.find(g=>g.id.endsWith('-ml')).specs.map(s=>s.label),['30 mL','50 mL','100 mL','120 mL']);
+  assert.deepEqual(typed.find(g=>g.id.endsWith('-g')).specs.map(s=>s.label),['30 g','50 g']);
+  const typedRecords=typed.flatMap(g=>g.specs.flatMap(spec=>spec.recordIds.map(id=>({id,kind:'package',name:'YT938(930)#条纹罩',
+    productCode:'YZ-BC-'+String(6525+Number(id.split('-').at(-1))).padStart(6,'0'),
+    specificationRaw:spec.label,capacityMl:g.id.endsWith('-ml')?parseFloat(spec.label):null,
+    category:'待细分',quoteRaw:'独立报价:'+spec.label,supplierRaw:'内部来源',
+    searchText:'整页提及30ml、50ml、100ml、120ml、30g、50g',
+    source:{workbook:'屹同-现货画册(1).pdf',page:90},
+    images:[{path:g.primaryImage.path,role:'reference',imageScope:'pdf-page-preview'},{path:'media/target-original-page.jpg',role:'reference',imageScope:'pdf-page-preview'}]
+  }))));
+  const neighbor={...typedRecords[0],id:'different-model',name:'YT938(968)-3#',productCode:'YZ-BC-006525'};
+  const fixture=[...typedRecords,neighbor],initial=JSON.stringify(fixture);
+  p=await open('',typed,fixture);
+  try {
+    assert.equal(p.w.groupTest.displayed().length,3);
+    assert.equal(p.d.querySelectorAll('.card').length,3);
+    assert.equal(p.d.querySelectorAll('.card .image-viewport').length,2);
+    assert.match(p.d.querySelectorAll('.card')[0].querySelector('.tags').textContent,/30 mL.*50 mL.*100 mL.*120 mL/);
+    assert.match(p.d.querySelectorAll('.card')[1].querySelector('.tags').textContent,/30 g.*50 g/);
+    assert.equal(p.d.querySelector('.image-viewport img').getAttribute('src'),'/'+typed[0].primaryImage.previewPath);
+    for(const [q,expected] of [['YZ-BC-006531','50 g'],['精华水瓶 100ml','100 mL'],['膏霜罐 30克','30 g']]) {
+      search(p,q);assert.equal(p.d.querySelectorAll('.card').length,1,q);
+      p.d.querySelector('.card-title').click();
+      assert.equal(p.d.querySelector('.group-option.active strong').textContent,expected);
+      assert.match(p.d.querySelector('.pricing-section').textContent,new RegExp('独立报价:'+expected));
+      const full=p.d.querySelector('.thumbnails [data-image-view]:not([data-image-view*="#view="])');
+      assert.ok(full,'Original page remains separate from the viewport');full.click();
+      assert.equal(p.d.querySelector('#detailPhoto .image-viewport'),null);
+      assert.ok(p.d.querySelectorAll('#imageAssociations .group-image-source').length>0,'Full original has its own source records');
+      const crop=p.d.querySelector('.thumbnails [data-image-view*="#view="]');crop.click();
+      assert.ok(p.d.querySelector('#detailPhoto .image-viewport'));
+      assert.equal(p.d.querySelectorAll('#imageAssociations .group-image-source').length,0,'The reviewed display view does not invent original owners');
+      assert.match(p.d.querySelector('#downloadImageLink').href,/\/media\/type-views\//);
+      p.d.querySelector('#detailPhoto img').dispatchEvent(new p.w.Event('error'));
+      assert.equal(p.d.querySelector('#detailPhoto .image-viewport'),null,'Failed source does not crop a fallback original page');
+      p.d.querySelector('#modal').close();
+    }
+    reset(p);p.d.querySelector('[data-filter="category"][value="罐与广口盒"]').click();
+    assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.specificationRaw),['30 g','50 g']);
+    assert.equal(p.d.querySelectorAll('.card').length,1);
+    assert.equal(JSON.stringify(fixture),initial,'The supplied raw catalogue is untouched');
+    assert.deepEqual(p.errors,[]);
+    checks.push('Exact target catalogue becomes separate bottle/jar cards, with four mL and two g SKUs; original models, independent quotes, numbering, source gallery and fallback behavior stay correct');
+  } finally {p.dom.window.close();}
+  const seen=new Set();
+  const singleSource=fs.readFileSync(path.join(root,'product-single-group-data.js'),'utf8');
+  const singleManifest=JSON.parse(singleSource.slice(singleSource.indexOf('[{'),singleSource.lastIndexOf(']')+1));
+  for(const def of [...typedManifest,...singleManifest]){
+    assert.ok(def.review.catalogue&&(def.review.page>0||def.review.row>0));
+    const c=def.primaryImage.displayCrop;
+    for(const k of ['x','y','width','height','sourceWidth','sourceHeight'])assert.ok(Number.isFinite(c[k]),def.id);
+    assert.ok(c.x>=0&&c.y>=0&&c.width>0&&c.height>0&&c.x+c.width<=1.000001&&c.y+c.height<=1.000001,def.id);
+    const units=new Set(def.specs.map(spec=>/mL$/.test(spec.label)?'mL':/g$/.test(spec.label)?'g':'unknown'));
+    assert.equal(units.size,1,def.id);assert.ok(!units.has('unknown'),def.id);
+    assert.deepEqual([...new Set(def.specs.flatMap(spec=>spec.recordIds))].sort(),[...def.recordIds].sort());
+    for(const id of def.recordIds){assert.ok(!seen.has(id),'A SKU cannot occupy two physical-type groups: '+id);seen.add(id);}
+  }
+  checks.push('All reviewed type definitions retain a catalogue/page, bounded viewports, one specification unit, exact SKU ownership, and no duplicate group membership');
+
   console.log(JSON.stringify({passed:true,checks,liveWebsiteRequests:0},null,2));
 })().catch(error=>{console.error(error);process.exitCode=1;});
