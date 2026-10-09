@@ -10,6 +10,7 @@ const suites = [
   ['--experimental-vm-modules', 'tests/frontend/client-tools-tests.cjs'],
   ['--experimental-vm-modules', 'tests/frontend/i18n-tests.cjs'],
   ['--test', 'tests/frontend/mobile-company-preview-tests.cjs'],
+  ['--test', 'tests/frontend/product-detail-demo-tests.cjs'],
   ['--experimental-vm-modules', 'tests/frontend/frontend-fault-tests.mjs'],
   ['--experimental-vm-modules', 'tests/frontend/product-groups-tests.cjs'],
   ['tests/frontend/http-client-tests.mjs'],

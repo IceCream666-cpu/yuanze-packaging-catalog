@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>源泽 · 产品详情设计预览</title>
+  <link rel="stylesheet" href="./demo.css">
+  <script src="./demo.js" defer></script>
+</head>
+<body>
+  <div class="preview-bar">
+    <div><span class="preview-dot"></span><strong id="preview-title">产品详情 · 设计预览</strong><span class="preview-note" id="preview-note">本地 demo</span></div>
+    <div class="preview-controls">
+      <label><span id="role-label">视角</span><select id="role" aria-labelledby="role-label"><option value="employee">业务员</option><option value="client">客户</option></select></label>
+      <label><span id="scenario-label">资料</span><select id="scenario" aria-labelledby="scenario-label"><option value="known">现有资料</option><option value="empty">未录入状态</option></select></label>
+    </div>
+  </div>
+  <header class="brand-bar">
+    <a class="brand" href="#main"><img src="./brand.svg" alt="源泽"><span>YUANZE<small>PACKAGING COLLECTION</small></span></a>
+    <button id="language" class="text-button" type="button" aria-label="切换中英文">EN / 中文</button>
+  </header>
+  <main id="main">
+    <div class="breadcrumbs" id="breadcrumbs"></div>
+    <div id="detail"></div>
+  </main>
+  <div id="notice" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="image-dialog" aria-label="包材图片">
+    <div class="lightbox-bar"><span id="lightbox-title"></span><button id="close-image" class="icon-button" type="button" aria-label="关闭图片">×</button></div>
+    <img id="lightbox-image" alt="包材大图">
+  </dialog>
+</body>
+</html>
