@@ -340,6 +340,88 @@ function reset(p){p.d.querySelector('[data-action=reset]').click();}
     checks.push('Reloading a cleared single-SKU group keeps its explicit unknown specification and cannot fall back to old reviewed labels or mixed OCR');
   } finally {p.dom.window.close();}
 
+  const manifestDOM=new JSDOM('',{runScripts:'outside-only'});
+  let handwash;
+  try {
+    const manifest=(await evaluateBrowserModule(manifestDOM,path.join(root,'product-group-data.js'))).namespace.reviewedProductGroups;
+    handwash=JSON.parse(JSON.stringify(manifest.find(g=>g.id==='family-yz-bc-000009')));
+  } finally {manifestDOM.window.close();}
+  assert.deepEqual(handwash.recordIds,['YZ-S01-R0012','YZ-S01-R0013']);
+  assert.deepEqual(handwash.specs,[{label:'250 mL',recordIds:['YZ-S01-R0012']},{label:'500 mL',recordIds:['YZ-S01-R0013']}]);
+  assert.equal(handwash.name,'洗手液瓶');assert.equal(handwash.galleryScope,'record');
+  assert.equal(handwash.primaryImage,undefined,'The series must use each selected capacity primary');
+  const handwashRecords=[250,500].map((capacityMl,n)=>({
+    id:handwash.recordIds[n],kind:'package',name:'洗手液',capacityMl,specificationRaw:`${capacityMl}ml`,
+    productCode:['YZ-BC-000009','YZ-BC-000010'][n],quoteRaw:['1.35','1.6'][n],bareBottlePrice:['1.35元','1.60元'][n],
+    supplierRaw:'原始供应商',source:{workbook:'原始询价表.xlsx',sheet:'包材',row:12+n},
+    searchText:'共享来源原文250ml与500ml',
+    // Deliberately put an unresolved original before the primary: gallery order
+    // must follow image policy without rewriting the supplied image array.
+    images:[{path:'media/image30.jpeg',role:'reference',imageScope:'unresolved'},
+      {path:`uploads/handwash-${capacityMl}.jpg`,role:'product',imageScope:'single_product'},
+      {path:'uploads/old-shared-handwash.jpg',role:'reference',imageScope:'unresolved'},
+      {path:'media/image27.jpeg',role:'inquiry',imageScope:'single_product'}],
+  }));
+  const sameNameJar={id:'same-name-jar',kind:'package',name:'洗手液',productCode:'YZ-BC-990010',
+    capacityMl:null,specificationRaw:'250g',quoteRaw:'其他报价',images:handwashRecords[0].images};
+  const handwashFixture=[...handwashRecords,sameNameJar],handwashOriginal=JSON.stringify(handwashFixture);
+  p=await open('',handwash,handwashFixture);
+  try {
+    assert.equal(p.w.groupTest.displayed().length,2,'A same-name/shared-image different container remains separate');
+    assert.equal(p.d.querySelectorAll('.card').length,2);
+    assert.equal(p.d.querySelector('.card-title').textContent,'洗手液瓶（多规格）');
+    assert.match(p.d.querySelector('.card .tags').textContent,/250 mL.*500 mL/);
+    for(const [code,id,capacity,price] of [['YZ-BC-000009','YZ-S01-R0012',250,'1.35'],['YZ-BC-000010','YZ-S01-R0013',500,'1.60']]) {
+      search(p,code);
+      assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),[id]);
+      assert.equal(p.d.querySelector('.card-title').dataset.detail,id);
+      assert.equal(p.d.querySelector('.photo img').getAttribute('src'),`/uploads/handwash-${capacity}.jpg?thumb=1`);
+      p.d.querySelector('.card-title').click();
+      assert.equal(p.d.querySelectorAll('.group-option').length,2);
+      assert.equal(p.d.querySelector('.group-option.active').dataset.detail,id);
+      assert.equal(p.d.querySelector('.group-option.active strong').textContent,`${capacity} mL`);
+      assert.match(p.d.querySelector('.pd-price-value').textContent,new RegExp(price.replace('.','\\.')));
+      assert.equal(p.d.querySelector('#detailPhoto img').getAttribute('src'),`/uploads/handwash-${capacity}.jpg`);
+      assert.equal(p.d.querySelectorAll('.thumbnails button').length,4);
+      const images=p.w.groupTest.groupGalleryImages(p.w.groupTest.getRecords().find(r=>r.id===id),p.w.groupTest.getIndex(),p.w.groupTest.imagePath);
+      assert.equal(images[0].path,`uploads/handwash-${capacity}.jpg`);
+      assert.ok(!images.some(image=>image.path===`uploads/handwash-${capacity===250?500:250}.jpg`));
+      assert.ok(images.every(image=>image._groupSources.every(source=>source.recordId===id)));
+      const sibling=capacity===250?'YZ-S01-R0013':'YZ-S01-R0012',siblingCapacity=capacity===250?500:250;
+      p.d.querySelector(`.group-option[data-detail="${sibling}"]`).click();
+      assert.equal(p.d.querySelector('.group-option.active').dataset.detail,sibling);
+      assert.equal(p.d.querySelector('#detailPhoto img').getAttribute('src'),`/uploads/handwash-${siblingCapacity}.jpg`);
+      assert.equal(p.d.querySelector('.detail-actions [data-favorite]').dataset.favorite,sibling);
+      assert.match(p.d.querySelector('.pd-price-value').textContent,new RegExp((capacity===250?'1.60':'1.35').replace('.','\\.')));
+      p.d.querySelector('#modal').close();
+    }
+    for(const capacity of [250,500]) {
+      search(p,`洗手液瓶 ${capacity}ml`);
+      assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),[handwash.recordIds[capacity===250?0:1]]);
+      assert.equal(p.d.querySelectorAll('.card').length,1);
+    }
+    reset(p);p.d.querySelector('[data-filter="capacity"][value="500"]').click();
+    assert.deepEqual(Array.from(p.w.groupTest.filtered(),r=>r.id),['YZ-S01-R0013']);
+    p.d.querySelector('[data-action=export]').click();
+    const csv=await new Promise((resolve,reject)=>{const reader=new p.w.FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsText(p.downloads[0]);});
+    assert.match(csv,/YZ-BC-000010/);assert.doesNotMatch(csv,/YZ-BC-000009/);
+    const all=p.w.groupTest.getRecords(),scoped=p.w.groupTest.createProductGroupIndex(all,[{...handwash,primaryImage:{path:'uploads/unscoped-series.jpg'}}]);
+    assert.ok(!p.w.groupTest.groupGalleryImages(all[0],scoped,p.w.groupTest.imagePath).some(image=>image.path==='uploads/unscoped-series.jpg'));
+    const fullSource={path:'media/one-source-page.jpg',role:'reference',imageScope:'source_page'};
+    const croppedSource={...fullSource,displayCrop:{x:0.1,y:0.1,width:0.4,height:0.5,sourceWidth:1000,sourceHeight:1200},previewPath:'media/source-crop.jpg'};
+    const cropFirst={...all[0],images:[croppedSource,fullSource]};
+    const cropIndex=p.w.groupTest.createProductGroupIndex([cropFirst,all[1]],[handwash]);
+    const separateViews=p.w.groupTest.groupGalleryImages(cropFirst,cropIndex,p.w.groupTest.imagePath);
+    assert.equal(separateViews.length,2,'Crop and full source sharing one path are separate views');
+    assert.deepEqual(separateViews[0].displayCrop,croppedSource.displayCrop);
+    assert.equal(separateViews[1].displayCrop,undefined,'Full-source metadata cannot inherit the first crop');
+    assert.equal(separateViews[1].previewPath,undefined);
+    assert.equal(separateViews[1]._groupSources[0].image,fullSource);
+    assert.equal(JSON.stringify(handwashFixture),handwashOriginal,'Grouping cannot rewrite prices, codes, source rows or image metadata');
+    assert.deepEqual(p.errors,[]);
+    checks.push('The reviewed 250/500 mL handwash family uses one card, exact original codes, independent bare prices and capacity filters; each capacity keeps its own primary and original gallery without borrowing sibling images or same-name jars');
+  } finally {p.dom.window.close();}
+
   const typedSource=fs.readFileSync(path.join(root,'product-type-group-data.js'),'utf8');
   const typedManifest=JSON.parse(typedSource.slice(typedSource.indexOf('[{'),typedSource.lastIndexOf(']')+1));
   const typed=typedManifest.filter(g=>g.id.startsWith('typed-pdf07-0090-'));

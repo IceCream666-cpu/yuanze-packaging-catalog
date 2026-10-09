@@ -1,6 +1,7 @@
 // Only this reviewed manifest defines visual families. Shared images, names and
 // catalogue pages are never enough to merge records automatically.
 import {imageViewKey} from './image-viewport.js';
+import {primaryImage as recordPrimaryImage} from './image-policy.js';
 export function createProductGroupIndex(records, reviewedGroups) {
   const known = new Map(records.map(record => [record.id, record]));
   const index = new Map();
@@ -34,6 +35,7 @@ export function createProductGroupIndex(records, reviewedGroups) {
       ...(typeof primary === 'string' ? {path: primary} : primary)} : null;
     const group = {id: definition.id || members[0].id, name: definition.name || members[0].name,
       records: members, specs, capacities, primaryImage, imageMappingPending: definition.imageMappingPending === true,
+      galleryScope: definition.galleryScope === 'record' ? 'record' : 'group',
       imageAliases: definition.imageAliases && typeof definition.imageAliases === 'object' && !Array.isArray(definition.imageAliases)
         ? {...definition.imageAliases} : {},
       classification: definition.classification || null,
@@ -80,8 +82,15 @@ export function groupGalleryImages(record, index, pathForImage) {
     if (!available.has(path)) available.set(path, value);
     entries.push({path, value, owner});
   }
-  if (group?.primaryImage) add(group.primaryImage);
-  for (const member of group?.records || [record]) for (const image of member.images || []) add(image, member);
+  // A reviewed family can share a card while each size has its own gallery.
+  // Keep the selected SKU's primary first and never borrow a sibling's image.
+  const recordGallery = group?.galleryScope === 'record';
+  if (!recordGallery && group?.primaryImage) add(group.primaryImage);
+  for (const member of recordGallery ? [record] : group?.records || [record]) {
+    const original = member.images || [], primary = recordGallery ? recordPrimaryImage(member) : null;
+    const ordered = primary ? [primary, ...original.filter(image => image !== primary)] : original;
+    for (const image of ordered) add(image, member);
+  }
   const aliases = new Map(Object.entries(group?.imageAliases || {})
     .filter(([from, to]) => from.trim() && typeof to === 'string' && to.trim())
     .map(([from, to]) => [pathForImage(from), pathForImage(to)]));
@@ -102,7 +111,7 @@ export function groupGalleryImages(record, index, pathForImage) {
     // A type-specific viewport and its full catalogue page are separate views,
     // even when both read the same file. Keep the original page for verification.
     const key = imageViewKey(value, retained);
-    if (!images.has(key)) images.set(key, {...(value.displayCrop ? value : available.get(retained)), _groupSources: [], _groupPaths: []});
+    if (!images.has(key)) images.set(key, {...(value.displayCrop || retained === path ? value : available.get(retained)), _groupSources: [], _groupPaths: []});
     const image = images.get(key);
     if (!image._groupPaths.includes(path)) image._groupPaths.push(path);
     if (owner) image._groupSources.push({recordId: owner.id, image: value});

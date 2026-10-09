@@ -1,4 +1,4 @@
-import {factRows} from './product-detail-facts.js';
+import {factRows,materialFact} from './product-detail-facts.js';
 import {t,registerTranslations,getLanguage,onLanguageChange} from './i18n.js';
 import {pricingData} from './product-pricing.js';
 registerTranslations({
@@ -15,12 +15,10 @@ export const defaultProcesses=[['silk','丝印','Screen printing','colour'],['fo
 export const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clean=v=>{const s=v==null?'':String(v).trim();return /^(?:[/／—–\-]+|暂无|待补(?:充)?|待确认|待核对|未填写|未注明|null|N\/?A)$/i.test(s)?'':s;};
 const values=rows=>[...new Set(rows.map(row=>clean(row.value)).filter(Boolean))].join('\n');
-const labelKey=v=>String(v||'').replace(/[\s：:／/（）()·]/g,'');
-const detailValue=(r,pattern)=>values((r.productDetails||[]).filter(d=>pattern.test(labelKey(d.label))));
 export function coreFacts(r={},spec=''){
  const p=pricingData(r);
  return {bare:values(p.bare),terms:values(p.terms),tax:values(p.tax),
-  material:(r.materials||[]).join(' / ')||clean(r.materialRaw)||detailValue(r,/^(材质|材料)$/),
+  material:materialFact(r),
   spec:clean(spec)||clean(r.specificationRaw)||(r.capacityMl==null?'':`${r.capacityMl} mL`),
   moq:clean(r.moqRaw)||values(p.moq),lead:clean(r.leadTimeRaw)||values(p.lead),
   uses:(r.uses||r._uses||[]).join(' / '),stock:['yes','no'].includes(r.stockStatus)?r.stockStatus:'unknown'};

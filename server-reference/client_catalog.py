@@ -242,6 +242,13 @@ FACETS = {'category': ('categories', 'category'), 'material': ('materials', 'mat
           'use': ('uses', 'uses'), 'section': ('sections', 'sections')}
 
 
+# This one design was confirmed against its source records. Both identities
+# must match: editable names, images and content productCode are never evidence
+# that another package belongs to the same design.
+CONFIRMED_VARIANTS = (('YZ-S01-R0012', 'YZ-BC-000009'),
+                      ('YZ-S01-R0013', 'YZ-BC-000010'))
+
+
 def facet_values(item, field):
     value = item[field]
     return value if isinstance(value, list) else ([value] if value else [])
@@ -348,6 +355,31 @@ class ClientCatalog:
                   for key, field in FACETS.values()}
         return entries, facets
 
+    def _variant_cards(self, matched, available):
+        """Group the confirmed pair after matching, using only safe projections.
+
+        A card keeps the first matching member as its representative. Its
+        nonrecursive variants include that member and its currently approved
+        sibling, so a capacity/code search opens the matching specification.
+        A missing, archived or revoked sibling does not create a group.
+        """
+        identities = {(self.opaque('record', record_id), code)
+                      for record_id, code in CONFIRMED_VARIANTS}
+        variants = [item for item in available
+                    if (item['id'], item['productCode']) in identities]
+        if len(variants) != len(CONFIRMED_VARIANTS):
+            return matched
+        cards, grouped = [], False
+        for item in matched:
+            if (item['id'], item['productCode']) in identities:
+                if grouped:
+                    continue
+                cards.append({**item, 'variants': variants})
+                grouped = True
+            else:
+                cards.append(item)
+        return cards
+
     def catalog(self, page=1, page_size=24, q='', filters=None):
         page = max(1, page)
         page_size = max(1, min(48, page_size))
@@ -359,9 +391,10 @@ class ClientCatalog:
                 self.snapshot_time=time.monotonic()
             entries,facets=self.snapshot
         filters = filters or {}
-        entries = [item for item in entries if matches_search(item, q) and
+        matched = [item for item in entries if matches_search(item, q) and
                    all(not filters.get(key) or set(filters[key]).intersection(facet_values(item, field))
                        for key, (_, field) in FACETS.items())]
+        entries = self._variant_cards(matched, entries)
         total = len(entries)
         pages = max(1, (total + page_size - 1) // page_size)
         page = min(page, pages)
@@ -380,6 +413,11 @@ class ClientCatalog:
                       if isinstance(match, dict) and isinstance(match.get('record_id'), str)
                       and isinstance(match.get('image_path'), str)]
         requested = {record_id for record_id, _ in candidates}
+        confirmed_ids = {record_id for record_id, _ in CONFIRMED_VARIANTS}
+        if requested.intersection(confirmed_ids):
+            # Related choices are read fresh after inference, never from a
+            # cached catalogue or from unapproved image-index metadata.
+            requested.update(confirmed_ids)
         records = {}
         with self.store.connection() as conn:
             # The approval predicate bounds parsing to customer-visible records.
@@ -396,28 +434,45 @@ class ClientCatalog:
                     paths = self.approved_images(record)
                     if paths:
                         records[row['id']] = (record, row['product_code'], paths)
-        entries, mappings, seen = [], [], set()
-        for record_id, matched_path in candidates:
-            if record_id in seen or record_id not in records:
-                continue
-            record, product_code, paths = records[record_id]
-            if matched_path not in paths:
-                continue
-            seen.add(record_id)
-            ordered_paths = [matched_path, *(path for path in paths if path != matched_path)]
+        entries, mappings, seen, projected = [], [], set(), {}
+        result_limit = max(1, min(48, limit))
+        complete_pair = all(record_id in records and records[record_id][1] == code
+                            for record_id, code in CONFIRMED_VARIANTS)
+
+        def project_entry(record_id, ordered_paths):
+            record, product_code, _ = records[record_id]
             images = []
             for path in ordered_paths:
                 token = self.opaque('image', record_id, path) + '.jpg'
                 mappings.append((token, record_id, path))
                 images.append({'url': '/client-media/' + token})
-            entries.append({'id': self.opaque('record', record_id),
-                            **project_record(record, product_code), 'images': images})
-            if len(entries) >= max(1, min(48, limit)):
+            return {'id': self.opaque('record', record_id),
+                    **project_record(record, product_code), 'images': images}
+
+        for record_id, matched_path in candidates:
+            if record_id in seen or record_id not in records:
+                continue
+            _, _, paths = records[record_id]
+            if matched_path not in paths:
+                continue
+            seen.add(record_id)
+            ordered_paths = [matched_path, *(path for path in paths if path != matched_path)]
+            projected[record_id] = project_entry(record_id, ordered_paths)
+            entries.append(projected[record_id])
+            # The sole confirmed pair can collapse at most one ranked result.
+            # Collect one extra so a series never consumes two result slots.
+            if len(entries) >= result_limit + int(complete_pair):
                 break
+        if complete_pair and seen.intersection(confirmed_ids):
+            available = [projected.get(record_id) or project_entry(record_id, records[record_id][2])
+                         for record_id, _ in CONFIRMED_VARIANTS]
+            entries = self._variant_cards(entries, available)
+        entries = entries[:result_limit]
         if mappings:
             with self.store.connection(True) as conn:
                 conn.executemany('INSERT OR IGNORE INTO client_media_map VALUES(?,?,?)', mappings)
-        facets = {key: sorted({value for item in entries for value in facet_values(item, field)})
+        choices = [variant for item in entries for variant in item.get('variants', [item])]
+        facets = {key: sorted({value for item in choices for value in facet_values(item, field)})
                   for key, field in FACETS.values()}
         return {'items': entries, 'page': 1, 'pages': 1, 'total': len(entries), 'facets': facets}
 

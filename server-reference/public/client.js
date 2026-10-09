@@ -24,9 +24,9 @@ const copy = {
   '下载图片':'Download image',
   '包材详情':'Packaging details','关闭详情':'Close details','关闭':'Close','包材图片':'Packaging image',
   '图片暂时无法显示，请稍后再试。':'This image is unavailable. Please try again later.',
-  '图片暂时无法显示':'Image currently unavailable','上一张图片':'Previous image','下一张图片':'Next image',
+  '图片暂时无法显示':'Image currently unavailable','上一张图片':'Previous image','下一张图片':'Next image','上一张':'Previous','下一张':'Next','第 {number} 张图片，共 {count} 张':'Image {number} of {count}',
   '产品规格':'Product specifications','收起侧栏':'Hide sidebar','展开侧栏':'Show sidebar','关闭侧栏':'Close sidebar',
-  '材质':'Material','规格':'Specification','瓶型':'Bottle type','用途':'Uses','包材类型':'Category',
+  '材质':'Material','规格':'Specification','选择规格':'Select a size','瓶型':'Bottle type','用途':'Uses','包材类型':'Category',
   '净含量':'Net content','使用部位':'Application area','产品编号':'Product code','查看详情':'View details',
   '全部分类':'All categories','不限材质':'All materials','不限规格':'All specifications','不限瓶型':'All bottle types','不限用途':'All uses',
   '清空本项':'Clear selection','没有匹配的选项':'No matching options','查找{label}…':'Find {label}…','筛选{label}选项':'Search {label} options',
@@ -97,7 +97,7 @@ function imageURL(image) {
   const value = typeof image?.url === 'string' ? image.url : '';
   return /^\/client-media\/[A-Za-z0-9_-]+\.(?:jpg|jpeg|png|webp)$/.test(value) ? value : '';
 }
-function safeItem(item) {
+function safeVariant(item) {
   return {
     id:typeof item?.id === 'string' && /^[A-Za-z0-9_-]{1,200}$/.test(item.id) ? item.id : '',
     productCode:/^YZ-BC-\d{6,}$/.test(item?.productCode) ? item.productCode : '',
@@ -108,12 +108,22 @@ function safeItem(item) {
     images:Array.isArray(item?.images) ? item.images.map(image => ({url:imageURL(image)})).filter(image => image.url) : [],
   };
 }
+function safeItem(item){
+  const safe=safeVariant(item),seen=new Set();
+  const variants=Array.isArray(item?.variants)?item.variants.map(safeVariant).filter(variant=>{
+    if(!variant.id||!variant.productCode||!variant.images.length||seen.has(variant.id))return false;seen.add(variant.id);return true;
+  }):[];
+  if(variants.length>1&&variants.some(variant=>variant.id===safe.id))safe.variants=variants;
+  return safe;
+}
 function safeFacets(input) {
   return Object.fromEntries(Object.entries(facetConfig).map(([key,{source,values}]) => [key,values ? safeArray(input?.[source],values) : Array.isArray(input?.[source]) ? [...new Set(input[source].filter(value => typeof value === 'string' && capacityPattern.test(value)))] : []]));
 }
 function label(key, value) {return key === 'section' ? t(value === 'face' ? '面部' : '身体／头部') : t(value);}
 function joined(values) {return values.map(value => t(value)).join(getLanguage() === 'en' ? ', ' : '、');}
 function itemName(item) {return [t(item.bottleType || item.category || '包材'),item.capacity].filter(Boolean).join(' · ');}
+function itemCapacities(item){return [...new Set((item.variants||[item]).map(variant=>variant.capacity).filter(Boolean))].join(' / ');}
+function catalogueItemName(item){return [t(item.bottleType||item.category||'包材'),itemCapacities(item)].filter(Boolean).join(' · ');}
 function hasFilters() {return Boolean(query || Object.values(selected).some(values => values.length));}
 function showNotice(key = '') {noticeKey = key;$('#notice').textContent = key ? t(key) : '';$('#notice').hidden = !key;}
 function setBusy(value) {
@@ -178,6 +188,7 @@ const thumbnailURL=url=>url+'?thumb=1';
 function loadImage(image, url, stillRelevant = () => image.isConnected) {
   let attempts = 0;
   image.addEventListener('error',() => {
+    if(!stillRelevant())return;
     if (attempts >= 2) {image.hidden = true;const parent = image.closest('.preview-image-wrap');if (parent) $('#previewError').hidden = false;else if (!image.parentElement.querySelector('.image-unavailable')) {const note = document.createElement('span');note.className = 'image-unavailable';note.textContent = t('图片暂时无法显示');image.parentElement.append(note);}return;}
     attempts += 1;setTimeout(() => {if (stillRelevant()) image.src = `${url}${url.includes('?') ? '&' : '?'}retry=${attempts}`;},attempts*1000);
   });
@@ -196,7 +207,7 @@ function paginationItems() {
   const output = [];for (const n of [...visible].sort((a,b) => a-b)) {if (output.length && n-output.at(-1) > 1) output.push('…');output.push(n);}return output;
 }
 function renderGallery() {
-  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(itemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:item.capacity || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
+  $('#gallery').innerHTML = items.map((item,index) => `<article class="gallery-card"><button type="button" class="photo-button" data-detail="${index}" aria-label="${esc(t('查看{code}详情',{code:item.productCode || itemName(item)}))}"><img data-image-url="${esc(thumbnailURL(item.images[0].url))}" alt="${esc(itemName(item))}" loading="lazy" decoding="async">${item.images.length > 1 ? `<span class="image-count">${esc(t('{count} 张图片',{count:item.images.length}))}</span>` : ''}</button><div class="card-body"><p class="record-code">${esc(item.productCode)}</p><button type="button" class="card-title" data-detail="${index}">${esc(catalogueItemName(item))}</button><div class="tags">${item.category ? `<span class="tag">${esc(t(item.category))}</span>` : ''}${item.materials.slice(0,2).map(value => `<span class="tag material">${esc(t(value))}</span>`).join('')}</div><p class="capacity">${esc(t('净含量：{capacity}',{capacity:itemCapacities(item) || '—'}))}</p></div><button type="button" class="card-foot" data-detail="${index}"><span>${esc(t('查看详情'))}</span><span aria-hidden="true">↗</span></button></article>`).join('');
   attachImages($('#gallery'));
   $('#empty').hidden = !loaded || items.length !== 0 || Boolean(noticeKey);
   $('#emptyTitle').textContent = t(hasFilters() ? '暂无匹配的包材' : collection === 'favourites' ? '暂无收藏' : collection === 'shortlist' ? '意向清单为空' : '更多包材，即将呈现');
@@ -234,14 +245,21 @@ function renderDetails(changeImage = false) {
   if (!previewItem) return;
   $('#detailCode').textContent = previewItem.productCode;$('#detailTitle').textContent = itemName(previewItem);
   $('#detailTags').innerHTML = previewItem.materials.map(value => `<span class="tag material">${esc(t(value))}</span>`).join('');
+  const variants=previewItem.variants||[],selector=$('#detailVariants'),variantKey=JSON.stringify(variants.map(variant=>[variant.id,variant.capacity]));selector.hidden=variants.length<=1;
+  if(selector.dataset.variantKey!==variantKey){selector.innerHTML=variants.map(variant=>`<button type="button" class="button" data-client-variant="${esc(variant.id)}">${esc(variant.capacity||variant.productCode)}</button>`).join('');selector.dataset.variantKey=variantKey;}
+  selector.querySelectorAll('[data-client-variant]').forEach(button=>{const active=button.dataset.clientVariant===previewItem.id;button.setAttribute('aria-pressed',String(active));button.classList.toggle('active',active);});
   $('#detailFacts').innerHTML = factRows({material:joined(previewItem.materials),spec:previewItem.capacity,uses:joined(previewItem.uses)},{client:true});
   $('#specifications').hidden = !previewItem.specifications.length;
   $('#detailSpecifications').innerHTML = previewItem.specifications.filter(spec=>! /^(材质|材料|规格|容量|净含量|用途|通常用于)$/.test(spec.label)).map(spec => factHTML(spec.label,spec.value)).join('');
   $('#imageStatus').textContent = `${previewIndex+1} / ${previewItem.images.length}`;
+  $('#imageStatus').setAttribute('aria-label',t('第 {number} 张图片，共 {count} 张',{number:previewIndex+1,count:previewItem.images.length}));
   $('#imagePrevious').disabled = previewIndex === 0;$('#imageNext').disabled = previewIndex === previewItem.images.length-1;
   $('.preview-controls').hidden = previewItem.images.length <= 1;
+  $('.preview-image-wrap .pd-gallery-controls').hidden = previewItem.images.length <= 1;
   $('#imageThumbnails').hidden = previewItem.images.length <= 1;
-  $('#imageThumbnails').innerHTML = previewItem.images.map((image,index) => `<button type="button" data-image-index="${index}" aria-current="${index === previewIndex}" aria-label="${esc(t('第 {number} 张图片',{number:index+1}))}"><img src="${esc(thumbnailURL(image.url))}" loading="lazy" alt=""></button>`).join('');
+  const thumbnails=$('#imageThumbnails'),galleryKey=JSON.stringify([previewItem.productCode,...previewItem.images.map(image=>image.url)]);
+  if(thumbnails.dataset.galleryKey!==galleryKey){thumbnails.innerHTML=previewItem.images.map((image,index)=>`<button type="button" data-image-index="${index}"><img src="${esc(thumbnailURL(image.url))}" loading="lazy" alt=""></button>`).join('');thumbnails.dataset.galleryKey=galleryKey;}
+  thumbnails.querySelectorAll('[data-image-index]').forEach(button=>{const index=Number(button.dataset.imageIndex);button.setAttribute('aria-current',String(index===previewIndex));button.setAttribute('aria-label',t('第 {number} 张图片',{number:index+1}));});
   if (changeImage) {
     const old = $('#previewImage'), image = old.cloneNode();image.removeAttribute('src');image.hidden = false;old.replaceWith(image);$('#previewError').hidden = true;
     loadImage(image,previewItem.images[previewIndex].url,() => previewItem && $('#previewImage') === image && image.isConnected);
@@ -254,7 +272,9 @@ function renderDetails(changeImage = false) {
   $('#detailActions').innerHTML = itemActions(previewItem,'preview');
 }
 function openPreview(item, source) {if (!item) return;previewItem = item;previewIndex = 0;previousFocus = source;renderDetails(true);$('#preview').showModal();}
-function moveImage(delta) {if (!previewItem) return;previewIndex = Math.max(0,Math.min(previewItem.images.length-1,previewIndex+delta));renderDetails(true);}
+function selectPreviewVariant(id){const chosen=previewItem?.variants?.find(variant=>variant.id===id);if(!chosen||chosen.id===previewItem.id)return;previewItem={...chosen,variants:previewItem.variants};previewIndex=0;renderDetails(true);}
+function selectPreviewImage(index){if(!previewItem||!Number.isInteger(index)||index<0||index>=previewItem.images.length||index===previewIndex)return;previewIndex=index;renderDetails(true);}
+function moveImage(delta) {selectPreviewImage(previewIndex+delta);}
 function updateSidebar() {
   document.body.classList.toggle('menu-open',mobile && sidebarOpen);document.body.classList.toggle('sidebar-collapsed',!mobile && !sidebarOpen);
   $('#sidebarBackdrop').hidden = !mobile || !sidebarOpen;$('#menuButton').setAttribute('aria-expanded',String(sidebarOpen));
@@ -281,7 +301,8 @@ document.addEventListener('click',event => {
   else if (button?.dataset.clearFilter) toggleFacet(button.dataset.clearFilter,button.dataset.filterValue);
   else if (button?.dataset.clearFacet) {selected[button.dataset.clearFacet] = [];applyFilters();}
   else if (button?.dataset.page && !busy) loadCatalog(Number(button.dataset.page),true);
-  else if (button?.dataset.imageIndex !== undefined && previewItem) {previewIndex = Number(button.dataset.imageIndex);renderDetails(true);}
+  else if (button?.dataset.imageIndex !== undefined && previewItem) selectPreviewImage(Number(button.dataset.imageIndex));
+  else if (button?.dataset.clientVariant) selectPreviewVariant(button.dataset.clientVariant);
   const summary = event.target.closest('.multi-filter summary');
   for (const panel of document.querySelectorAll('.multi-filter[open]')) if (summary && panel !== summary.parentElement || !event.target.closest('.multi-filter')) panel.open = false;
 });
@@ -290,9 +311,9 @@ $('#menuButton').addEventListener('click',() => {sidebarOpen = !sidebarOpen;upda
 $('#sidebarClose').addEventListener('click',() => {sidebarOpen = false;updateSidebar();$('#menuButton').focus();});$('#sidebarBackdrop').addEventListener('click',closeMobileSidebar);
 matchMedia('(max-width: 760px)').addEventListener?.('change',event => {mobile = event.matches;sidebarOpen = !mobile;updateSidebar();renderFilterToggle();});
 $('#closePreview').addEventListener('click',() => $('#preview').close());
-$('#preview').addEventListener('close',() => {const code = previewItem?.productCode;$('#previewImage').removeAttribute('src');previewItem = null;if (previousFocus?.isConnected) previousFocus.focus();else {[...document.querySelectorAll('.photo-button')].find(button => items[Number(button.dataset.detail)]?.productCode === code)?.focus();}});
+$('#preview').addEventListener('close',() => {const code = previewItem?.productCode;$('#previewImage').removeAttribute('src');previewItem = null;if (previousFocus?.isConnected) previousFocus.focus();else {[...document.querySelectorAll('.photo-button')].find(button => {const item=items[Number(button.dataset.detail)];return item?.productCode===code||item?.variants?.some(variant=>variant.productCode===code);})?.focus();}});
 $('#preview').addEventListener('click',event => {if (event.target === $('#preview')) $('#preview').close();});
-$('#preview').addEventListener('keydown',event => {if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {event.preventDefault();moveImage(event.key === 'ArrowLeft' ? -1 : 1);}});
+$('#preview').addEventListener('keydown',event => {if (previewItem?.images.length>1&&!event.target.closest('input,textarea,select,[contenteditable=true],[role=textbox]')&&(event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {event.preventDefault();moveImage(event.key === 'ArrowLeft' ? -1 : 1);}});
 $('#imagePrevious').addEventListener('click',() => moveImage(-1));$('#imageNext').addEventListener('click',() => moveImage(1));
 $('#previous').addEventListener('click',() => {if (!busy && page > 1) loadCatalog(page-1,true);});$('#next').addEventListener('click',() => {if (!busy && page < pages) loadCatalog(page+1,true);});
 $('#jumpForm').addEventListener('submit',event => {event.preventDefault();const target = Number($('#pageNumber').value);if (!busy && Number.isInteger(target) && target >= 1 && target <= pages && target !== page) loadCatalog(target,true);});
@@ -347,8 +368,12 @@ function renderLocalCollection(target = 1) {
   const source = collection === 'favourites' ? [...favourites.values()] : collection === 'shortlist' ? [...shortlist.values()] : imageResults;
   // Derive options before applying filters, from this collection's safe items.
   // A previous image search may have entirely different material/category facets.
-  facets = Object.fromEntries(Object.keys(facetConfig).map(key => [key,[...new Set(source.flatMap(item => publicFacetValues(item)[key]).filter(Boolean))]]));
-  const filtered = source.filter(matchesLocal);total = filtered.length;pages = Math.max(1,Math.ceil(total/pageSize));page = Math.max(1,Math.min(target,pages));
+  const facetItems=collection==='image'?source.flatMap(item=>item.variants||[item]):source;
+  facets = Object.fromEntries(Object.keys(facetConfig).map(key => [key,[...new Set(facetItems.flatMap(item => publicFacetValues(item)[key]).filter(Boolean))]]));
+  const filtered = collection==='image'?source.flatMap(item=>{
+    const candidates=[item,...(item.variants||[]).filter(variant=>variant.id!==item.id)],chosen=candidates.find(matchesLocal);
+    return chosen?[chosen===item?item:{...chosen,variants:item.variants}]:[];
+  }):source.filter(matchesLocal);total = filtered.length;pages = Math.max(1,Math.ceil(total/pageSize));page = Math.max(1,Math.min(target,pages));
   items = filtered.slice((page-1)*pageSize,page*pageSize);loaded = true;renderSidebar();renderFilters();renderGallery();
 }
 function changeCollection(next) {
