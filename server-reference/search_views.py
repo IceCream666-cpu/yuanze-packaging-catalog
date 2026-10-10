@@ -18,12 +18,14 @@ MANIFESTS = (
      'visually-reviewed-single-physical-type-and-own-source-specifications'),
 )
 MAX_MANIFEST_BYTES = 8 * 1024 * 1024
+MAX_PROVENANCE_BYTES = 2 * 1024 * 1024
 MAX_GROUPS = 10_000
 SHA256_RE = re.compile(r'[a-f0-9]{64}\Z')
 DISPLAY_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp'}
 # Extracted brochure originals are only hashed; the model receives the
 # reviewed, browser-compatible display bitmap, never these original encodings.
 NATIVE_EXTENSIONS = DISPLAY_EXTENSIONS | {'.jp2', '.jpf', '.jpx', '.tif', '.tiff'}
+PROVENANCE_FILENAME = 'search-view-provenance.json'
 
 
 @lru_cache(maxsize=8)
@@ -57,6 +59,49 @@ def _read_manifest(public, filename, export_name):
         # A malformed optional crop manifest cannot break ordinary catalogue
         # searches; no guessed or partial associations are published.
         return ()
+
+
+@lru_cache(maxsize=8)
+def _provenance(path, stamp):
+    del stamp
+    document = json.loads(Path(path).read_text(encoding='utf-8'))
+    if not isinstance(document, dict) or set(document) != {'version', 'entries'} or type(document['version']) is not int or document['version'] != 1:
+        return ()
+    entries = document['entries']
+    if not isinstance(entries, list) or len(entries) > MAX_GROUPS:
+        return ()
+    bindings = {}
+    for item in entries:
+        if not isinstance(item, dict) or set(item) != {'path', 'sha256', 'native_path', 'native_sha256'}:
+            return ()
+        path, native_path = _media_path(item['path']), _media_path(item['native_path'])
+        if (path is None or native_path is None
+            or PurePosixPath(path).suffix.lower() not in DISPLAY_EXTENSIONS
+            or PurePosixPath(native_path).suffix.lower() not in NATIVE_EXTENSIONS
+            or PurePosixPath(path).parent != PurePosixPath(native_path).parent
+            or any(not isinstance(item[key], str) or not SHA256_RE.fullmatch(item[key])
+                   for key in ('sha256', 'native_sha256'))):
+            return ()
+        key = (path, native_path, item['native_sha256'])
+        if key in bindings:
+            return ()
+        bindings[key] = item['sha256']
+    return tuple(sorted(bindings.items()))
+
+
+def _read_provenance(public):
+    directory = public.parent
+    path = directory / PROVENANCE_FILENAME
+    try:
+        if path.is_symlink() or not path.resolve().is_relative_to(directory):
+            return {}
+        stat = path.stat()
+        if stat.st_size > MAX_PROVENANCE_BYTES:
+            return {}
+        return dict(_provenance(str(path), (stat.st_dev, stat.st_ino, stat.st_size,
+                                           stat.st_mtime_ns, stat.st_ctime_ns)))
+    except (OSError, UnicodeError, ValueError):
+        return {}
 
 
 def _crop(value):
@@ -109,6 +154,7 @@ def reviewed_search_views(public, records):
     active = {record['id'] for record in records if isinstance(record, dict)
               and isinstance(record.get('id'), str) and record['id']
               and record.get('kind') == 'package' and not record.get('archived')}
+    provenance = _read_provenance(public)
     views = {}
     for filename, export_name, basis in MANIFESTS:
         for group in _read_manifest(public, filename, export_name):
@@ -142,6 +188,12 @@ def reviewed_search_views(public, records):
                 continue
             key = (path, crop, digest, native_path)
             views.setdefault(key, set()).update(record_ids)
-    return [{'path': path, 'record_ids': sorted(record_ids), 'crop': crop,
-             'review_sha256': digest, 'review_native_path': native_path}
-            for (path, crop, digest, native_path), record_ids in sorted(views.items())]
+    result = []
+    for (path, crop, digest, native_path), record_ids in sorted(views.items()):
+        view = {'path': path, 'record_ids': sorted(record_ids), 'crop': crop,
+                'review_sha256': digest, 'review_native_path': native_path}
+        delivered_hash = provenance.get((path, native_path, digest))
+        if delivered_hash:
+            view['display_sha256'] = delivered_hash
+        result.append(view)
+    return result

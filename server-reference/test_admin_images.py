@@ -246,6 +246,44 @@ class DynamicIndex(unittest.TestCase):
             native.unlink()
             self.assertEqual(self.service.status()['indexed_images'], 1)
 
+    def test_audited_derivative_can_be_indexed_without_large_native_original(self):
+        name = 'media/derived.webp'
+        source = self.private / name
+        Image.new('RGB', (60, 120), 'blue').save(source)
+        self.records.append({'id': 'reviewed', 'kind': 'package', 'images': []})
+        view = {'path': name, 'record_ids': ['reviewed'],
+                'crop': (.1, .1, .8, .8, 60, 120),
+                'review_native_path': 'media/native.jp2', 'review_sha256': 'a' * 64,
+                'display_sha256': image_search.sha256(source)}
+        with patch.object(admin_images, 'reviewed_search_views', return_value=[view]):
+            self.service.refresh(); self.wait_done()
+            self.assertEqual(self.service.status()['indexed_images'], 2)
+            self.assertEqual({x['record_id'] for x in self.service.search_request(
+                lambda: {'image': upload()})['matches']}, {'base', 'reviewed'})
+            # A later replacement is not the reviewed derivative even if its
+            # dimensions and filename remain unchanged.
+            Image.new('RGB', (60, 120), 'green').save(source)
+            self.assertEqual([x['record_ids'] for x in self.service._snapshot()], [['base']])
+
+    def test_derivative_proof_never_overrides_an_existing_native_hash_mismatch(self):
+        name = 'media/derived.webp'
+        source = self.private / name
+        Image.new('RGB', (60, 120), 'blue').save(source)
+        self.records.append({'id': 'reviewed', 'kind': 'package', 'images': []})
+        native = self.private / 'media/native.jp2'; native.write_bytes(b'different native bytes')
+        view = {'path': name, 'record_ids': ['reviewed'],
+                'crop': (.1, .1, .8, .8, 60, 120),
+                'review_native_path': 'media/native.jp2', 'review_sha256': 'a' * 64,
+                'display_sha256': image_search.sha256(source)}
+        with patch.object(admin_images, 'reviewed_search_views', return_value=[view]):
+            self.assertEqual([x['record_ids'] for x in self.service._snapshot()], [['base']])
+            native.unlink()
+            self.assertEqual(len(self.service._snapshot()), 2)
+            view['display_sha256'] = 'b' * 64
+            self.assertEqual([x['record_ids'] for x in self.service._snapshot()], [['base']])
+            del view['display_sha256']
+            self.assertEqual([x['record_ids'] for x in self.service._snapshot()], [['base']])
+
     def test_legacy_v1_dynamic_cache_restarts_without_embedding_or_rebuilding(self):
         self.add_uploaded_record()
         self.service.close()

@@ -24,7 +24,8 @@ class ReviewedSearchViews(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.public = Path(self.temp.name)
+        self.public = Path(self.temp.name) / 'public'
+        self.public.mkdir()
         self.records = [{'id': 'R1', 'kind': 'package'}, {'id': 'R2', 'kind': 'package'},
                         {'id': 'R3', 'kind': 'package', 'archived': True},
                         {'id': 'SOURCE', 'kind': 'source_page'}]
@@ -48,6 +49,19 @@ class ReviewedSearchViews(unittest.TestCase):
 
     def views(self):
         return search_views.reviewed_search_views(self.public, self.records)
+
+    def write_provenance(self, entries, version=1):
+        target = self.public.parent / search_views.PROVENANCE_FILENAME
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=target.parent,
+                                         prefix=target.name + '.', delete=False) as stream:
+            json.dump({'version': version, 'entries': entries}, stream)
+            temporary = Path(stream.name)
+        temporary.replace(target)
+        return target
+
+    def binding(self):
+        return {'path': 'media/catalogue.jpg', 'sha256': 'b' * 64,
+                'native_path': 'media/catalogue.jpg', 'native_sha256': 'a' * 64}
 
     def test_different_physical_types_on_same_page_remain_separate(self):
         bottle = group(['R1', 'R3', 'SOURCE', 'missing', 'R1'])
@@ -172,6 +186,52 @@ class ReviewedSearchViews(unittest.TestCase):
             self.assertEqual(after.st_mtime_ns, before.st_mtime_ns)
             self.assertNotEqual((after.st_dev, after.st_ino), (before.st_dev, before.st_ino))
             self.assertEqual(self.views()[0]['record_ids'], ['R2'])
+
+    def test_derivative_provenance_requires_exact_review_path_native_path_and_native_hash(self):
+        self.write([group()])
+        self.assertNotIn('display_sha256', self.views()[0])
+        self.write_provenance([self.binding()])
+        self.assertEqual(self.views()[0]['display_sha256'], 'b' * 64)
+        # A valid proof for a different review never authorizes this crop.
+        for field, value in [('path', 'media/other.jpg'), ('native_path', 'media/other.jp2'),
+                             ('native_sha256', 'c' * 64)]:
+            binding = self.binding(); binding[field] = value
+            self.write_provenance([binding])
+            self.assertNotIn('display_sha256', self.views()[0])
+
+    def test_malformed_or_unsafe_derivative_provenance_never_supplies_display_hash(self):
+        self.write([group()])
+        for field, value in [('path', '../outside.jpg'), ('native_path', 'media/../outside.jp2'),
+                             ('native_path', 'uploads/a.jpg'), ('native_path', 'media/other/a.jp2'),
+                             ('sha256', 'invalid'), ('native_sha256', None), ('extra', 'unexpected')]:
+            with self.subTest(field=field, value=value):
+                binding = self.binding(); binding[field] = value
+                self.write_provenance([binding])
+                self.assertNotIn('display_sha256', self.views()[0])
+        self.write_provenance([self.binding(), self.binding()])
+        self.assertNotIn('display_sha256', self.views()[0])
+        self.write_provenance([self.binding()], version=True)
+        self.assertNotIn('display_sha256', self.views()[0])
+        path = self.write_provenance([self.binding()])
+        with patch.object(search_views, 'MAX_PROVENANCE_BYTES', 1):
+            self.assertNotIn('display_sha256', self.views()[0])
+        path.write_text('{not JSON')
+        self.assertNotIn('display_sha256', self.views()[0])
+        path.unlink()
+        self.assertNotIn('display_sha256', self.views()[0])
+
+    def test_derivative_provenance_replacement_and_symlink_are_handled_safely(self):
+        self.write([group()])
+        target = self.write_provenance([self.binding()])
+        self.assertEqual(self.views()[0]['display_sha256'], 'b' * 64)
+        before = target.stat()
+        replacement = self.binding(); replacement['sha256'] = 'c' * 64
+        self.write_provenance([replacement])
+        os.utime(target, ns=(before.st_atime_ns, before.st_mtime_ns))
+        self.assertEqual(target.stat().st_size, before.st_size)
+        self.assertEqual(self.views()[0]['display_sha256'], 'c' * 64)
+        other = target.with_name('other-provenance.json'); target.rename(other); target.symlink_to(other)
+        self.assertNotIn('display_sha256', self.views()[0])
 
     def test_missing_malformed_oversized_or_executable_manifest_is_not_evaluated(self):
         name, export, _ = search_views.MANIFESTS[0]

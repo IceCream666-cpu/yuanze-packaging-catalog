@@ -219,12 +219,21 @@ class ManagedImageSearch:
         for view in reviewed_search_views(self.private.parent / 'public', records):
             source = self._resolve(view['path'])
             native = self._resolve(view['review_native_path'])
-            if source is None or native is None:
+            if source is None:
                 continue
             try:
-                if self._hash(native) != view['review_sha256']:
-                    continue
                 digest = self._hash(source)
+                expected_display = view.get('display_sha256')
+                if expected_display is not None and digest != expected_display:
+                    continue
+                if native is None:
+                    # Some brochures ship only their audited WebP derivative.
+                    # An exact code-owned native/derivative hash pair is required;
+                    # missing originals never permit guessed associations.
+                    if expected_display is None:
+                        continue
+                elif self._hash(native) != view['review_sha256']:
+                    continue
             except OSError:
                 continue
             result.append({**view, 'source': source, 'sha256': digest,
