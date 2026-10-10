@@ -325,6 +325,25 @@ class ClientCatalog:
             result.append(path)
         return result
 
+    def image_search_links(self):
+        """Read currently approved record/image links for private-side ranking.
+
+        This snapshot deliberately bypasses the presentation cache: an approval
+        change or archive must take effect in the same search. The final result
+        projection still checks each matched link again after ranking.
+        """
+        links = set()
+        with self.store.connection() as conn:
+            rows = conn.execute('''SELECT r.id,r.content FROM admin_records AS r
+                WHERE r.archived=0 AND json_extract(r.content,'$.kind')='package'
+                  AND EXISTS (SELECT 1 FROM json_each(r.content,'$.images') AS image
+                              WHERE json_extract(image.value,'$.clientVisible')=1
+                                AND json_type(image.value,'$.clientVisible')='true')''')
+            for row in rows:
+                record = json.loads(row['content'])
+                links.update((row['id'], path) for path in self.approved_images(record))
+        return links
+
     def _projected_entries(self):
         entries, mappings = [], []
         # json_each applies the opt-in filter in SQLite, avoiding a full parsed

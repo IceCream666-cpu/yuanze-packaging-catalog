@@ -15,11 +15,13 @@ import threading
 import time
 import uuid
 import zipfile
+from search_views import reviewed_search_views, validated_crop
 
 from image_search import (
     ALLOWED_ROLES, MAX_INDEX_BYTES, MAX_SOURCE_IMAGE_BYTES, MAX_SOURCE_PIXELS,
     SearchBusy, SearchUnavailable, UNAVAILABLE_MESSAGE,
     decode_image, decode_upload, model_manifest, rank_matches, sha256,
+    query_pairs, MAX_SEARCH_RESULTS,
 )
 
 UPLOAD_NAME = re.compile(r"uploads/[0-9a-f]{32}\.jpg\Z")
@@ -145,8 +147,9 @@ class ManagedImageSearch:
             self.request_reindex()
 
     @staticmethod
-    def _key(source, digest):
-        return (str(source.resolve()), digest)
+    def _key(source, digest, crop=None):
+        key = (str(source.resolve()), digest)
+        return key + (tuple(crop),) if crop is not None else key
 
     def _resolve(self, name):
         if not isinstance(name, str):
@@ -177,6 +180,8 @@ class ManagedImageSearch:
     def _snapshot(self):
         catalog = self.catalog_provider()
         records = catalog.get("records", []) if isinstance(catalog, dict) else catalog
+        package_ids = {record.get('id') for record in records
+                       if record.get('kind') == 'package' and not record.get('archived')}
         by_path = {}
         for record in records:
             if record.get("archived") or record.get("kind") not in ("package", "source_page"):
@@ -207,8 +212,26 @@ class ManagedImageSearch:
                     continue
                 by_path[name] = {"path": name, "record_ids": {rid}, "sha256": digest,
                                  "source": source, "key": self._key(source, digest)}
-        return [{**item, "record_ids": sorted(item["record_ids"])}
-                for _, item in sorted(by_path.items())]
+        result = [{**item, "record_ids": sorted(item["record_ids"])}
+                  for _, item in sorted(by_path.items())]
+        # These code-owned reviews distinguish e.g. a bottle from a jar in the
+        # same brochure photo. They do not approve any image for customers.
+        for view in reviewed_search_views(self.private.parent / 'public', records):
+            source = self._resolve(view['path'])
+            native = self._resolve(view['review_native_path'])
+            if source is None or native is None:
+                continue
+            try:
+                if self._hash(native) != view['review_sha256']:
+                    continue
+                digest = self._hash(source)
+            except OSError:
+                continue
+            result.append({**view, 'source': source, 'sha256': digest,
+                           'key': self._key(source, digest, view['crop'])})
+        for item in result:
+            item['package_record_ids'] = [rid for rid in item['record_ids'] if rid in package_ids]
+        return result
 
     def _ready(self, snapshot):
         with self.lock:
@@ -239,7 +262,7 @@ class ManagedImageSearch:
             result["message"] = "暂无可检索的包材图片，请先添加产品图片。"
         return result
 
-    def search_request(self, read_body):
+    def search_request(self, read_body, allowed_links=None, packages_only=False):
         if not self.base.available or not self._ready(self._snapshot()):
             raise SearchUnavailable(UNAVAILABLE_MESSAGE)
         if not self.gate.acquire(blocking=False):
@@ -250,7 +273,7 @@ class ManagedImageSearch:
                 raise ValueError("请仅提交要检索的图片")
             image = decode_upload(data["image"])
             try:
-                query_gray, query_rgb = self.base.embedder.pair(image)
+                pairs = list(query_pairs(self.base.embedder, image))
             except Exception as error:
                 raise SearchUnavailable("图片分析暂时未完成，请稍后重试") from error
             finally:
@@ -258,12 +281,18 @@ class ManagedImageSearch:
             # Read links after the slower image embedding, so an archive/unlink
             # during inference is effective before this request returns results.
             ready = self._ready(self._snapshot())
+            if packages_only:
+                ready = [({**item, 'record_ids': item['package_record_ids']}, pair)
+                         for item, pair in ready if item['package_record_ids']]
             if not ready:
                 return {"matches": [], "indexed_images": 0, "indexed_records": 0}
             entries = [{"path": item["path"], "record_ids": item["record_ids"]} for item, _ in ready]
             gray = self.np.stack([pair[0] for _, pair in ready])
             rgb = self.np.stack([pair[1] for _, pair in ready])
-            matches = rank_matches(self.np, entries, gray, rgb, query_gray, query_rgb)
+            links = allowed_links() if callable(allowed_links) else allowed_links
+            matches = rank_matches(self.np, entries, gray, rgb, *pairs[0],
+                                   extra_pairs=pairs[1:], allowed_links=links,
+                                   limit=MAX_SEARCH_RESULTS)
             return {"matches": matches, "indexed_images": len(entries),
                     "indexed_records": len({rid for item in entries for rid in item["record_ids"]})}
         finally:
@@ -333,7 +362,19 @@ class ManagedImageSearch:
                         image = decode_image(item["source"].read_bytes(), max_bytes=MAX_SOURCE_IMAGE_BYTES,
                                              max_pixels=MAX_SOURCE_PIXELS)
                         try:
-                            gray, rgb = self.base.embedder.pair(image)
+                            crop = item.get('crop')
+                            if crop is None:
+                                gray, rgb = self.base.embedder.pair(image)
+                            else:
+                                if image.size != tuple(crop[4:]):
+                                    raise ValueError('Reviewed image dimensions changed')
+                                width, height = image.size
+                                box = (round(crop[0]*width), round(crop[1]*height),
+                                       round((crop[0]+crop[2])*width), round((crop[1]+crop[3])*height))
+                                if min(box[2]-box[0], box[3]-box[1]) < 16:
+                                    raise ValueError('Reviewed product crop is too small')
+                                with image.crop(box) as focused:
+                                    gray, rgb = self.base.embedder.pair(focused)
                         finally:
                             image.close()
                         # Never cache a vector under a hash from a replaced file.
@@ -399,7 +440,10 @@ class ManagedImageSearch:
                 name = "media/" + str(source.relative_to(self.private / "media"))
             else:
                 continue
-            entries.append({"path": name, "sha256": key[1]})
+            entry = {"path": name, "sha256": key[1]}
+            if len(key) == 3:
+                entry['crop'] = key[2]
+            entries.append(entry)
             gray.append(pair[0])
             rgb.append(pair[1])
         dimension = self.base.embedder.dimension
@@ -409,7 +453,7 @@ class ManagedImageSearch:
             os.chmod(arrays_temp, 0o600)
             self.np.savez(stream, gray=self.np.stack(gray) if gray else self.np.empty((0, dimension), dtype="float32"),
                           rgb=self.np.stack(rgb) if rgb else self.np.empty((0, dimension), dtype="float32"))
-        metadata = {"version": 1, "model": self.model, "dimension": dimension, "entries": entries,
+        metadata = {"version": 2, "model": self.model, "dimension": dimension, "entries": entries,
                     "arrays_sha256": sha256(arrays_temp)}
         metadata_temp.write_text(json.dumps(metadata, ensure_ascii=False), encoding="utf-8")
         os.chmod(metadata_temp, 0o600)
@@ -424,7 +468,7 @@ class ManagedImageSearch:
             if metadata_file.stat().st_size > 16 * 1024 * 1024 or array_file.stat().st_size > MAX_INDEX_BYTES:
                 raise ValueError("Dynamic visual index is too large")
             metadata = json.loads(metadata_file.read_text(encoding="utf-8"))
-            if metadata.get("version") != 1 or metadata.get("model") != self.model or metadata.get("arrays_sha256") != sha256(array_file):
+            if metadata.get("version") not in (1, 2) or metadata.get("model") != self.model or metadata.get("arrays_sha256") != sha256(array_file):
                 raise ValueError("Dynamic visual index version/checksum mismatch")
             entries, dimension = metadata["entries"], metadata["dimension"]
             if not isinstance(entries, list) or dimension != self.base.embedder.dimension:
@@ -440,9 +484,12 @@ class ManagedImageSearch:
                 vectors.flags.writeable = False
             accepted = {}
             for index, item in enumerate(entries):
+                crop = validated_crop(item.get('crop')) if 'crop' in item else None
+                if 'crop' in item and (metadata['version'] != 2 or crop is None):
+                    raise ValueError('Invalid cached product crop')
                 source = self._resolve(item["path"])
                 if source and self._hash(source) == item["sha256"]:
-                    accepted[self._key(source, item["sha256"])] = (gray[index], rgb[index])
+                    accepted[self._key(source, item["sha256"], crop)] = (gray[index], rgb[index])
             self.cache.update(accepted)
         except Exception:
             # Immutable vectors still work; corrupt/stale additions are rebuilt.

@@ -4,6 +4,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {JSDOM,VirtualConsole}=require('jsdom');
 const {evaluateBrowserModule}=require('./module-loader.cjs');
+const {pictureFile,installImageBrowser}=require('./image-browser-fixture.cjs');
 const root=path.resolve(__dirname,'../../server-reference/public');
 const image=(name,extra={})=>({path:'uploads/'+name+'.png',role:'product',imageScope:'single_product',...extra});
 const crop={x:0,y:0,width:.5,height:1,sourceWidth:800,sourceHeight:800};
@@ -32,7 +33,7 @@ async function until(fn,label){for(let n=0;n<400;n++){if(fn())return;await new P
 function browser(filename){
   const errors=[],console=new VirtualConsole();console.on('jsdomError',e=>errors.push(e.message));
   const dom=new JSDOM(fs.readFileSync(path.join(root,filename),'utf8'),{url:'https://catalog.test/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:console});
-  const w=dom.window,d=w.document;w.matchMedia=()=>({matches:false,addEventListener(){}});w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=function(){};
+  const w=dom.window,d=w.document;installImageBrowser(w);w.matchMedia=()=>({matches:false,addEventListener(){}});w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=function(){};
   w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
   return {dom,w,d,errors};
 }
@@ -109,7 +110,7 @@ test('customer image-search capacity filter selects the matching safe variant wh
     const submit=id=>p.d.querySelector('#'+id).dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));
     const capacity=checked=>{const input=p.d.querySelector('[data-filter="capacity"][value="500 mL"]');assert.ok(input);input.checked=checked;input.dispatchEvent(new p.w.Event('change',{bubbles:true}));};
     p.d.querySelector('.photo-button').click();p.d.querySelector('#detailActions [data-item-action="shortlist"]').click();p.d.querySelector('#detailActions [data-item-action="favourite"]').click();p.d.querySelector('#closePreview').click();
-    p.d.querySelector('#imageSearchOpen').click();Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[new p.w.File(['fixture'],'bottle.png',{type:'image/png'})]});submit('imageSearchForm');await until(()=>p.d.querySelector('#collectionLabel').textContent==='图片相似结果','grouped image results');
+    p.d.querySelector('#imageSearchOpen').click();Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[pictureFile(p.w,'bottle.png')]});submit('imageSearchForm');await until(()=>p.d.querySelector('#collectionLabel').textContent==='图片相似结果','grouped image results');
     assert.equal(p.d.querySelectorAll('.gallery-card').length,1);assert.equal(p.d.querySelector('.record-code').textContent,'YZ-BC-990001');assert.equal(p.d.querySelector('.photo-button img').getAttribute('src'),'/client-media/item1-1.jpg?thumb=1');assert.ok(p.d.querySelector('[data-filter="capacity"][value="500 mL"]'));
     capacity(true);assert.equal(p.d.querySelectorAll('.gallery-card').length,1);assert.equal(p.d.querySelector('.record-code').textContent,'YZ-BC-990002');assert.equal(p.d.querySelector('.photo-button img').getAttribute('src'),'/client-media/item2-1.jpg?thumb=1');p.d.querySelector('.photo-button').click();assert.equal(p.d.querySelector('#detailCode').textContent,'YZ-BC-990002');assert.equal(p.d.querySelector('[data-client-variant="opaque2"]').getAttribute('aria-pressed'),'true');assert.equal(p.d.querySelector('#previewImage').getAttribute('src'),'/client-media/item2-1.jpg');assert.match(p.d.querySelector('#imageDownload').download,/990002-1/);assert.equal(p.d.querySelectorAll('[data-client-variant]').length,2);p.d.querySelector('#closePreview').click();
     p.d.querySelector('#query').value='YZ-BC-990001';submit('searchForm');assert.equal(p.d.querySelectorAll('.gallery-card').length,0,'Code250 combined with capacity500 cannot match a series by combining sibling facts');p.d.querySelector('#query').value='SECRET SUPPLIER';submit('searchForm');assert.equal(p.d.querySelectorAll('.gallery-card').length,0);p.d.querySelector('#query').value='';submit('searchForm');assert.equal(p.d.querySelectorAll('.gallery-card').length,1);

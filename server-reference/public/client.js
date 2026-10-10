@@ -1,5 +1,6 @@
 import {factRows} from './product-detail-facts.js';
 import {requestJSON} from './api-client.js';
+import {prepareImageQuery, bindImageQueryCrop, rotateImageQuery, ImageQueryError, IMAGE_QUERY_COPY} from './image-query.js';
 import {t, getLanguage, setLanguage, onLanguageChange, installLanguageSwitch, registerTranslations} from './i18n.js';
 
 const $ = selector => document.querySelector(selector);
@@ -68,6 +69,8 @@ const materials = {'玻璃':'Glass','PET':'PET','PETG':'PETG','PE':'PE','HDPE':'
 const uses = {'洁面':'Facial cleanser','卸妆':'Makeup remover','精华液':'Serum','爽肤水':'Toner','化妆水':'Skin toner','面霜':'Face cream','眼霜':'Eye cream','眼部精华':'Eye serum','面膜':'Face mask','唇部护理':'Lip care','防晒':'Sunscreen','粉底液':'Liquid foundation','底妆':'Base makeup','唇彩':'Lip colour','眉妆':'Brow makeup','睫毛产品':'Lash products','洗手液':'Hand wash','洗发水':'Shampoo','护发素':'Hair conditioner','发膜':'Hair mask','头皮护理':'Scalp care','头发造型':'Hair styling','染发':'Hair dye','沐浴露':'Body wash','身体乳':'Body lotion','身体霜':'Body cream','身体油':'Body oil','身体磨砂':'Body scrub','护手霜':'Hand cream','手足护理':'Hand & foot care','护足霜':'Foot cream','脱毛':'Hair removal','止汗除臭':'Deodorant','香水':'Perfume','身体香氛':'Body fragrance','香氛':'Fragrance','美甲':'Nail care','口腔护理':'Oral care','精油':'Essential oil','乳液':'Lotion','膏霜':'Cream','凝胶':'Gel','洗护':'Personal care','洗衣液':'Laundry detergent','家居清洁':'Household cleaning','水剂':'Water-based formulas','油剂':'Oil-based formulas','粉体':'Powder'};
 const specs = {'口径':'Neck diameter','瓶高':'Bottle height','高度':'Height','直径':'Diameter','底径':'Base diameter','长度':'Length','宽度':'Width','厚度':'Thickness','重量':'Weight','满口容量':'Brimful capacity'};
 registerTranslations(Object.fromEntries(Object.entries({...copy,...categories,...bottles,...materials,...uses,...specs}).map(([zh,en]) => [zh,{zh,en}])));
+registerTranslations(IMAGE_QUERY_COPY);
+registerTranslations({'选择图片（JPG、PNG、WebP，最大 20 MB）':'Choose an image (JPG, PNG or WebP, up to 20 MB)','手机照片会自动缩小；图片中有多款产品时，请框选目标包材。':'Camera photos are resized automatically. Select the target when several products appear in one image.'});
 
 const facetConfig = {
   category:{source:'categories',label:'包材类型',placeholder:'全部分类',values:categories},
@@ -86,6 +89,7 @@ let mobile = matchMedia('(max-width: 760px)').matches, sidebarOpen = !mobile;
 // through browser storage to the next visitor using the same account.
 const favourites = new Map(), shortlist = new Map(), comparison = new Map();
 let collection = 'catalog', pageSize = 24, imageResults = [], imageRequest = 0, imageController = null, filtersExpanded = false;
+let imageDraft = null, imagePreparationController = null, imageFileSequence = 0, imagePreparing = false, imageErrorKey = '';
 const embedded = new URLSearchParams(location.search).get('showroom') === '1';
 document.documentElement.classList.toggle('embedded-showroom',embedded);
 const capacityPattern = /^\d+(?:\.\d+)?\s*(?:mL|ml|L|g|kg)$/;
@@ -346,8 +350,8 @@ function renderTools() {
   $('#collectionBar').hidden = collection === 'catalog';$('#shortlistTools').hidden = !['favourites','shortlist'].includes(collection);
   $('#collectionLabel').textContent = t({catalog:'包材选型库',favourites:'我的收藏',shortlist:'意向清单',image:'图片相似结果'}[collection]);
   $('#galleryTitle').textContent = $('#collectionLabel').textContent;
-  $('#imageSearchSubmit').disabled = Boolean(imageController);
-  $('#imageSearchSubmit').textContent = t(imageController ? '正在加载…' : '查找相似包材');
+  $('#imageFilterNotice').hidden = collection !== 'image' || !hasFilters();
+  renderImageSearchUI();
 }
 function publicFacetValues(item) {return {category:[item.category],section:item.sections,material:item.materials,capacity:[item.capacity],bottle:[item.bottleType],use:[...new Set([...item.uses,...item.referenceUses])]};}
 function matchesLocal(item) {
@@ -410,26 +414,59 @@ function renderConsultation() {
   $('#consultText').value = [...shortlist.values()].map(item => [item.productCode,itemName(item)].filter(Boolean).join(' · ')).join('\n');
   $('#copyStatus').textContent = '';
 }
-function cancelImageSearch() {imageRequest++;imageController?.abort();imageController = null;renderTools();}
-function readImage(file) {
-  return new Promise((resolve,reject) => {const reader = new FileReader();reader.onload = () => resolve(reader.result);reader.onerror = () => reject(Error('Unable to read image'));reader.readAsDataURL(file);});
+function renderImageSearchUI() {
+  $('#imageSearchSubmit').disabled = Boolean(imageController || imagePreparing || !imageDraft);
+  $('#imageSearchSubmit').textContent = t(imageController ? '正在查找相似包材…' : '查找相似包材');
+  $('#imageSearchProgress').textContent = t(imagePreparing ? '正在准备图片…' : imageController ? '正在查找相似包材…' : '');
+  $('#imageSearchError').hidden = !imageErrorKey;$('#imageSearchError').textContent = t(imageErrorKey);
+  $('#imageSearchFile').disabled = Boolean(imageController);
+  $('#clientImageCropCanvas').toggleAttribute('inert',Boolean(imageController));
+  for (const id of ['clientImageCropReset','clientImageCropCentre','clientImageRotate']) $('#'+id).disabled = Boolean(imageController || imagePreparing || !imageDraft);
+  $('#clientImageCropHint').textContent = t(imageDraft?.selection?.crop ? '已框选目标包材；可重新拖动调整范围。' : '不框选则使用整张图片；可用方向键调整选框，Shift＋方向键调整大小。');
+}
+function cancelImageSearch() {
+  imageRequest++;imageFileSequence++;imageController?.abort();imagePreparationController?.abort();
+  imageController = imagePreparationController = null;imagePreparing = false;
+  imageDraft?.selection.dispose();imageDraft = null;$('#clientImageCropArea').hidden = true;
+  $('#imageSearchFile').value = '';imageErrorKey = '';renderTools();
+}
+function setClientImageDraft(base) {
+  imageDraft?.selection.dispose();const draft = {base,selection:null};imageDraft = draft;
+  draft.selection = bindImageQueryCrop($('#clientImageCropCanvas'),base,{onChange:() => {if(imageDraft === draft) renderImageSearchUI();}});
+  $('#clientImageCropArea').hidden = false;renderImageSearchUI();
+}
+async function prepareClientImage(file) {
+  const sequence = ++imageFileSequence;imagePreparationController?.abort();imagePreparationController = new AbortController();
+  imageDraft?.selection.dispose();imageDraft = null;imageErrorKey = '';imagePreparing = true;$('#clientImageCropArea').hidden = true;renderImageSearchUI();
+  try {
+    const base = await prepareImageQuery(file,{signal:imagePreparationController.signal});
+    if (sequence !== imageFileSequence || !$('#imageSearchDialog').open) return false;
+    setClientImageDraft(base);return true;
+  } catch (error) {
+    if (sequence === imageFileSequence && error.name !== 'AbortError') imageErrorKey = error instanceof ImageQueryError ? error.message : '图片准备失败，请重新选择图片。';
+    return false;
+  } finally {if (sequence === imageFileSequence) {imagePreparing = false;imagePreparationController = null;renderImageSearchUI();}}
 }
 async function searchImage(event) {
-  event.preventDefault();if (imageController) return;
-  const file = $('#imageSearchFile').files?.[0];$('#imageSearchError').hidden = true;
-  if (!file || !['image/jpeg','image/png','image/webp'].includes(file.type) || !file.size || file.size > 6*1024*1024) {$('#imageSearchError').textContent = t('请选择 JPG、PNG 或 WebP 图片，文件不超过 6 MB。');$('#imageSearchError').hidden = false;return;}
+  event.preventDefault();if (imageController || imagePreparing) return;
+  imageErrorKey = '';
+  if (!imageDraft && !await prepareClientImage($('#imageSearchFile').files?.[0])) return;
+  if (!imageDraft || !$('#imageSearchDialog').open) return;
+  let image;
+  try {image = imageDraft.selection.dataURL();} catch (error) {imageErrorKey = error instanceof ImageQueryError ? error.message : '图片准备失败，请重新选择图片。';renderImageSearchUI();return;}
   const request = ++imageRequest;imageController = new AbortController();const signal = imageController.signal;renderTools();
   try {
-    const image = await readImage(file);if (request !== imageRequest) return;
     const response = await requestJSON('/api/client/image-search',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':session?.csrf || ''},body:JSON.stringify({image}),signal,timeoutMs:60000});
     if (request !== imageRequest) return;
     if (!Array.isArray(response.items)) throw Error('Invalid image search results');
-    imageResults = response.items.map(safeItem).filter(item => item.images.length);collection = 'image';
+    imageResults = response.items.slice(0,48).map(safeItem).filter(item => item.images.length);collection = 'image';
     requestSequence++;controller?.abort();showNotice();$('#retry').hidden = true;setBusy(false);renderLocalCollection(1);$('#imageSearchDialog').close();scrollToFilters();
+    if (!imageResults.length) showNotice('未找到相似图片，请框选目标包材或调整拍摄角度后重试。');
   } catch (error) {
     if (request !== imageRequest || error.name === 'AbortError') return;
     if (error.status === 401) {navigateToLogin();return;}
-    $('#imageSearchError').textContent = t('暂时无法搜图，请稍后重试。');$('#imageSearchError').hidden = false;
+    imageErrorKey = error.code === 'timeout' ? '搜图请求超时，请稍后重试或框选目标包材。' : error.status === 429 ? '搜图服务繁忙，请稍后重试。' : '暂时无法搜图，请稍后重试。';
+    renderImageSearchUI();
   } finally {if (request === imageRequest) {imageController = null;renderTools();}}
 }
 $('#favoritesView').addEventListener('click',() => changeCollection('favourites'));
@@ -446,10 +483,15 @@ $('#exportList').addEventListener('click',() => exportProducts(items,'yuanze-pac
 $('#exportShortlist').addEventListener('click',() => exportProducts([...shortlist.values()],'yuanze-packaging-shortlist.csv'));
 $('#compareOpen').addEventListener('click',() => {if (!comparison.size) return;renderComparison();$('#compareDialog').showModal();});
 $('#compareClose').addEventListener('click',() => $('#compareDialog').close());
-$('#imageSearchOpen').addEventListener('click',() => {$('#imageSearchError').hidden = true;$('#imageSearchDialog').showModal();});
+$('#imageSearchOpen').addEventListener('click',() => {imageErrorKey = '';$('#imageSearchDialog').showModal();renderImageSearchUI();});
 $('#imageSearchClose').addEventListener('click',() => $('#imageSearchDialog').close());
 $('#imageSearchDialog').addEventListener('close',cancelImageSearch);
 $('#imageSearchForm').addEventListener('submit',searchImage);
+$('#imageSearchFile').addEventListener('change',() => prepareClientImage($('#imageSearchFile').files?.[0]));
+$('#clientImageCropReset').addEventListener('click',() => {if (imageDraft && !imageController) {imageDraft.selection.reset();imageErrorKey = '';renderImageSearchUI();}});
+$('#clientImageCropCentre').addEventListener('click',() => {if (imageDraft && !imageController) {imageDraft.selection.centre();imageErrorKey = '';renderImageSearchUI();}});
+$('#clientImageRotate').addEventListener('click',() => {if (imageDraft && !imageController) {setClientImageDraft(rotateImageQuery(imageDraft.base));imageErrorKey = '';renderImageSearchUI();}});
+$('#clearImageFilters').addEventListener('click',reset);
 $('#consultShortlist').addEventListener('click',() => {if (!shortlist.size) return;notifyShortlist();if (embedded && window.parent !== window) notifyParent({type:'yuanze-contact'});else {renderConsultation();$('#consultDialog').showModal();}});
 $('#consultClose').addEventListener('click',() => $('#consultDialog').close());
 $('#copyConsult').addEventListener('click',async () => {try {await navigator.clipboard.writeText($('#consultText').value);$('#copyStatus').textContent = t('已复制，可发送给业务员。');}catch {$('#consultText').select();$('#copyStatus').textContent = t('请手动选中并复制咨询内容。');}});

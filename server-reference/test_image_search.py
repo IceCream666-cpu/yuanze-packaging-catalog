@@ -90,6 +90,62 @@ class Images(unittest.TestCase):
         self.assertEqual(result[1]["image_path"], "media/shape.png")
         self.assertEqual(len(result), 3)  # shared row appears once, using its best image.
 
+    def test_query_views_keep_whole_image_and_bound_background_focus(self):
+        class Recorder:
+            def __init__(self):
+                self.sizes = []
+
+            def pair(self, image):
+                self.sizes.append(image.size)
+                return np.array([1, 0], dtype='float32'), np.array([1, 0], dtype='float32')
+        model = Recorder()
+        with Image.new('RGB', (100, 200), 'white') as image:
+            pairs = list(search.query_pairs(model, image))
+            self.assertEqual(model.sizes, [(100, 200), (60, 160)])
+            self.assertEqual(len(pairs), 2)
+            self.assertEqual(image.size, (100, 200))
+        small = Recorder()
+        with Image.new('RGB', (16, 16)) as image:
+            self.assertEqual(len(list(search.query_pairs(small, image))), 1)
+
+    def test_focus_view_recovers_small_target_without_losing_full_frame(self):
+        entries = [{'path': 'media/object.png', 'record_ids': ['object']},
+                   {'path': 'media/scene.png', 'record_ids': ['scene']}]
+        vectors = np.eye(2, dtype='float32')
+        whole = np.array([0.4, 0.6], dtype='float32')
+        focused = np.array([0.9, 0.1], dtype='float32')
+        before = search.rank_matches(np, entries, vectors, vectors, whole, whole)
+        after = search.rank_matches(np, entries, vectors, vectors, whole, whole,
+                                    extra_pairs=[(focused, focused)])
+        self.assertEqual(before[0]['record_id'], 'scene')
+        self.assertEqual(after[0]['record_id'], 'object')
+        self.assertEqual({item['record_id'] for item in after}, {'object', 'scene'})
+
+    def test_approval_is_applied_before_best_image_deduplication(self):
+        entries = [{'path': 'media/internal.png', 'record_ids': ['R', 'hidden']},
+                   {'path': 'media/public.png', 'record_ids': ['R']}]
+        vectors = np.array([[1, 0], [.6, .8]], dtype='float32')
+        query = np.array([1, 0], dtype='float32')
+        result = search.rank_matches(np, entries, vectors, vectors, query, query,
+                                     allowed_links={('R', 'media/public.png')})
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]['image_path'], 'media/public.png')
+        self.assertNotIn('hidden', str(result))
+        self.assertEqual(search.rank_matches(np, entries, vectors, vectors, query, query,
+                                            allowed_links=set()), [])
+
+    def test_service_bounds_candidates_before_frontend_cache_and_pagination(self):
+        service = ready_service()
+        service.entries = [{'path': f'media/{i}.png', 'record_ids': [f'R{i:04d}']}
+                           for i in range(600)]
+        service.gray = service.rgb = np.tile(np.array([1, 0], dtype='float32'), (600, 1))
+        result = service.search_request(lambda: {'image': upload()})
+        self.assertEqual(len(result['matches']), search.MAX_SEARCH_RESULTS)
+        self.assertEqual(result['matches'][0]['record_id'], 'R0000')
+        self.assertEqual(result['matches'][-1]['record_id'], 'R0119')
+        self.assertEqual(len(service.search_request(lambda: {'image': upload()},
+            allowed_links=lambda: {('R0599', 'media/599.png')})['matches']), 1)
+
     def test_busy_and_unavailable_requests_do_not_read_upload(self):
         service = ready_service()
         service.gate.acquire()

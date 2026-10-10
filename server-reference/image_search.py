@@ -26,6 +26,8 @@ MAX_DIMENSION = 10_000
 MAX_INDEX_BYTES = 256 * 1024 * 1024
 SHAPE_WEIGHT = 0.8
 PREPROCESS_VERSION = "letterbox-white-exif-rgb-and-gray-v1"
+QUERY_VERSION = "whole-and-center-view-v1"
+MAX_SEARCH_RESULTS = 120
 UNAVAILABLE_MESSAGE = "图片检索索引暂不可用，请稍后重试；仍可使用文字和分类检索。"
 
 
@@ -207,20 +209,48 @@ class Embedder:
         return self.vector(image, True), self.vector(image, False)
 
 
-def rank_matches(np, entries, gray_vectors, rgb_vectors, query_gray, query_rgb):
+def query_pairs(embedder, image):
+    """Bounded, sequential views reduce background/scale interference.
+
+    Keep the full frame: a centre crop is only an additional hypothesis, never
+    a detector or a replacement for a user-selected target. Index vectors stay
+    compatible; query photos are neither persisted nor sent to another service.
+    """
+    yield embedder.pair(image)
+    width, height = image.size
+    for left, top, right, bottom in ((.2, .1, .8, .9),):
+        box = (round(width * left), round(height * top),
+               round(width * right), round(height * bottom))
+        if min(box[2] - box[0], box[3] - box[1]) < 16:
+            continue
+        with image.crop(box) as view:
+            yield embedder.pair(view)
+
+
+def rank_matches(np, entries, gray_vectors, rgb_vectors, query_gray, query_rgb,
+                 *, extra_pairs=(), allowed_links=None, limit=None):
     # Small catalogue: direct reductions avoid starting another BLAS thread pool.
     scores = SHAPE_WEIGHT * np.einsum("ij,j->i", gray_vectors, query_gray, optimize=False)
     scores += (1 - SHAPE_WEIGHT) * np.einsum("ij,j->i", rgb_vectors, query_rgb, optimize=False)
+    for gray, rgb in extra_pairs:
+        alternative = SHAPE_WEIGHT * np.einsum("ij,j->i", gray_vectors, gray, optimize=False)
+        alternative += (1 - SHAPE_WEIGHT) * np.einsum("ij,j->i", rgb_vectors, rgb, optimize=False)
+        scores = np.maximum(scores, alternative)
     if not np.isfinite(scores).all():
         raise SearchUnavailable("图片相似度计算未完成，请稍后重试")
     scores = np.clip(scores, -1, 1)
     matches = {}
     for item, score in zip(entries, scores.tolist()):
         for rid in item["record_ids"]:
+            # Filter individual links BEFORE collapsing a record to its best
+            # image. An internal best match must not suppress an approved one.
+            if allowed_links is not None and (rid, item["path"]) not in allowed_links:
+                continue
             result = {"record_id": rid, "image_path": item["path"], "score": round(float(score), 6)}
             if rid not in matches or result["score"] > matches[rid]["score"]:
                 matches[rid] = result
-    return sorted(matches.values(), key=lambda item: (-item["score"], item["record_id"]))
+    results = sorted(matches.values(), key=lambda item: (-item["score"], item["record_id"]))
+    return results if limit is None else results[:max(0, min(MAX_SEARCH_RESULTS, limit))]
 
 
 class ImageSearchService:
@@ -289,7 +319,7 @@ class ImageSearchService:
             result["message"] = UNAVAILABLE_MESSAGE
         return result
 
-    def search_request(self, read_body):
+    def search_request(self, read_body, allowed_links=None, packages_only=False):
         if not self.available:
             raise SearchUnavailable(UNAVAILABLE_MESSAGE)
         # Acquire before reading/decompressing uploads, rather than queueing RAM-heavy requests.
@@ -301,12 +331,15 @@ class ImageSearchService:
                 raise ValueError("请仅提交要检索的图片")
             image = decode_upload(data["image"])
             try:
-                query_gray, query_rgb = self.embedder.pair(image)
+                pairs = list(query_pairs(self.embedder, image))
             except Exception as error:
                 raise SearchUnavailable("图片分析暂时未完成，请稍后重试") from error
             finally:
                 image.close()
-            return {"matches": rank_matches(self.np, self.entries, self.gray, self.rgb, query_gray, query_rgb),
+            links = allowed_links() if callable(allowed_links) else allowed_links
+            return {"matches": rank_matches(self.np, self.entries, self.gray, self.rgb, *pairs[0],
+                                             extra_pairs=pairs[1:], allowed_links=links,
+                                             limit=MAX_SEARCH_RESULTS),
                     "indexed_images": len(self.entries), "indexed_records": self.record_count}
         finally:
             self.gate.release()

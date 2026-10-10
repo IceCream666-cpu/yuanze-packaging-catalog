@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {JSDOM,VirtualConsole} = require('jsdom');
 const {evaluateBrowserModule} = require('./module-loader.cjs');
+const {pictureFile,installImageBrowser} = require('./image-browser-fixture.cjs');
 const root = path.resolve(__dirname,'../../server-reference/public');
 const checks = [];
 const facets = {categories:['瓶类','软管'],sections:['face','body-head'],materials:['PET','玻璃'],capacities:['100 mL','200 mL'],bottleTypes:['圆瓶','喷雾瓶'],uses:['精华液','洗手液']};
@@ -13,7 +14,7 @@ function create({embedded=false,mobile=false}={}) {
   const errors=[],calls=[],messages=[],downloads=[];
   const console=new VirtualConsole();console.on('jsdomError',error=>{if(!error.message.includes('Not implemented: navigation'))errors.push(error.message);});
   const dom=new JSDOM(fs.readFileSync(path.join(root,'client.html'),'utf8'),{url:`https://catalog.test/client${embedded?'?showroom=1':''}`,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:console});
-  const w=dom.window,d=w.document;
+  const w=dom.window,d=w.document;installImageBrowser(w);
   w.AbortController=AbortController;w.DOMException=DOMException;w.TypeError=TypeError;w.Blob=Blob;
   w.matchMedia=query=>({matches:query.includes('reduced-motion') || mobile && query === '(max-width: 760px)',addEventListener(){}});
   w.HTMLElement.prototype.scrollIntoView=function(){};
@@ -111,7 +112,7 @@ async function main(){
     }else{
       await p.start();
       if(stage==='catalogue'){p.w.fetch=async()=>response({error:'PRIVATE AUTH ERROR'},401);p.submit('searchForm');}
-      if(stage==='image'){p.setImageResponse(async()=>response({error:'PRIVATE AUTH ERROR'},401));Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[new p.w.File(['image'],'bottle.png',{type:'image/png'})]});p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');}
+      if(stage==='image'){p.setImageResponse(async()=>response({error:'PRIVATE AUTH ERROR'},401));Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[pictureFile(p.w,'bottle.png')]});p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');}
       if(stage==='logout'){p.w.fetch=async()=>response({error:'PRIVATE AUTH ERROR'},401);p.d.querySelector('#logout').click();}
     }
     await until(()=>p.messages.some(message=>message.message.type==='yuanze-auth-required'),'parent auth navigation '+stage);
@@ -121,22 +122,22 @@ async function main(){
   checks.push('Embedded initial session, catalogue, image search, logout and wrong-role failures request top-level login instead of framing login pages');
 
   p=create();await p.start();p.d.querySelector('#imageSearchOpen').click();
-  Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[new p.w.File(['svg'],'bottle.svg',{type:'image/svg+xml'})]});p.submit('imageSearchForm');assert.equal(p.d.querySelector('#imageSearchError').hidden,false);assert.equal(p.calls.filter(call=>call.url==='/api/client/image-search').length,0);
-  const oversized=new p.w.File(['oversized'],'large.png',{type:'image/png'});Object.defineProperty(oversized,'size',{value:6*1024*1024+1});Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[oversized]});p.submit('imageSearchForm');assert.match(p.d.querySelector('#imageSearchError').textContent,/6 MB/);assert.equal(p.calls.filter(call=>call.url==='/api/client/image-search').length,0);
-  Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[new p.w.File(['image-fixture'],'bottle.png',{type:'image/png'})]});p.submit('imageSearchForm');await until(()=>p.d.querySelector('#collectionLabel').textContent==='图片相似结果','image search');
-  const call=p.calls.find(call=>call.url==='/api/client/image-search');assert.equal(call.options.method,'POST');assert.equal(call.options.headers['X-CSRF-Token'],'fixture-csrf');assert.match(JSON.parse(call.options.body).image,/^data:image\/png;base64,/);
+  Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[new p.w.File(['svg'],'bottle.svg',{type:'image/svg+xml'})]});p.submit('imageSearchForm');await until(()=>!p.d.querySelector('#imageSearchError').hidden,'unsupported image rejected');assert.equal(p.d.querySelector('#imageSearchError').hidden,false);assert.equal(p.calls.filter(call=>call.url==='/api/client/image-search').length,0);
+  const oversized=new p.w.File(['oversized'],'large.png',{type:'image/png'});Object.defineProperty(oversized,'size',{value:20*1024*1024+1});Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[oversized]});p.submit('imageSearchForm');await until(()=>!p.d.querySelector('#imageSearchError').hidden,'oversized image rejected');assert.match(p.d.querySelector('#imageSearchError').textContent,/20 MB/);assert.equal(p.calls.filter(call=>call.url==='/api/client/image-search').length,0);
+  Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{configurable:true,value:[pictureFile(p.w,'bottle.png')]});p.submit('imageSearchForm');await until(()=>p.d.querySelector('#collectionLabel').textContent==='图片相似结果','image search');
+  const call=p.calls.find(call=>call.url==='/api/client/image-search');assert.equal(call.options.method,'POST');assert.equal(call.options.headers['X-CSRF-Token'],'fixture-csrf');assert.match(JSON.parse(call.options.body).image,/^data:image\/jpeg;base64,/);
   assert.equal(p.d.querySelectorAll('.gallery-card').length,1);assert.match(p.d.querySelector('#gallery').textContent,/YZ-BC-000088/);assert.equal(p.d.querySelector('#imageSearchDialog').open,false);assert.doesNotMatch(p.d.documentElement.outerHTML,/DO_NOT_SHOW/);
   p.d.querySelector('#query').value='100ml PET Serum';p.submit('searchForm');assert.equal(p.d.querySelectorAll('.gallery-card').length,1);p.d.querySelector('#query').value='100ml Glass';p.submit('searchForm');assert.equal(p.d.querySelectorAll('.gallery-card').length,0);p.d.querySelector('#reset').click();
   assert.ok(p.calls.every(call=>call.url==='/api/session'||call.url==='/api/client/image-search'||call.url.startsWith('/api/client/catalog?')));
   checks.push('Image upload validates type, sends CSRF to the customer-only endpoint, and renders only allowlisted image-search results');
 
-  let resolveSearch;p.setImageResponse(()=>new Promise(resolve=>{resolveSearch=resolve;}));p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');await until(()=>resolveSearch,'pending image search');p.d.querySelector('#imageSearchClose').click();resolveSearch(response({items:[fixture(99)]}));await new Promise(resolve=>setTimeout(resolve,30));assert.doesNotMatch(p.d.querySelector('#gallery').textContent,/YZ-BC-000099/);assert.equal(p.d.querySelector('#imageSearchSubmit').disabled,false);
+  let resolveSearch;p.setImageResponse(()=>new Promise(resolve=>{resolveSearch=resolve;}));p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');await until(()=>resolveSearch,'pending image search');p.d.querySelector('#imageSearchClose').click();resolveSearch(response({items:[fixture(99)]}));await new Promise(resolve=>setTimeout(resolve,30));assert.doesNotMatch(p.d.querySelector('#gallery').textContent,/YZ-BC-000099/);assert.equal(p.d.querySelector('#imageSearchSubmit').disabled,true);
   p.setImageResponse(async()=>response({error:'DO_NOT_SHOW_SERVER_ERROR'},400));p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');await until(()=>!p.d.querySelector('#imageSearchError').hidden,'image failure');assert.doesNotMatch(p.d.body.textContent,/DO_NOT_SHOW_SERVER_ERROR/);
   assert.deepEqual(p.errors,[]);p.dom.window.close();checks.push('Cancelled image searches cannot replace current results, and server error details remain private');
 
   p=create();await p.start();p.clickAction('favourite',0);p.clickAction('shortlist',0);
   p.setImageResponse(async()=>response({items:[{...fixture(88),materials:['玻璃']}],facets:{...facets,materials:['玻璃']}}));
-  Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[new p.w.File(['fixture'],'glass.png',{type:'image/png'})]});
+  Object.defineProperty(p.d.querySelector('#imageSearchFile'),'files',{value:[pictureFile(p.w,'glass.png')]});
   p.d.querySelector('#imageSearchOpen').click();p.submit('imageSearchForm');await until(()=>p.d.querySelector('#collectionLabel').textContent==='图片相似结果','glass-only search');
   assert.deepEqual([...p.d.querySelectorAll('[data-filter="material"]')].map(input=>input.value),['玻璃']);
   for(const view of ['favoritesView','shortlistView']){

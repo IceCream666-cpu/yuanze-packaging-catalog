@@ -202,6 +202,7 @@ select { cursor: pointer; }
 .filter-grid { gap: 16px; }
 .filter-grid label, .field { color: #657b6b; font-size: 11px; gap: 8px; }
 .filter-grid select { padding: 10px; font-size: 12px; background: #fafbf6; }
+.image-crop-actions{display:flex;flex-wrap:wrap;gap:6px}.image-crop-actions .quiet{min-height:44px;padding:8px}.image-canvas-stage canvas:focus-visible{outline:3px solid #164b47;outline-offset:-3px}.image-search-context>div>.btn{display:block;margin-top:8px}
 .image-search-launch { color: var(--teal); border-color: #b8cbbb; background: #edf3e9; }
 .image-search-launch:hover { background: #e1ecdc; border-color: #9bb99f; }
 .image-search-scope { color: #687662; font-size: 11px; margin-bottom: 19px; }

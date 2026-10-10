@@ -1,13 +1,19 @@
 """Customer access regressions, using synthetic accounts and images only."""
 from contextlib import redirect_stdout
-import http.client, io, json, secrets, tempfile, threading, time, unittest
+import base64, http.client, io, json, secrets, tempfile, threading, time, unittest
 from pathlib import Path
+from types import SimpleNamespace
 from urllib.parse import urlencode
 from unittest.mock import patch
 from PIL import Image, PngImagePlugin
 from client_catalog import safe_capacity
 from test_admin_store import credentials, PASSWORD
 from test_server import server
+import image_search
+try:
+    import numpy as np
+except ImportError:
+    np=None
 
 class ClientAccess(unittest.TestCase):
     def setUp(self):
@@ -225,7 +231,7 @@ class ClientAccess(unittest.TestCase):
             self.login('admin');self.assertEqual(self.req(path,{'image':'x'})[0],200)
             self.assertEqual(search.call_count,2)
         self.login()
-        def read_upload(read_body):
+        def read_upload(read_body, allowed_links=None):
             read_body()
             return {'matches':[]}
         with patch.object(server.IMAGE_SEARCH,'search_request',side_effect=read_upload), patch.object(server,'MAX_REQUEST_BYTES',8):
@@ -255,10 +261,63 @@ class ClientAccess(unittest.TestCase):
         # A private best-match on a record must not reveal its separate public image.
         self.assertEqual(server.CLIENT_CATALOG.image_search_results(raw_matches[:3])['total'],0)
 
+    def client_rank_service(self, on_embed=None):
+        """Use actual ranking/request code with controlled visual embeddings."""
+        service=image_search.ImageSearchService.__new__(image_search.ImageSearchService)
+        service.available=True;service.gate=threading.Lock();service.np=np
+        def pair(image):
+            if on_embed:on_embed()
+            vector=np.array([1,0],dtype='float32')
+            return vector,vector.copy()
+        service.embedder=SimpleNamespace(pair=pair)
+        service.entries=[{'path':'media/unapproved.png','record_ids':['INTERNAL-1','INTERNAL-2']},
+                         {'path':self.image['path'],'record_ids':['INTERNAL-1','INTERNAL-3']}]
+        service.gray=np.array([[1,0],[.6,.8]],dtype='float32');service.rgb=service.gray.copy()
+        service.record_count=3
+        image='data:image/png;base64,'+base64.b64encode((server.PRIVATE/self.image['path']).read_bytes()).decode()
+        return service,{'image':image}
+
+    @unittest.skipUnless(np is not None,'Optional image dependencies required')
+    def test_customer_image_search_ranks_approved_links_before_record_deduplication(self):
+        service,query=self.client_rank_service()
+        unrestricted=service.search_request(lambda:query)
+        matched=next(item for item in unrestricted['matches'] if item['record_id']=='INTERNAL-1')
+        self.assertEqual(matched['image_path'],'media/unapproved.png')
+        filtered=service.search_request(lambda:query,allowed_links=server.CLIENT_CATALOG.image_search_links)
+        self.assertEqual(filtered['matches'],[{'record_id':'INTERNAL-1',
+            'image_path':self.image['path'],'score':.6}])
+        self.login()
+        with patch.object(server,'IMAGE_SEARCH',service):
+            status,_,raw=self.req('/api/client/image-search',query)
+        self.assertEqual(status,200,raw);result=json.loads(raw)
+        self.assertEqual(result['total'],1)
+        self.assertEqual(result['items'][0]['productCode'],self.catalog()['items'][0]['productCode'])
+        for forbidden in ['INTERNAL','unapproved','image_path','score','PRIVATE']:
+            self.assertNotIn(forbidden,raw.decode())
+
+    @unittest.skipUnless(np is not None,'Optional image dependencies required')
+    def test_customer_image_search_reads_approval_after_model_inference(self):
+        revoked=False
+        def revoke_once():
+            nonlocal revoked
+            if revoked:return
+            revoked=True
+            record=server.STORE.read_admin('records',id='INTERNAL-1')
+            record['images'][0]['clientVisible']=False
+            server.STORE.mutate('records','save',{'id':record['id'],'version':record['version'],
+                'record':{'images':record['images']}},'admin')
+        service,query=self.client_rank_service(revoke_once)
+        self.assertTrue(server.CLIENT_CATALOG.image_search_links())
+        self.login()
+        with patch.object(server,'IMAGE_SEARCH',service):
+            status,_,raw=self.req('/api/client/image-search',query)
+        self.assertEqual(status,200,raw);self.assertEqual(json.loads(raw)['total'],0)
+        self.assertTrue(revoked)
+
     def test_customer_image_search_revocation_during_inference_is_effective(self):
         self.login()
         match={'record_id':'INTERNAL-1','image_path':self.image['path'],'score':1}
-        def revoke_during_search(read_body):
+        def revoke_during_search(read_body, allowed_links=None):
             read_body()
             record=server.STORE.read_admin('records',id='INTERNAL-1')
             record['images'][0]['clientVisible']=False
@@ -274,6 +333,39 @@ class ClientAccess(unittest.TestCase):
             'record':{'images':record['images']}},'admin')
         server.STORE.mutate('records','archive',{'id':saved['id'],'version':saved['version']},'admin')
         self.assertEqual(server.CLIENT_CATALOG.image_search_results([match])['total'],0)
+
+    def test_customer_image_search_links_are_fresh_and_only_allow_active_approved_images(self):
+        catalog=server.CLIENT_CATALOG
+        expected={('INTERNAL-1',self.image['path'])}
+        self.assertEqual(catalog.image_search_links(),expected)
+        # Building a presentation snapshot must never delay search revocation.
+        catalog.catalog()
+        record=server.STORE.read_admin('records',id='INTERNAL-1')
+        record['images'][0]['clientVisible']=False
+        saved=server.STORE.mutate('records','save',{'id':record['id'],'version':record['version'],
+            'record':{'images':record['images']}},'admin')
+        self.assertEqual(catalog.image_search_links(),set())
+        saved['images'][0]['clientVisible']=True
+        saved=server.STORE.mutate('records','save',{'id':saved['id'],'version':saved['version'],
+            'record':{'images':saved['images']}},'admin')
+        self.assertEqual(catalog.image_search_links(),expected)
+        server.STORE.mutate('records','archive',{'id':saved['id'],'version':saved['version']},'admin')
+        self.assertEqual(catalog.image_search_links(),set())
+
+    def test_customer_image_search_links_keep_approved_crop_paths_and_reject_missing_files(self):
+        catalog=server.CLIENT_CATALOG
+        record=server.STORE.read_admin('records',id='INTERNAL-1')
+        # Search authorization is to the original approved image path. A
+        # presentation crop does not turn another private image into a match.
+        record['images'][0]['crop']={'x':.1,'y':.1,'width':.8,'height':.8}
+        record['images'].append(dict(record['images'][0]))
+        saved=server.STORE.mutate('records','save',{'id':record['id'],'version':record['version'],
+            'record':{'images':record['images']}},'admin')
+        self.assertEqual(catalog.image_search_links(),{('INTERNAL-1',self.image['path'])})
+        (server.PRIVATE/self.image['path']).unlink()
+        self.assertEqual(catalog.image_search_links(),set())
+        self.assertEqual(catalog.image_search_results([{'record_id':saved['id'],
+            'image_path':self.image['path'],'score':1}])['total'],0)
 
     def test_customer_image_search_keeps_rank_and_caps_only_public_results(self):
         matches=[]

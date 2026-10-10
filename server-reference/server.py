@@ -331,7 +331,7 @@ class Handler(BaseHTTPRequestHandler):
             settings=STORE.read_admin('settings')
             page=(PUBLIC/'login.html').read_text().replace('登录 · 源泽包材库',html.escape('登录 · '+settings['siteTitle'])).replace('YUANZE · 源泽',html.escape(settings['englishName']+' · '+settings['brandName'])).replace('包材选型工作空间',html.escape(settings['catalogTitle']))
             return self.respond(200,page.encode(),'text/html; charset=utf-8')
-        if path in ['/login.js','/api-client.js','/style.css','/i18n.js','/i18n.css','/product-detail-facts.js','/product-detail.css']:
+        if path in ['/login.js','/api-client.js','/image-query.js','/style.css','/i18n.js','/i18n.css','/product-detail-facts.js','/product-detail.css']:
             return self.file(PUBLIC/('login.html' if path in ['/login','/login.html'] else path[1:]), PUBLIC)
         if path in ['/brand/yuanze-brand-guide.png', '/brand/yuanze-mark.svg']:
             return self.file(PUBLIC/path.lstrip('/'), PUBLIC)
@@ -644,10 +644,12 @@ class Handler(BaseHTTPRequestHandler):
             if path=='/api/client/image-search':
                 if s['role'] not in ['client','admin']:
                     return self.respond(403,{'error':'此功能仅供客户展示页使用'})
-                result=IMAGE_SEARCH.search_request(lambda: self.body(MAX_REQUEST_BYTES))
+                result=IMAGE_SEARCH.search_request(lambda: self.body(MAX_REQUEST_BYTES),
+                                                  allowed_links=CLIENT_CATALOG.image_search_links)
                 return self.respond(200,CLIENT_CATALOG.image_search_results(result.get('matches',[])))
             if path=='/api/image-search':
-                return self.respond(200,IMAGE_SEARCH.search_request(lambda: self.body(MAX_REQUEST_BYTES)))
+                return self.respond(200,IMAGE_SEARCH.search_request(lambda: self.body(MAX_REQUEST_BYTES),
+                                                                  packages_only=True))
             if path.startswith('/api/admin/'):
                 if s['role']!='admin':return self.respond(403,{'error':'仅管理员可以维护资料'})
                 return self.admin_post(path,s)
