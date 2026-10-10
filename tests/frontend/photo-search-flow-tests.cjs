@@ -83,6 +83,29 @@ test('reviewed type-family preview images can be matched while arbitrary paths c
     assert.ok(p.d.querySelector('.photo .image-viewport'));assert.deepEqual(p.errors,[]);
   }finally{p.dom.window.close();}
 });
+test('matched source paths preserve distinct reviewed bottle and jar crops instead of the raw shared page',async()=>{
+  const source='media/shared-reviewed-page.jpg',rows=records.slice(0,6).map((row,i)=>({...row,images:[{path:i<4?source:row.images[0].path,role:'product',imageScope:'single_product'}]}));
+  const crop=x=>({x,y:0,width:.5,height:1,sourceWidth:800,sourceHeight:600});
+  const groups=[
+    {id:'reviewed-bottle',recordIds:['record-0','record-1'],name:'精华水瓶系列',primaryImage:{path:source,role:'product',imageScope:'same_style_variants',displayCrop:crop(0)},specs:[{label:'30 mL',recordIds:['record-0']},{label:'50 mL',recordIds:['record-1']}]},
+    {id:'reviewed-jar',recordIds:['record-2','record-3'],name:'膏霜罐系列',primaryImage:{path:source,role:'product',imageScope:'same_style_variants',displayCrop:crop(.5)},specs:[{label:'30 g',recordIds:['record-2']},{label:'50 g',recordIds:['record-3']}]},
+  ];
+  const p=await staff({paged:false,rows,groups,search:()=>({matches:[{record_id:'record-0',image_path:source},{record_id:'record-2',image_path:source},{record_id:'record-4',image_path:'media/p4.jpg'},{record_id:'record-5',image_path:'media/unapproved-crop.jpg'}]})});try{
+    await staffDraft(p);p.d.querySelector('#imageSearchSubmit').click();await until(()=>!p.d.querySelector('#imageSearchModal').open,'same-file reviewed crop matches');
+    assert.equal(p.w.photoTest.imageSearch.matches.size,3);
+    const cards=p.d.querySelectorAll('.card');assert.equal(cards.length,3);
+    assert.match(cards[0].querySelector('.photo img').dataset.imageView,/#view=0,0,0\.5,1,800,600$/);
+    assert.match(cards[1].querySelector('.photo img').dataset.imageView,/#view=0\.5,0,0\.5,1,800,600$/);
+    assert.equal(cards[0].querySelector('.image-viewport').style.getPropertyValue('--crop-left'),'0%');
+    assert.equal(cards[1].querySelector('.image-viewport').style.getPropertyValue('--crop-left'),'-100%');
+    assert.equal(cards[2].querySelector('.photo .image-viewport'),null);assert.equal(cards[2].querySelector('.photo img').getAttribute('src'),'/media/p4.jpg?thumb=1');
+    cards[1].querySelector('.photo').click();await until(()=>p.d.querySelector('[data-detail-record="record-2"]'),'reviewed jar detail');
+    assert.match(p.d.querySelector('#detailImageContent img').dataset.imageView,/#view=0\.5,0,0\.5,1,800,600$/);
+    // The original remains separately available for verification/navigation.
+    assert.ok([...p.d.querySelectorAll('.thumbnails [data-image-view]')].some(button=>button.dataset.imageView==='/media/shared-reviewed-page.jpg'));
+    assert.deepEqual(p.errors,[]);
+  }finally{p.dom.window.close();}
+});
 test('cancelled staff inference cannot overwrite later catalogue results',async()=>{
   let resolve;const p=await staff({search:()=>new Promise(r=>resolve=r)});try{
     await staffDraft(p);p.d.querySelector('#imageSearchSubmit').click();await until(()=>resolve,'inference started');

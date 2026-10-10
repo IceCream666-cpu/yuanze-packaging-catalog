@@ -1,8 +1,10 @@
 """Crop search associations require review evidence; fixtures never edit products."""
 import copy
 import json
+import os
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -31,8 +33,18 @@ class ReviewedSearchViews(unittest.TestCase):
 
     def write(self, groups, index=0):
         name, export, _ = search_views.MANIFESTS[index]
-        (self.public / name).write_text('// Reviewed data only.\nexport const ' + export + ' = ' +
-                                        json.dumps(groups) + ';\n', encoding='utf-8')
+        self.write_source('// Reviewed data only.\nexport const ' + export + ' = ' +
+                          json.dumps(groups) + ';\n', index=index)
+
+    def write_source(self, source, index=0):
+        name = search_views.MANIFESTS[index][0]
+        # Match the real release writer: create a new file before atomically
+        # replacing the live path, without clearing the parser cache.
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=self.public,
+                                         prefix=name + '.', delete=False) as stream:
+            stream.write(source)
+            temporary = Path(stream.name)
+        temporary.replace(self.public / name)
 
     def views(self):
         return search_views.reviewed_search_views(self.public, self.records)
@@ -135,13 +147,39 @@ class ReviewedSearchViews(unittest.TestCase):
         self.write([group(['R2'])])
         self.assertEqual(self.views()[0]['record_ids'], ['R2'])
 
+    def test_same_size_same_timestamp_atomic_replacement_uses_new_file_identity(self):
+        self.write([group(['R1'])])
+        target = self.public / search_views.MANIFESTS[0][0]
+        original_stat = Path.stat
+        before = original_stat(target)
+
+        def coarse_timestamps(path, *args, **kwargs):
+            actual = original_stat(path, *args, **kwargs)
+            if path != target:
+                return actual
+            values = {name: getattr(actual, name) for name in dir(actual) if name.startswith('st_')}
+            # Emulate filesystems whose timestamps cannot distinguish two
+            # rapid same-size writes; inode/device are the distinguishing data.
+            values.update(st_mtime_ns=before.st_mtime_ns, st_ctime_ns=before.st_ctime_ns)
+            return SimpleNamespace(**values)
+
+        with patch.object(Path, 'stat', coarse_timestamps):
+            self.assertEqual(self.views()[0]['record_ids'], ['R1'])
+            self.write([group(['R2'])])
+            os.utime(target, ns=(before.st_atime_ns, before.st_mtime_ns))
+            after = original_stat(target)
+            self.assertEqual(after.st_size, before.st_size)
+            self.assertEqual(after.st_mtime_ns, before.st_mtime_ns)
+            self.assertNotEqual((after.st_dev, after.st_ino), (before.st_dev, before.st_ino))
+            self.assertEqual(self.views()[0]['record_ids'], ['R2'])
+
     def test_missing_malformed_oversized_or_executable_manifest_is_not_evaluated(self):
         name, export, _ = search_views.MANIFESTS[0]
         path = self.public / name
         for text in ['export const ' + export + ' = (() => [])();',
                      'export const ' + export + ' = []; alert("not executed");',
                      'export const ' + export + ' = {broken};', 'export const wrong = [];']:
-            path.write_text(text)
+            self.write_source(text)
             self.assertEqual(self.views(), [])
         self.write([group()])
         with patch.object(search_views, 'MAX_MANIFEST_BYTES', 10):

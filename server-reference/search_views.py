@@ -48,7 +48,11 @@ def _read_manifest(public, filename, export_name):
         stat = path.stat()
         if stat.st_size > MAX_MANIFEST_BYTES:
             return ()
-        return _manifest(str(path), (stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns), export_name)
+        # Releases replace files atomically. Some server filesystems report
+        # coarse timestamps, so a same-size replacement must also key on the
+        # actual file identity rather than inheriting the previous JSON cache.
+        return _manifest(str(path), (stat.st_dev, stat.st_ino, stat.st_size,
+                                     stat.st_mtime_ns, stat.st_ctime_ns), export_name)
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError):
         # A malformed optional crop manifest cannot break ordinary catalogue
         # searches; no guessed or partial associations are published.

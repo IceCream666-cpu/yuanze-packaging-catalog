@@ -62,7 +62,13 @@ function extraDetails(r){return [['备注',r.remarksRaw],['需求',r.requirement
 
 function source(r){if(r.sourceNote)return r.sourceNote;if(!r.source)return '管理员维护';const file=text(r.source.workbook);return r.source.page?`${file} · 第 ${r.source.page} 页`:`${file?file+' · ':''}${r.source.sheet||'原始表格'} · 第 ${r.source.row??'?'} 行`;}
 function galleryImages(r){return groupGalleryImages(r,productGroupIndex,imagePath);}
-function matchedImage(r,path){return sourceMatchedImage(r,path)||galleryImages(r).find(image=>isProductImage(image)&&String(image.path||image.file||'')===path);}
+function matchedImage(r,path){
+  const matching=galleryImages(r).filter(image=>isProductImage(image)&&String(image.path||image.file||'')===path);
+  // Search returns the file path, while reviewed bottle/jar views can crop that
+  // same source file. Preserve the selected record's audited view before its
+  // uncropped original; ordinary record image matching remains unchanged.
+  return matching.find(validImageCrop)||sourceMatchedImage(r,path)||matching[0];
+}
 function galleryImage(r){return matchedImage(r,imageSearch.matches?.get(r.id)?.image_path)||productGroupIndex.get(r.id)?.primaryImage||primaryImage(r)||galleryImages(r)[0];}
 function imageDownload(r,path){
   const extension=path.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i)?.[1]?.toLowerCase()||'jpg';
