@@ -65,3 +65,5 @@ html{height:100%;scroll-behavior:auto}body{height:100dvh;display:flex;flex-direc
   #poster-banner .poster-note{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.banner-slide{transition:none}}
+
+.photo-transfer-status{font-size:12px;line-height:1.7;margin:10px 0;color:var(--teal);overflow-wrap:anywhere}.photo-download[aria-disabled=true]{opacity:.75}.photo-toolbar #photo-original{margin-left:0}.photo-toolbar #photo-language-toggle{margin-left:auto}

@@ -119,6 +119,15 @@ window.YuanzeCompanyContent = {
     contact: '联系',
     navLabel: '主导航',
     close: '关闭大图',
+    viewOriginal: '查看高清原图',
+    cancelOriginal: '取消高清加载',
+    retryOriginal: '重试高清原图',
+    backToPreview: '返回预览图',
+    originalLoading: '正在加载高清原图，预览图仍可查看…',
+    originalFailed: '高清原图暂时无法加载，保留预览图；请重试。',
+    originalCancelled: '已取消高清加载，继续显示预览图。',
+    originalLoaded: '高清原图 · {width} × {height} 像素',
+    downloadStarted: '已发起下载，请查看浏览器下载进度；移动端也可长按图片保存。',
     footer: '广州源泽药业有限公司'
   },
   en: {
@@ -204,6 +213,15 @@ window.YuanzeCompanyContent = {
     contact: 'Contact',
     navLabel: 'Main navigation',
     close: 'Close photo',
+    viewOriginal: 'View HD original',
+    cancelOriginal: 'Cancel HD loading',
+    retryOriginal: 'Retry HD original',
+    backToPreview: 'Back to preview',
+    originalLoading: 'Loading the HD original. The preview remains available…',
+    originalFailed: 'The HD original is unavailable. The preview is retained; please retry.',
+    originalCancelled: 'HD loading cancelled. Showing the preview.',
+    originalLoaded: 'HD original · {width} × {height} pixels',
+    downloadStarted: 'Download requested. Check your browser’s downloads; on mobile you can also press and hold the image to save.',
     footer: 'YUANZE COSMETICS'
   }
 };
@@ -582,6 +600,78 @@ window.YuanzeProductPosters = {
   let logoutFailed = false;
   let posterObserver = null;
   let viewerRequest = 0;
+  let viewerPreviewImage = null;
+  let originalState = 'preview', originalImage = null, originalTimer = null;
+  let originalWidth = 0, originalHeight = 0, downloadRequested = false, downloadTimer = null;
+
+  function renderTransferStatus() {
+    const originalButton = document.getElementById('photo-original');
+    const status = document.getElementById('photo-original-status');
+    const key = {loading:'cancelOriginal',failed:'retryOriginal',loaded:'backToPreview'}[originalState] || 'viewOriginal';
+    originalButton.textContent = content[language][key];
+    originalButton.setAttribute('aria-pressed', String(originalState === 'loaded'));
+    originalButton.setAttribute('aria-busy', String(originalState === 'loading'));
+    const statusKey = {loading:'originalLoading',failed:'originalFailed',cancelled:'originalCancelled',loaded:'originalLoaded'}[originalState];
+    status.hidden = !statusKey;
+    status.textContent = statusKey ? format(statusKey,{width:originalWidth,height:originalHeight}) : '';
+    const download = document.getElementById('photo-download');
+    download.setAttribute('aria-disabled', String(downloadTimer !== null));
+    download.textContent = language === 'en' ? 'Download image' : '下载图片';
+    const downloadStatus = document.getElementById('photo-download-status');
+    downloadStatus.hidden = !downloadRequested;
+    downloadStatus.textContent = downloadRequested ? content[language].downloadStarted : '';
+  }
+
+  function cancelOriginal() {
+    if (originalTimer !== null) window.clearTimeout(originalTimer);
+    originalTimer = null;
+    // Removing the detached image's source cancels transfer without buffering a
+    // second copy in JS. The request generation also ignores queued events.
+    originalImage?.removeAttribute('src'); originalImage = null;
+  }
+
+  function cancelPreviewImage() {
+    viewerPreviewImage?.removeAttribute('src');viewerPreviewImage = null;
+  }
+
+  function resetTransfers() {
+    cancelOriginal(); originalState = 'preview'; originalWidth = originalHeight = 0;
+    if (downloadTimer !== null) window.clearTimeout(downloadTimer);
+    downloadTimer = null; downloadRequested = false;
+    renderTransferStatus();
+  }
+
+  function requestOriginal() {
+    const source = photo.dataset.original;
+    if (!source || !dialog.open) return;
+    if (originalState === 'loading' || originalState === 'loaded') {
+      ++viewerRequest; cancelOriginal();
+      originalState = originalState === 'loading' ? 'cancelled' : 'preview';
+      photo.src = previewURL(source,1280);photo.hidden = false;photoError.hidden = true;
+      renderTransferStatus();return;
+    }
+    const request = ++viewerRequest;
+    cancelPreviewImage();
+    cancelOriginal(); originalState = 'loading'; renderTransferStatus();
+    const detailed = new window.Image(); originalImage = detailed;
+    const current = () => request === viewerRequest && photo.dataset.original === source && dialog.open;
+    const fail = () => {
+      if (!current()) return;
+      cancelOriginal();originalState = 'failed';renderTransferStatus();
+    };
+    detailed.onload = () => {
+      if (!current()) return;
+      if (!(detailed.naturalWidth > 0 && detailed.naturalHeight > 0)) {fail();return;}
+      originalWidth = detailed.naturalWidth; originalHeight = detailed.naturalHeight;
+      if (originalTimer !== null) window.clearTimeout(originalTimer);
+      originalTimer = null; originalImage = null;originalState = 'loaded';
+      photo.src = source;photo.hidden = false;photoError.hidden = true;renderTransferStatus();
+    };
+    detailed.onerror = fail;
+    originalTimer = window.setTimeout(fail,60000);
+    // Only the selected allowlisted company/poster source is ever requested.
+    detailed.src = source;
+  }
 
   function previewURL(source, edge = 512) {
     return source.replace(/assets\/(.+)\.(png|webp)$/, `assets/previews/$1-${edge}.webp`);
@@ -837,15 +927,22 @@ window.YuanzeProductPosters = {
     // Full original artwork is requested only through the download control.
     if (photo.dataset.original !== asset.src) {
       const request = ++viewerRequest;
+      cancelPreviewImage();
+      resetTransfers();
       photo.dataset.original = asset.src;
       photoError.hidden = true; photo.hidden = false; photo.src = previewURL(asset.src);
       const detailed = new window.Image();
+      viewerPreviewImage = detailed;
       detailed.onload = () => {
-        if (request === viewerRequest && photo.dataset.original === asset.src) photo.src = detailed.src;
+        if (request === viewerRequest && photo.dataset.original === asset.src) {
+          photo.src = detailed.src;viewerPreviewImage = null;
+        }
       };
+      detailed.onerror = () => {if(request === viewerRequest)viewerPreviewImage = null;};
       // Keep the usable small image if the larger preview fails on a weak link.
       detailed.src = previewURL(asset.src, 1280);
     }
+    renderTransferStatus();
     photo.alt = poster ? poster.title[language] : content[language][`${selectedPhoto}Alt`] || content[language][`${selectedPhoto}Caption`];
     photoCaption.textContent = poster ? poster.title[language] : content[language][`${selectedPhoto}Caption`];
     dialog.setAttribute('aria-label', photoCaption.textContent);
@@ -899,6 +996,7 @@ window.YuanzeProductPosters = {
     renderPosters();
     renderBanner();
     updatePhoto();
+    renderTransferStatus();
     renderInquiry();
     renderSession();
     notifyLanguage();
@@ -977,9 +1075,26 @@ window.YuanzeProductPosters = {
   });
   previousPoster.addEventListener('click', () => movePoster(-1));
   nextPoster.addEventListener('click', () => movePoster(1));
-  photo.addEventListener('error', () => { photo.hidden = true; photoError.hidden = false; });
+  document.getElementById('photo-original').addEventListener('click', requestOriginal);
+  document.getElementById('photo-download').addEventListener('click', event => {
+    if (downloadTimer !== null) {event.preventDefault();return;}
+    // Let the browser stream the attachment immediately. Do not wait for a
+    // fetch/blob or report the click as a completed file save.
+    downloadRequested = true;
+    downloadTimer = window.setTimeout(() => {downloadTimer = null;renderTransferStatus();},2000);
+    renderTransferStatus();
+  });
+  photo.addEventListener('error', () => {
+    if (originalState === 'loaded' && photo.dataset.original) {
+      originalState = 'failed';photo.src = previewURL(photo.dataset.original,1280);
+      photo.hidden = false;photoError.hidden = true;renderTransferStatus();return;
+    }
+    photo.hidden = true; photoError.hidden = false;
+  });
   dialog.addEventListener('close', () => {
     ++viewerRequest; photo.removeAttribute('src'); delete photo.dataset.original;
+    cancelPreviewImage();
+    resetTransfers();
     selectedPhoto = null;
     selectedPoster = null;
     if (photoTrigger && !photoTrigger.closest('[hidden]')) photoTrigger.focus();

@@ -500,7 +500,7 @@ class ClientCatalog:
                   for key, field in FACETS.values()}
         return {'items': entries, 'page': 1, 'pages': 1, 'total': len(entries), 'facets': facets}
 
-    def media(self, token, thumbnail=False):
+    def media(self, token, thumbnail=False, original=False):
         # Optional image dependencies must not prevent employee login/startup.
         try:
             from PIL import Image, ImageOps, UnidentifiedImageError
@@ -518,9 +518,11 @@ class ClientCatalog:
         if source is None:
             return None
         stat = source.stat()
-        fingerprint = hashlib.sha256(f'{stat.st_size}:{stat.st_mtime_ns}'.encode()).hexdigest()[:20]
-        edge, quality = (512, 78) if thumbnail else (1600, 88)
-        variant = '-thumb512-v1' if thumbnail else ''
+        fingerprint = hashlib.sha256(f'{stat.st_dev}:{stat.st_ino}:{stat.st_size}:{stat.st_mtime_ns}:{stat.st_ctime_ns}'.encode()).hexdigest()[:20]
+        # Full resolution still uses an approved, opaque, metadata-clean
+        # derivative. It must never expose private original file bytes.
+        edge, quality = (None, 95) if original else (512, 78) if thumbnail else (1600, 88)
+        variant = '-original-jpeg-v1' if original else '-thumb512-v1' if thumbnail else ''
         target = self.cache / (token[:-4] + '-' + fingerprint + variant + '.jpg')
         if target.is_file():
             return target
@@ -534,12 +536,13 @@ class ClientCatalog:
                 raise ClientMediaBusy()
             if target.is_file():
                 return target
-            with Image.open(source) as original:
-                if original.width * original.height > 24_000_000 or original.width < 1 or original.height < 1:
+            with Image.open(source) as source_image:
+                if source_image.width * source_image.height > 24_000_000 or source_image.width < 1 or source_image.height < 1:
                     return None
-                original.draft('RGB', (edge, edge))
-                original.thumbnail((edge, edge))
-                rendered = ImageOps.exif_transpose(original).convert('RGB')
+                if edge is not None:
+                    source_image.draft('RGB', (edge, edge))
+                    source_image.thumbnail((edge, edge))
+                rendered = ImageOps.exif_transpose(source_image).convert('RGB')
                 # A fresh image has none of the original EXIF, comments, profiles
                 # or PNG text chunks, regardless of the original file format.
                 sanitized = Image.new('RGB', rendered.size, 'white')

@@ -432,7 +432,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.respond(400,{'error':'检索参数格式不正确'})
             return self.respond_catalog(lambda:CLIENT_CATALOG.catalog(page,size,q=search,filters=filters))
         if path.startswith('/client-media/'):
-            try:asset=CLIENT_CATALOG.media(path[len('/client-media/'):], thumbnail=self.wants_thumbnail())
+            original=parse_qs(urlsplit(self.path).query).get('size') == ['original']
+            try:asset=CLIENT_CATALOG.media(path[len('/client-media/'):], thumbnail=self.wants_thumbnail(), original=original)
             except ClientMediaBusy:return self.respond(429,{'error':'图片正在准备，请稍后重试'},extra={'Retry-After':'2'})
             if asset is None:return self.respond(404,{'error':'图片不存在'})
             return self.file(asset,CLIENT_CATALOG.cache,thumbnail=False)
@@ -581,9 +582,35 @@ class Handler(BaseHTTPRequestHandler):
                 tags=self.headers.get('If-None-Match','').split(',')
                 if 'Content-Disposition' not in headers and any(tag.strip().removeprefix('W/') in {etag,'*'} for tag in tags):
                     return self.respond(304,b'',ctype,headers)
-            self.response_headers(200,stat.st_size,ctype,headers)
+            start, length, status = 0, stat.st_size, 200
+            # Single byte ranges let browsers resume interrupted media without
+            # fetching the full file again. All authorization and current
+            # customer approval checks above run before any range or cache hit.
+            if ctype.startswith('image/') or ctype=='application/pdf':
+                headers['Accept-Ranges']='bytes'
+                request_range=self.headers.get('Range','')
+                if_range=self.headers.get('If-Range')
+                match=re.fullmatch(r'bytes=([0-9]{0,20})-([0-9]{0,20})',request_range.strip())
+                if match and all(match.groups()) and int(match[2])<int(match[1]):
+                    match=None  # Invalid reversed ranges are ignored, not 416.
+                if self.command=='GET' and match and any(match.groups()) and (not if_range or if_range==headers.get('ETag')):
+                    first,last=match.groups()
+                    if first:
+                        start=int(first);end=min(int(last),stat.st_size-1) if last else stat.st_size-1
+                    else:
+                        suffix=int(last);start=max(0,stat.st_size-suffix);end=stat.st_size-1
+                    if start>=stat.st_size or end<start:
+                        return self.respond(416,b'',ctype,{**headers,'Content-Range':f'bytes */{stat.st_size}'})
+                    status=206;length=end-start+1
+                    headers['Content-Range']=f'bytes {start}-{end}/{stat.st_size}'
+            self.response_headers(status,length,ctype,headers)
             if self.command!='HEAD':
-                while chunk:=source.read(65536):self.wfile.write(chunk)
+                source.seek(start)
+                remaining=length
+                while remaining:
+                    chunk=source.read(min(65536,remaining))
+                    if not chunk:break
+                    self.wfile.write(chunk);remaining-=len(chunk)
     def do_POST(self):
         if not self.valid_host(): return self.respond(403,{'error':'访问地址无效'})
         path=urlsplit(self.path).path

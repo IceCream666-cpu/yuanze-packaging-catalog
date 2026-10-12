@@ -23,6 +23,12 @@ const copy = {
   '正在加载…':'Loading…','清除筛选':'Clear filters','重新加载':'Retry','产品列表分页':'Catalogue pages',
   '上一页':'Previous','下一页':'Next','跳至':'Jump to','跳转页码':'Page number','前往':'Go',
   '下载图片':'Download image',
+  '查看高清原图':'View HD original','取消高清加载':'Cancel HD loading','重试高清原图':'Retry HD original','返回预览图':'Back to preview',
+  '正在加载高清原图，预览图仍可查看…':'Loading the HD original. The preview remains available…',
+  '高清原图暂时无法加载，保留预览图；请重试。':'The HD original is unavailable. The preview is retained; please retry.',
+  '已取消高清加载，继续显示预览图。':'HD loading cancelled. Showing the preview.',
+  '高清原图 · {width} × {height} 像素':'HD original · {width} × {height} pixels',
+  '已发起下载，请查看浏览器下载进度；移动端也可长按图片保存。':'Download requested. Check your browser’s downloads; on mobile you can also press and hold the image to save.',
   '包材详情':'Packaging details','关闭详情':'Close details','关闭':'Close','包材图片':'Packaging image',
   '图片暂时无法显示，请稍后再试。':'This image is unavailable. Please try again later.',
   '图片暂时无法显示':'Image currently unavailable','上一张图片':'Previous image','下一张图片':'Next image','上一张':'Previous','下一张':'Next','第 {number} 张图片，共 {count} 张':'Image {number} of {count}',
@@ -84,6 +90,8 @@ const selected = Object.fromEntries(Object.keys(facetConfig).map(key => [key,[]]
 let session = null, items = [], facets = {}, heroItems = [], query = '', page = 1, pages = 1, total = 0;
 let busy = false, loaded = false, noticeKey = '', requestSequence = 0, controller = null, retryPage = 1;
 let previewItem = null, previewIndex = 0, previousFocus = null;
+let originalState = 'preview', originalImage = null, originalTimer = null, originalSequence = 0;
+let originalWidth = 0, originalHeight = 0, downloadRequested = false, downloadTimer = null;
 let mobile = matchMedia('(max-width: 760px)').matches, sidebarOpen = !mobile;
 // Per-tab memory deliberately avoids leaking a shared customer's selections
 // through browser storage to the next visitor using the same account.
@@ -143,7 +151,7 @@ function renderText() {
   document.querySelectorAll('[data-client-text]').forEach(el => {el.textContent = t(el.dataset.clientText);});
   document.querySelectorAll('[data-client-label]').forEach(el => {el.setAttribute('aria-label',t(el.dataset.clientLabel));});
   document.querySelectorAll('[data-client-placeholder]').forEach(el => {el.placeholder = t(el.dataset.clientPlaceholder);});
-  showNotice(noticeKey);updateSidebar();
+  showNotice(noticeKey);updateSidebar();renderImageTransferStatus();
 }
 function renderStatus() {
   $('#resultCount').textContent = loaded ? t('找到 {count} 款包材',{count:total}) : '';
@@ -189,6 +197,59 @@ function filterOptions(input) {
   panel.querySelector('.multi-empty').hidden = count > 0;
 }
 const thumbnailURL=url=>url+'?thumb=1';
+const originalURL=url=>url+'?size=original';
+function renderImageTransferStatus() {
+  const key = {loading:'取消高清加载',failed:'重试高清原图',loaded:'返回预览图'}[originalState] || '查看高清原图';
+  $('#imageOriginal').textContent = t(key);
+  $('#imageOriginal').setAttribute('aria-pressed',String(originalState === 'loaded'));
+  $('#imageOriginal').setAttribute('aria-busy',String(originalState === 'loading'));
+  const statusKey = {loading:'正在加载高清原图，预览图仍可查看…',failed:'高清原图暂时无法加载，保留预览图；请重试。',cancelled:'已取消高清加载，继续显示预览图。',loaded:'高清原图 · {width} × {height} 像素'}[originalState];
+  $('#imageOriginalStatus').hidden = !statusKey;
+  $('#imageOriginalStatus').textContent = statusKey ? t(statusKey,{width:originalWidth,height:originalHeight}) : '';
+  $('#imageDownload').setAttribute('aria-disabled',String(downloadTimer !== null));
+  $('#imageDownloadStatus').hidden = !downloadRequested;
+  $('#imageDownloadStatus').textContent = downloadRequested ? t('已发起下载，请查看浏览器下载进度；移动端也可长按图片保存。') : '';
+}
+function cancelOriginalImage() {
+  ++originalSequence;
+  if (originalTimer !== null) clearTimeout(originalTimer);
+  originalTimer = null;originalImage?.removeAttribute('src');originalImage = null;
+}
+function resetImageTransfers() {
+  cancelOriginalImage();originalState = 'preview';originalWidth = originalHeight = 0;
+  if (downloadTimer !== null) clearTimeout(downloadTimer);
+  downloadTimer = null;downloadRequested = false;renderImageTransferStatus();
+}
+function requestOriginalImage() {
+  const selected = previewItem?.images[previewIndex]?.url;
+  if (!selected || !$('#preview').open) return;
+  if (originalState === 'loading' || originalState === 'loaded') {
+    cancelOriginalImage();originalState = originalState === 'loading' ? 'cancelled' : 'preview';
+    const image = $('#previewImage');image.src = selected;image.hidden = false;$('#previewError').hidden = true;
+    renderImageTransferStatus();return;
+  }
+  cancelOriginalImage();originalState = 'loading';renderImageTransferStatus();
+  const sequence = originalSequence, image = new window.Image();originalImage = image;
+  const current = () => sequence === originalSequence && $('#preview').open && previewItem?.images[previewIndex]?.url === selected;
+  const fail = () => {if(current()){cancelOriginalImage();originalState = 'failed';renderImageTransferStatus();}};
+  image.onload = () => {
+    if (!current()) return;
+    if (!(image.naturalWidth > 0 && image.naturalHeight > 0)) {fail();return;}
+    originalWidth = image.naturalWidth;originalHeight = image.naturalHeight;
+    if (originalTimer !== null) clearTimeout(originalTimer);
+    originalTimer = null;originalImage = null;originalState = 'loaded';
+    // Replace the preview node so its older retry callbacks cannot overwrite HD.
+    const old = $('#previewImage'), shown = old.cloneNode();shown.src = originalURL(selected);shown.hidden = false;old.replaceWith(shown);
+    shown.addEventListener('error',() => {
+      if (!current() || $('#previewImage') !== shown) return;
+      if (originalState === 'loaded') {
+        originalState = 'failed';shown.src = selected;renderImageTransferStatus();
+      } else {shown.hidden = true;$('#previewError').hidden = false;}
+    });
+    $('#previewError').hidden = true;renderImageTransferStatus();
+  };
+  image.onerror = fail;originalTimer = setTimeout(fail,60000);image.src = originalURL(selected);
+}
 function loadImage(image, url, stillRelevant = () => image.isConnected) {
   let attempts = 0;
   image.addEventListener('error',() => {
@@ -265,13 +326,15 @@ function renderDetails(changeImage = false) {
   if(thumbnails.dataset.galleryKey!==galleryKey){thumbnails.innerHTML=previewItem.images.map((image,index)=>`<button type="button" data-image-index="${index}"><img src="${esc(thumbnailURL(image.url))}" loading="lazy" alt=""></button>`).join('');thumbnails.dataset.galleryKey=galleryKey;}
   thumbnails.querySelectorAll('[data-image-index]').forEach(button=>{const index=Number(button.dataset.imageIndex);button.setAttribute('aria-current',String(index===previewIndex));button.setAttribute('aria-label',t('第 {number} 张图片',{number:index+1}));});
   if (changeImage) {
+    resetImageTransfers();
     const old = $('#previewImage'), image = old.cloneNode();image.removeAttribute('src');image.hidden = false;old.replaceWith(image);$('#previewError').hidden = true;
     loadImage(image,previewItem.images[previewIndex].url,() => previewItem && $('#previewImage') === image && image.isConnected);
   }
   const download=$('#imageDownload');
   const filename=`${previewItem.productCode||'yuanze-image'}-${previewIndex+1}.jpg`;
-  download.href=`${previewItem.images[previewIndex].url}?download=${encodeURIComponent(filename)}`;
+  download.href=`${originalURL(previewItem.images[previewIndex].url)}&download=${encodeURIComponent(filename)}`;
   download.download=filename;download.hidden=false;
+  renderImageTransferStatus();
   $('#previewImage').alt = `${itemName(previewItem)} · ${t('第 {number} 张图片',{number:previewIndex+1})}`;
   $('#detailActions').innerHTML = itemActions(previewItem,'preview');
 }
@@ -315,10 +378,16 @@ $('#menuButton').addEventListener('click',() => {sidebarOpen = !sidebarOpen;upda
 $('#sidebarClose').addEventListener('click',() => {sidebarOpen = false;updateSidebar();$('#menuButton').focus();});$('#sidebarBackdrop').addEventListener('click',closeMobileSidebar);
 matchMedia('(max-width: 760px)').addEventListener?.('change',event => {mobile = event.matches;sidebarOpen = !mobile;updateSidebar();renderFilterToggle();});
 $('#closePreview').addEventListener('click',() => $('#preview').close());
-$('#preview').addEventListener('close',() => {const code = previewItem?.productCode;$('#previewImage').removeAttribute('src');previewItem = null;if (previousFocus?.isConnected) previousFocus.focus();else {[...document.querySelectorAll('.photo-button')].find(button => {const item=items[Number(button.dataset.detail)];return item?.productCode===code||item?.variants?.some(variant=>variant.productCode===code);})?.focus();}});
+$('#preview').addEventListener('close',() => {const code = previewItem?.productCode;resetImageTransfers();$('#previewImage').removeAttribute('src');previewItem = null;if (previousFocus?.isConnected) previousFocus.focus();else {[...document.querySelectorAll('.photo-button')].find(button => {const item=items[Number(button.dataset.detail)];return item?.productCode===code||item?.variants?.some(variant=>variant.productCode===code);})?.focus();}});
 $('#preview').addEventListener('click',event => {if (event.target === $('#preview')) $('#preview').close();});
 $('#preview').addEventListener('keydown',event => {if (previewItem?.images.length>1&&!event.target.closest('input,textarea,select,[contenteditable=true],[role=textbox]')&&(event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {event.preventDefault();moveImage(event.key === 'ArrowLeft' ? -1 : 1);}});
 $('#imagePrevious').addEventListener('click',() => moveImage(-1));$('#imageNext').addEventListener('click',() => moveImage(1));
+$('#imageOriginal').addEventListener('click',requestOriginalImage);
+$('#imageDownload').addEventListener('click',event => {
+  if (downloadTimer !== null) {event.preventDefault();return;}
+  downloadRequested = true;downloadTimer = setTimeout(() => {downloadTimer = null;renderImageTransferStatus();},2000);
+  renderImageTransferStatus();
+});
 $('#previous').addEventListener('click',() => {if (!busy && page > 1) loadCatalog(page-1,true);});$('#next').addEventListener('click',() => {if (!busy && page < pages) loadCatalog(page+1,true);});
 $('#jumpForm').addEventListener('submit',event => {event.preventDefault();const target = Number($('#pageNumber').value);if (!busy && Number.isInteger(target) && target >= 1 && target <= pages && target !== page) loadCatalog(target,true);});
 $('#retry').addEventListener('click',() => session ? loadCatalog(retryPage) : init());

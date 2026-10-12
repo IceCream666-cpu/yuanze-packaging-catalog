@@ -750,3 +750,65 @@ test('viewer shows a small preview first, upgrades it safely, and downloads the 
   assert.equal(image.hasAttribute('src'),false,'a closed viewer must not restart its image request');
   assert.deepEqual(errors,[]);dom.window.close();
 });
+
+test('HD is explicit, preserves the preview on failure, displays actual dimensions and retains language', () => {
+  const pending=[];
+  const {dom,window,document,errors}=setup('zh',false,{hash:'#/products',beforeStart(window){
+    window.Image=function(){const image=window.document.createElement('img');pending.push(image);return image;};
+  }});
+  const poster=window.YuanzeProductPosters.items[0];
+  document.querySelector(`[data-poster-image="${poster.id}"]`).click();
+  const shown=document.getElementById('expanded-photo'), button=document.getElementById('photo-original');
+  assert.equal(pending.length,1);assert.notEqual(shown.getAttribute('src'),poster.src);
+  button.click();assert.equal(pending[1].getAttribute('src'),poster.src);
+  assert.equal(pending[0].hasAttribute('src'),false,'HD stops the superseded preview transfer');
+  assert.equal(button.textContent,'取消高清加载');assert.match(document.getElementById('photo-original-status').textContent,/正在加载/);
+  pending[0].onload();assert.equal(shown.getAttribute('src'),lightURL(poster.src),'older preview cannot replace an HD request');
+  pending[1].onerror();assert.notEqual(shown.getAttribute('src'),poster.src);assert.equal(shown.hidden,false);
+  assert.equal(button.textContent,'重试高清原图');button.click();const original=pending[2];
+  Object.defineProperties(original,{naturalWidth:{value:2400},naturalHeight:{value:1800}});
+  original.onload();assert.equal(shown.getAttribute('src'),poster.src);
+  assert.match(document.getElementById('photo-original-status').textContent,/2400 × 1800/);
+  document.getElementById('photo-language-toggle').click();assert.equal(pending.length,3);
+  assert.equal(shown.getAttribute('src'),poster.src);assert.equal(button.textContent,'Back to preview');
+  assert.match(document.getElementById('photo-original-status').textContent,/HD original.*2400 × 1800 pixels/);
+  button.click();assert.equal(shown.getAttribute('src'),lightURL(poster.src,1280));
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('HD cancel, image change, close and language-dependent certificate change reject late events', () => {
+  const pending=[];
+  const {dom,window,document,errors}=setup('zh',false,{hash:'#/products',beforeStart(window){
+    window.Image=function(){const image=window.document.createElement('img');pending.push(image);return image;};
+  }});
+  const button=document.getElementById('photo-original'), shown=document.getElementById('expanded-photo');
+  document.querySelector('[data-poster-image]').click();button.click();const cancelled=pending.at(-1);
+  button.click();assert.equal(cancelled.hasAttribute('src'),false);cancelled.onload();
+  assert.equal(shown.getAttribute('src'),lightURL(window.YuanzeProductPosters.items[0].src,1280));
+  button.click();const stale=pending.at(-1);document.getElementById('next-poster').click();
+  const nextSource=shown.getAttribute('src');stale.onload();assert.equal(shown.getAttribute('src'),nextSource);
+  button.click();const closed=pending.at(-1);document.getElementById('photo-dialog').close();closed.onload();
+  assert.equal(shown.hasAttribute('src'),false);
+  document.querySelector('[data-certificate=iso22716]').click();button.click();const zh=pending.at(-1);
+  document.getElementById('photo-language-toggle').click();assert.equal(zh.hasAttribute('src'),false);zh.onload();
+  assert.match(shown.getAttribute('src'),/iso22716-en-512.webp$/);assert.equal(button.textContent,'View HD original');
+  assert.deepEqual(errors,[]);dom.window.close();
+});
+
+test('HD timeout keeps a usable preview and attachment click acknowledges request without fetching a blob', () => {
+  const pending=[],calls=[];
+  const {dom,window,document,errors,banner}=setup('zh',false,{hash:'#/products',banner:{reducedMotion:true},fetch:async (...args)=>{calls.push(args);throw Error('Unexpected download fetch');},beforeStart(window){
+    window.Image=function(){const image=window.document.createElement('img');pending.push(image);return image;};
+  }});
+  document.querySelector('[data-poster-image]').click();document.getElementById('photo-original').click();
+  banner.advance(60000);assert.equal(document.getElementById('photo-original').textContent,'重试高清原图');
+  assert.equal(document.getElementById('expanded-photo').hidden,false);
+  const link=document.getElementById('photo-download'), first=new window.MouseEvent('click',{bubbles:true,cancelable:true});
+  link.dispatchEvent(first);assert.equal(first.defaultPrevented,false);
+  assert.match(document.getElementById('photo-download-status').textContent,/已发起下载/);
+  assert.doesNotMatch(document.getElementById('photo-download-status').textContent,/下载完成|下载成功/);
+  const duplicate=new window.MouseEvent('click',{bubbles:true,cancelable:true});link.dispatchEvent(duplicate);assert.equal(duplicate.defaultPrevented,true);
+  document.getElementById('photo-language-toggle').click();assert.match(document.getElementById('photo-download-status').textContent,/Download requested/);
+  banner.advance(2000);const retry=new window.MouseEvent('click',{bubbles:true,cancelable:true});link.dispatchEvent(retry);assert.equal(retry.defaultPrevented,false);
+  assert.equal(calls.length,0);assert.deepEqual(errors,[]);dom.window.close();
+});

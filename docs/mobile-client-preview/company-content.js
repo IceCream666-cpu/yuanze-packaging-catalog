@@ -119,6 +119,15 @@ window.YuanzeCompanyContent = {
     contact: '联系',
     navLabel: '主导航',
     close: '关闭大图',
+    viewOriginal: '查看高清原图',
+    cancelOriginal: '取消高清加载',
+    retryOriginal: '重试高清原图',
+    backToPreview: '返回预览图',
+    originalLoading: '正在加载高清原图，预览图仍可查看…',
+    originalFailed: '高清原图暂时无法加载，保留预览图；请重试。',
+    originalCancelled: '已取消高清加载，继续显示预览图。',
+    originalLoaded: '高清原图 · {width} × {height} 像素',
+    downloadStarted: '已发起下载，请查看浏览器下载进度；移动端也可长按图片保存。',
     footer: '广州源泽药业有限公司'
   },
   en: {
@@ -204,6 +213,15 @@ window.YuanzeCompanyContent = {
     contact: 'Contact',
     navLabel: 'Main navigation',
     close: 'Close photo',
+    viewOriginal: 'View HD original',
+    cancelOriginal: 'Cancel HD loading',
+    retryOriginal: 'Retry HD original',
+    backToPreview: 'Back to preview',
+    originalLoading: 'Loading the HD original. The preview remains available…',
+    originalFailed: 'The HD original is unavailable. The preview is retained; please retry.',
+    originalCancelled: 'HD loading cancelled. Showing the preview.',
+    originalLoaded: 'HD original · {width} × {height} pixels',
+    downloadStarted: 'Download requested. Check your browser’s downloads; on mobile you can also press and hold the image to save.',
     footer: 'YUANZE COSMETICS'
   }
 };

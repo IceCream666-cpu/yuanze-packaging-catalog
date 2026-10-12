@@ -537,20 +537,20 @@
       "sha256": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62"
     },
     "company-content.js": {
-      "bytes": 13340,
-      "sha256": "4d677e9fb6d44ac22aed4855324d731876a2ad222fe2de4975fb6763950abd04"
+      "bytes": 14519,
+      "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 35356,
-      "sha256": "5966bd45a8a45928354ac310819c151f45369afd633e9eea9fab6212412a337b"
+      "bytes": 35923,
+      "sha256": "a99cca92607869c57b1569b4f284b0ef74aa6252111867b41fe0a45cdb3661df"
     },
     "preview.css": {
-      "bytes": 22736,
-      "sha256": "365c2eb3dae7e923b141bc362074730e1eff70e9fd07d072003d590712ae0ec2"
+      "bytes": 22995,
+      "sha256": "a2bddb4ebab89f348f177d17d7718680d7af333936596e62a582e9be181267df"
     },
     "preview.js": {
-      "bytes": 47088,
-      "sha256": "5335a415dd7bdc9ec44f265b740de9c13fa9b8fe9fbe6afda28f224147fc4a00"
+      "bytes": 53110,
+      "sha256": "e220ec0f7ac7d6b2edabf34a64f08c03b692f697c6db23249543c1bbfab16b23"
     },
     "product-posters.js": {
       "bytes": 8964,
