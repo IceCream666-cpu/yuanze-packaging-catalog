@@ -320,6 +320,174 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-041-thumb.webp",
       "width": 1086,
       "height": 1448
+    },
+    {
+      "id": "poster-042",
+      "category": "body",
+      "title": {
+        "zh": "liaose 木质香氛沐浴露",
+        "en": "liaose Woodland body wash"
+      },
+      "src": "assets/posters/poster-042.webp",
+      "thumbnail": "assets/posters/poster-042-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-043",
+      "category": "face",
+      "title": {
+        "zh": "liaose 微晶洁面啫喱",
+        "en": "liaose Cloud cleanser"
+      },
+      "src": "assets/posters/poster-043.webp",
+      "thumbnail": "assets/posters/poster-043-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-044",
+      "category": "face",
+      "title": {
+        "zh": "liaose 温和洁面泡沫",
+        "en": "liaose Gentle cleansing foam"
+      },
+      "src": "assets/posters/poster-044.webp",
+      "thumbnail": "assets/posters/poster-044-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-045",
+      "category": "body",
+      "title": {
+        "zh": "liaose 纯净与茉莉沐浴露",
+        "en": "liaose Pure water & jasmine body wash"
+      },
+      "src": "assets/posters/poster-045.webp",
+      "thumbnail": "assets/posters/poster-045-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-046",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 多肽洗发水",
+        "en": "liaose Peptide shampoo"
+      },
+      "src": "assets/posters/poster-046.webp",
+      "thumbnail": "assets/posters/poster-046-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-047",
+      "category": "fragrance",
+      "title": {
+        "zh": "liaose 海岸香水",
+        "en": "liaose Coastal perfume"
+      },
+      "src": "assets/posters/poster-047.webp",
+      "thumbnail": "assets/posters/poster-047-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-048",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 日常洗发水",
+        "en": "liaose Daily shampoo"
+      },
+      "src": "assets/posters/poster-048.webp",
+      "thumbnail": "assets/posters/poster-048-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-049",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 滋润洗发水",
+        "en": "liaose Moisture shampoo"
+      },
+      "src": "assets/posters/poster-049.webp",
+      "thumbnail": "assets/posters/poster-049-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-050",
+      "category": "body",
+      "title": {
+        "zh": "liaose 果酸沐浴啫喱",
+        "en": "liaose AHA shower gel"
+      },
+      "src": "assets/posters/poster-050.webp",
+      "thumbnail": "assets/posters/poster-050-thumb.webp",
+      "width": 1447,
+      "height": 1087
+    },
+    {
+      "id": "poster-051",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 蓬松洗发水",
+        "en": "liaose Pure volume shampoo"
+      },
+      "src": "assets/posters/poster-051.webp",
+      "thumbnail": "assets/posters/poster-051-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-052",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 洗护发护理套装",
+        "en": "liaose Hair care ritual"
+      },
+      "src": "assets/posters/poster-052.webp",
+      "thumbnail": "assets/posters/poster-052-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-053",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 干性与油性头皮洗发水",
+        "en": "liaose Scalp shampoo"
+      },
+      "src": "assets/posters/poster-053.webp",
+      "thumbnail": "assets/posters/poster-053-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-054",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 生姜洗发水",
+        "en": "liaose Ginger shampoo"
+      },
+      "src": "assets/posters/poster-054.webp",
+      "thumbnail": "assets/posters/poster-054-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-055",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 白泥洗发水",
+        "en": "liaose White clay shampoo"
+      },
+      "src": "assets/posters/poster-055.webp",
+      "thumbnail": "assets/posters/poster-055-thumb.webp",
+      "width": 1448,
+      "height": 1086
     }
   ]
 };

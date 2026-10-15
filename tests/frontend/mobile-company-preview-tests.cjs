@@ -123,7 +123,7 @@ function activeBanner(document) {
 test('legacy markup without the banner keeps poster viewing, downloads, languages and navigation usable', async () => {
   const {dom,window,document,errors}=setup('zh',false,{hash:'#/products',legacyBanner:true});
   assert.equal(document.getElementById('poster-banner'),null);
-  assert.equal(document.querySelectorAll('[data-poster-card]').length,24);
+  assert.equal(document.querySelectorAll('[data-poster-card]').length,38);
   assert.equal(document.getElementById('poster-view').hidden,false);
   document.querySelector('[data-poster-image=poster-001]').click();
   assert.equal(document.getElementById('photo-dialog').open,true);
@@ -145,7 +145,7 @@ test('legacy markup without the banner keeps poster viewing, downloads, language
   document.querySelector('.bottom-nav [data-page-link=products]').click();
   assert.equal(document.getElementById('poster-view').hidden,false);
   assert.equal(frame.contentWindow,child);
-  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,24);
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,38);
   assert.deepEqual(errors,[]);dom.window.close();
 });
 
@@ -156,7 +156,7 @@ test('the five banner images load only when selected on the poster page and do n
   assert.deepEqual(slides.map(image=>image.dataset.bannerSlide),['0','1','2','3','4']);
   assert.deepEqual(slides.map(image=>image.dataset.src),bannerFiles.map(name=>`assets/poster-banners/${name}.webp`));
   assert.equal(slides.some(image=>image.hasAttribute('src')),false);
-  assert.equal(window.YuanzeProductPosters.items.length,24);
+  assert.equal(window.YuanzeProductPosters.items.length,38);
   banner.advance(18000);
   assert.equal(slides.some(image=>image.hasAttribute('src')),false);
   document.querySelector('.bottom-nav [data-page-link=products]').click();
@@ -164,7 +164,7 @@ test('the five banner images load only when selected on the poster page and do n
   assert.equal(document.getElementById('banner-position').textContent,'1 / 5');
   assert.equal(slides[0].getAttribute('src'),lightURL('assets/poster-banners/01-pdrn-capsule-cream.webp',1280));
   assert.equal(slides.slice(1).some(image=>image.hasAttribute('src')),false);
-  assert.equal(document.querySelectorAll('[data-poster-card]').length,24);
+  assert.equal(document.querySelectorAll('[data-poster-card]').length,38);
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   assert.deepEqual(errors,[]);dom.window.close();
 });
@@ -255,13 +255,13 @@ test('a failed banner shows its fallback and users can continue to an intact bac
 test('poster landing shows every active thumbnail without loading the catalogue or full artwork', () => {
   const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
   const data=window.YuanzeProductPosters, frame=document.getElementById('catalog-frame');
-  assert.equal(data.items.length,24);
+  assert.equal(data.items.length,38);
   assert.equal(document.getElementById('poster-view').hidden,false);
   assert.equal(document.getElementById('catalog-view').hidden,true);
   assert.equal(frame.hasAttribute('src'),false);
   assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,data.items.length);
   assert.equal(document.querySelectorAll('[data-poster-category]').length,data.categories.length+1);
-  assert.match(document.getElementById('poster-count').textContent,/24/);
+  assert.match(document.getElementById('poster-count').textContent,/38/);
   assert.equal(document.getElementById('expanded-photo').hasAttribute('src'),false);
   for(const item of data.items) {
     const image=document.querySelector(`[data-poster-card="${item.id}"] img`);
@@ -287,7 +287,7 @@ test('poster category buttons filter cards, counts and translated labels without
     assert.equal(button.getAttribute('aria-pressed'),'true');
     assert.equal(document.querySelectorAll('[data-poster-category][aria-pressed=true]').length,1);
     assert.deepEqual(Array.from(document.querySelectorAll('[data-poster-card]:not([hidden])'),card=>card.dataset.posterCard),Array.from(items,item=>item.id));
-    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 24 张`);
+    assert.equal(document.getElementById('poster-count').textContent,`${items.length} 张海报 · 共 38 张`);
   }
   const hash=window.location.hash;
   document.getElementById('language-toggle').click();
@@ -296,7 +296,7 @@ test('poster category buttons filter cards, counts and translated labels without
   assert.equal(document.querySelector('[data-poster-category=sets]').getAttribute('aria-pressed'),'true');
   assert.match(document.getElementById('poster-count').textContent,/posters/);
   document.querySelector('[data-poster-category=all]').click();
-  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,24);
+  assert.equal(document.querySelectorAll('[data-poster-card]:not([hidden])').length,38);
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   assert.deepEqual(errors,[]);dom.window.close();
 });
@@ -389,7 +389,7 @@ test('new attachment poster deep link opens the body artwork and preserves its E
   assert.equal(document.getElementById('photo-dialog').open,true);
   assert.equal(document.getElementById('expanded-photo').getAttribute('src'),lightURL('assets/posters/poster-041.webp'));
   assert.equal(document.getElementById('photo-caption').textContent,'liaose 果酸精油身体磨砂膏');
-  assert.equal(document.getElementById('next-poster').disabled,true);
+  assert.equal(document.getElementById('next-poster').disabled,false);
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   document.getElementById('photo-language-toggle').click();
   assert.equal(document.getElementById('photo-caption').textContent,'liaose AHA & essential oil body scrub');
@@ -711,11 +711,11 @@ test('home does not fetch poster thumbnails, and the gallery loads only nearby v
     };
   }});
   const cards=Array.from(document.querySelectorAll('[data-poster-card] img'));
-  assert.equal(cards.length,24);assert(cards.every(image=>!image.hasAttribute('src')));
+  assert.equal(cards.length,38);assert(cards.every(image=>!image.hasAttribute('src')));
   const observer=observers.find(item=>item.options.root?.id==='poster-view');
   assert.equal(observer.targets.size,0);
   document.querySelector('.bottom-nav [data-page-link=products]').click();
-  assert.equal(observer.targets.size,24);assert(cards.every(image=>!image.hasAttribute('src')));
+  assert.equal(observer.targets.size,38);assert(cards.every(image=>!image.hasAttribute('src')));
   assert.equal(observer.options.rootMargin,'120px 0px');
   observer.callback([{target:cards[0],isIntersecting:true},{target:cards[1],isIntersecting:false}]);
   assert.equal(cards[0].getAttribute('src'),lightURL(window.YuanzeProductPosters.items[0].src));

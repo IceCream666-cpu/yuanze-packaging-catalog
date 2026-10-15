@@ -1,8 +1,8 @@
 {
   "receivedAt": "2026-10-04",
   "archiveCount": 3,
-  "inputImageCount": 43,
-  "uniqueImageCount": 41,
+  "inputImageCount": 57,
+  "uniqueImageCount": 55,
   "items": [
     {
       "id": "poster-001",
@@ -877,10 +877,304 @@
       "duplicates": [],
       "image": "posters/poster-041.webp",
       "thumbnail": "posters/poster-041-thumb.webp"
+    },
+    {
+      "id": "poster-042",
+      "category": "body",
+      "title": {
+        "zh": "liaose 木质香氛沐浴露",
+        "en": "liaose Woodland body wash"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "codex-clipboard-600d61bb-5348-44c1-9a31-cb87435836c4.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "3a70f5a76304b05a7cd54350a26e568cc5e263afa9447289532a4dd2a5dcee3e",
+        "bytes": 2110051,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "cd0707c3bfa205ed9e324dde9eecc450fecf8697fb8abc45823a30356bcec5f1"
+      },
+      "duplicates": [],
+      "image": "posters/poster-042.webp",
+      "thumbnail": "posters/poster-042-thumb.webp"
+    },
+    {
+      "id": "poster-043",
+      "category": "face",
+      "title": {
+        "zh": "liaose 微晶洁面啫喱",
+        "en": "liaose Cloud cleanser"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "a8e31ae7322b1614eb6cb750371c127e.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "86c46c417f35c9bf7f0869db32b8ed2aa310e25794ef280b9697b692283ea4dc",
+        "bytes": 1663239,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "4728cdcf9373d9b1a3eda12b4d481cdc06d88338c886fefbe12502522ec33fce"
+      },
+      "duplicates": [],
+      "image": "posters/poster-043.webp",
+      "thumbnail": "posters/poster-043-thumb.webp"
+    },
+    {
+      "id": "poster-044",
+      "category": "face",
+      "title": {
+        "zh": "liaose 温和洁面泡沫",
+        "en": "liaose Gentle cleansing foam"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "d16d809c49246517300590369b4e9dbc.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "aa9301366c66914072f9e3d7410411b88bfb10d0fb2a8a8534ec74aa18464d65",
+        "bytes": 1719343,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "4cd8f3c04a4791003d06f24be6e11353bfcfbf52956c839d0dda13d52363b0c2"
+      },
+      "duplicates": [],
+      "image": "posters/poster-044.webp",
+      "thumbnail": "posters/poster-044-thumb.webp"
+    },
+    {
+      "id": "poster-045",
+      "category": "body",
+      "title": {
+        "zh": "liaose 纯净与茉莉沐浴露",
+        "en": "liaose Pure water & jasmine body wash"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "f0efbb5fbe28cbbe2026797409bfdf3e.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "b279ef0e08a779178dd60dd331323cfc8c05d57d27150a9b9bad5c34f1671d9a",
+        "bytes": 1624974,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "94911ce45c6d9f3693799e5f8633c14a210de2c2add36966d788402dab820caf"
+      },
+      "duplicates": [],
+      "image": "posters/poster-045.webp",
+      "thumbnail": "posters/poster-045-thumb.webp"
+    },
+    {
+      "id": "poster-046",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 多肽洗发水",
+        "en": "liaose Peptide shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "e56c3f5903a417af1d588f4d7888a0d4.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "cb74c167da4c5deb8be24316b1c76d7fd3512f7d1d734ed3664be0d5c13e3bdb",
+        "bytes": 1544960,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "8b5923c2abffe356f47b56eeab0ee26431efd213eb8f24a121db9659a53eed89"
+      },
+      "duplicates": [],
+      "image": "posters/poster-046.webp",
+      "thumbnail": "posters/poster-046-thumb.webp"
+    },
+    {
+      "id": "poster-047",
+      "category": "fragrance",
+      "title": {
+        "zh": "liaose 海岸香水",
+        "en": "liaose Coastal perfume"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "79d78d4bbb50549d78511c2d5b3a34e1.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "85afbb7f32d38fdbaabf32bcfb8a7d62068c797a3bc7e8fca49aa467f75cc6c2",
+        "bytes": 1986722,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "3c5dd05dcaa1145f7990bbe9ed79d3d0babf0b43dadb3753b757ccd926a02394"
+      },
+      "duplicates": [],
+      "image": "posters/poster-047.webp",
+      "thumbnail": "posters/poster-047-thumb.webp"
+    },
+    {
+      "id": "poster-048",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 日常洗发水",
+        "en": "liaose Daily shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "adc299a0b6d5db13fb85463b8360b1b2.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "16992ac9341cb6117d6816762ede2137a466d0a7f59e6e697a8d530fe7fe7788",
+        "bytes": 1907681,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "80289918c3ed9723789669beb57c2c10c761556bc6dbf4b3eee152a32964f0e5"
+      },
+      "duplicates": [],
+      "image": "posters/poster-048.webp",
+      "thumbnail": "posters/poster-048-thumb.webp"
+    },
+    {
+      "id": "poster-049",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 滋润洗发水",
+        "en": "liaose Moisture shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "94c9a88e0df33e25e91e55b882a1df7b.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "1250a63282f003cfe58275961c638ab11eaf02c7470facdc17c39fc2e0209274",
+        "bytes": 1462018,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "7cb09dcc4bda0403bc741254fd8525d2cea3695ccab18e76ec9c5e4f55ec7515"
+      },
+      "duplicates": [],
+      "image": "posters/poster-049.webp",
+      "thumbnail": "posters/poster-049-thumb.webp"
+    },
+    {
+      "id": "poster-050",
+      "category": "body",
+      "title": {
+        "zh": "liaose 果酸沐浴啫喱",
+        "en": "liaose AHA shower gel"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "2f82dc6fa3c2f93ba30338f8e913374e.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "fe0241d6bce1a36c1b7ae60b8c31732b402b5d59eb632abda08023c6c7a33328",
+        "bytes": 1731361,
+        "width": 1447,
+        "height": 1087,
+        "pixelsHash": "c18fc8a1c706b1de4c89d57dc593f8588d0c46d9462b0ef604817be584e8e704"
+      },
+      "duplicates": [],
+      "image": "posters/poster-050.webp",
+      "thumbnail": "posters/poster-050-thumb.webp"
+    },
+    {
+      "id": "poster-051",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 蓬松洗发水",
+        "en": "liaose Pure volume shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "15b10f2bc58715e7166e2807932ba012.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "29e213bd136f5495afe4985bd62c30741def945b2b68daa897f65f841354f84f",
+        "bytes": 1567308,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "760aea58e8d0e603150823a3215b419fd2fbc9186a5663739d4503c7610e3e76"
+      },
+      "duplicates": [],
+      "image": "posters/poster-051.webp",
+      "thumbnail": "posters/poster-051-thumb.webp"
+    },
+    {
+      "id": "poster-052",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 洗护发护理套装",
+        "en": "liaose Hair care ritual"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "14b7ff53a911f8d08fdfcf619209616c.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "e97c74f05c4caa907e96381a51daab4e84b6dcf5bd746c44bcc7d4d972db29f7",
+        "bytes": 1740249,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "f3d129178b17b747c42ab731d0029fc4a3418a2c6ca7755f15aebd4866c9ffd7"
+      },
+      "duplicates": [],
+      "image": "posters/poster-052.webp",
+      "thumbnail": "posters/poster-052-thumb.webp"
+    },
+    {
+      "id": "poster-053",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 干性与油性头皮洗发水",
+        "en": "liaose Scalp shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "95ff358299c108ee883b61fa4e5bd664.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "9ecfec88e2f857bd54cc43cd6f85ec2c906aaca95627fbad2a39bf9430ca3517",
+        "bytes": 1856306,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "5b14dffa2fcdcf8f31cf26b891599077634cfa9d7a5bc657b88d8fe94a24148e"
+      },
+      "duplicates": [],
+      "image": "posters/poster-053.webp",
+      "thumbnail": "posters/poster-053-thumb.webp"
+    },
+    {
+      "id": "poster-054",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 生姜洗发水",
+        "en": "liaose Ginger shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "817f4c00d70b05dbabe22be070873db0.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "d5e46237007929ad93614844bc0b326df850b529193a4c60b31421014c607222",
+        "bytes": 1641644,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "76b8f8ca43fb5d2ff3c3e7fff64127147da7eb709c5f47945595a00f9868f9c2"
+      },
+      "duplicates": [],
+      "image": "posters/poster-054.webp",
+      "thumbnail": "posters/poster-054-thumb.webp"
+    },
+    {
+      "id": "poster-055",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 白泥洗发水",
+        "en": "liaose White clay shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "09f1e42d9d5f8e45c1740eaf3fadfece.png",
+        "receivedAt": "2026-10-15",
+        "sha256": "02216c910710dab4bc58d20891daf29c10193034cc4a61251b268e52d216e32f",
+        "bytes": 1710254,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "aeab8f7098620f6f6f14f4f016f09b85d6c913a9b7e3300f298a4150c85858f8"
+      },
+      "duplicates": [],
+      "image": "posters/poster-055.webp",
+      "thumbnail": "posters/poster-055-thumb.webp"
     }
   ],
-  "updatedAt": "2026-10-07",
-  "directImageCount": 10,
-  "activeImageCount": 24,
+  "updatedAt": "2026-10-15",
+  "directImageCount": 24,
+  "activeImageCount": 38,
   "removedImageCount": 17
 }
