@@ -7,6 +7,12 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 class RepositoryBoundaries(unittest.TestCase):
+    def test_agent_rules_require_commits_and_verified_tests(self):
+        rules = (ROOT / 'AGENTS.md').read_text()
+        self.assertIn('## 必须遵守的提交与测试规则', rules)
+        self.assertIn('每次改动完成后，都必须创建一个对应的 Git commit，以便后续追踪和回滚。', rules)
+        self.assertIn('每次改动后，都必须编写或更新相关测试，并在交付给用户前，确保所有测试和验证全部通过。', rules)
+
     def test_private_paths_are_ignored_but_source_remains_trackable(self):
         private = ['.secrets/key', '.env', 'server-reference/state/catalog.sqlite',
                    'server-reference/private/media/quote.png', 'server-reference/private/catalog.json',
