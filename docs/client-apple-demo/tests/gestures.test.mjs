@@ -148,3 +148,66 @@ test('touch pointer swipe, vertical-scroll cancellation and lost capture leave n
   assert.equal(f.classes.has('is-dragging'), false);
   f.dispose();
 });
+
+test('a fresh same-direction stroke interrupts a long momentum tail without vertical reset', () => {
+  const f = fixture();
+  const stroke = deltas => deltas.forEach(deltaX => {
+    f.advance(16);
+    f.emit('wheel', {deltaX});
+  });
+  stroke([30, 40, 36, 30, 24, 18, 12, 8, 5, 3, 2, 1, 1, 1, 1, 1]);
+  assert.deepEqual(f.steps, [1]);
+  stroke([4, 12, 26, 38, 30, 20, 12, 6, 3, 1, 1, 1, 1, 1, 1, 1]);
+  assert.deepEqual(f.steps, [1, 1], 'next deliberate stroke must not be swallowed by momentum');
+  stroke([5, 15, 30, 40, 28, 17, 8, 3, 1]);
+  assert.deepEqual(f.steps, [1, 1, 1]);
+  f.dispose();
+});
+
+test('reverse and vertical-to-horizontal gestures do not remain locked', () => {
+  const f = fixture();
+  f.emit('wheel', {deltaX: 80});
+  for (const deltaX of [24, 16, 8, 4, 2, 1, 1, 1, 1, 1]) {
+    f.advance(16); f.emit('wheel', {deltaX});
+  }
+  for (const deltaX of [-14, -25, -36]) {
+    f.advance(16); f.emit('wheel', {deltaX});
+  }
+  assert.deepEqual(f.steps, [1, -1]);
+  const vertical = f.emit('wheel', {deltaX: 1, deltaY: 60});
+  assert.equal(vertical.defaultPrevented, false);
+  f.advance(32);
+  f.emit('wheel', {deltaX: 80});
+  assert.deepEqual(f.steps, [1, -1, 1]);
+  f.dispose();
+});
+
+test('idle reset really unlocks; subpixel tail and early acceleration cannot retrigger a stroke', () => {
+  const f = fixture();
+  for (const deltaX of [35, 35, 50, 65, 45, 30, 18, 8, 3, 1]) {
+    f.advance(16); f.emit('wheel', {deltaX});
+  }
+  for (let i = 0; i < 40; i++) {
+    f.advance(16); f.emit('wheel', {deltaX: 0.15});
+  }
+  assert.deepEqual(f.steps, [1]);
+  f.idle();
+  f.emit('wheel', {deltaX: 80});
+  assert.deepEqual(f.steps, [1, 1]);
+  f.dispose();
+});
+
+test('small momentum jitter stays suppressed, and a released pending mouse click cannot block trackpad input', () => {
+  const f = fixture();
+  f.emit('wheel', {deltaX: 80});
+  for (const deltaX of [40, 20, 10, 5, 3, 2, 1, 2, 1, 3, 1, -1, 1, 2]) {
+    f.advance(20); f.emit('wheel', {deltaX});
+  }
+  assert.deepEqual(f.steps, [1]);
+  f.emit('pointerdown');
+  f.emit('wheel', {deltaX: 80, buttons: 1});
+  assert.deepEqual(f.steps, [1], 'an active mouse drag retains ownership');
+  f.emit('wheel', {deltaX: 80, buttons: 0});
+  assert.deepEqual(f.steps, [1, 1], 'released mouse must not leave a stale pointer gate');
+  f.dispose();
+});

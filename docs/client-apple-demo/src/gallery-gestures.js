@@ -23,7 +23,8 @@ export function wheelDistance(event) {
 
 export function bindGalleryGestures(element, onStep, env = window) {
   let pointer = null, frame = 0, pending = 0, suppressUntil = 0;
-  let wheel = {sum: 0, at: -Infinity, committed: false}, wheelTimer = 0;
+  const freshWheel = () => ({sum: 0, at: -Infinity, committed: false, committedAt: 0, direction: 0, peak: 0, floor: Infinity});
+  let wheel = freshWheel(), wheelTimer = 0;
   const now = () => env.performance.now();
   const motion = env.matchMedia('(prefers-reduced-motion: reduce)');
   const paint = distance => {
@@ -45,14 +46,18 @@ export function bindGalleryGestures(element, onStep, env = window) {
     if (previous && element.hasPointerCapture?.(previous.id)) element.releasePointerCapture(previous.id);
     settle();
   };
+  const resetWheel = () => {
+    env.clearTimeout(wheelTimer);
+    wheelTimer = 0;
+    wheel = freshWheel();
+    settle();
+  };
   const down = event => {
     if (pointer) { suppressUntil = now() + 350; resetPointer(); return; }
     if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
     suppressUntil = 0;
-    env.clearTimeout(wheelTimer);
-    wheel = {sum: 0, at: -Infinity, committed: false};
-    settle();
-    pointer = {id: event.pointerId, x: event.clientX, y: event.clientY, at: now(), axis: null};
+    resetWheel();
+    pointer = {id: event.pointerId, type: event.pointerType, x: event.clientX, y: event.clientY, at: now(), axis: null};
   };
   const move = event => {
     if (!pointer || pointer.id !== event.pointerId) return;
@@ -79,6 +84,7 @@ export function bindGalleryGestures(element, onStep, env = window) {
   const cancel = () => {
     if (pointer) suppressUntil = now() + 350;
     resetPointer();
+    resetWheel();
   };
   const click = event => {
     if (event.detail !== 0 && now() < suppressUntil) {
@@ -87,21 +93,47 @@ export function bindGalleryGestures(element, onStep, env = window) {
     }
   };
   const scroll = event => {
+    // A mouse release outside the element before capture can otherwise leave
+    // a pending click blocking all later trackpad input.
+    if (pointer?.type === 'mouse' && !(event.buttons & 1)) resetPointer();
     if (pointer) return;
     const delta = wheelDistance(event);
-    if (!delta) return;
+    if (!delta) {
+      if (event.ctrlKey || Math.abs(event.deltaY) >= 4) resetWheel();
+      return;
+    }
     event.preventDefault();
-    const at = now();
-    if (at - wheel.at > 220) wheel = {sum: 0, at, committed: false};
+    const at = now(), magnitude = Math.abs(delta), direction = Math.sign(delta);
+    // macOS can send tiny momentum events for a long time. They must not keep
+    // renewing the lock or start another image transition after idle.
+    if (magnitude < 0.5) return;
+    if (at - wheel.at >= 180) resetWheel();
+    if (wheel.committed) {
+      const age = at - wheel.committedAt;
+      const reversed = direction !== wheel.direction && magnitude >= 6 && age >= 80;
+      const renewed = age >= 160 && wheel.floor <= wheel.peak * 0.6 &&
+        magnitude >= 12 && magnitude >= wheel.floor * 1.8 + 4;
+      // WheelEvent has no portable momentum phase. A deliberate reversal or
+      // renewed acceleration after a decaying tail starts a fresh stroke.
+      if (reversed || renewed) resetWheel();
+    }
     wheel.at = at;
     env.clearTimeout(wheelTimer);
-    wheelTimer = env.setTimeout(settle, 180);
-    if (wheel.committed) return; // Ignore the same trackpad gesture's momentum tail.
+    wheelTimer = env.setTimeout(resetWheel, 180);
+    if (wheel.committed) {
+      wheel.peak = Math.max(wheel.peak, magnitude);
+      wheel.floor = Math.min(wheel.floor, magnitude);
+      return;
+    }
+    if (wheel.direction && direction !== wheel.direction) wheel.sum = 0;
+    wheel.direction = direction;
     wheel.sum += delta;
     element.classList.add('is-dragging');
     paint(-Math.max(-60, Math.min(60, wheel.sum)));
     if (Math.abs(wheel.sum) >= 60) {
       wheel.committed = true;
+      wheel.committedAt = at;
+      wheel.peak = wheel.floor = magnitude;
       settle();
       onStep(wheel.sum > 0 ? 1 : -1);
     }
@@ -116,7 +148,7 @@ export function bindGalleryGestures(element, onStep, env = window) {
   element.addEventListener('wheel', scroll, {passive: false});
   env.addEventListener('blur', cancel);
   return () => {
-    env.clearTimeout(wheelTimer);
+    resetWheel();
     resetPointer();
     element.removeEventListener('pointerdown', down);
     element.removeEventListener('pointermove', move);

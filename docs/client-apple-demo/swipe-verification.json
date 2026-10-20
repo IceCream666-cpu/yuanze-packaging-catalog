@@ -5,7 +5,7 @@
   "url": "http://127.0.0.1:8773/",
   "productionChanged": false,
   "automated": {
-    "demoTests": 12,
+    "demoTests": 16,
     "demoTestsResult": "passed",
     "viteBuild": "passed",
     "projectVerify": "All verification suites passed.",
@@ -31,8 +31,57 @@
     ]
   },
   "behavior": {
-    "trackpad": "Horizontal wheel, one selection per gesture with 220ms idle separation; vertical wheel and Ctrl-wheel zoom left to browser.",
+    "trackpad": "Horizontal wheel with 180ms full idle reset, subpixel-tail exclusion, renewed-acceleration and deliberate-reversal detection. Vertical wheel and Ctrl-wheel zoom remain native.",
     "mouseAndTouch": "Follow-pointer transform, threshold/flick release, short-distance snap-back, click suppression, cancellation cleanup.",
     "reducedMotion": "No follow-pointer displacement; selection remains usable."
+  },
+  "trackpadFix": {
+    "date": "2026-10-20",
+    "version": "yuanze2.0.2 (same-version bug fix)",
+    "reproducedBeforeFix": "Three regression cases failed: repeated same-direction strokes in momentum, reversal without idle, and an idle timer that settled visuals without resetting the committed flag.",
+    "cause": "Every horizontal momentum event refreshed the lock timestamp. Idle only reset the transform. Fresh strokes before a 220ms gap were ignored.",
+    "changes": [
+      "Idle now resets the full wheel state after 180ms.",
+      "Subpixel momentum does not extend the lock.",
+      "Renewed acceleration after decay and deliberate reversal can start a fresh stroke without waiting for idle.",
+      "Vertical/zoom input resets stale wheel state without canceling native behavior.",
+      "A released pending mouse pointer no longer blocks subsequent wheel input."
+    ],
+    "browserChecks": [
+      {
+        "case": "three same-direction strokes, with 50 momentum-tail events per stroke and no quiet gap between strokes",
+        "pages": [
+          "2/38",
+          "3/38",
+          "4/38"
+        ],
+        "durationMs": [
+          1004,
+          986,
+          986
+        ]
+      },
+      {
+        "case": "forward, reverse, forward without an idle gap",
+        "pages": [
+          "7/38",
+          "6/38",
+          "7/38"
+        ]
+      },
+      {
+        "case": "vertical then horizontal",
+        "page": "6/38",
+        "offset": "0px"
+      },
+      {
+        "case": "console errors",
+        "errors": []
+      }
+    ],
+    "safari": "Refreshed the target preview. Native scroll injection was unavailable; no physical trackpad test claimed.",
+    "tests": "16 demo tests passed; Vite build and full project verification passed.",
+    "screenshot": "outputs/client-swipe-20261020/trackpad-fix.png",
+    "productionChanged": false
   }
 }
