@@ -14,6 +14,15 @@ button { cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-colo
 button:disabled { cursor: wait; }
 button:focus-visible, a:focus-visible { outline: 2px solid #a75420; outline-offset: 5px; }
 .motion-toggle:focus-visible { outline-color: white; }
+.login-form-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 66% at 0% 8%, rgba(255, 147, 91, .24), rgba(255, 194, 155, .12) 45%, transparent 80%),
+    radial-gradient(ellipse 74% 56% at 90% 96%, rgba(255, 151, 190, .13), rgba(255, 204, 216, .06) 44%, transparent 78%);
+}
 .orb-border, .orb-glow { background: conic-gradient(#00c6ff, #0072ff, #ff007a, #ff8a00, #00c6ff); }
 .submit-orb:is(:hover, :focus-visible):not(:disabled) .orb-border,
 .submit-orb:is(:hover, :focus-visible):not(:disabled) .orb-glow { animation: orbit 2.4s linear infinite; }

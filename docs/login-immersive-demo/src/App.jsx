@@ -4,8 +4,8 @@ import { authenticate, inputWarnings } from './login-contract.js';
 
 import { requestJSON } from '../../../server-reference/public/api-client.js';
 
-export const POSTER_URL = new URL('../assets/login-poster.jpg', import.meta.url).href;
-export const VIDEO_URL = new URL('../assets/login-atmosphere.mp4', import.meta.url).href;
+export const POSTER_URL = new URL('../assets/login-glow-poster.jpg', import.meta.url).href;
+export const VIDEO_URL = new URL('../assets/login-glow.mp4', import.meta.url).href;
 const copy = {
   zh: {
     subtitle: '登录你的源泽包材库账号', username: '账号', password: '密码',
@@ -102,7 +102,7 @@ export default function App({ transport = requestJSON, navigate = path => window
         <MotionPanel language={language} videoRef={motion.panelRef} playing={motion.playing} toggle={motion.toggle} />
 
         <section className="login-form-panel relative flex min-w-0 flex-1 flex-col justify-center px-5 pb-7 pt-14 sm:px-10 md:w-[55%] md:px-12 md:py-12" aria-labelledby="loginTitle">
-          <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 rounded-full bg-gradient-to-br from-[#FF512F] to-[#F09819] opacity-20 blur-[80px]" aria-hidden="true" />
+          <div className="login-form-glow" aria-hidden="true" />
           <button type="button" className="language-button absolute right-5 top-4 z-10 inline-flex min-h-10 items-center gap-1.5 rounded-full px-2 text-xs text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 md:right-7 md:top-5" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')} aria-label={language === 'zh' ? 'Switch to English' : '切换到中文'}><Globe2 size={14} />{language === 'zh' ? 'English' : '中文'}</button>
           <div className="relative z-10 mx-auto w-full max-w-[386px]">
             <div className="mb-8 flex items-center justify-center">

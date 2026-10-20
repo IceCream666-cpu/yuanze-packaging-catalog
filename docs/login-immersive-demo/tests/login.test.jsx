@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
-import App, { VIDEO_URL } from '../src/App.jsx';
+import App, { POSTER_URL, VIDEO_URL } from '../src/App.jsx';
 import { authenticate, inputWarnings, loginDestination } from '../src/login-contract.js';
 
 test('role destinations match the shared login and reject open redirects', () => {
@@ -69,9 +69,12 @@ test('React form prevents double submission, handles media failure, focus and re
   assert.equal(document.querySelector('#username').labels[0].textContent, '账号');
   assert.equal(document.querySelector('#password').autocomplete, 'current-password');
   assert.equal(document.querySelector('form').checkValidity(), false);
+  assert.equal(document.querySelector('.login-form-glow').getAttribute('aria-hidden'), 'true');
+  assert.equal(document.querySelector('.login-form-glow').querySelectorAll('button, input, a, [tabindex]').length, 0);
   assert.equal(document.querySelectorAll('video').length, 2);
   for (const video of document.querySelectorAll('video')) {
     assert.equal(video.getAttribute('src'), VIDEO_URL);
+    assert.equal(video.getAttribute('poster'), POSTER_URL);
     assert.equal(video.muted, true);
     assert.equal(video.loop, true);
     assert.equal(video.playsInline, true);

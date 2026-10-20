@@ -1,0 +1,23 @@
+{
+  "source": "Original procedural orange/pink glow animation based on the requested visual direction",
+  "generator": "scripts/build-glow.py",
+  "width": 576,
+  "height": 768,
+  "fps": 24,
+  "durationSeconds": 12,
+  "codec": "H.264 / yuv420p",
+  "fastStart": true,
+  "audio": false,
+  "loopBoundaryPixelsEqual": true,
+  "fullDecode": "passed",
+  "files": {
+    "login-glow.mp4": {
+      "bytes": 301343,
+      "sha256": "d70472923d0fd52c7a866ede77e823977ff722b2c8dc9501c4e610a6954c210a"
+    },
+    "login-glow-poster.jpg": {
+      "bytes": 31747,
+      "sha256": "b70814ca6a7c77dc366e9c85a99ad9e95caf6e915644547064b7c485f7077e12"
+    }
+  }
+}
