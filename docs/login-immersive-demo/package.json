@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1 --port 8772 --strictPort",
+    "dev": "vite build && node preview-server.js",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 8772 --strictPort",
-    "test": "tsx --test tests/*.test.*"
+    "preview": "node preview-server.js",
+    "test": "vite build && tsx --test tests/*.test.*"
   },
   "dependencies": {
     "lucide-react": "1.59.0",

@@ -13,7 +13,7 @@ html, body, #root { min-width: 0; min-height: 100%; margin: 0; }
 button { cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: wait; }
 button:focus-visible, a:focus-visible { outline: 2px solid #a75420; outline-offset: 5px; }
-.preview-tools button:focus-visible, .motion-toggle:focus-visible { outline-color: white; }
+.motion-toggle:focus-visible { outline-color: white; }
 .orb-border, .orb-glow { background: conic-gradient(#00c6ff, #0072ff, #ff007a, #ff8a00, #00c6ff); }
 .submit-orb:is(:hover, :focus-visible):not(:disabled) .orb-border,
 .submit-orb:is(:hover, :focus-visible):not(:disabled) .orb-glow { animation: orbit 2.4s linear infinite; }
@@ -36,3 +36,5 @@ button:focus-visible, a:focus-visible { outline: 2px solid #a75420; outline-offs
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+.video-panel { contain: layout paint; }

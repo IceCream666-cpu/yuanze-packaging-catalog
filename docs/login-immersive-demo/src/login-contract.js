@@ -34,27 +34,3 @@ export function inputWarnings(username, password, capsLock) {
   if (capsLock) notes.push('caps');
   return notes;
 }
-
-// This demo always uses an in-memory transport. No credentials are sent or stored.
-export function createPreviewTransport(scenario = 'success') {
-  let activeRole;
-  return async (path, options = {}) => {
-    await new Promise(resolve => setTimeout(resolve, 450));
-    if (scenario === 'offline') throw Object.assign(new Error('offline'), { code: 'offline' });
-    if (scenario === 'timeout') throw Object.assign(new Error('timeout'), { code: 'timeout' });
-    if (path === '/api/login') {
-      const { username, password } = JSON.parse(options.body);
-      const roles = { 'demo.employee': 'employee', 'demo.client': 'client', 'demo.admin': 'admin' };
-      if (!roles[username] || password !== 'YuanzeDemo2026' || scenario === 'invalid') {
-        throw Object.assign(new Error('invalid'), { status: 401 });
-      }
-      activeRole = roles[username];
-      return { role: activeRole };
-    }
-    if (path === '/api/session' && activeRole) {
-      if (scenario === 'cookie') throw Object.assign(new Error('cookie_missing'), { status: 401 });
-      return { role: activeRole };
-    }
-    throw new Error('unsupported_preview_request');
-  };
-}

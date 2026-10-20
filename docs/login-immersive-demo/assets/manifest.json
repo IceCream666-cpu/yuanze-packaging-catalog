@@ -1,30 +1,22 @@
 {
-  "source_name": "0.mp4",
-  "source_bytes": 6475973,
-  "source_sha256": "6449016199e7c379cd0af4409c75a3edaf3d092d74e774f3bfbb62626245aade",
-  "web_file": "login-atmosphere.mp4",
-  "web_bytes": 4354905,
-  "web_sha256": "7a9f3b32c2f34d8ae3edc645e6c51fda99c09226a626c18facfcb967beaf9f78",
-  "duration_seconds": 5.208984,
-  "width": 1104,
-  "height": 832,
-  "transcode": "macOS avconvert Preset1280x720 --multiPass; actual dimensions verified in browser",
-  "mp4_boxes": [
-    {
-      "type": "ftyp",
-      "offset": 0,
-      "bytes": 28
+  "sourceName": "0.mp4",
+  "sourceSha256": "6449016199e7c379cd0af4409c75a3edaf3d092d74e774f3bfbb62626245aade",
+  "sourceBytes": 6475973,
+  "previousWebBytes": 4354905,
+  "width": 768,
+  "height": 578,
+  "fps": 24,
+  "durationSeconds": 5.209,
+  "codec": "H.264 / yuv420p",
+  "fastStart": true,
+  "files": {
+    "login-atmosphere.mp4": {
+      "bytes": 756796,
+      "sha256": "5f0c645910ede01bcb777a5446d4c2e5fa58ed3f35b7335514384c8924cbc152"
     },
-    {
-      "type": "moov",
-      "offset": 28,
-      "bytes": 2356
-    },
-    {
-      "type": "mdat",
-      "offset": 2384,
-      "bytes": 4352521
+    "login-poster.jpg": {
+      "bytes": 73278,
+      "sha256": "8261d6939f60d4a255eac961338ad0c8987f0de27c4616404c5373779ff5f4f6"
     }
-  ],
-  "fast_start": true
+  }
 }

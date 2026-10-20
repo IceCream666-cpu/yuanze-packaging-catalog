@@ -1,7 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Eye, EyeOff, LoaderCircle, LockKeyhole, Pause, Play, Check, Globe2, Upload, X, CircleAlert } from 'lucide-react';
-import { authenticate, createPreviewTransport, inputWarnings } from './login-contract.js';
+import React, { memo, useEffect, useRef, useState } from 'react';
+import { ArrowRight, Eye, EyeOff, LoaderCircle, LockKeyhole, Pause, Play, Check, Globe2, CircleAlert } from 'lucide-react';
+import { authenticate, inputWarnings } from './login-contract.js';
 
+import { requestJSON } from '../../../server-reference/public/api-client.js';
+
+export const POSTER_URL = new URL('../assets/login-poster.jpg', import.meta.url).href;
 export const VIDEO_URL = new URL('../assets/login-atmosphere.mp4', import.meta.url).href;
 const copy = {
   zh: {
@@ -12,11 +15,10 @@ const copy = {
     contactInfo: '请联系为你分配账号的源泽管理员，核对账号或重置密码。',
     roleHint: '登录后自动进入你的工作空间',
     pause: '暂停背景视频', play: '播放背景视频', fallback: '视频暂不可用，登录不受影响',
-    loadingVideo: '正在加载视频', preview: '界面预览 · 不连接正式账号', demo: '填入演示账号',
-    upload: '选择本地视频', uploadHint: '视频只在本机预览，未上传', fileError: '请选择 MP4 或 WebM 视频文件。',
-    success: '登录交互演示完成', successHint: '正式接入后，将按原有账号权限进入对应页面。',
-    back: '返回登录预览', client: '客户工作空间', employee: '业务员工作空间', admin: '管理员工作空间',
-    error: '账号或密码不正确。预览请使用下方“填入演示账号”。',
+    loadingVideo: '正在加载视频',
+    success: '登录成功', successHint: '正在进入你的工作空间…',
+    back: '继续进入工作空间', client: '客户工作空间', employee: '业务员工作空间', admin: '管理员工作空间',
+    error: '账号或密码不正确，请核对后重新输入。', network: '暂时无法连接包材库服务器，请检查网络后重试。', limited: '登录尝试过于频繁，请稍后再试。',
     offline: '当前网络不可用，请恢复网络后重试。', timeout: '登录响应超时，请稍后重试，无需更改密码。',
     cookie_missing: '浏览器未保存登录状态，请允许 Cookie 后重试。',
     role_mismatch: '登录身份未同步，请刷新后重新登录。', invalid_role: '登录结果异常，请稍后重试。',
@@ -32,11 +34,10 @@ const copy = {
     contactInfo: 'Contact your Yuanze account administrator to check your account or reset your password.',
     roleHint: 'Your account takes you to the right workspace',
     pause: 'Pause background video', play: 'Play background video', fallback: 'Video unavailable. You can still sign in.',
-    loadingVideo: 'Loading video', preview: 'Interface preview · No live account connection', demo: 'Fill demo account',
-    upload: 'Choose local video', uploadHint: 'Local preview only. Nothing is uploaded.', fileError: 'Choose an MP4 or WebM video.',
-    success: 'Sign-in preview complete', successHint: 'When connected, your existing account permissions determine your workspace.',
-    back: 'Back to sign-in preview', client: 'Client workspace', employee: 'Sales workspace', admin: 'Admin workspace',
-    error: 'Incorrect account or password. Use “Fill demo account” below for this preview.',
+    loadingVideo: 'Loading video',
+    success: 'Signed in', successHint: 'Opening your workspace…',
+    back: 'Continue to workspace', client: 'Client workspace', employee: 'Sales workspace', admin: 'Admin workspace',
+    error: 'Incorrect account or password. Check your credentials and try again.', network: 'Unable to reach the server. Check your connection and try again.', limited: 'Too many sign-in attempts. Please try again later.',
     offline: 'You are offline. Reconnect and try again.', timeout: 'Sign-in timed out. Try again later; there is no need to change your password.',
     cookie_missing: 'Your browser did not save the session. Allow cookies and try again.',
     role_mismatch: 'Your session did not sync. Refresh and sign in again.', invalid_role: 'Unexpected sign-in result. Please try again later.',
@@ -46,7 +47,7 @@ const copy = {
   },
 };
 
-export default function App({ transport, initialScenario } = {}) {
+export default function App({ transport = requestJSON, navigate = path => window.location.replace(path) } = {}) {
   const [language, setLanguage] = useState('zh');
   const t = copy[language];
   const [username, setUsername] = useState('');
@@ -58,46 +59,18 @@ export default function App({ transport, initialScenario } = {}) {
   const [capsLock, setCapsLock] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [result, setResult] = useState(null);
-  const [source, setSource] = useState(VIDEO_URL);
-  const [videoState, setVideoState] = useState('loading');
-  const [playing, setPlaying] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const backgroundVideo = useRef(null), panelVideo = useRef(null), videoInput = useRef(null), heading = useRef(null);
-  const objectUrl = useRef(null);
+  const heading = useRef(null);
   const warnings = inputWarnings(username, password, capsLock);
-  const scenario = initialScenario || new URLSearchParams(window.location.search).get('scenario') || 'success';
 
   useEffect(() => {
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
   }, [language]);
 
   useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const onChange = () => { if (query.matches) setPlaying(false); };
-    const onHidden = () => { if (document.hidden) { setVisible(false); setPlaying(false); } };
-    query.addEventListener('change', onChange);
+    const onHidden = () => { if (document.hidden) setVisible(false); };
     document.addEventListener('visibilitychange', onHidden);
-    return () => {
-      query.removeEventListener('change', onChange);
-      document.removeEventListener('visibilitychange', onHidden);
-      if (objectUrl.current) URL.revokeObjectURL(objectUrl.current);
-    };
+    return () => document.removeEventListener('visibilitychange', onHidden);
   }, []);
-
-  useEffect(() => {
-    for (const video of [backgroundVideo.current, panelVideo.current]) {
-      if (!video) continue;
-      if (playing) video.play()?.catch(error => {
-        if (error.name === 'NotAllowedError') setPlaying(false);
-      });
-      else video.pause();
-    }
-  }, [playing, source]);
-
-  useEffect(() => {
-    setVideoState('loading');
-    const timer = setTimeout(() => setVideoState(state => state === 'loading' ? 'unavailable' : state), 12000);
-    return () => clearTimeout(timer);
-  }, [source]);
 
   useEffect(() => { if (result) heading.current?.focus(); }, [result]);
 
@@ -107,55 +80,34 @@ export default function App({ transport, initialScenario } = {}) {
     submitting.current = true;
     setBusy(true); setError(''); setVisible(false); setCapsLock(false);
     try {
-      const value = await authenticate(transport || createPreviewTransport(scenario), { username, password }, window.location.search);
+      const value = await authenticate(transport, { username, password }, window.location.search);
       setPassword('');
       setResult(value);
+      navigate(value.destination);
     } catch (err) {
-      setError(err.status === 401 ? 'error' : ['offline', 'timeout'].includes(err.code) ? err.code
+      setError(err.status === 401 ? 'error' : err.status === 429 ? 'limited' : err.status >= 500 ? 'network' : ['offline', 'timeout', 'network'].includes(err.code) ? err.code
         : ['cookie_missing', 'role_mismatch', 'invalid_role'].includes(err.message) ? err.message : 'unknown');
     } finally {
       submitting.current = false; setBusy(false);
     }
   }
 
-  function useLocalVideo(event) {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    if (!['video/mp4', 'video/webm'].includes(file.type)) { setError('fileError'); return; }
-    if (objectUrl.current) URL.revokeObjectURL(objectUrl.current);
-    objectUrl.current = URL.createObjectURL(file);
-    setSource(objectUrl.current); setPlaying(!window.matchMedia('(prefers-reduced-motion: reduce)').matches); setError('');
-  }
-
-  const videoProps = { src: source, autoPlay: playing, muted: true, loop: true, playsInline: true, preload: 'metadata', tabIndex: -1, 'aria-hidden': true };
-
   return (
     <div className="relative isolate flex min-h-screen flex-col items-center justify-center bg-black px-4 py-7 text-[#17171b] sm:px-8 sm:py-12">
       <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-black" aria-hidden="true">
-        <video ref={backgroundVideo} {...videoProps} className="h-full w-full scale-105 object-cover" />
+        <img src={POSTER_URL} alt="" className="h-full w-full scale-105 object-cover blur-sm" />
       </div>
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-black/10" aria-hidden="true" />
 
       <main className="login-card relative z-10 flex w-full max-w-[1040px] flex-col rounded-[2.5rem] border border-gray-200 bg-white p-3 shadow-[0_32px_100px_rgba(0,0,0,0.48)] md:min-h-[650px] md:flex-row" aria-label="源泽登录">
-        <section className="video-panel relative h-[225px] shrink-0 overflow-hidden rounded-[2rem] bg-[#0c0c0e] sm:h-[280px] md:h-auto md:w-[45%]" aria-label={language === 'zh' ? '灵感视频' : 'Inspiration video'}>
-          <video ref={panelVideo} {...videoProps} className="absolute inset-0 h-full w-full object-cover" onLoadedData={() => setVideoState('ready')} onPlaying={() => setVideoState('ready')} onError={() => setVideoState('unavailable')} />
-          {videoState !== 'ready' && <div className="fallback-composition pointer-events-none absolute inset-0 flex flex-col justify-between px-8 py-9 text-white md:px-10 md:py-11">
-            <div className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] text-white/65"><span className="h-1.5 w-1.5 rounded-full bg-[#ff7847]" /> A WORLD OF POSSIBILITIES</div>
-            <div><p className="fallback-title text-[33px] font-medium leading-[1.12] tracking-[-0.05em] sm:text-[42px] md:text-[52px]">Good ideas.<br /><span className="text-white/45">Great beginnings.</span></p><p className="mt-5 hidden text-[10px] tracking-[0.3em] text-white/50 md:block">YUANZE MATERIAL LIBRARY</p></div>
-            <div className="hidden h-px w-12 bg-white/30 md:block" />
-          </div>}
-          <div className="absolute bottom-5 left-6 right-5 flex items-center justify-between gap-2 text-white">
-            <span className="text-[10px] leading-4 text-white/65">{videoState === 'unavailable' ? t.fallback : videoState === 'loading' ? t.loadingVideo : 'MOTION / INSPIRATION'}</span>
-            {videoState === 'ready' && <button type="button" onClick={() => setPlaying(!playing)} className="motion-toggle flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md" aria-label={playing ? t.pause : t.play} aria-pressed={!playing}>{playing ? <Pause size={15} /> : <Play size={15} />}</button>}
-          </div>
-        </section>
+        <MotionPanel language={language} />
 
         <section className="login-form-panel relative flex min-w-0 flex-1 flex-col justify-center px-5 pb-7 pt-14 sm:px-10 md:w-[55%] md:px-12 md:py-16" aria-labelledby="loginTitle">
           <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 rounded-full bg-gradient-to-br from-[#FF512F] to-[#F09819] opacity-20 blur-[80px]" aria-hidden="true" />
           <button type="button" className="language-button absolute right-5 top-4 z-10 inline-flex min-h-10 items-center gap-1.5 rounded-full px-2 text-xs text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 md:right-7 md:top-5" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')} aria-label={language === 'zh' ? 'Switch to English' : '切换到中文'}><Globe2 size={14} />{language === 'zh' ? 'English' : '中文'}</button>
           <div className="relative z-10 mx-auto w-full max-w-[386px]">
             <div className="mb-8 flex items-center justify-center">
-              <svg className="h-11 w-[94px]" viewBox="1198 262 367 174" role="img" aria-label="YUANZE 源泽"><image href="/yuanze-brand-guide.png" width="1800" height="1520" /></svg>
+              <svg className="h-11 w-[94px]" viewBox="1198 262 367 174" role="img" aria-label="YUANZE 源泽"><image href={`${(import.meta.env?.BASE_URL || '/_login/')}yuanze-brand-guide.png`} width="1800" height="1520" /></svg>
             </div>
 
             {result ? <div className="text-center">
@@ -163,7 +115,7 @@ export default function App({ transport, initialScenario } = {}) {
               <h1 id="loginTitle" ref={heading} tabIndex={-1} className="text-[30px] font-semibold tracking-tight outline-none">{t.success}</h1>
               <p className="mt-4 text-sm leading-7 text-gray-500">{t.successHint}</p>
               <div className="my-7 rounded-2xl border border-gray-200 bg-gray-50 p-4 text-sm"><span>{t[result.role]}</span><code className="mt-1 block text-xs text-gray-500">{result.destination}</code></div>
-              <button type="button" onClick={() => { setResult(null); setError(''); }} className="w-full rounded-2xl bg-[#141417] px-4 py-4 text-sm font-medium text-white">{t.back}</button>
+              <button type="button" onClick={() => navigate(result.destination)} className="w-full rounded-2xl bg-[#141417] px-4 py-4 text-sm font-medium text-white">{t.back}</button>
             </div> : <>
               <header className="text-center"><h1 id="loginTitle" className="text-[40px] font-semibold leading-[1.18] tracking-[-0.05em] text-[#151519]">Welcome back</h1><p className="mt-3 text-sm text-gray-500">{t.subtitle}</p></header>
               <form className="mt-9" onSubmit={submit} aria-busy={busy} aria-describedby="loginHelp" autoComplete="on">
@@ -192,12 +144,52 @@ export default function App({ transport, initialScenario } = {}) {
         </section>
       </main>
 
-      <aside className="preview-tools relative z-10 mt-5 flex max-w-[1040px] flex-wrap items-center justify-center gap-x-4 gap-y-1 rounded-2xl bg-black/55 px-4 py-1 text-[11px] leading-5 text-white/80 backdrop-blur-md" aria-label="预览工具">
-        <span>{t.preview}</span><button type="button" onClick={() => { setUsername('demo.employee'); setPassword('YuanzeDemo2026'); setResult(null); setError(''); }} className="min-h-10 rounded-md px-1 text-white/85 underline decoration-white/25 underline-offset-4">{t.demo}</button>
-        <button type="button" onClick={() => videoInput.current?.click()} className="flex min-h-10 items-center gap-1.5 rounded-md px-1 text-white/85"><Upload size={12} />{t.upload}</button>
-        <input ref={videoInput} type="file" accept="video/mp4,video/webm" className="hidden" onChange={useLocalVideo} aria-label={t.upload} />
-        {source.startsWith('blob:') && <span>{t.uploadHint}<button type="button" aria-label="恢复原视频地址 / Restore source video" className="ml-2 inline-flex rounded p-1 align-middle" onClick={() => setSource(VIDEO_URL)}><X size={12} /></button></span>}
-      </aside>
+
     </div>
   );
 }
+
+// Form typing does not rerender this media subtree. Only one video decoder is
+// active; the outer backdrop is a still frame of the same clip.
+const MotionPanel = memo(function MotionPanel({ language }) {
+  const t = copy[language];
+  const videoRef = useRef(null);
+  const [videoState, setVideoState] = useState('loading');
+  const [playing, setPlaying] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => { if (query.matches) setPlaying(false); };
+    const onHidden = () => { if (document.hidden) setPlaying(false); };
+    query.addEventListener('change', onChange);
+    document.addEventListener('visibilitychange', onHidden);
+    const observer = typeof IntersectionObserver === 'function' ? new IntersectionObserver(entries => {
+      if (!entries[0]?.isIntersecting) setPlaying(false);
+    }) : null;
+    if (videoRef.current) observer?.observe(videoRef.current);
+    return () => { query.removeEventListener('change', onChange); document.removeEventListener('visibilitychange', onHidden); observer?.disconnect(); };
+  }, []);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (playing) video?.play()?.catch(() => setPlaying(false));
+    else video?.pause();
+  }, [playing]);
+  useEffect(() => {
+    const timer = setTimeout(() => setVideoState(state => state === 'loading' ? 'unavailable' : state), 12000);
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+        <section className="video-panel relative h-[225px] shrink-0 overflow-hidden rounded-[2rem] bg-[#0c0c0e] sm:h-[280px] md:h-auto md:w-[45%]" aria-label={language === 'zh' ? '灵感视频' : 'Inspiration video'}>
+          <video ref={videoRef} src={VIDEO_URL} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload="metadata" tabIndex={-1} aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" onLoadedMetadata={() => setVideoState('ready')} onPlaying={() => setVideoState('ready')} onError={() => setVideoState('unavailable')} />
+          {videoState === 'unavailable' && <div className="fallback-composition pointer-events-none absolute inset-0 flex flex-col justify-between px-8 py-9 text-white md:px-10 md:py-11">
+            <div className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] text-white/65"><span className="h-1.5 w-1.5 rounded-full bg-[#ff7847]" /> A WORLD OF POSSIBILITIES</div>
+            <div><p className="fallback-title text-[33px] font-medium leading-[1.12] tracking-[-0.05em] sm:text-[42px] md:text-[52px]">Good ideas.<br /><span className="text-white/45">Great beginnings.</span></p><p className="mt-5 hidden text-[10px] tracking-[0.3em] text-white/50 md:block">YUANZE MATERIAL LIBRARY</p></div>
+            <div className="hidden h-px w-12 bg-white/30 md:block" />
+          </div>}
+          <div className="absolute bottom-5 left-6 right-5 flex items-center justify-between gap-2 text-white">
+            <span className="text-[10px] leading-4 text-white/65">{videoState === 'unavailable' ? t.fallback : videoState === 'loading' ? t.loadingVideo : 'MOTION / INSPIRATION'}</span>
+            {videoState === 'ready' && <button type="button" onClick={() => setPlaying(!playing)} className="motion-toggle flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/60 text-white" aria-label={playing ? t.pause : t.play} aria-pressed={!playing}>{playing ? <Pause size={15} /> : <Play size={15} />}</button>}
+          </div>
+        </section>
+
+  );
+});
