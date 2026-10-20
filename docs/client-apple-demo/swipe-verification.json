@@ -1,0 +1,38 @@
+{
+  "version": "yuanze2.0.2",
+  "date": "2026-10-20",
+  "status": "local-preview-only",
+  "url": "http://127.0.0.1:8773/",
+  "productionChanged": false,
+  "automated": {
+    "demoTests": 12,
+    "demoTestsResult": "passed",
+    "viteBuild": "passed",
+    "projectVerify": "All verification suites passed.",
+    "historyCheckCorrection": "An earlier commit contained only a removed relative node_modules symlink. The history audit now recognizes that exact inspected mode and blob; the index audit still rejects it and all dependency contents."
+  },
+  "browser": {
+    "tool": "CUA in-app browser",
+    "checks": [
+      "Held mouse drag moved gallery track -110px; release selected 2/38 without opening dialog.",
+      "Horizontal wheel sequence [35,35,22,15,9] selected only one next poster (3/38), including momentum tail.",
+      "Click after the gesture opened the selected poster; closing restored gallery.",
+      "390px viewport drag selected 4/38; document width 383px, no horizontal overflow.",
+      "15px short drag retained 1/38 and reset offset to 0px, without opening dialog.",
+      "Reverse horizontal wheel -90 selected previous poster, wrapping 1/38 to 38/38.",
+      "Reduced-motion wheel selected the next poster with track transform none and transition 0s.",
+      "1440px viewport: document width 1433px, no horizontal overflow; final screenshot inspected."
+    ],
+    "safari": "Version 2.0.2 loaded successfully. Native horizontal-scroll automation did not complete; physical Mac trackpad interaction is not claimed as tested.",
+    "touchLimit": "Native touch injection unavailable in this browser. Touch pointer branching, cancellation and multi-touch covered by automated event tests; no physical phone test.",
+    "screenshots": [
+      "outputs/client-swipe-20261020/dragging.png",
+      "outputs/client-swipe-20261020/desktop-final.png"
+    ]
+  },
+  "behavior": {
+    "trackpad": "Horizontal wheel, one selection per gesture with 220ms idle separation; vertical wheel and Ctrl-wheel zoom left to browser.",
+    "mouseAndTouch": "Follow-pointer transform, threshold/flick release, short-distance snap-back, click suppression, cancellation cleanup.",
+    "reducedMotion": "No follow-pointer displacement; selection remains usable."
+  }
+}

@@ -36,10 +36,21 @@ class RepositoryBoundaries(unittest.TestCase):
         commits = subprocess.run(['git', 'rev-list', '--all'], cwd=ROOT,
                                  capture_output=True, text=True, check=True)
         historical_paths = set()
+        # adc8d34 recorded only this relative symlink, not dependencies or private
+        # file contents; 84814ce removed it. Pin mode + blob to that inspected
+        # object so different targets, regular files and descendants still fail.
+        # The current-index check above continues to forbid this path entirely.
+        removed_safe_symlink = (
+            'docs/client-apple-demo/node_modules',
+            '120000 blob 9e91910ea80a243065eaf6264b99118b0dd101ff',
+        )
         for commit in commits.stdout.splitlines():
-            tree = subprocess.run(['git', 'ls-tree', '-r', '-z', '--name-only', commit],
+            tree = subprocess.run(['git', 'ls-tree', '-r', '-z', commit],
                                   cwd=ROOT, capture_output=True, text=True, check=True)
-            historical_paths.update(name for name in tree.stdout.split('\0') if name)
+            for entry in filter(None, tree.stdout.split('\0')):
+                metadata, name = entry.split('\t', 1)
+                if (name, metadata) != removed_safe_symlink:
+                    historical_paths.add(name)
         if historical_paths:
             checked = subprocess.run(['git', 'check-ignore', '--no-index', '--stdin', '-z'],
                                      cwd=ROOT, input='\0'.join(sorted(historical_paths))+'\0',

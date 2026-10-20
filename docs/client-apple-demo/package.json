@@ -1,6 +1,6 @@
 {
   "name": "yuanze-client-apple-demo",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "type": "module",
   "scripts": {"build": "python3 prepare-assets.py && vite build", "dev": "vite --host 127.0.0.1 --port 8773 --strictPort", "test": "node --test tests/*.test.mjs"},
