@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-20T09:59:41.619884+08:00",
+  "scope": "Local preview only. Production login/backend and other site work unchanged.",
+  "preview_url": "http://127.0.0.1:8772/",
+  "build": "passed",
+  "demo_test_groups": 6,
+  "existing_regression": {
+    "root_python": 160,
+    "backend_python": 249,
+    "deployment_python": 32,
+    "frontend_suites": "all passed"
+  },
+  "browser": {
+    "desktop": [
+      1440,
+      960
+    ],
+    "phone": [
+      390,
+      844
+    ],
+    "narrow_phone_english": [
+      320,
+      740
+    ],
+    "tablet_english": [
+      768,
+      1024
+    ],
+    "horizontal_overflow": false,
+    "submit_button_css_px": [
+      52,
+      52
+    ],
+    "mobile_video_height_css_px": 225,
+    "keyboard_tab_and_enter": "passed",
+    "required_validation": "passed",
+    "incorrect_password_feedback": "passed",
+    "preview_success_and_heading_focus": "passed",
+    "video_ready_state": [
+      4,
+      4
+    ],
+    "video_muted_loop": [
+      true,
+      true
+    ],
+    "pause_both_videos": "passed",
+    "video_source": "same-origin bundled MP4, no Midjourney requests"
+  },
+  "limitations": [
+    "Phone dimensions were simulated in the desktop browser; physical iOS/Android verification remains for release.",
+    "Authentication uses memory-only preview transport; no live login was performed."
+  ],
+  "screenshots": [
+    "outputs/login-immersive-demo-20261020/desktop.jpg",
+    "outputs/login-immersive-demo-20261020/mobile.jpg"
+  ]
+}

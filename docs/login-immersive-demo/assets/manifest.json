@@ -1,0 +1,30 @@
+{
+  "source_name": "0.mp4",
+  "source_bytes": 6475973,
+  "source_sha256": "6449016199e7c379cd0af4409c75a3edaf3d092d74e774f3bfbb62626245aade",
+  "web_file": "login-atmosphere.mp4",
+  "web_bytes": 4354905,
+  "web_sha256": "7a9f3b32c2f34d8ae3edc645e6c51fda99c09226a626c18facfcb967beaf9f78",
+  "duration_seconds": 5.208984,
+  "width": 1104,
+  "height": 832,
+  "transcode": "macOS avconvert Preset1280x720 --multiPass; actual dimensions verified in browser",
+  "mp4_boxes": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "bytes": 28
+    },
+    {
+      "type": "moov",
+      "offset": 28,
+      "bytes": 2356
+    },
+    {
+      "type": "mdat",
+      "offset": 2384,
+      "bytes": 4352521
+    }
+  ],
+  "fast_start": true
+}
