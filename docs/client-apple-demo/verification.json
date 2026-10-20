@@ -1,0 +1,70 @@
+{
+  "version": "yuanze2.0.1",
+  "date": "2026-10-20",
+  "status": "local-preview-only",
+  "url": "http://127.0.0.1:8773/",
+  "productionChanged": false,
+  "approvedPosters": 38,
+  "resources": 115,
+  "automated": {
+    "demoTests": 6,
+    "viteBuild": "passed",
+    "projectVerify": "All verification suites passed.",
+    "tasteSourceLint": {
+      "fail": 0,
+      "warn": 0
+    },
+    "standaloneTasteInspector": "not run; browser checks performed through CUA"
+  },
+  "browser": {
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 320,
+        "height": 740,
+        "horizontalOverflow": false
+      }
+    ],
+    "checked": [
+      "arrow controls",
+      "keyboard left/right",
+      "horizontal drag",
+      "category and style filters",
+      "empty-result recovery",
+      "38-item overview",
+      "favorite persistence after reload",
+      "selection-note persistence after reload",
+      "delete local test note",
+      "remove favorite",
+      "mobile menu",
+      "Chinese/English",
+      "HD original loaded at 1448x1086",
+      "200 percent zoom",
+      "original download href",
+      "Escape and focus return",
+      "reduced-motion animation none and transition 0s"
+    ],
+    "consoleErrors": [],
+    "deviceLimit": "Browser viewport emulation; no physical mobile device performance measurement"
+  },
+  "boundary": "Real packaging matching and account synchronization are not connected. Original production features remain unchanged."
+}

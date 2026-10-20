@@ -1,0 +1,72 @@
+{
+  "title": "yuanze2.0.1 · 让灵感走向选型",
+  "question": "目标已确认：选中喜欢的风格，再找相似包材。三张是布局方案；点放大可看完整设计。选择只确定方向，不会上线。",
+  "options": [
+    {
+      "id": "explorer",
+      "kind": "assigned",
+      "label": "风格探索器",
+      "thesis": "先看到真实海报，再用感觉与瓶型逐步缩小选择。",
+      "palette": [
+        "#163e38",
+        "#f6f3ec",
+        "#cc8955"
+      ],
+      "materials": [
+        "完整产品海报",
+        "轻量选择步骤",
+        "大图与风格索引"
+      ],
+      "viewport": "大图占主要位置，旁边三个直观风格选项，下方立即给出下一步。",
+      "risk": "风格标签需要人工整理；不能用视觉感觉推断材质或适配性。",
+      "html": "/Users/icecream/Desktop/包材库/docs/client-showcase-concepts/explorer.html",
+      "comp": "/Users/icecream/Desktop/包材库/.impeccable/mocks/decision/explorer.png"
+    },
+    {
+      "id": "gallery",
+      "kind": "dealt",
+      "label": "沉浸主题展厅",
+      "thesis": "每次走进一个主题，让海报像一场可浏览的品牌展览。",
+      "palette": [
+        "#201a17",
+        "#f3e5d2",
+        "#b97446"
+      ],
+      "materials": [
+        "大幅海报",
+        "章节切换",
+        "常驻选型入口"
+      ],
+      "viewport": "一张主海报配局部露出的下一张；右侧可随时进入相似包材。",
+      "risk": "若只重观赏会降低查找效率，必须保留直接搜索与明显翻页。",
+      "html": "/Users/icecream/Desktop/包材库/docs/client-showcase-concepts/gallery.html",
+      "comp": "/Users/icecream/Desktop/包材库/.impeccable/mocks/decision/gallery.png"
+    },
+    {
+      "id": "board",
+      "kind": "dealt",
+      "label": "灵感搭配台",
+      "thesis": "把喜欢的几张放在一起，看清自己偏好的风格与瓶型。",
+      "palette": [
+        "#f4f0e8",
+        "#164740",
+        "#af714d"
+      ],
+      "materials": [
+        "大小错落的原海报",
+        "收藏清单",
+        "侧边线索栏"
+      ],
+      "viewport": "自由排版的三张海报与右侧搭配清单；选择任意海报可单独找相似。",
+      "risk": "首次使用比单图稍复杂，适合已经有几张喜欢海报的客户。",
+      "html": "/Users/icecream/Desktop/包材库/docs/client-showcase-concepts/board.html",
+      "comp": "/Users/icecream/Desktop/包材库/.impeccable/mocks/decision/board.png"
+    }
+  ],
+  "reroll": true,
+  "steer": true,
+  "buildPath": {
+    "value": "code",
+    "toggle": true
+  }
+}

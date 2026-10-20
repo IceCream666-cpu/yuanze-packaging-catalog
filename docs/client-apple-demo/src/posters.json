@@ -1,0 +1,534 @@
+[
+  {
+    "id": "poster-051",
+    "title": {
+      "zh": "liaose 蓬松洗发水",
+      "en": "liaose Pure volume shampoo"
+    },
+    "category": "hair",
+    "style": "natural",
+    "image": "/assets/poster-051.webp",
+    "thumb": "/assets/poster-051-thumb.webp",
+    "original": "/assets/poster-051-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-042",
+    "title": {
+      "zh": "liaose 木质香氛沐浴露",
+      "en": "liaose Woodland body wash"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-042.webp",
+    "thumb": "/assets/poster-042-thumb.webp",
+    "original": "/assets/poster-042-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-044",
+    "title": {
+      "zh": "liaose 温和洁面泡沫",
+      "en": "liaose Gentle cleansing foam"
+    },
+    "category": "face",
+    "style": "clear",
+    "image": "/assets/poster-044.webp",
+    "thumb": "/assets/poster-044-thumb.webp",
+    "original": "/assets/poster-044-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-047",
+    "title": {
+      "zh": "liaose 海岸香水",
+      "en": "liaose Coastal perfume"
+    },
+    "category": "fragrance",
+    "style": "natural",
+    "image": "/assets/poster-047.webp",
+    "thumb": "/assets/poster-047-thumb.webp",
+    "original": "/assets/poster-047-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-052",
+    "title": {
+      "zh": "liaose 洗护发护理套装",
+      "en": "liaose Hair care ritual"
+    },
+    "category": "hair",
+    "style": "natural",
+    "image": "/assets/poster-052.webp",
+    "thumb": "/assets/poster-052-thumb.webp",
+    "original": "/assets/poster-052-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-046",
+    "title": {
+      "zh": "liaose 多肽洗发水",
+      "en": "liaose Peptide shampoo"
+    },
+    "category": "hair",
+    "style": "clear",
+    "image": "/assets/poster-046.webp",
+    "thumb": "/assets/poster-046-thumb.webp",
+    "original": "/assets/poster-046-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-053",
+    "title": {
+      "zh": "liaose 干性与油性头皮洗发水",
+      "en": "liaose Scalp shampoo"
+    },
+    "category": "hair",
+    "style": "bold",
+    "image": "/assets/poster-053.webp",
+    "thumb": "/assets/poster-053-thumb.webp",
+    "original": "/assets/poster-053-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-043",
+    "title": {
+      "zh": "liaose 微晶洁面啫喱",
+      "en": "liaose Cloud cleanser"
+    },
+    "category": "face",
+    "style": "natural",
+    "image": "/assets/poster-043.webp",
+    "thumb": "/assets/poster-043-thumb.webp",
+    "original": "/assets/poster-043-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-054",
+    "title": {
+      "zh": "liaose 生姜洗发水",
+      "en": "liaose Ginger shampoo"
+    },
+    "category": "hair",
+    "style": "natural",
+    "image": "/assets/poster-054.webp",
+    "thumb": "/assets/poster-054-thumb.webp",
+    "original": "/assets/poster-054-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-055",
+    "title": {
+      "zh": "liaose 白泥洗发水",
+      "en": "liaose White clay shampoo"
+    },
+    "category": "hair",
+    "style": "clear",
+    "image": "/assets/poster-055.webp",
+    "thumb": "/assets/poster-055-thumb.webp",
+    "original": "/assets/poster-055-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-001",
+    "title": {
+      "zh": "胶原水凝胶面膜 · 青绿",
+      "en": "Collagen hydrogel mask · Teal"
+    },
+    "category": "face",
+    "style": "unclassified",
+    "image": "/assets/poster-001.webp",
+    "thumb": "/assets/poster-001-thumb.webp",
+    "original": "/assets/poster-001-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-002",
+    "title": {
+      "zh": "胶原水凝胶面膜 · 紫色",
+      "en": "Collagen hydrogel mask · Purple"
+    },
+    "category": "face",
+    "style": "unclassified",
+    "image": "/assets/poster-002.webp",
+    "thumb": "/assets/poster-002-thumb.webp",
+    "original": "/assets/poster-002-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-003",
+    "title": {
+      "zh": "胶原水凝胶面膜 · 黄色",
+      "en": "Collagen hydrogel mask · Yellow"
+    },
+    "category": "face",
+    "style": "unclassified",
+    "image": "/assets/poster-003.webp",
+    "thumb": "/assets/poster-003-thumb.webp",
+    "original": "/assets/poster-003-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-004",
+    "title": {
+      "zh": "护发油系列",
+      "en": "Hair oil collection"
+    },
+    "category": "hair",
+    "style": "natural",
+    "image": "/assets/poster-004.webp",
+    "thumb": "/assets/poster-004-thumb.webp",
+    "original": "/assets/poster-004-original.webp",
+    "width": 1672,
+    "height": 941
+  },
+  {
+    "id": "poster-005",
+    "title": {
+      "zh": "WHT Glow 护理礼盒",
+      "en": "WHT Glow care gift set"
+    },
+    "category": "sets",
+    "style": "unclassified",
+    "image": "/assets/poster-005.webp",
+    "thumb": "/assets/poster-005-thumb.webp",
+    "original": "/assets/poster-005-original.webp",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "id": "poster-006",
+    "title": {
+      "zh": "Lunéo Dawn 香水",
+      "en": "Lunéo Dawn perfume"
+    },
+    "category": "fragrance",
+    "style": "unclassified",
+    "image": "/assets/poster-006.webp",
+    "thumb": "/assets/poster-006-thumb.webp",
+    "original": "/assets/poster-006-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-007",
+    "title": {
+      "zh": "Noiré Glow 香水",
+      "en": "Noiré Glow perfume"
+    },
+    "category": "fragrance",
+    "style": "unclassified",
+    "image": "/assets/poster-007.webp",
+    "thumb": "/assets/poster-007-thumb.webp",
+    "original": "/assets/poster-007-original.webp",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "id": "poster-008",
+    "title": {
+      "zh": "牙膏系列",
+      "en": "Toothpaste collection"
+    },
+    "category": "oral",
+    "style": "unclassified",
+    "image": "/assets/poster-008.webp",
+    "thumb": "/assets/poster-008-thumb.webp",
+    "original": "/assets/poster-008-original.webp",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "id": "poster-009",
+    "title": {
+      "zh": "精华液系列",
+      "en": "Serum collection"
+    },
+    "category": "face",
+    "style": "bold",
+    "image": "/assets/poster-009.webp",
+    "thumb": "/assets/poster-009-thumb.webp",
+    "original": "/assets/poster-009-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-010",
+    "title": {
+      "zh": "PDRN 胶囊面霜",
+      "en": "PDRN capsule cream"
+    },
+    "category": "face",
+    "style": "unclassified",
+    "image": "/assets/poster-010.webp",
+    "thumb": "/assets/poster-010-thumb.webp",
+    "original": "/assets/poster-010-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-011",
+    "title": {
+      "zh": "Pink Cloud 身体护理套装",
+      "en": "Pink Cloud body care set"
+    },
+    "category": "sets",
+    "style": "bold",
+    "image": "/assets/poster-011.webp",
+    "thumb": "/assets/poster-011-thumb.webp",
+    "original": "/assets/poster-011-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-012",
+    "title": {
+      "zh": "身体磨砂膏 · 黄粉",
+      "en": "Body scrub · Yellow & pink"
+    },
+    "category": "body",
+    "style": "bold",
+    "image": "/assets/poster-012.webp",
+    "thumb": "/assets/poster-012-thumb.webp",
+    "original": "/assets/poster-012-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-013",
+    "title": {
+      "zh": "身体磨砂膏 · 珊瑚青绿",
+      "en": "Body scrub · Coral & aqua"
+    },
+    "category": "body",
+    "style": "bold",
+    "image": "/assets/poster-013.webp",
+    "thumb": "/assets/poster-013-thumb.webp",
+    "original": "/assets/poster-013-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-014",
+    "title": {
+      "zh": "身体磨砂系列",
+      "en": "Body scrub collection"
+    },
+    "category": "body",
+    "style": "unclassified",
+    "image": "/assets/poster-014.webp",
+    "thumb": "/assets/poster-014-thumb.webp",
+    "original": "/assets/poster-014-original.webp",
+    "width": 1600,
+    "height": 983
+  },
+  {
+    "id": "poster-032",
+    "title": {
+      "zh": "liaose 氨基酸沐浴露",
+      "en": "liaose amino acid body wash"
+    },
+    "category": "body",
+    "style": "unclassified",
+    "image": "/assets/poster-032.webp",
+    "thumb": "/assets/poster-032-thumb.webp",
+    "original": "/assets/poster-032-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-033",
+    "title": {
+      "zh": "liaose 茶树沐浴露",
+      "en": "liaose tea tree body wash"
+    },
+    "category": "body",
+    "style": "unclassified",
+    "image": "/assets/poster-033.webp",
+    "thumb": "/assets/poster-033-thumb.webp",
+    "original": "/assets/poster-033-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-034",
+    "title": {
+      "zh": "liaose 山茶花护发素",
+      "en": "liaose camellia conditioner"
+    },
+    "category": "hair",
+    "style": "unclassified",
+    "image": "/assets/poster-034.webp",
+    "thumb": "/assets/poster-034-thumb.webp",
+    "original": "/assets/poster-034-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-035",
+    "title": {
+      "zh": "liaose 植萃沐浴礼盒",
+      "en": "liaose botanical bath gift set"
+    },
+    "category": "sets",
+    "style": "unclassified",
+    "image": "/assets/poster-035.webp",
+    "thumb": "/assets/poster-035-thumb.webp",
+    "original": "/assets/poster-035-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-036",
+    "title": {
+      "zh": "liaose 真空瓶系列 · 紫黄",
+      "en": "liaose airless packaging · Lilac & yellow"
+    },
+    "category": "face",
+    "style": "bold",
+    "image": "/assets/poster-036.webp",
+    "thumb": "/assets/poster-036-thumb.webp",
+    "original": "/assets/poster-036-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-037",
+    "title": {
+      "zh": "liaose 木兰乳香护手油",
+      "en": "liaose magnolia & frankincense hand oil"
+    },
+    "category": "body",
+    "style": "unclassified",
+    "image": "/assets/poster-037.webp",
+    "thumb": "/assets/poster-037-thumb.webp",
+    "original": "/assets/poster-037-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-038",
+    "title": {
+      "zh": "liaose 玻尿酸舒缓面霜",
+      "en": "liaose hyaluronic acid soothing cream"
+    },
+    "category": "face",
+    "style": "unclassified",
+    "image": "/assets/poster-038.webp",
+    "thumb": "/assets/poster-038-thumb.webp",
+    "original": "/assets/poster-038-original.webp",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "poster-039",
+    "title": {
+      "zh": "liaose 面部护理系列",
+      "en": "liaose face care collection"
+    },
+    "category": "face",
+    "style": "clear",
+    "image": "/assets/poster-039.webp",
+    "thumb": "/assets/poster-039-thumb.webp",
+    "original": "/assets/poster-039-original.webp",
+    "width": 1672,
+    "height": 941
+  },
+  {
+    "id": "poster-040",
+    "title": {
+      "zh": "liaose 樱花香氛护理礼盒",
+      "en": "liaose cherry blossom fragrance gift set"
+    },
+    "category": "sets",
+    "style": "unclassified",
+    "image": "/assets/poster-040.webp",
+    "thumb": "/assets/poster-040-thumb.webp",
+    "original": "/assets/poster-040-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-041",
+    "title": {
+      "zh": "liaose 果酸精油身体磨砂膏",
+      "en": "liaose AHA & essential oil body scrub"
+    },
+    "category": "body",
+    "style": "unclassified",
+    "image": "/assets/poster-041.webp",
+    "thumb": "/assets/poster-041-thumb.webp",
+    "original": "/assets/poster-041-original.webp",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "poster-045",
+    "title": {
+      "zh": "liaose 纯净与茉莉沐浴露",
+      "en": "liaose Pure water & jasmine body wash"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-045.webp",
+    "thumb": "/assets/poster-045-thumb.webp",
+    "original": "/assets/poster-045-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-048",
+    "title": {
+      "zh": "liaose 日常洗发水",
+      "en": "liaose Daily shampoo"
+    },
+    "category": "hair",
+    "style": "unclassified",
+    "image": "/assets/poster-048.webp",
+    "thumb": "/assets/poster-048-thumb.webp",
+    "original": "/assets/poster-048-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-049",
+    "title": {
+      "zh": "liaose 滋润洗发水",
+      "en": "liaose Moisture shampoo"
+    },
+    "category": "hair",
+    "style": "clear",
+    "image": "/assets/poster-049.webp",
+    "thumb": "/assets/poster-049-thumb.webp",
+    "original": "/assets/poster-049-original.webp",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "id": "poster-050",
+    "title": {
+      "zh": "liaose 果酸沐浴啫喱",
+      "en": "liaose AHA shower gel"
+    },
+    "category": "body",
+    "style": "unclassified",
+    "image": "/assets/poster-050.webp",
+    "thumb": "/assets/poster-050-thumb.webp",
+    "original": "/assets/poster-050-original.webp",
+    "width": 1447,
+    "height": 1087
+  }
+]
