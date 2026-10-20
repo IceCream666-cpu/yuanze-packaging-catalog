@@ -10,10 +10,20 @@ import path from 'node:path';
 export const UPSTREAM = 'https://bmt.yuanzebeauty.com';
 const BUILD = fileURLToPath(new URL('./dist/', import.meta.url));
 const PREFIX = '/_login/';
+const WORKSPACE = fileURLToPath(new URL('../internal-selection-demo/', import.meta.url));
+const WORKSPACE_FILES = new Set(['workspace.css', 'workspace.js']);
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp4': 'video/mp4', '.svg': 'image/svg+xml' };
 const HOP = new Set(['connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization', 'te', 'trailer', 'transfer-encoding', 'upgrade']);
 
-export function createPreviewServer({ upstreamRequest = https.request, build = BUILD } = {}) {
+export function decorateWorkspaceHTML(html) {
+  // Only the authenticated employee workspace returned by the upstream is eligible.
+  // Login redirects, customer pages, admin tools and APIs are never substituted.
+  if (!/<body\b[^>]*class="[^"]*\bcatalog-workspace\b/.test(html)) return html;
+  return html.replace(/(<body\b[^>]*class=")([^"]*)"/, '$1$2 immersive-workspace"')
+    .replace('</head>', '<link rel="stylesheet" href="/_workspace/workspace.css">\n<script type="module" src="/_workspace/workspace.js"></script>\n</head>');
+}
+
+export function createPreviewServer({ upstreamRequest = https.request, build = BUILD, workspace = WORKSPACE } = {}) {
   return http.createServer(async (req, res) => {
     const origin = `http://127.0.0.1:${req.socket.localPort}`;
     const fail = (status, message) => {
@@ -30,6 +40,21 @@ export function createPreviewServer({ upstreamRequest = https.request, build = B
     let url;
     try { url = new URL(req.url, origin); } catch { return fail(400, '路径无效'); }
     const localLogin = ['/login', '/login.html', '/_login/', '/_login/index.html'].includes(url.pathname);
+    if (url.pathname.startsWith('/_workspace/')) {
+      const name = url.pathname.slice('/_workspace/'.length);
+      if (!WORKSPACE_FILES.has(name)) return fail(404, '文件不存在');
+      if (!['GET', 'HEAD'].includes(req.method)) return fail(405, '不支持的请求');
+      try {
+        const file = path.join(workspace, name), info = await stat(file);
+        res.writeHead(200, {
+          'Content-Type': MIME[path.extname(file)], 'Content-Length': info.size,
+          'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',
+        });
+        if (req.method === 'HEAD') return res.end();
+        createReadStream(file).on('error', () => res.destroy()).pipe(res);
+      } catch { fail(404, '预览文件不存在'); }
+      return;
+    }
     if (localLogin || url.pathname.startsWith(PREFIX)) {
       if (!['GET', 'HEAD'].includes(req.method)) return fail(405, '不支持的请求');
       let relative;
@@ -62,11 +87,34 @@ export function createPreviewServer({ upstreamRequest = https.request, build = B
     // unauthenticated redirect to /login and role boundaries. No local bypass.
     const headers = Object.fromEntries(Object.entries(req.headers).filter(([key]) => !HOP.has(key) && !key.startsWith('x-forwarded-') && !['forwarded', 'host', 'origin', 'referer'].includes(key)));
     headers.host = new URL(UPSTREAM).host;
+    const workspacePage = req.method === 'GET' && ['/', '/index.html'].includes(url.pathname);
+    if (workspacePage) {
+      headers['accept-encoding'] = 'identity';
+      delete headers['if-none-match']; delete headers['if-modified-since'];
+    }
     if (req.headers.origin) headers.origin = UPSTREAM;
     if (req.headers.referer?.startsWith(origin + '/')) headers.referer = UPSTREAM + new URL(req.headers.referer).pathname;
     const upstream = upstreamRequest(new URL(url.pathname + url.search, UPSTREAM), { method: req.method, headers, timeout: 20000 }, response => {
       const output = Object.fromEntries(Object.entries(response.headers).filter(([key]) => !HOP.has(key) && !['strict-transport-security', 'alt-svc'].includes(key)));
       if (typeof output.location === 'string' && output.location.startsWith(UPSTREAM + '/')) output.location = output.location.slice(UPSTREAM.length);
+      if (workspacePage && response.statusCode === 200 && /^text\/html\b/i.test(output['content-type'] || '') && !output['content-encoding']) {
+        const chunks = []; let size = 0;
+        response.on('data', chunk => {
+          size += Buffer.byteLength(chunk);
+          if (size > 4 * 1024 * 1024) { response.destroy(); fail(502, '预览页面过大'); }
+          else chunks.push(Buffer.from(chunk));
+        });
+        response.on('error', () => fail(502, '预览页面加载失败，请重试'));
+        response.on('end', () => {
+          if (res.writableEnded || res.destroyed) return;
+          const html = decorateWorkspaceHTML(Buffer.concat(chunks).toString('utf8'));
+          delete output.etag; delete output['last-modified'];
+          output['cache-control'] = 'no-store';
+          output['content-length'] = Buffer.byteLength(html);
+          res.writeHead(200, output); res.end(html);
+        });
+        return;
+      }
       // Preserve HttpOnly, Secure and SameSite on upstream session cookies.
       res.writeHead(response.statusCode, output);
       response.on('error', () => res.destroy()).pipe(res);

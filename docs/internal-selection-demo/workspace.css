@@ -1,0 +1,267 @@
+/* Local employee preview only. Original product imagery, data and actions remain authoritative.
+   Grid at 1440: 1440 - 232 sidebar - 16 inset - 56 padding = 1136;
+   3 × ((1136 - 2 × 20) / 3) + 2 × 20 = 1136. */
+body.immersive-workspace {
+  --sidebar-width:232px; --teal:#17171b; --ink:#202025; --blue:#17171b;
+  --muted:#64646d; --line:#e8e8ec; --mist:#f2f2f5; --sage:#bfc0c8;
+  --cream:#f7f7f9; --ease-out:cubic-bezier(.2,.7,.2,1);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--ink); background:#101012; font-size:14px;
+  font-variant-numeric:tabular-nums;
+}
+.immersive-workspace ::selection { background:#eadcfb; color:#17171b }
+.immersive-workspace :focus-visible { outline:3px solid #7254ab; outline-offset:3px }
+.immersive-workspace :is(input,textarea) { caret-color:#17171b }
+.immersive-workspace :is(main,dialog,.table-wrap) { scrollbar-color:#b7b7bf #f4f4f6; scrollbar-width:thin }
+.immersive-workspace aside#sidebar {
+  width:var(--sidebar-width); background:#101012; padding:30px 16px 24px;
+  color:#f6f6f8; box-shadow:none;
+}
+.immersive-workspace .sidebar-top { background:#101012 }
+.immersive-workspace .brand { gap:12px }
+.immersive-workspace .brand-mark { width:41px; height:48px; flex-basis:41px }
+.immersive-workspace .brand-words { color:white; font-size:24px }
+.immersive-workspace .brand small { color:#b6b6c0; font-size:10px }
+.immersive-workspace .workspace { color:#a6a6b1; font-size:12px; margin:20px 10px 30px }
+.immersive-workspace nav button {
+  min-height:46px; padding:12px; margin-bottom:6px; border-radius:12px;
+  color:#bfbfc9; gap:11px; justify-content:flex-start; box-shadow:none;
+}
+.immersive-workspace nav button span { color:inherit }
+.immersive-workspace nav button span:last-child { margin-left:auto }
+.immersive-workspace nav button:hover { background:#202024; color:white }
+.immersive-workspace nav button.active { background:#fff; color:#17171b; box-shadow:none }
+.immersive-workspace .ws-icon { width:18px; height:18px; flex:none; vertical-align:middle }
+.immersive-workspace .section-nav-heading { color:#a6a6b1; font-size:12px; letter-spacing:0; border-color:#2b2b30; padding-top:25px }
+.immersive-workspace .section-nav-help { color:#aaaab5; line-height:1.7; font-size:12px }
+.immersive-workspace .business-link { color:#bfbfc9; border-color:#2b2b30; font-size:12px }
+.immersive-workspace .sidebar-note { color:#bfbfc9; font-size:12px }
+.immersive-workspace .sidebar-note small { color:#a6a6b1; font-size:11px }
+.immersive-workspace .sidebar-close { color:#bfbfc9; border-color:#393940; border-radius:9px; flex-basis:32px }
+.immersive-workspace .shell { margin-left:232px; padding:0 16px 16px 0; min-width:0 }
+.immersive-workspace.sidebar-collapsed .shell { margin-left:0; padding-left:16px }
+.immersive-workspace header {
+  background:#101012; color:#bfbfc9; height:72px; min-height:72px;
+  padding:0 24px; border:0; backdrop-filter:none; box-shadow:none; gap:16px;
+}
+.immersive-workspace header > div { gap:12px; flex-wrap:nowrap }
+.immersive-workspace header #account { color:#f4f4f7; font-size:13px }
+.immersive-workspace header .quiet { color:#c4c4cd; border-color:#393940; white-space:nowrap }
+.immersive-workspace .sidebar-toggle { color:#c4c4cd; border-color:#393940; background:#202024; border-radius:10px }
+.immersive-workspace .sidebar-toggle:hover { background:#303036; border-color:#6e6e78 }
+.immersive-workspace main {
+  background:#f7f7f9; border-radius:26px; padding:28px;
+  min-height:calc(100vh - 88px); max-width:none; margin:0;
+}
+.immersive-workspace .head { gap:20px; margin-bottom:22px }
+.immersive-workspace .head h1 { font-size:28px; font-weight:650; letter-spacing:-.03em; color:#17171b }
+.immersive-workspace .head .sub { color:#64646d; font-size:13px; margin-top:5px; line-height:1.7 }
+.immersive-workspace .head .toolbar { flex-shrink:0 }
+.immersive-workspace .btn {
+  color:#3f3f47; background:#fff; border-color:#dcdce3; border-radius:12px;
+  min-height:42px; padding:10px 15px; font-size:13px; box-shadow:none;
+}
+.immersive-workspace .btn:hover { color:#17171b; background:#eeeeF2; border-color:#b8b8c3; box-shadow:none }
+.immersive-workspace .btn.primary { background:#19191e; color:#fff; border-color:#19191e }
+.immersive-workspace .btn.primary:hover { background:#34343b; border-color:#34343b }
+.immersive-workspace :is(input,select,textarea) { border:1px solid #d7d7e0; border-radius:10px; background:white; color:#24242a; font-size:14px }
+.immersive-workspace :is(input,textarea)::placeholder { color:#707079 }
+.immersive-workspace input[type=checkbox] { accent-color:#19191e; width:17px; height:17px }
+.immersive-workspace button:disabled { opacity:1; color:#777781; background:#ededf1; border-color:#dddde4 }
+.immersive-workspace .filters { padding:16px 18px; border:1px solid #e3e3e9; border-radius:20px; box-shadow:none; margin:0 0 20px }
+.immersive-workspace .search-row { gap:8px; align-items:center }
+.immersive-workspace .search-box { flex:1 1 260px; min-width:0 }
+.immersive-workspace .search-box input { height:48px; padding-left:42px; background:#f6f6f8; border-color:#e4e4eb; border-radius:12px }
+.immersive-workspace .search-box input:focus { background:#fff; border-color:#393940 }
+.immersive-workspace .search-box > span { top:14px; left:14px; color:#6a6a74; line-height:1 }
+.immersive-workspace .search-row .btn { min-height:48px; font-size:13px; padding:10px 14px; flex-shrink:0 }
+/* The small colour rim is the login's signature, confined to one action. */
+.immersive-workspace .search-row .image-search-launch {
+  background:linear-gradient(#fff,#fff) padding-box, /* taste-skill-ignore: user-approved login accent, white interior */
+    conic-gradient(from 40deg,#00c6ff,#0072ff,#ff007a,#ff8a00,#00c6ff) border-box; /* taste-skill-ignore: user-approved login colour rim */
+  border:1.5px solid transparent; color:#17171b; gap:7px;
+}
+.immersive-workspace .image-search-launch:hover { background:linear-gradient(#f5f3fa,#f5f3fa) padding-box,conic-gradient(from 40deg,#00c6ff,#0072ff,#ff007a,#ff8a00,#00c6ff) border-box } /* taste-skill-ignore: preserve the approved login accent on hover */
+.immersive-workspace .ws-shortcuts { display:flex; align-items:center; flex-wrap:wrap; gap:4px 7px; margin-top:11px; font-size:12px }
+.immersive-workspace .ws-shortcuts > span { color:#696972; margin-right:3px }
+.immersive-workspace .ws-shortcut { border:0; background:transparent; color:#56565f; border-radius:7px; padding:5px 8px; min-height:30px; font-size:12px }
+.immersive-workspace .ws-shortcut:hover,.immersive-workspace .ws-shortcut[aria-pressed=true] { background:#ededf2; color:#17171b }
+.immersive-workspace .image-search-scope { color:#707079; font-size:11px; margin:10px 0 0 }
+.immersive-workspace .active-filters { border-top:1px solid #ededf1; padding-top:10px; margin-top:10px; gap:6px }
+.immersive-workspace .filter-chip { background:#f0f0f4; color:#494952; border:1px solid #e2e2e9; border-radius:8px; font-size:12px }
+.immersive-workspace .filter-help { color:#64646d; line-height:1.7 }
+.immersive-workspace .multi-filter { border-color:#dcdce3; border-radius:10px; background:#fff; color:#414149 }
+.immersive-workspace .multi-filter summary { color:#414149 }
+.immersive-workspace .multi-option:hover { background:#f1f1f5 }
+.immersive-workspace .results-top { font-size:13px; color:#55555f; margin:0 0 14px; align-items:center }
+.immersive-workspace .results-top strong { color:#19191e }
+.immersive-workspace .catalog { grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px }
+.immersive-workspace .card { border:1px solid #e5e5eb; border-radius:16px; box-shadow:none; transition:border-color .16s }
+.immersive-workspace .card:hover { border-color:#b9b9c5; box-shadow:none; transform:none }
+.immersive-workspace .card:has([data-select]:checked) { border-color:#494953; outline:1px solid #494953 }
+.immersive-workspace .photo { height:226px; padding:16px; background:#fff }
+.immersive-workspace .photo img { object-fit:contain; transition:none; transform:none }
+.immersive-workspace .photo:hover img { transform:none }
+.immersive-workspace .image-label { background:#fffffff2; color:#63636d; border:1px solid #e2e2e8; border-radius:6px; font-size:11px }
+.immersive-workspace .image-count { background:#242429; color:#fff; border:0; box-shadow:none; border-radius:20px; font-size:11px }
+.immersive-workspace .card-body { padding:16px 18px 12px; gap:9px; border-color:#f0f0f3 }
+.immersive-workspace .record-code { font-size:11px; color:#73737e; letter-spacing:.025em }
+.immersive-workspace .card-title { font-size:16px; line-height:1.5; min-height:48px; color:#202025; font-weight:600 }
+.immersive-workspace .tag { background:#f1f1f5; color:#60606b; border-radius:5px; font-size:11px }
+.immersive-workspace .tag.blue { background:#f0f0f4; color:#54545e }
+.immersive-workspace .tag.orange { background:#faf1e5; color:#79551e }
+.immersive-workspace .reference-use-tag { background:#f6f6f8; color:#5c5c66; border-color:#e4e4eb; font-size:11px }
+.immersive-workspace :is(.group-summary,.group-current-record,.image-mapping-note) { color:#6a6a74; font-size:11px }
+.immersive-workspace .group-summary { margin:0; line-height:1.6 }
+.immersive-workspace .quote-preview { min-height:46px; color:#4f4f59; font-size:13px; margin-top:auto; -webkit-line-clamp:2; line-height:1.7 }
+.immersive-workspace .ws-price { display:flex; gap:3px 7px; align-items:baseline; flex-wrap:wrap; padding-top:3px }
+.immersive-workspace .ws-price span { font-size:12px; color:#65656f }
+.immersive-workspace .ws-price strong { color:#1b1b20; font-size:24px; font-weight:600; letter-spacing:-.03em }
+.immersive-workspace .ws-price small { color:#65656f; font-size:12px }
+.immersive-workspace .card-body > .muted { color:#676771; font-size:12px!important; line-height:1.6 }
+.immersive-workspace .card-foot { background:#fff; border-color:#eeeef2; min-height:54px; padding:6px 16px }
+.immersive-workspace .select-label { color:#5d5d67; font-size:12px; min-height:38px }
+.immersive-workspace .favorite { display:grid; place-items:center; width:40px; height:40px; color:#73737e; padding:10px; border-radius:10px }
+.immersive-workspace .favorite:hover { background:#f2f2f6 }
+.immersive-workspace .favorite.on { color:#936720 }
+.immersive-workspace .favorite.on svg { fill:#f0dfb6 }
+.immersive-workspace .pagination { border-color:#e2e2e9; margin-top:24px; gap:14px; font-size:13px }
+.immersive-workspace .page-number { color:#5c5c66; border-radius:9px }
+.immersive-workspace .page-number.active,.immersive-workspace .page-number[aria-current=page] { color:white; background:#19191e; border-color:#19191e }
+.immersive-workspace footer { border:0; color:#b4b4be; padding:20px 24px 4px; font-size:11px }
+.immersive-workspace :is(.panel,.empty) { border-color:#e2e2e9; background:#fff; color:#5c5c66; border-radius:16px; box-shadow:none }
+.immersive-workspace .empty { padding:52px 24px; line-height:1.8 }
+.immersive-workspace .table-wrap { border-radius:16px }
+.immersive-workspace table { font-size:13px }
+.immersive-workspace th { background:#f8f8fa; color:#666670; font-size:12px; font-weight:500 }
+.immersive-workspace td { border-color:#eeeef3; color:#41414a }
+.immersive-workspace .note { background:#f2f2f6; color:#575762; border-color:#e3e3e9; border-radius:10px; line-height:1.75 }
+.immersive-workspace .selection-bar { background:#1b1b20; color:#fff; border:1px solid #44444e; border-radius:16px; bottom:16px; padding:14px 18px; box-shadow:0 10px 28px #0002; gap:14px }
+.immersive-workspace .selection-bar .btn { color:#fff; background:#2c2c33; border-color:#5f5f6a; border-radius:10px }
+.immersive-workspace .selection-bar .btn.primary { color:#17171b; background:#fff; border-color:#fff }
+.immersive-workspace .selection-bar > div { display:flex; flex-wrap:wrap; gap:8px }
+.immersive-workspace .selection-bar .btn { margin:0 }
+.immersive-workspace dialog { background:#fff; color:#24242a; border-radius:24px; width:min(1180px,calc(100vw - 48px)); max-height:92dvh; box-shadow:0 24px 80px #0004 }
+.immersive-workspace dialog::backdrop { background:#0c0c0eb3; backdrop-filter:none }
+.immersive-workspace .dialog-head { background:#fff; padding:22px 28px; border-color:#e8e8ef; gap:16px; z-index:3 }
+.immersive-workspace .dialog-head h2 { font-size:21px; color:#222228; font-weight:600; line-height:1.5 }
+.immersive-workspace .close { width:40px; height:40px; flex-shrink:0; background:#f2f2f5; color:#52525d }
+.immersive-workspace .dialog-content { padding:28px }
+.immersive-workspace .dialog-foot { border-color:#e8e8ef; padding:16px 28px }
+.immersive-workspace .pd-layout { grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:32px }
+.immersive-workspace .pd-layout .detail-photo { background:#f5f5f8; border-color:#e9e9ef; border-radius:16px }
+.immersive-workspace .pd-layout .detail-visual { top:94px }
+.immersive-workspace .quiet { color:#4b4b57 }
+.immersive-workspace .group-selector { background:transparent; border-color:#e2e2e9; border-radius:12px; padding:16px }
+.immersive-workspace .group-selector h3 { color:#2c2c34; font-size:14px }
+.immersive-workspace .group-selector p { color:#6b6b75; font-size:12px }
+.immersive-workspace .group-option { border-color:#dcdce4; background:#f8f8fa; color:#4c4c57; border-radius:10px; min-height:56px }
+.immersive-workspace .group-option small,.immersive-workspace .group-option span { color:inherit; opacity:1; font-size:11px }
+.immersive-workspace .group-option.active { background:#1b1b20; color:#fff; border-color:#1b1b20; box-shadow:none }
+.immersive-workspace .pd-price { background:#f4f3f8; border-radius:16px; padding:20px 22px }
+.immersive-workspace :is(.pd-price-head,.pd-price-value,.pd-estimate-value,.pd-estimate h3,.pd-layout h2) { color:#222228 }
+.immersive-workspace .pd-price-value:has(.pd-currency) { font-size:38px; font-weight:600 }
+.immersive-workspace :is(.pd-price-head small,.pd-terms,.pd-price-value small,.pd-fact dt,.pd-note,.pd-section-head small,.pd-stock span,.pd-gallery-status) { color:#676771; font-size:12px }
+.immersive-workspace .pd-fact { border-color:#e6e6ed }
+.immersive-workspace .pd-fact dd { color:#292930; font-size:17px }
+.immersive-workspace :is(.pd-section-head h3,.pd-stock h3) { color:#292930 }
+.immersive-workspace .pd-table-wrap { border-color:#e0e0e8; border-radius:12px; background:#fff }
+.immersive-workspace .pd-table-wrap th { background:#f7f7fa; color:#666671; font-size:12px }
+.immersive-workspace .pd-table-wrap td { color:#555560; border-color:#ededf2; padding-block:12px }
+.immersive-workspace .pd-table-wrap td:first-child { color:#292930 }
+.immersive-workspace .pd-table-wrap :is(th,td):not(:first-child) { text-align:right }
+.immersive-workspace .pd-basis td { background:#fafafd; color:#676771!important }
+.immersive-workspace .pd-estimate { background:#f7f7fa; border-color:#e0e0e8; border-radius:12px }
+.immersive-workspace .pd-estimate :is(p,small) { color:#676771; font-size:12px }
+.immersive-workspace .source-disclosure { background:#fafafd; border:1px solid #e4e4ec; border-radius:12px; padding:14px 16px; color:#55555f }
+.immersive-workspace .source-disclosure summary { color:#41414c; min-height:24px; line-height:1.7 }
+.immersive-workspace .pd-layout .source-line { color:#6f6f7a; font-size:11px; overflow-wrap:anywhere }
+.immersive-workspace .pd-gallery-controls .pd-image-step { background:#fffffff0; color:#26262d; border-color:#d1d1db; box-shadow:0 3px 10px #0001 }
+.immersive-workspace .detail-visual .thumbnails button[aria-current=true] { border-color:#41414c; box-shadow:none }
+.immersive-workspace .compare-grid th { position:sticky; left:0; min-width:126px; z-index:1; background:#f8f8fb; font-size:12px }
+.immersive-workspace .compare-grid td { min-width:230px; max-width:340px; padding:16px; font-size:13px }
+.immersive-workspace #toast { background:#1b1b20; border-radius:12px; z-index:100 }
+.immersive-workspace :is(.reveal,.page-enter) { opacity:1!important; transform:none!important; animation:none!important }
+.immersive-workspace .sidebar-backdrop { background:#10101299 }
+@media(min-width:1650px) { .immersive-workspace .catalog { grid-template-columns:repeat(4,minmax(0,1fr)) } }
+@media(max-width:1100px) {
+  body.immersive-workspace { --sidebar-width:210px }
+  .immersive-workspace .brand-words { font-size:20px }
+  .immersive-workspace .shell { margin-left:210px; padding-right:12px }
+  .immersive-workspace main { padding:22px; border-radius:22px }
+  .immersive-workspace .catalog { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
+  .immersive-workspace .search-row .search-box { flex-basis:calc(100% - 80px) }
+  .immersive-workspace .head { align-items:flex-start }
+  .immersive-workspace header { padding-inline:16px; gap:10px }
+}
+@media(max-width:900px) {
+  .immersive-workspace .pd-layout { grid-template-columns:1fr; gap:24px }
+  .immersive-workspace .pd-layout .detail-visual { position:static }
+}
+@media(max-width:650px) {
+  body.immersive-workspace { --sidebar-width:265px }
+  .immersive-workspace .shell,.immersive-workspace.sidebar-collapsed .shell { margin-left:0; padding:0 }
+  .immersive-workspace header { height:64px; min-height:64px; padding:8px 16px; flex-wrap:nowrap }
+  .immersive-workspace header > div { gap:7px }
+  .immersive-workspace header .quiet { min-height:40px; padding:8px 4px; border:0; font-size:12px }
+  .immersive-workspace header #account { max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px }
+  .immersive-workspace main { border-radius:24px 24px 0 0; padding:20px 14px 26px; min-height:calc(100dvh - 64px) }
+  .immersive-workspace .head { margin-bottom:16px; gap:10px; align-items:center; display:flex }
+  .immersive-workspace .head h1 { font-size:23px }
+  .immersive-workspace .head .sub { font-size:12px; max-width:30ch }
+  .immersive-workspace .head .toolbar { margin:0; max-width:110px }
+  .immersive-workspace .head .btn { font-size:12px; padding:9px 10px; min-height:42px; white-space:normal }
+  .immersive-workspace .filters { padding:12px; border-radius:16px; margin-bottom:16px }
+  .immersive-workspace .search-row .search-box { flex-basis:calc(100% - 70px) }
+  .immersive-workspace .search-row .btn { flex:1 1 auto; min-height:44px; padding:10px; font-size:12px }
+  .immersive-workspace .search-row .btn[type=submit] { flex:0 0 56px }
+  .immersive-workspace .search-box input { font-size:16px; height:46px }
+  .immersive-workspace .ws-shortcuts { gap:3px; margin-top:7px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px }
+  .immersive-workspace .ws-shortcuts > span { display:none }
+  .immersive-workspace .ws-shortcut { white-space:nowrap; min-height:40px; padding:6px 10px; flex:none }
+  .immersive-workspace .image-search-scope { font-size:11px; line-height:1.6 }
+  .immersive-workspace .active-filters { margin-top:7px; padding-top:7px }
+  .immersive-workspace .filter-chip { min-height:34px; font-size:12px }
+  .immersive-workspace .results-top { font-size:12px; gap:8px }
+  .immersive-workspace .results-top .btn { min-height:40px; font-size:12px; padding:8px 10px }
+  .immersive-workspace .catalog { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px }
+  .immersive-workspace .photo { height:168px; padding:10px }
+  .immersive-workspace .card { border-radius:14px }
+  .immersive-workspace .card-body { padding:12px 10px 9px; gap:8px }
+  .immersive-workspace .record-code { font-size:11px; letter-spacing:0; overflow-wrap:anywhere }
+  .immersive-workspace .card-title { font-size:14px; min-height:42px; line-height:1.5 }
+  .immersive-workspace .tag { padding:3px 5px }
+  .immersive-workspace .ws-price { gap:2px 4px }
+  .immersive-workspace .ws-price span { flex-basis:100%; font-size:11px }
+  .immersive-workspace .ws-price strong { font-size:22px }
+  .immersive-workspace .card-foot { padding:4px 8px; gap:2px; flex-wrap:nowrap }
+  .immersive-workspace .favorite { width:36px; height:44px; padding:9px }
+  .immersive-workspace .select-label { min-height:44px; gap:4px; font-size:11px }
+  .immersive-workspace .selection-bar { bottom:8px; padding:12px; flex-wrap:wrap; gap:9px; border-radius:14px }
+  .immersive-workspace .selection-bar > div { flex:1; justify-content:flex-end; gap:5px }
+  .immersive-workspace .selection-bar .btn { min-height:42px; font-size:12px; padding:8px }
+  .immersive-workspace dialog { width:calc(100vw - 16px); max-height:calc(100dvh - 24px); border-radius:20px }
+  .immersive-workspace .dialog-head { padding:16px; gap:10px }
+  .immersive-workspace .dialog-head h2 { font-size:18px }
+  .immersive-workspace .dialog-content { padding:16px }
+  .immersive-workspace .dialog-foot { padding:14px 16px }
+  .immersive-workspace .pd-layout .detail-photo { max-height:330px }
+  .immersive-workspace .pd-price-value:has(.pd-currency) { font-size:34px }
+  .immersive-workspace .group-option { flex:1; min-width:120px }
+  .immersive-workspace .pd-table-wrap th { font-size:11px }
+  .immersive-workspace .pd-table-wrap td { font-size:12px }
+  .immersive-workspace .compare-grid th { min-width:96px; max-width:96px; white-space:normal }
+  .immersive-workspace .compare-grid td { min-width:185px }
+  .immersive-workspace .table-wrap { max-width:100%; overflow:auto }
+}
+@media(max-width:359px) {
+  .immersive-workspace .catalog { grid-template-columns:1fr }
+  .immersive-workspace .photo { height:230px }
+  .immersive-workspace .head { align-items:flex-start }
+  .immersive-workspace .head .toolbar { max-width:none }
+  .immersive-workspace .head .toolbar .btn { white-space:nowrap }
+  .immersive-workspace header > div { gap:3px }
+}
+@media(prefers-reduced-motion:reduce) {
+  .immersive-workspace *, .immersive-workspace *::before,.immersive-workspace *::after { scroll-behavior:auto!important; transition:none!important; animation:none!important }
+}

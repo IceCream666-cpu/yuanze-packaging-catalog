@@ -1,0 +1,60 @@
+{
+  "checked_at": "2026-10-20T11:41:30.133739+08:00",
+  "status": "verified local preview; not deployed",
+  "url": "http://127.0.0.1:8772/",
+  "scope": "Local appearance overlay on authenticated upstream employee HTML; live APIs and role boundaries retained.",
+  "validation": {
+    "login_preview_tests": 10,
+    "root_python": 160,
+    "backend_python": 249,
+    "deployment_python": 32,
+    "existing_frontend_suites": "all passed",
+    "build": "passed",
+    "source_lint": {
+      "fail": 0,
+      "warn": 6,
+      "review": "Approved login gradient exception; disabled blur, overlay shadows and hidden old ordinal reviewed."
+    }
+  },
+  "browser": {
+    "safari": "Native Safari verified list, shortcuts and bare prices; background-window update fixed.",
+    "widths": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "page_horizontal_overflow": false,
+    "tablet_sidebar_overlap": false,
+    "videos_in_workspace": 0,
+    "features_verified": [
+      "Real employee sign-in",
+      "Common-use query",
+      "Expand/collapse filters",
+      "No-result state and reset",
+      "Two-item comparison",
+      "Image-search dialog",
+      "Chinese/English",
+      "Keyboard search input to submit",
+      "250mL 1.35 / 500mL 1.60 and corresponding gallery/original/download URLs",
+      "Mobile specification selector"
+    ]
+  },
+  "limitations": [
+    "Local only; production files and services untouched.",
+    "Preview uses real data; original actions can write to the logged-in account.",
+    "No favorite/save-plan write, download/export execution or new image-search upload performed this round.",
+    "Mobile widths simulated on desktop; no physical-device FPS measurement.",
+    "One upstream 400 on Safari refresh recovered on the next ordinary reload; no production change made."
+  ],
+  "screenshots": [
+    "outputs/internal-selection-20261020/list-desktop.png",
+    "outputs/internal-selection-20261020/list-mobile.png",
+    "outputs/internal-selection-20261020/detail-desktop.png",
+    "outputs/internal-selection-20261020/detail-mobile.png"
+  ],
+  "source_sha256": {
+    "workspace.css": "f1749803b1a0d4bfd7bbca49c50296c62c16595b1f885c8a4e1eba089fb43934",
+    "workspace.js": "ca83bf562d35de8510b916abe7f1fd3bdc9162b41549fdd06e216f77f9f75ece"
+  }
+}
