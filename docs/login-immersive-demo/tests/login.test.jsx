@@ -47,7 +47,7 @@ test('input hints keep whitespace and invisible-character protections', () => {
 });
 
 test('React form prevents double submission, handles media failure, focus and real transport by default', async () => {
-  const dom = new JSDOM('<div id="root"></div>', { url: 'http://localhost:8772/' });
+  const dom = new JSDOM('<div id="root"></div>', { url: 'http://localhost:8772/', pretendToBeVisual: true });
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, IS_REACT_ACT_ENVIRONMENT: true });
   const listeners = new Set();
   const media = { matches: false, addEventListener: (_, fn) => listeners.add(fn), removeEventListener: (_, fn) => listeners.delete(fn) };
@@ -117,6 +117,11 @@ test('React form prevents double submission, handles media failure, focus and re
   await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('loadedmetadata')));
   assert.equal(document.querySelector('[aria-label="播放背景视频"]').getAttribute('aria-pressed'), 'true');
   assert.equal(document.querySelector('button[type=submit]').disabled, false);
+  Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+  await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+  Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+  await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+  assert.ok([...document.querySelectorAll('video')].every(video => !video.autoplay), 'Returning does not retry blocked autoplay');
   await act(async () => document.querySelector('form').dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true })));
   assert.match(document.querySelector('[role=alert]').textContent, /超时/);
   assert.equal(document.querySelector('button[type=submit]').disabled, false);
@@ -145,12 +150,59 @@ test('React form prevents double submission, handles media failure, focus and re
   }
 });
 
-test('both video placements pause together, survive form rerenders and respect reduced motion and visibility', async () => {
+test('initially hidden pages wait until visible and save-data requires explicit playback', async () => {
+  const dom = new JSDOM('<div id="root"></div>', { url: 'http://localhost:8772/login' });
+  Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, IS_REACT_ACT_ENVIRONMENT: true });
+  window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+  const connectionDescriptor = Object.getOwnPropertyDescriptor(navigator, 'connection');
+  const connectionListeners = new Set();
+  const connection = { saveData: false, addEventListener: (_, fn) => connectionListeners.add(fn), removeEventListener: (_, fn) => connectionListeners.delete(fn) };
+  Object.defineProperty(navigator, 'connection', { configurable: true, value: connection });
+  const playing = new Set();
+  window.HTMLMediaElement.prototype.play = async function () { playing.add(this); };
+  window.HTMLMediaElement.prototype.pause = function () { playing.delete(this); };
+  const root = createRoot(document.querySelector('#root'));
+  try {
+    assert.equal(document.hidden, true);
+    await act(async () => root.render(<App />));
+    assert.equal(playing.size, 0);
+    await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('loadedmetadata')));
+    await act(async () => document.querySelector('[aria-label="播放背景视频"]').click());
+    assert.equal(playing.size, 0, 'Play while hidden requests playback without defeating temporary suspension');
+    Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+    await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+    assert.equal(playing.size, 2);
+    await act(async () => { connection.saveData = true; for (const fn of connectionListeners) fn(); });
+    assert.equal(playing.size, 0);
+    await act(async () => { connection.saveData = false; for (const fn of connectionListeners) fn(); });
+    assert.equal(playing.size, 0, 'Turning off save-data does not unexpectedly restart animation');
+    await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('loadedmetadata')));
+    await act(async () => document.querySelector('[aria-label="播放背景视频"]').click());
+    assert.equal(playing.size, 2);
+  } finally {
+    await act(async () => root.unmount());
+    assert.equal(playing.size, 0);
+    assert.equal(connectionListeners.size, 0);
+    if (connectionDescriptor) Object.defineProperty(navigator, 'connection', connectionDescriptor);
+    else delete navigator.connection;
+    dom.window.close();
+  }
+});
+
+test('motion resumes after temporary suspension while preserving deliberate pauses and accessibility preferences', async () => {
   const dom = new JSDOM('<div id="root"></div>', { url: 'http://localhost:8772/login', pretendToBeVisual: true });
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, IS_REACT_ACT_ENVIRONMENT: true });
   const listeners = new Set();
   const query = { matches: false, addEventListener: (_, fn) => listeners.add(fn), removeEventListener: (_, fn) => listeners.delete(fn) };
   window.matchMedia = () => query;
+  let intersect;
+  let disconnected = false;
+  const originalObserver = globalThis.IntersectionObserver;
+  globalThis.IntersectionObserver = class {
+    constructor(callback) { intersect = callback; }
+    observe() {}
+    disconnect() { disconnected = true; }
+  };
   const playing = new Set();
   let playCalls = 0;
   window.HTMLMediaElement.prototype.play = async function () { playing.add(this); playCalls++; };
@@ -173,8 +225,23 @@ test('both video placements pause together, survive form rerenders and respect r
     await act(async () => document.querySelector('[aria-label="暂停背景视频"]').click());
     assert.equal(playing.size, 0);
     assert.ok(videos.every(video => !video.autoplay));
+    assert.equal(document.querySelector('[data-login-motion]').dataset.loginMotion, 'paused');
+    // A manual pause survives both tab switches and leaving/reentering the viewport.
+    Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+    await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+    await act(async () => intersect([{isIntersecting: false}]));
+    Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+    await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+    await act(async () => intersect([{isIntersecting: true}]));
+    assert.equal(playing.size, 0);
     await act(async () => document.querySelector('[aria-label="播放背景视频"]').click());
     assert.equal(playing.size, 2);
+    assert.equal(document.querySelector('[data-login-motion]').dataset.loginMotion, 'playing');
+
+    await act(async () => intersect([{isIntersecting: false}]));
+    assert.equal(playing.size, 0);
+    await act(async () => intersect([{isIntersecting: true}]));
+    assert.equal(playing.size, 2, 'Scrolling the scene back into view resumes it');
 
     // Failure of one placement does not disable the login or the shared control.
     await act(async () => backdrop.dispatchEvent(new window.Event('error')));
@@ -187,14 +254,18 @@ test('both video placements pause together, survive form rerenders and respect r
     assert.equal(document.querySelector('#password').type, 'password');
     Object.defineProperty(document, 'hidden', { configurable: true, value: false });
     await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
-    assert.equal(playing.size, 0, 'Returning to the tab does not override a paused state');
-    await act(async () => document.querySelector('[aria-label="播放背景视频"]').click());
+    assert.equal(playing.size, 2, 'Returning to the tab resumes a previously running scene');
     await act(async () => { query.matches = true; for (const fn of listeners) fn(); });
     assert.equal(playing.size, 0);
+    await act(async () => intersect([{isIntersecting: false}]));
+    await act(async () => intersect([{isIntersecting: true}]));
+    assert.equal(playing.size, 0, 'Visibility does not override reduced-motion preference');
   } finally {
     await act(async () => root.unmount());
     assert.equal(playing.size, 0);
     assert.equal(listeners.size, 0);
+    assert.equal(disconnected, true);
+    globalThis.IntersectionObserver = originalObserver;
     dom.window.close();
   }
 });

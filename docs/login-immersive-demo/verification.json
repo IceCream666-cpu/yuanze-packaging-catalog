@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-10-20T12:49:45+08:00",
-  "scope": "Local orange/pink glow video and form glow refinement. Authentication, role boundaries and production services unchanged.",
+  "checked_at": "2026-10-20T13:34:15+08:00",
+  "scope": "Local animation refinement: visible drifting/breathing glow loop, subtle form breathing, reliable temporary pause/resume. Authentication and production unchanged.",
   "preview_url": "http://127.0.0.1:8772/login",
   "build": "passed",
-  "test_groups": 11,
+  "test_groups": 12,
   "existing_regression": {
     "root_python": 160,
     "backend_python": 249,
@@ -45,7 +45,7 @@
       740
     ],
     "horizontal_overflow": false,
-    "keyboard_account_to_password": "passed",
+    "keyboard_account_to_password": "passed in preceding UI revision; form markup unchanged",
     "pause_resume_both_videos": "passed",
     "video_count": 2,
     "same_video_url": true,
@@ -57,11 +57,22 @@
     "fullscreen_backdrop_blur_px": 8,
     "clear_panel_filter": "none",
     "console_errors": [],
-    "safari": "Existing login tab refreshed; orange/pink video and form glow visually verified",
+    "safari": "Existing preview tab refreshed; updated layout visually checked. Background Safari remained suspended, so autoplay in foreground was not independently measured.",
     "form_glow_pointer_events": "none",
     "tablet_layout_verified_previous_revision": [
       768,
       1024
+    ],
+    "form_glow_play_state": "running during playback; paused with shared control",
+    "video_progress_samples_seconds": [
+      [
+        0.103396,
+        0.102068
+      ],
+      [
+        2.194513,
+        2.194481
+      ]
     ]
   },
   "automated_media_cases": [
@@ -74,7 +85,14 @@
     "autoplay refusal permits manual playback",
     "media failure does not disable login",
     "new glow poster attached to both video placements",
-    "decorative form glow hidden from accessibility and contains no controls"
+    "decorative form glow hidden from accessibility and contains no controls",
+    "temporary hidden/offscreen suspension resumes previously running motion",
+    "manual pause survives visibility changes",
+    "initial hidden page waits until visible",
+    "Play action during temporary suspension preserves requested playback",
+    "save-data pauses until explicit playback",
+    "autoplay rejection does not retry on visibility changes",
+    "form glow uses shared running/paused state"
   ],
   "limitations": [
     "Phone widths were simulated in the desktop browser, not measured on physical phones.",
@@ -82,10 +100,10 @@
     "The new login is local only; no production deployment or server restart."
   ],
   "screenshots": [
-    "outputs/login-glow-20261020/desktop.png",
-    "outputs/login-glow-20261020/mobile.png",
-    "outputs/login-glow-20261020/mobile-320-english.png",
-    "outputs/login-glow-20261020/safari.png"
+    "outputs/login-animation-20261020/desktop.png",
+    "outputs/login-animation-20261020/mobile.png",
+    "outputs/login-animation-20261020/mobile-320-english.png",
+    "outputs/login-animation-20261020/safari.png"
   ],
   "previous_media": {
     "before_mp4_bytes": 4354905,
@@ -100,21 +118,28 @@
     "width": 576,
     "height": 768,
     "fps": 24,
-    "durationSeconds": 12,
+    "durationSeconds": 10,
     "codec": "H.264 / yuv420p",
     "fastStart": true,
     "audio": false,
     "loopBoundaryPixelsEqual": true,
     "fullDecode": "passed",
+    "motion": {
+      "quarterLoopMeanPixelDelta": 15.485,
+      "lastToFirstMeanPixelDelta": 0.34
+    },
     "files": {
       "login-glow.mp4": {
-        "bytes": 301343,
-        "sha256": "d70472923d0fd52c7a866ede77e823977ff722b2c8dc9501c4e610a6954c210a"
+        "bytes": 291846,
+        "sha256": "3c1ec85a0464a3bbe6f740b8e6589865776e339c2bc4bfc7e72b50c253893851"
       },
       "login-glow-poster.jpg": {
-        "bytes": 31747,
-        "sha256": "b70814ca6a7c77dc366e9c85a99ad9e95caf6e915644547064b7c485f7077e12"
+        "bytes": 31178,
+        "sha256": "13eab9b862f347468624d541335027443c673f0d3bcc94fe80e55632e3c3433d"
       }
     }
+  },
+  "design_scan": {
+    "layout": "passed; no findings"
   }
 }

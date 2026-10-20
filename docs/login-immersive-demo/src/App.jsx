@@ -94,7 +94,7 @@ export default function App({ transport = requestJSON, navigate = path => window
   }
 
   return (
-    <div className="relative isolate flex min-h-screen flex-col items-center justify-center bg-black px-4 py-7 text-[#17171b] sm:px-8 sm:py-12">
+    <div data-login-motion={motion.playing ? 'playing' : 'paused'} className="relative isolate flex min-h-screen flex-col items-center justify-center bg-black px-4 py-7 text-[#17171b] sm:px-8 sm:py-12">
       <MotionBackdrop videoRef={motion.backdropRef} playing={motion.playing} />
       <div className="login-backdrop-shade pointer-events-none fixed inset-0 -z-10 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
 
@@ -153,20 +153,25 @@ export default function App({ transport = requestJSON, navigate = path => window
 function useLoginMotion() {
   const backdropRef = useRef(null);
   const panelRef = useRef(null);
-  const [playing, setPlaying] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
-  const toggle = useCallback(() => setPlaying(value => !value), []);
+  // Keep user intent separate from temporary suspension. Returning to the page
+  // resumes a running scene, but never overrides a deliberate pause.
+  const [requested, setRequested] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
+  const [pageVisible, setPageVisible] = useState(() => !document.hidden);
+  const [inView, setInView] = useState(true);
+  const playing = requested && pageVisible && inView;
+  const toggle = useCallback(() => setRequested(!playing), [playing]);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const onChange = () => { if (query.matches) setPlaying(false); };
-    const onHidden = () => { if (document.hidden) setPlaying(false); };
+    const onChange = () => { if (query.matches) setRequested(false); };
+    const onHidden = () => setPageVisible(!document.hidden);
     const connection = navigator.connection;
-    const onSaveData = () => { if (connection?.saveData) setPlaying(false); };
+    const onSaveData = () => { if (connection?.saveData) setRequested(false); };
     query.addEventListener('change', onChange);
     document.addEventListener('visibilitychange', onHidden);
     connection?.addEventListener?.('change', onSaveData);
     const observer = typeof IntersectionObserver === 'function' ? new IntersectionObserver(entries => {
-      if (!entries[0]?.isIntersecting) setPlaying(false);
+      if (entries[0]) setInView(entries[0].isIntersecting);
     }) : null;
     if (panelRef.current) observer?.observe(panelRef.current);
     return () => {
@@ -189,7 +194,7 @@ function useLoginMotion() {
       video.play()?.catch(error => {
         // A failed media file keeps its poster. Autoplay refusal stops both
         // placements, allowing the user to start them together explicitly.
-        if (active && error.name === 'NotAllowedError') setPlaying(false);
+        if (active && error.name === 'NotAllowedError') setRequested(false);
       });
     }
     return () => { active = false; videos.forEach(video => video.pause()); };

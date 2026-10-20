@@ -22,7 +22,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid #a75420; outline-offs
   background:
     radial-gradient(ellipse 85% 66% at 0% 8%, rgba(255, 147, 91, .24), rgba(255, 194, 155, .12) 45%, transparent 80%),
     radial-gradient(ellipse 74% 56% at 90% 96%, rgba(255, 151, 190, .13), rgba(255, 204, 216, .06) 44%, transparent 78%);
+  animation: glow-breathe 10s ease-in-out infinite;
+  animation-play-state: paused;
 }
+[data-login-motion="playing"] .login-form-glow { animation-play-state: running; }
+@keyframes glow-breathe { 0%, 100% { opacity: .58; } 50% { opacity: 1; } }
 .orb-border, .orb-glow { background: conic-gradient(#00c6ff, #0072ff, #ff007a, #ff8a00, #00c6ff); }
 .submit-orb:is(:hover, :focus-visible):not(:disabled) .orb-border,
 .submit-orb:is(:hover, :focus-visible):not(:disabled) .orb-glow { animation: orbit 2.4s linear infinite; }
