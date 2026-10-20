@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowRight, Eye, EyeOff, LoaderCircle, LockKeyhole, Pause, Play, Check, Globe2, CircleAlert } from 'lucide-react';
 import { authenticate, inputWarnings } from './login-contract.js';
 
@@ -60,6 +60,7 @@ export default function App({ transport = requestJSON, navigate = path => window
   const [helpOpen, setHelpOpen] = useState(false);
   const [result, setResult] = useState(null);
   const heading = useRef(null);
+  const motion = useLoginMotion();
   const warnings = inputWarnings(username, password, capsLock);
 
   useEffect(() => {
@@ -94,15 +95,13 @@ export default function App({ transport = requestJSON, navigate = path => window
 
   return (
     <div className="relative isolate flex min-h-screen flex-col items-center justify-center bg-black px-4 py-7 text-[#17171b] sm:px-8 sm:py-12">
-      <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-black" aria-hidden="true">
-        <img src={POSTER_URL} alt="" className="h-full w-full scale-105 object-cover blur-sm" />
-      </div>
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-black/10" aria-hidden="true" />
+      <MotionBackdrop videoRef={motion.backdropRef} playing={motion.playing} />
+      <div className="login-backdrop-shade pointer-events-none fixed inset-0 -z-10 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
 
       <main className="login-card relative z-10 flex w-full max-w-[1040px] flex-col rounded-[2.5rem] border border-gray-200 bg-white p-3 shadow-[0_32px_100px_rgba(0,0,0,0.48)] md:min-h-[650px] md:flex-row" aria-label="源泽登录">
-        <MotionPanel language={language} />
+        <MotionPanel language={language} videoRef={motion.panelRef} playing={motion.playing} toggle={motion.toggle} />
 
-        <section className="login-form-panel relative flex min-w-0 flex-1 flex-col justify-center px-5 pb-7 pt-14 sm:px-10 md:w-[55%] md:px-12 md:py-16" aria-labelledby="loginTitle">
+        <section className="login-form-panel relative flex min-w-0 flex-1 flex-col justify-center px-5 pb-7 pt-14 sm:px-10 md:w-[55%] md:px-12 md:py-12" aria-labelledby="loginTitle">
           <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 rounded-full bg-gradient-to-br from-[#FF512F] to-[#F09819] opacity-20 blur-[80px]" aria-hidden="true" />
           <button type="button" className="language-button absolute right-5 top-4 z-10 inline-flex min-h-10 items-center gap-1.5 rounded-full px-2 text-xs text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 md:right-7 md:top-5" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')} aria-label={language === 'zh' ? 'Switch to English' : '切换到中文'}><Globe2 size={14} />{language === 'zh' ? 'English' : '中文'}</button>
           <div className="relative z-10 mx-auto w-full max-w-[386px]">
@@ -117,14 +116,14 @@ export default function App({ transport = requestJSON, navigate = path => window
               <div className="my-7 rounded-2xl border border-gray-200 bg-gray-50 p-4 text-sm"><span>{t[result.role]}</span><code className="mt-1 block text-xs text-gray-500">{result.destination}</code></div>
               <button type="button" onClick={() => navigate(result.destination)} className="w-full rounded-2xl bg-[#141417] px-4 py-4 text-sm font-medium text-white">{t.back}</button>
             </div> : <>
-              <header className="text-center"><h1 id="loginTitle" className="text-[40px] font-semibold leading-[1.18] tracking-[-0.05em] text-[#151519]">Welcome back</h1><p className="mt-3 text-sm text-gray-500">{t.subtitle}</p></header>
+              <header className="text-center"><h1 id="loginTitle" className="text-[40px] font-semibold leading-[1.18] tracking-[-0.04em] text-[#151519]">Welcome back</h1><p className="mt-3 text-sm text-gray-500">{t.subtitle}</p></header>
               <form className="mt-9" onSubmit={submit} aria-busy={busy} aria-describedby="loginHelp" autoComplete="on">
                 <div className="field-group rounded-[1.25rem] border border-gray-200 bg-gray-50 p-2 transition focus-within:border-gray-900 focus-within:bg-white">
-                  <div className="px-3 py-1.5"><label htmlFor="username" className="block text-[11px] font-medium text-gray-500">{t.username}</label><input id="username" name="username" type="text" className="mt-1 block min-h-7 w-full bg-transparent text-[16px] text-gray-900 outline-none placeholder:text-gray-400" placeholder={t.userPlaceholder} autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} required value={username} onChange={event => { setUsername(event.target.value); setError(''); }} aria-describedby={warnings.length ? 'inputHint' : undefined} /></div>
+                  <div className="px-3 py-1.5"><label htmlFor="username" className="block text-[11px] font-medium text-gray-500">{t.username}</label><input id="username" name="username" type="text" className="mt-1 block min-h-7 w-full bg-transparent text-[16px] text-gray-900 outline-none placeholder:text-gray-500" placeholder={t.userPlaceholder} autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} required value={username} onChange={event => { setUsername(event.target.value); setError(''); }} aria-describedby={warnings.length ? 'inputHint' : undefined} /></div>
                 </div>
                 <div className="field-group mt-3 flex items-center gap-1 rounded-[1.25rem] border border-gray-200 bg-gray-50 p-2 transition focus-within:border-gray-900 focus-within:bg-white">
-                  <div className="min-w-0 flex-1 px-3 py-1.5"><label htmlFor="password" className="block text-[11px] font-medium text-gray-500">{t.password}</label><input id="password" name="password" type={visible ? 'text' : 'password'} className="mt-1 block min-h-7 w-full bg-transparent text-[16px] text-gray-900 outline-none placeholder:text-gray-400" placeholder={t.passwordPlaceholder} autoComplete="current-password" autoCapitalize="none" autoCorrect="off" spellCheck={false} required value={password} onChange={event => { setPassword(event.target.value); setError(''); }} onKeyUp={event => setCapsLock(event.getModifierState('CapsLock'))} onBlur={() => setCapsLock(false)} aria-describedby={warnings.length ? 'inputHint' : undefined} aria-invalid={error === 'error' ? true : undefined} /></div>
-                  <button type="button" className="eye-button flex h-11 w-9 shrink-0 items-center justify-center rounded-lg text-gray-400 transition hover:text-gray-900" aria-label={visible ? t.hide : t.show} aria-controls="password" aria-pressed={visible} onClick={() => setVisible(!visible)}>{visible ? <EyeOff size={17} strokeWidth={1.6} /> : <Eye size={17} strokeWidth={1.6} />}</button>
+                  <div className="min-w-0 flex-1 px-3 py-1.5"><label htmlFor="password" className="block text-[11px] font-medium text-gray-500">{t.password}</label><input id="password" name="password" type={visible ? 'text' : 'password'} className="mt-1 block min-h-7 w-full bg-transparent text-[16px] text-gray-900 outline-none placeholder:text-gray-500" placeholder={t.passwordPlaceholder} autoComplete="current-password" autoCapitalize="none" autoCorrect="off" spellCheck={false} required value={password} onChange={event => { setPassword(event.target.value); setError(''); }} onKeyUp={event => setCapsLock(event.getModifierState('CapsLock'))} onBlur={() => setCapsLock(false)} aria-describedby={warnings.length ? 'inputHint' : undefined} aria-invalid={error === 'error' ? true : undefined} /></div>
+                  <button type="button" className="eye-button flex h-11 w-9 shrink-0 items-center justify-center rounded-lg text-gray-500 transition hover:text-gray-900" aria-label={visible ? t.hide : t.show} aria-controls="password" aria-pressed={visible} onClick={() => setVisible(!visible)}>{visible ? <EyeOff size={17} strokeWidth={1.6} /> : <Eye size={17} strokeWidth={1.6} />}</button>
                   <button type="submit" className="submit-orb group relative m-1 flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full" disabled={busy} aria-label={busy ? t.busy : t.login}>
                     <span className="orb-glow pointer-events-none absolute -inset-1 rounded-full opacity-0 blur-[9px] transition-opacity duration-300" aria-hidden="true" />
                     <span className="orb-border pointer-events-none absolute inset-0 rounded-full" aria-hidden="true" />
@@ -149,45 +148,80 @@ export default function App({ transport = requestJSON, navigate = path => window
   );
 }
 
-// Form typing does not rerender this media subtree. Only one video decoder is
-// active; the outer backdrop is a still frame of the same clip.
-const MotionPanel = memo(function MotionPanel({ language }) {
-  const t = copy[language];
-  const videoRef = useRef(null);
-  const [videoState, setVideoState] = useState('loading');
+// Two placements share one lightweight, same-origin clip and one playback
+// control. Stable refs/props keep form input out of the media render path.
+function useLoginMotion() {
+  const backdropRef = useRef(null);
+  const panelRef = useRef(null);
   const [playing, setPlaying] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
+  const toggle = useCallback(() => setPlaying(value => !value), []);
+
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onChange = () => { if (query.matches) setPlaying(false); };
     const onHidden = () => { if (document.hidden) setPlaying(false); };
+    const connection = navigator.connection;
+    const onSaveData = () => { if (connection?.saveData) setPlaying(false); };
     query.addEventListener('change', onChange);
     document.addEventListener('visibilitychange', onHidden);
+    connection?.addEventListener?.('change', onSaveData);
     const observer = typeof IntersectionObserver === 'function' ? new IntersectionObserver(entries => {
       if (!entries[0]?.isIntersecting) setPlaying(false);
     }) : null;
-    if (videoRef.current) observer?.observe(videoRef.current);
-    return () => { query.removeEventListener('change', onChange); document.removeEventListener('visibilitychange', onHidden); observer?.disconnect(); };
+    if (panelRef.current) observer?.observe(panelRef.current);
+    return () => {
+      query.removeEventListener('change', onChange);
+      document.removeEventListener('visibilitychange', onHidden);
+      connection?.removeEventListener?.('change', onSaveData);
+      observer?.disconnect();
+    };
   }, []);
+
   useEffect(() => {
-    const video = videoRef.current;
-    if (playing) video?.play()?.catch(() => setPlaying(false));
-    else video?.pause();
+    const videos = [backdropRef.current, panelRef.current].filter(Boolean);
+    let active = true;
+    // Align on resume only; continuous seeking would add decoding work.
+    if (playing && videos.length === 2 && videos.every(video => video.readyState >= 1 && !video.error)) {
+      videos[0].currentTime = videos[1].currentTime;
+    }
+    for (const video of videos) {
+      if (!playing || video.error) { video.pause(); continue; }
+      video.play()?.catch(error => {
+        // A failed media file keeps its poster. Autoplay refusal stops both
+        // placements, allowing the user to start them together explicitly.
+        if (active && error.name === 'NotAllowedError') setPlaying(false);
+      });
+    }
+    return () => { active = false; videos.forEach(video => video.pause()); };
   }, [playing]);
+
+  return { backdropRef, panelRef, playing, toggle };
+}
+
+const MotionBackdrop = memo(function MotionBackdrop({ videoRef, playing }) {
+  return <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-black" aria-hidden="true">
+    <video ref={videoRef} data-login-video="backdrop" src={VIDEO_URL} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload="metadata" tabIndex={-1} className="h-full w-full scale-105 object-cover" />
+  </div>;
+});
+
+const MotionPanel = memo(function MotionPanel({ language, videoRef, playing, toggle }) {
+  const t = copy[language];
+  const [videoState, setVideoState] = useState('loading');
   useEffect(() => {
     const timer = setTimeout(() => setVideoState(state => state === 'loading' ? 'unavailable' : state), 12000);
     return () => clearTimeout(timer);
   }, []);
   return (
         <section className="video-panel relative h-[225px] shrink-0 overflow-hidden rounded-[2rem] bg-[#0c0c0e] sm:h-[280px] md:h-auto md:w-[45%]" aria-label={language === 'zh' ? '灵感视频' : 'Inspiration video'}>
-          <video ref={videoRef} src={VIDEO_URL} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload="metadata" tabIndex={-1} aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" onLoadedMetadata={() => setVideoState('ready')} onPlaying={() => setVideoState('ready')} onError={() => setVideoState('unavailable')} />
+          <video ref={videoRef} data-login-video="panel" src={VIDEO_URL} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload="metadata" tabIndex={-1} aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" onLoadedMetadata={() => setVideoState('ready')} onPlaying={() => setVideoState('ready')} onError={() => setVideoState('unavailable')} />
           {videoState === 'unavailable' && <div className="fallback-composition pointer-events-none absolute inset-0 flex flex-col justify-between px-8 py-9 text-white md:px-10 md:py-11">
             <div className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] text-white/65"><span className="h-1.5 w-1.5 rounded-full bg-[#ff7847]" /> A WORLD OF POSSIBILITIES</div>
             <div><p className="fallback-title text-[33px] font-medium leading-[1.12] tracking-[-0.05em] sm:text-[42px] md:text-[52px]">Good ideas.<br /><span className="text-white/45">Great beginnings.</span></p><p className="mt-5 hidden text-[10px] tracking-[0.3em] text-white/50 md:block">YUANZE MATERIAL LIBRARY</p></div>
             <div className="hidden h-px w-12 bg-white/30 md:block" />
           </div>}
           <div className="absolute bottom-5 left-6 right-5 flex items-center justify-between gap-2 text-white">
-            <span className="text-[10px] leading-4 text-white/65">{videoState === 'unavailable' ? t.fallback : videoState === 'loading' ? t.loadingVideo : 'MOTION / INSPIRATION'}</span>
-            {videoState === 'ready' && <button type="button" onClick={() => setPlaying(!playing)} className="motion-toggle flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/60 text-white" aria-label={playing ? t.pause : t.play} aria-pressed={!playing}>{playing ? <Pause size={15} /> : <Play size={15} />}</button>}
+            <span className="rounded-full bg-black/60 px-3 py-1.5 text-[10px] leading-4 text-white">{videoState === 'unavailable' ? t.fallback : videoState === 'loading' ? t.loadingVideo : 'MOTION / INSPIRATION'}</span>
+            {videoState !== 'loading' && <button type="button" onClick={toggle} className="motion-toggle flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black/60 text-white" aria-label={playing ? t.pause : t.play} aria-pressed={!playing}>{playing ? <Pause size={15} /> : <Play size={15} />}</button>}
           </div>
         </section>
 

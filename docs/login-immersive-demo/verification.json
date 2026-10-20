@@ -1,24 +1,44 @@
 {
-  "checked_at": "2026-10-20T10:41:39.386373+08:00",
-  "scope": "Loopback login preview connected to existing production authentication. No production files or service configuration modified.",
+  "checked_at": "2026-10-20T12:10:19+08:00",
+  "scope": "Local login layout and dual-video presentation only. Authentication contract, production files and services are unchanged.",
   "preview_url": "http://127.0.0.1:8772/login",
   "build": "passed",
-  "test_groups": 6,
+  "test_groups": 11,
   "existing_regression": {
     "root_python": 160,
     "backend_python": 249,
     "deployment_python": 32,
     "frontend_suites": "all passed"
   },
-  "live_authentication": {
-    "client": "Browser sign-in -> /client customer showroom -> logout passed",
-    "employee": "HTTPS login/session role and / HTTP 200, then logout passed",
-    "admin": "HTTPS login/session role and /admin HTTP 200, then logout passed"
+  "previous_live_authentication": {
+    "checked_at": "2026-10-20T10:41:39.386373+08:00",
+    "results": {
+      "client": "Browser sign-in -> /client customer showroom -> logout passed",
+      "employee": "HTTPS login/session role and / HTTP 200, then logout passed",
+      "admin": "HTTPS login/session role and /admin HTTP 200, then logout passed"
+    },
+    "note": "Retained evidence from earlier authentication repair; current UI-only round did not resubmit production credentials."
   },
   "browser": {
     "desktop": [
       1440,
       960
+    ],
+    "card": [
+      1040,
+      650
+    ],
+    "inner_panel_widths": [
+      456.296875,
+      557.703125
+    ],
+    "panel_ratio": [
+      45,
+      55
+    ],
+    "tablet": [
+      768,
+      1024
     ],
     "phone": [
       390,
@@ -29,15 +49,30 @@
       740
     ],
     "horizontal_overflow": false,
-    "username_retained_across_language_switch": "visually verified",
     "keyboard_account_to_password": "passed",
-    "pause_resume": "passed",
-    "video_count": 1,
+    "pause_resume_both_videos": "passed",
+    "video_count": 2,
+    "same_video_url": true,
     "video_width": 768,
     "video_height": 578,
-    "video_ready_state": 4,
-    "fullscreen_backdrop_filter_count": 0
+    "both_video_ready_state": 4,
+    "fullscreen_scale": 1.05,
+    "fullscreen_black_overlay_opacity": 0.1,
+    "fullscreen_backdrop_blur_px": 8,
+    "clear_panel_filter": "none",
+    "console_errors": [],
+    "safari": "Existing login preview tab refreshed and visually verified"
   },
+  "automated_media_cases": [
+    "same source in two placements",
+    "shared pause/resume",
+    "form rerender preserves media nodes and does not call play again",
+    "reduced motion stops both",
+    "hidden tab stops both and masks password",
+    "unmount cleans playback/listeners",
+    "autoplay refusal permits manual playback",
+    "media failure does not disable login"
+  ],
   "media": {
     "before_mp4_bytes": 4354905,
     "after_mp4_bytes": 756796,
@@ -45,14 +80,20 @@
     "poster_bytes": 73278,
     "source": "User-supplied local 0.mp4; source file unchanged"
   },
+  "design_scan": {
+    "tool": "Desktop Impeccable",
+    "scope": "layout",
+    "findings": []
+  },
   "limitations": [
-    "Mobile widths were simulated in the desktop browser, not measured on physical phones.",
-    "No cross-device FPS benchmark was performed.",
-    "The new login is local only; the production login page was not deployed."
+    "Phone widths were simulated in the desktop browser, not measured on physical phones.",
+    "Dual-video playback uses more resources than the preceding static-backdrop version; no cross-device FPS benchmark was performed.",
+    "The new login is local only; no production deployment or server restart."
   ],
   "screenshots": [
-    "outputs/login-fix-20261020/desktop.jpg",
-    "outputs/login-fix-20261020/mobile.jpg",
-    "outputs/login-fix-20261020/client-auth-success.jpg"
+    "outputs/login-dual-video-20261020/desktop.png",
+    "outputs/login-dual-video-20261020/mobile.png",
+    "outputs/login-dual-video-20261020/mobile-320-english.png",
+    "outputs/login-dual-video-20261020/safari.png"
   ]
 }

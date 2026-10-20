@@ -69,7 +69,7 @@ test('React form prevents double submission, handles media failure, focus and re
   assert.equal(document.querySelector('#username').labels[0].textContent, '账号');
   assert.equal(document.querySelector('#password').autocomplete, 'current-password');
   assert.equal(document.querySelector('form').checkValidity(), false);
-  assert.equal(document.querySelectorAll('video').length, 1);
+  assert.equal(document.querySelectorAll('video').length, 2);
   for (const video of document.querySelectorAll('video')) {
     assert.equal(video.getAttribute('src'), VIDEO_URL);
     assert.equal(video.muted, true);
@@ -77,10 +77,10 @@ test('React form prevents double submission, handles media failure, focus and re
     assert.equal(video.playsInline, true);
   }
   await act(async () => { media.matches = true; for (const listener of listeners) listener(); });
-  assert.equal(document.querySelector('video').autoplay, false);
-  await act(async () => document.querySelector('video').dispatchEvent(new window.Event('loadedmetadata')));
+  assert.ok([...document.querySelectorAll('video')].every(video => !video.autoplay));
+  await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('loadedmetadata')));
   assert.equal(document.querySelector('[aria-label="播放背景视频"]').getAttribute('aria-pressed'), 'true');
-  await act(async () => document.querySelector('video').dispatchEvent(new window.Event('error')));
+  await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('error')));
   assert.match(document.body.textContent, /视频暂不可用/);
   assert.equal(document.querySelector('button[type=submit]').disabled, false);
 
@@ -111,7 +111,7 @@ test('React form prevents double submission, handles media failure, focus and re
   window.HTMLMediaElement.prototype.play = async function () { throw new window.DOMException('Autoplay blocked', 'NotAllowedError'); };
   const blockedRoot = createRoot(document.querySelector('#root'));
   await act(async () => blockedRoot.render(<App navigate={navigate} transport={async () => { throw Object.assign(new Error(), {code: 'timeout'}); }} />));
-  await act(async () => document.querySelector('video').dispatchEvent(new window.Event('loadedmetadata')));
+  await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('loadedmetadata')));
   assert.equal(document.querySelector('[aria-label="播放背景视频"]').getAttribute('aria-pressed'), 'true');
   assert.equal(document.querySelector('button[type=submit]').disabled, false);
   await act(async () => document.querySelector('form').dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true })));
@@ -138,6 +138,60 @@ test('React form prevents double submission, handles media failure, focus and re
   } finally {
     await act(async () => liveRoot.unmount());
     globalThis.fetch = originalFetch;
+    dom.window.close();
+  }
+});
+
+test('both video placements pause together, survive form rerenders and respect reduced motion and visibility', async () => {
+  const dom = new JSDOM('<div id="root"></div>', { url: 'http://localhost:8772/login', pretendToBeVisual: true });
+  Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, IS_REACT_ACT_ENVIRONMENT: true });
+  const listeners = new Set();
+  const query = { matches: false, addEventListener: (_, fn) => listeners.add(fn), removeEventListener: (_, fn) => listeners.delete(fn) };
+  window.matchMedia = () => query;
+  const playing = new Set();
+  let playCalls = 0;
+  window.HTMLMediaElement.prototype.play = async function () { playing.add(this); playCalls++; };
+  window.HTMLMediaElement.prototype.pause = function () { playing.delete(this); };
+  const root = createRoot(document.querySelector('#root'));
+  try {
+    await act(async () => root.render(<App />));
+    const videos = [...document.querySelectorAll('video')];
+    const panel = document.querySelector('[data-login-video=panel]');
+    const backdrop = document.querySelector('[data-login-video=backdrop]');
+    assert.equal(new Set(videos.map(video => video.src)).size, 1);
+    assert.equal(playing.size, 2);
+    await act(async () => panel.dispatchEvent(new window.Event('loadedmetadata')));
+
+    // A form-only update must not replace or restart either video.
+    const starts = playCalls;
+    await act(async () => document.querySelector('[aria-controls=password]').click());
+    assert.deepEqual([...document.querySelectorAll('video')], videos);
+    assert.equal(playCalls, starts);
+    await act(async () => document.querySelector('[aria-label="暂停背景视频"]').click());
+    assert.equal(playing.size, 0);
+    assert.ok(videos.every(video => !video.autoplay));
+    await act(async () => document.querySelector('[aria-label="播放背景视频"]').click());
+    assert.equal(playing.size, 2);
+
+    // Failure of one placement does not disable the login or the shared control.
+    await act(async () => backdrop.dispatchEvent(new window.Event('error')));
+    assert.equal(document.querySelector('button[type=submit]').disabled, false);
+    assert.ok(document.querySelector('[aria-label="暂停背景视频"]'));
+
+    Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+    await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+    assert.equal(playing.size, 0);
+    assert.equal(document.querySelector('#password').type, 'password');
+    Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+    await act(async () => document.dispatchEvent(new window.Event('visibilitychange')));
+    assert.equal(playing.size, 0, 'Returning to the tab does not override a paused state');
+    await act(async () => document.querySelector('[aria-label="播放背景视频"]').click());
+    await act(async () => { query.matches = true; for (const fn of listeners) fn(); });
+    assert.equal(playing.size, 0);
+  } finally {
+    await act(async () => root.unmount());
+    assert.equal(playing.size, 0);
+    assert.equal(listeners.size, 0);
     dom.window.close();
   }
 });
