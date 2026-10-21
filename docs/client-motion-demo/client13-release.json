@@ -1,0 +1,271 @@
+{
+  "version": "client1.3",
+  "patch": "apple-typography-rounded-views",
+  "publishedAt": "2026-10-22T00:08:28+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "e7ea5d0d83daf151eafdde6a031948f67b3aa6be105ace77cf605f2ce26cf7d9",
+  "backup": "/opt/yuanze-reference/backups/client1.3-typography-20261022",
+  "verifiedFiles": 219,
+  "changed": [
+    "index.html",
+    "preview.js",
+    "preview.css",
+    "bundle-manifest.json"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=2564528\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "9a83cc94f585ac80499f31ccb288b048529096d3",
+  "onlineVerification": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "assets/featured/poster-012-1024.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-012.png",
+      "assets/featured/poster-013-1024.webp",
+      "assets/featured/poster-013-640.webp",
+      "assets/featured/poster-013.png",
+      "assets/featured/poster-039-1024.webp",
+      "assets/featured/poster-039-640.webp",
+      "assets/featured/poster-039.png",
+      "assets/featured/poster-042-1024.webp",
+      "assets/featured/poster-042-640.webp",
+      "assets/featured/poster-042.png",
+      "assets/featured/poster-044-1024.webp",
+      "assets/featured/poster-044-640.webp",
+      "assets/featured/poster-044.png",
+      "assets/featured/poster-047-1024.webp",
+      "assets/featured/poster-047-640.webp",
+      "assets/featured/poster-047.png",
+      "assets/featured/poster-049-1024.webp",
+      "assets/featured/poster-049-640.webp",
+      "assets/featured/poster-049.png",
+      "assets/featured/poster-051-1024.webp",
+      "assets/featured/poster-051-640.webp",
+      "assets/featured/poster-051.png"
+    ],
+    "originalDownload": true,
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-22T00:09:51+08:00",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browserLocal": [
+    {
+      "view": "grid-en",
+      "backSize": "16px",
+      "backVisible": "flex",
+      "cardTitle": "21px",
+      "columns": "277px",
+      "font": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "scroll": 313,
+      "width": 320
+    },
+    {
+      "view": "grid-en",
+      "backSize": "16px",
+      "backVisible": "flex",
+      "cardTitle": "21px",
+      "columns": "350px",
+      "font": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "scroll": 386,
+      "width": 393
+    },
+    {
+      "view": "grid-en",
+      "backSize": "16px",
+      "backVisible": "flex",
+      "cardTitle": "22px",
+      "columns": "333.469px 333.477px",
+      "font": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "scroll": 761,
+      "width": 768
+    },
+    {
+      "view": "grid-en",
+      "backSize": "16px",
+      "backVisible": "flex",
+      "cardTitle": "22px",
+      "columns": "417.719px 417.719px 417.719px",
+      "font": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "scroll": 1433,
+      "width": 1440
+    },
+    {
+      "view": "empty-search",
+      "pass": true
+    },
+    {
+      "view": "mobile-hd-modal",
+      "controls": [
+        {
+          "height": 48,
+          "size": "15px",
+          "text": "200%"
+        },
+        {
+          "height": 48,
+          "size": "15px",
+          "text": "已加载原图"
+        },
+        {
+          "height": 48,
+          "size": "15px",
+          "text": "下载原图"
+        }
+      ],
+      "naturalHeight": 1086,
+      "naturalWidth": 1448,
+      "overflow": false,
+      "radius": "28px"
+    },
+    {
+      "view": "gallery-next",
+      "title": "木质香氛沐浴露"
+    },
+    {
+      "view": "featured-zh",
+      "scroll": 313,
+      "subtitle": "16px",
+      "title": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "width": 320
+    },
+    {
+      "view": "featured-zh",
+      "scroll": 386,
+      "subtitle": "16px",
+      "title": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "width": 393
+    },
+    {
+      "view": "featured-zh",
+      "scroll": 761,
+      "subtitle": "17px",
+      "title": "-apple-system, \"system-ui\", \"SF Pro Display\", \"SF Pro Text\", \"Helvetica Neue\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "width": 768
+    },
+    {
+      "view": "featured-en",
+      "description": "16px",
+      "scroll": 313,
+      "title": "40px",
+      "width": 320
+    },
+    {
+      "view": "featured-en",
+      "description": "16px",
+      "scroll": 386,
+      "title": "40px",
+      "width": 393
+    },
+    {
+      "view": "featured-en",
+      "description": "17px",
+      "scroll": 761,
+      "title": "41.472px",
+      "width": 768
+    },
+    {
+      "view": "featured-en",
+      "description": "17px",
+      "scroll": 1433,
+      "title": "77.76px",
+      "width": 1440
+    },
+    {
+      "view": "info",
+      "body": "17px",
+      "radius": "28px"
+    }
+  ],
+  "browserLive": [
+    {
+      "back": "flex",
+      "buttons": [
+        {
+          "height": 48,
+          "label": "返回精选",
+          "right": 168
+        },
+        {
+          "height": 44,
+          "label": "发现灵感",
+          "right": 118.5
+        },
+        {
+          "height": 44,
+          "label": "我的收藏0",
+          "right": 278.5
+        },
+        {
+          "height": 48,
+          "label": "EN",
+          "right": 196
+        },
+        {
+          "height": 44,
+          "label": "展厅说明",
+          "right": 240
+        },
+        {
+          "height": 44,
+          "label": "退出登录",
+          "right": 284
+        }
+      ],
+      "logo": "block",
+      "scroll": 313,
+      "view": "production-grid-320",
+      "width": 320
+    },
+    {
+      "back": "16px",
+      "cardName": "21px",
+      "category": "15px",
+      "scroll": 386,
+      "view": "production-grid-393-en",
+      "width": 393
+    },
+    {
+      "view": "production-hd",
+      "height": 1086,
+      "loaded": true,
+      "width": 1448
+    }
+  ],
+  "verification": {
+    "rootTests": 171,
+    "backendTests": 251,
+    "deploymentTests": 32,
+    "motionTests": 26,
+    "allSuitesPassed": true,
+    "preservedNonEntrypointResources": 216,
+    "widths": [
+      320,
+      393,
+      768,
+      1440
+    ],
+    "languages": [
+      "zh",
+      "en"
+    ],
+    "physicalIPhoneTested": false
+  },
+  "screenshots": [
+    "outputs/client13-20261021/desktop-live.png",
+    "outputs/client13-20261021/mobile-en.png"
+  ]
+}

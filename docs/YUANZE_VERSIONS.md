@@ -34,4 +34,4 @@ client1.2 手机适配修复（2026-10-21 17:24:47）：已上线并完成正式
 
 client1.2 / yuanze2.0.3 同版媒体加载修复：2026-10-21 23:28:55 已上线；首图优先、响应式 WebP、完整占位、单视频双层显示、去掉登录暂停按钮。源码 `76e25ab6`；完整回执见 `docs/client-motion-demo/media-loading-release.json` 和 `docs/login-immersive-demo/media-loading-release.json`；同版问题修复不另占版本号。
 
-| client1.3 | 2026-10-22 | 统一 Apple 风格无衬线字体与文字层级；放大返回/说明/类别/名称；圆角玻璃导航、海报卡片、画廊和弹窗；手机单列与持续可见的返回按钮 | 待发布；浏览器核验与全套检查后仅更新展厅静态目录 | `docs/client-motion-demo/src/presentation.css`；发布回执待补 |
+| client1.3 | 2026-10-22 00:08:28 | 统一 Apple 风格无衬线字体与文字层级；放大返回/说明/类别/名称；圆角玻璃导航、海报卡片、画廊和弹窗；手机单列与持续可见的返回按钮 | 已上线 `/client`；桌面/手机浏览器、三角色权限、资源摘要与全套检查通过；无重启 | `9a83cc94`；`docs/client-motion-demo/client13-release.json` |
