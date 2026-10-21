@@ -22,12 +22,13 @@ test('eight featured products map by stable ID to the current approved collectio
 });
 
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{
- assert.equal(manifest.scope,'local-preview-derived-assets-not-production-approved');
+ assert.equal(manifest.scope,'approved-client1.2-display-derivatives');
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
  assert.deepEqual(readdirSync(resolve(base,'featured-assets')).sort(),featured.map(p=>`${p.id}.png`).sort());
  for(const entry of manifest.files){
   assert.equal(entry.file,`featured-assets/${entry.posterId}.png`);
   assert.equal(entry.target,`featured/${entry.posterId}.png`);
+  assert.equal(entry.productionTarget,`assets/featured/${entry.posterId}.png`);
   assert.equal(entry.approvedPoster,`server-reference/public/showroom/assets/posters/${entry.posterId}.webp`);
   assert.equal(hash(resolve(base,'../..',entry.approvedPoster)),entry.approvedPosterSha256);
   const file=readFileSync(resolve(base,entry.file));

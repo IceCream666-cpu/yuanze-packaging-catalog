@@ -18,39 +18,86 @@ DESTINATION = ROOT / 'server-reference/public/showroom'
 ENTRYPOINTS = ('index.html', 'preview.css', 'preview.js', 'company-content.js', 'product-posters.js')
 ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
+MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2'}
 
 
-def client_source_hash():
-    sources = [*sorted((CLIENT / 'src').glob('*')), CLIENT / 'index.html',
-               CLIENT / 'vite.config.js', CLIENT / 'package.json', CLIENT / 'assets-manifest.json']
+def client_directory(edition):
+    if edition not in CLIENT_EDITIONS:
+        raise ValueError(f'Unsupported client edition: {edition}')
+    return MOTION_CLIENT if edition == 'client12' else CLIENT
+
+
+def client_source_hash(edition='client1'):
+    client = client_directory(edition)
+    sources = [*sorted((client / 'src').glob('*')), client / 'index.html',
+               client / 'vite.config.js', client / 'package.json', client / 'assets-manifest.json']
+    if edition == 'client12':
+        sources += [client / 'featured-manifest.json', client / 'prepare-assets.py',
+                    *sorted((client / 'featured-assets').glob('*'))]
     digest = hashlib.sha256()
     for path in sources:
-        digest.update(path.relative_to(CLIENT).as_posix().encode() + b'\0' + path.read_bytes())
+        digest.update(path.relative_to(client).as_posix().encode() + b'\0' + path.read_bytes())
     return digest.hexdigest()
 
 
-def stamp_client_release():
-    files = {name: hashlib.sha256((CLIENT / 'release' / name).read_bytes()).hexdigest()
+def stamp_client_release(edition='client1'):
+    client = client_directory(edition)
+    files = {name: hashlib.sha256(source_file(client / 'release', name).read_bytes()).hexdigest()
              for name in CLIENT_ENTRYPOINTS}
-    (CLIENT / 'release/build.json').write_text(json.dumps({
-        'version': 'client1.0', 'sourceSha256': client_source_hash(), 'files': files,
+    (client / 'release/build.json').write_text(json.dumps({
+        'version': CLIENT_EDITIONS[edition], 'sourceSha256': client_source_hash(edition), 'files': files,
     }, indent=2) + '\n')
 
 
-def client_files(files):
-    """Overlay only the client entrypoints; preserve all reviewed media."""
+def featured_files(files, client):
+    """Add exactly the eight approved derivatives without replacing source posters."""
+    manifest = json.loads(source_file(client, 'featured-manifest.json').read_text())
+    if manifest.get('scope') != 'approved-client1.2-display-derivatives':
+        raise ValueError('Featured media has not been approved for client1.2')
+    featured = json.loads(source_file(client, 'src/featured.json').read_text())
+    ids = [item['id'] for item in featured]
+    entries = manifest['files']
+    if len(ids) != 8 or len(set(ids)) != 8 or sorted(item['posterId'] for item in entries) != sorted(ids):
+        raise ValueError('Featured media must exactly match the eight reviewed products')
+    for item in entries:
+        poster_id = item['posterId']
+        if not re.fullmatch(r'poster-\d{3}', poster_id):
+            raise ValueError('Invalid featured poster identity')
+        target = f'assets/featured/{poster_id}.png'
+        if item.get('productionTarget') != target or item.get('file') != f'featured-assets/{poster_id}.png':
+            raise ValueError('Invalid featured media route')
+        original = f'assets/posters/{poster_id}.webp'
+        if item.get('approvedPoster') != f'server-reference/public/showroom/{original}':
+            raise ValueError('Invalid featured source poster')
+        if hashlib.sha256(files.get(original, b'')).hexdigest() != item.get('approvedPosterSha256'):
+            raise ValueError(f'Featured source poster checksum mismatch: {poster_id}')
+        data = source_file(client, item['file']).read_bytes()
+        if len(data) != item.get('bytes') or hashlib.sha256(data).hexdigest() != item.get('sha256'):
+            raise ValueError(f'Featured media checksum mismatch: {poster_id}')
+        if target in files:
+            raise ValueError(f'Featured media cannot replace an existing file: {target}')
+        files[target] = data
+
+
+def client_files(files, edition='client1'):
+    """Overlay reviewed entrypoints; preserve original media and validate derivatives."""
+    client = client_directory(edition)
+    version = CLIENT_EDITIONS[edition]
     files = dict(files)
-    stamp = json.loads((CLIENT / 'release/build.json').read_text())
-    if stamp['sourceSha256'] != client_source_hash():
-        raise ValueError('client1.0 source changed: rebuild and stamp the release first')
+    stamp = json.loads(source_file(client / 'release', 'build.json').read_text())
+    if stamp.get('version') != version or set(stamp.get('files', {})) != set(CLIENT_ENTRYPOINTS):
+        raise ValueError(f'{version} release stamp has an invalid version or entrypoint set')
+    if stamp['sourceSha256'] != client_source_hash(edition):
+        raise ValueError(f'{version} source changed: rebuild and stamp the release first')
     for name in CLIENT_ENTRYPOINTS:
-        data = source_file(CLIENT / 'release', name).read_bytes()
+        data = source_file(client / 'release', name).read_bytes()
         if hashlib.sha256(data).hexdigest() != stamp['files'][name]:
-            raise ValueError(f'client1.0 release checksum mismatch: {name}')
+            raise ValueError(f'{version} release checksum mismatch: {name}')
         files[name] = data
-    paths = json.loads((CLIENT / 'src/asset-paths.json').read_text())
-    approved = json.loads((CLIENT / 'assets-manifest.json').read_text())
+    paths = json.loads((client / 'src/asset-paths.json').read_text())
+    approved = json.loads((client / 'assets-manifest.json').read_text())
     for item in approved['files']:
         route = paths['/' + item['target']]
         if not route.startswith('/showroom/assets/') or '..' in route.split('/'):
@@ -58,8 +105,10 @@ def client_files(files):
         data = files.get(route.removeprefix('/showroom/'), b'')
         if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
             raise ValueError('Client media differs from reviewed showroom media')
+    if edition == 'client12':
+        featured_files(files, client)
     files.pop('bundle-manifest.json')
-    bundle = {'schema': 1, 'source': 'docs/client-apple-demo', 'version': 'client1.0',
+    bundle = {'schema': 1, 'source': client.relative_to(ROOT).as_posix(), 'version': version,
               'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
                         for name, data in sorted(files.items())}}
     files['bundle-manifest.json'] = (json.dumps(bundle, ensure_ascii=False, sort_keys=True, indent=2) + '\n').encode()
@@ -74,6 +123,8 @@ def source_file(source, name):
 
 
 def expected_files(source=SOURCE, edition='legacy'):
+    if edition not in ('legacy', *CLIENT_EDITIONS):
+        raise ValueError(f'Unsupported showroom edition: {edition}')
     source = Path(source)
     files = {}
     for name in ENTRYPOINTS:
@@ -124,7 +175,7 @@ def expected_files(source=SOURCE, edition='legacy'):
               'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
                         for name, data in sorted(files.items())}}
     files['bundle-manifest.json'] = (json.dumps(bundle, ensure_ascii=False, sort_keys=True, indent=2) + '\n').encode()
-    return client_files(files) if edition == 'client1' else files
+    return client_files(files, edition) if edition in CLIENT_EDITIONS else files
 
 
 def check(source=SOURCE, destination=DESTINATION, edition='legacy'):
@@ -165,13 +216,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client1', 'legacy'), default='client1',
-                        help='client1 is the current release; legacy is for historical regression only')
+    parser.add_argument('--edition', choices=('client12', 'client1', 'legacy'), default='client12',
+                        help='client12 is the current release; client1 and legacy retain historical builds')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()
     if args.stamp_client:
-        stamp_client_release()
+        stamp_client_release(args.edition)
         return 0
     if args.check:
         stale = check(destination=args.output, edition=args.edition)

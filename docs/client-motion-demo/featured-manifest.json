@@ -1,6 +1,6 @@
 {
   "version": "client1.2",
-  "scope": "local-preview-derived-assets-not-production-approved",
+  "scope": "approved-client1.2-display-derivatives",
   "notes": "Generated cutouts are display derivatives; original 38 posters and their 115 approved resources are preserved without alteration.",
   "files": [
     {
@@ -12,10 +12,11 @@
       "sha256": "6b3236999bef9dc83ff2f983092e180a2ea6824433c54c3bb763c5259ed8b0e8",
       "bytes": 1622337,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "reused transparent image from approved visual demo",
       "originalDemoFilename": "yellow-pink.png",
-      "sourceMatch": "Visual match of package and poster composition; original demo reference has small pixel differences from current approved WebP."
+      "sourceMatch": "Visual match of package and poster composition; original demo reference has small pixel differences from current approved WebP.",
+      "productionTarget": "assets/featured/poster-012.png"
     },
     {
       "posterId": "poster-013",
@@ -26,10 +27,11 @@
       "sha256": "4de1d98936452cc66c5c8b26b455b0f8b4d8341f0af3737f9bd23c72bbe2de12",
       "bytes": 1936098,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "reused transparent image from approved visual demo",
       "originalDemoFilename": "coral-aqua.png",
-      "sourceMatch": "Visual match of package and poster composition; original demo reference has small pixel differences from current approved WebP."
+      "sourceMatch": "Visual match of package and poster composition; original demo reference has small pixel differences from current approved WebP.",
+      "productionTarget": "assets/featured/poster-013.png"
     },
     {
       "posterId": "poster-039",
@@ -40,9 +42,10 @@
       "sha256": "6345b60d409a983042dc4fd8c7bef5f78d70b2147b56d8880e0c3c64d84c772b",
       "bytes": 1570242,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "transparent extraction from current approved poster",
-      "selectedObject": "Foreground closed silver-lid PDRN capsule cream jar; full poster remains face-care collection."
+      "selectedObject": "Foreground closed silver-lid PDRN capsule cream jar; full poster remains face-care collection.",
+      "productionTarget": "assets/featured/poster-039.png"
     },
     {
       "posterId": "poster-049",
@@ -53,9 +56,10 @@
       "sha256": "59788897074464a77a4ea6a2e22631f000905754bb3836c8319bc2144580faa8",
       "bytes": 1797868,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "reused transparent image from approved visual demo",
-      "originalDemoFilename": "shampoo.png"
+      "originalDemoFilename": "shampoo.png",
+      "productionTarget": "assets/featured/poster-049.png"
     },
     {
       "posterId": "poster-042",
@@ -66,9 +70,10 @@
       "sha256": "0084d215fac8049cd3b387189d8384d27e2d701a474b5d4b0d9ffdd8c60210b7",
       "bytes": 1571264,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "reused transparent image from approved visual demo",
-      "originalDemoFilename": "woodland.png"
+      "originalDemoFilename": "woodland.png",
+      "productionTarget": "assets/featured/poster-042.png"
     },
     {
       "posterId": "poster-051",
@@ -79,8 +84,9 @@
       "sha256": "2efbf821064393cd7c0429b2fc4e5444c862dbc44d65431e20b32d93cfa283ac",
       "bytes": 890271,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
-      "method": "transparent extraction from current approved poster"
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
+      "method": "transparent extraction from current approved poster",
+      "productionTarget": "assets/featured/poster-051.png"
     },
     {
       "posterId": "poster-044",
@@ -91,9 +97,10 @@
       "sha256": "03858ca81f2ed4afb7e3e27a1568a42d2e672f947421ad92eb1d520cb4548f94",
       "bytes": 1227252,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "transparent extraction from current approved poster",
-      "selectedObject": "Right-hand cleansing foam bottle only."
+      "selectedObject": "Right-hand cleansing foam bottle only.",
+      "productionTarget": "assets/featured/poster-044.png"
     },
     {
       "posterId": "poster-047",
@@ -104,9 +111,14 @@
       "sha256": "66f12c52657654805151008b1db85616a50a708367743ff62089fcf38df5822a",
       "bytes": 1351149,
       "tool": "built-in image_gen.imagegen",
-      "scope": "derived product image for local design preview",
+      "scope": "approved client1.2 display derivative; original poster remains authoritative",
       "method": "transparent extraction from current approved poster",
-      "selectedObject": "Right-hand clear glass cork-capped Coastal bottle only."
+      "selectedObject": "Right-hand clear glass cork-capped Coastal bottle only.",
+      "productionTarget": "assets/featured/poster-047.png"
     }
-  ]
+  ],
+  "approval": {
+    "date": "2026-10-21",
+    "basis": "User explicitly requested publishing the reviewed client1.2 version."
+  }
 }
