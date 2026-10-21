@@ -25,6 +25,7 @@ def main():
     run([node, '--experimental-vm-modules', 'tests/frontend/run.mjs'])
     run([node, '--test', *map(str, sorted((ROOT / 'docs/client-apple-demo/tests').glob('*.test.mjs')))])
     run([node, '--test', *map(str, sorted((ROOT / 'docs/client-motion-demo/tests').glob('*.test.mjs')))])
+    run([node, 'docs/client-motion-demo/node_modules/tsx/dist/cli.mjs', '--test', *map(str, sorted((ROOT / 'docs/client-motion-demo/tests').glob('*.test.jsx')))])
     run([sys.executable, 'scripts/build_customer_showroom.py', '--check'])
     run([sys.executable, 'scripts/build_login.py', '--check'])
     login = ROOT / 'docs/login-immersive-demo'

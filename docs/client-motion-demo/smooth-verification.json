@@ -1,0 +1,32 @@
+{
+  "version": "client1.2",
+  "scope": "continuous_swipe_fix",
+  "localTests": {
+    "modelAssets": 22,
+    "domIntegration": 1,
+    "root": 168,
+    "server": 251,
+    "deployment": 32,
+    "allExistingFrontend": "passed"
+  },
+  "inputEvidence": {
+    "before": "three consecutive 0.35-page browser scroll calls advanced only one product",
+    "after": "same calls follow displacement across multiple products, reverse returns to first",
+    "syntheticDom": {
+      "inputEvents": 160,
+      "displayFrames": 40,
+      "reactCommits": 4,
+      "imagesRetained": 8
+    }
+  },
+  "browserChecks": [
+    "desktop consecutive horizontal scroll and reversal",
+    "selection and final centered transform agree",
+    "two-result circular gallery remains unique",
+    "390px continuous pointer drags do not open a modal",
+    "poster opens after drag and no horizontal overflow"
+  ],
+  "limitations": [
+    "Native browser automation and DOM events; not a physical touchpad or phone FPS measurement."
+  ]
+}

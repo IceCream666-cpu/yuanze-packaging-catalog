@@ -1,156 +1,157 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {Maximize2, MoveHorizontal} from 'lucide-react';
 import {shortestDelta, snapTarget, visibleItems, wrapIndex} from './carousel-model.js';
+import {createCarouselMotion, horizontalWheel, wheelSnap} from './carousel-motion.js';
 
 export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage, presentation = 'posters'}) {
   const products = presentation === 'products';
   const initial = Math.max(0, items.findIndex(p => p.id === selectedId));
-  const [position, setPosition] = useState(initial);
-  const [dragging, setDragging] = useState(false);
+  const [anchor, setAnchor] = useState(initial);
   const [width, setWidth] = useState(1000);
-  const stage = useRef(null);
-  const motion = useRef({position: initial, target: initial, frame: 0, pointer: null, velocity: 0, suppress: 0});
-  const callbacks = useRef({onSelect, onOpen});
-  callbacks.current = {onSelect, onOpen};
-  const reduced = useRef(false);
+  const stage = useRef(null), planes = useRef(new Map());
+  const pointer = useRef(null), wheel = useRef({timer: 0, start: null});
+  const suppress = useRef(0), anchorRef = useRef(initial), reduced = useRef(false);
+  const latest = useRef(null);
   const stepWidth = products ? Math.min(360, Math.max(205, width * .245)) : Math.min(460, Math.max(215, width * .37));
+  const motion = useRef(null);
 
-  function paint(value) { motion.current.position = value; setPosition(value); }
-  function advance(delta) {
-    const m = motion.current;
-    animate((m.frame ? m.target : Math.round(m.position)) + delta);
+  function paint(position, moving) {
+    const {items, products, stepWidth} = latest.current;
+    stage.current?.classList.toggle('is-moving', moving);
+    const nextAnchor = wrapIndex(Math.round(position), items.length);
+    // React handles semantic/visible-window changes, never fractional animation frames.
+    if (nextAnchor !== anchorRef.current) {anchorRef.current = nextAnchor; setAnchor(nextAnchor);}
+    for (const [id, node] of planes.current) {
+      const index = items.findIndex(item => item.id === id);
+      const offset = shortestDelta(index, position, items.length), distance = Math.abs(offset);
+      const scale = products ? 1 - Math.min(distance, 3.4) * .13 : Math.max(.62, 1 - distance * .16);
+      const turn = products ? Math.max(-18, Math.min(18, -offset * 6)) : Math.max(-14, Math.min(14, offset * -8));
+      const drift = products ? offset * 8 : Math.max(-9, Math.min(9, offset * 4));
+      // Hide circular-seam crossings before relocating the off-screen item.
+      const opacity = items.length === 2 ? Math.max(0, 1 - distance * 1.25)
+        : products ? Math.max(0, Math.min(1 - distance * .17, (3.3 - distance) * 2))
+        : Math.max(0, 1 - Math.max(0, distance - 1) * .6);
+      node.style.transform = `translate(-50%, -50%) translate3d(${offset * stepWidth}px,${distance * (products ? 21 : 16)}px,0) rotateY(${turn}deg) rotateZ(${drift}deg) scale(${scale})`;
+      node.style.opacity = opacity;
+      node.style.zIndex = 20 - Math.round(distance * 3);
+      node.style.visibility = opacity < .001 ? 'hidden' : 'visible';
+      node.style.pointerEvents = distance > 2.5 || opacity < .1 ? 'none' : 'auto';
+      node.setAttribute('aria-hidden', String(distance > 2.5 || opacity < .1));
+    }
   }
-  function animate(target, commit = true) {
-    // Fractional interpolation can leave tiny float residues across the circular seam.
-    // The committed target is always a discrete poster; only paint positions are fractional.
-    target = Math.round(target);
-    const m = motion.current;
-    cancelAnimationFrame(m.frame);
-    m.target = target;
-    const start = m.position;
-    const startTime = performance.now();
-    const duration = reduced.current ? 0 : Math.min(660, 360 + Math.abs(target - start) * 70);
-    if (commit && items.length) callbacks.current.onSelect(items[wrapIndex(target, items.length)].id);
-    const tick = now => {
-      const progress = duration ? Math.min(1, (now - startTime) / duration) : 1;
-      paint(start + (target - start) * (1 - (1 - progress) ** 4));
-      if (progress < 1) m.frame = requestAnimationFrame(tick);
-      else { m.frame = 0; m.target = wrapIndex(target, items.length); paint(m.target); }
-    };
-    m.frame = requestAnimationFrame(tick);
-  }
+  latest.current = {items, products, stepWidth, onSelect, onOpen, paint};
+  if (!motion.current) motion.current = createCarouselMotion({
+    initial, length: items.length,
+    now: () => performance.now(), requestFrame: fn => requestAnimationFrame(fn), cancelFrame: id => cancelAnimationFrame(id),
+    paint: (position, moving) => latest.current.paint(position, moving),
+    select: index => latest.current.onSelect(latest.current.items[index].id)
+  });
+  const controller = motion.current;
 
+  useLayoutEffect(() => {paint(controller.state.position, !!controller.state.frame || controller.state.input);});
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
     observer.observe(stage.current);
     const media = matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => {
-      reduced.current = media.matches;
-      const m = motion.current;
-      if (media.matches && m.frame) {
-        cancelAnimationFrame(m.frame); m.frame = 0;
-        m.target = wrapIndex(m.target, items.length); paint(m.target);
-      }
+    const update = () => {reduced.current = media.matches; controller.setReduced(media.matches);};
+    const inactive = () => {
+      finish(null, true); endWheel();
+      if (document.hidden) controller.setReduced(true);
+      else controller.setReduced(media.matches);
     };
     update(); media.addEventListener('change', update);
-    return () => { observer.disconnect(); media.removeEventListener('change', update); cancelAnimationFrame(motion.current.frame); };
+    document.addEventListener('visibilitychange', inactive);
+    window.addEventListener('blur', inactive);
+    return () => {
+      observer.disconnect(); media.removeEventListener('change', update);
+      document.removeEventListener('visibilitychange', inactive); window.removeEventListener('blur', inactive);
+      clearTimeout(wheel.current.timer); controller.dispose();
+    };
   }, []);
 
   useEffect(() => {
-    if (motion.current.pointer) return;
-    const index = Math.max(0, items.findIndex(p => p.id === selectedId));
-    const delta = shortestDelta(index, motion.current.position, items.length);
-    if (Math.abs(delta) > .001) animate(motion.current.position + delta, false);
+    if (pointer.current || wheel.current.start !== null) return;
+    controller.selectIndex(Math.max(0, items.findIndex(p => p.id === selectedId)));
   }, [selectedId]);
 
+  function endWheel() {
+    clearTimeout(wheel.current.timer);
+    if (wheel.current.start === null) return;
+    const target = wheelSnap(controller.state.position, wheel.current.start);
+    wheel.current.start = null; controller.settle(target);
+  }
   useEffect(() => {
     const node = stage.current;
-    let timer, lastAt = 0, previousMagnitude = 0, accumulated = 0, locked = false, decayed = false;
-    // One intentional trackpad stroke selects one poster; the inertial tail cannot skip more.
-    const wheel = event => {
-      const x = event.shiftKey && Math.abs(event.deltaX) < 2 ? event.deltaY : event.deltaX;
-      if (Math.abs(x) <= Math.abs(event.shiftKey ? 0 : event.deltaY) || Math.abs(x) < .2 || items.length < 2) return;
+    const handleWheel = event => {
+      const dx = horizontalWheel(event, latest.current.stepWidth);
+      if (!dx || items.length < 2 || pointer.current) return;
       event.preventDefault();
-      const now = performance.now(), magnitude = Math.abs(x);
-      const freshStroke = now - lastAt > 180 || (locked && decayed && magnitude > previousMagnitude * 2.5 && magnitude > 14);
-      if (freshStroke) { locked = false; accumulated = 0; decayed = false; }
-      if (magnitude < 5) decayed = true;
-      lastAt = now; previousMagnitude = magnitude;
-      if (!locked) {
-        accumulated += x * (event.deltaMode === 1 ? 16 : 1);
-        if (Math.abs(accumulated) > 42) { advance(Math.sign(accumulated)); locked = true; }
-      }
-      clearTimeout(timer); timer = setTimeout(() => { locked = false; accumulated = 0; }, 180);
+      const w = wheel.current;
+      if (w.start === null) w.start = controller.state.position;
+      // Consume every horizontal delta, including reversals and closely spaced strokes.
+      controller.moveTo(controller.state.position + dx / latest.current.stepWidth);
+      suppress.current = performance.now() + 250;
+      clearTimeout(w.timer); w.timer = setTimeout(endWheel, 120);
     };
-    node.addEventListener('wheel', wheel, {passive: false});
-    const cancel = () => finish(null, true);
-    window.addEventListener('blur', cancel);
-    return () => { node.removeEventListener('wheel', wheel); window.removeEventListener('blur', cancel); clearTimeout(timer); };
-  }, [items.length, stepWidth]);
+    node.addEventListener('wheel', handleWheel, {passive:false});
+    return () => node.removeEventListener('wheel', handleWheel);
+  }, [items.length]);
 
   function down(event) {
     if (event.button !== 0 || !event.isPrimary || items.length < 2) return;
-    const m = motion.current;
-    m.pointer = {id: event.pointerId, x: event.clientX, y: event.clientY, lastX: event.clientX, at: performance.now(), start: m.position, moved: false};
-    m.velocity = 0;
-    // Capture only after horizontal intent, preserving tap targets and vertical page scrolling.
+    endWheel();
+    pointer.current = {id:event.pointerId, x:event.clientX, y:event.clientY, lastX:event.clientX, at:performance.now(), start:controller.state.position, moved:false, velocity:0};
   }
   function move(event) {
-    const m = motion.current, p = m.pointer;
+    const p = pointer.current;
     if (!p || event.pointerId !== p.id) return;
     const dx = event.clientX - p.x, dy = event.clientY - p.y;
-    if (!p.moved && Math.abs(dy) > Math.abs(dx) + 8) { finish(event, true); return; }
+    if (!p.moved && Math.abs(dy) > Math.abs(dx) + 8) {finish(event, true); return;}
     if (!p.moved && Math.abs(dx) < 7) return;
     if (!p.moved) {
-      cancelAnimationFrame(m.frame); m.frame = 0;
-      p.start = m.position; p.moved = true;
-      stage.current.setPointerCapture(p.id); setDragging(true);
+      p.start = controller.state.position; p.moved = true;
+      stage.current.setPointerCapture(p.id); stage.current.classList.add('is-dragging');
     }
     const now = performance.now(), elapsed = Math.max(1, now - p.at);
-    m.velocity = m.velocity * .3 + ((p.lastX - event.clientX) / stepWidth / elapsed) * .7;
+    p.velocity = p.velocity * .3 + ((p.lastX - event.clientX) / stepWidth / elapsed) * .7;
     p.lastX = event.clientX; p.at = now;
-    paint(p.start - dx / stepWidth);
+    controller.moveTo(p.start - dx / stepWidth);
   }
   function finish(event, cancelled = false) {
-    const m = motion.current, p = m.pointer;
+    const p = pointer.current;
     if (!p || (event && event.pointerId !== p.id)) return;
-    m.pointer = null;
+    pointer.current = null;
     if (stage.current?.hasPointerCapture(p.id)) stage.current.releasePointerCapture(p.id);
-    setDragging(false);
+    stage.current?.classList.remove('is-dragging');
     if (p.moved) {
-      m.suppress = performance.now() + 400;
-      const velocity = performance.now() - p.at > 100 || cancelled || reduced.current ? 0 : m.velocity;
-      animate(snapTarget(m.position, velocity, items.length));
+      suppress.current = performance.now() + 400;
+      const velocity = performance.now() - p.at > 100 || cancelled || reduced.current ? 0 : p.velocity;
+      controller.settle(snapTarget(controller.state.position, velocity, items.length));
     }
   }
-  const activeIndex = wrapIndex(Math.round(position), items.length);
+  // All eight featured images remain mounted/decoded. Larger libraries keep a stable seven-item window.
+  const mounted = visibleItems(items, anchor, products ? items.length : 7).sort((a,b) => a.index - b.index);
   return <section className={`gallery-shell ${products ? 'product-stage-shell' : ''}`} aria-label={lang === 'zh' ? (products ? '精选产品' : '海报画廊') : (products ? 'Featured products' : 'Poster gallery')}>
-    <div className={`gallery-stage ${dragging ? 'is-dragging' : ''}`} ref={stage} tabIndex={0} role="region" aria-roledescription="carousel"
+    <div className="gallery-stage" ref={stage} tabIndex={0} role="region" aria-roledescription="carousel"
       aria-label={lang === 'zh' ? '左右拖动浏览，或使用方向键' : 'Drag sideways or use arrow keys'}
-      onPointerDown={down} onPointerMove={move} onPointerUp={finish} onPointerCancel={e => finish(e, true)}
-      onLostPointerCapture={e => { if (e.target === stage.current) finish(e, true); }}
-      onPointerLeave={e => { if (!motion.current.pointer?.moved) finish(e, true); }}
-      onKeyDown={e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); advance(e.key === 'ArrowRight' ? 1 : -1); } }}>
-      {!products && <div className="stage-floor" aria-hidden="true" />}
-      {visibleItems(items, position).map(({poster, index, offset}) => {
-        const distance = Math.abs(offset), active = index === activeIndex;
-        const scale = products ? 1 - Math.min(distance, 3.4) * .13 : Math.max(.62, 1 - distance * .16);
-        const turn = products ? Math.max(-18, Math.min(18, -offset * 6)) : Math.max(-14, Math.min(14, offset * -8));
-        const drift = products ? offset * 8 : Math.max(-9, Math.min(9, offset * 4));
-        // With two results the opposite poster changes sides at the circular seam.
-        // Fade it before that seam, retaining one real, accessible copy per poster.
-        const opacity = items.length === 2 ? Math.max(0, 1 - distance * 1.25) : products ? Math.max(.2, 1 - distance * .17) : Math.max(0, 1 - Math.max(0, distance - 1) * .6);
-        return <button key={poster.id} className={`poster-plane ${active ? 'center' : ''}`} tabIndex={active ? 0 : -1}
-          aria-hidden={distance > 2.5 || opacity < .1} aria-label={`${lang === 'zh' ? (active ? '查看海报' : '选择海报') : (active ? 'View poster' : 'Select poster')}: ${poster.title[lang]}`}
-          data-poster-id={poster.id}
-          style={{'--ratio': poster.width / poster.height, zIndex: 20 - Math.round(distance * 3), opacity, pointerEvents: distance > 2.5 || opacity < .1 ? 'none' : 'auto', aspectRatio: products ? undefined : `${poster.width} / ${poster.height}`, transform: `translate(-50%, -50%) translateX(${offset * stepWidth}px) translateY(${distance * (products ? 21 : 16)}px) rotateY(${turn}deg) rotateZ(${drift}deg) scale(${scale})`}}
+      onPointerDown={down} onPointerMove={move} onPointerUp={e => finish(e)} onPointerCancel={e => finish(e, true)}
+      onLostPointerCapture={e => {if (e.target === stage.current) finish(e, true);}}
+      onPointerLeave={e => {if (!pointer.current?.moved) finish(e, true);}}
+      onKeyDown={e => {if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {e.preventDefault(); endWheel(); controller.advance(e.key === 'ArrowRight' ? 1 : -1);}}}>
+      {!products && <div className="stage-floor" aria-hidden="true"/>}
+      {mounted.map(({poster,index}) => {
+        const active = index === anchor;
+        return <button key={poster.id} ref={node => {if(node) planes.current.set(poster.id,node);else planes.current.delete(poster.id);}}
+          className={`poster-plane ${active ? 'center' : ''}`} tabIndex={active ? 0 : -1}
+          aria-label={`${lang === 'zh' ? (active ? '查看海报' : '选择海报') : (active ? 'View poster' : 'Select poster')}: ${poster.title[lang]}`}
+          data-poster-id={poster.id} style={{'--ratio':poster.width/poster.height,aspectRatio:products ? undefined : `${poster.width} / ${poster.height}`}}
           onClick={() => {
-            if (performance.now() < motion.current.suppress) return;
-            if (active) callbacks.current.onOpen(poster);
-            else animate(motion.current.position + shortestDelta(index, motion.current.position, items.length));
+            if (performance.now() < suppress.current) return;
+            if (index === wrapIndex(Math.round(controller.state.position),items.length)) latest.current.onOpen(poster);
+            else controller.settle(controller.state.position + shortestDelta(index,controller.state.position,items.length));
           }}>
-          <SafeImage src={products ? poster.displayImage : poster.image} alt={poster.title[lang]} draggable="false" decoding="async" />
-          {!products && <span className="expand-hint"><Maximize2 size={15} />{lang === 'zh' ? '查看完整海报' : 'View full poster'}</span>}
+          <SafeImage src={products ? poster.displayImage : poster.image} alt={poster.title[lang]} draggable="false" decoding="async"/>
+          {!products && <span className="expand-hint"><Maximize2 size={15}/>{lang === 'zh' ? '查看完整海报' : 'View full poster'}</span>}
         </button>;
       })}
     </div>
