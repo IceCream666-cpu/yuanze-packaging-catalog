@@ -1,0 +1,64 @@
+{
+  "version": "client1.2",
+  "patch": "mobile-adaptation",
+  "publishedAt": "2026-10-21T17:24:47+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "0229add3c52aa1efdf896e147a4427d5674cb8f8938304a2b8286a954abc9852",
+  "backup": "/opt/yuanze-reference/backups/client1.2-mobile-audit-20261021",
+  "verifiedFiles": 203,
+  "changed": [
+    "preview.js",
+    "preview.css",
+    "bundle-manifest.json"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=2564528\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "f99d90176972e5016801a13352632d465a34898cae75cd1763e976dab4244d23",
+  "onlineVerification": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "assets/featured/poster-012.png",
+      "assets/featured/poster-013.png",
+      "assets/featured/poster-039.png",
+      "assets/featured/poster-042.png",
+      "assets/featured/poster-044.png",
+      "assets/featured/poster-047.png",
+      "assets/featured/poster-049.png",
+      "assets/featured/poster-051.png"
+    ],
+    "originalDownload": true,
+    "checkedAt": "2026-10-21T17:26:03+08:00",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginPreserved": true
+  },
+  "sourceCommit": "eea40c9b79099885390b745d55897f7579f969e8",
+  "browserVerification": {
+    "customerLogin": true,
+    "shortViewportInputVisible": "390x420",
+    "live320Swatches44px": true,
+    "libraryMobileNavigation": true,
+    "original1448x1086Loaded": true,
+    "browserDownloadCompleted": true,
+    "landscapeCloseButtonVisibleAfterScroll": true,
+    "bodyLockedDuringModal": true,
+    "physicalDeviceTest": false
+  },
+  "regression": {
+    "root": 168,
+    "backend": 251,
+    "deployment": 32,
+    "client": 24,
+    "fullSuitePassed": true
+  }
+}

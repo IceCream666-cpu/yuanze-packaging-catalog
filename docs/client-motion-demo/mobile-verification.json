@@ -426,13 +426,18 @@
     "tablet768FinalRecheck": true,
     "favoriteAddRemove": true,
     "escapeRestoresTriggerFocus": true,
-    "consoleErrors": []
+    "consoleErrors": [],
+    "shortViewport390x420LoginInputVisible": true,
+    "liveCustomerLogin": true,
+    "liveOriginalLoaded1448x1086": true,
+    "liveBrowserDownloadCompleted": true,
+    "liveLandscapeCloseStaysVisible": true
   },
   "limits": [
     "Viewport/pointer simulation, not a physical iOS or Android device",
     "No real mobile keyboard, Safari touch physics or low-end-device FPS measurement"
   ],
-  "status": "local verified; publication pending",
+  "status": "published and live verified",
   "findings": [
     {
       "area": "small-screen featured selector",
@@ -459,5 +464,6 @@
       "before": "no document scroll lock; gallery touch-action excluded native pinch zoom",
       "fix": "restoreable background scroll lock; pan-y pinch-zoom"
     }
-  ]
+  ],
+  "releaseReceipt": "mobile-release.json"
 }

@@ -62,4 +62,4 @@ CLI 默认 `client12`；`--edition client1` 与 `--edition legacy` 保留历史�
 
 ## 2026-10-21 mobile audit patch
 
-Client1.2 same-version fix: 320px swatch clipping and navigation compression, 44px mobile controls, 16px search inputs, in-flow filters, scroll-contained landscape dialogs, reversible page scroll lock and native pinch-zoom allowance. See `mobile-verification.json` for observed viewport coverage, checks and physical-device limitations. Login is audited without source changes. Production status is recorded separately in the release receipt.
+Client1.2 same-version fix: 320px swatch clipping and navigation compression, 44px mobile controls, 16px search inputs, in-flow filters, scroll-contained landscape dialogs, reversible page scroll lock and native pinch-zoom allowance. See `mobile-verification.json` for observed viewport coverage, checks and physical-device limitations. Login is audited without source changes. Published at 2026-10-21 17:24:47 +08:00; live verification and selective no-restart deployment evidence: `mobile-release.json`.
