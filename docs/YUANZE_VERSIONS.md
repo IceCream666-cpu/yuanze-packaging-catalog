@@ -29,3 +29,5 @@ client1.2 最新修复清单为 `3187fb4f0dc48284190c43055b3792bc2c5f4ff29358d4f
 client1.2 首次发布使用现有 `20261013-client-hd-v1` release，在 `/client` 原子替换展厅静态目录；服务 PID 18809 未变、数据库写入为 0。manifest SHA-256 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`，备份 `/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom`。新增图通过 `/showroom/assets/featured/` 登录保护路径提供，未替换完整原海报。
 
 历史 client1.0 部署标识为 `client1.0-20261020`，同样在 `20261013-client-hd-v1` release 内原子替换展厅静态文件。不得把服务 release 目录日期误作各次发布时间；同版预览与正式发布记录分别保留。
+
+client1.2 手机适配修复（2026-10-21）：本地审查和全量验证完成，待发布。包含小屏导航/色点、触控区、搜索字号、横屏弹窗与背景滚动；同版修复不新增版本号。

@@ -1,0 +1,82 @@
+/* Responsive audit: keep controls reachable without changing the artwork. */
+.modal {
+  overflow: hidden;
+  max-height: calc(100dvh - max(24px, env(safe-area-inset-top)) - max(24px, env(safe-area-inset-bottom)));
+  overscroll-behavior: contain;
+}
+.modal-inner { max-height: inherit; }
+.modal-toolbar strong { min-width: 0; overflow-wrap: anywhere; }
+.modal-toolbar .icon-button { flex-shrink: 0; }
+.info-modal .modal-inner { height: auto; }
+.info-content { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.lightbox-image { overscroll-behavior: contain; }
+.toast { bottom: max(25px, env(safe-area-inset-bottom)); }
+.main-nav button { min-height: 44px; }
+.gallery-stage { touch-action: pan-y pinch-zoom; }
+
+@media (max-width: 900px) {
+  .search-box input, .style-picker select { font-size: 16px; }
+  .colour-nav .colour-favorites, .colour-nav .colour-language,
+  .colour-play, .colour-footer button { min-width: 44px; min-height: 44px; }
+  .colour-swatches button { flex-basis: 44px; width: 44px; height: 44px; }
+}
+
+@media (max-width: 760px) {
+  .library-page .topbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    height: auto;
+    padding-top: 12px;
+    gap: 8px 12px;
+  }
+  .library-page .topbar .brand { justify-self: start; flex-shrink: 0; min-width: 44px; }
+  .library-page .topbar .brand img { flex-shrink: 0; }
+  .library-page .header-actions { grid-column: 2; grid-row: 1; }
+  .library-page .main-nav { grid-column: 1 / -1; grid-row: 2; gap: 24px; }
+  .library-page .main-nav button { min-height: 44px; white-space: nowrap; }
+  .library-page .header-actions .icon-button,
+  .library-page .language,
+  .grid-caption .icon-button,
+  .clear-search,
+  .gallery-navigation .round-button { min-width: 44px; min-height: 44px; }
+  .search-box { min-width: 0; }
+  .search-box input { font-size: 16px; }
+  .search-box kbd { display: none; }
+  .view-toggle { flex-shrink: 0; }
+  .style-picker { position: static; margin-left: auto; }
+  .style-picker select { min-height: 44px; font-size: 16px; max-width: 100%; }
+  .category-tabs { flex-basis: 100%; }
+  .filter-bar { gap: 0; }
+  .grid-section { margin-top: 16px; padding-top: 0; }
+  .grid-caption > div, .poster-title { min-width: 0; overflow-wrap: anywhere; }
+  .poster-detail { grid-template-columns: minmax(0, 1fr) auto; }
+  .poster-actions { flex-wrap: wrap; }
+  .gallery-navigation { gap: 0; }
+  .image-modal { height: calc(100dvh - 48px); }
+}
+
+@media (max-width: 600px) {
+  .colour-nav .colour-favorites, .colour-nav .colour-language,
+  .colour-save, .colour-play, .colour-footer button { min-width: 44px; min-height: 44px; }
+  .colour-nav { gap: 4px; }
+  .colour-swatches { min-width: 0; gap: 2px; }
+  .colour-swatches button { flex-basis: 44px; width: 44px; height: 44px; padding: 8px; }
+  .colour-collection-bar { grid-template-columns: minmax(0, 1fr); }
+  .colour-footer { flex-wrap: wrap; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+  .colour-footer > div { margin-left: auto; }
+}
+
+@media (max-width: 420px) {
+  .colour-header { display: grid; grid-template-columns: minmax(0, 1fr) 44px 44px; gap: 0 8px; }
+  .colour-nav { display: contents; }
+  .colour-nav .browse-collection { grid-column: 1 / -1; justify-self: end; }
+  .colour-swatches { display: grid; grid-template-columns: repeat(4, 44px); justify-content: center; gap: 4px 12px; }
+  .colour-intro { padding-top: 16px; }
+}
+
+@media (max-width: 360px) {
+  .colour-product-actions { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; }
+  .colour-poster { grid-column: 1 / -1; min-height: 48px; }
+  .colour-save { grid-column: 1; grid-row: 2; }
+  .colour-arrows { grid-column: 3; grid-row: 2; }
+}

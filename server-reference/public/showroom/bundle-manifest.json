@@ -801,12 +801,12 @@
       "sha256": "44afce1bffe4d18a6a65722aa84030278d7a30bb7034f778f76b43c4b60cc218"
     },
     "preview.css": {
-      "bytes": 26584,
-      "sha256": "7065164a380c5a4b6e0457fca196ca96f308753fa441b7f9ea237dd1dadb03c8"
+      "bytes": 29576,
+      "sha256": "615fd9b27cababb8f93c7f9ef87a07537d32b5b1b25f7d27381df12dddbcd4a1"
     },
     "preview.js": {
-      "bytes": 280704,
-      "sha256": "a6471253da3787c6d0d4c7077535821550178dc24c87ff0c65bc1164759901fa"
+      "bytes": 281289,
+      "sha256": "4c27caebe0b2ebdc532c3cb8430215244d5d8a1709fdda22418017193f406d45"
     },
     "product-posters.js": {
       "bytes": 13769,

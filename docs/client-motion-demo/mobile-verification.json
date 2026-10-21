@@ -1,0 +1,463 @@
+{
+  "login": [
+    {
+      "card": {
+        "bottom": 841.1171875,
+        "height": 813.1171875,
+        "left": 16,
+        "right": 289,
+        "top": 28,
+        "width": 273,
+        "x": 16,
+        "y": 28
+      },
+      "height": 568,
+      "inputs": [
+        {
+          "font": "16px",
+          "type": "text",
+          "width": 183
+        },
+        {
+          "font": "16px",
+          "type": "password",
+          "width": 95
+        }
+      ],
+      "overflow": false,
+      "video": [
+        {
+          "muted": true,
+          "ready": 4
+        },
+        {
+          "muted": true,
+          "ready": 4
+        }
+      ],
+      "width": 320
+    },
+    {
+      "card": {
+        "bottom": 879.1953125,
+        "height": 851.1953125,
+        "left": 16,
+        "right": 359,
+        "top": 28,
+        "width": 343,
+        "x": 16,
+        "y": 28
+      },
+      "height": 844,
+      "inputs": [
+        {
+          "font": "16px",
+          "type": "text",
+          "width": 235
+        },
+        {
+          "font": "16px",
+          "type": "password",
+          "width": 131
+        }
+      ],
+      "overflow": false,
+      "video": [
+        {
+          "muted": true,
+          "ready": 4
+        },
+        {
+          "muted": true,
+          "ready": 4
+        }
+      ],
+      "width": 390
+    },
+    {
+      "card": {
+        "bottom": 891.59375,
+        "height": 851.1953125,
+        "left": 16,
+        "right": 414,
+        "top": 40.3984375,
+        "width": 398,
+        "x": 16,
+        "y": 40.3984375
+      },
+      "height": 932,
+      "inputs": [
+        {
+          "font": "16px",
+          "type": "text",
+          "width": 290
+        },
+        {
+          "font": "16px",
+          "type": "password",
+          "width": 186
+        }
+      ],
+      "overflow": false,
+      "video": [
+        {
+          "muted": true,
+          "ready": 4
+        },
+        {
+          "muted": true,
+          "ready": 4
+        }
+      ],
+      "width": 430
+    },
+    {
+      "card": {
+        "bottom": 954.1953125,
+        "height": 906.1953125,
+        "left": 32,
+        "right": 620,
+        "top": 48,
+        "width": 588,
+        "x": 32,
+        "y": 48
+      },
+      "height": 375,
+      "inputs": [
+        {
+          "font": "16px",
+          "type": "text",
+          "width": 344
+        },
+        {
+          "font": "16px",
+          "type": "password",
+          "width": 240
+        }
+      ],
+      "overflow": false,
+      "video": [
+        {
+          "muted": true,
+          "ready": 4
+        },
+        {
+          "muted": true,
+          "ready": 4
+        }
+      ],
+      "width": 667
+    }
+  ],
+  "home": [
+    {
+      "clipped": [],
+      "height": 568,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 320
+    },
+    {
+      "clipped": [],
+      "height": 740,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 360
+    },
+    {
+      "clipped": [],
+      "height": 844,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "height": 932,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 430
+    },
+    {
+      "clipped": [],
+      "height": 375,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 667
+    },
+    {
+      "clipped": [],
+      "height": 1024,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 768
+    },
+    {
+      "clipped": [],
+      "height": 800,
+      "overflow": false,
+      "page": "home-en",
+      "touchAction": "pan-y pinch-zoom",
+      "width": 1280
+    }
+  ],
+  "library": [
+    {
+      "font": "16px",
+      "gridColumns": "126.5px 126.5px",
+      "head": [
+        {
+          "h": 44,
+          "label": "Back to featured collection",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "Discover",
+          "w": 54.703125
+        },
+        {
+          "h": 44,
+          "label": "Favorites0",
+          "w": 78.1484375
+        },
+        {
+          "h": 44,
+          "label": "切换为中文",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "About this gallery",
+          "w": 44
+        }
+      ],
+      "overflow": false,
+      "page": "library",
+      "width": 320
+    },
+    {
+      "font": "16px",
+      "gridColumns": "146.5px 146.5px",
+      "head": [
+        {
+          "h": 44,
+          "label": "Back to featured collection",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "Discover",
+          "w": 54.703125
+        },
+        {
+          "h": 44,
+          "label": "Favorites0",
+          "w": 78.1484375
+        },
+        {
+          "h": 44,
+          "label": "切换为中文",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "About this gallery",
+          "w": 44
+        }
+      ],
+      "overflow": false,
+      "page": "library",
+      "width": 360
+    },
+    {
+      "font": "16px",
+      "gridColumns": "161.5px 161.5px",
+      "head": [
+        {
+          "h": 44,
+          "label": "Back to featured collection",
+          "w": 98.609375
+        },
+        {
+          "h": 44,
+          "label": "Discover",
+          "w": 54.703125
+        },
+        {
+          "h": 44,
+          "label": "Favorites0",
+          "w": 82.1484375
+        },
+        {
+          "h": 44,
+          "label": "切换为中文",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "About this gallery",
+          "w": 44
+        }
+      ],
+      "overflow": false,
+      "page": "library",
+      "width": 390
+    },
+    {
+      "font": "16px",
+      "gridColumns": "181.5px 181.5px",
+      "head": [
+        {
+          "h": 44,
+          "label": "Back to featured collection",
+          "w": 98.609375
+        },
+        {
+          "h": 44,
+          "label": "Discover",
+          "w": 54.703125
+        },
+        {
+          "h": 44,
+          "label": "Favorites0",
+          "w": 82.1484375
+        },
+        {
+          "h": 44,
+          "label": "切换为中文",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "About this gallery",
+          "w": 44
+        }
+      ],
+      "overflow": false,
+      "page": "library",
+      "width": 430
+    },
+    {
+      "font": "16px",
+      "gridColumns": "293px 293px",
+      "head": [
+        {
+          "h": 44,
+          "label": "Back to featured collection",
+          "w": 122.5703125
+        },
+        {
+          "h": 44,
+          "label": "Discover",
+          "w": 54.703125
+        },
+        {
+          "h": 44,
+          "label": "Favorites0",
+          "w": 82.1484375
+        },
+        {
+          "h": 44,
+          "label": "切换为中文",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "About this gallery",
+          "w": 44
+        }
+      ],
+      "overflow": false,
+      "page": "library",
+      "width": 667
+    },
+    {
+      "font": "16px",
+      "gridColumns": "211.141px 211.141px 211.141px",
+      "head": [
+        {
+          "h": 44,
+          "label": "Back to featured collection",
+          "w": 236.5703125
+        },
+        {
+          "h": 44,
+          "label": "Discover",
+          "w": 62.8125
+        },
+        {
+          "h": 44,
+          "label": "Favorites0",
+          "w": 117.671875
+        },
+        {
+          "h": 44,
+          "label": "切换为中文",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "About this gallery",
+          "w": 44
+        }
+      ],
+      "overflow": false,
+      "page": "library",
+      "width": 768
+    }
+  ],
+  "checks": {
+    "horizontalDragChangedPoster": true,
+    "verticalScrollKeptPoster": true,
+    "dragDidNotOpenModal": true,
+    "englishLightboxWrap": true,
+    "originalLoaded1448x1086": true,
+    "zoomToggle": true,
+    "modalRestoredScrollY": 346.5,
+    "landscapeCloseRemainsVisible": true,
+    "searchEmptyAndReset": true,
+    "tablet768FinalRecheck": true,
+    "favoriteAddRemove": true,
+    "escapeRestoresTriggerFocus": true,
+    "consoleErrors": []
+  },
+  "limits": [
+    "Viewport/pointer simulation, not a physical iOS or Android device",
+    "No real mobile keyboard, Safari touch physics or low-end-device FPS measurement"
+  ],
+  "status": "local verified; publication pending",
+  "findings": [
+    {
+      "area": "small-screen featured selector",
+      "before": "last swatch exceeded the clipped container at 320px",
+      "fix": "four by two 44px selectors below 420px"
+    },
+    {
+      "area": "library navigation",
+      "before": "wrapped Chinese labels, shrunken logo and 14.5-20px English navigation target height",
+      "fix": "two-row mobile header and minimum 44px navigation targets"
+    },
+    {
+      "area": "mobile search/filter",
+      "before": "13px input font and absolutely positioned style selector",
+      "fix": "16px inputs through 900px; in-flow mobile style control"
+    },
+    {
+      "area": "landscape information dialog",
+      "before": "close button scrolled above viewport (top -101.75px)",
+      "fix": "fixed toolbar and independently scrollable content"
+    },
+    {
+      "area": "modal and gestures",
+      "before": "no document scroll lock; gallery touch-action excluded native pinch zoom",
+      "fix": "restoreable background scroll lock; pan-y pinch-zoom"
+    }
+  ]
+}

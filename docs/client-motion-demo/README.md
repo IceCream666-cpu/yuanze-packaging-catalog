@@ -59,3 +59,7 @@ CLI 默认 `client12`；`--edition client1` 与 `--edition legacy` 保留历史�
 本次安装在既有 `/opt/yuanze-reference/releases/20261013-client-hd-v1` 内完成，203 项静态资源全部核对；只改变三个页面入口及清单，新增 8 张透明图。manifest SHA-256 为 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`。展厅之外 6814 个文件摘要保持，服务 PID 18809 未变，无服务重启、release 切换或数据库写入。备份为 `/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom`。
 
 发布前全量验证通过：160 项根测试（3 项既有条件跳过）、249 项后端、32 项部署、全部原前端、18 项旧客户端及 15 项新版测试；生产构建浏览器模拟 session/退出等 13 项检查通过。正式域名另完成 126 项页面与素材摘要核验、客户/员工/管理员权限、匿名拒绝、原图下载及退出失效；真实客户登录的桌面与 390px 手机浏览器 8 项检查通过，JS/网络/意外 HTTP 错误均为 0。首次素材检查遇 TLS EOF 中止，完整重跑全部通过；证据见 client12-release.json。
+
+## 2026-10-21 mobile audit patch
+
+Client1.2 same-version fix: 320px swatch clipping and navigation compression, 44px mobile controls, 16px search inputs, in-flow filters, scroll-contained landscape dialogs, reversible page scroll lock and native pinch-zoom allowance. See `mobile-verification.json` for observed viewport coverage, checks and physical-device limitations. Login is audited without source changes. Production status is recorded separately in the release receipt.

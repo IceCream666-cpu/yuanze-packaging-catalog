@@ -9,8 +9,10 @@ import {copy, categories, styles} from './copy.js';
 import PosterStage from './PosterStage.jsx';
 import FeaturedShowcase from './FeaturedShowcase.jsx';
 import featuredData from './featured.json';
+import {lockPageScroll} from './modal-scroll.js';
 import './style.css';
 import './colour.css';
+import './mobile.css';
 
 // The preview is offline. Authentication remains the responsibility of the existing server.
 const production = import.meta.env.MODE === 'showroom';
@@ -71,6 +73,9 @@ function App() {
   useEffect(() => {
     if (modal) dialogRef.current?.showModal();
     else {dialogRef.current?.close(); triggerRef.current?.focus?.();}
+  }, [modal?.type]);
+  useEffect(() => {
+    if (modal) return lockPageScroll();
   }, [modal?.type]);
   useEffect(() => {
     const shortcut = event => {if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k' && !modal) {event.preventDefault(); searchRef.current?.focus();}};
