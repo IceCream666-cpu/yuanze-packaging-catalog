@@ -765,16 +765,16 @@
       "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 35923,
-      "sha256": "a99cca92607869c57b1569b4f284b0ef74aa6252111867b41fe0a45cdb3661df"
+      "bytes": 418,
+      "sha256": "53f0c9889d1ae3d8c5eb2287f8f42e9e01d9f60ea0a5efc813b77fbbc52c51a3"
     },
     "preview.css": {
-      "bytes": 22995,
-      "sha256": "a2bddb4ebab89f348f177d17d7718680d7af333936596e62a582e9be181267df"
+      "bytes": 22445,
+      "sha256": "0bff8e685e3b5ea9cf1ddcbb75a8658cdebb4d9218bf66dcc5ce489a29cab5ea"
     },
     "preview.js": {
-      "bytes": 57915,
-      "sha256": "6b8a21bf71b2439e5f723805360152e1fb98bc050df4b322041114c193d5ecf6"
+      "bytes": 270889,
+      "sha256": "c3097e6767d7425a6a8837e18f24fad43a2a344edbc53e54012991ddda8b46c6"
     },
     "product-posters.js": {
       "bytes": 13769,
@@ -782,5 +782,6 @@
     }
   },
   "schema": 1,
-  "source": "docs/mobile-client-preview"
+  "source": "docs/client-apple-demo",
+  "version": "client1.0"
 }

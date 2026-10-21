@@ -17,6 +17,53 @@ SOURCE = ROOT / 'docs/mobile-client-preview'
 DESTINATION = ROOT / 'server-reference/public/showroom'
 ENTRYPOINTS = ('index.html', 'preview.css', 'preview.js', 'company-content.js', 'product-posters.js')
 ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
+CLIENT = ROOT / 'docs/client-apple-demo'
+CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
+
+
+def client_source_hash():
+    sources = [*sorted((CLIENT / 'src').glob('*')), CLIENT / 'index.html',
+               CLIENT / 'vite.config.js', CLIENT / 'package.json', CLIENT / 'assets-manifest.json']
+    digest = hashlib.sha256()
+    for path in sources:
+        digest.update(path.relative_to(CLIENT).as_posix().encode() + b'\0' + path.read_bytes())
+    return digest.hexdigest()
+
+
+def stamp_client_release():
+    files = {name: hashlib.sha256((CLIENT / 'release' / name).read_bytes()).hexdigest()
+             for name in CLIENT_ENTRYPOINTS}
+    (CLIENT / 'release/build.json').write_text(json.dumps({
+        'version': 'client1.0', 'sourceSha256': client_source_hash(), 'files': files,
+    }, indent=2) + '\n')
+
+
+def client_files(files):
+    """Overlay only the client entrypoints; preserve all reviewed media."""
+    files = dict(files)
+    stamp = json.loads((CLIENT / 'release/build.json').read_text())
+    if stamp['sourceSha256'] != client_source_hash():
+        raise ValueError('client1.0 source changed: rebuild and stamp the release first')
+    for name in CLIENT_ENTRYPOINTS:
+        data = source_file(CLIENT / 'release', name).read_bytes()
+        if hashlib.sha256(data).hexdigest() != stamp['files'][name]:
+            raise ValueError(f'client1.0 release checksum mismatch: {name}')
+        files[name] = data
+    paths = json.loads((CLIENT / 'src/asset-paths.json').read_text())
+    approved = json.loads((CLIENT / 'assets-manifest.json').read_text())
+    for item in approved['files']:
+        route = paths['/' + item['target']]
+        if not route.startswith('/showroom/assets/') or '..' in route.split('/'):
+            raise ValueError('Invalid client media route')
+        data = files.get(route.removeprefix('/showroom/'), b'')
+        if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
+            raise ValueError('Client media differs from reviewed showroom media')
+    files.pop('bundle-manifest.json')
+    bundle = {'schema': 1, 'source': 'docs/client-apple-demo', 'version': 'client1.0',
+              'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
+                        for name, data in sorted(files.items())}}
+    files['bundle-manifest.json'] = (json.dumps(bundle, ensure_ascii=False, sort_keys=True, indent=2) + '\n').encode()
+    return files
 
 
 def source_file(source, name):
@@ -26,7 +73,7 @@ def source_file(source, name):
     return path
 
 
-def expected_files(source=SOURCE):
+def expected_files(source=SOURCE, edition='legacy'):
     source = Path(source)
     files = {}
     for name in ENTRYPOINTS:
@@ -77,12 +124,12 @@ def expected_files(source=SOURCE):
               'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
                         for name, data in sorted(files.items())}}
     files['bundle-manifest.json'] = (json.dumps(bundle, ensure_ascii=False, sort_keys=True, indent=2) + '\n').encode()
-    return files
+    return client_files(files) if edition == 'client1' else files
 
 
-def check(source=SOURCE, destination=DESTINATION):
+def check(source=SOURCE, destination=DESTINATION, edition='legacy'):
     destination = Path(destination)
-    expected = expected_files(source)
+    expected = expected_files(source, edition)
     actual = {path.relative_to(destination).as_posix() for path in destination.rglob('*') if path.is_file() or path.is_symlink()}
     stale = sorted(actual.symmetric_difference(expected))
     for name, data in expected.items():
@@ -92,11 +139,11 @@ def check(source=SOURCE, destination=DESTINATION):
     return sorted(set(stale))
 
 
-def build(source=SOURCE, destination=DESTINATION):
+def build(source=SOURCE, destination=DESTINATION, edition='legacy'):
     destination = Path(destination)
     if destination.name != 'showroom' or destination.is_symlink():
         raise ValueError('Destination must be a dedicated showroom directory')
-    files = expected_files(source)
+    files = expected_files(source, edition)
     destination.mkdir(parents=True, exist_ok=True)
     for path in destination.rglob('*'):
         if path.is_symlink():
@@ -118,15 +165,22 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
+    parser.add_argument('--edition', choices=('client1', 'legacy'), default='client1',
+                        help='client1 is the current release; legacy is for historical regression only')
+    parser.add_argument('--stamp-client', action='store_true',
+                        help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()
+    if args.stamp_client:
+        stamp_client_release()
+        return 0
     if args.check:
-        stale = check(destination=args.output)
+        stale = check(destination=args.output, edition=args.edition)
         if stale:
             print('Customer showroom bundle is stale: ' + ', '.join(stale), file=sys.stderr)
             return 1
         print('Customer showroom bundle matches the reviewed source.')
     else:
-        count = build(destination=args.output)
+        count = build(destination=args.output, edition=args.edition)
         print(f'Built {count} authenticated showroom files in {args.output}')
     return 0
 

@@ -1,0 +1,9 @@
+{
+  "version": "client1.0",
+  "sourceSha256": "802b3a1e44748e5fd81f0d700b0702a0424598c9f08bf1f92263bbf294324623",
+  "files": {
+    "index.html": "53f0c9889d1ae3d8c5eb2287f8f42e9e01d9f60ea0a5efc813b77fbbc52c51a3",
+    "preview.js": "c3097e6767d7425a6a8837e18f24fad43a2a344edbc53e54012991ddda8b46c6",
+    "preview.css": "0bff8e685e3b5ea9cf1ddcbb75a8658cdebb4d9218bf66dcc5ce489a29cab5ea"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "version": "client1.0",
+  "published": true,
+  "publishedAt": "2026-10-20T20:02:32.318365+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "filesVerified": 195,
+  "changedFiles": 3,
+  "backup": "/opt/yuanze-reference/backups/client1.0-20261020-showroom",
+  "manifestHash": "a5b844477dc1ea2e62fe89c46b81eb79306cf8deeb47e3f82a7391c3a4de733b",
+  "outsideUnchanged": true,
+  "service": "MainPID=18809\nActiveState=active\nActiveEnterTimestamp=Tue 2026-10-13 01:34:52 CST\n",
+  "databaseWrites": 0,
+  "serviceRestart": false,
+  "online": {
+    "version": "client1.0",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": 118,
+    "downloadOriginalVerified": true,
+    "anonymousDenied": true,
+    "logoutVerified": true
+  },
+  "localTests": {
+    "root": 162,
+    "backend": 249,
+    "deployment": 32,
+    "client": 18,
+    "frontendSuites": "all passed"
+  },
+  "browserChecks": [
+    "existing username/password login",
+    "desktop and 390px phone layout",
+    "HD original 1448x1086",
+    "favorites add/filter/remove",
+    "category filter",
+    "English",
+    "phone menu logout"
+  ],
+  "physicalTrackpadTest": false
+}

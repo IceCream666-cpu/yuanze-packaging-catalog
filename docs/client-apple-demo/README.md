@@ -1,6 +1,16 @@
-# 源泽灵感选型 · yuanze2.0.2
+# 源泽客户海报展厅 · client1.0
 
-**本地交互 demo，未上线。** 原生产 `/client`、登录、包材检索和后台均未修改。
+**2026-10-20 20:02:32（北京时间）已上线**：[正式客户展厅](https://bmt.yuanzebeauty.com/client)。保留现有账号密码和角色权限；38 张已批准海报，画廊/总览、分类/风格/搜索、浏览器本地收藏、滑动、高清图与原图下载。选型意向和相似包材演示入口已移除。手机菜单与桌面工具栏均可退出登录。
+
+## 当前构建和发布
+
+- 前端源码在本目录 `src/`；`release/` 为提交入库的正式 Vite 构建，资源仅映射至既有受保护 `/showroom/` 路径，不复制业务数据。
+- 本目录执行 `npm run build:release` 后，回到仓库根执行 `python3 scripts/build_customer_showroom.py --stamp-client`、`python3 scripts/build_customer_showroom.py`、`python3 scripts/build_customer_showroom.py --check`。
+- 生成器默认 CLI 版本为 client1；显式 `--edition legacy` 仅用于历史回归，不能覆盖正式发布。Python 函数默认保留 legacy，历史回归与 client1 发布测试分别覆盖。
+- 源码或批准素材变动后必须重新构建和盖摘要；校验拒绝源码与构建不一致。正式部署只替换 index.html、preview.js、preview.css 和清单，保留其余资源、数据库、认证与服务器进程。
+- `client1-release.json` 记录本轮真实发布与验收；旧 yuanze2.0.1/2 记录是发布前的历史预览，不能理解为当前状态。收藏键为兼容旧预览保留，收藏不会同步到其他设备。
+
+## 历史预览设计与验证（以下为发布前记录）
 
 ## 设计方向
 

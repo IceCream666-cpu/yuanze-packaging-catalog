@@ -18,3 +18,4 @@
 .gallery-stage.is-dragging .gallery-track{transition:none;will-change:transform}
 .gallery-stage.is-dragging .expand-hint{opacity:0}
 @media(prefers-reduced-motion:reduce){.gallery-track{transform:none}}
+.session-error{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:#fff4ed;color:#8a3415;border-radius:12px;font-size:13px}.session-error button{color:inherit;flex-shrink:0}

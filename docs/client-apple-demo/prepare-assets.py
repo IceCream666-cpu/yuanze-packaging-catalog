@@ -26,4 +26,8 @@ for item in items:
 copy_asset(SHOWROOM/'assets/yuanze-mark.svg','yuanze-mark.svg')
 (BASE/'src/posters.json').write_text(json.dumps(records,ensure_ascii=False,indent=2)+'\n')
 (BASE/'assets-manifest.json').write_text(json.dumps({'scope':'local-demo-only','styleTags':'editorial proposal, not product properties','count':len(records),'files':manifest},ensure_ascii=False,indent=2)+'\n')
+(BASE/'src/asset-paths.json').write_text(json.dumps({
+ '/'+item['target']:'/showroom/'+item['source'].split('public/showroom/')[1]
+ for item in manifest
+},indent=2)+'\n')
 print(f'Prepared {len(records)} approved posters and original logo; source pixels unchanged.')
