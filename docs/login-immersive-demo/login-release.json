@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "version": "yuanze2.0.3",
+  "status": "live_verified",
+  "origin": "https://bmt.yuanzebeauty.com",
+  "loginPath": "/login",
+  "initialSuccessfulPublicationAt": "2026-10-21T13:00:33+08:00",
+  "finalStaticPublicationAt": "2026-10-21T13:09:38+08:00",
+  "finalHttpsVerificationAt": "2026-10-21T13:13:46+08:00",
+  "sourceCommits": [
+    "992f5407a79c53e756701c1a93617cfe50b032c1",
+    "033c42ffd78168c4ab1e832040eb23c2b2f25701"
+  ],
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "runtime": {
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "serverSha256": "df4652663f0071c8ab87e0fab6296039debb2d5a597cf318dd530c1f10089668",
+    "manifestSha256": "f99d90176972e5016801a13352632d465a34898cae75cd1763e976dab4244d23",
+    "gatewaySha256": "fa42ab6621ab2ad04d539463fc8007a2a3d8d99f7c5b4167e37373c30988075f",
+    "showroomManifestSha256": "7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993",
+    "service": "MainPID=2564528\nActiveState=active\n"
+  },
+  "scope": {
+    "serverFilesChanged": [
+      "server.py"
+    ],
+    "addedLoginDirectory": "public/login-ui",
+    "existingUnrelatedFilesUnchanged": 7017,
+    "lastStaticUpdateOutsideFilesUnchanged": 7018,
+    "clientVersionPreserved": "client1.2",
+    "gatewayChanged": false,
+    "publisherWroteBusinessData": false,
+    "authenticationAndRoleRulesChanged": false
+  },
+  "backups": {
+    "beforeLoginRelease": "/opt/yuanze-reference/backups/yuanze2.0.3-login-20261021-retry2",
+    "beforeSafariStaticFix": "/opt/yuanze-reference/backups/yuanze2.0.3-login-20261021-retry2/login-ui-before-safari"
+  },
+  "verification": {
+    "fullRegression": "passed: scripts/verify.py",
+    "pythonSuites": {
+      "root": 168,
+      "server": 251,
+      "deployment": 32
+    },
+    "frontendSuites": "all existing suites passed; Apple client 18, motion client 15, login 12",
+    "finalGestureFixTests": {
+      "login": 12,
+      "loginHttp": 9,
+      "buildReceipt": "passed"
+    },
+    "roles": {
+      "client": {
+        "sessionSurvivedRestart": true,
+        "destinationAndPermissions": true
+      },
+      "employee": {
+        "sessionSurvivedRestart": true,
+        "destinationAndPermissions": true
+      },
+      "admin": {
+        "sessionSurvivedRestart": true,
+        "destinationAndPermissions": true
+      }
+    },
+    "publicRoutesGate": {
+      "passed": true,
+      "checkedAt": "2026-10-21T05:02:25.122265+00:00",
+      "networkPath": "public_dns_from_this_machine"
+    },
+    "finalPublicHttps": {
+      "checkedAt": "2026-10-21T13:13:46+08:00",
+      "publicHttps": true,
+      "resources": [
+        {
+          "path": "assets/index-BwvSbs1q.css",
+          "sha256": "eecff9726b84a38823659481852660e094ce8e42e07c728b6211c369f8bca21a",
+          "mime": "text/css",
+          "bytes": 24775
+        },
+        {
+          "path": "assets/login-glow-ShWKnVog.mp4",
+          "sha256": "3c1ec85a0464a3bbe6f740b8e6589865776e339c2bc4bfc7e72b50c253893851",
+          "mime": "video/mp4",
+          "bytes": 291846
+        },
+        {
+          "path": "assets/login-glow-poster-DAtzagyn.jpg",
+          "sha256": "13eab9b862f347468624d541335027443c673f0d3bcc94fe80e55632e3c3433d",
+          "mime": "image/jpeg",
+          "bytes": 31178
+        },
+        {
+          "path": "login.js",
+          "sha256": "035be67b48b08c1f0ae5f1b1415e00f468b0f3c985ddcf2dcb13c406ee986b08",
+          "mime": "text/javascript",
+          "bytes": 245703
+        }
+      ],
+      "videoRange": true,
+      "privateLoginArtifactsDenied": true,
+      "runtime": {
+        "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+        "serverSha256": "df4652663f0071c8ab87e0fab6296039debb2d5a597cf318dd530c1f10089668",
+        "manifestSha256": "f99d90176972e5016801a13352632d465a34898cae75cd1763e976dab4244d23",
+        "gatewaySha256": "fa42ab6621ab2ad04d539463fc8007a2a3d8d99f7c5b4167e37373c30988075f",
+        "showroomManifestSha256": "7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993",
+        "service": "MainPID=2564528\nActiveState=active\n"
+      }
+    },
+    "browser": {
+      "realCustomerLoginAndLogout": true,
+      "desktopViewport": [
+        1440,
+        1000
+      ],
+      "mobileWidthsChecked": [
+        320,
+        390
+      ],
+      "horizontalOverflow": false,
+      "bothVideosPlayAndPause": true,
+      "consoleErrors": 0,
+      "originalBrandRetained": true,
+      "safariNativeLayoutViewed": true,
+      "safariForegroundPlaybackVerified": false,
+      "physicalPhoneAndFpsMeasured": false
+    },
+    "screenshots": [
+      "outputs/login-release-20261021/live-desktop.png",
+      "outputs/login-release-20261021/live-mobile.png"
+    ]
+  },
+  "deploymentAttempts": [
+    {
+      "attempt": 1,
+      "outcome": "automatically_rolled_back",
+      "reason": "15-second readiness window shorter than approximately 38-second cold start",
+      "knownInterruption": {
+        "from": "2026-10-21T12:55:16+08:00",
+        "restoredListening": "2026-10-21T12:56:09+08:00"
+      },
+      "serviceRestarts": 2
+    },
+    {
+      "attempt": 2,
+      "outcome": "automatically_rolled_back",
+      "reason": "Exact HTML gate did not account for existing configured site title. Auth and role checks passed. Comparison corrected.",
+      "serviceRestarts": 2
+    },
+    {
+      "attempt": 3,
+      "outcome": "verified_live",
+      "publishedAt": "2026-10-21T13:00:33+08:00",
+      "readyCheckWindowSeconds": 75,
+      "serviceRestarts": 1
+    },
+    {
+      "attempt": "static_gesture_fix",
+      "outcome": "verified_live",
+      "publishedAt": "2026-10-21T13:09:38+08:00",
+      "serviceRestarts": 0
+    }
+  ],
+  "totalServiceRestarts": 5,
+  "rollbackRequirements": [
+    "Check current release, server SHA-256 and final login manifest against this receipt; stop and merge if any later edits exist.",
+    "Hold deploy lock; preserve yuanze UID/GID; restore only server.py and login-ui using the pre-release backup.",
+    "Keep database, showroom and gateway intact; allow at least 75 seconds readiness and verify existing sessions and role routes."
+  ]
+}

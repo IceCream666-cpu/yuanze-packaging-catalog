@@ -2,7 +2,7 @@
 
 ## yuanze2.0.3 正式发布包
 
-用户于 2026-10-21 批准登录页上线。正式构建：`NODE_BIN=<node> .venv/bin/python scripts/build_login.py`（工程根目录）；`--check` 校验源码摘要与5个运行文件。产物为 `server-reference/public/login-ui`，通过 `/_login/` 清单白名单提供，登录 HTML 使用 `/login` 原路径。原账号认证、角色跳转及旧登录回退保留。当前待正式服务器发布验收；完成记录见本目录 `login-release.json`。
+用户于 2026-10-21 批准登录页上线。正式构建：`NODE_BIN=<node> .venv/bin/python scripts/build_login.py`（工程根目录）；`--check` 校验源码摘要与5个运行文件。产物为 `server-reference/public/login-ui`，通过 `/_login/` 清单白名单提供，登录 HTML 使用 `/login` 原路径。原账号认证、角色跳转及旧登录回退保留。已于北京时间 2026-10-21 13:00:33 发布；13:09:38 完成无重启的用户手势播放兼容补丁，13:13:46 正式 HTTPS 复验通过。正式地址 https://bmt.yuanzebeauty.com/login ，版本 `yuanze2.0.3`，记录见本目录 `login-release.json`。客户展厅仍为 client1.2，原账号与角色权限保留。
 
 以下为此前的本地设计和测试记录，保留当时状态。
 
