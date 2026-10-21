@@ -32,33 +32,97 @@
       "bytes": 352385,
       "sha256": "a52d0606cfa05da829710ba645f98f43edc9fc67cfdbd651f7c67af91c711680"
     },
+    "assets/featured/poster-012-1024.webp": {
+      "bytes": 155576,
+      "sha256": "3d712b5e220162733e765c6f7eced8a598fa9bc730ee9303bb09c01c1b0acd27"
+    },
+    "assets/featured/poster-012-640.webp": {
+      "bytes": 75662,
+      "sha256": "d4ce81f02b661650439b15d132dcf9dc867c99402799dad5ef65bf01862eb744"
+    },
     "assets/featured/poster-012.png": {
       "bytes": 1622337,
       "sha256": "6b3236999bef9dc83ff2f983092e180a2ea6824433c54c3bb763c5259ed8b0e8"
+    },
+    "assets/featured/poster-013-1024.webp": {
+      "bytes": 213934,
+      "sha256": "939fa42b6cf3e5144bb5c9c150b4c2709ede6df2d9881d74b4014e5d15291c06"
+    },
+    "assets/featured/poster-013-640.webp": {
+      "bytes": 101376,
+      "sha256": "4409c9a1325cc1f371d5195e849d28c40bafdba29d53cc345c36841c52a7b922"
     },
     "assets/featured/poster-013.png": {
       "bytes": 1936098,
       "sha256": "4de1d98936452cc66c5c8b26b455b0f8b4d8341f0af3737f9bd23c72bbe2de12"
     },
+    "assets/featured/poster-039-1024.webp": {
+      "bytes": 141340,
+      "sha256": "bc93b5ca5d44712dbb8d6aac2e7842f79c8c574f6a89e42a3021584b05adfb3c"
+    },
+    "assets/featured/poster-039-640.webp": {
+      "bytes": 71080,
+      "sha256": "5e9f83be83593285405098ba80460f038aecb62c95d310c78faf78d5f04f1605"
+    },
     "assets/featured/poster-039.png": {
       "bytes": 1570242,
       "sha256": "6345b60d409a983042dc4fd8c7bef5f78d70b2147b56d8880e0c3c64d84c772b"
+    },
+    "assets/featured/poster-042-1024.webp": {
+      "bytes": 85276,
+      "sha256": "7c9cf1baa03f165cd55e3b79ce7e714179d5b3ef3ac0cbacf01f915afde5ea46"
+    },
+    "assets/featured/poster-042-640.webp": {
+      "bytes": 40222,
+      "sha256": "87e2cad7e999035c1e812adfab0c31675704d242f48dbb385b4fc7c9404973b8"
     },
     "assets/featured/poster-042.png": {
       "bytes": 1571264,
       "sha256": "0084d215fac8049cd3b387189d8384d27e2d701a474b5d4b0d9ffdd8c60210b7"
     },
+    "assets/featured/poster-044-1024.webp": {
+      "bytes": 38636,
+      "sha256": "6e2b6c774dcf127b834c59bb9de56452c044fbfe3266c5cc930a1bcff9bb3c87"
+    },
+    "assets/featured/poster-044-640.webp": {
+      "bytes": 19350,
+      "sha256": "117ba7df2abb497448ac9193a3701908de9fb6388ccb42eacc34c58440fcb207"
+    },
     "assets/featured/poster-044.png": {
       "bytes": 1227252,
       "sha256": "03858ca81f2ed4afb7e3e27a1568a42d2e672f947421ad92eb1d520cb4548f94"
+    },
+    "assets/featured/poster-047-1024.webp": {
+      "bytes": 118688,
+      "sha256": "816f6e2910e895088328907014ec13c30ad0219e0513b57685f660e2e51e2b96"
+    },
+    "assets/featured/poster-047-640.webp": {
+      "bytes": 54816,
+      "sha256": "73b932292633f22566186decd0f2df73f5de2bdcf8ba9ca4c49ce2cdef30bb0d"
     },
     "assets/featured/poster-047.png": {
       "bytes": 1351149,
       "sha256": "66f12c52657654805151008b1db85616a50a708367743ff62089fcf38df5822a"
     },
+    "assets/featured/poster-049-1024.webp": {
+      "bytes": 79208,
+      "sha256": "39667c8a1a998c65d67ca56e04f72aacb18524a66900bc498885c44ae2f5775e"
+    },
+    "assets/featured/poster-049-640.webp": {
+      "bytes": 37374,
+      "sha256": "14099c1572118dcf9ebcdbfa427a57ba396282076a610a28d213c56354981e65"
+    },
     "assets/featured/poster-049.png": {
       "bytes": 1797868,
       "sha256": "59788897074464a77a4ea6a2e22631f000905754bb3836c8319bc2144580faa8"
+    },
+    "assets/featured/poster-051-1024.webp": {
+      "bytes": 76416,
+      "sha256": "702d5ab174fa7f0806cb846710ea97f8240817fc9951fc6673ddf3b10973683e"
+    },
+    "assets/featured/poster-051-640.webp": {
+      "bytes": 38452,
+      "sha256": "e6d29409b7dddb100b5752f54aad6c5611785dcef8b15fc8ee27c47468ceb7a1"
     },
     "assets/featured/poster-051.png": {
       "bytes": 890271,
@@ -797,16 +861,16 @@
       "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 418,
-      "sha256": "44afce1bffe4d18a6a65722aa84030278d7a30bb7034f778f76b43c4b60cc218"
+      "bytes": 719,
+      "sha256": "85a7897fd315f7b3d7a8103555cb6c0a052636ccc14c38e62e50f8945e7fe8f7"
     },
     "preview.css": {
-      "bytes": 29576,
-      "sha256": "615fd9b27cababb8f93c7f9ef87a07537d32b5b1b25f7d27381df12dddbcd4a1"
+      "bytes": 30571,
+      "sha256": "60c24fc37a23ac610a9a5415b367be26ed1ac2115d6e9ff793f9a3e0313ee359"
     },
     "preview.js": {
-      "bytes": 281289,
-      "sha256": "4c27caebe0b2ebdc532c3cb8430215244d5d8a1709fdda22418017193f406d45"
+      "bytes": 302425,
+      "sha256": "b0bc24ab33792a895e410421a93141bdb6a94928face169691e04a64f6a8b58b"
     },
     "product-posters.js": {
       "bytes": 13769,

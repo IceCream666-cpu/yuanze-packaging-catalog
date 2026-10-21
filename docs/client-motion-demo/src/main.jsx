@@ -9,6 +9,7 @@ import {copy, categories, styles} from './copy.js';
 import PosterStage from './PosterStage.jsx';
 import FeaturedShowcase from './FeaturedShowcase.jsx';
 import featuredData from './featured.json';
+import featuredMedia from './featured-media.json';
 import {lockPageScroll} from './modal-scroll.js';
 import './style.css';
 import './colour.css';
@@ -19,7 +20,13 @@ const production = import.meta.env.MODE === 'showroom';
 const assetURL = path => production ? assetPaths[path] : `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 const posters = posterData.map(p => ({...p, image: assetURL(p.image), thumb: assetURL(p.thumb), original: assetURL(p.original)}));
 // Featured cutouts have a separate review manifest; the production build registers approved derivatives under assets/.
-const featured = featuredData.map(p => ({...posters.find(item => item.id === p.id), ...p, displayImage: `${import.meta.env.BASE_URL}${production ? 'assets/' : ''}featured/${p.id}.png`}));
+const featured = featuredData.map(p => {
+  const media = featuredMedia[p.id];
+  const prefix = `${import.meta.env.BASE_URL}${production ? 'assets/' : ''}featured/`;
+  return {...posters.find(item => item.id === p.id), ...p,
+    displayImage: `${prefix}${p.id}-1024.webp`, displayMobile: `${prefix}${p.id}-640.webp`,
+    placeholder: media.placeholder, displayWidth: media.width, displayHeight: media.height};
+});
 const localStore = (() => {try {return window.localStorage;} catch {return null;}})();
 const validIds = new Set(posters.map(p => p.id));
 

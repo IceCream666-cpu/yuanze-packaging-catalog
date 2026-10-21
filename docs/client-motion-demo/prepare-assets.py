@@ -43,3 +43,9 @@ for item in json.loads((BASE/'src/featured.json').read_text()):
   raise ValueError(f'Featured cutout does not match reviewed derivative: {src.name}')
  shutil.copyfile(src,featured_dir/src.name)
 print('Prepared 8 derived product cutouts for the design preview.')
+
+for entry in json.loads((BASE/'src/featured-media.json').read_text()).values():
+ for file in entry['files'].values():
+  src=BASE/file['file']
+  assert hashlib.sha256(src.read_bytes()).hexdigest()==file['sha256']
+  shutil.copyfile(src,featured_dir/src.name)

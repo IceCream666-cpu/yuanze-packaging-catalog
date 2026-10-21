@@ -1,27 +1,29 @@
 {
   "source": "Original procedural orange/pink glow animation based on the requested visual direction",
   "generator": "scripts/build-glow.py",
-  "width": 576,
-  "height": 768,
-  "fps": 24,
+  "width": 384,
+  "height": 512,
+  "fps": 20,
   "durationSeconds": 10,
   "codec": "H.264 / yuv420p",
   "fastStart": true,
   "audio": false,
-  "loopBoundaryPixelsEqual": true,
-  "fullDecode": "passed",
-  "motion": {
+  "fullDecode": "passed after optimization",
+  "files": {
+    "login-glow.mp4": {
+      "bytes": 94773,
+      "sha256": "af3a1167dd5e91f3b65618df7f8957de0ef7f272d4a4a195be438f1849ad7d29"
+    },
+    "login-glow-poster.jpg": {
+      "bytes": 7166,
+      "sha256": "615e0cb274da4e9b77dadb7df7c3f7dc66b19fcf962778e79d1b41f555f34425"
+    }
+  },
+  "optimization": "Same approved scene, scaled H.264 baseline yuv420p, CRF 27, faststart; one decoder mirrored to canvas",
+  "sourceAnimationMotion": {
     "quarterLoopMeanPixelDelta": 15.485,
     "lastToFirstMeanPixelDelta": 0.34
   },
-  "files": {
-    "login-glow.mp4": {
-      "bytes": 291846,
-      "sha256": "3c1ec85a0464a3bbe6f740b8e6589865776e339c2bc4bfc7e72b50c253893851"
-    },
-    "login-glow-poster.jpg": {
-      "bytes": 31178,
-      "sha256": "13eab9b862f347468624d541335027443c673f0d3bcc94fe80e55632e3c3433d"
-    }
-  }
+  "sourceLoopBoundaryPixelsEqual": true,
+  "sourceVideoSha256": "3c1ec85a0464a3bbe6f740b8e6589865776e339c2bc4bfc7e72b50c253893851"
 }

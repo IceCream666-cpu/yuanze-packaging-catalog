@@ -39,3 +39,22 @@ test('derived cutouts are independently accounted for and cannot overwrite appro
   assert.equal(file[25],6,'Each product has an RGBA channel rather than a baked background');
  }
 });
+
+test('mobile display derivatives retain source identity and fit the first-screen budget',()=>{
+ const media=json('src/featured-media.json');
+ assert.deepEqual(Object.keys(media).sort(),featured.map(p=>p.id).sort());
+ let total=0;
+ for(const [id,item] of Object.entries(media)){
+  assert.equal(item.sourceSha256,manifest.files.find(p=>p.posterId===id).sha256);
+  assert.match(item.placeholder,/^data:image\/webp;base64,/);
+  assert.ok(Buffer.from(item.placeholder.split(',')[1],'base64').length<4000);
+  for(const size of ['640','1024']){
+   const entry=item.files[size],file=readFileSync(resolve(base,entry.file));
+   assert.equal(hash(resolve(base,entry.file)),entry.sha256);assert.equal(file.length,entry.bytes);
+   assert.equal(file.subarray(8,12).toString(),'WEBP');assert.ok(Math.max(entry.width,entry.height)<=Number(size));
+   assert.equal(hash(resolve(base,'public/featured',`${id}-${size}.webp`)),entry.sha256);
+  }
+  assert.ok(item.files['640'].bytes<110000);total+=item.files['640'].bytes;
+ }
+ assert.ok(total<500000);assert.ok(media['poster-012'].files['640'].bytes<80000);
+});

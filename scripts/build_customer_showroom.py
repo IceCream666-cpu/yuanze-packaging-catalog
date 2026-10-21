@@ -35,7 +35,8 @@ def client_source_hash(edition='client1'):
                client / 'vite.config.js', client / 'package.json', client / 'assets-manifest.json']
     if edition == 'client12':
         sources += [client / 'featured-manifest.json', client / 'prepare-assets.py',
-                    *sorted((client / 'featured-assets').glob('*'))]
+                    *sorted((client / 'featured-assets').glob('*')),
+                    *sorted((client / 'featured-optimized').glob('*'))]
     digest = hashlib.sha256()
     for path in sources:
         digest.update(path.relative_to(client).as_posix().encode() + b'\0' + path.read_bytes())
@@ -79,6 +80,19 @@ def featured_files(files, client):
         if target in files:
             raise ValueError(f'Featured media cannot replace an existing file: {target}')
         files[target] = data
+        display = json.loads(source_file(client, 'src/featured-media.json').read_text())[poster_id]
+        if display['sourceSha256'] != item['sha256']:
+            raise ValueError('Display derivatives no longer match approved cutout')
+        if set(display['files']) != {'640', '1024'}:
+            raise ValueError('Expected mobile and desktop display sizes')
+        for size, entry in display['files'].items():
+            name = f'{poster_id}-{size}.webp'
+            if entry['file'] != f'featured-optimized/{name}':
+                raise ValueError('Invalid optimized media path')
+            data = source_file(client, entry['file']).read_bytes()
+            if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+                raise ValueError('Optimized media checksum mismatch')
+            files[f'assets/featured/{name}'] = data
 
 
 def client_files(files, edition='client1'):

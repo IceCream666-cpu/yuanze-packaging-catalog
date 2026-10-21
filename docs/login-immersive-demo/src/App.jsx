@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowRight, Eye, EyeOff, LoaderCircle, LockKeyhole, Pause, Play, Check, Globe2, CircleAlert } from 'lucide-react';
+import React, { memo, useEffect, useRef, useState } from 'react';
+import { ArrowRight, Eye, EyeOff, LoaderCircle, LockKeyhole, Check, Globe2, CircleAlert } from 'lucide-react';
 import { authenticate, inputWarnings } from './login-contract.js';
 
 import { requestJSON } from '../../../server-reference/public/api-client.js';
@@ -14,7 +14,7 @@ const copy = {
     help: '请使用公司分配的账号', contact: '账号问题？', contactLink: '联系管理员',
     contactInfo: '请联系为你分配账号的源泽管理员，核对账号或重置密码。',
     roleHint: '登录后自动进入你的工作空间',
-    pause: '暂停背景视频', play: '播放背景视频', fallback: '视频暂不可用，登录不受影响',
+    fallback: '视频暂不可用，登录不受影响',
     loadingVideo: '正在加载视频',
     success: '登录成功', successHint: '正在进入你的工作空间…',
     back: '继续进入工作空间', client: '客户工作空间', employee: '业务员工作空间', admin: '管理员工作空间',
@@ -33,7 +33,7 @@ const copy = {
     help: 'Use the account provided by your company', contact: 'Need account help?', contactLink: 'Contact your administrator',
     contactInfo: 'Contact your Yuanze account administrator to check your account or reset your password.',
     roleHint: 'Your account takes you to the right workspace',
-    pause: 'Pause background video', play: 'Play background video', fallback: 'Video unavailable. You can still sign in.',
+    fallback: 'Video unavailable. You can still sign in.',
     loadingVideo: 'Loading video',
     success: 'Signed in', successHint: 'Opening your workspace…',
     back: 'Continue to workspace', client: 'Client workspace', employee: 'Sales workspace', admin: 'Admin workspace',
@@ -95,11 +95,11 @@ export default function App({ transport = requestJSON, navigate = path => window
 
   return (
     <div data-login-motion={motion.playing ? 'playing' : 'paused'} className="relative isolate flex min-h-screen flex-col items-center justify-center bg-black px-4 py-7 text-[#17171b] sm:px-8 sm:py-12">
-      <MotionBackdrop videoRef={motion.backdropRef} playing={motion.playing} />
+      <MotionBackdrop canvasRef={motion.backdropRef} />
       <div className="login-backdrop-shade pointer-events-none fixed inset-0 -z-10 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
 
       <main className="login-card relative z-10 flex w-full max-w-[1040px] flex-col rounded-[2.5rem] border border-gray-200 bg-white p-3 shadow-[0_32px_100px_rgba(0,0,0,0.48)] md:min-h-[650px] md:flex-row" aria-label="源泽登录">
-        <MotionPanel language={language} videoRef={motion.panelRef} playing={motion.playing} toggle={motion.toggle} />
+        <MotionPanel language={language} videoRef={motion.panelRef} playing={motion.playing} enabled={motion.enabled} />
 
         <section className="login-form-panel relative flex min-w-0 flex-1 flex-col justify-center px-5 pb-7 pt-14 sm:px-10 md:w-[55%] md:px-12 md:py-12" aria-labelledby="loginTitle">
           <div className="login-form-glow" aria-hidden="true" />
@@ -148,98 +148,86 @@ export default function App({ transport = requestJSON, navigate = path => window
   );
 }
 
-// Two placements share one lightweight, same-origin clip and one playback
-// control. Stable refs/props keep form input out of the media render path.
+// One decoder supplies both visual placements: Safari no longer downloads the
+// same MP4 twice. The blurred background mirrors the clear panel's video frame.
 function useLoginMotion() {
-  const backdropRef = useRef(null);
-  const panelRef = useRef(null);
-  // Keep user intent separate from temporary suspension. Returning to the page
-  // resumes a running scene, but never overrides a deliberate pause.
-  const [requested, setRequested] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
+  const backdropRef = useRef(null), panelRef = useRef(null);
+  const [enabled, setEnabled] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
+  const [blocked, setBlocked] = useState(false);
   const [pageVisible, setPageVisible] = useState(() => !document.hidden);
   const [inView, setInView] = useState(true);
-  const playing = requested && pageVisible && inView;
-  const toggle = useCallback(() => {
-    if (!playing && pageVisible && inView) {
-      // WebKit can require play() inside the actual user gesture; a later
-      // React effect alone loses that permission when autoplay is restricted.
-      for (const video of [backdropRef.current, panelRef.current]) {
-        if (!video || video.error) continue;
-        video.muted = true;
-        video.play()?.catch(() => {});
-      }
-    }
-    setRequested(!playing);
-  }, [playing, pageVisible, inView]);
-
+  const playing = enabled && !blocked && pageVisible && inView;
+  const state = useRef(null);
+  state.current = {enabled, blocked, pageVisible, inView};
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const onChange = () => { if (query.matches) setRequested(false); };
-    const onHidden = () => setPageVisible(!document.hidden);
     const connection = navigator.connection;
-    const onSaveData = () => { if (connection?.saveData) setRequested(false); };
-    query.addEventListener('change', onChange);
-    document.addEventListener('visibilitychange', onHidden);
-    connection?.addEventListener?.('change', onSaveData);
+    const preference = () => setEnabled(!query.matches && !connection?.saveData);
+    const visibility = () => setPageVisible(!document.hidden);
+    const gesture = () => {
+      const current = state.current, video = panelRef.current;
+      if (!current.blocked || !current.enabled || !current.pageVisible || !current.inView || !video || video.error) return;
+      // Resume inside a real gesture when iOS rejects autoplay. There is no
+      // visible play/pause button and signing in never depends on media.
+      video.muted = true;
+      setBlocked(false);
+      video.play()?.catch(error => {if (error.name === 'NotAllowedError') setBlocked(true);});
+    };
+    query.addEventListener('change', preference);
+    connection?.addEventListener?.('change', preference);
+    document.addEventListener('visibilitychange', visibility);
+    document.addEventListener('pointerdown', gesture, {passive:true});
+    document.addEventListener('keydown', gesture);
     const observer = typeof IntersectionObserver === 'function' ? new IntersectionObserver(entries => {
       if (entries[0]) setInView(entries[0].isIntersecting);
     }) : null;
     if (panelRef.current) observer?.observe(panelRef.current);
     return () => {
-      query.removeEventListener('change', onChange);
-      document.removeEventListener('visibilitychange', onHidden);
-      connection?.removeEventListener?.('change', onSaveData);
+      query.removeEventListener('change', preference);
+      connection?.removeEventListener?.('change', preference);
+      document.removeEventListener('visibilitychange', visibility);
+      document.removeEventListener('pointerdown', gesture);
+      document.removeEventListener('keydown', gesture);
       observer?.disconnect();
     };
   }, []);
-
   useEffect(() => {
-    const videos = [backdropRef.current, panelRef.current].filter(Boolean);
-    let active = true;
-    // Align on resume only; continuous seeking would add decoding work.
-    if (playing && videos.length === 2 && videos.every(video => video.readyState >= 1 && !video.error)) {
-      videos[0].currentTime = videos[1].currentTime;
-    }
-    for (const video of videos) {
-      if (!playing || video.error) { video.pause(); continue; }
-      video.play()?.catch(error => {
-        // A failed media file keeps its poster. Autoplay refusal stops both
-        // placements, allowing the user to start them together explicitly.
-        if (active && error.name === 'NotAllowedError') setRequested(false);
-      });
-    }
-    return () => { active = false; videos.forEach(video => video.pause()); };
+    const video = panelRef.current, canvas = backdropRef.current;
+    if (!video || !playing || video.error) {video?.pause(); return;}
+    let active = true, frame = 0, last = 0;
+    const context = canvas?.getContext('2d', {alpha:false});
+    const draw = now => {
+      if (!active) return;
+      if (context && video.readyState >= 2 && now - last >= 45) {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.style.opacity = '1'; last = now;
+      }
+      frame = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
+    };
+    video.muted = true;
+    video.play()?.catch(error => {if (active && error.name === 'NotAllowedError') setBlocked(true);});
+    frame = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
+    return () => {
+      active = false; video.pause();
+      if (video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(frame); else cancelAnimationFrame(frame);
+    };
   }, [playing]);
-
-  return { backdropRef, panelRef, playing, toggle };
+  return {backdropRef, panelRef, playing, enabled};
 }
 
-const MotionBackdrop = memo(function MotionBackdrop({ videoRef, playing }) {
-  return <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-black" aria-hidden="true">
-    <video ref={videoRef} data-login-video="backdrop" src={VIDEO_URL} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload="metadata" tabIndex={-1} className="h-full w-full scale-105 object-cover" />
+const MotionBackdrop = memo(function MotionBackdrop({canvasRef}) {
+  return <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-black" aria-hidden="true" style={{backgroundImage:`url(${POSTER_URL})`, backgroundSize:'cover', backgroundPosition:'center'}}>
+    <canvas ref={canvasRef} data-login-backdrop width="384" height="512" style={{opacity:0}} className="h-full w-full scale-105 object-cover"/>
   </div>;
 });
 
-const MotionPanel = memo(function MotionPanel({ language, videoRef, playing, toggle }) {
+const MotionPanel = memo(function MotionPanel({language, videoRef, playing, enabled}) {
   const t = copy[language];
-  const [videoState, setVideoState] = useState('loading');
-  useEffect(() => {
-    const timer = setTimeout(() => setVideoState(state => state === 'loading' ? 'unavailable' : state), 12000);
-    return () => clearTimeout(timer);
-  }, []);
-  return (
-        <section className="video-panel relative h-[225px] shrink-0 overflow-hidden rounded-[2rem] bg-[#0c0c0e] sm:h-[280px] md:h-auto md:w-[45%]" aria-label={language === 'zh' ? '灵感视频' : 'Inspiration video'}>
-          <video ref={videoRef} data-login-video="panel" src={VIDEO_URL} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload="metadata" tabIndex={-1} aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" onLoadedMetadata={() => setVideoState('ready')} onPlaying={() => setVideoState('ready')} onError={() => setVideoState('unavailable')} />
-          {videoState === 'unavailable' && <div className="fallback-composition pointer-events-none absolute inset-0 flex flex-col justify-between px-8 py-9 text-white md:px-10 md:py-11">
-            <div className="flex items-center gap-2.5 text-[10px] tracking-[0.3em] text-white/65"><span className="h-1.5 w-1.5 rounded-full bg-[#ff7847]" /> A WORLD OF POSSIBILITIES</div>
-            <div><p className="fallback-title text-[33px] font-medium leading-[1.12] tracking-[-0.05em] sm:text-[42px] md:text-[52px]">Good ideas.<br /><span className="text-white/45">Great beginnings.</span></p><p className="mt-5 hidden text-[10px] tracking-[0.3em] text-white/50 md:block">YUANZE MATERIAL LIBRARY</p></div>
-            <div className="hidden h-px w-12 bg-white/30 md:block" />
-          </div>}
-          <div className="absolute bottom-5 left-6 right-5 flex items-center justify-between gap-2 text-white">
-            <span className="rounded-full bg-black/60 px-3 py-1.5 text-[10px] leading-4 text-white">{videoState === 'unavailable' ? t.fallback : videoState === 'loading' ? t.loadingVideo : 'MOTION / INSPIRATION'}</span>
-            {videoState !== 'loading' && <button type="button" onClick={toggle} className="motion-toggle flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black/60 text-white" aria-label={playing ? t.pause : t.play} aria-pressed={!playing}>{playing ? <Pause size={15} /> : <Play size={15} />}</button>}
-          </div>
-        </section>
-
-  );
+  const [failed, setFailed] = useState(false);
+  return <section className="video-panel relative h-[225px] shrink-0 overflow-hidden rounded-[2rem] bg-[#0c0c0e] sm:h-[280px] md:h-auto md:w-[45%]" aria-label={language === 'zh' ? '灵感视频' : 'Inspiration video'}>
+    <video ref={videoRef} data-login-video="panel" src={enabled ? VIDEO_URL : undefined} poster={POSTER_URL} autoPlay={playing} muted loop playsInline preload={enabled ? 'auto' : 'none'} tabIndex={-1} aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" onError={() => setFailed(true)} onPlaying={() => setFailed(false)}/>
+    <div className="absolute bottom-5 left-6 right-5 flex items-center gap-2 text-white">
+      <span className="rounded-full bg-black/60 px-3 py-1.5 text-[10px] leading-4 text-white">{failed ? t.fallback : 'MOTION / INSPIRATION'}</span>
+    </div>
+  </section>;
 });

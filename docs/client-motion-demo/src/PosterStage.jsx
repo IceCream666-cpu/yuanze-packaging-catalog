@@ -1,9 +1,12 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import FeaturedImage from './FeaturedImage.jsx';
 import {Maximize2, MoveHorizontal} from 'lucide-react';
 import {shortestDelta, snapTarget, visibleItems, wrapIndex} from './carousel-model.js';
 import {createCarouselMotion, horizontalWheel, wheelSnap} from './carousel-motion.js';
 
 export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage, presentation = 'posters'}) {
+  const [firstImageReady, setFirstImageReady] = useState(false);
+  const imageReady = useCallback(() => setFirstImageReady(true), []);
   const products = presentation === 'products';
   const initial = Math.max(0, items.findIndex(p => p.id === selectedId));
   const [anchor, setAnchor] = useState(initial);
@@ -150,7 +153,7 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
             if (index === wrapIndex(Math.round(controller.state.position),items.length)) latest.current.onOpen(poster);
             else controller.settle(controller.state.position + shortestDelta(index,controller.state.position,items.length));
           }}>
-          <SafeImage src={products ? poster.displayImage : poster.image} alt={poster.title[lang]} draggable="false" decoding="async"/>
+          {products ? <FeaturedImage poster={poster} active={active} enabled={active || firstImageReady} onReady={imageReady} alt={poster.title[lang]}/> : <SafeImage src={poster.image} alt={poster.title[lang]} draggable="false" decoding="async"/>}
           {!products && <span className="expand-hint"><Maximize2 size={15}/>{lang === 'zh' ? '查看完整海报' : 'View full poster'}</span>}
         </button>;
       })}

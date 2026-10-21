@@ -21,9 +21,11 @@ class MotionReleaseTests(unittest.TestCase):
         cls.current = builder.expected_files(edition='client12')
         cls.featured = json.loads((builder.MOTION_CLIENT / 'featured-manifest.json').read_text())
 
-    def test_release_changes_only_entrypoints_and_adds_eight_approved_derivatives(self):
+    def test_release_changes_only_entrypoints_and_adds_reviewed_display_derivatives(self):
         added = {item['productionTarget'] for item in self.featured['files']}
         self.assertEqual(len(added), 8)
+        added |= {f"assets/featured/{entry['posterId']}-{size}.webp" for entry in self.featured['files'] for size in (640, 1024)}
+        self.assertEqual(len(added), 24)
         self.assertEqual(set(self.current) - set(self.previous), added)
         self.assertEqual(set(self.previous) - set(self.current), set())
         changed = {name for name in self.previous if self.previous[name] != self.current[name]}
@@ -107,3 +109,15 @@ class MotionReleaseTests(unittest.TestCase):
             self.assertEqual(check.call_args.kwargs['edition'], 'client12')
         with self.assertRaisesRegex(ValueError, 'Unsupported showroom edition'):
             builder.expected_files(edition='unknown')
+
+    def test_optimized_derivatives_reject_modified_hash_and_path(self):
+        for field, value in [('file', '../private.png'), ('sha256', '0' * 64)]:
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as directory:
+                manifest = json.loads((builder.MOTION_CLIENT / 'src/featured-media.json').read_text())
+                manifest['poster-012']['files']['640'][field] = value
+                altered = Path(directory) / 'featured-media.json'
+                altered.write_text(json.dumps(manifest))
+                original = builder.source_file
+                with patch.object(builder, 'source_file', side_effect=lambda source, name: altered if name == 'src/featured-media.json' else original(source, name)):
+                    with self.assertRaises(ValueError):
+                        builder.featured_files(dict(self.previous), builder.MOTION_CLIENT)

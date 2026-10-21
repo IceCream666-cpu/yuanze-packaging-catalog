@@ -1,27 +1,27 @@
 {
   "schema": 1,
   "version": "yuanze2.0.3",
-  "sourceSha256": "4d3236ab04a4cc4ce38b1658ad2b548b977197f30bd54b8193b0264540c20fee",
+  "sourceSha256": "18993745e73ce3b3718ac6610e22133558a81ff1c0d974959875f8c990a79dcf",
   "files": {
-    "assets/index-BwvSbs1q.css": {
-      "sha256": "eecff9726b84a38823659481852660e094ce8e42e07c728b6211c369f8bca21a",
-      "bytes": 24775
+    "assets/index-D0HF_jDm.css": {
+      "sha256": "78ce2c999eabbaefacb3a2b76c2b02f2b79cdce055f61197fa5ec538fbc56d11",
+      "bytes": 23249
     },
-    "assets/login-glow-ShWKnVog.mp4": {
-      "sha256": "3c1ec85a0464a3bbe6f740b8e6589865776e339c2bc4bfc7e72b50c253893851",
-      "bytes": 291846
+    "assets/login-glow-1n6E-OzQ.mp4": {
+      "sha256": "af3a1167dd5e91f3b65618df7f8957de0ef7f272d4a4a195be438f1849ad7d29",
+      "bytes": 94773
     },
-    "assets/login-glow-poster-DAtzagyn.jpg": {
-      "sha256": "13eab9b862f347468624d541335027443c673f0d3bcc94fe80e55632e3c3433d",
-      "bytes": 31178
+    "assets/login-glow-poster-BTHCsfHo.jpg": {
+      "sha256": "615e0cb274da4e9b77dadb7df7c3f7dc66b19fcf962778e79d1b41f555f34425",
+      "bytes": 7166
     },
     "index.html": {
-      "sha256": "83bb411bfa4afd68bbae7d79166d83030b17ec6b5ec08485a75053551cf9ffbe",
-      "bytes": 745
+      "sha256": "a3ec026dfd2b618c51a3ff92f1ab3c6f8969f8e185002ada3c11b7d25a6d2345",
+      "bytes": 857
     },
     "login.js": {
-      "sha256": "035be67b48b08c1f0ae5f1b1415e00f468b0f3c985ddcf2dcb13c406ee986b08",
-      "bytes": 245703
+      "sha256": "cc43e1b0c5a50936de592309cb3e59ee71678b50d5e1357b28754b9afca4c922",
+      "bytes": 244452
     }
   }
 }
