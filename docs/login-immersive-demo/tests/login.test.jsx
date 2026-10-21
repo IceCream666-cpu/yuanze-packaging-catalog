@@ -52,7 +52,9 @@ test('React form prevents double submission, handles media failure, focus and re
   const listeners = new Set();
   const media = { matches: false, addEventListener: (_, fn) => listeners.add(fn), removeEventListener: (_, fn) => listeners.delete(fn) };
   window.matchMedia = () => media;
-  window.HTMLMediaElement.prototype.play = async function () {};
+  let withinUserClick = false;
+  const playGestures = [];
+  window.HTMLMediaElement.prototype.play = async function () { playGestures.push(withinUserClick); };
   window.HTMLMediaElement.prototype.pause = function () {};
   const root = createRoot(document.querySelector('#root'));
   let posts = 0, finish;
@@ -83,6 +85,12 @@ test('React form prevents double submission, handles media failure, focus and re
   assert.ok([...document.querySelectorAll('video')].every(video => !video.autoplay));
   await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('loadedmetadata')));
   assert.equal(document.querySelector('[aria-label="播放背景视频"]').getAttribute('aria-pressed'), 'true');
+  await act(async () => {
+    withinUserClick = true;
+    document.querySelector('[aria-label="播放背景视频"]').click();
+    withinUserClick = false;
+  });
+  assert.equal(playGestures.filter(Boolean).length, 2, 'Both videos start inside the user gesture for restricted WebKit playback');
   await act(async () => document.querySelector('[data-login-video=panel]').dispatchEvent(new window.Event('error')));
   assert.match(document.body.textContent, /视频暂不可用/);
   assert.equal(document.querySelector('button[type=submit]').disabled, false);

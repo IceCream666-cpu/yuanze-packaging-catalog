@@ -159,7 +159,18 @@ function useLoginMotion() {
   const [pageVisible, setPageVisible] = useState(() => !document.hidden);
   const [inView, setInView] = useState(true);
   const playing = requested && pageVisible && inView;
-  const toggle = useCallback(() => setRequested(!playing), [playing]);
+  const toggle = useCallback(() => {
+    if (!playing && pageVisible && inView) {
+      // WebKit can require play() inside the actual user gesture; a later
+      // React effect alone loses that permission when autoplay is restricted.
+      for (const video of [backdropRef.current, panelRef.current]) {
+        if (!video || video.error) continue;
+        video.muted = true;
+        video.play()?.catch(() => {});
+      }
+    }
+    setRequested(!playing);
+  }, [playing, pageVisible, inView]);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
