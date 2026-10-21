@@ -19,7 +19,7 @@ const raw=readFileSync(resolve(root,'server-reference/public/showroom/product-po
 const approved=JSON.parse(raw.slice(raw.indexOf('{')).trim().replace(/;$/,''));
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('client1.1 retains exactly the 38 approved poster identities and public facts',()=>{
+test('client1.2 retains exactly the 38 approved poster identities and public facts',()=>{
  assert.equal(posters.length,38);
  assert.equal(new Set(posters.map(p=>p.id)).size,38);
  assert.deepEqual(posters.map(p=>p.id).sort(),approved.items.map(p=>p.id).sort());

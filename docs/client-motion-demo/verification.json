@@ -1,216 +1,343 @@
 {
-  "version": "client1.1",
+  "date": "2026-10-21T03:39:10.506698+00:00",
   "scope": "local-preview-only",
-  "previewURL": "http://127.0.0.1:8784/",
-  "verifiedAt": "2026-10-21T03:09:40.454Z",
-  "browser": "Installed Google Chrome via Playwright; headless desktop and mobile emulation with real CDP touch dispatch",
-  "pureTests": {
-    "passed": 13,
-    "failed": 0,
-    "files": [
-      "tests/carousel-model.test.mjs",
-      "tests/regression.test.mjs"
-    ]
-  },
-  "browserChecks": {
-    "passed": 49,
-    "failed": 0,
-    "checks": [
+  "result": "passed",
+  "browser": {
+    "engine": "installed Google Chrome via Playwright, headless",
+    "desktopViewport": [
+      1440,
+      1000
+    ],
+    "mobileViewports": [
+      [
+        390,
+        844
+      ],
+      [
+        360,
+        844
+      ]
+    ],
+    "mobileInput": "CDP touch emulation; not a physical iOS/Safari test",
+    "checksPassed": 68,
+    "checksFailed": 0,
+    "components": {
+      "featuredDesktop": 43,
+      "featuredMobileAndRuntime": 14,
+      "libraryInterruptions": 11
+    },
+    "allChecks": [
       {
-        "name": "38 posters available and first shown",
-        "ok": true,
-        "detail": "poster-051"
-      },
-      {
-        "name": "visible posters decode and are unique",
+        "name": "homepage opens the pink featured design with eight swatches",
         "ok": true
       },
       {
-        "name": "previous arrow wraps to last",
-        "ok": true,
-        "detail": "poster-050"
-      },
-      {
-        "name": "next arrow wraps to first",
-        "ok": true,
-        "detail": "poster-051"
-      },
-      {
-        "name": "keyboard advances",
-        "ok": true,
-        "detail": "poster-042"
-      },
-      {
-        "name": "mouse drag advances and snaps without modal",
-        "ok": true,
-        "detail": "poster-042"
-      },
-      {
-        "name": "wheel inertia selects only one poster",
-        "ok": true,
-        "detail": "poster-042"
-      },
-      {
-        "name": "second wheel stroke advances again",
-        "ok": true,
-        "detail": "poster-044"
-      },
-      {
-        "name": "vertical wheel does not switch poster",
+        "name": "homepage uses display serif and floating product presentation",
         "ok": true
       },
       {
-        "name": "oral category shows one unique poster and disables arrows",
-        "ok": true,
-        "detail": {
-          "planes": 1
-        }
-      },
-      {
-        "name": "single poster keyboard is stable",
+        "name": "autoplay starts off",
         "ok": true
       },
       {
-        "name": "English search finds Woodland in Chinese UI",
+        "name": "homepage stays on its first product without opting into autoplay",
         "ok": true
       },
       {
-        "name": "language switch preserves search and selection",
-        "ok": true
-      },
-      {
-        "name": "Chinese search finds shampoo in English UI",
-        "ok": true
-      },
-      {
-        "name": "no-result state appears without orphan carousel",
-        "ok": true
-      },
-      {
-        "name": "clear filters restores all posters",
-        "ok": true
-      },
-      {
-        "name": "category style and query intersect",
-        "ok": true
-      },
-      {
-        "name": "favorites view contains exactly two unique posters",
-        "ok": true
-      },
-      {
-        "name": "removing selected favorite leaves valid single poster",
-        "ok": true,
-        "detail": "poster-051"
-      },
-      {
-        "name": "favorite persists after reload",
-        "ok": true
-      },
-      {
-        "name": "removing last favorite produces actionable empty state",
-        "ok": true
-      },
-      {
-        "name": "overview includes all 38 original poster cards",
-        "ok": true
-      },
-      {
-        "name": "grid opens correct poster with image and focused close",
-        "ok": true
-      },
-      {
-        "name": "zoom control toggles to 200 percent",
-        "ok": true
-      },
-      {
-        "name": "HD failure offers retry",
-        "ok": true
-      },
-      {
-        "name": "HD retry decodes original and shows true dimensions",
-        "ok": true
-      },
-      {
-        "name": "download bytes match approved original",
-        "ok": true,
-        "detail": "poster-051.webp"
-      },
-      {
-        "name": "Escape closes modal and restores grid trigger",
-        "ok": true
-      },
-      {
-        "name": "reduced motion settles quickly with no CSS animations",
-        "ok": true
-      },
-      {
-        "name": "page has no horizontal viewport overflow",
+        "name": "all eight swatches synchronize product title background and approved poster",
         "ok": true,
         "detail": [
           {
-            "width": 360,
-            "scroll": 360
+            "id": "poster-012",
+            "center": "poster-012",
+            "name": "Beach Magic",
+            "dot": "Beach Magic",
+            "scene": "#f4c8d6",
+            "poster": "/assets/poster-012.webp",
+            "posterMatches": true
           },
           {
-            "width": 390,
-            "scroll": 390
+            "id": "poster-013",
+            "center": "poster-013",
+            "name": "Coral & Aqua",
+            "dot": "Coral & Aqua",
+            "scene": "#bde2df",
+            "poster": "/assets/poster-013.webp",
+            "posterMatches": true
           },
           {
-            "width": 768,
-            "scroll": 768
+            "id": "poster-039",
+            "center": "poster-039",
+            "name": "PDRN Capsule Cream",
+            "dot": "PDRN Capsule Cream",
+            "scene": "#d5e5d8",
+            "poster": "/assets/poster-039.webp",
+            "posterMatches": true
           },
           {
-            "width": 1024,
-            "scroll": 1024
+            "id": "poster-049",
+            "center": "poster-049",
+            "name": "Moisture Shampoo",
+            "dot": "Moisture Shampoo",
+            "scene": "#dfe4e8",
+            "poster": "/assets/poster-049.webp",
+            "posterMatches": true
           },
           {
-            "width": 1440,
-            "scroll": 1440
+            "id": "poster-042",
+            "center": "poster-042",
+            "name": "Woodland",
+            "dot": "Woodland",
+            "scene": "#c5a58b",
+            "poster": "/assets/poster-042.webp",
+            "posterMatches": true
+          },
+          {
+            "id": "poster-051",
+            "center": "poster-051",
+            "name": "Pure Volume",
+            "dot": "Pure Volume",
+            "scene": "#dce4cf",
+            "poster": "/assets/poster-051.webp",
+            "posterMatches": true
+          },
+          {
+            "id": "poster-044",
+            "center": "poster-044",
+            "name": "Gentle Cleansing",
+            "dot": "Gentle Cleansing",
+            "scene": "#e8d6d3",
+            "poster": "/assets/poster-044.webp",
+            "posterMatches": true
+          },
+          {
+            "id": "poster-047",
+            "center": "poster-047",
+            "name": "Coastal",
+            "dot": "Coastal",
+            "scene": "#cbdfea",
+            "poster": "/assets/poster-047.webp",
+            "posterMatches": true
           }
         ]
       },
       {
-        "name": "390px actual touch swipe changes poster without modal",
-        "ok": true,
-        "detail": "poster-042"
-      },
-      {
-        "name": "390px vertical swipe scrolls without carousel change",
-        "ok": true,
-        "detail": {
-          "before": 0,
-          "after": 115
-        }
-      },
-      {
-        "name": "390px modal fits viewport",
+        "name": "poster close returns focus to the featured action",
         "ok": true
       },
       {
-        "name": "360px actual touch swipe changes poster without modal",
-        "ok": true,
-        "detail": "poster-042"
-      },
-      {
-        "name": "360px vertical swipe scrolls without carousel change",
-        "ok": true,
-        "detail": {
-          "before": 0,
-          "after": 115
-        }
-      },
-      {
-        "name": "360px modal fits viewport",
-        "ok": true
-      },
-      {
-        "name": "local preview never calls authenticated API",
+        "name": "all eight featured product images decode",
         "ok": true,
         "detail": []
       },
       {
-        "name": "no JavaScript runtime exceptions",
+        "name": "featured previous wraps to the eighth product",
+        "ok": true
+      },
+      {
+        "name": "featured next wraps back to first",
+        "ok": true
+      },
+      {
+        "name": "five rapid featured keyboard steps accumulate across the seam",
+        "ok": true
+      },
+      {
+        "name": "five rapid featured arrow clicks retain all selections",
+        "ok": true
+      },
+      {
+        "name": "featured mouse drag snaps to next product without opening a modal",
+        "ok": true
+      },
+      {
+        "name": "featured horizontal wheel inertia advances exactly once",
+        "ok": true
+      },
+      {
+        "name": "featured new wheel stroke advances again",
+        "ok": true
+      },
+      {
+        "name": "autoplay does not advance before its 4200 ms interval",
+        "ok": true
+      },
+      {
+        "name": "autoplay advances at approximately 4200 ms",
+        "ok": true,
+        "detail": {
+          "elapsedMs": 4194
+        }
+      },
+      {
+        "name": "autoplay pauses while the stage is hovered",
+        "ok": true
+      },
+      {
+        "name": "autoplay pauses while the stage has keyboard focus",
+        "ok": true
+      },
+      {
+        "name": "autoplay pauses while an original poster modal is open",
+        "ok": true
+      },
+      {
+        "name": "explicit pause stops future automatic changes",
+        "ok": true
+      },
+      {
+        "name": "entering the library cancels the homepage timer and returning preserves its selection",
+        "ok": true
+      },
+      {
+        "name": "reduced motion stops autoplay and all floating animations",
+        "ok": true
+      },
+      {
+        "name": "removing reduced motion does not silently restart autoplay",
+        "ok": true
+      },
+      {
+        "name": "homepage language switch retains featured identity and translates copy",
+        "ok": true
+      },
+      {
+        "name": "browse all opens the full 38-poster library in overview mode",
+        "ok": true
+      },
+      {
+        "name": "featured save is shared with the library favorites",
+        "ok": true
+      },
+      {
+        "name": "featured favorite survives a reload",
+        "ok": true
+      },
+      {
+        "name": "removing the last library favorite produces the empty state",
+        "ok": true
+      },
+      {
+        "name": "removing in the library updates the homepage favorite",
+        "ok": true
+      },
+      {
+        "name": "library English search returns the approved Woodland poster",
+        "ok": true
+      },
+      {
+        "name": "library language toggle preserves its query and result",
+        "ok": true
+      },
+      {
+        "name": "library Chinese search works in English UI",
+        "ok": true
+      },
+      {
+        "name": "library category style and query intersect",
+        "ok": true
+      },
+      {
+        "name": "leaving and returning to the library preserves filters",
+        "ok": true
+      },
+      {
+        "name": "library no-result state is actionable",
+        "ok": true
+      },
+      {
+        "name": "clearing filters restores all 38 posters",
+        "ok": true
+      },
+      {
+        "name": "library original viewer retains zoom",
+        "ok": true
+      },
+      {
+        "name": "library HD failure offers a retry",
+        "ok": true
+      },
+      {
+        "name": "library HD retry displays original pixel dimensions",
+        "ok": true
+      },
+      {
+        "name": "library original download is byte-identical to the approved source",
+        "ok": true
+      },
+      {
+        "name": "library modal restores focus to its card",
+        "ok": true
+      },
+      {
+        "name": "arrow keys in search do not change the library carousel",
+        "ok": true
+      },
+      {
+        "name": "single-result library category keeps one item and disabled controls",
+        "ok": true
+      },
+      {
+        "name": "390px featured touch swipe changes product and avoids accidental poster open",
+        "ok": true,
+        "detail": {
+          "selected": "poster-013"
+        }
+      },
+      {
+        "name": "390px vertical touch scrolls while preserving featured selection",
+        "ok": true
+      },
+      {
+        "name": "390px homepage has no horizontal overflow",
+        "ok": true
+      },
+      {
+        "name": "390px featured original poster modal fits viewport",
+        "ok": true
+      },
+      {
+        "name": "390px library remains usable with all 38 posters",
+        "ok": true
+      },
+      {
+        "name": "390px touch autoplay starts after returning home",
+        "ok": true
+      },
+      {
+        "name": "360px featured touch swipe changes product and avoids accidental poster open",
+        "ok": true,
+        "detail": {
+          "selected": "poster-013"
+        }
+      },
+      {
+        "name": "360px vertical touch scrolls while preserving featured selection",
+        "ok": true
+      },
+      {
+        "name": "360px homepage has no horizontal overflow",
+        "ok": true
+      },
+      {
+        "name": "360px featured original poster modal fits viewport",
+        "ok": true
+      },
+      {
+        "name": "360px library remains usable with all 38 posters",
+        "ok": true
+      },
+      {
+        "name": "360px touch autoplay starts after returning home",
+        "ok": true
+      },
+      {
+        "name": "local preview has no authenticated API calls",
+        "ok": true,
+        "detail": []
+      },
+      {
+        "name": "featured and library flows have no JavaScript exceptions",
         "ok": true,
         "detail": []
       },
@@ -238,8 +365,8 @@
         "name": "drag can take over a running animation and finish centered",
         "ok": true,
         "detail": {
-          "id": "poster-042",
-          "selectedTitle": "liaose 木质香氛沐浴露",
+          "id": "poster-044",
+          "selectedTitle": "liaose 温和洁面泡沫",
           "transform": "translate(-50%, -50%) translateX(0px) translateY(0px) rotateY(0deg) rotateZ(0deg) scale(1)",
           "centerError": 0
         }
@@ -351,57 +478,96 @@
       }
     ]
   },
-  "runtimeErrors": [],
-  "apiRequests": [],
-  "assetIntegrity": {
-    "posters": 38,
-    "manifestFiles": 115,
-    "checkedAgainst": "server-reference/public/showroom/bundle-manifest.json",
-    "checks": [
-      "public field whitelist",
-      "approved poster identity equality",
-      "all source and copied resource SHA-256 and sizes",
-      "asset path mapping",
-      "downloaded original SHA-256 equality"
-    ]
+  "unitAndAssetTests": {
+    "command": "node --test tests/*.test.mjs",
+    "passed": 15,
+    "failed": 0,
+    "scope": "carousel math, 38 approved poster records, original 115 asset bytes, bilingual filtering and favorites, 8 featured mappings, independent derived-cutout manifest"
   },
-  "fixedFindings": [
-    {
-      "issue": "Tap during animation canceled motion and left a poster offset",
-      "status": "targeted regression passed"
-    },
-    {
-      "issue": "Enabling reduced motion during travel left poster and title inconsistent",
-      "status": "targeted regression passed"
-    },
-    {
-      "issue": "Rapid repeated keyboard steps lost input by stepping from the intermediate position",
-      "status": "five consecutive keys at 30 ms intervals passed in both directions and across both seams"
-    },
-    {
-      "issue": "Fractional floating-point residue reached discrete target lookup during rapid reverse seam travel",
-      "status": "integer target normalization verified with no runtime exceptions"
-    },
-    {
-      "issue": "Two-result carousel showed the opposite poster switching sides at the seam",
-      "status": "unique two-poster DOM with hidden inaccessible side at both endpoints and wrap verified"
-    }
+  "cutoutImages": {
+    "decoded": 8,
+    "pending": []
+  },
+  "runtimeExceptions": [],
+  "authenticatedApiRequests": [],
+  "evidence": {
+    "desktopRaw": "browser-featured-results.json",
+    "mobileFinal": "browser-featured-mobile-results.json",
+    "interruptions": "browser-interruptions-results.json",
+    "mobileScreenshots": [
+      "featured-mobile-390.png",
+      "featured-mobile-360.png"
+    ],
+    "download": "downloaded-original.webp",
+    "touchDiagnostic": "touch-diagnostic.cjs"
+  },
+  "testHarnessCorrections": [
+    "The initial combined run passed all 43 desktop assertions, then its first mobile navigation exceeded the 10-second locator default. Navigation timeout was separated and raised to 45 seconds. The mobile-only retry completed at both widths. Original failed navigation remains recorded in desktopRaw.",
+    "A viewport-relative 310 px swipe at 390 px legitimately moved two products while 280 px at 360 px moved one. Diagnostic confirmed poster-012 -> poster-039. The mobile suite now uses the same intentional 240 px swipe at both widths. All 14 mobile/runtime assertions pass; no UI fix was needed."
+  ],
+  "regressionsRetained": [
+    "Five rapid keyboard steps in both directions and across both seams retain their committed destinations.",
+    "Tap during motion does not strand the stage, drag takeover settles, reduced motion settles to selected poster.",
+    "Two-result filters keep two unique DOM identities; hidden side opacity0 aria-hidden and pointerEvents none; center opacity1."
   ],
   "limitations": [
-    "Mobile tests use Chrome emulation and CDP, not physical iPhone/Safari or real touchpad hardware.",
-    "Preview makes no authenticated API requests; production authorization and deployment were not changed or tested by this browser suite.",
-    "The broad 38-check suite passed before the final animation fixes; eleven focused checks verified interruption, drag takeover, reduced-motion, rapid key and two-result seam paths afterward."
+    "Visual art-direction review is owned separately by the main agent.",
+    "Local preview only; production deployment, real API delivery and physical Safari were not tested."
   ],
+  "version": "client1.2",
+  "previewURL": "http://127.0.0.1:8786/",
   "sourceSHA256": {
-    "src/main.jsx": "f89eb9e5b1365b8b7d47554ebb6a022dd39d15db5dd4b37ed351232e9f0ea10f",
-    "src/PosterStage.jsx": "1e9e24997c103e58824243ce1aae3f8bdaf516223ed1a0692e06d0ba1e651e77",
-    "src/carousel-model.js": "2bb3447b30a62fc6455aacfff8b0d303e7d40ed3321c2ad7003fe45aaf3de6e0",
-    "src/model.js": "42dacdfd3e2c3873c34ccbcf55bdf478e863b074be3ce4c4dea716124bb0eb35",
-    "src/style.css": "5d633a668cfe81ade29a76099628a7bea2e483fdba0f8898b5cd7508f5541cbc",
-    "src/posters.json": "17a0daf0a24f826e9898aae9d045edab240669f9f7f0d685878da3a7d3e3e6d7",
     "assets-manifest.json": "64c8373476c1e3110cadbe7fc10caa395326b73cc88e47834ed1810cd974bea2",
+    "featured-manifest.json": "45b0a9a9b04db27a9a47e7b494de84c2f4acfb6bca403bdec7b565314bc77e19",
+    "src/FeaturedShowcase.jsx": "af7cfcf2384442e310cac1175cd697ba974b91c296a9331597e8ff6b8870e687",
+    "src/PosterStage.jsx": "58757aeb4fad1ff9178fe70dc30aa6bd9d32355f75d3c8bbf9cd9fd15f371c35",
+    "src/asset-paths.json": "96fd6941365db32bea2ef230e7e74bb3d1116723b0e43655df913e49de5eebc1",
+    "src/carousel-model.js": "2bb3447b30a62fc6455aacfff8b0d303e7d40ed3321c2ad7003fe45aaf3de6e0",
+    "src/colour.css": "983f154931bb407f554a27539e028c1d36e81f77ab06befc766becf3d00ebeb8",
+    "src/copy.js": "f7675ca25faf25b6b1293623fe33e23b929a763314fa3d210168c4add9436d5e",
+    "src/featured.json": "80f33642d5b911569d74014e20e57431ca4e5560f64b6e45fd161123a4b68b2d",
+    "src/main.jsx": "164ab3aed80256385930ce00cda9abb576db9eebf7c5a674a4ab4cba50fa22ec",
+    "src/model.js": "42dacdfd3e2c3873c34ccbcf55bdf478e863b074be3ce4c4dea716124bb0eb35",
+    "src/poster-palettes.json": "a9b8455d7b88e8419f9761eb6fa43f865a3069f365254bdf382eeea4cf795c41",
+    "src/posters.json": "17a0daf0a24f826e9898aae9d045edab240669f9f7f0d685878da3a7d3e3e6d7",
+    "src/session.js": "6f9412ce6e770111893cb8afc91ccb5560ee31c34680d041611ef9169d7fb966",
+    "src/style.css": "20e5334e82f5e97c7efa3f91728e3c39167ea000a2d1d38b4b739373545ab053",
+    "tests/browser-featured.cjs": "fefaa6b211ca8e13fccd9487b9080d47e0fcce1b27b3fc694a458c6acb40f22d",
+    "tests/browser-interruptions.cjs": "8613271fa115e712d1ff12610e46a26c17130b3895c357df31713c533963c857",
     "tests/carousel-model.test.mjs": "e7378a41afbe3fae6796ac3c6699d145800002539d54facd58e02cdfe54ff8dc",
-    "tests/regression.test.mjs": "8fd469f50fb2aa8bc994daaa3ee1f51b792f206836a7a100febaf861cd432d5d",
-    "tests/browser-interruptions.cjs": "88781448a2e022155c5ff3ccff73f5c122ee5330e36b3c98eab537e01007c6d6"
+    "tests/featured.test.mjs": "8d6b36d4c99966d5952c1b4c25d10be29895a025fa5c5ab2663b76c7721d4f34",
+    "tests/regression.test.mjs": "a1b0ae75141c88bb781e339fd75958e67cd17ac94c16e5e51feadd88e5fc7ec9"
+  },
+  "fullRepositoryVerification": {
+    "passed": true,
+    "rootTests": 154,
+    "rootSkipped": 3,
+    "backendTests": 249,
+    "deploymentTests": 32,
+    "newClientTests": 15,
+    "command": "NODE_BIN=<bundled-node> .venv/bin/python scripts/verify.py",
+    "result": "All verification suites passed."
+  },
+  "visualReview": {
+    "independentReview": true,
+    "featuredStatesReviewed": 8,
+    "desktop": "1440x900",
+    "mobile": "390x844",
+    "additionalInspectorWidths": [
+      1440,
+      768,
+      390
+    ],
+    "inspectorFailures": 0,
+    "inspectorWarnings": [
+      "No footage: user specified a product carousel, not a video section",
+      "Pinned reference heading retained with Chinese category description",
+      "13 moving elements: reference motion preserved without adding unrelated transitions",
+      "Small auxiliary mobile text retained from reference"
+    ],
+    "originalPostersUnchanged": 38,
+    "approvedOriginalResourcesUnchanged": 115,
+    "derivedCutouts": 8,
+    "productionDeployed": false
   }
 }

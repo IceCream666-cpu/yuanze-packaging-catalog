@@ -31,3 +31,15 @@ copy_asset(SHOWROOM/'assets/yuanze-mark.svg','yuanze-mark.svg')
  for item in manifest
 },indent=2)+'\n')
 print(f'Prepared {len(records)} approved posters and original logo; source pixels unchanged.')
+featured_dir=BASE/'public/featured'
+featured_dir.mkdir(parents=True,exist_ok=True)
+featured_manifest=json.loads((BASE/'featured-manifest.json').read_text())
+for item in json.loads((BASE/'src/featured.json').read_text()):
+ src=BASE/'featured-assets'/f"{item['id']}.png"
+ if not src.is_file():
+  raise FileNotFoundError(f'Missing featured cutout: {src.name}')
+ entry=next(record for record in featured_manifest['files'] if record['posterId']==item['id'])
+ if hashlib.sha256(src.read_bytes()).hexdigest()!=entry['sha256']:
+  raise ValueError(f'Featured cutout does not match reviewed derivative: {src.name}')
+ shutil.copyfile(src,featured_dir/src.name)
+print('Prepared 8 derived product cutouts for the design preview.')

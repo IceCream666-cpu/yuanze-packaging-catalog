@@ -17,6 +17,11 @@ async function snapshot(page){
   return {id:center?.dataset.posterId,selectedTitle:document.querySelector('.filmstrip [aria-pressed="true"]')?.getAttribute('aria-label'),transform:center?.style.transform,centerError:a&&b?Math.abs((b.left+b.width/2)-(a.left+a.width/2)):null};
  });
 }
+async function enterLibrary(page){
+ await page.locator('.browse-collection').click();
+ await page.locator('.view-toggle button').first().click();
+ await page.waitForTimeout(500);
+}
 
 (async()=>{
  const browser=await chromium.launch({headless:true,executablePath:CHROME});
@@ -24,6 +29,7 @@ async function snapshot(page){
   const page=await browser.newPage({viewport:{width:1440,height:1000}});
   page.on('pageerror',error=>report.runtimeErrors.push(error.message));
   await page.goto(URL,{waitUntil:'networkidle'});await page.waitForTimeout(500);
+  await enterLibrary(page);
   await page.getByRole('button',{name:'下一张海报',exact:true}).click();await page.waitForTimeout(60);
   const box=await page.locator('.gallery-stage').boundingBox();
   await page.mouse.click(box.x+box.width/2,box.y+box.height-8);await page.waitForTimeout(850);
@@ -33,6 +39,7 @@ async function snapshot(page){
   result('blank stage tap during animation still reaches its centered target',state);
 
   await page.reload({waitUntil:'networkidle'});await page.waitForTimeout(500);
+  await enterLibrary(page);
   await page.locator('.filmstrip button').nth(4).click();await page.waitForTimeout(30);
   await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(850);
   state=await snapshot(page);
@@ -42,6 +49,7 @@ async function snapshot(page){
   result('reduced motion during travel aligns poster, selection and title',state);
 
   await page.emulateMedia({reducedMotion:'no-preference'});await page.reload({waitUntil:'networkidle'});await page.waitForTimeout(500);
+  await enterLibrary(page);
   await page.getByRole('button',{name:'下一张海报',exact:true}).click();await page.waitForTimeout(50);
   const drag=await page.locator('.gallery-stage').boundingBox();
   await page.mouse.move(drag.x+drag.width*.65,drag.y+drag.height*.5);await page.mouse.down();await page.waitForTimeout(70);
@@ -52,6 +60,7 @@ async function snapshot(page){
   result('drag can take over a running animation and finish centered',state);
 
   await page.reload({waitUntil:'networkidle'});await page.waitForTimeout(500);
+  await enterLibrary(page);
   async function rapidKeys(key,expectedIndex,name){
    await page.locator('.gallery-stage').focus();
    for(let i=0;i<5;i++){await page.keyboard.press(key);await page.waitForTimeout(30);}

@@ -18,5 +18,6 @@
 | --- | --- | --- | --- | --- |
 | client1.0 | 2026-10-20 20:02:32 | 38 张海报；Apple 风格画廊/总览；搜索/筛选/本机收藏；拖动、触控板横滑；高清查看、下载及退出；收起未接通的选型演示 | 已上线 `/client`；账号密码和服务端权限保持 | 本条同次提交可由 `git log -- docs/client-apple-demo/client1-release.json` 定位；实际回执见该文件 |
 | client1.1 | 2026-10-21（设计预览） | 38 张既有海报的立体滑动展台、跟手拖动与吸附、背景随海报换色；保留筛选、收藏、高清和下载；桌面与手机适配 | 本地预览，未替换线上 client1.0 | `docs/client-motion-demo/`；同次实现提交可由 `git log -- docs/client-motion-demo` 定位；测试回执 `verification.json` |
+| client1.2 | 2026-10-21（设计预览） | 沿用用户指定粉色大标题与透明悬浮产品设计；8 款精选、全屏换色、双色圆点和自动轮播；完整 38 张海报库保留筛选/收藏/高清/下载 | 本地预览，未替换线上 client1.0 | `docs/client-motion-demo/`，本条同次提交为实现依据；衍生素材清单 `featured-manifest.json`，测试回执 `verification.json` |
 
 部署标识 `client1.0-20261020`，在现有 `20261013-client-hd-v1` release 内原子替换展厅静态文件。不得把服务 release 目录日期误作本次发布时间。

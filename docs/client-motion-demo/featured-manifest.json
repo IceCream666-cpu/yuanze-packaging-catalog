@@ -1,0 +1,112 @@
+{
+  "version": "client1.2",
+  "scope": "local-preview-derived-assets-not-production-approved",
+  "notes": "Generated cutouts are display derivatives; original 38 posters and their 115 approved resources are preserved without alteration.",
+  "files": [
+    {
+      "posterId": "poster-012",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-012.webp",
+      "approvedPosterSha256": "a90d6370e3d051028c8445f03720f64fe5a808e003e85c5b200b514d920878bb",
+      "file": "featured-assets/poster-012.png",
+      "target": "featured/poster-012.png",
+      "sha256": "6b3236999bef9dc83ff2f983092e180a2ea6824433c54c3bb763c5259ed8b0e8",
+      "bytes": 1622337,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "reused transparent image from approved visual demo",
+      "originalDemoFilename": "yellow-pink.png",
+      "sourceMatch": "Visual match of package and poster composition; original demo reference has small pixel differences from current approved WebP."
+    },
+    {
+      "posterId": "poster-013",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-013.webp",
+      "approvedPosterSha256": "6d13d07fbb3086ce3eb7b8708c5304dd97163d3dcc98cc1db6a4a9539c76e592",
+      "file": "featured-assets/poster-013.png",
+      "target": "featured/poster-013.png",
+      "sha256": "4de1d98936452cc66c5c8b26b455b0f8b4d8341f0af3737f9bd23c72bbe2de12",
+      "bytes": 1936098,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "reused transparent image from approved visual demo",
+      "originalDemoFilename": "coral-aqua.png",
+      "sourceMatch": "Visual match of package and poster composition; original demo reference has small pixel differences from current approved WebP."
+    },
+    {
+      "posterId": "poster-039",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-039.webp",
+      "approvedPosterSha256": "20f64a525352405eb3ac434efc586d2655a0a2103a4230a5ca46b50c4abf2fa0",
+      "file": "featured-assets/poster-039.png",
+      "target": "featured/poster-039.png",
+      "sha256": "6345b60d409a983042dc4fd8c7bef5f78d70b2147b56d8880e0c3c64d84c772b",
+      "bytes": 1570242,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "transparent extraction from current approved poster",
+      "selectedObject": "Foreground closed silver-lid PDRN capsule cream jar; full poster remains face-care collection."
+    },
+    {
+      "posterId": "poster-049",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-049.webp",
+      "approvedPosterSha256": "ea337ff75f5ef7d4f2d9ba90e35cc537d924534f93ef2c01477f34348d61efcc",
+      "file": "featured-assets/poster-049.png",
+      "target": "featured/poster-049.png",
+      "sha256": "59788897074464a77a4ea6a2e22631f000905754bb3836c8319bc2144580faa8",
+      "bytes": 1797868,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "reused transparent image from approved visual demo",
+      "originalDemoFilename": "shampoo.png"
+    },
+    {
+      "posterId": "poster-042",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-042.webp",
+      "approvedPosterSha256": "f433e657a24e286d406c54329431d8b73fc23535b281a876293bef9447372162",
+      "file": "featured-assets/poster-042.png",
+      "target": "featured/poster-042.png",
+      "sha256": "0084d215fac8049cd3b387189d8384d27e2d701a474b5d4b0d9ffdd8c60210b7",
+      "bytes": 1571264,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "reused transparent image from approved visual demo",
+      "originalDemoFilename": "woodland.png"
+    },
+    {
+      "posterId": "poster-051",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-051.webp",
+      "approvedPosterSha256": "77d4f8ea7cf74c6263025c49d27dee100f9a6e2da0220159a8f852ff9f3b8d08",
+      "file": "featured-assets/poster-051.png",
+      "target": "featured/poster-051.png",
+      "sha256": "2efbf821064393cd7c0429b2fc4e5444c862dbc44d65431e20b32d93cfa283ac",
+      "bytes": 890271,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "transparent extraction from current approved poster"
+    },
+    {
+      "posterId": "poster-044",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-044.webp",
+      "approvedPosterSha256": "3677285f25a234a2900551e6905bba2ac1210da46972b65c42cfd872fc79ce82",
+      "file": "featured-assets/poster-044.png",
+      "target": "featured/poster-044.png",
+      "sha256": "03858ca81f2ed4afb7e3e27a1568a42d2e672f947421ad92eb1d520cb4548f94",
+      "bytes": 1227252,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "transparent extraction from current approved poster",
+      "selectedObject": "Right-hand cleansing foam bottle only."
+    },
+    {
+      "posterId": "poster-047",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-047.webp",
+      "approvedPosterSha256": "bdfa73901daf1c27cc93dfe7a1791344c59031d5ef0d39a8ae33db68133ebdf6",
+      "file": "featured-assets/poster-047.png",
+      "target": "featured/poster-047.png",
+      "sha256": "66f12c52657654805151008b1db85616a50a708367743ff62089fcf38df5822a",
+      "bytes": 1351149,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "derived product image for local design preview",
+      "method": "transparent extraction from current approved poster",
+      "selectedObject": "Right-hand clear glass cork-capped Coastal bottle only."
+    }
+  ]
+}

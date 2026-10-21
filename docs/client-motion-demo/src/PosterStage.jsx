@@ -2,7 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Maximize2, MoveHorizontal} from 'lucide-react';
 import {shortestDelta, snapTarget, visibleItems, wrapIndex} from './carousel-model.js';
 
-export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage}) {
+export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage, presentation = 'posters'}) {
+  const products = presentation === 'products';
   const initial = Math.max(0, items.findIndex(p => p.id === selectedId));
   const [position, setPosition] = useState(initial);
   const [dragging, setDragging] = useState(false);
@@ -12,7 +13,7 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
   const callbacks = useRef({onSelect, onOpen});
   callbacks.current = {onSelect, onOpen};
   const reduced = useRef(false);
-  const stepWidth = Math.min(460, Math.max(215, width * .37));
+  const stepWidth = products ? Math.min(360, Math.max(205, width * .245)) : Math.min(460, Math.max(215, width * .37));
 
   function paint(value) { motion.current.position = value; setPosition(value); }
   function advance(delta) {
@@ -123,36 +124,36 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
     }
   }
   const activeIndex = wrapIndex(Math.round(position), items.length);
-  return <section className="gallery-shell" aria-label={lang === 'zh' ? '海报画廊' : 'Poster gallery'}>
+  return <section className={`gallery-shell ${products ? 'product-stage-shell' : ''}`} aria-label={lang === 'zh' ? (products ? '精选产品' : '海报画廊') : (products ? 'Featured products' : 'Poster gallery')}>
     <div className={`gallery-stage ${dragging ? 'is-dragging' : ''}`} ref={stage} tabIndex={0} role="region" aria-roledescription="carousel"
       aria-label={lang === 'zh' ? '左右拖动浏览，或使用方向键' : 'Drag sideways or use arrow keys'}
       onPointerDown={down} onPointerMove={move} onPointerUp={finish} onPointerCancel={e => finish(e, true)}
       onLostPointerCapture={e => { if (e.target === stage.current) finish(e, true); }}
       onPointerLeave={e => { if (!motion.current.pointer?.moved) finish(e, true); }}
       onKeyDown={e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); advance(e.key === 'ArrowRight' ? 1 : -1); } }}>
-      <div className="stage-floor" aria-hidden="true" />
+      {!products && <div className="stage-floor" aria-hidden="true" />}
       {visibleItems(items, position).map(({poster, index, offset}) => {
         const distance = Math.abs(offset), active = index === activeIndex;
-        const scale = Math.max(.62, 1 - distance * .16);
-        const turn = Math.max(-14, Math.min(14, offset * -8));
-        const drift = Math.max(-9, Math.min(9, offset * 4));
+        const scale = products ? 1 - Math.min(distance, 3.4) * .13 : Math.max(.62, 1 - distance * .16);
+        const turn = products ? Math.max(-18, Math.min(18, -offset * 6)) : Math.max(-14, Math.min(14, offset * -8));
+        const drift = products ? offset * 8 : Math.max(-9, Math.min(9, offset * 4));
         // With two results the opposite poster changes sides at the circular seam.
         // Fade it before that seam, retaining one real, accessible copy per poster.
-        const opacity = items.length === 2 ? Math.max(0, 1 - distance * 1.25) : Math.max(0, 1 - Math.max(0, distance - 1) * .6);
+        const opacity = items.length === 2 ? Math.max(0, 1 - distance * 1.25) : products ? Math.max(.2, 1 - distance * .17) : Math.max(0, 1 - Math.max(0, distance - 1) * .6);
         return <button key={poster.id} className={`poster-plane ${active ? 'center' : ''}`} tabIndex={active ? 0 : -1}
           aria-hidden={distance > 2.5 || opacity < .1} aria-label={`${lang === 'zh' ? (active ? '查看海报' : '选择海报') : (active ? 'View poster' : 'Select poster')}: ${poster.title[lang]}`}
           data-poster-id={poster.id}
-          style={{'--ratio': poster.width / poster.height, zIndex: 20 - Math.round(distance * 3), opacity, pointerEvents: distance > 2.5 || opacity < .1 ? 'none' : 'auto', aspectRatio: `${poster.width} / ${poster.height}`, transform: `translate(-50%, -50%) translateX(${offset * stepWidth}px) translateY(${distance * 16}px) rotateY(${turn}deg) rotateZ(${drift}deg) scale(${scale})`}}
+          style={{'--ratio': poster.width / poster.height, zIndex: 20 - Math.round(distance * 3), opacity, pointerEvents: distance > 2.5 || opacity < .1 ? 'none' : 'auto', aspectRatio: products ? undefined : `${poster.width} / ${poster.height}`, transform: `translate(-50%, -50%) translateX(${offset * stepWidth}px) translateY(${distance * (products ? 21 : 16)}px) rotateY(${turn}deg) rotateZ(${drift}deg) scale(${scale})`}}
           onClick={() => {
             if (performance.now() < motion.current.suppress) return;
             if (active) callbacks.current.onOpen(poster);
             else animate(motion.current.position + shortestDelta(index, motion.current.position, items.length));
           }}>
-          <SafeImage src={poster.image} alt={poster.title[lang]} draggable="false" decoding="async" />
-          <span className="expand-hint"><Maximize2 size={15} />{lang === 'zh' ? '查看完整海报' : 'View full poster'}</span>
+          <SafeImage src={products ? poster.displayImage : poster.image} alt={poster.title[lang]} draggable="false" decoding="async" />
+          {!products && <span className="expand-hint"><Maximize2 size={15} />{lang === 'zh' ? '查看完整海报' : 'View full poster'}</span>}
         </button>;
       })}
     </div>
-    <div className="gesture-hint"><MoveHorizontal size={18}/><span>{lang === 'zh' ? '左右拖动，让灵感流动' : 'Drag to find your inspiration'}</span></div>
+    {!products && <div className="gesture-hint"><MoveHorizontal size={18}/><span>{lang === 'zh' ? '左右拖动，让灵感流动' : 'Drag to find your inspiration'}</span></div>}
   </section>;
 }
