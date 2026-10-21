@@ -14,7 +14,7 @@ const chrome=process.env.QA_CHROME||'/Applications/Google Chrome.app/Contents/Ma
 const output=process.env.QA_OUTPUT;
 const manifest=JSON.parse(fs.readFileSync(path.join(publicDir,'bundle-manifest.json')));
 const featured=JSON.parse(fs.readFileSync(path.join(__dirname,'../featured-manifest.json'))).files;
-const report={version:'client1.2',mode:'showroom',scope:'local frontend integration with mocked session API',checks:[],runtimeErrors:[],unexpectedRequests:[]};
+const report={version:'client1.3',mode:'showroom',scope:'local frontend integration with mocked session API',checks:[],runtimeErrors:[],unexpectedRequests:[]};
 const csrf='local-browser-production-test-token';
 const requests=[];
 const logoutRequests=[];
@@ -70,7 +70,7 @@ async function waitEnabled(locator) {await locator.waitFor();await locator.evalu
 (async()=>{
   let browser;
   try {
-    assert.equal(manifest.version,'client1.2');
+    assert.equal(manifest.version,'client1.3');
     for(const name of ['index.html','preview.js','preview.css']) {
       assert.equal(fs.readFileSync(path.join(publicDir,name),'utf8'),fs.readFileSync(path.join(__dirname,'../release',name),'utf8'),`Published ${name} must equal the reviewed release`);
     }

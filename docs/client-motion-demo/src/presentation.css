@@ -1,0 +1,244 @@
+/* client1.3 — shared presentation roles. Loaded after legacy layout and mobile safeguards.
+   Native Apple typography, readable captions, and glass limited to stationary chrome. */
+.showroom {
+  --ui-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --type-caption: .9375rem;
+  --type-body: 1.0625rem;
+  --type-control: 1rem;
+  --radius-view: 28px;
+  --radius-control: 16px;
+  --glass: linear-gradient(135deg, #ffffffc9, #ffffff80);
+  --elevation: 0 8px 28px -16px #362f4529;
+  --gutter: clamp(18px, 4.3vw, 76px);
+  font-family: var(--ui-font);
+  font-size: var(--type-body);
+  line-height: 1.5;
+  letter-spacing: -.01em;
+}
+.showroom h1, .showroom h2 {font-family: var(--ui-font); text-wrap: balance; letter-spacing: -.035em; font-weight: 650;}
+.showroom p {text-wrap: pretty;}
+.showroom :focus-visible {outline: 3px solid var(--ink); outline-offset: 4px;}
+.showroom ::selection {background: color-mix(in srgb, var(--ink) 18%, var(--scene)); color: var(--ink);}
+.showroom input {caret-color: var(--ink);}
+.showroom button, .showroom select {font-size: var(--type-control);}
+/* One aligned content column; 3 cards + 2 gaps = the available library width. */
+.library-page {background: #f5f3f1;}
+.library-page .topbar, .library-page .intro, .library-page .filter-bar, .library-page .grid-section {
+  width: min(calc(100% - 2 * var(--gutter)), 1680px); margin-left: auto; margin-right: auto;
+}
+.library-page .topbar {
+  height: auto; min-height: 80px; margin-top: 20px; padding: 12px 18px;
+  border: 1px solid #ffffffd9; border-radius: var(--radius-view); background: var(--glass);
+  box-shadow: var(--elevation); gap: 20px;
+}
+.library-page .topbar .brand {gap: 18px; flex-shrink: 0; border-radius: 16px;}
+.library-page .brand img {width: 40px; height: 44px;}
+.back-home-label, .library-page .back-home-label {
+  display: inline-flex; align-items: center; gap: 7px; min-height: 48px;
+  border: 0; padding: 0 18px 0 10px; border-radius: 999px;
+  background: #ffffffb8; font-size: 1rem; font-weight: 600; white-space: nowrap;
+}
+.library-page .brand:hover .back-home-label {background: #fff;}
+.main-nav {align-self: center; gap: 4px; padding: 4px; border-radius: 999px; background: #30263309;}
+.main-nav button {min-height: 48px; padding: 0 20px; font-size: 1rem; border-radius: 999px; color: var(--ink);}
+.main-nav button.active {background: #fff; box-shadow: 0 3px 12px #3026330b; font-weight: 600;}
+.main-nav button.active:after {display: none;}
+.main-nav small {font-size: .875rem; min-width: 24px; height: 24px;}
+.header-actions {gap: 4px;}
+.header-actions .icon-button, .header-actions .language {min-width: 48px; min-height: 48px; border-radius: 50%;}
+.library-page .intro {align-items: end; padding: 52px 0 32px; gap: 28px;}
+.library-page .intro h1 {font-family: var(--ui-font); font-size: clamp(2rem, 3.6vw, 3.5rem); line-height: 1.2; font-weight: 650; margin-bottom: 16px;}
+.intro p {font-size: 1.1875rem; line-height: 1.65; max-width: 55ch;}
+.browse-tools {gap: 12px;}
+.search-box {width: clamp(220px, 20vw, 310px); min-height: 56px; padding: 0 16px; background: #ffffffb8; border: 1px solid #30263312; border-radius: var(--radius-control);}
+.search-box input {font-size: 1rem; padding: 14px 0;}
+.search-box kbd {font-family: var(--ui-font); font-size: .875rem;}
+.library-page .search-box:focus-within {border: 1px solid var(--ink); outline: 2px solid color-mix(in srgb, var(--ink) 12%, transparent);}
+.view-toggle {border-radius: 18px; padding: 4px; gap: 4px; background: #3026330a;}
+.view-toggle button {width: 48px; height: 48px; border-radius: 14px;}
+.library-page .filter-bar {border: 1px solid #ffffffd9; background: var(--glass); padding: 10px; border-radius: 22px; gap: 16px;}
+.category-tabs {gap: 4px; min-width: 0; padding: 2px;}
+.category-tabs button {min-height: 48px; padding: 10px 17px; font-size: 1rem; border-radius: 14px;}
+.category-tabs button.active {background: var(--ink); color: #fff;}
+.category-tabs button.active:after {display: none;}
+.category-tabs button:hover:not(.active) {background: #ffffffb8;}
+.category-tabs span {font-size: .875rem; opacity: 1;}
+.style-picker {background: transparent; border-radius: 14px;}
+.style-picker select {min-height: 48px; padding: 0 24px 0 14px; font-size: 1rem; max-width: 190px;}
+.library-page .grid-section {padding: 0; margin-top: 26px; margin-bottom: 60px;}
+.grid-count {font-size: var(--type-caption); margin: 0 4px 18px;}
+.library-page .poster-grid {gap: 28px; grid-template-columns: repeat(3, minmax(0, 1fr));}
+.poster-grid > article {min-width: 0; padding: 12px; border-radius: var(--radius-view); background: linear-gradient(145deg, #ffffffed, #ffffff9c); box-shadow: var(--elevation);}
+.library-page .grid-image {padding: 10px; border-radius: 20px; background: #f4f1ed;}
+.grid-image img {border-radius: 10px;}
+.grid-image:hover img {transform: none;}
+.grid-caption {margin: 0; padding: 20px 10px 12px; align-items: center; gap: 12px;}
+.grid-caption .category-label, .category-label {font-size: var(--type-caption); line-height: 1.5; margin-bottom: 6px;}
+.grid-caption h2 {font-size: 1.375rem; line-height: 1.4; font-weight: 600; letter-spacing: -.02em;}
+.grid-caption .icon-button {min-width: 48px; min-height: 48px; background: #30263306; flex-shrink: 0;}
+.grid-caption svg {width: 22px; height: 22px;}
+.library-page .gallery-shell {margin: 28px var(--gutter) 0; padding: 10px 0 16px; border-radius: 32px; background: #ffffff85;}
+.library-page .gallery-stage {border-radius: 24px;}
+.library-page .poster-plane {border-radius: 20px; background: #fff; padding: 10px;}
+.library-page .poster-plane img {border-radius: 12px;}
+.gesture-hint {font-size: .9375rem; min-height: 30px; height: auto; letter-spacing: 0; padding: 4px 16px; text-align: center;}
+.expand-hint {font-size: .875rem;}
+.poster-detail {margin: 24px var(--gutter) 0; padding: 22px; background: #ffffff9c; border: 0; border-radius: var(--radius-view);}
+.poster-title h2 {font-size: 1.625rem; line-height: 1.35; max-width: none;}
+.save-button, .primary-button, .soft-button {min-height: 48px; border-radius: var(--radius-control); font-size: 1rem; padding: 12px 20px; line-height: 1.35; white-space: normal;}
+.library-page .primary-button {border-radius: 999px;}
+.gallery-navigation > span {font-size: 1rem; min-width: 64px;}
+.round-button {width: 48px; height: 48px; flex-shrink: 0;}
+.filmstrip {padding: 8px; gap: 10px; border-radius: 18px; background: #ffffff70;}
+.filmstrip button {flex-basis: 84px; width: 84px; height: 68px; border-radius: 12px;}
+.filmstrip button img {border-radius: 8px;}
+.empty-state {margin: 28px var(--gutter); border-radius: var(--radius-view); background: #ffffffa0;}
+.empty-state h2 {font-size: 1.875rem;}
+.empty-state p {font-size: 1.0625rem; max-width: 46ch;}
+.showroom footer {font-size: .9375rem; letter-spacing: 0; line-height: 1.6; flex-wrap: wrap;}
+/* Featured products retain their silhouettes and scene colours; only the framing/type changes. */
+.colour-experience {padding-top: 20px;}
+.colour-header {margin: 0 var(--gutter); padding: 10px 18px; min-height: 80px; border: 1px solid #ffffff80; border-radius: var(--radius-view); background: var(--glass); box-shadow: var(--elevation);}
+.colour-brand > span {font-family: "Bodoni 72", "Didot", serif;}
+.colour-tagline {font-size: 1rem;}
+.colour-nav {gap: 12px;}
+.colour-nav button, .colour-nav .colour-language, .colour-nav .browse-collection {font-size: 1rem; min-height: 48px;}
+.colour-nav .colour-favorites {min-width: 48px;}
+.colour-favorites small {font-size: .875rem;}
+.colour-intro {padding-top: 36px; align-items: center;}
+.colour-intro h1 {font-family: var(--ui-font); font-size: clamp(2.5rem, 5.4vw, 5.5rem); font-weight: 650; line-height: 1.08; letter-spacing: -.04em; white-space: normal;}
+.colour-intro p {font-size: 1.125rem; line-height: 1.65;}
+.colour-intro p span {opacity: 1; color: var(--muted);}
+.colour-carousel {margin: 24px var(--gutter) 0; background: #ffffff18; border: 1px solid #ffffff30; border-radius: 32px;}
+.product-stage-shell .gallery-stage {border-radius: 32px;}
+.colour-details {padding-top: 28px; gap: 28px;}
+.colour-copy h2 {font-family: var(--ui-font); font-size: clamp(2rem, 3.2vw, 3.25rem); font-weight: 650; letter-spacing: -.035em; line-height: 1.16;}
+.colour-kind {font-size: 1.0625rem;}
+.colour-description {font-size: 1.0625rem; line-height: 1.65;}
+.colour-poster {font-size: 1rem; min-height: 56px;}
+.colour-play, .colour-collection-bar > span {font-size: 1rem;}
+.colour-footer {opacity: 1;}
+/* The original artwork stays complete. Blur belongs to overlay chrome, never moving posters. */
+.home-page .modal, .library-page .modal {background: #faf9f7; color: #262528; border-radius: 28px; box-shadow: 0 32px 100px #16121d4d;}
+.modal-toolbar {min-height: 72px; padding: 12px 24px; background: var(--glass);}
+.modal-toolbar strong {font-size: 1.25rem; font-weight: 600;}
+.modal-toolbar .icon-button {min-height: 48px; min-width: 48px; background: #00000006;}
+.home-page .lightbox-image, .library-page .lightbox-image {background: #eeece9; padding: 18px;}
+.lightbox-image:not(.zoomed) img {border-radius: 12px;}
+.lightbox-controls {font-size: .9375rem; padding: 16px 24px; gap: 16px;}
+.lightbox-controls > span {line-height: 1.5;}
+.home-page .soft-button, .library-page .soft-button {background: #e9e7e5; font-size: 1rem;}
+.info-modal {width: 540px;}
+.info-content {padding: 32px;}
+.info-content h2 {font-size: 1.875rem;}
+.info-content p {font-size: 1.0625rem; line-height: 1.75;}
+.info-content .preview-note {font-size: .9375rem;}
+.toast {font-size: 1rem; border-radius: 18px; line-height: 1.5;}
+.image-error {font-size: 1rem; border-radius: 16px; text-align: center;}
+.session-error {font-size: 1rem; line-height: 1.6;}
+.session-error button {min-height: 48px;}
+@supports (backdrop-filter: blur(12px)) {
+  .topbar, .colour-header {backdrop-filter: blur(12px) saturate(1.15); -webkit-backdrop-filter: blur(12px) saturate(1.15);}
+}
+@media (max-width: 1200px) {
+  .library-page .intro {align-items: start; flex-direction: column;}
+  .browse-tools {width: 100%; justify-content: space-between;}
+  .search-box {width: min(420px, 100%); flex: 1;}
+  .colour-details {align-items: start; flex-wrap: wrap;}
+  .colour-copy {max-width: 100%; min-height: 0;}
+  .colour-product-actions {flex-shrink: 1; flex-wrap: wrap;}
+  .colour-tagline {display: none;}
+}
+@media (max-width: 1000px) {
+  .library-page .topbar {display: grid; grid-template-columns: 1fr auto; gap: 12px;}
+  .library-page .topbar .brand {grid-column: 1; grid-row: 1;}
+  .header-actions {grid-column: 2; grid-row: 1;}
+  .main-nav {grid-column: 1 / -1; grid-row: 2; justify-self: center;}
+  .library-page .poster-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .library-page .filter-bar {flex-wrap: wrap;}
+  .category-tabs {flex-basis: 100%; width: 100%;}
+  .style-picker {position: static; margin-left: auto;}
+}
+@media (max-width: 760px) {
+  .showroom {--gutter: 18px; --radius-view: 24px;}
+  .library-page .topbar {padding: 10px; margin-top: 12px; gap: 10px;}
+  .library-page .topbar .brand {gap: 8px;}
+  .library-page .brand img {width: 30px; height: 36px;}
+  .library-page .back-home-label {display: inline-flex; padding: 0 10px 0 5px; gap: 2px; font-size: 1rem;}
+  .header-actions {gap: 0;}
+  .header-actions .icon-button, .header-actions .language {min-width: 44px; min-height: 48px;}
+  .main-nav {width: 100%; justify-content: center; gap: 4px;}
+  .main-nav button {padding: 0 15px; font-size: 1rem;}
+  .main-nav svg {display: block;}
+  .main-nav small {min-width: 24px; height: 24px; font-size: .875rem;}
+  .library-page .intro {padding: 32px 0 24px;}
+  .library-page .intro h1 {font-family: var(--ui-font); font-size: 2.125rem; line-height: 1.25; margin-bottom: 12px;}
+  .intro p {font-size: 1.0625rem; line-height: 1.65;}
+  .browse-tools {margin-top: 24px; gap: 10px;}
+  .search-box {width: auto; padding: 0 12px;}
+  .search-box kbd {display: none;}
+  .category-tabs button {font-size: 1rem; padding: 10px 16px;}
+  .style-picker select {font-size: 1rem; max-width: 200px;}
+  .library-page .grid-section {margin-top: 24px;}
+  .library-page .poster-grid {gap: 24px;}
+  .grid-caption h2 {font-size: 1.3125rem;}
+  .grid-caption .category-label {font-size: .9375rem;}
+  .grid-caption {padding: 18px 6px 10px;}
+  .poster-detail {padding: 20px; margin: 20px var(--gutter) 0; grid-template-columns: 1fr; gap: 20px;}
+  .poster-title h2 {font-size: 1.5rem;}
+  .poster-actions {grid-row: auto; grid-column: 1; justify-content: start; margin: 0;}
+  .gallery-navigation {grid-row: auto; grid-column: 1; justify-content: center; gap: 14px;}
+  .filmstrip {margin: 18px var(--gutter) 0;}
+  .showroom footer {padding: 26px var(--gutter); font-size: .875rem;}
+  .showroom footer > span:first-child {max-width: none;}
+  .colour-experience {padding-top: 12px;}
+  .colour-header {padding: 10px 12px; gap: 12px; border-radius: 24px;}
+  .colour-brand > span {font-size: 32px;}
+  .colour-nav {gap: 8px;}
+  .colour-intro {padding-top: 28px; gap: 16px;}
+  .colour-intro h1 {font-size: clamp(2.5rem, 8vw, 3.5rem);}
+  .colour-intro p {font-size: 1.0625rem;}
+  .colour-carousel {margin-top: 20px; border-radius: 24px;}
+  .colour-copy h2 {font-size: 2rem;}
+  .colour-kind, .colour-description {font-size: 1rem;}
+  .colour-product-actions {gap: 12px; margin-top: 20px;}
+  .colour-poster {font-size: 1rem; padding: 12px 18px;}
+  .colour-collection-bar {padding-top: 24px;}
+  .colour-play {font-size: 1rem;}
+  .modal-toolbar {padding: 12px 16px; min-height: 68px;}
+  .modal-toolbar strong {font-size: 1.125rem;}
+  .lightbox-controls {padding: 14px 16px;}
+  .lightbox-controls > span {font-size: .9375rem; margin-bottom: 12px;}
+  .lightbox-controls > div {gap: 8px; justify-content: start;}
+  .home-page .soft-button, .library-page .soft-button {font-size: .9375rem; padding: 10px 12px;}
+  .info-content {padding: 24px;}
+  .info-content p {font-size: 1rem;}
+}
+@media (max-width: 600px) {
+  .library-page .poster-grid {grid-template-columns: minmax(0, 1fr);}
+  .colour-header {display: grid; grid-template-columns: 1fr 48px 48px;}
+  .colour-nav {display: contents;}
+  .colour-brand {grid-column: 1; grid-row: 1;}
+  .colour-nav .colour-favorites {grid-column: 2; grid-row: 1;}
+  .colour-nav .colour-language {grid-column: 3; grid-row: 1;}
+  .colour-nav .browse-collection {grid-column: 1 / -1; grid-row: 2; justify-self: end; margin: 0; font-size: 1rem; gap: 10px;}
+  .colour-product-actions {display: grid; grid-template-columns: 1fr 48px; width: 100%;}
+  .colour-poster {grid-column: 1;}
+  .colour-save {grid-column: 2; order: 0; min-width: 48px; min-height: 48px;}
+  .colour-arrows {grid-column: 1 / -1; justify-content: end; gap: 12px; order: 0;}
+  .colour-arrows button {width: 48px; height: 48px;}
+}
+@media (max-width: 360px) {
+  .library-page .topbar {grid-template-columns: 1fr;}
+  .library-page .topbar .brand {grid-column: 1; grid-row: 1;}
+  .library-page .header-actions {grid-column: 1; grid-row: 2; justify-self: end;}
+  .library-page .main-nav {grid-column: 1; grid-row: 3;}
+  .library-page .topbar {gap: 8px;}
+  .library-page .intro h1 {font-family: var(--ui-font); font-size: 2rem;}
+  .main-nav button {padding: 0 10px; gap: 6px;}
+  .view-toggle button {width: 44px;}
+  .colour-swatches {display: grid; grid-template-columns: repeat(4, 44px); justify-content: space-between; gap: 10px;}
+}
+@media (prefers-reduced-transparency: reduce) {
+  .topbar, .colour-header, .filter-bar, .poster-grid > article, .poster-detail {background: #faf9f7!important; backdrop-filter: none!important; -webkit-backdrop-filter: none!important;}
+}

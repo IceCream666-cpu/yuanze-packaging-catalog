@@ -20,20 +20,21 @@ ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
 MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
-CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2'}
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3'}
+MOTION_EDITIONS = frozenset(('client12', 'client13'))
 
 
 def client_directory(edition):
     if edition not in CLIENT_EDITIONS:
         raise ValueError(f'Unsupported client edition: {edition}')
-    return MOTION_CLIENT if edition == 'client12' else CLIENT
+    return MOTION_CLIENT if edition in MOTION_EDITIONS else CLIENT
 
 
 def client_source_hash(edition='client1'):
     client = client_directory(edition)
     sources = [*sorted((client / 'src').glob('*')), client / 'index.html',
                client / 'vite.config.js', client / 'package.json', client / 'assets-manifest.json']
-    if edition == 'client12':
+    if edition in MOTION_EDITIONS:
         sources += [client / 'featured-manifest.json', client / 'prepare-assets.py',
                     *sorted((client / 'featured-assets').glob('*')),
                     *sorted((client / 'featured-optimized').glob('*'))]
@@ -119,7 +120,7 @@ def client_files(files, edition='client1'):
         data = files.get(route.removeprefix('/showroom/'), b'')
         if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
             raise ValueError('Client media differs from reviewed showroom media')
-    if edition == 'client12':
+    if edition in MOTION_EDITIONS:
         featured_files(files, client)
     files.pop('bundle-manifest.json')
     bundle = {'schema': 1, 'source': client.relative_to(ROOT).as_posix(), 'version': version,
@@ -230,8 +231,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client12', 'client1', 'legacy'), default='client12',
-                        help='client12 is the current release; client1 and legacy retain historical builds')
+    parser.add_argument('--edition', choices=('client13', 'client12', 'client1', 'legacy'), default='client13',
+                        help='client13 is current; older editions require their matching source and release stamp')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()

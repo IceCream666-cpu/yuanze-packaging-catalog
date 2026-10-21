@@ -32,3 +32,13 @@ Layout words by section: hero=oversized type plus floating cutouts / controls=co
 Scores: design 7 · usability 9 · creativity 7 · content 9 → overall 7.7
 Caps applied: Strict generic still-page warning caps design at 7; user-pinned single-screen motion takes precedence over adding unrelated effects.
 Top three problems: No blocking visual defects found in desktop, tablet or phone screenshots. Non-blocking limits are system-font differences across platforms, small auxiliary footer text retained from the reference, and generated display cutouts whose fine print should be checked in the original poster.
+
+## client1.3 — 2026-10-22 统一排版与圆角
+
+用户本轮明确要求改用 Apple 风格无衬线字体、放大返回/标题说明/类目/产品名，并将所有视图圆角化。此新要求替代上述 client1.2 衬线标题与小辅助字；产品图、八款精选及38张完整海报、配色联动与功能路径继续保留。
+
+参考实际查看了 Chrome 中的 Figma `iOS and iPadOS 27 (Community)` Materials 页面。采用原生 Apple 系统字体栈（中文 PingFang 回退），不下载字体；源泽品牌字标与海报内文字保持原素材。默认字体角色为标题32–56px、首页40–88px、产品名21–52px、正文16–19px、类目15px、控件16px、辅助14–15px。返回精选始终显示文字和箭头，触控高度48px。
+
+共享 presentation.css 在原布局与手机保护后加载，集中管理字体、圆角和表面；旧布局文件保留作为既有行为与响应式基础。网格桌面三列/平板两列/≤600px一列，28px卡片和24–32px视图圆角，浅色高光表面。毛玻璃仅用于静止顶栏，不施加于38张海报或滑动图片；继续使用WebP、首图优先、固定图片节点与原滑动控制器。搜索、类别、收藏空态、画廊、全图/高清/缩放/下载、关于、加载失败和会话提示共用排版。
+
+视觉与机械检查分开进行：独立审查确认旧规则在≤380px隐藏返回、手机11px文案、serif覆盖和固定两列问题；浏览器核验320/393/768/1440px及中英文。用户固定参考优先于随机风格抽取，也优先于skill对玻璃/系统字体的通用偏好。未引入新动画或外部素材。
