@@ -28,5 +28,6 @@
   ],
   "limitations": [
     "Native browser automation and DOM events; not a physical touchpad or phone FPS measurement."
-  ]
+  ],
+  "sourceCommit": "438d8eb3"
 }

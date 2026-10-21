@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "status": "live_verified",
+  "version": "client1.2",
+  "patch": "continuous-swipe",
+  "sourceCommit": "438d8eb3b2cbf0db9c187f9b2a188c558e4617ec",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "publication": {
+    "version": "client1.2",
+    "patch": "continuous-swipe",
+    "publishedAt": "2026-10-21T14:01:11+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "manifestSha256": "3187fb4f0dc48284190c43055b3792bc2c5f4ff29358d4f3c643514274711b86",
+    "backup": "/opt/yuanze-reference/backups/client1.2-continuous-swipe-20261021",
+    "verifiedFiles": 203,
+    "changed": [
+      "preview.js",
+      "preview.css",
+      "bundle-manifest.json"
+    ],
+    "outsideUnchanged": 6820,
+    "service": "MainPID=2564528\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "f99d90176972e5016801a13352632d465a34898cae75cd1763e976dab4244d23"
+  },
+  "online": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "assets/featured/poster-012.png",
+      "assets/featured/poster-013.png",
+      "assets/featured/poster-039.png",
+      "assets/featured/poster-042.png",
+      "assets/featured/poster-044.png",
+      "assets/featured/poster-047.png",
+      "assets/featured/poster-049.png",
+      "assets/featured/poster-051.png"
+    ],
+    "originalDownload": true,
+    "checkedAt": "2026-10-21T14:02:03+08:00",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginPreserved": true
+  },
+  "browser": {
+    "realCustomerLogin": true,
+    "desktopConsecutiveScroll": true,
+    "desktopReverseReturnsToFirst": true,
+    "desktopFinalTransformCentered": true,
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "mobile": {
+      "center": "poster-049",
+      "modalOpen": false,
+      "overflow": false,
+      "title": "Moisture Shampoo",
+      "transform": "translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateY(0deg) rotateZ(0deg) scale(1)",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    "consoleErrors": 0,
+    "input": "Native browser automation; physical touchpad and phone FPS not measured"
+  },
+  "localVerification": "smooth-verification.json",
+  "screenshots": [
+    "outputs/client12-smooth-20261021/live-desktop.png",
+    "outputs/client12-smooth-20261021/live-mobile.png"
+  ],
+  "rollback": "Hold deploy lock, require the current release and this manifest hash to match, atomically exchange only showroom with the backup preserving UID/GID; verify roles/resources. If later edits exist, merge rather than overwrite."
+}

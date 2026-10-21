@@ -1,5 +1,12 @@
 # 源泽包材库发布记录
 
+## client1.2 连续滑动修复（2026-10-21 14:01:11 已上线）
+
+- 修复触控板连滑被锁、动画重启和每帧 React 重绘；保留当前样式、38 张海报、8 款精选及完整功能。源码 `438d8eb3`；[线上回执](../../docs/client-motion-demo/smooth-release.json)、[本地验证](../../docs/client-motion-demo/smooth-verification.json)。
+- 只原子替换 showroom 的 preview.js、preview.css 和 bundle 清单；全部 203 文件摘要通过，6820 个非目标文件保持，服务 PID 2564528 不变；无重启、release 切换或发布工具业务数据写入。登录页 yuanze2.0.3 清单仍为 `f99d90176972e5016801a13352632d465a34898cae75cd1763e976dab4244d23`。
+- 23 项客户端模型/素材/DOM 测试、全部既有前端及 168 根 / 251 后端 / 32 部署测试通过。线上 11 项资源摘要、原图附件、三角色权限、匿名拒绝与退出失效通过；实际客户登录后桌面正反连续横滑、390px 两次连续拖动及最终对齐通过，控制台无错误。未把自动化输入等同物理触控板/实体手机帧率测量。
+- 当前清单 `3187fb4f0dc48284190c43055b3792bc2c5f4ff29358d4f3c643514274711b86`，原清单 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`。备份 `/opt/yuanze-reference/backups/client1.2-continuous-swipe-20261021`；持有部署锁并核对 current release 和当前清单后，可只交换展厅目录回退，保留 UID/GID。若有后续更改，先合并，不恢复旧数据库或覆盖登录及后台。
+
 ## yuanze2.0.3 双层光晕登录（2026-10-21 已上线）
 
 - 正式 `/login` 于北京时间 13:00:33 上线，13:09:38 静态更新用户手势播放兼容，13:13:46 全部运行资源经公开 HTTPS 复验。源码 `992f5407`、`033c42ff`，回执 [login-release.json](../../docs/login-immersive-demo/login-release.json)。
