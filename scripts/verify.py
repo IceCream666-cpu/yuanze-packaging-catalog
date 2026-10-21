@@ -24,6 +24,7 @@ def main():
     run([sys.executable, '-m', 'unittest', 'discover', '-s', 'server-reference/deploy/tests', '-q'])
     run([node, '--experimental-vm-modules', 'tests/frontend/run.mjs'])
     run([node, '--test', *map(str, sorted((ROOT / 'docs/client-apple-demo/tests').glob('*.test.mjs')))])
+    run([node, '--test', *map(str, sorted((ROOT / 'docs/client-motion-demo/tests').glob('*.test.mjs')))])
     run([sys.executable, 'scripts/build_customer_showroom.py', '--check'])
     run(['git', 'diff', '--check'])
     run(['git', 'diff', '--cached', '--check'])

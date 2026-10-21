@@ -1,0 +1,192 @@
+{
+  "poster-051": {
+    "background": "#ecf3e7",
+    "ink": "#173f35",
+    "accent": "#5e744e"
+  },
+  "poster-042": {
+    "background": "#f3e9e2",
+    "ink": "#173f35",
+    "accent": "#7e5b44"
+  },
+  "poster-044": {
+    "background": "#e7edf2",
+    "ink": "#173f35",
+    "accent": "#4e6274"
+  },
+  "poster-047": {
+    "background": "#f3ede6",
+    "ink": "#173f35",
+    "accent": "#76644c"
+  },
+  "poster-052": {
+    "background": "#f2eae3",
+    "ink": "#173f35",
+    "accent": "#785f4a"
+  },
+  "poster-046": {
+    "background": "#f3ece7",
+    "ink": "#173f35",
+    "accent": "#755e4d"
+  },
+  "poster-053": {
+    "background": "#f3f0e6",
+    "ink": "#173f35",
+    "accent": "#766b4c"
+  },
+  "poster-043": {
+    "background": "#f2eae3",
+    "ink": "#173f35",
+    "accent": "#785f49"
+  },
+  "poster-054": {
+    "background": "#f3efe7",
+    "ink": "#173f35",
+    "accent": "#75694d"
+  },
+  "poster-055": {
+    "background": "#f1e9e3",
+    "ink": "#173f35",
+    "accent": "#765e4c"
+  },
+  "poster-001": {
+    "background": "#e7f2f1",
+    "ink": "#173f35",
+    "accent": "#4f7370"
+  },
+  "poster-002": {
+    "background": "#f0e7f2",
+    "ink": "#173f35",
+    "accent": "#6a4e74"
+  },
+  "poster-003": {
+    "background": "#f3f0e7",
+    "ink": "#173f35",
+    "accent": "#756c4c"
+  },
+  "poster-004": {
+    "background": "#eee7f2",
+    "ink": "#173f35",
+    "accent": "#664e74"
+  },
+  "poster-005": {
+    "background": "#ece7f3",
+    "ink": "#173f35",
+    "accent": "#5e4d75"
+  },
+  "poster-006": {
+    "background": "#f3e8e7",
+    "ink": "#173f35",
+    "accent": "#74504d"
+  },
+  "poster-007": {
+    "background": "#f2ebe7",
+    "ink": "#173f35",
+    "accent": "#745b4e"
+  },
+  "poster-008": {
+    "background": "#f3e7e8",
+    "ink": "#173f35",
+    "accent": "#744d53"
+  },
+  "poster-009": {
+    "background": "#eae7f2",
+    "ink": "#173f35",
+    "accent": "#5a4f73"
+  },
+  "poster-010": {
+    "background": "#e7f3ef",
+    "ink": "#173f35",
+    "accent": "#4d7467"
+  },
+  "poster-011": {
+    "background": "#f3e7e9",
+    "ink": "#173f35",
+    "accent": "#754d53"
+  },
+  "poster-012": {
+    "background": "#f3e7e2",
+    "ink": "#173f35",
+    "accent": "#7d5645"
+  },
+  "poster-013": {
+    "background": "#e3f2f1",
+    "ink": "#173f35",
+    "accent": "#4b7774"
+  },
+  "poster-014": {
+    "background": "#f2e9e2",
+    "ink": "#173f35",
+    "accent": "#7a5b47"
+  },
+  "poster-032": {
+    "background": "#f2e9e3",
+    "ink": "#173f35",
+    "accent": "#795d49"
+  },
+  "poster-033": {
+    "background": "#f2f3e7",
+    "ink": "#173f35",
+    "accent": "#74754c"
+  },
+  "poster-034": {
+    "background": "#f2eae3",
+    "ink": "#173f35",
+    "accent": "#78604a"
+  },
+  "poster-035": {
+    "background": "#eef2e3",
+    "ink": "#173f35",
+    "accent": "#6c784a"
+  },
+  "poster-036": {
+    "background": "#f0e7f3",
+    "ink": "#173f35",
+    "accent": "#6d4d75"
+  },
+  "poster-037": {
+    "background": "#f3f2e7",
+    "ink": "#173f35",
+    "accent": "#75734d"
+  },
+  "poster-038": {
+    "background": "#e7f2ea",
+    "ink": "#173f35",
+    "accent": "#4f7358"
+  },
+  "poster-039": {
+    "background": "#e7f2ea",
+    "ink": "#173f35",
+    "accent": "#4f735a"
+  },
+  "poster-040": {
+    "background": "#f2e7e3",
+    "ink": "#173f35",
+    "accent": "#78584a"
+  },
+  "poster-041": {
+    "background": "#f1eae3",
+    "ink": "#173f35",
+    "accent": "#76614b"
+  },
+  "poster-045": {
+    "background": "#f1eee3",
+    "ink": "#173f35",
+    "accent": "#766d4c"
+  },
+  "poster-048": {
+    "background": "#f2e9e3",
+    "ink": "#173f35",
+    "accent": "#785c4a"
+  },
+  "poster-049": {
+    "background": "#e7edf2",
+    "ink": "#173f35",
+    "accent": "#4f6172"
+  },
+  "poster-050": {
+    "background": "#f1ebe3",
+    "ink": "#173f35",
+    "accent": "#76624b"
+  }
+}
