@@ -1,5 +1,16 @@
 # 源泽包材库发布记录
 
+## client1.2 色彩悬浮产品展厅（2026-10-21 已上线）
+
+- 用户在认可设计预览后明确要求上线。北京时间 2026-10-21 12:00:00 发布到 `https://bmt.yuanzebeauty.com/client`，源码 `6fd065a7ef20255ae52f0fc5c2f0fd3fadfa33cb`。继续原账号密码及客户权限，未更换登录页面。
+- 采用用户指定粉色首屏、Care in colour. 衬线标题、8 款透明悬浮产品、整页换色、双色圆点、手动切换及默认关闭的自动轮播；完整 38 张海报库、筛选、搜索、本机收藏、高清及下载保持。
+- 新增 8 张 PNG 展示衍生图随本次用户发布批准进入正式清单，路径 `/showroom/assets/featured/poster-xxx.png`。原 38 张海报及 115 个原资源摘要、字节保持；生成展示图不替代完整海报作为包装细节依据。来源与发布范围见 `docs/client-motion-demo/featured-manifest.json`。
+- 正式源码 `docs/client-motion-demo/`，`release/` 为 `showroom` 模式构建；CLI 默认 `client12`，`client1` 与 `legacy` 仅保留历史构建。生产构建禁用 public 目录直接复制，三个入口、源码及全部素材须通过摘要校验，新增图只能进入指定路径。
+- 在 `/opt/yuanze-reference/releases/20261013-client-hd-v1` 内完成展厅目录原子安装，203 项资源服务器核对通过；只替换三入口及清单，增加 8 张透明图。展厅之外 6814 个文件摘要保持，服务属主/属组 `yuanze` 保留，服务 PID 18809 未变，无服务重启、release 切换或数据库写入。
+- 本地 160 项根测试（3 项既有跳过）、249 项后端、32 项部署、全部原前端、18 项旧客户端、15 项新版测试及 13 项生产模式浏览器模拟检查通过。正式域名另完成 126 项 HTTPS 资源摘要、三角色权限、匿名拒绝、原图下载与退出失效验证；真实客户登录的桌面与 390px 手机浏览器 8 项检查通过，无 JS/网络/意外 HTTP 错误。首次素材检查因 TLS EOF 中止，完整重跑通过；公开回执见 `docs/client-motion-demo/client12-release.json`。
+- 当前 manifest SHA-256 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`，发布前为 `a5b844477dc1ea2e62fe89c46b81eb79306cf8deeb47e3f82a7391c3a4de733b`；备份 `/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom`。私有执行证据位于本次工作目录 `work/client12-release/`。
+- 回退先核对当前 release 和本次 manifest 摘要、持有部署锁，仅原子恢复备份中的展厅静态目录并保留 `yuanze` 属主/属组和权限，随后重验资源与角色访问。遇后续修改必须合并，禁止恢复旧数据库或覆盖其他业务文件。
+
 ## client1.0 客户海报展厅（2026-10-20 已上线）
 
 - 用户将当前客户端明确收敛为纯海报展示，正式版本命名 `client1.0`。北京时间 2026-10-20 20:02:32 发布到 `/client`，继续原账号密码登录；登录页本轮不变。

@@ -1,6 +1,8 @@
 # client1.2 · Care in colour
 
-状态：本地设计预览，尚未替换线上 /client。用户明确指定最初 LIAOSE 粉色悬浮产品版的整体设计；本版把完整视觉与交互用于包材库客户端。以 deb02b2 的 client1.0 为业务基线，在 client1.1 预览分支继续实现。
+状态：**已于北京时间 2026-10-21 12:00:00 发布到 [正式客户端](https://bmt.yuanzebeauty.com/client)**，继续原账号密码登录。发布源码 `6fd065a7ef20255ae52f0fc5c2f0fd3fadfa33cb`，公开回执见 [client12-release.json](client12-release.json)。203 项服务器资源、126 项严格 HTTPS 页面与素材校验、三角色权限及真实浏览器验收均已通过。
+
+本版先以 deb02b2 的 client1.0 为业务基线，在 client1.1 预览分支实现用户指定的 LIAOSE 粉色悬浮产品整体设计。2026-10-21 的初次交付为本地设计预览，随后用户明确要求“先上线这个版本”，本次发布沿用该获批视觉。此前预览测试记录 [verification.json](verification.json) 保留为历史证据，不改写成线上验收。
 
 ## 体验
 
@@ -16,7 +18,7 @@
 
 原 38 张海报、公开标题/类别/尺寸及源泽 logo 来自当前批准的 server-reference/public/showroom/product-posters.js 和 bundle-manifest.json。38 份预览、38 份缩略图、38 份原图和 logo 共 115 个资源；assets-manifest.json 逐项保留 SHA-256 与字节大小。**这些原始资源完全未修改。**
 
-featured-assets/ 中的 8 张透明 PNG 是首页展示衍生图，使用官方内置 imagegen 提取产品。4 张复用用户所选视觉演示中经核对的同款素材，另 4 张从当前海报重新提取；featured-manifest.json 单独记录来源、匹配说明、输出摘要及范围，不把派生图当成已获正式部署批准的原素材。生成的展示图不作为精确包装文字依据，点击查看原海报保留批准原图。
+featured-assets/ 中的 8 张透明 PNG 是首页展示衍生图，使用官方内置 imagegen 提取产品。4 张复用用户所选视觉演示中经核对的同款素材，另 4 张从当前海报重新提取；featured-manifest.json 单独记录来源、匹配说明、输出摘要及范围。它们在设计阶段仅用于本地预览，本次随用户明确批准发布 client1.2 获得展示授权，正式路径为 `/showroom/assets/featured/poster-xxx.png`，纳入登录保护的 bundle-manifest.json。生成的展示图不作为精确包装文字依据，点击查看原海报保留批准原图。
 
 风格与描述为视觉表达，不新增 SKU、供应商、库存、价格、功效或选型/询价功能。
 
@@ -33,6 +35,21 @@ npm run build
 
 开发预览 http://127.0.0.1:8784/；构建输出 dist/，资源路径相对，需本地 HTTP 静态服务。浏览器脚本需要 Playwright 与 Chrome，可通过 QA_URL、QA_CHROME、QA_OUTPUT 指定环境。
 
-本轮验证记录见 verification.json。浏览器触摸与 wheel 为 Chrome 模拟，不替代实体 iPhone Safari 和物理触控板验收。页面没有业务 API 请求；现有 session/CSRF 适配保留供后续整合，不把本地预览当成线上鉴权验收。
+设计预览验证记录见 verification.json。浏览器触摸与 wheel 为 Chrome 模拟，不替代实体 iPhone Safari 和物理触控板验收。本地预览模式不请求业务 API；正式 `showroom` 模式读取现有 session 并通过 CSRF 退出，不把本地模拟响应当成线上鉴权验收。
 
-设计依据与合理例外见 DESIGN.md。正式发布脚本仍采用 client1.0；后续整合此版本需把派生资源接入正式资产路径与清单流程，并重新核验访问权限和线上发布结果。
+## 正式构建与发布
+
+设计依据与合理例外见 DESIGN.md。从仓库根目录执行：
+
+```sh
+(cd docs/client-motion-demo && npm run build:release)
+.venv/bin/python scripts/build_customer_showroom.py --edition client12 --stamp-client
+.venv/bin/python scripts/build_customer_showroom.py --edition client12
+.venv/bin/python scripts/build_customer_showroom.py --check
+```
+
+CLI 默认 `client12`；`--edition client1` 与 `--edition legacy` 保留历史构建。正式 Vite 构建禁用 public 目录直接复制，仅生成 `release/index.html`、`preview.js`、`preview.css`；build.json 保存源码和构建摘要。清单接入逐项校验 115 个原资源与 8 个衍生图，拒绝过期源码、构建篡改、路径越界和覆盖原图。
+
+本次安装在既有 `/opt/yuanze-reference/releases/20261013-client-hd-v1` 内完成，203 项静态资源全部核对；只改变三个页面入口及清单，新增 8 张透明图。manifest SHA-256 为 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`。展厅之外 6814 个文件摘要保持，服务 PID 18809 未变，无服务重启、release 切换或数据库写入。备份为 `/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom`。
+
+发布前全量验证通过：160 项根测试（3 项既有条件跳过）、249 项后端、32 项部署、全部原前端、18 项旧客户端及 15 项新版测试；生产构建浏览器模拟 session/退出等 13 项检查通过。正式域名另完成 126 项页面与素材摘要核验、客户/员工/管理员权限、匿名拒绝、原图下载及退出失效；真实客户登录的桌面与 390px 手机浏览器 8 项检查通过，JS/网络/意外 HTTP 错误均为 0。首次素材检查遇 TLS EOF 中止，完整重跑全部通过；证据见 client12-release.json。

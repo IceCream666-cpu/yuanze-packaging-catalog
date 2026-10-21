@@ -19,5 +19,8 @@
 | client1.0 | 2026-10-20 20:02:32 | 38 张海报；Apple 风格画廊/总览；搜索/筛选/本机收藏；拖动、触控板横滑；高清查看、下载及退出；收起未接通的选型演示 | 已上线 `/client`；账号密码和服务端权限保持 | 本条同次提交可由 `git log -- docs/client-apple-demo/client1-release.json` 定位；实际回执见该文件 |
 | client1.1 | 2026-10-21（设计预览） | 38 张既有海报的立体滑动展台、跟手拖动与吸附、背景随海报换色；保留筛选、收藏、高清和下载；桌面与手机适配 | 本地预览，未替换线上 client1.0 | `docs/client-motion-demo/`；同次实现提交可由 `git log -- docs/client-motion-demo` 定位；测试回执 `verification.json` |
 | client1.2 | 2026-10-21（设计预览） | 沿用用户指定粉色大标题与透明悬浮产品设计；8 款精选、全屏换色、双色圆点和自动轮播；完整 38 张海报库保留筛选/收藏/高清/下载 | 本地预览，未替换线上 client1.0 | `docs/client-motion-demo/`，本条同次提交为实现依据；衍生素材清单 `featured-manifest.json`，测试回执 `verification.json` |
+| client1.2（同版正式发布） | 2026-10-21 12:00:00 | 按用户批准发布上述完整设计；8 张透明图进入正式资源清单；38 张原海报及 115 个原资源保持；接入既有登录 session 与退出 | 已上线 `/client`；203 项服务器资源、126 项 HTTPS 资源、三角色权限与真实桌面/手机浏览器验收通过 | `6fd065a7ef20255ae52f0fc5c2f0fd3fadfa33cb`；`docs/client-motion-demo/client12-release.json` |
 
-部署标识 `client1.0-20261020`，在现有 `20261013-client-hd-v1` release 内原子替换展厅静态文件。不得把服务 release 目录日期误作本次发布时间。
+当前 client1.2 发布使用现有 `20261013-client-hd-v1` release，在 `/client` 原子替换展厅静态目录；服务 PID 18809 未变、数据库写入为 0。manifest SHA-256 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`，备份 `/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom`。新增图通过 `/showroom/assets/featured/` 登录保护路径提供，未替换完整原海报。
+
+历史 client1.0 部署标识为 `client1.0-20261020`，同样在 `20261013-client-hd-v1` release 内原子替换展厅静态文件。不得把服务 release 目录日期误作各次发布时间；同版预览与正式发布记录分别保留。

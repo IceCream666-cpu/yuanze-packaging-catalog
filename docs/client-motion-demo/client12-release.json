@@ -1,0 +1,180 @@
+{
+  "version": "client1.2",
+  "status": "live-verified",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "sourceCommit": "6fd065a7ef20255ae52f0fc5c2f0fd3fadfa33cb",
+  "sourceSignature": "e1ac2db1ab5414c77ed3a6549e9a951daadb444b64f847a75536c1fd909750a1",
+  "publication": {
+    "version": "client1.2",
+    "published": true,
+    "publishedAt": "2026-10-21T12:00:00.625114+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "filesVerified": 203,
+    "updatedEntrypoints": 3,
+    "addedFeaturedImages": 8,
+    "backup": "/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom",
+    "manifestHash": "7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993",
+    "previousManifestHash": "a5b844477dc1ea2e62fe89c46b81eb79306cf8deeb47e3f82a7391c3a4de733b",
+    "outsideUnchanged": true,
+    "outsideFileCount": 6814,
+    "service": "MainPID=18809\nUser=yuanze\nGroup=yuanze\nActiveState=active\nActiveEnterTimestamp=Tue 2026-10-13 01:34:52 CST\n",
+    "databaseWrites": 0,
+    "serviceRestart": false
+  },
+  "verificationCompletedAt": "2026-10-21T12:06:25.387146+08:00",
+  "http": {
+    "version": "client1.2",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": 126,
+    "networkRetries": [],
+    "featuredResources": 8,
+    "downloadOriginalVerified": true,
+    "anonymousDenied": true,
+    "logoutVerified": true
+  },
+  "liveBrowser": {
+    "version": "client1.2",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "scope": "real HTTPS Chrome browser with existing client login; no API mocks",
+    "checks": [
+      {
+        "name": "existing client login reaches live client1.2 via strict HTTPS",
+        "ok": true
+      },
+      {
+        "name": "1440px desktop homepage renders the pink floating-product design",
+        "ok": true,
+        "detail": {
+          "screenshot": "package-client1.2-live-desktop.png"
+        }
+      },
+      {
+        "name": "all eight live featured products load and switch with matching titles",
+        "ok": true
+      },
+      {
+        "name": "full collection contains 38 posters; original HD viewer opens and closes",
+        "ok": true
+      },
+      {
+        "name": "English switching and production information work on the live site",
+        "ok": true
+      },
+      {
+        "name": "390px mobile layout fits and can open and close a poster",
+        "ok": true,
+        "detail": {
+          "screenshot": "package-client1.2-live-mobile.png"
+        }
+      },
+      {
+        "name": "mobile logout returns to login and invalidates the existing browser session",
+        "ok": true
+      },
+      {
+        "name": "no JS errors or unexpected HTTP/network failures",
+        "ok": true,
+        "detail": {
+          "navigationAborts": 0
+        }
+      }
+    ],
+    "jsErrors": [],
+    "networkErrors": [],
+    "httpErrors": [],
+    "passed": true,
+    "checkedAt": "2026-10-21T04:04:04.160Z"
+  },
+  "productionFrontendIntegration": {
+    "version": "client1.2",
+    "mode": "showroom",
+    "scope": "local frontend integration with mocked session API",
+    "checks": [
+      {
+        "name": "production entrypoints and all eight cutouts match the reviewed manifest",
+        "ok": true
+      },
+      {
+        "name": "showroom-mode homepage verifies session and exposes enabled logout",
+        "ok": true
+      },
+      {
+        "name": "all eight products render from protected assets/featured production paths",
+        "ok": true
+      },
+      {
+        "name": "Chinese and English production information omit local-preview status",
+        "ok": true
+      },
+      {
+        "name": "HD image and download use the original protected poster and preserve its bytes",
+        "ok": true
+      },
+      {
+        "name": "full library retains 38 posters and production logout",
+        "ok": true
+      },
+      {
+        "name": "session failure appears on homepage and library; reload recovers enabled controls",
+        "ok": true
+      },
+      {
+        "name": "unsupported session role is rejected and focus recheck accepts the administrator",
+        "ok": true
+      },
+      {
+        "name": "failed logout remains retryable; success posts the session CSRF token and returns to login",
+        "ok": true
+      },
+      {
+        "name": "expired session redirects to the existing login route",
+        "ok": true
+      },
+      {
+        "name": "390px production homepage fits the viewport and exposes working logout",
+        "ok": true
+      },
+      {
+        "name": "library logout also posts the protected session token and returns to login",
+        "ok": true
+      },
+      {
+        "name": "no runtime errors, external requests or unsupported resource paths",
+        "ok": true
+      }
+    ],
+    "runtimeErrors": [],
+    "unexpectedRequests": [],
+    "passed": true
+  },
+  "repositoryVerification": {
+    "passed": true,
+    "rootTests": 160,
+    "existingSkipped": 3,
+    "backendTests": 249,
+    "deploymentTests": 32,
+    "legacyClientTests": 18,
+    "motionTests": 15,
+    "allExistingFrontendSuitesPassed": true,
+    "bundleMatchesReviewedSource": true,
+    "diffCheckPassed": true
+  },
+  "preserved": {
+    "originalPosters": 38,
+    "originalPosterAndLogoResources": 115,
+    "unmodifiedExistingManifestResources": 192
+  },
+  "retryNotes": [
+    "First HTTPS resource-check run stopped on a TLS EOF transport error. The complete rerun passed all 126 resources with certificate verification enabled and no additional retries.",
+    "Production-browser harness waits were corrected for pending transitions and intentional mocked 503 responses; no corresponding application defect was found."
+  ],
+  "limits": [
+    "Mobile checks use Chrome at 390px with simulated touch; physical iPhone Safari and a physical trackpad were not retested.",
+    "Generated transparent product images illustrate the approved posters; exact packaging details remain in the original HD posters."
+  ]
+}
