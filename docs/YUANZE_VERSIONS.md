@@ -24,7 +24,7 @@
 
 | client1.2（连续滑动修复） | 2026-10-21 14:01:11 | 连续横滑与反向接续、减少每帧重绘、固定精选图片节点 | 已上线；同版修复不另占版本号，无服务重启 | `438d8eb3`；`docs/client-motion-demo/smooth-release.json` |
 
-client1.2 当前最新修复清单为 `0229add3c52aa1efdf896e147a4427d5674cb8f8938304a2b8286a954abc9852`；静态更新时服务 PID 2564528 保持，登录 yuanze2.0.3 未改变。此前首发证据保留如下。
+client1.2 当前最新修复清单为 `c1d8e58f024d4221f17aead99c1e514e66499212709f1fdb9d94cd2b67faad53`；本次同时修复登录媒体加载，其清单为 `5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42`；静态更新时服务 PID 2564528 保持。此前首发证据保留如下。
 
 client1.2 首次发布使用现有 `20261013-client-hd-v1` release，在 `/client` 原子替换展厅静态目录；服务 PID 18809 未变、数据库写入为 0。manifest SHA-256 `7e35c629ca90e2ff8f062d78b92124b9f2fa66b8c7d2a15b1342ae0e8c04f993`，备份 `/opt/yuanze-reference/backups/client1.2-20261021-colour-showroom`。新增图通过 `/showroom/assets/featured/` 登录保护路径提供，未替换完整原海报。
 
@@ -32,4 +32,4 @@ client1.2 首次发布使用现有 `20261013-client-hd-v1` release，在 `/clien
 
 client1.2 手机适配修复（2026-10-21 17:24:47）：已上线并完成正式 HTTPS 与手机宽度浏览器验收。包含小屏导航/色点、触控区、搜索字号、横屏弹窗与背景滚动；同版修复不新增版本号。源码 `eea40c9b`，回执 `docs/client-motion-demo/mobile-release.json`。
 
-client1.2 / yuanze2.0.3 同版媒体加载修复：2026-10-21 验证中，尚未发布；首图优先、响应式 WebP、完整占位、单视频双层显示、去掉登录暂停按钮。
+client1.2 / yuanze2.0.3 同版媒体加载修复：2026-10-21 23:28:55 已上线；首图优先、响应式 WebP、完整占位、单视频双层显示、去掉登录暂停按钮。源码 `76e25ab6`；完整回执见 `docs/client-motion-demo/media-loading-release.json` 和 `docs/login-immersive-demo/media-loading-release.json`；同版问题修复不另占版本号。

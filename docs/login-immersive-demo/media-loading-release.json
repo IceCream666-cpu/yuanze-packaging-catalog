@@ -1,0 +1,383 @@
+{
+  "sourceCommit": "76e25ab6",
+  "published": {
+    "patch": "media-loading",
+    "publishedAt": "2026-10-21T23:28:55+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "backup": "/opt/yuanze-reference/backups/media-loading-20261021",
+    "targets": {
+      "public/showroom": {
+        "manifestSha256": "c1d8e58f024d4221f17aead99c1e514e66499212709f1fdb9d94cd2b67faad53",
+        "files": 219,
+        "changed": [
+          "assets/featured/poster-012-1024.webp",
+          "assets/featured/poster-012-640.webp",
+          "assets/featured/poster-013-1024.webp",
+          "assets/featured/poster-013-640.webp",
+          "assets/featured/poster-039-1024.webp",
+          "assets/featured/poster-039-640.webp",
+          "assets/featured/poster-042-1024.webp",
+          "assets/featured/poster-042-640.webp",
+          "assets/featured/poster-044-1024.webp",
+          "assets/featured/poster-044-640.webp",
+          "assets/featured/poster-047-1024.webp",
+          "assets/featured/poster-047-640.webp",
+          "assets/featured/poster-049-1024.webp",
+          "assets/featured/poster-049-640.webp",
+          "assets/featured/poster-051-1024.webp",
+          "assets/featured/poster-051-640.webp",
+          "index.html",
+          "preview.css",
+          "preview.js",
+          "bundle-manifest.json"
+        ],
+        "removed": []
+      },
+      "public/login-ui": {
+        "manifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+        "files": 5,
+        "changed": [
+          "assets/index-D0HF_jDm.css",
+          "assets/login-glow-1n6E-OzQ.mp4",
+          "assets/login-glow-poster-BTHCsfHo.jpg",
+          "index.html",
+          "login.js",
+          "bundle-manifest.json"
+        ],
+        "removed": [
+          "assets/index-BwvSbs1q.css",
+          "assets/login-glow-ShWKnVog.mp4",
+          "assets/login-glow-poster-DAtzagyn.jpg"
+        ]
+      }
+    },
+    "outsideUnchanged": 6814,
+    "service": "MainPID=2564528\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "gatewayUnchanged": true
+  },
+  "online": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "assets/featured/poster-012-1024.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-012.png",
+      "assets/featured/poster-013-1024.webp",
+      "assets/featured/poster-013-640.webp",
+      "assets/featured/poster-013.png",
+      "assets/featured/poster-039-1024.webp",
+      "assets/featured/poster-039-640.webp",
+      "assets/featured/poster-039.png",
+      "assets/featured/poster-042-1024.webp",
+      "assets/featured/poster-042-640.webp",
+      "assets/featured/poster-042.png",
+      "assets/featured/poster-044-1024.webp",
+      "assets/featured/poster-044-640.webp",
+      "assets/featured/poster-044.png",
+      "assets/featured/poster-047-1024.webp",
+      "assets/featured/poster-047-640.webp",
+      "assets/featured/poster-047.png",
+      "assets/featured/poster-049-1024.webp",
+      "assets/featured/poster-049-640.webp",
+      "assets/featured/poster-049.png",
+      "assets/featured/poster-051-1024.webp",
+      "assets/featured/poster-051-640.webp",
+      "assets/featured/poster-051.png"
+    ],
+    "originalDownload": true,
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-21T23:32:46+08:00",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginUpdated": true
+  },
+  "tests": {
+    "fullVerification": "passed",
+    "root": 169,
+    "backend": 251,
+    "deployment": 32,
+    "motionClient": 26,
+    "login": 12,
+    "existingFrontendSuites": "passed"
+  },
+  "browser": {
+    "testType": "Chromium emulated 393x852, cold-cache, 1.6 Mbps download and 150 ms latency; one before/after sample, not physical iPhone timing",
+    "beforeClient": {
+      "images": [
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-012.png",
+          "complete": true,
+          "width": 1254
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-013.png",
+          "complete": true,
+          "width": 1254
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-039.png",
+          "complete": true,
+          "width": 1373
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-049.png",
+          "complete": true,
+          "width": 1024
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-042.png",
+          "complete": true,
+          "width": 1024
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-051.png",
+          "complete": true,
+          "width": 1240
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-044.png",
+          "complete": true,
+          "width": 1024
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-047.png",
+          "complete": true,
+          "width": 1145
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-042.png",
+          "start": 2201.4000000059605,
+          "end": 60493.40000000596,
+          "duration": 58292,
+          "bytes": 1571564
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-039.png",
+          "start": 2201.4000000059605,
+          "end": 60627.5,
+          "duration": 58426.09999999404,
+          "bytes": 1570542
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-012.png",
+          "start": 2201.4000000059605,
+          "end": 61708.29999999702,
+          "duration": 59506.89999999106,
+          "bytes": 1622637
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-049.png",
+          "start": 2201.4000000059605,
+          "end": 62848.20000000298,
+          "duration": 60646.79999999702,
+          "bytes": 1798168
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-013.png",
+          "start": 2201.4000000059605,
+          "end": 63754.90000000596,
+          "duration": 61553.5,
+          "bytes": 1936398
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-051.png",
+          "start": 2201.5,
+          "end": 39635.5,
+          "duration": 37434,
+          "bytes": 890571
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-044.png",
+          "start": 2201.5,
+          "end": 51455.29999999702,
+          "duration": 49253.79999999702,
+          "bytes": 1227552
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-047.png",
+          "start": 2201.5,
+          "end": 55182.90000000596,
+          "duration": 52981.40000000596,
+          "bytes": 1351449
+        }
+      ]
+    },
+    "afterClient": {
+      "width": 393,
+      "overflow": false,
+      "ready": [
+        "true",
+        "true",
+        "true",
+        "true",
+        "true",
+        "true",
+        "true",
+        "true"
+      ],
+      "resources": [
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-012-640.webp",
+          "start": 169.5,
+          "end": 1137.7000000029802,
+          "duration": 968.2000000029802,
+          "bytes": 75962
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-013-640.webp",
+          "start": 1399.8999999910593,
+          "end": 3103.3999999910593,
+          "duration": 1703.5,
+          "bytes": 101676
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-051-640.webp",
+          "start": 1399.8999999910593,
+          "end": 3163.0999999940395,
+          "duration": 1763.2000000029802,
+          "bytes": 38752
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-049-640.webp",
+          "start": 1399.8999999910593,
+          "end": 3170.2999999970198,
+          "duration": 1770.4000000059605,
+          "bytes": 37674
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-042-640.webp",
+          "start": 1399.8999999910593,
+          "end": 3222.7999999970198,
+          "duration": 1822.9000000059605,
+          "bytes": 40522
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-039-640.webp",
+          "start": 1399.8999999910593,
+          "end": 3621.0999999940395,
+          "duration": 2221.2000000029802,
+          "bytes": 71380
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-044-640.webp",
+          "start": 1399.8999999910593,
+          "end": 3696,
+          "duration": 2296.1000000089407,
+          "bytes": 19650
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-047-640.webp",
+          "start": 1399.8999999910593,
+          "end": 4056.5,
+          "duration": 2656.6000000089407,
+          "bytes": 55116
+        }
+      ]
+    },
+    "beforeLogin": {
+      "videos": [
+        {
+          "src": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-ShWKnVog.mp4",
+          "readyState": 4,
+          "time": 2.894652,
+          "paused": false
+        },
+        {
+          "src": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-ShWKnVog.mp4",
+          "readyState": 4,
+          "time": 2.945935,
+          "paused": false
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://bmt.yuanzebeauty.com/_login/login.js",
+          "start": 169.30000001192093,
+          "end": 812.3000000119209,
+          "duration": 643,
+          "bytes": 77920
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-poster-DAtzagyn.jpg",
+          "start": 841.6000000089407,
+          "end": 1442.800000011921,
+          "duration": 601.2000000029802,
+          "bytes": 31478
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-ShWKnVog.mp4",
+          "start": 856.5,
+          "end": 5508.100000008941,
+          "duration": 4651.600000008941,
+          "bytes": 292146
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-ShWKnVog.mp4",
+          "start": 857.1000000089407,
+          "end": 5469.4000000059605,
+          "duration": 4612.29999999702,
+          "bytes": 292146
+        }
+      ]
+    },
+    "afterLogin": {
+      "width": 393,
+      "overflow": false,
+      "videos": [
+        {
+          "ready": 4,
+          "time": 6.833598,
+          "paused": false,
+          "src": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-1n6E-OzQ.mp4"
+        }
+      ],
+      "canvas": "1",
+      "toggle": false,
+      "resources": [
+        {
+          "name": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-poster-BTHCsfHo.jpg",
+          "start": 1483.2999999970198,
+          "end": 1859,
+          "bytes": 7466
+        },
+        {
+          "name": "https://bmt.yuanzebeauty.com/_login/assets/login-glow-1n6E-OzQ.mp4",
+          "start": 2190.0999999940395,
+          "end": 3532.0999999940395,
+          "bytes": 95073
+        }
+      ]
+    },
+    "realClientLogin": true,
+    "hdOriginalLoaded": [
+      1254,
+      1254
+    ],
+    "noHorizontalOverflow": true,
+    "continuousNextButtons": true,
+    "desktopLoginCardWidth": 1040
+  },
+  "media": {
+    "originalFeaturedBytes": 11966481,
+    "mobileFeaturedBytes": 438332,
+    "desktopFeaturedBytes": 909074,
+    "firstMobileBytes": 75662,
+    "loginVideoBeforeBytes": 291846,
+    "loginVideoAfterBytes": 94773,
+    "loginPosterBeforeBytes": 31178,
+    "loginPosterAfterBytes": 7166,
+    "originalPostersUnchanged": 38
+  }
+}
