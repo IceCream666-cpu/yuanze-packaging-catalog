@@ -61,6 +61,20 @@ def showroom_asset(relative):
     target=(directory/relative).resolve()
     return target if target.is_relative_to(directory.resolve()) and target.is_file() else None
 
+def login_asset(relative):
+    """Public login UI only; no preview proxy, source files or private assets."""
+    if relative not in {'index.html', 'login.js'} and not re.fullmatch(r'assets/[A-Za-z0-9_-]+\.(?:css|jpg|mp4)', relative):
+        return None
+    directory = PUBLIC / 'login-ui'
+    try:
+        manifest = json.loads((directory / 'bundle-manifest.json').read_text())
+        if manifest.get('schema') != 1 or relative not in manifest.get('files', {}):
+            return None
+    except (OSError, ValueError, TypeError, AttributeError):
+        return None
+    target = (directory / relative).resolve()
+    return target if target.is_relative_to(directory.resolve()) and target.is_file() else None
+
 class AuthStorageUnavailable(Exception):
     pass
 
@@ -329,8 +343,12 @@ class Handler(BaseHTTPRequestHandler):
                 destination='/client' if s['role']=='client' else '/?code='+quote(code) if re.fullmatch(r'YZ-BC-[0-9]{6,}',code) else ('/admin' if s['role']=='admin' else '/')
                 return self.respond(303,b'','text/plain',{'Location':destination})
             settings=STORE.read_admin('settings')
-            page=(PUBLIC/'login.html').read_text().replace('登录 · 源泽包材库',html.escape('登录 · '+settings['siteTitle'])).replace('YUANZE · 源泽',html.escape(settings['englishName']+' · '+settings['brandName'])).replace('包材选型工作空间',html.escape(settings['catalogTitle']))
+            page=(login_asset('index.html') or PUBLIC/'login.html').read_text().replace('登录 · 源泽包材库',html.escape('登录 · '+settings['siteTitle'])).replace('YUANZE · 源泽',html.escape(settings['englishName']+' · '+settings['brandName'])).replace('包材选型工作空间',html.escape(settings['catalogTitle']))
             return self.respond(200,page.encode(),'text/html; charset=utf-8')
+        if path.startswith('/_login/'):
+            asset=login_asset(path[len('/_login/'):])
+            if asset is None or asset.name=='index.html':return self.respond(404,{'error':'页面或文件不存在'})
+            return self.file(asset,PUBLIC/'login-ui')
         if path in ['/login.js','/api-client.js','/image-query.js','/style.css','/i18n.js','/i18n.css','/product-detail-facts.js','/product-detail.css']:
             return self.file(PUBLIC/('login.html' if path in ['/login','/login.html'] else path[1:]), PUBLIC)
         if path in ['/brand/yuanze-brand-guide.png', '/brand/yuanze-mark.svg']:
@@ -572,7 +590,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(asset,THUMBNAILS.root,extra,thumbnail=False)
         # Authentication, role selection and customer approval have already run.
         # Revalidate on every reuse: revoked media must never get a cached 304.
-        cacheable=ctype.startswith('image/') or path.suffix.lower() in {'.css','.js','.mjs','.pdf','.woff','.woff2'}
+        cacheable=ctype.startswith('image/') or path.suffix.lower() in {'.css','.js','.mjs','.pdf','.woff','.woff2','.mp4'}
         with path.open('rb') as source:
             stat=os.fstat(source.fileno())
             headers={**(extra or {}),**self.image_download_headers(ctype)}
@@ -586,7 +604,7 @@ class Handler(BaseHTTPRequestHandler):
             # Single byte ranges let browsers resume interrupted media without
             # fetching the full file again. All authorization and current
             # customer approval checks above run before any range or cache hit.
-            if ctype.startswith('image/') or ctype=='application/pdf':
+            if ctype.startswith('image/') or ctype in {'application/pdf','video/mp4'}:
                 headers['Accept-Ranges']='bytes'
                 request_range=self.headers.get('Range','')
                 if_range=self.headers.get('If-Range')

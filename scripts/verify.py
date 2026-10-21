@@ -26,6 +26,10 @@ def main():
     run([node, '--test', *map(str, sorted((ROOT / 'docs/client-apple-demo/tests').glob('*.test.mjs')))])
     run([node, '--test', *map(str, sorted((ROOT / 'docs/client-motion-demo/tests').glob('*.test.mjs')))])
     run([sys.executable, 'scripts/build_customer_showroom.py', '--check'])
+    run([sys.executable, 'scripts/build_login.py', '--check'])
+    login = ROOT / 'docs/login-immersive-demo'
+    run([node, 'node_modules/vite/bin/vite.js', 'build'], login)
+    run([node, 'node_modules/tsx/dist/cli.mjs', '--test', *map(str, sorted((login / 'tests').glob('*.test.*')))], login)
     run(['git', 'diff', '--check'])
     run(['git', 'diff', '--cached', '--check'])
     print('All verification suites passed.', flush=True)

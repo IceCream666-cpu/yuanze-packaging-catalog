@@ -106,7 +106,7 @@ export default function App({ transport = requestJSON, navigate = path => window
           <button type="button" className="language-button absolute right-5 top-4 z-10 inline-flex min-h-10 items-center gap-1.5 rounded-full px-2 text-xs text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 md:right-7 md:top-5" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')} aria-label={language === 'zh' ? 'Switch to English' : '切换到中文'}><Globe2 size={14} />{language === 'zh' ? 'English' : '中文'}</button>
           <div className="relative z-10 mx-auto w-full max-w-[386px]">
             <div className="mb-8 flex items-center justify-center">
-              <svg className="h-11 w-[94px]" viewBox="1198 262 367 174" role="img" aria-label="YUANZE 源泽"><image href={`${(import.meta.env?.BASE_URL || '/_login/')}yuanze-brand-guide.png`} width="1800" height="1520" /></svg>
+              <svg className="h-11 w-[94px]" viewBox="1198 262 367 174" role="img" aria-label="YUANZE 源泽"><image href="/brand/yuanze-brand-guide.png" width="1800" height="1520" /></svg>
             </div>
 
             {result ? <div className="text-center">
@@ -117,7 +117,7 @@ export default function App({ transport = requestJSON, navigate = path => window
               <button type="button" onClick={() => navigate(result.destination)} className="w-full rounded-2xl bg-[#141417] px-4 py-4 text-sm font-medium text-white">{t.back}</button>
             </div> : <>
               <header className="text-center"><h1 id="loginTitle" className="text-[40px] font-semibold leading-[1.18] tracking-[-0.04em] text-[#151519]">Welcome back</h1><p className="mt-3 text-sm text-gray-500">{t.subtitle}</p></header>
-              <form className="mt-9" onSubmit={submit} aria-busy={busy} aria-describedby="loginHelp" autoComplete="on">
+              <form id="loginForm" className="mt-9" onSubmit={submit} aria-busy={busy} aria-describedby="loginHelp" autoComplete="on">
                 <div className="field-group rounded-[1.25rem] border border-gray-200 bg-gray-50 p-2 transition focus-within:border-gray-900 focus-within:bg-white">
                   <div className="px-3 py-1.5"><label htmlFor="username" className="block text-[11px] font-medium text-gray-500">{t.username}</label><input id="username" name="username" type="text" className="mt-1 block min-h-7 w-full bg-transparent text-[16px] text-gray-900 outline-none placeholder:text-gray-500" placeholder={t.userPlaceholder} autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} required value={username} onChange={event => { setUsername(event.target.value); setError(''); }} aria-describedby={warnings.length ? 'inputHint' : undefined} /></div>
                 </div>

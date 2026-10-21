@@ -43,7 +43,8 @@ class UnifiedLogin(unittest.TestCase):
                 self.assert_redirect(path, '/login')
         status, _, login = self.req('/login')
         self.assertEqual(status, 200)
-        self.assertIn(b'id="loginForm"', login)
+        self.assertIn(b'data-login-version="yuanze2.0.3"', login)
+        self.assertIn(b'/_login/login.js', login)
         self.assertEqual(self.req('/login.html')[2], login)
         for path in ('/api/catalog', '/api/admin/records', '/api/admin/users'):
             self.assertEqual(self.req(path)[0], 401, path)
