@@ -488,6 +488,186 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-055-thumb.webp",
       "width": 1448,
       "height": 1086
+    },
+    {
+      "id": "poster-056",
+      "category": "face",
+      "title": {
+        "zh": "liaose 金色面部护理油",
+        "en": "liaose Golden Face Oil"
+      },
+      "src": "assets/posters/poster-056.webp",
+      "thumbnail": "assets/posters/poster-056-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-057",
+      "category": "face",
+      "title": {
+        "zh": "liaose B5 精华液",
+        "en": "liaose B5 Serum"
+      },
+      "src": "assets/posters/poster-057.webp",
+      "thumbnail": "assets/posters/poster-057-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-058",
+      "category": "face",
+      "title": {
+        "zh": "liaose 柔光面部护理油",
+        "en": "liaose Luminous Face Oil"
+      },
+      "src": "assets/posters/poster-058.webp",
+      "thumbnail": "assets/posters/poster-058-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-059",
+      "category": "face",
+      "title": {
+        "zh": "liaose 精华油双瓶组合",
+        "en": "liaose Essence Oil Duo"
+      },
+      "src": "assets/posters/poster-059.webp",
+      "thumbnail": "assets/posters/poster-059-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-060",
+      "category": "body",
+      "title": {
+        "zh": "liaose AHA 身体喷雾",
+        "en": "liaose AHA Body Mist"
+      },
+      "src": "assets/posters/poster-060.webp",
+      "thumbnail": "assets/posters/poster-060-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-061",
+      "category": "body",
+      "title": {
+        "zh": "liaose 精油身体霜",
+        "en": "liaose Oil-Infused Body Cream"
+      },
+      "src": "assets/posters/poster-061.webp",
+      "thumbnail": "assets/posters/poster-061-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-062",
+      "category": "face",
+      "title": {
+        "zh": "liaose 微珠保湿面霜",
+        "en": "liaose Micro Cream"
+      },
+      "src": "assets/posters/poster-062.webp",
+      "thumbnail": "assets/posters/poster-062-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-063",
+      "category": "face",
+      "title": {
+        "zh": "liaose 滋润面霜",
+        "en": "liaose Moisture Cream"
+      },
+      "src": "assets/posters/poster-063.webp",
+      "thumbnail": "assets/posters/poster-063-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-064",
+      "category": "body",
+      "title": {
+        "zh": "liaose 芳香身体乳",
+        "en": "liaose Aromatic Body Lotion"
+      },
+      "src": "assets/posters/poster-064.webp",
+      "thumbnail": "assets/posters/poster-064-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-065",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 茶树洗发水与补充装",
+        "en": "liaose Tea Tree Shampoo"
+      },
+      "src": "assets/posters/poster-065.webp",
+      "thumbnail": "assets/posters/poster-065-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-066",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 玫瑰护发油",
+        "en": "liaose Rose Hair Oil"
+      },
+      "src": "assets/posters/poster-066.webp",
+      "thumbnail": "assets/posters/poster-066-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-067",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 琥珀生姜洗发水",
+        "en": "liaose Amber Ginger Shampoo"
+      },
+      "src": "assets/posters/poster-067.webp",
+      "thumbnail": "assets/posters/poster-067-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-068",
+      "category": "face",
+      "title": {
+        "zh": "liaose 精华水",
+        "en": "liaose Essence Water"
+      },
+      "src": "assets/posters/poster-068.webp",
+      "thumbnail": "assets/posters/poster-068-thumb.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "poster-069",
+      "category": "fragrance",
+      "title": {
+        "zh": "liaose STILL 精油",
+        "en": "liaose Still Essential Oil"
+      },
+      "src": "assets/posters/poster-069.webp",
+      "thumbnail": "assets/posters/poster-069-thumb.webp",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "id": "poster-070",
+      "category": "fragrance",
+      "title": {
+        "zh": "liaose DAYLIGHT 精油",
+        "en": "liaose Daylight Essential Oil"
+      },
+      "src": "assets/posters/poster-070.webp",
+      "thumbnail": "assets/posters/poster-070-thumb.webp",
+      "width": 1086,
+      "height": 1448
     }
   ]
 };

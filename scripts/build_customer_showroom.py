@@ -20,8 +20,9 @@ ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
 MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
-CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3'}
-MOTION_EDITIONS = frozenset(('client12', 'client13'))
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4'}
+MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14'))
+REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53)}
 
 
 def client_directory(edition):
@@ -55,16 +56,22 @@ def stamp_client_release(edition='client1'):
     }, indent=2) + '\n')
 
 
-def featured_files(files, client):
-    """Add exactly the eight approved derivatives without replacing source posters."""
+def featured_files(files, client, edition='client14'):
+    """Add the edition's complete approved set without replacing source posters."""
     manifest = json.loads(source_file(client, 'featured-manifest.json').read_text())
-    if manifest.get('scope') != 'approved-client1.2-display-derivatives':
-        raise ValueError('Featured media has not been approved for client1.2')
+    approval_version = 'client1.4' if edition == 'client14' else 'client1.2'
+    if manifest.get('scope') != f'approved-{approval_version}-display-derivatives':
+        raise ValueError(f'Featured media has not been approved for {approval_version}')
     featured = json.loads(source_file(client, 'src/featured.json').read_text())
     ids = [item['id'] for item in featured]
     entries = manifest['files']
-    if len(ids) != 8 or len(set(ids)) != 8 or sorted(item['posterId'] for item in entries) != sorted(ids):
-        raise ValueError('Featured media must exactly match the eight reviewed products')
+    expected_count = REVIEWED_COUNTS[edition][0]
+    if (len(ids) != expected_count or len(set(ids)) != expected_count
+            or sorted(item['posterId'] for item in entries) != sorted(ids)):
+        raise ValueError(f'Featured media must exactly match the {expected_count} reviewed products')
+    displays = json.loads(source_file(client, 'src/featured-media.json').read_text())
+    if set(displays) != set(ids):
+        raise ValueError('Display derivatives must exactly match the approved featured products')
     for item in entries:
         poster_id = item['posterId']
         if not re.fullmatch(r'poster-\d{3}', poster_id):
@@ -83,7 +90,7 @@ def featured_files(files, client):
         if target in files:
             raise ValueError(f'Featured media cannot replace an existing file: {target}')
         files[target] = data
-        display = json.loads(source_file(client, 'src/featured-media.json').read_text())[poster_id]
+        display = displays[poster_id]
         if display['sourceSha256'] != item['sha256']:
             raise ValueError('Display derivatives no longer match approved cutout')
         if set(display['files']) != {'640', '1024'}:
@@ -98,7 +105,7 @@ def featured_files(files, client):
             files[f'assets/featured/{name}'] = data
 
 
-def optimized_display_files(files, client):
+def optimized_display_files(files, client, edition='client14'):
     """Validate every display derivative against an existing approved original."""
     manifest = json.loads(source_file(client, 'display-derivatives.json').read_text())
     if manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client-display-optimization':
@@ -106,8 +113,10 @@ def optimized_display_files(files, client):
     posters = files['product-posters.js'].decode()
     catalogue = json.loads(posters[posters.index('{'):].strip().rstrip(';'))
     ids = [item['id'] for item in catalogue['items']]
-    if len(ids) != 38 or len(set(ids)) != 38 or any(not re.fullmatch(r'poster-\d{3}', value) for value in ids):
-        raise ValueError('Display derivatives require the current 38 approved posters')
+    expected_count = REVIEWED_COUNTS[edition][1]
+    if (len(ids) != expected_count or len(set(ids)) != expected_count
+            or any(not re.fullmatch(r'poster-\d{3}', value) for value in ids)):
+        raise ValueError(f'Display derivatives require the {expected_count} approved posters for {CLIENT_EDITIONS[edition]}')
     expected = {f'{poster_id}-strip.webp': ('filmstrip', f'assets/posters/{poster_id}.webp', poster_id)
                 for poster_id in ids}
     expected['yuanze-mark-compact.webp'] = ('visible-logo', 'assets/yuanze-mark.svg', None)
@@ -156,7 +165,7 @@ def client_files(files, edition='client1'):
     paths = json.loads((client / 'src/asset-paths.json').read_text())
     approved = json.loads((client / 'assets-manifest.json').read_text())
     if edition in MOTION_EDITIONS:
-        optimized_display_files(files, client)
+        optimized_display_files(files, client, edition)
     for item in approved['files']:
         route = paths['/' + item['target']]
         if not route.startswith('/showroom/assets/') or '..' in route.split('/'):
@@ -165,7 +174,7 @@ def client_files(files, edition='client1'):
         if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
             raise ValueError('Client media differs from reviewed showroom media')
     if edition in MOTION_EDITIONS:
-        featured_files(files, client)
+        featured_files(files, client, edition)
     files.pop('bundle-manifest.json')
     bundle = {'schema': 1, 'source': client.relative_to(ROOT).as_posix(), 'version': version,
               'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
@@ -275,8 +284,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client13', 'client12', 'client1', 'legacy'), default='client13',
-                        help='client13 is current; older editions require their matching source and release stamp')
+    parser.add_argument('--edition', choices=('client14', 'client13', 'client12', 'client1', 'legacy'), default='client14',
+                        help='client14 is current; older editions require their matching source and release stamp')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()

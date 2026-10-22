@@ -1,7 +1,7 @@
 {
-  "version": "client1.2",
-  "scope": "approved-client1.2-display-derivatives",
-  "notes": "Generated cutouts are display derivatives; original 38 posters and their 115 approved resources are preserved without alteration.",
+  "version": "client1.4",
+  "scope": "approved-client1.4-display-derivatives",
+  "notes": "Original 38 active posters and 8 featured derivatives are preserved. Fifteen user-supplied posters and matching existing transparent display derivatives are appended in attachment order; original posters remain authoritative.",
   "files": [
     {
       "posterId": "poster-012",
@@ -115,10 +115,340 @@
       "method": "transparent extraction from current approved poster",
       "selectedObject": "Right-hand clear glass cork-capped Coastal bottle only.",
       "productionTarget": "assets/featured/poster-047.png"
+    },
+    {
+      "posterId": "poster-056",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-056.webp",
+      "approvedPosterSha256": "0cbe558deb7061da6163b7d96bbf55e81ca1d4bf15e3c05ac455108986d6a448",
+      "file": "featured-assets/poster-056.png",
+      "target": "featured/poster-056.png",
+      "sha256": "b9ba4661e6e439b3ce06402bc2403c62386927294afd94fbf7258bb07873563d",
+      "bytes": 784142,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One golden square face-oil bottle with its dark olive translucent cap.",
+      "productionTarget": "assets/featured/poster-056.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/golden-face-oil.png",
+      "sourceSha256": "b9ba4661e6e439b3ce06402bc2403c62386927294afd94fbf7258bb07873563d",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-057",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-057.webp",
+      "approvedPosterSha256": "90ea93fdc4cffd57257673d8c6811f9de37841341ce58445da855b99aa7b4913",
+      "file": "featured-assets/poster-057.png",
+      "target": "featured/poster-057.png",
+      "sha256": "00901f9a68b5c521d2320113e28ad444fe2a1b4fccd82bac969c93eb588cd521",
+      "bytes": 1437952,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One pink square B5 serum dropper bottle, including its white base.",
+      "productionTarget": "assets/featured/poster-057.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/b5-serum.png",
+      "sourceSha256": "00901f9a68b5c521d2320113e28ad444fe2a1b4fccd82bac969c93eb588cd521",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/asset-manifest.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-058",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-058.webp",
+      "approvedPosterSha256": "9a2940f544e1f238a3a2955a519859810416653c247b7ec4579d111a02926f72",
+      "file": "featured-assets/poster-058.png",
+      "target": "featured/poster-058.png",
+      "sha256": "4b95bdbb5977bf777177e62b4a5ce5bb2bed1ef775ba0b64447cc64832f52ecc",
+      "bytes": 1196381,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One tall rectangular pink face-oil dropper bottle with silver collar.",
+      "productionTarget": "assets/featured/poster-058.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/luminous-face-oil.png",
+      "sourceSha256": "4b95bdbb5977bf777177e62b4a5ce5bb2bed1ef775ba0b64447cc64832f52ecc",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-059",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-059.webp",
+      "approvedPosterSha256": "9a2e6aff984e9f2253fb50ad3bcf4d7d5946f471e70444d64d17f49c66815d2c",
+      "file": "featured-assets/poster-059.png",
+      "target": "featured/poster-059.png",
+      "sha256": "7fe2640b19741423aa92d00a8ea4bdc4bac7fadd6035ae55c6228498c3dbd8ca",
+      "bytes": 1239727,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "Both golden dropper bottles, including the biphase oil bottle; no wooden tray.",
+      "productionTarget": "assets/featured/poster-059.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/essence-oil-duo.png",
+      "sourceSha256": "7fe2640b19741423aa92d00a8ea4bdc4bac7fadd6035ae55c6228498c3dbd8ca",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-060",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-060.webp",
+      "approvedPosterSha256": "4fef451dcefe43bf5264b19d1e44b4c34c82dc0bfbb5c90f3ebfbfb5d4f83b96",
+      "file": "featured-assets/poster-060.png",
+      "target": "featured/poster-060.png",
+      "sha256": "dd070dd32426e33d4835b372796b1838bc9fcd8d530902069e3236ce9130e334",
+      "bytes": 1288795,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One cylindrical AHA Body Mist bottle with black sprayer and silver label.",
+      "productionTarget": "assets/featured/poster-060.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/aha-body-mist.png",
+      "sourceSha256": "dd070dd32426e33d4835b372796b1838bc9fcd8d530902069e3236ce9130e334",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-061",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-061.webp",
+      "approvedPosterSha256": "61669fe7773532d7831f650c320cf4c5d401d0c008f864487338cf74f111b5ca",
+      "file": "featured-assets/poster-061.png",
+      "target": "featured/poster-061.png",
+      "sha256": "6d7f4f9a7d2ff05e1d7dd140820be23a750ebcf8fec7c80dc709fb200b951ddb",
+      "bytes": 1565851,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "Both ivory pump bottles and both corresponding cartons; no basket or stones.",
+      "productionTarget": "assets/featured/poster-061.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/oil-infused-body-cream.png",
+      "sourceSha256": "6d7f4f9a7d2ff05e1d7dd140820be23a750ebcf8fec7c80dc709fb200b951ddb",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-062",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-062.webp",
+      "approvedPosterSha256": "4c0897800267078ebf6014937d85b4d076a7041ebae4e39ed5f5b8e28a3d9f97",
+      "file": "featured-assets/poster-062.png",
+      "target": "featured/poster-062.png",
+      "sha256": "8c90acc71518087154af7f050598c14ff4da1916c728f219a3c3887b2a230389",
+      "bytes": 1400977,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "Only the complete foreground square cream jar; the cropped rear bottle is excluded.",
+      "productionTarget": "assets/featured/poster-062.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/micro-cream.png",
+      "sourceSha256": "8c90acc71518087154af7f050598c14ff4da1916c728f219a3c3887b2a230389",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-063",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-063.webp",
+      "approvedPosterSha256": "065639ca28e814076bc8f76a8ce501fcd12584244c270c3e0fb80fc0b801280b",
+      "file": "featured-assets/poster-063.png",
+      "target": "featured/poster-063.png",
+      "sha256": "180479979e9bc9850d3720b54356fb87a65b941be7ceb6b79c02e926928d2135",
+      "bytes": 1215486,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "Open frosted jar, contained cream swirl and its detached champagne lid.",
+      "productionTarget": "assets/featured/poster-063.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/moisture-cream.png",
+      "sourceSha256": "180479979e9bc9850d3720b54356fb87a65b941be7ceb6b79c02e926928d2135",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-064",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-064.webp",
+      "approvedPosterSha256": "72a1269f427a3c29163201cce475fa54e0b6e6d22aed6edeb9d06169a47e549d",
+      "file": "featured-assets/poster-064.png",
+      "target": "featured/poster-064.png",
+      "sha256": "ad47bd78fd4b284945b176929790f4847086cb04748fcdd6694288709c5dab33",
+      "bytes": 1419012,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One yellow pump bottle with attached braided rope; no berries or platform.",
+      "productionTarget": "assets/featured/poster-064.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/aromatic-body-lotion.png",
+      "sourceSha256": "ad47bd78fd4b284945b176929790f4847086cb04748fcdd6694288709c5dab33",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-065",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-065.webp",
+      "approvedPosterSha256": "c10335129314ce657e31eb04884b5427473559dfa8c129119ece43c227c1b805",
+      "file": "featured-assets/poster-065.png",
+      "target": "featured/poster-065.png",
+      "sha256": "f73516367305afbb8bf4301bfa751af96f2a7ac6e849681421b89e065296df85",
+      "bytes": 1252152,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "Complete blue-pump bottle and its refill pouch; no tea-tree sprig.",
+      "productionTarget": "assets/featured/poster-065.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/tea-tree-shampoo.png",
+      "sourceSha256": "f73516367305afbb8bf4301bfa751af96f2a7ac6e849681421b89e065296df85",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-066",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-066.webp",
+      "approvedPosterSha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+      "file": "featured-assets/poster-066.png",
+      "target": "featured/poster-066.png",
+      "sha256": "bc424d94e10e0fb5ce4b844c3494a1d292d50ecbd68faa960b499a313be28f35",
+      "bytes": 1115816,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One floral-label square hair-oil bottle with gold pump and clear cap.",
+      "productionTarget": "assets/featured/poster-066.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/rose-hair-oil.png",
+      "sourceSha256": "bc424d94e10e0fb5ce4b844c3494a1d292d50ecbd68faa960b499a313be28f35",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-existing-extra.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-067",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-067.webp",
+      "approvedPosterSha256": "6640c4ace680b7f0189b486ce4a6383cc759e63135c2f2113f1edcb366fbcff1",
+      "file": "featured-assets/poster-067.png",
+      "target": "featured/poster-067.png",
+      "sha256": "13146a4ef2174e346b942aec7e350806d765fcd2d50d6b7a63ed5d67d07166c4",
+      "bytes": 708468,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One amber pouch-shaped bottle, black pump and attached brown neck cord; distinct from pearl bottle poster-054.",
+      "productionTarget": "assets/featured/poster-067.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/ginger-shampoo-amber.png",
+      "sourceSha256": "13146a4ef2174e346b942aec7e350806d765fcd2d50d6b7a63ed5d67d07166c4",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-c.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-068",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-068.webp",
+      "approvedPosterSha256": "50cc44a74ae1c7b311c9c195a8aee82fa13d36e2bc9a760802f9893d3b303db0",
+      "file": "featured-assets/poster-068.png",
+      "target": "featured/poster-068.png",
+      "sha256": "41ce1e7efbef60e3517a569de93051901c9e37cdb48d136be3a8184e4386648d",
+      "bytes": 1751929,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One pale lavender rectangular bottle and its matching tall lavender carton.",
+      "productionTarget": "assets/featured/poster-068.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/essence-water.png",
+      "sourceSha256": "41ce1e7efbef60e3517a569de93051901c9e37cdb48d136be3a8184e4386648d",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-c.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-069",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-069.webp",
+      "approvedPosterSha256": "ba56936ec3df65208917b77cc5b748c25b30c7677e0ab00df52c3ce7024fa4fc",
+      "file": "featured-assets/poster-069.png",
+      "target": "featured/poster-069.png",
+      "sha256": "fb8b3a4f565f2221255ae1ee359cd9aa8cb67df44809971adbb3b4a66c92431c",
+      "bytes": 1406561,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One slender glass essential-oil bottle with cork cap and tag, plus its matching carton.",
+      "productionTarget": "assets/featured/poster-069.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/still-essential-oil.png",
+      "sourceSha256": "fb8b3a4f565f2221255ae1ee359cd9aa8cb67df44809971adbb3b4a66c92431c",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-c.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
+    },
+    {
+      "posterId": "poster-070",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-070.webp",
+      "approvedPosterSha256": "eb2fe535a55164a76dc2496026bc3e62b57dd0e37c2d244bc0a075ecc29ab2c0",
+      "file": "featured-assets/poster-070.png",
+      "target": "featured/poster-070.png",
+      "sha256": "028abeb9a7781c70f9e7da35d5fbe7fa11b1df41aa3c6d29142ec9d4a4c708ea",
+      "bytes": 1570058,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.4 display derivative; original poster remains authoritative",
+      "method": "reused existing independent-site transparent display derivative, matched to this user-supplied poster",
+      "selectedObject": "One tapered frosted glass essential-oil bottle with wide textured cap.",
+      "productionTarget": "assets/featured/poster-070.png",
+      "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/daylight-essential-oil.png",
+      "sourceSha256": "028abeb9a7781c70f9e7da35d5fbe7fa11b1df41aa3c6d29142ec9d4a4c708ea",
+      "sourceManifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+      "sourceMatch": "Visual identity verified against this attachment; previous poster differs only by WebP compression (same dimensions and composition).",
+      "approval": {
+        "date": "2026-10-22",
+        "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
+      }
     }
   ],
   "approval": {
-    "date": "2026-10-21",
-    "basis": "User explicitly requested publishing the reviewed client1.2 version."
+    "date": "2026-10-22",
+    "basis": "User requested auditing these 15 products, skipping existing products, adding missing products to the sliding view and updating their posters. Existing 8 derivative approval records are retained."
   }
 }

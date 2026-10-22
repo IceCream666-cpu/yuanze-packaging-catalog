@@ -65,7 +65,7 @@ class ShowroomBuild(unittest.TestCase):
         for name in ['catalog.json', 'auth.json', 'preview_customer_showroom.py', 'assets/manifest.json']:
             self.assertNotIn(name, files)
         self.assertEqual(len([name for name in files if name.endswith('.pdf')]), 4)
-        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 76)
+        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 106)
         self.assertEqual({name for name in files if name.startswith('assets/poster-banners/')}, set(BANNER_PATHS))
         for path in BANNER_PATHS:
             self.assertIn('/showroom/' + path, files['company-content.js'].decode())
@@ -110,7 +110,7 @@ class ShowroomRoutes(unittest.TestCase):
             (public / name).write_text(text)
         builder.build(destination=public / 'showroom')
         self.poster_paths = [f'assets/posters/{poster}{suffix}.webp'
-                             for poster in ('poster-001', 'poster-032', 'poster-041')
+                             for poster in ('poster-001', 'poster-032', 'poster-041', 'poster-056', 'poster-070')
                              for suffix in ('', '-thumb')]
         self.public = public
         patcher = patch.object(server, 'PUBLIC', public)

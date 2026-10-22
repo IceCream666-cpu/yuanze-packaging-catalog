@@ -1,3 +1,11 @@
+# client1.4 · Care in colour
+
+2026-10-22：按用户提供的15张海报逐项核对，新增056–070（23款精选、53张海报），保留原8款及38张海报。来源、去重和无损核对见 [product-batch-20261022.json](product-batch-20261022.json)。当前本地验收完成、待正式发布。
+
+全屏产品展台与完整海报画廊共用稳定ID；当前及邻近项按需加载，最多2个请求；新增单行可滚动色点条和位置计数。继续client1.3的Apple字体、圆角和清晰图片加载。
+
+素材准备先运行 `scripts/optimize_featured_media.py`，再运行本目录 `optimize-display-assets.py` 和 `prepare-assets.py`；后二者直接读取批准的canonical海报清单，不依赖旧发布目录。构建使用 `vite build --mode showroom`，然后根目录 `scripts/build_customer_showroom.py --edition client14 --stamp-client` 和 `--edition client14`。所有历史发布记录保留如下，不能据其旧数量或命令重发当前版。
+
 # client1.2 · Care in colour
 
 ## 2026-10-21 连续滑动修复

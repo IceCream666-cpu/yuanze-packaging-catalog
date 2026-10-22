@@ -43,3 +43,18 @@ test('both visible neighbours on each side eventually load without preloading di
  while(loading(queue).length){const id=loading(queue)[0];queue.finish(id,queue.snapshot()[id].token,'loaded');}
  assert.deepEqual(Object.entries(queue.snapshot()).filter(([,state])=>state.enabled).map(([id])=>id),['a','b','c','g','h']);
 });
+
+test('a 23-product collection still loads only five initial neighbours with at most two in flight',()=>{
+ const expanded=Array.from({length:23},(_,i)=>`p${i}`);
+ const queue=createFeaturedLoadQueue({ids:expanded});queue.select('p0');
+ assert.deepEqual(loading(queue),['p0','p1']);
+ while(loading(queue).length){
+  assert.ok(loading(queue).length<=2);
+  const id=loading(queue)[0];queue.finish(id,queue.snapshot()[id].token,'loaded');
+ }
+ assert.deepEqual(Object.entries(queue.snapshot()).filter(([,state])=>state.enabled).map(([id])=>id),['p0','p1','p2','p21','p22']);
+ queue.select('p12');assert.deepEqual(loading(queue),['p12','p13']);
+ queue.select('p19');queue.finish('p12',1,'loaded');
+ assert.deepEqual(loading(queue),['p13','p19']);
+ assert.equal(queue.snapshot().p0.token,1);assert.equal(queue.snapshot().p0.status,'loaded');
+});

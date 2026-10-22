@@ -19,11 +19,14 @@ const raw=readFileSync(resolve(root,'server-reference/public/showroom/product-po
 const approved=JSON.parse(raw.slice(raw.indexOf('{')).trim().replace(/;$/,''));
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('client1.2 retains exactly the 38 approved poster identities and public facts',()=>{
- assert.equal(posters.length,38);
- assert.equal(new Set(posters.map(p=>p.id)).size,38);
+test('the approved collection grows without dropping previous poster identities or changing their public facts',()=>{
+ assert.ok(posters.length>=previous.length);
+ assert.equal(new Set(posters.map(p=>p.id)).size,posters.length);
  assert.deepEqual(posters.map(p=>p.id).sort(),approved.items.map(p=>p.id).sort());
- assert.deepEqual(posters.map(p=>p.id).sort(),previous.map(p=>p.id).sort());
+ for(const original of previous){
+  const current=posters.find(p=>p.id===original.id);assert.ok(current,original.id);
+  for(const field of ['title','category','width','height'])assert.deepEqual(current[field],original[field],`${original.id}.${field}`);
+ }
  for(const p of posters){
   assert.deepEqual(Object.keys(p).sort(),['id','title','category','style','image','thumb','original','width','height','smallImage','smallWidth','smallHeight','imageWidth','imageHeight','stripThumb','stripWidth','stripHeight'].sort());
   assert.deepEqual(Object.keys(p.title).sort(),['en','zh']);
@@ -35,8 +38,8 @@ test('client1.2 retains exactly the 38 approved poster identities and public fac
 });
 
 test('all copied images and logo match the approved deployment manifest and bytes',()=>{
- assert.equal(manifest.count,38);assert.equal(manifest.files.length,192);
- assert.equal(new Set(manifest.files.map(f=>f.target)).size,192);
+ assert.equal(manifest.count,posters.length);assert.equal(manifest.files.length,posters.length*5+2);
+ assert.equal(new Set(manifest.files.map(f=>f.target)).size,manifest.files.length);
  const declared=new Set(manifest.files.map(f=>f.target));
  const actual=readdirSync(resolve(base,'public/assets'),{recursive:true}).filter(p=>statSync(resolve(base,'public/assets',p)).isFile()).map(p=>`assets/${p}`);
  assert.deepEqual([...declared].sort(),actual.sort());
@@ -68,7 +71,7 @@ test('combined category, style, favorites and search filters preserve AND semant
  assert.deepEqual(filterPosters(posters,{category:'hair',style:'natural',favorites:['poster-051','poster-042'],query:'shampoo'}).map(p=>p.id),['poster-051']);
  assert.equal(filterPosters(posters,{category:'body',style:'natural',favorites:['poster-051']}).length,0);
  assert.deepEqual(filterPosters(posters,{favorites:[]}),[]);
- assert.equal(filterPosters(posters,{}).length,38);
+ assert.equal(filterPosters(posters,{}).length,posters.length);
  const source=JSON.stringify(posters);filterPosters(posters,{category:'hair',query:'洗'});assert.equal(JSON.stringify(posters),source);
 });
 

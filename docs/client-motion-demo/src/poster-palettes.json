@@ -188,5 +188,80 @@
     "background": "#f1ebe3",
     "ink": "#173f35",
     "accent": "#76624b"
+  },
+  "poster-056": {
+    "background": "#e6dfb9",
+    "ink": "#3c4224",
+    "accent": "#5a632d"
+  },
+  "poster-057": {
+    "background": "#f1d8de",
+    "ink": "#54313e",
+    "accent": "#edb8c7"
+  },
+  "poster-058": {
+    "background": "#eed9cc",
+    "ink": "#573c31",
+    "accent": "#e7b5a1"
+  },
+  "poster-059": {
+    "background": "#eadfbd",
+    "ink": "#4a3c20",
+    "accent": "#e1b23c"
+  },
+  "poster-060": {
+    "background": "#dfddd5",
+    "ink": "#363634",
+    "accent": "#c9c8c0"
+  },
+  "poster-061": {
+    "background": "#e9e1d1",
+    "ink": "#40392e",
+    "accent": "#e9dfc9"
+  },
+  "poster-062": {
+    "background": "#d6e5e9",
+    "ink": "#253c45",
+    "accent": "#b5d9e1"
+  },
+  "poster-063": {
+    "background": "#ead9cd",
+    "ink": "#553b31",
+    "accent": "#c49e7c"
+  },
+  "poster-064": {
+    "background": "#ecdcb3",
+    "ink": "#514325",
+    "accent": "#e9c875"
+  },
+  "poster-065": {
+    "background": "#e4d9bf",
+    "ink": "#24374c",
+    "accent": "#223d66"
+  },
+  "poster-066": {
+    "background": "#eed6dc",
+    "ink": "#543540",
+    "accent": "#dda5b8"
+  },
+  "poster-067": {
+    "background": "#dfd7b8",
+    "ink": "#3d4027",
+    "accent": "#a37a30"
+  },
+  "poster-068": {
+    "background": "#e2dce9",
+    "ink": "#44394f",
+    "accent": "#b9a7c0"
+  },
+  "poster-069": {
+    "background": "#dfcdb7",
+    "ink": "#4b3527",
+    "accent": "#9c623d"
+  },
+  "poster-070": {
+    "background": "#e4e1d5",
+    "ink": "#403d32",
+    "accent": "#eae3d2"
   }
 }

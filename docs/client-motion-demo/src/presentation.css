@@ -242,3 +242,22 @@
 @media (prefers-reduced-transparency: reduce) {
   .topbar, .colour-header, .filter-bar, .poster-grid > article, .poster-detail {background: #faf9f7!important; backdrop-filter: none!important; -webkit-backdrop-filter: none!important;}
 }
+
+/* A single scrollable colour rail keeps expanded collections compact at every viewport. */
+.colour-collection-bar {grid-template-columns: auto minmax(0, 1fr) auto;}
+.colour-swatch-picker {display: flex; align-items: center; gap: 12px; min-width: 0; width: 100%; max-width: 720px; justify-self: center;}
+.colour-collection-bar .colour-swatches {
+  display: flex; flex-wrap: nowrap; flex: 1; min-width: 0; width: auto; gap: 6px;
+  justify-content: flex-start; overflow-x: auto; overflow-y: hidden; padding: 6px;
+  overscroll-behavior-x: contain; scroll-padding-inline: 6px; scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--ink) 25%, transparent) transparent;
+}
+.colour-collection-bar .colour-swatches button {flex: 0 0 44px; width: 44px; height: 44px;}
+.colour-position {flex-shrink: 0; font-size: .9375rem; font-variant-numeric: tabular-nums; white-space: nowrap;}
+@media (max-width: 900px) {
+  .colour-collection-bar {grid-template-columns: minmax(0, 1fr) auto;}
+}
+@media (max-width: 600px) {
+  .colour-collection-bar {grid-template-columns: minmax(0, 1fr);}
+  .colour-swatch-picker {gap: 8px;}
+}

@@ -10,8 +10,9 @@ const json=path=>JSON.parse(readFileSync(resolve(base,path),'utf8'));
 const featured=json('src/featured.json'),posters=json('src/posters.json'),manifest=json('featured-manifest.json');
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('eight featured products map by stable ID to the current approved collection',()=>{
- assert.equal(featured.length,8);assert.equal(new Set(featured.map(p=>p.id)).size,8);
+test('featured additions retain the original eight products and map by stable ID to the approved collection',()=>{
+ assert.ok(featured.length>=8);assert.equal(new Set(featured.map(p=>p.id)).size,featured.length);
+ assert.deepEqual(featured.slice(0,8).map(p=>p.id),['poster-012','poster-013','poster-039','poster-049','poster-042','poster-051','poster-044','poster-047']);
  assert.equal(featured[0].id,'poster-012');assert.equal(featured[0].background,'#f4c8d6');
  for(const item of featured){
   assert.ok(posters.some(p=>p.id===item.id));
@@ -22,7 +23,8 @@ test('eight featured products map by stable ID to the current approved collectio
 });
 
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{
- assert.equal(manifest.scope,'approved-client1.2-display-derivatives');
+ assert.match(manifest.version,/^client1\.\d+$/);
+ assert.equal(manifest.scope,`approved-${manifest.version}-display-derivatives`);
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
  assert.deepEqual(readdirSync(resolve(base,'featured-assets')).sort(),featured.map(p=>`${p.id}.png`).sort());
  for(const entry of manifest.files){
@@ -43,7 +45,6 @@ test('derived cutouts are independently accounted for and cannot overwrite appro
 test('mobile display derivatives retain source identity and fit the first-screen budget',()=>{
  const media=json('src/featured-media.json');
  assert.deepEqual(Object.keys(media).sort(),featured.map(p=>p.id).sort());
- let total=0;
  for(const [id,item] of Object.entries(media)){
   assert.equal(item.sourceSha256,manifest.files.find(p=>p.posterId===id).sha256);
   assert.equal('placeholder' in item,false,'tiny full-size placeholders must not ship in the client bundle');
@@ -53,7 +54,9 @@ test('mobile display derivatives retain source identity and fit the first-screen
    assert.equal(file.subarray(8,12).toString(),'WEBP');assert.ok(Math.max(entry.width,entry.height)<=Number(size));
    assert.equal(hash(resolve(base,'public/featured',`${id}-${size}.webp`)),entry.sha256);
   }
-  assert.ok(item.files['640'].bytes<110000);total+=item.files['640'].bytes;
+  assert.ok(item.files['640'].bytes<110000);
  }
- assert.ok(total<500000);assert.ok(media['poster-012'].files['640'].bytes<80000);
+ const initial=[0,1,-1,2,-2].map(offset=>featured[(offset+featured.length)%featured.length].id);
+ assert.ok(initial.reduce((sum,id)=>sum+media[id].files['640'].bytes,0)<500000,'Current product and four neighbours retain the initial mobile resource budget');
+ assert.ok(media['poster-012'].files['640'].bytes<80000);
 });

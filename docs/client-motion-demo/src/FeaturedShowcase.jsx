@@ -9,10 +9,29 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
   const [hidden, setHidden] = useState(document.hidden);
   const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [interacted, setInteracted] = useState(0);
+  const swatches = useRef(null);
   const current = items.find(p => p.id === selectedId) || items[0];
+  const currentIndex = items.indexOf(current);
   const latest = useRef({items, selectedId, onSelect});
   latest.current = {items, selectedId, onSelect};
   const zh = lang === 'zh';
+  useEffect(() => {
+    const strip = swatches.current;
+    if (!strip) return;
+    const reveal = () => {
+      const selected = strip.querySelector('[aria-pressed="true"]');
+      if (!selected) return;
+      const frame = strip.getBoundingClientRect(), item = selected.getBoundingClientRect();
+      // Move only the horizontal rail, never the page or the user's vertical position.
+      const delta = item.left < frame.left + 6 ? item.left - frame.left - 6
+        : item.right > frame.right - 6 ? item.right - frame.right + 6 : 0;
+      if (delta) strip.scrollLeft += delta;
+    };
+    reveal();
+    const observer = new ResizeObserver(reveal);
+    observer.observe(strip);
+    return () => observer.disconnect();
+  }, [current.id, items.length]);
   useEffect(() => {
     const visibility = () => setHidden(document.hidden);
     const media = matchMedia('(prefers-reduced-motion: reduce)');
@@ -54,7 +73,7 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
       </nav>
     </header>
     <main className="colour-main">
-      <section className="colour-intro"><h1>Care in colour.</h1><p>{zh ? '身体、面部与头发护理。' : 'Body, face & hair. A world of care.'}<br/><span>{zh ? '拖动产品，探索 8 款精选灵感。' : 'Drag to explore eight colourful ideas.'}</span></p></section>
+      <section className="colour-intro"><h1>Care in colour.</h1><p>{zh ? '身体、面部与头发护理。' : 'Body, face & hair. A world of care.'}<br/><span>{zh ? `拖动产品，探索 ${items.length} 款精选灵感。` : `Drag to explore ${items.length} colourful ideas.`}</span></p></section>
       <div className="colour-carousel" {...interaction}>
         <PosterStage items={items} selectedId={current.id} onSelect={choose} onOpen={onOpen} lang={lang} SafeImage={SafeImage} presentation="products"/>
       </div>
@@ -66,7 +85,7 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
           <div className="colour-arrows"><button onClick={() => step(-1)} aria-label={zh ? '上一款' : 'Previous product'}><ArrowLeft size={21} strokeWidth={1.5}/></button><button onClick={() => step(1)} aria-label={zh ? '下一款' : 'Next product'}><ArrowRight size={21} strokeWidth={1.5}/></button></div>
         </div>
       </section>
-      <div className="colour-collection-bar"><span>{zh ? '选择你的色彩' : 'Find your colour'}</span><div className="colour-swatches" role="group" aria-label={zh ? '选择精选产品' : 'Choose a featured product'}>{items.map(p => <button key={p.id} onClick={() => choose(p.id)} aria-label={p.name} aria-pressed={p.id === current.id} title={p.name}><span><i style={{background:p.swatch[0]}}/><i style={{background:p.swatch[1]}}/></span></button>)}</div><button className="colour-play" disabled={reduced} aria-pressed={playing} onClick={() => setPlaying(!playing)} title={reduced ? (zh ? '已遵循系统减少动态效果设置' : 'Reduced motion is enabled') : undefined}>{playing ? <Pause size={22} strokeWidth={1}/> : <Play size={24} strokeWidth={1}/>}<span>{reduced ? (zh ? '已减少动态效果' : 'Reduced motion') : playing ? (zh ? '暂停轮播' : 'Pause slideshow') : (zh ? '自动轮播' : 'Auto play')}</span></button></div>
+      <div className="colour-collection-bar"><span>{zh ? '选择你的色彩' : 'Find your colour'}</span><div className="colour-swatch-picker"><div className="colour-swatches" ref={swatches} role="group" aria-label={zh ? `选择精选产品，共 ${items.length} 款` : `Choose from ${items.length} featured products`}>{items.map(p => <button key={p.id} onClick={() => choose(p.id)} aria-label={p.name} aria-pressed={p.id === current.id} title={p.name}><span><i style={{background:p.swatch[0]}}/><i style={{background:p.swatch[1]}}/></span></button>)}</div><span className="colour-position" aria-hidden="true">{String(currentIndex + 1).padStart(2, '0')} / {items.length}</span></div><button className="colour-play" disabled={reduced} aria-pressed={playing} onClick={() => setPlaying(!playing)} title={reduced ? (zh ? '已遵循系统减少动态效果设置' : 'Reduced motion is enabled') : undefined}>{playing ? <Pause size={22} strokeWidth={1}/> : <Play size={24} strokeWidth={1}/>}<span>{reduced ? (zh ? '已减少动态效果' : 'Reduced motion') : playing ? (zh ? '暂停轮播' : 'Pause slideshow') : (zh ? '自动轮播' : 'Auto play')}</span></button></div>
     </main>
     <footer className="colour-footer"><span>Body · Face · Hair</span><div><button onClick={onInfo} aria-label={zh ? '关于客户端' : 'About the client'}><Info size={14}/></button><span>YUANZE Collection</span>{production && <button onClick={onSignOut} disabled={signingOut} aria-label={zh ? '退出登录' : 'Log out'}><LogOut size={15}/></button>}</div></footer>
   </div>;

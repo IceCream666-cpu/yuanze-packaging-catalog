@@ -1,8 +1,8 @@
 {
   "receivedAt": "2026-10-04",
   "archiveCount": 3,
-  "inputImageCount": 57,
-  "uniqueImageCount": 55,
+  "inputImageCount": 72,
+  "uniqueImageCount": 70,
   "items": [
     {
       "id": "poster-001",
@@ -1171,10 +1171,325 @@
       "duplicates": [],
       "image": "posters/poster-055.webp",
       "thumbnail": "posters/poster-055-thumb.webp"
+    },
+    {
+      "id": "poster-056",
+      "category": "face",
+      "title": {
+        "zh": "liaose 金色面部护理油",
+        "en": "liaose Golden Face Oil"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "28f1ec7228e2f366dffba80cc83d6019.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "7d6ca65970cba1071df26a082f9a46fcb6c9bc87a003069bdffe01a47618c9b2",
+        "bytes": 1679927,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "dfebc90e7f34fe65a8ffe4d158dfbc0b641ccd4d8dc8d031a0b2fc8f40d584f5"
+      },
+      "duplicates": [],
+      "image": "posters/poster-056.webp",
+      "thumbnail": "posters/poster-056-thumb.webp"
+    },
+    {
+      "id": "poster-057",
+      "category": "face",
+      "title": {
+        "zh": "liaose B5 精华液",
+        "en": "liaose B5 Serum"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "d2bbf373cfec77f0649ddc72c66b1bde.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "d19f34e358cf8aa0f63c74dad63c6399d41a0a99755484512fe87adc73e7e29f",
+        "bytes": 1473981,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "d572937bc0fb4e4b6e18a2b8aebcfe6c20a2d01943132c06ded436a4e4cbb8bd"
+      },
+      "duplicates": [],
+      "image": "posters/poster-057.webp",
+      "thumbnail": "posters/poster-057-thumb.webp"
+    },
+    {
+      "id": "poster-058",
+      "category": "face",
+      "title": {
+        "zh": "liaose 柔光面部护理油",
+        "en": "liaose Luminous Face Oil"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "f0791b7f69a3415c9697c46feb26cb8c.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "10a8d36968b20e66cb562bcd2d71b639f30382304aad73acd9c3de896dc37f77",
+        "bytes": 1625827,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "e876c1f1f227546766269f48d574c54ca7faebd309861e6e6ce7496ec4fb127a"
+      },
+      "duplicates": [],
+      "image": "posters/poster-058.webp",
+      "thumbnail": "posters/poster-058-thumb.webp"
+    },
+    {
+      "id": "poster-059",
+      "category": "face",
+      "title": {
+        "zh": "liaose 精华油双瓶组合",
+        "en": "liaose Essence Oil Duo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "24de6c5e088de1a846872715514b237a.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "30cc8504fc8b208f73d752dc820257ff224cf2128aa725768fea7d2fe2629b06",
+        "bytes": 1725732,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "580fcebf7bc14a5d38d5f2507b9acdd9b6015e56e90dbf1dcd0af6f29a25d887"
+      },
+      "duplicates": [],
+      "image": "posters/poster-059.webp",
+      "thumbnail": "posters/poster-059-thumb.webp"
+    },
+    {
+      "id": "poster-060",
+      "category": "body",
+      "title": {
+        "zh": "liaose AHA 身体喷雾",
+        "en": "liaose AHA Body Mist"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "87a378beb6e5a0cf9a534533fb1e0261.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "b0e66f27011c1bf6556ebebba588dbbe96a15c406a7e0382723f23a91135ced6",
+        "bytes": 1686799,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "21b5462a6ef289d82c2ad0cba21dbab9994229b5896e9af77cede75246b5b7f5"
+      },
+      "duplicates": [],
+      "image": "posters/poster-060.webp",
+      "thumbnail": "posters/poster-060-thumb.webp"
+    },
+    {
+      "id": "poster-061",
+      "category": "body",
+      "title": {
+        "zh": "liaose 精油身体霜",
+        "en": "liaose Oil-Infused Body Cream"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "3aa6ed8f0d56ca270d8ab0364d5008b3.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "e6abb5535faa7e353f9c7fc940f35097fdd87eae5829327217ba631f29120af1",
+        "bytes": 2066661,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "c7f99a90c372b20700009bdde582384f1cf68d90a38db39d14d37f73e75bce10"
+      },
+      "duplicates": [],
+      "image": "posters/poster-061.webp",
+      "thumbnail": "posters/poster-061-thumb.webp"
+    },
+    {
+      "id": "poster-062",
+      "category": "face",
+      "title": {
+        "zh": "liaose 微珠保湿面霜",
+        "en": "liaose Micro Cream"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "063e9f310a1838652e03287810fdea5b.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "8cd92ea2e00a512fa615295896c26798a3f278134187636168235c5adabecd44",
+        "bytes": 1670688,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "ef9df32bbaa90db71cee6a7bad9447a45463f86e1566fec96336a6b38590f111"
+      },
+      "duplicates": [],
+      "image": "posters/poster-062.webp",
+      "thumbnail": "posters/poster-062-thumb.webp"
+    },
+    {
+      "id": "poster-063",
+      "category": "face",
+      "title": {
+        "zh": "liaose 滋润面霜",
+        "en": "liaose Moisture Cream"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "20fa2e0658766da018ca3f4f5fbc86c7.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "a691412e2bdf1820948759ad2b2c9ad7ecad04eb4414599802e671add5a17346",
+        "bytes": 1705141,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "0579934297cb6add575c48dde70cfaa29a547bddc1636656ca86876126dbb7e3"
+      },
+      "duplicates": [],
+      "image": "posters/poster-063.webp",
+      "thumbnail": "posters/poster-063-thumb.webp"
+    },
+    {
+      "id": "poster-064",
+      "category": "body",
+      "title": {
+        "zh": "liaose 芳香身体乳",
+        "en": "liaose Aromatic Body Lotion"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "941ec5abbe56159613f0f5026b44aef6.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "1ec358a3f17045683c819e0532cc325b670a7dbbda6ec249319ee04680457463",
+        "bytes": 1838768,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "4eb3bc56047a7ad7e0055d2fa12a668343335855e9d5b1af5b21aba08b8b41a8"
+      },
+      "duplicates": [],
+      "image": "posters/poster-064.webp",
+      "thumbnail": "posters/poster-064-thumb.webp"
+    },
+    {
+      "id": "poster-065",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 茶树洗发水与补充装",
+        "en": "liaose Tea Tree Shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "2dbd99928f5379299a8a2159c46d681f.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "7648f313afd5837d7e40ac8882a38587869f13a4a83d69d5790fdf0ca9cc7635",
+        "bytes": 1599808,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "ceda25b6ecf47708e7130e13b58aca41a16ccf08003853f7a659c38838212371"
+      },
+      "duplicates": [],
+      "image": "posters/poster-065.webp",
+      "thumbnail": "posters/poster-065-thumb.webp"
+    },
+    {
+      "id": "poster-066",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 玫瑰护发油",
+        "en": "liaose Rose Hair Oil"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "b973152bebb785e67a9077d2ee775ee1.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "5e075293907e4424e5fb6f07a5bb1a710fb1f7c8fffc820612fe5144bd08e2ea",
+        "bytes": 1635113,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "6563c90eafedaf6644359a8831ce8dfe8b4ecea1ae9f4eeda2b4416e79d23919"
+      },
+      "duplicates": [],
+      "image": "posters/poster-066.webp",
+      "thumbnail": "posters/poster-066-thumb.webp"
+    },
+    {
+      "id": "poster-067",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 琥珀生姜洗发水",
+        "en": "liaose Amber Ginger Shampoo"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "425fe3ead0ddc392faef5853e7f65e3b.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "78852ddc88252d822dbf4d9767badd8196baffb03598d5d70fa585a645eb24d6",
+        "bytes": 1815020,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "4e49e975aabc4fa0e0f82eeaa53f1cfeb15997f49807d525c31b962f6f87487d"
+      },
+      "duplicates": [],
+      "image": "posters/poster-067.webp",
+      "thumbnail": "posters/poster-067-thumb.webp"
+    },
+    {
+      "id": "poster-068",
+      "category": "face",
+      "title": {
+        "zh": "liaose 精华水",
+        "en": "liaose Essence Water"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "a16e13e717f3c66da683604e7c0c4cd5.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "858f8bbedabaa485afd1549586cd407a8e33fb3e4112cf1e2f64642798e78f23",
+        "bytes": 1808009,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "972b73c25f68391afe7bc77ca09167b08fcc40ae7b506308766f6d1b9fef76c5"
+      },
+      "duplicates": [],
+      "image": "posters/poster-068.webp",
+      "thumbnail": "posters/poster-068-thumb.webp"
+    },
+    {
+      "id": "poster-069",
+      "category": "fragrance",
+      "title": {
+        "zh": "liaose STILL 精油",
+        "en": "liaose Still Essential Oil"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "b6cfd736b2018d09038de2cd1561a327.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "edd8660df16eb57c1e7ac3e097fe9ad4b89c68f7eebb039f67311676f0b94b59",
+        "bytes": 1832152,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "7d0302b1cbfd86b056f50c4041b0a3d8b56f19120f43f44b973046ae7aa47dd3"
+      },
+      "duplicates": [],
+      "image": "posters/poster-069.webp",
+      "thumbnail": "posters/poster-069-thumb.webp"
+    },
+    {
+      "id": "poster-070",
+      "category": "fragrance",
+      "title": {
+        "zh": "liaose DAYLIGHT 精油",
+        "en": "liaose Daylight Essential Oil"
+      },
+      "source": {
+        "kind": "attachment",
+        "filename": "e2f7a8ee6b3b7262048ce26cec30bae1.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "fc3a396d50043cd38db7e57f56931ce20fc9f37ddae86590b1c228fd3890af30",
+        "bytes": 1452405,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "c0d7dbb2c063ea815c499cbe78d9e649a9728ec81ea63fdd16a875d2a16a6299"
+      },
+      "duplicates": [],
+      "image": "posters/poster-070.webp",
+      "thumbnail": "posters/poster-070-thumb.webp"
     }
   ],
-  "updatedAt": "2026-10-15",
-  "directImageCount": 24,
-  "activeImageCount": 38,
+  "updatedAt": "2026-10-22",
+  "directImageCount": 39,
+  "activeImageCount": 53,
   "removedImageCount": 17
 }

@@ -1,0 +1,1722 @@
+{
+  "schema": 1,
+  "version": "client1.4",
+  "date": "2026-10-22",
+  "status": "verified-local-pending-publication",
+  "request": "Audit 15 supplied products in the sliding view; skip existing and add missing products with their posters.",
+  "counts": {
+    "received": 15,
+    "existingInFeatured": 0,
+    "existingInActivePosters": 0,
+    "addedPosters": 15,
+    "addedFeatured": 15,
+    "activePostersBefore": 38,
+    "activePostersAfter": 53,
+    "featuredBefore": 8,
+    "featuredAfter": 23
+  },
+  "scope": "Customer showroom only; no catalogue SKU, formula efficacy, supplier or pricing data inferred.",
+  "preservation": {
+    "existingActivePosterOrder": [
+      "poster-001",
+      "poster-002",
+      "poster-003",
+      "poster-004",
+      "poster-005",
+      "poster-006",
+      "poster-007",
+      "poster-008",
+      "poster-009",
+      "poster-010",
+      "poster-011",
+      "poster-012",
+      "poster-013",
+      "poster-014",
+      "poster-032",
+      "poster-033",
+      "poster-034",
+      "poster-035",
+      "poster-036",
+      "poster-037",
+      "poster-038",
+      "poster-039",
+      "poster-040",
+      "poster-041",
+      "poster-042",
+      "poster-043",
+      "poster-044",
+      "poster-045",
+      "poster-046",
+      "poster-047",
+      "poster-048",
+      "poster-049",
+      "poster-050",
+      "poster-051",
+      "poster-052",
+      "poster-053",
+      "poster-054",
+      "poster-055"
+    ],
+    "existingFeaturedOrder": [
+      "poster-012",
+      "poster-013",
+      "poster-039",
+      "poster-049",
+      "poster-042",
+      "poster-051",
+      "poster-044",
+      "poster-047"
+    ],
+    "unchangedExistingResourceCount": 198,
+    "existingResourceHashes": {
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/gmpc-en.pdf": "6f7ae0d2cfdb0ec15addaf682eb2948f890c8380aaad3ff4f27aac4e07c5e0f1",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/gmpc-en.png": "e893225993633f9ae6b73963a2fc28b16095be2e3fd8e9d133e8fbd9c5f7bcf0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/gmpc-zh.pdf": "7ce0468424a4dd1f8686f9c5a32633160935f1008815408a41057db4b6b5a951",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/gmpc-zh.png": "69ac1d75717da4717976f627eb61d75c65cc4ebe670239c4afd2bdc0b372caef",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/iso22716-en.pdf": "0a9f7e3bc90a1622cd726916032cc18aa6095bb171500b0a6a745e1139d7bc02",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/iso22716-en.png": "c0e5e58e8834b3411681bfd22a8f2b7a7f9782c0652c0f694afc8331deae40cb",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/iso22716-zh.pdf": "e05f80ff3a06e01aa63957f1f5e61b424af08cf9b09adb182c9f5ffe968fb86f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/certificates/iso22716-zh.png": "a52d0606cfa05da829710ba645f98f43edc9fc67cfdbd651f7c67af91c711680",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/reception.png": "9f32b34e37731637fba6fb0c6dcbeb274779432d80c0086e583151a0c2a63e40",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/showroom.png": "922c7b8a397ef1055289f9a206c9ac86c6d83b455c81c8e1f0df70609cedcc2c",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/yuanze-mark.svg": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-001.webp": "3016b4d386c85f38a879cc564325e14c305e7fe2ab82bbc947e4f98e361377c5",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-001-thumb.webp": "04ea78033c895e6a8b068e6c78228e288dca38942435a2bb163b57c7c15f4a88",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-002.webp": "0e633a47506abdf285613c62384d958b5dbb615957ad11fd58dbeb5f536dc103",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-002-thumb.webp": "ed3dd1d3fef18236b55104dca106c9dc9939973e5ea91572046bc576b4e7ce41",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-003.webp": "6aecd1f3ae6fd6c381101b3ce82173c8217a844a44cb5e899e477e8f4f3c56d6",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-003-thumb.webp": "9241418d15620655332c9bc48c4816cc585b8892d214b7c590bafad85581354a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-004.webp": "5f5fb18d37b1458ccb3ac93dd3698f64a51ad60227d44de1f19fe98559417697",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-004-thumb.webp": "5ba46f5778b2fae7b0963c3779f60d33a4065e30f741e5a2878c8da3a92b7a71",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-005.webp": "77b95fc98560aab207c6912b855706c17f2dbf497c99de4c41adee770cb75a1f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-005-thumb.webp": "8d43fd35b83e31e3dc1e8cb5e364be75be42bf51b92fb0bf13161e9dfe29b1b5",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-006.webp": "dd72d7c1b620e23a8831fbf8903647171802fbd468c27f4461ed2d01c722e48d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-006-thumb.webp": "9372f3a51af248af86ca690458dc365bd0835edadad708d1173001408f05f889",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-007.webp": "5e934fd9f3876c35715da103a8bafaed1a68cef402c6fbb7182145cbfd5a7b20",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-007-thumb.webp": "a4e7cde09bff41e81037f040c8a7346579d221ace66ba2a19ff301f2ab98c11f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-008.webp": "8bbff7744122efe1ebea3bfaa8bc4e446afb5b282188e31180fa18816f5ee8d7",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-008-thumb.webp": "fc124555f792719dad1b64b5c60d000d285ee0562338be1c70d994f2a361597b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-009.webp": "8da379263e1639c0368dd06530ee8623a0eeda176d57d72551351000c409ae34",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-009-thumb.webp": "b5b9fb98c2b88a89c577f0468d4f97b7b9e730250328147b7963ca694002696e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-010.webp": "d0c7b8503bf337f3146c66e89bd7f5b795e3e489fbe03a9cc6fc25e7a26d6c4e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-010-thumb.webp": "8b4696b8e4aeca9527aa7fc40c98f101b6e3d7180bd445cb752f4fafe0bbcb71",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-011.webp": "b2b2a38105144fd5d845023e0045631a2810f8740c4cdfd98b6d73df572888ea",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-011-thumb.webp": "52ab5c7714167c5c5d9e7fe504a768d36d5e727c20b35ef048e70cf13763b931",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-012.webp": "a90d6370e3d051028c8445f03720f64fe5a808e003e85c5b200b514d920878bb",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-012-thumb.webp": "812bea20787d93fcb9cfbda4d029556822de7bdad74cd6fff8bdad995d7a4d7e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-013.webp": "6d13d07fbb3086ce3eb7b8708c5304dd97163d3dcc98cc1db6a4a9539c76e592",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-013-thumb.webp": "a5cd697932a664f7eaf9541bd4018d3defa406c8ac180e688e5722774ff9385d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-014.webp": "1a3f6bcc0f2e70e5fb2dba2d54e6cf2abe1683e32e8c3faa5ad4a1590be8d616",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-014-thumb.webp": "7c8598937090c1bd9b206bb7419c7a00b898c829831c50befece05ee0215c56d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-032.webp": "ce2be77b67da9f8da5e820191208be0f7e62c5e2222594d09c2529ccd4341ea9",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-032-thumb.webp": "cafb15107a3030f203c07d83ce47c697e4621404650c188ded376469baa26af2",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-033.webp": "47b8bfa9f85f962a2a27ca8071ad9fec4597aa054add6ef7b044b0023a70bdac",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-033-thumb.webp": "da044fecc4d9f6f643ae9f3d2607811c9eebdac5fa5bff307662f9833b1141b2",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-034.webp": "8cbbba538bcf8ce76b48ce10aef6430638cec18853cdbceadd6c3e82a6118a00",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-034-thumb.webp": "149c197fd9dcdf688ea5e8920c3dfb0a3880543518b88a70cdc35da5b71c623b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-035.webp": "1b7ff01bbb43db058c000568652f3a3b386bd72fb07bff6418796e388f354386",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-035-thumb.webp": "12ac2b8567338a293d0701866c24d67ba5ea64c8d6afff90cebb42e5c529506d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-036.webp": "e1eb9b5867236797d0b6e26c236e7eddfaced4f228b83ecf3ef30c16f0c3384d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-036-thumb.webp": "03464e5bc7cb785ef72d6375584987ebbd17de13f8aceefcc094b96a7bb6988c",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-037.webp": "f55a26634ef573697de99a4bf03ffb8ac7a8cb6cb0be5e935ab831f7bef63c0b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-037-thumb.webp": "3f6033b1021230211628c7b52d4f2a72ec3a33bb9d9eae692459cc7056b961a8",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-038.webp": "c124a33237a1295572c18b48340417fde60f82ea6725d92643ebd5e52a089c16",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-038-thumb.webp": "4a0f6f1cff577ea5719219a73b6cdafa507cc56ecd29d59974dd11b5be341b3d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-039.webp": "20f64a525352405eb3ac434efc586d2655a0a2103a4230a5ca46b50c4abf2fa0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-039-thumb.webp": "7e7f72b5d993dacdd2579f25b0334b014a59576ec02a7326632e3df0f79c5a49",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-040.webp": "d6cb089611cd9b1d3a66edc70215a51868574ee94c280dc0d4cf75449319c3cd",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-040-thumb.webp": "2c052329a956ef320bb41d593fec43ea1de2f55c4c4eb22133f65a0c483bf691",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-041.webp": "97830a29fd6d993977d1dc252c6a3b6580bfbda83c2ca7298cdb6e5d553d54cb",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-041-thumb.webp": "d959b4254b6f1854c8d07275d4a56550b81e6b04174e9dc282fff95fcffb160b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/poster-banners/01-pdrn-capsule-cream.webp": "2bd8465ff3d2cc329bcd2bdb40ae50c8d3dcbb612aefd57eace6ab1258dbb887",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/poster-banners/02-body-care-collection.webp": "59253e74ad06d925d417cc604962b40f744d63d27c557bf6afd9e0d3480adc0c",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/poster-banners/03-cherry-blossom-gift-set.webp": "e184ab973465ccd4aa9f6d61ec03c7351aae5603b286fc4e340ee4724486849f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/poster-banners/04-hand-care-collection.webp": "e598813a94800c4a91aaa80ac28bd469e99b0160fe442564cba13a58e1e8b464",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/poster-banners/05-daylight-still.webp": "25c47724ca6dba3c298100e6e60a7f64ae2860a8128f382ab73e5ec6c234f9cf",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-042.webp": "f433e657a24e286d406c54329431d8b73fc23535b281a876293bef9447372162",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-042-thumb.webp": "08cd1e276bb0945d654cf1e251ac20f16a43a58d5f70a20bbe386d0115524c5e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-043.webp": "bdd95808e2534f824e2fada17a55ae3396288bcc273b2742ca8de6ac297d825e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-043-thumb.webp": "75e615f1c043f6cb7b51b4beeb4b78436b867cb8611e3cefcea5f2715a1a9992",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-044.webp": "3677285f25a234a2900551e6905bba2ac1210da46972b65c42cfd872fc79ce82",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-044-thumb.webp": "0dacae2b46694202320d4989d72100fb990bf4756fe01166e8851c8086477446",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-045.webp": "8fadbf29baa470e4368cbe5692641a27f21eafcc6d9390141af26266f6a38c3d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-045-thumb.webp": "62e2d6f77e3f2f9b7c4141e4facced742cb7eb2cf8c6f8094a14f0c3381fa188",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-046.webp": "34f7cbc93d7e504d7979b39d8b8eddb8a10d6566d30b526a6e7a90ae72b894f0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-046-thumb.webp": "739dfe2f2c152d049cbbf1e0e7a913c9a392b5d314fc1686f3db76064cccc527",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-047.webp": "bdfa73901daf1c27cc93dfe7a1791344c59031d5ef0d39a8ae33db68133ebdf6",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-047-thumb.webp": "eff44218264a9bd7b58ec4b8a9cb9b9537d7aeef66cabcba11b07eff15aef8bb",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-048.webp": "246e9544076d2d64238c7bd235c5e5b3fe6ce23f988df6a3ca80b76c9f558fca",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-048-thumb.webp": "97d792d56fe920dddc26cd39f941b9a6979dce4ee42b7eeef0d52e812086baef",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-049.webp": "ea337ff75f5ef7d4f2d9ba90e35cc537d924534f93ef2c01477f34348d61efcc",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-049-thumb.webp": "9b148caae0e7be7a58d9cd221605028a8e5c2690e80aebe43123c5921e699f57",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-050.webp": "9be6d3a32e5436ba0d369d2f3a9b1e80f75209fd9079088b20c13d7f555a5936",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-050-thumb.webp": "f8de8f05519633fb7ed212c4b6379210f020a7e6c6f66cf6023a701158a8906b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-051.webp": "77d4f8ea7cf74c6263025c49d27dee100f9a6e2da0220159a8f852ff9f3b8d08",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-051-thumb.webp": "c5f2186f1dde45d70f46954e93313e41056580a48eb97ee5573bac881bf3e6c7",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-052.webp": "ef00c2056586fa43075082ff262a0bc3d56ca4c243d5c9f7659f27b2bbf2b988",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-052-thumb.webp": "97b184833cb76c676d1d9d90fca98c1460b8c84968a26d82ae6dd0b0b08e7794",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-053.webp": "ac7e40e6ce872055ac3022a51012b0b070319d0545e0563e8b4e436370292782",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-053-thumb.webp": "e45079f22877e9ac6ff3331d3d4c02b3ef78e198bcc1e695c30e9feb4e1a614f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-054.webp": "eaf489eb39f5f29b2d1a756e92cc75edf811df085ac830715ae666bc8fdc0306",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-054-thumb.webp": "16c2e30066ae00ebace9cc0b74a03c43f8032bbc77072dc2dee97cbab1b2f2f6",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-055.webp": "adef75c90886349c5448db6d25cc16b1290ed9671ab19a0721882ef41c10d132",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/posters/poster-055-thumb.webp": "e6c3007ec9323075afc00f695047a480d862f4070724dbbe159522080c087af0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/gmpc-en-512.webp": "40f61d9466b49e2b04379b45772a70eb271c191925c3d8dd9f5363f46cbcd31a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/gmpc-en-1280.webp": "1103f376eade7558d7551cc27719c5da2cc5b719a132c891c176c597eb8ef02a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/gmpc-zh-512.webp": "dbe0315a1a3cee1a9faef33cad25ddbdcfb7736b622f358ad2f71dd15f170c49",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/gmpc-zh-1280.webp": "b3692628a98ce1f275c88f5c8c31201b3e841205c1e19f51211f76861faa4083",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/iso22716-en-512.webp": "62ea19b7d6b2cb82374933f6bff1ce52ac3c895c3663a35406932e8cdd7bbad2",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/iso22716-en-1280.webp": "69bf566aa9c22718dae0cffc32c7b3e9f2ca860688b9869e62ce325501c8b8eb",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/iso22716-zh-512.webp": "65f2e97e9c3afd8487ef7bc8417c0d14f2e58469315e3f132db24621bae4e7ee",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/certificates/iso22716-zh-1280.webp": "4d47fca0f42a3fa68a3e9580c38cb8d024ee702ba171d57d6d0c80f603368b9f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/reception-512.webp": "9de8bafbfa82c3b67620f81d849d12e9b4281967b0a60b69a8674ee7c9246ed6",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/reception-1280.webp": "c4660dccb8a60648eadb32212bcc4c805f3a9fe957fd74c6c55fd93665cf0535",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/showroom-512.webp": "2a67c6c6f395073ac7b101b4743c427b70a704252166892f394260d3975409a5",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/showroom-1280.webp": "b45a4a658d9f01fd17cdea1a329c550a6fbac3ba85daf34a3242bfef77da0065",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-001-512.webp": "0bac13a3155cae9f2c9c51d60e5b34536a139ade25a09b609e94eff65cb38734",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-001-1280.webp": "f2cf85caf9b6c62e28aa530f3e9479efc34cc7ff485858e82d81f0e5a9167c02",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-002-512.webp": "811eff68882e2c17d986feac6dc756bcbbada39e890c0957e0bc8be49afcedf2",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-002-1280.webp": "de86aa63469d4066656d8cb642c5c610ced6850091ec4ba9ab5086e03bb36df7",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-003-512.webp": "42838260246c84d020bc5a023779fa87f3aeb304d244c02db756d4b50d5a61d0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-003-1280.webp": "d46cdfcf112ccb520524535bdfcd8ffad92542796183000c77f1a51f057aeb82",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-004-512.webp": "12c0a7b739db700fda8fc0608ee8b6b57a79deefeeda8da30f7003e06d3cccae",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-004-1280.webp": "cdc9e6849deaafa784f5fff333ebb37f09bea2fef40d0fef488b222aabbfb48e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-005-512.webp": "f6898534b0eae67c902d08dbaa9a3c1779de270d9a0425980904fcc1d72dcbff",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-005-1280.webp": "97da8e324239acb2b077676b81b956a6610e9671f3a1cc33e0538c6d3d6e9fef",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-006-512.webp": "0b4fd91b4cb7fb46140632e858e84dfb502aafa1166e5a9a6b46a7853d6ecccf",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-006-1280.webp": "3deb55643437c97ac530453ab6804a6746a2500dc547566493c60912c0933f99",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-007-512.webp": "f5f5770eb0b61e1c52f36b9554fc3f1880ec49d047b3eaf62967b0d6e0fc3ede",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-007-1280.webp": "baad78fb198bd68507f49fd8276d1e03b821ac561673f39367a4fa4141212d26",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-008-512.webp": "30703c8ed52b69979a1a8531ce784168fc1eecfe5fdab8a14c4ef3d036172d7d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-008-1280.webp": "48fed4907631fc9d497111307a7497ca614e7d6551dc8cbcc17022e2e65b9970",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-009-512.webp": "678f0c3dde3c3cd556c2aadf0fa4557055866044a5cf748e5830a56444b43dc0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-009-1280.webp": "f75a4e66f6ed290108bffcb886974ddd7696d7785c5cbd934d2c58a329eef65b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-010-512.webp": "098329f3cd2e3502420ef89ff6c78035300533ac4d3610cdd592584ff4c5bb7a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-010-1280.webp": "d24ac4f6355a2ff7660828378173e5e38ac26cb699bc84bd22c468645e9125ca",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-011-512.webp": "a96ee1883178c0addaddd4432bd3c382bca7e4ac61fbb2120b57ccc2006560a8",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-011-1280.webp": "779ff165ff9d03be7092dfaaa69dc2c7c75b3379a2675d2912b5bc5b78c24207",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-012-512.webp": "9b1052dae70371211c09eecd3b68a9ff21183d48f7fe8dc874288b91588e40de",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-012-1280.webp": "5548e86179a827ac2c65fd8130c7181fecd93c566269e679405f4f3633869b2f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-013-512.webp": "01e127c18726a1d2dc45e5d508403696b566f0b970656d378463e0bb0826cad3",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-013-1280.webp": "fc85f5abeff3995a35538db7ef31af52c7ef71ef8b3e2d517b02c1f433a1958c",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-014-512.webp": "3a0dacec4e2b9816f28e64559ba4be091f04623a4f9aa1dee157e4e944af4e8c",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-014-1280.webp": "8f1beabae2f6d0b9f8f5c35931506d85793495297fe68b4e4759f66cb0e3c0e8",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-032-512.webp": "ec5c73e9ca5df00912a285848956ac073dc7f88b80edc0853ebb5e6aff7f0e1f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-032-1280.webp": "26dad3bb73801d098d0aad3b9cfed87cfc198e599113faae71567dba46ee5418",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-033-512.webp": "e06703fa304cd0ad25bc6ac6b0c3cdb5fd5243a1bffb25c2da3f671b6c4242e8",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-033-1280.webp": "8ea6994649dbdf6445bb1461ebe3d0c900770bce6213bc8ea012d0e79f6c2cf6",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-034-512.webp": "f1af128de44e70d1527dc2628d6751953453f9dc7b4515bc65b3d85675d39a29",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-034-1280.webp": "a7ef62ea8e9535092930074ac09004398abdaf1b2dd20bef59f922d1620dcd15",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-035-512.webp": "1278caaf250690c5e6addf15c4c3fd256034cf6bfd470b0da435cbf38b7c6935",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-035-1280.webp": "ad45e1aca5219258c123d131ac700d45ef66b7371e918e0ee6e068d6a9e68932",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-036-512.webp": "bd45755a026a905bdbc2e3662f6a5bdeec1a5dbeac1bfb5159e7d7b0eb6c4a05",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-036-1280.webp": "ff398918c3cd11c90aba2a9d3759f27a46101b6f1a2aa75b61c1f653042afe65",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-037-512.webp": "88b705a5667ebd41a64371842656c9e54c74308d6e49e5af59e73ba3c15e7d2a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-037-1280.webp": "269dd7681254966a18ce2dffcf2ad76258bbc544d73571904293bec664f15913",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-038-512.webp": "f2938f818f1e0d95062127b815bb7f311275aeb92234b12dd112aa4a9d4c646b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-038-1280.webp": "c3479094b445719054572cf5dc9c913b08fa01915b3d996e4cad8f0c88fb33f8",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-039-512.webp": "2bda1c8bded742525a031288f0c7078354c00ea3a47cb4a20cc412a5fe222ae9",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-039-1280.webp": "00c8f2467edc5d60ce5e9365714495481b41181a60a38444dce965df9079aa90",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-040-512.webp": "78c210d80cc6cdbec6be70703c30cf02b6e9bb3edbb6886a227f099426489752",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-040-1280.webp": "b34e624dbdd6742a4f4bb925e95571e2be422b4c26f9e6db6dcd4d10aaca4319",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-041-512.webp": "4ed206b65195a785595747160958bf6e8fd7904901012c95c71c2f9416ee0de1",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-041-1280.webp": "0438146cdc37471f9c37b712e7e4693187b335a261dd401842adb754e0883ee1",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/01-pdrn-capsule-cream-512.webp": "c03fdd816c5a0b2f47f55300d8a60a075684fcd86ed25e39c6f4f711ad6c9da4",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/01-pdrn-capsule-cream-1280.webp": "be997dcbae10b7a77428f81b1eba65fa62a0f771f1cb3f54609972c53b562ce7",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/02-body-care-collection-512.webp": "1ead32b4cd4926c57837d007a9119aaee5d323eed7c96f8f6eb02ab394a1be54",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/02-body-care-collection-1280.webp": "364a48d25339c7674a1340d1f03f69879cf44a43cf10f847f7c83df4d5064c8b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/03-cherry-blossom-gift-set-512.webp": "49c19f36ad72020b2f1936703c4b34a899897d384662f6ba8af69327a0aa6723",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/03-cherry-blossom-gift-set-1280.webp": "ffb7a29db3d8a9c0ea09df51386f0b6a666126fdfac9f0ff07ce5a405e4c2fc1",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/04-hand-care-collection-512.webp": "1f0df4a9484d7df6286d6f7f8b01045649ab8dba01c3add59b5d0870890152d9",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/04-hand-care-collection-1280.webp": "d1810ec3ebc53308c967b9e47637b0a11c7d12eed3147b3a72f8232e972f0246",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/05-daylight-still-512.webp": "dde1b98c74aa7b61967dcd5345089369591157985934b3b060f1b1a6c2e35cd5",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/poster-banners/05-daylight-still-1280.webp": "a84b594c95fa0799568905a358d841928a2e7e4f1ee24983b0f2f5b971033b03",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-042-512.webp": "a51271008b5bf9859028b3ae2603610028e1febe65ca40b13dcd555c08c46dc8",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-042-1280.webp": "cc33e40faa8073369b91189936b72f30ec9e70e1be57bee38f98e9a43f2d568b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-043-512.webp": "38a7975bc1b8a48c34f67b7214ccc484a013af4c555c4038868162cdd3873eeb",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-043-1280.webp": "962eee4918832ec7950f2745e2e850fb45854a0be56b328177029f296908b31a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-044-512.webp": "ad3b3f328f7e2ecad74cbada093c605da87a782dd510dc767ddf4db77a293554",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-044-1280.webp": "ca326dee8d35af543c096699bfc62332cad2b444a3b7b3fceddf39c5b43dab0b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-045-512.webp": "9ca2af615f294738495de6ca647c6b434b387733ea65013854b0be70edcd0883",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-045-1280.webp": "6fae58b0e87c7512bab4f116689f9b09810f94d7da826a5d7c86fc27178f9ffd",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-046-512.webp": "dc8257c5ea5004a38b14175bffc98dc783be606b7e987147eba81f8754315c4a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-046-1280.webp": "9a7c993c69c0fef59a9465494e6f148329a639a4740a133199fc40e2dccf9819",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-047-512.webp": "45d63e75ffe0c04768ebea1271da872b2bba56e9f7fe4d153e48b62736b133bf",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-047-1280.webp": "c08df4fcf9cdeef68ba33436292cdee3e24726658a5264bbec1c931f4b368b7f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-048-512.webp": "aad04434b290922d00a853fdab02766182c54805c9c1e825584a40f7644029fc",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-048-1280.webp": "6c4b6242a1f069bc8ac4c3cddd67f116696c94d40d0213dca475009b4090527a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-049-512.webp": "c1975a100e83bbda48291da1f36abe8a1b0ec78e6bf163112224c40b132a9de9",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-049-1280.webp": "6a618552ea023943258b629f1b3c108021db8f50b7e7101cb91647fd56c4a3dd",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-050-512.webp": "30b55c30c57688380e08d7cda5d8b6f31d41eb964a4d835eb0069f061f291b13",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-050-1280.webp": "8552f9eebd4e6c620cf8208471691a909fa9385a10e860fa426849d33f57e740",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-051-512.webp": "efa377ab8043601c31604b1ef7e7d28fc3b274d9283f0857019c9d7435056f6d",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-051-1280.webp": "938f252dfd08e75166f02546ba3444036542f1c4f9298785d8f0024ca92196b0",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-052-512.webp": "02a16e32f4c7cbf6c0aa1758dd34d2e8ab5c7cfecd82d05acc5466f02947d89b",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-052-1280.webp": "4a26c513c5a2158616338cfccf0b104f5f4d6282c65c73bfdb1b46f0af8af96e",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-053-512.webp": "066832e0bc56f6e73a1b41be37c3021ea41c48d6326c8bcfe76903643e7728ca",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-053-1280.webp": "ac52ff0d6313c534f8b39391e835baca253c7c18e6b93725b4f15732abb903a9",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-054-512.webp": "9c1e6e5fc57ac5e03ef2e470bae45aa4a6f5501a508fb058a8ea751b1311722f",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-054-1280.webp": "5f6503070c39cd9fdc06140d214199308db206ac12a3096537c1997dde457b4a",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-055-512.webp": "a534c2aeaeb2945beae1fde5ca4d7f0306ceff8cfda45fb66b7bedc5a3cb7674",
+      "/Users/icecream/Desktop/包材库/docs/mobile-client-preview/assets/previews/posters/poster-055-1280.webp": "21a5d151b6739223fcd02471236121010f9ba4435d9277f88dee707e70fce30e",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-012.png": "6b3236999bef9dc83ff2f983092e180a2ea6824433c54c3bb763c5259ed8b0e8",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-013.png": "4de1d98936452cc66c5c8b26b455b0f8b4d8341f0af3737f9bd23c72bbe2de12",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-039.png": "6345b60d409a983042dc4fd8c7bef5f78d70b2147b56d8880e0c3c64d84c772b",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-049.png": "59788897074464a77a4ea6a2e22631f000905754bb3836c8319bc2144580faa8",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-042.png": "0084d215fac8049cd3b387189d8384d27e2d701a474b5d4b0d9ffdd8c60210b7",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-051.png": "2efbf821064393cd7c0429b2fc4e5444c862dbc44d65431e20b32d93cfa283ac",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-044.png": "03858ca81f2ed4afb7e3e27a1568a42d2e672f947421ad92eb1d520cb4548f94",
+      "/Users/icecream/Desktop/包材库/docs/client-motion-demo/featured-assets/poster-047.png": "66f12c52657654805151008b1db85616a50a708367743ff62089fcf38df5822a"
+    },
+    "existingMetadataPreserved": true
+  },
+  "items": [
+    {
+      "order": 1,
+      "posterId": "poster-056",
+      "slug": "golden-face-oil",
+      "title": {
+        "zh": "liaose 金色面部护理油",
+        "en": "liaose Golden Face Oil"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/28f1ec7228e2f366dffba80cc83d6019.png",
+        "kind": "attachment",
+        "filename": "28f1ec7228e2f366dffba80cc83d6019.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "7d6ca65970cba1071df26a082f9a46fcb6c9bc87a003069bdffe01a47618c9b2",
+        "bytes": 1679927,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "dfebc90e7f34fe65a8ffe4d158dfbc0b641ccd4d8dc8d031a0b2fc8f40d584f5"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-056.webp",
+        "sha256": "0cbe558deb7061da6163b7d96bbf55e81ca1d4bf15e3c05ac455108986d6a448",
+        "pixelsSha256": "dfebc90e7f34fe65a8ffe4d158dfbc0b641ccd4d8dc8d031a0b2fc8f40d584f5",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-056-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-056.webp",
+          "sourceSha256": "0cbe558deb7061da6163b7d96bbf55e81ca1d4bf15e3c05ac455108986d6a448",
+          "sha256": "0a1bcac8a026858828636d4eccf62e781c9e127319e3005f6d3ba562fa315d0d",
+          "bytes": 17474,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-056-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-056.webp",
+          "sourceSha256": "0cbe558deb7061da6163b7d96bbf55e81ca1d4bf15e3c05ac455108986d6a448",
+          "sha256": "4dd0252d32b0e6cbfbfee5f7c60f010bd2193946dc6a6e0199c444757c30f9bb",
+          "bytes": 68962,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/golden-face-oil.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-056.png",
+        "sha256": "b9ba4661e6e439b3ce06402bc2403c62386927294afd94fbf7258bb07873563d",
+        "bytes": 784142,
+        "width": 1448,
+        "height": 1086,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One golden square face-oil bottle with its dark olive translucent cap.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+            "manifestSha256": "e059b8e287f741a9935213ae202d809e933898b0a4ef8c7d0d9c9d73572db912",
+            "recordName": "golden-face-oil",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/golden-face-oil.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-b9224918-4723-45f0-895a-09547b19c0d8.png",
+            "recordedOutputSha256": "b9ba4661e6e439b3ce06402bc2403c62386927294afd94fbf7258bb07873563d"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/golden-face-oil.webp",
+        "referencePosterSha256": "b5ae0e4f55f14f4d48139fb93e156c1de811d3934f97e3c9ccb258b65bfbee3d",
+        "referenceMeanAbsoluteChannelDifference": 1.1151,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 2,
+      "posterId": "poster-057",
+      "slug": "b5-serum",
+      "title": {
+        "zh": "liaose B5 精华液",
+        "en": "liaose B5 Serum"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/d2bbf373cfec77f0649ddc72c66b1bde.png",
+        "kind": "attachment",
+        "filename": "d2bbf373cfec77f0649ddc72c66b1bde.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "d19f34e358cf8aa0f63c74dad63c6399d41a0a99755484512fe87adc73e7e29f",
+        "bytes": 1473981,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "d572937bc0fb4e4b6e18a2b8aebcfe6c20a2d01943132c06ded436a4e4cbb8bd"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-057.webp",
+        "sha256": "90ea93fdc4cffd57257673d8c6811f9de37841341ce58445da855b99aa7b4913",
+        "pixelsSha256": "d572937bc0fb4e4b6e18a2b8aebcfe6c20a2d01943132c06ded436a4e4cbb8bd",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-057-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-057.webp",
+          "sourceSha256": "90ea93fdc4cffd57257673d8c6811f9de37841341ce58445da855b99aa7b4913",
+          "sha256": "d393f3fdf868926947b10db79a6da084fc2719be15705a9d76ca8ef7ee59c01b",
+          "bytes": 11180,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-057-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-057.webp",
+          "sourceSha256": "90ea93fdc4cffd57257673d8c6811f9de37841341ce58445da855b99aa7b4913",
+          "sha256": "efc7cc332e5caf9dfa9266a1ff7f5c98e4bafe40a5526f4693feccfa98675008",
+          "bytes": 44228,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/b5-serum.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-057.png",
+        "sha256": "00901f9a68b5c521d2320113e28ad444fe2a1b4fccd82bac969c93eb588cd521",
+        "bytes": 1437952,
+        "width": 1024,
+        "height": 1536,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "selectedObject": "One pink square B5 serum dropper bottle, including its white base.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/asset-manifest.json",
+            "manifestSha256": "237934ffe136eb856abb95a336c1d436860335386a48fe9419b71c0c516ecff9",
+            "recordName": "b5-serum",
+            "input": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-b577ffeb-f805-4829-86da-57a628014eb9.png",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-b577ffeb-f805-4829-86da-57a628014eb9.png",
+            "recordedOutputSha256": "00901f9a68b5c521d2320113e28ad444fe2a1b4fccd82bac969c93eb588cd521"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/b5-serum.webp",
+        "referencePosterSha256": "b144a34cd5ae7158ec6866c5e541a115ad6ac37389e71132857ae3dbcbe7d1b6",
+        "referenceMeanAbsoluteChannelDifference": 0.9076,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 3,
+      "posterId": "poster-058",
+      "slug": "luminous-face-oil",
+      "title": {
+        "zh": "liaose 柔光面部护理油",
+        "en": "liaose Luminous Face Oil"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/f0791b7f69a3415c9697c46feb26cb8c.png",
+        "kind": "attachment",
+        "filename": "f0791b7f69a3415c9697c46feb26cb8c.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "10a8d36968b20e66cb562bcd2d71b639f30382304aad73acd9c3de896dc37f77",
+        "bytes": 1625827,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "e876c1f1f227546766269f48d574c54ca7faebd309861e6e6ce7496ec4fb127a"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-058.webp",
+        "sha256": "9a2940f544e1f238a3a2955a519859810416653c247b7ec4579d111a02926f72",
+        "pixelsSha256": "e876c1f1f227546766269f48d574c54ca7faebd309861e6e6ce7496ec4fb127a",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-058-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-058.webp",
+          "sourceSha256": "9a2940f544e1f238a3a2955a519859810416653c247b7ec4579d111a02926f72",
+          "sha256": "2b4e371738ce5a7f2b28fcadaa6f10d17c641d278723febf47f9a465e7e2171f",
+          "bytes": 16338,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-058-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-058.webp",
+          "sourceSha256": "9a2940f544e1f238a3a2955a519859810416653c247b7ec4579d111a02926f72",
+          "sha256": "d0683a800cc2199e562149b34eefd93a78e843a23c11f13c7f3805134be52877",
+          "bytes": 60984,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/luminous-face-oil.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-058.png",
+        "sha256": "4b95bdbb5977bf777177e62b4a5ce5bb2bed1ef775ba0b64447cc64832f52ecc",
+        "bytes": 1196381,
+        "width": 1024,
+        "height": 1536,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "selectedObject": "One tall rectangular pink face-oil dropper bottle with silver collar.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+            "manifestSha256": "e059b8e287f741a9935213ae202d809e933898b0a4ef8c7d0d9c9d73572db912",
+            "recordName": "luminous-face-oil",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/luminous-face-oil.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-543d6561-56b2-438e-b80b-e7e61f8b1024.png",
+            "recordedOutputSha256": "4b95bdbb5977bf777177e62b4a5ce5bb2bed1ef775ba0b64447cc64832f52ecc"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/luminous-face-oil.webp",
+        "referencePosterSha256": "a8368ef71c81f980d0408f689447240a01a306e4c6cd6b4216e663b9d6614281",
+        "referenceMeanAbsoluteChannelDifference": 1.0164,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 4,
+      "posterId": "poster-059",
+      "slug": "essence-oil-duo",
+      "title": {
+        "zh": "liaose 精华油双瓶组合",
+        "en": "liaose Essence Oil Duo"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/24de6c5e088de1a846872715514b237a.png",
+        "kind": "attachment",
+        "filename": "24de6c5e088de1a846872715514b237a.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "30cc8504fc8b208f73d752dc820257ff224cf2128aa725768fea7d2fe2629b06",
+        "bytes": 1725732,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "580fcebf7bc14a5d38d5f2507b9acdd9b6015e56e90dbf1dcd0af6f29a25d887"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-059.webp",
+        "sha256": "9a2e6aff984e9f2253fb50ad3bcf4d7d5946f471e70444d64d17f49c66815d2c",
+        "pixelsSha256": "580fcebf7bc14a5d38d5f2507b9acdd9b6015e56e90dbf1dcd0af6f29a25d887",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-059-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-059.webp",
+          "sourceSha256": "9a2e6aff984e9f2253fb50ad3bcf4d7d5946f471e70444d64d17f49c66815d2c",
+          "sha256": "4c004f305115e13b43244321c6ca044e83cecf64d92903da52f9257d52d05eca",
+          "bytes": 19350,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-059-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-059.webp",
+          "sourceSha256": "9a2e6aff984e9f2253fb50ad3bcf4d7d5946f471e70444d64d17f49c66815d2c",
+          "sha256": "d98e311f3a47b5f240609cf852ea3a6e58844eb1ab5b0b346f5e374a923c859c",
+          "bytes": 79338,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/essence-oil-duo.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-059.png",
+        "sha256": "7fe2640b19741423aa92d00a8ea4bdc4bac7fadd6035ae55c6228498c3dbd8ca",
+        "bytes": 1239727,
+        "width": 1312,
+        "height": 1199,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "Both golden dropper bottles, including the biphase oil bottle; no wooden tray.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+            "manifestSha256": "e059b8e287f741a9935213ae202d809e933898b0a4ef8c7d0d9c9d73572db912",
+            "recordName": "essence-oil-duo",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/essence-oil-duo.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-19039803-2bf5-475b-aea6-67983f443da7.png",
+            "recordedOutputSha256": "7fe2640b19741423aa92d00a8ea4bdc4bac7fadd6035ae55c6228498c3dbd8ca"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/essence-oil-duo.webp",
+        "referencePosterSha256": "ba87bd1957d9f14acf68a16506b5562acb1beb1eb0abfedd1763a45e03bbac85",
+        "referenceMeanAbsoluteChannelDifference": 1.2266,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 5,
+      "posterId": "poster-060",
+      "slug": "aha-body-mist",
+      "title": {
+        "zh": "liaose AHA 身体喷雾",
+        "en": "liaose AHA Body Mist"
+      },
+      "category": "body",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/87a378beb6e5a0cf9a534533fb1e0261.png",
+        "kind": "attachment",
+        "filename": "87a378beb6e5a0cf9a534533fb1e0261.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "b0e66f27011c1bf6556ebebba588dbbe96a15c406a7e0382723f23a91135ced6",
+        "bytes": 1686799,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "21b5462a6ef289d82c2ad0cba21dbab9994229b5896e9af77cede75246b5b7f5"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-060.webp",
+        "sha256": "4fef451dcefe43bf5264b19d1e44b4c34c82dc0bfbb5c90f3ebfbfb5d4f83b96",
+        "pixelsSha256": "21b5462a6ef289d82c2ad0cba21dbab9994229b5896e9af77cede75246b5b7f5",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-060-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-060.webp",
+          "sourceSha256": "4fef451dcefe43bf5264b19d1e44b4c34c82dc0bfbb5c90f3ebfbfb5d4f83b96",
+          "sha256": "0530add8aab2d2df68ae67ee42da9458999c0c5d939357ddd10b207f5f5c6872",
+          "bytes": 13592,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-060-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-060.webp",
+          "sourceSha256": "4fef451dcefe43bf5264b19d1e44b4c34c82dc0bfbb5c90f3ebfbfb5d4f83b96",
+          "sha256": "f20fa2039fa0901f588135b5b9e0f14620cf05dec2571af83ea04dce200480ce",
+          "bytes": 63964,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/aha-body-mist.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-060.png",
+        "sha256": "dd070dd32426e33d4835b372796b1838bc9fcd8d530902069e3236ce9130e334",
+        "bytes": 1288795,
+        "width": 1024,
+        "height": 1536,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "selectedObject": "One cylindrical AHA Body Mist bottle with black sprayer and silver label.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+            "manifestSha256": "e059b8e287f741a9935213ae202d809e933898b0a4ef8c7d0d9c9d73572db912",
+            "recordName": "aha-body-mist",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/aha-body-mist.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-05f8ea96-eae5-42b3-a107-c61a8ddbc50b.png",
+            "recordedOutputSha256": "dd070dd32426e33d4835b372796b1838bc9fcd8d530902069e3236ce9130e334"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/aha-body-mist.webp",
+        "referencePosterSha256": "a0ad30ade71165bf0a3966834030ce9f5ec5a7b68e159c7fd3c0e12fc7de6833",
+        "referenceMeanAbsoluteChannelDifference": 0.9734,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 6,
+      "posterId": "poster-061",
+      "slug": "oil-infused-body-cream",
+      "title": {
+        "zh": "liaose 精油身体霜",
+        "en": "liaose Oil-Infused Body Cream"
+      },
+      "category": "body",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/3aa6ed8f0d56ca270d8ab0364d5008b3.png",
+        "kind": "attachment",
+        "filename": "3aa6ed8f0d56ca270d8ab0364d5008b3.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "e6abb5535faa7e353f9c7fc940f35097fdd87eae5829327217ba631f29120af1",
+        "bytes": 2066661,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "c7f99a90c372b20700009bdde582384f1cf68d90a38db39d14d37f73e75bce10"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-061.webp",
+        "sha256": "61669fe7773532d7831f650c320cf4c5d401d0c008f864487338cf74f111b5ca",
+        "pixelsSha256": "c7f99a90c372b20700009bdde582384f1cf68d90a38db39d14d37f73e75bce10",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-061-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-061.webp",
+          "sourceSha256": "61669fe7773532d7831f650c320cf4c5d401d0c008f864487338cf74f111b5ca",
+          "sha256": "f438f160b403ec355c0ce18435fbbbeee3fe441f77cd8b8042550783698698eb",
+          "bytes": 21632,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-061-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-061.webp",
+          "sourceSha256": "61669fe7773532d7831f650c320cf4c5d401d0c008f864487338cf74f111b5ca",
+          "sha256": "695cb1c140fe4ada109976c16601920e89850080253c51fdd18b554efd02113f",
+          "bytes": 98148,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/oil-infused-body-cream.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-061.png",
+        "sha256": "6d7f4f9a7d2ff05e1d7dd140820be23a750ebcf8fec7c80dc709fb200b951ddb",
+        "bytes": 1565851,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "Both ivory pump bottles and both corresponding cartons; no basket or stones.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+            "manifestSha256": "e059b8e287f741a9935213ae202d809e933898b0a4ef8c7d0d9c9d73572db912",
+            "recordName": "oil-infused-body-cream",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/oil-infused-body-cream.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-3758b556-8643-4334-90ad-3727b248dbb1.png",
+            "recordedOutputSha256": "6d7f4f9a7d2ff05e1d7dd140820be23a750ebcf8fec7c80dc709fb200b951ddb"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/oil-infused-body-cream.webp",
+        "referencePosterSha256": "b4fcb67a2822f6ae32c811db8e3b896792e4d1a60685268639152b854a7a1d26",
+        "referenceMeanAbsoluteChannelDifference": 1.1902,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 7,
+      "posterId": "poster-062",
+      "slug": "micro-cream",
+      "title": {
+        "zh": "liaose 微珠保湿面霜",
+        "en": "liaose Micro Cream"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/063e9f310a1838652e03287810fdea5b.png",
+        "kind": "attachment",
+        "filename": "063e9f310a1838652e03287810fdea5b.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "8cd92ea2e00a512fa615295896c26798a3f278134187636168235c5adabecd44",
+        "bytes": 1670688,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "ef9df32bbaa90db71cee6a7bad9447a45463f86e1566fec96336a6b38590f111"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-062.webp",
+        "sha256": "4c0897800267078ebf6014937d85b4d076a7041ebae4e39ed5f5b8e28a3d9f97",
+        "pixelsSha256": "ef9df32bbaa90db71cee6a7bad9447a45463f86e1566fec96336a6b38590f111",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-062-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-062.webp",
+          "sourceSha256": "4c0897800267078ebf6014937d85b4d076a7041ebae4e39ed5f5b8e28a3d9f97",
+          "sha256": "c5d34555c81caaaf370f0273383dcad2caf61e1768b55a98c51e31217b1de62b",
+          "bytes": 18956,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-062-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-062.webp",
+          "sourceSha256": "4c0897800267078ebf6014937d85b4d076a7041ebae4e39ed5f5b8e28a3d9f97",
+          "sha256": "2b3217322f10f71f0dc5003b7d1be8f6ca3c42c2754f8f586b306d414974878b",
+          "bytes": 72474,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/micro-cream.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-062.png",
+        "sha256": "8c90acc71518087154af7f050598c14ff4da1916c728f219a3c3887b2a230389",
+        "bytes": 1400977,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "Only the complete foreground square cream jar; the cropped rear bottle is excluded.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+            "manifestSha256": "b8af6a521e9414587101e9b3e09ea54cde74fbd1787cad0459126185b44dd0c0",
+            "recordName": "micro-cream",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/micro-cream.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-7e78-7531-88d4-986f0e11f6ad/exec-67ee82c2-9c66-4c6d-ace3-dee4b5b03676.png",
+            "recordedOutputSha256": "8c90acc71518087154af7f050598c14ff4da1916c728f219a3c3887b2a230389"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/micro-cream.webp",
+        "referencePosterSha256": "cf80b6c79aa2f53d25e85c817798be534e2cc99cb85be29bb3c8b3b37d5d3b52",
+        "referenceMeanAbsoluteChannelDifference": 0.9676,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 8,
+      "posterId": "poster-063",
+      "slug": "moisture-cream",
+      "title": {
+        "zh": "liaose 滋润面霜",
+        "en": "liaose Moisture Cream"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/20fa2e0658766da018ca3f4f5fbc86c7.png",
+        "kind": "attachment",
+        "filename": "20fa2e0658766da018ca3f4f5fbc86c7.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "a691412e2bdf1820948759ad2b2c9ad7ecad04eb4414599802e671add5a17346",
+        "bytes": 1705141,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "0579934297cb6add575c48dde70cfaa29a547bddc1636656ca86876126dbb7e3"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-063.webp",
+        "sha256": "065639ca28e814076bc8f76a8ce501fcd12584244c270c3e0fb80fc0b801280b",
+        "pixelsSha256": "0579934297cb6add575c48dde70cfaa29a547bddc1636656ca86876126dbb7e3",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-063-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-063.webp",
+          "sourceSha256": "065639ca28e814076bc8f76a8ce501fcd12584244c270c3e0fb80fc0b801280b",
+          "sha256": "fd996467413216bb590907b29b1c3d974823721201ed5d1fab115c0e6cc0957d",
+          "bytes": 14678,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-063-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-063.webp",
+          "sourceSha256": "065639ca28e814076bc8f76a8ce501fcd12584244c270c3e0fb80fc0b801280b",
+          "sha256": "73c4298eb2773c4ef3e1562dcb244e6d0e61a85cde526d637fc710c0e0c91e29",
+          "bytes": 62184,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/moisture-cream.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-063.png",
+        "sha256": "180479979e9bc9850d3720b54356fb87a65b941be7ceb6b79c02e926928d2135",
+        "bytes": 1215486,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "Open frosted jar, contained cream swirl and its detached champagne lid.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+            "manifestSha256": "b8af6a521e9414587101e9b3e09ea54cde74fbd1787cad0459126185b44dd0c0",
+            "recordName": "moisture-cream",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/moisture-cream.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-7e78-7531-88d4-986f0e11f6ad/exec-074f80a2-4b47-4a15-b149-5c4a70117150.png",
+            "recordedOutputSha256": "180479979e9bc9850d3720b54356fb87a65b941be7ceb6b79c02e926928d2135"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/moisture-cream.webp",
+        "referencePosterSha256": "56a3dffe87dbce5abfad01ff82d8032b36fc034a244ad416eb55a646cd7a190c",
+        "referenceMeanAbsoluteChannelDifference": 1.0456,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 9,
+      "posterId": "poster-064",
+      "slug": "aromatic-body-lotion",
+      "title": {
+        "zh": "liaose 芳香身体乳",
+        "en": "liaose Aromatic Body Lotion"
+      },
+      "category": "body",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/941ec5abbe56159613f0f5026b44aef6.png",
+        "kind": "attachment",
+        "filename": "941ec5abbe56159613f0f5026b44aef6.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "1ec358a3f17045683c819e0532cc325b670a7dbbda6ec249319ee04680457463",
+        "bytes": 1838768,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "4eb3bc56047a7ad7e0055d2fa12a668343335855e9d5b1af5b21aba08b8b41a8"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-064.webp",
+        "sha256": "72a1269f427a3c29163201cce475fa54e0b6e6d22aed6edeb9d06169a47e549d",
+        "pixelsSha256": "4eb3bc56047a7ad7e0055d2fa12a668343335855e9d5b1af5b21aba08b8b41a8",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-064-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-064.webp",
+          "sourceSha256": "72a1269f427a3c29163201cce475fa54e0b6e6d22aed6edeb9d06169a47e549d",
+          "sha256": "719cda5f8865963e88acb2371cc34994066063f0ddfff5215af72b5b62ddc005",
+          "bytes": 19280,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-064-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-064.webp",
+          "sourceSha256": "72a1269f427a3c29163201cce475fa54e0b6e6d22aed6edeb9d06169a47e549d",
+          "sha256": "84d87cce1ce877e67fc6e76f57cf7e4cc07b8502ba2320461f66d5136ad3a8c3",
+          "bytes": 78050,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/aromatic-body-lotion.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-064.png",
+        "sha256": "ad47bd78fd4b284945b176929790f4847086cb04748fcdd6694288709c5dab33",
+        "bytes": 1419012,
+        "width": 1199,
+        "height": 1312,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One yellow pump bottle with attached braided rope; no berries or platform.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+            "manifestSha256": "b8af6a521e9414587101e9b3e09ea54cde74fbd1787cad0459126185b44dd0c0",
+            "recordName": "aromatic-body-lotion",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/aromatic-body-lotion.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-7e78-7531-88d4-986f0e11f6ad/exec-5b1c6b1b-9b54-4afe-bb3e-5453c6c0af09.png",
+            "recordedOutputSha256": "ad47bd78fd4b284945b176929790f4847086cb04748fcdd6694288709c5dab33"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/aromatic-body-lotion.webp",
+        "referencePosterSha256": "0730f33b6505417210247bbe6ebf676486080950547230c32aaa6e6cc4ea67af",
+        "referenceMeanAbsoluteChannelDifference": 1.1777,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 10,
+      "posterId": "poster-065",
+      "slug": "tea-tree-shampoo",
+      "title": {
+        "zh": "liaose 茶树洗发水与补充装",
+        "en": "liaose Tea Tree Shampoo"
+      },
+      "category": "hair",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/2dbd99928f5379299a8a2159c46d681f.png",
+        "kind": "attachment",
+        "filename": "2dbd99928f5379299a8a2159c46d681f.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "7648f313afd5837d7e40ac8882a38587869f13a4a83d69d5790fdf0ca9cc7635",
+        "bytes": 1599808,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "ceda25b6ecf47708e7130e13b58aca41a16ccf08003853f7a659c38838212371"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-065.webp",
+        "sha256": "c10335129314ce657e31eb04884b5427473559dfa8c129119ece43c227c1b805",
+        "pixelsSha256": "ceda25b6ecf47708e7130e13b58aca41a16ccf08003853f7a659c38838212371",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-065-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-065.webp",
+          "sourceSha256": "c10335129314ce657e31eb04884b5427473559dfa8c129119ece43c227c1b805",
+          "sha256": "968b27799e0983778c0ef5a0d01b8b10584466141942a5c91e24f52a4c258f18",
+          "bytes": 18604,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-065-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-065.webp",
+          "sourceSha256": "c10335129314ce657e31eb04884b5427473559dfa8c129119ece43c227c1b805",
+          "sha256": "6279f3990a6763809f06cfc125b3e1ba31b7b2e15b17b0715b48cb7071fd12f3",
+          "bytes": 73040,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/tea-tree-shampoo.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-065.png",
+        "sha256": "f73516367305afbb8bf4301bfa751af96f2a7ac6e849681421b89e065296df85",
+        "bytes": 1252152,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "Complete blue-pump bottle and its refill pouch; no tea-tree sprig.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-b.json",
+            "manifestSha256": "b8af6a521e9414587101e9b3e09ea54cde74fbd1787cad0459126185b44dd0c0",
+            "recordName": "tea-tree-shampoo",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/tea-tree-shampoo.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-7e78-7531-88d4-986f0e11f6ad/exec-1033e406-e62a-4476-8e99-5c56a03c171d.png",
+            "recordedOutputSha256": "f73516367305afbb8bf4301bfa751af96f2a7ac6e849681421b89e065296df85"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/tea-tree-shampoo.webp",
+        "referencePosterSha256": "20b13a3b94dd5834cb47b46eaf6a84dfe0cf3333cc3427671a7d08721e71f108",
+        "referenceMeanAbsoluteChannelDifference": 1.1781,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 11,
+      "posterId": "poster-066",
+      "slug": "rose-hair-oil",
+      "title": {
+        "zh": "liaose 玫瑰护发油",
+        "en": "liaose Rose Hair Oil"
+      },
+      "category": "hair",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/b973152bebb785e67a9077d2ee775ee1.png",
+        "kind": "attachment",
+        "filename": "b973152bebb785e67a9077d2ee775ee1.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "5e075293907e4424e5fb6f07a5bb1a710fb1f7c8fffc820612fe5144bd08e2ea",
+        "bytes": 1635113,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "6563c90eafedaf6644359a8831ce8dfe8b4ecea1ae9f4eeda2b4416e79d23919"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-066.webp",
+        "sha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+        "pixelsSha256": "6563c90eafedaf6644359a8831ce8dfe8b4ecea1ae9f4eeda2b4416e79d23919",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-066-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-066.webp",
+          "sourceSha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+          "sha256": "37bbee8b14a43002eb2d2f263dbd7665f218a216416360b145fd8ffc85b9855f",
+          "bytes": 16892,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-066-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-066.webp",
+          "sourceSha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+          "sha256": "5d974bf05562cc1ba9e629764ecd14b66c7f42d1778c60ae05cc20d77999d07d",
+          "bytes": 63170,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/rose-hair-oil.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-066.png",
+        "sha256": "bc424d94e10e0fb5ce4b844c3494a1d292d50ecbd68faa960b499a313be28f35",
+        "bytes": 1115816,
+        "width": 1222,
+        "height": 1287,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One floral-label square hair-oil bottle with gold pump and clear cap.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-existing-extra.json",
+            "manifestSha256": "a7caa3a6306f939374a7e4295b0e38c610c2a0e4429fa58706a4bfdca32a9048",
+            "recordName": "rose-hair-oil",
+            "input": "/Users/icecream/Documents/Codex/2026-10-20/nin/outputs/liaose-slider/assets/rose-oil.png",
+            "generatedPath": "/Users/icecream/Documents/Codex/2026-10-20/nin/outputs/liaose-slider/assets/rose-oil.png",
+            "recordedOutputSha256": "bc424d94e10e0fb5ce4b844c3494a1d292d50ecbd68faa960b499a313be28f35"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/rose-hair-oil.webp",
+        "referencePosterSha256": "d2235f4efa46f870b6056e9259d2d3e6ae681e2b09cfacee7d6edecffba06dc9",
+        "referenceMeanAbsoluteChannelDifference": 1.0164,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 12,
+      "posterId": "poster-067",
+      "slug": "ginger-shampoo-amber",
+      "title": {
+        "zh": "liaose 琥珀生姜洗发水",
+        "en": "liaose Amber Ginger Shampoo"
+      },
+      "category": "hair",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/425fe3ead0ddc392faef5853e7f65e3b.png",
+        "kind": "attachment",
+        "filename": "425fe3ead0ddc392faef5853e7f65e3b.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "78852ddc88252d822dbf4d9767badd8196baffb03598d5d70fa585a645eb24d6",
+        "bytes": 1815020,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "4e49e975aabc4fa0e0f82eeaa53f1cfeb15997f49807d525c31b962f6f87487d"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "Existing poster-054 is the different pearl/ivory Ginger Shampoo bottle and is preserved."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-067.webp",
+        "sha256": "6640c4ace680b7f0189b486ce4a6383cc759e63135c2f2113f1edcb366fbcff1",
+        "pixelsSha256": "4e49e975aabc4fa0e0f82eeaa53f1cfeb15997f49807d525c31b962f6f87487d",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-067-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-067.webp",
+          "sourceSha256": "6640c4ace680b7f0189b486ce4a6383cc759e63135c2f2113f1edcb366fbcff1",
+          "sha256": "334f000eb0cd70ca033b3790036f1f602c115940ba62e31844effc999143d8c1",
+          "bytes": 21132,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-067-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-067.webp",
+          "sourceSha256": "6640c4ace680b7f0189b486ce4a6383cc759e63135c2f2113f1edcb366fbcff1",
+          "sha256": "b6210fb0e382cd9d356a88d030371596b5109408234f596d0b165710c36d8af2",
+          "bytes": 81850,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/ginger-shampoo-amber.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-067.png",
+        "sha256": "13146a4ef2174e346b942aec7e350806d765fcd2d50d6b7a63ed5d67d07166c4",
+        "bytes": 708468,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One amber pouch-shaped bottle, black pump and attached brown neck cord; distinct from pearl bottle poster-054.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-c.json",
+            "manifestSha256": "e792b250047a6710e8ae15fbedcaabd32be976d3da32b2919ecee4bcc7a1b015",
+            "recordName": "ginger-shampoo-amber",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/ginger-shampoo-amber.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9a-a6ad-7632-8be7-27c78a89e961/exec-a0ba51fc-6d26-421b-9057-66f1f66e79a8.png",
+            "recordedOutputSha256": "13146a4ef2174e346b942aec7e350806d765fcd2d50d6b7a63ed5d67d07166c4"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/ginger-shampoo-amber.webp",
+        "referencePosterSha256": "f91c256ea3cba5031e08da7f6b009d42199099f94450b4c668bcd590a43ac349",
+        "referenceMeanAbsoluteChannelDifference": 1.1245,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 13,
+      "posterId": "poster-068",
+      "slug": "essence-water",
+      "title": {
+        "zh": "liaose 精华水",
+        "en": "liaose Essence Water"
+      },
+      "category": "face",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/a16e13e717f3c66da683604e7c0c4cd5.png",
+        "kind": "attachment",
+        "filename": "a16e13e717f3c66da683604e7c0c4cd5.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "858f8bbedabaa485afd1549586cd407a8e33fb3e4112cf1e2f64642798e78f23",
+        "bytes": 1808009,
+        "width": 1448,
+        "height": 1086,
+        "pixelsHash": "972b73c25f68391afe7bc77ca09167b08fcc40ae7b506308766f6d1b9fef76c5"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-068.webp",
+        "sha256": "50cc44a74ae1c7b311c9c195a8aee82fa13d36e2bc9a760802f9893d3b303db0",
+        "pixelsSha256": "972b73c25f68391afe7bc77ca09167b08fcc40ae7b506308766f6d1b9fef76c5",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-068-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-068.webp",
+          "sourceSha256": "50cc44a74ae1c7b311c9c195a8aee82fa13d36e2bc9a760802f9893d3b303db0",
+          "sha256": "af3c009e1add184d0d1986aedf3195f2ce4038fc1ebe2146b25cbe676e5b03f0",
+          "bytes": 14400,
+          "width": 512,
+          "height": 384,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-068-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-068.webp",
+          "sourceSha256": "50cc44a74ae1c7b311c9c195a8aee82fa13d36e2bc9a760802f9893d3b303db0",
+          "sha256": "bd0cc86244969a2a511bdf476a71ff260800af9ef5f85d124f3c87f980952c52",
+          "bytes": 67456,
+          "width": 1280,
+          "height": 960,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/essence-water.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-068.png",
+        "sha256": "41ce1e7efbef60e3517a569de93051901c9e37cdb48d136be3a8184e4386648d",
+        "bytes": 1751929,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One pale lavender rectangular bottle and its matching tall lavender carton.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-c.json",
+            "manifestSha256": "e792b250047a6710e8ae15fbedcaabd32be976d3da32b2919ecee4bcc7a1b015",
+            "recordName": "essence-water",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/essence-water.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9a-a6ad-7632-8be7-27c78a89e961/exec-9dc359fc-76a2-4ccc-a2dc-cd6e38618c80.png",
+            "recordedOutputSha256": "41ce1e7efbef60e3517a569de93051901c9e37cdb48d136be3a8184e4386648d"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/essence-water.webp",
+        "referencePosterSha256": "5d256f596a95d36b87114eb993a936c202439af4edd4bdc971d99724ff13732e",
+        "referenceMeanAbsoluteChannelDifference": 0.9954,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 14,
+      "posterId": "poster-069",
+      "slug": "still-essential-oil",
+      "title": {
+        "zh": "liaose STILL 精油",
+        "en": "liaose Still Essential Oil"
+      },
+      "category": "fragrance",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/b6cfd736b2018d09038de2cd1561a327.png",
+        "kind": "attachment",
+        "filename": "b6cfd736b2018d09038de2cd1561a327.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "edd8660df16eb57c1e7ac3e097fe9ad4b89c68f7eebb039f67311676f0b94b59",
+        "bytes": 1832152,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "7d0302b1cbfd86b056f50c4041b0a3d8b56f19120f43f44b973046ae7aa47dd3"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-069.webp",
+        "sha256": "ba56936ec3df65208917b77cc5b748c25b30c7677e0ab00df52c3ce7024fa4fc",
+        "pixelsSha256": "7d0302b1cbfd86b056f50c4041b0a3d8b56f19120f43f44b973046ae7aa47dd3",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-069-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-069.webp",
+          "sourceSha256": "ba56936ec3df65208917b77cc5b748c25b30c7677e0ab00df52c3ce7024fa4fc",
+          "sha256": "45b0d042cf6a12c19104b9d175c6cbe12be3529fcae85520792f4d0d12a382f9",
+          "bytes": 12768,
+          "width": 384,
+          "height": 512,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-069-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-069.webp",
+          "sourceSha256": "ba56936ec3df65208917b77cc5b748c25b30c7677e0ab00df52c3ce7024fa4fc",
+          "sha256": "0aa3e513a833e17cffe2edc3abebe131e9acd8b9bded3b2c7a2fec08174473bf",
+          "bytes": 70548,
+          "width": 960,
+          "height": 1280,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/still-essential-oil.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-069.png",
+        "sha256": "fb8b3a4f565f2221255ae1ee359cd9aa8cb67df44809971adbb3b4a66c92431c",
+        "bytes": 1406561,
+        "width": 1254,
+        "height": 1254,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One slender glass essential-oil bottle with cork cap and tag, plus its matching carton.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-c.json",
+            "manifestSha256": "e792b250047a6710e8ae15fbedcaabd32be976d3da32b2919ecee4bcc7a1b015",
+            "recordName": "still-essential-oil",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/still-essential-oil.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9a-a6ad-7632-8be7-27c78a89e961/exec-f930889b-69e6-43d3-8d0f-8e9331c0556c.png",
+            "recordedOutputSha256": "fb8b3a4f565f2221255ae1ee359cd9aa8cb67df44809971adbb3b4a66c92431c"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/still-essential-oil.webp",
+        "referencePosterSha256": "d45b0a640858d62d7a01b085f944b71ed9f9b96ead8680fcfd0c3b88091ad7d7",
+        "referenceMeanAbsoluteChannelDifference": 1.1729,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    },
+    {
+      "order": 15,
+      "posterId": "poster-070",
+      "slug": "daylight-essential-oil",
+      "title": {
+        "zh": "liaose DAYLIGHT 精油",
+        "en": "liaose Daylight Essential Oil"
+      },
+      "category": "fragrance",
+      "source": {
+        "path": "/Users/icecream/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_1zvd90xm0two22_7a55/temp/RWTemp/2026-10/e2f7a8ee6b3b7262048ce26cec30bae1.png",
+        "kind": "attachment",
+        "filename": "e2f7a8ee6b3b7262048ce26cec30bae1.png",
+        "receivedAt": "2026-10-22",
+        "sha256": "fc3a396d50043cd38db7e57f56931ce20fc9f37ddae86590b1c228fd3890af30",
+        "bytes": 1452405,
+        "width": 1086,
+        "height": 1448,
+        "pixelsHash": "c0d7dbb2c063ea815c499cbe78d9e649a9728ec81ea63fdd16a875d2a16a6299"
+      },
+      "audit": {
+        "matchedCurrentPoster": null,
+        "matchedHistoricalPixels": null,
+        "matchedFeaturedProduct": null,
+        "decision": "add missing product and poster",
+        "visualReview": "Compared supplied poster with all 38 active posters and with the reused cutout; product identity matches reused cutout.",
+        "note": "No matching product in current featured or poster library."
+      },
+      "originalPoster": {
+        "path": "docs/mobile-client-preview/assets/posters/poster-070.webp",
+        "sha256": "eb2fe535a55164a76dc2496026bc3e62b57dd0e37c2d244bc0a075ecc29ab2c0",
+        "pixelsSha256": "c0d7dbb2c063ea815c499cbe78d9e649a9728ec81ea63fdd16a875d2a16a6299",
+        "pixelsEqualToAttachment": true
+      },
+      "previews": [
+        {
+          "path": "previews/posters/poster-070-512.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-070.webp",
+          "sourceSha256": "eb2fe535a55164a76dc2496026bc3e62b57dd0e37c2d244bc0a075ecc29ab2c0",
+          "sha256": "63ccd744d05b12827a5e3fb6222efa166b8a90434a83dc848955ed58cdeb4651",
+          "bytes": 9764,
+          "width": 384,
+          "height": 512,
+          "maxEdge": 512
+        },
+        {
+          "path": "previews/posters/poster-070-1280.webp",
+          "kind": "showroom-preview",
+          "source": "posters/poster-070.webp",
+          "sourceSha256": "eb2fe535a55164a76dc2496026bc3e62b57dd0e37c2d244bc0a075ecc29ab2c0",
+          "sha256": "a4993a588b3ace7e3666730c7854cdf10a27b6e82d96f197cd9e50e8664f1f0f",
+          "bytes": 44114,
+          "width": 960,
+          "height": 1280,
+          "maxEdge": 1280
+        }
+      ],
+      "cutout": {
+        "sourcePath": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets/daylight-essential-oil.png",
+        "path": "docs/client-motion-demo/featured-assets/poster-070.png",
+        "sha256": "028abeb9a7781c70f9e7da35d5fbe7fa11b1df41aa3c6d29142ec9d4a4c708ea",
+        "bytes": 1570058,
+        "width": 1086,
+        "height": 1448,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "selectedObject": "One tapered frosted glass essential-oil bottle with wide textured cap.",
+        "sourceRecords": [
+          {
+            "manifest": "/Users/icecream/Desktop/独立站/src/product-stage-demo/assets-generated-a.json",
+            "manifestSha256": "e059b8e287f741a9935213ae202d809e933898b0a4ef8c7d0d9c9d73572db912",
+            "recordName": "daylight-essential-oil",
+            "input": "/Users/icecream/Desktop/独立站/demo/assets/daylight-essential-oil.webp",
+            "generatedPath": "/Users/icecream/.codex/generated_images/01a15c9b-0025-7902-a966-918602f6609a/exec-2c40116f-5e41-4da9-92bd-8cc4936edf24.png",
+            "recordedOutputSha256": "028abeb9a7781c70f9e7da35d5fbe7fa11b1df41aa3c6d29142ec9d4a4c708ea"
+          }
+        ],
+        "referencePoster": "/Users/icecream/Desktop/独立站/demo/assets/daylight-essential-oil.webp",
+        "referencePosterSha256": "8a34cfb32cb541b3473e7dcac0e3de0700356795cee72b272471ee495b90c246",
+        "referenceMeanAbsoluteChannelDifference": 0.9006,
+        "visualMatch": true,
+        "bytesUnchangedFromReusedAsset": true
+      }
+    }
+  ],
+  "localVerification": {
+    "rootTests": 180,
+    "backendTests": 251,
+    "deploymentTests": 32,
+    "frontend": "all existing frontend suites passed",
+    "browserProducts": [
+      {
+        "id": "poster-056",
+        "name": "Golden Face Oil",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-056-1280.webp",
+        "title": "liaose 金色面部护理油"
+      },
+      {
+        "id": "poster-057",
+        "name": "B5 Serum",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-057-1280.webp",
+        "title": "liaose B5 精华液"
+      },
+      {
+        "id": "poster-058",
+        "name": "Luminous Face Oil",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-058-1280.webp",
+        "title": "liaose 柔光面部护理油"
+      },
+      {
+        "id": "poster-059",
+        "name": "Essence Oil Duo",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-059-1280.webp",
+        "title": "liaose 精华油双瓶组合"
+      },
+      {
+        "id": "poster-060",
+        "name": "AHA Body Mist",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-060-1280.webp",
+        "title": "liaose AHA 身体喷雾"
+      },
+      {
+        "id": "poster-061",
+        "name": "Oil-Infused Body Cream",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-061-1280.webp",
+        "title": "liaose 精油身体霜"
+      },
+      {
+        "id": "poster-062",
+        "name": "Micro Cream",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-062-1280.webp",
+        "title": "liaose 微珠保湿面霜"
+      },
+      {
+        "id": "poster-063",
+        "name": "Moisture Cream",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-063-1280.webp",
+        "title": "liaose 滋润面霜"
+      },
+      {
+        "id": "poster-064",
+        "name": "Aromatic Body Lotion",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-064-1280.webp",
+        "title": "liaose 芳香身体乳"
+      },
+      {
+        "id": "poster-065",
+        "name": "Tea Tree Shampoo",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-065-1280.webp",
+        "title": "liaose 茶树洗发水与补充装"
+      },
+      {
+        "id": "poster-066",
+        "name": "Rose Hair Oil",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-066-1280.webp",
+        "title": "liaose 玫瑰护发油"
+      },
+      {
+        "id": "poster-067",
+        "name": "Amber Ginger Shampoo",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-067-1280.webp",
+        "title": "liaose 琥珀生姜洗发水"
+      },
+      {
+        "id": "poster-068",
+        "name": "Essence Water",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-068-1280.webp",
+        "title": "liaose 精华水"
+      },
+      {
+        "id": "poster-069",
+        "name": "Still Essential Oil",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-069-1280.webp",
+        "title": "liaose STILL 精油"
+      },
+      {
+        "id": "poster-070",
+        "name": "Daylight Essential Oil",
+        "src": "http://127.0.0.1:18876/showroom/assets/previews/posters/poster-070-1280.webp",
+        "title": "liaose DAYLIGHT 精油"
+      }
+    ],
+    "viewports": [
+      320,
+      393,
+      768,
+      1280
+    ],
+    "originalPosterPixelEquality": 15,
+    "retainedOriginalResources": 198,
+    "initialNetwork": {
+      "width": 393,
+      "dpr": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:18876/showroom/assets/featured/poster-012-640.webp",
+          "duration": 1158.3999999910593,
+          "bytes": 75662
+        },
+        {
+          "name": "http://127.0.0.1:18876/showroom/assets/featured/poster-013-640.webp",
+          "duration": 1049.1000000089407,
+          "bytes": 101376
+        },
+        {
+          "name": "http://127.0.0.1:18876/showroom/assets/featured/poster-070-640.webp",
+          "duration": 628.5999999940395,
+          "bytes": 43572
+        },
+        {
+          "name": "http://127.0.0.1:18876/showroom/assets/featured/poster-039-640.webp",
+          "duration": 720.2000000029802,
+          "bytes": 71080
+        },
+        {
+          "name": "http://127.0.0.1:18876/showroom/assets/featured/poster-069-640.webp",
+          "duration": 483.29999999701977,
+          "bytes": 50844
+        }
+      ],
+      "loaded": 5
+    },
+    "gallery": "53 posters; Ginger search preserves both old and new bottle; new gallery poster opens original",
+    "limitations": [
+      "Browser viewport and network emulation; not a physical-device Safari FPS measurement."
+    ]
+  }
+}

@@ -4,13 +4,14 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import re
 import xml.etree.ElementTree as ET
 
 from PIL import Image
 
 BASE = Path(__file__).resolve().parent
 ROOT = BASE.parents[1]
-SHOWROOM = ROOT / 'server-reference/public/showroom'
+SOURCE = ROOT / 'docs/mobile-client-preview'
 OUTPUT = BASE / 'optimized-assets'
 SCOPE = 'approved-client-display-optimization'
 
@@ -21,13 +22,13 @@ def digest(data):
 
 def main():
     approved = {f"assets/{item['path']}": item for item in json.loads(
-        (ROOT / 'docs/mobile-client-preview/assets/manifest.json').read_text())['files']}
+        (SOURCE / 'assets/manifest.json').read_text())['files']}
     OUTPUT.mkdir(parents=True, exist_ok=True)
     entries = []
 
     def source_bytes(route):
         expected = approved[route]
-        data = (SHOWROOM / route).read_bytes()
+        data = (SOURCE / route).read_bytes()
         if digest(data) != expected['sha256'] or len(data) != expected['bytes']:
             raise ValueError(f'Original no longer matches the approved source: {route}')
         return data
@@ -62,10 +63,13 @@ def main():
         visible = original.crop((x, y, x + width, y + height))
         save(visible, 'yuanze-mark-compact.webp', route, raw, 'visible-logo', crop=viewbox)
 
-    posters = json.loads((BASE / 'src/posters.json').read_text())
+    # Canonical input avoids requiring stale generated src/posters.json (or a
+    # previously built showroom) before new derivatives can be prepared.
+    raw = (SOURCE / 'product-posters.js').read_text()
+    posters = json.loads(raw[raw.index('{'):].strip().rstrip(';'))['items']
     ids = [item['id'] for item in posters]
-    if len(ids) != 38 or len(set(ids)) != 38:
-        raise ValueError('Expected the current 38 approved posters')
+    if not ids or len(set(ids)) != len(ids) or any(not re.fullmatch(r'poster-\d{3}', value) for value in ids):
+        raise ValueError('Expected unique canonical poster identities')
     for poster_id in sorted(ids):
         route = f'assets/posters/{poster_id}.webp'
         raw = source_bytes(route)

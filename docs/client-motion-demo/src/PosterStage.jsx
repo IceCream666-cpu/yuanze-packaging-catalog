@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import FeaturedImage from './FeaturedImage.jsx';
 import {createFeaturedLoadQueue} from './featured-loading.js';
 import {Maximize2, MoveHorizontal} from 'lucide-react';
@@ -7,6 +7,7 @@ import {createCarouselMotion, horizontalWheel, wheelSnap} from './carousel-motio
 
 export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage, presentation = 'posters'}) {
   const products = presentation === 'products';
+  const indices = useMemo(() => new Map(items.map((item, index) => [item.id, index])), [items]);
   const [imageLoads, setImageLoads] = useState({});
   const imageQueue = useRef(null);
   if (!imageQueue.current) imageQueue.current = createFeaturedLoadQueue({ids: items.map(item => item.id), onChange: setImageLoads});
@@ -21,14 +22,16 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
   const motion = useRef(null);
 
   function paint(position, moving) {
-    const {items, products, stepWidth} = latest.current;
+    const {items, indices, products, stepWidth} = latest.current;
     stage.current?.classList.toggle('is-moving', moving);
     const nextAnchor = wrapIndex(Math.round(position), items.length);
     // React handles semantic/visible-window changes, never fractional animation frames.
     if (nextAnchor !== anchorRef.current) {anchorRef.current = nextAnchor; setAnchor(nextAnchor);}
     for (const [id, node] of planes.current) {
-      const index = items.findIndex(item => item.id === id);
+      const index = indices.get(id);
       const offset = shortestDelta(index, position, items.length), distance = Math.abs(offset);
+      // Keep decoded image nodes stable, but avoid rewriting invisible far-away products every frame.
+      if (products && distance >= 3.3 && node.style.visibility === 'hidden') continue;
       const scale = products ? 1 - Math.min(distance, 3.4) * .13 : Math.max(.62, 1 - distance * .16);
       const turn = products ? Math.max(-18, Math.min(18, -offset * 6)) : Math.max(-14, Math.min(14, offset * -8));
       const drift = products ? offset * 8 : Math.max(-9, Math.min(9, offset * 4));
@@ -44,7 +47,7 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
       node.setAttribute('aria-hidden', String(distance > 2.5 || opacity < .1));
     }
   }
-  latest.current = {items, products, stepWidth, onSelect, onOpen, paint};
+  latest.current = {items, indices, products, stepWidth, onSelect, onOpen, paint};
   if (!motion.current) motion.current = createCarouselMotion({
     initial, length: items.length,
     now: () => performance.now(), requestFrame: fn => requestAnimationFrame(fn), cancelFrame: id => cancelAnimationFrame(id),
@@ -139,7 +142,8 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
       controller.settle(snapTarget(controller.state.position, velocity, items.length));
     }
   }
-  // All eight featured images remain mounted/decoded. Larger libraries keep a stable seven-item window.
+  // Product nodes retain their decoded images; requests remain limited to the current item and neighbours.
+  // Full-poster libraries keep a stable seven-item window.
   const mounted = visibleItems(items, anchor, products ? items.length : 7).sort((a,b) => a.index - b.index);
   return <section className={`gallery-shell ${products ? 'product-stage-shell' : ''}`} aria-label={lang === 'zh' ? (products ? '精选产品' : '海报画廊') : (products ? 'Featured products' : 'Poster gallery')}>
     <div className="gallery-stage" ref={stage} tabIndex={0} role="region" aria-roledescription="carousel"
