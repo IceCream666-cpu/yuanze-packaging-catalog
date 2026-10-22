@@ -356,3 +356,9 @@ Caddy 实际运行用户执行强制配置检查：`/usr/local/lib/yuanze/releas
 北京时间 11:50:40 在当前 `20261013-client-hd-v1` release 内持部署锁原子交换 `public/showroom`；3 个入口、39 个新衍生资源及清单为本次范围。258 个清单文件、96 项正式 HTTPS 入口/展示资源、原图下载及三角色权限验证通过。主服务 PID 2564528 未变，6820 个非展厅文件、登录清单及 Nginx 配置摘要保持；未重启、未写业务数据。
 
 源码 `4435d09a`，清单 `d646f3553203e730c31dffe455e380f200f56240bb155f83bec27a3cb814bf62`；回执 `docs/client-motion-demo/loading-clarity-release.json`；备份 `/opt/yuanze-reference/backups/client1.3-loading-20261022`。回退前必须核对 current release 和展厅清单仍匹配、持 `/opt/yuanze-reference/deploy.lock` 并保留 yuanze 属主，仅交换展厅目录。若已出现后续更新，先合并，不能用本备份覆盖其他电脑工作。
+
+## 2026-10-22 client1.4 产品与海报补齐
+
+12:45:32在当前`20261013-client-hd-v1`内持锁原子发布showroom；15款产品/15张海报，现23精选/53海报。新增120素材，4个入口或数据文件更新，既有素材摘要保持；378项服务器文件和124项正式HTTPS入口/新增资源核验通过。三角色、原图下载、登录视频Range及桌面/手机浏览器通过。服务PID2564528、6820个非展厅文件和网关摘要一致，未重启或写业务数据。
+
+源码`7d341571`；清单`54ac16275ceb2c8ee76936af61835ccf5b472e28e4cf3b7d91d59af69ab5be52`；回执`docs/client-motion-demo/client14-release.json`；备份`/opt/yuanze-reference/backups/client1.4-products-20261022`。回退前核对current和清单仍匹配，持`/opt/yuanze-reference/deploy.lock`并保留yuanze属主；仅交换showroom目录，不能覆盖另一台电脑后续更新。

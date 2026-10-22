@@ -2,7 +2,7 @@
   "schema": 1,
   "version": "client1.4",
   "date": "2026-10-22",
-  "status": "verified-local-pending-publication",
+  "status": "published-and-verified",
   "request": "Audit 15 supplied products in the sliding view; skip existing and add missing products with their posters.",
   "counts": {
     "received": 15,
@@ -1718,5 +1718,7 @@
     "limitations": [
       "Browser viewport and network emulation; not a physical-device Safari FPS measurement."
     ]
-  }
+  },
+  "publishedAt": "2026-10-22T12:45:32+08:00",
+  "releaseReceipt": "client14-release.json"
 }
