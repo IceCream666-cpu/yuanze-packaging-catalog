@@ -68,19 +68,23 @@
 .library-page .grid-section {padding: 0; margin-top: 26px; margin-bottom: 60px;}
 .grid-count {font-size: var(--type-caption); margin: 0 4px 18px;}
 .library-page .poster-grid {gap: 28px; grid-template-columns: repeat(3, minmax(0, 1fr));}
-.poster-grid > article {min-width: 0; padding: 12px; border-radius: var(--radius-view); background: linear-gradient(145deg, #ffffffed, #ffffff9c); box-shadow: var(--elevation);}
-.library-page .grid-image {padding: 10px; border-radius: 20px; background: #f4f1ed;}
-.grid-image img {border-radius: 10px;}
+.poster-grid > article {min-width: 0; padding: 0; border: 0; background: transparent; box-shadow: none;}
+/* The artwork is the surface: no nested mat, and its own ratio keeps copy intact. */
+.library-page .grid-image {padding: 0; border: 0; border-radius: 24px; background: transparent;}
+.grid-image .responsive-media {border-radius: inherit; overflow: hidden;}
+.grid-image img {border-radius: inherit;}
 .grid-image:hover img {transform: none;}
-.grid-caption {margin: 0; padding: 20px 10px 12px; align-items: center; gap: 12px;}
+.grid-caption {margin: 0; padding: 16px 2px 0; align-items: center; gap: 12px;}
 .grid-caption .category-label, .category-label {font-size: var(--type-caption); line-height: 1.5; margin-bottom: 6px;}
 .grid-caption h2 {font-size: 1.375rem; line-height: 1.4; font-weight: 600; letter-spacing: -.02em;}
-.grid-caption .icon-button {min-width: 48px; min-height: 48px; background: #30263306; flex-shrink: 0;}
+.grid-caption .icon-button {min-width: 48px; min-height: 48px; background: transparent; flex-shrink: 0;}
+.grid-caption .icon-button:hover, .grid-caption .icon-button:focus-visible {background: #30263306;}
 .grid-caption svg {width: 22px; height: 22px;}
 .library-page .gallery-shell {margin: 28px var(--gutter) 0; padding: 10px 0 16px; border-radius: 32px; background: #ffffff85;}
 .library-page .gallery-stage {border-radius: 24px;}
-.library-page .poster-plane {border-radius: 20px; background: #fff; padding: 10px;}
-.library-page .poster-plane img {border-radius: 12px;}
+.library-page .poster-plane {border-radius: 20px; background: transparent; padding: 0;}
+.library-page .poster-plane .responsive-media {border-radius: inherit; overflow: hidden;}
+.library-page .poster-plane img {border-radius: inherit;}
 .gesture-hint {font-size: .9375rem; min-height: 30px; height: auto; letter-spacing: 0; padding: 4px 16px; text-align: center;}
 .expand-hint {font-size: .875rem;}
 .poster-detail {margin: 24px var(--gutter) 0; padding: 22px; background: #ffffff9c; border: 0; border-radius: var(--radius-view);}
@@ -183,7 +187,8 @@
   .library-page .poster-grid {gap: 24px;}
   .grid-caption h2 {font-size: 1.3125rem;}
   .grid-caption .category-label {font-size: .9375rem;}
-  .grid-caption {padding: 18px 6px 10px;}
+  .library-page .grid-image {border-radius: 20px;}
+  .grid-caption {padding: 14px 2px 0;}
   .poster-detail {padding: 20px; margin: 20px var(--gutter) 0; grid-template-columns: 1fr; gap: 20px;}
   .poster-title h2 {font-size: 1.5rem;}
   .poster-actions {grid-row: auto; grid-column: 1; justify-content: start; margin: 0;}
@@ -240,7 +245,7 @@
   .colour-swatches {display: grid; grid-template-columns: repeat(4, 44px); justify-content: space-between; gap: 10px;}
 }
 @media (prefers-reduced-transparency: reduce) {
-  .topbar, .colour-header, .filter-bar, .poster-grid > article, .poster-detail {background: #faf9f7!important; backdrop-filter: none!important; -webkit-backdrop-filter: none!important;}
+  .topbar, .colour-header, .filter-bar, .poster-detail {background: #faf9f7!important; backdrop-filter: none!important; -webkit-backdrop-filter: none!important;}
 }
 
 /* A single scrollable colour rail keeps expanded collections compact at every viewport. */

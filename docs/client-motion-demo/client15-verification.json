@@ -1,0 +1,129 @@
+{
+  "version": "client1.5",
+  "checks": [
+    {
+      "viewport": 1440,
+      "overflow": false,
+      "cards": 1,
+      "allMediaEdgesMatch": true,
+      "allFramesHaveNoPadding": true,
+      "allOuterCardsTransparent": true,
+      "sample": {
+        "border": "0px",
+        "cardBackground": "rgba(0, 0, 0, 0)",
+        "cardPadding": "0px",
+        "cardShadow": "none",
+        "clip": "hidden",
+        "edgesMatch": true,
+        "mediaRadius": "24px",
+        "naturalRatio": 0.750465549348231,
+        "padding": "0px",
+        "radius": "24px",
+        "ratio": 0.7500070136063964,
+        "title": "liaose DAYLIGHT 精油"
+      }
+    },
+    {
+      "viewport": 393,
+      "overflow": false,
+      "cards": 1,
+      "allMediaEdgesMatch": true,
+      "allFramesHaveNoPadding": true,
+      "allOuterCardsTransparent": true,
+      "sample": {
+        "border": "0px",
+        "cardBackground": "rgba(0, 0, 0, 0)",
+        "cardPadding": "0px",
+        "cardShadow": "none",
+        "clip": "hidden",
+        "edgesMatch": true,
+        "mediaRadius": "20px",
+        "naturalRatio": 0.750561797752809,
+        "padding": "0px",
+        "radius": "20px",
+        "ratio": 0.7500041852912126,
+        "title": "liaose DAYLIGHT 精油"
+      }
+    },
+    {
+      "viewport": 393,
+      "overflow": false,
+      "cards": 53,
+      "allMediaEdgesMatch": true,
+      "allFramesHaveNoPadding": true,
+      "allOuterCardsTransparent": true,
+      "sample": {
+        "border": "0px",
+        "cardBackground": "rgba(0, 0, 0, 0)",
+        "cardPadding": "0px",
+        "cardShadow": "none",
+        "clip": "hidden",
+        "edgesMatch": true,
+        "mediaRadius": "20px",
+        "naturalRatio": 1.336,
+        "padding": "0px",
+        "radius": "20px",
+        "ratio": 1.3333333333333333,
+        "title": "liaose 蓬松洗发水"
+      }
+    },
+    {
+      "viewport": 768,
+      "overflow": false,
+      "cards": 53,
+      "allMediaEdgesMatch": true,
+      "allFramesHaveNoPadding": true,
+      "allOuterCardsTransparent": true,
+      "sample": {
+        "border": "0px",
+        "cardBackground": "rgba(0, 0, 0, 0)",
+        "cardPadding": "0px",
+        "cardShadow": "none",
+        "clip": "hidden",
+        "edgesMatch": true,
+        "mediaRadius": "24px",
+        "naturalRatio": 1.3360323886639676,
+        "padding": "0px",
+        "radius": "24px",
+        "ratio": 1.3333333333333333,
+        "title": "liaose 蓬松洗发水"
+      }
+    },
+    {
+      "viewport": 320,
+      "overflow": false,
+      "cards": 53,
+      "allMediaEdgesMatch": true,
+      "allFramesHaveNoPadding": true,
+      "allOuterCardsTransparent": true,
+      "sample": {
+        "border": "0px",
+        "cardBackground": "rgba(0, 0, 0, 0)",
+        "cardPadding": "0px",
+        "cardShadow": "none",
+        "clip": "hidden",
+        "edgesMatch": true,
+        "mediaRadius": "20px",
+        "naturalRatio": 1.3333333333333333,
+        "padding": "0px",
+        "radius": "20px",
+        "ratio": 1.3333333333333333,
+        "title": "liaose 蓬松洗发水"
+      }
+    }
+  ],
+  "hdOriginal": [
+    1086,
+    1448
+  ],
+  "galleryPadding": 0,
+  "errors": [],
+  "status": "locally-verified",
+  "tests": {
+    "root": 181,
+    "backend": 251,
+    "deployment": 32,
+    "allVerificationSuitesPassed": true
+  },
+  "assetsUnchanged": true
+}

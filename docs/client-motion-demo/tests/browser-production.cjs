@@ -14,7 +14,9 @@ const chrome=process.env.QA_CHROME||'/Applications/Google Chrome.app/Contents/Ma
 const output=process.env.QA_OUTPUT;
 const manifest=JSON.parse(fs.readFileSync(path.join(publicDir,'bundle-manifest.json')));
 const featured=JSON.parse(fs.readFileSync(path.join(__dirname,'../featured-manifest.json'))).files;
-const report={version:'client1.3',mode:'showroom',scope:'local frontend integration with mocked session API',checks:[],runtimeErrors:[],unexpectedRequests:[]};
+const posters=JSON.parse(fs.readFileSync(path.join(__dirname,'../src/posters.json')));
+const expectedVersion='client'+JSON.parse(fs.readFileSync(path.join(__dirname,'../package.json'))).version.split('.').slice(0,2).join('.');
+const report={version:expectedVersion,mode:'showroom',scope:'local frontend integration with mocked session API',checks:[],runtimeErrors:[],unexpectedRequests:[]};
 const csrf='local-browser-production-test-token';
 const requests=[];
 const logoutRequests=[];
@@ -67,10 +69,48 @@ async function openHome(page,origin) {
 }
 async function waitEnabled(locator) {await locator.waitFor();await locator.evaluate(el=>new Promise((resolve,reject)=>{let attempts=0;const tick=()=>{if(!el.disabled)return resolve();if(++attempts>100)return reject(new Error('Button remained disabled'));setTimeout(tick,30);};tick();}));}
 
+function posterCard(page,poster) {
+  return page.locator('.poster-grid article').filter({has:page.getByRole('button',{name:`打开海报: ${poster.title.zh}`,exact:true})});
+}
+async function checkUnmattedPoster(page,poster,radius) {
+  const card=posterCard(page,poster),button=card.locator('.grid-image');
+  await button.scrollIntoViewIfNeeded();
+  await card.locator('.responsive-media[data-ready="true"]').waitFor();
+  const measured=await card.evaluate(article=>{
+    const button=article.querySelector('.grid-image'),media=button.querySelector('.responsive-media'),image=media.querySelector('img');
+    const edges=node=>{const r=node.getBoundingClientRect();return {left:r.left,top:r.top,width:r.width,height:r.height};};
+    const surface=node=>{const s=getComputedStyle(node);return {
+      padding:[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft].map(parseFloat),
+      border:[s.borderTopWidth,s.borderRightWidth,s.borderBottomWidth,s.borderLeftWidth].map(parseFloat),
+      radius:[s.borderTopLeftRadius,s.borderTopRightRadius,s.borderBottomRightRadius,s.borderBottomLeftRadius].map(parseFloat),
+      background:s.backgroundColor,backgroundImage:s.backgroundImage,shadow:s.boxShadow,overflow:s.overflow,fit:s.objectFit,
+    };};
+    return {card:surface(article),button:{...edges(button),...surface(button)},media:{...edges(media),...surface(media)},
+      image:{...edges(image),...surface(image),naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight}};
+  });
+  const label=`${poster.id} at ${page.viewportSize().width}px`;
+  assert.ok(measured.button.width>0&&measured.button.height>0,label+' renders a nonzero surface');
+  assert.ok(Math.abs(measured.button.width/measured.button.height-poster.imageWidth/poster.imageHeight)<.005,label+' keeps original artwork aspect ratio');
+  for(const layer of ['card','button']) {
+    assert.deepEqual(measured[layer].padding,[0,0,0,0],label+' has no '+layer+' mat');
+    assert.deepEqual(measured[layer].border,[0,0,0,0],label+' has no '+layer+' border');
+  }
+  assert.equal(measured.card.background,'rgba(0, 0, 0, 0)',label+' has no outer white card');
+  assert.equal(measured.card.backgroundImage,'none');assert.equal(measured.card.shadow,'none');
+  for(const layer of ['button','media','image'])assert.deepEqual(measured[layer].radius,[radius,radius,radius,radius],label+' rounds '+layer+' itself');
+  assert.equal(measured.media.overflow,'hidden',label+' clips the loading/media wrapper at rounded corners');
+  assert.equal(measured.image.fit,'contain',label+' never crops packaging copy');
+  for(const layer of ['media','image'])for(const edge of ['left','top','width','height']) {
+    assert.ok(Math.abs(measured[layer][edge]-measured.button[edge])<.75,label+' fills image surface '+layer+'.'+edge);
+  }
+  assert.ok(Math.abs(measured.image.width/measured.image.height-measured.image.naturalWidth/measured.image.naturalHeight)<.005,label+' has no letterboxing');
+  return {id:poster.id,viewport:page.viewportSize().width,width:measured.image.width,height:measured.image.height,radius};
+}
+
 (async()=>{
   let browser;
   try {
-    assert.equal(manifest.version,'client1.3');
+    assert.equal(manifest.version,expectedVersion);
     for(const name of ['index.html','preview.js','preview.css']) {
       assert.equal(fs.readFileSync(path.join(publicDir,name),'utf8'),fs.readFileSync(path.join(__dirname,'../release',name),'utf8'),`Published ${name} must equal the reviewed release`);
     }
@@ -79,7 +119,7 @@ async function waitEnabled(locator) {await locator.waitFor();await locator.evalu
       assert.equal(manifest.files[item.productionTarget].sha256,item.sha256);
       assert.equal(sha(fs.readFileSync(path.join(publicDir,item.productionTarget))),item.sha256);
     }
-    record('production entrypoints and all eight cutouts match the reviewed manifest');
+    record(`production entrypoints and all ${featured.length} cutouts match the reviewed manifest`);
     await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
     const origin=`http://127.0.0.1:${server.address().port}`;
     browser=await chromium.launch({headless:true,executablePath:chrome});
@@ -89,26 +129,27 @@ async function waitEnabled(locator) {await locator.waitFor();await locator.evalu
     const page=await context.newPage();
     await openHome(page,origin);
     await waitEnabled(page.getByRole('button',{name:'退出登录',exact:true}));
-    assert.match(await page.title(),/client1\.2/);assert.doesNotMatch(await page.title(),/预览/);
+    assert.ok((await page.title()).includes(expectedVersion));assert.doesNotMatch(await page.title(),/预览/);
     assert.ok(requests.some(r=>r.pathname==='/api/session'));
     record('showroom-mode homepage verifies session and exposes enabled logout');
 
     const swatches=page.locator('.colour-swatches button');
-    assert.equal(await swatches.count(),8);
-    for(let i=0;i<8;i++) {
+    assert.equal(await swatches.count(),featured.length);
+    for(let i=0;i<featured.length;i++) {
       await swatches.nth(i).click();
       await page.waitForFunction(id=>document.querySelector('.poster-plane.center')?.dataset.posterId===id,featured[i].posterId);
       await page.locator('.poster-plane.center img').waitFor();
       await page.waitForFunction(()=>{const image=document.querySelector('.poster-plane.center img');return image&&image.complete&&image.naturalWidth>0;});
-      const src=new URL(await page.locator('.poster-plane.center img').getAttribute('src'),origin);
-      assert.equal(src.pathname,`/showroom/${featured[i].productionTarget}`);
+      const src=new URL(await page.locator('.poster-plane.center img').evaluate(image=>image.currentSrc||image.src),origin);
+      assert.match(src.pathname,new RegExp(`^/showroom/assets/featured/${featured[i].posterId}-(640|1024)\\.webp$`));
+      assert.ok(manifest.files[src.pathname.slice('/showroom/'.length)]);
       assert.equal(await swatches.nth(i).getAttribute('aria-pressed'),'true');
     }
-    record('all eight products render from protected assets/featured production paths');
+    record(`all ${featured.length} products render from protected optimized production paths`);
 
     await page.getByRole('button',{name:'关于客户端',exact:true}).click();
     const info=await page.locator('dialog[open]').innerText();
-    assert.match(info,/client1\.2/);assert.match(info,/38/);assert.doesNotMatch(info,/设计预览|尚未替换线上|design preview/i);
+    assert.ok(info.includes(expectedVersion));assert.ok(info.includes(`${posters.length} 张`));assert.doesNotMatch(info,/设计预览|尚未替换线上|design preview/i);
     await page.getByRole('button',{name:'关闭',exact:true}).click();
     await page.locator('.colour-language').click();
     await page.getByRole('button',{name:'About the client',exact:true}).click();
@@ -133,10 +174,29 @@ async function waitEnabled(locator) {await locator.waitFor();await locator.evalu
 
     await page.locator('.browse-collection').click();
     await waitEnabled(page.getByRole('button',{name:'退出登录',exact:true}));
-    assert.equal(await page.locator('.poster-grid article').count(),38);
+    assert.equal(await page.locator('.poster-grid article').count(),posters.length);
     await page.waitForLoadState('networkidle');
     assert.doesNotMatch(await page.locator('footer').innerText(),/设计预览|Design preview/);
-    record('full library retains 38 posters and production logout');
+    record(`full library retains ${posters.length} posters and production logout`);
+
+    const shapeSamples=[posters.find(p=>p.imageWidth/p.imageHeight>1.1),posters.find(p=>p.imageWidth/p.imageHeight<.9)];
+    assert.ok(shapeSamples.every(Boolean),'collection must include landscape and portrait regression samples');
+    const geometry=[];
+    for(const poster of shapeSamples) {
+      geometry.push(await checkUnmattedPoster(page,poster,24));
+      await posterCard(page,poster).getByRole('button',{name:'收藏',exact:true}).click();
+    }
+    await page.getByRole('button',{name:/^我的收藏/}).click();
+    assert.equal(await page.locator('.poster-grid article').count(),shapeSamples.length);
+    for(const poster of shapeSamples)geometry.push(await checkUnmattedPoster(page,poster,24));
+    await page.setViewportSize({width:390,height:844});
+    for(const poster of shapeSamples)geometry.push(await checkUnmattedPoster(page,poster,20));
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    await page.getByRole('button',{name:'发现灵感',exact:true}).click();
+    assert.equal(await page.locator('.poster-grid article').count(),posters.length);
+    for(const poster of shapeSamples)geometry.push(await checkUnmattedPoster(page,poster,20));
+    await page.setViewportSize({width:1440,height:900});
+    record('landscape and portrait artwork fills its own rounded surface in overview and favorites on desktop and mobile',geometry);
 
     sessionMode='unavailable';await openHome(page,origin);
     await page.getByRole('alert').waitFor();
@@ -183,7 +243,7 @@ async function waitEnabled(locator) {await locator.waitFor();await locator.evalu
 
     assert.deepEqual(report.unexpectedRequests,[]);assert.deepEqual(report.runtimeErrors,[]);
     const fetched=new Set(requests.map(r=>r.pathname));
-    for(const entry of featured)assert.ok(fetched.has('/showroom/'+entry.productionTarget));
+    for(const entry of featured)assert.ok([640,1024].some(size=>fetched.has(`/showroom/assets/featured/${entry.posterId}-${size}.webp`)));
     record('no runtime errors, external requests or unsupported resource paths');
     report.passed=true;
   } catch(error) {

@@ -1,9 +1,9 @@
 {
-  "version": "client1.4",
-  "sourceSha256": "761768499ef52e8f7f2d730d424895ab72144f9d792d8daf2dc4abde2ba03705",
+  "version": "client1.5",
+  "sourceSha256": "23c61b17eebfc6fa5662c061ee01f194050c591a9487db14a72d71f766af553c",
   "files": {
-    "index.html": "b65f738f28a597ae25be0363a54103d7101cacbf6876b021086f6efb1b2467ac",
-    "preview.js": "2e55c2db4fe0f635f9233a40f1fd3c10c11d81f8b9373a050ab654db83fa1d45",
-    "preview.css": "fc153a519d63235be11f93a2fab78fc27f0cf46732994fb32079d3463b261fda"
+    "index.html": "cf1e9b275db8ac197455a8db37bf8768f9e4c6b5002c839bc03f844e07f3c51d",
+    "preview.js": "7a53d514d4a71aa6028ca7344c71a263de2854591166829be96b2bc91ce8f47f",
+    "preview.css": "2fc2b564444e1d4d8296aec1c1dfc27ee6a0d3c43e0f9bc8dd59a70faca9176c"
   }
 }
