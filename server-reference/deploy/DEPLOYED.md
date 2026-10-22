@@ -1,4 +1,11 @@
 # 源泽包材库发布记录
+## client1.5 海报边框精简（2026-10-22 14:01:23 已上线）
+
+- 源码 `4a5ee3a2`；回执 `docs/client-motion-demo/client15-release.json`。去除总览/收藏外卡片及图片衬边，图片自身圆角和原比例，画廊去白边；23款/53张和全部素材保持。
+- 清单 `03169abf40456e88ff9784ed5e5036f83afb415c47467b07c5da37e57d4eaec6`；仅index.html/preview.js/preview.css及bundle清单变更；378项文件核对通过。
+- 6820个非展厅文件、登录清单、网关、服务PID2564528保持；无重启及业务数据写入。备份 `/opt/yuanze-reference/backups/client1.5-frameless-20261022`；回退须核对当前release/manifest并持部署锁，保留属主，仅交换展厅目录。
+- 三角色权限、匿名拒绝、正式入口与资源摘要、原图下载、登录视频Range及1440/393px真实浏览器核验通过。
+
 
 ## client1.2 连续滑动修复（2026-10-21 14:01:11 已上线）
 

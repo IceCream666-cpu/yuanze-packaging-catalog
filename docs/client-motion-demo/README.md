@@ -1,6 +1,6 @@
 # client1.5 · 满幅圆角海报
 
-2026-10-22：总览与收藏去除嵌套白框、衬底和阴影，图片自身圆角并按原比例完整显示；画廊同步去掉白边。保留23款精选、53张海报及全部功能。当前本地验证通过，待正式发布。
+2026-10-22：总览与收藏去除嵌套白框、衬底和阴影，图片自身圆角并按原比例完整显示；画廊同步去掉白边。保留23款精选、53张海报及全部功能。已于北京时间2026-10-22 14:01:23上线，源码 `4a5ee3a2`；[发布回执](client15-release.json)。正式入口、资源、权限及电脑/手机宽度验证通过。
 
 构建：`vite build --mode showroom`，根目录 `scripts/build_customer_showroom.py --edition client15 --stamp-client`，再运行 `scripts/build_customer_showroom.py --edition client15`。历史构建命令仅用于对应版本。
 

@@ -1,0 +1,60 @@
+{
+  "version": "client1.5",
+  "patch": "frameless-poster-surfaces",
+  "publishedAt": "2026-10-22T14:01:23+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "03169abf40456e88ff9784ed5e5036f83afb415c47467b07c5da37e57d4eaec6",
+  "backup": "/opt/yuanze-reference/backups/client1.5-frameless-20261022",
+  "verifiedFiles": 378,
+  "changed": [
+    "index.html",
+    "preview.css",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=2564528\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "status": "published-and-verified",
+  "sourceCommit": "4a5ee3a2cd599bd949d3904178dff0fb5e8ec926",
+  "onlineVerification": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-070.webp",
+      "assets/featured/poster-012-640.webp"
+    ],
+    "originalDownload": true,
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-22T14:02:30+08:00",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browser": {
+    "desktopWidth": 1440,
+    "phoneWidth": 393,
+    "allPosters": 53,
+    "imageRadius": [
+      24,
+      20
+    ],
+    "noFramePadding": true,
+    "noConsoleErrors": true,
+    "screenshots": [
+      "work/client15-frameless-20261022/online-desktop.png",
+      "work/client15-frameless-20261022/online-mobile.png"
+    ]
+  }
+}
