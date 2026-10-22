@@ -1,0 +1,566 @@
+{
+  "version": "client1.3",
+  "patch": "initial-loading-and-image-clarity",
+  "publishedAt": "2026-10-22T11:50:40+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "d646f3553203e730c31dffe455e380f200f56240bb155f83bec27a3cb814bf62",
+  "backup": "/opt/yuanze-reference/backups/client1.3-loading-20261022",
+  "verifiedFiles": 258,
+  "changed": [
+    "assets/optimized/poster-001-strip.webp",
+    "assets/optimized/poster-002-strip.webp",
+    "assets/optimized/poster-003-strip.webp",
+    "assets/optimized/poster-004-strip.webp",
+    "assets/optimized/poster-005-strip.webp",
+    "assets/optimized/poster-006-strip.webp",
+    "assets/optimized/poster-007-strip.webp",
+    "assets/optimized/poster-008-strip.webp",
+    "assets/optimized/poster-009-strip.webp",
+    "assets/optimized/poster-010-strip.webp",
+    "assets/optimized/poster-011-strip.webp",
+    "assets/optimized/poster-012-strip.webp",
+    "assets/optimized/poster-013-strip.webp",
+    "assets/optimized/poster-014-strip.webp",
+    "assets/optimized/poster-032-strip.webp",
+    "assets/optimized/poster-033-strip.webp",
+    "assets/optimized/poster-034-strip.webp",
+    "assets/optimized/poster-035-strip.webp",
+    "assets/optimized/poster-036-strip.webp",
+    "assets/optimized/poster-037-strip.webp",
+    "assets/optimized/poster-038-strip.webp",
+    "assets/optimized/poster-039-strip.webp",
+    "assets/optimized/poster-040-strip.webp",
+    "assets/optimized/poster-041-strip.webp",
+    "assets/optimized/poster-042-strip.webp",
+    "assets/optimized/poster-043-strip.webp",
+    "assets/optimized/poster-044-strip.webp",
+    "assets/optimized/poster-045-strip.webp",
+    "assets/optimized/poster-046-strip.webp",
+    "assets/optimized/poster-047-strip.webp",
+    "assets/optimized/poster-048-strip.webp",
+    "assets/optimized/poster-049-strip.webp",
+    "assets/optimized/poster-050-strip.webp",
+    "assets/optimized/poster-051-strip.webp",
+    "assets/optimized/poster-052-strip.webp",
+    "assets/optimized/poster-053-strip.webp",
+    "assets/optimized/poster-054-strip.webp",
+    "assets/optimized/poster-055-strip.webp",
+    "assets/optimized/yuanze-mark-compact.webp",
+    "index.html",
+    "preview.css",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=2564528\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "4435d09a075062fef9cc1662e453bf906ef01a5d",
+  "onlineVerification": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "assets/featured/poster-012-1024.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-013-1024.webp",
+      "assets/featured/poster-013-640.webp",
+      "assets/featured/poster-039-1024.webp",
+      "assets/featured/poster-039-640.webp",
+      "assets/featured/poster-042-1024.webp",
+      "assets/featured/poster-042-640.webp",
+      "assets/featured/poster-044-1024.webp",
+      "assets/featured/poster-044-640.webp",
+      "assets/featured/poster-047-1024.webp",
+      "assets/featured/poster-047-640.webp",
+      "assets/featured/poster-049-1024.webp",
+      "assets/featured/poster-049-640.webp",
+      "assets/featured/poster-051-1024.webp",
+      "assets/featured/poster-051-640.webp",
+      "assets/optimized/poster-001-strip.webp",
+      "assets/optimized/poster-002-strip.webp",
+      "assets/optimized/poster-003-strip.webp",
+      "assets/optimized/poster-004-strip.webp",
+      "assets/optimized/poster-005-strip.webp",
+      "assets/optimized/poster-006-strip.webp",
+      "assets/optimized/poster-007-strip.webp",
+      "assets/optimized/poster-008-strip.webp",
+      "assets/optimized/poster-009-strip.webp",
+      "assets/optimized/poster-010-strip.webp",
+      "assets/optimized/poster-011-strip.webp",
+      "assets/optimized/poster-012-strip.webp",
+      "assets/optimized/poster-013-strip.webp",
+      "assets/optimized/poster-014-strip.webp",
+      "assets/optimized/poster-032-strip.webp",
+      "assets/optimized/poster-033-strip.webp",
+      "assets/optimized/poster-034-strip.webp",
+      "assets/optimized/poster-035-strip.webp",
+      "assets/optimized/poster-036-strip.webp",
+      "assets/optimized/poster-037-strip.webp",
+      "assets/optimized/poster-038-strip.webp",
+      "assets/optimized/poster-039-strip.webp",
+      "assets/optimized/poster-040-strip.webp",
+      "assets/optimized/poster-041-strip.webp",
+      "assets/optimized/poster-042-strip.webp",
+      "assets/optimized/poster-043-strip.webp",
+      "assets/optimized/poster-044-strip.webp",
+      "assets/optimized/poster-045-strip.webp",
+      "assets/optimized/poster-046-strip.webp",
+      "assets/optimized/poster-047-strip.webp",
+      "assets/optimized/poster-048-strip.webp",
+      "assets/optimized/poster-049-strip.webp",
+      "assets/optimized/poster-050-strip.webp",
+      "assets/optimized/poster-051-strip.webp",
+      "assets/optimized/poster-052-strip.webp",
+      "assets/optimized/poster-053-strip.webp",
+      "assets/optimized/poster-054-strip.webp",
+      "assets/optimized/poster-055-strip.webp",
+      "assets/optimized/yuanze-mark-compact.webp",
+      "assets/previews/posters/poster-001-512.webp",
+      "assets/previews/posters/poster-002-512.webp",
+      "assets/previews/posters/poster-003-512.webp",
+      "assets/previews/posters/poster-004-512.webp",
+      "assets/previews/posters/poster-005-512.webp",
+      "assets/previews/posters/poster-006-512.webp",
+      "assets/previews/posters/poster-007-512.webp",
+      "assets/previews/posters/poster-008-512.webp",
+      "assets/previews/posters/poster-009-512.webp",
+      "assets/previews/posters/poster-010-512.webp",
+      "assets/previews/posters/poster-011-512.webp",
+      "assets/previews/posters/poster-012-512.webp",
+      "assets/previews/posters/poster-013-512.webp",
+      "assets/previews/posters/poster-014-512.webp",
+      "assets/previews/posters/poster-032-512.webp",
+      "assets/previews/posters/poster-033-512.webp",
+      "assets/previews/posters/poster-034-512.webp",
+      "assets/previews/posters/poster-035-512.webp",
+      "assets/previews/posters/poster-036-512.webp",
+      "assets/previews/posters/poster-037-512.webp",
+      "assets/previews/posters/poster-038-512.webp",
+      "assets/previews/posters/poster-039-512.webp",
+      "assets/previews/posters/poster-040-512.webp",
+      "assets/previews/posters/poster-041-512.webp",
+      "assets/previews/posters/poster-042-512.webp",
+      "assets/previews/posters/poster-043-512.webp",
+      "assets/previews/posters/poster-044-512.webp",
+      "assets/previews/posters/poster-045-512.webp",
+      "assets/previews/posters/poster-046-512.webp",
+      "assets/previews/posters/poster-047-512.webp",
+      "assets/previews/posters/poster-048-512.webp",
+      "assets/previews/posters/poster-049-512.webp",
+      "assets/previews/posters/poster-050-512.webp",
+      "assets/previews/posters/poster-051-512.webp",
+      "assets/previews/posters/poster-052-512.webp",
+      "assets/previews/posters/poster-053-512.webp",
+      "assets/previews/posters/poster-054-512.webp",
+      "assets/previews/posters/poster-055-512.webp"
+    ],
+    "originalDownload": true,
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-22T11:54:15+08:00",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "finalServer": {
+    "current": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "outside": "b103ebcb5cd261b0091b6fa9b88298c486a8a2e7cc7d49c87ac61e7b53cd64b8",
+    "count": 6820,
+    "manifest": "d646f3553203e730c31dffe455e380f200f56240bb155f83bec27a3cb814bf62",
+    "gateway": "fa42ab6621ab2ad04d539463fc8007a2a3d8d99f7c5b4167e37373c30988075f",
+    "service": "MainPID=2564528\nActiveState=active\n"
+  },
+  "performance": {
+    "conditions": {
+      "viewport": "393x852",
+      "dpr": 1,
+      "latency": 150,
+      "downloadBytesPerSecond": 200000,
+      "cache": "disabled"
+    },
+    "method": "Browser CDP emulation, cold cache; single before and two after featured samples. Transfer totals exclude HTML; no physical-device or field-metric claim.",
+    "featuredInitialBytesBefore": 850045,
+    "featuredInitialBytesAfter": 430824,
+    "gridInitialImageBytesBefore": 387750,
+    "gridInitialImageBytesAfter": 35402,
+    "gridFirstRequestMsBefore": 2214,
+    "gridFirstRequestMsAfter": 467,
+    "featuredBefore": [
+      {
+        "url": "preview.js",
+        "start": 723,
+        "end": 2038,
+        "duration": 1314,
+        "bytes": 101558
+      },
+      {
+        "url": "preview.css",
+        "start": 723,
+        "end": 1266,
+        "duration": 543,
+        "bytes": 9453
+      },
+      {
+        "url": "poster-012-640.webp",
+        "start": 723,
+        "end": 1924,
+        "duration": 1201,
+        "bytes": 75962
+      },
+      {
+        "url": "yuanze-mark.svg",
+        "start": 2048,
+        "end": 8714,
+        "duration": 6666,
+        "bytes": 297569
+      },
+      {
+        "url": "session",
+        "start": 2052,
+        "end": 5367,
+        "duration": 3315,
+        "bytes": 384
+      },
+      {
+        "url": "poster-039-640.webp",
+        "start": 2057,
+        "end": 7093,
+        "duration": 5036,
+        "bytes": 71380
+      },
+      {
+        "url": "poster-013-640.webp",
+        "start": 2057,
+        "end": 7445,
+        "duration": 5388,
+        "bytes": 101676
+      },
+      {
+        "url": "poster-051-640.webp",
+        "start": 2057,
+        "end": 6906,
+        "duration": 4849,
+        "bytes": 38752
+      },
+      {
+        "url": "poster-049-640.webp",
+        "start": 2057,
+        "end": 6912,
+        "duration": 4854,
+        "bytes": 37674
+      },
+      {
+        "url": "poster-042-640.webp",
+        "start": 2057,
+        "end": 6964,
+        "duration": 4907,
+        "bytes": 40522
+      },
+      {
+        "url": "poster-044-640.webp",
+        "start": 2057,
+        "end": 7475,
+        "duration": 5418,
+        "bytes": 19650
+      },
+      {
+        "url": "poster-047-640.webp",
+        "start": 2058,
+        "end": 7828,
+        "duration": 5770,
+        "bytes": 55116
+      },
+      {
+        "url": "favicon.ico",
+        "start": 8721,
+        "end": 9050,
+        "duration": 328,
+        "bytes": 349
+      }
+    ],
+    "featuredAfterSamples": [
+      [
+        {
+          "url": "preview.js",
+          "start": 3026,
+          "end": 4071,
+          "duration": 1045,
+          "bytes": 91085
+        },
+        {
+          "url": "preview.css",
+          "start": 3026,
+          "end": 3329,
+          "duration": 303,
+          "bytes": 9738
+        },
+        {
+          "url": "poster-012-640.webp",
+          "start": 3026,
+          "end": 3988,
+          "duration": 962,
+          "bytes": 75962
+        },
+        {
+          "url": "yuanze-mark-compact.webp",
+          "start": 4083,
+          "end": 4311,
+          "duration": 229,
+          "bytes": 5484
+        },
+        {
+          "url": "session",
+          "start": 4087,
+          "end": 4251,
+          "duration": 164,
+          "bytes": 384
+        },
+        {
+          "url": "poster-013-640.webp",
+          "start": 4087,
+          "end": 5128,
+          "duration": 1040,
+          "bytes": 101676
+        },
+        {
+          "url": "poster-047-640.webp",
+          "start": 4094,
+          "end": 4828,
+          "duration": 734,
+          "bytes": 55116
+        },
+        {
+          "url": "poster-039-640.webp",
+          "start": 4833,
+          "end": 5526,
+          "duration": 693,
+          "bytes": 71380
+        },
+        {
+          "url": "poster-044-640.webp",
+          "start": 5144,
+          "end": 5503,
+          "duration": 359,
+          "bytes": 19650
+        },
+        {
+          "url": "favicon.ico",
+          "start": 5528,
+          "end": 5691,
+          "duration": 164,
+          "bytes": 349
+        }
+      ],
+      [
+        {
+          "url": "preview.js",
+          "start": 166,
+          "end": 1212,
+          "duration": 1045,
+          "bytes": 91085
+        },
+        {
+          "url": "preview.css",
+          "start": 167,
+          "end": 470,
+          "duration": 304,
+          "bytes": 9738
+        },
+        {
+          "url": "poster-012-640.webp",
+          "start": 167,
+          "end": 1130,
+          "duration": 963,
+          "bytes": 75962
+        },
+        {
+          "url": "yuanze-mark-compact.webp",
+          "start": 1227,
+          "end": 1452,
+          "duration": 225,
+          "bytes": 5484
+        },
+        {
+          "url": "session",
+          "start": 1231,
+          "end": 1393,
+          "duration": 162,
+          "bytes": 384
+        },
+        {
+          "url": "poster-013-640.webp",
+          "start": 1234,
+          "end": 2278,
+          "duration": 1044,
+          "bytes": 101676
+        },
+        {
+          "url": "poster-047-640.webp",
+          "start": 1240,
+          "end": 1970,
+          "duration": 731,
+          "bytes": 55116
+        },
+        {
+          "url": "poster-039-640.webp",
+          "start": 1975,
+          "end": 2666,
+          "duration": 691,
+          "bytes": 71380
+        },
+        {
+          "url": "poster-044-640.webp",
+          "start": 2283,
+          "end": 2645,
+          "duration": 361,
+          "bytes": 19650
+        },
+        {
+          "url": "favicon.ico",
+          "start": 2668,
+          "end": 2824,
+          "duration": 157,
+          "bytes": 349
+        }
+      ]
+    ],
+    "gridBefore": [
+      {
+        "url": "poster-051-1280.webp",
+        "start": 99903,
+        "end": 102117,
+        "duration": 2214,
+        "bytes": 58772
+      },
+      {
+        "url": "poster-042-1280.webp",
+        "start": 99903,
+        "end": 102388,
+        "duration": 2485,
+        "bytes": 93612
+      },
+      {
+        "url": "poster-044-1280.webp",
+        "start": 99903,
+        "end": 102634,
+        "duration": 2731,
+        "bytes": 70670
+      },
+      {
+        "url": "poster-052-1280.webp",
+        "start": 99903,
+        "end": 102658,
+        "duration": 2755,
+        "bytes": 72536
+      },
+      {
+        "url": "poster-047-1280.webp",
+        "start": 99903,
+        "end": 102733,
+        "duration": 2830,
+        "bytes": 92160
+      }
+    ],
+    "gridAfter": [
+      {
+        "url": "poster-051-512.webp",
+        "start": 104778,
+        "end": 105245,
+        "duration": 467,
+        "bytes": 14858
+      },
+      {
+        "url": "poster-042-512.webp",
+        "start": 104793,
+        "end": 105269,
+        "duration": 476,
+        "bytes": 20544
+      }
+    ],
+    "afterNavigationRepeat": [
+      {
+        "responseStart": 156.6000000089407,
+        "responseEnd": 161.5,
+        "dom": 1222.9000000059605
+      }
+    ],
+    "retinaPhone": {
+      "width": 393,
+      "dpr": 3,
+      "overflow": false,
+      "images": [
+        {
+          "ready": "true",
+          "failed": "false",
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-012-1024.webp",
+          "display": 290
+        },
+        {
+          "ready": "true",
+          "failed": "false",
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-013-1024.webp",
+          "display": 290
+        },
+        {
+          "ready": "true",
+          "failed": "false",
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-039-1024.webp",
+          "display": 290
+        },
+        {
+          "ready": "false",
+          "failed": "false",
+          "src": "",
+          "display": 290
+        },
+        {
+          "ready": "false",
+          "failed": "false",
+          "src": "",
+          "display": 290
+        },
+        {
+          "ready": "false",
+          "failed": "false",
+          "src": "",
+          "display": 290
+        },
+        {
+          "ready": "true",
+          "failed": "false",
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-044-1024.webp",
+          "display": 290
+        },
+        {
+          "ready": "true",
+          "failed": "false",
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-047-1024.webp",
+          "display": 290
+        }
+      ]
+    }
+  },
+  "localVerification": {
+    "allSuitesPassed": true,
+    "rootTests": 176,
+    "backendTests": 251,
+    "deploymentTests": 32,
+    "clientTests": 38,
+    "loginTests": 12,
+    "failureRecovery": "Blocked first featured media in browser, observed retry label, unblocked and clicked retry: clear image restored.",
+    "hdZoom": "200% requested original 1448 x 1086 image in local and public mobile browser",
+    "layout": "Desktop and 393px mobile grid, gallery and featured checked; DPR3 no horizontal overflow"
+  },
+  "limitations": [
+    "Network measurements are lab samples and vary with HTML response and network conditions.",
+    "Mobile viewport and device pixel ratio emulation do not establish physical Safari performance."
+  ]
+}

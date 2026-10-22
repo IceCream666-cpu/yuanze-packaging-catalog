@@ -350,3 +350,9 @@ Caddy 实际运行用户执行强制配置检查：`/usr/local/lib/yuanze/releas
 - 本机公网 `https://bmt.yuanzebeauty.com/login` 请求连接重置（curl 35），不能把服务器网关验证当成公网浏览器或实体手机文件保存验证。
 
 补充验证：本机经公网 `https://8.134.220.216` 实测员工、管理员、客户登录及图片附件下载全部通过；客户包材、海报、公司照片和证书下载可用，原图／后台越权请求被拒绝，退出后会话失效。报告：`work/image-download-20261007/public-ip-validation.json`。域名在本机连接重置仍未解决，实体手机文件保存和公网浏览器点击尚未验收。
+
+## 2026-10-22 client1.3 初次加载与清晰度补丁
+
+北京时间 11:50:40 在当前 `20261013-client-hd-v1` release 内持部署锁原子交换 `public/showroom`；3 个入口、39 个新衍生资源及清单为本次范围。258 个清单文件、96 项正式 HTTPS 入口/展示资源、原图下载及三角色权限验证通过。主服务 PID 2564528 未变，6820 个非展厅文件、登录清单及 Nginx 配置摘要保持；未重启、未写业务数据。
+
+源码 `4435d09a`，清单 `d646f3553203e730c31dffe455e380f200f56240bb155f83bec27a3cb814bf62`；回执 `docs/client-motion-demo/loading-clarity-release.json`；备份 `/opt/yuanze-reference/backups/client1.3-loading-20261022`。回退前必须核对 current release 和展厅清单仍匹配、持 `/opt/yuanze-reference/deploy.lock` 并保留 yuanze 属主，仅交换展厅目录。若已出现后续更新，先合并，不能用本备份覆盖其他电脑工作。
