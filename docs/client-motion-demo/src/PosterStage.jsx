@@ -1,13 +1,15 @@
-import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import FeaturedImage from './FeaturedImage.jsx';
+import {createFeaturedLoadQueue} from './featured-loading.js';
 import {Maximize2, MoveHorizontal} from 'lucide-react';
 import {shortestDelta, snapTarget, visibleItems, wrapIndex} from './carousel-model.js';
 import {createCarouselMotion, horizontalWheel, wheelSnap} from './carousel-motion.js';
 
 export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage, presentation = 'posters'}) {
-  const [firstImageReady, setFirstImageReady] = useState(false);
-  const imageReady = useCallback(() => setFirstImageReady(true), []);
   const products = presentation === 'products';
+  const [imageLoads, setImageLoads] = useState({});
+  const imageQueue = useRef(null);
+  if (!imageQueue.current) imageQueue.current = createFeaturedLoadQueue({ids: items.map(item => item.id), onChange: setImageLoads});
   const initial = Math.max(0, items.findIndex(p => p.id === selectedId));
   const [anchor, setAnchor] = useState(initial);
   const [width, setWidth] = useState(1000);
@@ -51,6 +53,10 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
   });
   const controller = motion.current;
 
+  useEffect(() => {
+    if (products) imageQueue.current.select(items[anchor]?.id);
+  }, [anchor, products]);
+
   useLayoutEffect(() => {paint(controller.state.position, !!controller.state.frame || controller.state.input);});
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
@@ -69,6 +75,7 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
       observer.disconnect(); media.removeEventListener('change', update);
       document.removeEventListener('visibilitychange', inactive); window.removeEventListener('blur', inactive);
       clearTimeout(wheel.current.timer); controller.dispose();
+      imageQueue.current.dispose();
     };
   }, []);
 
@@ -144,16 +151,24 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
       {!products && <div className="stage-floor" aria-hidden="true"/>}
       {mounted.map(({poster,index}) => {
         const active = index === anchor;
+        const load = imageLoads[poster.id];
+        const retryable = products && active && load?.status === 'error';
         return <button key={poster.id} ref={node => {if(node) planes.current.set(poster.id,node);else planes.current.delete(poster.id);}}
           className={`poster-plane ${active ? 'center' : ''}`} tabIndex={active ? 0 : -1}
-          aria-label={`${lang === 'zh' ? (active ? '查看海报' : '选择海报') : (active ? 'View poster' : 'Select poster')}: ${poster.title[lang]}`}
+          aria-label={`${retryable ? (lang === 'zh' ? '重试图片' : 'Retry image') : lang === 'zh' ? (active ? '查看海报' : '选择海报') : (active ? 'View poster' : 'Select poster')}: ${poster.title[lang]}`}
           data-poster-id={poster.id} style={{'--ratio':poster.width/poster.height,aspectRatio:products ? undefined : `${poster.width} / ${poster.height}`}}
           onClick={() => {
             if (performance.now() < suppress.current) return;
+            if (retryable) {imageQueue.current.retry(poster.id); return;}
             if (index === wrapIndex(Math.round(controller.state.position),items.length)) latest.current.onOpen(poster);
             else controller.settle(controller.state.position + shortestDelta(index,controller.state.position,items.length));
           }}>
-          {products ? <FeaturedImage poster={poster} active={active} enabled={active || firstImageReady} onReady={imageReady} alt={poster.title[lang]}/> : <SafeImage src={poster.image} alt={poster.title[lang]} draggable="false" decoding="async"/>}
+          {products ? <FeaturedImage poster={poster} active={active} enabled={load?.enabled || false}
+            requestKey={load?.token || 1} onSettled={status => imageQueue.current.finish(poster.id, load?.token, status)}
+            alt={poster.title[lang]} lang={lang}/>
+            : <SafeImage src={poster.image} srcSet={poster.imageSrcSet} sizes={poster.gallerySizes}
+              enabled={Math.abs(shortestDelta(index, anchor, items.length)) <= 2}
+              alt={poster.title[lang]} draggable="false" decoding="async" loading={active ? 'eager' : 'lazy'} fetchPriority={active ? 'high' : 'low'}/>}
           {!products && <span className="expand-hint"><Maximize2 size={15}/>{lang === 'zh' ? '查看完整海报' : 'View full poster'}</span>}
         </button>;
       })}

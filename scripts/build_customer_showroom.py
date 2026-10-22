@@ -36,6 +36,8 @@ def client_source_hash(edition='client1'):
                client / 'vite.config.js', client / 'package.json', client / 'assets-manifest.json']
     if edition in MOTION_EDITIONS:
         sources += [client / 'featured-manifest.json', client / 'prepare-assets.py',
+                    client / 'display-derivatives.json', client / 'optimize-display-assets.py',
+                    *sorted((client / 'optimized-assets').glob('*')),
                     *sorted((client / 'featured-assets').glob('*')),
                     *sorted((client / 'featured-optimized').glob('*'))]
     digest = hashlib.sha256()
@@ -96,6 +98,46 @@ def featured_files(files, client):
             files[f'assets/featured/{name}'] = data
 
 
+def optimized_display_files(files, client):
+    """Validate every display derivative against an existing approved original."""
+    manifest = json.loads(source_file(client, 'display-derivatives.json').read_text())
+    if manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client-display-optimization':
+        raise ValueError('Invalid display derivative approval')
+    posters = files['product-posters.js'].decode()
+    catalogue = json.loads(posters[posters.index('{'):].strip().rstrip(';'))
+    ids = [item['id'] for item in catalogue['items']]
+    if len(ids) != 38 or len(set(ids)) != 38 or any(not re.fullmatch(r'poster-\d{3}', value) for value in ids):
+        raise ValueError('Display derivatives require the current 38 approved posters')
+    expected = {f'{poster_id}-strip.webp': ('filmstrip', f'assets/posters/{poster_id}.webp', poster_id)
+                for poster_id in ids}
+    expected['yuanze-mark-compact.webp'] = ('visible-logo', 'assets/yuanze-mark.svg', None)
+    entries = manifest.get('files', [])
+    names = [entry.get('productionTarget', '').removeprefix('assets/optimized/') for entry in entries]
+    if len(names) != len(expected) or set(names) != set(expected):
+        raise ValueError('Display derivatives must exactly match approved logo and posters')
+    for entry in entries:
+        name = entry['productionTarget'].removeprefix('assets/optimized/')
+        kind, original, poster_id = expected[name]
+        if (entry.get('kind') != kind or entry.get('productionTarget') != f'assets/optimized/{name}'
+                or entry.get('file') != f'optimized-assets/{name}' or entry.get('approvedSource') != original
+                or entry.get('posterId') != poster_id):
+            raise ValueError('Invalid display derivative identity or path')
+        if hashlib.sha256(files.get(original, b'')).hexdigest() != entry.get('approvedSourceSha256'):
+            raise ValueError('Display derivative source checksum mismatch')
+        width, height = entry.get('width'), entry.get('height')
+        if (type(width) is not int or type(height) is not int or width < 1 or height < 1
+                or (kind == 'filmstrip' and max(width, height) != 192)
+                or (kind == 'visible-logo' and ((width, height) != (152, 171) or entry.get('crop') != [1200, 264, 152, 171]))):
+            raise ValueError('Invalid display derivative dimensions')
+        data = source_file(client, entry['file']).read_bytes()
+        if len(data) != entry.get('bytes') or hashlib.sha256(data).hexdigest() != entry.get('sha256'):
+            raise ValueError('Display derivative checksum mismatch')
+        target = entry['productionTarget']
+        if target in files:
+            raise ValueError('Display derivatives cannot replace existing showroom files')
+        files[target] = data
+
+
 def client_files(files, edition='client1'):
     """Overlay reviewed entrypoints; preserve original media and validate derivatives."""
     client = client_directory(edition)
@@ -113,6 +155,8 @@ def client_files(files, edition='client1'):
         files[name] = data
     paths = json.loads((client / 'src/asset-paths.json').read_text())
     approved = json.loads((client / 'assets-manifest.json').read_text())
+    if edition in MOTION_EDITIONS:
+        optimized_display_files(files, client)
     for item in approved['files']:
         route = paths['/' + item['target']]
         if not route.startswith('/showroom/assets/') or '..' in route.split('/'):

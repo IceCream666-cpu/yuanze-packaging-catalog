@@ -25,7 +25,7 @@ test('client1.2 retains exactly the 38 approved poster identities and public fac
  assert.deepEqual(posters.map(p=>p.id).sort(),approved.items.map(p=>p.id).sort());
  assert.deepEqual(posters.map(p=>p.id).sort(),previous.map(p=>p.id).sort());
  for(const p of posters){
-  assert.deepEqual(Object.keys(p).sort(),['id','title','category','style','image','thumb','original','width','height'].sort());
+  assert.deepEqual(Object.keys(p).sort(),['id','title','category','style','image','thumb','original','width','height','smallImage','smallWidth','smallHeight','imageWidth','imageHeight','stripThumb','stripWidth','stripHeight'].sort());
   assert.deepEqual(Object.keys(p.title).sort(),['en','zh']);
   const source=approved.items.find(item=>item.id===p.id);
   assert.deepEqual(p.title,source.title);assert.equal(p.category,source.category);
@@ -35,8 +35,8 @@ test('client1.2 retains exactly the 38 approved poster identities and public fac
 });
 
 test('all copied images and logo match the approved deployment manifest and bytes',()=>{
- assert.equal(manifest.count,38);assert.equal(manifest.files.length,115);
- assert.equal(new Set(manifest.files.map(f=>f.target)).size,115);
+ assert.equal(manifest.count,38);assert.equal(manifest.files.length,192);
+ assert.equal(new Set(manifest.files.map(f=>f.target)).size,192);
  const declared=new Set(manifest.files.map(f=>f.target));
  const actual=readdirSync(resolve(base,'public/assets'),{recursive:true}).filter(p=>statSync(resolve(base,'public/assets',p)).isFile()).map(p=>`assets/${p}`);
  assert.deepEqual([...declared].sort(),actual.sort());
@@ -52,7 +52,7 @@ test('all copied images and logo match the approved deployment manifest and byte
   assert.equal(statSync(target).size,entry.bytes);
   assert.equal(assetPaths[`/${entry.target}`],`/showroom/${approvedPath}`);
  }
- for(const p of posters)for(const field of ['image','thumb','original'])assert.ok(declared.has(p[field].slice(1)));
+ for(const p of posters)for(const field of ['image','thumb','original','smallImage','stripThumb'])assert.ok(declared.has(p[field].slice(1)));
 });
 
 test('bilingual searches are case-insensitive, trimmed and restricted to public titles',()=>{

@@ -128,6 +128,162 @@
       "bytes": 890271,
       "sha256": "2efbf821064393cd7c0429b2fc4e5444c862dbc44d65431e20b32d93cfa283ac"
     },
+    "assets/optimized/poster-001-strip.webp": {
+      "bytes": 4762,
+      "sha256": "dc6fe7aecafdcab6089ec7331d236436ded7b3e0c1a39ae25a3adb28c1d006fd"
+    },
+    "assets/optimized/poster-002-strip.webp": {
+      "bytes": 4478,
+      "sha256": "ff21074590a77ccb01d34e011a0eee8d51744dd83ae35bab54ac48f7ce3332fd"
+    },
+    "assets/optimized/poster-003-strip.webp": {
+      "bytes": 4516,
+      "sha256": "2836a0a4141b7333a882042dc847e43385456115e35c02a8e67862bac09ae071"
+    },
+    "assets/optimized/poster-004-strip.webp": {
+      "bytes": 2762,
+      "sha256": "8fc6bb81c5f8f4e588fb306aa0bb8227f704260120a70394411eb9a2a7f8716f"
+    },
+    "assets/optimized/poster-005-strip.webp": {
+      "bytes": 5570,
+      "sha256": "bebb5d69470631deabb89c60ec0914d806f04d15312e6ea95de9dd80c1d22d92"
+    },
+    "assets/optimized/poster-006-strip.webp": {
+      "bytes": 3034,
+      "sha256": "0e33d71d7704d8bdc1585cde518ffbb2c251f305d5601b42df9ec4970621719c"
+    },
+    "assets/optimized/poster-007-strip.webp": {
+      "bytes": 1342,
+      "sha256": "cfde9a10f47cea2b0b206ce98e88ab2cedd9a5ded316ba65b91a02c03ee2f96d"
+    },
+    "assets/optimized/poster-008-strip.webp": {
+      "bytes": 5624,
+      "sha256": "a5184cbfd11e6bdc94e852816ae99c7170005068d3c50bf5e7f56ad70784f687"
+    },
+    "assets/optimized/poster-009-strip.webp": {
+      "bytes": 2942,
+      "sha256": "3bf258ae5ace9170f9156227ca1d471d2fa1aee85368b3ac15ce0f46c6a04098"
+    },
+    "assets/optimized/poster-010-strip.webp": {
+      "bytes": 6680,
+      "sha256": "ce243cec15b3a60c4c7a23a728cdd067a505429f321db91e4987ad3435f1319a"
+    },
+    "assets/optimized/poster-011-strip.webp": {
+      "bytes": 7442,
+      "sha256": "898b55f6734ad127f804b60a376bc534b2ff91d724f17a8df0d795bf90fcebe2"
+    },
+    "assets/optimized/poster-012-strip.webp": {
+      "bytes": 5038,
+      "sha256": "729989c8a417db10b968d8037ac36943964f07ecabe0027298a0740a2d1a5f9a"
+    },
+    "assets/optimized/poster-013-strip.webp": {
+      "bytes": 9094,
+      "sha256": "1d81bd60de2b2623bfc817efc81580c894dc4929d8d584d3702cd304e9fb270b"
+    },
+    "assets/optimized/poster-014-strip.webp": {
+      "bytes": 5570,
+      "sha256": "06086323cb909f3a998626a366d6c7b72cccc76ee6ee639d3c579cf39483a13f"
+    },
+    "assets/optimized/poster-032-strip.webp": {
+      "bytes": 2334,
+      "sha256": "7617085beb590173e43bc17301d71423223447b3fa5002d072d86e631c392660"
+    },
+    "assets/optimized/poster-033-strip.webp": {
+      "bytes": 1562,
+      "sha256": "addad74c3cbfc0cfdc957ce580086eb09d96c8ed204554aa3f1cd28602e072ea"
+    },
+    "assets/optimized/poster-034-strip.webp": {
+      "bytes": 3630,
+      "sha256": "e4008d6dbc66d65c7ab30ecb78015bc560f980818befdd5b1ef6508862654f4f"
+    },
+    "assets/optimized/poster-035-strip.webp": {
+      "bytes": 4592,
+      "sha256": "775c5792024522ba2dc30edcde19fb8881e4ba62909e206201f412007d73671f"
+    },
+    "assets/optimized/poster-036-strip.webp": {
+      "bytes": 3136,
+      "sha256": "6bf38904dd668749980f4f526f1273c217ee7f9c393a8f96478bd34af0f86776"
+    },
+    "assets/optimized/poster-037-strip.webp": {
+      "bytes": 5088,
+      "sha256": "35f4342b71685371dacf39187826a70e427111d77659645ca2d8c23f1c89b85d"
+    },
+    "assets/optimized/poster-038-strip.webp": {
+      "bytes": 2948,
+      "sha256": "be1ac0cc3816d649b51dc0cb7cc38b245b37786cf5bfbc86a77ecac655d6f74e"
+    },
+    "assets/optimized/poster-039-strip.webp": {
+      "bytes": 2832,
+      "sha256": "87e1a371f0e85427a1b47583e2bcf85ed817eb8a2765b782b92719d92a2a8006"
+    },
+    "assets/optimized/poster-040-strip.webp": {
+      "bytes": 7466,
+      "sha256": "a815380b5e7a4ecd4da2d6ddf37b2e3a04fc0bf156eb654c18d3721e3cc69c87"
+    },
+    "assets/optimized/poster-041-strip.webp": {
+      "bytes": 5626,
+      "sha256": "688287e4ae81a8693f0921e93b5dcf178cd8aecef21385ac5847fafe0d39d4fc"
+    },
+    "assets/optimized/poster-042-strip.webp": {
+      "bytes": 4454,
+      "sha256": "281938ec0dcd818a7dd47bbaac96ad4fcfcbe241d5b89631f989e2a6a1b88962"
+    },
+    "assets/optimized/poster-043-strip.webp": {
+      "bytes": 3718,
+      "sha256": "9bfc5479e1a548137fe2c2095f6f7da7e9de98869406862c897c5e9ae94c4150"
+    },
+    "assets/optimized/poster-044-strip.webp": {
+      "bytes": 4068,
+      "sha256": "d38cc867985ea479a77fed126e89c5d67f09988b283953a0a08d60db88cfb373"
+    },
+    "assets/optimized/poster-045-strip.webp": {
+      "bytes": 4032,
+      "sha256": "d2b39a81d810f4120552655411170315e7ce5a7233ccdfcc8e2060bb09c7625c"
+    },
+    "assets/optimized/poster-046-strip.webp": {
+      "bytes": 3210,
+      "sha256": "3851278c12430c9cedcfa2debb7373eb9a85cb10298fd09215ffd9ffe27eaac9"
+    },
+    "assets/optimized/poster-047-strip.webp": {
+      "bytes": 3534,
+      "sha256": "71190f599b5b583b6b7197944f2ee31b87471047f372dcd04774295f6980ee80"
+    },
+    "assets/optimized/poster-048-strip.webp": {
+      "bytes": 4850,
+      "sha256": "e09f53727981ed79651f4a261cb388587ddd41ccb06654a694025e67fcb93873"
+    },
+    "assets/optimized/poster-049-strip.webp": {
+      "bytes": 3702,
+      "sha256": "847676d7f7a61b40f4fd96cfe9c4d80e5b18811c40df91f47c9826a1cfc65dd5"
+    },
+    "assets/optimized/poster-050-strip.webp": {
+      "bytes": 4380,
+      "sha256": "8c89bb0c1ebb93d64b0a86c92375c2f9928bb368a995c0ab6a6e2e880b934447"
+    },
+    "assets/optimized/poster-051-strip.webp": {
+      "bytes": 3316,
+      "sha256": "95c1950751d0006e91cbce8cbd8256d8edfb390be23f09f3058791b6cefc89ff"
+    },
+    "assets/optimized/poster-052-strip.webp": {
+      "bytes": 4350,
+      "sha256": "9f6070c00c6f4470dcdf824750a71f248bb144b392812080e5a52501875b4ce5"
+    },
+    "assets/optimized/poster-053-strip.webp": {
+      "bytes": 4302,
+      "sha256": "76a1421c69a2c641aac07eeaa6473db7cb855a0e9326cb58ce44459d408d08b5"
+    },
+    "assets/optimized/poster-054-strip.webp": {
+      "bytes": 4188,
+      "sha256": "8602b28517aad1465b99013f05bc444293d05220b72d85deb8d95428e267bbe7"
+    },
+    "assets/optimized/poster-055-strip.webp": {
+      "bytes": 4410,
+      "sha256": "d6d23d4f84d4d89e7857741601b90f2bb52b33b329546896a075601c6bf2e7a5"
+    },
+    "assets/optimized/yuanze-mark-compact.webp": {
+      "bytes": 5184,
+      "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
+    },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
       "sha256": "2bd8465ff3d2cc329bcd2bdb40ae50c8d3dcbb612aefd57eace6ab1258dbb887"
@@ -861,16 +1017,16 @@
       "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 719,
-      "sha256": "1dd056d3058bb354bb6dc1fbbd25734135593a7ebba34c19f6190383d11cc2a1"
+      "bytes": 759,
+      "sha256": "1433899e9e47531c266aadae55cf2e6d49f647b26f9dedeb3c4ae5602b93ad29"
     },
     "preview.css": {
-      "bytes": 43700,
-      "sha256": "c97d94af466a2fc3b62bcf8b5b7e9514451657eae114ff4e2200deee1343fba2"
+      "bytes": 45178,
+      "sha256": "50b9fca3a38f47f7e209cab1f58823373df68c838c2202f55f8654f79684effa"
     },
     "preview.js": {
-      "bytes": 302473,
-      "sha256": "989d6331bce5522d08665c84158f969ab01819d38aa9b2702a0582620607eba1"
+      "bytes": 304676,
+      "sha256": "6317da555e9ce6dbcea1b1a916c5acd7975e2399a1f5057f0dedee7401ef3763"
     },
     "product-posters.js": {
       "bytes": 13769,

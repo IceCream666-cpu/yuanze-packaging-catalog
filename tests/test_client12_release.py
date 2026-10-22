@@ -1,12 +1,17 @@
 """client1.3 preserves reviewed cutouts in the authenticated showroom bundle."""
 import copy
+import base64
 import hashlib
 import importlib.util
+import io
 import json
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+import xml.etree.ElementTree as ET
+
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('motion_showroom_builder', ROOT / 'scripts/build_customer_showroom.py')
@@ -42,12 +47,15 @@ class MotionReleaseTests(unittest.TestCase):
         cls.previous = builder.expected_files(edition='client1')
         cls.current = builder.expected_files(edition='client13')
         cls.featured = json.loads((builder.MOTION_CLIENT / 'featured-manifest.json').read_text())
+        cls.display = json.loads((builder.MOTION_CLIENT / 'display-derivatives.json').read_text())
 
     def test_release_changes_only_entrypoints_and_adds_reviewed_display_derivatives(self):
         added = {item['productionTarget'] for item in self.featured['files']}
         self.assertEqual(len(added), 8)
         added |= {f"assets/featured/{entry['posterId']}-{size}.webp" for entry in self.featured['files'] for size in (640, 1024)}
         self.assertEqual(len(added), 24)
+        added |= {entry['productionTarget'] for entry in self.display['files']}
+        self.assertEqual(len(added), 63)
         self.assertEqual(set(self.current) - set(self.previous), added)
         self.assertEqual(set(self.previous) - set(self.current), set())
         changed = {name for name in self.previous if self.previous[name] != self.current[name]}
@@ -143,3 +151,83 @@ class MotionReleaseTests(unittest.TestCase):
                 with patch.object(builder, 'source_file', side_effect=lambda source, name: altered if name == 'src/featured-media.json' else original(source, name)):
                     with self.assertRaises(ValueError):
                         builder.featured_files(dict(self.previous), builder.MOTION_CLIENT)
+
+
+class DisplayDerivativeTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.previous = builder.expected_files(edition='client1')
+        cls.manifest = json.loads((builder.MOTION_CLIENT / 'display-derivatives.json').read_text())
+
+    def test_adds_only_39_small_derivatives_and_keeps_all_original_bytes(self):
+        files = dict(self.previous)
+        builder.optimized_display_files(files, builder.MOTION_CLIENT)
+        added = set(files) - set(self.previous)
+        self.assertEqual(len(added), 39)
+        self.assertEqual(added, {entry['productionTarget'] for entry in self.manifest['files']})
+        for name, data in self.previous.items():
+            self.assertEqual(files[name], data, name)
+        for entry in self.manifest['files']:
+            with Image.open(io.BytesIO(files[entry['productionTarget']])) as image:
+                self.assertEqual(image.format, 'WEBP')
+                self.assertEqual(image.size, (entry['width'], entry['height']))
+                if entry['kind'] == 'filmstrip':
+                    self.assertEqual(max(image.size), 192)
+
+    def test_compact_logo_has_the_exact_original_visible_pixels(self):
+        svg = ET.fromstring(self.previous['assets/yuanze-mark.svg'])
+        embedded = svg.find('{http://www.w3.org/2000/svg}image').get('href').split(',', 1)[1]
+        x, y, width, height = [int(value) for value in svg.get('viewBox').split()]
+        with Image.open(io.BytesIO(base64.b64decode(embedded))) as original, \
+                Image.open(builder.MOTION_CLIENT / 'optimized-assets/yuanze-mark-compact.webp') as compact:
+            expected = original.crop((x, y, x + width, y + height)).convert('RGBA')
+            self.assertEqual(compact.convert('RGBA').tobytes(), expected.tobytes())
+            self.assertLess((builder.MOTION_CLIENT / 'optimized-assets/yuanze-mark-compact.webp').stat().st_size, 10_000)
+
+    def test_rejects_modified_approval_identity_paths_hashes_and_dimensions(self):
+        mutations = [
+            lambda m: m.update(scope='unapproved'),
+            lambda m: m['files'].pop(),
+            lambda m: m['files'].append(copy.deepcopy(m['files'][0])),
+            lambda m: m['files'][0].update(productionTarget='assets/yuanze-mark.svg'),
+            lambda m: m['files'][0].update(file='../private.json'),
+            lambda m: m['files'][0].update(approvedSource='private.json'),
+            lambda m: m['files'][0].update(approvedSourceSha256='0' * 64),
+            lambda m: m['files'][0].update(sha256='0' * 64),
+            lambda m: m['files'][0].update(crop=[0, 0, 152, 171]),
+            lambda m: m['files'][1].update(posterId='poster-999'),
+            lambda m: m['files'][1].update(width=193),
+        ]
+        for index, mutate in enumerate(mutations):
+            with self.subTest(index=index), tempfile.TemporaryDirectory() as directory:
+                manifest = copy.deepcopy(self.manifest)
+                mutate(manifest)
+                altered = Path(directory) / 'display-derivatives.json'
+                altered.write_text(json.dumps(manifest))
+                original = builder.source_file
+                with patch.object(builder, 'source_file', side_effect=lambda source, name:
+                                  altered if name == 'display-derivatives.json' else original(source, name)):
+                    with self.assertRaises(ValueError):
+                        builder.optimized_display_files(dict(self.previous), builder.MOTION_CLIENT)
+
+    def test_derivatives_cannot_overwrite_any_existing_route(self):
+        files = dict(self.previous)
+        files[self.manifest['files'][0]['productionTarget']] = b'existing'
+        with self.assertRaisesRegex(ValueError, 'cannot replace'):
+            builder.optimized_display_files(files, builder.MOTION_CLIENT)
+
+    def test_responsive_metadata_and_routes_match_real_assets(self):
+        posters = json.loads((builder.MOTION_CLIENT / 'src/posters.json').read_text())
+        paths = json.loads((builder.MOTION_CLIENT / 'src/asset-paths.json').read_text())
+        files = dict(self.previous)
+        builder.optimized_display_files(files, builder.MOTION_CLIENT)
+        for poster in posters:
+            for field, width_field, height_field in [('image', 'imageWidth', 'imageHeight'),
+                    ('smallImage', 'smallWidth', 'smallHeight'), ('stripThumb', 'stripWidth', 'stripHeight')]:
+                route = paths[poster[field]].removeprefix('/showroom/')
+                with Image.open(io.BytesIO(files[route])) as image:
+                    self.assertEqual(image.size, (poster[width_field], poster[height_field]))
+                if field == 'smallImage':
+                    self.assertTrue(route.endswith('-512.webp'))
+                if field == 'stripThumb':
+                    self.assertEqual(route, f"assets/optimized/{poster['id']}-strip.webp")

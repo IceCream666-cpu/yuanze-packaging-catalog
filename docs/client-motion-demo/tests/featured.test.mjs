@@ -46,8 +46,7 @@ test('mobile display derivatives retain source identity and fit the first-screen
  let total=0;
  for(const [id,item] of Object.entries(media)){
   assert.equal(item.sourceSha256,manifest.files.find(p=>p.posterId===id).sha256);
-  assert.match(item.placeholder,/^data:image\/webp;base64,/);
-  assert.ok(Buffer.from(item.placeholder.split(',')[1],'base64').length<4000);
+  assert.equal('placeholder' in item,false,'tiny full-size placeholders must not ship in the client bundle');
   for(const size of ['640','1024']){
    const entry=item.files[size],file=readFileSync(resolve(base,entry.file));
    assert.equal(hash(resolve(base,entry.file)),entry.sha256);assert.equal(file.length,entry.bytes);

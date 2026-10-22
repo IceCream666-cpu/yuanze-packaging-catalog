@@ -1,0 +1,9 @@
+.responsive-media {display:block;position:relative;width:100%;height:100%;}
+.responsive-media > img {display:block;width:100%;height:100%;object-fit:contain;}
+.responsive-media .media-status {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:inherit;background:linear-gradient(125deg,#f1edeb,#f9f7f5);color:#645a5c;font-size:14px;padding:16px;text-align:center;}
+.responsive-media .media-status.is-error {cursor:pointer;}
+.filmstrip button .responsive-media {display:block;}
+.filmstrip .media-status {padding:3px;font-size:10px;}
+.lightbox-image .responsive-media {display:contents;}
+.lightbox-image {position:relative;}
+.lightbox-image .media-status {inset:24px;}

@@ -5,21 +5,73 @@ import React,{act} from 'react';
 import {createRoot} from 'react-dom/client';
 import FeaturedImage from '../src/FeaturedImage.jsx';
 
-test('complete placeholder remains until decode; inactive media waits, errors release the queue',async()=>{
+const poster={displayImage:'/1024.webp',displaySrcSet:'/640.webp 427w, /1024.webp 683w',displaySizes:'290px',placeholder:'data:image/webp;base64,AA',displayWidth:1024,displayHeight:1536};
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+
+async function setup(run){
  const dom=new JSDOM('<div id="root"></div>',{url:'http://localhost',pretendToBeVisual:true});
  Object.assign(globalThis,{window:dom.window,document:dom.window.document,IS_REACT_ACT_ENVIRONMENT:true});
- const root=createRoot(document.getElementById('root'));let done=0,decode;
- const poster={displayImage:'/1024.webp',displayMobile:'/640.webp',placeholder:'data:image/webp;base64,AA',displayWidth:1200,displayHeight:1200};
- const render=enabled=><FeaturedImage poster={poster} active={enabled} enabled={enabled} onReady={()=>done++} alt="Product"/>;
- try{
-  await act(async()=>root.render(render(false)));const image=document.querySelector('picture img');
-  assert.equal(image.getAttribute('src'),null);assert.equal(document.querySelector('source').getAttribute('srcset'),null);
-  assert.equal(document.querySelector('.featured-placeholder').style.opacity,'1');
-  await act(async()=>root.render(render(true)));assert.equal(document.querySelector('picture img'),image);
+ const root=createRoot(document.getElementById('root'));
+ try{await run(root);}finally{await act(async()=>root.unmount());dom.window.close();}
+}
+
+test('no low-resolution product is shown; a complete responsive image appears after decode',async()=>setup(async root=>{
+ let done=[],decode;
+ const render=(enabled,active=true)=><FeaturedImage poster={poster} active={active} enabled={enabled} requestKey={1} onSettled={value=>done.push(value)} alt="Product"/>;
+  await act(async()=>root.render(render(false)));
+  assert.equal(document.querySelector('picture img').getAttribute('src'),null);
+  assert.equal(document.querySelector('img[src^="data:"]'),null);
+  assert.ok(document.querySelector('.featured-loading-shape'));
+  const waitingImage=document.querySelector('picture img');
+  await act(async()=>root.render(render(true)));const image=document.querySelector('picture img');
+  assert.equal(image,waitingImage);
+  assert.equal(image.getAttribute('srcset'),poster.displaySrcSet);assert.equal(image.getAttribute('sizes'),'290px');
   image.decode=()=>new Promise(r=>decode=r);await act(async()=>image.dispatchEvent(new window.Event('load')));
-  assert.equal(image.style.opacity,'0');assert.equal(done,0);
-  await act(async()=>decode());assert.equal(image.style.opacity,'1');assert.equal(done,1);
-  assert.equal(document.querySelector('source').getAttribute('srcset'),'/640.webp');
-  await act(async()=>image.dispatchEvent(new window.Event('error')));assert.equal(done,2);
- }finally{await act(async()=>root.unmount());dom.window.close();}
-});
+  assert.equal(image.style.opacity,'0');assert.deepEqual(done,[]);
+  await act(async()=>root.render(render(true,false)));
+  assert.equal(document.querySelector('picture img'),image);assert.equal(image.getAttribute('src'),'/1024.webp');
+  assert.equal(image.getAttribute('fetchpriority'),'low');
+  await act(async()=>decode());assert.equal(image.style.opacity,'1');assert.deepEqual(done,['loaded']);
+  assert.equal(document.querySelector('.featured-loading'),null);
+}));
+
+test('failed media retries once, releases the queue and offers a recoverable failure instead of a mosaic',async()=>setup(async root=>{
+ const done=[];
+ const render=token=><FeaturedImage poster={poster} active enabled requestKey={token} retryDelay={0} onSettled={value=>done.push(value)} alt="Product" lang="zh"/>;
+ await act(async()=>root.render(render(1)));
+ const original=document.querySelector('picture img');
+ await act(async()=>original.dispatchEvent(new window.Event('error')));
+ await act(async()=>wait(5));
+ const retry=document.querySelector('picture img');
+ assert.notEqual(retry,original);assert.match(retry.getAttribute('src'),/media_retry=1-1/);
+ assert.equal(retry.getAttribute('srcset'),null);
+ await act(async()=>retry.dispatchEvent(new window.Event('error')));
+ assert.deepEqual(done,['error']);
+ assert.equal(document.querySelector('.featured-media').dataset.failed,'true');
+ assert.equal(document.querySelector('picture img').getAttribute('src'),null);
+ assert.match(document.querySelector('.featured-loading-label').textContent,/点击重试/);
+ assert.equal(document.querySelector('img[src^="data:"]'),null);
+ await act(async()=>root.render(render(2)));
+ const recovered=document.querySelector('picture img');recovered.decode=()=>Promise.resolve();
+ await act(async()=>recovered.dispatchEvent(new window.Event('load')));
+ assert.deepEqual(done,['error','loaded']);assert.equal(document.querySelector('.featured-media').dataset.ready,'true');
+}));
+
+test('a stalled request has a bounded lifetime and cannot hold the loading queue forever',async()=>setup(async root=>{
+ const done=[];
+ await act(async()=>root.render(<FeaturedImage poster={poster} active enabled requestKey={1} retryDelay={0} timeoutMs={10} onSettled={value=>done.push(value)} alt="Product"/>));
+ await act(async()=>wait(20));
+ await act(async()=>wait(20));
+ assert.deepEqual(done,['error']);assert.equal(document.querySelector('.featured-media').dataset.failed,'true');
+}));
+
+test('an old decode result cannot replace the state of a manual retry',async()=>setup(async root=>{
+ const done=[];let decode;
+ const render=token=><FeaturedImage poster={poster} active enabled requestKey={token} onSettled={value=>done.push(value)} alt="Product"/>;
+ await act(async()=>root.render(render(1)));
+ const original=document.querySelector('picture img');original.decode=()=>new Promise(resolve=>decode=resolve);
+ await act(async()=>original.dispatchEvent(new window.Event('load')));
+ await act(async()=>root.render(render(2)));
+ await act(async()=>decode());
+ assert.deepEqual(done,[]);assert.equal(document.querySelector('.featured-media').dataset.ready,'false');
+}));
