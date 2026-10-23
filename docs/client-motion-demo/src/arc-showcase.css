@@ -1,4 +1,4 @@
-/* client1.6: the product arc and its description share one view, with no frame around the artwork. */
+/* client1.7: the product arc and its description share one view, with no frame around the artwork. */
 .arc-experience .arc-hero {
   display:grid; grid-template-columns:minmax(280px, .82fr) minmax(0, 1.6fr);
   grid-template-areas:"info display" "actions display"; grid-template-rows:auto 1fr;

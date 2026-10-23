@@ -69,7 +69,7 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
   return <div className="colour-experience arc-experience">
     <header className="colour-header">
       <a href="#" className="colour-brand" aria-label={zh ? '源泽 · 精选展示' : 'Yuanze · Featured collection'} onClick={e => e.preventDefault()}><img src={logo} alt=""/><span>yuanze</span></a>
-      <span className="colour-tagline">A daily dose of delight.</span>
+      <span className="colour-tagline">{zh ? '源泽产品精选' : 'Selected by Yuanze'}</span>
       <nav className="colour-nav" aria-label={zh ? '主导航' : 'Main navigation'}>
         <button className="colour-favorites" onClick={onFavorites} aria-label={zh ? `我的收藏 ${favorites.length}` : `Favorites ${favorites.length}`}><Heart size={17}/>{favorites.length > 0 && <small>{favorites.length}</small>}</button>
         <button className="colour-language" onClick={onLanguage}>{zh ? 'EN' : '中文'}</button>
@@ -102,11 +102,11 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
           </div>
         </div>
         <div className="colour-product-actions">
-          <button className="colour-poster" onClick={() => onOpen(current)}>{zh ? '查看产品海报' : 'View product poster'}<ArrowUpRight size={24} strokeWidth={1}/></button>
+          <button className="colour-poster" onClick={() => onOpen(current)}>{current.id === 'poster-012' ? (zh ? '查看产品详情' : 'View product details') : (zh ? '查看产品海报' : 'View product poster')}<ArrowUpRight size={24} strokeWidth={1}/></button>
           <button className="colour-save" aria-label={favorites.includes(current.id) ? (zh ? '取消收藏' : 'Remove favorite') : (zh ? '收藏此款' : 'Save favorite')} aria-pressed={favorites.includes(current.id)} onClick={() => onFavorite(current.id)}><Heart size={19} strokeWidth={1.4} fill={favorites.includes(current.id) ? 'currentColor' : 'none'}/></button>
         </div>
       </div>
-      <div className="colour-collection-bar"><span>{zh ? '选择你的色彩' : 'Find your colour'}</span><div className="colour-swatch-picker"><div className="colour-swatches" ref={swatches} role="group" aria-label={zh ? `选择精选产品，共 ${items.length} 款` : `Choose from ${items.length} featured products`}>{items.map(p => <button key={p.id} onClick={() => choose(p.id)} aria-label={p.name} aria-pressed={p.id === current.id} title={p.name}><span><i style={{background:p.swatch[0]}}/><i style={{background:p.swatch[1]}}/></span></button>)}</div><span className="colour-position" aria-hidden="true">{String(currentIndex + 1).padStart(2, '0')} / {items.length}</span></div><button className="colour-play" disabled={reduced} aria-pressed={playing} onClick={() => setPlaying(!playing)} title={reduced ? (zh ? '已遵循系统减少动态效果设置' : 'Reduced motion is enabled') : undefined}>{playing ? <Pause size={22} strokeWidth={1}/> : <Play size={24} strokeWidth={1}/>}<span>{reduced ? (zh ? '已减少动态效果' : 'Reduced motion') : playing ? (zh ? '暂停轮播' : 'Pause slideshow') : (zh ? '自动轮播' : 'Auto play')}</span></button></div>
+      <div className="colour-collection-bar"><span>{zh ? '选择产品' : 'Choose a product'}</span><div className="colour-swatch-picker"><div className="colour-swatches" ref={swatches} role="group" aria-label={zh ? `选择精选产品，共 ${items.length} 款` : `Choose from ${items.length} featured products`}>{items.map(p => <button key={p.id} onClick={() => choose(p.id)} aria-label={p.name} aria-pressed={p.id === current.id} title={p.name}><span><i style={{background:p.swatch[0]}}/><i style={{background:p.swatch[1]}}/></span></button>)}</div><span className="colour-position" aria-hidden="true">{String(currentIndex + 1).padStart(2, '0')} / {items.length}</span></div><button className="colour-play" disabled={reduced} aria-pressed={playing} onClick={() => setPlaying(!playing)} title={reduced ? (zh ? '已遵循系统减少动态效果设置' : 'Reduced motion is enabled') : undefined}>{playing ? <Pause size={22} strokeWidth={1}/> : <Play size={24} strokeWidth={1}/>}<span>{reduced ? (zh ? '已减少动态效果' : 'Reduced motion') : playing ? (zh ? '暂停轮播' : 'Pause slideshow') : (zh ? '自动轮播' : 'Auto play')}</span></button></div>
     </main>
     <footer className="colour-footer"><span>Body · Face · Hair</span><div><button onClick={onInfo} aria-label={zh ? '关于客户端' : 'About the client'}><Info size={14}/></button><span>YUANZE Collection</span>{production && <button onClick={onSignOut} disabled={signingOut} aria-label={zh ? '退出登录' : 'Log out'}><LogOut size={15}/></button>}</div></footer>
   </div>;

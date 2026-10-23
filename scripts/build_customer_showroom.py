@@ -20,11 +20,15 @@ ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
 MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
-CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6'}
-MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16'))
-REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53)}
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6', 'client17': 'client1.7'}
+MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16', 'client17'))
+REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53), 'client17': (23, 53)}
 FEATURED_APPROVAL_VERSIONS = {'client12': 'client1.2', 'client13': 'client1.2',
-                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4'}
+                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4', 'client17': 'client1.4'}
+PACKAGING_EDITIONS = frozenset(('client16', 'client17'))
+PACKAGING_ASSETS = {'beach-magic-packaging.glb': 'model', 'gsap.min.js': 'animation',
+                    'ScrollTrigger.min.js': 'scroll-animation'}
+PACKAGING_CHUNK = re.compile(r'assets/packaging/[A-Za-z0-9_-]+-[A-Za-z0-9_-]{8,}\.(?:js|css)')
 
 
 def client_directory(edition):
@@ -35,7 +39,7 @@ def client_directory(edition):
 
 def client_source_hash(edition='client1'):
     client = client_directory(edition)
-    sources = [*sorted((client / 'src').glob('*')), client / 'index.html',
+    sources = [*sorted(path for path in (client / 'src').rglob('*') if path.is_file() or path.is_symlink()), client / 'index.html',
                client / 'vite.config.js', client / 'package.json', client / 'assets-manifest.json']
     if edition in MOTION_EDITIONS:
         sources += [client / 'featured-manifest.json', client / 'prepare-assets.py',
@@ -43,22 +47,125 @@ def client_source_hash(edition='client1'):
                     *sorted((client / 'optimized-assets').glob('*')),
                     *sorted((client / 'featured-assets').glob('*')),
                     *sorted((client / 'featured-optimized').glob('*'))]
+    if edition in PACKAGING_EDITIONS:
+        sources += [client / 'packaging-manifest.json',
+                    *(client / 'packaging-assets' / name for name in sorted(PACKAGING_ASSETS))]
     digest = hashlib.sha256()
     for path in sources:
-        digest.update(path.relative_to(client).as_posix().encode() + b'\0' + path.read_bytes())
+        name = path.relative_to(client).as_posix()
+        digest.update(name.encode() + b'\0' + source_file(client, name).read_bytes())
     return digest.hexdigest()
+
+
+def release_file_names(client, edition):
+    """Permit only reachable Vite outputs, never an arbitrary release directory."""
+    if edition not in PACKAGING_EDITIONS:
+        return set(CLIENT_ENTRYPOINTS)
+    release = client / 'release'
+    graph = json.loads(source_file(release, '.vite/manifest.json').read_text())
+    if not isinstance(graph, dict) or not graph or 'index.html' not in graph:
+        raise ValueError('Invalid packaging build graph')
+    if not isinstance(graph['index.html'], dict) or graph['index.html'].get('file') != 'preview.js' or graph['index.html'].get('isEntry') is not True:
+        raise ValueError('Invalid packaging build entrypoint')
+    names, seen, pending = {'index.html'}, set(), ['index.html']
+    while pending:
+        key = pending.pop()
+        if key in seen:
+            continue
+        node = graph.get(key)
+        if not isinstance(node, dict):
+            raise ValueError('Invalid packaging build dependency')
+        seen.add(key)
+        if node.get('isEntry') and key != 'index.html':
+            raise ValueError('Unexpected packaging build entrypoint')
+        output = node.get('file')
+        if (output != 'preview.js' and (not isinstance(output, str) or not PACKAGING_CHUNK.fullmatch(output))
+                or not isinstance(output, str) or not output.endswith('.js')):
+            raise ValueError('Invalid packaging build module path')
+        names.add(output)
+        css = node.get('css', [])
+        if not isinstance(css, list) or node.get('assets', []):
+            raise ValueError('Unexpected packaging build assets')
+        for name in css:
+            if not isinstance(name, str) or (name != 'preview.css' and not PACKAGING_CHUNK.fullmatch(name)) or not name.endswith('.css'):
+                raise ValueError('Invalid packaging build stylesheet path')
+            names.add(name)
+        for field in ('imports', 'dynamicImports'):
+            edges = node.get(field, [])
+            if not isinstance(edges, list) or any(not isinstance(key, str) for key in edges):
+                raise ValueError('Invalid packaging build dependencies')
+            pending.extend(edges)
+    if seen != set(graph) or not set(CLIENT_ENTRYPOINTS).issubset(names):
+        raise ValueError('Packaging build has unreachable modules or missing entrypoints')
+    actual = set()
+    for path in release.rglob('*'):
+        if path.is_symlink():
+            raise ValueError('Packaging release may not contain symlinks')
+        if path.is_file():
+            actual.add(path.relative_to(release).as_posix())
+    if actual - {'build.json', '.vite/manifest.json'} != names:
+        raise ValueError('Packaging release differs from its build graph')
+    return names
 
 
 def stamp_client_release(edition='client1'):
     client = client_directory(edition)
     files = {name: hashlib.sha256(source_file(client / 'release', name).read_bytes()).hexdigest()
-             for name in CLIENT_ENTRYPOINTS}
-    (client / 'release/build.json').write_text(json.dumps({
+             for name in sorted(release_file_names(client, edition))}
+    stamp = {
         'version': CLIENT_EDITIONS[edition], 'sourceSha256': client_source_hash(edition), 'files': files,
-    }, indent=2) + '\n')
+    }
+    if edition in PACKAGING_EDITIONS:
+        packaging_files({}, client)
+        stamp['viteManifestSha256'] = hashlib.sha256(source_file(client / 'release', '.vite/manifest.json').read_bytes()).hexdigest()
+    (client / 'release/build.json').write_text(json.dumps(stamp, indent=2) + '\n')
 
 
-def featured_files(files, client, edition='client16'):
+def packaging_files(files, client):
+    """Add the three explicitly reviewed model/animation assets, with fixed routes."""
+    manifest = json.loads(source_file(client, 'packaging-manifest.json').read_text())
+    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.6-packaging'
+            or manifest.get('posterId') != 'poster-012'
+            or manifest.get('components') != ['Jar', 'OuterCap', 'InnerLid']
+            or manifest.get('containsFormula') is not False):
+        raise ValueError('Invalid packaging approval')
+    entries = manifest.get('files', [])
+    if (not isinstance(entries, list) or len(entries) != len(PACKAGING_ASSETS)
+            or any(not isinstance(entry, dict) for entry in entries)
+            or {entry.get('name') for entry in entries} != set(PACKAGING_ASSETS)):
+        raise ValueError('Packaging approval must exactly match the reviewed assets')
+    for entry in entries:
+        name = entry['name']
+        target = f'assets/packaging/{name}'
+        if (entry.get('kind') != PACKAGING_ASSETS[name] or entry.get('file') != f'packaging-assets/{name}'
+                or entry.get('productionTarget') != target):
+            raise ValueError('Invalid packaging asset identity or path')
+        data = source_file(client, entry['file']).read_bytes()
+        if len(data) != entry.get('bytes') or hashlib.sha256(data).hexdigest() != entry.get('sha256'):
+            raise ValueError(f'Packaging asset checksum mismatch: {name}')
+        if target in files:
+            raise ValueError(f'Packaging asset cannot replace an existing file: {target}')
+        files[target] = data
+
+
+def prepare_packaging_assets(client):
+    """Use the production approval checks for the loopback preview as well."""
+    files = {}
+    packaging_files(files, client)
+    public = client / 'public'
+    for name in files:
+        parts = name.split('/')
+        if public.is_symlink() or any(public.joinpath(*parts[:index]).is_symlink()
+                                      for index in range(1, len(parts) + 1)):
+            raise ValueError('Packaging preview output may not contain symlinks')
+    for name, data in files.items():
+        destination = public / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data)
+    return len(files)
+
+
+def featured_files(files, client, edition='client17'):
     """Add the edition's complete approved set without replacing source posters."""
     manifest = json.loads(source_file(client, 'featured-manifest.json').read_text())
     approval_version = FEATURED_APPROVAL_VERSIONS[edition]
@@ -107,7 +214,7 @@ def featured_files(files, client, edition='client16'):
             files[f'assets/featured/{name}'] = data
 
 
-def optimized_display_files(files, client, edition='client16'):
+def optimized_display_files(files, client, edition='client17'):
     """Validate every display derivative against an existing approved original."""
     manifest = json.loads(source_file(client, 'display-derivatives.json').read_text())
     if manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client-display-optimization':
@@ -155,11 +262,16 @@ def client_files(files, edition='client1'):
     version = CLIENT_EDITIONS[edition]
     files = dict(files)
     stamp = json.loads(source_file(client / 'release', 'build.json').read_text())
-    if stamp.get('version') != version or set(stamp.get('files', {})) != set(CLIENT_ENTRYPOINTS):
+    if stamp.get('version') != version:
         raise ValueError(f'{version} release stamp has an invalid version or entrypoint set')
+    release_names = release_file_names(client, edition)
+    if set(stamp.get('files', {})) != release_names:
+        raise ValueError(f'{version} release stamp has an invalid version or entrypoint set')
+    if edition in PACKAGING_EDITIONS and stamp.get('viteManifestSha256') != hashlib.sha256(source_file(client / 'release', '.vite/manifest.json').read_bytes()).hexdigest():
+        raise ValueError(f'{version} build graph checksum mismatch')
     if stamp['sourceSha256'] != client_source_hash(edition):
         raise ValueError(f'{version} source changed: rebuild and stamp the release first')
-    for name in CLIENT_ENTRYPOINTS:
+    for name in sorted(release_names):
         data = source_file(client / 'release', name).read_bytes()
         if hashlib.sha256(data).hexdigest() != stamp['files'][name]:
             raise ValueError(f'{version} release checksum mismatch: {name}')
@@ -177,6 +289,8 @@ def client_files(files, edition='client1'):
             raise ValueError('Client media differs from reviewed showroom media')
     if edition in MOTION_EDITIONS:
         featured_files(files, client, edition)
+    if edition in PACKAGING_EDITIONS:
+        packaging_files(files, client)
     files.pop('bundle-manifest.json')
     bundle = {'schema': 1, 'source': client.relative_to(ROOT).as_posix(), 'version': version,
               'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
@@ -186,7 +300,14 @@ def client_files(files, edition='client1'):
 
 
 def source_file(source, name):
-    path = (source / name).resolve()
+    if (not isinstance(name, str) or '\\' in name or name.startswith('/')
+            or any(part in {'.', '..', ''} for part in name.split('/'))):
+        raise ValueError(f'Invalid showroom source: {name}')
+    candidate = source / name
+    parts = name.split('/')
+    if any(source.joinpath(*parts[:index]).is_symlink() for index in range(1, len(parts) + 1)):
+        raise ValueError(f'Invalid showroom source symlink: {name}')
+    path = candidate.resolve()
     if not path.is_relative_to(source.resolve()) or not path.is_file():
         raise ValueError(f'Invalid showroom source: {name}')
     return path
@@ -286,8 +407,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client16',
-                        help='client16 is current; older editions require their matching source and release stamp')
+    parser.add_argument('--edition', choices=('client17', 'client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client17',
+                        help='client17 is current; older editions require their matching source and release stamp')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()

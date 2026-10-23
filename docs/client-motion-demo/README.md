@@ -1,10 +1,14 @@
-# client1.6 · 弧形产品轮播
+# client1.7 · 弧形产品轮播
 
-2026-10-23：精选首页使用有前后纵深的弧形产品排列，左上角随当前产品更新名称、类目和既有介绍。保留23款精选、53张完整海报、原标志、收藏、高清查看/下载及原账号权限；总览、收藏和画廊继续沿用client1.5的简洁圆角。
+2026-10-23：精选首页采用有前后纵深的弧形排列，左上角随当前产品更新名称、类目和既有介绍；保留23款精选、53张海报及全部原有入口。同步整合另一台电脑已经发布的client1.6 Beach Magic三部件详情，保留按需模型加载、旋转、展开和原海报入口。
 
-**本地验证完成，待发布。** 1440/768/393/320px中英文逐项检查全部23款；未发现横向溢出或当前信息与居中产品不一致，切换时展台顶部位置保持。393/320px最终移动布局和模拟触控复查通过；连续正反横滑检查保留23个产品节点。全量验证通过，详见 [client16-verification.json](client16-verification.json)。上述浏览器模拟不替代实体Safari/触控板验收，帧采样含后台调度停顿，不作为FPS结论。
+**本地合并验证完成，待发布。** 合并后的client1.7已重新构建并通过全量检查：193项根测试、258项后端、32项部署、33项动效模型/20项DOM及既有前端和登录套件。1440/768/393/320px中英文各23款检查均无横向溢出、信息与居中产品匹配，展台顶部偏移为0；模拟触控和横向wheel检查通过。Beach Magic详情打开、手动展开、原海报往返和返回弧形展台均通过；六项模型相关资源与已发布client1.6摘要完全一致，未增删资源。详见 [client17-verification.json](client17-verification.json)，其中合并前证据独立保留。浏览器模拟不替代实体Safari/触控板验收，不作FPS结论。
 
-构建：`vite build --mode showroom`，根目录 `scripts/build_customer_showroom.py --edition client16 --stamp-client`，再运行 `scripts/build_customer_showroom.py --edition client16`。正式发布须另记录时间、清单摘要、线上资源/权限及回退依据。下面保留历史记录。
+构建：`vite build --mode showroom`，根目录 `scripts/build_customer_showroom.py --edition client17 --stamp-client`，再运行 `scripts/build_customer_showroom.py --edition client17`。正式发布另记录实际时间、清单摘要、线上资源/权限及回退依据。
+
+# client1.6 · Beach Magic 三部件详情
+
+2026-10-23 11:37:01已上线；源码 `122ce36a`，回执 [client16-release.json](client16-release.json)。Beach Magic支持无料体的旋盖、提拉内盖与透明罐身，详情、模型和动画脚本按需加载；保留23款精选、53张海报及原图、下载、收藏和权限。此正式记录属于三部件详情，不包含尚未发布的弧形轮播。
 
 # client1.5 · 满幅圆角海报
 

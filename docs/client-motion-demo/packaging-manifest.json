@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "scope": "approved-client1.6-packaging",
+  "posterId": "poster-012",
+  "components": [
+    "Jar",
+    "OuterCap",
+    "InnerLid"
+  ],
+  "containsFormula": false,
+  "files": [
+    {
+      "name": "beach-magic-packaging.glb",
+      "kind": "model",
+      "file": "packaging-assets/beach-magic-packaging.glb",
+      "productionTarget": "assets/packaging/beach-magic-packaging.glb",
+      "bytes": 2750324,
+      "sha256": "133e16571a1005e801e9dbdfc2a8faf5cd5bf10b61cb138acf287c1bcb709bd7"
+    },
+    {
+      "name": "gsap.min.js",
+      "kind": "animation",
+      "file": "packaging-assets/gsap.min.js",
+      "productionTarget": "assets/packaging/gsap.min.js",
+      "bytes": 72435,
+      "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+    },
+    {
+      "name": "ScrollTrigger.min.js",
+      "kind": "scroll-animation",
+      "file": "packaging-assets/ScrollTrigger.min.js",
+      "productionTarget": "assets/packaging/ScrollTrigger.min.js",
+      "bytes": 44157,
+      "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+    }
+  ]
+}

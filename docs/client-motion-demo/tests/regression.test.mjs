@@ -13,6 +13,7 @@ const json=path=>JSON.parse(readFileSync(path,'utf8'));
 const posters=json(resolve(base,'src/posters.json'));
 const previous=json(resolve(base,'../client-apple-demo/src/posters.json'));
 const manifest=json(resolve(base,'assets-manifest.json'));
+const packagingManifest=json(resolve(base,'packaging-manifest.json'));
 const assetPaths=json(resolve(base,'src/asset-paths.json'));
 const approvedBundle=json(resolve(root,'server-reference/public/showroom/bundle-manifest.json'));
 const raw=readFileSync(resolve(root,'server-reference/public/showroom/product-posters.js'),'utf8');
@@ -37,12 +38,22 @@ test('the approved collection grows without dropping previous poster identities 
  }
 });
 
-test('all copied images and logo match the approved deployment manifest and bytes',()=>{
+test('original poster assets and separately approved packaging assets match exactly their manifests and bytes',()=>{
  assert.equal(manifest.count,posters.length);assert.equal(manifest.files.length,posters.length*5+2);
  assert.equal(new Set(manifest.files.map(f=>f.target)).size,manifest.files.length);
  const declared=new Set(manifest.files.map(f=>f.target));
+ assert.equal(packagingManifest.schema,1);
+ assert.equal(packagingManifest.scope,'approved-client1.6-packaging');
+ assert.equal(packagingManifest.posterId,'poster-012');
+ assert.equal(packagingManifest.containsFormula,false);
+ assert.deepEqual(packagingManifest.components,['Jar','OuterCap','InnerLid']);
+ const packagingKinds={'beach-magic-packaging.glb':'model','gsap.min.js':'animation','ScrollTrigger.min.js':'scroll-animation'};
+ assert.deepEqual(packagingManifest.files.map(entry=>entry.name).sort(),Object.keys(packagingKinds).sort());
+ const packagingDeclared=new Set(packagingManifest.files.map(entry=>entry.productionTarget));
+ assert.equal(packagingDeclared.size,packagingManifest.files.length);
+ for(const target of packagingDeclared)assert.ok(!declared.has(target),'new packaging assets cannot overwrite original posters');
  const actual=readdirSync(resolve(base,'public/assets'),{recursive:true}).filter(p=>statSync(resolve(base,'public/assets',p)).isFile()).map(p=>`assets/${p}`);
- assert.deepEqual([...declared].sort(),actual.sort());
+ assert.deepEqual([...declared,...packagingDeclared].sort(),actual.sort());
  for(const entry of manifest.files){
   assert.match(entry.source,/^server-reference\/public\/showroom\/assets\//);
   assert.ok(!entry.source.split('/').includes('..'));assert.ok(!entry.target.split('/').includes('..'));
@@ -54,6 +65,16 @@ test('all copied images and logo match the approved deployment manifest and byte
   assert.equal(hash(source),gate.sha256,entry.source);assert.equal(hash(target),gate.sha256,entry.target);
   assert.equal(statSync(target).size,entry.bytes);
   assert.equal(assetPaths[`/${entry.target}`],`/showroom/${approvedPath}`);
+ }
+ for(const entry of packagingManifest.files){
+  assert.equal(entry.kind,packagingKinds[entry.name]);
+  assert.equal(entry.file,`packaging-assets/${entry.name}`);
+  assert.equal(entry.productionTarget,`assets/packaging/${entry.name}`);
+  const source=resolve(base,entry.file),target=resolve(base,'public',entry.productionTarget);
+  assert.equal(hash(source),entry.sha256,entry.file);
+  assert.equal(hash(target),entry.sha256,entry.productionTarget);
+  assert.equal(statSync(source).size,entry.bytes);
+  assert.equal(statSync(target).size,entry.bytes);
  }
  for(const p of posters)for(const field of ['image','thumb','original','smallImage','stripThumb'])assert.ok(declared.has(p[field].slice(1)));
 });
