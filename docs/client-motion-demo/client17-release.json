@@ -1,0 +1,156 @@
+{
+  "version": "client1.7",
+  "status": "published-and-verified",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "sourceCommit": "9b7add178bb633215110b0a1b833cb9704d05b5b",
+  "publication": {
+    "version": "client1.7",
+    "patch": "3d-product-arc-preserving-packaging",
+    "publishedAt": "2026-10-23T12:08:14+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "manifestSha256": "d781c15ad6a96bc7ee9d12d253a81ea682af382bd455301c63fc97255912e73e",
+    "backup": "/opt/yuanze-reference/backups/client1.7-arc-20261023",
+    "baselineManifestSha256": "aec39e01ed14460df5a9947fdd76d54c799b44a17abbf8ba06426311eb6f4e1b",
+    "verifiedFiles": 384,
+    "changed": [
+      "index.html",
+      "preview.css",
+      "preview.js",
+      "bundle-manifest.json"
+    ],
+    "removedObsoleteChunks": [],
+    "preservedPackaging": [
+      "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+      "assets/packaging/PackagingDetail-Dt1YKAYF.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/packaging-scene-uK9QnIWU.js"
+    ],
+    "outsideUnchanged": 6820,
+    "service": "MainPID=30976\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42"
+  },
+  "onlineVerification": {
+    "version": "client1.7",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-070.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+      "assets/packaging/PackagingDetail-Dt1YKAYF.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/packaging-scene-uK9QnIWU.js"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+        "bytes": 11100,
+        "sha256": "be2e92326f0f2f54b01341be151330af1cc6d94827dbc55ef370b520f3384285"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-Dt1YKAYF.css",
+        "bytes": 10318,
+        "sha256": "5660d7d4705d61c03f0c5a0ca7de0981a64b34d4a2cdbda0ce57336d6e286954"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2750324,
+        "sha256": "133e16571a1005e801e9dbdfc2a8faf5cd5bf10b61cb138acf287c1bcb709bd7"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-uK9QnIWU.js",
+        "bytes": 568995,
+        "sha256": "db41b80dad394e6aa82a06322070677398a13f0096ef4d923212b525ea8135eb"
+      }
+    ],
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2750324"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-23T12:09:37+08:00",
+    "manifestSha256": "d781c15ad6a96bc7ee9d12d253a81ea682af382bd455301c63fc97255912e73e",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browserVerification": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "version": "源泽 · 客户海报展厅 — client1.7",
+    "mobile": {
+      "width": 393,
+      "overflow": false,
+      "info": "poster-057",
+      "center": "poster-057"
+    },
+    "gallery": {
+      "count": 53,
+      "radius": "20px",
+      "overflow": false
+    },
+    "packaging": {
+      "canvas": true,
+      "status": null,
+      "overflow": false
+    },
+    "poster": {
+      "width": 1254,
+      "download": "/showroom/assets/posters/poster-012.webp?download=poster-012.webp"
+    },
+    "desktop": {
+      "width": 1440,
+      "checked": true
+    }
+  },
+  "localVerification": "client17-verification.json",
+  "screenshots": {
+    "desktop": "work/client17-arc-20261023/live-desktop.png",
+    "mobile": "work/client17-arc-20261023/live-mobile.png"
+  },
+  "preservation": {
+    "featuredProducts": 23,
+    "posters": 53,
+    "concurrentRelease": "client1.6 Beach Magic packaging detail",
+    "packagingResourcesUnchanged": 6,
+    "outsideFilesUnchanged": 6820,
+    "loginUnchanged": true,
+    "serviceRestart": false,
+    "businessDataWrites": 0
+  },
+  "limits": [
+    "Viewport, touch and wheel checks are browser simulations, not physical Safari/Mac trackpad or an FPS benchmark."
+  ]
+}

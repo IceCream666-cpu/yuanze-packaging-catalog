@@ -1,0 +1,65 @@
+/* client1.7: the product arc and its description share one view, with no frame around the artwork. */
+.arc-experience .arc-hero {
+  display:grid; grid-template-columns:minmax(280px, .82fr) minmax(0, 1.6fr);
+  grid-template-areas:"info display" "actions display"; grid-template-rows:auto 1fr;
+  gap:clamp(20px,3vw,48px); padding:54px var(--gutter) 32px;
+  align-items:start; flex:1;
+}
+.arc-experience .arc-information {display:block; padding:0; min-width:0; grid-area:info;}
+.arc-information h1 {font:600 clamp(24px,2.3vw,34px)/1.2 var(--ui-font); letter-spacing:-.035em; margin:0 0 40px;}
+.arc-information .colour-copy {max-width:none; min-height:280px;}
+.arc-information .colour-copy h2 {font-size:clamp(32px,3.7vw,60px); line-height:1.06; margin:0 0 20px; overflow-wrap:normal; text-wrap:balance;}
+.arc-information .colour-kind {font-size:18px; line-height:1.5; margin:0;}
+.arc-information .colour-description {font-size:17px; line-height:1.7; margin:16px 0 0; max-width:34ch;}
+.arc-product-facts {display:flex; flex-wrap:wrap; gap:18px 32px; margin:28px 0 0;}
+.arc-product-facts div {min-width:0;}
+.arc-product-facts dt {font-size:14px; line-height:1.5; opacity:.7;}
+.arc-product-facts dd {font-size:16px; line-height:1.5; margin:5px 0 0; font-weight:550;}
+.arc-hero > .colour-product-actions {grid-area:actions; display:flex; align-self:start; gap:14px; flex-wrap:wrap; margin:0; width:auto;}
+.arc-hero .colour-poster {order:0; min-height:56px; padding:14px 22px;}
+.arc-hero .colour-save {display:grid; order:1; width:48px; height:48px; flex-shrink:0;}
+.arc-experience .arc-display {grid-area:display; min-width:0; padding-top:8px;}
+.arc-experience .colour-carousel {margin:0; border:0; border-radius:0; background:transparent;}
+.arc-experience .product-stage-shell .gallery-stage {height:clamp(370px,40vw,570px); border-radius:0; perspective:1000px; perspective-origin:50% 50%;}
+.arc-experience .product-stage-shell .poster-plane {width:min(310px,40%); height:76%; top:59%; transform-origin:center; padding:0; border:0;}
+.arc-experience .product-stage-shell .poster-plane .featured-media {animation:none;}
+.arc-experience .arc-stage-controls {display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 4px 0;}
+.arc-stage-controls p {font-size:15px; margin:0; line-height:1.5; opacity:.75;}
+.arc-stage-controls .colour-arrows {margin:0; flex-shrink:0; gap:12px;}
+.arc-stage-controls .colour-arrows button {width:52px; height:52px;}
+.arc-experience .colour-collection-bar {margin-top:0; padding-top:18px; padding-bottom:18px;}
+.arc-copy-transition {animation:arc-copy-in 220ms ease-out both;}
+@keyframes arc-copy-in {from {opacity:.35; transform:translateY(6px);} to {opacity:1; transform:translateY(0);}}
+@media(min-width:1600px) {
+  .arc-experience .arc-hero {grid-template-columns:minmax(340px,.8fr) minmax(0,1.6fr); padding-top:72px;}
+}
+@media(max-width:1000px) {
+  .arc-experience .arc-hero {grid-template-columns:minmax(240px,.85fr) minmax(0,1.15fr); gap:18px; padding-top:38px;}
+  .arc-information h1 {font-size:26px; margin-bottom:28px;}
+  .arc-information .colour-copy h2 {font-size:36px;}
+  .arc-information .colour-copy {min-height:300px;}
+  .arc-information .colour-kind {font-size:16px;}
+  .arc-experience .product-stage-shell .gallery-stage {height:430px;}
+  .arc-experience .product-stage-shell .poster-plane {width:56%; height:70%; top:59%;}
+  .arc-stage-controls {flex-wrap:wrap;}
+  .arc-stage-controls .colour-arrows {margin-left:auto;}
+}
+@media(max-width:700px) {
+  .arc-experience .arc-hero {grid-template-columns:minmax(0,1fr); grid-template-areas:"info" "display" "actions"; grid-template-rows:auto; gap:12px; padding:24px var(--gutter) 22px;}
+  .arc-information h1 {font-size:20px; margin-bottom:18px;}
+  .arc-information .colour-copy {min-height:230px;}
+  .arc-information .colour-copy h2 {font-size:clamp(30px,8.2vw,44px); margin-bottom:12px; text-wrap:initial;}
+  .arc-information .colour-description {font-size:16px; margin-top:10px; max-width:none;}
+  .arc-product-facts {gap:14px 28px; margin-top:18px;}
+  .arc-product-facts dd {margin-top:2px; font-size:15px;}
+  .arc-hero > .colour-product-actions {margin-top:8px; gap:12px;}
+  .arc-hero .colour-poster {font-size:15px; min-height:48px; padding:12px 18px;}
+  .arc-experience .arc-display {padding-top:0;}
+  .arc-experience .product-stage-shell .gallery-stage {height:280px; margin-inline:calc(-1 * var(--gutter)); width:calc(100% + 2 * var(--gutter));}
+  .arc-experience .product-stage-shell .poster-plane {width:min(240px,62%); height:84%; top:56%;}
+  .arc-experience .arc-stage-controls {padding-top:0;}
+  .arc-stage-controls p {font-size:14px; max-width:18ch;}
+  .arc-stage-controls .colour-arrows button {width:48px; height:48px;}
+  .arc-experience .colour-collection-bar {padding-top:0;}
+}
+@media(prefers-reduced-motion:reduce) {.arc-copy-transition {animation:none;}}

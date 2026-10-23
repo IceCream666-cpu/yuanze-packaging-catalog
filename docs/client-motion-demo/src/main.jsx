@@ -21,6 +21,7 @@ import './mobile.css';
 import './presentation.css';
 import './media-loading.css';
 import './responsive-media.css';
+import './arc-showcase.css';
 
 // The preview is offline. Authentication remains the responsibility of the existing server.
 const production = import.meta.env.MODE === 'showroom';

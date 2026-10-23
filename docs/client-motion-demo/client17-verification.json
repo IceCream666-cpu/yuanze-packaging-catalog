@@ -1,0 +1,325 @@
+{
+  "version": "client1.7",
+  "date": "2026-10-23",
+  "status": "merged-local-verification-passed-pending-publication",
+  "scope": "Arc carousel merged with the already published client1.6 Beach Magic packaging detail.",
+  "currentMergedVerification": {
+    "status": "passed",
+    "date": "2026-10-23",
+    "build": {
+      "version": "client1.7",
+      "sourceSha256": "e5d9ee2a2459f564b4d6512d3d33ac68aa2b4beb680cbbc690255105358ff97c",
+      "releaseFileSha256": {
+        "assets/packaging/PackagingDetail-DDyvL9Kd.js": "be2e92326f0f2f54b01341be151330af1cc6d94827dbc55ef370b520f3384285",
+        "assets/packaging/PackagingDetail-Dt1YKAYF.css": "5660d7d4705d61c03f0c5a0ca7de0981a64b34d4a2cdbda0ce57336d6e286954",
+        "assets/packaging/packaging-scene-uK9QnIWU.js": "db41b80dad394e6aa82a06322070677398a13f0096ef4d923212b525ea8135eb",
+        "index.html": "2be4d04f4acfb945489956c7f70b0c1dcabb0b6196df30e08b9c57699f28b54d",
+        "preview.css": "eb009937be2c6cf961805d818e14fffbc9d20eeb59aa62a425fe6daa798da147",
+        "preview.js": "78fb4b4584cf185a0112883fb4615e7d06705757c342a58e14da0ad173ef9018"
+      },
+      "viteManifestSha256": "bdbea53d5da0ab9c3927ef1c0d6d8b5506d85f8cb925e9d367ec2c31769ce043",
+      "bundleManifestSha256": "d781c15ad6a96bc7ee9d12d253a81ea682af382bd455301c63fc97255912e73e",
+      "manifestResourceCount": 384
+    },
+    "automatedVerification": {
+      "evidence": "work/client17-arc-20261023/verify.log",
+      "result": "passed",
+      "rootTests": 193,
+      "backendTests": 258,
+      "deploymentTests": 32,
+      "legacyClientTests": 18,
+      "motionModelTests": 33,
+      "motionDomTests": 20,
+      "loginTests": 12,
+      "existingFrontendSuites": "passed",
+      "showroomAndLoginBundleChecks": "passed",
+      "gitDiffChecks": "passed"
+    },
+    "browserLayout": {
+      "evidence": "work/client17-arc-20261023/layout-checks.json",
+      "matrix": [
+        {
+          "width": 1440,
+          "lang": "zh",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 1440,
+          "lang": "en",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 768,
+          "lang": "zh",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 768,
+          "lang": "en",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 393,
+          "lang": "zh",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 393,
+          "lang": "en",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 320,
+          "lang": "zh",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        },
+        {
+          "width": 320,
+          "lang": "en",
+          "count": 23,
+          "stageTopSpread": 0,
+          "overflow": false,
+          "centerMatches": true
+        }
+      ]
+    },
+    "packagingIntegration": {
+      "evidence": "work/client17-arc-20261023/integration-browser.json",
+      "checks": {
+        "detailOpens": true,
+        "manualExpanded": true,
+        "posterRoundTrip": true,
+        "arcRetained": true
+      }
+    },
+    "simulatedInput": {
+      "evidence": "work/client17-arc-20261023/input-checks.json",
+      "checks": {
+        "wheel": {
+          "info": "poster-039",
+          "center": "poster-039"
+        },
+        "touch": {
+          "info": "poster-049",
+          "center": "poster-049",
+          "scrollY": 0
+        },
+        "emulated": true
+      }
+    },
+    "preservation": {
+      "featuredCount": 23,
+      "posterCount": 53,
+      "resourceAddedOrRemoved": false,
+      "packagingAssetsCompared": 6,
+      "packagingAssetHashesMatchPublishedClient16": true,
+      "comparisonSource": "52ef737:server-reference/public/showroom/bundle-manifest.json",
+      "originalMediaPreservation": "verified by full release guards"
+    },
+    "limits": [
+      "Browser viewport, touch and wheel emulation do not constitute physical Safari or Mac trackpad validation.",
+      "These checks do not establish device FPS or universal smoothness.",
+      "This record verifies the local merged build; production publication is pending."
+    ]
+  },
+  "previousArcOnlyEvidence": {
+    "note": "Historical pre-merge local checks only. The former local client1.6 label was superseded by the production packaging release. These results do not verify the merged client1.7 build.",
+    "record": {
+      "version": "client1.6",
+      "date": "2026-10-23",
+      "status": "local-verification-passed-pending-publication",
+      "scope": "Homepage 3D arc carousel with synchronized upper-left product information; existing 23 featured products and 53 posters retained.",
+      "build": {
+        "sourceSha256": "cd006eb3a4262590e1f695d07c07336dc2d7add56e7918ed0c06be203fcf4fb8",
+        "entrypointSha256": {
+          "index.html": "345baa808a9f9c911bcdf99febe400a1d2f07a93d8044e7e48ab298deb19f1ea",
+          "preview.js": "c141b0d48f853fb81ac072b4079a423931aec0e1e9f5cac0cb6585c28c349f86",
+          "preview.css": "5bd340286f7a2fc4234f2786434e6b5004bb6c46b0d12a71df5d9c442e6edc89"
+        },
+        "bundleManifestSha256": "1e376296b96f0f0fca81b3198b4f588d1ea2647fb3420a4c4b2713b8820815ee",
+        "manifestResourceCount": 378
+      },
+      "automatedVerification": {
+        "command": "NODE_BIN=<bundled-node> .venv/bin/python scripts/verify.py",
+        "result": "passed",
+        "rootTests": 181,
+        "backendTests": 251,
+        "deploymentTests": 32,
+        "legacyClientTests": 18,
+        "motionClientModelTests": 33,
+        "motionClientDomTests": 12,
+        "loginTests": 12,
+        "existingFrontendSuites": "passed",
+        "showroomBundleCheck": "passed",
+        "loginBundleCheck": "passed",
+        "gitDiffChecks": "passed",
+        "evidence": "work/client16-arc-20261023/verify.log"
+      },
+      "browserLayout": {
+        "evidence": "work/client16-arc-20261023/layout-checks.json",
+        "matrix": [
+          {
+            "width": 1440,
+            "language": "zh",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 1440,
+            "language": "en",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 768,
+            "language": "zh",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 768,
+            "language": "en",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 393,
+            "language": "zh",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 393,
+            "language": "en",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 320,
+            "language": "zh",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 320,
+            "language": "en",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          }
+        ]
+      },
+      "finalMobileLayout": {
+        "evidence": "work/client16-arc-20261023/mobile-final-checks.json",
+        "matrix": [
+          {
+            "width": 393,
+            "language": "zh",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 393,
+            "language": "en",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 320,
+            "language": "zh",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          },
+          {
+            "width": 320,
+            "language": "en",
+            "productsChecked": 23,
+            "horizontalOverflow": false,
+            "selectedProductMatchesCenter": true,
+            "stageTopSpreadPx": 0
+          }
+        ],
+        "simulatedTouch": {
+          "before": "poster-044",
+          "after": {
+            "active": "poster-047",
+            "center": "poster-047",
+            "scrollY": 0
+          }
+        }
+      },
+      "continuousMotion": {
+        "evidence": "work/client16-arc-20261023/motion-checks.json",
+        "forwardSelection": "poster-058",
+        "reverseSelection": "poster-051",
+        "retainedProductNodes": true,
+        "productNodeCount": 23,
+        "sampledFrames": 108,
+        "sampledSelectionMismatches": 0,
+        "finalCenter": "poster-044",
+        "finalInformation": "poster-044"
+      },
+      "preservation": {
+        "featuredCount": 23,
+        "posterCount": 53,
+        "approvedArtworkVersion": "client1.4",
+        "originalMediaBytePreservation": "covered by passing release guards",
+        "galleryFramelessStyling": "client1.5 retained",
+        "authenticationAndBackend": "not modified"
+      },
+      "limits": [
+        "Local browser checks use emulated viewport, touch and wheel input; they do not establish physical Safari or Mac trackpad behavior.",
+        "Motion frame samples included background scheduling gaps and are not an FPS benchmark or a universal smoothness claim.",
+        "This is a local verification record. No production publication or live authorization claim is made by this file."
+      ]
+    }
+  },
+  "productionBaseline": {
+    "version": "client1.6",
+    "scope": "Beach Magic three-part packaging detail",
+    "receipt": "client16-release.json"
+  },
+  "nextStep": "Publish only after current-server concurrency checks; record live resources, authorization and rollback verification separately."
+}

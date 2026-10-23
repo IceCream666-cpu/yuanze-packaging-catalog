@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {ArrowLeft, ArrowRight, ArrowUpRight, Heart, Info, LogOut, Pause, Play} from 'lucide-react';
 import PosterStage from './PosterStage.jsx';
+import {categories, styles} from './copy.js';
 
 export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse, onFavorites, onOpen, onInfo, onLanguage, lang, favorites, onFavorite, SafeImage, modalOpen, logo, production, onSignOut, signingOut}) {
   const [playing, setPlaying] = useState(false);
@@ -9,12 +10,15 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
   const [hidden, setHidden] = useState(document.hidden);
   const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [interacted, setInteracted] = useState(0);
+  const [visibleId, setVisibleId] = useState(selectedId);
   const swatches = useRef(null);
-  const current = items.find(p => p.id === selectedId) || items[0];
+  const current = items.find(p => p.id === visibleId) || items[0];
   const currentIndex = items.indexOf(current);
   const latest = useRef({items, selectedId, onSelect});
   latest.current = {items, selectedId, onSelect};
   const zh = lang === 'zh';
+  const category = categories.find(item => item[0] === current.category)?.[zh ? 1 : 2];
+  const style = styles.find(item => item[0] === current.style)?.[zh ? 1 : 2];
   useEffect(() => {
     const strip = swatches.current;
     if (!strip) return;
@@ -62,7 +66,7 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
     onBlurCapture: e => {if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);},
     onPointerDownCapture: () => setInteracted(n => n + 1)
   };
-  return <div className="colour-experience">
+  return <div className="colour-experience arc-experience">
     <header className="colour-header">
       <a href="#" className="colour-brand" aria-label={zh ? '源泽 · 精选展示' : 'Yuanze · Featured collection'} onClick={e => e.preventDefault()}><img src={logo} alt=""/><span>yuanze</span></a>
       <span className="colour-tagline">{zh ? '源泽产品精选' : 'Selected by Yuanze'}</span>
@@ -73,18 +77,35 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
       </nav>
     </header>
     <main className="colour-main">
-      <section className="colour-intro"><h1>Care in colour.</h1><p>{zh ? '身体、面部与头发护理系列。' : 'Body, face and hair care.'}<br/><span>{zh ? `拖动产品，探索 ${items.length} 款精选产品。` : `Drag to explore ${items.length} selected products.`}</span></p></section>
-      <div className="colour-carousel" {...interaction}>
-        <PosterStage items={items} selectedId={current.id} onSelect={choose} onOpen={onOpen} lang={lang} SafeImage={SafeImage} presentation="products"/>
-      </div>
-      <section className="colour-details">
-        <div className="colour-copy" aria-live={playing ? 'off' : 'polite'} aria-atomic="true"><h2>{current.name}</h2><p className="colour-kind">{current.kind[lang]}</p><p className="colour-description">{current.description[lang]}</p></div>
-        <div className="colour-product-actions">
-          <button className="colour-save" aria-label={favorites.includes(current.id) ? (zh ? '取消收藏' : 'Remove favorite') : (zh ? '收藏此款' : 'Save favorite')} aria-pressed={favorites.includes(current.id)} onClick={() => onFavorite(current.id)}><Heart size={19} strokeWidth={1.4} fill={favorites.includes(current.id) ? 'currentColor' : 'none'}/></button>
-          <button className="colour-poster" onClick={() => onOpen(current)}>{current.id === 'poster-012' ? (zh ? '查看产品详情' : 'View product details') : (zh ? '查看产品海报' : 'View product poster')}<ArrowUpRight size={24} strokeWidth={1}/></button>
-          <div className="colour-arrows"><button onClick={() => step(-1)} aria-label={zh ? '上一款' : 'Previous product'}><ArrowLeft size={21} strokeWidth={1.5}/></button><button onClick={() => step(1)} aria-label={zh ? '下一款' : 'Next product'}><ArrowRight size={21} strokeWidth={1.5}/></button></div>
+      <div className="arc-hero">
+        <section className="colour-details arc-information" aria-labelledby="featured-title">
+          <h1>Care in colour.</h1>
+          <div className="colour-copy" aria-live={playing ? 'off' : 'polite'} aria-atomic="true" data-product-id={current.id}>
+            <div className="arc-copy-transition" key={`${current.id}-${lang}`}>
+              <h2 id="featured-title">{current.name}</h2>
+              <p className="colour-kind">{current.kind[lang]}</p>
+              <p className="colour-description">{current.description[lang]}</p>
+              <dl className="arc-product-facts">
+                {category && <div><dt>{zh ? '产品类目' : 'Category'}</dt><dd>{category}</dd></div>}
+                {style && <div><dt>{zh ? '视觉风格' : 'Visual style'}</dt><dd>{style}</dd></div>}
+              </dl>
+            </div>
+          </div>
+        </section>
+        <div className="arc-display" {...interaction}>
+          <div className="colour-carousel">
+            <PosterStage items={items} selectedId={selectedId} onActiveChange={setVisibleId} onSelect={choose} onOpen={onOpen} lang={lang} SafeImage={SafeImage} presentation="products"/>
+          </div>
+          <div className="arc-stage-controls">
+            <p>{zh ? '左右拖动，发现下一款' : 'Drag to discover your next favourite'}</p>
+            <div className="colour-arrows"><button onClick={() => step(-1)} aria-label={zh ? '上一款' : 'Previous product'}><ArrowLeft size={21} strokeWidth={1.5}/></button><button onClick={() => step(1)} aria-label={zh ? '下一款' : 'Next product'}><ArrowRight size={21} strokeWidth={1.5}/></button></div>
+          </div>
         </div>
-      </section>
+        <div className="colour-product-actions">
+          <button className="colour-poster" onClick={() => onOpen(current)}>{current.id === 'poster-012' ? (zh ? '查看产品详情' : 'View product details') : (zh ? '查看产品海报' : 'View product poster')}<ArrowUpRight size={24} strokeWidth={1}/></button>
+          <button className="colour-save" aria-label={favorites.includes(current.id) ? (zh ? '取消收藏' : 'Remove favorite') : (zh ? '收藏此款' : 'Save favorite')} aria-pressed={favorites.includes(current.id)} onClick={() => onFavorite(current.id)}><Heart size={19} strokeWidth={1.4} fill={favorites.includes(current.id) ? 'currentColor' : 'none'}/></button>
+        </div>
+      </div>
       <div className="colour-collection-bar"><span>{zh ? '选择产品' : 'Choose a product'}</span><div className="colour-swatch-picker"><div className="colour-swatches" ref={swatches} role="group" aria-label={zh ? `选择精选产品，共 ${items.length} 款` : `Choose from ${items.length} featured products`}>{items.map(p => <button key={p.id} onClick={() => choose(p.id)} aria-label={p.name} aria-pressed={p.id === current.id} title={p.name}><span><i style={{background:p.swatch[0]}}/><i style={{background:p.swatch[1]}}/></span></button>)}</div><span className="colour-position" aria-hidden="true">{String(currentIndex + 1).padStart(2, '0')} / {items.length}</span></div><button className="colour-play" disabled={reduced} aria-pressed={playing} onClick={() => setPlaying(!playing)} title={reduced ? (zh ? '已遵循系统减少动态效果设置' : 'Reduced motion is enabled') : undefined}>{playing ? <Pause size={22} strokeWidth={1}/> : <Play size={24} strokeWidth={1}/>}<span>{reduced ? (zh ? '已减少动态效果' : 'Reduced motion') : playing ? (zh ? '暂停轮播' : 'Pause slideshow') : (zh ? '自动轮播' : 'Auto play')}</span></button></div>
     </main>
     <footer className="colour-footer"><span>Body · Face · Hair</span><div><button onClick={onInfo} aria-label={zh ? '关于客户端' : 'About the client'}><Info size={14}/></button><span>YUANZE Collection</span>{production && <button onClick={onSignOut} disabled={signingOut} aria-label={zh ? '退出登录' : 'Log out'}><LogOut size={15}/></button>}</div></footer>
