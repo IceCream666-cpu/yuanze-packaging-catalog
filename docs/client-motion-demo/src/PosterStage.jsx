@@ -67,8 +67,8 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
   }, [activeId]);
 
   useEffect(() => {
-    if (products) imageQueue.current.select(items[anchor]?.id);
-  }, [anchor, products]);
+    if (products) imageQueue.current.select(controller.state.input ? activeId : selectedId);
+  }, [activeId, selectedId, products]);
 
   useLayoutEffect(() => {paint(controller.state.position, !!controller.state.frame || controller.state.input);});
   useEffect(() => {
@@ -178,6 +178,8 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
             else controller.settle(controller.state.position + shortestDelta(index,controller.state.position,items.length));
           }}>
           {products ? <FeaturedImage poster={poster} active={active} enabled={load?.enabled || false}
+            urgent={poster.id === (controller.state.input ? activeId : selectedId)}
+            onTransferred={() => imageQueue.current.finish(poster.id, load?.token, 'downloaded')}
             requestKey={load?.token || 1} onSettled={status => imageQueue.current.finish(poster.id, load?.token, status)}
             alt={poster.title[lang]} lang={lang}/>
             : <SafeImage src={poster.image} srcSet={poster.imageSrcSet} sizes={poster.gallerySizes}

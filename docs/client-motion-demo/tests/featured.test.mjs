@@ -57,6 +57,8 @@ test('mobile display derivatives retain source identity and fit the first-screen
   assert.ok(item.files['640'].bytes<110000);
  }
  const initial=[0,1,-1,2,-2].map(offset=>featured[(offset+featured.length)%featured.length].id);
- assert.ok(initial.reduce((sum,id)=>sum+media[id].files['640'].bytes,0)<500000,'Current product and four neighbours retain the initial mobile resource budget');
- assert.ok(media['poster-012'].files['640'].bytes<80000);
+ assert.ok(initial.reduce((sum,id)=>sum+media[id].files['640'].bytes,0)<300000,'Current product and four neighbours fit the 300 KB mobile resource budget');
+ assert.ok(initial.reduce((sum,id)=>sum+media[id].files['1024'].bytes,0)<620000,'High-density screens retain the five-image 620 KB resource budget');
+ assert.ok(media['poster-012'].files['640'].bytes<65000);
+ assert.ok(media['poster-012'].files['1024'].bytes<130000,'The high-density first image fits within 130 KB');
 });

@@ -75,3 +75,63 @@ test('an old decode result cannot replace the state of a manual retry',async()=>
  await act(async()=>decode());
  assert.deepEqual(done,[]);assert.equal(document.querySelector('.featured-media').dataset.ready,'false');
 }));
+
+test('download completion releases a slot while the image is still decoding',async()=>setup(async root=>{
+ const events=[];let decode;
+ await act(async()=>root.render(<FeaturedImage poster={poster} active enabled
+   onTransferred={()=>events.push('downloaded')} onSettled={()=>events.push('loaded')} alt="Product"/>));
+ const img=document.querySelector('picture img');img.decode=()=>new Promise(resolve=>decode=resolve);
+ await act(async()=>img.dispatchEvent(new window.Event('load')));
+ assert.deepEqual(events,['downloaded']);assert.equal(img.style.opacity,'0');
+ await act(async()=>decode());assert.deepEqual(events,['downloaded','loaded']);assert.equal(img.style.opacity,'1');
+}));
+
+test('neighbours use the light image, retain it during a selected upgrade, and cancel unfinished upgrades',async()=>setup(async root=>{
+ const media={...poster,displayMobile:'/640.webp'};
+ const render=active=><FeaturedImage poster={media} active={active} enabled alt="Product"/>;
+ await act(async()=>root.render(render(false)));
+ const base=document.querySelector('picture img');assert.equal(base.getAttribute('src'),'/640.webp');
+ assert.equal(base.getAttribute('srcset'),null);base.decode=()=>Promise.resolve();
+ await act(async()=>base.dispatchEvent(new window.Event('load')));
+ await act(async()=>root.render(render(true)));
+ await act(async()=>wait(230));
+ const detail=document.querySelector('.featured-detail');assert.ok(detail);assert.equal(base.style.opacity,'1');
+ assert.equal(detail.style.opacity,'0');assert.equal(detail.getAttribute('srcset'),poster.displaySrcSet);
+ await act(async()=>root.render(render(false)));
+ assert.equal(document.querySelector('.featured-detail'),null);assert.equal(document.querySelector('picture img'),base);
+ await act(async()=>root.render(render(true)));await act(async()=>wait(230));
+ const finished=document.querySelector('.featured-detail');finished.decode=()=>Promise.resolve();
+ await act(async()=>finished.dispatchEvent(new window.Event('load')));
+ await act(async()=>root.render(render(false)));
+ assert.equal(document.querySelector('.featured-detail'),finished);assert.equal(finished.style.opacity,'1');
+}));
+
+test('mobile failure retries the approved light derivative instead of forcing a 1024 download',async()=>setup(async root=>{
+ await act(async()=>root.render(<FeaturedImage poster={{...poster,displayMobile:'/640.webp'}} active enabled
+   retryDelay={0} alt="Product"/>));
+ await act(async()=>document.querySelector('picture img').dispatchEvent(new window.Event('error')));
+ await act(async()=>wait(5));
+ assert.match(document.querySelector('picture img').getAttribute('src'),/^\/640.webp\?media_retry=/);
+}));
+
+test('an intermediate visual center does not upgrade ahead of the explicit target',async()=>setup(async root=>{
+ await act(async()=>root.render(<FeaturedImage poster={{...poster,displayMobile:'/640.webp'}} active urgent={false} enabled alt="Product"/>));
+ const base=document.querySelector('picture img');base.decode=()=>Promise.resolve();
+ await act(async()=>base.dispatchEvent(new window.Event('load')));await act(async()=>wait(230));
+ assert.equal(document.querySelector('.featured-detail'),null);assert.equal(base.getAttribute('fetchpriority'),'low');
+}));
+
+test('decode failure after transfer does not launch an uncounted retry; a hung valid image has a bounded fallback',async()=>setup(async root=>{
+ let transferred=0,done=[];
+ const render=key=><FeaturedImage poster={poster} active enabled requestKey={key} decodeTimeoutMs={10}
+   onTransferred={()=>transferred++} onSettled={state=>done.push(state)} alt="Product"/>;
+ await act(async()=>root.render(render(1)));
+ const broken=document.querySelector('picture img');broken.decode=()=>Promise.reject(new Error('bad decode'));
+ await act(async()=>broken.dispatchEvent(new window.Event('load')));
+ assert.deepEqual(done,['error']);assert.equal(broken.getAttribute('src'),null);assert.equal(transferred,1);
+ await act(async()=>root.render(render(2)));
+ const valid=document.querySelector('picture img');valid.decode=()=>new Promise(()=>{});
+ Object.defineProperties(valid,{complete:{value:true},naturalWidth:{value:640}});
+ await act(async()=>valid.dispatchEvent(new window.Event('load')));await act(async()=>wait(20));
+ assert.deepEqual(done,['error','loaded']);assert.equal(valid.style.opacity,'1');
+}));

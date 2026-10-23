@@ -20,7 +20,7 @@ test('failed active products retry through the existing parent button without a 
  try{
   await act(async()=>root.render(<Demo/>));
   const button=document.querySelector('[data-poster-id="p0"]');
-  assert.equal(document.querySelectorAll('.poster-plane picture img[src]').length,2);
+  assert.equal(document.querySelectorAll('.poster-plane picture img[src]').length,1);
   await act(async()=>button.querySelector('img').dispatchEvent(new window.Event('error')));
   await act(async()=>new Promise(resolve=>setTimeout(resolve,375)));
   await act(async()=>button.querySelector('img').dispatchEvent(new window.Event('error')));
@@ -28,9 +28,9 @@ test('failed active products retry through the existing parent button without a 
   assert.equal(button.querySelector('button'),null);
   await act(async()=>button.click());
   assert.equal(opened,0,'Retry must not open the poster modal');
-  // Both slots are occupied: retry waits and takes the first slot that completes.
-  const neighbour=document.querySelector('[data-poster-id="p1"] img');neighbour.decode=()=>Promise.resolve();
-  await act(async()=>neighbour.dispatchEvent(new window.Event('load')));
+  // Both neighbour slots were occupied; retry replaces the lower-priority
+  // unfinished source immediately rather than waiting for a neighbour.
+  assert.equal(document.querySelector('[data-poster-id="p7"] img').getAttribute('src'),null);
   const retry=button.querySelector('img');assert.equal(retry.getAttribute('src'),'/0.webp');retry.decode=()=>Promise.resolve();
   await act(async()=>retry.dispatchEvent(new window.Event('load')));
   assert.match(button.getAttribute('aria-label'),/^查看海报/);

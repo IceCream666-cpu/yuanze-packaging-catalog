@@ -18,7 +18,9 @@ for entry in manifest['files']:
         image = original.copy()
         image.thumbnail((size, size), Image.Resampling.LANCZOS)
         path = output / f"{entry['posterId']}-{size}.webp"
-        image.save(path, 'WEBP', quality=88, method=6)
+        # Preserve 640/1024 resolution and lossless alpha. Reviewed q82 encoding
+        # reduces first-screen transfer without changing approved PNG originals.
+        image.save(path, 'WEBP', quality=82, method=6)
         record['files'][str(size)] = {'file': str(path.relative_to(BASE)), 'bytes': path.stat().st_size,
             'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'width': image.width, 'height': image.height}
     records[entry['posterId']] = record

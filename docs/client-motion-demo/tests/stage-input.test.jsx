@@ -20,8 +20,12 @@ test('23 products keep continuous wheel/reverse, rapid keys, pause and filtered 
  const finish=async()=>{await act(async()=>{await new Promise(resolve=>setTimeout(resolve,135));});for(let i=0;i<100&&frames.size;i++)await frame();assert.equal(frames.size,0);};
  try{
   await act(async()=>root.render(<Demo/>));
-  const stage=document.querySelector('.gallery-stage'),images=[...stage.querySelectorAll('img')];const before=commits;
-  assert.equal(images.length,23);assert.equal(stage.querySelectorAll('img[src]').length,2,'More products do not increase simultaneous image requests');
+  const stage=document.querySelector('.gallery-stage'),planes=[...stage.querySelectorAll('.poster-plane')];
+  assert.equal(planes.length,23);assert.equal(stage.querySelectorAll('img[src]').length,1,'The initial product has the network to itself');
+  const firstImage=stage.querySelector('[data-poster-id="p0"] img');firstImage.decode=()=>Promise.resolve();
+  await act(async()=>firstImage.dispatchEvent(new window.Event('load')));
+  assert.equal(stage.querySelector('[data-poster-id="p0"] .featured-media').dataset.ready,'true');
+  const before=commits;
   assert.ok([...stage.querySelectorAll('.poster-plane')].filter(node=>node.style.visibility==='visible').length<=7);
   for(let f=0;f<40;f++){
    await act(async()=>{for(let j=0;j<4;j++)stage.dispatchEvent(new window.WheelEvent('wheel',{deltaX:6,deltaY:0,bubbles:true,cancelable:true}));});
@@ -29,7 +33,8 @@ test('23 products keep continuous wheel/reverse, rapid keys, pause and filtered 
   }
   await finish();assert.equal(selected,'p3');assert.equal(document.querySelector('.center').dataset.posterId,'p3');
   assert.ok(commits-before<12,`React committed ${commits-before} times during ${frameCount} animation frames`);
-  assert.deepEqual([...stage.querySelectorAll('img')],images,'featured images retain DOM identity and order');
+  assert.deepEqual([...stage.querySelectorAll('.poster-plane')],planes,'Product planes retain DOM identity and order');
+  assert.equal(stage.querySelector('[data-poster-id="p0"] img'),firstImage,'Fully decoded images retain their source and node');
   const afterForward=commits;
   for(let f=0;f<30;f++){
    await act(async()=>stage.dispatchEvent(new window.WheelEvent('wheel',{deltaX:-29.4,deltaY:0,bubbles:true,cancelable:true})));await frame();
@@ -43,11 +48,12 @@ test('23 products keep continuous wheel/reverse, rapid keys, pause and filtered 
   assert.equal(frames.size,0);assert.equal(document.querySelector('.center').dataset.posterId,'p6');
   await act(async()=>{for(let i=0;i<23;i++)stage.dispatchEvent(new window.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));});
   assert.equal(document.querySelector('.center').dataset.posterId,'p6','Expanded carousel wraps cleanly through the full collection');
-  assert.deepEqual([...stage.querySelectorAll('img')],images);
+  assert.deepEqual([...stage.querySelectorAll('.poster-plane')],planes);
+  assert.equal(stage.querySelector('[data-poster-id="p0"] img'),firstImage);
   await act(async()=>root.render(<Demo key="pair" list={items.slice(0,2)}/>));
   assert.equal(document.querySelectorAll('.poster-plane').length,2);
   assert.equal(document.querySelectorAll('.poster-plane[aria-hidden="false"]').length,1);
-  console.log(JSON.stringify({integration:'continuous_input',frames:frameCount,commits,forwardCommits:afterForward-before,imagesRetained:images.length}));
+  console.log(JSON.stringify({integration:'continuous_input',frames:frameCount,commits,forwardCommits:afterForward-before,productNodesRetained:planes.length,decodedImagesRetained:1}));
  }finally{await act(async()=>root.unmount());dom.window.close();}
  assert.equal(frames.size,0);
 });

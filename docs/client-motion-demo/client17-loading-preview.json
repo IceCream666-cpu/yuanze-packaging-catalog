@@ -1,0 +1,91 @@
+{
+  "version": "client1.7",
+  "status": "local-preview-awaiting-user-choice",
+  "deployed": false,
+  "baselineCommit": "eff0a0f7dcc8f72319f30b5d3589dbb528e19b50",
+  "previousVersionCommit": "52ef737a70bfab47aac3b06b32b0f37009f71932",
+  "condition": "3 alternating runs per version; loopback servers, gzip, 393x852 DPR3, 150ms latency, 200000B/s download, cache disabled",
+  "performance": {
+    "before": {
+      "medianFirstProductMs": 1814,
+      "medianFiveProductsMs": 4587,
+      "productImageBytes": 727382
+    },
+    "optimized": {
+      "medianFirstProductMs": 1523,
+      "medianFiveProductsMs": 2795,
+      "productImageBytes": 345668
+    }
+  },
+  "remoteSelectionCondition": "1440x1000 DPR2, 150ms latency, 60000B/s, cold cache; one sample each",
+  "remoteSelection": {
+    "before": {
+      "requestStartAfterClickMs": 3528.7,
+      "visibleAfterClickMs": 5288.1
+    },
+    "optimized": {
+      "requestStartAfterClickMs": 2.9,
+      "visibleAfterClickMs": 2338.1
+    }
+  },
+  "manifestSha256": "d63398462401ee7f0ac208bf061896ca1846008b7f9d5468444f0a92f54734a5",
+  "resourceCount": 384,
+  "changedResources": [
+    "assets/featured/poster-012-1024.webp",
+    "assets/featured/poster-012-640.webp",
+    "assets/featured/poster-013-1024.webp",
+    "assets/featured/poster-013-640.webp",
+    "assets/featured/poster-039-1024.webp",
+    "assets/featured/poster-039-640.webp",
+    "assets/featured/poster-042-1024.webp",
+    "assets/featured/poster-042-640.webp",
+    "assets/featured/poster-044-1024.webp",
+    "assets/featured/poster-044-640.webp",
+    "assets/featured/poster-047-1024.webp",
+    "assets/featured/poster-047-640.webp",
+    "assets/featured/poster-049-1024.webp",
+    "assets/featured/poster-049-640.webp",
+    "assets/featured/poster-051-1024.webp",
+    "assets/featured/poster-051-640.webp",
+    "assets/featured/poster-056-1024.webp",
+    "assets/featured/poster-056-640.webp",
+    "assets/featured/poster-057-1024.webp",
+    "assets/featured/poster-057-640.webp",
+    "assets/featured/poster-058-1024.webp",
+    "assets/featured/poster-058-640.webp",
+    "assets/featured/poster-059-1024.webp",
+    "assets/featured/poster-059-640.webp",
+    "assets/featured/poster-060-1024.webp",
+    "assets/featured/poster-060-640.webp",
+    "assets/featured/poster-061-1024.webp",
+    "assets/featured/poster-061-640.webp",
+    "assets/featured/poster-062-1024.webp",
+    "assets/featured/poster-062-640.webp",
+    "assets/featured/poster-063-1024.webp",
+    "assets/featured/poster-063-640.webp",
+    "assets/featured/poster-064-1024.webp",
+    "assets/featured/poster-064-640.webp",
+    "assets/featured/poster-065-1024.webp",
+    "assets/featured/poster-065-640.webp",
+    "assets/featured/poster-066-1024.webp",
+    "assets/featured/poster-066-640.webp",
+    "assets/featured/poster-067-1024.webp",
+    "assets/featured/poster-067-640.webp",
+    "assets/featured/poster-068-1024.webp",
+    "assets/featured/poster-068-640.webp",
+    "assets/featured/poster-069-1024.webp",
+    "assets/featured/poster-069-640.webp",
+    "assets/featured/poster-070-1024.webp",
+    "assets/featured/poster-070-640.webp",
+    "preview.css",
+    "preview.js"
+  ],
+  "unchanged": "All 53 original posters, all transparent PNG sources, all six packaging resources, auth, login, backend and database",
+  "previewUrls": {
+    "A_previous": "http://127.0.0.1:18916/client",
+    "B_currentBeforeFix": "http://127.0.0.1:18917/client",
+    "C_optimized": "http://127.0.0.1:18918/client"
+  },
+  "evidenceDirectory": "work/client17-loading-20261023",
+  "limitations": "Local Chromium emulation is not production field speed or physical iPhone/Safari/FPS verification."
+}
