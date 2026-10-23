@@ -4,8 +4,9 @@ import {createFeaturedLoadQueue} from './featured-loading.js';
 import {Maximize2, MoveHorizontal} from 'lucide-react';
 import {shortestDelta, snapTarget, visibleItems, wrapIndex} from './carousel-model.js';
 import {createCarouselMotion, horizontalWheel, wheelSnap} from './carousel-motion.js';
+import {productArc} from './product-arc.js';
 
-export default function PosterStage({items, selectedId, onSelect, onOpen, lang, SafeImage, presentation = 'posters'}) {
+export default function PosterStage({items, selectedId, onSelect, onActiveChange, onOpen, lang, SafeImage, presentation = 'posters'}) {
   const products = presentation === 'products';
   const indices = useMemo(() => new Map(items.map((item, index) => [item.id, index])), [items]);
   const [imageLoads, setImageLoads] = useState({});
@@ -22,7 +23,7 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
   const motion = useRef(null);
 
   function paint(position, moving) {
-    const {items, indices, products, stepWidth} = latest.current;
+    const {items, indices, products, stepWidth, width} = latest.current;
     stage.current?.classList.toggle('is-moving', moving);
     const nextAnchor = wrapIndex(Math.round(position), items.length);
     // React handles semantic/visible-window changes, never fractional animation frames.
@@ -31,15 +32,17 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
       const index = indices.get(id);
       const offset = shortestDelta(index, position, items.length), distance = Math.abs(offset);
       // Keep decoded image nodes stable, but avoid rewriting invisible far-away products every frame.
-      if (products && distance >= 3.3 && node.style.visibility === 'hidden') continue;
-      const scale = products ? 1 - Math.min(distance, 3.4) * .13 : Math.max(.62, 1 - distance * .16);
-      const turn = products ? Math.max(-18, Math.min(18, -offset * 6)) : Math.max(-14, Math.min(14, offset * -8));
-      const drift = products ? offset * 8 : Math.max(-9, Math.min(9, offset * 4));
+      if (products && distance >= 2.7 && node.style.visibility === 'hidden') continue;
+      const arc = products ? productArc(offset, width, items.length) : null;
+      const scale = Math.max(.62, 1 - distance * .16);
+      const turn = Math.max(-14, Math.min(14, offset * -8));
+      const drift = Math.max(-9, Math.min(9, offset * 4));
       // Hide circular-seam crossings before relocating the off-screen item.
-      const opacity = items.length === 2 ? Math.max(0, 1 - distance * 1.25)
-        : products ? Math.max(0, Math.min(1 - distance * .17, (3.3 - distance) * 2))
+      const opacity = arc ? arc.opacity : items.length === 2 ? Math.max(0, 1 - distance * 1.25)
         : Math.max(0, 1 - Math.max(0, distance - 1) * .6);
-      node.style.transform = `translate(-50%, -50%) translate3d(${offset * stepWidth}px,${distance * (products ? 21 : 16)}px,0) rotateY(${turn}deg) rotateZ(${drift}deg) scale(${scale})`;
+      node.style.transform = arc
+        ? `translate(-50%, -50%) translate3d(${arc.x}px,${arc.y}px,${arc.z}px) rotateY(${arc.rotateY}deg) scale(${arc.scale})`
+        : `translate(-50%, -50%) translate3d(${offset * stepWidth}px,${distance * 16}px,0) rotateY(${turn}deg) rotateZ(${drift}deg) scale(${scale})`;
       node.style.opacity = opacity;
       node.style.zIndex = 20 - Math.round(distance * 3);
       node.style.visibility = opacity < .001 ? 'hidden' : 'visible';
@@ -47,7 +50,7 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
       node.setAttribute('aria-hidden', String(distance > 2.5 || opacity < .1));
     }
   }
-  latest.current = {items, indices, products, stepWidth, onSelect, onOpen, paint};
+  latest.current = {items, indices, products, stepWidth, width, onSelect, onActiveChange, onOpen, paint};
   if (!motion.current) motion.current = createCarouselMotion({
     initial, length: items.length,
     now: () => performance.now(), requestFrame: fn => requestAnimationFrame(fn), cancelFrame: id => cancelAnimationFrame(id),
@@ -55,6 +58,13 @@ export default function PosterStage({items, selectedId, onSelect, onOpen, lang, 
     select: index => latest.current.onSelect(latest.current.items[index].id)
   });
   const controller = motion.current;
+  const activeId = items[anchor]?.id;
+
+  // Detail copy follows the product nearest the visual center, even before a
+  // drag settles. This notification never feeds a new target into the spring.
+  useEffect(() => {
+    if (activeId !== undefined) latest.current.onActiveChange?.(activeId);
+  }, [activeId]);
 
   useEffect(() => {
     if (products) imageQueue.current.select(items[anchor]?.id);

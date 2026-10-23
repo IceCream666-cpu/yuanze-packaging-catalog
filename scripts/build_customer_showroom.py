@@ -20,11 +20,11 @@ ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
 MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
-CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5'}
-MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15'))
-REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53)}
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6'}
+MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16'))
+REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53)}
 FEATURED_APPROVAL_VERSIONS = {'client12': 'client1.2', 'client13': 'client1.2',
-                             'client14': 'client1.4', 'client15': 'client1.4'}
+                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4'}
 
 
 def client_directory(edition):
@@ -58,7 +58,7 @@ def stamp_client_release(edition='client1'):
     }, indent=2) + '\n')
 
 
-def featured_files(files, client, edition='client15'):
+def featured_files(files, client, edition='client16'):
     """Add the edition's complete approved set without replacing source posters."""
     manifest = json.loads(source_file(client, 'featured-manifest.json').read_text())
     approval_version = FEATURED_APPROVAL_VERSIONS[edition]
@@ -107,7 +107,7 @@ def featured_files(files, client, edition='client15'):
             files[f'assets/featured/{name}'] = data
 
 
-def optimized_display_files(files, client, edition='client15'):
+def optimized_display_files(files, client, edition='client16'):
     """Validate every display derivative against an existing approved original."""
     manifest = json.loads(source_file(client, 'display-derivatives.json').read_text())
     if manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client-display-optimization':
@@ -286,8 +286,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client15',
-                        help='client15 is current; older editions require their matching source and release stamp')
+    parser.add_argument('--edition', choices=('client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client16',
+                        help='client16 is current; older editions require their matching source and release stamp')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()

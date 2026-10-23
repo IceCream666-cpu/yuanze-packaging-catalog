@@ -1,0 +1,170 @@
+{
+  "version": "client1.6",
+  "date": "2026-10-23",
+  "status": "local-verification-passed-pending-publication",
+  "scope": "Homepage 3D arc carousel with synchronized upper-left product information; existing 23 featured products and 53 posters retained.",
+  "build": {
+    "sourceSha256": "cd006eb3a4262590e1f695d07c07336dc2d7add56e7918ed0c06be203fcf4fb8",
+    "entrypointSha256": {
+      "index.html": "345baa808a9f9c911bcdf99febe400a1d2f07a93d8044e7e48ab298deb19f1ea",
+      "preview.js": "c141b0d48f853fb81ac072b4079a423931aec0e1e9f5cac0cb6585c28c349f86",
+      "preview.css": "5bd340286f7a2fc4234f2786434e6b5004bb6c46b0d12a71df5d9c442e6edc89"
+    },
+    "bundleManifestSha256": "1e376296b96f0f0fca81b3198b4f588d1ea2647fb3420a4c4b2713b8820815ee",
+    "manifestResourceCount": 378
+  },
+  "automatedVerification": {
+    "command": "NODE_BIN=<bundled-node> .venv/bin/python scripts/verify.py",
+    "result": "passed",
+    "rootTests": 181,
+    "backendTests": 251,
+    "deploymentTests": 32,
+    "legacyClientTests": 18,
+    "motionClientModelTests": 33,
+    "motionClientDomTests": 12,
+    "loginTests": 12,
+    "existingFrontendSuites": "passed",
+    "showroomBundleCheck": "passed",
+    "loginBundleCheck": "passed",
+    "gitDiffChecks": "passed",
+    "evidence": "work/client16-arc-20261023/verify.log"
+  },
+  "browserLayout": {
+    "evidence": "work/client16-arc-20261023/layout-checks.json",
+    "matrix": [
+      {
+        "width": 1440,
+        "language": "zh",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 1440,
+        "language": "en",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 768,
+        "language": "zh",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 768,
+        "language": "en",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 393,
+        "language": "zh",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 393,
+        "language": "en",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 320,
+        "language": "zh",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 320,
+        "language": "en",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      }
+    ]
+  },
+  "finalMobileLayout": {
+    "evidence": "work/client16-arc-20261023/mobile-final-checks.json",
+    "matrix": [
+      {
+        "width": 393,
+        "language": "zh",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 393,
+        "language": "en",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 320,
+        "language": "zh",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      },
+      {
+        "width": 320,
+        "language": "en",
+        "productsChecked": 23,
+        "horizontalOverflow": false,
+        "selectedProductMatchesCenter": true,
+        "stageTopSpreadPx": 0
+      }
+    ],
+    "simulatedTouch": {
+      "before": "poster-044",
+      "after": {
+        "active": "poster-047",
+        "center": "poster-047",
+        "scrollY": 0
+      }
+    }
+  },
+  "continuousMotion": {
+    "evidence": "work/client16-arc-20261023/motion-checks.json",
+    "forwardSelection": "poster-058",
+    "reverseSelection": "poster-051",
+    "retainedProductNodes": true,
+    "productNodeCount": 23,
+    "sampledFrames": 108,
+    "sampledSelectionMismatches": 0,
+    "finalCenter": "poster-044",
+    "finalInformation": "poster-044"
+  },
+  "preservation": {
+    "featuredCount": 23,
+    "posterCount": 53,
+    "approvedArtworkVersion": "client1.4",
+    "originalMediaBytePreservation": "covered by passing release guards",
+    "galleryFramelessStyling": "client1.5 retained",
+    "authenticationAndBackend": "not modified"
+  },
+  "limits": [
+    "Local browser checks use emulated viewport, touch and wheel input; they do not establish physical Safari or Mac trackpad behavior.",
+    "Motion frame samples included background scheduling gaps and are not an FPS benchmark or a universal smoothness claim.",
+    "This is a local verification record. No production publication or live authorization claim is made by this file."
+  ]
+}

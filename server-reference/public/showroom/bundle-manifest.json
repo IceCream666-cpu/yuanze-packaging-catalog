@@ -1497,16 +1497,16 @@
       "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 759,
-      "sha256": "cf1e9b275db8ac197455a8db37bf8768f9e4c6b5002c839bc03f844e07f3c51d"
+      "bytes": 783,
+      "sha256": "345baa808a9f9c911bcdf99febe400a1d2f07a93d8044e7e48ab298deb19f1ea"
     },
     "preview.css": {
-      "bytes": 46259,
-      "sha256": "2fc2b564444e1d4d8296aec1c1dfc27ee6a0d3c43e0f9bc8dd59a70faca9176c"
+      "bytes": 50577,
+      "sha256": "5bd340286f7a2fc4234f2786434e6b5004bb6c46b0d12a71df5d9c442e6edc89"
     },
     "preview.js": {
-      "bytes": 331207,
-      "sha256": "7a53d514d4a71aa6028ca7344c71a263de2854591166829be96b2bc91ce8f47f"
+      "bytes": 332334,
+      "sha256": "c141b0d48f853fb81ac072b4079a423931aec0e1e9f5cac0cb6585c28c349f86"
     },
     "product-posters.js": {
       "bytes": 18887,
@@ -1515,5 +1515,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.5"
+  "version": "client1.6"
 }
