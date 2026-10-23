@@ -1,13 +1,13 @@
 {
   "version": "client1.7",
-  "sourceSha256": "9d70c1ae6f30d0610baff61dffaa34aa7c3871bc24802710d37b2880e35f0c12",
+  "sourceSha256": "6a588c3b33e8247989b0e42eefce2817f9462fdfaac375ac0829df980662d2f1",
   "files": {
     "assets/packaging/PackagingDetail-DDyvL9Kd.js": "be2e92326f0f2f54b01341be151330af1cc6d94827dbc55ef370b520f3384285",
     "assets/packaging/PackagingDetail-Dt1YKAYF.css": "5660d7d4705d61c03f0c5a0ca7de0981a64b34d4a2cdbda0ce57336d6e286954",
     "assets/packaging/packaging-scene-uK9QnIWU.js": "db41b80dad394e6aa82a06322070677398a13f0096ef4d923212b525ea8135eb",
-    "index.html": "2be4d04f4acfb945489956c7f70b0c1dcabb0b6196df30e08b9c57699f28b54d",
+    "index.html": "15d6359022db1092830ab92ff6ec81bb20072e1ed6744412960b3c6d9cd7bfe6",
     "preview.css": "6c85001fb791387723081b42cce12154231672e290fc730e3ec003c7bdd87744",
-    "preview.js": "869d631d3f79d97317b62207f5ecd96cf5b8551ef76e0fc05cabf3b59c6356c5"
+    "preview.js": "0c088dfbf6d7426670f38f9d8d6a7bb2bd96afeeb78ad45d3e77a044c41aaada"
   },
   "viteManifestSha256": "bdbea53d5da0ab9c3927ef1c0d6d8b5506d85f8cb925e9d367ec2c31769ce043"
 }

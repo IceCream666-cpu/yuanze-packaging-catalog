@@ -1521,16 +1521,16 @@
       "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 783,
-      "sha256": "2be4d04f4acfb945489956c7f70b0c1dcabb0b6196df30e08b9c57699f28b54d"
+      "bytes": 541,
+      "sha256": "15d6359022db1092830ab92ff6ec81bb20072e1ed6744412960b3c6d9cd7bfe6"
     },
     "preview.css": {
       "bytes": 51370,
       "sha256": "6c85001fb791387723081b42cce12154231672e290fc730e3ec003c7bdd87744"
     },
     "preview.js": {
-      "bytes": 337394,
-      "sha256": "869d631d3f79d97317b62207f5ecd96cf5b8551ef76e0fc05cabf3b59c6356c5"
+      "bytes": 337643,
+      "sha256": "0c088dfbf6d7426670f38f9d8d6a7bb2bd96afeeb78ad45d3e77a044c41aaada"
     },
     "product-posters.js": {
       "bytes": 18887,

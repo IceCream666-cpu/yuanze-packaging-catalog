@@ -121,6 +121,21 @@ test('an intermediate visual center does not upgrade ahead of the explicit targe
  assert.equal(document.querySelector('.featured-detail'),null);assert.equal(base.getAttribute('fetchpriority'),'low');
 }));
 
+test('a newly selected product always starts at 640 and waits for motion and base warming before upgrading',async()=>setup(async root=>{
+ const media={...poster,displayMobile:'/640.webp'};
+ const render=allowUpgrade=><FeaturedImage poster={media} active urgent enabled allowUpgrade={allowUpgrade} alt="Product"/>;
+ await act(async()=>root.render(render(false)));
+ const base=document.querySelector('picture img');
+ assert.equal(base.getAttribute('src'),'/640.webp');assert.equal(base.getAttribute('srcset'),null);
+ base.decode=()=>Promise.resolve();await act(async()=>base.dispatchEvent(new window.Event('load')));
+ await act(async()=>wait(240));assert.equal(document.querySelector('.featured-detail'),null);
+ await act(async()=>root.render(render(true)));await act(async()=>wait(230));
+ assert.ok(document.querySelector('.featured-detail'));
+ await act(async()=>root.render(render(false)));
+ assert.equal(document.querySelector('.featured-detail'),null);
+ assert.equal(document.querySelector('picture img'),base);assert.equal(base.style.opacity,'1');
+}));
+
 test('decode failure after transfer does not launch an uncounted retry; a hung valid image has a bounded fallback',async()=>setup(async root=>{
  let transferred=0,done=[];
  const render=key=><FeaturedImage poster={poster} active enabled requestKey={key} decodeTimeoutMs={10}

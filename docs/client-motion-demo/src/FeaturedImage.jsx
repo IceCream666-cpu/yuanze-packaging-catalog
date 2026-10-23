@@ -6,7 +6,7 @@ function retryURL(url, token) {
   return `${path}${path.includes('?') ? '&' : '?'}media_retry=${token}${hash ? `#${hash}` : ''}`;
 }
 
-// A neighbour is already clear at 640px. Upgrade it only after selection settles,
+// Every base image is already clear at 640px. Upgrade after motion and warming settle,
 // keeping that decoded image visible until the larger candidate is ready.
 function DetailUpgrade({poster, active}) {
   const [enabled, setEnabled] = useState(false), [ready, setReady] = useState(false);
@@ -29,7 +29,7 @@ function DetailUpgrade({poster, active}) {
     style={{opacity: ready ? 1 : 0}} onLoad={loaded}/> : null;
 }
 
-function ImageRequest({poster, active, urgent = active, enabled, requestKey, onTransferred, onSettled, alt, lang, retryDelay, timeoutMs, decodeTimeoutMs}) {
+function ImageRequest({poster, active, urgent = active, allowUpgrade = true, enabled, requestKey, onTransferred, onSettled, alt, lang, retryDelay, timeoutMs, decodeTimeoutMs}) {
   const image = useRef(null), callback = useRef(onSettled), finished = useRef(false);
   const handled = useRef(-1), retryTimer = useRef(null), mounted = useRef(true);
   const transferred = useRef(onTransferred), timeout = useRef(null), plan = useRef(null);
@@ -39,8 +39,8 @@ function ImageRequest({poster, active, urgent = active, enabled, requestKey, onT
   const [phase, setPhase] = useState(enabled ? 'loading' : 'waiting');
   callback.current = onSettled;
   transferred.current = onTransferred;
-  if (enabled && !plan.current) plan.current = {light: !urgent && !!poster.displayMobile,
-    src: !urgent && poster.displayMobile ? poster.displayMobile : poster.displayImage};
+  if (enabled && !plan.current) plan.current = {light: !!poster.displayMobile,
+    src: poster.displayMobile || poster.displayImage};
   const ready = phase === 'loaded', failed = phase === 'error', zh = lang !== 'en';
   // Retry the lighter approved derivative instead of forcing a larger download.
   const src = !enabled || failed ? undefined : attempt
@@ -96,11 +96,11 @@ function ImageRequest({poster, active, urgent = active, enabled, requestKey, onT
         width={poster.displayWidth} height={poster.displayHeight} style={{opacity: ready ? 1 : 0}}
         onLoad={event => loaded(event, attempt)} onError={event => fail(event.currentTarget, attempt)}/>
     </picture>
-    {ready && plan.current?.light && <DetailUpgrade poster={poster} active={active && urgent}/>}
+    {ready && plan.current?.light && <DetailUpgrade poster={poster} active={active && urgent && allowUpgrade}/>}
   </span>;
 }
 
-// Tokens change only for a new/manual retry, never on ordinary active selection.
+// Tokens change only for a first request/manual retry, never on active selection.
 export default function FeaturedImage({requestKey = 1, retryDelay = 350, timeoutMs = 12000, decodeTimeoutMs = 2500, ...props}) {
   return <ImageRequest key={requestKey} requestKey={requestKey} retryDelay={retryDelay} timeoutMs={timeoutMs} decodeTimeoutMs={decodeTimeoutMs} {...props}/>;
 }

@@ -87,5 +87,7 @@
     "C_optimized": "http://127.0.0.1:18918/client"
   },
   "evidenceDirectory": "work/client17-loading-20261023",
-  "limitations": "Local Chromium emulation is not production field speed or physical iPhone/Safari/FPS verification."
+  "limitations": "Local Chromium emulation is not production field speed or physical iPhone/Safari/FPS verification.",
+  "supersededBy": "client17-rapid-preview.json",
+  "historicalMeasurementNote": "Metrics and manifest here describe b4e4aaf. C URL now serves the subsequent rapid-swipe fix; use the follow-up receipt for current preview evidence."
 }

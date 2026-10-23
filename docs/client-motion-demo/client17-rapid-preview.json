@@ -1,0 +1,80 @@
+{
+  "version": "client1.7",
+  "status": "local-preview-awaiting-user-choice",
+  "deployed": false,
+  "baselineCommit": "b4e4aaf54f318eeba3fb7fb66eba46658f4fdba6",
+  "fixes": [
+    "Keep started base requests and their DOM nodes through forward and reverse input",
+    "Continuously warm all 23 approved 640px images, in travel order, at two regular slots plus one current-target slot",
+    "Coalesce new targets when all slots are busy; request the latest target on the next available slot",
+    "Match HTML first-image preload to 640px base; do not download a second initial size",
+    "Permit responsive detail upgrades only after actual motion settles and base warming completes",
+    "Respect Save-Data by warming visible neighbours only and skipping detail upgrades"
+  ],
+  "media": {
+    "baseImageCount": 23,
+    "baseImageBytes": 922422,
+    "addedPreviewPack": false,
+    "originalsChanged": false
+  },
+  "browserComparison": {
+    "condition": "One alternating before/after sample; loopback gzip, Chromium 1440x1000 DPR2, cache disabled, 150ms latency, 200000B/s; first product visible then 5000ms pause; 12 forward + 6 reverse CDP wheel strokes with 150ms requested gaps (actual observed centers ~200-250ms apart); sampled every50ms",
+    "before": {
+      "samples": 226,
+      "blankSamples": 44,
+      "loadedAtEnd": 15,
+      "requests": 22
+    },
+    "after": {
+      "samples": 206,
+      "blankSamples": 0,
+      "loadedAtEnd": 23,
+      "requests": 23
+    },
+    "newAllBaseImagesReadyByMs": 6307
+  },
+  "weakNetworkLimit": {
+    "condition": "60000B/s, 150ms, first product visible then1200ms pause, same fast gesture; latest final-source rerun",
+    "before": {
+      "samples": 155,
+      "blankSamples": 84,
+      "loadedAtEnd": 4,
+      "requests": 10
+    },
+    "after": {
+      "samples": 165,
+      "blankSamples": 88,
+      "loadedAtEnd": 12,
+      "requests": 13
+    },
+    "result": "First-pass blank periods remain when the gesture outruns cold transfers. Do not claim zero waiting at arbitrary bandwidth. More bases finish (4 to12); no repeated cancellation."
+  },
+  "verification": {
+    "fullSuite": "passed;193 root,258 backend,32 deploy,35 motion model,28 motion DOM,12 login plus existing suites",
+    "initialRun": "258 backend assertions passed, then native runtime aborted during process shutdown; full rerun passed normally",
+    "responsiveWidths": [
+      320,
+      393,
+      768,
+      1440
+    ],
+    "productsLoadedAtEachWidth": 23,
+    "touch": "393px native CDP touch; reached PDRN Capsule Cream with matching center/copy and decoded image;53-poster overview opened",
+    "resources": 384,
+    "changedResources": [
+      "index.html",
+      "preview.js"
+    ],
+    "resourceAdditions": 0,
+    "resourceRemovals": 0
+  },
+  "manifestSha256": "e83041d5060ffe601693e08cf4c24294a26873ce14a38fb19c9dbf7df4f0d87d",
+  "previewUrls": {
+    "A_previousHorizontal": "http://127.0.0.1:18916/client",
+    "B_originalArc": "http://127.0.0.1:18917/client",
+    "C_optimizedArc": "http://127.0.0.1:18918/client",
+    "internalPreviousFixBenchmark": "http://127.0.0.1:18919/client"
+  },
+  "evidenceDirectory": "work/client17-rapid-20261023",
+  "limitations": "Local controlled browser measurements; not production field performance, physical Safari or Mac trackpad/FPS certification. No production writes, restart or deployment."
+}

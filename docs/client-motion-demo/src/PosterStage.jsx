@@ -11,10 +11,13 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
   const indices = useMemo(() => new Map(items.map((item, index) => [item.id, index])), [items]);
   const [imageLoads, setImageLoads] = useState({});
   const imageQueue = useRef(null);
-  if (!imageQueue.current) imageQueue.current = createFeaturedLoadQueue({ids: items.map(item => item.id), onChange: setImageLoads});
+  const saveData = useRef(!!globalThis.navigator?.connection?.saveData);
+  if (!imageQueue.current) imageQueue.current = createFeaturedLoadQueue({ids: items.map(item => item.id), onChange: setImageLoads, warmCollection: !saveData.current});
   const initial = Math.max(0, items.findIndex(p => p.id === selectedId));
   const [anchor, setAnchor] = useState(initial);
   const [width, setWidth] = useState(1000);
+  const [isMoving, setIsMoving] = useState(false);
+  const movingRef = useRef(false);
   const stage = useRef(null), planes = useRef(new Map());
   const pointer = useRef(null), wheel = useRef({timer: 0, start: null});
   const suppress = useRef(0), anchorRef = useRef(initial), reduced = useRef(false);
@@ -25,6 +28,7 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
   function paint(position, moving) {
     const {items, indices, products, stepWidth, width} = latest.current;
     stage.current?.classList.toggle('is-moving', moving);
+    if (moving !== movingRef.current) {movingRef.current = moving; setIsMoving(moving);}
     const nextAnchor = wrapIndex(Math.round(position), items.length);
     // React handles semantic/visible-window changes, never fractional animation frames.
     if (nextAnchor !== anchorRef.current) {anchorRef.current = nextAnchor; setAnchor(nextAnchor);}
@@ -59,6 +63,10 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
   });
   const controller = motion.current;
   const activeId = items[anchor]?.id;
+  const basesReady = items.every(item => {
+    if (saveData.current && Math.abs(shortestDelta(indices.get(item.id), anchor, items.length)) > 2) return true;
+    return ['loaded', 'error'].includes(imageLoads[item.id]?.status);
+  });
 
   // Detail copy follows the product nearest the visual center, even before a
   // drag settles. This notification never feeds a new target into the spring.
@@ -152,7 +160,8 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
       controller.settle(snapTarget(controller.state.position, velocity, items.length));
     }
   }
-  // Product nodes retain their decoded images; requests remain limited to the current item and neighbours.
+  // Stable product nodes retain started and decoded images; the queue warms the
+  // rest at low concurrency so a continuous swipe can use already decoded art.
   // Full-poster libraries keep a stable seven-item window.
   const mounted = visibleItems(items, anchor, products ? items.length : 7).sort((a,b) => a.index - b.index);
   return <section className={`gallery-shell ${products ? 'product-stage-shell' : ''}`} aria-label={lang === 'zh' ? (products ? '精选产品' : '海报画廊') : (products ? 'Featured products' : 'Poster gallery')}>
@@ -178,6 +187,7 @@ export default function PosterStage({items, selectedId, onSelect, onActiveChange
             else controller.settle(controller.state.position + shortestDelta(index,controller.state.position,items.length));
           }}>
           {products ? <FeaturedImage poster={poster} active={active} enabled={load?.enabled || false}
+            allowUpgrade={!isMoving && basesReady && !saveData.current}
             urgent={poster.id === (controller.state.input ? activeId : selectedId)}
             onTransferred={() => imageQueue.current.finish(poster.id, load?.token, 'downloaded')}
             requestKey={load?.token || 1} onSettled={status => imageQueue.current.finish(poster.id, load?.token, status)}
