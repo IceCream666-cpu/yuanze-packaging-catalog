@@ -1,0 +1,561 @@
+{
+  "version": "client1.7",
+  "status": "published-and-verified",
+  "releaseId": "client1.7-loading-palette-20261023",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "publishedAtBeijing": "2026-10-23T12:19:35+08:00",
+  "sourceCommit": "0a973fbadee440fb7267877ed4496113c9825d44",
+  "scope": {
+    "product": "poster-012 Beach Magic",
+    "preservedFeaturedProducts": 23,
+    "preservedPosters": 53,
+    "preservedArcHomepageSource": "eff0a0f",
+    "preserved": [
+      "three component geometry and hierarchy",
+      "neutral studio illumination",
+      "approved transparent and white materials",
+      "scroll expansion, rotation sensitivity, bottom view",
+      "original posters, zoom, downloads, favorites, search and languages",
+      "existing business API and session authorization"
+    ],
+    "formulaBodyIncluded": false
+  },
+  "palette": {
+    "colors": {
+      "paper": "f4c8d6",
+      "ink": "3c1927",
+      "muted": "6c3d4e",
+      "accent": "f5ce40"
+    },
+    "textContrast": {
+      "main": 10.35,
+      "secondary": 5.83
+    },
+    "accentHandleOutlineContrast": 10.13,
+    "note": "Yellow only fills a control handle; dark outline preserves its edge. No yellow text."
+  },
+  "loadingChanges": [
+    "Parallel model fetch, scene module and detail module on click",
+    "GSAP does not gate first model frame",
+    "PMREM preparation overlaps model transfer",
+    "Abort and disposal on close, bounded errors and retry",
+    "Lossless embedded label PNG to WebP; all decoded RGBA pixels and geometry accessor bytes identical",
+    "Add model/gltf-binary to existing Nginx gzip_types; retain private no-cache, authentication, ETag and Range behavior"
+  ],
+  "model": {
+    "originalBytes": 2750324,
+    "newBytes": 2394816,
+    "encodedHttpsBodyBytes": 1160206,
+    "transferReductionPercent": 57.82,
+    "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76",
+    "accessorsByteIdentical": 27,
+    "meshCount": 9,
+    "vertices": 62621,
+    "triangles": 123840,
+    "labelDimensions": [
+      4096,
+      2560
+    ],
+    "validatorErrors": 0,
+    "validatorWarnings": 0,
+    "blenderImportVerified": "4.5.9"
+  },
+  "performance": {
+    "condition": {
+      "origin": "https://bmt.yuanzebeauty.com",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "latency": 150,
+      "bytesPerSecond": 200000,
+      "cacheDisabled": true,
+      "homeImagesReady": true
+    },
+    "before": {
+      "condition": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "latency": 150,
+        "bytesPerSecond": 200000,
+        "cacheDisabled": true,
+        "homeImagesReady": true
+      },
+      "clickToFirstDraw": 15416.199999999255,
+      "resources": [
+        {
+          "name": "session",
+          "start": 42.5,
+          "duration": 157.09999999962747,
+          "encoded": 84,
+          "decoded": 84
+        },
+        {
+          "name": "PackagingDetail-DDyvL9Kd.js",
+          "start": 79.69999999925494,
+          "duration": 203.20000000018626,
+          "encoded": 4322,
+          "decoded": 11100
+        },
+        {
+          "name": "PackagingDetail-Dt1YKAYF.css",
+          "start": 79.79999999981374,
+          "duration": 195.5,
+          "encoded": 2676,
+          "decoded": 10318
+        },
+        {
+          "name": "yuanze-mark-compact.webp",
+          "start": 285.09999999962747,
+          "duration": 230.40000000037253,
+          "encoded": 5184,
+          "decoded": 5184
+        },
+        {
+          "name": "gsap.min.js",
+          "start": 287.19999999925494,
+          "duration": 482.1000000005588,
+          "encoded": 28215,
+          "decoded": 72435
+        },
+        {
+          "name": "packaging-scene-uK9QnIWU.js",
+          "start": 287.29999999981374,
+          "duration": 1151.2999999998137,
+          "encoded": 142701,
+          "decoded": 568995
+        },
+        {
+          "name": "ScrollTrigger.min.js",
+          "start": 772.8999999994412,
+          "duration": 342.29999999981374,
+          "encoded": 17827,
+          "decoded": 44157
+        },
+        {
+          "name": "beach-magic-packaging.glb",
+          "start": 1461.0999999996275,
+          "duration": 13913.700000000186,
+          "encoded": 2750324,
+          "decoded": 2750324
+        }
+      ]
+    },
+    "afterColdSamples": [
+      {
+        "condition": {
+          "origin": "https://bmt.yuanzebeauty.com",
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "latency": 150,
+          "bytesPerSecond": 200000,
+          "cacheDisabled": true,
+          "homeImagesReady": true
+        },
+        "title": "源泽 · 客户海报展厅 — client1.7",
+        "clickToFirstDraw": 10171.599999999627,
+        "metrics": [
+          {
+            "id": 1,
+            "timings": {
+              "start": 0,
+              "fetchStart": 0.09999999962747097,
+              "detailModule": 2188.7999999988824,
+              "animationReady": 3476.699999999255,
+              "sceneModule": 3847.199999999255,
+              "pmremStart": 3860.9000000003725,
+              "pmremEnd": 3877.699999999255,
+              "fetchEnd": 8944.799999998882,
+              "parseStart": 8945,
+              "parseEnd": 8980.5,
+              "firstFrameStart": 8983.5,
+              "firstFrame": 9127.400000000373
+            }
+          }
+        ],
+        "resources": [
+          {
+            "name": "beach-magic-packaging.glb",
+            "start": 1042.8999999985099,
+            "duration": 8940.10000000149,
+            "encoded": 1160206,
+            "decoded": 2394816
+          },
+          {
+            "name": "PackagingDetail-Cj4KWLwf.js",
+            "start": 1043.3999999985099,
+            "duration": 2187.2000000011176,
+            "encoded": 4638,
+            "decoded": 11934
+          },
+          {
+            "name": "PackagingDetail-qX33rcx_.css",
+            "start": 1043.5999999996275,
+            "duration": 2163.5999999996275,
+            "encoded": 2692,
+            "decoded": 10346
+          },
+          {
+            "name": "packaging-scene-WX9CdaCv.js",
+            "start": 1047,
+            "duration": 3836.5,
+            "encoded": 143027,
+            "decoded": 569698
+          },
+          {
+            "name": "yuanze-mark-compact.webp",
+            "start": 3234.5999999996275,
+            "duration": 237.69999999925494,
+            "encoded": 5184,
+            "decoded": 5184
+          },
+          {
+            "name": "gsap.min.js",
+            "start": 3237.89999999851,
+            "duration": 832.4000000003725,
+            "encoded": 28215,
+            "decoded": 72435
+          },
+          {
+            "name": "ScrollTrigger.min.js",
+            "start": 4074.5999999996275,
+            "duration": 441.09999999962747,
+            "encoded": 17827,
+            "decoded": 44157
+          }
+        ],
+        "background": "rgb(244, 200, 214)"
+      },
+      {
+        "condition": {
+          "origin": "https://bmt.yuanzebeauty.com",
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "latency": 150,
+          "bytesPerSecond": 200000,
+          "cacheDisabled": true,
+          "homeImagesReady": true
+        },
+        "clickToFirstDraw": 8143.699999999255,
+        "eventToFirstDraw": 7200.9000000003725,
+        "metrics": [
+          {
+            "id": 1,
+            "timings": {
+              "start": 0,
+              "fetchStart": 0.09999999962747097,
+              "detailModule": 338.7999999988824,
+              "animationReady": 1417.4000000003725,
+              "sceneModule": 2007.9000000003725,
+              "pmremStart": 2017.699999999255,
+              "pmremEnd": 2031.699999999255,
+              "fetchEnd": 7017.299999998882,
+              "parseStart": 7017.299999998882,
+              "parseEnd": 7052.699999999255,
+              "firstFrameStart": 7056.5,
+              "firstFrame": 7198.9000000003725
+            }
+          }
+        ],
+        "resources": [
+          {
+            "name": "beach-magic-packaging.glb",
+            "start": 944.2999999988824,
+            "duration": 7011.700000001118,
+            "ttfb": 82.80000000074506,
+            "encoded": 1160206,
+            "decoded": 2394816
+          },
+          {
+            "name": "PackagingDetail-Cj4KWLwf.js",
+            "start": 944.5,
+            "duration": 336.2999999988824,
+            "ttfb": 252.7000000011176,
+            "encoded": 4638,
+            "decoded": 11934
+          },
+          {
+            "name": "PackagingDetail-qX33rcx_.css",
+            "start": 944.5999999996275,
+            "duration": 193.09999999962747,
+            "ttfb": 64.19999999925494,
+            "encoded": 2692,
+            "decoded": 10346
+          },
+          {
+            "name": "packaging-scene-WX9CdaCv.js",
+            "start": 948.6999999992549,
+            "duration": 1998.0999999996275,
+            "ttfb": 250.69999999925494,
+            "encoded": 143027,
+            "decoded": 569698
+          },
+          {
+            "name": "yuanze-mark-compact.webp",
+            "start": 1285.699999999255,
+            "duration": 256.80000000074506,
+            "ttfb": 103.69999999925494,
+            "encoded": 5184,
+            "decoded": 5184
+          },
+          {
+            "name": "gsap.min.js",
+            "start": 1289,
+            "duration": 628,
+            "ttfb": 105,
+            "encoded": 28215,
+            "decoded": 72435
+          },
+          {
+            "name": "ScrollTrigger.min.js",
+            "start": 1919.5999999996275,
+            "duration": 439.80000000074506,
+            "ttfb": 68.30000000074506,
+            "encoded": 17827,
+            "decoded": 44157
+          }
+        ]
+      }
+    ],
+    "afterWarmSample": {
+      "eventToFirstDraw": 4533.300000000745,
+      "metrics": {
+        "id": 3,
+        "timings": {
+          "start": 0,
+          "fetchStart": 0,
+          "detailModule": 55.30000000074506,
+          "animationReady": 59.59999999962747,
+          "sceneModule": 59.59999999962747,
+          "pmremStart": 71.70000000111759,
+          "pmremEnd": 85.20000000111759,
+          "fetchEnd": 4360,
+          "parseStart": 4360,
+          "parseEnd": 4386.9000000003725,
+          "firstFrameStart": 4389.5999999996275,
+          "firstFrame": 4531.4000000003725,
+          "aborted": 4631.300000000745
+        }
+      },
+      "resource": [
+        {
+          "duration": 4357.5,
+          "ttfb": 4164.5,
+          "transfer": 300,
+          "encoded": 1160206,
+          "decoded": 2394816
+        }
+      ]
+    },
+    "interpretation": "Same browser automation action-to-first-draw: 15.4 s before versus 8.1-10.2 s after, under simulated 200000 B/s and 150 ms latency after home images settle. Warm revalidation had 4.16 s TTFB, so no claim of instant warm opening. Single-device browser lab samples, not field performance or physical Safari. firstFrame means renderer.render returned, not a GPU/compositor completion fence."
+  },
+  "validation": {
+    "fullSuitePassed": true,
+    "rootPythonTests": 185,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deploymentTests": 32,
+    "motionTests": 37,
+    "motionDomTests": 28,
+    "loginTests": 12,
+    "existingFrontendSuitesPassed": true,
+    "staticTransactionFaultTests": 13,
+    "gzipTransactionFaultTests": 14,
+    "localViewports": [
+      1440,
+      768,
+      390
+    ],
+    "liveBrowser": {
+      "origin": "https://bmt.yuanzebeauty.com",
+      "viewport": "390x844 DPR2 touch emulation",
+      "touch": {
+        "progress": 1,
+        "renderedProgress": 0.9999634627177332,
+        "yaw": 1.0275022582826832,
+        "pitch": 0,
+        "selected": null,
+        "components": [
+          "jar",
+          "cap",
+          "liner"
+        ],
+        "meshes": 19,
+        "triangles": 247682
+      },
+      "base": {
+        "progress": 1,
+        "renderedProgress": 0.9999999643699833,
+        "yaw": 0.004320831936731616,
+        "pitch": -1.7951618020891176,
+        "selected": null,
+        "components": [
+          "jar",
+          "cap",
+          "liner"
+        ],
+        "meshes": 19,
+        "triangles": 247682
+      },
+      "favoritesRestored": true,
+      "original": {
+        "imageWidths": [
+          1254
+        ],
+        "text": "返回结构展示身体磨砂膏 · 黄粉1254 × 1254100%已加载原图下载原图"
+      },
+      "home": {
+        "title": "源泽 · 客户海报展厅 — client1.7",
+        "overflow": false,
+        "packagingCanvases": 0
+      }
+    },
+    "otherProductAndLogout": {
+      "other": {
+        "model": 0,
+        "text": "身体磨砂膏 · 珊瑚青绿完整海报200%查看高清原图下载原图"
+      },
+      "loggedOutStatus": 401
+    },
+    "https": {
+      "roles": {
+        "client": {
+          "sessionValid": true,
+          "routesAndPermissions": true
+        },
+        "employee": {
+          "sessionValid": true,
+          "routesAndPermissions": true
+        },
+        "admin": {
+          "sessionValid": true,
+          "routesAndPermissions": true
+        }
+      },
+      "resources": [
+        "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+        "assets/packaging/PackagingDetail-qX33rcx_.css",
+        "assets/packaging/ScrollTrigger.min.js",
+        "assets/packaging/beach-magic-packaging.glb",
+        "assets/packaging/gsap.min.js",
+        "assets/packaging/packaging-scene-WX9CdaCv.js",
+        "index.html",
+        "preview.js",
+        "preview.css",
+        "product-posters.js",
+        "assets/posters/poster-012.webp",
+        "assets/posters/poster-070.webp",
+        "assets/featured/poster-012-640.webp",
+        "assets/featured/poster-070-1024.webp"
+      ],
+      "publicHttps": true,
+      "sourceCommit": "0a973fbadee440fb7267877ed4496113c9825d44",
+      "modelRangeHeadAndCache": true,
+      "modelGzipBytes": 1160206,
+      "modelDecodedBytes": 2394816,
+      "originalDownload": true,
+      "loginUnchangedAndVideoRange": true,
+      "anonymousDenied": true,
+      "logoutVerified": true,
+      "sessionCleanupErrors": [],
+      "checkedAt": "2026-10-23T12:21:08+08:00"
+    },
+    "failureScenariosPassed": [
+      "GSAP unavailable does not prevent model or manual presets",
+      "Model failure then retry",
+      "Close during transfer aborts request and disposes canvas"
+    ],
+    "evidenceDirectory": "/Users/icecream/Documents/Codex/2026-10-20/g-s/work/beach-magic-speed-20261023",
+    "fullTestLog": "verify-client17.log",
+    "screenshots": [
+      "live-desktop.png",
+      "live-mobile.png",
+      "live-mobile-base.png",
+      "merged-arc-desktop.png"
+    ]
+  },
+  "publication": {
+    "static": {
+      "added": [
+        "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+        "assets/packaging/PackagingDetail-qX33rcx_.css",
+        "assets/packaging/packaging-scene-WX9CdaCv.js"
+      ],
+      "archiveSha256": "6ce5a9240dc621874542ea92bc6fe2d8c1383364a7541b16a30c727f7e9b7215",
+      "backup": "/opt/yuanze-reference/backups/client1.7-loading-palette-20261023",
+      "businessDataWrites": 0,
+      "changed": [
+        "assets/packaging/beach-magic-packaging.glb",
+        "preview.css",
+        "preview.js"
+      ],
+      "gatewayChanged": false,
+      "gatewayHash": "fa42ab6621ab2ad04d539463fc8007a2a3d8d99f7c5b4167e37373c30988075f",
+      "manifestSha256": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+      "outsideHash": "8baaca0daaa877acec011d4e5dd18fa592aa86adb96913462d91778b02b2cb08",
+      "outsideUnchanged": 6820,
+      "planSha256": "698c6287c45672b5bce80b177a2cbeaecd3d7f4a0ea920a4bbe9e05b9dd49253",
+      "previousManifestSha256": "d781c15ad6a96bc7ee9d12d253a81ea682af382bd455301c63fc97255912e73e",
+      "published": true,
+      "publishedAt": "2026-10-23T04:18:33.420968+00:00",
+      "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+      "releaseId": "client1.7-loading-palette-20261023",
+      "removed": [
+        "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+        "assets/packaging/PackagingDetail-Dt1YKAYF.css",
+        "assets/packaging/packaging-scene-uK9QnIWU.js"
+      ],
+      "serverSha256": "a10a349a52e9d69bb3a05c6c3cd7aef8fe41e42efcf87dc0f77c3d3ec962c3a2",
+      "service": "MainPID=30976\nActiveState=active\n",
+      "serviceRestart": false,
+      "sourceCommit": "0a973fbadee440fb7267877ed4496113c9825d44",
+      "stage": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023",
+      "verifiedFiles": 384,
+      "version": "client1.7"
+    },
+    "gateway": {
+      "published": true,
+      "scope": "nginx-glb-gzip-only",
+      "sourceCommit": "0a973fbadee440fb7267877ed4496113c9825d44",
+      "publishedAt": "2026-10-23T04:19:35.314342+00:00",
+      "current": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+      "manifestHash": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+      "serverSha256": "a10a349a52e9d69bb3a05c6c3cd7aef8fe41e42efcf87dc0f77c3d3ec962c3a2",
+      "beforeGatewayHash": "fa42ab6621ab2ad04d539463fc8007a2a3d8d99f7c5b4167e37373c30988075f",
+      "candidateGatewayHash": "f0ccb2f82b426ca0df3d1d1b4057544b14e8ae5dc76efd18ccc4c8d6f4693368",
+      "backup": "/opt/yuanze-reference/backups/client1.7-beach-magic-gzip-20261023",
+      "applicationService": "MainPID=30976\nActiveState=active\n",
+      "applicationRestarts": 0,
+      "nginxReloaded": true,
+      "insertedBytes": 18
+    },
+    "finalSnapshot": {
+      "capturedAt": "2026-10-23T04:24:29.175233+00:00",
+      "current": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+      "gatewayHash": "f0ccb2f82b426ca0df3d1d1b4057544b14e8ae5dc76efd18ccc4c8d6f4693368",
+      "gatewayValid": true,
+      "manifestHash": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+      "outsideHash": "8baaca0daaa877acec011d4e5dd18fa592aa86adb96913462d91778b02b2cb08",
+      "serverSha256": "a10a349a52e9d69bb3a05c6c3cd7aef8fe41e42efcf87dc0f77c3d3ec962c3a2",
+      "service": "MainPID=30976\nActiveState=active\n"
+    },
+    "allManifestFilesVerified": 384,
+    "outsideFilesUnchanged": 6820,
+    "applicationRestarts": 0,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42"
+  },
+  "rollback": {
+    "order": [
+      "gateway gzip transaction",
+      "static showroom transaction"
+    ],
+    "backups": [
+      "/opt/yuanze-reference/backups/client1.7-beach-magic-gzip-20261023",
+      "/opt/yuanze-reference/backups/client1.7-loading-palette-20261023"
+    ],
+    "requirements": "Hold deployment lock, verify current release and hashes match this release, preserve service ownership and concurrent changes; never overwrite a later release."
+  }
+}
