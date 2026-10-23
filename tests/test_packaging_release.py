@@ -239,7 +239,15 @@ class BuiltPackagingLazyLoadTests(unittest.TestCase):
         deferred_bytes = b'\n'.join((client / 'release' / name).read_bytes() for name in names - initial)
         self.assertNotIn(b'THREE.WebGLRenderer', initial_bytes)
         self.assertIn(b'THREE.WebGLRenderer', deferred_bytes)
-        self.assertNotIn(b'beach-magic-packaging.glb', initial_bytes)
+        # The lightweight, click-mounted loader legitimately contains the model
+        # URL. The eager graph must still exclude its binary and renderer code;
+        # the React integration test verifies no request occurs before opening.
+        self.assertNotIn('src/structure/packaging-scene.js', visited)
+        self.assertNotIn('src/structure/PackagingDetail.jsx', visited)
+        self.assertTrue(all(not name.endswith('.glb') for name in initial))
+        glb = (client / 'packaging-assets/beach-magic-packaging.glb').read_bytes()
+        self.assertNotIn(glb, initial_bytes)
+        self.assertNotIn(b'gsap.min.js', initial_bytes)
         self.assertNotIn(b'ScrollTrigger.min.js', initial_bytes)
         self.assertNotIn(b'.packaging-detail', initial_bytes)
         self.assertTrue(any(name.endswith('.css') for name in names - initial))

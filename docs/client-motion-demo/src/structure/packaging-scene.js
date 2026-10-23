@@ -4,28 +4,66 @@ import { GLTFLoader } from './vendor/GLTFLoader.js';
 const clamp = T.MathUtils.clamp;
 const smooth = (a, b, x) => { const t = clamp((x-a)/(b-a), 0, 1); return t*t*(3-2*t); };
 
-export async function mountPackagingScene(host, { onError, onReady } = {}) {
+function disposeObjects(...objects) {
+  const geometries = new Set(), materials = new Set(), textures = new Set();
+  objects.forEach(object => object?.traverse(o => {
+    if (o.geometry) geometries.add(o.geometry);
+    if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => materials.add(m));
+  }));
+  materials.forEach(m => {Object.values(m).forEach(v => {if (v?.isTexture) textures.add(v);}); m.dispose();});
+  geometries.forEach(g => g.dispose()); textures.forEach(t => t.dispose());
+}
+
+export async function mountPackagingScene(host, { onError, onReady, modelRequest, signal } = {}) {
   let disposed = false, frame = 0, lastTime = 0;
-  const renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+  let renderer, canvas, scene, envTarget, key, observer, api, studio;
+  let down, move, up, lost, visible;
+  const mark = phase => modelRequest?.mark(phase);
+  const signals = [signal, modelRequest?.signal].filter(Boolean);
+  const abortReason = () => signals.find(value => value.aborted)?.reason || new DOMException('Packaging view closed', 'AbortError');
+  let rejectAbort;
+  const aborted = new Promise((resolve, reject) => {rejectAbort = reject;});
+  aborted.catch(() => {});
+  const cancelled = () => {dispose(); rejectAbort(abortReason());};
+  function dispose() {
+    if (disposed) return;
+    disposed = true; cancelAnimationFrame(frame); observer?.disconnect();
+    signals.forEach(value => value.removeEventListener('abort', cancelled));
+    canvas?.removeEventListener('pointerdown', down); canvas?.removeEventListener('pointermove', move);
+    canvas?.removeEventListener('pointerup', up); canvas?.removeEventListener('pointercancel', up);
+    canvas?.removeEventListener('lostpointercapture', up); canvas?.removeEventListener('webglcontextlost', lost);
+    document.removeEventListener('visibilitychange', visible);
+    disposeObjects(scene, studio);
+    envTarget?.dispose(); key?.shadow.map?.dispose(); key?.shadow.mapPass?.dispose();
+    renderer?.dispose(); canvas?.remove();
+    if (host.__packagingScene === api) delete host.__packagingScene;
+  }
+  signals.forEach(value => value.addEventListener('abort', cancelled, {once: true}));
+  try {
+  if (signals.some(value => value.aborted)) throw abortReason();
+  if (!modelRequest) throw new Error('A packaging model request is required.');
+  // The authenticated request already started in the lightweight detail loader.
+  // Prepare the unchanged studio while its bytes travel over the network.
+  renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
   renderer.toneMapping = T.ACESFilmicToneMapping;
   renderer.toneMappingExposure = .92;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = T.PCFSoftShadowMap;
-  renderer.setClearColor(0xd4d1cc, 1);
+  renderer.setClearColor(0xf4c8d6, 1);
   host.append(renderer.domElement);
-  const canvas = renderer.domElement;
+  canvas = renderer.domElement;
   canvas.setAttribute('aria-label', 'Beach Magic 三部件空罐模型，可拖拽旋转');
   canvas.setAttribute('role', 'img');
   canvas.style.touchAction = 'pan-y';
-  const scene = new T.Scene();
-  scene.background = new T.Color(0xd4d1cc);
+  scene = new T.Scene();
+  scene.background = new T.Color(0xf4c8d6);
   const camera = new T.OrthographicCamera(-3, 3, 3, -3, .01, 100);
   const root = new T.Group();
   scene.add(root);
   // Neutral studio reflections keep the clear wall legible even at grazing angles.
   // Reflection cards live only in the environment map and never obstruct the product.
-  const studio = new T.Scene();
+  studio = new T.Scene();
   studio.background = new T.Color('#858480');
   const cardGeometry = new T.PlaneGeometry(1, 1);
   const cardMaterials = [];
@@ -42,11 +80,13 @@ export async function mountPackagingScene(host, { onError, onReady } = {}) {
   reflectionCard([-3, 0, -5], [2.3, 5], '#faf4e9', 1.1);
   reflectionCard([0, 0, 7], [2.8, 7], '#4f5052', 1);
   const pmrem = new T.PMREMGenerator(renderer);
-  const envTarget = pmrem.fromScene(studio, .025);
+  mark('pmremStart');
+  try {envTarget = pmrem.fromScene(studio, .025);} finally {pmrem.dispose();}
+  mark('pmremEnd');
   scene.environment = envTarget.texture;
-  cardGeometry.dispose(); cardMaterials.forEach(m => m.dispose()); pmrem.dispose();
+  cardGeometry.dispose(); cardMaterials.forEach(m => m.dispose()); studio = null;
   scene.add(new T.HemisphereLight(0xf5f2ed, 0x716961, .32));
-  const key = new T.DirectionalLight(0xfff6e9, 2.3); key.position.set(-4, 6, 4);
+  key = new T.DirectionalLight(0xfff6e9, 2.3); key.position.set(-4, 6, 4);
   key.target.position.set(0, 2.5, 0); scene.add(key, key.target);
   key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
   Object.assign(key.shadow.camera, { left: -4, right: 4, top: 5, bottom: -4, near: .1, far: 18 });
@@ -56,17 +96,21 @@ export async function mountPackagingScene(host, { onError, onReady } = {}) {
   const fill = new T.DirectionalLight(0xfff9ef, .16); fill.position.set(1, 1, 7); scene.add(fill);
   const bounce = new T.DirectionalLight(0xf3f0ea, 1.25); bounce.position.set(0, -3, 6); scene.add(bounce);
 
-  let model;
-  try {
-    model = (await new GLTFLoader().loadAsync(`${import.meta.env.BASE_URL}assets/packaging/beach-magic-packaging.glb`)).scene;
-  } catch (error) {
-    envTarget.dispose(); renderer.dispose(); canvas.remove(); throw error;
-  }
+  const parsed = modelRequest.promise.then(bytes => {
+    if (disposed) throw abortReason();
+    mark('parseStart');
+    return new GLTFLoader().parseAsync(bytes, '');
+  }).then(gltf => {
+    if (disposed) {disposeObjects(gltf.scene); throw abortReason();}
+    mark('parseEnd');
+    return gltf.scene;
+  });
+  const model = await Promise.race([parsed, aborted]);
   root.add(model);
   model.scale.setScalar(30);
   const parts = { jar: model.getObjectByName('Jar'), cap: model.getObjectByName('OuterCap'), liner: model.getObjectByName('InnerLid') };
   if (Object.values(parts).some(v => !v)) {
-    envTarget.dispose(); renderer.dispose(); canvas.remove(); throw new Error('The three packaging components are required.');
+    throw new Error('The three packaging components are required.');
   }
   const rest = Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, { p: value.position.clone(), q: value.quaternion.clone() }]));
   model.traverse(o => {
@@ -157,7 +201,7 @@ export async function mountPackagingScene(host, { onError, onReady } = {}) {
     const dt = Math.min((time-lastTime)/1000, .06) || .016; lastTime = time;
     const ease = reduced ? 1 : 1-Math.exp(-dt*13);
     current += (target-current)*ease; yaw += (desiredYaw-yaw)*ease; pitch += (desiredPitch-pitch)*ease;
-    pose();
+    try {pose();} catch (error) {dispose(); onError?.(error); return;}
     if (Math.abs(target-current)+Math.abs(desiredYaw-yaw)+Math.abs(desiredPitch-pitch) > .0002) invalidate();
   }
   function invalidate() { if (!frame && !disposed) frame = requestAnimationFrame(render); }
@@ -165,28 +209,28 @@ export async function mountPackagingScene(host, { onError, onReady } = {}) {
     width = Math.max(host.clientWidth, 1); height = Math.max(host.clientHeight, 1);
     renderer.setSize(width, height); invalidate();
   };
-  const observer = new ResizeObserver(resize); observer.observe(host); resize();
-  function down(e) {
+  observer = new ResizeObserver(resize); observer.observe(host); resize();
+  down = function(e) {
     if (e.button && e.button !== 0) return;
     pointer = { id: e.pointerId, x: e.clientX, y: e.clientY, yaw: desiredYaw, pitch: desiredPitch, touch: e.pointerType==='touch' };
     if (!pointer.touch) canvas.setPointerCapture(e.pointerId);
     canvas.style.cursor = 'grabbing';
   }
-  function move(e) {
+  move = function(e) {
     if (!pointer || e.pointerId !== pointer.id) return;
     const dx = e.clientX-pointer.x, dy = e.clientY-pointer.y;
     desiredYaw = pointer.yaw + dx*.015;
     if (!pointer.touch) desiredPitch = clamp(pointer.pitch + dy*.006, -Math.PI*.75, Math.PI*.75);
     invalidate();
   }
-  function up() { pointer = null; canvas.style.cursor = 'grab'; }
-  function lost(e) { e.preventDefault(); onError?.(new Error('WebGL context lost')); }
-  function visible() { if (!document.hidden) { lastTime=0; invalidate(); } }
+  up = function() { pointer = null; canvas.style.cursor = 'grab'; };
+  lost = function(e) { e.preventDefault(); dispose(); onError?.(new Error('WebGL context lost')); };
+  visible = function() { if (!document.hidden) { lastTime=0; invalidate(); } };
   canvas.style.cursor = 'grab';
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointermove', move);
   canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', up); canvas.addEventListener('lostpointercapture', up);
   canvas.addEventListener('webglcontextlost', lost); document.addEventListener('visibilitychange', visible);
-  const api = {
+  api = {
     setProgress(p) { target = clamp(Number(p)||0, 0, 1); invalidate(); },
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
@@ -199,16 +243,11 @@ export async function mountPackagingScene(host, { onError, onReady } = {}) {
       focus=key==='cap'?.25:key==='jar'?-.12:0; invalidate();
     },
     getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, components:Object.keys(parts), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
-    dispose() {
-      if (disposed) return; disposed=true; cancelAnimationFrame(frame); observer.disconnect();
-      canvas.removeEventListener('pointerdown',down); canvas.removeEventListener('pointermove',move); canvas.removeEventListener('pointerup',up); canvas.removeEventListener('pointercancel',up); canvas.removeEventListener('lostpointercapture',up); canvas.removeEventListener('webglcontextlost',lost); document.removeEventListener('visibilitychange',visible);
-      const geometries=new Set(), materials=new Set(), textures=new Set();
-      scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>materials.add(m));});
-      materials.forEach(m=>{Object.values(m).forEach(v=>{if(v?.isTexture)textures.add(v);});m.dispose();});
-      geometries.forEach(g=>g.dispose());textures.forEach(t=>t.dispose());envTarget.dispose();key.shadow.map?.dispose();key.shadow.mapPass?.dispose();renderer.dispose();canvas.remove();
-      if (host.__packagingScene===api) delete host.__packagingScene;
-    }
+    dispose,
   };
   host.__packagingScene=api;
-  onReady?.(); invalidate(); return api;
+  cancelAnimationFrame(frame); frame = 0;
+  mark('firstFrameStart'); pose(); mark('firstFrame');
+  onReady?.(); return api;
+  } catch (error) {dispose(); throw error;}
 }

@@ -524,29 +524,29 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-DDyvL9Kd.js": {
-      "bytes": 11100,
-      "sha256": "be2e92326f0f2f54b01341be151330af1cc6d94827dbc55ef370b520f3384285"
+    "assets/packaging/PackagingDetail-Cj4KWLwf.js": {
+      "bytes": 11934,
+      "sha256": "43d31e465d0ee524cabf9b3f43354a7a52ec1312c1a053aeb7b73b10808f4fd3"
     },
-    "assets/packaging/PackagingDetail-Dt1YKAYF.css": {
-      "bytes": 10318,
-      "sha256": "5660d7d4705d61c03f0c5a0ca7de0981a64b34d4a2cdbda0ce57336d6e286954"
+    "assets/packaging/PackagingDetail-qX33rcx_.css": {
+      "bytes": 10346,
+      "sha256": "4f933a90f88aa780b693e40399ea4caef65d6521c488ae365b2ff4790215a76f"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
       "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
     },
     "assets/packaging/beach-magic-packaging.glb": {
-      "bytes": 2750324,
-      "sha256": "133e16571a1005e801e9dbdfc2a8faf5cd5bf10b61cb138acf287c1bcb709bd7"
+      "bytes": 2394816,
+      "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
     },
     "assets/packaging/gsap.min.js": {
       "bytes": 72435,
       "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
     },
-    "assets/packaging/packaging-scene-uK9QnIWU.js": {
-      "bytes": 568995,
-      "sha256": "db41b80dad394e6aa82a06322070677398a13f0096ef4d923212b525ea8135eb"
+    "assets/packaging/packaging-scene-WX9CdaCv.js": {
+      "bytes": 569698,
+      "sha256": "9ff21342ed2a34fecc53074a378a9c78792f0c417051b0bb828efa836ab4c8d9"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1526,11 +1526,11 @@
     },
     "preview.css": {
       "bytes": 46910,
-      "sha256": "8499dc3ffe7630a31bf30da2b9c3c20a32e2f92b0d97cd8de87666afb1a40da1"
+      "sha256": "a5bbfa32f562ccdcefee1d268e2b54cc720d61435439a4886d7740c8e6191c6c"
     },
     "preview.js": {
-      "bytes": 334203,
-      "sha256": "7fb07faad5e685ee52f7da48630e6790c53479ec0a10dc364aa0927db8e4d5cf"
+      "bytes": 335815,
+      "sha256": "96c0baf6a3f131c5b3088393dd529acadbd89790286bbe117dbd2dc46ebbbc60"
     },
     "product-posters.js": {
       "bytes": 18887,

@@ -11,7 +11,7 @@ import {createRoot} from 'react-dom/client';
 // handlers, state, fallback UI and the App's routing run unchanged in React.
 const require = createRequire(import.meta.url);
 const {transformSync} = createRequire(require.resolve('tsx/package.json'))('esbuild');
-function component(name, {deps = {}, mocks = {}, main = false} = {}) {
+function component(name, {deps = {}, mocks = {}, main = false, allExports = false} = {}) {
   const url = new URL(`../src/${name}`, import.meta.url);
   let source = readFileSync(url, 'utf8').replace(/^import ['"][^'"]+\.css['"];?\s*$/gm, '');
   source = source.replace("import('./PackagingDetail.jsx')", '__deps.loadDetail()')
@@ -20,8 +20,8 @@ function component(name, {deps = {}, mocks = {}, main = false} = {}) {
   const {code} = transformSync(source, {loader: 'jsx', format: 'cjs', jsx: 'transform',
     define: {'import.meta.env.MODE': '"test"', 'import.meta.env.BASE_URL': '"/"'}});
   const module = {exports: {}}, localRequire = createRequire(url);
-  new Function('require', 'module', 'exports', '__deps', code)(id => id in mocks ? mocks[id] : localRequire(id), module, module.exports, deps);
-  return main ? module.exports.App : module.exports.default;
+  new Function('require', 'module', 'exports', '__deps', code)(id => id in mocks ? mocks[id] : localRequire(id), module, module.exports, {loadScene: async () => ({}), ...deps});
+  return allExports ? module.exports : main ? module.exports.App : module.exports.default;
 }
 function deferred() {
   let resolve, reject;
@@ -32,6 +32,8 @@ function setup({reduced = true} = {}) {
   const dom = new JSDOM('<div id="root"></div>', {url: 'http://localhost/', pretendToBeVisual: true});
   const media = {matches: reduced, addEventListener() {}, removeEventListener() {}};
   const frames = new Map(); let id = 0;
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({ok: true, arrayBuffer: async () => new ArrayBuffer(12)});
   Object.assign(globalThis, {window: dom.window, document: dom.window.document, IS_REACT_ACT_ENVIRONMENT: true,
     matchMedia: () => media, requestAnimationFrame: fn => {frames.set(++id, fn); return id;},
     cancelAnimationFrame: key => frames.delete(key)});
@@ -43,7 +45,7 @@ function setup({reduced = true} = {}) {
   };
   window.HTMLDialogElement.prototype.close = function() {this.open = false;};
   const root = createRoot(document.getElementById('root'));
-  return {root, dom, frames, async close() {await act(async () => root.unmount()); dom.window.close();}};
+  return {root, dom, frames, async close() {await act(async () => root.unmount()); dom.window.close(); globalThis.fetch = originalFetch;}};
 }
 const item = {id: 'poster-012', title: {zh: 'Beach Magic 原海报', en: 'Beach Magic poster'}, image: '/poster-012.webp', original: '/poster-012-original.webp'};
 const defaultProps = {item, lang: 'zh', logo: '/logo.webp', saved: false, onClose() {}, onOriginal() {}, onFavorite() {}};
@@ -102,7 +104,7 @@ test('scene failure keeps the real poster, favorite and close controls usable an
 test('late scene completion is disposed after leaving; mounted scenes release once and never stay attached', async () => {
   const env = setup(), pending = deferred(); let mounts = 0, disposals = 0;
   const api = {dispose() {disposals++;}, setProgress() {}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
-  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: () => {mounts++; return pending.promise;}})}});
+  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, {onReady}) => {mounts++; const result = await pending.promise; onReady(); return result;}})}});
   try {
     await act(async () => env.root.render(<Detail {...defaultProps}/>));
     assert.equal(mounts, 1);
@@ -122,7 +124,7 @@ test('runtime scene failure releases the renderer and switches to an original-po
   const env = setup(), priorError = console.error; let failScene, disposals = 0;
   console.error = () => {};
   const api = {dispose() {disposals++;}, setProgress() {}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
-  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, {onError}) => {failScene = onError; return api;}})}});
+  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, {onError, onReady}) => {failScene = onError; onReady(); return api;}})}});
   try {
     await act(async () => env.root.render(<Detail {...defaultProps}/>));
     assert.equal(document.querySelector('#packaging-opening').disabled, false);
@@ -139,7 +141,7 @@ test('animation-script failure retains a usable 3D scene with manual stages and 
   const append = document.head.append.bind(document.head);
   document.head.append = node => {append(node); if (node.tagName === 'SCRIPT') queueMicrotask(() => node.onerror?.());};
   const api = {dispose() {}, setProgress(value) {progress = value;}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
-  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async () => api})}});
+  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, {onReady}) => {onReady(); return api;}})}});
   try {
     await act(async () => env.root.render(<Detail {...defaultProps} onOriginal={() => originals++}/>));
     assert.ok(document.querySelector('.packaging-detail--manual'));
@@ -153,7 +155,150 @@ test('animation-script failure retains a usable 3D scene with manual stages and 
   } finally {await env.close();}
 });
 
-function appHarness() {
+test('loader starts one authenticated model request beside both modules and aborts it immediately on close', async () => {
+  const env = setup(), detail = deferred(), scene = deferred(), bytes = deferred();
+  let received, calls = 0, sceneCalls = 0, signal;
+  globalThis.fetch = (url, options) => {
+    calls++; signal = options.signal;
+    assert.equal(url, '/assets/packaging/beach-magic-packaging.glb');
+    assert.equal(options.credentials, 'same-origin'); assert.equal(options.cache, 'no-cache');
+    signal.addEventListener('abort', () => bytes.reject(signal.reason), {once: true});
+    return bytes.promise;
+  };
+  function Detail(props) {received = props; return <div>Detail</div>;}
+  const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {
+    loadDetail: () => detail.promise, loadScene: () => {sceneCalls++; return scene.promise;},
+  }});
+  try {
+    await act(async () => env.root.render(<Loader {...defaultProps}/>));
+    assert.equal(calls, 1); assert.equal(sceneCalls, 1);
+    await act(async () => detail.resolve({default: Detail}));
+    assert.equal(received.getModelRequest(), received.getModelRequest());
+    assert.equal(received.getSceneModule(), scene.promise);
+    assert.equal(calls, 1); assert.equal(sceneCalls, 1, 'the prefetched scene module is reused');
+    await act(async () => env.root.render(<div>Collection</div>));
+    assert.equal(signal.aborted, true);
+    await act(async () => scene.resolve({}));
+    assert.equal(document.getElementById('root').textContent, 'Collection');
+  } finally {await env.close();}
+});
+
+test('module timeout cancels the pending model, keeps poster escape and ignores a late module', async t => {
+  const env = setup(), detail = deferred(), response = deferred(); let signal;
+  t.mock.timers.enable({apis: ['setTimeout']});
+  globalThis.fetch = (url, options) => {
+    signal = options.signal;
+    signal.addEventListener('abort', () => response.reject(signal.reason), {once: true});
+    return response.promise;
+  };
+  const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {loadDetail: () => detail.promise}});
+  try {
+    await act(async () => env.root.render(<Loader {...defaultProps}/>));
+    await act(async () => t.mock.timers.tick(30000));
+    assert.equal(signal.aborted, true); assert.equal(signal.reason.name, 'TimeoutError');
+    assert.ok(byText('重新加载')); assert.ok(byText('查看原海报'));
+    await act(async () => detail.resolve({default: () => <div>Stale detail</div>}));
+    assert.equal(document.getElementById('root').textContent.includes('Stale detail'), false);
+  } finally {await env.close(); t.mock.timers.reset();}
+});
+
+test('model deadline aborts its own request and a later attempt can fetch fresh bytes', async t => {
+  const env = setup(); t.mock.timers.enable({apis: ['setTimeout']});
+  const {startPackagingModelRequest} = component('structure/PackagingDetailLoader.jsx', {allExports: true});
+  let calls = 0;
+  globalThis.fetch = (url, {signal}) => {
+    calls++;
+    return calls === 1 ? new Promise((resolve, reject) => signal.addEventListener('abort', () => reject(signal.reason), {once: true}))
+      : Promise.resolve({ok: true, arrayBuffer: async () => new ArrayBuffer(20)});
+  };
+  try {
+    const first = startPackagingModelRequest();
+    await act(async () => t.mock.timers.tick(60000));
+    await assert.rejects(first.promise, error => error.name === 'TimeoutError');
+    assert.equal(first.signal.aborted, true);
+    const second = startPackagingModelRequest();
+    assert.equal((await second.promise).byteLength, 20); assert.equal(calls, 2);
+    assert.ok('fetchEnd' in second.timings); second.abort();
+  } finally {await env.close(); t.mock.timers.reset();}
+});
+
+test('a rejected protected model response is never parsed or reused for another opening', async () => {
+  const env = setup(); let calls = 0, bodyReads = 0;
+  const {startPackagingModelRequest} = component('structure/PackagingDetailLoader.jsx', {allExports: true});
+  globalThis.fetch = async () => ({ok: ++calls > 1, status: calls === 1 ? 403 : 200,
+    arrayBuffer: async () => {bodyReads++; return new ArrayBuffer(16);}});
+  try {
+    const denied = startPackagingModelRequest();
+    await assert.rejects(denied.promise, /403/); assert.equal(bodyReads, 0); denied.abort();
+    const fresh = startPackagingModelRequest();
+    assert.equal((await fresh.promise).byteLength, 16); assert.equal(calls, 2); assert.equal(bodyReads, 1); fresh.abort();
+  } finally {await env.close();}
+});
+
+test('scene initialization has a deadline that aborts both scene work and the prefetched request', async t => {
+  const env = setup(), pending = deferred(), previousError = console.error; let signal, requestAborts = 0;
+  console.error = () => {}; t.mock.timers.enable({apis: ['setTimeout']});
+  const modelRequest = {mark() {}, abort() {requestAborts++;}};
+  const getModelRequest = () => modelRequest;
+  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: (host, options) => {
+    signal = options.signal; return pending.promise;
+  }})}});
+  try {
+    await act(async () => env.root.render(<Detail {...defaultProps} getModelRequest={getModelRequest}/>));
+    await act(async () => t.mock.timers.tick(60000));
+    assert.equal(signal.aborted, true); assert.equal(signal.reason.name, 'TimeoutError'); assert.equal(requestAborts, 1);
+    assert.ok(document.querySelector('.packaging-error')); assert.ok(byText('重新加载'));
+    let disposed = 0; await act(async () => pending.resolve({dispose() {disposed++;}}));
+    assert.equal(disposed, 1); assert.equal(document.querySelector('#packaging-opening').disabled, true);
+  } finally {await env.close(); t.mock.timers.reset(); console.error = previousError;}
+});
+
+test('pending animation never blocks the scene, and late animation preserves a manual stage with a full 0-to-1 range', async () => {
+  const env = setup({reduced: false}); let mountCount = 0, onReady, progress = -1, clock, config, reverted = 0;
+  const api = {dispose() {}, setProgress(value) {progress = value;}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
+  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, options) => {
+    mountCount++; onReady = options.onReady; return api;
+  }})}});
+  const trigger = {start: 0, end: 1000, refresh() {config.scrollTrigger.onRefreshInit(); config.scrollTrigger.onRefresh(trigger);},
+    update() {}, getTween: () => null, animation: {progress(value) {clock.progress = value; config.onUpdate();}}};
+  try {
+    await act(async () => env.root.render(<Detail {...defaultProps}/>));
+    assert.equal(mountCount, 1, 'scene starts while the animation request remains pending');
+    assert.equal(document.querySelector('#packaging-opening').disabled, true, 'mount resolution alone is not a first frame');
+    await act(async () => onReady());
+    await click(byText('半展开')); assert.equal(progress, .5);
+    const core = document.querySelector('script[src$="gsap.min.js"]'); assert.ok(core);
+    window.gsap = {registerPlugin() {}, context(run) {run(); return {revert() {reverted++;}};},
+      to(value, options) {clock = value; config = options; assert.equal(clock.progress, 0); assert.equal(options.progress, 1); return {scrollTrigger: trigger};}};
+    await act(async () => core.onload());
+    const plugin = document.querySelector('script[src$="ScrollTrigger.min.js"]'); assert.ok(plugin);
+    window.ScrollTrigger = {};
+    await act(async () => plugin.onload());
+    await act(async () => {const callbacks = [...env.frames.values()]; env.frames.clear(); callbacks.forEach(fn => fn());});
+    assert.equal(progress, .5); assert.equal(document.querySelector('.packaging-scroll').scrollTop, 500);
+    await act(async () => {clock.progress = 0; config.onUpdate();}); assert.equal(progress, 0);
+    await act(async () => {clock.progress = 1; config.onUpdate();}); assert.equal(progress, 1);
+  } finally {await env.close(); assert.equal(reverted, 1);}
+});
+
+test('animation timeout enters manual mode and a later opening retries its script', async t => {
+  const env = setup({reduced: false}); t.mock.timers.enable({apis: ['setTimeout']});
+  const api = {dispose() {}, setProgress() {}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
+  const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, {onReady}) => {onReady(); return api;}})}});
+  try {
+    await act(async () => env.root.render(<Detail {...defaultProps}/>));
+    const first = document.querySelector('script[src$="gsap.min.js"]'); assert.ok(first);
+    assert.equal(document.querySelector('#packaging-opening').disabled, false);
+    await act(async () => t.mock.timers.tick(15000));
+    assert.ok(document.querySelector('.packaging-detail--manual')); assert.equal(first.isConnected, false);
+    assert.equal(first.onload, null); assert.equal(first.onerror, null);
+    await act(async () => env.root.render(<div>Collection</div>));
+    await act(async () => env.root.render(<Detail {...defaultProps}/>));
+    const second = document.querySelector('script[src$="gsap.min.js"]'); assert.ok(second); assert.notEqual(second, first);
+  } finally {await env.close(); t.mock.timers.reset();}
+});
+
+function appHarness({loader} = {}) {
   let mounts = 0, unmounts = 0;
   function Showcase(props) {return <div data-testid="showcase" data-selected={props.selectedId} data-modal={String(props.modalOpen)}>
     {props.items.map(p => <button key={p.id} data-open={p.id} onClick={() => {props.onSelect(p.id); props.onOpen(p);}}>{p.id}</button>)}
@@ -168,9 +313,28 @@ function appHarness() {
       <button onClick={props.onFavorite} aria-pressed={props.saved}>Save structure</button>
     </div>;
   }
-  const App = component('main.jsx', {main: true, mocks: {'./FeaturedShowcase.jsx': Showcase, './structure/PackagingDetailLoader.jsx': Detail}});
+  const App = component('main.jsx', {main: true, mocks: {'./FeaturedShowcase.jsx': Showcase, './structure/PackagingDetailLoader.jsx': loader || Detail}});
   return {App, counts: () => ({mounts, unmounts})};
 }
+
+test('the real App and lightweight loader make no model or module request before opening Beach Magic', async () => {
+  const env = setup(); let requests = 0, details = 0, scenes = 0;
+  globalThis.fetch = async () => {requests++; return {ok: true, arrayBuffer: async () => new ArrayBuffer(12)};};
+  const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {
+    loadDetail: async () => {details++; return {default: () => <div>Beach detail</div>};},
+    loadScene: async () => {scenes++; return {};},
+  }});
+  const {App} = appHarness({loader: Loader});
+  try {
+    await act(async () => env.root.render(<App/>));
+    assert.deepEqual([requests, details, scenes], [0, 0, 0]);
+    await click(document.querySelector('[data-open="poster-013"]'));
+    assert.deepEqual([requests, details, scenes], [0, 0, 0]);
+    await click(document.querySelector('[aria-label="关闭"]'));
+    await click(document.querySelector('[data-open="poster-012"]'));
+    assert.deepEqual([requests, details, scenes], [1, 1, 1]);
+  } finally {await env.close();}
+});
 
 test('App opens only Beach Magic as 3D and preserves another product HD/download/favorites and return focus', async () => {
   const env = setup();

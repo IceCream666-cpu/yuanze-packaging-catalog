@@ -2,26 +2,39 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowLeft, Heart, Focus, Image as ImageIcon, RotateCcw, RotateCw } from 'lucide-react';
 import './packaging-detail.css';
 
-let animationPromise;
+let animationTask;
 
-function loadAnimation() {
+function loadAnimation(signal) {
   if (window.gsap && window.ScrollTrigger) return Promise.resolve();
-  if (!animationPromise) {
-    animationPromise = (async () => {
+  if (!animationTask || animationTask.signal.aborted) {
+    const task = {signal};
+    animationTask = task;
+    task.promise = (async () => {
       for (const [globalName, file] of [['gsap', 'gsap.min.js'], ['ScrollTrigger', 'ScrollTrigger.min.js']]) {
+        if (signal.aborted) throw signal.reason;
         if (window[globalName]) continue;
         await new Promise((resolve, reject) => {
           const script = document.createElement('script');
+          const finish = error => {
+            clearTimeout(timer);
+            signal.removeEventListener('abort', cancelled);
+            script.onload = script.onerror = null;
+            if (error) {script.remove(); reject(error);} else resolve();
+          };
+          const cancelled = () => finish(signal.reason);
+          const timer = setTimeout(() => finish(new Error(`Loading ${file} timed out`)), 15000);
           script.src = import.meta.env.BASE_URL + 'assets/packaging/' + file;
-          script.onload = resolve;
-          script.onerror = () => { script.remove(); reject(new Error(`Cannot load ${file}`)); };
+          script.onload = () => finish(window[globalName] ? null : new Error(`Cannot initialize ${file}`));
+          script.onerror = () => finish(new Error(`Cannot load ${file}`));
+          signal.addEventListener('abort', cancelled, {once: true});
           document.head.append(script);
         });
       }
+      if (signal.aborted) throw signal.reason;
       window.gsap.registerPlugin(window.ScrollTrigger);
-    })().catch(error => { animationPromise = undefined; throw error; });
+    })().catch(error => {if (animationTask === task) animationTask = undefined; throw error;});
   }
-  return animationPromise;
+  return animationTask.promise;
 }
 
 const PARTS = [
@@ -54,7 +67,7 @@ function stageFor(progress) {
   return 2;
 }
 
-export default function PackagingDetail({ item, lang, onClose, onOriginal, onFavorite, saved, logo }) {
+export default function PackagingDetail({ item, lang, onClose, onOriginal, onFavorite, saved, logo, getModelRequest, getSceneModule }) {
   const zh = lang === 'zh';
   const languageIndex = zh ? 0 : 1;
   const rootRef = useRef(null);
@@ -95,6 +108,10 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
     let resizeProgress = null;
     let refreshProgress = null;
     let refreshing = false;
+    const controller = new AbortController();
+    const modelRequest = getModelRequest?.();
+    const mark = phase => modelRequest?.mark(phase);
+    let initializationTimer;
     setReady(false);
     setFailed(false);
     setManualOnly(reducedMotion);
@@ -152,6 +169,9 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
     const fail = error => {
       if (!active || failedDuringMount) return;
       failedDuringMount = true;
+      clearTimeout(initializationTimer);
+      controller.abort(error);
+      modelRequest?.abort(error);
       setFailed(true);
       setReady(false);
       cancelAnimationFrame(frame);
@@ -166,24 +186,31 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
       console.error('Packaging preview unavailable', error);
     };
 
+    initializationTimer = setTimeout(() => fail(new DOMException('Model preparation timed out', 'TimeoutError')), 60000);
+    // Animation is optional: never hold the GLB or first frame behind its scripts.
+    const animation = reducedMotion ? Promise.resolve(false) : loadAnimation(controller.signal).then(() => {
+      mark('animationReady'); return true;
+    }, () => false);
     (async () => {
       try {
-        const [{ mountPackagingScene }, animationAvailable] = await Promise.all([
-          import('./packaging-scene.js'),
-          reducedMotion ? Promise.resolve(false) : loadAnimation().then(() => true, () => false),
-        ]);
-        if (!active) return;
+        const { mountPackagingScene } = await (getSceneModule ? getSceneModule() : import('./packaging-scene.js'));
+        if (!active || failedDuringMount) return;
+        mark('sceneModule');
         const mountedApi = await mountPackagingScene(hostRef.current, {
+          modelRequest, signal: controller.signal,
           onError: fail,
-          onReady: () => { if (active && !failedDuringMount) setReady(true); },
+          onReady: () => {if (active && !failedDuringMount) {clearTimeout(initializationTimer); setReady(true);}},
         });
         if (!active || failedDuringMount) { mountedApi?.dispose(); return; }
         api = mountedApi;
         apiRef.current = api;
-        setReady(true);
         update(0);
 
+        const animationAvailable = await animation;
+        if (!active || failedDuringMount) return;
         if (animationAvailable) {
+          // Preserve a manual selection made while the animation scripts loaded.
+          const retainedProgress = progressRef.current;
           context = window.gsap.context(() => {
             const clock = { progress: 0 };
             const tween = window.gsap.to(clock, {
@@ -206,7 +233,13 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
             });
             triggerRef.current = tween.scrollTrigger;
           }, rootRef);
-          frame = requestAnimationFrame(() => triggerRef.current?.refresh());
+          frame = requestAnimationFrame(() => {
+            if (!active || failedDuringMount || !triggerRef.current) return;
+            resizeProgress = retainedProgress;
+            triggerRef.current.refresh();
+            restoreProgressAfterRefresh(triggerRef.current);
+            resizeProgress = null;
+          });
         } else {
           setManualOnly(true);
         }
@@ -217,6 +250,9 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
 
     return () => {
       active = false;
+      clearTimeout(initializationTimer);
+      controller.abort();
+      modelRequest?.abort();
       cancelAnimationFrame(frame);
       clearTimeout(resizeTimer);
       window.removeEventListener('resize', handleResize, true);
@@ -226,7 +262,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
       triggerRef.current = null;
       updateRef.current = null;
     };
-  }, [item.id, reducedMotion, retry]);
+  }, [item.id, reducedMotion, retry, getModelRequest, getSceneModule]);
 
   function jumpTo(value, smooth = true) {
     const progress = Math.max(0, Math.min(1, value));

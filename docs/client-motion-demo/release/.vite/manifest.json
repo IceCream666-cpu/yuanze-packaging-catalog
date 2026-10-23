@@ -5,6 +5,7 @@
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
+      "src/structure/packaging-scene.js",
       "src/structure/PackagingDetail.jsx"
     ],
     "css": [
@@ -12,7 +13,7 @@
     ]
   },
   "src/structure/PackagingDetail.jsx": {
-    "file": "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+    "file": "assets/packaging/PackagingDetail-Cj4KWLwf.js",
     "name": "PackagingDetail",
     "src": "src/structure/PackagingDetail.jsx",
     "isDynamicEntry": true,
@@ -23,11 +24,11 @@
       "src/structure/packaging-scene.js"
     ],
     "css": [
-      "assets/packaging/PackagingDetail-Dt1YKAYF.css"
+      "assets/packaging/PackagingDetail-qX33rcx_.css"
     ]
   },
   "src/structure/packaging-scene.js": {
-    "file": "assets/packaging/packaging-scene-uK9QnIWU.js",
+    "file": "assets/packaging/packaging-scene-WX9CdaCv.js",
     "name": "packaging-scene",
     "src": "src/structure/packaging-scene.js",
     "isDynamicEntry": true
