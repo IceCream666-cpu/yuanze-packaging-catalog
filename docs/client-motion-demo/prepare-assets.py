@@ -2,6 +2,7 @@
 from pathlib import Path
 import json, shutil, hashlib
 import re
+import importlib.util
 from PIL import Image
 BASE=Path(__file__).resolve().parent
 ROOT=BASE.parents[1]
@@ -91,3 +92,10 @@ for entry in featured_media.values():
   if hashlib.sha256(src.read_bytes()).hexdigest()!=file['sha256'] or src.stat().st_size!=file['bytes']:
    raise ValueError(f'Optimized featured media checksum mismatch: {src.name}')
   shutil.copyfile(src,featured_dir/src.name)
+
+# The same fixed identities, paths and checksums gate preview and production.
+builder_spec=importlib.util.spec_from_file_location('showroom_asset_builder', ROOT/'scripts/build_customer_showroom.py')
+builder=importlib.util.module_from_spec(builder_spec)
+builder_spec.loader.exec_module(builder)
+packaging_count=builder.prepare_packaging_assets(BASE)
+print(f'Prepared {packaging_count} reviewed packaging model and animation assets.')

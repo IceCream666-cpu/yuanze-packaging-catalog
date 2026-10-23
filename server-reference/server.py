@@ -43,13 +43,16 @@ IMPORTS = {}
 IMPORT_GATE = threading.Lock()
 CATALOG_RESPONSE_GATE = threading.Lock()
 DEFAULT_CSP = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+SHOWROOM_CSP = (DEFAULT_CSP.replace("img-src 'self' data:", "img-src 'self' data: blob:")
+                .replace("connect-src 'self'", "connect-src 'self' blob:") + "; frame-src 'self'")
 
 def showroom_asset(relative):
     """Only deterministic build outputs may be served as customer company files."""
     if not isinstance(relative,str) or '\\' in relative or '..' in relative.split('/'):
         return None
     entrypoints={'index.html','preview.js','preview.css','company-content.js','product-posters.js'}
-    if relative not in entrypoints and not re.fullmatch(r'assets/[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)',relative):
+    packaging = re.fullmatch(r'assets/packaging/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*\.(?:js|css|glb)', relative)
+    if relative not in entrypoints and not packaging and not re.fullmatch(r'assets/[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)',relative):
         return None
     directory=PUBLIC/'showroom'
     try:
@@ -430,7 +433,7 @@ class Handler(BaseHTTPRequestHandler):
             relative='index.html' if path in ['/client','/client.html'] else path[len('/showroom/'):]
             asset=showroom_asset(relative)
             if asset is None:return self.respond(404,{'error':'客户展示资料暂不可用'})
-            extra={'Content-Security-Policy':DEFAULT_CSP+"; frame-src 'self'"} if relative=='index.html' else None
+            extra={'Content-Security-Policy':SHOWROOM_CSP} if relative=='index.html' else None
             return self.file(asset,PUBLIC/'showroom',extra)
         if path=='/client/products':
             return self.file(PUBLIC/'client.html',PUBLIC,{'X-Frame-Options':'SAMEORIGIN',
@@ -581,6 +584,8 @@ class Handler(BaseHTTPRequestHandler):
         if not path.is_relative_to(base) or not path.is_file(): return self.respond(404,{'error':'页面或文件不存在'})
         ctype=mimetypes.guess_type(path.name)[0] or 'application/octet-stream'
         if path.suffix in ['.js','.mjs']: ctype='text/javascript'
+        if path.suffix.lower()=='.css': ctype='text/css'
+        if path.suffix.lower()=='.glb': ctype='model/gltf-binary'
         # Minimal Linux installations may omit WebP from their system MIME map.
         if path.suffix.lower()=='.webp': ctype='image/webp'
         if thumbnail and self.wants_thumbnail() and path.suffix.lower() in {'.png','.jpg','.jpeg','.webp','.gif'}:
@@ -590,7 +595,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(asset,THUMBNAILS.root,extra,thumbnail=False)
         # Authentication, role selection and customer approval have already run.
         # Revalidate on every reuse: revoked media must never get a cached 304.
-        cacheable=ctype.startswith('image/') or path.suffix.lower() in {'.css','.js','.mjs','.pdf','.woff','.woff2','.mp4'}
+        cacheable=ctype.startswith('image/') or path.suffix.lower() in {'.css','.js','.mjs','.pdf','.woff','.woff2','.mp4','.glb'}
         with path.open('rb') as source:
             stat=os.fstat(source.fileno())
             headers={**(extra or {}),**self.image_download_headers(ctype)}
@@ -604,7 +609,7 @@ class Handler(BaseHTTPRequestHandler):
             # Single byte ranges let browsers resume interrupted media without
             # fetching the full file again. All authorization and current
             # customer approval checks above run before any range or cache hit.
-            if ctype.startswith('image/') or ctype in {'application/pdf','video/mp4'}:
+            if ctype.startswith('image/') or ctype in {'application/pdf','video/mp4','model/gltf-binary'}:
                 headers['Accept-Ranges']='bytes'
                 request_range=self.headers.get('Range','')
                 if_range=self.headers.get('If-Range')

@@ -1,0 +1,35 @@
+{
+  "index.html": {
+    "file": "preview.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/structure/PackagingDetail.jsx"
+    ],
+    "css": [
+      "preview.css"
+    ]
+  },
+  "src/structure/PackagingDetail.jsx": {
+    "file": "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+    "name": "PackagingDetail",
+    "src": "src/structure/PackagingDetail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ],
+    "dynamicImports": [
+      "src/structure/packaging-scene.js"
+    ],
+    "css": [
+      "assets/packaging/PackagingDetail-Dt1YKAYF.css"
+    ]
+  },
+  "src/structure/packaging-scene.js": {
+    "file": "assets/packaging/packaging-scene-uK9QnIWU.js",
+    "name": "packaging-scene",
+    "src": "src/structure/packaging-scene.js",
+    "isDynamicEntry": true
+  }
+}

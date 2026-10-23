@@ -25,7 +25,7 @@ test('expanded collection controls report the actual count and reveal selection 
  try{
   await act(async()=>root.render(<Demo/>));
   const strip=document.querySelector('.colour-swatches'),buttons=[...strip.querySelectorAll('button')];
-  assert.equal(buttons.length,23);assert.match(document.querySelector('.colour-intro p').textContent,/23 款/);
+  assert.equal(buttons.length,items.length);assert.match(document.querySelector('.colour-intro p').textContent,new RegExp(`${items.length} 款`));
   assert.equal(document.querySelector('.colour-position').textContent,'01 / 23');
   strip.scrollLeft=0;
   strip.getBoundingClientRect=()=>({left:20,right:270});
@@ -39,7 +39,7 @@ test('expanded collection controls report the actual count and reveal selection 
   await act(async()=>document.querySelector('[aria-label="下一款"]').click());
   assert.equal(selected,'p0');assert.equal(strip.scrollLeft,0);
   await act(async()=>root.render(<Demo lang="en"/>));
-  assert.match(document.querySelector('.colour-intro p').textContent,/23 colourful ideas/);
-  assert.equal(document.querySelector('.colour-swatches').getAttribute('aria-label'),'Choose from 23 featured products');
+  assert.match(document.querySelector('.colour-intro p').textContent,new RegExp(`${items.length} selected products`));
+  assert.equal(document.querySelector('.colour-swatches').getAttribute('aria-label'),`Choose from ${items.length} featured products`);
  }finally{await act(async()=>root.unmount());dom.window.close();}
 });

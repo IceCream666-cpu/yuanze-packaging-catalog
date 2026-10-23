@@ -1,2 +1,7 @@
 # Preserve generated PDF bytes and avoid treating their ASCII streams as source text.
 *.pdf binary
+# Preserve reviewed third-party bytes and generated GLSL template-string whitespace.
+docs/client-motion-demo/packaging-assets/*.js -whitespace
+docs/client-motion-demo/src/structure/vendor/*.js -whitespace
+docs/client-motion-demo/release/assets/packaging/*.js -whitespace
+server-reference/public/showroom/assets/packaging/*.js -whitespace
