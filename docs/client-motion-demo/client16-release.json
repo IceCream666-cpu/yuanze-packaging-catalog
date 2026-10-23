@@ -1,0 +1,180 @@
+{
+  "version": "client1.6",
+  "status": "published-and-verified",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "publishedAtBeijing": "2026-10-23T11:37:01+08:00",
+  "sourceCommit": "122ce36a9983974a8030ae6e2ba149ab0fe9aa24",
+  "sourceBranch": "codex/beach-magic-packaging-release",
+  "scope": {
+    "featuredProducts": 23,
+    "posters": 53,
+    "interactiveProductId": "poster-012",
+    "components": [
+      "Jar",
+      "OuterCap",
+      "InnerLid"
+    ],
+    "contentsIncluded": false,
+    "originalMediaUnchanged": true,
+    "businessApisChanged": false,
+    "businessDataWrittenByPublisher": false
+  },
+  "publication": {
+    "archiveSha256": "2fc7ff9d9a27e3dcd0887a4ce4bc19d8daf03a1055d5747f04ff723bf9810059",
+    "backup": "/opt/yuanze-reference/backups/client1.6-beach-magic-20261023",
+    "businessDataWrittenByPublisher": false,
+    "changed": [
+      "server.py",
+      "public/showroom/index.html",
+      "public/showroom/preview.css",
+      "public/showroom/preview.js",
+      "public/showroom/assets/packaging/PackagingDetail-DDyvL9Kd.js",
+      "public/showroom/assets/packaging/PackagingDetail-Dt1YKAYF.css",
+      "public/showroom/assets/packaging/ScrollTrigger.min.js",
+      "public/showroom/assets/packaging/beach-magic-packaging.glb",
+      "public/showroom/assets/packaging/gsap.min.js",
+      "public/showroom/assets/packaging/packaging-scene-uK9QnIWU.js",
+      "public/showroom/bundle-manifest.json"
+    ],
+    "gatewayChanged": false,
+    "health": {
+      "consecutiveSuccessfulHttpChecks": 3,
+      "elapsedSeconds": 48.1,
+      "windowSeconds": 90
+    },
+    "manifestSha256": "aec39e01ed14460df5a9947fdd76d54c799b44a17abbf8ba06426311eb6f4e1b",
+    "outsideUnchanged": 6819,
+    "planSha256": "2b863895a55e7f37e34da6844c09516d7be93ed8acdd0629e5c5b00e64acb91d",
+    "previousManifestSha256": "03169abf40456e88ff9784ed5e5036f83afb415c47467b07c5da37e57d4eaec6",
+    "previousServerSha256": "df4652663f0071c8ab87e0fab6296039debb2d5a597cf318dd530c1f10089668",
+    "published": true,
+    "publishedAt": "2026-10-23T03:37:01.087463+00:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "releaseId": "client1.6-beach-magic-20261023",
+    "serverSha256": "a10a349a52e9d69bb3a05c6c3cd7aef8fe41e42efcf87dc0f77c3d3ec962c3a2",
+    "service": "MainPID=30976\nActiveState=active\n",
+    "serviceRestarts": 1,
+    "sourceCommit": "122ce36a9983974a8030ae6e2ba149ab0fe9aa24",
+    "stage": "/opt/yuanze-reference/staging/client1.6-beach-magic-20261023",
+    "verifiedFiles": 384,
+    "version": "client1.6"
+  },
+  "publicHttpsVerification": {
+    "roles": {
+      "client": {
+        "sessionSurvivedRestart": true,
+        "routesAndPermissions": true
+      },
+      "employee": {
+        "sessionSurvivedRestart": true,
+        "routesAndPermissions": true
+      },
+      "admin": {
+        "sessionSurvivedRestart": true,
+        "routesAndPermissions": true
+      }
+    },
+    "resources": [
+      "assets/packaging/PackagingDetail-DDyvL9Kd.js",
+      "assets/packaging/PackagingDetail-Dt1YKAYF.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/packaging-scene-uK9QnIWU.js",
+      "index.html",
+      "preview.js",
+      "preview.css",
+      "product-posters.js",
+      "assets/posters/poster-012.webp",
+      "assets/posters/poster-070.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-070-1024.webp"
+    ],
+    "publicHttps": true,
+    "sourceCommit": "122ce36a9983974a8030ae6e2ba149ab0fe9aa24",
+    "modelRangeHeadAndCache": true,
+    "originalDownload": true,
+    "loginUnchangedAndVideoRange": true,
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "sessionCleanupErrors": [],
+    "checkedAt": "2026-10-23T11:37:59+08:00"
+  },
+  "localBrowserVerification": {
+    "checkedAt": "2026-10-23T11:31:50.538092+08:00",
+    "environment": "loopback production bundle, synthetic client session, production CSP",
+    "viewports": [
+      "1440x960",
+      "390x844 DPR2 touch",
+      "375x667 DPR2 reduced motion English"
+    ],
+    "checks": {
+      "noPackagingRequestsOnHome": true,
+      "threePartsNoContents": true,
+      "scrollAndPresets": true,
+      "horizontalTouchRotation": true,
+      "bottomView": true,
+      "original1254PixelsAnd200Percent": true,
+      "favoritesAndEsc": true,
+      "otherProductOriginalPoster": true,
+      "failedModelPosterFallbackAndRetryRecovery": true,
+      "originalLibraryCount53": true,
+      "smallScreenOverflow": false
+    },
+    "screenshots": [
+      "local-desktop.png",
+      "local-mobile.png",
+      "local-mobile-base.png",
+      "local-small-english.png"
+    ],
+    "limitations": [
+      "Browser device emulation is not a physical Safari or low-end-device frame-rate measurement."
+    ]
+  },
+  "liveBrowserVerification": {
+    "origin": "https://bmt.yuanzebeauty.com",
+    "realClientLogin": true,
+    "sessionSurvivedRestart": true,
+    "viewports": [
+      "1440x960",
+      "390x844 DPR2 touch"
+    ],
+    "initialModelRequests": 0,
+    "modelComponents": 3,
+    "explodeAndHalfOpen": true,
+    "touchRotation": true,
+    "bottomView": true,
+    "originalImageNaturalWidth": 1254,
+    "original200Percent": true,
+    "favoritesToggledAndRestored": true,
+    "otherProductRetainsOriginalPoster": true,
+    "searchMatchesOneYellowPinkPoster": true,
+    "modelAvailableFromLibrary": true,
+    "runtimeErrorsObserved": [],
+    "mobileHorizontalOverflow": false,
+    "screenshots": [
+      "live-desktop.png",
+      "live-mobile.png",
+      "live-mobile-base.png"
+    ],
+    "physicalDevicePerformanceMeasured": false,
+    "logoutViaUiVerified": true
+  },
+  "automatedVerification": {
+    "allRequiredSuitesPassed": true,
+    "rootPythonTests": 185,
+    "backendPythonTests": 258,
+    "deploymentGateTests": 32,
+    "motionClientTests": 48,
+    "deploymentTransactionSimulations": 10,
+    "logSha256": "f643e1ff7746818484a62a83f6fb2fabfcfc4e5b38c3e1bbd491675c66a8a785"
+  },
+  "serverAfter": {
+    "current": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "serverSha256": "a10a349a52e9d69bb3a05c6c3cd7aef8fe41e42efcf87dc0f77c3d3ec962c3a2",
+    "manifestSha256": "aec39e01ed14460df5a9947fdd76d54c799b44a17abbf8ba06426311eb6f4e1b",
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+    "service": "MainPID=30976\nActiveState=active\n"
+  },
+  "evidenceDirectory": "/Users/icecream/Documents/Codex/2026-10-20/g-s/work/beach-magic-publish-20261023"
+}
