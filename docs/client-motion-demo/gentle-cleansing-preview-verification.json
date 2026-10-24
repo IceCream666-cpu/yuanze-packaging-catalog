@@ -1,9 +1,9 @@
 {
-  "status": "single-product-local-review",
+  "status": "approved-and-published-separately",
   "product": "poster-044",
   "name": "Gentle Cleansing",
-  "published": false,
-  "userVisualApproval": false,
+  "published": true,
+  "userVisualApproval": true,
   "checkedAt": "2026-10-24T18:23:12.578765+08:00",
   "preview": "http://127.0.0.1:8784/?model=poster-044",
   "priorProductRelease": "client112-pure-volume-release.json",
@@ -119,5 +119,7 @@
     "The image alone does not establish glass or polymer manufacturing specification",
     "Empty packaging excludes the photographed liquid, foam and outer carton",
     "Viewport emulation is not physical-phone or Safari verification"
-  ]
+  ],
+  "releaseReceipt": "client113-gentle-cleansing-release.json",
+  "publishedAt": "2026-10-24T18:57:27+08:00"
 }

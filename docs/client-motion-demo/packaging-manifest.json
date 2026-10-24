@@ -95,8 +95,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-047.glb",
       "productionTarget": "assets/packaging/poster-047.glb",
-      "bytes": 627052,
-      "sha256": "5c49307c710abb75db53a96fa3fd53ecfc74af0d6395c77b52b26e42c63f6d5b"
+      "bytes": 4731120,
+      "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
     },
     {
       "name": "poster-056.glb",
@@ -306,6 +306,7 @@
       "components": [
         "Closure",
         "Body",
+        "PaperLabel",
         "LogoPrint"
       ]
     },

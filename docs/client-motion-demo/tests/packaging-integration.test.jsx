@@ -457,3 +457,17 @@ test('Gentle Cleansing exposes its cover, frosted oval and complete printing ind
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#e8d6d3');
   } finally {await env.close();}
 });
+
+
+test('Coastal exposes the cork, glass, paper and complete lettering independently', async () => {
+  const env=setup(); let mounted,focused;
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
+  try {
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-047'}}/>));
+    assert.equal(document.querySelectorAll('.packaging-part').length,4);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,4);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','Body','PaperLabel','LogoPrint']);
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[2]);assert.equal(focused,'label');
+    assert.match(document.querySelector('h1').textContent,/Coastal/);
+  } finally {await env.close();}
+});

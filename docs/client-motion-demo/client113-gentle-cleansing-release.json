@@ -1,0 +1,242 @@
+{
+  "version": "client1.13",
+  "patch": "gentle-cleansing-seven-layer-label-and-print-expansion",
+  "publishedAt": "2026-10-24T18:57:27+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "f35aa0fda8d807aba68a5ff8ef4f554d470c42947283aa6e26698d6184b5ac25",
+  "backup": "/opt/yuanze-reference/backups/client1.13-gentle-cleansing-20261024",
+  "baselineManifestSha256": "1c6c99099f8d0e8a735d4fd702235a6fda8b76480e83cdc1afb621576759f655",
+  "verifiedFiles": 398,
+  "changed": [
+    "assets/packaging/PackagingDetail-DSpVcI-5.js",
+    "assets/packaging/PackagingDetail-DWdw5hs-.css",
+    "assets/packaging/packaging-scene-BF_C2yHE.js",
+    "assets/packaging/poster-044.glb",
+    "index.html",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [
+    "assets/packaging/PackagingDetail-BGt-r4gx.js",
+    "assets/packaging/PackagingDetail-mND3m7FI.css",
+    "assets/packaging/packaging-scene-DNwJPBWw.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "146d005f5b6acdab110efe45dc85b246441742e7",
+  "approvedLocalSource": "9d179b17f96fb78d16184bbe353c98e52c24c8cb",
+  "onlineVerification": {
+    "version": "client1.13",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-044.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-044-1024.webp",
+      "assets/featured/poster-044-640.webp",
+      "assets/featured/poster-044.png",
+      "assets/optimized/poster-044-strip.webp",
+      "assets/packaging/poster-044.glb",
+      "assets/posters/poster-044-thumb.webp",
+      "assets/posters/poster-044.webp",
+      "assets/previews/posters/poster-044-1280.webp",
+      "assets/previews/posters/poster-044-512.webp",
+      "assets/packaging/PackagingDetail-DSpVcI-5.js",
+      "assets/packaging/PackagingDetail-DWdw5hs-.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-BF_C2yHE.js",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/poster-044.glb",
+        "bytes": 2296608,
+        "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-DSpVcI-5.js",
+        "bytes": 12321,
+        "sha256": "4c6e7a2633cce5daaec122f4110d12a463c1d87715ae320bbd90cbe2a8ffaa87"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-DWdw5hs-.css",
+        "bytes": 14186,
+        "sha256": "75025d55352516d5e9c68adfbc9c2e7617b9a8210267db29d5f740253792d767"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2394816,
+        "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-BF_C2yHE.js",
+        "bytes": 575163,
+        "sha256": "95d40725ad4eb0c9797515af027c6d834cb69daece8b3c658cbe423524c86312"
+      },
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+      },
+      {
+        "name": "assets/packaging/poster-042.glb",
+        "bytes": 1639336,
+        "sha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff"
+      },
+      {
+        "name": "assets/packaging/poster-044.glb",
+        "bytes": 2296608,
+        "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370"
+      },
+      {
+        "name": "assets/packaging/poster-049.glb",
+        "bytes": 1577088,
+        "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
+      },
+      {
+        "name": "assets/packaging/poster-051.glb",
+        "bytes": 4086460,
+        "sha256": "ca462e089e0458ff6b04022c0442232140c0042120e273650d023052e2b2fe4d"
+      }
+    ],
+    "gentleCleansingRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2296608"
+    },
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2394816"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-24T18:58:21+08:00",
+    "manifestSha256": "f35aa0fda8d807aba68a5ff8ef4f554d470c42947283aa6e26698d6184b5ac25",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "localVerification": {
+    "rootTests": 213,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 49,
+    "motionDOMTests": 39,
+    "loginTests": 12,
+    "legacyClientTests": 18,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "preservedImages": 377,
+  "featuredCount": 24,
+  "posterCount": 54,
+  "modelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049",
+    "poster-042",
+    "poster-051",
+    "poster-044"
+  ],
+  "otherFeaturedProductsRemainPosters": 17,
+  "modelSha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370",
+  "rollback": "Hold the deployment lock and verify current release, current manifest, outside code, gateway and service match this receipt; then atomically exchange public/showroom with the retained client1.12 backup. The local guarded helper is work/gentle-cleansing-live/rollback.py --rollback and refuses a later release.",
+  "browserVerification": {
+    "browser": "Ego Lite Chromium",
+    "checkedAt": "2026-10-24T18:58:45+08:00",
+    "productionTitle": "client1.13",
+    "selectedFromProductUI": true,
+    "desktopViewport": [
+      1440,
+      1000
+    ],
+    "sevenComponents": true,
+    "coverFrostedOvalAndCompletePrintMatchApproval": true,
+    "labelAndPrintHaveIndependentDepth": true,
+    "expandedPrintOffset": [
+      -2.649406,
+      0.499888,
+      1.64963
+    ],
+    "closedProgressBelow": 0.001,
+    "originalPosterRoundTrip": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileHorizontalOverflow": false,
+    "mobileClosedAndExpandedUncropped": true,
+    "mobileSevenControlsVisible": true,
+    "mobileControlHorizontalBounds": [
+      20,
+      373
+    ],
+    "mobileExpandedPrintOffset": [
+      -2.649553,
+      0.499916,
+      1.649722
+    ],
+    "screenshots": [
+      "live-desktop-closed.png",
+      "live-desktop-open.png",
+      "live-mobile-closed.png",
+      "live-mobile-open.png"
+    ],
+    "physicalDeviceTest": false,
+    "checkedBy": "root agent"
+  }
+}

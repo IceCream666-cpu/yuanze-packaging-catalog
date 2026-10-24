@@ -585,48 +585,64 @@
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "双段软木瓶塞",
+          "Two-tier cork stopper"
         ],
         "short": [
-          "外盖",
-          "Closure"
+          "软木塞",
+          "Cork"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "粗颗粒软木、横向层线与收窄塞脚。",
+          "Coarse cork grain, horizontal seams and a narrower plug."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "厚底透明玻璃瓶",
+          "Clear glass bottle"
         ],
         "short": [
           "瓶身",
-          "Body"
+          "Bottle"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "矮圆柱轮廓、短肩细颈与厚玻璃底。",
+          "A low cylinder, short shoulder, narrow neck and thick base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "暖白纸标",
+          "Warm ivory label"
+        ],
+        "short": [
+          "标贴",
+          "Label"
+        ],
+        "detail": [
+          "纸张底材独立离开瓶身。",
+          "The textured paper separates from the glass."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo、产品名与容量",
+          "Logo, name and volume"
         ],
         "short": [
-          "印刷",
+          "文字",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "完整黑字比纸标更向外展开。",
+          "Complete black lettering moves farther out than the label."
         ]
       }
     ]

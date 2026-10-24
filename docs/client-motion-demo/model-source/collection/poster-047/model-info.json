@@ -3,14 +3,45 @@
   "components": [
     "Body",
     "Closure",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "width": 1.5343915343915344,
+  "closedHeightToDiameter": 1.89,
+  "glassHeightToDiameter": 1.329,
+  "thickBaseToDiameter": 0.21,
+  "corkVisibleHeightToDiameter": 0.57,
+  "corkUpperDiameterToBody": 0.674,
+  "corkLowerDiameterToBody": 0.51,
+  "corkUpperHeightToDiameter": 0.44,
+  "labelWidthToDiameter": 0.85,
+  "labelHeightToDiameter": 0.72,
+  "labelBottomToDiameter": 0.32,
+  "labelCentreHeightToDiameter": 0.68,
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-047.png",
+  "reference": "../../mobile-client-preview/assets/posters/poster-047.webp",
+  "featuredReference": "featured-assets/poster-047.png",
   "editableArtwork": [
     "label.svg",
     "print.svg"
-  ]
+  ],
+  "proceduralTextures": [
+    "paper.png",
+    "cork.png",
+    "cork-color.jpg",
+    "cork-normal.png"
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "COASTAL",
+    "short separator rule",
+    "PERFUME",
+    "50 ml"
+  ],
+  "hiddenStructure": "The short concealed cork foot and wall thickness need physical measurement; cork is removed as one piece",
+  "revision": "individual-reference-review-20261024",
+  "generator": "build_coastal.py"
 }

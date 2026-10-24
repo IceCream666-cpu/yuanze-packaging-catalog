@@ -1,0 +1,149 @@
+{
+  "status": "single-product-local-review",
+  "product": "poster-047",
+  "name": "Coastal",
+  "published": false,
+  "userVisualApproval": false,
+  "checkedAt": "2026-10-24T19:02:00.313201+08:00",
+  "preview": "http://127.0.0.1:8784/?model=poster-047",
+  "priorProductRelease": "client113-gentle-cleansing-release.json",
+  "model": {
+    "bytes": 4731120,
+    "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+    "id": "poster-047",
+    "components": [
+      "Body",
+      "Closure",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "height": 2.9,
+    "width": 1.5343915343915344,
+    "closedHeightToDiameter": 1.89,
+    "glassHeightToDiameter": 1.329,
+    "thickBaseToDiameter": 0.21,
+    "corkVisibleHeightToDiameter": 0.57,
+    "corkUpperDiameterToBody": 0.674,
+    "corkLowerDiameterToBody": 0.51,
+    "corkUpperHeightToDiameter": 0.44,
+    "labelWidthToDiameter": 0.85,
+    "labelHeightToDiameter": 0.72,
+    "labelBottomToDiameter": 0.32,
+    "labelCentreHeightToDiameter": 0.68,
+    "illustrativeDimensions": true,
+    "containsFormula": false,
+    "reference": "../../mobile-client-preview/assets/posters/poster-047.webp",
+    "featuredReference": "featured-assets/poster-047.png",
+    "editableArtwork": [
+      "label.svg",
+      "print.svg"
+    ],
+    "proceduralTextures": [
+      "paper.png",
+      "cork.png",
+      "cork-color.jpg",
+      "cork-normal.png"
+    ],
+    "separateLabelAndPrint": true,
+    "printIncludes": [
+      "liaose",
+      "COASTAL",
+      "short separator rule",
+      "PERFUME",
+      "50 ml"
+    ],
+    "hiddenStructure": "The short concealed cork foot and wall thickness need physical measurement; cork is removed as one piece",
+    "revision": "individual-reference-review-20261024",
+    "generator": "build_coastal.py"
+  },
+  "printing": {
+    "text": [
+      "liaose",
+      "COASTAL",
+      "short separator rule",
+      "PERFUME",
+      "50 ml"
+    ],
+    "labelOffset": [
+      -1.5,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -3.1,
+      0.18,
+      1.65
+    ],
+    "labelScale": 1.15,
+    "printScale": 1.45,
+    "depthDifference": 1,
+    "closedRestoresOriginalTransforms": true
+  },
+  "visualReview": {
+    "tool": "Impeccable detector, independent reference and GLB audit, Ego Lite rendered inspection",
+    "detectorBlockingFindings": 0,
+    "detectorExistingFontAdvisories": 1,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        1474,
+        722
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "horizontalOverflow": false,
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "wheel",
+      "drag-rotation",
+      "bottom-view",
+      "reset",
+      "original-poster-roundtrip",
+      "part-selection"
+    ],
+    "corrections": [
+      "Rebuilt the shorter glass body, larger two-tier cork and wider paper label from the full original poster",
+      "Kept glass neutral and empty instead of colouring it with the photographed liquid",
+      "Used narrower studio reflection cards to keep the thick base clear",
+      "Darkened cork grain and added irregular deep-brown pores with a verified neutral normal map",
+      "Moved all five print elements independently of the blank paper substrate"
+    ]
+  },
+  "validation": {
+    "geometryTests": 7,
+    "collectionTests": 3,
+    "frontendTests": 104,
+    "packagingReleaseTests": 12,
+    "clientReleaseTests": 21,
+    "buildCheck": "passed"
+  },
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-half.png",
+    "desktop-open.png",
+    "desktop-rotated.png",
+    "bottom-view.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "small-mobile-open.png",
+    "browser-delivery.png"
+  ],
+  "limits": [
+    "The microstructure of cork is procedurally reconstructed, with simplified natural fissures",
+    "Concealed cork foot and manufacturing wall thickness need physical measurements",
+    "Empty packaging excludes photographed perfume, ceramic bottle and carton",
+    "Viewport emulation does not verify physical phones or Safari"
+  ]
+}
