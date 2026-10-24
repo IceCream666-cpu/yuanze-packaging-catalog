@@ -20,14 +20,14 @@ ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
 MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
-CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6', 'client17': 'client1.7', 'client18': 'client1.8', 'client19': 'client1.9', 'client110': 'client1.10', 'client111': 'client1.11', 'client112': 'client1.12', 'client113': 'client1.13', 'client114': 'client1.14'}
-MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114'))
-REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53), 'client17': (23, 53), 'client18': (24, 54), 'client19': (24, 54), 'client110': (24, 54), 'client111': (24, 54), 'client112': (24, 54), 'client113': (24, 54), 'client114': (24, 54)}
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6', 'client17': 'client1.7', 'client18': 'client1.8', 'client19': 'client1.9', 'client110': 'client1.10', 'client111': 'client1.11', 'client112': 'client1.12', 'client113': 'client1.13', 'client114': 'client1.14', 'client115': 'client1.15'}
+MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114', 'client115'))
+REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53), 'client17': (23, 53), 'client18': (24, 54), 'client19': (24, 54), 'client110': (24, 54), 'client111': (24, 54), 'client112': (24, 54), 'client113': (24, 54), 'client114': (24, 54), 'client115': (24, 54)}
 FEATURED_APPROVAL_VERSIONS = {'client12': 'client1.2', 'client13': 'client1.2',
-                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4', 'client17': 'client1.4', 'client18': 'client1.8', 'client19': 'client1.8', 'client110': 'client1.8', 'client111': 'client1.8', 'client112': 'client1.8', 'client113': 'client1.8', 'client114': 'client1.8'}
-PACKAGING_EDITIONS = frozenset(('client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114'))
+                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4', 'client17': 'client1.4', 'client18': 'client1.8', 'client19': 'client1.8', 'client110': 'client1.8', 'client111': 'client1.8', 'client112': 'client1.8', 'client113': 'client1.8', 'client114': 'client1.8', 'client115': 'client1.8'}
+PACKAGING_EDITIONS = frozenset(('client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114', 'client115'))
 PACKAGING_ASSETS = {'beach-magic-packaging.glb': 'model', 'gsap.min.js': 'animation',
-                    'ScrollTrigger.min.js': 'scroll-animation', 'liaose-pump.glb': 'model', 'poster-039.glb': 'model', 'poster-049.glb': 'model', 'poster-042.glb': 'model', 'poster-051.glb': 'model', 'poster-044.glb': 'model', 'poster-047.glb': 'model'}
+                    'ScrollTrigger.min.js': 'scroll-animation', 'liaose-pump.glb': 'model', 'poster-039.glb': 'model', 'poster-049.glb': 'model', 'poster-042.glb': 'model', 'poster-051.glb': 'model', 'poster-044.glb': 'model', 'poster-047.glb': 'model', 'poster-056.glb': 'model'}
 PACKAGING_CHUNK = re.compile(r'assets/packaging/[A-Za-z0-9_-]+-[A-Za-z0-9_-]{8,}\.(?:js|css)')
 
 
@@ -124,10 +124,10 @@ def stamp_client_release(edition='client1'):
 def packaging_files(files, client):
     """Add the ten explicitly reviewed model/animation assets, with fixed routes."""
     manifest = json.loads(source_file(client, 'packaging-manifest.json').read_text())
-    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.14-coastal-packaging'
+    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.15-golden-face-oil-packaging'
             or manifest.get('posterId') != 'poster-012'
             or manifest.get('components') != ['Jar', 'OuterCap', 'InnerLid']
-            or manifest.get('additionalProducts') != [{'posterId':'poster-071','file':'liaose-pump.glb','components':['BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint']},{'posterId':'poster-039','file':'poster-039.glb','components':['Body','Closure','InnerLid','LogoPrint']},{'posterId':'poster-049','file':'poster-049.glb','components':['Body','Closure','PumpStem','Actuator','PaperLabel','LogoPrint']},{'posterId':'poster-042','file':'poster-042.glb','components':['Body','Closure','StopperInsert','PaperLabel','LogoPrint']},{'posterId':'poster-051','file':'poster-051.glb','components':['Body','Closure','PumpStem','Actuator','Cord','PaperLabel','LogoPrint']},{'posterId':'poster-044','file':'poster-044.glb','components':['Body','Closure','PumpStem','Actuator','Overcap','PaperLabel','LogoPrint']},{'posterId':'poster-047','file':'poster-047.glb','components':['Body','Closure','PaperLabel','LogoPrint']}]
+            or manifest.get('additionalProducts') != [{'posterId':'poster-071','file':'liaose-pump.glb','components':['BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint']},{'posterId':'poster-039','file':'poster-039.glb','components':['Body','Closure','InnerLid','LogoPrint']},{'posterId':'poster-049','file':'poster-049.glb','components':['Body','Closure','PumpStem','Actuator','PaperLabel','LogoPrint']},{'posterId':'poster-042','file':'poster-042.glb','components':['Body','Closure','StopperInsert','PaperLabel','LogoPrint']},{'posterId':'poster-051','file':'poster-051.glb','components':['Body','Closure','PumpStem','Actuator','Cord','PaperLabel','LogoPrint']},{'posterId':'poster-044','file':'poster-044.glb','components':['Body','Closure','PumpStem','Actuator','Overcap','PaperLabel','LogoPrint']},{'posterId':'poster-047','file':'poster-047.glb','components':['Body','Closure','PaperLabel','LogoPrint']},{'posterId': 'poster-056', 'file': 'poster-056.glb', 'components': ['Body', 'Closure', 'PumpStem', 'Actuator', 'Overcap', 'PaperLabel', 'LogoPrint']}]
             or manifest.get('containsFormula') is not False):
         raise ValueError('Invalid packaging approval')
     entries = manifest.get('files', [])
@@ -166,7 +166,7 @@ def prepare_packaging_assets(client):
     return len(files)
 
 
-def featured_files(files, client, edition='client114'):
+def featured_files(files, client, edition='client115'):
     """Add the edition's complete approved set without replacing source posters."""
     manifest = json.loads(source_file(client, 'featured-manifest.json').read_text())
     approval_version = FEATURED_APPROVAL_VERSIONS[edition]
@@ -215,7 +215,7 @@ def featured_files(files, client, edition='client114'):
             files[f'assets/featured/{name}'] = data
 
 
-def optimized_display_files(files, client, edition='client114'):
+def optimized_display_files(files, client, edition='client115'):
     """Validate every display derivative against an existing approved original."""
     manifest = json.loads(source_file(client, 'display-derivatives.json').read_text())
     if manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client-display-optimization':
@@ -408,8 +408,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client114', 'client113', 'client112', 'client111', 'client110', 'client19', 'client18', 'client17', 'client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client114',
-                        help='client114 is current; older editions require their matching source and release stamp')
+    parser.add_argument('--edition', choices=('client115', 'client114', 'client113', 'client112', 'client111', 'client110', 'client19', 'client18', 'client17', 'client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client115',
+                        help='client115 is current; older editions require their matching source and release stamp')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()

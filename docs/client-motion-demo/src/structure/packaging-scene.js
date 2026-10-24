@@ -22,6 +22,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const pureVolume = product.file === 'poster-051.glb';
   const gentle = product.file === 'poster-044.glb';
   const coastal = product.file === 'poster-047.glb';
+  const golden = product.file === 'poster-056.glb';
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
@@ -97,9 +98,13 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     reflectionCard([-7, 1, 0], [4, 10], '#121512', 1);
     reflectionCard([7, 1, 0], [4, 10], '#121512', 1);
   }
-  if (woodland || coastal) {
+  if (woodland || coastal || golden) {
     reflectionCard([-4, 2, 5], [1.5, 8], '#ffffff', 2.6);
     reflectionCard([4, 2, 5], [.7, 7], '#ffffff', 1.9);
+  }
+  if (golden) {
+    reflectionCard([1.8, 2, 7], [.25, 6], '#ffffff', 3.5);
+    reflectionCard([-1.8, 2, 7], [.15, 6], '#ffffff', 2.8);
   }
   const pmrem = new T.PMREMGenerator(renderer);
   mark('pmremStart');
@@ -141,25 +146,25 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     o.frustumCulled = false;
     // GLTFLoader replaces spaces in object names; userData retains the source name.
     const isPullTongue = (o.userData.name || o.name).replaceAll('_', ' ').includes('short flexible pull tongue');
-    // The small pull tongue needs its own satin material to remain legible at UI scale.
-    if (isPullTongue) o.material = o.material.clone();
+    // Isolate the satin pull tongue and preserve the original tint of each shared olive panel.
+    if (isPullTongue || golden && o.material.name.includes('olive')) o.material = o.material.clone();
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
-    if (pdrn || moisture || woodland || gentle || coastal) {
+    if (pdrn || moisture || woodland || gentle || coastal || golden) {
       m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
       if (m.map) {m.specularIntensity=.05; m.roughness=.7; m.envMapIntensity=.1;}
       if (m.transmission > .5) {
-        if (!woodland) m.color.set('#ffffff');
-        m.transmission=1; m.roughness=woodland ? .035 : .012;
+        if (!woodland && !(golden && m.name.includes('olive'))) m.color.set('#ffffff');
+        m.transmission=1; m.roughness=woodland || golden && m.name.includes('olive') ? .035 : .012;
         m.ior=1.48; m.thickness=gentle && m.name.includes('cover') ? .012 : .08; m.envMapIntensity=.3;
-        if (woodland && m.name.includes('amber')) {
+        if (woodland && m.name.includes('amber') || golden && m.name.includes('olive')) {
           m.attenuationColor.copy(m.color); m.color.set('#ffffff');
-          m.attenuationDistance=.85; m.thickness=.12; m.envMapIntensity=.65;
+          m.attenuationDistance=golden ? .18 : .85; m.thickness=.12; m.envMapIntensity=golden ? 1.4 : .65;
         }
         // Match the untonemapped backdrop through the clear wall.
         m.toneMapped=false; m.specularIntensity=.7;
-        m.transparent=false; m.opacity=1; m.side=T.DoubleSide;
+        m.transparent=false; m.opacity=1; m.side=golden && m.name.includes('overcap') ? T.FrontSide : T.DoubleSide;
         // The same restrained rim correction used by the first approved glass jar.
         m.onBeforeCompile = shader => {
           shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
@@ -215,7 +220,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     m.needsUpdate = true;
   });
   // Keep the complete black lettering above the translucent oval.
-  if (gentle) parts.print.traverse(o => {if (o.isMesh) o.renderOrder=3;});
+  if (gentle || golden) parts.print.traverse(o => {if (o.isMesh) o.renderOrder=3;});
   const shadowCanvas = document.createElement('canvas'); shadowCanvas.width = shadowCanvas.height = 256;
   const context = shadowCanvas.getContext('2d');
   const gradient = context.createRadialGradient(128, 128, 4, 128, 128, 124);
@@ -240,6 +245,16 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
       parts.print.position.copy(rest.print.p).add(new T.Vector3(-2.15,.10,1.10).multiplyScalar(current));
       parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
+    } else if (golden) {
+      parts.overcap.position.copy(rest.overcap.p).y += 4.85*smooth(0,.65,current);
+      parts.head.position.copy(rest.head.p).y += 2.6*current;
+      parts.stem.position.copy(rest.stem.p).y += 1.5*current;
+      parts.closure.position.copy(rest.closure.p).y += .75*current;
+      parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.85,.08,.65),current);
+      parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
+      parts.label.traverse(o => {if (o.isMesh) o.material.opacity=.05+.95*smooth(.03,.6,current);});
+      parts.print.position.copy(rest.print.p).addScaledVector(new T.Vector3(-3.8,.18,1.65),current);
+      parts.print.scale.copy(rest.print.s).multiplyScalar(1+.95*current);
     } else if (gentle) {
       parts.overcap.position.copy(rest.overcap.p).y += 3.6*smooth(0,.85,current);
       parts.head.position.copy(rest.head.p).y += 2.5*current;
@@ -296,7 +311,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
-    const assemblyCenter = pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture || woodland || pureVolume || coastal ? 1.45+current*1.4 : pump ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = golden ? 1.45+current*2.4+intermediateHeadroom*.8 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture || woodland || pureVolume || coastal ? 1.45+current*1.4 : pump ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -304,12 +319,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.4+intermediateHeadroom*.6 : moisture || woodland || pureVolume || coastal ? 4.2+current*2.3 : pump ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : 3.65)/aspect);
+    const viewHeight = Math.max((golden ? 4.2+current*4.5+intermediateHeadroom*1.6 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.4+intermediateHeadroom*.6 : moisture || woodland || pureVolume || coastal ? 4.2+current*2.3 : pump ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (golden ? 3.9+current*3.4 : pdrn ? 4.25 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : 3.65)/aspect);
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     const centerY = assemblyCenter + focus;
-    const centerX = pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
-    camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle || coastal ? 1.05 : 2.35), 10);
+    const centerX = golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
+    camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden ? 1.05 : 2.35), 10);
     camera.lookAt(centerX, centerY, 0); camera.updateProjectionMatrix();
     renderer.render(scene, camera);
   }
@@ -353,7 +368,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
     viewBottom() {
-      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland || pureVolume || gentle || coastal ? 1.05 : 2.35, 10);
+      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden ? 1.05 : 2.35, 10);
       selected=null; focus=0; invalidate();
     },
     focusPart(key) {

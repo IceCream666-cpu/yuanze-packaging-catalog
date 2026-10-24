@@ -250,3 +250,20 @@
  .packaging-detail--coastal .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
  .packaging-detail--coastal .packaging-model {top:205px;}
 }
+
+/* Approved Golden Face Oil seven-layer layout. */
+.packaging-detail--golden .packaging-parts {top:19%; gap:8px;}
+.packaging-detail--golden .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
+@media (max-width:900px) {
+ .packaging-detail--golden .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
+ .packaging-detail--golden .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
+ .packaging-detail--golden .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
+ .packaging-detail--golden .packaging-model {top:205px;}
+}
+
+.packaging-detail--golden .packaging-parts {top:15%; gap:1px;}
+.packaging-detail--golden .packaging-part {padding:5px 0;}
+.packaging-detail--golden .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
+@media (max-width:400px) {
+  .packaging-detail--golden .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
+}

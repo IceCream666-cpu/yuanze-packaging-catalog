@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.14-coastal-packaging",
+  "scope": "approved-client1.15-golden-face-oil-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -88,6 +88,14 @@
       "productionTarget": "assets/packaging/poster-047.glb",
       "bytes": 4731120,
       "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
+    },
+    {
+      "name": "poster-056.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-056.glb",
+      "productionTarget": "assets/packaging/poster-056.glb",
+      "bytes": 520372,
+      "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709"
     }
   ],
   "additionalProducts": [
@@ -167,6 +175,19 @@
       "components": [
         "Body",
         "Closure",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-056",
+      "file": "poster-056.glb",
+      "components": [
+        "Body",
+        "Closure",
+        "PumpStem",
+        "Actuator",
+        "Overcap",
         "PaperLabel",
         "LogoPrint"
       ]

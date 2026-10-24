@@ -137,6 +137,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-042', {closure: 2.8, liner: 1.35}, [-3.1, .18, 1.65]],
   ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
   ['poster-051', {closure:.9,stem:1.8,head:2.8}, [-3.4,.18,1.65]],
+  ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
   ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
@@ -168,15 +169,17 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
-      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-042' || id === 'poster-047' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
+      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-056' ? -1.85 : id === 'poster-042' || id === 'poster-047' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
       sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
       near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
       if (id === 'poster-051') {
         parts.cord.position.clone().sub(rest.cord.position).toArray().forEach((v,i)=>near(v,[1.05,.30,.25][i]*progress,'cord separation'));
+      }
+      if (id === 'poster-051' || id === 'poster-056') {
         if (progress === 0) near(parts.label.material.opacity,.05,'clear film leaves no paper patch at rest');
         if (progress === 1) near(parts.label.material.opacity,1,'separated film retains its translucent texture');
       }
@@ -184,10 +187,10 @@ for (const [id, lifts, printOffset] of [
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047') {
-        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(id==='poster-044' && key==='overcap' ? 3100/4913 : .5), `${key} half lift`);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056') {
+        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(key==='overcap' && id==='poster-044' ? 3100/4913 : key==='overcap' && id==='poster-056' ? 1900/2197 : .5), `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
-        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' ? 1.475 : 1.225),'half print scale');
+        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' ? 1.475 : 1.225),'half print scale');
         checkSeparateLabel(.5);
       }
       api.setProgress(1); flush();
@@ -203,8 +206,8 @@ for (const [id, lifts, printOffset] of [
         assert.ok(displacement.z >= 1, 'PDRN print must lift forward from the glass surface.');
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
-      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' ? 1.95 : 1.45), 'expanded print scale');
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047') checkSeparateLabel(1);
+      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' ? 1.95 : 1.45), 'expanded print scale');
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -212,9 +215,31 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047') checkSeparateLabel(0);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
+});
+
+
+test('Golden keeps its olive cover tinted while the empty glass stays neutral', async () => {
+  const product=PACKAGING_PRODUCTS['poster-056']; let loaded;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    loaded=env.model();
+    const cover=loaded.scene.getObjectByName('Overcap'),body=loaded.scene.getObjectByName('Body');
+    cover.material.name='olive translucent overcap';cover.material.color.set('#3d4822');cover.material.transmission=.9;
+    body.material.name='clear glass';body.material.color.set('#eeeeee');body.material.transmission=1;
+    const secondPanel=new Three.Mesh(new Three.BoxGeometry(),cover.material);cover.add(secondPanel);
+    const olive=cover.material.color.clone();
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.ok(cover.material.attenuationColor.equals(olive));
+    assert.equal(cover.material.side,Three.FrontSide);assert.equal(cover.material.roughness,.035);assert.equal(cover.material.attenuationDistance,.18);assert.equal(cover.material.thickness,.12);assert.equal(cover.material.envMapIntensity,1.4);
+    assert.notEqual(cover.material,secondPanel.material);
+    assert.ok(secondPanel.material.attenuationColor.equals(olive),'every panel retains the original tint even when the GLB shares one material');
+    assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
+    assert.equal(body.material.transmission,1);
+    assert.equal(body.castShadow,false);
+  } finally {api?.dispose();env.close();}
 });
 
 test('PDRN glass, silver and print materials use their approved settings while older models retain theirs', async () => {
