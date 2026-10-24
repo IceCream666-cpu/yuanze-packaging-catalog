@@ -1,6 +1,6 @@
 {
   "version": "client1.8",
-  "status": "local-reviewed-awaiting-publication",
+  "status": "published-and-live-verified",
   "visualReview": {
     "tool": "Impeccable polish + detect",
     "screenshots": [
@@ -104,5 +104,6 @@
       "work/client18/tests-remaining.log (frontend suites after count corrections)",
       "work/client18/tests-last.log (historical demo fixture restoration and all remaining suites)"
     ]
-  }
+  },
+  "releaseReceipt": "client18-release.json"
 }

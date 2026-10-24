@@ -1,0 +1,136 @@
+{
+  "version": "client1.8",
+  "patch": "liaose-long-neck-poster-and-featured",
+  "publishedAt": "2026-10-24T11:26:40+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "ffc33b238b53f989d8b5dd1842e93d2eae33970ab2613178fa1ee0df333c8efb",
+  "backup": "/opt/yuanze-reference/backups/client1.8-long-neck-20261024",
+  "baselineManifestSha256": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+  "verifiedFiles": 392,
+  "changed": [
+    "assets/featured/poster-071-1024.webp",
+    "assets/featured/poster-071-640.webp",
+    "assets/featured/poster-071.png",
+    "assets/optimized/poster-071-strip.webp",
+    "assets/posters/poster-071-thumb.webp",
+    "assets/posters/poster-071.webp",
+    "assets/previews/posters/poster-071-1280.webp",
+    "assets/previews/posters/poster-071-512.webp",
+    "index.html",
+    "preview.js",
+    "product-posters.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [],
+  "preservedPackaging": [
+    "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+    "assets/packaging/PackagingDetail-qX33rcx_.css",
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/packaging-scene-WX9CdaCv.js"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=30976\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "8ecb25d9",
+  "onlineVerification": {
+    "version": "client1.8",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-071.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-071-1024.webp",
+      "assets/featured/poster-071-640.webp",
+      "assets/featured/poster-071.png",
+      "assets/optimized/poster-071-strip.webp",
+      "assets/posters/poster-071-thumb.webp",
+      "assets/posters/poster-071.webp",
+      "assets/previews/posters/poster-071-1280.webp",
+      "assets/previews/posters/poster-071-512.webp",
+      "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+      "assets/packaging/PackagingDetail-qX33rcx_.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/packaging-scene-WX9CdaCv.js"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+        "bytes": 11934,
+        "sha256": "43d31e465d0ee524cabf9b3f43354a7a52ec1312c1a053aeb7b73b10808f4fd3"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-qX33rcx_.css",
+        "bytes": 10346,
+        "sha256": "4f933a90f88aa780b693e40399ea4caef65d6521c488ae365b2ff4790215a76f"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2394816,
+        "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-WX9CdaCv.js",
+        "bytes": 569698,
+        "sha256": "9ff21342ed2a34fecc53074a378a9c78792f0c417051b0bb828efa836ab4c8d9"
+      }
+    ],
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2394816"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-24T11:27:45+08:00",
+    "manifestSha256": "ffc33b238b53f989d8b5dd1842e93d2eae33970ab2613178fa1ee0df333c8efb",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browserVerification": {
+    "origin": "https://bmt.yuanzebeauty.com/client",
+    "version": "client1.8",
+    "newFeaturedVisible": true,
+    "fullPosterOpens": true,
+    "hdOriginal": [
+      1447,
+      1087
+    ],
+    "posterCount": 54,
+    "searchLongNeckFindsNewPoster": true,
+    "mobileWidth": 393,
+    "mobileScrollWidth": 393,
+    "desktopAndMobileVisuallyReviewed": true
+  }
+}
