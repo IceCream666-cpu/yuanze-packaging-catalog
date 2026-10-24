@@ -1,4 +1,4 @@
-/* User-supplied poster artwork. No catalogue SKU or price is inferred. */
+/* User-approved poster artwork. No catalogue SKU or price is inferred. */
 window.YuanzeProductPosters = {
   "categories": [
     {
@@ -668,6 +668,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "/showroom/assets/posters/poster-070-thumb.webp",
       "width": 1086,
       "height": 1448
+    },
+    {
+      "id": "poster-071",
+      "category": "body",
+      "title": {
+        "zh": "liaose 长颈雕塑泵瓶",
+        "en": "liaose Sculptural long-neck pump bottle"
+      },
+      "src": "/showroom/assets/posters/poster-071.webp",
+      "thumbnail": "/showroom/assets/posters/poster-071-thumb.webp",
+      "width": 1447,
+      "height": 1087
     }
   ]
 };

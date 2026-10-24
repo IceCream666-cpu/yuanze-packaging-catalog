@@ -14,7 +14,7 @@ if not ids or len(set(ids))!=len(ids) or any(not re.fullmatch(r'poster-\d{3}',va
  raise ValueError('Expected unique canonical poster identities')
 approved={f"assets/{entry['path']}":entry for entry in json.loads((SOURCE/'assets/manifest.json').read_text())['files']}
 styles={51:'natural',47:'natural',52:'natural',54:'natural',42:'natural',43:'natural',45:'natural',49:'clear',44:'clear',55:'clear',53:'bold',46:'clear',9:'bold',36:'bold',12:'bold',13:'bold',11:'bold',39:'clear',4:'natural'}
-styles.update({56:'natural',57:'clear',58:'natural',59:'natural',60:'clear',61:'natural',62:'clear',63:'natural',64:'natural',65:'natural',66:'natural',67:'natural',68:'clear',69:'natural',70:'natural'})
+styles.update({56:'natural',57:'clear',58:'natural',59:'natural',60:'clear',61:'natural',62:'clear',63:'natural',64:'natural',65:'natural',66:'natural',67:'natural',68:'clear',69:'natural',70:'natural',71:'natural'})
 first=[51,42,44,47,52,46,53,43,54,55]
 items=sorted(data['items'],key=lambda x:first.index(int(x['id'].split('-')[-1])) if int(x['id'].split('-')[-1]) in first else 100+int(x['id'].split('-')[-1]))
 records=[]; manifest=[]

@@ -1,6 +1,6 @@
 {
-  "version": "client1.4",
-  "scope": "approved-client1.4-display-derivatives",
+  "version": "client1.8",
+  "scope": "approved-client1.8-display-derivatives",
   "notes": "Original 38 active posters and 8 featured derivatives are preserved. Fifteen user-supplied posters and matching existing transparent display derivatives are appended in attachment order; original posters remain authoritative.",
   "files": [
     {
@@ -445,10 +445,28 @@
         "date": "2026-10-22",
         "basis": "User requested adding any of these 15 products missing from the sliding view and updating their posters."
       }
+    },
+    {
+      "posterId": "poster-071",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-071.webp",
+      "approvedPosterSha256": "eeb9de2810d3e2db51e992b802ec4cdd8d5ca858442cef2eaf0b48cfbb880cfe",
+      "file": "featured-assets/poster-071.png",
+      "target": "featured/poster-071.png",
+      "productionTarget": "assets/featured/poster-071.png",
+      "sha256": "7f67b0098b3e9be300b651ac66eb5a07ed5ce7c7cb5b077f167885d8dcaa06a7",
+      "bytes": 730604,
+      "tool": "built-in image_gen.imagegen",
+      "scope": "approved client1.8 display derivative; original poster remains authoritative",
+      "method": "transparent-background extraction from approved poster",
+      "selectedObject": "Complete ivory long-neck pump bottle with liaose wordmark",
+      "approval": {
+        "date": "2026-10-24",
+        "basis": "User requested updating client posters and adding this product to the homepage sliding showcase."
+      }
     }
   ],
   "approval": {
-    "date": "2026-10-22",
-    "basis": "User requested auditing these 15 products, skipping existing products, adding missing products to the sliding view and updating their posters. Existing 8 derivative approval records are retained."
+    "date": "2026-10-24",
+    "basis": "User approved adding poster-071 and its carousel derivative; retain all 23 prior products."
   }
 }

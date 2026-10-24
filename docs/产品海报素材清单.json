@@ -1,8 +1,8 @@
 {
   "receivedAt": "2026-10-04",
   "archiveCount": 3,
-  "inputImageCount": 72,
-  "uniqueImageCount": 70,
+  "inputImageCount": 73,
+  "uniqueImageCount": 71,
   "items": [
     {
       "id": "poster-001",
@@ -1486,10 +1486,32 @@
       "duplicates": [],
       "image": "posters/poster-070.webp",
       "thumbnail": "posters/poster-070-thumb.webp"
+    },
+    {
+      "id": "poster-071",
+      "category": "body",
+      "title": {
+        "zh": "liaose 长颈雕塑泵瓶",
+        "en": "liaose Sculptural long-neck pump bottle"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "liaose-长颈泵瓶-4比3.png",
+        "receivedAt": "2026-10-24",
+        "sha256": "d2efecbbf67854913cf46fb4053a1b9574066cc3586782f970c6e44888b0e572",
+        "bytes": 1795652,
+        "width": 1447,
+        "height": 1087,
+        "pixelsHash": "b863ff9636ae77627878d63a379bbf3368ac31f48457eb24506008447d8fac68"
+      },
+      "duplicates": [],
+      "image": "posters/poster-071.webp",
+      "thumbnail": "posters/poster-071-thumb.webp"
     }
   ],
-  "updatedAt": "2026-10-22",
+  "updatedAt": "2026-10-24",
   "directImageCount": 39,
-  "activeImageCount": 53,
-  "removedImageCount": 17
+  "activeImageCount": 54,
+  "removedImageCount": 17,
+  "generatedImageCount": 1
 }

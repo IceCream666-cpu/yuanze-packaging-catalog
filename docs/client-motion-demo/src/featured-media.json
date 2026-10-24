@@ -481,5 +481,26 @@
         "height": 1024
       }
     }
+  },
+  "poster-071": {
+    "sourceSha256": "7f67b0098b3e9be300b651ac66eb5a07ed5ce7c7cb5b077f167885d8dcaa06a7",
+    "width": 1087,
+    "height": 1446,
+    "files": {
+      "640": {
+        "file": "featured-optimized/poster-071-640.webp",
+        "bytes": 22236,
+        "sha256": "2b44fa3e64ec417cad20c078da7189f8e53732b8e0819dea72552481c168b7d3",
+        "width": 481,
+        "height": 640
+      },
+      "1024": {
+        "file": "featured-optimized/poster-071-1024.webp",
+        "bytes": 44002,
+        "sha256": "5782ebd26bbd27acec973180832d19f390cd99c46c7813ec12e07d7955512ab1",
+        "width": 770,
+        "height": 1024
+      }
+    }
   }
 }

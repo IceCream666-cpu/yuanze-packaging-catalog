@@ -1,0 +1,108 @@
+{
+  "version": "client1.8",
+  "status": "local-reviewed-awaiting-publication",
+  "visualReview": {
+    "tool": "Impeccable polish + detect",
+    "screenshots": [
+      "desktop.png",
+      "mobile.png",
+      "poster.png"
+    ],
+    "scope": "poster-071 integration only",
+    "visualChecks": {
+      "logo": "liaose shown on poster and cutout, no Aerder visible",
+      "proportions": "poster 1447×1087 unchanged; bottle contains entire pump and base",
+      "mobile": "393px viewport equals scroll width; action and product visible",
+      "palette": "existing pale sage, ivory and dark green visual system retained"
+    },
+    "detector": {
+      "errors": 0,
+      "warnings": 3,
+      "disposition": "Three preexisting system-font warnings; user-pinned Apple system typography retained."
+    },
+    "blockingFindings": []
+  },
+  "viewports": [
+    {
+      "width": 320,
+      "scroll": 320,
+      "newProduct": true
+    },
+    {
+      "width": 768,
+      "scroll": 768,
+      "newProduct": true
+    },
+    {
+      "width": 1440,
+      "scroll": 1433,
+      "newProduct": true
+    }
+  ],
+  "additionalMobileViewport": {
+    "width": 393,
+    "scrollWidth": 393,
+    "height": 852
+  },
+  "flows": [
+    "homepage selects poster-071",
+    "homepage opens full poster",
+    "1447x1087 original loads",
+    "library shows 54 posters",
+    "search 长颈 returns poster-071",
+    "gallery opens matching full poster"
+  ],
+  "publicationPlan": {
+    "version": "client1.8",
+    "baselineManifestSha256": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+    "manifestSha256": "ffc33b238b53f989d8b5dd1842e93d2eae33970ab2613178fa1ee0df333c8efb",
+    "changed": [
+      "assets/featured/poster-071-1024.webp",
+      "assets/featured/poster-071-640.webp",
+      "assets/featured/poster-071.png",
+      "assets/optimized/poster-071-strip.webp",
+      "assets/posters/poster-071-thumb.webp",
+      "assets/posters/poster-071.webp",
+      "assets/previews/posters/poster-071-1280.webp",
+      "assets/previews/posters/poster-071-512.webp",
+      "index.html",
+      "preview.js",
+      "product-posters.js"
+    ],
+    "added": [
+      "assets/featured/poster-071-1024.webp",
+      "assets/featured/poster-071-640.webp",
+      "assets/featured/poster-071.png",
+      "assets/optimized/poster-071-strip.webp",
+      "assets/posters/poster-071-thumb.webp",
+      "assets/posters/poster-071.webp",
+      "assets/previews/posters/poster-071-1280.webp",
+      "assets/previews/posters/poster-071-512.webp"
+    ],
+    "removed": [],
+    "preservedPackaging": [
+      "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+      "assets/packaging/PackagingDetail-qX33rcx_.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/packaging-scene-WX9CdaCv.js"
+    ],
+    "resources": 392
+  },
+  "automatedVerification": {
+    "result": "all required suites passed",
+    "root": {
+      "tests": 185,
+      "skipped": 3
+    },
+    "backend": 258,
+    "deployment": 32,
+    "remaining": "all frontend, legacy demo, motion model/DOM, showroom build, login build/tests and git whitespace checks passed",
+    "logs": [
+      "work/client18/tests-final.log (Python suites)",
+      "work/client18/tests-remaining.log (frontend suites after count corrections)",
+      "work/client18/tests-last.log (historical demo fixture restoration and all remaining suites)"
+    ]
+  }
+}

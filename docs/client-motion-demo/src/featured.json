@@ -412,5 +412,23 @@
       "#eae3d2",
       "#afa28e"
     ]
+  },
+  {
+    "id": "poster-071",
+    "name": "Sculptural Pump",
+    "kind": {
+      "zh": "身体护理 · 长颈泵瓶",
+      "en": "Body care · Long-neck pump bottle"
+    },
+    "description": {
+      "zh": "乳白长颈、宽底轮廓，搭配左向长嘴泵头。",
+      "en": "An ivory long neck and broad base with a left-facing extended pump."
+    },
+    "background": "#e5e8d9",
+    "ink": "#25352b",
+    "swatch": [
+      "#eeece3",
+      "#b8c2a8"
+    ]
   }
 ]

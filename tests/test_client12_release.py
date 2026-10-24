@@ -1,4 +1,4 @@
-"""client1.7 preserves reviewed cutouts in the authenticated showroom bundle."""
+"""client1.8 preserves reviewed cutouts in the authenticated showroom bundle."""
 import copy
 import base64
 import hashlib
@@ -21,7 +21,8 @@ spec.loader.exec_module(builder)
 
 class EditionSelectionTests(unittest.TestCase):
     def test_default_and_explicit_historical_editions_reach_matching_build(self):
-        for args, edition in [([], 'client17'), (['--edition', 'client17'], 'client17'),
+        for args, edition in [([], 'client18'), (['--edition', 'client18'], 'client18'),
+                              (['--edition', 'client17'], 'client17'),
                               (['--edition', 'client16'], 'client16'),
                               (['--edition', 'client15'], 'client15'),
                               (['--edition', 'client14'], 'client14'),
@@ -35,7 +36,7 @@ class EditionSelectionTests(unittest.TestCase):
                 self.assertEqual(check.call_args.kwargs['edition'], edition)
 
     def test_release_cannot_be_relabeled_as_another_edition(self):
-        for edition, other_version in [('client17', 'client1.6'), ('client16', 'client1.7'), ('client15', 'client1.4'), ('client14', 'client1.5'), ('client13', 'client1.4'), ('client12', 'client1.3')]:
+        for edition, other_version in [('client18', 'client1.6'), ('client16', 'client1.8'), ('client15', 'client1.4'), ('client14', 'client1.5'), ('client13', 'client1.4'), ('client12', 'client1.3')]:
             with self.subTest(edition=edition), tempfile.TemporaryDirectory() as directory:
                 stamp = Path(directory) / 'build.json'
                 stamp.write_text(json.dumps({'version': other_version, 'sourceSha256': '0' * 64,
@@ -49,25 +50,25 @@ class MotionReleaseTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.previous = builder.expected_files(edition='client1')
-        cls.current = builder.expected_files(edition='client17')
+        cls.current = builder.expected_files(edition='client18')
         cls.featured = json.loads((builder.MOTION_CLIENT / 'featured-manifest.json').read_text())
         cls.display = json.loads((builder.MOTION_CLIENT / 'display-derivatives.json').read_text())
 
     def test_release_changes_only_entrypoints_and_adds_reviewed_display_derivatives(self):
         added = {item['productionTarget'] for item in self.featured['files']}
-        self.assertEqual(len(added), 23)
+        self.assertEqual(len(added), 24)
         added |= {f"assets/featured/{entry['posterId']}-{size}.webp" for entry in self.featured['files'] for size in (640, 1024)}
-        self.assertEqual(len(added), 69)
+        self.assertEqual(len(added), 72)
         added |= {entry['productionTarget'] for entry in self.display['files']}
-        self.assertEqual(len(added), 123)
+        self.assertEqual(len(added), 127)
         packaging = json.loads((builder.MOTION_CLIENT / 'packaging-manifest.json').read_text())
         added |= {entry['productionTarget'] for entry in packaging['files']}
-        added |= builder.release_file_names(builder.MOTION_CLIENT, 'client17') - set(builder.CLIENT_ENTRYPOINTS)
+        added |= builder.release_file_names(builder.MOTION_CLIENT, 'client18') - set(builder.CLIENT_ENTRYPOINTS)
         self.assertEqual(set(self.current) - set(self.previous), added)
         self.assertEqual(set(self.previous) - set(self.current), set())
         changed = {name for name in self.previous if self.previous[name] != self.current[name]}
         self.assertEqual(changed, {'index.html', 'preview.js', 'preview.css', 'bundle-manifest.json'})
-        self.assertIn(b'client1.7', self.current['index.html'])
+        self.assertIn(b'client1.8', self.current['index.html'])
         self.assertNotIn('动效预览'.encode(), self.current['index.html'])
         self.assertIn(b'/showroom/preview.js', self.current['index.html'])
         self.assertIn(b'/showroom/preview.css', self.current['index.html'])
@@ -76,7 +77,7 @@ class MotionReleaseTests(unittest.TestCase):
         self.assertIn(b'assets/featured/', self.current['preview.js'])
         self.assertNotIn(b'/src/main.jsx', self.current['index.html'])
         manifest = json.loads(self.current['bundle-manifest.json'])
-        self.assertEqual(manifest['version'], 'client1.7')
+        self.assertEqual(manifest['version'], 'client1.8')
         self.assertEqual(manifest['source'], 'docs/client-motion-demo')
         self.assertEqual(set(manifest['files']), set(self.current) - {'bundle-manifest.json'})
         for name, entry in manifest['files'].items():
@@ -88,7 +89,7 @@ class MotionReleaseTests(unittest.TestCase):
     def test_source_changes_and_release_tampering_are_rejected(self):
         with patch.object(builder, 'client_source_hash', return_value='0' * 64):
             with self.assertRaisesRegex(ValueError, 'source changed'):
-                builder.client_files(self.previous, 'client17')
+                builder.client_files(self.previous, 'client18')
         with tempfile.TemporaryDirectory() as directory:
             altered = Path(directory) / 'preview.js'
             altered.write_bytes(b'tampered')
@@ -97,7 +98,7 @@ class MotionReleaseTests(unittest.TestCase):
                 return altered if Path(source) == builder.MOTION_CLIENT / 'release' and name == 'preview.js' else original(source, name)
             with patch.object(builder, 'source_file', side_effect=source_file):
                 with self.assertRaisesRegex(ValueError, 'release checksum mismatch'):
-                    builder.client_files(self.previous, 'client17')
+                    builder.client_files(self.previous, 'client18')
 
     def test_derivative_approval_identity_paths_and_original_hash_are_checked(self):
         cases = [
@@ -127,36 +128,33 @@ class MotionReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'cannot replace'):
             builder.featured_files(files, builder.MOTION_CLIENT)
 
-    def test_layout_only_edition_reuses_client14_approved_artwork_without_rewriting_it(self):
-        previous_media = dict(self.previous)
-        builder.featured_files(previous_media, builder.MOTION_CLIENT, 'client14')
-        builder.optimized_display_files(previous_media, builder.MOTION_CLIENT, 'client14')
-        for edition in ('client15', 'client16', 'client17'):
+    def test_new_approval_does_not_authorize_historical_editions(self):
+        for edition in ('client14', 'client15', 'client16', 'client17'):
             with self.subTest(edition=edition):
-                current_media = dict(self.previous)
-                builder.featured_files(current_media, builder.MOTION_CLIENT, edition)
-                builder.optimized_display_files(current_media, builder.MOTION_CLIENT, edition)
-                self.assertEqual(previous_media, current_media)
-                self.assertEqual(len(set(current_media) - set(self.previous)), 123)
+                self.assertEqual(builder.REVIEWED_COUNTS[edition], (23, 53))
+                self.assertEqual(builder.FEATURED_APPROVAL_VERSIONS[edition], 'client1.4')
+                with self.assertRaisesRegex(ValueError, 'not been approved'):
+                    builder.featured_files(dict(self.previous), builder.MOTION_CLIENT, edition)
+        self.assertEqual(builder.REVIEWED_COUNTS['client18'], (24, 54))
 
     def test_only_stamped_entrypoints_are_packaged_and_output_tampering_is_detected(self):
         release = builder.MOTION_CLIENT / 'release'
         self.assertEqual({p.relative_to(release).as_posix() for p in release.rglob('*') if p.is_file()},
-                         builder.release_file_names(builder.MOTION_CLIENT, 'client17') | {'build.json', '.vite/manifest.json'})
+                         builder.release_file_names(builder.MOTION_CLIENT, 'client18') | {'build.json', '.vite/manifest.json'})
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / 'showroom'
-            builder.build(destination=output, edition='client17')
-            self.assertEqual(builder.check(destination=output, edition='client17'), [])
+            builder.build(destination=output, edition='client18')
+            self.assertEqual(builder.check(destination=output, edition='client18'), [])
             name = self.featured['files'][0]['productionTarget']
             (output / name).write_bytes(b'changed')
             (output / 'private.json').write_text('not approved')
-            self.assertEqual(builder.check(destination=output, edition='client17'), [name, 'private.json'])
+            self.assertEqual(builder.check(destination=output, edition='client18'), [name, 'private.json'])
 
-    def test_cli_defaults_to_client17_and_keeps_historical_editions_explicit(self):
+    def test_cli_defaults_to_client18_and_keeps_historical_editions_explicit(self):
         with patch.object(builder.sys, 'argv', ['build_customer_showroom.py', '--check']), \
                 patch.object(builder, 'check', return_value=[]) as check:
             self.assertEqual(builder.main(), 0)
-            self.assertEqual(check.call_args.kwargs['edition'], 'client17')
+            self.assertEqual(check.call_args.kwargs['edition'], 'client18')
         with self.assertRaisesRegex(ValueError, 'Unsupported showroom edition'):
             builder.expected_files(edition='unknown')
 
@@ -215,7 +213,7 @@ class MotionReleaseTests(unittest.TestCase):
                     files = dict(self.previous)
                     builder.featured_files(files, builder.MOTION_CLIENT, edition)
                     self.assertEqual(len(set(files) - set(self.previous)), 24)
-                for edition in ('client14', 'client15', 'client16', 'client17'):
+                for edition in ('client14', 'client15', 'client16', 'client18'):
                     with self.assertRaisesRegex(ValueError, 'not been approved'):
                         builder.featured_files(dict(self.previous), builder.MOTION_CLIENT, edition)
 
@@ -226,11 +224,11 @@ class DisplayDerivativeTests(unittest.TestCase):
         cls.previous = builder.expected_files(edition='client1')
         cls.manifest = json.loads((builder.MOTION_CLIENT / 'display-derivatives.json').read_text())
 
-    def test_adds_only_54_small_derivatives_and_keeps_all_original_bytes(self):
+    def test_adds_only_55_small_derivatives_and_keeps_all_original_bytes(self):
         files = dict(self.previous)
         builder.optimized_display_files(files, builder.MOTION_CLIENT)
         added = set(files) - set(self.previous)
-        self.assertEqual(len(added), 54)
+        self.assertEqual(len(added), 55)
         self.assertEqual(added, {entry['productionTarget'] for entry in self.manifest['files']})
         for name, data in self.previous.items():
             self.assertEqual(files[name], data, name)
@@ -290,7 +288,7 @@ class DisplayDerivativeTests(unittest.TestCase):
             files = dict(self.previous)
             files['product-posters.js'] = ('window.YuanzeProductPosters = ' + json.dumps(
                 {**catalogue, 'items': items}) + ';').encode()
-            with self.assertRaisesRegex(ValueError, '53 approved posters'):
+            with self.assertRaisesRegex(ValueError, '54 approved posters'):
                 builder.optimized_display_files(files, builder.MOTION_CLIENT)
 
     def test_responsive_metadata_and_routes_match_real_assets(self):

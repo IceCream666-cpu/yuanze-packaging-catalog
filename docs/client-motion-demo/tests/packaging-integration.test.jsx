@@ -341,7 +341,7 @@ test('App opens only Beach Magic as 3D and preserves another product HD/download
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 23);
+    assert.equal(document.querySelectorAll('[data-open]').length, 24);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging'), null);

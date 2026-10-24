@@ -1,0 +1,62 @@
+{
+  "version": "client1.8",
+  "date": "2026-10-24",
+  "posterId": "poster-071",
+  "title": {
+    "zh": "liaose 长颈雕塑泵瓶",
+    "en": "liaose Sculptural long-neck pump bottle"
+  },
+  "source": {
+    "kind": "user-approved-generated-artwork",
+    "filename": "liaose-长颈泵瓶-4比3.png",
+    "receivedAt": "2026-10-24",
+    "sha256": "d2efecbbf67854913cf46fb4053a1b9574066cc3586782f970c6e44888b0e572",
+    "bytes": 1795652,
+    "width": 1447,
+    "height": 1087,
+    "pixelsHash": "b863ff9636ae77627878d63a379bbf3368ac31f48457eb24506008447d8fac68"
+  },
+  "approval": "用户要求替换为 liaose Logo，沿用客户端展示比例并更新至客户端海报及首页滑动展示区",
+  "featuredCount": 24,
+  "posterCount": 54,
+  "baselineCommit": "a2fc699",
+  "baselineManifestSha256": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+  "manifestSha256": "ffc33b238b53f989d8b5dd1842e93d2eae33970ab2613178fa1ee0df333c8efb",
+  "addedAssets": {
+    "assets/featured/poster-071-1024.webp": {
+      "bytes": 44002,
+      "sha256": "5782ebd26bbd27acec973180832d19f390cd99c46c7813ec12e07d7955512ab1"
+    },
+    "assets/featured/poster-071-640.webp": {
+      "bytes": 22236,
+      "sha256": "2b44fa3e64ec417cad20c078da7189f8e53732b8e0819dea72552481c168b7d3"
+    },
+    "assets/featured/poster-071.png": {
+      "bytes": 730604,
+      "sha256": "7f67b0098b3e9be300b651ac66eb5a07ed5ce7c7cb5b077f167885d8dcaa06a7"
+    },
+    "assets/optimized/poster-071-strip.webp": {
+      "bytes": 2958,
+      "sha256": "09fb7121f4d922d0679e76aa1870b6fc20e1dd2359f714b79734e544a3243c40"
+    },
+    "assets/posters/poster-071-thumb.webp": {
+      "bytes": 19138,
+      "sha256": "e0fd02a0719afce2ce1ae7d77ba4f24c7f37ea49f4840b5f1ca27cb83a2928bf"
+    },
+    "assets/posters/poster-071.webp": {
+      "bytes": 1203452,
+      "sha256": "eeb9de2810d3e2db51e992b802ec4cdd8d5ca858442cef2eaf0b48cfbb880cfe"
+    },
+    "assets/previews/posters/poster-071-1280.webp": {
+      "bytes": 49802,
+      "sha256": "682f2e3f2f8d18abd6bc70dfb3e62f8fdd3d922cd492769d4030a6a33cb0c4e0"
+    },
+    "assets/previews/posters/poster-071-512.webp": {
+      "bytes": 11686,
+      "sha256": "43084724190103dd6fee6899abe9c278d7c1c1b3eefe1f1d93ad01dca148a0fd"
+    }
+  },
+  "preservedExistingAssets": 381,
+  "originalPixelsUnchanged": true,
+  "materialSpecificationConfirmed": false
+}

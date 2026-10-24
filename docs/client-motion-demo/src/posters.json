@@ -1164,5 +1164,27 @@
     "original": "/assets/poster-070-original.webp",
     "width": 1086,
     "height": 1448
+  },
+  {
+    "id": "poster-071",
+    "title": {
+      "zh": "liaose 长颈雕塑泵瓶",
+      "en": "liaose Sculptural long-neck pump bottle"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-071.webp",
+    "imageWidth": 1280,
+    "imageHeight": 962,
+    "smallImage": "/assets/poster-071-small.webp",
+    "smallWidth": 512,
+    "smallHeight": 385,
+    "thumb": "/assets/poster-071-thumb.webp",
+    "stripThumb": "/assets/poster-071-strip.webp",
+    "stripWidth": 192,
+    "stripHeight": 144,
+    "original": "/assets/poster-071-original.webp",
+    "width": 1447,
+    "height": 1087
   }
 ]
