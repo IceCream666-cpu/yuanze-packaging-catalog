@@ -291,7 +291,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const controlsDisabled = !ready || failed;
 
   return (
-    <div ref={rootRef} className={`packaging-detail ${item.id === 'poster-071' ? 'packaging-detail--pump' : item.id === 'poster-039' ? 'packaging-detail--pdrn' : item.id === 'poster-049' ? 'packaging-detail--moisture' : item.id === 'poster-042' ? 'packaging-detail--woodland' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={['poster-071', 'poster-039', 'poster-049', 'poster-042'].includes(item.id) ? {'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]} : undefined}>
+    <div ref={rootRef} className={`packaging-detail ${item.id === 'poster-071' ? 'packaging-detail--pump' : item.id === 'poster-039' ? 'packaging-detail--pdrn' : item.id === 'poster-049' ? 'packaging-detail--moisture' : item.id === 'poster-042' ? 'packaging-detail--woodland' : item.id === 'poster-051' ? 'packaging-detail--pure' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={['poster-071', 'poster-039', 'poster-049', 'poster-042', 'poster-051'].includes(item.id) ? {'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]} : undefined}>
       <header className="packaging-header">
         <button className="packaging-back" onClick={onClose}>
           <ArrowLeft size={18} aria-hidden="true" />
