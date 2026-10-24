@@ -145,7 +145,7 @@ for i in range(n):
 mesh('Flattened dispensing lever',verts,faces,silver,'Actuator')
 mesh('Recessed dispensing outlet',section(-.467,2.342,.052,.012),[tuple(reversed(range(n)))],outlet,'Actuator')
 
-for kind,parent in [('label','LogoPrint'),('print','LogoPrint')]:
+for kind,parent in [('label','PaperLabel'),('print','LogoPrint')]:
     m=material('Moisture ivory paper stock' if kind=='label' else 'Moisture complete black print','#ffffff',.72 if kind=='label' else .66)
     b=m.node_tree.nodes.get('Principled BSDF')
     b.inputs['Specular IOR Level'].default_value=.12 if kind=='label' else .025
@@ -171,7 +171,7 @@ for kind,parent in [('label','LogoPrint'),('print','LogoPrint')]:
             uv.data[li].uv=(v%(nx+1)/nx,v//(nx+1)/ny)
 
 scale=2.9/2.45
-pivots={'Body':0,'Closure':1.74,'PumpStem':2.05,'Actuator':2.35,'LogoPrint':.84}
+pivots={'Body':0,'Closure':1.74,'PumpStem':2.05,'Actuator':2.35,'PaperLabel':.84,'LogoPrint':.84}
 for key,group in groups.items():
     pivot=Vector((0,0,pivots[key]))
     for child in group.children:child.location-=pivot
@@ -187,7 +187,8 @@ bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-049.blend'))
     'closedHeightToDiameter':2.45,'bodyHeightToDiameter':1.673,'closureDiameterToBody':.89,
     'illustrativeDimensions':True,'containsFormula':False,
     'reference':'featured-assets/poster-049.png','editableArtwork':['label.svg','print.svg'],
-    'labelMovesWithPrint':True,
+    'labelMovesWithPrint':False,
+    'separateLabelAndPrint':True,
     'printIncludes':['liaose','WHIPPED MOISTURE','SHAMPOO','two separator rules'],
     'revision':'individual-reference-review-20261024','generator':'build_moisture.py'
 },indent=2)+'\n')

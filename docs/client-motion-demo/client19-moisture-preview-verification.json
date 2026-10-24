@@ -8,13 +8,14 @@
   "checkedAt": "2026-10-24T17:33:33+08:00",
   "priorProductRelease": "client19-pdrn-release.json",
   "model": {
-    "bytes": 1576944,
-    "sha256": "47d2fa61efbe34e588aaa159159fd7353d9c804be4915ae2644d479099f6c3cb",
+    "bytes": 1577088,
+    "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732",
     "components": [
       "Body",
       "Closure",
       "PumpStem",
       "Actuator",
+      "PaperLabel",
       "LogoPrint"
     ],
     "containsFormula": false,
@@ -26,8 +27,8 @@
     "Round wide-mouth clear bottle, short shoulder and curved base reconstructed from reference",
     "Wide silver closure with fine vertical flutes and two lower bands",
     "Stepped housing and broad flat spout with recessed rectangular outlet",
-    "Paper label, brand, two copy lines and separator rules move together; no label remains on Body",
-    "Closure/housing/head travel .85/1.75/2.8; label offset -1.50/.10/.95 and scale 1.45 at full expansion"
+    "PaperLabel and LogoPrint move on separate depth planes; Body retains no label or text",
+    "Closure/housing/head travel .85/1.75/2.8; label offset -1.25/.08/.65 at scale1.15; complete print offset -2.65/.18/1.65 at scale1.45"
   ],
   "visualReview": {
     "tool": "Impeccable detector and actual Ego Lite rendered review",
@@ -98,5 +99,49 @@
       "label-desktop-closed.png",
       "label-mobile-open.png"
     ]
+  },
+  "separateLayersFollowup": {
+    "checkedAt": "2026-10-24T17:49:56+08:00",
+    "request": "标贴和logo以及产品名不再一个平面，文字更向外展开",
+    "independentGroups": [
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "fullOpenDepthDifference": 1.0,
+    "closedGeometryMaximumWorldDelta": 0,
+    "comparedMeshes": 12,
+    "published": false,
+    "geometryTests": 8,
+    "frontendTests": 95,
+    "finalSceneTests": 32,
+    "screenshots": [
+      "separate-desktop-open.png",
+      "separate-desktop-closed.png",
+      "separate-perspective.png",
+      "separate-mobile-open.png",
+      "separate-short-open.png",
+      "separate-small-mobile.png"
+    ],
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        1474,
+        722
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "horizontalOverflow": false,
+    "review": "Actual Ego Lite front, perspective, closed, desktop and mobile review; paper horizontal offset refined to avoid touching glass in front view",
+    "independentCodeReview": "Passed: closed transforms restore, changes scoped to poster-049, publication remains local only"
   }
 }

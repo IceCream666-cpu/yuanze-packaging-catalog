@@ -289,7 +289,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const controlsDisabled = !ready || failed;
 
   return (
-    <div ref={rootRef} className={`packaging-detail ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={{'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]}}>
+    <div ref={rootRef} className={`packaging-detail ${product.file === 'poster-049.glb' ? 'packaging-detail--moisture' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={{'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]}}>
       <header className="packaging-header">
         <button className="packaging-back" onClick={onClose}>
           <ArrowLeft size={18} aria-hidden="true" />

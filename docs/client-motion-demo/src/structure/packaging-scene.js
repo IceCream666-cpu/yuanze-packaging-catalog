@@ -221,6 +221,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       parts.closure.position.copy(rest.closure.p).y += .85*current;
       parts.stem.position.copy(rest.stem.p).y += 1.75*current;
       parts.head.position.copy(rest.head.p).y += 2.8*current;
+      parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.25,.08,.65),current);
+      parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
     } else if (collection) {
       const offsets={closure:[0,.48,0],liner:[0,.24,0],stem:[0,.88,0],head:[0,1.28,0],overcap:[.10,2.30,0],outerpack:[-.22,.02,-.20]};
       for (const [key,xyz] of Object.entries(offsets)) if(parts[key]) parts[key].position.copy(rest[key].p).addScaledVector(new T.Vector3(...xyz),current);
@@ -240,9 +242,9 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
     }
     parts.print.position.copy(rest.print.p);
-    parts.print.position.x -= (pdrn ? 2.15 : moisture ? 1.50 : pump || collection ? .63 : .025)*current;
-    parts.print.position.y += (pump || collection ? .10 : .004)*current;
-    parts.print.position.z += (pdrn ? 1.10 : moisture ? .95 : pump || collection ? .86 : .035)*current;
+    parts.print.position.x -= (pdrn ? 2.15 : moisture ? 2.65 : pump || collection ? .63 : .025)*current;
+    parts.print.position.y += (moisture ? .18 : pump || collection ? .10 : .004)*current;
+    parts.print.position.z += (pdrn ? 1.10 : moisture ? 1.65 : pump || collection ? .86 : .035)*current;
     parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
     const aspect = width/height;
     // At half-open the cap is already high; reserve headroom without changing
@@ -256,12 +258,13 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : moisture ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : product.wide ? 4.8 : 3.65)/aspect);
+    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : moisture ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : moisture ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     const centerY = assemblyCenter + focus;
-    camera.position.set(0, centerY+(pdrn || moisture ? 1.05 : 2.35), 10);
-    camera.lookAt(0, centerY, 0); camera.updateProjectionMatrix();
+    const centerX = moisture ? -.65*current : 0;
+    camera.position.set(centerX, centerY+(pdrn || moisture ? 1.05 : 2.35), 10);
+    camera.lookAt(centerX, centerY, 0); camera.updateProjectionMatrix();
     renderer.render(scene, camera);
   }
   function render(time = 0) {

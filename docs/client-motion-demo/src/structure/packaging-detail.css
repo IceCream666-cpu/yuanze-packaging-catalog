@@ -172,3 +172,7 @@
  .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
  .packaging-model {top:205px;}
 }
+
+.packaging-detail--moisture .packaging-parts {top:17%; gap:3px;}
+.packaging-detail--moisture .packaging-part {padding:8px 0;}
+.packaging-detail--moisture .packaging-part-detail {margin-top:4px; line-height:1.5;}

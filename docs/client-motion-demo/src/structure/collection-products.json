@@ -214,19 +214,35 @@
         ]
       },
       {
-        "key": "print",
-        "node": "LogoPrint",
+        "key": "label",
+        "node": "PaperLabel",
         "title": [
-          "标贴与印刷",
-          "Label and printing"
+          "乳白标贴",
+          "Ivory label"
         ],
         "short": [
           "标贴",
           "Label"
         ],
         "detail": [
-          "整张标贴连同品牌和产品名一起展开，合拢后归位。",
-          "The full label, brand and product name open together and return when closed."
+          "纸标底材独立离开瓶身。",
+          "The paper label separates from the bottle."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 与产品名",
+          "Logo and product name"
+        ],
+        "short": [
+          "文字",
+          "Print"
+        ],
+        "detail": [
+          "Logo 与产品名进一步向外展开。",
+          "Brand and product name move further outward."
         ]
       }
     ]

@@ -69,10 +69,10 @@ class MoistureModelTests(unittest.TestCase):
         return ([min(p[j] for p in points) for j in range(3)],
                 [max(p[j] for p in points) for j in range(3)])
 
-    def test_five_independent_groups_and_embedded_editable_assets(self):
+    def test_six_independent_groups_and_embedded_editable_assets(self):
         roots = self.gltf['scenes'][self.gltf.get('scene', 0)]['nodes']
         self.assertEqual({self.nodes[i]['name'] for i in roots},
-                         {'Body', 'Closure', 'PumpStem', 'Actuator', 'LogoPrint'})
+                         {'Body', 'Closure', 'PumpStem', 'Actuator', 'PaperLabel', 'LogoPrint'})
         self.assertTrue(all(self.nodes[i].get('children') for i in roots))
         self.assertTrue(all('uri' not in item for item in self.gltf.get('images', []) + self.gltf.get('buffers', [])))
         self.assertFalse(self.gltf.get('animations'))
@@ -128,20 +128,20 @@ class MoistureModelTests(unittest.TestCase):
             self.assertTrue(.12 <= pbr['roughnessFactor'] <= .20,
                             'The Moisture silver finish must retain its softer sheen rather than a mirror finish.')
 
-    def test_paper_and_all_printing_move_together_without_a_duplicate_label_on_the_body(self):
+    def test_paper_and_printing_are_separate_without_a_duplicate_label_on_the_body(self):
         textured = [i for i in self.mesh_indices() if any(
             'baseColorTexture' in m['pbrMetallicRoughness'] for m in self.materials(i))]
         self.assertTrue(textured, 'The model must retain the product artwork.')
         paper = self.named['Ivory paper label']
-        self.assertEqual(self.ancestor(paper), 'LogoPrint')
-        self.assertEqual({self.nodes[i]['name'] for i in self.mesh_indices('LogoPrint')},
-                         {'Ivory paper label', 'Complete shampoo print'})
+        self.assertEqual(self.ancestor(paper), 'PaperLabel')
+        self.assertEqual({self.nodes[i]['name'] for i in self.mesh_indices('PaperLabel')}, {'Ivory paper label'})
+        self.assertEqual({self.nodes[i]['name'] for i in self.mesh_indices('LogoPrint')}, {'Complete shampoo print'})
         self.assertEqual({self.nodes[i]['name'] for i in self.mesh_indices('Body')},
                          {'Clear wide-mouth bottle', 'Glass neck bead', 'Visible bottle thread'})
         for name in ['Ivory paper label', 'Complete shampoo print']:
             self.assertEqual(sum(node['name'] == name for node in self.nodes), 1)
         for index in textured:
-            self.assertEqual(self.ancestor(index), 'LogoPrint', self.nodes[index]['name'])
+            self.assertEqual(self.ancestor(index), 'PaperLabel' if index == paper else 'LogoPrint', self.nodes[index]['name'])
         for index in self.mesh_indices('Body'):
             for material in self.materials(index):
                 for fields in [material, material['pbrMetallicRoughness']]:

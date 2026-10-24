@@ -63,8 +63,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-049.glb",
       "productionTarget": "assets/packaging/poster-049.glb",
-      "bytes": 1576944,
-      "sha256": "47d2fa61efbe34e588aaa159159fd7353d9c804be4915ae2644d479099f6c3cb"
+      "bytes": 1577088,
+      "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
     },
     {
       "name": "poster-042.glb",
@@ -259,6 +259,7 @@
         "PumpStem",
         "Closure",
         "Body",
+        "PaperLabel",
         "LogoPrint"
       ]
     },

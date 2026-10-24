@@ -5,6 +5,7 @@
     "Closure",
     "PumpStem",
     "Actuator",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
@@ -19,7 +20,8 @@
     "label.svg",
     "print.svg"
   ],
-  "labelMovesWithPrint": true,
+  "labelMovesWithPrint": false,
+  "separateLabelAndPrint": true,
   "printIncludes": [
     "liaose",
     "WHIPPED MOISTURE",
