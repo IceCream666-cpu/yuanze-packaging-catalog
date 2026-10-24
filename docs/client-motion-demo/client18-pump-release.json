@@ -1,0 +1,145 @@
+{
+  "version": "client1.8",
+  "patch": "long-neck-pump-layered-model-logo-expansion",
+  "publishedAt": "2026-10-24T16:41:31+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "94c686cba91afeabea0857c82cf070037240bd1d937ce4b2d8393692c1efcbb2",
+  "backup": "/opt/yuanze-reference/backups/client1.8-pump3d-20261024",
+  "baselineManifestSha256": "ffc33b238b53f989d8b5dd1842e93d2eae33970ab2613178fa1ee0df333c8efb",
+  "verifiedFiles": 393,
+  "changed": [
+    "assets/packaging/PackagingDetail-BA-rU8x5.js",
+    "assets/packaging/PackagingDetail-CqSj1n16.css",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/packaging-scene-Du8BdS3C.js",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [
+    "assets/packaging/PackagingDetail-Cj4KWLwf.js",
+    "assets/packaging/PackagingDetail-qX33rcx_.css",
+    "assets/packaging/packaging-scene-WX9CdaCv.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "029aef88",
+  "browserVerification": {
+    "origin": "https://bmt.yuanzebeauty.com/client",
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      393,
+      852
+    ],
+    "opens3DFromHomepage": true,
+    "fiveLayers": true,
+    "outwardLogo": true,
+    "closeResetsPrint": true,
+    "originalPosterRoundTrip": true,
+    "mobileOverflow": false,
+    "visualReview": true
+  },
+  "onlineVerification": {
+    "version": "client1.8",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-071.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-071-1024.webp",
+      "assets/featured/poster-071-640.webp",
+      "assets/featured/poster-071.png",
+      "assets/optimized/poster-071-strip.webp",
+      "assets/posters/poster-071-thumb.webp",
+      "assets/posters/poster-071.webp",
+      "assets/previews/posters/poster-071-1280.webp",
+      "assets/previews/posters/poster-071-512.webp",
+      "assets/packaging/PackagingDetail-BA-rU8x5.js",
+      "assets/packaging/PackagingDetail-CqSj1n16.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-Du8BdS3C.js"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/PackagingDetail-BA-rU8x5.js",
+        "bytes": 11914,
+        "sha256": "e6d659c5d3d6df791500f4f8ddb1586441bf912a05bc8fcd41cce29002fdad18"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-CqSj1n16.css",
+        "bytes": 10849,
+        "sha256": "51e86112127366781f2cc3622d9c9c6ac2e495c09b8a968917fed64e916a9aa0"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2394816,
+        "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-Du8BdS3C.js",
+        "bytes": 570862,
+        "sha256": "88597d8d98b339cea72c511fba1f442d7317d52fa2bea5bb4a3f2b36647d2f44"
+      }
+    ],
+    "pumpRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/996144"
+    },
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2394816"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-24T16:42:35+08:00",
+    "manifestSha256": "94c686cba91afeabea0857c82cf070037240bd1d937ce4b2d8393692c1efcbb2",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  }
+}

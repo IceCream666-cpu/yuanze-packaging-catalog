@@ -5,6 +5,9 @@ import bpy,math,json,sys
 from pathlib import Path
 from mathutils import Vector
 BASE=Path(__file__).resolve().parent;CLIENT=BASE.parents[1]
+if sys.argv[-1]=='poster-039':
+ import runpy
+ runpy.run_path(str(BASE/'build_pdrn.py'));sys.exit(0)
 p=next(x for x in json.loads((BASE/'products.json').read_text()) if x['id']==sys.argv[-1]);out=BASE/p['id']
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 for data in list(bpy.data.materials):bpy.data.materials.remove(data)

@@ -123,3 +123,62 @@ for (const [id,product] of Object.entries(PACKAGING_PRODUCTS)) test(`${id} print
   api.dispose();assert.equal(env.host.querySelector('canvas'),null);
  }finally{env.close();}
 });
+
+for (const [id, lifts, printOffset] of [
+  ['poster-039', {closure: 3.45, liner: 1.41}, null],
+  ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
+  ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
+]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
+  const product = PACKAGING_PRODUCTS[id]; let loaded;
+  const env = harness({product, parse: () => Promise.resolve(loaded)});
+  let api;
+  try {
+    loaded = env.model();
+    const parts = Object.fromEntries(product.parts.map(part => [part.key, loaded.scene.getObjectByName(part.node)]));
+    // Nonzero pivots and scales catch animations that overwrite the imported model's transforms.
+    Object.values(parts).forEach((part, i) => {
+      part.position.set(.13*i, .27*i, -.09*i);
+      part.scale.set(1.7, 1.8, 1.9);
+      part.quaternion.setFromEuler(new Three.Euler(.03, -.02, .01));
+    });
+    const rest = Object.fromEntries(Object.entries(parts).map(([key, part]) => [key, {
+      position: part.position.clone(), scale: part.scale.clone(), quaternion: part.quaternion.clone(),
+    }]));
+    api = await env.mount(env.host, {product, modelRequest: env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush = () => {
+      const callbacks = [...env.frames.values()]; env.frames.clear(); callbacks.forEach(fn => fn(16));
+    };
+    const near = (actual, expected, message) => assert.ok(Math.abs(actual-expected) < 1e-9, `${message}: ${actual} != ${expected}`);
+    const sameVector = (actual, expected, message) => actual.toArray().forEach((value, i) => near(value, expected.toArray()[i], message));
+    const unchanged = key => {
+      sameVector(parts[key].position, rest[key].position, `${key} position`);
+      sameVector(parts[key].scale, rest[key].scale, `${key} scale`);
+      parts[key].quaternion.toArray().forEach((value, i) => near(value, rest[key].quaternion.toArray()[i], `${key} rotation`));
+    };
+
+    for (let cycle = 0; cycle < 2; cycle++) {
+      api.setProgress(.5); flush();
+      api.setProgress(1); flush();
+      for (const [key, lift] of Object.entries(lifts)) {
+        near(parts[key].position.y-rest[key].position.y, lift, `${key} full lift`);
+        sameVector(parts[key].scale, rest[key].scale, `${key} scale`);
+      }
+      unchanged('jar');
+      const displacement = parts.print.position.clone().sub(rest.print.position);
+      if (printOffset) displacement.toArray().forEach((value, i) => near(value, printOffset[i], 'print displacement'));
+      else {
+        assert.ok(displacement.x < -1.5, 'PDRN print must visibly separate to the left of the wider jar.');
+        assert.ok(displacement.z >= 1, 'PDRN print must lift forward from the glass surface.');
+        assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
+      }
+      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(1.45), 'expanded print scale');
+      // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
+      if (id !== 'poster-071') {
+        near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
+        near((parts.liner.position.y-rest.liner.position.y)*product.scale, 1.41, 'studio liner lift');
+      }
+      api.setProgress(0); flush();
+      Object.keys(parts).forEach(unchanged);
+    }
+  } finally {api?.dispose(); env.close();}
+});

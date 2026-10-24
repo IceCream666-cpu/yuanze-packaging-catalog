@@ -7,11 +7,17 @@
     "LogoPrint"
   ],
   "height": 2.9,
+  "width": 3.632107843137255,
+  "bodyHeightToDiameter": 0.6335616438356164,
+  "closedHeightToDiameter": 0.7984344422700587,
+  "capHeightToDiameter": 0.23581213307240703,
   "illustrativeDimensions": true,
   "containsFormula": false,
   "reference": "featured-assets/poster-039.png",
   "editableArtwork": [
     "label.svg",
     "print.svg"
-  ]
+  ],
+  "revision": "individual-reference-review-20261024",
+  "generator": "build_pdrn.py"
 }

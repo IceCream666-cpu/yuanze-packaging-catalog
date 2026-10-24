@@ -16,6 +16,7 @@ function disposeObjects(...objects) {
 }
 
 export async function mountPackagingScene(host, { onError, onReady, modelRequest, signal, product = PACKAGING_PRODUCTS['poster-012'], design = {background:'#f4c8d6',name:'Beach Magic'} } = {}) {
+  const pdrn = product.file === 'poster-039.glb';
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
@@ -80,6 +81,17 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   reflectionCard([0, 7, -1], [5, 3], '#ffffff', 1.7);
   reflectionCard([-3, 0, -5], [2.3, 5], '#faf4e9', 1.1);
   reflectionCard([0, 0, 7], [2.8, 7], '#4f5052', 1);
+  if (pdrn) {
+    studio.background.set('#b9b9b5');
+    reflectionCard([0, 8, 0], [14, 14], '#ffffff', 2.2);
+    reflectionCard([0, 2, -7], [12, 5], '#ffffff', 2.5);
+    reflectionCard([-4, 2, 5], [3, 10], '#ffffff', 3.6);
+    reflectionCard([4, 2, 5], [2, 10], '#ffffff', 3.1);
+    reflectionCard([-1.7, 2, 6], [.6, 9], '#111311', .25);
+    reflectionCard([1.8, 2, 6], [.4, 9], '#121412', .25);
+    reflectionCard([-7, 1, 0], [4, 10], '#121512', 1);
+    reflectionCard([7, 1, 0], [4, 10], '#121512', 1);
+  }
   const pmrem = new T.PMREMGenerator(renderer);
   mark('pmremStart');
   try {envTarget = pmrem.fromScene(studio, .025);} finally {pmrem.dispose();}
@@ -128,6 +140,27 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
     if (pump || collection) {
       m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
+      if (pdrn) {
+        if (m.map) {m.specularIntensity=.05; m.roughness=.7; m.envMapIntensity=.1;}
+        if (m.transmission > .5) {
+          m.color.set('#ffffff'); m.transmission=1; m.roughness=.012;
+          m.ior=1.48; m.thickness=.08; m.envMapIntensity=.3;
+          // Match the untonemapped backdrop through the clear wall.
+          m.toneMapped=false; m.specularIntensity=.7;
+          m.transparent=false; m.opacity=1; m.side=T.DoubleSide;
+          // The same restrained rim correction used by the first approved glass jar.
+          m.onBeforeCompile = shader => {
+            shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
+              float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
+              gl_FragColor.rgb *= 1.0 - 0.18 * wallEdge;
+            `);
+          };
+          o.castShadow=false; o.receiveShadow=false;
+        } else if (m.metalness > .9) {
+          m.roughness=.075; m.envMapIntensity=1;
+          o.castShadow=false;
+        }
+      }
       if (m.map) {m.depthWrite=!m.transparent; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=m.transparent?2:0;}
       return;
     }
@@ -175,7 +208,15 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const rotationEuler = new T.Euler();
   let pointer = null;
   function pose() {
-    if (collection) {
+    if (pdrn) {
+      const capOpen=smooth(.02,.72,current), linerOpen=smooth(.25,1,current);
+      parts.closure.position.copy(rest.closure.p).add(new T.Vector3(-.18,3.45,0).multiplyScalar(capOpen));
+      rotationEuler.set(-.68*capOpen,-Math.PI*1.25*capOpen,-.10*capOpen);
+      capTilt.setFromEuler(rotationEuler); parts.closure.quaternion.copy(rest.closure.q).multiply(capTilt);
+      parts.liner.position.copy(rest.liner.p).add(new T.Vector3(.06,1.41,0).multiplyScalar(linerOpen));
+      rotationEuler.set(.16*linerOpen,.10*linerOpen,-.06*linerOpen);
+      linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
+    } else if (collection) {
       const offsets={closure:[0,.48,0],liner:[0,.24,0],stem:[0,.88,0],head:[0,1.28,0],overcap:[.10,2.30,0],outerpack:[-.22,.02,-.20]};
       for (const [key,xyz] of Object.entries(offsets)) if(parts[key]) parts[key].position.copy(rest[key].p).addScaledVector(new T.Vector3(...xyz),current);
     } else if (pump) {
@@ -194,15 +235,15 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
     }
     parts.print.position.copy(rest.print.p);
-    parts.print.position.x -= (pump || collection ? .63 : .025)*current;
+    parts.print.position.x -= (pdrn ? 2.15 : pump || collection ? .63 : .025)*current;
     parts.print.position.y += (pump || collection ? .10 : .004)*current;
-    parts.print.position.z += (pump || collection ? .86 : .035)*current;
+    parts.print.position.z += (pdrn ? 1.10 : pump || collection ? .86 : .035)*current;
     parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
     const aspect = width/height;
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
-    const assemblyCenter = pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -210,11 +251,11 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max((pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (product.wide ? 4.8 : 3.65)/aspect);
+    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : product.wide ? 4.8 : 3.65)/aspect);
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     const centerY = assemblyCenter + focus;
-    camera.position.set(0, centerY+2.35, 10);
+    camera.position.set(0, centerY+(pdrn ? 1.05 : 2.35), 10);
     camera.lookAt(0, centerY, 0); camera.updateProjectionMatrix();
     renderer.render(scene, camera);
   }
@@ -258,7 +299,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
     viewBottom() {
-      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(2.35, 10);
+      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn ? 1.05 : 2.35, 10);
       selected=null; focus=0; invalidate();
     },
     focusPart(key) {

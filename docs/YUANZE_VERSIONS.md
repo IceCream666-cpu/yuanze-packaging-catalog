@@ -1,5 +1,11 @@
 # 源泽版本记录
 
+## client1.8 长颈泵瓶 3D 独立补丁（2026-10-24 16:41:31 已上线）
+
+用户明确要求先将已认可的 poster-071「liaose 长颈雕塑泵瓶」3D 模型上线，再继续本地逐款精修。本次独立发布只接入该款五层结构、Logo 向外展开、旋转及原海报往返；Beach Magic 保持线上原三部件模型，其他22款仍打开海报。正式客户端继续使用 client1.8，没有发布 client1.9 批量初稿或 PDRN 精修模型。
+
+实现提交 `029aef88`，正式回执记录提交 `1d709bc1`。上线与正式验证证据见 [client18-pump-release.json](client-motion-demo/client18-pump-release.json)，本地发布前记录见 [client18-pump-preview-verification.json](client-motion-demo/client18-pump-preview-verification.json)。393项资源、正式 HTTPS、三角色权限、匿名拒绝、模型 Range、原海报下载及桌面/393px手机浏览器检查已在独立发布流程中验证。377个图片、原 Beach 模型和6820个非展厅文件保持，服务 PID33772 不变，无服务重启或业务数据写入。备份 `/opt/yuanze-reference/backups/client1.8-pump3d-20261024`；回退须持部署锁并核对当前清单，不能覆盖后续更新。
+
 ### client1.8 长颈泵瓶上新（2026-10-24 11:26:40 已上线）
 
 新增 poster-071「liaose 长颈雕塑泵瓶」，海报库54张、首页精选24款。完整海报沿用1447×1087原像素，首页新增透明产品展示及640/1024响应式资源；保留既有展示结构、权限与Beach Magic三部件详情。基于实际线上a2fc699构建，独立分支codex/client18-long-neck，未包含主分支尚未发布的加载试验。素材来源见 `client-motion-demo/product-batch-20261024.json`。已于北京时间11:26:40原子发布，源码 `8ecb25d9`，回执 `client-motion-demo/client18-release.json`。185根测试（3跳过）、258后端、32部署及全部前端/构建验证通过。正式HTTPS新增素材、原图下载、三角色权限、登录和模型资源校验通过；浏览器核验电脑与393px手机首页、完整海报及1447×1087原图。392项服务器资源通过校验，6820个非展厅文件保持，服务未重启。备份 `/opt/yuanze-reference/backups/client1.8-long-neck-20261024`；回退须持部署锁并核对当前清单，避免覆盖后续发布。
@@ -78,6 +84,8 @@ client1.2 / yuanze2.0.3 同版媒体加载修复：2026-10-21 23:28:55 已上线
 
 12:47:35 已发布 Ponytail 清单解析优化 `20261024-ponytail-manifest-cache-v1`，源码 `1706c276`。只替换 server.py，无新增界面版本；实时 client1.8 静态资源保持。公网、三角色、会话保留、业务表摘要和隔离回滚验证通过。详见 `ponytail-20261024.md` 和 `ponytail-20261024-release.json`。
 
-## client1.9 · 24款分层模型与 Logo 展开（2026-10-24，本地评审）
+## client1.9 · 逐款模型精修（2026-10-24，本地待审，未上线）
 
-24款首页精选均可进入独立3D详情，保留54张原海报。原Beach Magic增加独立Logo层，长颈泵瓶接入五层展示，新增22款结构模型与可编辑印刷稿。用户明确要求逐款打开浏览器预览后继续，暂不上线，等一起梳理。24款桌面/手机预览、相关全套回归与本地构建通过，详见 `docs/client-motion-demo/client19-preview-verification.json`。未替换线上客户端，`publicationApproved:false`。
+上一轮24款模型为功能初稿：虽已逐款打开预览并完成当时的功能回归，但未经用户视觉验收。用户指出材质、比例和展开幅度不符合原海报及前两款标准，要求改为“一款精修、一款展示、审阅后再继续”。历史 `client-motion-demo/client19-preview-verification.json` 不作为本轮精修或视觉质量的通过证明。
+
+当前只进行 poster-039「PDRN Capsule Cream」的材质、比例、印刷和展开精修，已完成电脑/手机/短屏预览和本轮回归，等待用户逐款视觉审阅；验证记录 `client-motion-demo/client19-pdrn-preview-verification.json`。版本仍为 client1.9 本地预览，`publicationApproved:false`；PDRN 及其余未认可的批量模型不发布。071 长颈泵瓶已按单独授权于16:41:31作为 client1.8 补丁上线，范围与证据见本文件顶部记录；该单款发布不代表24款初稿获准上线。

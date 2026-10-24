@@ -81,16 +81,16 @@
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "亮银旋盖",
+          "Polished silver lid"
         ],
         "short": [
           "外盖",
           "Closure"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "圆角盖沿，展开查看内侧与罐口。",
+          "Rounded edges; open to inspect the inner lid and jar neck."
         ]
       },
       {
@@ -113,16 +113,16 @@
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "透明玻璃罐",
+          "Clear glass jar"
         ],
         "short": [
           "罐身",
           "Body"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "矮宽罐身、透明罐壁与加厚罐底。",
+          "A low, wide profile with clear walls and a thick base."
         ]
       },
       {

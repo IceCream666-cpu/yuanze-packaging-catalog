@@ -55,8 +55,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-039.glb",
       "productionTarget": "assets/packaging/poster-039.glb",
-      "bytes": 479708,
-      "sha256": "c21528b57d39ed2c1bfa6182dd28f6e5c59e3b00815bdfcf62d9ca67e29c4dee"
+      "bytes": 913976,
+      "sha256": "fed83257a2ab97290bde8ab36385360ae834d3e9e36a33a5492b581ed218944d"
     },
     {
       "name": "poster-049.glb",

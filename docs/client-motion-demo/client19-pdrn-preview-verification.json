@@ -1,0 +1,87 @@
+{
+  "version": "client1.9",
+  "status": "single-product-local-review",
+  "product": "poster-039",
+  "name": "PDRN Capsule Cream",
+  "published": false,
+  "userVisualApproval": false,
+  "preview": "http://127.0.0.1:8784/?model=poster-039",
+  "scope": "Finish one product, show it, wait for review before proceeding to the next. Only poster-071 was separately authorized and published under client1.8.",
+  "generatedAt": "2026-10-24T16:51:44+08:00",
+  "model": {
+    "bytes": 913976,
+    "sha256": "fed83257a2ab97290bde8ab36385360ae834d3e9e36a33a5492b581ed218944d",
+    "components": [
+      "Body",
+      "Closure",
+      "InnerLid",
+      "LogoPrint"
+    ],
+    "containsFormula": false,
+    "measuredDimensions": false
+  },
+  "refinements": [
+    "Single-product squat geometry reconstructed from original poster ratios",
+    "Neutral clear thick-base glass, polished silver cap and serif fixed copy",
+    "Independent wordmark and label artwork",
+    "Outer lid travel 3.45, inner lid 1.41 in studio units; staged animation and full return",
+    "Match glass transmission to the untonemapped background",
+    "Desktop/mobile/short-screen framing with complete exploded assembly"
+  ],
+  "visualReview": {
+    "tool": "Impeccable detector and rendered visual review",
+    "detector": "Only existing Helvetica warning retained to preserve client typography",
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        1474,
+        722
+      ]
+    ],
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "bottom view",
+      "reset",
+      "original poster roundtrip",
+      "mouse drag rotation",
+      "wheel expansion"
+    ],
+    "horizontalOverflow": false,
+    "knownLimits": [
+      "Dimensions, wall thickness and internal parts are illustrative pending a physical sample",
+      "Desktop Chromium viewport emulation does not verify a physical phone or Safari"
+    ]
+  },
+  "validation": {
+    "status": "passed",
+    "rootTests": {
+      "total": 188,
+      "passed": 185,
+      "skipped": 3
+    },
+    "backendTests": 264,
+    "deploymentTests": 32,
+    "motionModuleTests": 65,
+    "motionDOMTests": 29,
+    "loginTests": 12,
+    "buildChecks": "passed",
+    "remainingFrontendSuites": "passed",
+    "environmentRepair": "Initial verify run reached login build without the local dependency symlink. Reused the existing installed login node_modules and ran the remaining login build/tests and diff checks successfully. No dependency versions changed."
+  },
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-open.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "short-half.png"
+  ]
+}
