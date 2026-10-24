@@ -1,3 +1,4 @@
+import {PACKAGING_PRODUCTS} from '../src/structure/packaging-products.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -14,7 +15,7 @@ function deferred() {
   const promise = new Promise((yes, no) => {resolve = yes; reject = no;});
   return {promise, resolve, reject};
 }
-function harness({parse, renderError} = {}) {
+function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
   const dom = new JSDOM('<div id="host"></div>', {pretendToBeVisual: true});
   const events = [], frames = new Map(); let frameId = 0, rendererDisposals = 0, envDisposals = 0, observers = 0;
   Object.assign(globalThis, {window: dom.window, document: dom.window.document,
@@ -37,14 +38,14 @@ function harness({parse, renderError} = {}) {
   }
   function model() {
     const scene = new Three.Group();
-    for (const name of ['Jar', 'OuterCap', 'InnerLid']) {
+    for (const name of product.parts.map(part=>part.node)) {
       const part = new Three.Mesh(new Three.BoxGeometry(), new Three.MeshPhysicalMaterial());
       part.name = name; scene.add(part);
     }
     return {scene};
   }
   const module = {exports: {}};
-  new Function('require', 'module', 'exports', code)(id => id.includes('GLTFLoader')
+  new Function('require', 'module', 'exports', code)(id => id.includes('packaging-products') ? {PACKAGING_PRODUCTS} : id.includes('GLTFLoader')
     ? {GLTFLoader: class {parseAsync(bytes) {events.push('parse'); return parse ? parse(bytes) : Promise.resolve(model());}}}
     : {...Three, WebGLRenderer: Renderer, PMREMGenerator: PMREM}, module, module.exports);
   const host = document.getElementById('host');
@@ -108,4 +109,25 @@ test('a first-render failure never reports ready and releases the whole mounted 
     assert.deepEqual(env.counts(), {rendererDisposals: 1, envDisposals: 1, observers: 0});
     assert.equal(env.host.querySelector('canvas'), null); assert.equal(env.frames.size, 0);
   } finally {env.close();}
+});
+
+for (const id of ['poster-012','poster-071']) test(`${id} approved components expand and reset without changing original scales`, async()=>{
+ const product=PACKAGING_PRODUCTS[id];let gltf;
+ const env=harness({product,parse:()=>Promise.resolve(gltf=env.model())});
+ try {
+  const api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+  const nodes=Object.fromEntries(product.parts.map(part=>[part.key,gltf.scene.getObjectByName(part.node)]));
+  assert.equal(product.parts.length,id==='poster-071'?5:3);
+  api.setProgress(1);flush();
+  if(id==='poster-071'){
+   assert.equal(nodes.closure.position.y,.38);assert.equal(nodes.stem.position.y,.84);assert.equal(nodes.head.position.y,1.35);
+   assert.deepEqual(api.getState().printOffset,[-.63,.10,.86]);assert.equal(nodes.print.scale.x,1.45);
+  }else{
+   assert.equal(nodes.cap.position.y,.100);assert.equal(nodes.liner.position.y,.047);assert.equal(api.getState().printOffset,null);
+  }
+  api.setProgress(0);flush();
+  for(const n of Object.values(nodes)){assert.deepEqual(n.position.toArray(),[0,0,0]);assert.deepEqual(n.scale.toArray(),[1,1,1]);}
+  api.dispose();assert.equal(env.host.querySelector('canvas'),null);
+ }finally{env.close();}
 });

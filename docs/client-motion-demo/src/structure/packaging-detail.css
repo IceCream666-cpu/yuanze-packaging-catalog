@@ -162,3 +162,13 @@
   .packaging-loading-mark { animation: none; }
   .packaging-scroll { scroll-behavior: auto; }
 }
+
+/* The five pump layers need more vertical space; the approved jar layout stays intact. */
+.packaging-detail--pump .packaging-parts {top:19%; gap:8px;}
+.packaging-detail--pump .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px);}
+@media (max-width:900px) {
+ .packaging-detail--pump .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
+ .packaging-detail--pump .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
+ .packaging-detail--pump .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
+ .packaging-detail--pump .packaging-model {top:205px;}
+}

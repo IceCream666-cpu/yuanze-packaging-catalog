@@ -1,0 +1,30 @@
+{
+  "version": "client1.8",
+  "scope": [
+    "poster-071"
+  ],
+  "preservedModel": "poster-012",
+  "publicationApproved": true,
+  "desktop": [
+    1440,
+    1000
+  ],
+  "mobile": [
+    393,
+    852
+  ],
+  "fiveLayers": true,
+  "logoOutwardAndReset": true,
+  "posterAndOriginalPreserved": true,
+  "tests": {
+    "root": {
+      "total": 186,
+      "skipped": 3
+    },
+    "backend": 258,
+    "deploy": 32,
+    "frontendAndBuilds": "passed"
+  },
+  "aestheticReview": "actual desktop/mobile closed and exploded; existing Helvetica warning retained",
+  "publication": "pending"
+}

@@ -17,7 +17,7 @@ spec.loader.exec_module(builder)
 
 
 class PackagingApprovalTests(unittest.TestCase):
-    def test_only_the_reviewed_model_and_two_animation_scripts_are_added(self):
+    def test_only_the_two_reviewed_models_and_two_animation_scripts_are_added(self):
         files = {'unrelated.webp': b'preserved'}
         builder.packaging_files(files, builder.MOTION_CLIENT)
         self.assertEqual(files['unrelated.webp'], b'preserved')
@@ -36,12 +36,23 @@ class PackagingApprovalTests(unittest.TestCase):
         self.assertNotIn('KHR_lights_punctual', model.get('extensions', {}))
         self.assertTrue(all('bufferView' in image and 'uri' not in image for image in model['images']))
 
+    def test_pump_has_exactly_five_parts_and_beach_model_is_unchanged(self):
+        files={};builder.packaging_files(files,builder.MOTION_CLIENT)
+        self.assertEqual(set(builder.PACKAGING_ASSETS), {'beach-magic-packaging.glb','liaose-pump.glb','gsap.min.js','ScrollTrigger.min.js'})
+        glb=files['assets/packaging/liaose-pump.glb']
+        self.assertEqual(hashlib.sha256(glb).hexdigest(),'d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936')
+        length=struct.unpack_from('<I',glb,12)[0];model=json.loads(glb[20:20+length])
+        roots=model['scenes'][model.get('scene',0)]['nodes']
+        self.assertEqual({model['nodes'][i]['name'] for i in roots},{'BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint'})
+        self.assertEqual(hashlib.sha256(files['assets/packaging/beach-magic-packaging.glb']).hexdigest(),'e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76')
+
     def test_approval_identity_path_hash_and_duplicate_changes_are_rejected(self):
         approved = json.loads((builder.MOTION_CLIENT / 'packaging-manifest.json').read_text())
         mutations = [
             lambda m: m.update(scope='unapproved'),
             lambda m: m.update(posterId='poster-999'),
             lambda m: m.update(containsFormula=True),
+            lambda m: m['additionalProducts'].append({'posterId':'poster-039'}),
             lambda m: m['components'].append('Contents'),
             lambda m: m['files'].pop(),
             lambda m: m['files'].__setitem__(1, m['files'][0]),
@@ -72,7 +83,7 @@ class PackagingApprovalTests(unittest.TestCase):
             base = Path(directory)
             shutil.copytree(builder.MOTION_CLIENT / 'packaging-assets', base / 'packaging-assets')
             shutil.copyfile(builder.MOTION_CLIENT / 'packaging-manifest.json', base / 'packaging-manifest.json')
-            self.assertEqual(builder.prepare_packaging_assets(base), 3)
+            self.assertEqual(builder.prepare_packaging_assets(base), 4)
             expected = {f'assets/packaging/{name}' for name in builder.PACKAGING_ASSETS}
             self.assertEqual({path.relative_to(base / 'public').as_posix()
                               for path in (base / 'public').rglob('*') if path.is_file()}, expected)

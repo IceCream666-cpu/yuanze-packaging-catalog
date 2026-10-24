@@ -336,7 +336,7 @@ test('the real App and lightweight loader make no model or module request before
   } finally {await env.close();}
 });
 
-test('App opens only Beach Magic as 3D and preserves another product HD/download/favorites and return focus', async () => {
+test('App opens Beach Magic as 3D and preserves another product HD/download/favorites and return focus', async () => {
   const env = setup();
   const {App, counts} = appHarness();
   try {
@@ -398,4 +398,29 @@ test('App original-poster round trip unmounts 3D and resets HD status without lo
     assert.equal(document.activeElement, beach);
     assert.deepEqual(counts(), {mounts: 2, unmounts: 2});
   } finally {await env.close();}
+});
+
+test('pump model loader requests only its approved model and rejects unknown IDs before fetching',async()=>{
+ const env=setup(),urls=[];
+ const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
+ globalThis.fetch=async url=>{urls.push(url);return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+ try {
+  for(const id of ['poster-039','poster-013','constructor','../private']) assert.throws(()=>startPackagingModelRequest(id),/Unsupported/);
+  assert.deepEqual(urls,[]);
+  const request=startPackagingModelRequest('poster-071');await request.promise;request.abort();
+  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb']);
+ } finally {await env.close();}
+});
+
+test('pump opens in 3D and its original poster round trip returns to the same five-layer product',async()=>{
+ const env=setup();const {App}=appHarness();
+ try {
+  await act(async()=>env.root.render(<App/>));
+  await click(document.querySelector('[data-open="poster-071"]'));
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-071');
+  await click(byText('Original poster'));
+  assert.ok(document.querySelector('a[download="poster-071.webp"]'));
+  await click(byText('返回结构展示'));
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-071');
+ } finally {await env.close();}
 });

@@ -540,13 +540,13 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-Cj4KWLwf.js": {
-      "bytes": 11934,
-      "sha256": "43d31e465d0ee524cabf9b3f43354a7a52ec1312c1a053aeb7b73b10808f4fd3"
+    "assets/packaging/PackagingDetail-BA-rU8x5.js": {
+      "bytes": 11914,
+      "sha256": "e6d659c5d3d6df791500f4f8ddb1586441bf912a05bc8fcd41cce29002fdad18"
     },
-    "assets/packaging/PackagingDetail-qX33rcx_.css": {
-      "bytes": 10346,
-      "sha256": "4f933a90f88aa780b693e40399ea4caef65d6521c488ae365b2ff4790215a76f"
+    "assets/packaging/PackagingDetail-CqSj1n16.css": {
+      "bytes": 10849,
+      "sha256": "51e86112127366781f2cc3622d9c9c6ac2e495c09b8a968917fed64e916a9aa0"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
@@ -560,9 +560,13 @@
       "bytes": 72435,
       "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
     },
-    "assets/packaging/packaging-scene-WX9CdaCv.js": {
-      "bytes": 569698,
-      "sha256": "9ff21342ed2a34fecc53074a378a9c78792f0c417051b0bb828efa836ab4c8d9"
+    "assets/packaging/liaose-pump.glb": {
+      "bytes": 996144,
+      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    },
+    "assets/packaging/packaging-scene-Du8BdS3C.js": {
+      "bytes": 570862,
+      "sha256": "88597d8d98b339cea72c511fba1f442d7317d52fa2bea5bb4a3f2b36647d2f44"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1561,8 +1565,8 @@
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 338650,
-      "sha256": "c3119584e2b27f4e7784293c6ff701ea771f04857f21b9e97914d5d0f6270869"
+      "bytes": 340312,
+      "sha256": "ff8009b51c5b9d3729884ef26f024b97456d8231162f2fa9c99956d0ce9b7702"
     },
     "product-posters.js": {
       "bytes": 19245,

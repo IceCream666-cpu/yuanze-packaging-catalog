@@ -27,7 +27,7 @@ FEATURED_APPROVAL_VERSIONS = {'client12': 'client1.2', 'client13': 'client1.2',
                              'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4', 'client17': 'client1.4', 'client18': 'client1.8'}
 PACKAGING_EDITIONS = frozenset(('client16', 'client17', 'client18'))
 PACKAGING_ASSETS = {'beach-magic-packaging.glb': 'model', 'gsap.min.js': 'animation',
-                    'ScrollTrigger.min.js': 'scroll-animation'}
+                    'ScrollTrigger.min.js': 'scroll-animation', 'liaose-pump.glb': 'model'}
 PACKAGING_CHUNK = re.compile(r'assets/packaging/[A-Za-z0-9_-]+-[A-Za-z0-9_-]{8,}\.(?:js|css)')
 
 
@@ -122,11 +122,12 @@ def stamp_client_release(edition='client1'):
 
 
 def packaging_files(files, client):
-    """Add the three explicitly reviewed model/animation assets, with fixed routes."""
+    """Add the four explicitly reviewed model/animation assets, with fixed routes."""
     manifest = json.loads(source_file(client, 'packaging-manifest.json').read_text())
-    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.6-packaging'
+    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.8-pump-packaging'
             or manifest.get('posterId') != 'poster-012'
             or manifest.get('components') != ['Jar', 'OuterCap', 'InnerLid']
+            or manifest.get('additionalProducts') != [{'posterId':'poster-071','file':'liaose-pump.glb','components':['BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint']}]
             or manifest.get('containsFormula') is not False):
         raise ValueError('Invalid packaging approval')
     entries = manifest.get('files', [])

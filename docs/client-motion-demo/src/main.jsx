@@ -1,3 +1,4 @@
+import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {ArrowRight, Check, ChevronLeft, ChevronRight, Download, GalleryHorizontalEnd, Heart, Images, Info, LayoutGrid, LogOut, Maximize2, Search, X, ZoomIn, ZoomOut} from 'lucide-react';
@@ -107,7 +108,7 @@ function App() {
   }
   function open(type, item) {
     triggerRef.current = document.activeElement;
-    setHd(false); setZoom(false); setHdStatus('idle'); setImageAttempt(0); setModal({type: type === 'image' && item?.id === 'poster-012' ? 'packaging' : type, item});
+    setHd(false); setZoom(false); setHdStatus('idle'); setImageAttempt(0); setModal({type: type === 'image' && PACKAGING_PRODUCTS[item?.id] ? 'packaging' : type, item});
   }
   function close() {setModal(null);}
   function reset() {setCategory('all'); setStyle('all'); setQuery('');}
