@@ -1,0 +1,101 @@
+{
+  "version": "client1.14",
+  "published": false,
+  "checkedAt": "2026-10-24T19:13:37+08:00",
+  "baselineCommit": "62bc826a",
+  "approvedLocalSource": "bebe65ca13afcaf57029b4b9f54b9b8c1e1938aa",
+  "approvedModelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049",
+    "poster-042",
+    "poster-051",
+    "poster-044",
+    "poster-047"
+  ],
+  "newModel": "poster-047",
+  "components": [
+    "Body",
+    "Closure",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "otherFeaturedProductsRemainPosters": 16,
+  "posterCount": 54,
+  "featuredCount": 24,
+  "modelSha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+  "preservedImages": 377,
+  "publicationPlan": {
+    "version": "client1.14",
+    "baselineManifestSha256": "f35aa0fda8d807aba68a5ff8ef4f554d470c42947283aa6e26698d6184b5ac25",
+    "manifestSha256": "6da8ac4cd8bdd4dc92570f25f8a43c4690cd2b25d63e9df07a80c9c059f67ecc",
+    "changed": [
+      "assets/packaging/PackagingDetail-BdIabh8h.css",
+      "assets/packaging/PackagingDetail-CDAhqwii.js",
+      "assets/packaging/packaging-scene-howJ6eA-.js",
+      "assets/packaging/poster-047.glb",
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-BdIabh8h.css",
+      "assets/packaging/PackagingDetail-CDAhqwii.js",
+      "assets/packaging/packaging-scene-howJ6eA-.js",
+      "assets/packaging/poster-047.glb"
+    ],
+    "removed": [
+      "assets/packaging/PackagingDetail-DSpVcI-5.js",
+      "assets/packaging/PackagingDetail-DWdw5hs-.css",
+      "assets/packaging/packaging-scene-BF_C2yHE.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb"
+    ],
+    "resources": 399
+  },
+  "verification": {
+    "rootTests": 220,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 51,
+    "motionDOMTests": 41,
+    "loginTests": 12,
+    "legacyClientTests": 18,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "browserCandidate": {
+    "browser": "Ego Lite Chromium",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "fourComponents": true,
+    "closedAndFullyExpandedComparedWithApprovedPreview": true,
+    "expandedPrintOffset": [
+      -3.099,
+      0.18,
+      1.649
+    ],
+    "screenshots": [
+      "work/coastal-live/candidate-desktop-closed.png",
+      "work/coastal-live/candidate-desktop-open.png"
+    ],
+    "checkedBy": "root agent"
+  },
+  "limits": [
+    "Browser screenshots do not replace physical-device testing.",
+    "No server publication has occurred at this preview verification stage."
+  ]
+}

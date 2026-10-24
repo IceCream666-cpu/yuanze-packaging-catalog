@@ -21,6 +21,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const woodland = product.file === 'poster-042.glb';
   const pureVolume = product.file === 'poster-051.glb';
   const gentle = product.file === 'poster-044.glb';
+  const coastal = product.file === 'poster-047.glb';
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
@@ -96,7 +97,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     reflectionCard([-7, 1, 0], [4, 10], '#121512', 1);
     reflectionCard([7, 1, 0], [4, 10], '#121512', 1);
   }
-  if (woodland) {
+  if (woodland || coastal) {
     reflectionCard([-4, 2, 5], [1.5, 8], '#ffffff', 2.6);
     reflectionCard([4, 2, 5], [.7, 7], '#ffffff', 1.9);
   }
@@ -145,7 +146,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
-    if (pdrn || moisture || woodland || gentle) {
+    if (pdrn || moisture || woodland || gentle || coastal) {
       m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
       if (m.map) {m.specularIntensity=.05; m.roughness=.7; m.envMapIntensity=.1;}
       if (m.transmission > .5) {
@@ -259,9 +260,9 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       parts.label.traverse(o => {if (o.isMesh) o.material.opacity=.05+.95*smooth(.03,.6,current);});
       parts.print.position.copy(rest.print.p).addScaledVector(new T.Vector3(-3.4,.18,1.65),current);
       parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
-    } else if (woodland) {
+    } else if (woodland || coastal) {
       parts.closure.position.copy(rest.closure.p).y += 2.8*current;
-      parts.liner.position.copy(rest.liner.p).y += 1.35*current;
+      if (woodland) parts.liner.position.copy(rest.liner.p).y += 1.35*current;
       parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.50,.08,.65),current);
       parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
       parts.print.position.copy(rest.print.p).addScaledVector(new T.Vector3(-3.1,.18,1.65),current);
@@ -295,7 +296,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
-    const assemblyCenter = pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture || woodland || pureVolume ? 1.45+current*1.4 : pump ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture || woodland || pureVolume || coastal ? 1.45+current*1.4 : pump ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -303,12 +304,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.4+intermediateHeadroom*.6 : moisture || woodland || pureVolume ? 4.2+current*2.3 : pump ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : pureVolume ? 3.8+current*3.4 : woodland ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : 3.65)/aspect);
+    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.4+intermediateHeadroom*.6 : moisture || woodland || pureVolume || coastal ? 4.2+current*2.3 : pump ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : 3.65)/aspect);
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     const centerY = assemblyCenter + focus;
-    const centerX = pureVolume ? -.75*current : woodland ? -.85*current : moisture || gentle ? -.65*current : 0;
-    camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle ? 1.05 : 2.35), 10);
+    const centerX = pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
+    camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle || coastal ? 1.05 : 2.35), 10);
     camera.lookAt(centerX, centerY, 0); camera.updateProjectionMatrix();
     renderer.render(scene, camera);
   }
@@ -352,7 +353,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
     viewBottom() {
-      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland || pureVolume || gentle ? 1.05 : 2.35, 10);
+      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland || pureVolume || gentle || coastal ? 1.05 : 2.35, 10);
       selected=null; focus=0; invalidate();
     },
     focusPart(key) {

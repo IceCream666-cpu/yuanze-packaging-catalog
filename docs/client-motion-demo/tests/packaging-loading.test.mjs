@@ -135,6 +135,7 @@ for (const id of ['poster-012','poster-071']) test(`${id} approved components ex
 for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
   ['poster-042', {closure: 2.8, liner: 1.35}, [-3.1, .18, 1.65]],
+  ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
   ['poster-051', {closure:.9,stem:1.8,head:2.8}, [-3.4,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
   ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
@@ -167,11 +168,11 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
-      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-042' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
+      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-042' || id === 'poster-047' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
       sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
       near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
       if (id === 'poster-051') {
@@ -183,7 +184,7 @@ for (const [id, lifts, printOffset] of [
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044') {
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047') {
         for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(id==='poster-044' && key==='overcap' ? 3100/4913 : .5), `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
         sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' ? 1.475 : 1.225),'half print scale');
@@ -203,7 +204,7 @@ for (const [id, lifts, printOffset] of [
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
       sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' ? 1.95 : 1.45), 'expanded print scale');
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044') checkSeparateLabel(1);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -211,7 +212,7 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044') checkSeparateLabel(0);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });
@@ -309,5 +310,20 @@ test('Gentle clear cover keeps its thin wall while the empty bottle retains its 
   api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
   assert.equal(body.material.thickness,.08);assert.equal(cover.material.thickness,.012);
   for(const part of [body,cover]){assert.equal(part.material.color.getHexString(),'ffffff');assert.equal(part.material.roughness,.012);assert.equal(part.material.ior,1.48);assert.equal(part.material.envMapIntensity,.3);assert.equal(part.material.toneMapped,false);assert.equal(part.castShadow,false);assert.equal(part.receiveShadow,false);}
+ } finally {api?.dispose();env.close();}
+});
+
+test('Coastal keeps neutral clear glass and the approved textured cork without losing its normal map', async () => {
+ const product=PACKAGING_PRODUCTS['poster-047'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+ try {
+  loaded=env.model();
+  const body=loaded.scene.getObjectByName('Body'),cork=loaded.scene.getObjectByName('Closure');
+  body.material.transmission=1;body.material.color.set('#ffeecc');
+  cork.material.map=new Three.Texture();cork.material.normalMap=new Three.Texture();cork.material.normalScale.set(.7,.7);cork.material.roughness=.84;cork.material.color.set('#a97642');const normal=cork.material.normalMap;
+  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);part.material.map=new Three.Texture();part.material.transparent=true;}
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  assert.equal(body.material.color.getHexString(),'ffffff');assert.equal(body.material.roughness,.012);assert.equal(body.material.ior,1.48);assert.equal(body.material.thickness,.08);assert.equal(body.material.envMapIntensity,.3);assert.equal(body.material.toneMapped,false);
+  assert.equal(cork.material.color.getHexString(),'a97642');assert.equal(cork.material.normalMap,normal);assert.deepEqual(cork.material.normalScale.toArray(),[.7,.7]);assert.equal(cork.material.roughness,.7);assert.equal(cork.material.specularIntensity,.05);assert.equal(cork.material.envMapIntensity,.1);assert.equal(cork.material.depthWrite,true);assert.equal(cork.renderOrder,0);
+  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);assert.equal(part.material.depthWrite,false);assert.equal(part.renderOrder,2);}
  } finally {api?.dispose();env.close();}
 });

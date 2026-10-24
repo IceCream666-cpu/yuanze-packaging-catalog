@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.13-gentle-cleansing-packaging",
+  "scope": "approved-client1.14-coastal-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -80,6 +80,14 @@
       "productionTarget": "assets/packaging/poster-044.glb",
       "bytes": 2296608,
       "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370"
+    },
+    {
+      "name": "poster-047.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-047.glb",
+      "productionTarget": "assets/packaging/poster-047.glb",
+      "bytes": 4731120,
+      "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
     }
   ],
   "additionalProducts": [
@@ -149,6 +157,16 @@
         "PumpStem",
         "Actuator",
         "Overcap",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-047",
+      "file": "poster-047.glb",
+      "components": [
+        "Body",
+        "Closure",
         "PaperLabel",
         "LogoPrint"
       ]

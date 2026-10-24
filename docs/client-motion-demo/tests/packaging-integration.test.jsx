@@ -407,8 +407,8 @@ test('model loader requests only approved models and rejects unknown IDs before 
  try {
   for(const id of ['poster-062','poster-013','constructor','../private']) assert.throws(()=>startPackagingModelRequest(id),/Unsupported/);
   assert.deepEqual(urls,[]);
-  for (const id of ['poster-071','poster-039','poster-049','poster-042','poster-051','poster-044']) {const request=startPackagingModelRequest(id);await request.promise;request.abort();}
-  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb','/assets/packaging/poster-039.glb','/assets/packaging/poster-049.glb','/assets/packaging/poster-042.glb','/assets/packaging/poster-051.glb','/assets/packaging/poster-044.glb']);
+  for (const id of ['poster-071','poster-039','poster-049','poster-042','poster-051','poster-044','poster-047']) {const request=startPackagingModelRequest(id);await request.promise;request.abort();}
+  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb','/assets/packaging/poster-039.glb','/assets/packaging/poster-049.glb','/assets/packaging/poster-042.glb','/assets/packaging/poster-051.glb','/assets/packaging/poster-044.glb','/assets/packaging/poster-047.glb']);
  } finally {await env.close();}
 });
 
@@ -471,7 +471,7 @@ test('Woodland opens in 3D and keeps its original poster and favorite through th
  } finally {await env.close();}
 });
 
-test('exactly the seven approved products use 3D; all other 17 featured products keep poster entrypoints', async () => {
+test('exactly the eight approved products use 3D; all other 16 featured products keep poster entrypoints', async () => {
  const env=setup(); const {App}=appHarness();
  try {
   await act(async()=>env.root.render(<App/>));
@@ -479,7 +479,7 @@ test('exactly the seven approved products use 3D; all other 17 featured products
   assert.equal(ids.length,24);
   for (const id of ids) {
    await click(document.querySelector(`[data-open="${id}"]`));
-   if (['poster-012','poster-071','poster-039','poster-049','poster-042','poster-051','poster-044'].includes(id)) {
+   if (['poster-012','poster-071','poster-039','poster-049','poster-042','poster-051','poster-044','poster-047'].includes(id)) {
     assert.equal(document.querySelector('.test-packaging').dataset.id,id);await click(byText('Close structure'));
    } else {
     assert.equal(document.querySelector('.test-packaging'),null);assert.ok(document.querySelector(`a[download="${id}.webp"]`));
@@ -560,5 +560,36 @@ test('Gentle Cleansing exposes its cover, frosted oval and complete printing ind
     await click(document.querySelectorAll('.packaging-mobile-parts button')[5]);assert.equal(focused,'label');
     assert.match(document.querySelector('h1').textContent,/Gentle Cleansing/);
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#e8d6d3');
+  } finally {await env.close();}
+});
+
+test('Coastal opens in 3D and keeps its original poster and favorite through the round trip', async () => {
+ const env=setup(); const {App}=appHarness();
+ try {
+  await act(async()=>env.root.render(<App/>));
+  const card=document.querySelector('[data-open="poster-047"]');card.focus();await click(card);
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-047');
+  await click(byText('Save structure'));await click(byText('Original poster'));
+  assert.ok(document.querySelector('a[download="poster-047.webp"]'));
+  await click(byText('返回结构展示'));
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-047');
+  assert.equal(byText('Save structure').getAttribute('aria-pressed'),'true');
+  await click(byText('Close structure'));assert.equal(document.activeElement,card);
+ } finally {await env.close();}
+});
+
+
+
+
+test('Coastal exposes the cork, glass, paper and complete lettering independently', async () => {
+  const env=setup(); let mounted,focused;
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
+  try {
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-047'}}/>));
+    assert.equal(document.querySelectorAll('.packaging-part').length,4);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,4);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','Body','PaperLabel','LogoPrint']);
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[2]);assert.equal(focused,'label');
+    assert.match(document.querySelector('h1').textContent,/Coastal/);
   } finally {await env.close();}
 });

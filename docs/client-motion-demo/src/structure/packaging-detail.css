@@ -240,3 +240,13 @@
 @media (max-width:400px) {
   .packaging-detail--gentle .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
 }
+
+/* Match the approved Coastal detail without changing existing product layouts. */
+.packaging-detail--coastal .packaging-parts {top:19%; gap:8px;}
+.packaging-detail--coastal .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
+@media (max-width:900px) {
+ .packaging-detail--coastal .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
+ .packaging-detail--coastal .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
+ .packaging-detail--coastal .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
+ .packaging-detail--coastal .packaging-model {top:205px;}
+}
