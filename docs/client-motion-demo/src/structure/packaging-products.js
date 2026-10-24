@@ -11,4 +11,5 @@ export const PACKAGING_PRODUCTS = {
     {key:'closure',node:'Closure',title:['细纹旋盖','Ribbed closure'],short:['旋盖','Closure'],detail:['竖向细纹与下方瓶颈套环。','Vertical ribs and a lower neck collar.']},
     {key:'jar',node:'BottleAssembly',title:['乳白瓶身','Ivory bottle'],short:['瓶身','Bottle'],detail:['长颈与宽底的雕塑轮廓。','A long neck and sculptural broad base.']},print,
   ]},
+  'poster-039': {"file":"poster-039.glb","scale":1,"parts":[{"key":"closure","node":"Closure","title":["亮银旋盖","Polished silver lid"],"short":["外盖","Closure"],"detail":["圆角盖沿，展开查看内侧与罐口。","Rounded edges; open to inspect the inner lid and jar neck."]},{"key":"liner","node":"InnerLid","title":["提拉内盖","Inner lid"],"short":["内盖","Inner lid"],"detail":["独立内盖随展开分离。","The inner lid separates with the opening."]},{"key":"jar","node":"Body","title":["透明玻璃罐","Clear glass jar"],"short":["罐身","Body"],"detail":["矮宽罐身、透明罐壁与加厚罐底。","A low, wide profile with clear walls and a thick base."]},{"key":"print","node":"LogoPrint","title":["Logo 与产品名","Logo and product name"],"short":["印刷","Print"],"detail":["品牌、产品名和副标题一起展开，合拢后归位。","Brand, product name and subtitle open together and return when closed."]}]},
 };

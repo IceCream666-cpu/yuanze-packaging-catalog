@@ -172,3 +172,13 @@
  .packaging-detail--pump .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
  .packaging-detail--pump .packaging-model {top:205px;}
 }
+
+/* Match the approved PDRN preview without changing either existing product layout. */
+.packaging-detail--pdrn .packaging-parts {top:19%; gap:8px;}
+.packaging-detail--pdrn .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
+@media (max-width:900px) {
+ .packaging-detail--pdrn .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
+ .packaging-detail--pdrn .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
+ .packaging-detail--pdrn .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
+ .packaging-detail--pdrn .packaging-model {top:205px;}
+}

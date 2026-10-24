@@ -400,15 +400,15 @@ test('App original-poster round trip unmounts 3D and resets HD status without lo
   } finally {await env.close();}
 });
 
-test('pump model loader requests only its approved model and rejects unknown IDs before fetching',async()=>{
+test('model loader requests only approved models and rejects unknown IDs before fetching',async()=>{
  const env=setup(),urls=[];
  const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
  globalThis.fetch=async url=>{urls.push(url);return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
  try {
-  for(const id of ['poster-039','poster-013','constructor','../private']) assert.throws(()=>startPackagingModelRequest(id),/Unsupported/);
+  for(const id of ['poster-062','poster-013','constructor','../private']) assert.throws(()=>startPackagingModelRequest(id),/Unsupported/);
   assert.deepEqual(urls,[]);
-  const request=startPackagingModelRequest('poster-071');await request.promise;request.abort();
-  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb']);
+  for (const id of ['poster-071','poster-039']) {const request=startPackagingModelRequest(id);await request.promise;request.abort();}
+  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb','/assets/packaging/poster-039.glb']);
  } finally {await env.close();}
 });
 
@@ -422,5 +422,39 @@ test('pump opens in 3D and its original poster round trip returns to the same fi
   assert.ok(document.querySelector('a[download="poster-071.webp"]'));
   await click(byText('返回结构展示'));
   assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-071');
+ } finally {await env.close();}
+});
+
+
+test('PDRN opens in 3D and keeps its original poster and favorite through the round trip', async () => {
+ const env=setup(); const {App}=appHarness();
+ try {
+  await act(async()=>env.root.render(<App/>));
+  const card=document.querySelector('[data-open="poster-039"]');card.focus();await click(card);
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-039');
+  await click(byText('Save structure'));await click(byText('Original poster'));
+  assert.ok(document.querySelector('a[download="poster-039.webp"]'));
+  await click(byText('返回结构展示'));
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-039');
+  assert.equal(byText('Save structure').getAttribute('aria-pressed'),'true');
+  await click(byText('Close structure'));assert.equal(document.activeElement,card);
+ } finally {await env.close();}
+});
+
+test('exactly the three approved products use 3D; all other 21 featured products keep poster entrypoints', async () => {
+ const env=setup(); const {App}=appHarness();
+ try {
+  await act(async()=>env.root.render(<App/>));
+  const ids=[...document.querySelectorAll('[data-open]')].map(button=>button.dataset.open);
+  assert.equal(ids.length,24);
+  for (const id of ids) {
+   await click(document.querySelector(`[data-open="${id}"]`));
+   if (['poster-012','poster-071','poster-039'].includes(id)) {
+    assert.equal(document.querySelector('.test-packaging').dataset.id,id);await click(byText('Close structure'));
+   } else {
+    assert.equal(document.querySelector('.test-packaging'),null);assert.ok(document.querySelector(`a[download="${id}.webp"]`));
+    await click(document.querySelector('[aria-label="关闭"]'));
+   }
+  }
  } finally {await env.close();}
 });

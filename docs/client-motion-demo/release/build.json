@@ -1,13 +1,13 @@
 {
-  "version": "client1.8",
-  "sourceSha256": "26c05cfe74ceefa5f7c4e0f43bf8c0b93ce79effbafc9bd71c044d1c6f8ff570",
+  "version": "client1.9",
+  "sourceSha256": "f741b55e178fcef9933b165d6b345c8f6048f51f1c895cb9e1e21b6c85a75bd5",
   "files": {
-    "assets/packaging/PackagingDetail-BA-rU8x5.js": "e6d659c5d3d6df791500f4f8ddb1586441bf912a05bc8fcd41cce29002fdad18",
-    "assets/packaging/PackagingDetail-CqSj1n16.css": "51e86112127366781f2cc3622d9c9c6ac2e495c09b8a968917fed64e916a9aa0",
-    "assets/packaging/packaging-scene-Du8BdS3C.js": "88597d8d98b339cea72c511fba1f442d7317d52fa2bea5bb4a3f2b36647d2f44",
-    "index.html": "0188c0839c6a66b041db0014f444279e51187c4d1fa7897b8c87ca507d9e4872",
+    "assets/packaging/PackagingDetail-LBKvInv1.js": "6a8a7404865e451c6df97c6c5155865ca364882ece1aa3bb528dafc7bc3d3267",
+    "assets/packaging/PackagingDetail-dge4tMq2.css": "44fcaebe67bb417b737ab260b2a8c7798718b99688772e146cc32ab0ae90d62e",
+    "assets/packaging/packaging-scene-_jQ3vA3b.js": "a45aed8b4e5deb237f15051611ba8531c4ce5b287f4bb6583b437dfcc5f2fbb3",
+    "index.html": "1f3348ac72c5d45bff711b03935b083385d911e58af3c37915964c6f4fc22241",
     "preview.css": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5",
-    "preview.js": "ff8009b51c5b9d3729884ef26f024b97456d8231162f2fa9c99956d0ce9b7702"
+    "preview.js": "24fe349ad5367e1c1cb92d995abee396f94fceec37535f31e17a8b6444c5bff0"
   },
-  "viteManifestSha256": "c2cd89764d3ee26e55c5ecc26b252e0b2d74e2f34aac32a6af08b89be8d6c6a3"
+  "viteManifestSha256": "18915ac903934321cabc9f54d26b219f450d8cc3a92ff93f77360b1ef819e641"
 }

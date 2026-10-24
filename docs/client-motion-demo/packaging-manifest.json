@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.8-pump-packaging",
+  "scope": "approved-client1.9-pdrn-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -40,6 +40,14 @@
       "productionTarget": "assets/packaging/liaose-pump.glb",
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    },
+    {
+      "name": "poster-039.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-039.glb",
+      "productionTarget": "assets/packaging/poster-039.glb",
+      "bytes": 914020,
+      "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
     }
   ],
   "additionalProducts": [
@@ -51,6 +59,16 @@
         "Closure",
         "PumpStem",
         "PumpHead",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-039",
+      "file": "poster-039.glb",
+      "components": [
+        "Body",
+        "Closure",
+        "InnerLid",
         "LogoPrint"
       ]
     }
