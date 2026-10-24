@@ -8,6 +8,9 @@ BASE=Path(__file__).resolve().parent;CLIENT=BASE.parents[1]
 if sys.argv[-1]=='poster-039':
  import runpy
  runpy.run_path(str(BASE/'build_pdrn.py'));sys.exit(0)
+if sys.argv[-1]=='poster-051':
+ import runpy
+ runpy.run_path(str(BASE/'build_pure_volume.py'));sys.exit(0)
 if sys.argv[-1]=='poster-042':
  import runpy
  runpy.run_path(str(BASE/'build_woodland.py'));sys.exit(0)

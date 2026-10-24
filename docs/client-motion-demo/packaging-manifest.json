@@ -79,8 +79,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-051.glb",
       "productionTarget": "assets/packaging/poster-051.glb",
-      "bytes": 1665920,
-      "sha256": "c557548357c80ad2c81ed938d29dd811f9a45c1dba650ee72d751f198630f3d9"
+      "bytes": 4086460,
+      "sha256": "ca462e089e0458ff6b04022c0442232140c0042120e273650d023052e2b2fe4d"
     },
     {
       "name": "poster-044.glb",
@@ -281,7 +281,9 @@
         "Actuator",
         "PumpStem",
         "Closure",
+        "Cord",
         "Body",
+        "PaperLabel",
         "LogoPrint"
       ]
     },

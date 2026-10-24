@@ -1,0 +1,113 @@
+{
+  "status": "single-product-local-review",
+  "product": "poster-051",
+  "name": "Pure Volume",
+  "published": false,
+  "userVisualApproval": false,
+  "checkedAt": "2026-10-24T18:13:11.730773+08:00",
+  "preview": "http://127.0.0.1:8784/?model=poster-051",
+  "priorProductRelease": "client111-woodland-release.json",
+  "model": {
+    "bytes": 4086460,
+    "sha256": "ca462e089e0458ff6b04022c0442232140c0042120e273650d023052e2b2fe4d",
+    "components": [
+      "Body",
+      "Closure",
+      "PumpStem",
+      "Actuator",
+      "Cord",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "heightToWidth": 1.68,
+    "depthToWidth": 0.48,
+    "containsFormula": false,
+    "measuredDimensions": false
+  },
+  "printing": {
+    "text": [
+      "liaose",
+      "PURE VOLUME",
+      "SHAMPOO"
+    ],
+    "labelOffset": [
+      -1.65,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -3.4,
+      0.18,
+      1.65
+    ],
+    "labelScale": 1.15,
+    "printScale": 1.45,
+    "depthDifference": 1,
+    "closedRestoresOriginalTransforms": true,
+    "label": "Illustrative clear conformal film, no opaque paper boundary"
+  },
+  "visualReview": {
+    "tool": "Impeccable detector and rendered Ego Lite inspection",
+    "detectorBlockingFindings": 0,
+    "detectorExistingFontAdvisories": 1,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        1474,
+        722
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "horizontalOverflow": false,
+    "allSevenControlsVisibleAt320": true,
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "wheel",
+      "drag-rotation",
+      "reset",
+      "original-poster-roundtrip",
+      "part-selection"
+    ],
+    "corrections": [
+      "Reference-led broad pouch silhouette, opaque matte ivory body, folded collar and flat long spout",
+      "Double braided cord, asymmetric tails with green rounded tips and narrow gold line",
+      "Exact three-item print artwork with corrected line widths",
+      "Clear label reveals its perimeter when separated; no white patch at rest",
+      "320px seven-part controls fit within the viewport"
+    ]
+  },
+  "validation": {
+    "geometryTests": 7,
+    "collectionTests": 3,
+    "frontendTests": 99,
+    "packagingReleaseTests": 12,
+    "clientReleaseTests": 19,
+    "buildCheck": "passed"
+  },
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-open.png",
+    "short-desktop-half.png",
+    "desktop-rotated.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "small-mobile-open.png"
+  ],
+  "limits": [
+    "Depth, hidden pump seat and clear label carrier are illustrative pending a physical sample",
+    "Single-view reconstruction is more symmetric than the tilted reference and the knot is more regular",
+    "Viewport emulation is not physical-phone or Safari verification"
+  ]
+}

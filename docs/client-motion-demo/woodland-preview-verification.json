@@ -1,9 +1,9 @@
 {
-  "status": "single-product-local-review",
+  "status": "approved-and-published-separately",
   "product": "poster-042",
   "name": "Woodland",
-  "published": false,
-  "userVisualApproval": false,
+  "published": true,
+  "userVisualApproval": true,
   "checkedAt": "2026-10-24T18:03:40.291448+08:00",
   "preview": "http://127.0.0.1:8784/?model=poster-042",
   "priorProductRelease": "client110-moisture-release.json",
@@ -102,5 +102,7 @@
     "Depth, wall thickness and hidden stopper insert are illustrative pending a physical sample",
     "Wood grain is a procedural reconstruction, not an exact scan of the original label",
     "Viewport emulation is not physical-phone or Safari verification"
-  ]
+  ],
+  "releaseReceipt": "client111-woodland-release.json",
+  "publishedAt": "2026-10-24T18:11:00+08:00"
 }

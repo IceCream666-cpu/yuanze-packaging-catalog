@@ -429,3 +429,17 @@ test('Woodland keeps ivory print readable against its separate warm studio and e
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),mounted.design.background);
   } finally {await env.close();}
 });
+
+test('Pure Volume exposes the cord, clear label and complete printing as separate controls', async () => {
+  const env=setup(); let mounted,focused;
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
+  try {
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-051'}}/>));
+    assert.equal(document.querySelectorAll('.packaging-part').length,7);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Actuator','PumpStem','Closure','Cord','Body','PaperLabel','LogoPrint']);
+    const cord=[...document.querySelectorAll('.packaging-part')].find(button=>button.textContent.includes('深绿编绳'));
+    await click(cord);assert.equal(focused,'cord');
+    assert.match(document.querySelector('h1').textContent,/Pure Volume/);
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#dce4cf');
+  } finally {await env.close();}
+});

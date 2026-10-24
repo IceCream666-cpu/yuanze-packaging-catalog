@@ -5,14 +5,36 @@
     "Closure",
     "PumpStem",
     "Actuator",
+    "Cord",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "width": 1.7261904761904763,
+  "depth": 0.8285714285714286,
+  "closedHeightToWidth": 1.68,
+  "bodyDepthToWidth": 0.48,
+  "bodyPinchHeightToWidth": 0.92,
+  "foldedNeckTopToWidth": 1.188,
+  "closureDiameterToWidth": 0.364,
+  "pumpCylinderDiameterToWidth": 0.326,
+  "cordDiameterToWidth": 0.0254,
+  "nozzleSpanToWidth": 0.55,
   "illustrativeDimensions": true,
   "containsFormula": false,
   "reference": "featured-assets/poster-051.png",
   "editableArtwork": [
     "label.svg",
     "print.svg"
-  ]
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "PURE VOLUME",
+    "SHAMPOO"
+  ],
+  "illustrativeHiddenStructure": "Inner pump seat and transparent label carrier are design illustrations; original has no visible paper boundary",
+  "material": "Opaque matte ivory packaging with dark green braided cord; not transparent glass",
+  "revision": "individual-reference-review-20261024",
+  "generator": "build_pure_volume.py"
 }

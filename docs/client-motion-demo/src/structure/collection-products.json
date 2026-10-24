@@ -345,80 +345,112 @@
         "key": "head",
         "node": "Actuator",
         "title": [
-          "按压泵头",
-          "Pump head"
+          "弧形长嘴泵头",
+          "Curved pump head"
         ],
         "short": [
           "泵头",
-          "Pump head"
+          "Head"
         ],
         "detail": [
-          "查看上部按压或滴管部件。",
-          "Explore the actuator or dropper."
+          "乳白弧面与扁长出液嘴。",
+          "Ivory curved press pad and flattened spout."
         ]
       },
       {
         "key": "stem",
         "node": "PumpStem",
         "title": [
-          "泵杆",
-          "Stem"
+          "按压泵杆",
+          "Actuator stem"
         ],
         "short": [
           "泵杆",
           "Stem"
         ],
         "detail": [
-          "泵头下方的连接层。",
-          "Connection beneath the pump head."
+          "按压头下方的连接层。",
+          "Connection beneath the press pad."
         ]
       },
       {
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "细金环旋盖",
+          "Gold-ring closure"
         ],
         "short": [
-          "外盖",
+          "旋盖",
           "Closure"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "光滑盖身与底部细金环。",
+          "Smooth collar with a narrow gold ring."
+        ]
+      },
+      {
+        "key": "cord",
+        "node": "Cord",
+        "title": [
+          "深绿编绳",
+          "Braided green cord"
+        ],
+        "short": [
+          "编绳",
+          "Cord"
+        ],
+        "detail": [
+          "双圈束绳、绳结与长短垂尾。",
+          "Double wrap, side knot and unequal tails."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "乳白束口瓶",
+          "Ivory gathered bottle"
         ],
         "short": [
           "瓶身",
-          "Body"
+          "Bottle"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "宽底轮廓与收口褶皱。",
+          "Broad base and gathered neck folds."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明标贴底层",
+          "Clear label substrate"
+        ],
+        "short": [
+          "标贴",
+          "Label"
+        ],
+        "detail": [
+          "贴合曲面的透明膜层示意。",
+          "An illustrative film fitted to the surface."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo 与产品名",
+          "Logo and product name"
         ],
         "short": [
-          "印刷",
+          "文字",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "完整绿色文字进一步外展。",
+          "Complete green lettering moves farther out."
         ]
       }
     ]

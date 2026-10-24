@@ -176,3 +176,10 @@
 .packaging-detail--moisture .packaging-parts {top:17%; gap:3px;}
 .packaging-detail--moisture .packaging-part {padding:8px 0;}
 .packaging-detail--moisture .packaging-part-detail {margin-top:4px; line-height:1.5;}
+
+.packaging-detail--pure .packaging-parts {top:15%; gap:1px;}
+.packaging-detail--pure .packaging-part {padding:5px 0;}
+.packaging-detail--pure .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
+@media (max-width:400px) {
+  .packaging-detail--pure .packaging-mobile-parts button {min-width:36px;}
+}

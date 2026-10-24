@@ -1,0 +1,84 @@
+{
+  "version": "client1.11",
+  "published": false,
+  "checkedAt": "2026-10-24T18:10:33+08:00",
+  "baselineCommit": "e180702",
+  "approvedLocalSource": "c138275",
+  "approvedModelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049",
+    "poster-042"
+  ],
+  "newModel": "poster-042",
+  "components": [
+    "Body",
+    "Closure",
+    "StopperInsert",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "otherFeaturedProductsRemainPosters": 19,
+  "posterCount": 54,
+  "featuredCount": 24,
+  "modelSha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff",
+  "preservedImages": 377,
+  "publicationPlan": {
+    "version": "client1.11",
+    "baselineManifestSha256": "1a793f6581cbc187ce9163075a542a833c07a927bdb8f5b3a68eb48b9a1bfe16",
+    "manifestSha256": "0de7709cf0d3c54d9c3d136a7fc297eaa15aa5d90bd5cea5339fbb1875fc5da3",
+    "changed": [
+      "assets/packaging/PackagingDetail-BAeVbcvS.js",
+      "assets/packaging/PackagingDetail-BKFUtHlw.css",
+      "assets/packaging/packaging-scene-E3s50Ow2.js",
+      "assets/packaging/poster-042.glb",
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-BAeVbcvS.js",
+      "assets/packaging/PackagingDetail-BKFUtHlw.css",
+      "assets/packaging/packaging-scene-E3s50Ow2.js",
+      "assets/packaging/poster-042.glb"
+    ],
+    "removed": [
+      "assets/packaging/PackagingDetail-BxYXQrjM.css",
+      "assets/packaging/PackagingDetail-CIbxeZML.js",
+      "assets/packaging/packaging-scene-Cx5GIB8M.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-049.glb"
+    ],
+    "resources": 396
+  },
+  "verification": {
+    "rootTests": 199,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 44,
+    "motionDOMTests": 35,
+    "loginTests": 12,
+    "legacyClientTests": 18,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "browserCandidate": {
+    "browser": "Ego Lite Chromium",
+    "fiveComponents": true,
+    "fullyExpandedComparedWithApprovedPreview": true,
+    "screenshot": "work/woodland-live/candidate-open.png",
+    "checkedBy": "root agent"
+  },
+  "limits": [
+    "Browser screenshots do not replace physical-device testing.",
+    "No server publication has occurred at this preview verification stage."
+  ]
+}
