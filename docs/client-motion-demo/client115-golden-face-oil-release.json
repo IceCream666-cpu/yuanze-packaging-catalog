@@ -1,0 +1,259 @@
+{
+  "version": "client1.15",
+  "patch": "golden-face-oil-seven-layer-label-and-print-expansion",
+  "publishedAt": "2026-10-24T21:14:38+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "046219ce7473d4ad4a488136cbbd27495042e00f48f66eaf774ba551abeeb5d9",
+  "backup": "/opt/yuanze-reference/backups/client1.15-golden-face-oil-20261024",
+  "baselineManifestSha256": "6da8ac4cd8bdd4dc92570f25f8a43c4690cd2b25d63e9df07a80c9c059f67ecc",
+  "verifiedFiles": 400,
+  "changed": [
+    "assets/packaging/PackagingDetail-Fh6nnsX_.js",
+    "assets/packaging/PackagingDetail-gi_vA1cI.css",
+    "assets/packaging/packaging-scene-CHZ2WbwF.js",
+    "assets/packaging/poster-056.glb",
+    "index.html",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [
+    "assets/packaging/PackagingDetail-BdIabh8h.css",
+    "assets/packaging/PackagingDetail-CDAhqwii.js",
+    "assets/packaging/packaging-scene-howJ6eA-.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "cecec583d63b4b5f9823490a8371aba2d08003cd",
+  "approvedLocalSource": "6bc3b89039237d2b173ef926b071bd668d1c2943",
+  "onlineVerification": {
+    "version": "client1.15",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-056.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-056-1024.webp",
+      "assets/featured/poster-056-640.webp",
+      "assets/featured/poster-056.png",
+      "assets/optimized/poster-056-strip.webp",
+      "assets/packaging/poster-056.glb",
+      "assets/posters/poster-056-thumb.webp",
+      "assets/posters/poster-056.webp",
+      "assets/previews/posters/poster-056-1280.webp",
+      "assets/previews/posters/poster-056-512.webp",
+      "assets/packaging/PackagingDetail-Fh6nnsX_.js",
+      "assets/packaging/PackagingDetail-gi_vA1cI.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-CHZ2WbwF.js",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/poster-056.glb",
+        "bytes": 520372,
+        "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-Fh6nnsX_.js",
+        "bytes": 12442,
+        "sha256": "67c9dc9c129bc6ff70742903056e8f6c74798b74b3f4f5a3ad70ef3fbede7220"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-gi_vA1cI.css",
+        "bytes": 15541,
+        "sha256": "bbd7d89ebf99b965e780e17c684049680c8aa6c47b2fcc454092ccac3213a91b"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2394816,
+        "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-CHZ2WbwF.js",
+        "bytes": 576140,
+        "sha256": "822d0ff9537f61cd36f3f643547d014eb425902f6696d2c3c097e71c95eb530d"
+      },
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+      },
+      {
+        "name": "assets/packaging/poster-042.glb",
+        "bytes": 1639336,
+        "sha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff"
+      },
+      {
+        "name": "assets/packaging/poster-044.glb",
+        "bytes": 2296608,
+        "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370"
+      },
+      {
+        "name": "assets/packaging/poster-047.glb",
+        "bytes": 4731120,
+        "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
+      },
+      {
+        "name": "assets/packaging/poster-049.glb",
+        "bytes": 1577088,
+        "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
+      },
+      {
+        "name": "assets/packaging/poster-051.glb",
+        "bytes": 4086460,
+        "sha256": "ca462e089e0458ff6b04022c0442232140c0042120e273650d023052e2b2fe4d"
+      },
+      {
+        "name": "assets/packaging/poster-056.glb",
+        "bytes": 520372,
+        "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709"
+      }
+    ],
+    "goldenFaceOilRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/520372"
+    },
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2394816"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-24T21:15:55+08:00",
+    "manifestSha256": "046219ce7473d4ad4a488136cbbd27495042e00f48f66eaf774ba551abeeb5d9",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "localVerification": {
+    "rootTests": 229,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "legacyClientTests": 18,
+    "motionTests": 53,
+    "loginTests": 12,
+    "motionDOMTests": 43,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "preservedImages": 377,
+  "featuredCount": 24,
+  "posterCount": 54,
+  "modelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049",
+    "poster-042",
+    "poster-051",
+    "poster-044",
+    "poster-047",
+    "poster-056"
+  ],
+  "otherFeaturedProductsRemainPosters": 15,
+  "modelSha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709",
+  "rollback": "Hold the deployment lock and verify current release, current manifest, outside code, gateway and service match this receipt; then atomically exchange public/showroom with the retained client1.14 backup. The local guarded helper is work/golden-face-oil-live/rollback.py --rollback and refuses a later release.",
+  "browserVerification": {
+    "browser": "Ego Lite Chromium",
+    "checkedAt": "2026-10-24T21:17:15+08:00",
+    "productionTitle": "client1.15",
+    "selectedFromProductUI": true,
+    "desktopViewport": [
+      1440,
+      1000
+    ],
+    "sevenComponents": true,
+    "triangles": 37058,
+    "actualModelUrl": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-056.glb",
+    "oliveCoverClearGlassFilmAndCompletePrintMatchApproval": true,
+    "labelAndPrintHaveIndependentDepth": true,
+    "expandedPrintOffsetApprox": [
+      -3.79957,
+      0.17998,
+      1.64981
+    ],
+    "collapseVerified": true,
+    "originalPosterRoundTrip": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileHorizontalOverflow": false,
+    "mobileClosedAndExpandedUncropped": true,
+    "mobileSevenControlsVisible": true,
+    "screenshots": [
+      "live-desktop-closed.png",
+      "live-desktop-open.png",
+      "live-mobile-closed.png",
+      "live-mobile-open.png"
+    ],
+    "physicalDeviceTest": false,
+    "checkedBy": "root agent"
+  },
+  "independentAudit": {
+    "approvedSourceMatches": true,
+    "all400ResourceHashesMatch": true,
+    "oldEightModelsAnd377ImagesUnchanged": true,
+    "explicitNineModelRegistryOnly": true,
+    "freshBaselineAndGuardedPlanVerified": true,
+    "checkedBy": "pdrn_review agent"
+  }
+}

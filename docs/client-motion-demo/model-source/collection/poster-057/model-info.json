@@ -2,16 +2,165 @@
   "id": "poster-057",
   "components": [
     "Body",
+    "Base",
     "Closure",
-    "Actuator",
+    "DropperBulb",
+    "Pipette",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "nominalHeight": 2.9,
+  "actualHeight": 2.9000000953674316,
+  "width": 1.3551401869158877,
+  "depth": 0.5691588785046728,
+  "closedHeightToWidth": 2.14,
+  "visibleGlassHeightToWidth": 0.82,
+  "glassTopToWidth": 1.36,
+  "glassBottomToWidth": 0.055,
+  "glassInnerFloorToWidth": 0.11,
+  "glassVisibleWidthToBaseWidth": 0.98,
+  "baseHeightToWidth": 0.5,
+  "baseInnerFloorToWidth": 0.045,
+  "baseInnerHalfWidth": 0.474,
+  "baseInnerHalfDepth": 0.184,
+  "concealedGlassHalfWidth": 0.466,
+  "concealedGlassHalfDepth": 0.177,
+  "baseSideClearanceToWidth": 0.008,
+  "baseDepthClearanceToWidth": 0.007,
+  "baseMinimumLipClearanceToWidth": 0.002,
+  "closureDiameterToWidth": 0.45,
+  "closureHeightToWidth": 0.4,
+  "bulbMainDiameterToWidth": 0.22,
+  "bulbRootDiameterToWidth": 0.28,
+  "bulbVisibleHeightToWidth": 0.39,
+  "pipetteOuterDiameterToWidth": 0.058,
+  "pipetteInnerDiameterToWidth": 0.042,
+  "pipetteBottomToWidth": 0.17,
+  "pipetteTopToWidth": 1.82,
+  "pipetteInnerFloorClearanceToWidth": 0.06,
+  "labelWidthToBodyWidth": 0.72,
+  "labelHeightToBodyWidth": 0.66,
+  "labelCentreHeightToWidth": 0.875,
+  "labelPlaneBlenderY": -0.2014,
+  "printPlaneBlenderY": -0.2022,
+  "baseLogoWidthToWidth": 0.55,
+  "baseLogoHeightToWidth": 0.21,
+  "baseLogoCentreHeightToWidth": 0.23,
+  "baseLogoReliefDepthToWidth": 0.003,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.6640186905860901,
+        -0.2710280418395996,
+        0.07453271001577377
+      ],
+      "max": [
+        0.6640186905860901,
+        0.2710280418395996,
+        1.842990756034851
+      ]
+    },
+    "Base": {
+      "min": [
+        -0.677570104598999,
+        -0.28457942605018616,
+        0.0
+      ],
+      "max": [
+        0.677570104598999,
+        0.28457942605018616,
+        0.677570104598999
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.30490654706954956,
+        -0.30490654706954956,
+        1.8294392824172974
+      ],
+      "max": [
+        0.30490654706954956,
+        0.30490654706954956,
+        2.371495246887207
+      ]
+    },
+    "DropperBulb": {
+      "min": [
+        -0.18971963226795197,
+        -0.18971963226795197,
+        2.330841302871704
+      ],
+      "max": [
+        0.18971963226795197,
+        0.18971963226795197,
+        2.9000000953674316
+      ]
+    },
+    "Pipette": {
+      "min": [
+        -0.03929906338453293,
+        -0.03929906338453293,
+        0.23037384450435638
+      ],
+      "max": [
+        0.03929906338453293,
+        0.03929906338453293,
+        2.466355323791504
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.48785048723220825,
+        -0.2729252278804779,
+        0.7385514378547668
+      ],
+      "max": [
+        0.48785048723220825,
+        -0.2729252278804779,
+        1.6329439878463745
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.48785048723220825,
+        -0.2900000214576721,
+        0.16939252614974976
+      ],
+      "max": [
+        0.48785048723220825,
+        -0.2740093469619751,
+        1.6329439878463745
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Base": 0.25,
+    "Closure": 1.35,
+    "DropperBulb": 1.75,
+    "Pipette": 1.35,
+    "PaperLabel": 0.875,
+    "LogoPrint": 0.72
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-057.png",
+  "reference": "../../mobile-client-preview/assets/posters/poster-057.webp",
+  "featuredReference": "featured-assets/poster-057.png",
   "editableArtwork": [
     "label.svg",
-    "print.svg"
-  ]
+    "print.svg",
+    "base-logo.svg"
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "B5 SERUM",
+    "30 ml",
+    "liaose relief on white base"
+  ],
+  "hiddenStructure": "Bottle heel concealed inside the open base cup, dropper air connection, tube length and wall dimensions are illustrative. The reference gives no visible paper label boundary; a transparent unprinted film carrier is provided for layer interaction. White base material is unspecified rather than asserted ceramic or paper.",
+  "material": "Neutral empty glass, opaque white collar and hollow bulb, matte white base; no pink formula is modeled.",
+  "revision": "individual-reference-review-20261024",
+  "generator": "build_b5_serum.py"
 }

@@ -2,8 +2,8 @@
   "status": "single-product-local-review",
   "product": "poster-056",
   "name": "Golden Face Oil",
-  "published": false,
-  "userVisualApproval": false,
+  "published": true,
+  "userVisualApproval": true,
   "checkedAt": "2026-10-24T19:22:36.749736+08:00",
   "preview": "http://127.0.0.1:8784/?model=poster-056",
   "priorProductRelease": "client114-coastal-release.json",
@@ -188,5 +188,7 @@
     "Hidden pump connectors and the clear unprinted carrier are illustrative",
     "The empty packaging omits the photographed yellow formula",
     "Viewport emulation is not physical-device or Safari verification"
-  ]
+  ],
+  "releaseReceipt": "client115-golden-face-oil-release.json",
+  "publishedVersion": "client1.15"
 }

@@ -775,66 +775,114 @@
     "parts": [
       {
         "key": "head",
-        "node": "Actuator",
+        "node": "DropperBulb",
         "title": [
-          "滴管",
-          "Dropper"
+          "白色滴管胶头",
+          "White dropper bulb"
+        ],
+        "short": [
+          "胶头",
+          "Bulb"
+        ],
+        "detail": [
+          "圆顶软胶头独立向上分离。",
+          "The rounded bulb lifts separately."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "Pipette",
+        "title": [
+          "透明玻璃滴管",
+          "Clear glass pipette"
         ],
         "short": [
           "滴管",
-          "Dropper"
+          "Pipette"
         ],
         "detail": [
-          "查看上部按压或滴管部件。",
-          "Explore the actuator or dropper."
+          "细长玻璃管与胶头、旋盖分离。",
+          "The slender pipette separates from bulb and collar."
         ]
       },
       {
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "白色圆筒旋盖",
+          "White cylindrical collar"
         ],
         "short": [
-          "外盖",
-          "Closure"
+          "旋盖",
+          "Collar"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "圆筒旋盖与瓶口独立展开。",
+          "The smooth cylindrical collar lifts off the neck."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "圆角扁方玻璃瓶",
+          "Rounded flat glass bottle"
         ],
         "short": [
           "瓶身",
-          "Body"
+          "Bottle"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "透明瓶壁、圆角肩与厚底。",
+          "Clear walls, rounded shoulders and a thick base."
+        ]
+      },
+      {
+        "key": "base",
+        "node": "Base",
+        "title": [
+          "哑光白色底座",
+          "Matte white base"
+        ],
+        "short": [
+          "底座",
+          "Base"
+        ],
+        "detail": [
+          "底座先向下脱开，再移向一侧。",
+          "The base lowers before moving aside."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明标贴底材",
+          "Clear label film"
+        ],
+        "short": [
+          "标贴",
+          "Label"
+        ],
+        "detail": [
+          "透明无字底材独立离开瓶身。",
+          "The unprinted clear film separates from the bottle."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo、产品名与容量",
+          "Logo, name and volume"
         ],
         "short": [
-          "印刷",
+          "文字",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "瓶身白字与底座 Logo 一起向外展开。",
+          "Bottle lettering and the base logo move outward together."
         ]
       }
     ]

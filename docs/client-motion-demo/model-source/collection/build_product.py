@@ -8,6 +8,9 @@ BASE=Path(__file__).resolve().parent;CLIENT=BASE.parents[1]
 if sys.argv[-1]=='poster-039':
  import runpy
  runpy.run_path(str(BASE/'build_pdrn.py'));sys.exit(0)
+if sys.argv[-1]=='poster-057':
+ import runpy
+ runpy.run_path(str(BASE/'build_b5_serum.py'));sys.exit(0)
 if sys.argv[-1]=='poster-056':
  import runpy
  runpy.run_path(str(BASE/'build_golden_face_oil.py'));sys.exit(0)

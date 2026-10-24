@@ -1,0 +1,114 @@
+{
+  "version": "client1.15",
+  "published": false,
+  "checkedAt": "2026-10-24T21:14:13+08:00",
+  "baselineCommit": "36489a0ed3f0a1c57c8b958e96bc0a497b21262e",
+  "approvedLocalSource": "6bc3b89039237d2b173ef926b071bd668d1c2943",
+  "approvedModelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049",
+    "poster-042",
+    "poster-051",
+    "poster-044",
+    "poster-047",
+    "poster-056"
+  ],
+  "newModel": "poster-056",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Overcap",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "otherFeaturedProductsRemainPosters": 15,
+  "posterCount": 54,
+  "featuredCount": 24,
+  "modelSha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709",
+  "preservedImages": 377,
+  "publicationPlan": {
+    "version": "client1.15",
+    "baselineManifestSha256": "6da8ac4cd8bdd4dc92570f25f8a43c4690cd2b25d63e9df07a80c9c059f67ecc",
+    "manifestSha256": "046219ce7473d4ad4a488136cbbd27495042e00f48f66eaf774ba551abeeb5d9",
+    "changed": [
+      "assets/packaging/PackagingDetail-Fh6nnsX_.js",
+      "assets/packaging/PackagingDetail-gi_vA1cI.css",
+      "assets/packaging/packaging-scene-CHZ2WbwF.js",
+      "assets/packaging/poster-056.glb",
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-Fh6nnsX_.js",
+      "assets/packaging/PackagingDetail-gi_vA1cI.css",
+      "assets/packaging/packaging-scene-CHZ2WbwF.js",
+      "assets/packaging/poster-056.glb"
+    ],
+    "removed": [
+      "assets/packaging/PackagingDetail-BdIabh8h.css",
+      "assets/packaging/PackagingDetail-CDAhqwii.js",
+      "assets/packaging/packaging-scene-howJ6eA-.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb"
+    ],
+    "resources": 400
+  },
+  "verification": {
+    "rootTests": 229,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "legacyClientTests": 18,
+    "motionTests": 53,
+    "loginTests": 12,
+    "motionDOMTests": 43,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "browserCandidate": {
+    "browser": "Ego Lite Chromium",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "sevenComponents": true,
+    "closedAndFullyExpandedComparedWithApprovedPreview": true,
+    "expandedPrintOffset": [
+      -3.799,
+      0.18,
+      1.65
+    ],
+    "screenshots": [
+      "work/golden-face-oil-live/candidate-desktop-closed.png",
+      "work/golden-face-oil-live/candidate-desktop-open.png"
+    ],
+    "checkedBy": "root agent"
+  },
+  "limits": [
+    "Browser screenshots do not replace physical-device testing.",
+    "No server publication has occurred at this preview verification stage."
+  ],
+  "independentAudit": {
+    "approvedSourceMatches": true,
+    "all400ResourceHashesMatch": true,
+    "oldEightModelsAnd377ImagesUnchanged": true,
+    "explicitNineModelRegistryOnly": true,
+    "freshBaselineAndGuardedPlanVerified": true,
+    "checkedBy": "pdrn_review agent"
+  }
+}
