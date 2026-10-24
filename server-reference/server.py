@@ -48,9 +48,9 @@ SHOWROOM_CSP = (DEFAULT_CSP.replace("img-src 'self' data:", "img-src 'self' data
                 .replace("connect-src 'self'", "connect-src 'self' blob:") + "; frame-src 'self'")
 
 @lru_cache(maxsize=4)
-def _read_bundle_files(path, stamp):
-    """Cache only the allowlist; the caller rechecks its file identity each time."""
-    manifest = json.loads(path.read_text())
+def _read_bundle_files(content):
+    """Content keys notice changes even when filesystem timestamps collide."""
+    manifest = json.loads(content)
     if not isinstance(manifest, dict) or manifest.get('schema') != 1 or not isinstance(manifest.get('files'), dict):
         raise ValueError('Invalid bundle manifest')
     return frozenset(manifest['files'])
@@ -58,10 +58,7 @@ def _read_bundle_files(path, stamp):
 def bundle_contains(directory, relative):
     path = directory / 'bundle-manifest.json'
     try:
-        stat = path.stat()
-        # Include inode and ctime so atomic swaps and preserved mtimes invalidate approval.
-        stamp = (stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
-        return relative in _read_bundle_files(path, stamp)
+        return relative in _read_bundle_files(path.read_bytes())
     except (OSError, ValueError, TypeError):
         return False
 

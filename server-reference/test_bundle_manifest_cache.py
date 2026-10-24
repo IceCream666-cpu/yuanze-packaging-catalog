@@ -32,19 +32,13 @@ class BundleManifestCache(unittest.TestCase):
         return ((self.public / 'showroom', server.showroom_asset),
                 (self.public / 'login-ui', server.login_asset))
 
-    def test_unchanged_manifest_is_read_only_once_per_bundle(self):
-        original = Path.read_text
-        reads = []
-
-        def read(path, *args, **kwargs):
-            reads.append(path)
-            return original(path, *args, **kwargs)
-
-        with patch.object(Path, 'read_text', read):
+    def test_unchanged_content_is_parsed_once(self):
+        server._read_bundle_files.cache_clear()
+        with patch.object(server.json, 'loads', wraps=json.loads) as parse:
             for root, lookup in self.loaders():
                 for _ in range(20):
                     self.assertEqual(lookup('index.html'), root / 'index.html')
-        self.assertEqual(len(reads), 2)
+        self.assertEqual(parse.call_count, 1)
 
     def test_atomic_replacement_with_same_size_and_mtime_revokes_entry(self):
         for root, lookup in self.loaders():
@@ -70,8 +64,9 @@ class BundleManifestCache(unittest.TestCase):
                 os.utime(manifest, ns=(before.st_atime_ns, before.st_mtime_ns))
                 self.assertEqual(manifest.stat().st_ino, before.st_ino)
                 self.assertEqual(manifest.stat().st_size, before.st_size)
-                self.assertNotEqual(manifest.stat().st_ctime_ns, before.st_ctime_ns)
-                self.assertIsNone(lookup('index.html'))
+                # Force identical metadata to reproduce coarse filesystem timestamps.
+                with patch.object(Path, 'stat', return_value=before):
+                    self.assertIsNone(lookup('index.html'))
 
     def test_deleted_or_invalid_manifest_fails_closed_and_recovers(self):
         invalid = ('broken', '[]', '{"schema":2,"files":{"index.html":{}}}',
@@ -108,7 +103,7 @@ class BundleManifestCache(unittest.TestCase):
     def test_read_error_is_not_cached_and_retries_on_next_request(self):
         for root, lookup in self.loaders():
             with self.subTest(bundle=root.name):
-                with patch.object(Path, 'read_text', side_effect=PermissionError):
+                with patch.object(Path, 'read_bytes', side_effect=PermissionError):
                     self.assertIsNone(lookup('index.html'))
                 self.assertIsNotNone(lookup('index.html'))
 
