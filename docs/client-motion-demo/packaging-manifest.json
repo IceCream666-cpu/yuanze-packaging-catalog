@@ -87,8 +87,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-044.glb",
       "productionTarget": "assets/packaging/poster-044.glb",
-      "bytes": 1317460,
-      "sha256": "e96bf1bcc88bed0bc178dcba825e5437846d84c550d61306f130ee192f6dd6c9"
+      "bytes": 2296608,
+      "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370"
     },
     {
       "name": "poster-047.glb",
@@ -291,11 +291,12 @@
       "posterId": "poster-044",
       "file": "poster-044.glb",
       "components": [
-        "Actuator",
         "Overcap",
+        "Actuator",
         "PumpStem",
         "Closure",
         "Body",
+        "PaperLabel",
         "LogoPrint"
       ]
     },

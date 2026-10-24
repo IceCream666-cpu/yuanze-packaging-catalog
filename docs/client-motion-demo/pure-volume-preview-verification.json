@@ -1,9 +1,9 @@
 {
-  "status": "single-product-local-review",
+  "status": "approved-and-published-separately",
   "product": "poster-051",
   "name": "Pure Volume",
-  "published": false,
-  "userVisualApproval": false,
+  "published": true,
+  "userVisualApproval": true,
   "checkedAt": "2026-10-24T18:13:11.730773+08:00",
   "preview": "http://127.0.0.1:8784/?model=poster-051",
   "priorProductRelease": "client111-woodland-release.json",
@@ -109,5 +109,7 @@
     "Depth, hidden pump seat and clear label carrier are illustrative pending a physical sample",
     "Single-view reconstruction is more symmetric than the tilted reference and the knot is more regular",
     "Viewport emulation is not physical-phone or Safari verification"
-  ]
+  ],
+  "releaseReceipt": "client112-pure-volume-release.json",
+  "publishedAt": "2026-10-24T18:19:07+08:00"
 }

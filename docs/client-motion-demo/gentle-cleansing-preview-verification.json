@@ -1,0 +1,123 @@
+{
+  "status": "single-product-local-review",
+  "product": "poster-044",
+  "name": "Gentle Cleansing",
+  "published": false,
+  "userVisualApproval": false,
+  "checkedAt": "2026-10-24T18:23:12.578765+08:00",
+  "preview": "http://127.0.0.1:8784/?model=poster-044",
+  "priorProductRelease": "client112-pure-volume-release.json",
+  "model": {
+    "bytes": 2296608,
+    "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370",
+    "components": [
+      "Body",
+      "Closure",
+      "PumpStem",
+      "Actuator",
+      "Overcap",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "heightToDiameter": 3.44,
+    "visibleBodyHeightToDiameter": 2.17,
+    "closureHeightToDiameter": 0.35,
+    "closureDiameterToBody": 0.982,
+    "overcapHeightToDiameter": 0.9,
+    "overcapDiameterToBody": 0.91,
+    "containsFormula": false,
+    "measuredDimensions": false
+  },
+  "printing": {
+    "text": [
+      "liaose",
+      "GENTLE",
+      "CLEANSING FOAM",
+      "short rule",
+      "120 ml"
+    ],
+    "labelOffset": [
+      -1.25,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -2.65,
+      0.5,
+      1.65
+    ],
+    "labelScale": 1.15,
+    "printScale": 1.95,
+    "depthDifference": 1,
+    "closedRestoresOriginalTransforms": true,
+    "label": "Translucent frosted oval .72D by .91D at center height 1.06D"
+  },
+  "visualReview": {
+    "tool": "Impeccable detector, independent reference/GLB review and Ego Lite rendered inspection",
+    "detectorBlockingFindings": 0,
+    "detectorExistingFontAdvisories": 1,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        1474,
+        722
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "horizontalOverflow": false,
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "wheel",
+      "drag-rotation",
+      "bottom-view",
+      "reset",
+      "original-poster-roundtrip",
+      "part-selection"
+    ],
+    "corrections": [
+      "Calibrated to the full original poster rather than its slightly elongated cutout",
+      "Clear empty bottle and cover, broad white collar and short right-facing foamer",
+      "Replaced incorrect 100 ml with complete 120 ml artwork",
+      "Separated frosted oval from all black lettering and fixed their transparent draw order",
+      "Cover lifts ahead of actuator with intermediate camera headroom",
+      "Larger detached typography retains legibility when seven components spread apart"
+    ]
+  },
+  "validation": {
+    "geometryTests": 7,
+    "collectionTests": 3,
+    "frontendTests": 102,
+    "packagingReleaseTests": 12,
+    "clientReleaseTests": 19,
+    "buildCheck": "passed"
+  },
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-half.png",
+    "desktop-open.png",
+    "short-desktop-open.png",
+    "desktop-rotated.png",
+    "bottom-view.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "small-mobile-open.png"
+  ],
+  "limits": [
+    "Bottle wall, hidden neck and pump connections are illustrative pending a physical sample",
+    "The image alone does not establish glass or polymer manufacturing specification",
+    "Empty packaging excludes the photographed liquid, foam and outer carton",
+    "Viewport emulation is not physical-phone or Safari verification"
+  ]
+}

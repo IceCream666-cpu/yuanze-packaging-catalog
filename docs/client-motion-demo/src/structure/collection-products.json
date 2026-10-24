@@ -462,99 +462,115 @@
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
-        "title": [
-          "按压泵头",
-          "Pump head"
-        ],
-        "short": [
-          "泵头",
-          "Pump head"
-        ],
-        "detail": [
-          "查看上部按压或滴管部件。",
-          "Explore the actuator or dropper."
-        ]
-      },
-      {
         "key": "overcap",
         "node": "Overcap",
         "title": [
-          "透明保护盖",
-          "Overcap"
+          "透明保护罩",
+          "Clear protective cover"
         ],
         "short": [
-          "保护盖",
-          "Overcap"
+          "保护罩",
+          "Cover"
         ],
         "detail": [
-          "保护盖位于最上层。",
-          "The protective cover lifts to the top."
+          "薄壁透明罩与圆顶细节。",
+          "Thin clear walls and a softly rounded top."
+        ]
+      },
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "短嘴泡沫泵头",
+          "Short foam actuator"
+        ],
+        "short": [
+          "泵头",
+          "Head"
+        ],
+        "detail": [
+          "朝右出液短嘴与宽按压面。",
+          "Right-facing short nozzle and broad actuator."
         ]
       },
       {
         "key": "stem",
         "node": "PumpStem",
         "title": [
-          "泵杆",
-          "Stem"
+          "按压连接泵杆",
+          "Connecting pump stem"
         ],
         "short": [
           "泵杆",
           "Stem"
         ],
         "detail": [
-          "泵头下方的连接层。",
-          "Connection beneath the pump head."
+          "按压头下方的连接层。",
+          "Connection beneath the actuator."
         ]
       },
       {
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "亮白宽旋盖",
+          "Glossy white collar"
         ],
         "short": [
-          "外盖",
-          "Closure"
+          "旋盖",
+          "Collar"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "与瓶身近乎齐宽的光滑盖座。",
+          "Smooth collar close to the body diameter."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "透明圆柱瓶身",
+          "Clear cylindrical bottle"
         ],
         "short": [
           "瓶身",
           "Body"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "直筒瓶壁与收圆厚底。",
+          "Straight clear walls and a rounded thick base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "椭圆磨砂标贴",
+          "Frosted oval label"
+        ],
+        "short": [
+          "标贴",
+          "Label"
+        ],
+        "detail": [
+          "半透明椭圆底材独立展开。",
+          "The translucent oval carrier separates."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo、产品名与容量",
+          "Logo, name and volume"
         ],
         "short": [
-          "印刷",
+          "文字",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "完整黑色文字比标贴更向外展开。",
+          "Complete black lettering moves farther out."
         ]
       }
     ]

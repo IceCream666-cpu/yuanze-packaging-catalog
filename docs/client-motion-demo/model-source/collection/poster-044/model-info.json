@@ -6,14 +6,40 @@
     "PumpStem",
     "Actuator",
     "Overcap",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "width": 0.8430232558139534,
+  "closedHeightToDiameter": 3.44,
+  "visibleBodyHeightToDiameter": 2.17,
+  "closureHeightToDiameter": 0.35,
+  "closureDiameterToBody": 0.982,
+  "overcapHeightToDiameter": 0.9,
+  "overcapDiameterToBody": 0.91,
+  "ovalWidthToBody": 0.72,
+  "ovalHeightToBody": 0.91,
+  "ovalBottomToBody": 0.605,
+  "printIncludes": [
+    "liaose",
+    "GENTLE",
+    "CLEANSING FOAM",
+    "short separator rule",
+    "120 ml"
+  ],
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-044.png",
+  "containsFoam": false,
+  "reference": "../../mobile-client-preview/assets/posters/poster-044.webp",
+  "featuredReference": "featured-assets/poster-044.png",
   "editableArtwork": [
     "label.svg",
     "print.svg"
-  ]
+  ],
+  "proceduralTexture": "oval-frost.png",
+  "separateLabelAndPrint": true,
+  "hiddenStructure": "Bottle neck and concealed short foamer stem are illustrative; top-cover dimple is not a through-hole",
+  "material": "Neutral clear empty bottle, separate thin clear protective cover, glossy white closure, translucent frosted oval",
+  "revision": "individual-reference-review-20261024",
+  "generator": "build_gentle_cleansing.py"
 }

@@ -4,7 +4,7 @@
  {"id":"poster-049","shape":"bottle","w":0.48,"h":2.08,"depth":0.78,"exponent":3.4,"glass":"#f4ebcf","cap":"#bfc3c2","metal":1,"label":"#f3eee2","ink":"#352f28","lines":["WHIPPED MOISTURE","S H A M P O O"],"top":"pump"},
  {"id":"poster-042","shape":"bottle","w":0.58,"h":1.98,"depth":0.74,"exponent":6,"glass":"#ad5a17","cap":"#11100e","label":"#1c1916","ink":"#ede7dc","lines":["WOODLAND","B O D Y W A S H","350 ml"],"top":"sphere"},
  {"id":"poster-051","shape":"pouch","w":0.70,"h":1.98,"depth":0.57,"exponent":3.6,"body":"#f3eee1","cap":"#e4decc","ink":"#233a28","lines":["P U R E   V O L U M E","S H A M P O O"],"top":"pump","rope":"#203a29"},
- {"id":"poster-044","shape":"bottle","w":0.32,"h":2.12,"depth":1,"exponent":2,"glass":"#e1edbb","cap":"#f2f0e9","ink":"#3c4930","lines":["G E N T L E","CLEANSING FOAM","100 ml"],"top":"foam","overcap":true},
+ {"id":"poster-044","shape":"bottle","w":0.32,"h":2.12,"depth":1,"exponent":2,"glass":"#e1edbb","cap":"#f2f0e9","ink":"#3c4930","lines":["G E N T L E","CLEANSING FOAM","120 ml"],"top":"foam","overcap":true},
  {"id":"poster-047","shape":"bottle","w":0.61,"h":1.92,"depth":1,"exponent":2,"glass":"#ece5c6","cap":"#b68e59","label":"#eee4d0","ink":"#302a1e","lines":["C O A S T A L","P E R F U M E","50 ml"],"top":"cork"},
  {"id":"poster-056","shape":"bottle","w":0.66,"h":1.62,"depth":0.60,"exponent":8,"glass":"#e8c44c","cap":"#333b16","ink":"#333516","lines":["GOLDEN FACE OIL"],"top":"faceted"},
  {"id":"poster-057","shape":"bottle","w":0.62,"h":1.50,"depth":0.65,"exponent":8,"glass":"#e9b8c4","cap":"#efeee9","ink":"#fff7ed","lines":["B5 SERUM"],"top":"dropper","plinth":true},
