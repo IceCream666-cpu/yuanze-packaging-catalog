@@ -1,13 +1,13 @@
 {
-  "version": "client1.10",
-  "sourceSha256": "b69a662aab9c39bcc5210ac22340a9257e3c605ed5fa2ac9bba0ec1c60cb87ac",
+  "version": "client1.11",
+  "sourceSha256": "57d4d14c1519b91af4f71e0d275c5a2699ec132d0f488deeff718376c4548148",
   "files": {
-    "assets/packaging/PackagingDetail-BxYXQrjM.css": "476089dc48c8150df786c0f9d8a2062ed3d15f26db06b2e8083ab8924fe21cfe",
-    "assets/packaging/PackagingDetail-CIbxeZML.js": "1c5c5e5229da2108da646dfd547fb8d275863680f4efacb79fd227b7cf755ebb",
-    "assets/packaging/packaging-scene-Cx5GIB8M.js": "33be923227c70fb61221a41ea89e0f321904ca5bf3e32054ff6b18084212b1fd",
-    "index.html": "20078ea240e51f5b537073a3755bfeaf975a43dfae4abeceab27528eb3994ad4",
+    "assets/packaging/PackagingDetail-BAeVbcvS.js": "a23b0c021f0d2243dc26956449575d0b9fb7095f02f41e29b134732e39c7bd18",
+    "assets/packaging/PackagingDetail-BKFUtHlw.css": "808215b3574ff66532c166fe741e8550650e60f4e2e9d052956918771d229ab6",
+    "assets/packaging/packaging-scene-E3s50Ow2.js": "6cee924f74e1566ab650ac897e98a138c13584eca75e2c9867373fd6adc67d5f",
+    "index.html": "a76c2eeba553fe7b68609ef7b1179accb7a78060c2da314cbd5c5ddc525c3384",
     "preview.css": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5",
-    "preview.js": "8443d782f80b7a394543f4464ad4056c466935d68164245ef1df925337497450"
+    "preview.js": "46f659f5e33af758e41831c4980fd0a7507050f12686ce7fa088ae41521adb6d"
   },
-  "viteManifestSha256": "ca5369c7550dba0be0bffa6e73a38839d59d40ffad1c117c0b627cb4595c9c95"
+  "viteManifestSha256": "7e842224d3ebbc87fdd55b24ac97e8bd38baec3044281b878e34e93a0df18252"
 }

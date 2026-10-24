@@ -18,6 +18,7 @@ function disposeObjects(...objects) {
 export async function mountPackagingScene(host, { onError, onReady, modelRequest, signal, product = PACKAGING_PRODUCTS['poster-012'], design = {background:'#f4c8d6',name:'Beach Magic'} } = {}) {
   const pdrn = product.file === 'poster-039.glb';
   const moisture = product.file === 'poster-049.glb';
+  const woodland = product.file === 'poster-042.glb';
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
@@ -93,6 +94,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     reflectionCard([-7, 1, 0], [4, 10], '#121512', 1);
     reflectionCard([7, 1, 0], [4, 10], '#121512', 1);
   }
+  if (woodland) {
+    reflectionCard([-4, 2, 5], [1.5, 8], '#ffffff', 2.6);
+    reflectionCard([4, 2, 5], [.7, 7], '#ffffff', 1.9);
+  }
   const pmrem = new T.PMREMGenerator(renderer);
   mark('pmremStart');
   try {envTarget = pmrem.fromScene(studio, .025);} finally {pmrem.dispose();}
@@ -138,12 +143,17 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
-    if (pdrn || moisture) {
+    if (pdrn || moisture || woodland) {
       m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
       if (m.map) {m.specularIntensity=.05; m.roughness=.7; m.envMapIntensity=.1;}
       if (m.transmission > .5) {
-        m.color.set('#ffffff'); m.transmission=1; m.roughness=.012;
+        if (!woodland) m.color.set('#ffffff');
+        m.transmission=1; m.roughness=woodland ? .035 : .012;
         m.ior=1.48; m.thickness=.08; m.envMapIntensity=.3;
+        if (woodland && m.name.includes('amber')) {
+          m.attenuationColor.copy(m.color); m.color.set('#ffffff');
+          m.attenuationDistance=.85; m.thickness=.12; m.envMapIntensity=.65;
+        }
         // Match the untonemapped backdrop through the clear wall.
         m.toneMapped=false; m.specularIntensity=.7;
         m.transparent=false; m.opacity=1; m.side=T.DoubleSide;
@@ -220,6 +230,13 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
       parts.print.position.copy(rest.print.p).add(new T.Vector3(-2.15,.10,1.10).multiplyScalar(current));
       parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
+    } else if (woodland) {
+      parts.closure.position.copy(rest.closure.p).y += 2.8*current;
+      parts.liner.position.copy(rest.liner.p).y += 1.35*current;
+      parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.50,.08,.65),current);
+      parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
+      parts.print.position.copy(rest.print.p).addScaledVector(new T.Vector3(-3.1,.18,1.65),current);
+      parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
     } else if (moisture) {
       parts.closure.position.copy(rest.closure.p).y += .85*current;
       parts.stem.position.copy(rest.stem.p).y += 1.75*current;
@@ -249,7 +266,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
-    const assemblyCenter = pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : moisture ? 1.45+current*1.4 : pump ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : moisture || woodland ? 1.45+current*1.4 : pump ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -257,12 +274,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : moisture ? 4.2+current*2.3 : pump ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : moisture ? 3.65+current*2.15 : 3.65)/aspect);
+    const viewHeight = Math.max((pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : moisture || woodland ? 4.2+current*2.3 : pump ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : woodland ? 3.65+current*2.75 : moisture ? 3.65+current*2.15 : 3.65)/aspect);
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     const centerY = assemblyCenter + focus;
-    const centerX = moisture ? -.65*current : 0;
-    camera.position.set(centerX, centerY+(pdrn || moisture ? 1.05 : 2.35), 10);
+    const centerX = woodland ? -.85*current : moisture ? -.65*current : 0;
+    camera.position.set(centerX, centerY+(pdrn || moisture || woodland ? 1.05 : 2.35), 10);
     camera.lookAt(centerX, centerY, 0); camera.updateProjectionMatrix();
     renderer.render(scene, camera);
   }
@@ -306,7 +323,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
     viewBottom() {
-      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture ? 1.05 : 2.35, 10);
+      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland ? 1.05 : 2.35, 10);
       selected=null; focus=0; invalidate();
     },
     focusPart(key) {

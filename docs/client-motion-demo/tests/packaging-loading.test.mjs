@@ -134,6 +134,7 @@ for (const id of ['poster-012','poster-071']) test(`${id} approved components ex
 
 for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
+  ['poster-042', {closure: 2.8, liner: 1.35}, [-3.1, .18, 1.65]],
   ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
@@ -164,18 +165,18 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, 6);
+      assert.equal(product.parts.length, id === 'poster-042' ? 5 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
-      labelDisplacement.toArray().forEach((value,i)=>near(value,[-1.25,.08,.65][i]*progress,'paper displacement'));
+      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-042' ? -1.5 : -1.25,.08,.65][i]*progress,'paper displacement'));
       sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
       near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
     };
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049') {
+      if (id === 'poster-049' || id === 'poster-042') {
         for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*.5, `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
         sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(1.225),'half print scale');
@@ -195,7 +196,7 @@ for (const [id, lifts, printOffset] of [
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
       sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(1.45), 'expanded print scale');
-      if (id === 'poster-049') checkSeparateLabel(1);
+      if (id === 'poster-049' || id === 'poster-042') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -203,7 +204,7 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049') checkSeparateLabel(0);
+      if (id === 'poster-049' || id === 'poster-042') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });
@@ -237,4 +238,23 @@ test('PDRN glass, silver and print materials use their approved settings while o
    }
   } finally {api?.dispose();env.close();}
  }
+});
+
+test('Woodland uses amber absorption and preserves its nonmetal black closure and separate artwork', async () => {
+ const product=PACKAGING_PRODUCTS['poster-042'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+ try {
+  loaded=env.model();
+  const body=loaded.scene.getObjectByName('Body'),closure=loaded.scene.getObjectByName('Closure');
+  body.material.name='Woodland amber glass';body.material.transmission=1;body.material.color.set('#ff9e42');
+  const amber=body.material.color.clone();
+  closure.material.metalness=0;closure.material.roughness=.06;closure.material.color.set('#080808');
+  const originalCapColor=closure.material.color.clone();
+  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);part.material.map=new Three.Texture();part.material.transparent=true;}
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  assert.ok(body.material.attenuationColor.equals(amber));assert.equal(body.material.color.getHexString(),'ffffff');
+  assert.equal(body.material.attenuationDistance,.85);assert.equal(body.material.thickness,.12);
+  assert.equal(body.material.envMapIntensity,.65);assert.equal(body.material.roughness,.035);assert.equal(body.material.toneMapped,false);
+  assert.equal(closure.material.metalness,0);assert.equal(closure.material.roughness,.06);assert.ok(closure.material.color.equals(originalCapColor));
+  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);assert.equal(part.material.depthWrite,false);assert.equal(part.renderOrder,2);assert.equal(part.material.envMapIntensity,.1);}
+ } finally {api?.dispose();env.close();}
 });

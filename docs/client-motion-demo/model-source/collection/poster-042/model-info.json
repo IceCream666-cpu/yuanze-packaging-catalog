@@ -1,0 +1,38 @@
+{
+  "id": "poster-042",
+  "components": [
+    "Body",
+    "Closure",
+    "StopperInsert",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "width": 1.277533039647577,
+  "depth": 0.8942731277533038,
+  "closedHeightToWidth": 2.27,
+  "capDiameterToBodyWidth": 0.51,
+  "capVisibleHeightToBodyWidth": 0.42,
+  "mouthRingDiameterToBodyWidth": 0.564,
+  "labelWidthToBodyWidth": 0.61,
+  "labelHeightToBodyWidth": 1.21,
+  "labelBottomToBodyWidth": 0.14,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-042.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ],
+  "proceduralTexture": "wood.png",
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "WOODLAND",
+    "BODY WASH",
+    "350 ml"
+  ],
+  "hiddenStructure": "StopperInsert is an illustrative friction sleeve; verify against a physical sample",
+  "revision": "individual-reference-review-20261024",
+  "generator": "build_woodland.py"
+}

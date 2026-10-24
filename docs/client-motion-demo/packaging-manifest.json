@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.10-moisture-packaging",
+  "scope": "approved-client1.11-woodland-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -56,6 +56,14 @@
       "productionTarget": "assets/packaging/poster-049.glb",
       "bytes": 1577088,
       "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
+    },
+    {
+      "name": "poster-042.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-042.glb",
+      "productionTarget": "assets/packaging/poster-042.glb",
+      "bytes": 1639336,
+      "sha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff"
     }
   ],
   "additionalProducts": [
@@ -88,6 +96,17 @@
         "Closure",
         "PumpStem",
         "Actuator",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-042",
+      "file": "poster-042.glb",
+      "components": [
+        "Body",
+        "Closure",
+        "StopperInsert",
         "PaperLabel",
         "LogoPrint"
       ]
