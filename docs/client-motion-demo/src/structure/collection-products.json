@@ -129,16 +129,16 @@
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo 与产品名",
+          "Logo and product name"
         ],
         "short": [
           "印刷",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "品牌、产品名和副标题一起展开，合拢后归位。",
+          "Brand, product name and subtitle open together and return when closed."
         ]
       }
     ]

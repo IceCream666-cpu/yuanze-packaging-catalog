@@ -100,8 +100,8 @@ tab = lathe('Inner seal lifting tab',[(0,0),(0,.10),(.012,.12),(.025,.10),(.025,
 tab.location = (.59,-.10,1.31)
 tab.scale = (1.40,.62,1)
 
-for kind,parent in [('label','Body'),('print','LogoPrint')]:
-    m = material('PDRN fixed serif copy' if kind=='label' else 'PDRN independent wordmark','#ffffff',.44)
+for kind,parent in [('label','LogoPrint'),('print','LogoPrint')]:
+    m = material('PDRN product-name print' if kind=='label' else 'PDRN independent wordmark','#ffffff',.44)
     b=m.node_tree.nodes.get('Principled BSDF')
     tex=m.node_tree.nodes.new('ShaderNodeTexImage')
     tex.image=bpy.data.images.load(str(OUT/(kind+'.png')))

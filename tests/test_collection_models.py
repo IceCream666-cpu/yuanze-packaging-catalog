@@ -65,16 +65,30 @@ class CollectionModelTests(unittest.TestCase):
   silver_rgb=silver.get('baseColorFactor',[1,1,1,1])[:3]
   self.assertLess(max(silver_rgb)-min(silver_rgb),.005)
 
-  # Empty packaging contains only its shell, threads and print, never capsule/content geometry.
+  # The empty jar has no contents or duplicate text; all front printing moves together.
   self.assertEqual({nodes[i]['name'] for i in nodes[named['Body']]['children']},
-                   {'Clear thick-bottom jar','Glass neck bead','Visible glass screw thread','Serif copy and underline'})
-  self.assertEqual(nodes[named['LogoPrint']]['children'],[named['Liaose separate print']])
+                   {'Clear thick-bottom jar','Glass neck bead','Visible glass screw thread'})
+  print_names={'Serif copy and underline','Liaose separate print'}
+  self.assertEqual({nodes[i]['name'] for i in nodes[named['LogoPrint']]['children']},print_names)
+  for name in print_names:
+   self.assertEqual(sum(node['name']==name for node in nodes),1)
+   self.assertEqual([i for i,node in enumerate(nodes) if named[name] in node.get('children',[])],[named['LogoPrint']])
   self.assertNotIn(named['LogoPrint'],parents)
-  fixed=mesh_material('Serif copy and underline')
+  copy=mesh_material('Serif copy and underline')
   wordmark=mesh_material('Liaose separate print')
-  self.assertNotEqual(fixed['pbrMetallicRoughness']['baseColorTexture']['index'],
-                      wordmark['pbrMetallicRoughness']['baseColorTexture']['index'])
+  copy_texture=copy['pbrMetallicRoughness']['baseColorTexture']['index']
+  wordmark_texture=wordmark['pbrMetallicRoughness']['baseColorTexture']['index']
+  self.assertNotEqual(copy_texture,wordmark_texture)
+  self.assertNotEqual(gltf['textures'][copy_texture]['source'],gltf['textures'][wordmark_texture]['source'])
+  self.assertIn(copy.get('alphaMode'),{'BLEND','MASK'})
   self.assertIn(wordmark.get('alphaMode'),{'BLEND','MASK'})
+  # Reparenting the product name must not shift its original closed-state artwork plate.
+  copy_bounds=bounds(positions('Serif copy and underline'))
+  wordmark_bounds=bounds(positions('Liaose separate print'))
+  for copy_edge,wordmark_edge in zip(copy_bounds,wordmark_bounds):
+   for axis in (0,1): self.assertAlmostEqual(copy_edge[axis],wordmark_edge[axis],places=5)
+  self.assertAlmostEqual(copy_bounds[0][1],.21*2.9/1.632,places=5)
+  self.assertAlmostEqual(copy_bounds[1][1],1.09*2.9/1.632,places=5)
   meta=json.loads((ROOT/'model-source/collection/poster-039/model-info.json').read_text())
   self.assertFalse(meta['containsFormula'])
 

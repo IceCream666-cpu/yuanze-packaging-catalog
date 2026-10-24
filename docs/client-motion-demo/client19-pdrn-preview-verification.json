@@ -9,8 +9,8 @@
   "scope": "Finish one product, show it, wait for review before proceeding to the next. Only poster-071 was separately authorized and published under client1.8.",
   "generatedAt": "2026-10-24T16:51:44+08:00",
   "model": {
-    "bytes": 913976,
-    "sha256": "fed83257a2ab97290bde8ab36385360ae834d3e9e36a33a5492b581ed218944d",
+    "bytes": 914020,
+    "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
     "components": [
       "Body",
       "Closure",
@@ -22,8 +22,8 @@
   },
   "refinements": [
     "Single-product squat geometry reconstructed from original poster ratios",
-    "Neutral clear thick-base glass, polished silver cap and serif fixed copy",
-    "Independent wordmark and label artwork",
+    "Neutral clear thick-base glass, polished silver cap and serif product-name print",
+    "Independent artwork files with wordmark and product-name copy grouped into the moving print layer",
     "Outer lid travel 3.45, inner lid 1.41 in studio units; staged animation and full return",
     "Match glass transmission to the untonemapped background",
     "Desktop/mobile/short-screen framing with complete exploded assembly"
@@ -83,5 +83,31 @@
     "mobile-closed.png",
     "mobile-open.png",
     "short-half.png"
-  ]
+  ],
+  "productNameFollowup": {
+    "date": "2026-10-24T17:19:28+08:00",
+    "change": "PDRN CAPSULE CREAM, DAILY SKINCARE and underline now move with the liaose wordmark and return to their original placement. No text remains attached to Body.",
+    "validation": {
+      "assetAndReleaseTests": 15,
+      "sceneLoadingTests": 31,
+      "buildCheck": "passed",
+      "aestheticDetector": "no findings for changed UI configuration",
+      "viewports": [
+        [
+          1440,
+          1000
+        ],
+        [
+          393,
+          852
+        ],
+        [
+          1474,
+          722
+        ]
+      ],
+      "closedMeshComparison": "10 meshes compared with previous revision; maximum world-coordinate difference 2.32e-8"
+    },
+    "published": false
+  }
 }

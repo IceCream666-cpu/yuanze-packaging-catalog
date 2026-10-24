@@ -573,8 +573,8 @@
       "sha256": "1f59b159772df947f6b3679a269da33086a1df55409821915145bd78bad1834a"
     },
     "assets/packaging/poster-039.glb": {
-      "bytes": 913976,
-      "sha256": "fed83257a2ab97290bde8ab36385360ae834d3e9e36a33a5492b581ed218944d"
+      "bytes": 914020,
+      "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
     },
     "assets/packaging/poster-042.glb": {
       "bytes": 450384,
@@ -1653,8 +1653,8 @@
       "sha256": "3a93e310ac65b109da97eda99f304f6e9c7915497e32795b5f35d1fa04a78ecc"
     },
     "preview.js": {
-      "bytes": 359181,
-      "sha256": "bdf2685344049ca57a5ee6172f827c6c086dd3e216115eb4471f4100c4cd9ad5"
+      "bytes": 359250,
+      "sha256": "186d985d20447c58225bc4528f6929c2a7a2e62e947193d7e7e2e5a34f0f77e1"
     },
     "product-posters.js": {
       "bytes": 19245,
