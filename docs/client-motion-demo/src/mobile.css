@@ -1,4 +1,9 @@
 /* Responsive audit: keep controls reachable without changing the artwork. */
+/* Keep Mac trackpad overscroll inside the showroom, including gestures that
+   start outside the carousel. Leave vertical scrolling and pinch zoom native.
+   Set both roots for Chromium versions with different viewport propagation. */
+html, body { overscroll-behavior-x: contain; }
+
 .modal {
   overflow: hidden;
   max-height: calc(100dvh - max(24px, env(safe-area-inset-top)) - max(24px, env(safe-area-inset-bottom)));
