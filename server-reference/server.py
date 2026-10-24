@@ -5,6 +5,7 @@ import io
 import tempfile
 import argparse, base64, hashlib, hmac, http.cookies, json, mimetypes, os, re, secrets, sqlite3, threading, time
 from contextlib import contextmanager
+from functools import lru_cache
 from datetime import datetime, timezone
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -46,6 +47,24 @@ DEFAULT_CSP = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsaf
 SHOWROOM_CSP = (DEFAULT_CSP.replace("img-src 'self' data:", "img-src 'self' data: blob:")
                 .replace("connect-src 'self'", "connect-src 'self' blob:") + "; frame-src 'self'")
 
+@lru_cache(maxsize=4)
+def _read_bundle_files(path, stamp):
+    """Cache only the allowlist; the caller rechecks its file identity each time."""
+    manifest = json.loads(path.read_text())
+    if not isinstance(manifest, dict) or manifest.get('schema') != 1 or not isinstance(manifest.get('files'), dict):
+        raise ValueError('Invalid bundle manifest')
+    return frozenset(manifest['files'])
+
+def bundle_contains(directory, relative):
+    path = directory / 'bundle-manifest.json'
+    try:
+        stat = path.stat()
+        # Include inode and ctime so atomic swaps and preserved mtimes invalidate approval.
+        stamp = (stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
+        return relative in _read_bundle_files(path, stamp)
+    except (OSError, ValueError, TypeError):
+        return False
+
 def showroom_asset(relative):
     """Only deterministic build outputs may be served as customer company files."""
     if not isinstance(relative,str) or '\\' in relative or '..' in relative.split('/'):
@@ -55,11 +74,7 @@ def showroom_asset(relative):
     if relative not in entrypoints and not packaging and not re.fullmatch(r'assets/[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)',relative):
         return None
     directory=PUBLIC/'showroom'
-    try:
-        manifest=json.loads((directory/'bundle-manifest.json').read_text())
-        if not isinstance(manifest,dict) or manifest.get('schema')!=1 or not isinstance(manifest.get('files'),dict) or relative not in manifest['files']:
-            return None
-    except (OSError,ValueError,TypeError):
+    if not bundle_contains(directory, relative):
         return None
     target=(directory/relative).resolve()
     return target if target.is_relative_to(directory.resolve()) and target.is_file() else None
@@ -69,11 +84,7 @@ def login_asset(relative):
     if relative not in {'index.html', 'login.js'} and not re.fullmatch(r'assets/[A-Za-z0-9_-]+\.(?:css|jpg|mp4)', relative):
         return None
     directory = PUBLIC / 'login-ui'
-    try:
-        manifest = json.loads((directory / 'bundle-manifest.json').read_text())
-        if manifest.get('schema') != 1 or relative not in manifest.get('files', {}):
-            return None
-    except (OSError, ValueError, TypeError, AttributeError):
+    if not bundle_contains(directory, relative):
         return None
     target = (directory / relative).resolve()
     return target if target.is_relative_to(directory.resolve()) and target.is_file() else None
