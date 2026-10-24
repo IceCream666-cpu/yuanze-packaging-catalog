@@ -180,10 +180,14 @@
 .packaging-detail--pure .packaging-parts {top:15%; gap:1px;}
 .packaging-detail--pure .packaging-part {padding:5px 0;}
 .packaging-detail--pure .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
+.packaging-detail--golden .packaging-parts,
 .packaging-detail--gentle .packaging-parts {top:15%; gap:1px;}
+.packaging-detail--golden .packaging-part,
 .packaging-detail--gentle .packaging-part {padding:5px 0;}
+.packaging-detail--golden .packaging-part-detail,
 .packaging-detail--gentle .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
 @media (max-width:400px) {
   .packaging-detail--pure .packaging-mobile-parts button {min-width:36px;}
+  .packaging-detail--golden .packaging-mobile-parts button,
   .packaging-detail--gentle .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
 }

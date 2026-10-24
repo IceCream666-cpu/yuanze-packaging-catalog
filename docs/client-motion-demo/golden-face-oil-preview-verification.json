@@ -1,0 +1,192 @@
+{
+  "status": "single-product-local-review",
+  "product": "poster-056",
+  "name": "Golden Face Oil",
+  "published": false,
+  "userVisualApproval": false,
+  "checkedAt": "2026-10-24T19:22:36.749736+08:00",
+  "preview": "http://127.0.0.1:8784/?model=poster-056",
+  "priorProductRelease": "client114-coastal-release.json",
+  "model": {
+    "bytes": 520372,
+    "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709",
+    "id": "poster-056",
+    "components": [
+      "Body",
+      "Closure",
+      "PumpStem",
+      "Actuator",
+      "Overcap",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "height": 2.9,
+    "width": 2.0567375886524824,
+    "depth": 0.6992907801418441,
+    "closedHeightToWidth": 1.41,
+    "glassHeightToWidth": 0.92,
+    "bodyDepthToWidth": 0.34,
+    "glassInnerFloorToWidth": 0.14,
+    "overcapWidthToBodyWidth": 0.62,
+    "overcapDepthToBodyWidth": 0.42,
+    "overcapTopToWidth": 1.41,
+    "overcapFrontSkirtBottomToWidth": 0.5,
+    "overcapSkirtLowerCornerRadiusToWidth": 0.11,
+    "overcapWallThicknessToWidth": 0.012,
+    "overcapInnerFrontBlenderY": -0.185,
+    "bodyFrontBlenderY": -0.17,
+    "overcapFrontGapToWidth": 0.015,
+    "overcapShortWallsBottomToWidth": 0.96,
+    "overcapInnerTopToWidth": 1.398,
+    "actuatorTopToWidth": 1.351,
+    "labelWidthToBodyWidth": 0.62,
+    "labelHeightToBodyWidth": 0.35,
+    "labelCentreHeightToWidth": 0.3,
+    "labelPlaneBlenderY": -0.1714,
+    "printPlaneBlenderY": -0.1722,
+    "illustrativeDimensions": true,
+    "containsFormula": false,
+    "reference": "../../mobile-client-preview/assets/posters/poster-056.webp",
+    "featuredReference": "featured-assets/poster-056.png",
+    "editableArtwork": [
+      "label.svg",
+      "print.svg"
+    ],
+    "separateLabelAndPrint": true,
+    "printIncludes": [
+      "liaose",
+      "GOLDEN FACE OIL"
+    ],
+    "perspectiveCalibration": "Approximate orthographic deprojection: yaw 28 degrees, elevation 10 degrees; dimensions require physical measurement",
+    "hiddenStructure": "Short connecting stem, hidden actuator cavity and pump seat are illustrative. The transparent unprinted carrier is a layer illustration; no paper label boundary appears in the reference. No liquid, long nozzle or dropper is added.",
+    "coverConstruction": "The long front sheet sits outside the glass; short side and rear walls stop above the shoulder. It lifts upward without intersecting the bottle.",
+    "revision": "individual-reference-review-20261024",
+    "generator": "build_golden_face_oil.py",
+    "nominalHeight": 2.9,
+    "actualHeight": 2.905068874359131,
+    "nominalOvercapWidthToBodyWidth": 0.62,
+    "nominalOvercapDepthToBodyWidth": 0.42,
+    "actualOvercapWidthToBodyWidth": 0.624941322721284,
+    "actualOvercapDepthToBodyWidth": 0.4248378679670136,
+    "actualBoundsBlenderXYZ": [
+      [
+        -1.0283688306808472,
+        -0.4100908041000366,
+        0.0
+      ],
+      [
+        1.0283688306808472,
+        0.4636892080307007,
+        2.905068874359131
+      ]
+    ],
+    "actualOvercapBoundsBlenderXYZ": [
+      [
+        -0.6426701545715332,
+        -0.4100908041000366,
+        1.0283688306808472
+      ],
+      [
+        0.6426701545715332,
+        0.4636892080307007,
+        2.905068874359131
+      ]
+    ],
+    "dimensionNote": "height and unsuffixed design ratios are nominal. Small corner-bevel envelope growth is reported separately in actual fields; this remains a reference-based visualization."
+  },
+  "printing": {
+    "text": [
+      "liaose",
+      "GOLDEN FACE OIL"
+    ],
+    "labelOffset": [
+      -1.85,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -3.8,
+      0.18,
+      1.65
+    ],
+    "labelScale": 1.15,
+    "printScale": 1.95,
+    "depthDifference": 1,
+    "closedRestoresOriginalTransforms": true
+  },
+  "separation": {
+    "overcapLift": 4.85,
+    "headLift": 2.6,
+    "stemLift": 1.5,
+    "closureLift": 0.75,
+    "overcapTiming": "smooth(0,.65,progress)"
+  },
+  "visualReview": {
+    "tool": "Impeccable detector, independent full-poster and GLB audit, Ego Lite rendered inspection",
+    "detectorBlockingFindings": 0,
+    "detectorExistingFontAdvisories": 1,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        1474,
+        722
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "horizontalOverflow": false,
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "wheel",
+      "drag-rotation",
+      "bottom-view",
+      "reset",
+      "original-poster-roundtrip",
+      "part-selection"
+    ],
+    "corrections": [
+      "Rebuilt the flat rounded glass bottle and long U-front cover from the full original poster with perspective correction",
+      "Kept the empty glass neutral and placed the long cover sheet outside the glass with a physical gap",
+      "Made inner pump parts opaque so the browser transmission pass can show the entire actuator inside the cover",
+      "Corrected the cover edge bevel and tuned olive transmission after real rendered inspection",
+      "Separated the label completely from the bottle silhouette and enlarged all lettering together for legibility",
+      "Retained seven visible controls down to the 320 px viewport"
+    ]
+  },
+  "validation": {
+    "geometryTests": 9,
+    "collectionTests": 3,
+    "frontendTests": 107,
+    "packagingReleaseTests": 12,
+    "clientReleaseTests": 21,
+    "buildCheck": "passed"
+  },
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-half.png",
+    "desktop-open.png",
+    "desktop-rotated.png",
+    "bottom-view.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "small-mobile-open.png",
+    "browser-delivery.png"
+  ],
+  "limits": [
+    "Image-derived proportions and material appearance require physical measurements for manufacturing",
+    "Hidden pump connectors and the clear unprinted carrier are illustrative",
+    "The empty packaging omits the photographed yellow formula",
+    "Viewport emulation is not physical-device or Safari verification"
+  ]
+}

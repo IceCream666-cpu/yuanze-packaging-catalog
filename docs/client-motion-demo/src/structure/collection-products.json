@@ -654,51 +654,115 @@
     "wide": false,
     "parts": [
       {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "墨绿长裙罩盖",
+          "Olive long-skirt cover"
+        ],
+        "short": [
+          "罩盖",
+          "Cover"
+        ],
+        "detail": [
+          "半透明方罩，前片延伸至瓶肩以下。",
+          "A translucent square hood with a long front skirt."
+        ]
+      },
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "圆柱按压头",
+          "Cylindrical actuator"
+        ],
+        "short": [
+          "压头",
+          "Head"
+        ],
+        "detail": [
+          "罩内可见的短圆柱按压件。",
+          "The short cylindrical actuator visible inside the cover."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "短连接段",
+          "Short connector"
+        ],
+        "short": [
+          "连接",
+          "Stem"
+        ],
+        "detail": [
+          "按压件与瓶口之间的连接示意。",
+          "Illustrative connection between the actuator and neck."
+        ]
+      },
+      {
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "双圈瓶口座",
+          "Twin-ring collar"
         ],
         "short": [
-          "外盖",
-          "Closure"
+          "瓶口座",
+          "Collar"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "双圈底座独立向上分离。",
+          "The twin-ring collar lifts separately."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "厚底扁方玻璃瓶",
+          "Thick-base flat glass bottle"
         ],
         "short": [
           "瓶身",
-          "Body"
+          "Bottle"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "圆角方肩、扁瓶深度与透明厚底。",
+          "Rounded shoulders, a shallow body and a clear thick base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明标贴底材",
+          "Clear label film"
+        ],
+        "short": [
+          "标贴",
+          "Label"
+        ],
+        "detail": [
+          "透明无字底材独立离开瓶身。",
+          "The clear, unprinted film separates from the bottle."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo 与产品名",
+          "Logo and product name"
         ],
         "short": [
-          "印刷",
+          "文字",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "完整文字比透明标贴更向外展开。",
+          "Complete lettering moves farther out than the clear film."
         ]
       }
     ]

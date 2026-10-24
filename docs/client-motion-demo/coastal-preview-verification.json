@@ -2,8 +2,8 @@
   "status": "single-product-local-review",
   "product": "poster-047",
   "name": "Coastal",
-  "published": false,
-  "userVisualApproval": false,
+  "published": true,
+  "userVisualApproval": true,
   "checkedAt": "2026-10-24T19:02:00.313201+08:00",
   "preview": "http://127.0.0.1:8784/?model=poster-047",
   "priorProductRelease": "client113-gentle-cleansing-release.json",
@@ -145,5 +145,6 @@
     "Concealed cork foot and manufacturing wall thickness need physical measurements",
     "Empty packaging excludes photographed perfume, ceramic bottle and carton",
     "Viewport emulation does not verify physical phones or Safari"
-  ]
+  ],
+  "productionRelease": "client114-coastal-release.json"
 }
