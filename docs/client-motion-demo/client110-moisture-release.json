@@ -1,0 +1,201 @@
+{
+  "version": "client1.10",
+  "patch": "moisture-six-layer-label-and-print-expansion",
+  "publishedAt": "2026-10-24T17:59:55+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "1a793f6581cbc187ce9163075a542a833c07a927bdb8f5b3a68eb48b9a1bfe16",
+  "backup": "/opt/yuanze-reference/backups/client1.10-moisture-20261024",
+  "baselineManifestSha256": "6eecf93d14b932a4febf7fd8ecfdcd2b5bed781809c387288f14ae0098dedebd",
+  "verifiedFiles": 395,
+  "changed": [
+    "assets/packaging/PackagingDetail-BxYXQrjM.css",
+    "assets/packaging/PackagingDetail-CIbxeZML.js",
+    "assets/packaging/packaging-scene-Cx5GIB8M.js",
+    "assets/packaging/poster-049.glb",
+    "index.html",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [
+    "assets/packaging/PackagingDetail-LBKvInv1.js",
+    "assets/packaging/PackagingDetail-dge4tMq2.css",
+    "assets/packaging/packaging-scene-_jQ3vA3b.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-039.glb"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "ab4a9038c73dd275cec499f4b0af421f254da96f",
+  "approvedLocalSource": "3f77c86",
+  "onlineVerification": {
+    "version": "client1.10",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-049.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-049-1024.webp",
+      "assets/featured/poster-049-640.webp",
+      "assets/featured/poster-049.png",
+      "assets/optimized/poster-049-strip.webp",
+      "assets/packaging/poster-049.glb",
+      "assets/posters/poster-049-thumb.webp",
+      "assets/posters/poster-049.webp",
+      "assets/previews/posters/poster-049-1280.webp",
+      "assets/previews/posters/poster-049-512.webp",
+      "assets/packaging/PackagingDetail-BxYXQrjM.css",
+      "assets/packaging/PackagingDetail-CIbxeZML.js",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-Cx5GIB8M.js",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-049.glb"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/poster-049.glb",
+        "bytes": 1577088,
+        "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-BxYXQrjM.css",
+        "bytes": 12061,
+        "sha256": "476089dc48c8150df786c0f9d8a2062ed3d15f26db06b2e8083ab8924fe21cfe"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-CIbxeZML.js",
+        "bytes": 12044,
+        "sha256": "1c5c5e5229da2108da646dfd547fb8d275863680f4efacb79fd227b7cf755ebb"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2394816,
+        "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-Cx5GIB8M.js",
+        "bytes": 573127,
+        "sha256": "33be923227c70fb61221a41ea89e0f321904ca5bf3e32054ff6b18084212b1fd"
+      },
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+      },
+      {
+        "name": "assets/packaging/poster-049.glb",
+        "bytes": 1577088,
+        "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
+      }
+    ],
+    "moistureRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1577088"
+    },
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2394816"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-24T18:00:48+08:00",
+    "manifestSha256": "1a793f6581cbc187ce9163075a542a833c07a927bdb8f5b3a68eb48b9a1bfe16",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "localVerification": {
+    "rootTests": 192,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 42,
+    "motionDOMTests": 33,
+    "loginTests": 12,
+    "legacyClientTests": 18,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "preservedImages": 377,
+  "featuredCount": 24,
+  "posterCount": 54,
+  "modelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049"
+  ],
+  "otherFeaturedProductsRemainPosters": 20,
+  "modelSha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732",
+  "rollback": "Hold the deployment lock and verify current release, current manifest, outside code, gateway and service match this receipt; then atomically exchange public/showroom with the retained client1.9 backup. The local guarded helper is work/moisture-live/rollback.py --rollback and refuses a later release.",
+  "browserVerification": {
+    "browser": "Ego Lite Chromium",
+    "checkedAt": "2026-10-24T18:01:35+08:00",
+    "productionTitle": "client1.10",
+    "selectedFromProductUI": true,
+    "sixComponents": true,
+    "paperAndPrintHaveIndependentDepth": true,
+    "expandedPrintOffset": [
+      -2.65,
+      0.18,
+      1.65
+    ],
+    "closedPrintResidualBelow": 0.001,
+    "originalPosterRoundTrip": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileHorizontalOverflow": false,
+    "screenshots": [
+      "live-closed.png",
+      "live-open.png",
+      "live-mobile.png"
+    ],
+    "physicalDeviceTest": false,
+    "checkedBy": "root agent"
+  }
+}

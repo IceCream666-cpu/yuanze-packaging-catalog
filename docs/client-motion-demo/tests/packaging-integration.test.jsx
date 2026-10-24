@@ -416,3 +416,16 @@ test('pump fetches its own model and has five separate layers with its own headi
     assert.equal(document.querySelectorAll('.packaging-part').length,5);
   } finally {await env.close();}
 });
+
+test('Woodland keeps ivory print readable against its separate warm studio and exposes all five layers', async () => {
+  const env=setup(); let mounted;
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},dispose(){}};}})}});
+  try {
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-042'}}/>));
+    assert.equal(document.querySelectorAll('.packaging-part').length,5);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','StopperInsert','Body','PaperLabel','LogoPrint']);
+    const luminance=hex=>{const c=hex.match(/[a-f\d]{2}/gi).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;};
+    assert.ok((luminance('#ede7dc')+.05)/(luminance(mounted.design.background)+.05)>4.5,'original ivory lettering must remain visible away from the black substrate');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),mounted.design.background);
+  } finally {await env.close();}
+});

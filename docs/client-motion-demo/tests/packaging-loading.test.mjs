@@ -126,6 +126,7 @@ for (const [id,product] of Object.entries(PACKAGING_PRODUCTS)) test(`${id} print
 
 for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
+  ['poster-042', {closure: 2.8, liner: 1.35}, [-3.1, .18, 1.65]],
   ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
   ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
@@ -158,18 +159,18 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, 6);
+      assert.equal(product.parts.length, id === 'poster-042' ? 5 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
-      labelDisplacement.toArray().forEach((value,i)=>near(value,[-1.25,.08,.65][i]*progress,'paper displacement'));
+      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-042' ? -1.5 : -1.25,.08,.65][i]*progress,'paper displacement'));
       sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
       near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
     };
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049') {
+      if (id === 'poster-049' || id === 'poster-042') {
         for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*.5, `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
         sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(1.225),'half print scale');
@@ -189,7 +190,7 @@ for (const [id, lifts, printOffset] of [
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
       sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(1.45), 'expanded print scale');
-      if (id === 'poster-049') checkSeparateLabel(1);
+      if (id === 'poster-049' || id === 'poster-042') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -197,7 +198,7 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049') checkSeparateLabel(0);
+      if (id === 'poster-049' || id === 'poster-042') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });

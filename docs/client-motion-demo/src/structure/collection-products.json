@@ -257,48 +257,80 @@
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "亮黑球形外盖",
+          "Gloss-black spherical cap"
         ],
         "short": [
-          "外盖",
-          "Closure"
+          "球盖",
+          "Cap"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "截底球形轮廓，亮黑表面。",
+          "A flat-base sphere with a polished black finish."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "StopperInsert",
+        "title": [
+          "瓶口密封内塞",
+          "Neck insert"
+        ],
+        "short": [
+          "内塞",
+          "Insert"
+        ],
+        "detail": [
+          "内塞与外盖分离，内部结构为示意。",
+          "A separate insert; concealed structure is illustrative."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "琥珀色方形玻璃瓶",
+          "Amber glass bottle"
         ],
         "short": [
           "瓶身",
-          "Body"
+          "Bottle"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "倒角方瓶、收腰瓶颈与厚玻璃口环。",
+          "Bevelled sides, a waisted neck and a thick glass lip."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "深色木纹标贴",
+          "Dark wood-grain label"
+        ],
+        "short": [
+          "标贴",
+          "Label"
+        ],
+        "detail": [
+          "木纹底材单独离开瓶身。",
+          "The wood-grain label separates from the bottle."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo、产品名与容量",
+          "Logo, product name and volume"
         ],
         "short": [
-          "印刷",
+          "文字",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "完整文字层比标贴更向外展开。",
+          "The complete lettering moves farther out than the label."
         ]
       }
     ]

@@ -1,0 +1,106 @@
+{
+  "status": "single-product-local-review",
+  "product": "poster-042",
+  "name": "Woodland",
+  "published": false,
+  "userVisualApproval": false,
+  "checkedAt": "2026-10-24T18:03:40.291448+08:00",
+  "preview": "http://127.0.0.1:8784/?model=poster-042",
+  "priorProductRelease": "client110-moisture-release.json",
+  "model": {
+    "bytes": 1639336,
+    "sha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff",
+    "components": [
+      "Body",
+      "Closure",
+      "StopperInsert",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "containsFormula": false,
+    "measuredDimensions": false,
+    "heightToWidth": 2.27,
+    "capDiameterToWidth": 0.51,
+    "mouthRingDiameterToWidth": 0.564
+  },
+  "printing": {
+    "text": [
+      "liaose",
+      "WOODLAND",
+      "BODY WASH",
+      "350 ml"
+    ],
+    "paperOffset": [
+      -1.5,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -3.1,
+      0.18,
+      1.65
+    ],
+    "paperScale": 1.15,
+    "printScale": 1.45,
+    "depthDifference": 1.0,
+    "closedRestoresOriginalTransforms": true
+  },
+  "visualReview": {
+    "tool": "Impeccable detector and actual Ego Lite rendered inspection",
+    "detectorPrimaryFindings": 0,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        1474,
+        722
+      ]
+    ],
+    "horizontalOverflow": false,
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "rotation",
+      "wheel",
+      "original-poster-roundtrip",
+      "reset"
+    ],
+    "corrections": [
+      "Reference-shaped square body, waisted round neck, wide clear mouth and truncated sphere cap",
+      "Original long-grain black label with no residual text",
+      "Separate complete typography includes product name and volume",
+      "Warm darker studio preserves contrast for ivory print outside the black label",
+      "Glass attenuation adjusted to show empty hollow packaging instead of a filled solid block"
+    ]
+  },
+  "validation": {
+    "geometryTests": 7,
+    "collectionTests": 3,
+    "frontendTests": 97,
+    "packagingReleaseTests": 12,
+    "clientReleaseTests": 19,
+    "buildCheck": "passed"
+  },
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-half.png",
+    "desktop-open.png",
+    "perspective.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "short-closed.png",
+    "short-open.png"
+  ],
+  "limits": [
+    "Depth, wall thickness and hidden stopper insert are illustrative pending a physical sample",
+    "Wood grain is a procedural reconstruction, not an exact scan of the original label",
+    "Viewport emulation is not physical-phone or Safari verification"
+  ]
+}
