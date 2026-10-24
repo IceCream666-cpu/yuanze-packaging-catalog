@@ -544,9 +544,9 @@
       "bytes": 10731,
       "sha256": "c70e65f340b077e31418b22907f689dce753758574eb5f31cf902083e32e02cd"
     },
-    "assets/packaging/PackagingDetail-D8kUw7nZ.js": {
+    "assets/packaging/PackagingDetail-DCxKgdDu.js": {
       "bytes": 11773,
-      "sha256": "edc163fbbe603d4e475f402ede758885d95b03c318afb20329c7cb7287111f6c"
+      "sha256": "ba992150688377f803787d7b5234cd0d1b321282c1adb3de4df8590437c22683"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
@@ -564,9 +564,9 @@
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
     },
-    "assets/packaging/packaging-scene-DaL9dwpH.js": {
-      "bytes": 572807,
-      "sha256": "f7f13571c64857a1092805849cdd69bc9a6f6c61766f6a9a3c73d5eca00c1143"
+    "assets/packaging/packaging-scene-BTcTzW8u.js": {
+      "bytes": 573002,
+      "sha256": "e8f1817234fccf90a1876646502c9f85c0821b9e27dbf332e8c1eddf8d2167ff"
     },
     "assets/packaging/poster-013.glb": {
       "bytes": 500252,
@@ -589,8 +589,8 @@
       "sha256": "5c49307c710abb75db53a96fa3fd53ecfc74af0d6395c77b52b26e42c63f6d5b"
     },
     "assets/packaging/poster-049.glb": {
-      "bytes": 1230240,
-      "sha256": "5bef55a16d90c3d05642ca24581a39b9aa666a254bc39b79695ed170cc0e73cb"
+      "bytes": 1576912,
+      "sha256": "6ace8ec3c39a5bfc30170dc5df4f31c2d38c4c90fa6a88c12e621975a13fb038"
     },
     "assets/packaging/poster-051.glb": {
       "bytes": 1665920,
@@ -1653,8 +1653,8 @@
       "sha256": "3a93e310ac65b109da97eda99f304f6e9c7915497e32795b5f35d1fa04a78ecc"
     },
     "preview.js": {
-      "bytes": 359250,
-      "sha256": "186d985d20447c58225bc4528f6929c2a7a2e62e947193d7e7e2e5a34f0f77e1"
+      "bytes": 359474,
+      "sha256": "f11e1e8965f4189447f16a4924b7456452a28c8b62cb779a04956c28de1a67fa"
     },
     "product-posters.js": {
       "bytes": 19245,

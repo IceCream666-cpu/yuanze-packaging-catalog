@@ -109,5 +109,13 @@
       "closedMeshComparison": "10 meshes compared with previous revision; maximum world-coordinate difference 2.32e-8"
     },
     "published": false
+  },
+  "approvalFollowup": {
+    "approvedAt": "2026-10-24",
+    "userRequest": "这一款上线，做下一款",
+    "release": "client19-pdrn-release.json",
+    "productionSourceCommit": "343eebf333f4faa5750b349febd6f0c20bb15cf9",
+    "publishedAt": "2026-10-24T17:28:06+08:00",
+    "note": "Original local-preview evidence retained; final model was subsequently approved and independently published."
   }
 }

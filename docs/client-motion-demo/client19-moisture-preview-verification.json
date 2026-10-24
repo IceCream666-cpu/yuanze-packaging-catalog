@@ -1,0 +1,87 @@
+{
+  "status": "single-product-local-review",
+  "product": "poster-049",
+  "name": "Moisture Shampoo",
+  "published": false,
+  "userVisualApproval": false,
+  "preview": "http://127.0.0.1:8784/?model=poster-049",
+  "checkedAt": "2026-10-24T17:33:33+08:00",
+  "priorProductRelease": "client19-pdrn-release.json",
+  "model": {
+    "bytes": 1576912,
+    "sha256": "6ace8ec3c39a5bfc30170dc5df4f31c2d38c4c90fa6a88c12e621975a13fb038",
+    "components": [
+      "Body",
+      "Closure",
+      "PumpStem",
+      "Actuator",
+      "LogoPrint"
+    ],
+    "containsFormula": false,
+    "measuredDimensions": false,
+    "heightToBodyDiameter": 2.45,
+    "closureToBodyDiameter": 0.89
+  },
+  "refinements": [
+    "Round wide-mouth clear bottle, short shoulder and curved base reconstructed from reference",
+    "Wide silver closure with fine vertical flutes and two lower bands",
+    "Stepped housing and broad flat spout with recessed rectangular outlet",
+    "Blank paper stays on Body; brand, two copy lines and separator rules move together",
+    "Closure/housing/head travel .85/1.75/2.8; print offset -1.30/.10/.95 and scale 1.45 at full expansion"
+  ],
+  "visualReview": {
+    "tool": "Impeccable detector and actual Ego Lite rendered review",
+    "detector": "No findings for changed scene/config; existing Helvetica advisory retained for client typography",
+    "corrections": [
+      "Increased print separation to prevent logo tail touching fixed paper",
+      "Reduced unused vertical space in fully-open camera framing"
+    ],
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        393,
+        852
+      ],
+      [
+        1474,
+        722
+      ]
+    ],
+    "states": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "wheel expansion",
+      "drag rotation",
+      "bottom view",
+      "reset",
+      "original poster roundtrip"
+    ],
+    "horizontalOverflow": false
+  },
+  "validation": {
+    "geometryAndMaterialTests": 8,
+    "sceneTestsIncludedInFrontend": 32,
+    "frontendTests": 95,
+    "packagingReleaseTests": 12,
+    "buildCheck": "passed",
+    "clientReleaseTests": 19
+  },
+  "limits": [
+    "Visual ratios and illustrative hidden structure need confirmation against a physical sample",
+    "No formula contents; silver microtexture from the photograph is not recreated",
+    "Chromium viewport emulation is not physical-phone or Safari verification"
+  ],
+  "screenshots": [
+    "desktop-closed.png",
+    "desktop-open.png",
+    "mobile-closed.png",
+    "mobile-open.png",
+    "short-half.png",
+    "desktop-rotated.png",
+    "desktop-bottom.png"
+  ]
+}

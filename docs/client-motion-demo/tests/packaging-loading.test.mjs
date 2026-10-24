@@ -126,6 +126,7 @@ for (const [id,product] of Object.entries(PACKAGING_PRODUCTS)) test(`${id} print
 
 for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
+  ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-1.30, .10, .95]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
   ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
@@ -158,6 +159,11 @@ for (const [id, lifts, printOffset] of [
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
+      if (id === 'poster-049') {
+        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*.5, `${key} half lift`);
+        parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
+        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(1.225),'half print scale');
+      }
       api.setProgress(1); flush();
       for (const [key, lift] of Object.entries(lifts)) {
         near(parts[key].position.y-rest[key].position.y, lift, `${key} full lift`);
@@ -173,7 +179,7 @@ for (const [id, lifts, printOffset] of [
       }
       sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(1.45), 'expanded print scale');
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
-      if (id !== 'poster-071') {
+      if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
         near((parts.liner.position.y-rest.liner.position.y)*product.scale, 1.41, 'studio liner lift');
       }

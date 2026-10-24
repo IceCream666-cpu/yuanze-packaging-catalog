@@ -153,80 +153,80 @@
         "key": "head",
         "node": "Actuator",
         "title": [
-          "按压泵头",
-          "Pump head"
+          "扁嘴按压头",
+          "Flat-spout actuator"
         ],
         "short": [
           "泵头",
-          "Pump head"
+          "Head"
         ],
         "detail": [
-          "查看上部按压或滴管部件。",
-          "Explore the actuator or dropper."
+          "宽扁压板与下折出液嘴。",
+          "Broad flat press plate with a downturned outlet."
         ]
       },
       {
         "key": "stem",
         "node": "PumpStem",
         "title": [
-          "泵杆",
-          "Stem"
+          "台阶泵座",
+          "Stepped pump housing"
         ],
         "short": [
-          "泵杆",
-          "Stem"
+          "泵座",
+          "Housing"
         ],
         "detail": [
-          "泵头下方的连接层。",
-          "Connection beneath the pump head."
+          "圆筒泵座与上方台阶连接套。",
+          "Cylindrical housing and stepped connector."
         ]
       },
       {
         "key": "closure",
         "node": "Closure",
         "title": [
-          "外盖 / 旋盖",
-          "Closure"
+          "宽口银色旋盖",
+          "Wide silver closure"
         ],
         "short": [
-          "外盖",
+          "旋盖",
           "Closure"
         ],
         "detail": [
-          "展开查看外盖与瓶口的关系。",
-          "Explore the closure and neck."
+          "上部密集竖纹，下方双道环纹。",
+          "Fine upper flutes and two lower bands."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "瓶身 / 罐身",
-          "Body"
+          "透明玻璃瓶",
+          "Clear glass bottle"
         ],
         "short": [
           "瓶身",
-          "Body"
+          "Bottle"
         ],
         "detail": [
-          "查看瓶壁、瓶口与底部轮廓。",
-          "Inspect the walls, mouth and base."
+          "圆柱宽口、短肩与弧形收底，保留纸标底材。",
+          "Wide round neck, short shoulder, curved base and paper label."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 印刷",
-          "Print"
+          "Logo 与产品名",
+          "Logo and product name"
         ],
         "short": [
           "印刷",
           "Print"
         ],
         "detail": [
-          "滑动时向外展开，合拢时回到原位。",
-          "Moves outward and returns when closed."
+          "品牌、产品名及分隔线整体展开，合拢后归位。",
+          "Brand, product name and rules open together and return when closed."
         ]
       }
     ]

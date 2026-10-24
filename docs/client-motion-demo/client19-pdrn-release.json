@@ -1,0 +1,177 @@
+{
+  "version": "client1.9",
+  "patch": "pdrn-jar-layered-model-full-print-expansion",
+  "publishedAt": "2026-10-24T17:28:06+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "6eecf93d14b932a4febf7fd8ecfdcd2b5bed781809c387288f14ae0098dedebd",
+  "backup": "/opt/yuanze-reference/backups/client1.9-pdrn-20261024",
+  "baselineManifestSha256": "94c686cba91afeabea0857c82cf070037240bd1d937ce4b2d8393692c1efcbb2",
+  "verifiedFiles": 394,
+  "changed": [
+    "assets/packaging/PackagingDetail-LBKvInv1.js",
+    "assets/packaging/PackagingDetail-dge4tMq2.css",
+    "assets/packaging/packaging-scene-_jQ3vA3b.js",
+    "assets/packaging/poster-039.glb",
+    "index.html",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [
+    "assets/packaging/PackagingDetail-BA-rU8x5.js",
+    "assets/packaging/PackagingDetail-CqSj1n16.css",
+    "assets/packaging/packaging-scene-Du8BdS3C.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "343eebf333f4faa5750b349febd6f0c20bb15cf9",
+  "onlineVerification": {
+    "version": "client1.9",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/posters/poster-039.webp",
+      "assets/featured/poster-012-640.webp",
+      "assets/featured/poster-039-1024.webp",
+      "assets/featured/poster-039-640.webp",
+      "assets/featured/poster-039.png",
+      "assets/optimized/poster-039-strip.webp",
+      "assets/packaging/poster-039.glb",
+      "assets/posters/poster-039-thumb.webp",
+      "assets/posters/poster-039.webp",
+      "assets/previews/posters/poster-039-1280.webp",
+      "assets/previews/posters/poster-039-512.webp",
+      "assets/packaging/PackagingDetail-LBKvInv1.js",
+      "assets/packaging/PackagingDetail-dge4tMq2.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-_jQ3vA3b.js",
+      "assets/packaging/poster-039.glb"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-LBKvInv1.js",
+        "bytes": 11982,
+        "sha256": "6a8a7404865e451c6df97c6c5155865ca364882ece1aa3bb528dafc7bc3d3267"
+      },
+      {
+        "name": "assets/packaging/PackagingDetail-dge4tMq2.css",
+        "bytes": 11373,
+        "sha256": "44fcaebe67bb417b737ab260b2a8c7798718b99688772e146cc32ab0ae90d62e"
+      },
+      {
+        "name": "assets/packaging/ScrollTrigger.min.js",
+        "bytes": 44157,
+        "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+      },
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2394816,
+        "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      },
+      {
+        "name": "assets/packaging/gsap.min.js",
+        "bytes": 72435,
+        "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      },
+      {
+        "name": "assets/packaging/packaging-scene-_jQ3vA3b.js",
+        "bytes": 572644,
+        "sha256": "a45aed8b4e5deb237f15051611ba8531c4ce5b287f4bb6583b437dfcc5f2fbb3"
+      },
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+      }
+    ],
+    "pdrnRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/914020"
+    },
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2394816"
+    },
+    "originalDownload": true,
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "checkedAt": "2026-10-24T17:29:01+08:00",
+    "manifestSha256": "6eecf93d14b932a4febf7fd8ecfdcd2b5bed781809c387288f14ae0098dedebd",
+    "publicHttps": true,
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browserVerification": {
+    "browser": "Ego Lite Chromium",
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        393,
+        852
+      ]
+    ],
+    "closedAndExpanded": true,
+    "logoAndProductNameExpandTogether": true,
+    "closeResetsPrint": true,
+    "originalPosterRoundTrip": true,
+    "mobileOverflow": false,
+    "screenshots": [
+      "live-closed.png",
+      "live-open.png",
+      "live-mobile.png"
+    ],
+    "physicalDeviceTest": false
+  },
+  "localVerification": {
+    "rootTests": 187,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 73,
+    "motionDOMTests": 32,
+    "loginTests": 12,
+    "buildChecks": true,
+    "note": "Full verification reached login build; restored missing ignored dependency link and completed remaining build/tests."
+  },
+  "rollback": "Hold deployment lock, verify current release and manifest still match this receipt, then atomically exchange only public/showroom with the retained backup; preserve ownership."
+}
