@@ -540,13 +540,13 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-LBKvInv1.js": {
-      "bytes": 11982,
-      "sha256": "6a8a7404865e451c6df97c6c5155865ca364882ece1aa3bb528dafc7bc3d3267"
+    "assets/packaging/PackagingDetail-BxYXQrjM.css": {
+      "bytes": 12061,
+      "sha256": "476089dc48c8150df786c0f9d8a2062ed3d15f26db06b2e8083ab8924fe21cfe"
     },
-    "assets/packaging/PackagingDetail-dge4tMq2.css": {
-      "bytes": 11373,
-      "sha256": "44fcaebe67bb417b737ab260b2a8c7798718b99688772e146cc32ab0ae90d62e"
+    "assets/packaging/PackagingDetail-CIbxeZML.js": {
+      "bytes": 12044,
+      "sha256": "1c5c5e5229da2108da646dfd547fb8d275863680f4efacb79fd227b7cf755ebb"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
@@ -564,13 +564,17 @@
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
     },
-    "assets/packaging/packaging-scene-_jQ3vA3b.js": {
-      "bytes": 572644,
-      "sha256": "a45aed8b4e5deb237f15051611ba8531c4ce5b287f4bb6583b437dfcc5f2fbb3"
+    "assets/packaging/packaging-scene-Cx5GIB8M.js": {
+      "bytes": 573127,
+      "sha256": "33be923227c70fb61221a41ea89e0f321904ca5bf3e32054ff6b18084212b1fd"
     },
     "assets/packaging/poster-039.glb": {
       "bytes": 914020,
       "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+    },
+    "assets/packaging/poster-049.glb": {
+      "bytes": 1577088,
+      "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1561,16 +1565,16 @@
       "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3"
     },
     "index.html": {
-      "bytes": 783,
-      "sha256": "1f3348ac72c5d45bff711b03935b083385d911e58af3c37915964c6f4fc22241"
+      "bytes": 784,
+      "sha256": "20078ea240e51f5b537073a3755bfeaf975a43dfae4abeceab27528eb3994ad4"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 341228,
-      "sha256": "24fe349ad5367e1c1cb92d995abee396f94fceec37535f31e17a8b6444c5bff0"
+      "bytes": 342471,
+      "sha256": "8443d782f80b7a394543f4464ad4056c466935d68164245ef1df925337497450"
     },
     "product-posters.js": {
       "bytes": 19245,
@@ -1579,5 +1583,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.9"
+  "version": "client1.10"
 }

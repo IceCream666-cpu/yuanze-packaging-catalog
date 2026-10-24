@@ -43,12 +43,12 @@ test('original poster assets and separately approved packaging assets match exac
  assert.equal(new Set(manifest.files.map(f=>f.target)).size,manifest.files.length);
  const declared=new Set(manifest.files.map(f=>f.target));
  assert.equal(packagingManifest.schema,1);
- assert.equal(packagingManifest.scope,'approved-client1.9-pdrn-packaging');
+ assert.equal(packagingManifest.scope,'approved-client1.10-moisture-packaging');
  assert.equal(packagingManifest.posterId,'poster-012');
  assert.equal(packagingManifest.containsFormula,false);
  assert.deepEqual(packagingManifest.components,['Jar','OuterCap','InnerLid']);
- assert.deepEqual(packagingManifest.additionalProducts,[{posterId:'poster-071',file:'liaose-pump.glb',components:['BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint']},{posterId:'poster-039',file:'poster-039.glb',components:['Body','Closure','InnerLid','LogoPrint']}]);
- const packagingKinds={'beach-magic-packaging.glb':'model','liaose-pump.glb':'model','poster-039.glb':'model','gsap.min.js':'animation','ScrollTrigger.min.js':'scroll-animation'};
+ assert.deepEqual(packagingManifest.additionalProducts,[{posterId:'poster-071',file:'liaose-pump.glb',components:['BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint']},{posterId:'poster-039',file:'poster-039.glb',components:['Body','Closure','InnerLid','LogoPrint']},{posterId:'poster-049',file:'poster-049.glb',components:['Body','Closure','PumpStem','Actuator','PaperLabel','LogoPrint']}]);
+ const packagingKinds={'beach-magic-packaging.glb':'model','liaose-pump.glb':'model','poster-039.glb':'model','poster-049.glb':'model','gsap.min.js':'animation','ScrollTrigger.min.js':'scroll-animation'};
  assert.deepEqual(packagingManifest.files.map(entry=>entry.name).sort(),Object.keys(packagingKinds).sort());
  const packagingDeclared=new Set(packagingManifest.files.map(entry=>entry.productionTarget));
  assert.equal(packagingDeclared.size,packagingManifest.files.length);

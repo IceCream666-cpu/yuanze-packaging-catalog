@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.9-pdrn-packaging",
+  "scope": "approved-client1.10-moisture-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -48,6 +48,14 @@
       "productionTarget": "assets/packaging/poster-039.glb",
       "bytes": 914020,
       "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+    },
+    {
+      "name": "poster-049.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-049.glb",
+      "productionTarget": "assets/packaging/poster-049.glb",
+      "bytes": 1577088,
+      "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
     }
   ],
   "additionalProducts": [
@@ -69,6 +77,18 @@
         "Body",
         "Closure",
         "InnerLid",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-049",
+      "file": "poster-049.glb",
+      "components": [
+        "Body",
+        "Closure",
+        "PumpStem",
+        "Actuator",
+        "PaperLabel",
         "LogoPrint"
       ]
     }

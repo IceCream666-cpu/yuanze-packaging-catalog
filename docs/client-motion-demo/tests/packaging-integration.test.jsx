@@ -407,8 +407,8 @@ test('model loader requests only approved models and rejects unknown IDs before 
  try {
   for(const id of ['poster-062','poster-013','constructor','../private']) assert.throws(()=>startPackagingModelRequest(id),/Unsupported/);
   assert.deepEqual(urls,[]);
-  for (const id of ['poster-071','poster-039']) {const request=startPackagingModelRequest(id);await request.promise;request.abort();}
-  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb','/assets/packaging/poster-039.glb']);
+  for (const id of ['poster-071','poster-039','poster-049']) {const request=startPackagingModelRequest(id);await request.promise;request.abort();}
+  assert.deepEqual(urls,['/assets/packaging/liaose-pump.glb','/assets/packaging/poster-039.glb','/assets/packaging/poster-049.glb']);
  } finally {await env.close();}
 });
 
@@ -441,7 +441,22 @@ test('PDRN opens in 3D and keeps its original poster and favorite through the ro
  } finally {await env.close();}
 });
 
-test('exactly the three approved products use 3D; all other 21 featured products keep poster entrypoints', async () => {
+test('Moisture opens in 3D and keeps its original poster and favorite through the round trip', async () => {
+ const env=setup(); const {App}=appHarness();
+ try {
+  await act(async()=>env.root.render(<App/>));
+  const card=document.querySelector('[data-open="poster-049"]');card.focus();await click(card);
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-049');
+  await click(byText('Save structure'));await click(byText('Original poster'));
+  assert.ok(document.querySelector('a[download="poster-049.webp"]'));
+  await click(byText('返回结构展示'));
+  assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-049');
+  assert.equal(byText('Save structure').getAttribute('aria-pressed'),'true');
+  await click(byText('Close structure'));assert.equal(document.activeElement,card);
+ } finally {await env.close();}
+});
+
+test('exactly the four approved products use 3D; all other 20 featured products keep poster entrypoints', async () => {
  const env=setup(); const {App}=appHarness();
  try {
   await act(async()=>env.root.render(<App/>));
@@ -449,7 +464,7 @@ test('exactly the three approved products use 3D; all other 21 featured products
   assert.equal(ids.length,24);
   for (const id of ids) {
    await click(document.querySelector(`[data-open="${id}"]`));
-   if (['poster-012','poster-071','poster-039'].includes(id)) {
+   if (['poster-012','poster-071','poster-039','poster-049'].includes(id)) {
     assert.equal(document.querySelector('.test-packaging').dataset.id,id);await click(byText('Close structure'));
    } else {
     assert.equal(document.querySelector('.test-packaging'),null);assert.ok(document.querySelector(`a[download="${id}.webp"]`));

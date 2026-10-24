@@ -1,0 +1,83 @@
+{
+  "version": "client1.10",
+  "published": false,
+  "checkedAt": "2026-10-24T17:58:55+08:00",
+  "baselineCommit": "7a78bf1",
+  "approvedLocalSource": "3f77c86",
+  "approvedModelIds": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049"
+  ],
+  "newModel": "poster-049",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "otherFeaturedProductsRemainPosters": 20,
+  "posterCount": 54,
+  "featuredCount": 24,
+  "modelSha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732",
+  "preservedImages": 377,
+  "publicationPlan": {
+    "version": "client1.10",
+    "baselineManifestSha256": "6eecf93d14b932a4febf7fd8ecfdcd2b5bed781809c387288f14ae0098dedebd",
+    "manifestSha256": "1a793f6581cbc187ce9163075a542a833c07a927bdb8f5b3a68eb48b9a1bfe16",
+    "changed": [
+      "assets/packaging/PackagingDetail-BxYXQrjM.css",
+      "assets/packaging/PackagingDetail-CIbxeZML.js",
+      "assets/packaging/packaging-scene-Cx5GIB8M.js",
+      "assets/packaging/poster-049.glb",
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-BxYXQrjM.css",
+      "assets/packaging/PackagingDetail-CIbxeZML.js",
+      "assets/packaging/packaging-scene-Cx5GIB8M.js",
+      "assets/packaging/poster-049.glb"
+    ],
+    "removed": [
+      "assets/packaging/PackagingDetail-LBKvInv1.js",
+      "assets/packaging/PackagingDetail-dge4tMq2.css",
+      "assets/packaging/packaging-scene-_jQ3vA3b.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-039.glb"
+    ],
+    "resources": 395
+  },
+  "verification": {
+    "rootTests": 192,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 42,
+    "motionDOMTests": 33,
+    "loginTests": 12,
+    "legacyClientTests": 18,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true
+  },
+  "browserCandidate": {
+    "browser": "Ego Lite Chromium",
+    "sixComponents": true,
+    "fullyExpandedComparedWithApprovedPreview": true,
+    "screenshot": "work/moisture-live/candidate-open.png",
+    "checkedBy": "root agent"
+  },
+  "limits": [
+    "Browser screenshots do not replace physical-device testing.",
+    "No server publication has occurred at this preview verification stage."
+  ]
+}

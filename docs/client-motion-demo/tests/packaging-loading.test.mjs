@@ -134,6 +134,7 @@ for (const id of ['poster-012','poster-071']) test(`${id} approved components ex
 
 for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
+  ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
   const env = harness({product, parse: () => Promise.resolve(loaded)});
@@ -162,8 +163,24 @@ for (const [id, lifts, printOffset] of [
       parts[key].quaternion.toArray().forEach((value, i) => near(value, rest[key].quaternion.toArray()[i], `${key} rotation`));
     };
 
+    const checkSeparateLabel = progress => {
+      assert.equal(product.parts.length, 6);
+      assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
+      const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
+      const printDisplacement = parts.print.position.clone().sub(rest.print.position);
+      labelDisplacement.toArray().forEach((value,i)=>near(value,[-1.25,.08,.65][i]*progress,'paper displacement'));
+      sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
+      near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
+    };
+
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
+      if (id === 'poster-049') {
+        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*.5, `${key} half lift`);
+        parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
+        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(1.225),'half print scale');
+        checkSeparateLabel(.5);
+      }
       api.setProgress(1); flush();
       for (const [key, lift] of Object.entries(lifts)) {
         near(parts[key].position.y-rest[key].position.y, lift, `${key} full lift`);
@@ -178,19 +195,21 @@ for (const [id, lifts, printOffset] of [
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
       sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(1.45), 'expanded print scale');
+      if (id === 'poster-049') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
-      if (id !== 'poster-071') {
+      if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
         near((parts.liner.position.y-rest.liner.position.y)*product.scale, 1.41, 'studio liner lift');
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
+      if (id === 'poster-049') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });
 
 test('PDRN glass, silver and print materials use their approved settings while older models retain theirs', async () => {
- for (const id of ['poster-012','poster-071','poster-039']) {
+ for (const id of ['poster-012','poster-071','poster-039','poster-049']) {
   const product=PACKAGING_PRODUCTS[id];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
   try {
    loaded=env.model();
@@ -202,11 +221,11 @@ test('PDRN glass, silver and print materials use their approved settings while o
    if (print) {print.material.map=new Three.Texture();print.material.transparent=true;}
    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
    const glass=body.material;
-   if (id==='poster-039') {
+   if (id==='poster-039' || id==='poster-049') {
     assert.equal(glass.roughness,.012);assert.equal(glass.thickness,.08);assert.equal(glass.ior,1.48);
     assert.equal(glass.envMapIntensity,.3);assert.equal(glass.toneMapped,false);assert.equal(glass.specularIntensity,.7);
     assert.equal(body.castShadow,false);assert.equal(body.receiveShadow,false);
-    assert.equal(closure.material.roughness,.075);assert.equal(closure.material.envMapIntensity,1);
+    assert.equal(closure.material.roughness,id==='poster-049'?.16:.075);assert.equal(closure.material.envMapIntensity,1);
     assert.equal(print.material.roughness,.7);assert.equal(print.material.specularIntensity,.05);
     assert.equal(print.material.depthWrite,false);assert.equal(print.renderOrder,2);
    } else if (id==='poster-012') {
