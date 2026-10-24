@@ -19,6 +19,7 @@
     "label.svg",
     "print.svg"
   ],
+  "labelMovesWithPrint": true,
   "printIncludes": [
     "liaose",
     "WHIPPED MOISTURE",

@@ -128,16 +128,25 @@ class MoistureModelTests(unittest.TestCase):
             self.assertTrue(.12 <= pbr['roughnessFactor'] <= .20,
                             'The Moisture silver finish must retain its softer sheen rather than a mirror finish.')
 
-    def test_all_printing_moves_together_and_only_blank_paper_stays_on_the_body(self):
+    def test_paper_and_all_printing_move_together_without_a_duplicate_label_on_the_body(self):
         textured = [i for i in self.mesh_indices() if any(
             'baseColorTexture' in m['pbrMetallicRoughness'] for m in self.materials(i))]
         self.assertTrue(textured, 'The model must retain the product artwork.')
         paper = self.named['Ivory paper label']
-        self.assertEqual(self.ancestor(paper), 'Body')
-        self.assertTrue(any(self.ancestor(i) == 'LogoPrint' for i in textured))
+        self.assertEqual(self.ancestor(paper), 'LogoPrint')
+        self.assertEqual({self.nodes[i]['name'] for i in self.mesh_indices('LogoPrint')},
+                         {'Ivory paper label', 'Complete shampoo print'})
+        self.assertEqual({self.nodes[i]['name'] for i in self.mesh_indices('Body')},
+                         {'Clear wide-mouth bottle', 'Glass neck bead', 'Visible bottle thread'})
+        for name in ['Ivory paper label', 'Complete shampoo print']:
+            self.assertEqual(sum(node['name'] == name for node in self.nodes), 1)
         for index in textured:
-            if index != paper:
-                self.assertEqual(self.ancestor(index), 'LogoPrint', self.nodes[index]['name'])
+            self.assertEqual(self.ancestor(index), 'LogoPrint', self.nodes[index]['name'])
+        for index in self.mesh_indices('Body'):
+            for material in self.materials(index):
+                for fields in [material, material['pbrMetallicRoughness']]:
+                    self.assertFalse(any(key.endswith('Texture') for key in fields),
+                                     'The bottle body must not retain a label texture after the whole label opens.')
         for material in self.materials(paper):
             texture = material['pbrMetallicRoughness'].get('baseColorTexture')
             if not texture:
@@ -151,7 +160,7 @@ class MoistureModelTests(unittest.TestCase):
                 self.assertIsNotNone(mask.getbbox())
                 visible = Image.composite(rgba.convert('RGB'), Image.new('RGB', rgba.size, 'white'), mask)
                 self.assertGreater(min(low for low, high in visible.getextrema()), 180,
-                                   'The fixed paper may contain the blank ivory background, never duplicate dark printing.')
+                                   'The moving paper contains only its ivory background, never duplicate dark printing.')
 
     def test_bottle_bottom_and_actuator_top_are_sealed_without_rejecting_designed_openings(self):
         # The collar's central pump aperture and the dispensing outlet are intentional.

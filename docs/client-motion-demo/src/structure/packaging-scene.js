@@ -240,7 +240,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
     }
     parts.print.position.copy(rest.print.p);
-    parts.print.position.x -= (pdrn ? 2.15 : moisture ? 1.30 : pump || collection ? .63 : .025)*current;
+    parts.print.position.x -= (pdrn ? 2.15 : moisture ? 1.50 : pump || collection ? .63 : .025)*current;
     parts.print.position.y += (pump || collection ? .10 : .004)*current;
     parts.print.position.z += (pdrn ? 1.10 : moisture ? .95 : pump || collection ? .86 : .035)*current;
     parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);

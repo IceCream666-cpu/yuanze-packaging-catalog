@@ -145,7 +145,7 @@ for i in range(n):
 mesh('Flattened dispensing lever',verts,faces,silver,'Actuator')
 mesh('Recessed dispensing outlet',section(-.467,2.342,.052,.012),[tuple(reversed(range(n)))],outlet,'Actuator')
 
-for kind,parent in [('label','Body'),('print','LogoPrint')]:
+for kind,parent in [('label','LogoPrint'),('print','LogoPrint')]:
     m=material('Moisture ivory paper stock' if kind=='label' else 'Moisture complete black print','#ffffff',.72 if kind=='label' else .66)
     b=m.node_tree.nodes.get('Principled BSDF')
     b.inputs['Specular IOR Level'].default_value=.12 if kind=='label' else .025
@@ -187,6 +187,7 @@ bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-049.blend'))
     'closedHeightToDiameter':2.45,'bodyHeightToDiameter':1.673,'closureDiameterToBody':.89,
     'illustrativeDimensions':True,'containsFormula':False,
     'reference':'featured-assets/poster-049.png','editableArtwork':['label.svg','print.svg'],
+    'labelMovesWithPrint':True,
     'printIncludes':['liaose','WHIPPED MOISTURE','SHAMPOO','two separator rules'],
     'revision':'individual-reference-review-20261024','generator':'build_moisture.py'
 },indent=2)+'\n')

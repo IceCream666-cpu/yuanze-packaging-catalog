@@ -8,8 +8,8 @@
   "checkedAt": "2026-10-24T17:33:33+08:00",
   "priorProductRelease": "client19-pdrn-release.json",
   "model": {
-    "bytes": 1576912,
-    "sha256": "6ace8ec3c39a5bfc30170dc5df4f31c2d38c4c90fa6a88c12e621975a13fb038",
+    "bytes": 1576944,
+    "sha256": "47d2fa61efbe34e588aaa159159fd7353d9c804be4915ae2644d479099f6c3cb",
     "components": [
       "Body",
       "Closure",
@@ -26,8 +26,8 @@
     "Round wide-mouth clear bottle, short shoulder and curved base reconstructed from reference",
     "Wide silver closure with fine vertical flutes and two lower bands",
     "Stepped housing and broad flat spout with recessed rectangular outlet",
-    "Blank paper stays on Body; brand, two copy lines and separator rules move together",
-    "Closure/housing/head travel .85/1.75/2.8; print offset -1.30/.10/.95 and scale 1.45 at full expansion"
+    "Paper label, brand, two copy lines and separator rules move together; no label remains on Body",
+    "Closure/housing/head travel .85/1.75/2.8; label offset -1.50/.10/.95 and scale 1.45 at full expansion"
   ],
   "visualReview": {
     "tool": "Impeccable detector and actual Ego Lite rendered review",
@@ -83,5 +83,20 @@
     "short-half.png",
     "desktop-rotated.png",
     "desktop-bottom.png"
-  ]
+  ],
+  "labelExpansionFollowup": {
+    "checkedAt": "2026-10-24T17:36:08+08:00",
+    "request": "标贴也要展开",
+    "change": "Full paper label and printing share LogoPrint and move together; Body has no textured mesh",
+    "closedGeometryMaximumWorldDelta": 6.3448539e-08,
+    "comparedMeshes": 12,
+    "published": false,
+    "geometryTests": 8,
+    "sceneTests": 32,
+    "screenshots": [
+      "label-desktop-open.png",
+      "label-desktop-closed.png",
+      "label-mobile-open.png"
+    ]
+  }
 }

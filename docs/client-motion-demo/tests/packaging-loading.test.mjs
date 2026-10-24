@@ -126,7 +126,7 @@ for (const [id,product] of Object.entries(PACKAGING_PRODUCTS)) test(`${id} print
 
 for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
-  ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-1.30, .10, .95]],
+  ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-1.50, .10, .95]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
   ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {

@@ -209,24 +209,24 @@
           "Bottle"
         ],
         "detail": [
-          "圆柱宽口、短肩与弧形收底，保留纸标底材。",
-          "Wide round neck, short shoulder, curved base and paper label."
+          "圆柱宽口、短肩与弧形收底。",
+          "Wide round neck, short shoulder and curved base."
         ]
       },
       {
         "key": "print",
         "node": "LogoPrint",
         "title": [
-          "Logo 与产品名",
-          "Logo and product name"
+          "标贴与印刷",
+          "Label and printing"
         ],
         "short": [
-          "印刷",
-          "Print"
+          "标贴",
+          "Label"
         ],
         "detail": [
-          "品牌、产品名及分隔线整体展开，合拢后归位。",
-          "Brand, product name and rules open together and return when closed."
+          "整张标贴连同品牌和产品名一起展开，合拢后归位。",
+          "The full label, brand and product name open together and return when closed."
         ]
       }
     ]
