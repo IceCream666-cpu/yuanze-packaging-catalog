@@ -1,17 +1,87 @@
 {
+  "closedHeightToWidth": 0.7,
+  "depthToWidth": 0.6,
+  "innerFloorToWidth": 0.1,
+  "printIncludes": [
+    "liaose",
+    "MICRO HYDRATION CREAM"
+  ],
+  "hiddenStructure": "Inner lift-out liner and clear carrier are illustrative; no gel, bubbles or background bottle.",
+  "generator": "build_micro_cream.py",
   "id": "poster-062",
   "components": [
     "Body",
     "Closure",
     "InnerLid",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "scaleFromReferenceWidth": 4.142857213409581,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -2.0714285373687744,
+        -1.2428572177886963,
+        0.0
+      ],
+      "max": [
+        2.0714285373687744,
+        1.2428572177886963,
+        1.992714285850525
+      ]
+    },
+    "Closure": {
+      "min": [
+        -2.0672857761383057,
+        -1.2428572177886963,
+        1.872571349143982
+      ],
+      "max": [
+        2.0672857761383057,
+        1.2428572177886963,
+        2.8999998569488525
+      ]
+    },
+    "InnerLid": {
+      "min": [
+        -1.7855713367462158,
+        -0.9611428380012512,
+        1.972000002861023
+      ],
+      "max": [
+        1.7855713367462158,
+        0.9611428380012512,
+        2.116999864578247
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -1.5328571796417236,
+        -1.2486571073532104,
+        0.5592857003211975
+      ],
+      "max": [
+        1.5328571796417236,
+        -1.2486571073532104,
+        1.59499990940094
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -1.5328571796417236,
+        -1.2519713640213013,
+        0.5592857003211975
+      ],
+      "max": [
+        1.5328571796417236,
+        -1.2519713640213013,
+        1.59499990940094
+      ]
+    }
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-062.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "reference": "../../mobile-client-preview/assets/posters/poster-062.webp",
+  "separateLabelAndPrint": true
 }

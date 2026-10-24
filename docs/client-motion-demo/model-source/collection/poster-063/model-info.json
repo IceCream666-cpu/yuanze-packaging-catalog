@@ -1,17 +1,87 @@
 {
+  "closedHeightToDiameter": 0.6666666666666667,
+  "mainBodyDiameter": 1,
+  "innerFloorToDiameter": 0.09,
+  "printIncludes": [
+    "liaose",
+    "RICH MOISTURE CREAM"
+  ],
+  "hiddenStructure": "No cream contents; closed placement and inner seal illustrate assembly. Photographic open lid is represented by interactive separation.",
+  "generator": "build_rich_moisture_cream.py",
   "id": "poster-063",
   "components": [
     "Body",
     "Closure",
     "InnerLid",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "scaleFromReferenceWidth": 4.264705837494774,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -2.132352828979492,
+        -2.132352828979492,
+        0.0
+      ],
+      "max": [
+        2.132352828979492,
+        2.132352828979492,
+        2.516176223754883
+      ]
+    },
+    "Closure": {
+      "min": [
+        -2.174999952316284,
+        -2.174999952316284,
+        1.9063234329223633
+      ],
+      "max": [
+        2.174999952316284,
+        2.174999952316284,
+        2.8999998569488525
+      ]
+    },
+    "InnerLid": {
+      "min": [
+        -1.7229411602020264,
+        -1.7229411602020264,
+        2.473529100418091
+      ],
+      "max": [
+        1.7229411602020264,
+        1.7229411602020264,
+        2.6355881690979004
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -1.748529314994812,
+        -2.138749837875366,
+        0.4477940797805786
+      ],
+      "max": [
+        1.748529314994812,
+        -1.226878046989441,
+        1.5139704942703247
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -1.748529314994812,
+        -2.1421618461608887,
+        0.4477940797805786
+      ],
+      "max": [
+        1.748529314994812,
+        -1.2302898168563843,
+        1.5139704942703247
+      ]
+    }
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-063.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "reference": "../../mobile-client-preview/assets/posters/poster-063.webp",
+  "separateLabelAndPrint": true
 }

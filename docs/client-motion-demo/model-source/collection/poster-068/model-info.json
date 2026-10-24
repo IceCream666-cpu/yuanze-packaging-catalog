@@ -1,17 +1,103 @@
 {
+  "closedHeightToWidth": 2.36,
+  "bodyDepthToWidth": 0.48,
+  "glassHeightToWidth": 1.85,
+  "capDiameterToWidth": 0.532,
+  "printIncludes": [
+    "liaose",
+    "ESSENCE WATER",
+    "200 ml",
+    "thin rectangular border and separator"
+  ],
+  "generator": "build_essence_water.py",
+  "hiddenStructure": "Internal seal dimensions are illustrative; the package contains no formula or carton.",
   "id": "poster-068",
   "components": [
     "Body",
+    "NeckInsert",
     "Closure",
-    "LogoPrint",
-    "OuterPack"
+    "PaperLabel",
+    "LogoPrint"
   ],
   "height": 2.9,
-  "illustrativeDimensions": true,
+  "actualHeight": 2.8999998569488525,
+  "width": 1.228813559322034,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.6144067645072937,
+        -0.29491522908210754,
+        0.0
+      ],
+      "max": [
+        0.6144067645072937,
+        0.29491522908210754,
+        2.2733049392700195
+      ]
+    },
+    "NeckInsert": {
+      "min": [
+        -0.31211864948272705,
+        -0.31211864948272705,
+        2.1872880458831787
+      ],
+      "max": [
+        0.31211864948272705,
+        0.31211864948272705,
+        2.3101694583892822
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.32684123516082764,
+        -0.31966742873191833,
+        2.285593271255493
+      ],
+      "max": [
+        0.32684123516082764,
+        0.32684123516082764,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.41779661178588867,
+        -0.29798728227615356,
+        0.29491522908210754
+      ],
+      "max": [
+        0.41779661178588867,
+        -0.29798728227615356,
+        1.9415254592895508
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.41779661178588867,
+        -0.299216091632843,
+        0.29491522908210754
+      ],
+      "max": [
+        0.41779661178588867,
+        -0.299216091632843,
+        1.9415254592895508
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 1.86,
+    "NeckInsert": 1.82,
+    "PaperLabel": 0.91,
+    "LogoPrint": 0.91
+  },
   "containsFormula": false,
-  "reference": "featured-assets/poster-068.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-068.webp",
+  "featuredReference": "featured-assets/poster-068.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
 }

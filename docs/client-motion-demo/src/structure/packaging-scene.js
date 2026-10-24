@@ -24,6 +24,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const coastal = product.file === 'poster-047.glb';
   const golden = product.file === 'poster-056.glb';
   const b5 = product.file === 'poster-057.glb';
+  const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
@@ -88,7 +89,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   reflectionCard([0, 7, -1], [5, 3], '#ffffff', 1.7);
   reflectionCard([-3, 0, -5], [2.3, 5], '#faf4e9', 1.1);
   reflectionCard([0, 0, 7], [2.8, 7], '#4f5052', 1);
-  if (pdrn || moisture) {
+  if (pdrn || moisture || appearance?.metal) {
     studio.background.set('#b9b9b5');
     reflectionCard([0, 8, 0], [14, 14], '#ffffff', 2.2);
     reflectionCard([0, 2, -7], [12, 5], '#ffffff', 2.5);
@@ -99,7 +100,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     reflectionCard([-7, 1, 0], [4, 10], '#121512', 1);
     reflectionCard([7, 1, 0], [4, 10], '#121512', 1);
   }
-  if (woodland || coastal || golden || b5) {
+  if (woodland || coastal || golden || b5 || review) {
     reflectionCard([-4, 2, 5], [1.5, 8], '#ffffff', 2.6);
     reflectionCard([4, 2, 5], [.7, 7], '#ffffff', 1.9);
   }
@@ -145,29 +146,35 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const rest = Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, { p: value.position.clone(), q: value.quaternion.clone(), s: value.scale.clone() }]));
   model.traverse(o => {
     if (!o.isMesh) return;
+    let component=o; while(component.parent && component.parent!==model) component=component.parent;
+    const isReviewOvercap=review && component===parts.overcap;
+    const isReviewFilm=review && component===parts.refill;
     o.frustumCulled = false;
     // GLTFLoader replaces spaces in object names; userData retains the source name.
     const isPullTongue = (o.userData.name || o.name).replaceAll('_', ' ').includes('short flexible pull tongue');
-    // The small pull tongue needs its own satin material to remain legible at UI scale.
-    if (isPullTongue || (golden && o.material.name.includes('olive'))) o.material = o.material.clone();
+    // Component-specific finishes must not mutate another part sharing the GLB material.
+    if (isPullTongue || isReviewOvercap || isReviewFilm || (golden && o.material.name.includes('olive')) || (appearance?.tintedGlass && o.material.transmission>.5)) o.material = o.material.clone();
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
     if (pump || collection) {
       m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
-      if (pdrn || moisture || woodland || gentle || coastal || golden || b5) {
-        if (m.map) {m.specularIntensity=.05; m.roughness=.7; m.envMapIntensity=.1;}
+      if (pdrn || moisture || woodland || gentle || coastal || golden || b5 || review) {
+        if (m.map) {m.specularIntensity=.05; if (!review || m.metalness<.3) m.roughness=.7; m.envMapIntensity=.1;}
         if (m.transmission > .5) {
-          if (!woodland && !(golden && m.name.includes('olive'))) m.color.set('#ffffff');
-          m.transmission=1; m.roughness=woodland ? .035 : golden && m.name.includes('olive') ? .035 : .012;
-          m.ior=1.48; m.thickness=gentle && m.name.includes('cover') ? .012 : .08; m.envMapIntensity=.3;
+          if (!review && !woodland && !(golden && m.name.includes('olive'))) m.color.set('#ffffff');
+          if (!review) m.transmission=1;
+          m.roughness=review ? Math.max(appearance.frosted ? .24 : .012,m.roughness) : woodland ? .035 : golden && m.name.includes('olive') ? .035 : .012;
+          m.ior=1.48; m.thickness=isReviewFilm ? .005 : isReviewOvercap || gentle && m.name.includes('cover') ? .012 : .08; m.envMapIntensity=.3;
+          if(isReviewFilm) m.color.set('#ffffff');
           if ((woodland && m.name.includes('amber')) || (golden && m.name.includes('olive'))) {
             m.attenuationColor.copy(m.color); m.color.set('#ffffff');
             m.attenuationDistance=golden ? .18 : .85; m.thickness=.12; m.envMapIntensity=golden ? 1.4 : .65;
           }
+          if (appearance?.tintedGlass) {m.attenuationColor.copy(m.color);m.color.set('#ffffff');m.attenuationDistance=appearance.attenuationDistance;}
           // Match the untonemapped backdrop through the clear wall.
-          m.toneMapped=false; m.specularIntensity=.7;
-          m.transparent=false; m.opacity=1; m.side=golden && m.name.includes('overcap') ? T.FrontSide : T.DoubleSide;
+          m.toneMapped=Boolean(isReviewOvercap); m.specularIntensity=review ? .35 : .7;
+          m.transparent=false; m.opacity=1; m.side=isReviewOvercap || isReviewFilm || golden && m.name.includes('overcap') ? T.FrontSide : T.DoubleSide;
           // The same restrained rim correction used by the first approved glass jar.
           m.onBeforeCompile = shader => {
             shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
@@ -177,13 +184,13 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           };
           o.castShadow=false; o.receiveShadow=false;
         } else if (m.metalness > .9) {
-          m.roughness=moisture ? .16 : .075; m.envMapIntensity=1;
+          m.roughness=review ? Math.max(.06,m.roughness) : moisture ? .16 : .075; m.envMapIntensity=1;
           o.castShadow=false;
         }
       }
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
-      if (b5 && m.transmission > .5) m.depthWrite=false;
-      if (b5 && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
+      if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
+      if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
       if (b5 && m.map) m.toneMapped=false;
       if (m.map) {m.depthWrite=!m.transparent; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=m.transparent?2:0;}
       return;
@@ -219,7 +226,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     m.needsUpdate = true;
   });
   // Keep the lettering above the translucent substrate at every viewing angle.
-  if (gentle || golden || b5) parts.print.traverse(o => {if (o.isMesh) o.renderOrder=3;});
+  if (gentle || golden || b5 || review) parts.print.traverse(o => {if (o.isMesh) o.renderOrder=3;});
   const shadowCanvas = document.createElement('canvas'); shadowCanvas.width = shadowCanvas.height = 256;
   const context = shadowCanvas.getContext('2d');
   const gradient = context.createRadialGradient(128, 128, 4, 128, 128, 124);
@@ -234,7 +241,25 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const rotationEuler = new T.Euler();
   let pointer = null;
   function pose() {
-    if (pdrn) {
+    const narrowReview=review && width>1 && width<768;
+    if (explosion) {
+      for (const [key, offset] of Object.entries(explosion.offsets)) {
+        const interval=explosion.timing?.[key];
+        const amount=interval ? smooth(...interval,current) : current;
+        const travel=new T.Vector3(...offset);
+        // Keep the same front-to-back separation while fitting wide print pairs on phones.
+        if(narrowReview && (key==='label' || key==='print')) travel.x*=.5;
+        parts[key].position.copy(rest[key].p).addScaledVector(travel,amount);
+        const scale=explosion.scales?.[key] ?? 1;
+        parts[key].scale.copy(rest[key].s).multiplyScalar(1+(scale-1)*amount);
+        const rotation=explosion.rotations?.[key];
+        if (rotation) {
+          rotationEuler.set(...rotation.map(v=>v*amount));
+          capTilt.setFromEuler(rotationEuler); parts[key].quaternion.copy(rest[key].q).multiply(capTilt);
+        }
+      }
+      if (appearance.clearLabel) parts.label.traverse(o=>{if(o.isMesh)o.material.opacity=.05+.95*smooth(.03,.6,current);});
+    } else if (pdrn) {
       const capOpen=smooth(.02,.72,current), linerOpen=smooth(.25,1,current);
       parts.closure.position.copy(rest.closure.p).add(new T.Vector3(-.18,3.45,0).multiplyScalar(capOpen));
       rotationEuler.set(-.68*capOpen,-Math.PI*1.25*capOpen,-.10*capOpen);
@@ -296,16 +321,19 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     rotationEuler.set(.19*linerOpen, .12*linerOpen, -.1*linerOpen);
     linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
     }
+    if (!explosion) {
     parts.print.position.copy(rest.print.p);
     parts.print.position.x -= (pdrn ? 2.15 : b5 ? 3.1 : golden ? 3.8 : pureVolume ? 3.4 : woodland || coastal ? 3.1 : moisture || gentle ? 2.65 : pump || collection ? .63 : .025)*current;
     parts.print.position.y += (gentle ? .50 : b5 ? .10 : golden ? .18 : moisture || woodland || pureVolume || coastal ? .18 : pump || collection ? .10 : .004)*current;
     parts.print.position.z += (pdrn ? 1.10 : moisture || woodland || pureVolume || gentle || coastal || golden || b5 ? 1.65 : pump || collection ? .86 : .035)*current;
     parts.print.scale.copy(rest.print.s).multiplyScalar(1+(gentle || golden || b5 ? .95 : .45)*current);
+    }
     const aspect = width/height;
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
-    const assemblyCenter = b5 ? 1.45+current*1.8 : golden ? 1.45+current*2.4+intermediateHeadroom*.8 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture || woodland || pureVolume || coastal ? 1.45+current*1.4 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const interpolate = pair => pair[0]+(pair[1]-pair[0])*current;
+    const assemblyCenter = explosion ? interpolate(explosion.camera.centerY) : b5 ? 1.45+current*1.8 : golden ? 1.45+current*2.4+intermediateHeadroom*.8 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture || woodland || pureVolume || coastal ? 1.45+current*1.4 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -313,12 +341,18 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max((b5 ? 4.2+current*4.6 : golden ? 4.2+current*4.5+intermediateHeadroom*1.6 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.4+intermediateHeadroom*.6 : moisture || woodland || pureVolume || coastal ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : b5 ? 3.8+current*3.6 : golden ? 3.9+current*3.4 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
+    let viewHeight = explosion ? Math.max(interpolate(explosion.camera.height)+tiltHeadroom,interpolate(explosion.camera.width)/aspect) : Math.max((b5 ? 4.2+current*4.6 : golden ? 4.2+current*4.5+intermediateHeadroom*1.6 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.4+intermediateHeadroom*.6 : moisture || woodland || pureVolume || coastal ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : b5 ? 3.8+current*3.6 : golden ? 3.9+current*3.4 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
+    let centerY = assemblyCenter + focus;
+    let centerX = explosion ? interpolate(explosion.camera.centerX) : b5 ? -.4*current : golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
+    if(narrowReview) {
+      root.updateMatrixWorld(true);
+      const bounds=new T.Box3().setFromObject(root),size=bounds.getSize(new T.Vector3()),center=bounds.getCenter(new T.Vector3());
+      centerX=center.x;centerY=center.y;
+      viewHeight=Math.max(interpolate(explosion.camera.height),size.y+size.z*.105+.55,(size.x+.55)/aspect);
+    }
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
-    const centerY = assemblyCenter + focus;
-    const centerX = b5 ? -.4*current : golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
-    camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden || b5 ? 1.05 : 2.35), 10);
+    camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden || b5 || review ? 1.05 : 2.35), 10);
     camera.lookAt(centerX, centerY, 0); camera.updateProjectionMatrix();
     renderer.render(scene, camera);
   }
@@ -362,7 +396,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
     viewBottom() {
-      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden || b5 ? 1.05 : 2.35, 10);
+      desiredYaw=0; desiredPitch=-Math.PI/2-Math.atan2(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden || b5 || review ? 1.05 : 2.35, 10);
       selected=null; focus=0; invalidate();
     },
     focusPart(key) {

@@ -1,3 +1,17 @@
+# 24款精选包材 · 本地模型总览
+
+全部24款的统一查看入口：[包材结构陈列](http://127.0.0.1:8784/model-review.html)。每款提供实际合拢图、展开图、原海报和交互模型，可按名称或品类查找。9款保留此前独立发布记录，另外15款仅供本地预览；本批没有部署。
+
+桌面“包材库模型总览.command”用Chrome打开总览。本机LaunchAgent `com.yuanze.packaging-preview` 仅在 `127.0.0.1:8784` 提供 `dist/` 静态文件，登录后自动启动。源文件修改后先运行 `scripts/build_model_review.py`（仓库根目录），再从本目录执行 `/Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/vite/bin/vite.js build` 更新静态预览。开发时若改用Vite，需要先停止该预览服务避免占用端口。
+
+- [模型源文件与复建方法](model-source/collection/README.md)
+- [逐款状态和缩略图](model-review-status.json)
+- [本次验证记录](collection-completion-verification.json)
+
+保留原海报可见比例及材质特征，标贴与全部印刷分别展开。模型用于外观和层级展示；隐藏结构、壁厚和实际尺寸由图片推定，生产前需实物校准。
+
+以下为历史版本记录。
+
 # client1.7 · 弧形产品轮播
 
 **2026-10-23 连续快滑修复仍为本地对比预览，尚未发布。** 当前C版保留基础图下载，按方向预热全部23款，实际停稳且基础图完成后升级高清；首图预载统一640。清晰基础图总量922,422B，图像素材与384项清单数量不变。受控200KB/s、首图后停留5秒的快速正反滑测试空位采样44→0；极弱网首次快速跨多款仍需下载，详见 [本次回执](client17-rapid-preview.json)。A上一版横向：http://127.0.0.1:18916/client；B原弧形：http://127.0.0.1:18917/client；C修复后：http://127.0.0.1:18918/client。以上仅本机，正式服务器保持已有发布。上一轮首屏优化数据作为历史记录保留在 [前次回执](client17-loading-preview.json)。

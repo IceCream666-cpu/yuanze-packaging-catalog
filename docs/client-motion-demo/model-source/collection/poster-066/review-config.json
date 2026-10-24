@@ -1,0 +1,185 @@
+{
+  "parts": [
+    {
+      "key": "overcap",
+      "node": "Overcap",
+      "title": [
+        "透明罩",
+        "Cover"
+      ],
+      "short": [
+        "透明罩",
+        "Cover"
+      ],
+      "detail": [
+        "薄壁保护罩先行抬起。",
+        "The thin protective cover lifts first."
+      ]
+    },
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "按压头",
+        "Head"
+      ],
+      "short": [
+        "按压头",
+        "Head"
+      ],
+      "detail": [
+        "白色短嘴按压件。",
+        "White press head with a short dispensing spout."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "连接杆",
+        "Stem"
+      ],
+      "short": [
+        "连接杆",
+        "Stem"
+      ],
+      "detail": [
+        "独立泵连接层。",
+        "The pump connector separates from the head and seat."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "金泵座",
+        "Gold seat"
+      ],
+      "short": [
+        "金泵座",
+        "Gold seat"
+      ],
+      "detail": [
+        "浅香槟金阶梯泵座。",
+        "Stepped pump seat in pale champagne gold."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "short": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "厚底透明扁方空瓶。",
+        "Empty clear flat bottle with a thick glass base."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "底纸",
+        "Paper"
+      ],
+      "short": [
+        "底纸",
+        "Paper"
+      ],
+      "detail": [
+        "无字乳白底纸。",
+        "Ivory paper backing without lettering."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "印花",
+        "Artwork"
+      ],
+      "short": [
+        "印花",
+        "Artwork"
+      ],
+      "detail": [
+        "原玫瑰印花与全部黑字独立外展。",
+        "The original rose artwork and all black lettering move outward together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": true
+  },
+  "explosion": {
+    "offsets": {
+      "overcap": [
+        0,
+        4.6,
+        0
+      ],
+      "head": [
+        0,
+        2.8,
+        0
+      ],
+      "stem": [
+        0,
+        1.6,
+        0
+      ],
+      "closure": [
+        0,
+        0.8,
+        0
+      ],
+      "label": [
+        -1.6,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.3,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.6
+      ],
+      "height": [
+        4.2,
+        8.8
+      ],
+      "width": [
+        3.8,
+        7.6
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ]
+    },
+    "timing": {
+      "overcap": [
+        0,
+        0.65
+      ]
+    }
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "poster-012": {
+    "state": "published",
+    "components": [
+      "Jar",
+      "OuterCap",
+      "InnerLid",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-012-closed.webp",
+      "open": "/review-assets/poster-012-open.webp"
+    },
+    "background": "#edcbd6"
+  },
+  "poster-071": {
+    "state": "published",
+    "components": [
+      "BottleAssembly",
+      "Closure",
+      "PumpStem",
+      "PumpHead",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-071-closed.webp",
+      "open": "/review-assets/poster-071-open.webp"
+    },
+    "background": "#e5e7db"
+  },
+  "poster-039": {
+    "state": "published",
+    "components": [
+      "Closure",
+      "InnerLid",
+      "Body",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-039-closed.webp",
+      "open": "/review-assets/poster-039-open.webp"
+    },
+    "background": "#d8e5da"
+  },
+  "poster-049": {
+    "state": "published",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-049-closed.webp",
+      "open": "/review-assets/poster-049-open.webp"
+    },
+    "background": "#e0e4e7"
+  },
+  "poster-042": {
+    "state": "published",
+    "components": [
+      "Closure",
+      "StopperInsert",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-042-closed.webp",
+      "open": "/review-assets/poster-042-open.webp"
+    },
+    "background": "#73523d"
+  },
+  "poster-051": {
+    "state": "published",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Cord",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-051-closed.webp",
+      "open": "/review-assets/poster-051-open.webp"
+    },
+    "background": "#dce4d1"
+  },
+  "poster-044": {
+    "state": "published",
+    "components": [
+      "Overcap",
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-044-closed.webp",
+      "open": "/review-assets/poster-044-open.webp"
+    },
+    "background": "#e4d8d3"
+  },
+  "poster-047": {
+    "state": "published",
+    "components": [
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-047-closed.webp",
+      "open": "/review-assets/poster-047-open.webp"
+    },
+    "background": "#cedfe9"
+  },
+  "poster-056": {
+    "state": "published",
+    "components": [
+      "Overcap",
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-056-closed.webp",
+      "open": "/review-assets/poster-056-open.webp"
+    },
+    "background": "#e5dfbd"
+  },
+  "poster-057": {
+    "state": "complete",
+    "components": [
+      "DropperBulb",
+      "Pipette",
+      "Closure",
+      "Body",
+      "Base",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-057-closed.webp",
+      "open": "/review-assets/poster-057-open.webp"
+    },
+    "background": "#7f656b"
+  },
+  "poster-013": {
+    "state": "complete",
+    "components": [
+      "Closure",
+      "InnerLid",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-013-closed.webp",
+      "open": "/review-assets/poster-013-open.webp"
+    },
+    "background": "#cbe4e2"
+  },
+  "poster-058": {
+    "state": "complete",
+    "components": [
+      "DropperBulb",
+      "Pipette",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-058-closed.webp",
+      "open": "/review-assets/poster-058-open.webp"
+    },
+    "background": "#d1b89c"
+  },
+  "poster-059": {
+    "state": "complete",
+    "components": [
+      "DropperBulb",
+      "Pipette",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-059-closed.webp",
+      "open": "/review-assets/poster-059-open.webp"
+    },
+    "background": "#ddcfb4"
+  },
+  "poster-060": {
+    "state": "complete",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-060-closed.webp",
+      "open": "/review-assets/poster-060-open.webp"
+    },
+    "background": "#bfb4a3"
+  },
+  "poster-061": {
+    "state": "complete",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-061-closed.webp",
+      "open": "/review-assets/poster-061-open.webp"
+    },
+    "background": "#d7d0c0"
+  },
+  "poster-062": {
+    "state": "complete",
+    "components": [
+      "Closure",
+      "InnerLid",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-062-closed.webp",
+      "open": "/review-assets/poster-062-open.webp"
+    },
+    "background": "#d8e6e6"
+  },
+  "poster-063": {
+    "state": "complete",
+    "components": [
+      "Closure",
+      "InnerLid",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-063-closed.webp",
+      "open": "/review-assets/poster-063-open.webp"
+    },
+    "background": "#e6d9c9"
+  },
+  "poster-064": {
+    "state": "complete",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Cord",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-064-closed.webp",
+      "open": "/review-assets/poster-064-open.webp"
+    },
+    "background": "#e0d3ae"
+  },
+  "poster-065": {
+    "state": "complete",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "RefillPouch",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-065-closed.webp",
+      "open": "/review-assets/poster-065-open.webp"
+    },
+    "background": "#646e7a"
+  },
+  "poster-066": {
+    "state": "complete",
+    "components": [
+      "Overcap",
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-066-closed.webp",
+      "open": "/review-assets/poster-066-open.webp"
+    },
+    "background": "#ead7db"
+  },
+  "poster-067": {
+    "state": "complete",
+    "components": [
+      "Actuator",
+      "PumpStem",
+      "Closure",
+      "Cord",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-067-closed.webp",
+      "open": "/review-assets/poster-067-open.webp"
+    },
+    "background": "#74614a"
+  },
+  "poster-068": {
+    "state": "complete",
+    "components": [
+      "Closure",
+      "NeckInsert",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-068-closed.webp",
+      "open": "/review-assets/poster-068-open.webp"
+    },
+    "background": "#e1ddea"
+  },
+  "poster-069": {
+    "state": "complete",
+    "components": [
+      "Closure",
+      "NeckSeal",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-069-closed.webp",
+      "open": "/review-assets/poster-069-open.webp"
+    },
+    "background": "#ddceba"
+  },
+  "poster-070": {
+    "state": "complete",
+    "components": [
+      "Closure",
+      "CapWrap",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-070-closed.webp",
+      "open": "/review-assets/poster-070-open.webp"
+    },
+    "background": "#e4e1d7"
+  }
+}

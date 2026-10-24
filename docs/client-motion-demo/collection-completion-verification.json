@@ -1,0 +1,566 @@
+{
+  "status": "complete-local-review-collection",
+  "checkedAt": "2026-10-25T04:07:10.939382+08:00",
+  "preview": "http://127.0.0.1:8784/model-review.html",
+  "allFeaturedProducts": 24,
+  "newlyRefinedProducts": [
+    "poster-013",
+    "poster-058",
+    "poster-059",
+    "poster-060",
+    "poster-061",
+    "poster-062",
+    "poster-063",
+    "poster-064",
+    "poster-065",
+    "poster-066",
+    "poster-067",
+    "poster-068",
+    "poster-069",
+    "poster-070"
+  ],
+  "newDeploymentPerformed": false,
+  "userVisualApprovalRequiredForRemainingModels": false,
+  "historicalPublishedModels": 9,
+  "localOnlyModels": 15,
+  "previousModelFilesUnchanged": [
+    "poster-012",
+    "poster-071",
+    "poster-039",
+    "poster-049",
+    "poster-042",
+    "poster-051",
+    "poster-044",
+    "poster-047",
+    "poster-056",
+    "poster-057"
+  ],
+  "baselineCommit": "0ecc2c1ba1326bd353331c89177b8e42ccfe3e21",
+  "deliveryCommit": "The commit containing this record: Complete 24-model local review collection",
+  "models": [
+    {
+      "id": "poster-012",
+      "name": "Beach Magic",
+      "status": "published",
+      "components": [
+        "Jar",
+        "OuterCap",
+        "InnerLid",
+        "LogoPrint"
+      ],
+      "file": "beach-magic-packaging.glb",
+      "bytes": 2395680,
+      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
+    },
+    {
+      "id": "poster-013",
+      "name": "Coral & Aqua",
+      "status": "complete",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-013.glb",
+      "bytes": 1064352,
+      "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688"
+    },
+    {
+      "id": "poster-039",
+      "name": "PDRN Capsule Cream",
+      "status": "published",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "LogoPrint"
+      ],
+      "file": "poster-039.glb",
+      "bytes": 914020,
+      "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+    },
+    {
+      "id": "poster-049",
+      "name": "Moisture Shampoo",
+      "status": "published",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-049.glb",
+      "bytes": 1577088,
+      "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732"
+    },
+    {
+      "id": "poster-042",
+      "name": "Woodland",
+      "status": "published",
+      "components": [
+        "Closure",
+        "StopperInsert",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-042.glb",
+      "bytes": 1639336,
+      "sha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff"
+    },
+    {
+      "id": "poster-051",
+      "name": "Pure Volume",
+      "status": "published",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Cord",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-051.glb",
+      "bytes": 4086460,
+      "sha256": "ca462e089e0458ff6b04022c0442232140c0042120e273650d023052e2b2fe4d"
+    },
+    {
+      "id": "poster-044",
+      "name": "Gentle Cleansing",
+      "status": "published",
+      "components": [
+        "Overcap",
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-044.glb",
+      "bytes": 2296608,
+      "sha256": "1713db68bc43efc553b42b8ff730d74ea151544d73e8f57bab56dbf298915370"
+    },
+    {
+      "id": "poster-047",
+      "name": "Coastal",
+      "status": "published",
+      "components": [
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-047.glb",
+      "bytes": 4731120,
+      "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
+    },
+    {
+      "id": "poster-056",
+      "name": "Golden Face Oil",
+      "status": "published",
+      "components": [
+        "Overcap",
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-056.glb",
+      "bytes": 520372,
+      "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709"
+    },
+    {
+      "id": "poster-057",
+      "name": "B5 Serum",
+      "status": "complete",
+      "components": [
+        "DropperBulb",
+        "Pipette",
+        "Closure",
+        "Body",
+        "Base",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-057.glb",
+      "bytes": 2490440,
+      "sha256": "c42291192e6d59a27123a28ed59f89b5862605dedadc948bf7138040acc82f82"
+    },
+    {
+      "id": "poster-058",
+      "name": "Luminous Face Oil",
+      "status": "complete",
+      "components": [
+        "DropperBulb",
+        "Pipette",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-058.glb",
+      "bytes": 1953044,
+      "sha256": "844d3658442de322dfc490055d8e4c55bcd425da576ca08d17118215e8bc94d8"
+    },
+    {
+      "id": "poster-059",
+      "name": "Essence Oil Duo",
+      "status": "complete",
+      "components": [
+        "DropperBulb",
+        "Pipette",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-059.glb",
+      "bytes": 1220536,
+      "sha256": "fd0ad9a323a5aad51982236bba6be5c80a868af50f773d1518d671f2c16fdcf5"
+    },
+    {
+      "id": "poster-060",
+      "name": "AHA Body Mist",
+      "status": "complete",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-060.glb",
+      "bytes": 1111412,
+      "sha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783"
+    },
+    {
+      "id": "poster-061",
+      "name": "Oil-Infused Body Cream",
+      "status": "complete",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-061.glb",
+      "bytes": 1042708,
+      "sha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a"
+    },
+    {
+      "id": "poster-062",
+      "name": "Micro Cream",
+      "status": "complete",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-062.glb",
+      "bytes": 279060,
+      "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34"
+    },
+    {
+      "id": "poster-063",
+      "name": "Moisture Cream",
+      "status": "complete",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-063.glb",
+      "bytes": 819544,
+      "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a"
+    },
+    {
+      "id": "poster-064",
+      "name": "Aromatic Body Lotion",
+      "status": "complete",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Cord",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-064.glb",
+      "bytes": 3598760,
+      "sha256": "1228bed596498239bebea597ff5511f81e8deb194927fc18d01b1d6e4bf475d6"
+    },
+    {
+      "id": "poster-065",
+      "name": "Tea Tree Shampoo",
+      "status": "complete",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "RefillPouch",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-065.glb",
+      "bytes": 2726200,
+      "sha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2"
+    },
+    {
+      "id": "poster-066",
+      "name": "Rose Hair Oil",
+      "status": "complete",
+      "components": [
+        "Overcap",
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-066.glb",
+      "bytes": 4125864,
+      "sha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9"
+    },
+    {
+      "id": "poster-067",
+      "name": "Amber Ginger Shampoo",
+      "status": "complete",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Cord",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-067.glb",
+      "bytes": 3379404,
+      "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e"
+    },
+    {
+      "id": "poster-068",
+      "name": "Essence Water",
+      "status": "complete",
+      "components": [
+        "Closure",
+        "NeckInsert",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-068.glb",
+      "bytes": 1458536,
+      "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3"
+    },
+    {
+      "id": "poster-069",
+      "name": "Still Essential Oil",
+      "status": "complete",
+      "components": [
+        "Closure",
+        "NeckSeal",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-069.glb",
+      "bytes": 3522180,
+      "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157"
+    },
+    {
+      "id": "poster-070",
+      "name": "Daylight Essential Oil",
+      "status": "complete",
+      "components": [
+        "Closure",
+        "CapWrap",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "file": "poster-070.glb",
+      "bytes": 3191832,
+      "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
+    },
+    {
+      "id": "poster-071",
+      "name": "Sculptural Pump",
+      "status": "published",
+      "components": [
+        "BottleAssembly",
+        "Closure",
+        "PumpStem",
+        "PumpHead",
+        "LogoPrint"
+      ],
+      "file": "liaose-pump.glb",
+      "bytes": 996144,
+      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    }
+  ],
+  "browserChecks": {
+    "desktop": {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "products": 24,
+      "scenarios": [
+        "closed",
+        "half-open",
+        "fully-open",
+        "rotate 90 degrees",
+        "view bottom",
+        "reset front",
+        "restore closed",
+        "original poster and return"
+      ],
+      "uncaughtErrors": 0
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "products": 24,
+      "scenarios": [
+        "closed",
+        "half-open",
+        "fully-open",
+        "select print",
+        "restore closed"
+      ],
+      "horizontalOverflow": false,
+      "clippedPartControls": false,
+      "uncaughtErrors": 0
+    },
+    "compact": {
+      "viewport": [
+        320,
+        740
+      ],
+      "products": [
+        "poster-064",
+        "poster-065",
+        "poster-066",
+        "poster-067"
+      ],
+      "sevenPartControlsVisible": true
+    },
+    "input": {
+      "wheelProgress": 0.21858708185040654,
+      "dragYaw": 1.1251207485261845
+    },
+    "dashboard": {
+      "cards": 24,
+      "interactiveLinks": 24,
+      "modelPreviewImages": 48,
+      "originalPosterImages": 24,
+      "all72ImagesLoaded": true,
+      "searchAndEmptyState": true,
+      "desktopAndMobileOverflow": false
+    },
+    "chromeNative": {
+      "opened": true,
+      "visibleReadyCount": "24/24",
+      "screenshot": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/work/collection-completion-20261025/model-review-chrome.png"
+    },
+    "servedModelHashesMatch": 24
+  },
+  "automatedChecks": {
+    "frontend": {
+      "passed": 137,
+      "failed": 0
+    },
+    "modelAndIntegration": {
+      "passed": 130,
+      "failed": 0
+    },
+    "packagingRelease": {
+      "passed": 12,
+      "failed": 0
+    },
+    "clientRelease": {
+      "passed": 19,
+      "failed": 0
+    },
+    "dashboardAfterFinalColourMatch": {
+      "passed": 7,
+      "failed": 0,
+      "includedInFrontendCount": true
+    },
+    "showroomSourceConsistency": true,
+    "staticBuild": true,
+    "gitDiffCheck": true
+  },
+  "visualReview": {
+    "tool": "Impeccable detect",
+    "dashboardFindings": [],
+    "existingStructureWarnings": [
+      {
+        "antipattern": "overused-font",
+        "name": "Overused font",
+        "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+        "severity": "warning",
+        "category": "slop",
+        "file": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/docs/client-motion-demo/src/structure/packaging-detail.css",
+        "line": 13,
+        "snippet": "font-family: \"Helvetica",
+        "importedBy": [
+          "PackagingDetail.jsx"
+        ]
+      }
+    ],
+    "preservedApprovedFont": true,
+    "all14OriginalPostersCompared": true,
+    "all14BlendFilesOpenedAndTexturesPacked": true,
+    "corrections": [
+      "independent complete print layers",
+      "material transmission and metal roughness",
+      "isolated shared overcap and refill materials",
+      "glass and empty refill film appearance",
+      "pump connections and rope normals",
+      "source typography and floral alpha",
+      "cork colour and visible neck seal",
+      "mobile framing",
+      "Tea Tree pouch clear of desktop part descriptions",
+      "thumbnail backgrounds matched to rendered images"
+    ]
+  },
+  "availability": {
+    "host": "127.0.0.1",
+    "port": 8784,
+    "server": "Vite preview of local static dist",
+    "launchAgent": "com.yuanze.packaging-preview",
+    "runAtLoginConfigured": true,
+    "keepAliveConfigured": true,
+    "loginRestartPhysicallyTested": false,
+    "desktopLauncher": "/Users/icecream/Desktop/包材库模型总览.command"
+  },
+  "limitations": [
+    "Reference images do not establish manufacturing dimensions, wall thickness or concealed fittings.",
+    "Mobile checks use browser viewports, not physical Safari devices.",
+    "Nested glass pipettes use a transparent blending approximation for the single-pass transmission renderer.",
+    "No new production deployment or production image-loading investigation was performed."
+  ],
+  "evidenceDirectory": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/work/collection-completion-20261025"
+}

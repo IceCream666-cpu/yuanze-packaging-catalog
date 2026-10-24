@@ -1,0 +1,137 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "金属盖",
+        "Cap"
+      ],
+      "short": [
+        "金属盖",
+        "Cap"
+      ],
+      "detail": [
+        "浅香槟银色圆筒旋盖。",
+        "Cylindrical screw cap in pale champagne silver."
+      ]
+    },
+    {
+      "key": "wrap",
+      "node": "CapWrap",
+      "title": [
+        "纹理套",
+        "Wrap"
+      ],
+      "short": [
+        "纹理套",
+        "Wrap"
+      ],
+      "detail": [
+        "原图压纹套纸与右侧延伸边。",
+        "Embossed cap wrap with the loose right edge shown in the reference."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "磨砂瓶",
+        "Bottle"
+      ],
+      "short": [
+        "磨砂瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "阔底锥形磨砂空玻璃。",
+        "Empty frosted glass with a broad base and tapered body."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明膜",
+        "Carrier"
+      ],
+      "short": [
+        "透明膜",
+        "Carrier"
+      ],
+      "detail": [
+        "无字透明承印膜。",
+        "Clear print carrier without any lettering."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "黑印字",
+        "Print"
+      ],
+      "short": [
+        "黑印字",
+        "Print"
+      ],
+      "detail": [
+        "liaose、DAYLIGHT、ESSENTIAL OIL 完整独立。",
+        "The complete liaose, DAYLIGHT and ESSENTIAL OIL print separates together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": true,
+    "pipette": false,
+    "clearLabel": true,
+    "metal": true
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        2.8,
+        0
+      ],
+      "wrap": [
+        1.5,
+        1.0,
+        0.4
+      ],
+      "label": [
+        -1.6,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.3,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.1
+      ],
+      "height": [
+        4.2,
+        7.8
+      ],
+      "width": [
+        3.8,
+        7.7
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ]
+    }
+  }
+}

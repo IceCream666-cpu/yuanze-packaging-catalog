@@ -1,17 +1,115 @@
 {
+  "closedHeightToWidth": 3.9,
+  "bodyDepthToWidth": 1,
+  "glassHeightToWidth": 2.95,
+  "solidBaseHeightToWidth": 0.495,
+  "corkDiameterToWidth": 0.85,
+  "visibleCorkHeightToWidth": 0.96,
+  "labelWidthToWidth": 0.9,
+  "labelHeightToWidth": 1.46,
+  "printIncludes": [
+    "liaose",
+    "STILL",
+    "ESSENTIAL OIL",
+    "30 ml"
+  ],
+  "generator": "build_still_essential_oil.py",
+  "proceduralTextures": [
+    "cork-color.png",
+    "cork-color.jpg",
+    "cork-normal.png",
+    "paper.png",
+    "paper.jpg",
+    "label.jpg"
+  ],
+  "hiddenStructure": "The concealed cork foot and wall thickness are illustrative; no oil or box is included.",
   "id": "poster-069",
   "components": [
     "Body",
     "Closure",
-    "LogoPrint",
-    "OuterPack"
+    "NeckSeal",
+    "PaperLabel",
+    "LogoPrint"
   ],
   "height": 2.9,
-  "illustrativeDimensions": true,
+  "actualHeight": 2.9000000953674316,
+  "width": 0.7435897435897436,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.3717948794364929,
+        -0.3717948794364929,
+        0.0
+      ],
+      "max": [
+        0.3717948794364929,
+        0.3717948794364929,
+        2.193589925765991
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.31602564454078674,
+        -0.31602564454078674,
+        2.0523078441619873
+      ],
+      "max": [
+        0.31602564454078674,
+        0.31602564454078674,
+        2.9000000953674316
+      ]
+    },
+    "NeckSeal": {
+      "min": [
+        0.05152333900332451,
+        -0.20016562938690186,
+        1.6582051515579224
+      ],
+      "max": [
+        0.620293915271759,
+        0.09719446301460266,
+        2.209202289581299
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.3346153795719147,
+        -0.3729102611541748,
+        0.6394872069358826
+      ],
+      "max": [
+        0.3346153795719147,
+        -0.1631770133972168,
+        1.725128173828125
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.3346153795719147,
+        -0.3736538589000702,
+        0.6394872069358826
+      ],
+      "max": [
+        0.3346153795719147,
+        -0.16392061114311218,
+        1.725128173828125
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 2.95,
+    "NeckSeal": 2.87,
+    "PaperLabel": 1.59,
+    "LogoPrint": 1.59
+  },
   "containsFormula": false,
-  "reference": "featured-assets/poster-069.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-069.webp",
+  "featuredReference": "featured-assets/poster-069.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
 }

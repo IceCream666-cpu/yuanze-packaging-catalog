@@ -1,0 +1,148 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "水蓝色平滑外盖",
+        "Aqua cap"
+      ],
+      "short": [
+        "外盖",
+        "Aqua"
+      ],
+      "detail": [
+        "平滑圆筒盖与圆形内侧开口。",
+        "Smooth cylindrical cap with a circular inner opening."
+      ]
+    },
+    {
+      "key": "liner",
+      "node": "InnerLid",
+      "title": [
+        "提拉内盖",
+        "Inner liner"
+      ],
+      "short": [
+        "内盖",
+        "Inner"
+      ],
+      "detail": [
+        "隐藏内盖为结构示意。",
+        "The concealed lift-out liner is an illustrative structure."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "透明圆角方罐",
+        "Square jar"
+      ],
+      "short": [
+        "罐身",
+        "Square"
+      ],
+      "detail": [
+        "圆角方形罐身、圆形罐口与透明厚底。",
+        "Rounded square walls, circular neck and a clear heavy base."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "米色无字标贴",
+        "Paper label"
+      ],
+      "short": [
+        "标贴",
+        "Paper"
+      ],
+      "detail": [
+        "纸标与全部印刷分别展开。",
+        "Blank paper separates from the complete printed artwork."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "Logo、品名与双色边线",
+        "Complete print"
+      ],
+      "short": [
+        "文字",
+        "Complete"
+      ],
+      "detail": [
+        "品牌、BEACH MAGIC、SUGAR SCRUB和双色边线一起向外展开。",
+        "The brand, BEACH MAGIC, SUGAR SCRUB and two-colour border move outward together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "studio": {
+      "background": "#c5e5e3",
+      "ink": "#174c50"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        3.35,
+        0
+      ],
+      "liner": [
+        0,
+        1.5,
+        0
+      ],
+      "label": [
+        -1.8,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.65,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "rotations": {
+      "closure": [
+        -0.6,
+        -0.55,
+        -0.05
+      ]
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.05
+      ],
+      "height": [
+        4.3,
+        7.8
+      ],
+      "width": [
+        4.1,
+        9.1
+      ],
+      "centerX": [
+        0,
+        -1.15
+      ]
+    }
+  }
+}

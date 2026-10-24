@@ -3,15 +3,131 @@
   "components": [
     "Body",
     "Closure",
-    "Actuator",
+    "DropperBulb",
+    "Pipette",
+    "PaperLabel",
     "LogoPrint"
   ],
+  "bottleCount": 2,
   "height": 2.9,
+  "width": 2.8179245283018863,
+  "singleBottleWidth": 1.3679245283018866,
+  "depth": 0.5471698113207547,
+  "singleClosedHeightToWidth": 2.12,
+  "glassVisibleHeightToWidth": 1.3,
+  "glassNeckTopToWidth": 1.345,
+  "glassInnerFloorToWidth": 0.143,
+  "bottleCentreSpacingToWidth": 1.06,
+  "closureDiameterToWidth": 0.5,
+  "closureHeightToWidth": 0.38,
+  "bulbMainDiameterToWidth": 0.23,
+  "bulbVisibleHeightToWidth": 0.44,
+  "pipetteBottomToWidth": 0.43,
+  "pipetteTopToWidth": 1.78,
+  "pipetteOuterDiameterToWidth": 0.076,
+  "pipetteInnerDiameterToWidth": 0.056,
+  "labelWidthToBottleWidth": 0.82,
+  "labelHeightToBottleWidth": 0.58,
+  "labelBottomToWidth": 0.47,
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 1.3,
+    "DropperBulb": 1.68,
+    "Pipette": 1.3,
+    "PaperLabel": 0.76,
+    "LogoPrint": 0.76
+  },
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -1.4089622497558594,
+        -0.27358493208885193,
+        0.0
+      ],
+      "max": [
+        1.4089622497558594,
+        0.27358493208885193,
+        1.8398585319519043
+      ]
+    },
+    "Closure": {
+      "min": [
+        -1.0669810771942139,
+        -0.3419811427593231,
+        1.7783018350601196
+      ],
+      "max": [
+        1.0669810771942139,
+        0.3419811427593231,
+        2.2981131076812744
+      ]
+    },
+    "DropperBulb": {
+      "min": [
+        -0.9315566420555115,
+        -0.20655660331249237,
+        2.258443593978882
+      ],
+      "max": [
+        0.9315566420555115,
+        0.20655660331249237,
+        2.8999998569488525
+      ]
+    },
+    "Pipette": {
+      "min": [
+        -0.7769811749458313,
+        -0.051981132477521896,
+        0.5882076025009155
+      ],
+      "max": [
+        0.7769811749458313,
+        0.051981132477521896,
+        2.434905767440796
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -1.2858490943908691,
+        -0.27549999952316284,
+        0.6429245471954346
+      ],
+      "max": [
+        1.2858490943908691,
+        -0.27549999952316284,
+        1.4363207817077637
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -1.2858490943908691,
+        -0.276594340801239,
+        0.6429245471954346
+      ],
+      "max": [
+        1.2858490943908691,
+        -0.276594340801239,
+        1.4363207817077637
+      ]
+    }
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-059.png",
+  "reference": "../../mobile-client-preview/assets/posters/poster-059.webp",
   "editableArtwork": [
     "label.svg",
-    "print.svg"
-  ]
+    "print.svg",
+    "print-biphase.svg"
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "ESSENCE OIL",
+    "liaose",
+    "BIPHASE ESSENCE OIL"
+  ],
+  "hiddenStructure": "Bottle depth, concealed connection and wall dimensions are illustrative; the original has no paper-label boundary, so two transparent film carriers are provided. Dropper tubes stop at their visible solid ends; liquid globules and oil/water layers are excluded.",
+  "material": "Two neutral empty clear bottles, opaque cream collars and white hollow bulbs",
+  "revision": "individual-reference-review-20261025",
+  "generator": "build_essence_oil_duo.py"
 }

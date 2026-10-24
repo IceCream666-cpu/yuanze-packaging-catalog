@@ -1,19 +1,121 @@
 {
+  "bottleHeightToDiameter": 2.687,
+  "refillHeightToBottleDiameter": 2.76,
+  "refillMaxWidthToBottleDiameter": 1.88,
+  "pouchFilmThicknessToBottleDiameter": 0.0025,
+  "printIncludes": [
+    "liaose",
+    "TEA TREE",
+    "SHAMPOO",
+    "750 mL",
+    "liaose",
+    "TEA TREE",
+    "SHAMPOO",
+    "REFILL",
+    "two fine rules"
+  ],
+  "hiddenStructure": "Refill pouch is retained as packaging; no liquid, bubbles, herbs or platform. A shallow preformed empty pouch and pump internals are illustrative.",
+  "generator": "build_tea_tree_shampoo.py",
   "id": "poster-065",
   "components": [
     "Body",
     "Closure",
     "PumpStem",
     "Actuator",
-    "LogoPrint",
-    "OuterPack"
+    "RefillPouch",
+    "PaperLabel",
+    "LogoPrint"
   ],
   "height": 2.9,
+  "scaleFromReferenceWidth": 1.0375670557566783,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.5187835097312927,
+        -0.5187835097312927,
+        0.0
+      ],
+      "max": [
+        0.5187835097312927,
+        0.5187835097312927,
+        2.1166367530822754
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.2127012312412262,
+        -0.2127012312412262,
+        2.085509777069092
+      ],
+      "max": [
+        0.2127012312412262,
+        0.2127012312412262,
+        2.395742177963257
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.09545616805553436,
+        -0.09545616805553436,
+        0.09338103234767914
+      ],
+      "max": [
+        0.15158292651176453,
+        0.09545616805553436,
+        2.5949549674987793
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.41502681374549866,
+        -0.15044721961021423,
+        2.562790632247925
+      ],
+      "max": [
+        0.20751340687274933,
+        0.15044721961021423,
+        2.78794264793396
+      ]
+    },
+    "RefillPouch": {
+      "min": [
+        0.5610491037368774,
+        0.08508049696683884,
+        0.03631484508514404
+      ],
+      "max": [
+        2.5101494789123535,
+        0.30919498205184937,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.3527728021144867,
+        -0.520339846611023,
+        0.3527728021144867
+      ],
+      "max": [
+        2.007692337036133,
+        0.13769304752349854,
+        1.597853183746338
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.3527728021144867,
+        -0.5211699604988098,
+        0.3527728021144867
+      ],
+      "max": [
+        2.007692337036133,
+        0.13686299324035645,
+        1.597853183746338
+      ]
+    }
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-065.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "reference": "../../mobile-client-preview/assets/posters/poster-065.webp",
+  "separateLabelAndPrint": true
 }

@@ -55,6 +55,134 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
 
+for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review)) {
+  test(`${id} separates all printing from its blank label and restores imported transforms`, async () => {
+    let loaded, api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();
+      const parts=Object.fromEntries(product.parts.map(p=>[p.key,loaded.scene.getObjectByName(p.node)]));
+      Object.values(parts).forEach((p,i)=>{p.position.set(.12*i,.23*i,-.07*i);p.scale.set(1.4,1.5,1.6);p.quaternion.setFromEuler(new Three.Euler(.02,-.03,.01));});
+      const rest=Object.fromEntries(Object.entries(parts).map(([k,p])=>[k,{p:p.position.clone(),s:p.scale.clone(),q:p.quaternion.clone()}]));
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+      for (const value of [.5,1,0,1,0]) {
+        api.setProgress(value);flush();
+        const print=parts.print.position.clone().sub(rest.print.p),label=parts.label.position.clone().sub(rest.label.p);
+        if(value) {
+          assert.ok(print.z-label.z>.45*value,'lettering must sit visibly in front of its label');
+          assert.ok(print.x<label.x-.8*value,'lettering must also move farther sideways');
+          assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
+          assert.ok(parts.closure.position.y-rest.closure.p.y>.7*value,'cap separation must remain substantial');
+          for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
+            if(value===1) parts[key].position.clone().sub(rest[key].p).toArray().forEach((n,i)=>assert.ok(Math.abs(n-offset[i])<1e-9));
+          }
+        } else {
+          for(const [key,p] of Object.entries(parts)) {
+            assert.ok(p.position.distanceTo(rest[key].p)<1e-9);
+            assert.ok(p.scale.distanceTo(rest[key].s)<1e-9);
+            assert.ok(1-Math.abs(p.quaternion.dot(rest[key].q))<1e-9);
+          }
+        }
+        if(product.review.appearance.clearLabel && value!==.5) assert.equal(parts.label.material.opacity,value===0?.05:1);
+      }
+    } finally {api?.dispose();env.close();}
+  });
+}
+
+test('reviewed models preserve frosted glass, brushed metal and original glass tint', async () => {
+  const product=PACKAGING_PRODUCTS['poster-063'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    loaded=env.model();const body=loaded.scene.getObjectByName('Body'),cap=loaded.scene.getObjectByName('Closure'),label=loaded.scene.getObjectByName('PaperLabel');
+    body.material.transmission=1;body.material.roughness=.3;body.material.color.set('#c5a978');
+    const tint=body.material.color.clone();cap.material.metalness=1;cap.material.roughness=.27;
+    label.material.map=new Three.Texture();label.material.metalness=1;label.material.roughness=.31;
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.equal(body.material.roughness,.3);assert.ok(body.material.color.equals(tint));
+    assert.equal(cap.material.roughness,.27);assert.equal(label.material.roughness,.31);
+  } finally {api?.dispose();env.close();}
+});
+
+test('phone framing preserves depth separation while compacting wide print pairs', async () => {
+  const product=PACKAGING_PRODUCTS['poster-059'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:393},clientHeight:{value:450}});
+    loaded=env.model();
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    api.setProgress(1);const frames=[...env.frames.values()];env.frames.clear();frames.forEach(fn=>fn(16));
+    for(const key of ['label','print']) {
+      const part=loaded.scene.getObjectByName(product.parts.find(p=>p.key===key).node),offset=product.review.explosion.offsets[key];
+      assert.equal(part.position.x,offset[0]*.5);assert.equal(part.position.z,offset[2]);
+    }
+    api.setProgress(0);[...env.frames.values()].forEach(fn=>fn(32));
+    assert.deepEqual(api.getState().printOffset,[0,0,0]);
+  } finally {api?.dispose();env.close();}
+});
+
+test('reviewed tinted glass uses absorption and frosted glass retains its original transmission', async () => {
+  for(const id of ['poster-067','poster-061']) {
+    const product=PACKAGING_PRODUCTS[id];let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();const body=loaded.scene.getObjectByName('Body');
+      body.material.transmission=.62;body.material.color.set('#b08040');const tint=body.material.color.clone();
+      const other=new Three.Mesh(new Three.BoxGeometry(),body.material);body.add(other);
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(body.material.transmission,.62);
+      if(id==='poster-067') for(const mesh of [body,other]) {
+        assert.ok(mesh.material.attenuationColor.equals(tint));assert.equal(mesh.material.attenuationDistance,.3);
+        assert.ok(mesh.material.color.equals(new Three.Color('#ffffff')));
+      }
+    } finally {api?.dispose();env.close();}
+  }
+});
+
+test('the refill pouch keeps a thin transparent film instead of a thick coloured wall', async () => {
+  const product=PACKAGING_PRODUCTS['poster-065'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    loaded=env.model();const film=loaded.scene.getObjectByName('RefillPouch');
+    film.material.transmission=.92;film.material.color.set('#ead4a3');
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.equal(film.material.transmission,.92);assert.equal(film.material.thickness,.005);
+    assert.equal(film.material.side,Three.FrontSide);assert.ok(film.material.color.equals(new Three.Color('#ffffff')));
+  } finally {api?.dispose();env.close();}
+});
+
+for (const [id, node, thickness, toneMapped] of [
+  ['poster-066','Overcap',.012,true],
+  ['poster-065','RefillPouch',.005,false],
+]) test(`${id} isolates cover or film settings from shared bottle glass in either traversal order`, async () => {
+  for (const bodyFirst of [true,false]) {
+    const product=PACKAGING_PRODUCTS[id];let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();
+      const body=loaded.scene.getObjectByName('Body'),part=loaded.scene.getObjectByName(node);
+      body.material.transmission=.92;body.material.color.set('#d3c4a0');
+      const tint=body.material.color.clone();part.material=body.material;
+      const panel=new Three.Mesh(new Three.BoxGeometry(),body.material);part.add(panel);
+      // The real Rose GLB visits Body before Overcap; neither order may share mutations.
+      loaded.scene.children.sort((a,b)=>(a===body?(bodyFirst?-1:1):0)-(b===body?(bodyFirst?-1:1):0));
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(body.material.thickness,.08);assert.equal(body.material.side,Three.DoubleSide);
+      assert.equal(body.material.toneMapped,false);assert.ok(body.material.color.equals(tint));
+      for (const mesh of [part,panel]) {
+        assert.notEqual(mesh.material,body.material);
+        assert.equal(mesh.material.thickness,thickness);assert.equal(mesh.material.side,Three.FrontSide);
+        assert.equal(mesh.material.toneMapped,toneMapped);
+        assert.ok(mesh.material.color.equals(node==='RefillPouch'?new Three.Color('#ffffff'):tint));
+      }
+      const disposals=new Map([body.material,part.material,panel.material].map(material=>[material,0]));
+      disposals.forEach((_,material)=>material.addEventListener('dispose',()=>disposals.set(material,disposals.get(material)+1)));
+      api.dispose();api.dispose();
+      assert.deepEqual([...disposals.values()],[1,1,1]);
+    } finally {api?.dispose();env.close();}
+  }
+});
+
 test('Gentle lettering renders above the translucent oval without tinting its black print', async () => {
   const product=PACKAGING_PRODUCTS['poster-044']; let loaded;
   const env=harness({product,parse:()=>Promise.resolve(loaded)});

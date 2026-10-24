@@ -5,15 +5,140 @@
     "Closure",
     "PumpStem",
     "Actuator",
-    "LogoPrint",
-    "OuterPack"
+    "PaperLabel",
+    "LogoPrint"
   ],
+  "bottleCount": 2,
   "height": 2.9,
+  "tallerHeight": 2.9,
+  "smallerHeight": 2.75,
+  "singleBottleDiameter": 1.25,
+  "pairWidth": 2.325,
+  "pairDepth": 1.9500000000000002,
+  "tallerHeightToDiameter": 2.32,
+  "smallerHeightToDiameter": 2.2,
+  "tallerBodyHeightToDiameter": 1.52,
+  "smallerBodyHeightToDiameter": 1.4,
+  "bottleCentersToDiameter": [
+    [
+      -0.43,
+      -0.28
+    ],
+    [
+      0.43,
+      0.28
+    ]
+  ],
+  "bottleCentreDistanceToDiameter": 1.0262553288533998,
+  "glassInnerFloorToDiameter": 0.11,
+  "closureDiameterToBottle": 0.46,
+  "closureHeightToDiameter": 0.3,
+  "visibleStemDiameterToBottle": 0.21,
+  "headDiameterToBottle": 0.266,
+  "headTotalSpanToDiameter": 0.575,
+  "spoutCrossSectionToDiameter": [
+    0.086,
+    0.05
+  ],
+  "labelWidthToDiameter": 0.78,
+  "labelHeightToDiameter": 0.74,
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 1.43,
+    "PumpStem": 1.7,
+    "Actuator": 1.94,
+    "PaperLabel": 0.78,
+    "LogoPrint": 0.78
+  },
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -1.162500023841858,
+        -0.9749999642372131,
+        0.0
+      ],
+      "max": [
+        1.162500023841858,
+        0.9749999642372131,
+        1.9875000715255737
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.8250000476837158,
+        -0.637499988079071,
+        1.712499976158142
+      ],
+      "max": [
+        0.8250000476837158,
+        0.637499988079071,
+        2.237499952316284
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.6687500476837158,
+        -0.48124998807907104,
+        1.6812500953674316
+      ],
+      "max": [
+        0.6687500476837158,
+        0.48124998807907104,
+        2.5999999046325684
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.7037500143051147,
+        -0.5162500143051147,
+        2.3499999046325684
+      ],
+      "max": [
+        1.1055042743682861,
+        0.5162500143051147,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -1.024999976158142,
+        -0.9767499566078186,
+        0.4625000059604645
+      ],
+      "max": [
+        1.024999976158142,
+        -0.0428621843457222,
+        1.4875000715255737
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -1.024999976158142,
+        -0.9777499437332153,
+        0.4625000059604645
+      ],
+      "max": [
+        1.024999976158142,
+        -0.043862201273441315,
+        1.4875000715255737
+      ]
+    }
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-061.png",
+  "reference": "../../mobile-client-preview/assets/posters/poster-061.webp",
   "editableArtwork": [
     "label.svg",
     "print.svg"
-  ]
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "OIL-INFUSED",
+    "BODY CREAM"
+  ],
+  "hiddenStructure": "The photograph shows two similar diameters with different body heights. Bottles stand on a common ground here; scene stones and cartons are excluded. Wall thickness, pump internal connector and open spout construction are illustrative, not a manufacturing design. No unseen dip tube or formula is added. Original direct printing is represented by a transparent unprinted carrier and separate full print.",
+  "material": "Ivory frosted empty glass with opaque satin black pump parts",
+  "revision": "individual-reference-review-20261025",
+  "generator": "build_oil_infused_body_cream.py"
 }

@@ -1,16 +1,108 @@
 {
+  "closedHeightToWidth": 1.39,
+  "bodyDepthToWidth": 1,
+  "glassHeightToWidth": 0.985,
+  "capDiameterToWidth": 0.352,
+  "capHeightToWidth": 0.42,
+  "wrapExtensionToWidth": 0.325,
+  "printIncludes": [
+    "liaose",
+    "DAYLIGHT",
+    "ESSENTIAL OIL"
+  ],
+  "generator": "build_daylight_essential_oil.py",
+  "proceduralTextures": [
+    "embossed-wrap.png",
+    "embossed-wrap-normal.png"
+  ],
+  "hiddenStructure": "Closure seal and transparent print carrier are illustrative. This is empty frosted glass, with no formula.",
   "id": "poster-070",
   "components": [
     "Body",
     "Closure",
+    "CapWrap",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
-  "illustrativeDimensions": true,
+  "actualHeight": 2.8999998569488525,
+  "width": 2.0863309352517985,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -1.0431654453277588,
+        -1.0431654453277588,
+        0.0
+      ],
+      "max": [
+        1.0431654453277588,
+        1.0431654453277588,
+        2.0550360679626465
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.3671942353248596,
+        -0.3671942353248596,
+        2.0237410068511963
+      ],
+      "max": [
+        0.3671942353248596,
+        0.3671942353248596,
+        2.8999998569488525
+      ]
+    },
+    "CapWrap": {
+      "min": [
+        -0.3823132812976837,
+        -0.38237640261650085,
+        2.1568548679351807
+      ],
+      "max": [
+        0.6780574917793274,
+        0.3823833167552948,
+        2.798185348510742
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.49028775095939636,
+        -0.9950915575027466,
+        0.47985610365867615
+      ],
+      "max": [
+        0.49028775095939636,
+        -0.5259561538696289,
+        1.1474820375442505
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.49028775095939636,
+        -0.9971778392791748,
+        0.47985610365867615
+      ],
+      "max": [
+        0.49028775095939636,
+        -0.5280425548553467,
+        1.1474820375442505
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 0.98,
+    "CapWrap": 1.18,
+    "PaperLabel": 0.39,
+    "LogoPrint": 0.39
+  },
   "containsFormula": false,
-  "reference": "featured-assets/poster-070.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-070.webp",
+  "featuredReference": "featured-assets/poster-070.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
 }

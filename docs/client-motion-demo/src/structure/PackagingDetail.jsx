@@ -56,7 +56,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const product = PACKAGING_PRODUCTS[item.id];
   const featuredDesign = featured.find(value => value.id === item.id);
   // Preserve light original lettering against a deeper product-specific studio.
-  const design = item.id === 'poster-042' ? {...featuredDesign, background:'#76513b', ink:'#fff0db', swatch:['#ead5bb','#241e1a']} : item.id === 'poster-057' ? {...featuredDesign, background:'#87626b', ink:'#fff2f4', swatch:['#f7dfe5','#61434b']} : featuredDesign;
+  const design = product.review?.appearance?.studio ? {...featuredDesign,...product.review.appearance.studio} : item.id === 'poster-042' ? {...featuredDesign, background:'#76513b', ink:'#fff0db', swatch:['#ead5bb','#241e1a']} : item.id === 'poster-057' ? {...featuredDesign, background:'#87626b', ink:'#fff2f4', swatch:['#f7dfe5','#61434b']} : featuredDesign;
   const PARTS = product.parts;
   const languageIndex = zh ? 0 : 1;
   const rootRef = useRef(null);
@@ -291,7 +291,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const controlsDisabled = !ready || failed;
 
   return (
-    <div ref={rootRef} className={`packaging-detail ${product.file === 'poster-049.glb' ? 'packaging-detail--moisture' : product.file === 'poster-051.glb' ? 'packaging-detail--pure' : product.file === 'poster-044.glb' ? 'packaging-detail--gentle' : product.file === 'poster-056.glb' ? 'packaging-detail--golden' : product.file === 'poster-057.glb' ? 'packaging-detail--b5' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={{'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]}}>
+    <div ref={rootRef} className={`packaging-detail ${product.review ? 'packaging-detail--reviewed' : product.file === 'poster-049.glb' ? 'packaging-detail--moisture' : product.file === 'poster-051.glb' ? 'packaging-detail--pure' : product.file === 'poster-044.glb' ? 'packaging-detail--gentle' : product.file === 'poster-056.glb' ? 'packaging-detail--golden' : product.file === 'poster-057.glb' ? 'packaging-detail--b5' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={{'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]}}>
       <header className="packaging-header">
         <button className="packaging-back" onClick={onClose}>
           <ArrowLeft size={18} aria-hidden="true" />

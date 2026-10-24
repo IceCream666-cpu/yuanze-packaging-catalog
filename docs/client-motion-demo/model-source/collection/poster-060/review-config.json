@@ -1,0 +1,162 @@
+{
+  "parts": [
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "黑色喷雾按头",
+        "Black spray actuator"
+      ],
+      "short": [
+        "喷头",
+        "Head"
+      ],
+      "detail": [
+        "白色圆形喷孔与黑色按压头一起上移。",
+        "The white spray insert moves with the black actuator."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "内部连接与弯吸管",
+        "Connector and curved dip tube"
+      ],
+      "short": [
+        "吸管",
+        "Tube"
+      ],
+      "detail": [
+        "透明细管与连接段独立展开。",
+        "The hollow dip tube separates with its connector."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "黑色圆筒旋盖",
+        "Black cylindrical collar"
+      ],
+      "short": [
+        "旋盖",
+        "Collar"
+      ],
+      "detail": [
+        "光亮圆筒盖独立向上分离。",
+        "The glossy collar lifts independently."
+      ]
+    },
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "圆肩透明玻璃瓶",
+        "Clear round-shoulder bottle"
+      ],
+      "short": [
+        "瓶身",
+        "Bottle"
+      ],
+      "detail": [
+        "中性空心瓶壁保留厚底与圆肩。",
+        "The neutral empty bottle retains its thick base and rounded shoulder."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "拉丝银色标贴",
+        "Brushed silver label"
+      ],
+      "short": [
+        "标贴",
+        "Label"
+      ],
+      "detail": [
+        "无字金属效果底材顺圆柱瓶身贴合。",
+        "The unprinted metal-effect substrate follows the cylindrical bottle."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整品牌与容量印刷",
+        "Complete brand and volume print"
+      ],
+      "short": [
+        "文字",
+        "Print"
+      ],
+      "detail": [
+        "liaose、AHA、BODY MIST、横线与160 ml独立展开。",
+        "The brand, AHA BODY MIST, rule and 160 ml separate together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": true,
+    "clearLabel": false,
+    "metal": true,
+    "studio": {
+      "background": "#c2b3a0",
+      "ink": "#302a22"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "head": [
+        0,
+        5,
+        0
+      ],
+      "stem": [
+        0,
+        3.8,
+        0
+      ],
+      "closure": [
+        0,
+        1,
+        0
+      ],
+      "label": [
+        -1.25,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -2.85,
+        0.15,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.95
+      ],
+      "height": [
+        4.2,
+        9.1
+      ],
+      "width": [
+        3.8,
+        8.8
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ]
+    }
+  }
+}

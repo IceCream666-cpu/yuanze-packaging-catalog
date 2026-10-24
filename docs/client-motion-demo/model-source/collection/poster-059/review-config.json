@@ -1,0 +1,162 @@
+{
+  "parts": [
+    {
+      "key": "head",
+      "node": "DropperBulb",
+      "title": [
+        "双瓶白色胶头",
+        "Two white dropper bulbs"
+      ],
+      "short": [
+        "胶头",
+        "Bulb"
+      ],
+      "detail": [
+        "两只空腔胶头同步上提。",
+        "Both hollow bulbs lift together."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "Pipette",
+      "title": [
+        "双瓶透明滴管",
+        "Two clear pipettes"
+      ],
+      "short": [
+        "滴管",
+        "Pipette"
+      ],
+      "detail": [
+        "细玻璃管独立分离，不包含油滴。",
+        "The glass tubes separate without liquid drops."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "奶油色圆筒盖",
+        "Cream cylindrical collars"
+      ],
+      "short": [
+        "旋盖",
+        "Collar"
+      ],
+      "detail": [
+        "两只光滑圆盖独立展开。",
+        "Both smooth collars separate."
+      ]
+    },
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "圆角扁方双瓶",
+        "Rounded flat bottle pair"
+      ],
+      "short": [
+        "瓶身",
+        "Bottle"
+      ],
+      "detail": [
+        "保留两只相同外形的空心玻璃瓶。",
+        "Two equal empty glass bottles are retained."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明标贴底材",
+        "Transparent label carriers"
+      ],
+      "short": [
+        "标贴",
+        "Label"
+      ],
+      "detail": [
+        "无字薄膜底材独立于完整印刷。",
+        "The unprinted films separate from the full printing."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "双瓶完整产品印刷",
+        "Complete print on both bottles"
+      ],
+      "short": [
+        "文字",
+        "Print"
+      ],
+      "detail": [
+        "ESSENCE OIL 与 BIPHASE ESSENCE OIL 保留各自品牌字。",
+        "Both original product names and brand marks move outward."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": true,
+    "clearLabel": true,
+    "metal": false,
+    "studio": {
+      "background": "#ded0af",
+      "ink": "#3c3426"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "head": [
+        0,
+        3.9,
+        0
+      ],
+      "stem": [
+        0,
+        3.05,
+        0
+      ],
+      "closure": [
+        0,
+        1.05,
+        0
+      ],
+      "label": [
+        -3.0,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -6.4,
+        0.15,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.08,
+      "print": 1.5
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.2
+      ],
+      "height": [
+        4.2,
+        7.9
+      ],
+      "width": [
+        5.2,
+        12.4
+      ],
+      "centerX": [
+        0,
+        -2.15
+      ]
+    }
+  }
+}

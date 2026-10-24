@@ -1,0 +1,64 @@
+{
+  "id": "poster-060",
+  "bytes": 1111412,
+  "sha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783",
+  "meshes": [
+    {
+      "mesh": "Hollow cylindrical glass with rounded shoulder and thick base",
+      "triangles": 11280,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9102765321731567
+    },
+    {
+      "mesh": "Hollow glossy black atomizer collar",
+      "triangles": 2976,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9494181275367737
+    },
+    {
+      "mesh": "Curved hollow clear suction tube",
+      "triangles": 6464,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6934418678283691
+    },
+    {
+      "mesh": "Opaque illustrative white pump connector",
+      "triangles": 1984,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9314199090003967
+    },
+    {
+      "mesh": "Black cylindrical spray actuator",
+      "triangles": 2480,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.7446175217628479
+    },
+    {
+      "mesh": "White circular recessed spray nozzle",
+      "triangles": 1104,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8449495434761047
+    },
+    {
+      "mesh": "Brushed silver unprinted label substrate",
+      "triangles": 2560,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9999014139175415
+    },
+    {
+      "mesh": "Complete AHA Body Mist print",
+      "triangles": 2560,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.999901533126831
+    }
+  ],
+  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks."
+}

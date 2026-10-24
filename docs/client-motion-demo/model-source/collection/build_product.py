@@ -5,6 +5,18 @@ import bpy,math,json,sys
 from pathlib import Path
 from mathutils import Vector
 BASE=Path(__file__).resolve().parent;CLIENT=BASE.parents[1]
+REVIEWED_GENERATORS={
+ 'poster-013':'build_coral_aqua.py','poster-058':'build_luminous_face_oil.py',
+ 'poster-059':'build_essence_oil_duo.py','poster-060':'build_aha_body_mist.py',
+ 'poster-061':'build_oil_infused_body_cream.py','poster-062':'build_micro_cream.py',
+ 'poster-063':'build_rich_moisture_cream.py','poster-064':'build_aromatic_body_lotion.py',
+ 'poster-065':'build_tea_tree_shampoo.py','poster-066':'build_rose_hair_oil.py',
+ 'poster-067':'build_ginger_shampoo.py','poster-068':'build_essence_water.py',
+ 'poster-069':'build_still_essential_oil.py','poster-070':'build_daylight_essential_oil.py',
+}
+if sys.argv[-1] in REVIEWED_GENERATORS:
+ import runpy
+ runpy.run_path(str(BASE/REVIEWED_GENERATORS[sys.argv[-1]]),run_name='__main__');sys.exit(0)
 if sys.argv[-1]=='poster-039':
  import runpy
  runpy.run_path(str(BASE/'build_pdrn.py'));sys.exit(0)

@@ -1,17 +1,91 @@
 {
+  "generator": "build_coral_aqua.py",
+  "closedHeightToWidth": 1.075,
+  "depthToWidth": 0.9,
+  "capDiameterToWidth": 0.9,
+  "capHeightToWidth": 0.195,
+  "printIncludes": [
+    "liaose",
+    "BEACH MAGIC",
+    "SUGAR SCRUB",
+    "coral upper border",
+    "aqua lower border"
+  ],
+  "hiddenStructure": "Empty packaging only. No scrub, spoon, bubbles, tiles or scene props. Hidden inner liner is illustrative.",
   "id": "poster-013",
   "components": [
     "Body",
     "Closure",
     "InnerLid",
+    "PaperLabel",
     "LogoPrint"
   ],
   "height": 2.9,
+  "scaleFromReferenceWidth": 2.6976742989440607,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -1.34883713722229,
+        -1.2139533758163452,
+        0.0
+      ],
+      "max": [
+        1.34883713722229,
+        1.2139533758163452,
+        2.481860399246216
+      ]
+    },
+    "Closure": {
+      "min": [
+        -1.2139533758163452,
+        -1.2139533758163452,
+        2.373953342437744
+      ],
+      "max": [
+        1.2139533758163452,
+        1.2139533758163452,
+        2.8999998569488525
+      ]
+    },
+    "InnerLid": {
+      "min": [
+        -1.095255732536316,
+        -1.095255732536316,
+        2.4656741619110107
+      ],
+      "max": [
+        1.095255732536316,
+        1.095255732536316,
+        2.551999807357788
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -1.07906973361969,
+        -1.217730164527893,
+        0.5530232191085815
+      ],
+      "max": [
+        1.07906973361969,
+        -1.217730164527893,
+        1.7399998903274536
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -1.07906973361969,
+        -1.2198883295059204,
+        0.5530232191085815
+      ],
+      "max": [
+        1.07906973361969,
+        -1.2198883295059204,
+        1.7399998903274536
+      ]
+    }
+  },
   "illustrativeDimensions": true,
   "containsFormula": false,
-  "reference": "featured-assets/poster-013.png",
-  "editableArtwork": [
-    "label.svg",
-    "print.svg"
-  ]
+  "reference": "../../mobile-client-preview/assets/posters/poster-013.webp",
+  "separateLabelAndPrint": true
 }

@@ -1,0 +1,183 @@
+{
+  "parts": [
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "长嘴白泵头",
+        "White pump"
+      ],
+      "short": [
+        "泵头",
+        "White"
+      ],
+      "detail": [
+        "扁长左向出液嘴与凹入出口。",
+        "Flat elongated left-facing spout with a recessed outlet."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "白色连接泵杆",
+        "Pump stem"
+      ],
+      "short": [
+        "泵杆",
+        "Pump"
+      ],
+      "detail": [
+        "独立向上拔出的连接段。",
+        "Connecting stem lifts out as an independent part."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "白色宽旋盖",
+        "White collar"
+      ],
+      "short": [
+        "外盖",
+        "White"
+      ],
+      "detail": [
+        "光滑圆筒宽盖座。",
+        "Wide smooth cylindrical screw collar."
+      ]
+    },
+    {
+      "key": "cord",
+      "node": "Cord",
+      "title": [
+        "天然棉编绳",
+        "Cotton cord"
+      ],
+      "short": [
+        "编绳",
+        "Cotton"
+      ],
+      "detail": [
+        "三圈股绳、两条长短尾与散纤维。",
+        "Three braided wraps, two unequal tails and fine fringe fibers."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "黄色阶梯瓶身",
+        "Yellow bottle"
+      ],
+      "short": [
+        "瓶身",
+        "Yellow"
+      ],
+      "detail": [
+        "哑光不透明瓶壁与收窄底脚。",
+        "Opaque matte bottle with a narrower stepped foot."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "暖白纸标",
+        "Paper label"
+      ],
+      "short": [
+        "标贴",
+        "Paper"
+      ],
+      "detail": [
+        "保留无字纸质底材。",
+        "Blank warm paper label remains separate from the print."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整印刷文字",
+        "Lettering"
+      ],
+      "short": [
+        "文字",
+        "Lettering"
+      ],
+      "detail": [
+        "品牌、两道细线、产品名与300 ml一同展开。",
+        "Brand, two fine rules, product name and 300 ml move together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": false,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "studio": {
+      "background": "#e4d2ac",
+      "ink": "#4c351d"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "head": [
+        0,
+        2.9,
+        0
+      ],
+      "stem": [
+        0,
+        1.8,
+        0
+      ],
+      "closure": [
+        0,
+        0.9,
+        0
+      ],
+      "cord": [
+        1.35,
+        0.22,
+        0.35
+      ],
+      "label": [
+        -1.55,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.3,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.9
+      ],
+      "height": [
+        4.2,
+        7.1
+      ],
+      "width": [
+        4.1,
+        8.2
+      ],
+      "centerX": [
+        0,
+        -0.7
+      ]
+    }
+  }
+}

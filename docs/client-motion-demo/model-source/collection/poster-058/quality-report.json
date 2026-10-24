@@ -1,0 +1,50 @@
+{
+  "id": "poster-058",
+  "bytes": 1953044,
+  "sha256": "844d3658442de322dfc490055d8e4c55bcd425da576ca08d17118215e8bc94d8",
+  "meshes": [
+    {
+      "mesh": "Hollow slender flat Luminous glass bottle",
+      "triangles": 6108,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8157455921173096
+    },
+    {
+      "mesh": "Mirror silver hollow cylindrical collar",
+      "triangles": 2976,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9482522010803223
+    },
+    {
+      "mesh": "Hollow white Luminous dropper bulb",
+      "triangles": 23712,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6987509727478027
+    },
+    {
+      "mesh": "Short hollow clear pipette without suspended formula",
+      "triangles": 2208,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9965122938156128
+    },
+    {
+      "mesh": "Warm ivory unprinted paper label",
+      "triangles": 1280,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9906271696090698
+    },
+    {
+      "mesh": "Complete Luminous Face Oil print",
+      "triangles": 1280,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9906270503997803
+    }
+  ],
+  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks."
+}
