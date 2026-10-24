@@ -1,0 +1,968 @@
+{
+  "version": "client1.9",
+  "status": "local-review-only",
+  "published": false,
+  "userScope": "24 homepage featured products; open each browser preview and continue; hold all production publication for joint review",
+  "featuredCount": 24,
+  "posterCount": 54,
+  "modelCount": 24,
+  "containsFormula": false,
+  "measuredDimensions": false,
+  "preview": "http://127.0.0.1:8784/model-review.html",
+  "generatedAt": "2026-10-24T15:11:56+08:00",
+  "validation": {
+    "rootTests": {
+      "passed": 184,
+      "skipped": 3,
+      "total": 187
+    },
+    "backendTests": 264,
+    "deploymentTests": 32,
+    "motionModuleTests": 62,
+    "motionDOMTests": 29,
+    "loginTests": 12,
+    "buildChecks": "passed",
+    "browserDesktopModels": 24,
+    "browserMobileModels": 24,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "aestheticReview": "Impeccable scan plus rendered desktop/mobile review; preserved existing approved typography",
+    "refinements": [
+      "independent logo layer and fixed text",
+      "cap and overcap separation",
+      "small twin relative transforms",
+      "jar typography spacing",
+      "rose border UV and capacity duplication",
+      "cork texture and tapered silhouette"
+    ]
+  },
+  "models": [
+    {
+      "name": "beach-magic-packaging.glb",
+      "kind": "model",
+      "file": "packaging-assets/beach-magic-packaging.glb",
+      "productionTarget": "assets/packaging/beach-magic-packaging.glb",
+      "bytes": 2395680,
+      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
+    },
+    {
+      "name": "liaose-pump.glb",
+      "kind": "model",
+      "file": "packaging-assets/liaose-pump.glb",
+      "productionTarget": "assets/packaging/liaose-pump.glb",
+      "bytes": 996144,
+      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    },
+    {
+      "name": "poster-013.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-013.glb",
+      "productionTarget": "assets/packaging/poster-013.glb",
+      "bytes": 500252,
+      "sha256": "1f59b159772df947f6b3679a269da33086a1df55409821915145bd78bad1834a"
+    },
+    {
+      "name": "poster-039.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-039.glb",
+      "productionTarget": "assets/packaging/poster-039.glb",
+      "bytes": 479708,
+      "sha256": "c21528b57d39ed2c1bfa6182dd28f6e5c59e3b00815bdfcf62d9ca67e29c4dee"
+    },
+    {
+      "name": "poster-049.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-049.glb",
+      "productionTarget": "assets/packaging/poster-049.glb",
+      "bytes": 1230240,
+      "sha256": "5bef55a16d90c3d05642ca24581a39b9aa666a254bc39b79695ed170cc0e73cb"
+    },
+    {
+      "name": "poster-042.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-042.glb",
+      "productionTarget": "assets/packaging/poster-042.glb",
+      "bytes": 450384,
+      "sha256": "8f70c4371851d7e07b58dde97b0a3a132a0f8fb1d818ca59595d7f1903e907b3"
+    },
+    {
+      "name": "poster-051.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-051.glb",
+      "productionTarget": "assets/packaging/poster-051.glb",
+      "bytes": 1665920,
+      "sha256": "c557548357c80ad2c81ed938d29dd811f9a45c1dba650ee72d751f198630f3d9"
+    },
+    {
+      "name": "poster-044.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-044.glb",
+      "productionTarget": "assets/packaging/poster-044.glb",
+      "bytes": 1317460,
+      "sha256": "e96bf1bcc88bed0bc178dcba825e5437846d84c550d61306f130ee192f6dd6c9"
+    },
+    {
+      "name": "poster-047.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-047.glb",
+      "productionTarget": "assets/packaging/poster-047.glb",
+      "bytes": 627052,
+      "sha256": "5c49307c710abb75db53a96fa3fd53ecfc74af0d6395c77b52b26e42c63f6d5b"
+    },
+    {
+      "name": "poster-056.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-056.glb",
+      "productionTarget": "assets/packaging/poster-056.glb",
+      "bytes": 414448,
+      "sha256": "81298e54155f7907b8f026a4c9fc57f517eed3bc6ca5f17c470fb69be71cb31e"
+    },
+    {
+      "name": "poster-057.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-057.glb",
+      "productionTarget": "assets/packaging/poster-057.glb",
+      "bytes": 1219852,
+      "sha256": "b443ada8ff09caf52bdc67715a5cbb8328a453fcf9a8ab1494d7435a165cad98"
+    },
+    {
+      "name": "poster-058.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-058.glb",
+      "productionTarget": "assets/packaging/poster-058.glb",
+      "bytes": 1208996,
+      "sha256": "3d17de8dee635226038add19572d55e1f4eef5f219b2d97e112f7932d544c81a"
+    },
+    {
+      "name": "poster-059.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-059.glb",
+      "productionTarget": "assets/packaging/poster-059.glb",
+      "bytes": 2260220,
+      "sha256": "e3b12d17793283415a47ce7dbb40e6189a3ccbc2d1879e4c75c2693ec1880dda"
+    },
+    {
+      "name": "poster-060.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-060.glb",
+      "productionTarget": "assets/packaging/poster-060.glb",
+      "bytes": 1222356,
+      "sha256": "33ac08ba4bf924b3f904c3c8dc737cbc0f39d246e60366e5b8fe11d5faa0cb39"
+    },
+    {
+      "name": "poster-061.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-061.glb",
+      "productionTarget": "assets/packaging/poster-061.glb",
+      "bytes": 2515448,
+      "sha256": "d518700376a61f51b44fb7c17d83f135ece15ddc3728cd646a8edd3c7a7fa5bc"
+    },
+    {
+      "name": "poster-062.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-062.glb",
+      "productionTarget": "assets/packaging/poster-062.glb",
+      "bytes": 487128,
+      "sha256": "d42152ff86fe51918ca1419ea6abf9474667f527116cafda36574331148036ed"
+    },
+    {
+      "name": "poster-063.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-063.glb",
+      "productionTarget": "assets/packaging/poster-063.glb",
+      "bytes": 512992,
+      "sha256": "b8c72efa7b31400ee72557982b59515a2a3cabe12a1c2f6b1fab9b2e614696d5"
+    },
+    {
+      "name": "poster-064.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-064.glb",
+      "productionTarget": "assets/packaging/poster-064.glb",
+      "bytes": 2169528,
+      "sha256": "59ebdc2b3a901965ed90363eec5b4e79b6d7a58b8ab2a65676472fab8ed07a2e"
+    },
+    {
+      "name": "poster-065.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-065.glb",
+      "productionTarget": "assets/packaging/poster-065.glb",
+      "bytes": 1362548,
+      "sha256": "3d1fab3f4ef5f093ab8117b10a57e8862e1e4445ac34fc6b311a90b190a83bfb"
+    },
+    {
+      "name": "poster-066.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-066.glb",
+      "productionTarget": "assets/packaging/poster-066.glb",
+      "bytes": 2502492,
+      "sha256": "73286b0338f11fc8001ff94a3ba30c354fa3fd9e1efaa84c2b0c428d47effb36"
+    },
+    {
+      "name": "poster-067.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-067.glb",
+      "productionTarget": "assets/packaging/poster-067.glb",
+      "bytes": 1663284,
+      "sha256": "44a24d9f28ecc1d491f91c825706bcd0263999f299854ae92c8a141813dde00d"
+    },
+    {
+      "name": "poster-068.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-068.glb",
+      "productionTarget": "assets/packaging/poster-068.glb",
+      "bytes": 514600,
+      "sha256": "2742301b2ef4eb928accd0c2d80ad2cb0322706a5225946d189e65a0197d9455"
+    },
+    {
+      "name": "poster-069.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-069.glb",
+      "productionTarget": "assets/packaging/poster-069.glb",
+      "bytes": 620268,
+      "sha256": "a176afac92b979d1e5d022bd82026f29b36b7480c8bac6a1e3d1f25f66b98f94"
+    },
+    {
+      "name": "poster-070.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-070.glb",
+      "productionTarget": "assets/packaging/poster-070.glb",
+      "bytes": 527704,
+      "sha256": "9d47f6b1ad5b7489d597096301f2067d196bb112394fb16b7593330d4e1d0588"
+    }
+  ],
+  "mobileResults": [
+    {
+      "id": "poster-012",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9996736369023708,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.02499184092255927,
+          0.0039986945476094835,
+          0.03498857729158298
+        ],
+        "components": [
+          "cap",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 21,
+        "triangles": 264066
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-013",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9991748794725644,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294801740677156,
+          0.09991748794725645,
+          0.8592903963464054
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 35938
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-039",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.999462560912771,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296614133750457,
+          0.09994625609127711,
+          0.859537802384983
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 35938
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-049",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9991922698182388,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294911299854905,
+          0.09991922698182389,
+          0.8593053520436854
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 99,
+        "triangles": 120890
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-042",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9994809665366013,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296730089180589,
+          0.09994809665366014,
+          0.8595536312214771
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 13,
+        "triangles": 41450
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-051",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9991964258546535,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294937482884317,
+          0.09991964258546536,
+          0.859308926235002
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 55,
+        "triangles": 84254
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-044",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9992593508891586,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6295333910601699,
+          0.09992593508891587,
+          0.8593630417646764
+        ],
+        "components": [
+          "head",
+          "overcap",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 101,
+        "triangles": 122426
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-047",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9995261724315982,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6297014886319069,
+          0.09995261724315983,
+          0.8595925082911745
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 13,
+        "triangles": 41322
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-056",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.999478216652496,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296712764910725,
+          0.09994782166524961,
+          0.8595512663211465
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 13,
+        "triangles": 39754
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-057",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9995299981177018,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6297038988141521,
+          0.0999529998117702,
+          0.8595957983812236
+        ],
+        "components": [
+          "head",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 99,
+        "triangles": 120178
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-058",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9995882122133172,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6297405736943898,
+          0.09995882122133172,
+          0.8596458625034528
+        ],
+        "components": [
+          "head",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 97,
+        "triangles": 119578
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-059",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9991653798248971,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294741892896851,
+          0.09991653798248971,
+          0.8592822266494115
+        ],
+        "components": [
+          "head",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 193,
+        "triangles": 239154
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-060",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9990939344833873,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294291787245341,
+          0.09990939344833874,
+          0.8592207836557131
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 99,
+        "triangles": 121370
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-061",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9991830969779523,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294853510961099,
+          0.09991830969779524,
+          0.859297463401039
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "outerpack",
+          "print"
+        ],
+        "meshes": 108,
+        "triangles": 132334
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-062",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9994153546576272,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296316734343052,
+          0.09994153546576273,
+          0.8594972050055594
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 35938
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-063",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9994699661442301,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.629666078670865,
+          0.09994699661442302,
+          0.8595441708840379
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 35938
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-064",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9991860297601871,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294871987489179,
+          0.09991860297601872,
+          0.8592999855937609
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 57,
+        "triangles": 112286
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-065",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9995236497949108,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296998993707938,
+          0.09995236497949109,
+          0.8595903388236233
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "outerpack",
+          "print"
+        ],
+        "meshes": 107,
+        "triangles": 123794
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-066",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9995312543323426,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6297046902293758,
+          0.09995312543323426,
+          0.8595968787258146
+        ],
+        "components": [
+          "head",
+          "overcap",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 103,
+        "triangles": 126126
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-067",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9994760084100941,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296698852983593,
+          0.09994760084100941,
+          0.8595493672326809
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 105,
+        "triangles": 158906
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-068",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9992703204420951,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.62954030187852,
+          0.09992703204420951,
+          0.8593724755802018
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "outerpack",
+          "print"
+        ],
+        "meshes": 19,
+        "triangles": 41930
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-069",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9995214299492943,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6296985008680553,
+          0.09995214299492944,
+          0.859588429756393
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "outerpack",
+          "print"
+        ],
+        "meshes": 19,
+        "triangles": 41930
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-070",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9991821133929918,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294847314375849,
+          0.09991821133929918,
+          0.8592966175179729
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 13,
+        "triangles": 34026
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    },
+    {
+      "id": "poster-071",
+      "title": "Care in colour.",
+      "state": {
+        "progress": 0.999999,
+        "renderedProgress": 0.9991933001322533,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.6294917790833195,
+          0.09991933001322534,
+          0.8593062381137379
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 80,
+        "triangles": 48372
+      },
+      "overflow": false,
+      "controlsBottom": 800,
+      "headingBottom": 149.7109375,
+      "canvasTop": 205,
+      "width": 393,
+      "height": 852
+    }
+  ],
+  "productionChanges": 0
+}

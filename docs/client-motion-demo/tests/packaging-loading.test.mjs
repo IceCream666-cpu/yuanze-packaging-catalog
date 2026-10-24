@@ -1,3 +1,4 @@
+import {PACKAGING_PRODUCTS} from '../src/structure/packaging-products.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -14,7 +15,7 @@ function deferred() {
   const promise = new Promise((yes, no) => {resolve = yes; reject = no;});
   return {promise, resolve, reject};
 }
-function harness({parse, renderError} = {}) {
+function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
   const dom = new JSDOM('<div id="host"></div>', {pretendToBeVisual: true});
   const events = [], frames = new Map(); let frameId = 0, rendererDisposals = 0, envDisposals = 0, observers = 0;
   Object.assign(globalThis, {window: dom.window, document: dom.window.document,
@@ -37,14 +38,14 @@ function harness({parse, renderError} = {}) {
   }
   function model() {
     const scene = new Three.Group();
-    for (const name of ['Jar', 'OuterCap', 'InnerLid']) {
+    for (const name of product.parts.map(part => part.node)) {
       const part = new Three.Mesh(new Three.BoxGeometry(), new Three.MeshPhysicalMaterial());
       part.name = name; scene.add(part);
     }
     return {scene};
   }
   const module = {exports: {}};
-  new Function('require', 'module', 'exports', code)(id => id.includes('GLTFLoader')
+  new Function('require', 'module', 'exports', code)(id => id.includes('packaging-products') ? {PACKAGING_PRODUCTS} : id.includes('GLTFLoader')
     ? {GLTFLoader: class {parseAsync(bytes) {events.push('parse'); return parse ? parse(bytes) : Promise.resolve(model());}}}
     : {...Three, WebGLRenderer: Renderer, PMREMGenerator: PMREM}, module, module.exports);
   const host = document.getElementById('host');
@@ -95,7 +96,7 @@ test('closing while parsing disposes a late model and never displays it', async 
     env.controller.abort(); await assert.rejects(mounting);
     const gltf = env.model(); gltf.scene.traverse(object => object.geometry?.addEventListener('dispose', () => geometryDisposals++));
     parsing.resolve(gltf); await Promise.resolve(); await Promise.resolve();
-    assert.equal(geometryDisposals, 3); assert.equal(ready, 0); assert.equal(env.host.__packagingScene, undefined);
+    assert.equal(geometryDisposals, 4); assert.equal(ready, 0); assert.equal(env.host.__packagingScene, undefined);
     assert.deepEqual(env.counts(), {rendererDisposals: 1, envDisposals: 1, observers: 0});
   } finally {env.close();}
 });
@@ -108,4 +109,17 @@ test('a first-render failure never reports ready and releases the whole mounted 
     assert.deepEqual(env.counts(), {rendererDisposals: 1, envDisposals: 1, observers: 0});
     assert.equal(env.host.querySelector('canvas'), null); assert.equal(env.frames.size, 0);
   } finally {env.close();}
+});
+
+// Exercise the real pose branches for every product; the renderer alone is stubbed.
+for (const [id,product] of Object.entries(PACKAGING_PRODUCTS)) test(`${id} print moves outward, clamps, resets and disposes`,async()=>{
+ const env=harness({product});
+ try{
+  const api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+  api.setProgress(2);flush();assert.equal(api.getState().renderedProgress,1);assert.ok(api.getState().printOffset[2]>0);
+  assert.deepEqual(api.getState().components,product.parts.map(p=>p.key));
+  api.setProgress(-1);flush();assert.deepEqual(api.getState().printOffset,[0,0,0]);
+  api.dispose();assert.equal(env.host.querySelector('canvas'),null);
+ }finally{env.close();}
 });

@@ -317,7 +317,7 @@ function appHarness({loader} = {}) {
   return {App, counts: () => ({mounts, unmounts})};
 }
 
-test('the real App and lightweight loader make no model or module request before opening Beach Magic', async () => {
+test('the real App loads a model only after opening one of the featured products', async () => {
   const env = setup(); let requests = 0, details = 0, scenes = 0;
   globalThis.fetch = async () => {requests++; return {ok: true, arrayBuffer: async () => new ArrayBuffer(12)};};
   const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {
@@ -329,14 +329,11 @@ test('the real App and lightweight loader make no model or module request before
     await act(async () => env.root.render(<App/>));
     assert.deepEqual([requests, details, scenes], [0, 0, 0]);
     await click(document.querySelector('[data-open="poster-013"]'));
-    assert.deepEqual([requests, details, scenes], [0, 0, 0]);
-    await click(document.querySelector('[aria-label="关闭"]'));
-    await click(document.querySelector('[data-open="poster-012"]'));
     assert.deepEqual([requests, details, scenes], [1, 1, 1]);
   } finally {await env.close();}
 });
 
-test('App opens only Beach Magic as 3D and preserves another product HD/download/favorites and return focus', async () => {
+test('App opens featured models and preserves poster HD/download/favorites and return focus', async () => {
   const env = setup();
   const {App, counts} = appHarness();
   try {
@@ -344,6 +341,8 @@ test('App opens only Beach Magic as 3D and preserves another product HD/download
     assert.equal(document.querySelectorAll('[data-open]').length, 24);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
+    assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');
+    await click(byText('Original poster'));
     assert.equal(document.querySelector('.test-packaging'), null);
     assert.ok(document.querySelector('dialog.image-modal'));
     const download = document.querySelector('a[download="poster-013.webp"]'); assert.ok(download);
@@ -369,7 +368,7 @@ test('App opens only Beach Magic as 3D and preserves another product HD/download
     assert.equal(document.activeElement, beach);
     assert.equal(document.querySelector('[data-testid="showcase"]').dataset.selected, 'poster-012');
     assert.equal(document.querySelector('[data-testid="showcase"]').dataset.modal, 'false');
-    assert.deepEqual(counts(), {mounts: 1, unmounts: 1});
+    assert.deepEqual(counts(), {mounts: 2, unmounts: 2});
   } finally {await env.close();}
 });
 
@@ -397,5 +396,23 @@ test('App original-poster round trip unmounts 3D and resets HD status without lo
     await click(document.querySelector('[aria-label="关闭"]'));
     assert.equal(document.activeElement, beach);
     assert.deepEqual(counts(), {mounts: 2, unmounts: 2});
+  } finally {await env.close();}
+});
+
+test('pump fetches its own model and has five separate layers with its own heading', async () => {
+  const env = setup(); let url, mounted;
+  const pump = {...item,id:'poster-071',title:{zh:'长颈泵瓶',en:'Sculptural Pump'}};
+  globalThis.fetch = async value => {url=value; return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+  const {startPackagingModelRequest} = component('structure/PackagingDetailLoader.jsx',{allExports:true});
+  const api = {setProgress(){},dispose(){}};
+  const Detail = component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return api;}})}});
+  try {
+    const request=startPackagingModelRequest(pump.id); await request.promise; request.abort();
+    assert.equal(url,'/assets/packaging/liaose-pump.glb');
+    assert.throws(()=>startPackagingModelRequest('../../private'),/Unsupported/);
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={pump}/>));
+    assert.match(document.querySelector('h1').textContent,/Sculptural Pump/);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['PumpHead','PumpStem','Closure','BottleAssembly','LogoPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,5);
   } finally {await env.close();}
 });

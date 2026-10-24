@@ -1,0 +1,19 @@
+{
+  "id": "poster-065",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "LogoPrint",
+    "OuterPack"
+  ],
+  "height": 2.9,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-065.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ]
+}

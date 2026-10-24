@@ -1,0 +1,1730 @@
+{
+  "poster-013": {
+    "file": "poster-013.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "InnerLid",
+        "title": [
+          "提拉内盖",
+          "Inner lid"
+        ],
+        "short": [
+          "内盖",
+          "Inner lid"
+        ],
+        "detail": [
+          "独立内盖随展开分离。",
+          "The inner lid separates with the opening."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "罐身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-039": {
+    "file": "poster-039.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "InnerLid",
+        "title": [
+          "提拉内盖",
+          "Inner lid"
+        ],
+        "short": [
+          "内盖",
+          "Inner lid"
+        ],
+        "detail": [
+          "独立内盖随展开分离。",
+          "The inner lid separates with the opening."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "罐身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-049": {
+    "file": "poster-049.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-042": {
+    "file": "poster-042.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-051": {
+    "file": "poster-051.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-044": {
+    "file": "poster-044.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明保护盖",
+          "Overcap"
+        ],
+        "short": [
+          "保护盖",
+          "Overcap"
+        ],
+        "detail": [
+          "保护盖位于最上层。",
+          "The protective cover lifts to the top."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-047": {
+    "file": "poster-047.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-056": {
+    "file": "poster-056.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-057": {
+    "file": "poster-057.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "滴管",
+          "Dropper"
+        ],
+        "short": [
+          "滴管",
+          "Dropper"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-058": {
+    "file": "poster-058.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "滴管",
+          "Dropper"
+        ],
+        "short": [
+          "滴管",
+          "Dropper"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-059": {
+    "file": "poster-059.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": true,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "滴管",
+          "Dropper"
+        ],
+        "short": [
+          "滴管",
+          "Dropper"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-060": {
+    "file": "poster-060.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "喷头",
+          "Spray head"
+        ],
+        "short": [
+          "喷头",
+          "Spray head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-061": {
+    "file": "poster-061.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": true,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "outerpack",
+        "node": "OuterPack",
+        "title": [
+          "配套外包装",
+          "Outer pack"
+        ],
+        "short": [
+          "外包装",
+          "Outer pack"
+        ],
+        "detail": [
+          "保留组合包装的独立轮廓。",
+          "A separate companion packaging shape."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-062": {
+    "file": "poster-062.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "InnerLid",
+        "title": [
+          "提拉内盖",
+          "Inner lid"
+        ],
+        "short": [
+          "内盖",
+          "Inner lid"
+        ],
+        "detail": [
+          "独立内盖随展开分离。",
+          "The inner lid separates with the opening."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "罐身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-063": {
+    "file": "poster-063.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "InnerLid",
+        "title": [
+          "提拉内盖",
+          "Inner lid"
+        ],
+        "short": [
+          "内盖",
+          "Inner lid"
+        ],
+        "detail": [
+          "独立内盖随展开分离。",
+          "The inner lid separates with the opening."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "罐身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-064": {
+    "file": "poster-064.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-065": {
+    "file": "poster-065.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": true,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "outerpack",
+        "node": "OuterPack",
+        "title": [
+          "配套外包装",
+          "Outer pack"
+        ],
+        "short": [
+          "外包装",
+          "Outer pack"
+        ],
+        "detail": [
+          "保留组合包装的独立轮廓。",
+          "A separate companion packaging shape."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-066": {
+    "file": "poster-066.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明保护盖",
+          "Overcap"
+        ],
+        "short": [
+          "保护盖",
+          "Overcap"
+        ],
+        "detail": [
+          "保护盖位于最上层。",
+          "The protective cover lifts to the top."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-067": {
+    "file": "poster-067.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压泵头",
+          "Pump head"
+        ],
+        "short": [
+          "泵头",
+          "Pump head"
+        ],
+        "detail": [
+          "查看上部按压或滴管部件。",
+          "Explore the actuator or dropper."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "泵杆",
+          "Stem"
+        ],
+        "short": [
+          "泵杆",
+          "Stem"
+        ],
+        "detail": [
+          "泵头下方的连接层。",
+          "Connection beneath the pump head."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-068": {
+    "file": "poster-068.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": true,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "outerpack",
+        "node": "OuterPack",
+        "title": [
+          "配套外包装",
+          "Outer pack"
+        ],
+        "short": [
+          "外包装",
+          "Outer pack"
+        ],
+        "detail": [
+          "保留组合包装的独立轮廓。",
+          "A separate companion packaging shape."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-069": {
+    "file": "poster-069.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": true,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "outerpack",
+        "node": "OuterPack",
+        "title": [
+          "配套外包装",
+          "Outer pack"
+        ],
+        "short": [
+          "外包装",
+          "Outer pack"
+        ],
+        "detail": [
+          "保留组合包装的独立轮廓。",
+          "A separate companion packaging shape."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  },
+  "poster-070": {
+    "file": "poster-070.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "外盖 / 旋盖",
+          "Closure"
+        ],
+        "short": [
+          "外盖",
+          "Closure"
+        ],
+        "detail": [
+          "展开查看外盖与瓶口的关系。",
+          "Explore the closure and neck."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "瓶身 / 罐身",
+          "Body"
+        ],
+        "short": [
+          "瓶身",
+          "Body"
+        ],
+        "detail": [
+          "查看瓶壁、瓶口与底部轮廓。",
+          "Inspect the walls, mouth and base."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "Logo 印刷",
+          "Print"
+        ],
+        "short": [
+          "印刷",
+          "Print"
+        ],
+        "detail": [
+          "滑动时向外展开，合拢时回到原位。",
+          "Moves outward and returns when closed."
+        ]
+      }
+    ]
+  }
+}

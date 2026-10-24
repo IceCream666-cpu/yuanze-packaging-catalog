@@ -1,0 +1,19 @@
+{
+  "id": "poster-044",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Overcap",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-044.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ]
+}

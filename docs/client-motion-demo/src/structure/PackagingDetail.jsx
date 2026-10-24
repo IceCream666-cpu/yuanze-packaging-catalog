@@ -1,3 +1,5 @@
+import {PACKAGING_PRODUCTS} from './packaging-products.js';
+import featured from '../featured.json';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowLeft, Heart, Focus, Image as ImageIcon, RotateCcw, RotateCw } from 'lucide-react';
 import './packaging-detail.css';
@@ -37,24 +39,6 @@ function loadAnimation(signal) {
   return animationTask.promise;
 }
 
-const PARTS = [
-  {
-    key: 'cap', title: ['旋盖', 'Screw cap'],
-    detail: ['侧边细纹，内侧螺纹。', 'Fine ribs around the edge; threads inside.'],
-    short: ['外盖', 'Cap'],
-  },
-  {
-    key: 'liner', title: ['提拉内盖', 'Lift-out inner lid'],
-    detail: ['浅盘盖沿，带一体提拉片。', 'A shallow rim with an integral pull tab.'],
-    short: ['内盖', 'Inner lid'],
-  },
-  {
-    key: 'jar', title: ['透明罐身', 'Clear jar'],
-    detail: ['查看罐口螺纹、罐壁与罐底。', 'Inspect the threaded neck, walls and base.'],
-    short: ['罐身', 'Jar'],
-  },
-];
-
 const PRESETS = [
   { progress: 0, label: ['合拢', 'Closed'] },
   { progress: .5, label: ['半展开', 'Half open'] },
@@ -69,6 +53,9 @@ function stageFor(progress) {
 
 export default function PackagingDetail({ item, lang, onClose, onOriginal, onFavorite, saved, logo, getModelRequest, getSceneModule }) {
   const zh = lang === 'zh';
+  const product = PACKAGING_PRODUCTS[item.id];
+  const design = featured.find(value => value.id === item.id);
+  const PARTS = product.parts;
   const languageIndex = zh ? 0 : 1;
   const rootRef = useRef(null);
   const scrollRef = useRef(null);
@@ -197,7 +184,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
         if (!active || failedDuringMount) return;
         mark('sceneModule');
         const mountedApi = await mountPackagingScene(hostRef.current, {
-          modelRequest, signal: controller.signal,
+          modelRequest, product, design, signal: controller.signal,
           onError: fail,
           onReady: () => {if (active && !failedDuringMount) {clearTimeout(initializationTimer); setReady(true);}},
         });
@@ -302,7 +289,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const controlsDisabled = !ready || failed;
 
   return (
-    <div ref={rootRef} className={`packaging-detail ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'}>
+    <div ref={rootRef} className={`packaging-detail ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={{'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]}}>
       <header className="packaging-header">
         <button className="packaging-back" onClick={onClose}>
           <ArrowLeft size={18} aria-hidden="true" />
@@ -322,11 +309,11 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
         <div className="packaging-track" ref={trackRef}>
           <section className="packaging-stage" aria-labelledby="packaging-title">
             <div className="packaging-heading">
-              <h1 id="packaging-title"><span>Beach</span>{' '}<span className="packaging-title-second">Magic</span></h1>
-              <p className="packaging-intro">{zh ? 'LIAOSE 磨砂膏罐' : 'LIAOSE scrub jar'}</p>
+              <h1 id="packaging-title">{design.name.split(' ').map((word,i) => <React.Fragment key={i}>{i > 0 && ' '}<span className={i > 0 ? 'packaging-title-second' : undefined}>{word}</span></React.Fragment>)}</h1>
+              <p className="packaging-intro">{design.kind[lang]}</p>
             </div>
 
-            <div className="packaging-model" ref={hostRef} aria-label={zh ? '可拖拽旋转的三部件包材模型' : 'Three-part packaging model, drag to rotate or use the bottom view button'} />
+            <div className="packaging-model" ref={hostRef} aria-label={zh ? '可拖拽旋转的分层包材模型' : 'Layered packaging model, drag to rotate or use the bottom view button'} />
 
             {!ready && !failed && (
               <div className="packaging-loading" role="status">
@@ -337,7 +324,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
 
             {failed && (
               <div className="packaging-error" role="status">
-                <img src={item.image} alt={zh ? 'Beach Magic 原产品海报' : 'Original Beach Magic product poster'} />
+                <img src={item.image} alt={item.title[lang]} />
                 <p>{zh ? '模型暂时无法显示' : 'The model is currently unavailable'}</p>
                 <div><button onClick={() => setRetry(value => value + 1)}>{zh ? '重新加载' : 'Try again'}</button><button onClick={onOriginal}>{zh ? '查看原海报' : 'View poster'}</button></div>
               </div>

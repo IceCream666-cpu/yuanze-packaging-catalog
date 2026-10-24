@@ -1,3 +1,4 @@
+import {PACKAGING_PRODUCTS} from './packaging-products.js';
 import * as T from './vendor/three.module.js';
 import { GLTFLoader } from './vendor/GLTFLoader.js';
 
@@ -14,7 +15,7 @@ function disposeObjects(...objects) {
   geometries.forEach(g => g.dispose()); textures.forEach(t => t.dispose());
 }
 
-export async function mountPackagingScene(host, { onError, onReady, modelRequest, signal } = {}) {
+export async function mountPackagingScene(host, { onError, onReady, modelRequest, signal, product = PACKAGING_PRODUCTS['poster-012'], design = {background:'#f4c8d6',name:'Beach Magic'} } = {}) {
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
@@ -50,14 +51,14 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   renderer.toneMappingExposure = .92;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = T.PCFSoftShadowMap;
-  renderer.setClearColor(0xf4c8d6, 1);
+  renderer.setClearColor(design.background, 1);
   host.append(renderer.domElement);
   canvas = renderer.domElement;
-  canvas.setAttribute('aria-label', 'Beach Magic 三部件空罐模型，可拖拽旋转');
+  canvas.setAttribute('aria-label', `${design.name} 分层包材模型，可拖拽旋转`);
   canvas.setAttribute('role', 'img');
   canvas.style.touchAction = 'pan-y';
   scene = new T.Scene();
-  scene.background = new T.Color(0xf4c8d6);
+  scene.background = new T.Color(design.background);
   const camera = new T.OrthographicCamera(-3, 3, 3, -3, .01, 100);
   const root = new T.Group();
   scene.add(root);
@@ -107,12 +108,14 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   });
   const model = await Promise.race([parsed, aborted]);
   root.add(model);
-  model.scale.setScalar(30);
-  const parts = { jar: model.getObjectByName('Jar'), cap: model.getObjectByName('OuterCap'), liner: model.getObjectByName('InnerLid') };
+  model.scale.setScalar(product.scale);
+  const collection = product.kind === 'collection';
+  const pump = product.file === 'liaose-pump.glb';
+  const parts = Object.fromEntries(product.parts.map(part => [part.key, model.getObjectByName(part.node)]));
   if (Object.values(parts).some(v => !v)) {
-    throw new Error('The three packaging components are required.');
+    throw new Error('All approved packaging components are required.');
   }
-  const rest = Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, { p: value.position.clone(), q: value.quaternion.clone() }]));
+  const rest = Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, { p: value.position.clone(), q: value.quaternion.clone(), s: value.scale.clone() }]));
   model.traverse(o => {
     if (!o.isMesh) return;
     o.frustumCulled = false;
@@ -123,6 +126,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
+    if (pump || collection) {
+      m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
+      if (m.map) {m.depthWrite=!m.transparent; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=m.transparent?2:0;}
+      return;
+    }
+    if (o === parts.print) {m.depthWrite=false; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=2;}
     if (m.transmission > .5) {
       m.transmission = 1; m.roughness = .035; m.thickness = .0024;
       m.ior = 1.47; m.envMapIntensity = 1.05; m.color.set('#ffffff');
@@ -166,6 +175,14 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const rotationEuler = new T.Euler();
   let pointer = null;
   function pose() {
+    if (collection) {
+      const offsets={closure:[0,.48,0],liner:[0,.24,0],stem:[0,.88,0],head:[0,1.28,0],overcap:[.10,2.30,0],outerpack:[-.22,.02,-.20]};
+      for (const [key,xyz] of Object.entries(offsets)) if(parts[key]) parts[key].position.copy(rest[key].p).addScaledVector(new T.Vector3(...xyz),current);
+    } else if (pump) {
+      parts.closure.position.copy(rest.closure.p).y += .38*current;
+      parts.stem.position.copy(rest.stem.p).y += .84*current;
+      parts.head.position.copy(rest.head.p).y += 1.35*current;
+    } else {
     const capOpen = smooth(.02, .65, current), linerOpen = smooth(.27, 1, current);
     parts.cap.position.copy(rest.cap.p); parts.cap.position.y += .100 * capOpen;
     parts.cap.position.x -= .006 * capOpen;
@@ -175,11 +192,17 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     parts.liner.position.x += .002 * linerOpen;
     rotationEuler.set(.19*linerOpen, .12*linerOpen, -.1*linerOpen);
     linerTilt.setFromEuler(rotationEuler); parts.liner.quaternion.copy(rest.liner.q).multiply(linerTilt);
+    }
+    parts.print.position.copy(rest.print.p);
+    parts.print.position.x -= (pump || collection ? .63 : .025)*current;
+    parts.print.position.y += (pump || collection ? .10 : .004)*current;
+    parts.print.position.z += (pump || collection ? .86 : .035)*current;
+    parts.print.scale.copy(rest.print.s).multiplyScalar(1+.45*current);
     const aspect = width/height;
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
-    const assemblyCenter = 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -187,7 +210,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    const viewHeight = Math.max(4.2 + current*3.05 + intermediateHeadroom*1.2 + tiltHeadroom, 3.65/aspect);
+    const viewHeight = Math.max((pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (product.wide ? 4.8 : 3.65)/aspect);
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     const centerY = assemblyCenter + focus;
@@ -242,7 +265,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       selected=key; desiredYaw=0; desiredPitch=key==='liner'?.16:key==='cap'?-.15:0;
       focus=key==='cap'?.25:key==='jar'?-.12:0; invalidate();
     },
-    getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, components:Object.keys(parts), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
+    getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, printOffset:parts.print.position.clone().sub(rest.print.p).toArray(), components:Object.keys(parts), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
     dispose,
   };
   host.__packagingScene=api;

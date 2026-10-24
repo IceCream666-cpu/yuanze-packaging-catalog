@@ -29,8 +29,8 @@ class PackagingApprovalTests(unittest.TestCase):
         self.assertEqual(chunk_type, 0x4e4f534a)
         model = json.loads(glb[20:20 + json_length])
         roots = model['scenes'][model.get('scene', 0)]['nodes']
-        self.assertEqual({model['nodes'][index]['name'] for index in roots}, {'Jar', 'OuterCap', 'InnerLid'})
-        self.assertEqual(len(model['meshes']), 9)
+        self.assertEqual({model['nodes'][index]['name'] for index in roots}, {'Jar', 'OuterCap', 'InnerLid', 'LogoPrint'})
+        self.assertEqual(len(model['meshes']), 10)
         self.assertFalse(model.get('animations'))
         self.assertFalse(model.get('cameras'))
         self.assertNotIn('KHR_lights_punctual', model.get('extensions', {}))
@@ -72,7 +72,7 @@ class PackagingApprovalTests(unittest.TestCase):
             base = Path(directory)
             shutil.copytree(builder.MOTION_CLIENT / 'packaging-assets', base / 'packaging-assets')
             shutil.copyfile(builder.MOTION_CLIENT / 'packaging-manifest.json', base / 'packaging-manifest.json')
-            self.assertEqual(builder.prepare_packaging_assets(base), 3)
+            self.assertEqual(builder.prepare_packaging_assets(base), len(builder.PACKAGING_ASSETS))
             expected = {f'assets/packaging/{name}' for name in builder.PACKAGING_ASSETS}
             self.assertEqual({path.relative_to(base / 'public').as_posix()
                               for path in (base / 'public').rglob('*') if path.is_file()}, expected)
@@ -125,7 +125,7 @@ class BuildGraphTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             base = Path(directory)
             _, _, expected = self.fixture(base)
-            for edition in ('client16', 'client18'):
+            for edition in ('client16', 'client19'):
                 with self.subTest(edition=edition):
                     self.assertEqual(builder.release_file_names(base, edition), expected)
             for edition in ('client1', 'client12', 'client13', 'client14', 'client15'):
@@ -149,14 +149,14 @@ class BuildGraphTests(unittest.TestCase):
                 mutate(graph)
                 (release / '.vite/manifest.json').write_text(json.dumps(graph))
                 with self.assertRaises(ValueError):
-                    builder.release_file_names(base, 'client18')
+                    builder.release_file_names(base, 'client19')
         for name in ('private.json', 'assets/packaging/extra-12345678.js', 'preview.js.map'):
             with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
                 base = Path(directory)
                 release, _, _ = self.fixture(base)
                 (release / name).write_text('unreviewed')
                 with self.assertRaisesRegex(ValueError, 'differs from its build graph'):
-                    builder.release_file_names(base, 'client18')
+                    builder.release_file_names(base, 'client19')
 
     def test_symlinked_chunks_and_parent_directories_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -166,7 +166,7 @@ class BuildGraphTests(unittest.TestCase):
             path.unlink()
             path.symlink_to(release / 'preview.js')
             with self.assertRaisesRegex(ValueError, 'symlink'):
-                builder.release_file_names(base, 'client18')
+                builder.release_file_names(base, 'client19')
             with self.assertRaisesRegex(ValueError, 'symlink'):
                 builder.source_file(release, path.relative_to(release).as_posix())
             (release / 'alias').symlink_to(release / 'assets', target_is_directory=True)
@@ -178,7 +178,7 @@ class BuildGraphTests(unittest.TestCase):
             with self.subTest(tamper_graph=tamper_graph), tempfile.TemporaryDirectory() as directory:
                 base = Path(directory)
                 release, graph, names = self.fixture(base)
-                stamp = {'version': 'client1.8', 'sourceSha256': 'source',
+                stamp = {'version': 'client1.9', 'sourceSha256': 'source',
                          'files': {name: hashlib.sha256((release / name).read_bytes()).hexdigest() for name in names},
                          'viteManifestSha256': hashlib.sha256((release / '.vite/manifest.json').read_bytes()).hexdigest()}
                 (release / 'build.json').write_text(json.dumps(stamp))
@@ -189,7 +189,7 @@ class BuildGraphTests(unittest.TestCase):
                 with patch.object(builder, 'client_directory', return_value=base), \
                         patch.object(builder, 'client_source_hash', return_value='source'):
                     with self.assertRaisesRegex(ValueError, 'checksum mismatch'):
-                        builder.client_files({}, 'client18')
+                        builder.client_files({}, 'client19')
 
 
 class RecursiveSourceTests(unittest.TestCase):
@@ -206,16 +206,16 @@ class RecursiveSourceTests(unittest.TestCase):
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(name)
             with patch.object(builder, 'client_directory', return_value=base):
-                before = builder.client_source_hash('client18')
+                before = builder.client_source_hash('client19')
                 for name in ['src/structure/vendor/three.module.js', 'src/structure/packaging-detail.css',
                              'packaging-assets/beach-magic-packaging.glb', 'packaging-manifest.json']:
                     path = base / name
                     original = path.read_bytes()
                     path.write_bytes(original + b'changed')
-                    self.assertNotEqual(builder.client_source_hash('client18'), before, name)
+                    self.assertNotEqual(builder.client_source_hash('client19'), before, name)
                     path.write_bytes(original)
                 (base / 'src/structure/new.js').write_text('new nested source')
-                self.assertNotEqual(builder.client_source_hash('client18'), before)
+                self.assertNotEqual(builder.client_source_hash('client19'), before)
 
     def test_original_flat_client1_source_stamp_is_still_valid(self):
         stamp = json.loads((builder.CLIENT / 'release/build.json').read_text())
@@ -225,7 +225,7 @@ class RecursiveSourceTests(unittest.TestCase):
 class BuiltPackagingLazyLoadTests(unittest.TestCase):
     def test_initial_import_graph_excludes_three_gsap_model_and_detail_styles(self):
         client = builder.MOTION_CLIENT
-        names = builder.release_file_names(client, 'client18')
+        names = builder.release_file_names(client, 'client19')
         graph = json.loads((client / 'release/.vite/manifest.json').read_text())
         pending, visited, initial = ['index.html'], set(), set()
         while pending:

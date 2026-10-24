@@ -1,11 +1,12 @@
 {
   "schema": 1,
-  "scope": "approved-client1.6-packaging",
+  "scope": "local-review-client1.9-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
     "OuterCap",
-    "InnerLid"
+    "InnerLid",
+    "LogoPrint"
   ],
   "containsFormula": false,
   "files": [
@@ -14,8 +15,8 @@
       "kind": "model",
       "file": "packaging-assets/beach-magic-packaging.glb",
       "productionTarget": "assets/packaging/beach-magic-packaging.glb",
-      "bytes": 2394816,
-      "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      "bytes": 2395680,
+      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
     },
     {
       "name": "gsap.min.js",
@@ -32,6 +33,433 @@
       "productionTarget": "assets/packaging/ScrollTrigger.min.js",
       "bytes": 44157,
       "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+    },
+    {
+      "name": "liaose-pump.glb",
+      "kind": "model",
+      "file": "packaging-assets/liaose-pump.glb",
+      "productionTarget": "assets/packaging/liaose-pump.glb",
+      "bytes": 996144,
+      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    },
+    {
+      "name": "poster-013.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-013.glb",
+      "productionTarget": "assets/packaging/poster-013.glb",
+      "bytes": 500252,
+      "sha256": "1f59b159772df947f6b3679a269da33086a1df55409821915145bd78bad1834a"
+    },
+    {
+      "name": "poster-039.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-039.glb",
+      "productionTarget": "assets/packaging/poster-039.glb",
+      "bytes": 479708,
+      "sha256": "c21528b57d39ed2c1bfa6182dd28f6e5c59e3b00815bdfcf62d9ca67e29c4dee"
+    },
+    {
+      "name": "poster-049.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-049.glb",
+      "productionTarget": "assets/packaging/poster-049.glb",
+      "bytes": 1230240,
+      "sha256": "5bef55a16d90c3d05642ca24581a39b9aa666a254bc39b79695ed170cc0e73cb"
+    },
+    {
+      "name": "poster-042.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-042.glb",
+      "productionTarget": "assets/packaging/poster-042.glb",
+      "bytes": 450384,
+      "sha256": "8f70c4371851d7e07b58dde97b0a3a132a0f8fb1d818ca59595d7f1903e907b3"
+    },
+    {
+      "name": "poster-051.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-051.glb",
+      "productionTarget": "assets/packaging/poster-051.glb",
+      "bytes": 1665920,
+      "sha256": "c557548357c80ad2c81ed938d29dd811f9a45c1dba650ee72d751f198630f3d9"
+    },
+    {
+      "name": "poster-044.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-044.glb",
+      "productionTarget": "assets/packaging/poster-044.glb",
+      "bytes": 1317460,
+      "sha256": "e96bf1bcc88bed0bc178dcba825e5437846d84c550d61306f130ee192f6dd6c9"
+    },
+    {
+      "name": "poster-047.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-047.glb",
+      "productionTarget": "assets/packaging/poster-047.glb",
+      "bytes": 627052,
+      "sha256": "5c49307c710abb75db53a96fa3fd53ecfc74af0d6395c77b52b26e42c63f6d5b"
+    },
+    {
+      "name": "poster-056.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-056.glb",
+      "productionTarget": "assets/packaging/poster-056.glb",
+      "bytes": 414448,
+      "sha256": "81298e54155f7907b8f026a4c9fc57f517eed3bc6ca5f17c470fb69be71cb31e"
+    },
+    {
+      "name": "poster-057.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-057.glb",
+      "productionTarget": "assets/packaging/poster-057.glb",
+      "bytes": 1219852,
+      "sha256": "b443ada8ff09caf52bdc67715a5cbb8328a453fcf9a8ab1494d7435a165cad98"
+    },
+    {
+      "name": "poster-058.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-058.glb",
+      "productionTarget": "assets/packaging/poster-058.glb",
+      "bytes": 1208996,
+      "sha256": "3d17de8dee635226038add19572d55e1f4eef5f219b2d97e112f7932d544c81a"
+    },
+    {
+      "name": "poster-059.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-059.glb",
+      "productionTarget": "assets/packaging/poster-059.glb",
+      "bytes": 2260220,
+      "sha256": "e3b12d17793283415a47ce7dbb40e6189a3ccbc2d1879e4c75c2693ec1880dda"
+    },
+    {
+      "name": "poster-060.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-060.glb",
+      "productionTarget": "assets/packaging/poster-060.glb",
+      "bytes": 1222356,
+      "sha256": "33ac08ba4bf924b3f904c3c8dc737cbc0f39d246e60366e5b8fe11d5faa0cb39"
+    },
+    {
+      "name": "poster-061.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-061.glb",
+      "productionTarget": "assets/packaging/poster-061.glb",
+      "bytes": 2515448,
+      "sha256": "d518700376a61f51b44fb7c17d83f135ece15ddc3728cd646a8edd3c7a7fa5bc"
+    },
+    {
+      "name": "poster-062.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-062.glb",
+      "productionTarget": "assets/packaging/poster-062.glb",
+      "bytes": 487128,
+      "sha256": "d42152ff86fe51918ca1419ea6abf9474667f527116cafda36574331148036ed"
+    },
+    {
+      "name": "poster-063.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-063.glb",
+      "productionTarget": "assets/packaging/poster-063.glb",
+      "bytes": 512992,
+      "sha256": "b8c72efa7b31400ee72557982b59515a2a3cabe12a1c2f6b1fab9b2e614696d5"
+    },
+    {
+      "name": "poster-064.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-064.glb",
+      "productionTarget": "assets/packaging/poster-064.glb",
+      "bytes": 2169528,
+      "sha256": "59ebdc2b3a901965ed90363eec5b4e79b6d7a58b8ab2a65676472fab8ed07a2e"
+    },
+    {
+      "name": "poster-065.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-065.glb",
+      "productionTarget": "assets/packaging/poster-065.glb",
+      "bytes": 1362548,
+      "sha256": "3d1fab3f4ef5f093ab8117b10a57e8862e1e4445ac34fc6b311a90b190a83bfb"
+    },
+    {
+      "name": "poster-066.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-066.glb",
+      "productionTarget": "assets/packaging/poster-066.glb",
+      "bytes": 2502492,
+      "sha256": "73286b0338f11fc8001ff94a3ba30c354fa3fd9e1efaa84c2b0c428d47effb36"
+    },
+    {
+      "name": "poster-067.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-067.glb",
+      "productionTarget": "assets/packaging/poster-067.glb",
+      "bytes": 1663284,
+      "sha256": "44a24d9f28ecc1d491f91c825706bcd0263999f299854ae92c8a141813dde00d"
+    },
+    {
+      "name": "poster-068.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-068.glb",
+      "productionTarget": "assets/packaging/poster-068.glb",
+      "bytes": 514600,
+      "sha256": "2742301b2ef4eb928accd0c2d80ad2cb0322706a5225946d189e65a0197d9455"
+    },
+    {
+      "name": "poster-069.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-069.glb",
+      "productionTarget": "assets/packaging/poster-069.glb",
+      "bytes": 620268,
+      "sha256": "a176afac92b979d1e5d022bd82026f29b36b7480c8bac6a1e3d1f25f66b98f94"
+    },
+    {
+      "name": "poster-070.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-070.glb",
+      "productionTarget": "assets/packaging/poster-070.glb",
+      "bytes": 527704,
+      "sha256": "9d47f6b1ad5b7489d597096301f2067d196bb112394fb16b7593330d4e1d0588"
     }
-  ]
+  ],
+  "additionalProducts": [
+    {
+      "posterId": "poster-071",
+      "file": "liaose-pump.glb",
+      "components": [
+        "BottleAssembly",
+        "Closure",
+        "PumpStem",
+        "PumpHead",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-013",
+      "file": "poster-013.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-039",
+      "file": "poster-039.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-049",
+      "file": "poster-049.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-042",
+      "file": "poster-042.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-051",
+      "file": "poster-051.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-044",
+      "file": "poster-044.glb",
+      "components": [
+        "Actuator",
+        "Overcap",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-047",
+      "file": "poster-047.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-056",
+      "file": "poster-056.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-057",
+      "file": "poster-057.glb",
+      "components": [
+        "Actuator",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-058",
+      "file": "poster-058.glb",
+      "components": [
+        "Actuator",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-059",
+      "file": "poster-059.glb",
+      "components": [
+        "Actuator",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-060",
+      "file": "poster-060.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-061",
+      "file": "poster-061.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "OuterPack",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-062",
+      "file": "poster-062.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-063",
+      "file": "poster-063.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-064",
+      "file": "poster-064.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-065",
+      "file": "poster-065.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "OuterPack",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-066",
+      "file": "poster-066.glb",
+      "components": [
+        "Actuator",
+        "Overcap",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-067",
+      "file": "poster-067.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-068",
+      "file": "poster-068.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "OuterPack",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-069",
+      "file": "poster-069.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "OuterPack",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-070",
+      "file": "poster-070.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "LogoPrint"
+      ]
+    }
+  ],
+  "publicationApproved": false
 }

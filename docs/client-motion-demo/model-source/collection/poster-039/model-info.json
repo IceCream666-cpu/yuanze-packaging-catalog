@@ -1,0 +1,17 @@
+{
+  "id": "poster-039",
+  "components": [
+    "Body",
+    "Closure",
+    "InnerLid",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-039.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ]
+}

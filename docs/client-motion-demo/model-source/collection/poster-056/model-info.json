@@ -1,0 +1,16 @@
+{
+  "id": "poster-056",
+  "components": [
+    "Body",
+    "Closure",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-056.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ]
+}

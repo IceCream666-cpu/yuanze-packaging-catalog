@@ -1,0 +1,17 @@
+{
+  "id": "poster-058",
+  "components": [
+    "Body",
+    "Closure",
+    "Actuator",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-058.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ]
+}

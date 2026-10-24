@@ -1,0 +1,17 @@
+{
+  "id": "poster-069",
+  "components": [
+    "Body",
+    "Closure",
+    "LogoPrint",
+    "OuterPack"
+  ],
+  "height": 2.9,
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "featured-assets/poster-069.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ]
+}

@@ -1,3 +1,4 @@
+import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {ArrowRight, Check, ChevronLeft, ChevronRight, Download, GalleryHorizontalEnd, Heart, Images, Info, LayoutGrid, LogOut, Maximize2, Search, X, ZoomIn, ZoomOut} from 'lucide-react';
@@ -70,6 +71,12 @@ function App() {
   const categoryName = id => categories.find(c => c[0] === id)?.[lang === 'zh' ? 1 : 2];
   const stageKey = filtered.map(p => p.id).join('|');
 
+  useEffect(() => {
+    if (production) return;
+    const id = new URLSearchParams(window.location.search).get('model');
+    const item = posters.find(value => value.id === id);
+    if (item && PACKAGING_PRODUCTS[id]) {setFeaturedId(id); setModal({type:'packaging',item});}
+  }, []);
   useEffect(() => {document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';}, [lang]);
   useEffect(() => {
     if (!production) return;
@@ -107,7 +114,7 @@ function App() {
   }
   function open(type, item) {
     triggerRef.current = document.activeElement;
-    setHd(false); setZoom(false); setHdStatus('idle'); setImageAttempt(0); setModal({type: type === 'image' && item?.id === 'poster-012' ? 'packaging' : type, item});
+    setHd(false); setZoom(false); setHdStatus('idle'); setImageAttempt(0); setModal({type: type === 'image' && PACKAGING_PRODUCTS[item?.id] ? 'packaging' : type, item});
   }
   function close() {setModal(null);}
   function reset() {setCategory('all'); setStyle('all'); setQuery('');}
