@@ -27,7 +27,7 @@ def mesh(name, vertices, faces, mat):
     parts.append(obj)
     return obj
 
-def revolve(name, profile, mat, sides=96, depth=1, exponent=2):
+def revolve(name, profile, mat, sides=96, depth=1, exponent=2, caps=True):
     vertices=[]; faces=[]
     for z,r in profile:
         for i in range(sides):
@@ -37,7 +37,7 @@ def revolve(name, profile, mat, sides=96, depth=1, exponent=2):
         for i in range(sides):
             a=j*sides+i; b=j*sides+(i+1)%sides
             faces.append((a,b,b+sides,a+sides))
-    faces += [tuple(reversed(range(sides))), tuple((len(profile)-1)*sides+i for i in range(sides))]
+    if caps: faces += [tuple(reversed(range(sides))), tuple((len(profile)-1)*sides+i for i in range(sides))]
     return mesh(name,vertices,faces,mat)
 
 outline=[(.0,.57),(.016,.65),(.045,.70),(.09,.725),(.19,.735),(.40,.735),(.57,.72),(.73,.665),(.91,.53),(1.09,.385),(1.29,.275),(1.49,.223),(1.7,.21),(1.9,.21)]
@@ -49,9 +49,10 @@ def radius(z):
             return (2*t**3-3*t*t+1)*a[1]+(t**3-2*t*t+t)*dz*m0+(-2*t**3+3*t*t)*b[1]+(t**3-t*t)*dz*m1
     return outline[-1][1]
 profile=[(a[0]+(b[0]-a[0])*j/8,radius(a[0]+(b[0]-a[0])*j/8)) for a,b in zip(outline,outline[1:]) for j in range(8)]+[outline[-1]]
-bottle=revolve('Bottle',profile,body_mat,128,.72,2.65)
-revolve('Neck collar',[(1.87,.21),(1.88,.243),(1.90,.259),(1.93,.266),(2.015,.266),(2.045,.25),(2.055,.235)],pump_mat)
-revolve('Ribbed closure',[(2.045,.226),(2.06,.235),(2.32,.235),(2.35,.224),(2.36,.215)],pump_mat)
+# The shallow neck cavity is illustrative; a measured interior needs supplier drawings.
+bottle=revolve('Bottle',profile+[(1.9,.18),(1.60,.18),(1.58,.001)],body_mat,128,.72,2.65)
+revolve('Neck collar',[(1.87,.21),(1.88,.243),(1.90,.259),(1.93,.266),(2.015,.266),(2.045,.25),(2.055,.235),(2.055,.201),(1.87,.201),(1.87,.21)],pump_mat,caps=False)
+revolve('Ribbed closure',[(2.045,.226),(2.06,.235),(2.32,.235),(2.35,.224),(2.36,.215),(2.36,.1),(2.325,.1),(2.32,.204),(2.045,.204),(2.045,.226)],pump_mat,caps=False)
 for i in range(64):
     a=2*math.pi*i/64
     bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6, location=(.235*math.cos(a),.235*math.sin(a),2.203))
@@ -111,8 +112,19 @@ for f in decal.data.polygons:
     for li in f.loop_indices:
         vi=decal.data.loops[li].vertex_index;uv.data[li].uv=(vi%(nx+1)/nx,vi//(nx+1)/ny)
 
+groups={}
+for name in ('BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint'):
+    group=bpy.data.objects.new(name,None);bpy.context.collection.objects.link(group);groups[name]=group
+for obj in parts:
+    if obj.name=='Front liaose print': key='LogoPrint'
+    elif obj.name=='Bottle': key='BottleAssembly'
+    elif obj.name in ('Neck collar','Ribbed closure') or obj.name.startswith('Closure rib'): key='Closure'
+    elif obj.name in ('Stem seat','Pump stem'): key='PumpStem'
+    else: key='PumpHead'
+    obj.parent=groups[key]
+assert all(group.children for group in groups.values())
 bpy.ops.object.select_all(action='DESELECT')
-for o in parts:o.select_set(True)
+for o in [*parts,*groups.values()]:o.select_set(True)
 bpy.context.view_layer.objects.active=bottle
 bpy.ops.export_scene.gltf(filepath=str(BASE/'assets/liaose-pump.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True)
 

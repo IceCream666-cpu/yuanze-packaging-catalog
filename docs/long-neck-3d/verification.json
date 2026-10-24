@@ -1,29 +1,31 @@
 {
-  "modelSha256": "27537f89716478acef77a6413e00bf68d31f7a467e8548a576fbfcff5102f0de",
-  "bytes": 967300,
+  "modelSha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936",
+  "bytes": 996144,
   "meshes": 78,
   "materials": 4,
   "embeddedTextures": 1,
-  "offlineHTMLBytes": 1896724,
+  "offlineHTMLBytes": 1937336,
   "externalModelResources": false,
   "geometryValidation": "passed",
   "productionDimensions": false,
   "browser": {
     "tool": "Ego Lite",
     "offlineFileProtocol": true,
-    "desktopReady": true,
+    "expandedDesktopReviewed": true,
     "mobileViewport": 393,
     "mobileScrollWidth": 393,
-    "mouseDrag": true,
-    "mouseWheelZoom": [
-      47,
-      61
-    ],
-    "keyboardRotateAndZoom": true,
-    "autoRotateToggle": true,
-    "reset": true,
-    "frontSideBackReviewed": true
+    "layerSliderHomeEnd": true,
+    "wheelExpansionPercent": 45,
+    "assembleAndReset": true,
+    "singleLogoMovesOutAndBack": true
   },
+  "layers": [
+    "BottleAssembly",
+    "Closure",
+    "PumpStem",
+    "PumpHead",
+    "LogoPrint"
+  ],
   "aesthetic": {
     "tool": "Impeccable",
     "findings": []
