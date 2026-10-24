@@ -136,6 +136,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
   ['poster-042', {closure: 2.8, liner: 1.35}, [-3.1, .18, 1.65]],
   ['poster-051', {closure:.9,stem:1.8,head:2.8}, [-3.4,.18,1.65]],
+  ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
   ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
@@ -166,7 +167,7 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-042' ? 5 : id === 'poster-051' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
@@ -182,10 +183,10 @@ for (const [id, lifts, printOffset] of [
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051') {
-        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*.5, `${key} half lift`);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044') {
+        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(id==='poster-044' && key==='overcap' ? 3100/4913 : .5), `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
-        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(1.225),'half print scale');
+        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' ? 1.475 : 1.225),'half print scale');
         checkSeparateLabel(.5);
       }
       api.setProgress(1); flush();
@@ -201,8 +202,8 @@ for (const [id, lifts, printOffset] of [
         assert.ok(displacement.z >= 1, 'PDRN print must lift forward from the glass surface.');
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
-      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(1.45), 'expanded print scale');
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051') checkSeparateLabel(1);
+      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' ? 1.95 : 1.45), 'expanded print scale');
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -210,7 +211,7 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051') checkSeparateLabel(0);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });
@@ -278,5 +279,35 @@ test('Pure Volume preserves matte ivory, brushed gold and translucent film witho
   assert.equal(closure.material.color.getHexString(),'a68c56');assert.equal(closure.material.metalness,1);assert.equal(closure.material.roughness,.24);
   for(const part of [body,closure]) {assert.equal(part.material.envMapIntensity,.65);assert.equal(part.castShadow,true);assert.equal(part.receiveShadow,true);}
   for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);assert.equal(part.material.roughness,.23);assert.equal(part.material.envMapIntensity,.65);assert.equal(part.material.depthWrite,false);assert.equal(part.renderOrder,2);assert.equal(part.castShadow,false);assert.equal(part.receiveShadow,false);}
+ } finally {api?.dispose();env.close();}
+});
+
+test('Gentle lettering renders above the translucent oval without tinting its black print', async () => {
+  const product=PACKAGING_PRODUCTS['poster-044']; let loaded;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  let api;
+  try {
+    loaded=env.model();
+    const label=loaded.scene.getObjectByName('PaperLabel'),print=loaded.scene.getObjectByName('LogoPrint');
+    for (const part of [label,print]) {part.material.map=new Three.Texture();part.material.transparent=true;}
+    print.material.color.set('#111714');const original=print.material.color.clone();
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.ok(print.renderOrder>label.renderOrder);
+    assert.equal(print.material.depthWrite,false);assert.equal(label.material.depthWrite,false);
+    assert.ok(print.material.color.equals(original));
+  } finally {api?.dispose();env.close();}
+});
+
+
+test('Gentle clear cover keeps its thin wall while the empty bottle retains its thicker transmission', async () => {
+ const product=PACKAGING_PRODUCTS['poster-044'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+ try {
+  loaded=env.model();
+  const body=loaded.scene.getObjectByName('Body'),cover=loaded.scene.getObjectByName('Overcap');
+  body.material.name='Gentle neutral clear bottle wall';cover.material.name='Gentle clear thin protective cover';
+  for(const part of [body,cover]){part.material.transmission=1;part.material.color.set('#f8fcff');}
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  assert.equal(body.material.thickness,.08);assert.equal(cover.material.thickness,.012);
+  for(const part of [body,cover]){assert.equal(part.material.color.getHexString(),'ffffff');assert.equal(part.material.roughness,.012);assert.equal(part.material.ior,1.48);assert.equal(part.material.envMapIntensity,.3);assert.equal(part.material.toneMapped,false);assert.equal(part.castShadow,false);assert.equal(part.receiveShadow,false);}
  } finally {api?.dispose();env.close();}
 });
