@@ -90,11 +90,11 @@ class WoodlandModelTests(unittest.TestCase):
         low, high = self.bounds(self.positions(BODY))
         return high[0] - low[0]
 
-    def test_five_independent_groups_with_only_the_eight_packaging_meshes(self):
+    def test_four_groups_keep_the_spherical_cap_and_insert_in_one_assembly(self):
         expected = {
             'Body': {BODY, MOUTH},
-            'Closure': {CAP, 'Black closure seating rim'},
-            'StopperInsert': {'Illustrative removable sealing sleeve', 'Illustrative stopper seating ribs'},
+            'CapAssembly': {CAP, 'Black closure seating rim', 'Illustrative removable sealing sleeve',
+                            'Illustrative stopper seating ribs'},
             'PaperLabel': {PAPER},
             'LogoPrint': {PRINT},
         }
@@ -104,6 +104,20 @@ class WoodlandModelTests(unittest.TestCase):
         self.assertEqual(len(meshes), 8, 'No extra formula, duplicated artwork or old bottle mesh may remain.')
         for group, names in expected.items():
             self.assertEqual({self.nodes[i]['name'] for i in meshes if self.ancestor(i) == group}, names)
+        assembly = self.nodes[self.named['CapAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in assembly['children']}, {'Closure', 'StopperInsert'})
+        self.assertNotIn('matrix', assembly)
+        self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(assembly.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
+        self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
+        for group, names in {
+            'Closure': {CAP, 'Black closure seating rim'},
+            'StopperInsert': {'Illustrative removable sealing sleeve', 'Illustrative stopper seating ribs'},
+        }.items():
+            self.assertEqual({self.nodes[i]['name'] for i in self.nodes[self.named[group]]['children']}, names)
+        cap_low = min(p[1] for name in expected['CapAssembly'] for p in self.positions(name))
+        bottle_high = max(p[1] for name in expected['Body'] for p in self.positions(name))
+        self.assertGreater(cap_low + 1.2 - bottle_high, 1.0, 'The whole cap, including its insert, clears the glass lip.')
         self.assertTrue(all('uri' not in item for item in self.gltf['images'] + self.gltf['buffers']))
         self.assertFalse(self.gltf.get('animations'))
         self.assertFalse(self.gltf.get('cameras'))
@@ -120,6 +134,7 @@ class WoodlandModelTests(unittest.TestCase):
         self.assertAlmostEqual((high[2] - low[2]) / width, .70, delta=.01)
         all_points = [p for node in self.nodes if 'mesh' in node for p in self.positions(node['name'])]
         all_low, all_high = self.bounds(all_points)
+        self.assertAlmostEqual(all_high[1] - all_low[1], 2.9, delta=.001)
         self.assertAlmostEqual((all_high[1] - all_low[1]) / width, 2.27, delta=.025)
         # Front corners joined by a broad flat face distinguish the bottle from an oval cylinder.
         for level in [.13, 1.37]:

@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-26",
+  "product": "Woodland",
+  "productId": "poster-042",
+  "selectionNumber": 5,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "id": "poster-049",
+    "name": "Moisture Shampoo",
+    "state": "published-live-browser-verified",
+    "version": "client1.23",
+    "releaseCommit": "ea6fa9d4ab201470def10dad481e912f09a3e00f"
+  },
+  "nextProduct": {
+    "selectionNumber": 6,
+    "id": "poster-051",
+    "name": "Pure Volume",
+    "status": "not-started"
+  },
+  "remainingQueuedCount": 14,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-042",
+  "components": [
+    "CapAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": [
+    "Closure",
+    "StopperInsert"
+  ],
+  "containsFormula": false,
+  "animation": {
+    "completeCapLift": 1.2,
+    "cameraCenterY": [
+      1.45,
+      2.05
+    ],
+    "cameraHeight": [
+      4.2,
+      5.1
+    ],
+    "paperOffset": [
+      -1.5,
+      0.08,
+      0.65
+    ],
+    "paperScale": 1.15,
+    "printOffset": [
+      -3.1,
+      0.18,
+      1.65
+    ],
+    "printScale": 1.45
+  },
+  "geometryAndScope": {
+    "model": "poster-042",
+    "bytes": 1639380,
+    "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+    "roots": [
+      "Body",
+      "PaperLabel",
+      "LogoPrint",
+      "CapAssembly"
+    ],
+    "meshes": [
+      {
+        "name": "Clear thick flared mouth ring",
+        "vertices": 1866,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Hollow amber bevelled square bottle",
+        "vertices": 5842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Black closure seating rim",
+        "vertices": 1318,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Hollow glossy black spherical closure",
+        "vertices": 15150,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Illustrative removable sealing sleeve",
+        "vertices": 1590,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Illustrative stopper seating ribs",
+        "vertices": 816,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Black woodgrain label substrate",
+        "vertices": 4,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Complete Woodland lettering",
+        "vertices": 4,
+        "maxWorldVertexDelta": 0.0,
+        "attributesAndIndicesIdentical": true,
+        "materialIdentical": true
+      }
+    ],
+    "maxWorldVertexDelta": 0.0,
+    "artworkBytesIdentical": [
+      "label.svg",
+      "label.png",
+      "wood.png",
+      "print.png",
+      "print.svg"
+    ],
+    "otherAssetHashesPreserved": 25,
+    "otherConfigurationsIdentical": true,
+    "manifestOnlyTargetChanged": true,
+    "publicBytesIdentical": true
+  },
+  "verification": {
+    "actualGlbTestsPassed": 7,
+    "frontendTestsPassed": 91,
+    "galleryTests": 7,
+    "viteBuild": "passed",
+    "localSourcePublicDistHttpGlbIdentical": true,
+    "coastalMotionAndCameraUnchanged": true,
+    "browser": "Codex in-app browser (IAB)",
+    "viewport": [
+      1280,
+      720
+    ],
+    "closedHalfOpen": true,
+    "rotate90": true,
+    "returnFrontAndClosed": true,
+    "originalPosterRoundTrip": "Passed: original poster rendered and return restored the structure at 0%; reopened to 100% for delivery.",
+    "physicalMobileDeviceTested": false,
+    "mobileViewportBrowserTestedThisRevision": false,
+    "mobileConfigurationTestsPassed": true,
+    "aestheticReview": "Impeccable regex check plus independent reference and four actual screenshot review; no blocking issue in this scoped assembly change.",
+    "browserRuntimeNote": "Earlier Ego task 21 no longer existed; used user-preferred Codex IAB for actual interaction proof.",
+    "screenshots": [
+      {
+        "path": "review-evidence/woodland/simplified-cap/desktop-closed.png",
+        "bytes": 41212,
+        "sha256": "faf5f33a49691d82e997a39b817eeaf90ea16e942ba16e7084c51445c3dbdb3a"
+      },
+      {
+        "path": "review-evidence/woodland/simplified-cap/desktop-half.png",
+        "bytes": 40973,
+        "sha256": "fae98f42ec23dc93657cff3a925d84c86d8ce1b3e774607446562488ae6fba36"
+      },
+      {
+        "path": "review-evidence/woodland/simplified-cap/desktop-open.png",
+        "bytes": 41143,
+        "sha256": "f6226ec3703ad6a5cc0d35048547f43eaccb42e0ceb06196761d1e12e4add473"
+      },
+      {
+        "path": "review-evidence/woodland/simplified-cap/desktop-rotated.png",
+        "bytes": 36860,
+        "sha256": "a651a891fe71f105d49ec4ab51411b2e663da0bd3c30805515bf2a762b336704"
+      }
+    ]
+  },
+  "knownLimits": [
+    "Hidden fit and wall thickness remain illustrative, not manufacturing dimensions.",
+    "Existing planar label and print become nearly edge-on at 90 degrees.",
+    "Empty packaging is intentionally lighter than the filled reference poster."
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.23-collection-packaging",
+  "scope": "approved-client1.24-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -71,8 +71,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-042.glb",
       "productionTarget": "assets/packaging/poster-042.glb",
-      "bytes": 1639336,
-      "sha256": "b0447a74c7148a612632537746e985e933815465651a06512e97482c4e800eff"
+      "bytes": 1639380,
+      "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18"
     },
     {
       "name": "poster-051.glb",
@@ -282,8 +282,7 @@
       "posterId": "poster-042",
       "file": "poster-042.glb",
       "components": [
-        "Closure",
-        "StopperInsert",
+        "CapAssembly",
         "Body",
         "PaperLabel",
         "LogoPrint"

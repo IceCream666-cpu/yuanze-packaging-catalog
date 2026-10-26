@@ -1,4 +1,4 @@
-"""Client 1.22 updates only the approved Body Oil complete cap and preserves the collection."""
+"""Client 1.24 updates only the approved Woodland complete cap and preserves the collection."""
 import copy
 import hashlib
 import importlib.util
