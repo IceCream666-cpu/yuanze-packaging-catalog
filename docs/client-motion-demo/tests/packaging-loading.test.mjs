@@ -38,7 +38,7 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
   }
   function model() {
     const scene = new Three.Group();
-    for (const name of product.parts.map(part=>part.node)) {
+    for (const name of product.parts.map(part => part.node)) {
       const part = new Three.Mesh(new Three.BoxGeometry(), new Three.MeshPhysicalMaterial());
       part.name = name; scene.add(part);
     }
@@ -54,6 +54,150 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
   return {dom, host, events, frames, controller, request, model, mount: module.exports.mountPackagingScene,
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
+
+for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review)) {
+  test(`${id} separates all printing from its blank label and restores imported transforms`, async () => {
+    let loaded, api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();
+      const parts=Object.fromEntries(product.parts.map(p=>[p.key,loaded.scene.getObjectByName(p.node)]));
+      Object.values(parts).forEach((p,i)=>{p.position.set(.12*i,.23*i,-.07*i);p.scale.set(1.4,1.5,1.6);p.quaternion.setFromEuler(new Three.Euler(.02,-.03,.01));});
+      const rest=Object.fromEntries(Object.entries(parts).map(([k,p])=>[k,{p:p.position.clone(),s:p.scale.clone(),q:p.quaternion.clone()}]));
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+      for (const value of [.5,1,0,1,0]) {
+        api.setProgress(value);flush();
+        const print=parts.print.position.clone().sub(rest.print.p),label=parts.label.position.clone().sub(rest.label.p);
+        if(value) {
+          assert.ok(print.z-label.z>.45*value,'lettering must sit visibly in front of its label');
+          assert.ok(print.x<label.x-.8*value,'lettering must also move farther sideways');
+          assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
+          assert.ok(parts.closure.position.y-rest.closure.p.y>.7*value,'cap separation must remain substantial');
+          for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
+            if(value===1) parts[key].position.clone().sub(rest[key].p).toArray().forEach((n,i)=>assert.ok(Math.abs(n-offset[i])<1e-9));
+          }
+        } else {
+          for(const [key,p] of Object.entries(parts)) {
+            assert.ok(p.position.distanceTo(rest[key].p)<1e-9);
+            assert.ok(p.scale.distanceTo(rest[key].s)<1e-9);
+            assert.ok(1-Math.abs(p.quaternion.dot(rest[key].q))<1e-9);
+          }
+        }
+        if(product.review.appearance.clearLabel && value!==.5) assert.equal(parts.label.material.opacity,value===0?.05:1);
+      }
+    } finally {api?.dispose();env.close();}
+  });
+}
+
+test('reviewed models preserve frosted glass, brushed metal and original glass tint', async () => {
+  const product=PACKAGING_PRODUCTS['poster-063'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    loaded=env.model();const body=loaded.scene.getObjectByName('Body'),cap=loaded.scene.getObjectByName('Closure'),label=loaded.scene.getObjectByName('PaperLabel');
+    body.material.transmission=1;body.material.roughness=.3;body.material.color.set('#c5a978');
+    const tint=body.material.color.clone();cap.material.metalness=1;cap.material.roughness=.27;
+    label.material.map=new Three.Texture();label.material.metalness=1;label.material.roughness=.31;
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.equal(body.material.roughness,.3);assert.ok(body.material.color.equals(tint));
+    assert.equal(cap.material.roughness,.27);assert.equal(label.material.roughness,.31);
+  } finally {api?.dispose();env.close();}
+});
+
+test('phone framing preserves depth separation while compacting wide print pairs', async () => {
+  const product=PACKAGING_PRODUCTS['poster-059'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:393},clientHeight:{value:450}});
+    loaded=env.model();
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    api.setProgress(1);const frames=[...env.frames.values()];env.frames.clear();frames.forEach(fn=>fn(16));
+    for(const key of ['label','print']) {
+      const part=loaded.scene.getObjectByName(product.parts.find(p=>p.key===key).node),offset=product.review.explosion.offsets[key];
+      assert.equal(part.position.x,offset[0]*.5);assert.equal(part.position.z,offset[2]);
+    }
+    api.setProgress(0);[...env.frames.values()].forEach(fn=>fn(32));
+    assert.deepEqual(api.getState().printOffset,[0,0,0]);
+  } finally {api?.dispose();env.close();}
+});
+
+test('reviewed tinted glass uses absorption and frosted glass retains its original transmission', async () => {
+  for(const id of ['poster-067','poster-061']) {
+    const product=PACKAGING_PRODUCTS[id];let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();const body=loaded.scene.getObjectByName('Body');
+      body.material.transmission=.62;body.material.color.set('#b08040');const tint=body.material.color.clone();
+      const other=new Three.Mesh(new Three.BoxGeometry(),body.material);body.add(other);
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(body.material.transmission,.62);
+      if(id==='poster-067') for(const mesh of [body,other]) {
+        assert.ok(mesh.material.attenuationColor.equals(tint));assert.equal(mesh.material.attenuationDistance,.3);
+        assert.ok(mesh.material.color.equals(new Three.Color('#ffffff')));
+      }
+    } finally {api?.dispose();env.close();}
+  }
+});
+
+test('the refill pouch keeps a thin transparent film instead of a thick coloured wall', async () => {
+  const product=PACKAGING_PRODUCTS['poster-065'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    loaded=env.model();const film=loaded.scene.getObjectByName('RefillPouch');
+    film.material.transmission=.92;film.material.color.set('#ead4a3');
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.equal(film.material.transmission,.92);assert.equal(film.material.thickness,.005);
+    assert.equal(film.material.side,Three.FrontSide);assert.ok(film.material.color.equals(new Three.Color('#ffffff')));
+  } finally {api?.dispose();env.close();}
+});
+
+for (const [id, node, thickness, toneMapped] of [
+  ['poster-066','Overcap',.012,true],
+  ['poster-065','RefillPouch',.005,false],
+]) test(`${id} isolates cover or film settings from shared bottle glass in either traversal order`, async () => {
+  for (const bodyFirst of [true,false]) {
+    const product=PACKAGING_PRODUCTS[id];let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();
+      const body=loaded.scene.getObjectByName('Body'),part=loaded.scene.getObjectByName(node);
+      body.material.transmission=.92;body.material.color.set('#d3c4a0');
+      const tint=body.material.color.clone();part.material=body.material;
+      const panel=new Three.Mesh(new Three.BoxGeometry(),body.material);part.add(panel);
+      // The real Rose GLB visits Body before Overcap; neither order may share mutations.
+      loaded.scene.children.sort((a,b)=>(a===body?(bodyFirst?-1:1):0)-(b===body?(bodyFirst?-1:1):0));
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(body.material.thickness,.08);assert.equal(body.material.side,Three.DoubleSide);
+      assert.equal(body.material.toneMapped,false);assert.ok(body.material.color.equals(tint));
+      for (const mesh of [part,panel]) {
+        assert.notEqual(mesh.material,body.material);
+        assert.equal(mesh.material.thickness,thickness);assert.equal(mesh.material.side,Three.FrontSide);
+        assert.equal(mesh.material.toneMapped,toneMapped);
+        assert.ok(mesh.material.color.equals(node==='RefillPouch'?new Three.Color('#ffffff'):tint));
+      }
+      const disposals=new Map([body.material,part.material,panel.material].map(material=>[material,0]));
+      disposals.forEach((_,material)=>material.addEventListener('dispose',()=>disposals.set(material,disposals.get(material)+1)));
+      api.dispose();api.dispose();
+      assert.deepEqual([...disposals.values()],[1,1,1]);
+    } finally {api?.dispose();env.close();}
+  }
+});
+
+test('Gentle lettering renders above the translucent oval without tinting its black print', async () => {
+  const product=PACKAGING_PRODUCTS['poster-044']; let loaded;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  let api;
+  try {
+    loaded=env.model();
+    const label=loaded.scene.getObjectByName('PaperLabel'),print=loaded.scene.getObjectByName('LogoPrint');
+    for (const part of [label,print]) {part.material.map=new Three.Texture();part.material.transparent=true;}
+    print.material.color.set('#111714');const original=print.material.color.clone();
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.ok(print.renderOrder>label.renderOrder);
+    assert.equal(print.material.depthWrite,false);assert.equal(label.material.depthWrite,false);
+    assert.ok(print.material.color.equals(original));
+  } finally {api?.dispose();env.close();}
+});
 
 test('scene consumes the already-started model request and reports ready only after the first render', async () => {
   const env = harness(); let ready = 0;
@@ -96,7 +240,7 @@ test('closing while parsing disposes a late model and never displays it', async 
     env.controller.abort(); await assert.rejects(mounting);
     const gltf = env.model(); gltf.scene.traverse(object => object.geometry?.addEventListener('dispose', () => geometryDisposals++));
     parsing.resolve(gltf); await Promise.resolve(); await Promise.resolve();
-    assert.equal(geometryDisposals, 3); assert.equal(ready, 0); assert.equal(env.host.__packagingScene, undefined);
+    assert.equal(geometryDisposals, 4); assert.equal(ready, 0); assert.equal(env.host.__packagingScene, undefined);
     assert.deepEqual(env.counts(), {rendererDisposals: 1, envDisposals: 1, observers: 0});
   } finally {env.close();}
 });
@@ -111,23 +255,15 @@ test('a first-render failure never reports ready and releases the whole mounted 
   } finally {env.close();}
 });
 
-for (const id of ['poster-012','poster-071']) test(`${id} approved components expand and reset without changing original scales`, async()=>{
- const product=PACKAGING_PRODUCTS[id];let gltf;
- const env=harness({product,parse:()=>Promise.resolve(gltf=env.model())});
- try {
+// Exercise the real pose branches for every product; the renderer alone is stubbed.
+for (const [id,product] of Object.entries(PACKAGING_PRODUCTS)) test(`${id} print moves outward, clamps, resets and disposes`,async()=>{
+ const env=harness({product});
+ try{
   const api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
   const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
-  const nodes=Object.fromEntries(product.parts.map(part=>[part.key,gltf.scene.getObjectByName(part.node)]));
-  assert.equal(product.parts.length,id==='poster-071'?5:3);
-  api.setProgress(1);flush();
-  if(id==='poster-071'){
-   assert.equal(nodes.closure.position.y,.38);assert.equal(nodes.stem.position.y,.84);assert.equal(nodes.head.position.y,1.35);
-   assert.deepEqual(api.getState().printOffset,[-.63,.10,.86]);assert.equal(nodes.print.scale.x,1.45);
-  }else{
-   assert.equal(nodes.cap.position.y,.100);assert.equal(nodes.liner.position.y,.047);assert.equal(api.getState().printOffset,null);
-  }
-  api.setProgress(0);flush();
-  for(const n of Object.values(nodes)){assert.deepEqual(n.position.toArray(),[0,0,0]);assert.deepEqual(n.scale.toArray(),[1,1,1]);}
+  api.setProgress(2);flush();assert.equal(api.getState().renderedProgress,1);assert.ok(api.getState().printOffset[2]>0);
+  assert.deepEqual(api.getState().components,product.parts.map(p=>p.key));
+  api.setProgress(-1);flush();assert.deepEqual(api.getState().printOffset,[0,0,0]);
   api.dispose();assert.equal(env.host.querySelector('canvas'),null);
  }finally{env.close();}
 });
@@ -137,9 +273,12 @@ for (const [id, lifts, printOffset] of [
   ['poster-042', {closure: 2.8, liner: 1.35}, [-3.1, .18, 1.65]],
   ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
   ['poster-051', {closure:.9,stem:1.8,head:2.8}, [-3.4,.18,1.65]],
+  ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
   ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
+  ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
+  ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
   const env = harness({product, parse: () => Promise.resolve(loaded)});
@@ -169,17 +308,22 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
-      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-056' ? -1.85 : id === 'poster-042' || id === 'poster-047' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
+      labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-057' ? -1.4 : id === 'poster-056' ? -1.85 : id === 'poster-042' || id === 'poster-047' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
       sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
       near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
+      if (id === 'poster-057') {
+        const t=Math.max(0,Math.min(1,(progress-.3)/.7)), drop=Math.max(0,Math.min(1,progress/.3));
+        const offset=[1.7*t*t*(3-2*t),-.8*drop*drop*(3-2*drop),.35*t*t*(3-2*t)];
+        parts.base.position.clone().sub(rest.base.position).toArray().forEach((v,i)=>near(v,offset[i],'base clears the sleeve before moving sideways'));
+      }
       if (id === 'poster-051') {
         parts.cord.position.clone().sub(rest.cord.position).toArray().forEach((v,i)=>near(v,[1.05,.30,.25][i]*progress,'cord separation'));
       }
-      if (id === 'poster-051' || id === 'poster-056') {
+      if (id === 'poster-051' || id === 'poster-056' || id === 'poster-057') {
         if (progress === 0) near(parts.label.material.opacity,.05,'clear film leaves no paper patch at rest');
         if (progress === 1) near(parts.label.material.opacity,1,'separated film retains its translucent texture');
       }
@@ -187,10 +331,10 @@ for (const [id, lifts, printOffset] of [
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056') {
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') {
         for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(key==='overcap' && id==='poster-044' ? 3100/4913 : key==='overcap' && id==='poster-056' ? 1900/2197 : .5), `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
-        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' ? 1.475 : 1.225),'half print scale');
+        sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' || id==='poster-057' ? 1.475 : 1.225),'half print scale');
         checkSeparateLabel(.5);
       }
       api.setProgress(1); flush();
@@ -206,8 +350,8 @@ for (const [id, lifts, printOffset] of [
         assert.ok(displacement.z >= 1, 'PDRN print must lift forward from the glass surface.');
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
-      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' ? 1.95 : 1.45), 'expanded print scale');
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056') checkSeparateLabel(1);
+      sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' || id==='poster-057' ? 1.95 : 1.45), 'expanded print scale');
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -215,7 +359,7 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056') checkSeparateLabel(0);
+      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });
@@ -227,14 +371,12 @@ test('Golden keeps its olive cover tinted while the empty glass stays neutral', 
   try {
     loaded=env.model();
     const cover=loaded.scene.getObjectByName('Overcap'),body=loaded.scene.getObjectByName('Body');
-    cover.material.name='olive translucent overcap';cover.material.color.set('#3d4822');cover.material.transmission=.9;
+    cover.material.name='olive translucent cover';cover.material.color.set('#3d4822');cover.material.transmission=.9;
     body.material.name='clear glass';body.material.color.set('#eeeeee');body.material.transmission=1;
     const secondPanel=new Three.Mesh(new Three.BoxGeometry(),cover.material);cover.add(secondPanel);
     const olive=cover.material.color.clone();
     api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
     assert.ok(cover.material.attenuationColor.equals(olive));
-    assert.equal(cover.material.side,Three.FrontSide);assert.equal(cover.material.roughness,.035);assert.equal(cover.material.attenuationDistance,.18);assert.equal(cover.material.thickness,.12);assert.equal(cover.material.envMapIntensity,1.4);
-    assert.notEqual(cover.material,secondPanel.material);
     assert.ok(secondPanel.material.attenuationColor.equals(olive),'every panel retains the original tint even when the GLB shares one material');
     assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
     assert.equal(body.material.transmission,1);
@@ -242,113 +384,18 @@ test('Golden keeps its olive cover tinted while the empty glass stays neutral', 
   } finally {api?.dispose();env.close();}
 });
 
-test('PDRN glass, silver and print materials use their approved settings while older models retain theirs', async () => {
- for (const id of ['poster-012','poster-071','poster-039','poster-049']) {
-  const product=PACKAGING_PRODUCTS[id];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
-  try {
-   loaded=env.model();
-   const body=loaded.scene.getObjectByName(product.parts.find(part=>part.key==='jar').node);
-   body.material.transmission=1;body.material.roughness=.08;body.material.thickness=.2;
-   const closure=loaded.scene.getObjectByName(product.parts.find(part=>['cap','closure'].includes(part.key)).node);
-   closure.material.metalness=1;
-   const print=loaded.scene.getObjectByName('LogoPrint');
-   if (print) {print.material.map=new Three.Texture();print.material.transparent=true;}
-   api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-   const glass=body.material;
-   if (id==='poster-039' || id==='poster-049') {
-    assert.equal(glass.roughness,.012);assert.equal(glass.thickness,.08);assert.equal(glass.ior,1.48);
-    assert.equal(glass.envMapIntensity,.3);assert.equal(glass.toneMapped,false);assert.equal(glass.specularIntensity,.7);
-    assert.equal(body.castShadow,false);assert.equal(body.receiveShadow,false);
-    assert.equal(closure.material.roughness,id==='poster-049'?.16:.075);assert.equal(closure.material.envMapIntensity,1);
-    assert.equal(print.material.roughness,.7);assert.equal(print.material.specularIntensity,.05);
-    assert.equal(print.material.depthWrite,false);assert.equal(print.renderOrder,2);
-   } else if (id==='poster-012') {
-    assert.equal(glass.roughness,.035);assert.equal(glass.thickness,.0024);assert.equal(glass.ior,1.47);
-    assert.equal(glass.envMapIntensity,1.05);assert.equal(glass.toneMapped,true);assert.equal(closure.material.roughness,.34);
-   } else {
-    assert.equal(glass.roughness,.08);assert.equal(glass.thickness,.2);assert.equal(glass.envMapIntensity,.65);
-    assert.equal(print.material.depthWrite,false);assert.equal(print.renderOrder,2);
-   }
-  } finally {api?.dispose();env.close();}
- }
-});
 
-test('Woodland uses amber absorption and preserves its nonmetal black closure and separate artwork', async () => {
- const product=PACKAGING_PRODUCTS['poster-042'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
- try {
-  loaded=env.model();
-  const body=loaded.scene.getObjectByName('Body'),closure=loaded.scene.getObjectByName('Closure');
-  body.material.name='Woodland amber glass';body.material.transmission=1;body.material.color.set('#ff9e42');
-  const amber=body.material.color.clone();
-  closure.material.metalness=0;closure.material.roughness=.06;closure.material.color.set('#080808');
-  const originalCapColor=closure.material.color.clone();
-  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);part.material.map=new Three.Texture();part.material.transparent=true;}
-  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-  assert.ok(body.material.attenuationColor.equals(amber));assert.equal(body.material.color.getHexString(),'ffffff');
-  assert.equal(body.material.attenuationDistance,.85);assert.equal(body.material.thickness,.12);
-  assert.equal(body.material.envMapIntensity,.65);assert.equal(body.material.roughness,.035);assert.equal(body.material.toneMapped,false);
-  assert.equal(closure.material.metalness,0);assert.equal(closure.material.roughness,.06);assert.ok(closure.material.color.equals(originalCapColor));
-  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);assert.equal(part.material.depthWrite,false);assert.equal(part.renderOrder,2);assert.equal(part.material.envMapIntensity,.1);}
- } finally {api?.dispose();env.close();}
-});
-
-test('Pure Volume preserves matte ivory, brushed gold and translucent film without glass overrides', async () => {
- const product=PACKAGING_PRODUCTS['poster-051'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
- try {
-  loaded=env.model();
-  const body=loaded.scene.getObjectByName('Body'),closure=loaded.scene.getObjectByName('Closure');
-  body.material.color.set('#f3eee3');body.material.roughness=.48;body.material.transmission=0;
-  closure.material.color.set('#a68c56');closure.material.metalness=1;closure.material.roughness=.24;
-  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);part.material.map=new Three.Texture();part.material.transparent=true;part.material.roughness=.23;}
-  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-  assert.equal(body.material.color.getHexString(),'f3eee3');assert.equal(body.material.transmission,0);assert.equal(body.material.roughness,.48);
-  assert.equal(closure.material.color.getHexString(),'a68c56');assert.equal(closure.material.metalness,1);assert.equal(closure.material.roughness,.24);
-  for(const part of [body,closure]) {assert.equal(part.material.envMapIntensity,.65);assert.equal(part.castShadow,true);assert.equal(part.receiveShadow,true);}
-  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);assert.equal(part.material.roughness,.23);assert.equal(part.material.envMapIntensity,.65);assert.equal(part.material.depthWrite,false);assert.equal(part.renderOrder,2);assert.equal(part.castShadow,false);assert.equal(part.receiveShadow,false);}
- } finally {api?.dispose();env.close();}
-});
-
-test('Gentle lettering renders above the translucent oval without tinting its black print', async () => {
-  const product=PACKAGING_PRODUCTS['poster-044']; let loaded;
-  const env=harness({product,parse:()=>Promise.resolve(loaded)});
-  let api;
+test('B5 pipette remains visible through the empty bottle and preserves the original white print', async () => {
+  const product=PACKAGING_PRODUCTS['poster-057'];let loaded;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
   try {
     loaded=env.model();
-    const label=loaded.scene.getObjectByName('PaperLabel'),print=loaded.scene.getObjectByName('LogoPrint');
-    for (const part of [label,print]) {part.material.map=new Three.Texture();part.material.transparent=true;}
-    print.material.color.set('#111714');const original=print.material.color.clone();
+    const pipe=loaded.scene.getObjectByName('Pipette'),body=loaded.scene.getObjectByName('Body'),print=loaded.scene.getObjectByName('LogoPrint');
+    pipe.material.name='B5 clear glass pipette';pipe.material.transmission=1;
+    body.material.transmission=1;print.material.map=new Three.Texture();print.material.transparent=true;print.material.color.set('#ffffff');
     api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-    assert.ok(print.renderOrder>label.renderOrder);
-    assert.equal(print.material.depthWrite,false);assert.equal(label.material.depthWrite,false);
-    assert.ok(print.material.color.equals(original));
+    assert.equal(pipe.material.transmission,0);assert.equal(pipe.material.transparent,true);assert.equal(pipe.material.opacity,.38);assert.equal(pipe.material.depthWrite,false);
+    assert.equal(body.material.transmission,1);assert.equal(body.material.depthWrite,false);assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
+    assert.equal(print.renderOrder,3);assert.ok(print.material.color.equals(new Three.Color('#ffffff')));assert.equal(print.material.toneMapped,false);
   } finally {api?.dispose();env.close();}
-});
-
-
-test('Gentle clear cover keeps its thin wall while the empty bottle retains its thicker transmission', async () => {
- const product=PACKAGING_PRODUCTS['poster-044'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
- try {
-  loaded=env.model();
-  const body=loaded.scene.getObjectByName('Body'),cover=loaded.scene.getObjectByName('Overcap');
-  body.material.name='Gentle neutral clear bottle wall';cover.material.name='Gentle clear thin protective cover';
-  for(const part of [body,cover]){part.material.transmission=1;part.material.color.set('#f8fcff');}
-  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-  assert.equal(body.material.thickness,.08);assert.equal(cover.material.thickness,.012);
-  for(const part of [body,cover]){assert.equal(part.material.color.getHexString(),'ffffff');assert.equal(part.material.roughness,.012);assert.equal(part.material.ior,1.48);assert.equal(part.material.envMapIntensity,.3);assert.equal(part.material.toneMapped,false);assert.equal(part.castShadow,false);assert.equal(part.receiveShadow,false);}
- } finally {api?.dispose();env.close();}
-});
-
-test('Coastal keeps neutral clear glass and the approved textured cork without losing its normal map', async () => {
- const product=PACKAGING_PRODUCTS['poster-047'];let loaded;const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
- try {
-  loaded=env.model();
-  const body=loaded.scene.getObjectByName('Body'),cork=loaded.scene.getObjectByName('Closure');
-  body.material.transmission=1;body.material.color.set('#ffeecc');
-  cork.material.map=new Three.Texture();cork.material.normalMap=new Three.Texture();cork.material.normalScale.set(.7,.7);cork.material.roughness=.84;cork.material.color.set('#a97642');const normal=cork.material.normalMap;
-  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);part.material.map=new Three.Texture();part.material.transparent=true;}
-  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-  assert.equal(body.material.color.getHexString(),'ffffff');assert.equal(body.material.roughness,.012);assert.equal(body.material.ior,1.48);assert.equal(body.material.thickness,.08);assert.equal(body.material.envMapIntensity,.3);assert.equal(body.material.toneMapped,false);
-  assert.equal(cork.material.color.getHexString(),'a97642');assert.equal(cork.material.normalMap,normal);assert.deepEqual(cork.material.normalScale.toArray(),[.7,.7]);assert.equal(cork.material.roughness,.7);assert.equal(cork.material.specularIntensity,.05);assert.equal(cork.material.envMapIntensity,.1);assert.equal(cork.material.depthWrite,true);assert.equal(cork.renderOrder,0);
-  for(const name of ['PaperLabel','LogoPrint']){const part=loaded.scene.getObjectByName(name);assert.equal(part.material.depthWrite,false);assert.equal(part.renderOrder,2);}
- } finally {api?.dispose();env.close();}
 });

@@ -1,0 +1,185 @@
+{
+  "parts": [
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "黑泵头",
+        "Head"
+      ],
+      "short": [
+        "黑泵头",
+        "Head"
+      ],
+      "detail": [
+        "原图长弧形黑色泵嘴。",
+        "Long curved black dispensing head from the reference."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "泵杆",
+        "Stem"
+      ],
+      "short": [
+        "泵杆",
+        "Stem"
+      ],
+      "detail": [
+        "短黑色连接杆独立上移。",
+        "The short black pump connector lifts independently."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "旋盖",
+        "Closure"
+      ],
+      "short": [
+        "旋盖",
+        "Closure"
+      ],
+      "detail": [
+        "光面黑色长筒旋盖。",
+        "Tall cylindrical closure in glossy black."
+      ]
+    },
+    {
+      "key": "cord",
+      "node": "Cord",
+      "title": [
+        "编绳",
+        "Cord"
+      ],
+      "short": [
+        "编绳",
+        "Cord"
+      ],
+      "detail": [
+        "双圈棕色编绳及右侧长绳尾。",
+        "Two brown braided loops with a knot and long tails on the right."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "short": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "保留收腰轮廓与浅琥珀玻璃，空瓶无料液。",
+        "Empty light amber glass retains the gathered waist and rounded body."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明膜",
+        "Carrier"
+      ],
+      "short": [
+        "透明膜",
+        "Carrier"
+      ],
+      "detail": [
+        "演示用无字透明承印膜。",
+        "An unprinted clear carrier illustrates the print layer."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "白印字",
+        "Print"
+      ],
+      "short": [
+        "白印字",
+        "Print"
+      ],
+      "detail": [
+        "liaose 与 GINGER SHAMPOO 完整独立。",
+        "The complete liaose and GINGER SHAMPOO lettering forms one separate layer."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": true,
+    "metal": false,
+    "tintedGlass": true,
+    "attenuationDistance": 0.3,
+    "studio": {
+      "background": "#786047",
+      "ink": "#fff2db"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        0.85,
+        0
+      ],
+      "stem": [
+        0,
+        1.75,
+        0
+      ],
+      "head": [
+        0,
+        2.9,
+        0
+      ],
+      "cord": [
+        1.15,
+        0.2,
+        0.25
+      ],
+      "label": [
+        -1.6,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.3,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.1
+      ],
+      "height": [
+        4.2,
+        7.8
+      ],
+      "width": [
+        3.8,
+        7.6
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ]
+    }
+  }
+}

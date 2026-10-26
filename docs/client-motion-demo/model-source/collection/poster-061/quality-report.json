@@ -1,0 +1,106 @@
+{
+  "id": "poster-061",
+  "bytes": 1042708,
+  "sha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a",
+  "meshes": [
+    {
+      "mesh": "Smaller hollow frosted round-bottom bottle",
+      "triangles": 8736,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8942463397979736
+    },
+    {
+      "mesh": "Taller hollow frosted round-bottom bottle",
+      "triangles": 8736,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8942463397979736
+    },
+    {
+      "mesh": "Smaller hollow black pump collar",
+      "triangles": 2976,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9384585618972778
+    },
+    {
+      "mesh": "Taller hollow black pump collar",
+      "triangles": 2976,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9384585618972778
+    },
+    {
+      "mesh": "Smaller visible black rising pump stem",
+      "triangles": 2232,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9158746600151062
+    },
+    {
+      "mesh": "Taller visible black rising pump stem",
+      "triangles": 2232,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9158746600151062
+    },
+    {
+      "mesh": "Smaller curved hollow oval pump spout",
+      "triangles": 3936,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6936050057411194
+    },
+    {
+      "mesh": "Smaller cylindrical hollow press head",
+      "triangles": 2480,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.7769238948822021
+    },
+    {
+      "mesh": "Taller curved hollow oval pump spout",
+      "triangles": 3936,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6936056613922119
+    },
+    {
+      "mesh": "Taller cylindrical hollow press head",
+      "triangles": 2480,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.7769237160682678
+    },
+    {
+      "mesh": "Smaller transparent unprinted film",
+      "triangles": 1920,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9998893141746521
+    },
+    {
+      "mesh": "Taller transparent unprinted film",
+      "triangles": 1920,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9998893141746521
+    },
+    {
+      "mesh": "Smaller complete dark body cream lettering",
+      "triangles": 1920,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9998893141746521
+    },
+    {
+      "mesh": "Taller complete dark body cream lettering",
+      "triangles": 1920,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9998893141746521
+    }
+  ],
+  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks."
+}

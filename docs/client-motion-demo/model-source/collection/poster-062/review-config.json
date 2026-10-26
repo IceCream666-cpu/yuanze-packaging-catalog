@@ -1,0 +1,148 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "黑亮外盖",
+        "Black lid"
+      ],
+      "short": [
+        "外盖",
+        "Black lid"
+      ],
+      "detail": [
+        "圆角长方形盖壳，内侧中空。",
+        "Rounded rectangular lid with a hollow inner shell."
+      ]
+    },
+    {
+      "key": "liner",
+      "node": "InnerLid",
+      "title": [
+        "提拉内盖",
+        "Inner liner"
+      ],
+      "short": [
+        "内盖",
+        "Inner liner"
+      ],
+      "detail": [
+        "隐藏结构示意，独立上提。",
+        "Illustrative inner liner lifts out separately."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "透明方罐",
+        "Clear jar"
+      ],
+      "short": [
+        "罐身",
+        "Clear jar"
+      ],
+      "detail": [
+        "厚底、圆角方形罐壁与宽开口。",
+        "Rounded rectangular jar with a thick base and wide opening."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明膜",
+        "Clear film"
+      ],
+      "short": [
+        "标贴",
+        "Clear film"
+      ],
+      "detail": [
+        "原图无纸标边界，透明底材示意。",
+        "Clear carrier film represents the unmarked label boundary."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整文字",
+        "Lettering"
+      ],
+      "short": [
+        "文字",
+        "Lettering"
+      ],
+      "detail": [
+        "品牌与完整产品名一同展开。",
+        "Brand and complete product name move out together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": true,
+    "metal": false,
+    "studio": {
+      "background": "#d5e5e6",
+      "ink": "#142c32"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        3.2,
+        0
+      ],
+      "liner": [
+        0,
+        1.45,
+        0
+      ],
+      "label": [
+        -2.1,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -4.2,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "rotations": {
+      "closure": [
+        -0.6,
+        -0.5,
+        -0.05
+      ]
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.05
+      ],
+      "height": [
+        4.3,
+        7.8
+      ],
+      "width": [
+        5.1,
+        10.2
+      ],
+      "centerX": [
+        0,
+        -1.25
+      ]
+    }
+  }
+}

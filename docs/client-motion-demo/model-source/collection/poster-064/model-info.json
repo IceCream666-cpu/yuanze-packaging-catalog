@@ -1,0 +1,118 @@
+{
+  "closedHeightToBottleWidth": 1.789,
+  "bodyDepthToWidth": 0.55,
+  "bodyMainShoulderHeight": 1.083,
+  "cordWrapCount": 3,
+  "cordPlyCount": 3,
+  "printIncludes": [
+    "liaose",
+    "AROMATIC",
+    "BODY LOTION",
+    "300 ml",
+    "two fine rules"
+  ],
+  "hiddenStructure": "White pump internal connection and bottle inner wall are illustrative; no lotion.",
+  "generator": "build_aromatic_body_lotion.py",
+  "id": "poster-064",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Cord",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "scaleFromReferenceWidth": 1.6210172970077068,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.810508668422699,
+        -0.4457797706127167,
+        0.0
+      ],
+      "max": [
+        0.810508668422699,
+        0.4457797706127167,
+        2.147848129272461
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.3404136300086975,
+        -0.3404136300086975,
+        2.120290517807007
+      ],
+      "max": [
+        0.3404136300086975,
+        0.3404136300086975,
+        2.5125768184661865
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.14264953136444092,
+        -0.14264953136444092,
+        2.4720513820648193
+      ],
+      "max": [
+        0.14264953136444092,
+        0.14264953136444092,
+        2.6746785640716553
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.7294577956199646,
+        -0.20262716710567474,
+        2.6260480880737305
+      ],
+      "max": [
+        0.3323085606098175,
+        0.20262716710567474,
+        2.9000000953674316
+      ]
+    },
+    "Cord": {
+      "min": [
+        -0.5419750213623047,
+        -0.6022632122039795,
+        0.04787343367934227
+      ],
+      "max": [
+        1.3334091901779175,
+        0.4347687065601349,
+        2.2181320190429688
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.5268306136131287,
+        -0.44821128249168396,
+        0.45388486981391907
+      ],
+      "max": [
+        0.5268306136131287,
+        -0.44821128249168396,
+        1.588597059249878
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.5268306136131287,
+        -0.44950810074806213,
+        0.45388486981391907
+      ],
+      "max": [
+        0.5268306136131287,
+        -0.44950810074806213,
+        1.588597059249878
+      ]
+    }
+  },
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "../../mobile-client-preview/assets/posters/poster-064.webp",
+  "separateLabelAndPrint": true
+}

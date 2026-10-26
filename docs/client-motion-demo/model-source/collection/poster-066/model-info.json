@@ -1,0 +1,139 @@
+{
+  "closedHeightToWidth": 1.77,
+  "bodyDepthToWidth": 0.47,
+  "glassHeightToWidth": 1.082,
+  "coverDiameterToWidth": 0.458,
+  "labelWidthToWidth": 0.81,
+  "labelHeightToWidth": 0.8,
+  "printIncludes": [
+    "original watercolor rose and leaf design",
+    "liaose",
+    "ROSE HAIR OIL",
+    "120 ml"
+  ],
+  "floralReferenceCrop": [
+    738,
+    468,
+    1094,
+    814
+  ],
+  "generator": "build_rose_hair_oil.py",
+  "hiddenStructure": "Pump stem, wall thickness and hidden nozzle mechanism are illustrative; no liquid is modeled.",
+  "id": "poster-066",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Overcap",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.8999998569488525,
+  "width": 1.6384180790960452,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.8192090392112732,
+        -0.38502824306488037,
+        0.0
+      ],
+      "max": [
+        0.8192090392112732,
+        0.38502824306488037,
+        1.7727683782577515
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.39322033524513245,
+        -0.39322033524513245,
+        1.746553659439087
+      ],
+      "max": [
+        0.39322033524513245,
+        0.39322033524513245,
+        2.42322039604187
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.10485876351594925,
+        -0.10485876351594925,
+        2.3265535831451416
+      ],
+      "max": [
+        0.10485876351594925,
+        0.10485876351594925,
+        2.536271095275879
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.29491525888442993,
+        -0.21627119183540344,
+        2.4084746837615967
+      ],
+      "max": [
+        0.21627119183540344,
+        0.21627119183540344,
+        2.75254225730896
+      ]
+    },
+    "Overcap": {
+      "min": [
+        -0.37519773840904236,
+        -0.37519773840904236,
+        1.8383049964904785
+      ],
+      "max": [
+        0.37519773840904236,
+        0.37519773840904236,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.6635593175888062,
+        -0.3891242742538452,
+        0.24576272070407867
+      ],
+      "max": [
+        0.6635593175888062,
+        -0.3891242742538452,
+        1.5564970970153809
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.6635593175888062,
+        -0.39076271653175354,
+        0.24576272070407867
+      ],
+      "max": [
+        0.6635593175888062,
+        -0.39076271653175354,
+        1.5564970970153809
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 1.09,
+    "PumpStem": 1.47,
+    "Actuator": 1.54,
+    "Overcap": 1.12,
+    "PaperLabel": 0.55,
+    "LogoPrint": 0.55
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-066.webp",
+  "featuredReference": "featured-assets/poster-066.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

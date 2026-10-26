@@ -55,8 +55,8 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const zh = lang === 'zh';
   const product = PACKAGING_PRODUCTS[item.id];
   const featuredDesign = featured.find(value => value.id === item.id);
-  // Ivory print remains readable when it leaves Woodland's black label.
-  const design = item.id === 'poster-042' ? {...featuredDesign, background:'#76513b', ink:'#fff0db', swatch:['#ead5bb','#241e1a']} : featuredDesign;
+  // Preserve light original lettering against a deeper product-specific studio.
+  const design = product.review?.appearance?.studio ? {...featuredDesign,...product.review.appearance.studio} : item.id === 'poster-042' ? {...featuredDesign, background:'#76513b', ink:'#fff0db', swatch:['#ead5bb','#241e1a']} : item.id === 'poster-057' ? {...featuredDesign, background:'#87626b', ink:'#fff2f4', swatch:['#f7dfe5','#61434b']} : featuredDesign;
   const PARTS = product.parts;
   const languageIndex = zh ? 0 : 1;
   const rootRef = useRef(null);
@@ -291,7 +291,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const controlsDisabled = !ready || failed;
 
   return (
-    <div ref={rootRef} className={`packaging-detail ${item.id === 'poster-071' ? 'packaging-detail--pump' : item.id === 'poster-039' ? 'packaging-detail--pdrn' : item.id === 'poster-049' ? 'packaging-detail--moisture' : item.id === 'poster-042' ? 'packaging-detail--woodland' : item.id === 'poster-051' ? 'packaging-detail--pure' : item.id === 'poster-044' ? 'packaging-detail--gentle' : item.id === 'poster-047' ? 'packaging-detail--coastal' : item.id === 'poster-056' ? 'packaging-detail--golden' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={['poster-071', 'poster-039', 'poster-049', 'poster-042', 'poster-051', 'poster-044', 'poster-047', 'poster-056'].includes(item.id) ? {'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]} : undefined}>
+    <div ref={rootRef} className={`packaging-detail ${product.review ? 'packaging-detail--reviewed' : product.file === 'poster-049.glb' ? 'packaging-detail--moisture' : product.file === 'poster-051.glb' ? 'packaging-detail--pure' : product.file === 'poster-044.glb' ? 'packaging-detail--gentle' : product.file === 'poster-056.glb' ? 'packaging-detail--golden' : product.file === 'poster-057.glb' ? 'packaging-detail--b5' : ''} ${manualOnly ? 'packaging-detail--manual' : ''} ${failed ? 'packaging-detail--failed' : ''}`} lang={zh ? 'zh-CN' : 'en'} style={{'--pack-paper':design.background,'--pack-ink':design.ink,'--pack-muted':design.ink+'ba','--pack-hairline':design.ink+'4a','--pack-accent':design.swatch[0]}}>
       <header className="packaging-header">
         <button className="packaging-back" onClick={onClose}>
           <ArrowLeft size={18} aria-hidden="true" />
@@ -312,7 +312,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
           <section className="packaging-stage" aria-labelledby="packaging-title">
             <div className="packaging-heading">
               <h1 id="packaging-title">{design.name.split(' ').map((word,i) => <React.Fragment key={i}>{i > 0 && ' '}<span className={i > 0 ? 'packaging-title-second' : undefined}>{word}</span></React.Fragment>)}</h1>
-              <p className="packaging-intro">{item.id === 'poster-012' ? (zh ? 'LIAOSE 磨砂膏罐' : 'LIAOSE scrub jar') : design.kind[lang]}</p>
+              <p className="packaging-intro">{design.kind[lang]}</p>
             </div>
 
             <div className="packaging-model" ref={hostRef} aria-label={zh ? '可拖拽旋转的分层包材模型' : 'Layered packaging model, drag to rotate or use the bottom view button'} />

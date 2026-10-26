@@ -1,0 +1,133 @@
+{
+  "id": "poster-060",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "width": 0.821529745042493,
+  "depth": 0.821529745042493,
+  "closedHeightToDiameter": 3.53,
+  "glassVisibleHeightToDiameter": 2.8,
+  "glassNeckTopToDiameter": 2.9,
+  "glassInnerFloorToDiameter": 0.18,
+  "closureDiameterToBody": 0.51,
+  "closureHeightToDiameter": 0.44,
+  "actuatorDiameterToBody": 0.32,
+  "actuatorVisibleHeightToDiameter": 0.29,
+  "dipTubeOuterDiameterToBody": 0.036,
+  "dipTubeInnerDiameterToBody": 0.024,
+  "dipTubeLowestCentreToDiameter": 0.212,
+  "labelWidthToDiameter": 0.76,
+  "labelHeightToDiameter": 1.1,
+  "labelBottomToDiameter": 1.28,
+  "labelCurve": "Both substrate and text follow the cylindrical front with distinct surface offsets",
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 2.8,
+    "PumpStem": 2.8,
+    "Actuator": 3.21,
+    "PaperLabel": 1.83,
+    "LogoPrint": 1.83
+  },
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.4107648730278015,
+        -0.4107648730278015,
+        0.0
+      ],
+      "max": [
+        0.4107648730278015,
+        0.4107648730278015,
+        2.3824362754821777
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.2094900757074356,
+        -0.2094900757074356,
+        2.300283193588257
+      ],
+      "max": [
+        0.2094900757074356,
+        0.2094900757074356,
+        2.6617562770843506
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.06802927702665329,
+        -0.05422096326947212,
+        0.1643306165933609
+      ],
+      "max": [
+        0.24928760528564453,
+        0.05422096326947212,
+        2.711048126220703
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.1314447522163391,
+        -0.138838529586792,
+        2.637110471725464
+      ],
+      "max": [
+        0.1314447522163391,
+        0.1314447522163391,
+        2.9000000953674316
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.312181293964386,
+        -0.4120793342590332,
+        1.051558017730713
+      ],
+      "max": [
+        0.312181293964386,
+        -0.268280029296875,
+        1.9552408456802368
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.312181293964386,
+        -0.4129008650779724,
+        1.051558017730713
+      ],
+      "max": [
+        0.312181293964386,
+        -0.2691015303134918,
+        1.9552408456802368
+      ]
+    }
+  },
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "../../mobile-client-preview/assets/posters/poster-060.webp",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ],
+  "proceduralTextures": [
+    "brushed-silver.png"
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "AHA",
+    "BODY MIST",
+    "short separator rule",
+    "160 ml"
+  ],
+  "hiddenStructure": "Pump connector, internal tube bend and wall dimensions are illustrative. No fluid or mist is modeled. The visible spray insert is a shallow annular piece, not a functional engineered nozzle.",
+  "material": "Neutral clear bottle, black opaque atomizer, silver brushed foil label with independent dark printing",
+  "revision": "individual-reference-review-20261025",
+  "generator": "build_aha_body_mist.py"
+}

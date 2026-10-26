@@ -1,0 +1,136 @@
+{
+  "id": "poster-058",
+  "components": [
+    "Body",
+    "Closure",
+    "DropperBulb",
+    "Pipette",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "nominalHeight": 2.9,
+  "actualHeight": 2.9000000953674316,
+  "width": 0.7945205479452054,
+  "depth": 0.3178082191780822,
+  "closedHeightToWidth": 3.65,
+  "glassVisibleHeightToWidth": 2.66,
+  "glassNeckTopToWidth": 2.75,
+  "glassInnerFloorToWidth": 0.124,
+  "closureDiameterToWidth": 0.62,
+  "closureHeightToWidth": 0.46,
+  "bulbMainDiameterToWidth": 0.33,
+  "bulbRootDiameterToWidth": 0.38,
+  "bulbVisibleHeightToWidth": 0.53,
+  "pipetteBottomToWidth": 2.0,
+  "pipetteTopToWidth": 3.23,
+  "pipetteOuterDiameterToWidth": 0.072,
+  "pipetteInnerDiameterToWidth": 0.052,
+  "labelWidthToBodyWidth": 0.98,
+  "labelHeightToBodyWidth": 1.415,
+  "labelBottomToWidth": 0.035,
+  "labelCentreHeightToWidth": 0.7425,
+  "labelCurve": "Plane across the broad front; only outer .045W on each side follows the .055W glass corner, with .0014W surface clearance",
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 2.66,
+    "DropperBulb": 3.12,
+    "Pipette": 2.66,
+    "PaperLabel": 0.7425,
+    "LogoPrint": 0.7425
+  },
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.39726027846336365,
+        -0.15890412032604218,
+        0.0
+      ],
+      "max": [
+        0.39726027846336365,
+        0.15890412032604218,
+        2.184931516647339
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.24630136787891388,
+        -0.24630136787891388,
+        2.113424777984619
+      ],
+      "max": [
+        0.24630136787891388,
+        0.24630136787891388,
+        2.4789040088653564
+      ]
+    },
+    "DropperBulb": {
+      "min": [
+        -0.15095891058444977,
+        -0.15095891058444977,
+        2.4526848793029785
+      ],
+      "max": [
+        0.15095891058444977,
+        0.15095891058444977,
+        2.9000000953674316
+      ]
+    },
+    "Pipette": {
+      "min": [
+        -0.028602737933397293,
+        -0.028602737933397293,
+        1.5890411138534546
+      ],
+      "max": [
+        0.028602737933397293,
+        0.028602737933397293,
+        2.5663013458251953
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.38931506872177124,
+        -0.16001643240451813,
+        0.02780821919441223
+      ],
+      "max": [
+        0.38931506872177124,
+        -0.14144274592399597,
+        1.152054786682129
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.38931506872177124,
+        -0.1606520563364029,
+        0.02780821919441223
+      ],
+      "max": [
+        0.38931506872177124,
+        -0.14207836985588074,
+        1.152054786682129
+      ]
+    }
+  },
+  "illustrativeDimensions": true,
+  "containsFormula": false,
+  "reference": "../../mobile-client-preview/assets/posters/poster-058.webp",
+  "featuredReference": "featured-assets/poster-058.png",
+  "editableArtwork": [
+    "label.svg",
+    "print.svg"
+  ],
+  "separateLabelAndPrint": true,
+  "printIncludes": [
+    "liaose",
+    "LUMINOUS",
+    "FACE OIL",
+    "warm separator rule",
+    "50 ml"
+  ],
+  "hiddenStructure": "Neck, collar connection, wall thickness and bulb air path are illustrative; body depth cannot be measured exactly from one poster. Short pipette follows the visible reference. No oil or suspended liquid drop is included.",
+  "material": "Neutral empty glass, mirror silver metal collar, opaque soft white hollow bulb, warm ivory paper",
+  "revision": "individual-reference-review-20261025",
+  "generator": "build_luminous_face_oil.py"
+}

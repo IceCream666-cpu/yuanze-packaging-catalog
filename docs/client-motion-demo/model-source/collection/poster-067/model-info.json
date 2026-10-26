@@ -1,0 +1,131 @@
+{
+  "closedHeightToWidth": 2.02,
+  "bodyDepthToWidth": 0.72,
+  "glassHeightToWidth": 1.477,
+  "pinchHeightToWidth": 1.135,
+  "closureDiameterToWidth": 0.352,
+  "cordDiameterToWidth": 0.0272,
+  "printIncludes": [
+    "liaose",
+    "GINGER SHAMPOO"
+  ],
+  "generator": "build_ginger_shampoo.py",
+  "hiddenStructure": "Amber glass tint follows the visible neck; there is no liquid. Inner pump mechanics and clear carrier are illustrative.",
+  "id": "poster-067",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Cord",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.8999998569488525,
+  "width": 1.4356435643564356,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.7178217768669128,
+        -0.5168316960334778,
+        0.0
+      ],
+      "max": [
+        0.7178217768669128,
+        0.5168316960334778,
+        2.120445489883423
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.2900000214576721,
+        -0.2900000214576721,
+        2.0888614654541016
+      ],
+      "max": [
+        0.2900000214576721,
+        0.2900000214576721,
+        2.5870296955108643
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.11054455488920212,
+        -0.11054455488920212,
+        2.5698018074035645
+      ],
+      "max": [
+        0.11054455488920212,
+        0.11054455488920212,
+        2.7593069076538086
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.7034653425216675,
+        -0.13925743103027344,
+        2.7133662700653076
+      ],
+      "max": [
+        0.2354455441236496,
+        0.13925743103027344,
+        2.8999998569488525
+      ]
+    },
+    "Cord": {
+      "min": [
+        -0.3282601535320282,
+        -0.26541244983673096,
+        0.3300713002681732
+      ],
+      "max": [
+        0.7987234592437744,
+        0.26561737060546875,
+        1.7086706161499023
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.4450494945049286,
+        -0.5189851522445679,
+        0.20816831290721893
+      ],
+      "max": [
+        0.4450494945049286,
+        -0.3873037099838257,
+        0.7249999642372131
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.4450494945049286,
+        -0.5204207897186279,
+        0.20816831290721893
+      ],
+      "max": [
+        0.4450494945049286,
+        -0.38873937726020813,
+        0.7249999642372131
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Body": 0,
+    "Closure": 1.48,
+    "PumpStem": 1.85,
+    "Actuator": 1.94,
+    "Cord": 1.12,
+    "PaperLabel": 0.325,
+    "LogoPrint": 0.325
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-067.webp",
+  "featuredReference": "featured-assets/poster-067.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

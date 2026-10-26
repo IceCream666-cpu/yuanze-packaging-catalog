@@ -1,11 +1,12 @@
 {
   "schema": 1,
-  "scope": "approved-client1.15-golden-face-oil-packaging",
+  "scope": "approved-client1.16-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
     "OuterCap",
-    "InnerLid"
+    "InnerLid",
+    "LogoPrint"
   ],
   "containsFormula": false,
   "files": [
@@ -14,8 +15,8 @@
       "kind": "model",
       "file": "packaging-assets/beach-magic-packaging.glb",
       "productionTarget": "assets/packaging/beach-magic-packaging.glb",
-      "bytes": 2394816,
-      "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76"
+      "bytes": 2395680,
+      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
     },
     {
       "name": "gsap.min.js",
@@ -40,6 +41,14 @@
       "productionTarget": "assets/packaging/liaose-pump.glb",
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    },
+    {
+      "name": "poster-013.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-013.glb",
+      "productionTarget": "assets/packaging/poster-013.glb",
+      "bytes": 1064352,
+      "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688"
     },
     {
       "name": "poster-039.glb",
@@ -96,6 +105,118 @@
       "productionTarget": "assets/packaging/poster-056.glb",
       "bytes": 520372,
       "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709"
+    },
+    {
+      "name": "poster-057.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-057.glb",
+      "productionTarget": "assets/packaging/poster-057.glb",
+      "bytes": 2490440,
+      "sha256": "c42291192e6d59a27123a28ed59f89b5862605dedadc948bf7138040acc82f82"
+    },
+    {
+      "name": "poster-058.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-058.glb",
+      "productionTarget": "assets/packaging/poster-058.glb",
+      "bytes": 1953044,
+      "sha256": "844d3658442de322dfc490055d8e4c55bcd425da576ca08d17118215e8bc94d8"
+    },
+    {
+      "name": "poster-059.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-059.glb",
+      "productionTarget": "assets/packaging/poster-059.glb",
+      "bytes": 1220536,
+      "sha256": "fd0ad9a323a5aad51982236bba6be5c80a868af50f773d1518d671f2c16fdcf5"
+    },
+    {
+      "name": "poster-060.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-060.glb",
+      "productionTarget": "assets/packaging/poster-060.glb",
+      "bytes": 1111412,
+      "sha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783"
+    },
+    {
+      "name": "poster-061.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-061.glb",
+      "productionTarget": "assets/packaging/poster-061.glb",
+      "bytes": 1042708,
+      "sha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a"
+    },
+    {
+      "name": "poster-062.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-062.glb",
+      "productionTarget": "assets/packaging/poster-062.glb",
+      "bytes": 279060,
+      "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34"
+    },
+    {
+      "name": "poster-063.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-063.glb",
+      "productionTarget": "assets/packaging/poster-063.glb",
+      "bytes": 819544,
+      "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a"
+    },
+    {
+      "name": "poster-064.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-064.glb",
+      "productionTarget": "assets/packaging/poster-064.glb",
+      "bytes": 3598760,
+      "sha256": "1228bed596498239bebea597ff5511f81e8deb194927fc18d01b1d6e4bf475d6"
+    },
+    {
+      "name": "poster-065.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-065.glb",
+      "productionTarget": "assets/packaging/poster-065.glb",
+      "bytes": 2726200,
+      "sha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2"
+    },
+    {
+      "name": "poster-066.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-066.glb",
+      "productionTarget": "assets/packaging/poster-066.glb",
+      "bytes": 4125864,
+      "sha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9"
+    },
+    {
+      "name": "poster-067.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-067.glb",
+      "productionTarget": "assets/packaging/poster-067.glb",
+      "bytes": 3379404,
+      "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e"
+    },
+    {
+      "name": "poster-068.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-068.glb",
+      "productionTarget": "assets/packaging/poster-068.glb",
+      "bytes": 1458536,
+      "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3"
+    },
+    {
+      "name": "poster-069.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-069.glb",
+      "productionTarget": "assets/packaging/poster-069.glb",
+      "bytes": 3522180,
+      "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157"
+    },
+    {
+      "name": "poster-070.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-070.glb",
+      "productionTarget": "assets/packaging/poster-070.glb",
+      "bytes": 3191832,
+      "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
     }
   ],
   "additionalProducts": [
@@ -111,12 +232,23 @@
       ]
     },
     {
+      "posterId": "poster-013",
+      "file": "poster-013.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
       "posterId": "poster-039",
       "file": "poster-039.glb",
       "components": [
-        "Body",
         "Closure",
         "InnerLid",
+        "Body",
         "LogoPrint"
       ]
     },
@@ -124,10 +256,10 @@
       "posterId": "poster-049",
       "file": "poster-049.glb",
       "components": [
-        "Body",
-        "Closure",
-        "PumpStem",
         "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
         "PaperLabel",
         "LogoPrint"
       ]
@@ -136,9 +268,9 @@
       "posterId": "poster-042",
       "file": "poster-042.glb",
       "components": [
-        "Body",
         "Closure",
         "StopperInsert",
+        "Body",
         "PaperLabel",
         "LogoPrint"
       ]
@@ -147,11 +279,11 @@
       "posterId": "poster-051",
       "file": "poster-051.glb",
       "components": [
-        "Body",
-        "Closure",
-        "PumpStem",
         "Actuator",
+        "PumpStem",
+        "Closure",
         "Cord",
+        "Body",
         "PaperLabel",
         "LogoPrint"
       ]
@@ -160,11 +292,11 @@
       "posterId": "poster-044",
       "file": "poster-044.glb",
       "components": [
-        "Body",
-        "Closure",
-        "PumpStem",
-        "Actuator",
         "Overcap",
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
         "PaperLabel",
         "LogoPrint"
       ]
@@ -173,8 +305,8 @@
       "posterId": "poster-047",
       "file": "poster-047.glb",
       "components": [
-        "Body",
         "Closure",
+        "Body",
         "PaperLabel",
         "LogoPrint"
       ]
@@ -183,14 +315,183 @@
       "posterId": "poster-056",
       "file": "poster-056.glb",
       "components": [
-        "Body",
-        "Closure",
-        "PumpStem",
-        "Actuator",
         "Overcap",
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-057",
+      "file": "poster-057.glb",
+      "components": [
+        "DropperBulb",
+        "Pipette",
+        "Closure",
+        "Body",
+        "Base",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-058",
+      "file": "poster-058.glb",
+      "components": [
+        "DropperBulb",
+        "Pipette",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-059",
+      "file": "poster-059.glb",
+      "components": [
+        "DropperBulb",
+        "Pipette",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-060",
+      "file": "poster-060.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-061",
+      "file": "poster-061.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-062",
+      "file": "poster-062.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-063",
+      "file": "poster-063.glb",
+      "components": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-064",
+      "file": "poster-064.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Cord",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-065",
+      "file": "poster-065.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "RefillPouch",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-066",
+      "file": "poster-066.glb",
+      "components": [
+        "Overcap",
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-067",
+      "file": "poster-067.glb",
+      "components": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Cord",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-068",
+      "file": "poster-068.glb",
+      "components": [
+        "Closure",
+        "NeckInsert",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-069",
+      "file": "poster-069.glb",
+      "components": [
+        "Closure",
+        "NeckSeal",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-070",
+      "file": "poster-070.glb",
+      "components": [
+        "Closure",
+        "CapWrap",
+        "Body",
         "PaperLabel",
         "LogoPrint"
       ]
     }
-  ]
+  ],
+  "publicationApproved": true
 }

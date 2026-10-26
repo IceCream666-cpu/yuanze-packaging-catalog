@@ -1,0 +1,183 @@
+{
+  "parts": [
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "深蓝长嘴泵头",
+        "Navy head"
+      ],
+      "short": [
+        "泵头",
+        "Navy"
+      ],
+      "detail": [
+        "向左弯曲出液嘴与宽按压面。",
+        "Curved left-facing spout with a broad pressing surface."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "泵杆与吸管",
+        "Pump stem"
+      ],
+      "short": [
+        "泵杆",
+        "Pump"
+      ],
+      "detail": [
+        "连接泵杆、内部泵芯与空心吸管。",
+        "Connecting stem, internal pump chamber and hollow dip tube."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "深蓝旋盖",
+        "Navy collar"
+      ],
+      "short": [
+        "外盖",
+        "Navy"
+      ],
+      "detail": [
+        "双层台阶圆筒盖座。",
+        "Cylindrical screw collar with two raised steps."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "透明洗发水瓶",
+        "Clear bottle"
+      ],
+      "short": [
+        "瓶身",
+        "Clear"
+      ],
+      "detail": [
+        "圆肩空瓶与加厚圆底。",
+        "Empty round-shouldered bottle with a thick circular base."
+      ]
+    },
+    {
+      "key": "refill",
+      "node": "RefillPouch",
+      "title": [
+        "透明补充袋",
+        "Refill pouch"
+      ],
+      "short": [
+        "补充袋",
+        "Refill"
+      ],
+      "detail": [
+        "独立薄膜前后壁、收边和封口。",
+        "Separate thin front and rear films with sealed edges."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "双款深蓝标签",
+        "Navy labels"
+      ],
+      "short": [
+        "标贴",
+        "Navy"
+      ],
+      "detail": [
+        "瓶标与补充袋标都保持无字。",
+        "Bottle and refill labels both remain blank."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "两套完整文字",
+        "Lettering"
+      ],
+      "short": [
+        "文字",
+        "Lettering"
+      ],
+      "detail": [
+        "瓶身750 mL与袋上REFILL分别完整展开。",
+        "Complete bottle 750 mL and pouch REFILL lettering move out together."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "studio": {
+      "background": "#626d7c",
+      "ink": "#fff4dd"
+    }
+  },
+  "explosion": {
+    "offsets": {
+      "head": [
+        0,
+        4.5,
+        0
+      ],
+      "stem": [
+        0,
+        3.6,
+        0
+      ],
+      "closure": [
+        0,
+        1.0,
+        0
+      ],
+      "refill": [
+        1.15,
+        0.05,
+        0
+      ],
+      "label": [
+        -2.55,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -4.8,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.55
+      ],
+      "height": [
+        4.3,
+        9.5
+      ],
+      "width": [
+        4.7,
+        11.8
+      ],
+      "centerX": [
+        0.8,
+        -0.6
+      ]
+    }
+  }
+}

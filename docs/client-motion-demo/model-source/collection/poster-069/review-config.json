@@ -1,0 +1,137 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "软木盖",
+        "Cork"
+      ],
+      "short": [
+        "软木盖",
+        "Cork"
+      ],
+      "detail": [
+        "高软木盖带独立可提起的塞脚。",
+        "The tall cork and its concealed stopper foot lift as one piece."
+      ]
+    },
+    {
+      "key": "seal",
+      "node": "NeckSeal",
+      "title": [
+        "颈封签",
+        "Seal"
+      ],
+      "short": [
+        "颈封签",
+        "Seal"
+      ],
+      "detail": [
+        "原图右侧无字封签可独立展开。",
+        "The original unprinted neck seal opens independently on the right."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "short": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "细长透明空瓶，保留厚玻璃底。",
+        "Slender clear empty bottle with its heavy glass base."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "纸标",
+        "Label"
+      ],
+      "short": [
+        "纸标",
+        "Label"
+      ],
+      "detail": [
+        "无字暖白纤维纸。",
+        "Warm white textured paper without lettering."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "印刷",
+        "Print"
+      ],
+      "short": [
+        "印刷",
+        "Print"
+      ],
+      "detail": [
+        "liaose、STILL、ESSENTIAL OIL、30 ml 完整独立。",
+        "The full liaose, STILL, ESSENTIAL OIL and 30 ml print forms a separate layer."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        2.8,
+        0
+      ],
+      "seal": [
+        1.1,
+        0.9,
+        0.25
+      ],
+      "label": [
+        -1.5,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.1,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.1
+      ],
+      "height": [
+        4.2,
+        7.8
+      ],
+      "width": [
+        3.8,
+        7.0
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ]
+    }
+  }
+}

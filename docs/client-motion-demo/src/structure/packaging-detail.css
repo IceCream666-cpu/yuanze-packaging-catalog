@@ -36,7 +36,7 @@
 .packaging-intro { margin: 24px 0 0; font-size: 16px; line-height: 1.6; }
 .packaging-model { position: absolute; inset: 80px 0 148px; }
 .packaging-model canvas { display: block; width: 100%; height: 100%; touch-action: pan-y; outline: none; }
-.packaging-parts { position: absolute; z-index: 3; right: var(--pack-gutter); top: 31%; width: 18%; max-width: 252px; display: flex; flex-direction: column; gap: 27px; }
+.packaging-parts { position: absolute; z-index: 3; right: var(--pack-gutter); top: 19%; width: 18%; max-width: 252px; display: flex; flex-direction: column; gap: 8px; }
 .packaging-part { display: flex; gap: 13px; align-items: flex-start; text-align: left; padding: 12px 0; border: 0; background: transparent; }
 .packaging-part-focus { flex: 0 0 auto; margin-top: 4px; opacity: .65; }
 .packaging-part:hover .packaging-part-focus, .packaging-part[aria-pressed="true"] .packaging-part-focus { opacity: 1; }
@@ -163,107 +163,39 @@
   .packaging-scroll { scroll-behavior: auto; }
 }
 
-/* The five pump layers need more vertical space; the approved jar layout stays intact. */
-.packaging-detail--pump .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--pump .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px);}
-@media (max-width:900px) {
- .packaging-detail--pump .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--pump .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--pump .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--pump .packaging-model {top:205px;}
-}
+.packaging-mobile-parts {flex-wrap: wrap;}
+.packaging-heading h1 {font-size: clamp(42px, 5.5vw, 80px); overflow-wrap: normal;}
 
-/* Match the approved PDRN preview without changing either existing product layout. */
-.packaging-detail--pdrn .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--pdrn .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
 @media (max-width:900px) {
- .packaging-detail--pdrn .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--pdrn .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--pdrn .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--pdrn .packaging-model {top:205px;}
-}
-
-/* Keep the approved Moisture layout scoped to its six-layer detail. */
-.packaging-detail--moisture .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--moisture .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
-@media (max-width:900px) {
- .packaging-detail--moisture .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--moisture .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--moisture .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--moisture .packaging-model {top:205px;}
+ .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
+ .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
+ .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
+ .packaging-model {top:205px;}
 }
 
 .packaging-detail--moisture .packaging-parts {top:17%; gap:3px;}
 .packaging-detail--moisture .packaging-part {padding:8px 0;}
 .packaging-detail--moisture .packaging-part-detail {margin-top:4px; line-height:1.5;}
 
-/* Match the approved Woodland detail without changing existing product layouts. */
-.packaging-detail--woodland .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--woodland .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
-@media (max-width:900px) {
- .packaging-detail--woodland .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--woodland .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--woodland .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--woodland .packaging-model {top:205px;}
-}
-
-/* Match the approved Pure Volume detail without changing existing product layouts. */
-.packaging-detail--pure .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--pure .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
-@media (max-width:900px) {
- .packaging-detail--pure .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--pure .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--pure .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--pure .packaging-model {top:205px;}
-}
-
 .packaging-detail--pure .packaging-parts {top:15%; gap:1px;}
 .packaging-detail--pure .packaging-part {padding:5px 0;}
 .packaging-detail--pure .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
-@media (max-width:400px) {
-  .packaging-detail--pure .packaging-mobile-parts button {min-width:36px;}
-}
-
-/* Match the approved Gentle Cleansing detail without changing existing product layouts. */
-.packaging-detail--gentle .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--gentle .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
-@media (max-width:900px) {
- .packaging-detail--gentle .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--gentle .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--gentle .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--gentle .packaging-model {top:205px;}
-}
-
+.packaging-detail--reviewed .packaging-parts,
+.packaging-detail--b5 .packaging-parts,
+.packaging-detail--golden .packaging-parts,
 .packaging-detail--gentle .packaging-parts {top:15%; gap:1px;}
+.packaging-detail--reviewed .packaging-part,
+.packaging-detail--b5 .packaging-part,
+.packaging-detail--golden .packaging-part,
 .packaging-detail--gentle .packaging-part {padding:5px 0;}
+.packaging-detail--reviewed .packaging-part-detail,
+.packaging-detail--b5 .packaging-part-detail,
+.packaging-detail--golden .packaging-part-detail,
 .packaging-detail--gentle .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
 @media (max-width:400px) {
+  .packaging-detail--pure .packaging-mobile-parts button {min-width:36px;}
+  .packaging-detail--reviewed .packaging-mobile-parts button,
+  .packaging-detail--b5 .packaging-mobile-parts button,
+  .packaging-detail--golden .packaging-mobile-parts button,
   .packaging-detail--gentle .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
-}
-
-/* Match the approved Coastal detail without changing existing product layouts. */
-.packaging-detail--coastal .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--coastal .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
-@media (max-width:900px) {
- .packaging-detail--coastal .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--coastal .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--coastal .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--coastal .packaging-model {top:205px;}
-}
-
-/* Approved Golden Face Oil seven-layer layout. */
-.packaging-detail--golden .packaging-parts {top:19%; gap:8px;}
-.packaging-detail--golden .packaging-heading h1 {font-size:clamp(42px,5.5vw,80px); overflow-wrap:normal;}
-@media (max-width:900px) {
- .packaging-detail--golden .packaging-mobile-parts {flex-wrap:nowrap; gap:4px; justify-content:space-between; overflow-x:auto;}
- .packaging-detail--golden .packaging-mobile-parts button {flex:0 0 auto; min-width:40px; font-size:13px;}
- .packaging-detail--golden .packaging-heading h1 {font-size:clamp(34px,8.4vw,48px);}
- .packaging-detail--golden .packaging-model {top:205px;}
-}
-
-.packaging-detail--golden .packaging-parts {top:15%; gap:1px;}
-.packaging-detail--golden .packaging-part {padding:5px 0;}
-.packaging-detail--golden .packaging-part-detail {margin-top:3px; line-height:1.4; font-size:13px;}
-@media (max-width:400px) {
-  .packaging-detail--golden .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
 }
