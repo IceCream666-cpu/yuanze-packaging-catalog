@@ -1,0 +1,138 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "旋盖",
+        "Cap"
+      ],
+      "short": [
+        "旋盖",
+        "Cap"
+      ],
+      "detail": [
+        "旋盖独立展示。",
+        "Cap shown as a separate component."
+      ]
+    },
+    {
+      "key": "overcap",
+      "node": "Overcap",
+      "title": [
+        "透明外盖",
+        "Outer cap"
+      ],
+      "short": [
+        "透明外盖",
+        "Outer cap"
+      ],
+      "detail": [
+        "透明外盖独立展示。",
+        "Outer cap shown as a separate component."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "浅绿方瓶",
+        "Bottle"
+      ],
+      "short": [
+        "浅绿方瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "浅绿方瓶独立展示。",
+        "Bottle shown as a separate component."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "纸标",
+        "Label"
+      ],
+      "short": [
+        "纸标",
+        "Label"
+      ],
+      "detail": [
+        "纸标独立展示。",
+        "Label shown as a separate component."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整印刷",
+        "Print"
+      ],
+      "short": [
+        "完整印刷",
+        "Print"
+      ],
+      "detail": [
+        "完整印刷独立展示。",
+        "Print shown as a separate component."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "overcapToneMapped": false
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        1.3,
+        0
+      ],
+      "overcap": [
+        0,
+        2.4,
+        0
+      ],
+      "label": [
+        -1.35,
+        0.08,
+        0.5
+      ],
+      "print": [
+        -2.75,
+        0.15,
+        1.2
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.55
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.85
+      ],
+      "height": [
+        3.8,
+        7.0
+      ],
+      "width": [
+        3.4,
+        6.7
+      ],
+      "centerX": [
+        0,
+        -0.8
+      ]
+    }
+  }
+}

@@ -666,6 +666,90 @@
       "width": 192,
       "height": 144,
       "posterId": "poster-071"
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-072-strip.webp",
+      "productionTarget": "assets/optimized/poster-072-strip.webp",
+      "approvedSource": "assets/posters/poster-072.webp",
+      "approvedSourceSha256": "05683d65e88c071c73536081167ddaa22724f260101d637c89f2d0521ccb55a3",
+      "posterId": "poster-072",
+      "bytes": 3954,
+      "sha256": "066e96ff543eaef5e9bc8221d5810ec932274eeaddd8cc6deaa43b3e171ce9b5",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-073-strip.webp",
+      "productionTarget": "assets/optimized/poster-073-strip.webp",
+      "approvedSource": "assets/posters/poster-073.webp",
+      "approvedSourceSha256": "158fed22b7761fced3fe19610211469a644d8fe47bbe7b0dd5b5a399f8503fa2",
+      "posterId": "poster-073",
+      "bytes": 5520,
+      "sha256": "6d805ccc1c79f3d266a3beecab813fc5c8dd19baf855646d5c7ec73f4a590388",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-074-strip.webp",
+      "productionTarget": "assets/optimized/poster-074-strip.webp",
+      "approvedSource": "assets/posters/poster-074.webp",
+      "approvedSourceSha256": "d21aa72f1619b4bb946979b9aea63d2bd212bd549786b99d19e7233c8c98bc13",
+      "posterId": "poster-074",
+      "bytes": 3652,
+      "sha256": "60227418674b5a4cd7d45116e46896991439f9f0924a68f97d4ef47ada6a5808",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-075-strip.webp",
+      "productionTarget": "assets/optimized/poster-075-strip.webp",
+      "approvedSource": "assets/posters/poster-075.webp",
+      "approvedSourceSha256": "0f63d3e2d18cbbfc183da27062a527bbafd2e8bcd4e36d0884043e9e65a5569e",
+      "posterId": "poster-075",
+      "bytes": 4792,
+      "sha256": "a97f582a81a8680f148cdf81f3ea58855823b5a18e85c2f9af1bfb96eb4c7d06",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-076-strip.webp",
+      "productionTarget": "assets/optimized/poster-076-strip.webp",
+      "approvedSource": "assets/posters/poster-076.webp",
+      "approvedSourceSha256": "2cb0f513c93a07a679a6ae7a281db94856ba97533cb4fa90231bfff5941abd9d",
+      "posterId": "poster-076",
+      "bytes": 3372,
+      "sha256": "a55104835aeec97670728a321c00f08b9ba5f3d622b9ec3675dc85f62787d533",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-077-strip.webp",
+      "productionTarget": "assets/optimized/poster-077-strip.webp",
+      "approvedSource": "assets/posters/poster-077.webp",
+      "approvedSourceSha256": "5e8ac1687823df050ad9d0bc7d7e33ceec297db13dfbba6b0d0ce6f47f98683d",
+      "posterId": "poster-077",
+      "bytes": 4304,
+      "sha256": "6b98816e7b765971d530e784213249ad0608106721f046498e47d7f6c290af0c",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-078-strip.webp",
+      "productionTarget": "assets/optimized/poster-078-strip.webp",
+      "approvedSource": "assets/posters/poster-078.webp",
+      "approvedSourceSha256": "51582f16303114b30be7aa54281acc5a881a39b1960f402747595c0c27b0e441",
+      "posterId": "poster-078",
+      "bytes": 4176,
+      "sha256": "b53a11ce0bd82eedac2fa15174f64e2422aa257a438b95d5cff6a5bb5b9fb32e",
+      "width": 128,
+      "height": 192
     }
   ]
 }

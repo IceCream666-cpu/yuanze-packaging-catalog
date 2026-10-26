@@ -1,0 +1,159 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "泵座",
+        "Collar"
+      ],
+      "short": [
+        "泵座",
+        "Collar"
+      ],
+      "detail": [
+        "泵座独立展示。",
+        "Collar shown as a separate component."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "连接杆",
+        "Stem"
+      ],
+      "short": [
+        "连接杆",
+        "Stem"
+      ],
+      "detail": [
+        "连接杆独立展示。",
+        "Stem shown as a separate component."
+      ]
+    },
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "按压头",
+        "Actuator"
+      ],
+      "short": [
+        "按压头",
+        "Actuator"
+      ],
+      "detail": [
+        "按压头独立展示。",
+        "Actuator shown as a separate component."
+      ]
+    },
+    {
+      "key": "overcap",
+      "node": "Overcap",
+      "title": [
+        "透明罩",
+        "Cover"
+      ],
+      "short": [
+        "透明罩",
+        "Cover"
+      ],
+      "detail": [
+        "透明罩独立展示。",
+        "Cover shown as a separate component."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "磨砂方瓶",
+        "Bottle"
+      ],
+      "short": [
+        "磨砂方瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "磨砂方瓶独立展示。",
+        "Bottle shown as a separate component."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整印刷",
+        "Print"
+      ],
+      "short": [
+        "完整印刷",
+        "Print"
+      ],
+      "detail": [
+        "完整印刷独立展示。",
+        "Print shown as a separate component."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "overcapToneMapped": false
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        0.9,
+        0
+      ],
+      "stem": [
+        0,
+        1.5,
+        0
+      ],
+      "head": [
+        0,
+        2.4,
+        0
+      ],
+      "overcap": [
+        0,
+        3.2,
+        0
+      ],
+      "print": [
+        -2.75,
+        0.15,
+        1.2
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.55
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.85
+      ],
+      "height": [
+        3.8,
+        7.0
+      ],
+      "width": [
+        3.4,
+        6.7
+      ],
+      "centerX": [
+        0,
+        -0.8
+      ]
+    }
+  }
+}

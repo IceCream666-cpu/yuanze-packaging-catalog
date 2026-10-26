@@ -1186,5 +1186,159 @@
     "original": "/assets/poster-071-original.webp",
     "width": 1447,
     "height": 1087
+  },
+  {
+    "id": "poster-072",
+    "title": {
+      "zh": "liaose 日常乳液",
+      "en": "liaose Daily Emulsion"
+    },
+    "category": "face",
+    "style": "natural",
+    "image": "/assets/poster-072.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-072-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-072-thumb.webp",
+    "stripThumb": "/assets/poster-072-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-072-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-073",
+    "title": {
+      "zh": "liaose 身体护理油三瓶组",
+      "en": "liaose Body Oil Collection"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-073.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-073-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-073-thumb.webp",
+    "stripThumb": "/assets/poster-073-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-073-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-074",
+    "title": {
+      "zh": "liaose 真空泵瓶",
+      "en": "liaose Airless Pump"
+    },
+    "category": "face",
+    "style": "clear",
+    "image": "/assets/poster-074.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-074-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-074-thumb.webp",
+    "stripThumb": "/assets/poster-074-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-074-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-075",
+    "title": {
+      "zh": "liaose 去角质啫喱泵罐",
+      "en": "liaose Exfoliating Gel"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-075.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-075-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-075-thumb.webp",
+    "stripThumb": "/assets/poster-075-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-075-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-076",
+    "title": {
+      "zh": "liaose 日常漱口水瓶",
+      "en": "liaose Daily Mouthwash"
+    },
+    "category": "oral",
+    "style": "clear",
+    "image": "/assets/poster-076.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-076-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-076-thumb.webp",
+    "stripThumb": "/assets/poster-076-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-076-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-077",
+    "title": {
+      "zh": "liaose 滚珠眼部精华笔",
+      "en": "liaose Eye Serum Roller"
+    },
+    "category": "face",
+    "style": "clear",
+    "image": "/assets/poster-077.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-077-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-077-thumb.webp",
+    "stripThumb": "/assets/poster-077-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-077-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-078",
+    "title": {
+      "zh": "liaose 茶萃精华水瓶",
+      "en": "liaose Tea Essence"
+    },
+    "category": "face",
+    "style": "natural",
+    "image": "/assets/poster-078.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-078-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-078-thumb.webp",
+    "stripThumb": "/assets/poster-078-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-078-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]

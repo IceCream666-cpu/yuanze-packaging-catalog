@@ -1,8 +1,8 @@
 {
   "receivedAt": "2026-10-04",
   "archiveCount": 3,
-  "inputImageCount": 73,
-  "uniqueImageCount": 71,
+  "inputImageCount": 80,
+  "uniqueImageCount": 78,
   "items": [
     {
       "id": "poster-001",
@@ -1507,11 +1507,158 @@
       "duplicates": [],
       "image": "posters/poster-071.webp",
       "thumbnail": "posters/poster-071-thumb.webp"
+    },
+    {
+      "id": "poster-072",
+      "category": "face",
+      "title": {
+        "zh": "liaose 日常乳液",
+        "en": "liaose Daily Emulsion"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "01-liaose-daily-emulsion.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "7acc8be4dd9b4ef4608619e9f10029dfd5be5be4650a59f346ba4664e58722a3",
+        "bytes": 1942468,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "8f08fcf8ced246a000ab8dc322f0c6d1f6fc145a483119f8fafc2db5f2310000"
+      },
+      "duplicates": [],
+      "image": "posters/poster-072.webp",
+      "thumbnail": "posters/poster-072-thumb.webp"
+    },
+    {
+      "id": "poster-073",
+      "category": "body",
+      "title": {
+        "zh": "liaose 身体护理油三瓶组",
+        "en": "liaose Body Oil Collection"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "02-liaose-body-oil.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "4121918e9f0721a73a7d7d755b4f765e01281ac51f88e3565b83a5a9fce840e2",
+        "bytes": 2231513,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "81f756646de913edc79a6942fcc14a47c7595f3d23b0047a6a8763d39581fbc6"
+      },
+      "duplicates": [],
+      "image": "posters/poster-073.webp",
+      "thumbnail": "posters/poster-073-thumb.webp"
+    },
+    {
+      "id": "poster-074",
+      "category": "face",
+      "title": {
+        "zh": "liaose 真空泵瓶",
+        "en": "liaose Airless Pump"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "03-liaose-airless-pump.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "7398c2346ab6e8e716950268ad17da50d3d6287a844c24d33b38b268f89a5008",
+        "bytes": 1786020,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "f4903c6dd6427fa9c3c63f6664f11639d234ca01f39527fcf3314d5c401016aa"
+      },
+      "duplicates": [],
+      "image": "posters/poster-074.webp",
+      "thumbnail": "posters/poster-074-thumb.webp"
+    },
+    {
+      "id": "poster-075",
+      "category": "body",
+      "title": {
+        "zh": "liaose 去角质啫喱泵罐",
+        "en": "liaose Exfoliating Gel"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "04-liaose-exfoliating-gel.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "720aa6b9645a951010bf47ad55f968276b3149d702e0382722fdc05ac9babd52",
+        "bytes": 2327432,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "907cc7f0c263c2ef931014b81fbd66fa734aa105fc6d1f7ad960cf0d228054c2"
+      },
+      "duplicates": [],
+      "image": "posters/poster-075.webp",
+      "thumbnail": "posters/poster-075-thumb.webp"
+    },
+    {
+      "id": "poster-076",
+      "category": "oral",
+      "title": {
+        "zh": "liaose 日常漱口水瓶",
+        "en": "liaose Daily Mouthwash"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "05-liaose-mouthwash.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "a6fe46a33615a273a581e8546e498d5a8a19862ee57e9815e2e255ddedc7b475",
+        "bytes": 1809026,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "b0c7846694d07cbe3db980f78099eda291750bfd8bf5dfdfa4380f5b1c4a40ba"
+      },
+      "duplicates": [],
+      "image": "posters/poster-076.webp",
+      "thumbnail": "posters/poster-076-thumb.webp"
+    },
+    {
+      "id": "poster-077",
+      "category": "face",
+      "title": {
+        "zh": "liaose 滚珠眼部精华笔",
+        "en": "liaose Eye Serum Roller"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "06-liaose-eye-serum.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "4ef9154eaca00ecfc76673482a9f63a314f58198e600bdef36346e14252fb515",
+        "bytes": 2007694,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "21f3d7967e4d5da7d5b2e8cc437d8c3d4fae4d6b5453d542e4495fb25eb76cd5"
+      },
+      "duplicates": [],
+      "image": "posters/poster-077.webp",
+      "thumbnail": "posters/poster-077-thumb.webp"
+    },
+    {
+      "id": "poster-078",
+      "category": "face",
+      "title": {
+        "zh": "liaose 茶萃精华水瓶",
+        "en": "liaose Tea Essence"
+      },
+      "source": {
+        "kind": "user-approved-generated-artwork",
+        "filename": "07-liaose-tea-essence.png",
+        "receivedAt": "2026-10-26",
+        "sha256": "51144be5630d8220d4ccb43b2f3db4a9f03d95271b41dd8e26599334f5e63457",
+        "bytes": 2120608,
+        "width": 1024,
+        "height": 1536,
+        "pixelsHash": "50a9f72a4ecb7b1e2d64d37f3ddb62963094f539a2b784199c618e5271f4aeed"
+      },
+      "duplicates": [],
+      "image": "posters/poster-078.webp",
+      "thumbnail": "posters/poster-078-thumb.webp"
     }
   ],
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-26",
   "directImageCount": 39,
-  "activeImageCount": 54,
+  "activeImageCount": 61,
   "removedImageCount": 17,
-  "generatedImageCount": 1
+  "generatedImageCount": 8
 }

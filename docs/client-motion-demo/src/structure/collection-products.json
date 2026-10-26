@@ -3137,5 +3137,1042 @@
         }
       }
     }
+  },
+  "poster-072": {
+    "file": "poster-072.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "泵座",
+          "Collar"
+        ],
+        "short": [
+          "泵座",
+          "Collar"
+        ],
+        "detail": [
+          "泵座独立展示。",
+          "Collar shown as a separate component."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "连接杆",
+          "Stem"
+        ],
+        "short": [
+          "连接杆",
+          "Stem"
+        ],
+        "detail": [
+          "连接杆独立展示。",
+          "Stem shown as a separate component."
+        ]
+      },
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压头",
+          "Actuator"
+        ],
+        "short": [
+          "按压头",
+          "Actuator"
+        ],
+        "detail": [
+          "按压头独立展示。",
+          "Actuator shown as a separate component."
+        ]
+      },
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明罩",
+          "Cover"
+        ],
+        "short": [
+          "透明罩",
+          "Cover"
+        ],
+        "detail": [
+          "透明罩独立展示。",
+          "Cover shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "磨砂方瓶",
+          "Bottle"
+        ],
+        "short": [
+          "磨砂方瓶",
+          "Bottle"
+        ],
+        "detail": [
+          "磨砂方瓶独立展示。",
+          "Bottle shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            0.9,
+            0
+          ],
+          "stem": [
+            0,
+            1.5,
+            0
+          ],
+          "head": [
+            0,
+            2.4,
+            0
+          ],
+          "overcap": [
+            0,
+            3.2,
+            0
+          ],
+          "print": [
+            -2.75,
+            0.15,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.85
+          ],
+          "height": [
+            3.8,
+            7.0
+          ],
+          "width": [
+            3.4,
+            6.7
+          ],
+          "centerX": [
+            0,
+            -0.8
+          ]
+        }
+      }
+    }
+  },
+  "poster-073": {
+    "file": "poster-073.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": true,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "旋盖",
+          "Cap"
+        ],
+        "short": [
+          "旋盖",
+          "Cap"
+        ],
+        "detail": [
+          "旋盖独立展示。",
+          "Cap shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "透明油瓶",
+          "Bottles"
+        ],
+        "short": [
+          "透明油瓶",
+          "Bottles"
+        ],
+        "detail": [
+          "透明油瓶独立展示。",
+          "Bottles shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            1.5,
+            0
+          ],
+          "print": [
+            0,
+            -1.5,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.1
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            1.2
+          ],
+          "height": [
+            3.8,
+            7.8
+          ],
+          "width": [
+            4.8,
+            6
+          ],
+          "centerX": [
+            0,
+            0
+          ]
+        }
+      }
+    }
+  },
+  "poster-074": {
+    "file": "poster-074.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "泵座",
+          "Collar"
+        ],
+        "short": [
+          "泵座",
+          "Collar"
+        ],
+        "detail": [
+          "泵座独立展示。",
+          "Collar shown as a separate component."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "连接杆",
+          "Stem"
+        ],
+        "short": [
+          "连接杆",
+          "Stem"
+        ],
+        "detail": [
+          "连接杆独立展示。",
+          "Stem shown as a separate component."
+        ]
+      },
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "按压头",
+          "Actuator"
+        ],
+        "short": [
+          "按压头",
+          "Actuator"
+        ],
+        "detail": [
+          "按压头独立展示。",
+          "Actuator shown as a separate component."
+        ]
+      },
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明罩",
+          "Cover"
+        ],
+        "short": [
+          "透明罩",
+          "Cover"
+        ],
+        "detail": [
+          "透明罩独立展示。",
+          "Cover shown as a separate component."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "Piston",
+        "title": [
+          "升降托盘",
+          "Lift plate"
+        ],
+        "short": [
+          "升降托盘",
+          "Lift plate"
+        ],
+        "detail": [
+          "升降托盘独立展示。",
+          "Lift plate shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "磨砂筒身",
+          "Body"
+        ],
+        "short": [
+          "磨砂筒身",
+          "Body"
+        ],
+        "detail": [
+          "磨砂筒身独立展示。",
+          "Body shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            0.85,
+            0
+          ],
+          "stem": [
+            0,
+            1.5,
+            0
+          ],
+          "head": [
+            0,
+            2.4,
+            0
+          ],
+          "overcap": [
+            0,
+            3.0,
+            0
+          ],
+          "liner": [
+            1.15,
+            0.35,
+            0.2
+          ],
+          "print": [
+            -2.75,
+            0.15,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.85
+          ],
+          "height": [
+            3.8,
+            7.0
+          ],
+          "width": [
+            3.4,
+            6.7
+          ],
+          "centerX": [
+            0,
+            -0.8
+          ]
+        }
+      }
+    }
+  },
+  "poster-075": {
+    "file": "poster-075.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "宽泵座",
+          "Collar"
+        ],
+        "short": [
+          "宽泵座",
+          "Collar"
+        ],
+        "detail": [
+          "宽泵座独立展示。",
+          "Collar shown as a separate component."
+        ]
+      },
+      {
+        "key": "stem",
+        "node": "PumpStem",
+        "title": [
+          "连接杆",
+          "Stem"
+        ],
+        "short": [
+          "连接杆",
+          "Stem"
+        ],
+        "detail": [
+          "连接杆独立展示。",
+          "Stem shown as a separate component."
+        ]
+      },
+      {
+        "key": "head",
+        "node": "Actuator",
+        "title": [
+          "椭圆泵头",
+          "Oval head"
+        ],
+        "short": [
+          "椭圆泵头",
+          "Oval head"
+        ],
+        "detail": [
+          "椭圆泵头独立展示。",
+          "Oval head shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "红色罐身",
+          "Jar"
+        ],
+        "short": [
+          "红色罐身",
+          "Jar"
+        ],
+        "detail": [
+          "红色罐身独立展示。",
+          "Jar shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "studio": {
+          "background": "#80534d",
+          "ink": "#fff1e7",
+          "swatch": [
+            "#b54b43",
+            "#f2eee4"
+          ]
+        },
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            0.95,
+            0
+          ],
+          "stem": [
+            0,
+            1.5,
+            0
+          ],
+          "head": [
+            0,
+            2,
+            0
+          ],
+          "print": [
+            -2.75,
+            0.15,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.85
+          ],
+          "height": [
+            3.8,
+            7.0
+          ],
+          "width": [
+            3.4,
+            6.7
+          ],
+          "centerX": [
+            0,
+            -0.8
+          ]
+        }
+      }
+    }
+  },
+  "poster-076": {
+    "file": "poster-076.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "旋盖",
+          "Cap"
+        ],
+        "short": [
+          "旋盖",
+          "Cap"
+        ],
+        "detail": [
+          "旋盖独立展示。",
+          "Cap shown as a separate component."
+        ]
+      },
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明外盖",
+          "Outer cap"
+        ],
+        "short": [
+          "透明外盖",
+          "Outer cap"
+        ],
+        "detail": [
+          "透明外盖独立展示。",
+          "Outer cap shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "浅绿方瓶",
+          "Bottle"
+        ],
+        "short": [
+          "浅绿方瓶",
+          "Bottle"
+        ],
+        "detail": [
+          "浅绿方瓶独立展示。",
+          "Bottle shown as a separate component."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "纸标",
+          "Label"
+        ],
+        "short": [
+          "纸标",
+          "Label"
+        ],
+        "detail": [
+          "纸标独立展示。",
+          "Label shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            1.3,
+            0
+          ],
+          "overcap": [
+            0,
+            2.4,
+            0
+          ],
+          "label": [
+            -1.35,
+            0.08,
+            0.5
+          ],
+          "print": [
+            -2.75,
+            0.15,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.85
+          ],
+          "height": [
+            3.8,
+            7.0
+          ],
+          "width": [
+            3.4,
+            6.7
+          ],
+          "centerX": [
+            0,
+            -0.8
+          ]
+        }
+      }
+    }
+  },
+  "poster-077": {
+    "file": "poster-077.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "liner",
+        "node": "NeckInsert",
+        "title": [
+          "黑色连接座",
+          "Seat"
+        ],
+        "short": [
+          "黑色连接座",
+          "Seat"
+        ],
+        "detail": [
+          "黑色连接座独立展示。",
+          "Seat shown as a separate component."
+        ]
+      },
+      {
+        "key": "head",
+        "node": "RollerSeat",
+        "title": [
+          "滚珠头座",
+          "Roller seat"
+        ],
+        "short": [
+          "滚珠头座",
+          "Roller seat"
+        ],
+        "detail": [
+          "滚珠头座独立展示。",
+          "Roller seat shown as a separate component."
+        ]
+      },
+      {
+        "key": "ball",
+        "node": "RollerBall",
+        "title": [
+          "金属滚珠",
+          "Metal ball"
+        ],
+        "short": [
+          "金属滚珠",
+          "Metal ball"
+        ],
+        "detail": [
+          "金属滚珠独立展示。",
+          "Metal ball shown as a separate component."
+        ]
+      },
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "银色保护盖",
+          "Cap"
+        ],
+        "short": [
+          "银色保护盖",
+          "Cap"
+        ],
+        "detail": [
+          "银色保护盖独立展示。",
+          "Cap shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "银色笔管",
+          "Tube"
+        ],
+        "short": [
+          "银色笔管",
+          "Tube"
+        ],
+        "detail": [
+          "银色笔管独立展示。",
+          "Tube shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": false,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": true,
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "liner": [
+            0,
+            0.75,
+            0
+          ],
+          "head": [
+            0,
+            1.55,
+            0
+          ],
+          "ball": [
+            0,
+            2.2,
+            0
+          ],
+          "closure": [
+            1.15,
+            2.3,
+            0
+          ],
+          "print": [
+            -2.75,
+            0.15,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.85
+          ],
+          "height": [
+            3.7,
+            6.7
+          ],
+          "width": [
+            2.8,
+            6.3
+          ],
+          "centerX": [
+            0,
+            -0.8
+          ]
+        }
+      }
+    }
+  },
+  "poster-078": {
+    "file": "poster-078.glb",
+    "scale": 1,
+    "kind": "collection",
+    "wide": false,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "圆顶白盖",
+          "Dome cap"
+        ],
+        "short": [
+          "圆顶白盖",
+          "Dome cap"
+        ],
+        "detail": [
+          "圆顶白盖独立展示。",
+          "Dome cap shown as a separate component."
+        ]
+      },
+      {
+        "key": "jar",
+        "node": "Body",
+        "title": [
+          "橄榄绿瓶",
+          "Bottle"
+        ],
+        "short": [
+          "橄榄绿瓶",
+          "Bottle"
+        ],
+        "detail": [
+          "橄榄绿瓶独立展示。",
+          "Bottle shown as a separate component."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "纸标",
+          "Label"
+        ],
+        "short": [
+          "纸标",
+          "Label"
+        ],
+        "detail": [
+          "纸标独立展示。",
+          "Label shown as a separate component."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "完整印刷",
+          "Print"
+        ],
+        "short": [
+          "完整印刷",
+          "Print"
+        ],
+        "detail": [
+          "完整印刷独立展示。",
+          "Print shown as a separate component."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "overcapToneMapped": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            2.4,
+            0
+          ],
+          "label": [
+            -1.35,
+            0.08,
+            0.5
+          ],
+          "print": [
+            -2.75,
+            0.15,
+            1.2
+          ]
+        },
+        "scales": {
+          "label": 1.15,
+          "print": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.85
+          ],
+          "height": [
+            3.8,
+            7.0
+          ],
+          "width": [
+            3.4,
+            6.7
+          ],
+          "centerX": [
+            0,
+            -0.8
+          ]
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,99 @@
+{
+  "closedHeightToWidth": 1.59,
+  "generator": "build_liaose_seven.py",
+  "referencePoster": "poster-075",
+  "printIncludes": [
+    "liaose"
+  ],
+  "primaryContainers": 1,
+  "hiddenStructure": "Hidden seals and pump mechanics are illustrative. Empty packaging, no formula.",
+  "id": "poster-075",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.9000000953674316,
+  "width": 1.8238993710691822,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.9119496941566467,
+        -0.9119496941566467,
+        0.0
+      ],
+      "max": [
+        0.9119496941566467,
+        0.9119496941566467,
+        1.787421464920044
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.9301886558532715,
+        -0.9301886558532715,
+        1.6962264776229858
+      ],
+      "max": [
+        0.9301886558532715,
+        0.9301886558532715,
+        2.2616353034973145
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.36477988958358765,
+        -0.36477988958358765,
+        2.206918239593506
+      ],
+      "max": [
+        0.36477988958358765,
+        0.36477988958358765,
+        2.7176101207733154
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -1.1308176517486572,
+        -0.7477987408638,
+        2.662893295288086
+      ],
+      "max": [
+        1.1308176517486572,
+        0.7477987408638,
+        2.9000000953674316
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.7113207578659058,
+        -0.9165094494819641,
+        0.32830190658569336
+      ],
+      "max": [
+        0.7113207578659058,
+        -0.5752391815185547,
+        1.4591195583343506
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Closure": 0.93,
+    "PumpStem": 1.21,
+    "Actuator": 1.46,
+    "Body": 0,
+    "LogoPrint": 0.49
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-075.webp",
+  "featuredReference": "featured-assets/poster-075.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

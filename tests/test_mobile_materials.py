@@ -43,7 +43,7 @@ class CompanyMaterials(unittest.TestCase):
         manifest = json.loads((ASSETS / 'manifest.json').read_text())
         entries = {item['path']: item for item in manifest['files']}
         previews = [item for item in manifest['files'] if item['kind'] == 'showroom-preview']
-        self.assertEqual(len(previews), 130)
+        self.assertEqual(len(previews), 144)
         for item in previews:
             with self.subTest(path=item['path']):
                 original = entries[item['source']]
@@ -106,17 +106,17 @@ class CompanyMaterials(unittest.TestCase):
         self.assertIsNotNone(assignment, 'Poster data must be a standalone JSON-compatible assignment')
         catalog = json.loads(assignment[1])
         self.assertEqual((report['archiveCount'], report['directImageCount'],
-                          report['inputImageCount'], report['uniqueImageCount']), (3, 39, 73, 71))
+                          report['inputImageCount'], report['uniqueImageCount']), (3, 39, 80, 78))
         archived_ids = {f'poster-{index:03d}' for index in range(1, 32)}
         attachment_ids = {f'poster-{index:03d}' for index in range(32, 71)}
-        generated_ids = {'poster-071'}
+        generated_ids = {f'poster-{index:03d}' for index in range(71, 79)}
         expected_ids = archived_ids | attachment_ids | generated_ids
         removed_ids = {f'poster-{index:03d}' for index in range(15, 32)}
         active_ids = expected_ids - removed_ids
-        self.assertEqual((report['activeImageCount'], report['removedImageCount']), (54, 17))
-        self.assertEqual(len(report['items']), 71)
+        self.assertEqual((report['activeImageCount'], report['removedImageCount']), (61, 17))
+        self.assertEqual(len(report['items']), 78)
         self.assertEqual({item['id'] for item in report['items']}, expected_ids)
-        self.assertEqual(len(catalog['items']), 54)
+        self.assertEqual(len(catalog['items']), 61)
         self.assertEqual({item['id'] for item in catalog['items']}, active_ids)
         customer_items = {item['id']: item for item in catalog['items']}
         self.assertEqual(len(catalog['categories']), len({category['id'] for category in catalog['categories']}))
@@ -158,7 +158,7 @@ class CompanyMaterials(unittest.TestCase):
                     attachments.add(origin)
                 elif item['id'] in generated_ids:
                     self.assertEqual(source['kind'], 'user-approved-generated-artwork')
-                    self.assertEqual(source['receivedAt'], '2026-10-24')
+                    self.assertEqual(source['receivedAt'], '2026-10-24' if item['id']=='poster-071' else '2026-10-26')
                     self.assertEqual(item['duplicates'], [])
                     sources.add(('generated', source['receivedAt'], source['filename']))
                 else:
@@ -226,7 +226,7 @@ class CompanyMaterials(unittest.TestCase):
         self.assertEqual(len(attachments), report['directImageCount'])
         self.assertEqual(archived_posters, archived_ids)
         self.assertEqual(attached_posters, attachment_ids)
-        self.assertEqual(len(sources - attachments), 34)
+        self.assertEqual(len(sources - attachments), 41)
 
     def test_banner_webps_preserve_the_five_approved_pngs_without_resizing_or_metadata(self):
         manifest = json.loads((ASSETS / 'manifest.json').read_text())

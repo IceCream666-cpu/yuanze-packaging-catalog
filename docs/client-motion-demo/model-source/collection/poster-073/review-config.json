@@ -1,0 +1,96 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "旋盖",
+        "Cap"
+      ],
+      "short": [
+        "旋盖",
+        "Cap"
+      ],
+      "detail": [
+        "旋盖独立展示。",
+        "Cap shown as a separate component."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "透明油瓶",
+        "Bottles"
+      ],
+      "short": [
+        "透明油瓶",
+        "Bottles"
+      ],
+      "detail": [
+        "透明油瓶独立展示。",
+        "Bottles shown as a separate component."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整印刷",
+        "Print"
+      ],
+      "short": [
+        "完整印刷",
+        "Print"
+      ],
+      "detail": [
+        "完整印刷独立展示。",
+        "Print shown as a separate component."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "overcapToneMapped": false
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        1.5,
+        0
+      ],
+      "print": [
+        0,
+        -1.5,
+        1.2
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.1
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        1.2
+      ],
+      "height": [
+        3.8,
+        7.8
+      ],
+      "width": [
+        4.8,
+        6
+      ],
+      "centerX": [
+        0,
+        0
+      ]
+    }
+  }
+}

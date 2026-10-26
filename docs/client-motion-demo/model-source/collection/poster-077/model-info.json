@@ -1,0 +1,113 @@
+{
+  "closedHeightToWidth": 5.82,
+  "generator": "build_liaose_seven.py",
+  "referencePoster": "poster-077",
+  "printIncludes": [
+    "liaose"
+  ],
+  "primaryContainers": 1,
+  "hiddenStructure": "Hidden seals and pump mechanics are illustrative. Empty packaging, no formula.",
+  "id": "poster-077",
+  "components": [
+    "Body",
+    "NeckInsert",
+    "RollerSeat",
+    "RollerBall",
+    "Closure",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.9000000953674316,
+  "width": 0.4982817869415807,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.2491408884525299,
+        -0.2491408884525299,
+        0.0
+      ],
+      "max": [
+        0.2491408884525299,
+        0.2491408884525299,
+        2.182474136352539
+      ]
+    },
+    "NeckInsert": {
+      "min": [
+        -0.21924397349357605,
+        -0.21924397349357605,
+        2.132646083831787
+      ],
+      "max": [
+        0.21924397349357605,
+        0.21924397349357605,
+        2.381787061691284
+      ]
+    },
+    "RollerSeat": {
+      "min": [
+        -0.15945015847682953,
+        -0.15945015847682953,
+        2.3419241905212402
+      ],
+      "max": [
+        0.15945015847682953,
+        0.15945015847682953,
+        2.7754294872283936
+      ]
+    },
+    "RollerBall": {
+      "min": [
+        -0.10713066160678864,
+        -0.10713063925504684,
+        2.6583335399627686
+      ],
+      "max": [
+        0.10713060945272446,
+        0.10713067650794983,
+        2.8725945949554443
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.2566151022911072,
+        -0.2566151022911072,
+        2.1625430583953857
+      ],
+      "max": [
+        0.2566151022911072,
+        0.2566151022911072,
+        2.9000000953674316
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.18436425924301147,
+        -0.2503865957260132,
+        1.2457044124603271
+      ],
+      "max": [
+        0.18436425924301147,
+        -0.1688195765018463,
+        1.8685566186904907
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "NeckInsert": 4.38,
+    "RollerSeat": 4.74,
+    "RollerBall": 5.55,
+    "Closure": 4.34,
+    "Body": 0,
+    "LogoPrint": 3.125
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-077.webp",
+  "featuredReference": "featured-assets/poster-077.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

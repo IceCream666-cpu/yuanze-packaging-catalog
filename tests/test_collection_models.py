@@ -1,4 +1,4 @@
-"""All 24 local review models must map to their own complete, self-contained GLB."""
+"""All 31 local review models must map to their own complete, self-contained GLB."""
 import json,struct,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]/'docs/client-motion-demo'
@@ -96,7 +96,7 @@ class CollectionModelTests(unittest.TestCase):
   featured={p['id'] for p in json.loads((ROOT/'src/featured.json').read_text())}
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
   self.assertEqual(set(collection)|{'poster-012','poster-071'},featured)
-  self.assertEqual(len(featured),24)
+  self.assertEqual(len(featured),31)
   for id,p in collection.items():
    with self.subTest(id=id):
     self.assertEqual(p['file'],id+'.glb')
@@ -111,4 +111,20 @@ class CollectionModelTests(unittest.TestCase):
     self.assertTrue((ROOT/'model-source/collection'/id/(id+'.blend')).is_file())
  def test_collection_publication_matches_explicit_user_approval(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
-  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.16-collection-packaging')
+  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.17-collection-packaging')
+
+ def test_liaose_seven_have_reference_specific_parts_and_small_embedded_models(self):
+  collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
+  expected={72:{'jar','closure','stem','head','overcap','print'},73:{'jar','closure','print'},74:{'jar','closure','stem','head','overcap','liner','print'},75:{'jar','closure','stem','head','print'},76:{'jar','closure','overcap','label','print'},77:{'jar','closure','liner','head','ball','print'},78:{'jar','closure','label','print'}}
+  for number,keys in expected.items():
+   pid=f'poster-{number:03}';source=ROOT/'model-source/collection'/pid
+   with self.subTest(id=pid):
+    cfg=collection[pid];meta=json.loads((source/'model-info.json').read_text())
+    self.assertEqual({p['key'] for p in cfg['parts']},keys)
+    self.assertFalse(meta['containsFormula']);self.assertTrue(meta['illustrativeDimensions'])
+    self.assertLess((ROOT/'packaging-assets'/cfg['file']).stat().st_size,750_000)
+    self.assertEqual(json.loads((source/'review-config.json').read_text())['explosion'],cfg['review']['explosion'])
+    self.assertEqual(set(cfg['review']['explosion']['offsets']),keys-{'jar'})
+  for file,value in [('print-01.svg','01'),('print.svg','02'),('print-03.svg','03')]:
+   self.assertIn('>'+value+'</text>',(ROOT/'model-source/collection/poster-073'/file).read_text())
+  self.assertIn('studio',collection['poster-075']['review']['appearance'])

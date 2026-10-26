@@ -680,6 +680,90 @@ window.YuanzeProductPosters = {
       "thumbnail": "/showroom/assets/posters/poster-071-thumb.webp",
       "width": 1447,
       "height": 1087
+    },
+    {
+      "id": "poster-072",
+      "category": "face",
+      "title": {
+        "zh": "liaose 日常乳液",
+        "en": "liaose Daily Emulsion"
+      },
+      "src": "/showroom/assets/posters/poster-072.webp",
+      "thumbnail": "/showroom/assets/posters/poster-072-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-073",
+      "category": "body",
+      "title": {
+        "zh": "liaose 身体护理油三瓶组",
+        "en": "liaose Body Oil Collection"
+      },
+      "src": "/showroom/assets/posters/poster-073.webp",
+      "thumbnail": "/showroom/assets/posters/poster-073-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-074",
+      "category": "face",
+      "title": {
+        "zh": "liaose 真空泵瓶",
+        "en": "liaose Airless Pump"
+      },
+      "src": "/showroom/assets/posters/poster-074.webp",
+      "thumbnail": "/showroom/assets/posters/poster-074-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-075",
+      "category": "body",
+      "title": {
+        "zh": "liaose 去角质啫喱泵罐",
+        "en": "liaose Exfoliating Gel"
+      },
+      "src": "/showroom/assets/posters/poster-075.webp",
+      "thumbnail": "/showroom/assets/posters/poster-075-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-076",
+      "category": "oral",
+      "title": {
+        "zh": "liaose 日常漱口水瓶",
+        "en": "liaose Daily Mouthwash"
+      },
+      "src": "/showroom/assets/posters/poster-076.webp",
+      "thumbnail": "/showroom/assets/posters/poster-076-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-077",
+      "category": "face",
+      "title": {
+        "zh": "liaose 滚珠眼部精华笔",
+        "en": "liaose Eye Serum Roller"
+      },
+      "src": "/showroom/assets/posters/poster-077.webp",
+      "thumbnail": "/showroom/assets/posters/poster-077-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-078",
+      "category": "face",
+      "title": {
+        "zh": "liaose 茶萃精华水瓶",
+        "en": "liaose Tea Essence"
+      },
+      "src": "/showroom/assets/posters/poster-078.webp",
+      "thumbnail": "/showroom/assets/posters/poster-078-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

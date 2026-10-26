@@ -1,0 +1,71 @@
+{
+  "closedHeightToWidth": 2.26,
+  "generator": "build_liaose_seven.py",
+  "referencePoster": "poster-073",
+  "printIncludes": [
+    "liaose"
+  ],
+  "primaryContainers": 3,
+  "hiddenStructure": "Hidden seals and pump mechanics are illustrative. Empty packaging, no formula.",
+  "id": "poster-073",
+  "components": [
+    "Body",
+    "Closure",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.9000000953674316,
+  "width": 1.2831858407079646,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -2.091593027114868,
+        -0.6415929198265076,
+        0.0
+      ],
+      "max": [
+        2.091593027114868,
+        0.6415929198265076,
+        2.5022125244140625
+      ]
+    },
+    "Closure": {
+      "min": [
+        -1.7515487670898438,
+        -0.30154865980148315,
+        2.4380531311035156
+      ],
+      "max": [
+        1.7515487670898438,
+        0.30154865980148315,
+        2.9000000953674316
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -1.886283278465271,
+        -0.6448009014129639,
+        0.3849557638168335
+      ],
+      "max": [
+        1.886283278465271,
+        -0.4736316502094269,
+        1.5654867887496948
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Closure": 1.9,
+    "Body": 0,
+    "LogoPrint": 0.76
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-073.webp",
+  "featuredReference": "featured-assets/poster-073.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

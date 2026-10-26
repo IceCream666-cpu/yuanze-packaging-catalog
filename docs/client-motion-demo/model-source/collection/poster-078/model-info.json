@@ -1,0 +1,85 @@
+{
+  "closedHeightToWidth": 2.95,
+  "generator": "build_liaose_seven.py",
+  "referencePoster": "poster-078",
+  "printIncludes": [
+    "liaose"
+  ],
+  "primaryContainers": 1,
+  "hiddenStructure": "Hidden seals and pump mechanics are illustrative. Empty packaging, no formula.",
+  "id": "poster-078",
+  "components": [
+    "Body",
+    "Closure",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.8999998569488525,
+  "width": 0.983050847457627,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.49152541160583496,
+        -0.49152541160583496,
+        0.0
+      ],
+      "max": [
+        0.49152541160583496,
+        0.49152541160583496,
+        2.211864471435547
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.4964406490325928,
+        -0.4964406490325928,
+        2.064406633377075
+      ],
+      "max": [
+        0.4964406490325928,
+        0.4964406490325928,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.39322033524513245,
+        -0.4925084412097931,
+        0.24576270580291748
+      ],
+      "max": [
+        0.39322033524513245,
+        -0.29589828848838806,
+        1.159999966621399
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.39322033524513245,
+        -0.49398303031921387,
+        0.24576270580291748
+      ],
+      "max": [
+        0.39322033524513245,
+        -0.29737287759780884,
+        1.159999966621399
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Closure": 2.1,
+    "Body": 0,
+    "PaperLabel": 0.7150000000000001,
+    "LogoPrint": 0.7150000000000001
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-078.webp",
+  "featuredReference": "featured-assets/poster-078.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

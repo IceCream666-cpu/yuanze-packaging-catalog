@@ -1,0 +1,159 @@
+{
+  "parts": [
+    {
+      "key": "liner",
+      "node": "NeckInsert",
+      "title": [
+        "黑色连接座",
+        "Seat"
+      ],
+      "short": [
+        "黑色连接座",
+        "Seat"
+      ],
+      "detail": [
+        "黑色连接座独立展示。",
+        "Seat shown as a separate component."
+      ]
+    },
+    {
+      "key": "head",
+      "node": "RollerSeat",
+      "title": [
+        "滚珠头座",
+        "Roller seat"
+      ],
+      "short": [
+        "滚珠头座",
+        "Roller seat"
+      ],
+      "detail": [
+        "滚珠头座独立展示。",
+        "Roller seat shown as a separate component."
+      ]
+    },
+    {
+      "key": "ball",
+      "node": "RollerBall",
+      "title": [
+        "金属滚珠",
+        "Metal ball"
+      ],
+      "short": [
+        "金属滚珠",
+        "Metal ball"
+      ],
+      "detail": [
+        "金属滚珠独立展示。",
+        "Metal ball shown as a separate component."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "银色保护盖",
+        "Cap"
+      ],
+      "short": [
+        "银色保护盖",
+        "Cap"
+      ],
+      "detail": [
+        "银色保护盖独立展示。",
+        "Cap shown as a separate component."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "银色笔管",
+        "Tube"
+      ],
+      "short": [
+        "银色笔管",
+        "Tube"
+      ],
+      "detail": [
+        "银色笔管独立展示。",
+        "Tube shown as a separate component."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整印刷",
+        "Print"
+      ],
+      "short": [
+        "完整印刷",
+        "Print"
+      ],
+      "detail": [
+        "完整印刷独立展示。",
+        "Print shown as a separate component."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": false,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": true,
+    "overcapToneMapped": false
+  },
+  "explosion": {
+    "offsets": {
+      "liner": [
+        0,
+        0.75,
+        0
+      ],
+      "head": [
+        0,
+        1.55,
+        0
+      ],
+      "ball": [
+        0,
+        2.2,
+        0
+      ],
+      "closure": [
+        1.15,
+        2.3,
+        0
+      ],
+      "print": [
+        -2.75,
+        0.15,
+        1.2
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.55
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.85
+      ],
+      "height": [
+        3.7,
+        6.7
+      ],
+      "width": [
+        2.8,
+        6.3
+      ],
+      "centerX": [
+        0,
+        -0.8
+      ]
+    }
+  }
+}

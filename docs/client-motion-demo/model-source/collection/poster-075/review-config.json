@@ -1,0 +1,146 @@
+{
+  "parts": [
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "宽泵座",
+        "Collar"
+      ],
+      "short": [
+        "宽泵座",
+        "Collar"
+      ],
+      "detail": [
+        "宽泵座独立展示。",
+        "Collar shown as a separate component."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "连接杆",
+        "Stem"
+      ],
+      "short": [
+        "连接杆",
+        "Stem"
+      ],
+      "detail": [
+        "连接杆独立展示。",
+        "Stem shown as a separate component."
+      ]
+    },
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "椭圆泵头",
+        "Oval head"
+      ],
+      "short": [
+        "椭圆泵头",
+        "Oval head"
+      ],
+      "detail": [
+        "椭圆泵头独立展示。",
+        "Oval head shown as a separate component."
+      ]
+    },
+    {
+      "key": "jar",
+      "node": "Body",
+      "title": [
+        "红色罐身",
+        "Jar"
+      ],
+      "short": [
+        "红色罐身",
+        "Jar"
+      ],
+      "detail": [
+        "红色罐身独立展示。",
+        "Jar shown as a separate component."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "完整印刷",
+        "Print"
+      ],
+      "short": [
+        "完整印刷",
+        "Print"
+      ],
+      "detail": [
+        "完整印刷独立展示。",
+        "Print shown as a separate component."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": false,
+    "pipette": false,
+    "clearLabel": false,
+    "metal": false,
+    "studio": {
+      "background": "#80534d",
+      "ink": "#fff1e7",
+      "swatch": [
+        "#b54b43",
+        "#f2eee4"
+      ]
+    },
+    "overcapToneMapped": false
+  },
+  "explosion": {
+    "offsets": {
+      "closure": [
+        0,
+        0.95,
+        0
+      ],
+      "stem": [
+        0,
+        1.5,
+        0
+      ],
+      "head": [
+        0,
+        2,
+        0
+      ],
+      "print": [
+        -2.75,
+        0.15,
+        1.2
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.55
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.85
+      ],
+      "height": [
+        3.8,
+        7.0
+      ],
+      "width": [
+        3.4,
+        6.7
+      ],
+      "centerX": [
+        0,
+        -0.8
+      ]
+    }
+  }
+}

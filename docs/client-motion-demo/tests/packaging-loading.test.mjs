@@ -56,7 +56,7 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
 }
 
 for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review)) {
-  test(`${id} separates all printing from its blank label and restores imported transforms`, async () => {
+  test(`${id} separates all printing and restores imported transforms`, async () => {
     let loaded, api;
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try {
@@ -68,11 +68,14 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
       const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
       for (const value of [.5,1,0,1,0]) {
         api.setProgress(value);flush();
-        const print=parts.print.position.clone().sub(rest.print.p),label=parts.label.position.clone().sub(rest.label.p);
+        const print=parts.print.position.clone().sub(rest.print.p);
+        const label=parts.label?.position.clone().sub(rest.label.p);
         if(value) {
+          if(label) {
           assert.ok(print.z-label.z>.45*value,'lettering must sit visibly in front of its label');
           assert.ok(print.x<label.x-.8*value,'lettering must also move farther sideways');
           assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
+          } else assert.ok(print.length()>.5*value,'direct printing must separate from the container');
           assert.ok(parts.closure.position.y-rest.closure.p.y>.7*value,'cap separation must remain substantial');
           for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
             if(value===1) parts[key].position.clone().sub(rest[key].p).toArray().forEach((n,i)=>assert.ok(Math.abs(n-offset[i])<1e-9));
@@ -398,4 +401,19 @@ test('B5 pipette remains visible through the empty bottle and preserves the orig
     assert.equal(body.material.transmission,1);assert.equal(body.material.depthWrite,false);assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
     assert.equal(print.renderOrder,3);assert.ok(print.material.color.equals(new Three.Color('#ffffff')));assert.equal(print.material.toneMapped,false);
   } finally {api?.dispose();env.close();}
+});
+
+
+test('new clear overcaps retain neutral transmission without changing prior finishes', async () => {
+  for(const id of ['poster-072','poster-074','poster-076','poster-066']) {
+    const product=PACKAGING_PRODUCTS[id];let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();const cap=loaded.scene.getObjectByName(product.parts.find(p=>p.key==='overcap').node);
+      cap.material.transmission=1;cap.material.roughness=.035;
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(cap.material.toneMapped,id==='poster-066');
+      assert.equal(cap.material.transmission,1);
+    } finally {api?.dispose();env.close();}
+  }
 });

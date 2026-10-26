@@ -1,0 +1,99 @@
+{
+  "closedHeightToWidth": 2.04,
+  "generator": "build_liaose_seven.py",
+  "referencePoster": "poster-076",
+  "printIncludes": [
+    "liaose"
+  ],
+  "primaryContainers": 1,
+  "hiddenStructure": "Hidden seals and pump mechanics are illustrative. Empty packaging, no formula.",
+  "id": "poster-076",
+  "components": [
+    "Body",
+    "Closure",
+    "Overcap",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.8999998569488525,
+  "width": 1.4215686274509802,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.7107843160629272,
+        -0.4264706075191498,
+        0.0
+      ],
+      "max": [
+        0.7107843160629272,
+        0.4264706075191498,
+        2.430882453918457
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.4264706075191498,
+        -0.4264706075191498,
+        2.3740196228027344
+      ],
+      "max": [
+        0.4264706075191498,
+        0.4264706075191498,
+        2.8573529720306396
+      ]
+    },
+    "Overcap": {
+      "min": [
+        -0.5032352805137634,
+        -0.5032352805137634,
+        2.4024510383605957
+      ],
+      "max": [
+        0.5032352805137634,
+        0.5032352805137634,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.4833333492279053,
+        -0.42789214849472046,
+        0.39803922176361084
+      ],
+      "max": [
+        0.4833333492279053,
+        -0.42789214849472046,
+        1.9617646932601929
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.4833333492279053,
+        -0.43002453446388245,
+        0.39803922176361084
+      ],
+      "max": [
+        0.4833333492279053,
+        -0.43002453446388245,
+        1.9617646932601929
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Closure": 1.67,
+    "Overcap": 1.69,
+    "Body": 0,
+    "PaperLabel": 0.8300000000000001,
+    "LogoPrint": 0.8300000000000001
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-076.webp",
+  "featuredReference": "featured-assets/poster-076.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}

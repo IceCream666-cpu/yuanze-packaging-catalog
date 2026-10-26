@@ -1,0 +1,219 @@
+{
+  "version": "client1.17",
+  "environment": "loopback production bundle; synthetic local client session",
+  "viewports": {
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      393,
+      852
+    ]
+  },
+  "checks": [
+    "assembled and exploded components",
+    "original poster and HD return",
+    "restored transforms",
+    "no mobile overflow",
+    "all visible component controls",
+    "no browser errors"
+  ],
+  "rounds": [
+    {
+      "startedAt": "2026-10-26T08:15:22.087Z",
+      "state": "passed",
+      "bundlePreviewSha256": "45156a069b480020d9cdbd8b2605405a3c488530aeef4e8a33c1954547d59a4a",
+      "cases": [
+        {
+          "id": "poster-072",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-073",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-074",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-075",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-076",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-077",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-078",
+          "mode": "desktop",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "startedAt": "2026-10-26T08:16:59.994Z",
+      "state": "passed",
+      "bundlePreviewSha256": "1c507131724720c0bb9c200465be581b37fc52db3d484dec39b4c854fe305415",
+      "cases": [
+        {
+          "id": "poster-072",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-073",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-074",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-075",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-076",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-077",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-078",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-072",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-073",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-074",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-075",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-076",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-077",
+          "mode": "desktop",
+          "status": "passed"
+        },
+        {
+          "id": "poster-078",
+          "mode": "desktop",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "startedAt": "2026-10-26T08:19:15.965Z",
+      "state": "passed",
+      "bundlePreviewSha256": "5fd804acef12d2ec4f6283f7db26ea01caaaad8d2d55f5ef9a2b789b1e018a73",
+      "cases": [
+        {
+          "id": "poster-072",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-075",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-078",
+          "mode": "mobile",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "startedAt": "2026-10-26T08:20:32.976Z",
+      "state": "passed",
+      "bundlePreviewSha256": "d8afbeb9c0b4c01af5b07fa2ca199dca3c517077cdf5e43e35bd315b2ee0cda4",
+      "cases": [
+        {
+          "id": "poster-075",
+          "mode": "mobile",
+          "status": "passed"
+        },
+        {
+          "id": "poster-078",
+          "mode": "mobile",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No physical mobile device testing",
+    "No manufacturing dimensions, fit or sealing validation"
+  ],
+  "gallerySearch": {
+    "query": "漱口水",
+    "results": 1,
+    "opensModel": "poster-076",
+    "status": "passed"
+  },
+  "regression": {
+    "root": {
+      "tests": 316,
+      "skipped": 3,
+      "passed": true
+    },
+    "backend": {
+      "tests": 258,
+      "passed": true
+    },
+    "deployment": {
+      "tests": 32,
+      "passed": true
+    },
+    "sharedFrontend": true,
+    "historicalClient": true,
+    "motionAndPackaging": true,
+    "clientDOM": true,
+    "login": {
+      "tests": 12,
+      "passed": true
+    },
+    "showroomBuildMatches": true,
+    "loginBuildMatches": true,
+    "diffCheck": true,
+    "note": "All checks from scripts/verify.py completed. Continued after restoring ignored dependency links and historical preview assets; no failed checks remain."
+  }
+}

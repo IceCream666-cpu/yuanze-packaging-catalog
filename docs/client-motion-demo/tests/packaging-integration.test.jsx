@@ -402,7 +402,7 @@ test('App opens featured models and preserves poster HD/download/favorites and r
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 24);
+    assert.equal(document.querySelectorAll('[data-open]').length, 31);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');

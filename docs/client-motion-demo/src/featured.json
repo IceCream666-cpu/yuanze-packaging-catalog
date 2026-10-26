@@ -430,5 +430,131 @@
       "#eeece3",
       "#b8c2a8"
     ]
+  },
+  {
+    "id": "poster-072",
+    "name": "Daily Emulsion",
+    "kind": {
+      "zh": "日常乳液",
+      "en": "Daily Emulsion"
+    },
+    "description": {
+      "zh": "磨砂方瓶、透明罩与白色泵头。",
+      "en": "Frosted rectangular bottle with a clear cover and white pump."
+    },
+    "background": "#e8e5da",
+    "ink": "#363c32",
+    "swatch": [
+      "#e8e5da",
+      "#363c32"
+    ]
+  },
+  {
+    "id": "poster-073",
+    "name": "Body Oil Collection",
+    "kind": {
+      "zh": "身体护理油三瓶组",
+      "en": "Body Oil Collection"
+    },
+    "description": {
+      "zh": "斜肩透明瓶与象牙白旋盖，三款并列呈现。",
+      "en": "Three clear sloping-shoulder bottles with ivory screw caps."
+    },
+    "background": "#e8d9bc",
+    "ink": "#4c3c25",
+    "swatch": [
+      "#e8d9bc",
+      "#4c3c25"
+    ]
+  },
+  {
+    "id": "poster-074",
+    "name": "Airless Pump",
+    "kind": {
+      "zh": "真空泵瓶",
+      "en": "Airless Pump"
+    },
+    "description": {
+      "zh": "磨砂筒身搭配奶黄色泵头与透明罩。",
+      "en": "A frosted cylinder with a butter-yellow pump and clear cover."
+    },
+    "background": "#e8e9dd",
+    "ink": "#404635",
+    "swatch": [
+      "#e8e9dd",
+      "#404635"
+    ]
+  },
+  {
+    "id": "poster-075",
+    "name": "Exfoliating Gel",
+    "kind": {
+      "zh": "去角质啫喱泵罐",
+      "en": "Exfoliating Gel"
+    },
+    "description": {
+      "zh": "莓红宽罐与象牙白椭圆按压头。",
+      "en": "A rose-red jar with a broad ivory oval pump head."
+    },
+    "background": "#ead1c6",
+    "ink": "#542e2b",
+    "swatch": [
+      "#ead1c6",
+      "#542e2b"
+    ]
+  },
+  {
+    "id": "poster-076",
+    "name": "Daily Mouthwash",
+    "kind": {
+      "zh": "日常漱口水瓶",
+      "en": "Daily Mouthwash"
+    },
+    "description": {
+      "zh": "浅绿圆角方瓶、细纹透明盖与暖白纸标。",
+      "en": "A pale green rectangular bottle, ribbed clear cap and warm paper label."
+    },
+    "background": "#e2e7d9",
+    "ink": "#364237",
+    "swatch": [
+      "#e2e7d9",
+      "#364237"
+    ]
+  },
+  {
+    "id": "poster-077",
+    "name": "Eye Serum Roller",
+    "kind": {
+      "zh": "滚珠眼部精华笔",
+      "en": "Eye Serum Roller"
+    },
+    "description": {
+      "zh": "银色修长笔管，配亮黑头座与金属滚珠。",
+      "en": "A slender silver tube with a black seat and metal roller ball."
+    },
+    "background": "#e1e4e4",
+    "ink": "#343c40",
+    "swatch": [
+      "#e1e4e4",
+      "#343c40"
+    ]
+  },
+  {
+    "id": "poster-078",
+    "name": "Tea Essence",
+    "kind": {
+      "zh": "茶萃精华水瓶",
+      "en": "Tea Essence"
+    },
+    "description": {
+      "zh": "橄榄绿瓶身、圆顶白盖与鼠尾草绿纸标。",
+      "en": "Olive glass, a domed white cap and a sage paper label."
+    },
+    "background": "#dce2ce",
+    "ink": "#35432b",
+    "swatch": [
+      "#dce2ce",
+      "#35432b"
+    ]
   }
 ]

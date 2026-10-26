@@ -1,0 +1,113 @@
+{
+  "closedHeightToWidth": 2.75,
+  "generator": "build_liaose_seven.py",
+  "referencePoster": "poster-072",
+  "printIncludes": [
+    "liaose"
+  ],
+  "primaryContainers": 1,
+  "hiddenStructure": "Hidden seals and pump mechanics are illustrative. Empty packaging, no formula.",
+  "id": "poster-072",
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Overcap",
+    "LogoPrint"
+  ],
+  "height": 2.9,
+  "actualHeight": 2.8999998569488525,
+  "width": 1.0545454545454545,
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.5272727012634277,
+        -0.29527270793914795,
+        0.0
+      ],
+      "max": [
+        0.5272727012634277,
+        0.29527270793914795,
+        1.9509090185165405
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.33745452761650085,
+        -0.33745452761650085,
+        1.9087271690368652
+      ],
+      "max": [
+        0.33745452761650085,
+        0.33745452761650085,
+        2.225090742111206
+      ]
+    },
+    "PumpStem": {
+      "min": [
+        -0.12654544413089752,
+        -0.12654544413089752,
+        2.1934542655944824
+      ],
+      "max": [
+        0.12654544413089752,
+        0.12654544413089752,
+        2.330545425415039
+      ]
+    },
+    "Actuator": {
+      "min": [
+        -0.1950909048318863,
+        -0.1950909048318863,
+        2.3094544410705566
+      ],
+      "max": [
+        0.3393000066280365,
+        0.1950909048318863,
+        2.7945454120635986
+      ]
+    },
+    "Overcap": {
+      "min": [
+        -0.3585454523563385,
+        -0.3585454523563385,
+        2.1934542655944824
+      ],
+      "max": [
+        0.3585454523563385,
+        0.3585454523563385,
+        2.8999998569488525
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.41127270460128784,
+        -0.29790908098220825,
+        0.3163636326789856
+      ],
+      "max": [
+        0.41127270460128784,
+        -0.29790908098220825,
+        1.5607272386550903
+      ]
+    }
+  },
+  "pivotsHeightToWidth": {
+    "Closure": 1.81,
+    "PumpStem": 2.08,
+    "Actuator": 2.19,
+    "Overcap": 2.08,
+    "Body": 0,
+    "LogoPrint": 0.8899999999999999
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "separateLabelAndPrint": true,
+  "reference": "../../mobile-client-preview/assets/posters/poster-072.webp",
+  "featuredReference": "featured-assets/poster-072.png",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ],
+  "revision": "individual-reference-review-20261025"
+}
