@@ -139,7 +139,7 @@
     "background": "#e5dfbd"
   },
   "poster-057": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "DropperBulb",
       "Pipette",
@@ -156,7 +156,7 @@
     "background": "#7f656b"
   },
   "poster-013": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Closure",
       "InnerLid",
@@ -171,7 +171,7 @@
     "background": "#cbe4e2"
   },
   "poster-058": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "DropperBulb",
       "Pipette",
@@ -187,7 +187,7 @@
     "background": "#d1b89c"
   },
   "poster-059": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "DropperBulb",
       "Pipette",
@@ -203,7 +203,7 @@
     "background": "#ddcfb4"
   },
   "poster-060": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Actuator",
       "PumpStem",
@@ -219,7 +219,7 @@
     "background": "#bfb4a3"
   },
   "poster-061": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Actuator",
       "PumpStem",
@@ -235,7 +235,7 @@
     "background": "#d7d0c0"
   },
   "poster-062": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Closure",
       "InnerLid",
@@ -250,7 +250,7 @@
     "background": "#d8e6e6"
   },
   "poster-063": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Closure",
       "InnerLid",
@@ -265,7 +265,7 @@
     "background": "#e6d9c9"
   },
   "poster-064": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Actuator",
       "PumpStem",
@@ -282,7 +282,7 @@
     "background": "#e0d3ae"
   },
   "poster-065": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Actuator",
       "PumpStem",
@@ -299,7 +299,7 @@
     "background": "#646e7a"
   },
   "poster-066": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Overcap",
       "Actuator",
@@ -316,7 +316,7 @@
     "background": "#ead7db"
   },
   "poster-067": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Actuator",
       "PumpStem",
@@ -333,7 +333,7 @@
     "background": "#74614a"
   },
   "poster-068": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Closure",
       "NeckInsert",
@@ -348,7 +348,7 @@
     "background": "#e1ddea"
   },
   "poster-069": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Closure",
       "NeckSeal",
@@ -363,7 +363,7 @@
     "background": "#ddceba"
   },
   "poster-070": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Closure",
       "CapWrap",
