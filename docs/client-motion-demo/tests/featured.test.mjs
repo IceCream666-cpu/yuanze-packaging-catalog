@@ -26,7 +26,10 @@ test('derived cutouts are independently accounted for and cannot overwrite appro
  assert.match(manifest.version,/^client1\.\d+$/);
  assert.equal(manifest.scope,`approved-${manifest.version}-display-derivatives`);
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
- assert.deepEqual(readdirSync(resolve(base,'featured-assets')).sort(),featured.map(p=>`${p.id}.png`).sort());
+ const archived=Array.from({length:7},(_,i)=>`poster-${String(72+i).padStart(3,'0')}`);
+ assert.ok(archived.every(id=>!featured.some(p=>p.id===id)));
+ assert.deepEqual(readdirSync(resolve(base,'featured-assets')).sort(),[...featured.map(p=>`${p.id}.png`),...archived.map(id=>`${id}.png`)].sort());
+ assert.deepEqual(readdirSync(resolve(base,'public/featured')).sort(),featured.flatMap(p=>[`${p.id}.png`,`${p.id}-640.webp`,`${p.id}-1024.webp`]).sort());
  for(const entry of manifest.files){
   assert.equal(entry.file,`featured-assets/${entry.posterId}.png`);
   assert.equal(entry.target,`featured/${entry.posterId}.png`);

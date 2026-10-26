@@ -366,6 +366,7 @@ function appHarness({loader} = {}) {
   let mounts = 0, unmounts = 0;
   function Showcase(props) {return <div data-testid="showcase" data-selected={props.selectedId} data-modal={String(props.modalOpen)}>
     {props.items.map(p => <button key={p.id} data-open={p.id} onClick={() => {props.onSelect(p.id); props.onOpen(p);}}>{p.id}</button>)}
+    <button data-testid="browse-all" onClick={props.onBrowse}>Browse all</button>
     <button data-testid="favorite-other" onClick={() => props.onFavorite('poster-013')}>Favorite other</button>
     <span data-testid="favorites">{props.favorites.join(',')}</span>
   </div>;}
@@ -402,7 +403,7 @@ test('App opens featured models and preserves poster HD/download/favorites and r
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 31);
+    assert.equal(document.querySelectorAll('[data-open]').length, 24);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');
@@ -566,15 +567,20 @@ test('B5 Serum exposes the separate white base and keeps white lettering readabl
 });
 
 
-test('withdrawn seven models open retained posters without loading any 3D', async () => {
+test('withdrawn seven displays are absent from featured but remain accessible in the full poster library', async () => {
   const env = setup(); let requests = 0;
   globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
+    assert.equal(document.querySelectorAll('[data-open]').length,24);
+    for (let n=72;n<=78;n++) assert.equal(document.querySelector(`[data-open="poster-${String(n).padStart(3,'0')}"]`),null);
+    await click(document.querySelector('[data-testid="browse-all"]'));
+    await click(document.querySelector('.view-toggle button:nth-child(2)'));
+    assert.equal(document.querySelectorAll('.grid-image').length,61);
     for (let n=72;n<=78;n++) {
       const id=`poster-${n.toString().padStart(3,'0')}`;
-      const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
+      const trigger=[...document.querySelectorAll(".grid-image")].find(button=>button.querySelector("img")?.getAttribute("src").includes(id));trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging'),null);
       assert.ok(document.querySelector('dialog.image-modal').open);
       assert.ok(document.querySelector(`a[download="${id}.webp"]`));

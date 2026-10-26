@@ -95,8 +95,8 @@ class CollectionModelTests(unittest.TestCase):
  def test_complete_featured_inventory_and_independent_print_layers(self):
   featured={p['id'] for p in json.loads((ROOT/'src/featured.json').read_text())}
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
-  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured-{f'poster-{n:03}' for n in range(72,79)})
-  self.assertEqual(len(featured),31)
+  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured)
+  self.assertEqual(len(featured),24)
   for id,p in collection.items():
    with self.subTest(id=id):
     self.assertEqual(p['file'],id+'.glb')

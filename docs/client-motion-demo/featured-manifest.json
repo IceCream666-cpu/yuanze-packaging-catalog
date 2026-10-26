@@ -1,7 +1,7 @@
 {
-  "version": "client1.17",
-  "scope": "approved-client1.17-display-derivatives",
-  "notes": "Preserve the existing 54 posters and 24 featured products; append seven approved Liaose posters and corresponding empty packaging renders.",
+  "version": "client1.19",
+  "scope": "approved-client1.19-display-derivatives",
+  "notes": "Withdraw seven new homepage renders while preserving all 61 original posters and the original 24 featured products.",
   "files": [
     {
       "posterId": "poster-012",
@@ -462,132 +462,6 @@
       "approval": {
         "date": "2026-10-24",
         "basis": "User requested updating client posters and adding this product to the homepage sliding showcase."
-      }
-    },
-    {
-      "posterId": "poster-072",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-072.webp",
-      "approvedPosterSha256": "05683d65e88c071c73536081167ddaa22724f260101d637c89f2d0521ccb55a3",
-      "file": "featured-assets/poster-072.png",
-      "target": "featured/poster-072.png",
-      "productionTarget": "assets/featured/poster-072.png",
-      "bytes": 821404,
-      "sha256": "11635668e5ef2ed4fa5205717417b28cc4cfe9b6758686771123621a203dcca6",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Daily Emulsion",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
-      }
-    },
-    {
-      "posterId": "poster-073",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-073.webp",
-      "approvedPosterSha256": "158fed22b7761fced3fe19610211469a644d8fe47bbe7b0dd5b5a399f8503fa2",
-      "file": "featured-assets/poster-073.png",
-      "target": "featured/poster-073.png",
-      "productionTarget": "assets/featured/poster-073.png",
-      "bytes": 855573,
-      "sha256": "26c4a0ecc34c94431ea651ea6f3940a97c87ff03426256f83f775027fe90907b",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Body Oil Collection",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
-      }
-    },
-    {
-      "posterId": "poster-074",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-074.webp",
-      "approvedPosterSha256": "d21aa72f1619b4bb946979b9aea63d2bd212bd549786b99d19e7233c8c98bc13",
-      "file": "featured-assets/poster-074.png",
-      "target": "featured/poster-074.png",
-      "productionTarget": "assets/featured/poster-074.png",
-      "bytes": 906581,
-      "sha256": "4669ec56859867e904d137f4fb3a28e70718b0ddb5a9f022a578612df35ee389",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Airless Pump",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
-      }
-    },
-    {
-      "posterId": "poster-075",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-075.webp",
-      "approvedPosterSha256": "0f63d3e2d18cbbfc183da27062a527bbafd2e8bcd4e36d0884043e9e65a5569e",
-      "file": "featured-assets/poster-075.png",
-      "target": "featured/poster-075.png",
-      "productionTarget": "assets/featured/poster-075.png",
-      "bytes": 1072650,
-      "sha256": "9c48fa52ec3d069259ced97aadf5050a3478e00e7bd5efcb3ff3413051393c96",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Exfoliating Gel",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
-      }
-    },
-    {
-      "posterId": "poster-076",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-076.webp",
-      "approvedPosterSha256": "2cb0f513c93a07a679a6ae7a281db94856ba97533cb4fa90231bfff5941abd9d",
-      "file": "featured-assets/poster-076.png",
-      "target": "featured/poster-076.png",
-      "productionTarget": "assets/featured/poster-076.png",
-      "bytes": 948503,
-      "sha256": "a668fd5511a0f894f18507cbc753733b33f27a1feaf3dd540a3bb8301b31dc97",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Daily Mouthwash",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
-      }
-    },
-    {
-      "posterId": "poster-077",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-077.webp",
-      "approvedPosterSha256": "5e8ac1687823df050ad9d0bc7d7e33ceec297db13dfbba6b0d0ce6f47f98683d",
-      "file": "featured-assets/poster-077.png",
-      "target": "featured/poster-077.png",
-      "productionTarget": "assets/featured/poster-077.png",
-      "bytes": 631886,
-      "sha256": "2dcd2f7482af33336c91d3f686d70268cbeae99d91ac53098e9847e0dc55bed0",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Eye Serum Roller",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
-      }
-    },
-    {
-      "posterId": "poster-078",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-078.webp",
-      "approvedPosterSha256": "51582f16303114b30be7aa54281acc5a881a39b1960f402747595c0c27b0e441",
-      "file": "featured-assets/poster-078.png",
-      "target": "featured/poster-078.png",
-      "productionTarget": "assets/featured/poster-078.png",
-      "bytes": 797726,
-      "sha256": "977a7b41ceab38056a3c06fcb2e689638b316609fdac2dace1ef1611266c1147",
-      "tool": "Blender 4.5 Cycles",
-      "scope": "approved client1.17 display derivative; original poster remains authoritative",
-      "method": "transparent render from the corresponding layered packaging model",
-      "selectedObject": "Tea Essence",
-      "approval": {
-        "date": "2026-10-26",
-        "basis": "User requested publishing seven Liaose posters and matching showroom 3D models."
       }
     }
   ],
