@@ -59,7 +59,7 @@
   "businessDataWrites": 0,
   "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
   "sourceCommit": "de8cf0cad61eb425df32284ec8505b5868aa1414",
-  "status": "published-and-https-verified",
+  "status": "published-and-verified",
   "approvedModel": {
     "posterId": "poster-072",
     "sourceApprovalCommit": "5293d04a",
@@ -707,8 +707,92 @@
     },
     "impeccableFindings": []
   },
-  "browserVerification": {
-    "status": "pending-root-review",
-    "note": "The root agent is responsible for actual Ego and Chrome review; no browser pass is claimed by this receipt."
+  "browser": {
+    "version": "client1.21",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "browser": "Ego Lite",
+    "titleVerified": true,
+    "productId": "poster-072",
+    "completedAt": "2026-10-26T20:26:45+08:00",
+    "desktop": {
+      "width": 1474,
+      "height": 722,
+      "verifiedProgress": [
+        0,
+        50,
+        100
+      ],
+      "rotationDegrees": 90,
+      "completePumpAssemblyPreserved": true,
+      "screenshotsVisuallyInspected": true
+    },
+    "mobile": {
+      "width": 393,
+      "height": 852,
+      "verifiedProgress": [
+        0,
+        100
+      ],
+      "scrollWidth": 393,
+      "canvasCount": 1,
+      "finalProgress": 100,
+      "controlsVisible": 6,
+      "screenshotsVisuallyInspected": true
+    },
+    "originalPoster": {
+      "src": "/showroom/assets/previews/posters/poster-072-1280.webp",
+      "complete": true,
+      "naturalWidth": 853,
+      "returnToStructure": true,
+      "returnProgress": 0
+    },
+    "screenshots": [
+      {
+        "file": "review-evidence/daily-emulsion/client121/desktop-closed.png",
+        "width": 1474,
+        "height": 722,
+        "bytes": 120340,
+        "sha256": "e04008b50de15db6d7effe345ec3bdde4c24519c01194741db254a9a54c3d6de"
+      },
+      {
+        "file": "review-evidence/daily-emulsion/client121/desktop-half.png",
+        "width": 1474,
+        "height": 722,
+        "bytes": 115828,
+        "sha256": "fd7af12ae0687743ba1df18df09e0bfa30b42bbda5385374987b3a6ec375a950"
+      },
+      {
+        "file": "review-evidence/daily-emulsion/client121/desktop-open.png",
+        "width": 1474,
+        "height": 722,
+        "bytes": 110752,
+        "sha256": "392b19c67fb693395074b4b80d8738135a4eb42ee3bb4d2d74f1325e55b7e128"
+      },
+      {
+        "file": "review-evidence/daily-emulsion/client121/desktop-rotated.png",
+        "width": 1474,
+        "height": 722,
+        "bytes": 109659,
+        "sha256": "742bcd881ce4da8a4a6709520a0a0c52ddfa128d703021555267aac97049c1fa"
+      },
+      {
+        "file": "review-evidence/daily-emulsion/client121/mobile-closed.png",
+        "width": 393,
+        "height": 852,
+        "bytes": 52223,
+        "sha256": "938aba34ec8e19e7bf104ab8675ced68d86ff708f3da91ccf3f36834ad9e5cc5"
+      },
+      {
+        "file": "review-evidence/daily-emulsion/client121/mobile-open.png",
+        "width": 393,
+        "height": 852,
+        "bytes": 45682,
+        "sha256": "0969888580958be02eedc638680882226d670cc688c811a1d555e25c3c9a1ce5"
+      }
+    ],
+    "limits": [
+      "Mobile validation uses a 393 by 852 simulated viewport; no physical phone validation.",
+      "Production browser verification was performed in Ego Lite; no Chrome production pass is claimed."
+    ]
   }
 }

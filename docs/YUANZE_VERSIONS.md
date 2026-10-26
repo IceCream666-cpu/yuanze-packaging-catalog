@@ -6,7 +6,7 @@
 
 维持24款首页精选、61张海报和其他25个已上线模型，412张图片保持原字节；074–078继续仅海报。非精选海报库入口支持打开3D、原海报往返、收藏与下载。仅为本款的 clearOvercap 标记补入透明罩材质例外，既有 overcapToneMapped 设置及其他材质行为保留。Body Oil 后续简化属于独立本地审阅，不进入本次发布。
 
-源码提交 de8cf0cad61eb425df32284ec8505b5868aa1414 已自动同步。完整验证通过：根测试330项（3跳过）、后端258、发布32、客户端103、DOM43、旧客户端18、登录12及通用前端、构建清单和diff。2026-10-26 20:07:24原子发布，20:09:22正式HTTPS验收完成；072完整文件返回200且摘要匹配，26模型Range、三角色权限、匿名拒绝、074–078五模型404和21个撤回精选图404均通过。452资源逐项校验，6820展厅外文件及PID33772保持。回滚备份位于 /opt/yuanze-reference/backups/client1.21-daily-emulsion-pump-assembly-20261026。正式回执见[client121-daily-emulsion-release.json](client-motion-demo/client121-daily-emulsion-release.json)。Ego/Chrome实际浏览器核验由根代理继续，当前回执未将其标记为通过。效果为海报外观与隐藏结构示意，不代表生产尺寸确认。
+源码提交 de8cf0cad61eb425df32284ec8505b5868aa1414 已自动同步。完整验证通过：根测试330项（3跳过）、后端258、发布32、客户端103、DOM43、旧客户端18、登录12及通用前端、构建清单和diff。2026-10-26 20:07:24原子发布，20:09:22正式HTTPS验收完成；072完整文件返回200且摘要匹配，26模型Range、三角色权限、匿名拒绝、074–078五模型404和21个撤回精选图404均通过。452资源逐项校验，6820展厅外文件及PID33772保持。回滚备份位于 /opt/yuanze-reference/backups/client1.21-daily-emulsion-pump-assembly-20261026。正式回执见[client121-daily-emulsion-release.json](client-motion-demo/client121-daily-emulsion-release.json)。正式Ego浏览器验收完成：1474×722桌面合拢、50%半开、100%展开与90°旋转均实际截图并审阅，完整泵头保持组装；393×852手机合拢与全开正常，scrollWidth393且六控件完整。原海报加载完成（naturalWidth853），返回结构正常并重置合拢。六张正式截图留档于review-evidence/daily-emulsion/client121/。手机为模拟视口；未声称Chrome正式环境或实体手机通过。效果为海报外观与隐藏结构示意，不代表生产尺寸确认。
 
 ## client1.20 Body Oil 单瓶空包材（2026-10-26 19:24:57 已上线）
 
