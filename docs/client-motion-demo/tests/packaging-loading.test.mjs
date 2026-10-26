@@ -55,6 +55,31 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
 
+test('local Body Oil single empty bottle has six parts and restores independent lettering and zoom',async()=>{
+  const {product}=JSON.parse(readFileSync(new URL('../review-source/body-oil-collection/review-config.json',import.meta.url),'utf8'));
+  const env=harness({product});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+    const rest=api.getState().partStates;
+    for(const value of [.5,1,0]){
+      api.setProgress(value);flush();const state=api.getState();
+      assert.equal(state.renderedProgress,value);
+      for(const key of ['print','name'])assert.ok(state.partStates[key].offset[2]-state.partStates.label.offset[2]>=1.14*value);
+      if(!value)assert.deepEqual(state.partStates,rest);
+    }
+    assert.deepEqual(Object.keys(rest).sort(),['body','closure','label','liner','name','print']);
+    assert.equal(Object.hasOwn(product.review.appearance,'liquid'),false);
+    assert.equal(Object.hasOwn(rest,'liquid'),false);
+    assert.equal(api.setPartVisible,undefined);
+    api.setZoom(3);assert.equal(api.getState().zoom,1.7);
+    api.setZoom(-1);assert.equal(api.getState().zoom,.7);
+    api.setZoom(NaN);assert.equal(api.getState().zoom,.7);
+    api.setZoom(1);assert.equal(api.getState().zoom,1);
+  }finally{api?.dispose();env.close();}
+});
+
 for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review)) {
   test(`${id} separates all printing from its blank label and restores imported transforms`, async () => {
     let loaded, api;

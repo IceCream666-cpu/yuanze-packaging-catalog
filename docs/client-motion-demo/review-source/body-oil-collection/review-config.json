@@ -1,0 +1,279 @@
+{
+  "product": {
+    "file": "body-oil-collection.glb",
+    "kind": "collection",
+    "scale": 1,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "米白瓶盖",
+          "Ivory caps"
+        ],
+        "short": [
+          "米白瓶盖",
+          "Ivory caps"
+        ],
+        "detail": [
+          "光滑圆筒盖向上分离。",
+          "The satin cylindrical cap lifts away."
+        ]
+      },
+      {
+        "key": "liner",
+        "node": "InnerSeal",
+        "title": [
+          "密封垫",
+          "Seals"
+        ],
+        "short": [
+          "密封垫",
+          "Seals"
+        ],
+        "detail": [
+          "盖内薄垫单独分离，隐藏结构为示意。",
+          "Illustrative concealed seals separate."
+        ]
+      },
+      {
+        "key": "body",
+        "node": "Body",
+        "title": [
+          "透明玻璃瓶",
+          "Clear glass"
+        ],
+        "short": [
+          "透明玻璃瓶",
+          "Clear glass"
+        ],
+        "detail": [
+          "取原图02号同型空瓶，保留长肩、短颈与圆润厚底。",
+          "One representative empty long-shoulder bottle with a thick glass base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明底材",
+          "Clear carriers"
+        ],
+        "short": [
+          "透明底材",
+          "Clear carriers"
+        ],
+        "detail": [
+          "无字薄膜示意，不添加原图没有的纸标。",
+          "Unprinted clear carriers, without an invented paper label."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "品牌字",
+          "Brand lettering"
+        ],
+        "short": [
+          "品牌字",
+          "Brand lettering"
+        ],
+        "detail": [
+          "liaose独立向外展开。",
+          "The liaose mark moves outward independently."
+        ]
+      },
+      {
+        "key": "name",
+        "node": "ProductPrint",
+        "title": [
+          "产品名与编号",
+          "Names and numbers"
+        ],
+        "short": [
+          "产品名与编号",
+          "Names and numbers"
+        ],
+        "detail": [
+          "BODY OIL及02比标贴更向外展开。",
+          "BODY OIL and 02 move farther out than the carriers."
+        ]
+      }
+    ],
+    "review": {
+      "parts": [
+        {
+          "key": "closure",
+          "node": "Closure",
+          "title": [
+            "米白瓶盖",
+            "Ivory caps"
+          ],
+          "short": [
+            "米白瓶盖",
+            "Ivory caps"
+          ],
+          "detail": [
+            "光滑圆筒盖向上分离。",
+            "The satin cylindrical cap lifts away."
+          ]
+        },
+        {
+          "key": "liner",
+          "node": "InnerSeal",
+          "title": [
+            "密封垫",
+            "Seals"
+          ],
+          "short": [
+            "密封垫",
+            "Seals"
+          ],
+          "detail": [
+            "盖内薄垫单独分离，隐藏结构为示意。",
+            "Illustrative concealed seals separate."
+          ]
+        },
+        {
+          "key": "body",
+          "node": "Body",
+          "title": [
+            "透明玻璃瓶",
+            "Clear glass"
+          ],
+          "short": [
+            "透明玻璃瓶",
+            "Clear glass"
+          ],
+          "detail": [
+            "取原图02号同型空瓶，保留长肩、短颈与圆润厚底。",
+            "One representative empty long-shoulder bottle with a thick glass base."
+          ]
+        },
+        {
+          "key": "label",
+          "node": "PaperLabel",
+          "title": [
+            "透明底材",
+            "Clear carriers"
+          ],
+          "short": [
+            "透明底材",
+            "Clear carriers"
+          ],
+          "detail": [
+            "无字薄膜示意，不添加原图没有的纸标。",
+            "Unprinted clear carriers, without an invented paper label."
+          ]
+        },
+        {
+          "key": "print",
+          "node": "LogoPrint",
+          "title": [
+            "品牌字",
+            "Brand lettering"
+          ],
+          "short": [
+            "品牌字",
+            "Brand lettering"
+          ],
+          "detail": [
+            "liaose独立向外展开。",
+            "The liaose mark moves outward independently."
+          ]
+        },
+        {
+          "key": "name",
+          "node": "ProductPrint",
+          "title": [
+            "产品名与编号",
+            "Names and numbers"
+          ],
+          "short": [
+            "产品名与编号",
+            "Names and numbers"
+          ],
+          "detail": [
+            "BODY OIL及02比标贴更向外展开。",
+            "BODY OIL and 02 move farther out than the carriers."
+          ]
+        }
+      ],
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": true,
+        "metal": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            2.8,
+            0
+          ],
+          "liner": [
+            0,
+            1.35,
+            0
+          ],
+          "label": [
+            -0.65,
+            0.02,
+            0.7
+          ],
+          "print": [
+            -1.5,
+            0.23,
+            1.85
+          ],
+          "name": [
+            -1.5,
+            -0.18,
+            1.85
+          ]
+        },
+        "scales": {
+          "label": 1.08,
+          "print": 1.3,
+          "name": 1.3
+        },
+        "timing": {
+          "closure": [
+            0,
+            0.8
+          ],
+          "liner": [
+            0.16,
+            1
+          ]
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.65
+          ],
+          "centerX": [
+            0,
+            -0.75
+          ],
+          "height": [
+            3.7,
+            6.35
+          ],
+          "width": [
+            2.1,
+            4.4
+          ]
+        }
+      }
+    }
+  },
+  "design": {
+    "name": "Body Oil Collection",
+    "background": "#eadbc5",
+    "ink": "#3e2b1d"
+  }
+}

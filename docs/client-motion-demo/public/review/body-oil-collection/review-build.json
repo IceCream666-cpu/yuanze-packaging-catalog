@@ -1,0 +1,37 @@
+{
+  "scope": "local-review-only",
+  "publicationApproved": false,
+  "model": "Body Oil Collection",
+  "files": [
+    {
+      "file": "index.html",
+      "bytes": 2924,
+      "sha256": "d2d36e385360ddafaba6a1adaf5753a20cd4b52055629fcd51057b5992ff32ce"
+    },
+    {
+      "file": "style.css",
+      "bytes": 4648,
+      "sha256": "9b77c2e973f5bd3d6ef983668d62c2e3fc002b2d34cb0441c6b4e412bbc745e6"
+    },
+    {
+      "file": "main.js",
+      "bytes": 629457,
+      "sha256": "1f900cde8d3ed1c13ffd371eb1a336e8d776c3b04794b0eb405796f6e21a0029"
+    },
+    {
+      "file": "review-config.json",
+      "bytes": 6289,
+      "sha256": "6b246c17d617af19f47aaee43fe79ef6b1644fb93c1217f9d9a03a894f7f5faf"
+    },
+    {
+      "file": "body-oil-collection.glb",
+      "bytes": 628084,
+      "sha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e"
+    },
+    {
+      "file": "reference.png",
+      "bytes": 2062752,
+      "sha256": "e78a40f295286e52f685b5d94c51740c9ebbd22f22acdab028ea753801a708dc"
+    }
+  ]
+}

@@ -236,7 +236,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const shadow = new T.Mesh(new T.PlaneGeometry(4.6, 4.6), new T.MeshBasicMaterial({map: shadowTexture, transparent: true, depthWrite: false})); // taste-skill-ignore: physical grounding under the model.
   shadow.rotation.x = -Math.PI/2; shadow.position.y = -.025; scene.add(shadow);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let target = 0, current = 0, yaw = 0, pitch = 0, desiredYaw = 0, desiredPitch = 0, selected = null, focus = 0, width = 1, height = 1;
+  let target = 0, current = 0, yaw = 0, pitch = 0, desiredYaw = 0, desiredPitch = 0, selected = null, focus = 0, width = 1, height = 1, zoom = 1;
   const capTilt = new T.Quaternion(), linerTilt = new T.Quaternion();
   const rotationEuler = new T.Euler();
   let pointer = null;
@@ -248,7 +248,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         const amount=interval ? smooth(...interval,current) : current;
         const travel=new T.Vector3(...offset);
         // Keep the same front-to-back separation while fitting wide print pairs on phones.
-        if(narrowReview && (key==='label' || key==='print')) travel.x*=.5;
+        if(narrowReview && (key==='label' || key==='print' || key==='name')) travel.x*=.5;
         parts[key].position.copy(rest[key].p).addScaledVector(travel,amount);
         const scale=explosion.scales?.[key] ?? 1;
         parts[key].scale.copy(rest[key].s).multiplyScalar(1+(scale-1)*amount);
@@ -350,6 +350,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       centerX=center.x;centerY=center.y;
       viewHeight=Math.max(interpolate(explosion.camera.height),size.y+size.z*.105+.55,(size.x+.55)/aspect);
     }
+    viewHeight /= zoom;
     camera.left = -viewHeight*aspect/2; camera.right = viewHeight*aspect/2;
     camera.top = viewHeight/2; camera.bottom = -viewHeight/2;
     camera.position.set(centerX, centerY+(pdrn || moisture || woodland || pureVolume || gentle || coastal || golden || b5 || review ? 1.05 : 2.35), 10);
@@ -393,6 +394,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   canvas.addEventListener('webglcontextlost', lost); document.addEventListener('visibilitychange', visible);
   api = {
     setProgress(p) { target = clamp(Number(p)||0, 0, 1); invalidate(); },
+    setZoom(value) { const next=Number(value); if (Number.isFinite(next)) {zoom=clamp(next,.7,1.7);invalidate();} },
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
     viewBottom() {
@@ -403,7 +405,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       selected=key; desiredYaw=0; desiredPitch=key==='liner'?.16:key==='cap'?-.15:0;
       focus=key==='cap'?.25:key==='jar'?-.12:0; invalidate();
     },
-    getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, printOffset:parts.print.position.clone().sub(rest.print.p).toArray(), components:Object.keys(parts), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
+    getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, zoom, printOffset:parts.print.position.clone().sub(rest.print.p).toArray(), components:Object.keys(parts), partStates:Object.fromEntries(Object.entries(parts).map(([key,o])=>[key,{visible:o.visible,position:o.position.toArray(),offset:o.position.clone().sub(rest[key].p).toArray(),scale:o.scale.toArray()}])), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
     dispose,
   };
   host.__packagingScene=api;
