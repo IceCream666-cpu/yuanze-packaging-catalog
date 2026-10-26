@@ -1,5 +1,15 @@
 # 源泽版本记录
 
+## Daily Emulsion 整体泵头修订（2026-10-26，本地待审，未上线）
+
+用户暂停新款制作，要求按客户理解简化旧模型的展开层级；本轮先改 Daily Emulsion。泵头、短连接杆与盖座归入 PumpAssembly，始终保持原来的装配相对位置，作为一个完整泵头整体抬起。物理主件仅展示透明罩、完整泵头、磨砂空瓶；无字透明底材、品牌与产品名保留独立外展，文字仍比底材更向前。
+
+六个根组为 Body、PumpAssembly、Overcap、PaperLabel、LogoPrint、ProductPrint。泵组件上移1.05，透明罩上移2.35；移除罩盖提前完成的时序，压缩全开取景高度至5.95并保持充分留白。8个网格与上一提交 d837768 的闭合世界坐标、边界及材质完整比对一致，最大坐标差0；不改变已确认瓶型、原印刷和空包材状态。
+
+本轮78项相关前端与8项实际GLB测试通过，包含多个进度的组件刚性同移、回合拢和101个进度的罩盖取景检查。Chrome实看0%、50%、100%，透明罩无裁切、泵件不拆散；Impeccable及独立视觉复核无阻断项。专用构建仅写本款预览目录，888个其他资源摘要保持，public、dist与本地HTTP返回的六个文件逐字节一致。
+
+预览：http://127.0.0.1:8784/review/daily-emulsion/ ，Chrome已停在完全展开状态。记录：`client-motion-demo/daily-emulsion-simplified-preview-verification.json`；截图：`client-motion-demo/review-evidence/daily-emulsion/simplified-pump/`；提交标题“Keep Daily Emulsion pump assembled during expansion”。本轮未连接或修改生产，其他旧款留待逐个审查；先前各款发布状态由各自正式回执记录。未重新验收实体手机与制造尺寸。
+
 ## Daily Emulsion 第二款单瓶空包材（2026-10-26，本地待审，未上线）
 
 本轮按用户逐款检查要求，仅制作第二张参考海报 Daily Emulsion 的一只空瓶。总高/瓶宽2.80，可见玻璃高/宽1.84，白盖座径比.69，透明罩径比.628；展示总高2.9。保留扁圆角方形、短肩、磨砂无色玻璃与厚底、白色泵件及清透保护罩，不添加乳液、容量文字或其他瓶子。

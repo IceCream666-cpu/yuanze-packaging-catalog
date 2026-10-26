@@ -446,3 +446,52 @@ test('B5 pipette remains visible through the empty bottle and preserves the orig
     assert.equal(print.renderOrder,3);assert.ok(print.material.color.equals(new Three.Color('#ffffff')));assert.equal(print.material.toneMapped,false);
   } finally {api?.dispose();env.close();}
 });
+
+test('Daily Emulsion moves the exported pump assembly rigidly and restores all six review components', async () => {
+  const {product}=JSON.parse(readFileSync(new URL('../review-source/daily-emulsion/review-config.json',import.meta.url),'utf8'));
+  const bytes=readFileSync(new URL('../public/review/daily-emulsion/daily-emulsion.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  // Retain the actual exported hierarchy and transforms; Python tests inspect its full mesh geometry.
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();
+    const assembly=loaded.scene.getObjectByName('PumpAssembly');
+    assert.ok(assembly,'the pump has one exported parent component');
+    const pieces=['Closure','PumpStem','Actuator'].map(name=>loaded.scene.getObjectByName(name));
+    pieces.forEach(piece=>assert.equal(piece.parent,assembly));
+    const rest=api.getState().partStates;
+    assert.deepEqual(Object.keys(rest).sort(),['body','label','name','overcap','print','pump']);
+    const restAssembly=assembly.getWorldPosition(new Three.Vector3());
+    const restPieces=pieces.map(piece=>({position:piece.getWorldPosition(new Three.Vector3()),matrix:piece.matrix.toArray()}));
+    for(const progress of [0,.1,.25,.5,.75,1,.5,0]) {
+      api.setProgress(progress);flush();
+      const state=api.getState();
+      assert.ok(Math.abs(state.partStates.pump.offset[1]-1.05*progress)<1e-9);
+      const displacement=assembly.getWorldPosition(new Three.Vector3()).sub(restAssembly);
+      pieces.forEach((piece,i)=>{
+        assert.deepEqual(piece.matrix.toArray(),restPieces[i].matrix,'no pump piece changes its local transform');
+        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(restPieces[i].position).distanceTo(displacement)<1e-9,'every pump piece travels with the assembly');
+      });
+      for(const key of ['print','name']) assert.ok(state.partStates[key].offset[2]-state.partStates.label.offset[2]>=1.19*progress);
+      if(progress===1) assert.ok(Math.abs(state.partStates.overcap.offset[1]-2.35)<1e-9);
+      if(progress===0) assert.deepEqual(state.partStates,rest);
+    }
+  } finally {api?.dispose();env.close();}
+});

@@ -204,6 +204,21 @@ for name,g in m.groups.items():
 assert abs(max(b['max'][2] for b in bounds.values())-2.9)<1e-6
 assert len(solid_checks)==5
 assert 2.779-max(v.co.z for v in head.data.vertices)>.075, 'Cover roof must clear the press head.'
+# Customers see the complete pump as one part; keep its existing fitted geometry.
+pump = bpy.data.objects.new('PumpAssembly', None)
+bpy.context.collection.objects.link(pump)
+pump.location = (0, 0, 1.97 * scale)
+bpy.context.view_layer.update()
+for name in ['Closure', 'PumpStem', 'Actuator']:
+    child = m.groups.pop(name)
+    fitted = child.matrix_world.copy()
+    child.parent = pump
+    child.matrix_world = fitted
+m.groups['PumpAssembly'] = pump
+bpy.context.view_layer.update()
+pump_bounds = [bounds.pop(name) for name in ['Closure', 'PumpStem', 'Actuator']]
+bounds['PumpAssembly'] = {'min':[min(b['min'][i] for b in pump_bounds) for i in range(3)],
+                          'max':[max(b['max'][i] for b in pump_bounds) for i in range(3)]}
 glb=PUBLIC/(ID+'.glb')
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(glb),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
@@ -212,16 +227,14 @@ shutil.copy2(OUT/'reference.png',PUBLIC/'reference.png')
 
 parts=[
     part('overcap','Overcap','透明保护罩','Clear cover','薄壁透明罩向上移开，保留圆顶和底沿。','A hollow clear cover lifts away.'),
-    part('head','Actuator','白色短嘴泵头','White actuator','斜面按压头与朝右短嘴一起分离。','The sloped white actuator and short right-facing outlet separate.'),
-    part('stem','PumpStem','连接泵杆','Connector','独立短连接杆，隐藏结构为示意。','An independent short connector; the concealed fit is illustrative.'),
-    part('closure','Closure','白色盖座','White closure','光滑宽盖座及泵头底座向上分离。','The wide smooth closure and stepped pump pedestal lift away.'),
+    part('pump','PumpAssembly','完整泵头组件','Complete pump','泵头、连接杆与盖座保持组装状态，作为整体与瓶身分离。','The actuator, connector and closure remain fitted and lift as one complete pump.'),
     part('body','Body','磨砂空玻璃瓶','Frosted glass','扁圆角方形玻璃、短肩与厚底，不含乳液。','An empty flat rounded glass bottle with frosted walls and a thick base.'),
     part('label','PaperLabel','透明底材','Clear carrier','无字透明膜示意，闭合时几乎不可见。','An unprinted transparent carrier, nearly invisible when closed.'),
     part('print','LogoPrint','品牌字','Brand','liaose独立离开瓶身，比底材更向外展开。','The liaose mark moves farther outward than the carrier.'),
     part('name','ProductPrint','产品名','Product name','横线、DAILY EMULSION及FACE CARE一同展开。','The rule, DAILY EMULSION and FACE CARE move as one print layer.'),
 ]
-for p,short in zip(parts,['罩盖','泵头','泵杆','盖座','瓶身','标贴','品牌','品名']):p['short'][0]=short
-review={'parts':parts,'appearance':{'glass':True,'frosted':True,'clearOvercap':True,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'overcap':[0,4.55,0],'head':[0,2.65,0],'stem':[0,1.55,0],'closure':[0,.80,0],'label':[-.85,.03,.70],'print':[-1.90,.30,1.90],'name':[-1.90,-.12,1.90]},'scales':{'label':1.10,'print':1.50,'name':1.55},'timing':{'overcap':[0,.65]},'camera':{'centerY':[1.45,3.66],'centerX':[0,-.90],'height':[3.7,8.05],'width':[2.1,5.1]}}}
+for p,short in zip(parts,['罩盖','泵头组件','瓶身','标贴','品牌','品名']):p['short'][0]=short
+review={'parts':parts,'appearance':{'glass':True,'frosted':True,'clearOvercap':True,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'overcap':[0,2.35,0],'pump':[0,1.05,0],'label':[-.85,.03,.70],'print':[-1.90,.30,1.90],'name':[-1.90,-.12,1.90]},'scales':{'label':1.10,'print':1.50,'name':1.55},'camera':{'centerY':[1.45,2.62],'centerX':[0,-.90],'height':[3.7,5.95],'width':[2.1,4.5]}}}
 config={'product':{'file':ID+'.glb','kind':'collection','scale':1,'parts':parts,'review':review},'design':{'name':'Daily Emulsion','background':'#e9e5d8','ink':'#34372e'}}
 source=CLIENT/'review-source'/ID;source.mkdir(parents=True,exist_ok=True)
 (source/'review-config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n')
@@ -230,7 +243,7 @@ info={'id':ID,'state':'local-review','productCount':1,'bottleCount':1,'height':2
 (OUT/'model-info.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n')
 (OUT/'README.md').write_text('''# Daily Emulsion — local single-bottle review
 
-One empty bottle, calibrated to the supplied reference. Eight independent roots: Body, Closure, PumpStem, Actuator, Overcap, PaperLabel, LogoPrint, ProductPrint. The glass body is neutral frosted glass; the protective cover is clear. All lettering remains separate from the unprinted clear carrier.
+One empty bottle, calibrated to the supplied reference. Six independent roots: Body, PumpAssembly, Overcap, PaperLabel, LogoPrint, ProductPrint. PumpAssembly keeps the actuator, connector and closure fitted together throughout the animation. The glass body is neutral frosted glass; the protective cover is clear. All lettering remains separate from the unprinted clear carrier.
 
 Rebuild with Blender 4.5: `Blender --background --python-exit-code 1 --python build_daily_emulsion.py` from the collection directory. The existing Node/Sharp runtime converts the three SVGs; `tail_model_helpers.py` supplies manifold lofts and the approved liaose vector. Source, packed blend, SVG/PNG artwork, normal map, measurements and review config are retained here.
 

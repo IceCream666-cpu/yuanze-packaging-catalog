@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-26",
+  "product": "Daily Emulsion",
+  "state": "local-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "revision": "Keep actuator, connector and closure assembled as one complete pump; separate only cover, complete pump and bottle physically.",
+  "previewUrl": "http://127.0.0.1:8784/review/daily-emulsion/",
+  "productCount": 1,
+  "containsFormula": false,
+  "modelSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+  "modelBytes": 1162568,
+  "components": [
+    "Body",
+    "PumpAssembly",
+    "Overcap",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "pumpChildren": [
+    "Closure",
+    "PumpStem",
+    "Actuator"
+  ],
+  "explosion": {
+    "offsets": {
+      "overcap": [
+        0,
+        2.35,
+        0
+      ],
+      "pump": [
+        0,
+        1.05,
+        0
+      ],
+      "label": [
+        -0.85,
+        0.03,
+        0.7
+      ],
+      "print": [
+        -1.9,
+        0.3,
+        1.9
+      ],
+      "name": [
+        -1.9,
+        -0.12,
+        1.9
+      ]
+    },
+    "scales": {
+      "label": 1.1,
+      "print": 1.5,
+      "name": 1.55
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.62
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ],
+      "height": [
+        3.7,
+        5.95
+      ],
+      "width": [
+        2.1,
+        4.5
+      ]
+    }
+  },
+  "closedGeometryComparison": {
+    "baselineCommit": "d8377684f954f0427156367ae391691977527982",
+    "baselineModelSha256": "fd76f2277225fd11b62e2d4a006eff5fac5357814159c6dbf98ed321529d6fe4",
+    "meshesCompared": 8,
+    "maximumWorldVertexDifference": 0,
+    "allBoundsAndMaterialsIdentical": true,
+    "note": "Actuator export vertex order changed; sorted full world-coordinate multisets are identical."
+  },
+  "tests": {
+    "frontend": {
+      "passed": 78,
+      "failed": 0,
+      "command": "node --test docs/client-motion-demo/tests/packaging-loading.test.mjs docs/client-motion-demo/tests/daily-emulsion-review.test.mjs docs/client-motion-demo/tests/body-oil-review.test.mjs"
+    },
+    "actualGlb": {
+      "passed": 8,
+      "failed": 0,
+      "command": "python3 -B -m unittest discover -s tests -p test_daily_emulsion_model.py -v"
+    },
+    "minimumCoverHeadClearance": 0.10268065,
+    "cameraSamples": 101,
+    "minimumProjectedCoverHeadroom": 0.33104231,
+    "cameraTestViewport": [
+      1200,
+      800
+    ]
+  },
+  "preservationAndLocalHttp": {
+    "protectedCount": 888,
+    "changedProtectedFiles": [],
+    "publicDistHttpMatch": true,
+    "files": [
+      {
+        "file": "index.html",
+        "status": 200,
+        "bytes": 2912,
+        "sha256": "49ed230d2b8a1348035fd5c18b9cfd78b04e7a5c31d40276ee62e5ce1d493827"
+      },
+      {
+        "file": "style.css",
+        "status": 200,
+        "bytes": 4648,
+        "sha256": "9b77c2e973f5bd3d6ef983668d62c2e3fc002b2d34cb0441c6b4e412bbc745e6"
+      },
+      {
+        "file": "main.js",
+        "status": 200,
+        "bytes": 629503,
+        "sha256": "52c81d5bac19c9355dc138e6358f0f671a989fbe09c6c1040fd8aec9b7ec7804"
+      },
+      {
+        "file": "review-config.json",
+        "status": 200,
+        "bytes": 6351,
+        "sha256": "957288b5aa055869589979ec94a3abcaf1153dc23aefdf742679d3cffa08d17c"
+      },
+      {
+        "file": "daily-emulsion.glb",
+        "status": 200,
+        "bytes": 1162568,
+        "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
+      },
+      {
+        "file": "reference.png",
+        "status": 200,
+        "bytes": 1746623,
+        "sha256": "169066c2a83c6ad5df7b4b20079232222f4e19d6e642dfe5bf21d4716bbde4a2"
+      }
+    ]
+  },
+  "browser": {
+    "browser": "Google Chrome",
+    "statesVisuallyChecked": [
+      0,
+      0.5,
+      1
+    ],
+    "pumpRemainsAssembled": true,
+    "coverNotClipped": true,
+    "carrierAndTextSeparate": true,
+    "closedRestoresOriginalAppearance": true,
+    "leftOpenAtProgress": 1
+  },
+  "aestheticReview": {
+    "method": "Impeccable context and static review, native Chrome screenshots and independent visual review",
+    "staticFindings": 0,
+    "blockingVisualFindings": 0
+  },
+  "screenshots": [
+    {
+      "file": "review-evidence/daily-emulsion/simplified-pump/closed.png",
+      "bytes": 332029,
+      "sha256": "1895f3695d8471574c4b9baa9d1459b80d98546d92d3a47f0d443e6ab42ddff0"
+    },
+    {
+      "file": "review-evidence/daily-emulsion/simplified-pump/half.png",
+      "bytes": 338763,
+      "sha256": "4fd9d98c17a136c6c7d45beaef94890df29259f325ffd39e7e15ffa11c2db92e"
+    },
+    {
+      "file": "review-evidence/daily-emulsion/simplified-pump/open.png",
+      "bytes": 326752,
+      "sha256": "778e6984e449bf9cf5c1efd82143128a65aafa760e22cf8a6f5b73221d08f938"
+    }
+  ],
+  "commitSubject": "Keep Daily Emulsion pump assembled during expansion",
+  "limits": [
+    "Local preview revision only; no production connection or deployment in this revision.",
+    "Other models are unchanged and remain pending individual review.",
+    "Physical manufacturing dimensions and hidden structures remain illustrative.",
+    "This revision was visually reviewed on desktop Chrome; no new physical-phone validation."
+  ]
+}

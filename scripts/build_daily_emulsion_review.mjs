@@ -13,9 +13,9 @@ const require = createRequire(resolve(client, 'package.json'));
 const {build} = createRequire(require.resolve('tsx/package.json'))('esbuild');
 const config = JSON.parse(await readFile(resolve(source, 'review-config.json'), 'utf8'));
 if (config.product?.file !== 'daily-emulsion.glb' || !Array.isArray(config.product.parts) || !config.design?.name) throw new Error('Invalid Daily Emulsion review configuration');
-const expectedParts = {overcap:'Overcap', head:'Actuator', stem:'PumpStem', closure:'Closure', body:'Body', label:'PaperLabel', print:'LogoPrint', name:'ProductPrint'};
+const expectedParts = {overcap:'Overcap', pump:'PumpAssembly', body:'Body', label:'PaperLabel', print:'LogoPrint', name:'ProductPrint'};
 if (JSON.stringify(config.product.parts.map(part => part.key).sort()) !== JSON.stringify(Object.keys(expectedParts).sort())
-    || config.product.parts.some(part => part.node !== expectedParts[part.key])) throw new Error('Daily Emulsion preview requires the eight reviewed empty-bottle component groups');
+    || config.product.parts.some(part => part.node !== expectedParts[part.key])) throw new Error('Daily Emulsion preview requires six groups with one complete pump assembly');
 
 // The model builder owns these files; this build only packages this review directory.
 const model = await readFile(resolve(output, config.product.file));

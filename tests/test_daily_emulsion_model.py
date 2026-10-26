@@ -2,6 +2,7 @@
 from collections import Counter
 import hashlib
 import json
+import math
 import unittest
 import xml.etree.ElementTree as ET
 
@@ -15,20 +16,34 @@ class DailyEmulsionModelTests(ExportedModelReader):
     cover_name = 'Daily hollow clear overcap with soft top and mould dimple'
     head_name = 'Daily sloped press head with short right nozzle'
     source = CLIENT / 'model-source/collection/daily-emulsion'
-    expected_roots = {'Body', 'Closure', 'PumpStem', 'Actuator', 'Overcap',
+    expected_roots = {'Body', 'PumpAssembly', 'Overcap',
                       'PaperLabel', 'LogoPrint', 'ProductPrint'}
 
     def group(self, name):
-        return [n for n in self.mesh_names() if self.ancestor(n) == name]
+        def belongs(mesh):
+            index = self.named[mesh]
+            while True:
+                if self.nodes[index]['name'] == name:
+                    return True
+                if index not in self.parents:
+                    return False
+                index = self.parents[index]
+        return [n for n in self.mesh_names() if belongs(n)]
 
     def config(self):
         return json.loads((CLIENT / 'review-source/daily-emulsion/review-config.json').read_text())
 
-    def test_single_bottle_eight_independent_roots_and_embedded_assets(self):
+    def test_single_bottle_six_roots_keep_three_pump_pieces_in_one_assembly(self):
         self.assertEqual({self.nodes[i]['name'] for i in self.gltf['scenes'][0]['nodes']},
                          self.expected_roots)
         self.assertEqual(len(self.mesh_names()), 8)
         for name in self.expected_roots:
+            self.assertEqual(len(self.group(name)), 3 if name == 'PumpAssembly' else 1)
+        assembly = self.named['PumpAssembly']
+        self.assertEqual({self.nodes[i]['name'] for i in self.nodes[assembly]['children']},
+                         {'Closure', 'PumpStem', 'Actuator'})
+        for name in ('Closure', 'PumpStem', 'Actuator'):
+            self.assertEqual(self.parents[self.named[name]], assembly)
             self.assertEqual(len(self.group(name)), 1)
         self.assertTrue(all('uri' not in item for item in self.gltf['buffers'] + self.gltf['images']))
 
@@ -96,17 +111,35 @@ class DailyEmulsionModelTests(ExportedModelReader):
         head_top = self.bounds(self.positions(self.head_name))[1][1]
         explosion = self.config()['product']['review']['explosion']
         cover_lift = explosion['offsets']['overcap'][1]
-        head_lift = explosion['offsets']['head'][1]
-        start, end = explosion['timing']['overcap']
-        clearances = [roof + cover_lift * self.smooth(start, end, p / 1000)
-                      - head_top - head_lift * p / 1000 for p in range(1001)]
+        pump_lift = explosion['offsets']['pump'][1]
+        self.assertEqual(explosion['offsets']['pump'], [0, 1.05, 0])
+        self.assertEqual(explosion['offsets']['overcap'], [0, 2.35, 0])
+        for settings in ('offsets', 'scales', 'timing', 'rotations'):
+            self.assertFalse({'head', 'stem', 'closure'} & set(explosion.get(settings, {})))
+        self.assertEqual(explosion.get('scales', {}).get('pump', 1), 1)
+        self.assertEqual(explosion.get('rotations', {}).get('pump', [0, 0, 0]), [0, 0, 0])
+        interval = explosion.get('timing', {}).get('overcap')
+        cover_amount = lambda progress: self.smooth(*interval, progress) if interval else progress
+        clearances = [roof + cover_lift * cover_amount(p / 1000)
+                      - head_top - pump_lift * p / 1000 for p in range(1001)]
         self.assertGreater(min(clearances), .02)
-        parts = [('Overcap', 'overcap'), ('Actuator', 'head'), ('PumpStem', 'stem'), ('Closure', 'closure')]
+        # Project the real cover vertices at the neutral desktop camera's 1.05/10 tilt.
+        # This catches the early cover lift that previously escaped the compact half-open frame.
+        camera = explosion['camera']
+        tilt = math.atan2(1.05, 10)
+        for step in range(101):
+            progress = step / 100
+            lerp = lambda pair: pair[0] + (pair[1] - pair[0]) * progress
+            height = max(lerp(camera['height']), lerp(camera['width']) / (1200 / 800))
+            top = max((p[1] + cover_lift * cover_amount(progress) - lerp(camera['centerY'])) * math.cos(tilt)
+                      - p[2] * math.sin(tilt) for p in self.positions(self.cover_name))
+            self.assertGreater(height / 2 - top, .1, f'cover headroom at {progress:.2f}')
+        parts = [('Overcap', 'overcap'), ('PumpAssembly', 'pump'), ('Body', 'body')]
         for (upper, upper_key), (lower, lower_key) in zip(parts, parts[1:]):
-            upper_min = self.bounds(self.positions(self.group(upper)[0]))[0][1]
-            lower_max = self.bounds(self.positions(self.group(lower)[0]))[1][1]
-            self.assertGreater(upper_min + explosion['offsets'][upper_key][1]
-                               - lower_max - explosion['offsets'][lower_key][1], .1)
+            upper_min = min(p[1] for n in self.group(upper) for p in self.positions(n))
+            lower_max = max(p[1] for n in self.group(lower) for p in self.positions(n))
+            self.assertGreater(upper_min + explosion['offsets'].get(upper_key, [0, 0, 0])[1]
+                               - lower_max - explosion['offsets'].get(lower_key, [0, 0, 0])[1], .1)
 
     def test_all_reference_copy_and_blank_carrier_are_separate_embedded_artwork(self):
         film = ET.parse(self.source / 'label.svg').getroot()

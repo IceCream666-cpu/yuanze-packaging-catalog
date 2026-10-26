@@ -13,8 +13,7 @@ const source = readFileSync(new URL('main.js', sourceDirectory), 'utf8')
 const {code} = transformSync(source, {loader: 'js', format: 'cjs'});
 const config = {
   product: {file: 'daily-emulsion.glb', parts: [
-    {key:'overcap', node:'Overcap'}, {key:'head', node:'Actuator'}, {key:'stem', node:'PumpStem'},
-    {key:'closure', node:'Closure'}, {key:'body', node:'Body'},
+    {key:'overcap', node:'Overcap'}, {key:'pump', node:'PumpAssembly'}, {key:'body', node:'Body'},
     {key:'label', node:'PaperLabel'}, {key:'print', node:'LogoPrint'}, {key:'name', node:'ProductPrint'},
   ]},
   design: {name: 'Daily Emulsion', background: '#e9dfcf', ink: '#30251f'},
@@ -85,7 +84,7 @@ test('single empty Daily Emulsion bottle supports opening, slider, wheel, bounde
     assert.equal(env.$('.review-state').textContent, '第 2 款 · 本地待审');
     assert.equal(env.$('h1').textContent, 'Daily Emulsion');
     assert.equal(env.$('#reference-view img').getAttribute('alt'), 'Daily Emulsion 乳液原海报');
-    assert.deepEqual(env.mounts[0].product.parts.map(part => part.node), ['Overcap','Actuator','PumpStem','Closure','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.deepEqual(env.mounts[0].product.parts.map(part => part.node), ['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint','ProductPrint']);
     env.$('#open-model').click();
     assert.equal(env.api.calls.progress.at(-1), 1);
     assert.equal(env.$('#opening-value').value, '100%');

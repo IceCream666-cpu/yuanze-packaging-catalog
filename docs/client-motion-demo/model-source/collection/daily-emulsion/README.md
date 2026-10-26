@@ -1,6 +1,6 @@
 # Daily Emulsion — local single-bottle review
 
-One empty bottle, calibrated to the supplied reference. Eight independent roots: Body, Closure, PumpStem, Actuator, Overcap, PaperLabel, LogoPrint, ProductPrint. The glass body is neutral frosted glass; the protective cover is clear. All lettering remains separate from the unprinted clear carrier.
+One empty bottle, calibrated to the supplied reference. Six independent roots: Body, PumpAssembly, Overcap, PaperLabel, LogoPrint, ProductPrint. PumpAssembly keeps the actuator, connector and closure fitted together throughout the animation. The glass body is neutral frosted glass; the protective cover is clear. All lettering remains separate from the unprinted clear carrier.
 
 Rebuild with Blender 4.5: `Blender --background --python-exit-code 1 --python build_daily_emulsion.py` from the collection directory. The existing Node/Sharp runtime converts the three SVGs; `tail_model_helpers.py` supplies manifold lofts and the approved liaose vector. Source, packed blend, SVG/PNG artwork, normal map, measurements and review config are retained here.
 

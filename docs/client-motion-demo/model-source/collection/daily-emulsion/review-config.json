@@ -17,51 +17,19 @@
       ]
     },
     {
-      "key": "head",
-      "node": "Actuator",
+      "key": "pump",
+      "node": "PumpAssembly",
       "title": [
-        "白色短嘴泵头",
-        "White actuator"
+        "完整泵头组件",
+        "Complete pump"
       ],
       "short": [
-        "泵头",
-        "White actuator"
+        "泵头组件",
+        "Complete pump"
       ],
       "detail": [
-        "斜面按压头与朝右短嘴一起分离。",
-        "The sloped white actuator and short right-facing outlet separate."
-      ]
-    },
-    {
-      "key": "stem",
-      "node": "PumpStem",
-      "title": [
-        "连接泵杆",
-        "Connector"
-      ],
-      "short": [
-        "泵杆",
-        "Connector"
-      ],
-      "detail": [
-        "独立短连接杆，隐藏结构为示意。",
-        "An independent short connector; the concealed fit is illustrative."
-      ]
-    },
-    {
-      "key": "closure",
-      "node": "Closure",
-      "title": [
-        "白色盖座",
-        "White closure"
-      ],
-      "short": [
-        "盖座",
-        "White closure"
-      ],
-      "detail": [
-        "光滑宽盖座及泵头底座向上分离。",
-        "The wide smooth closure and stepped pump pedestal lift away."
+        "泵头、连接杆与盖座保持组装状态，作为整体与瓶身分离。",
+        "The actuator, connector and closure remain fitted and lift as one complete pump."
       ]
     },
     {
@@ -141,22 +109,12 @@
     "offsets": {
       "overcap": [
         0,
-        4.55,
+        2.35,
         0
       ],
-      "head": [
+      "pump": [
         0,
-        2.65,
-        0
-      ],
-      "stem": [
-        0,
-        1.55,
-        0
-      ],
-      "closure": [
-        0,
-        0.8,
+        1.05,
         0
       ],
       "label": [
@@ -180,16 +138,10 @@
       "print": 1.5,
       "name": 1.55
     },
-    "timing": {
-      "overcap": [
-        0,
-        0.65
-      ]
-    },
     "camera": {
       "centerY": [
         1.45,
-        3.66
+        2.62
       ],
       "centerX": [
         0,
@@ -197,11 +149,11 @@
       ],
       "height": [
         3.7,
-        8.05
+        5.95
       ],
       "width": [
         2.1,
-        5.1
+        4.5
       ]
     }
   }
