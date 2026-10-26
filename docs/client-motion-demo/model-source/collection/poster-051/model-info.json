@@ -1,14 +1,24 @@
 {
   "id": "poster-051",
   "components": [
-    "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
-    "Cord",
+    "PumpAssembly",
+    "BottleAssembly",
     "PaperLabel",
     "LogoPrint"
   ],
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Cord"
+    ]
+  },
+  "completePumpLift": 1.2,
+  "cordStaysOnBottle": true,
   "height": 2.9,
   "width": 1.7261904761904763,
   "depth": 0.8285714285714286,
@@ -35,6 +45,6 @@
   ],
   "illustrativeHiddenStructure": "Inner pump seat and transparent label carrier are design illustrations; original has no visible paper boundary",
   "material": "Opaque matte ivory packaging with dark green braided cord; not transparent glass",
-  "revision": "individual-reference-review-20261024",
+  "revision": "complete-pump-and-attached-cord-local-review-20261026",
   "generator": "build_pure_volume.py"
 }

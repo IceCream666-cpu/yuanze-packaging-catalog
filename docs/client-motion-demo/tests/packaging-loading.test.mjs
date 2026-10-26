@@ -347,7 +347,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
   ['poster-042', {closure: 1.2}, [-3.1, .18, 1.65]],
   ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
-  ['poster-051', {closure:.9,stem:1.8,head:2.8}, [-3.4,.18,1.65]],
+  ['poster-051', {pump:1.2}, [-3.4,.18,1.65]],
   ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
@@ -383,7 +383,7 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' ? 4 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' || id === 'poster-051' ? 4 : id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
@@ -394,9 +394,6 @@ for (const [id, lifts, printOffset] of [
         const t=Math.max(0,Math.min(1,(progress-.3)/.7)), drop=Math.max(0,Math.min(1,progress/.3));
         const offset=[1.7*t*t*(3-2*t),-.8*drop*drop*(3-2*drop),.35*t*t*(3-2*t)];
         parts.base.position.clone().sub(rest.base.position).toArray().forEach((v,i)=>near(v,offset[i],'base clears the sleeve before moving sideways'));
-      }
-      if (id === 'poster-051') {
-        parts.cord.position.clone().sub(rest.cord.position).toArray().forEach((v,i)=>near(v,[1.05,.30,.25][i]*progress,'cord separation'));
       }
       if (id === 'poster-051' || id === 'poster-056' || id === 'poster-057') {
         if (progress === 0) near(parts.label.material.opacity,.05,'clear film leaves no paper patch at rest');
@@ -689,6 +686,83 @@ for(const [id,lift,centerDelta,heightDelta] of [
         for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]) {
           const projected=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
           assert.ok(Math.abs(projected.x)<.98 && Math.abs(projected.y)<.98,`${id} ${mesh.name} remains in frame at ${progress}`);
+        }
+      }
+      for(const key of progress===0 ? Object.keys(parts) : ['jar']) {
+        assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);
+        assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
+        assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
+      }
+    }
+  } finally {api?.dispose();env.close();}
+});
+
+test('Pure Volume lifts one complete pump while the fitted cord stays on the bottle',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-051'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-051.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    let object=new Three.Group();
+    if('mesh' in node) {
+      const accessor=gltf.accessors[gltf.meshes[node.mesh].primitives[0].attributes.POSITION];
+      const low=new Three.Vector3(...accessor.min),high=new Three.Vector3(...accessor.max);
+      const size=high.clone().sub(low),center=high.clone().add(low).multiplyScalar(.5);
+      object=new Three.Mesh(new Three.BoxGeometry(...size.toArray()).translate(...center.toArray()),new Three.MeshPhysicalMaterial());
+    }
+    object.name=node.name;
+    if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  let camera,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};
+    flush();
+    const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
+    assert.deepEqual(Object.keys(parts).sort(),['jar','label','print','pump']);
+    assert.equal(product.review,undefined,'keep the original matte body, gold line and green artwork treatment');
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
+    const fitted=['Closure','PumpStem','Actuator','Body','Cord'].map(name=>{
+      const part=loaded.scene.getObjectByName(name),key=['Body','Cord'].includes(name)?'jar':'pump';
+      assert.equal(part.parent,parts[key]);
+      return {part,key,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
+    });
+    const film=loaded.scene.getObjectByName('Illustrative transparent curved label carrier');
+    for(const progress of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(progress);flush();
+      assert.equal(api.getState().renderedProgress,progress);
+      assert.ok(parts.pump.position.clone().sub(rest.pump.position).distanceTo(new Three.Vector3(0,1.2*progress,0))<1e-9);
+      for(const {part,key,matrix,world} of fitted) {
+        assert.deepEqual(part.matrix.toArray(),matrix,'the fitted pump and cord retain their local transforms');
+        const displacement=parts[key].getWorldPosition(new Three.Vector3()).sub(rest[key].world);
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
+        if(key==='jar')assert.ok(displacement.length()<1e-9,'the cord remains fixed to the stationary bottle');
+      }
+      assert.ok(Math.abs(camera.position.y-1.05-(1.45+.6*progress))<1e-9);
+      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+.9*progress))<1e-9);
+      assert.ok(Math.abs(camera.position.x+.75*progress)<1e-9);
+      for(const [key,offset,growth] of [['label',[-1.65,.08,.65],.15],['print',[-3.4,.18,1.65],.45]]) {
+        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
+        assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+growth*progress))<1e-9);
+      }
+      if(progress===0)assert.equal(film.material.opacity,.05,'the clear carrier leaves no visible patch when closed');
+      if(progress===1)assert.equal(film.material.opacity,1,'the translucent carrier is visible separately when open');
+      for(const mesh of nodes.filter(node=>node.isMesh)) {
+        mesh.geometry.computeBoundingBox();
+        const {min,max}=mesh.geometry.boundingBox;
+        for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]) {
+          const projected=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+          assert.ok(Math.abs(projected.x)<.98 && Math.abs(projected.y)<.98,`${mesh.name} stays in frame at ${progress}`);
         }
       }
       for(const key of progress===0 ? Object.keys(parts) : ['jar']) {

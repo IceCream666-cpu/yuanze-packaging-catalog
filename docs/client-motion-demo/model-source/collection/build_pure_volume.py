@@ -166,9 +166,16 @@ for name,g in groups.items():
  pivot=Vector((0,0,pivots[name]))
  for child in g.children:child.location-=pivot
  g.location=pivot*scale;g.scale=(scale,scale,scale)
+# Preserve the fitted pump and keep the neck cord attached to the bottle.
+assemblies={}
+for name,children in [('PumpAssembly',('Closure','PumpStem','Actuator')),('BottleAssembly',('Body','Cord'))]:
+ assembly=bpy.data.objects.new(name,None);bpy.context.collection.objects.link(assembly)
+ for child in children:groups[child].parent=assembly
+ assemblies[name]=assembly
+groups={**assemblies,'PaperLabel':groups['PaperLabel'],'LogoPrint':groups['LogoPrint']}
 assert abs(1.68*scale-2.9)<1e-9
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-051.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-051.blend'))
-(OUT/'model-info.json').write_text(json.dumps({'id':'poster-051','components':list(groups),'height':2.9,'width':scale,'depth':.48*scale,'closedHeightToWidth':1.68,'bodyDepthToWidth':.48,'bodyPinchHeightToWidth':.92,'foldedNeckTopToWidth':1.188,'closureDiameterToWidth':.364,'pumpCylinderDiameterToWidth':.326,'cordDiameterToWidth':.0254,'nozzleSpanToWidth':.55,'illustrativeDimensions':True,'containsFormula':False,'reference':'featured-assets/poster-051.png','editableArtwork':['label.svg','print.svg'],'separateLabelAndPrint':True,'printIncludes':['liaose','PURE VOLUME','SHAMPOO'],'illustrativeHiddenStructure':'Inner pump seat and transparent label carrier are design illustrations; original has no visible paper boundary','material':'Opaque matte ivory packaging with dark green braided cord; not transparent glass','revision':'individual-reference-review-20261024','generator':'build_pure_volume.py'},indent=2)+'\n')
+(OUT/'model-info.json').write_text(json.dumps({'id':'poster-051','components':list(groups),'assemblyChildren':{'PumpAssembly':['Closure','PumpStem','Actuator'],'BottleAssembly':['Body','Cord']},'completePumpLift':1.2,'cordStaysOnBottle':True,'height':2.9,'width':scale,'depth':.48*scale,'closedHeightToWidth':1.68,'bodyDepthToWidth':.48,'bodyPinchHeightToWidth':.92,'foldedNeckTopToWidth':1.188,'closureDiameterToWidth':.364,'pumpCylinderDiameterToWidth':.326,'cordDiameterToWidth':.0254,'nozzleSpanToWidth':.55,'illustrativeDimensions':True,'containsFormula':False,'reference':'featured-assets/poster-051.png','editableArtwork':['label.svg','print.svg'],'separateLabelAndPrint':True,'printIncludes':['liaose','PURE VOLUME','SHAMPOO'],'illustrativeHiddenStructure':'Inner pump seat and transparent label carrier are design illustrations; original has no visible paper boundary','material':'Opaque matte ivory packaging with dark green braided cord; not transparent glass','revision':'complete-pump-and-attached-cord-local-review-20261026','generator':'build_pure_volume.py'},indent=2)+'\n')
 print('Pure Volume rebuilt:',len(groups),'independent groups')

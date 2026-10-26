@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo approved and published as client1.23; Woodland revision local for review; all remaining selected revisions require individual review.",
+  "deployment": "Moisture Shampoo published as client1.23 and Woodland as client1.24; Pure Volume revision local for review; remaining selected revisions require individual review.",
   "items": [
     {
       "selectionNumber": 4,
@@ -17,13 +17,16 @@
       "selectionNumber": 5,
       "posterId": "poster-042",
       "name": "Woodland",
-      "status": "local-awaiting-user"
+      "status": "published-live-verified",
+      "releaseVersion": "client1.24",
+      "releaseSourceCommit": "8051963944c50f6fb04869635b51f3e83be57587",
+      "releaseReceiptCommit": "358314535b25c4d082f025c3a19630d28a512fc7"
     },
     {
       "selectionNumber": 6,
       "posterId": "poster-051",
       "name": "Pure Volume",
-      "status": "queued"
+      "status": "local-awaiting-user"
     },
     {
       "selectionNumber": 7,

@@ -57,7 +57,7 @@
     "background": "#e0e4e7"
   },
   "poster-042": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "CapAssembly",
       "Body",
@@ -71,19 +71,16 @@
     "background": "#73523d"
   },
   "poster-051": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "Actuator",
-      "PumpStem",
-      "Closure",
-      "Cord",
-      "Body",
+      "PumpAssembly",
+      "BottleAssembly",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-051-closed.webp",
-      "open": "/review-assets/poster-051-open.webp"
+      "closed": "/review-assets/poster-051-simplified-closed.png",
+      "open": "/review-assets/poster-051-simplified-open.png"
     },
     "background": "#dce4d1"
   },

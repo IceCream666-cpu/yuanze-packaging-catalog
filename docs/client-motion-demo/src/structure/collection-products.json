@@ -376,83 +376,35 @@
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
+        "key": "pump",
+        "node": "PumpAssembly",
         "title": [
-          "弧形长嘴泵头",
-          "Curved pump head"
+          "完整乳白泵头",
+          "Complete ivory pump"
         ],
         "short": [
-          "泵头",
-          "Head"
+          "整泵头",
+          "Pump"
         ],
         "detail": [
-          "乳白弧面与扁长出液嘴。",
-          "Ivory curved press pad and flattened spout."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "按压泵杆",
-          "Actuator stem"
-        ],
-        "short": [
-          "泵杆",
-          "Stem"
-        ],
-        "detail": [
-          "按压头下方的连接层。",
-          "Connection beneath the press pad."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "细金环旋盖",
-          "Gold-ring closure"
-        ],
-        "short": [
-          "旋盖",
-          "Closure"
-        ],
-        "detail": [
-          "光滑盖身与底部细金环。",
-          "Smooth collar with a narrow gold ring."
-        ]
-      },
-      {
-        "key": "cord",
-        "node": "Cord",
-        "title": [
-          "深绿编绳",
-          "Braided green cord"
-        ],
-        "short": [
-          "编绳",
-          "Cord"
-        ],
-        "detail": [
-          "双圈束绳、绳结与长短垂尾。",
-          "Double wrap, side knot and unequal tails."
+          "弧形长嘴、泵杆与细金环盖座保持装配，一起向上移开。",
+          "The curved spout, stem and gold-ring collar remain fitted and lift together."
         ]
       },
       {
         "key": "jar",
-        "node": "Body",
+        "node": "BottleAssembly",
         "title": [
-          "乳白束口瓶",
-          "Ivory gathered bottle"
+          "带编绳束口瓶",
+          "Gathered bottle with cord"
         ],
         "short": [
           "瓶身",
           "Bottle"
         ],
         "detail": [
-          "宽底轮廓与收口褶皱。",
-          "Broad base and gathered neck folds."
+          "深绿编绳保留在瓶身束口处，与宽底瓶身一起保持原位。",
+          "The dark green cord stays tied around the gathered neck and remains with the broad bottle body."
         ]
       },
       {

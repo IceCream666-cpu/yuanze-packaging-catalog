@@ -79,8 +79,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-051.glb",
       "productionTarget": "assets/packaging/poster-051.glb",
-      "bytes": 4086460,
-      "sha256": "ca462e089e0458ff6b04022c0442232140c0042120e273650d023052e2b2fe4d"
+      "bytes": 4080620,
+      "sha256": "bd92e62cc67346379ff9b0d032ea3095a467ca20980bce67c2caee4f713b35ff"
     },
     {
       "name": "poster-044.glb",
@@ -276,11 +276,8 @@
       "posterId": "poster-051",
       "file": "poster-051.glb",
       "components": [
-        "Actuator",
-        "PumpStem",
-        "Closure",
-        "Cord",
-        "Body",
+        "PumpAssembly",
+        "BottleAssembly",
         "PaperLabel",
         "LogoPrint"
       ]

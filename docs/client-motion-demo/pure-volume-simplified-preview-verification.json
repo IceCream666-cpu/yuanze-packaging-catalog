@@ -1,0 +1,685 @@
+{
+  "date": "2026-10-26",
+  "product": "Pure Volume",
+  "productId": "poster-051",
+  "selectionNumber": 6,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "id": "poster-042",
+    "name": "Woodland",
+    "state": "published-live-browser-verified",
+    "version": "client1.24",
+    "releaseSourceCommit": "8051963944c50f6fb04869635b51f3e83be57587",
+    "releaseReceiptCommit": "358314535b25c4d082f025c3a19630d28a512fc7"
+  },
+  "nextProduct": {
+    "selectionNumber": 7,
+    "id": "poster-044",
+    "name": "Gentle Cleansing",
+    "status": "not-started"
+  },
+  "remainingQueuedCount": 13,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-051",
+  "components": [
+    "PumpAssembly",
+    "BottleAssembly",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "assemblies": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Cord"
+    ]
+  },
+  "containsFormula": false,
+  "animation": {
+    "pumpLift": 1.2,
+    "bottleAndCordStationary": true,
+    "cameraCenterY": [
+      1.45,
+      2.05
+    ],
+    "cameraHeight": [
+      4.2,
+      5.1
+    ],
+    "paperOffset": [
+      -1.65,
+      0.08,
+      0.65
+    ],
+    "paperScale": 1.15,
+    "printOffset": [
+      -3.4,
+      0.18,
+      1.65
+    ],
+    "printScale": 1.45,
+    "clearCarrierFadePreserved": true
+  },
+  "geometryAndScope": {
+    "model": "poster-051",
+    "bytes": 4080620,
+    "sha256": "bd92e62cc67346379ff9b0d032ea3095a467ca20980bce67c2caee4f713b35ff",
+    "roots": [
+      "PaperLabel",
+      "LogoPrint",
+      "PumpAssembly",
+      "BottleAssembly"
+    ],
+    "meshCount": 57,
+    "vertexCount": 126429,
+    "meshes": [
+      {
+        "name": "Hollow ivory pouch body with soft gathered folds",
+        "vertices": 48962,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Broad ivory screw closure",
+        "vertices": 2816,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Hidden closure screw seat",
+        "vertices": 1536,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Single fine gold closure line",
+        "vertices": 512,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Independent ivory pump stem",
+        "vertices": 1280,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Actuator connection shaft",
+        "vertices": 834,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Left curved flattened dispensing lever",
+        "vertices": 457,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Recessed flattened outlet",
+        "vertices": 40,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Green rounded long cord end",
+        "vertices": 559,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": false,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Green rounded short cord end",
+        "vertices": 559,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": false,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail inner rope core",
+        "vertices": 1824,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven -1 strand 1",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven -1 strand 2",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven -1 strand 3",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven -1 strand 4",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven 1 strand 1",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven 1 strand 2",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven 1 strand 3",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Long hanging tail woven 1 strand 4",
+        "vertices": 1368,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 inner rope core",
+        "vertices": 2456,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven -1 strand 1",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven -1 strand 2",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven -1 strand 3",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven -1 strand 4",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven 1 strand 1",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven 1 strand 2",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven 1 strand 3",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 1 woven 1 strand 4",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 inner rope core",
+        "vertices": 2456,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven -1 strand 1",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven -1 strand 2",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven -1 strand 3",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven -1 strand 4",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven 1 strand 1",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven 1 strand 2",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven 1 strand 3",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Neck cord loop 2 woven 1 strand 4",
+        "vertices": 1842,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot inner rope core",
+        "vertices": 504,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven -1 strand 1",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven -1 strand 2",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven -1 strand 3",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven -1 strand 4",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven 1 strand 1",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven 1 strand 2",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven 1 strand 3",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Right hand tying knot woven 1 strand 4",
+        "vertices": 378,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail inner rope core",
+        "vertices": 1392,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven -1 strand 1",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven -1 strand 2",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven -1 strand 3",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven -1 strand 4",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven 1 strand 1",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven 1 strand 2",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven 1 strand 3",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short hanging tail woven 1 strand 4",
+        "vertices": 1044,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Illustrative transparent curved label carrier",
+        "vertices": 4225,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Complete Pure Volume green lettering",
+        "vertices": 4225,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      }
+    ],
+    "maxWorldVertexDelta": 0.0,
+    "triangleOrderOnlyChanges": [
+      "Green rounded long cord end",
+      "Green rounded short cord end"
+    ],
+    "artworkBytesIdentical": [
+      "label.svg",
+      "label.png",
+      "print.png",
+      "print.svg"
+    ],
+    "otherAssetHashesPreserved": 25,
+    "otherConfigurationsIdentical": true,
+    "manifestOnlyTargetChanged": true,
+    "lightingAndMaterialCodeIdentical": true,
+    "woodlandCoastalMoisturePoseBranchesIdentical": true,
+    "publicBytesIdentical": true
+  },
+  "verification": {
+    "actualGlbTestsPassed": 7,
+    "frontendTestsPassed": 92,
+    "galleryTests": 7,
+    "viteBuild": "passed",
+    "sourcePublicDistHttpIdentical": true,
+    "browser": "Ego Lite for desktop/mobile; Codex IAB for user delivery",
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileScrollWidth": 393,
+    "closedHalfOpenAndRotate90": true,
+    "originalPosterNavigationAndReturn": true,
+    "returnProgress": 0,
+    "codexDeliveredAtProgress": 100,
+    "codexViewport": [
+      1314,
+      969
+    ],
+    "physicalMobileDeviceTested": false,
+    "aestheticReview": "Impeccable regex check plus independent reference and six actual screenshot review; no blocking issue in this scoped assembly change.",
+    "screenshots": [
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/codex-open.png",
+        "bytes": 47084,
+        "sha256": "cce85f0990d13695ffea64fbeb31ae419486bdff863cb61727cbd64eec3e1b1b"
+      },
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/desktop-closed.png",
+        "bytes": 123909,
+        "sha256": "57c3441b1c063560428155f0a8188afc2787a2dac5f0c01818ec35b1f6adf51c"
+      },
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/desktop-half.png",
+        "bytes": 119660,
+        "sha256": "1218a7bdf1db160d015a040e061c6553197789fe479fa1e9b14109cb0778c63b"
+      },
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/desktop-open.png",
+        "bytes": 116397,
+        "sha256": "7a3b463a07a9bf342d4c0b1a7842cd9d35378a82491e24d46eb8152a3b83c616"
+      },
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/desktop-rotated.png",
+        "bytes": 99498,
+        "sha256": "1067de8bc1f193922502c7910ed6ce108148acf6fce1d036ede970c07fc88f05"
+      },
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/mobile-closed.png",
+        "bytes": 63210,
+        "sha256": "ad8cd646e08899a53b35cf6769bdf3473aeb6b2bdbbb59f07c8073bf179e5dfd"
+      },
+      {
+        "path": "review-evidence/pure-volume/simplified-pump/mobile-open.png",
+        "bytes": 46178,
+        "sha256": "c635104bc7687ab2fd8717a38e62818b6ee25ca96d8e1d49008dd06d8573f396"
+      }
+    ]
+  },
+  "knownLimits": [
+    "Hidden connections and wall thickness remain illustrative, not manufacturing dimensions.",
+    "Two cord-end mesh triangle arrays changed order only; oriented triangle multisets are identical.",
+    "Clear carrier remains subtle on the pale background.",
+    "Small product text on a fully expanded mobile view and edge-on planar print at 90 degrees are existing behavior."
+  ]
+}
