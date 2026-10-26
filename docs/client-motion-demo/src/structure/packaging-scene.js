@@ -248,7 +248,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         const amount=interval ? smooth(...interval,current) : current;
         const travel=new T.Vector3(...offset);
         // Keep the same front-to-back separation while fitting wide print pairs on phones.
-        if(narrowReview && (key==='label' || key==='print')) travel.x*=.5;
+        if(narrowReview && (key==='label' || key==='print' || key==='name')) travel.x*=.5;
         parts[key].position.copy(rest[key].p).addScaledVector(travel,amount);
         const scale=explosion.scales?.[key] ?? 1;
         parts[key].scale.copy(rest[key].s).multiplyScalar(1+(scale-1)*amount);

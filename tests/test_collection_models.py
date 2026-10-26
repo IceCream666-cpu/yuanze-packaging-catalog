@@ -1,4 +1,4 @@
-"""The 24 published models and seven archived review models must map to their own complete, self-contained GLB."""
+"""The 25 published models and six archived review models must map to their own complete, self-contained GLB."""
 import json,struct,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]/'docs/client-motion-demo'
@@ -95,7 +95,8 @@ class CollectionModelTests(unittest.TestCase):
  def test_complete_featured_inventory_and_independent_print_layers(self):
   featured={p['id'] for p in json.loads((ROOT/'src/featured.json').read_text())}
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
-  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured)
+  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured|{'poster-073'})
+  self.assertNotIn('poster-073',featured)
   self.assertEqual(len(featured),24)
   for id,p in collection.items():
    with self.subTest(id=id):
@@ -108,14 +109,15 @@ class CollectionModelTests(unittest.TestCase):
     self.assertTrue(all('uri' not in i for i in g.get('images',[])+g.get('buffers',[])))
     self.assertFalse(g.get('animations'));self.assertFalse(g.get('cameras'))
     for view in g['bufferViews']:self.assertLessEqual(view.get('byteOffset',0)+view['byteLength'],g['buffers'][0]['byteLength'])
-    self.assertTrue((ROOT/'model-source/collection'/id/(id+'.blend')).is_file())
+    source=ROOT/'model-source/collection'/('body-oil-collection' if id=='poster-073' else id)
+    self.assertTrue((source/('body-oil-collection.blend' if id=='poster-073' else id+'.blend')).is_file())
  def test_collection_publication_matches_explicit_user_approval(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
-  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.18-collection-packaging')
+  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.20-collection-packaging')
 
- def test_liaose_seven_have_reference_specific_parts_and_small_embedded_models(self):
+ def test_six_withdrawn_liaose_models_remain_archived_and_inactive(self):
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
-  expected={72:{'jar','closure','stem','head','overcap','print'},73:{'jar','closure','print'},74:{'jar','closure','stem','head','overcap','liner','print'},75:{'jar','closure','stem','head','print'},76:{'jar','closure','overcap','label','print'},77:{'jar','closure','liner','head','ball','print'},78:{'jar','closure','label','print'}}
+  expected={72:{'jar','closure','stem','head','overcap','print'},74:{'jar','closure','stem','head','overcap','liner','print'},75:{'jar','closure','stem','head','print'},76:{'jar','closure','overcap','label','print'},77:{'jar','closure','liner','head','ball','print'},78:{'jar','closure','label','print'}}
   for number,keys in expected.items():
    pid=f'poster-{number:03}';source=ROOT/'model-source/collection'/pid
    with self.subTest(id=pid):

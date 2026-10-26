@@ -54,7 +54,7 @@ function stageFor(progress) {
 export default function PackagingDetail({ item, lang, onClose, onOriginal, onFavorite, saved, logo, getModelRequest, getSceneModule }) {
   const zh = lang === 'zh';
   const product = PACKAGING_PRODUCTS[item.id];
-  const featuredDesign = featured.find(value => value.id === item.id);
+  const featuredDesign = featured.find(value => value.id === item.id) || product.design;
   // Preserve light original lettering against a deeper product-specific studio.
   const design = product.review?.appearance?.studio ? {...featuredDesign,...product.review.appearance.studio} : item.id === 'poster-042' ? {...featuredDesign, background:'#76513b', ink:'#fff0db', swatch:['#ead5bb','#241e1a']} : item.id === 'poster-057' ? {...featuredDesign, background:'#87626b', ink:'#fff2f4', swatch:['#f7dfe5','#61434b']} : featuredDesign;
   const PARTS = product.parts;

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.18-collection-packaging",
+  "scope": "approved-client1.20-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -217,6 +217,14 @@
       "productionTarget": "assets/packaging/poster-070.glb",
       "bytes": 3191832,
       "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
+    },
+    {
+      "name": "poster-073.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-073.glb",
+      "productionTarget": "assets/packaging/poster-073.glb",
+      "bytes": 628084,
+      "sha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e"
     }
   ],
   "additionalProducts": [
@@ -490,6 +498,18 @@
         "Body",
         "PaperLabel",
         "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-073",
+      "file": "poster-073.glb",
+      "components": [
+        "Closure",
+        "InnerSeal",
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
       ]
     }
   ],

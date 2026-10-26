@@ -567,7 +567,86 @@ test('B5 Serum exposes the separate white base and keeps white lettering readabl
 });
 
 
-test('withdrawn seven displays are absent from featured but remain accessible in the full poster library', async () => {
+test('Body Oil opens from the poster library without joining featured and returns from the original poster', async () => {
+  const env=setup(); const {App,counts}=appHarness();
+  try {
+    await act(async()=>env.root.render(<App/>));
+    assert.equal(document.querySelectorAll('[data-open]').length,24);
+    assert.equal(document.querySelector('[data-open="poster-073"]'),null);
+    await click(document.querySelector('[data-testid="browse-all"]'));
+    await click(document.querySelector('.view-toggle button:nth-child(2)'));
+    assert.equal(document.querySelectorAll('.grid-image').length,61);
+    const trigger=[...document.querySelectorAll('.grid-image')].find(button=>button.querySelector('img')?.getAttribute('src').includes('poster-073'));
+    trigger.focus(); await click(trigger);
+    assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-073');
+    await click(byText('Save structure'));
+    await click(byText('Original poster'));
+    assert.equal(document.querySelector('.test-packaging'),null);
+    assert.ok(document.querySelector('a[download="poster-073.webp"]'));
+    assert.equal(document.activeElement,byText('返回结构展示'));
+    await click(byText('返回结构展示'));
+    assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-073');
+    assert.equal(byText('Save structure').getAttribute('aria-pressed'),'true');
+    await click(byText('Close structure'));
+    assert.equal(document.activeElement,trigger);
+    assert.deepEqual(counts(),{mounts:2,unmounts:2});
+  } finally {await env.close();}
+});
+
+test('non-featured Body Oil uses its complete design fallback and all six independent controls', async () => {
+  const env=setup(); let mounted,focused,url;
+  const bodyOil={...item,id:'poster-073',title:{zh:'身体油系列',en:'Body Oil Collection'}};
+  globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+  const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{
+    mounted=options; options.onReady(); return {setProgress(){},focusPart(key){focused=key;},dispose(){}};
+  }})}});
+  try {
+    assert.equal(JSON.parse(readFileSync(new URL('../src/featured.json',import.meta.url),'utf8')).some(p=>p.id==='poster-073'),false);
+    const request=startPackagingModelRequest(bodyOil.id);await request.promise;request.abort();
+    assert.equal(url,'/assets/packaging/poster-073.glb');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil}/>));
+    assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
+    assert.equal(document.querySelector('.packaging-intro').textContent,'身体护理 · 单瓶身体油空包材');
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','InnerSeal','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,6);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,6);
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#eadbc5');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-ink'),'#3e2b1d');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-accent'),'#eee3d1');
+    assert.equal(Object.hasOwn(mounted.product.review.appearance,'liquid'),false);
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[5]);
+    assert.equal(focused,'name');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil} lang="en"/>));
+    const english=document.querySelector('.packaging-intro').textContent;
+    assert.equal(english,mounted.design.kind.en);
+    assert.ok(/[A-Za-z]/.test(english));
+    assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
+  } finally {await env.close();}
+});
+
+test('a non-featured design retains its title and copy when appearance supplies studio colours', async () => {
+  const env=setup();let mounted;
+  const collection=JSON.parse(readFileSync(new URL('../src/structure/collection-products.json',import.meta.url),'utf8'));
+  const original=collection['poster-073'];
+  const product={...original,review:{...original.review,appearance:{...original.review.appearance,studio:{background:'#786047',ink:'#fff2db'}}}};
+  const Detail=component('structure/PackagingDetail.jsx',{
+    mocks:{'./packaging-products.js':{PACKAGING_PRODUCTS:{'poster-073':product}}},
+    deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},dispose(){}};}})}
+  });
+  try {
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-073'}}/>));
+    assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
+    assert.equal(document.querySelector('.packaging-intro').textContent,original.design.kind.zh);
+    assert.equal(mounted.design.background,'#786047');
+    assert.equal(mounted.design.ink,'#fff2db');
+    assert.deepEqual(mounted.design.swatch,['#eee3d1','#25180f']);
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#786047');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-ink'),'#fff2db');
+  } finally {await env.close();}
+});
+
+test('all seven added posters stay outside featured and the six unapproved models stay inactive', async () => {
   const env = setup(); let requests = 0;
   globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
   const {App, counts} = appHarness();
@@ -578,7 +657,7 @@ test('withdrawn seven displays are absent from featured but remain accessible in
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
     assert.equal(document.querySelectorAll('.grid-image').length,61);
-    for (let n=72;n<=78;n++) {
+    for (const n of [72,74,75,76,77,78]) {
       const id=`poster-${n.toString().padStart(3,'0')}`;
       const trigger=[...document.querySelectorAll(".grid-image")].find(button=>button.querySelector("img")?.getAttribute("src").includes(id));trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging'),null);

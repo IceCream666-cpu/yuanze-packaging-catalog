@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-26",
+  "state": "local-review-awaiting-user",
+  "publicationApproved": false,
+  "productCount": 1,
+  "bottleCount": 1,
+  "representative": "02",
+  "containsFormula": false,
+  "modelSha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e",
+  "components": [
+    "Body",
+    "Closure",
+    "InnerSeal",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "frontendTests": {
+    "passed": 145,
+    "failed": 0
+  },
+  "actualGlbTests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "existingAssetHashesUnchanged": 28,
+  "browser": {
+    "name": "Google Chrome",
+    "checks": [
+      "closed empty glass bottle",
+      "fully exploded six layers",
+      "90 degree side view confirms lettering in front of blank carrier",
+      "original poster loads",
+      "reference round trip retains expansion",
+      "reset restores closed front view"
+    ],
+    "screenshots": [
+      "review-evidence/body-oil-collection/single-closed.png",
+      "review-evidence/body-oil-collection/single-open.png",
+      "review-evidence/body-oil-collection/single-open-side.png"
+    ],
+    "notVerified": [
+      "physical mobile devices",
+      "manufacturing dimensions"
+    ],
+    "egoScreenshotIssue": "CDP screenshot requests timed out; final visual inspection used native Chrome screenshots."
+  },
+  "aestheticReview": {
+    "tool": "Impeccable",
+    "staticFindingsRemaining": 0,
+    "independentReferenceComparison": "passed",
+    "notes": "Transparent carrier and thin seal are intentionally subtle; zoom is available for inspection."
+  },
+  "limits": [
+    "Wall thickness, seal and hidden fit are illustrative.",
+    "No new product after the first was modeled; user review is required."
+  ]
+}

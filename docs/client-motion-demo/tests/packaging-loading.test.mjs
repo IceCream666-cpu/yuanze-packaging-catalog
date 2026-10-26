@@ -55,6 +55,37 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
 
+test('published Body Oil single empty bottle has six parts and restores both independent lettering layers',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-073'];
+  let loaded,api;const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    loaded=env.model();
+    const parts=Object.fromEntries(product.parts.map(p=>[p.key,loaded.scene.getObjectByName(p.node)]));
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,p])=>[key,{position:p.position.clone(),scale:p.scale.clone()}]));
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+    for(const value of [.5,1,0]){
+      api.setProgress(value);flush();
+      assert.equal(api.getState().renderedProgress,value);
+      const offset=key=>parts[key].position.clone().sub(rest[key].position);
+      for(const key of ['print','name']){
+        assert.ok(offset(key).z-offset('label').z>=1.14*value);
+        assert.ok(Math.abs(offset(key).y-product.review.explosion.offsets[key][1]*value)<1e-9);
+        assert.ok(Math.abs(parts[key].scale.x-(1+.3*value))<1e-9);
+      }
+      if(value)assert.notEqual(parts.print.position.y,parts.name.position.y);
+      else for(const [key,p] of Object.entries(parts)){
+        assert.ok(p.position.distanceTo(rest[key].position)<1e-9);
+        assert.ok(p.scale.distanceTo(rest[key].scale)<1e-9);
+      }
+    }
+    assert.deepEqual(Object.keys(parts).sort(),['body','closure','label','liner','name','print']);
+    assert.equal(Object.hasOwn(product.review.appearance,'liquid'),false);
+    assert.equal(loaded.scene.getObjectByName('Liquid'),undefined);
+  }finally{api?.dispose();env.close();}
+});
+
 for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review)) {
   test(`${id} separates all printing and restores imported transforms`, async () => {
     let loaded, api;

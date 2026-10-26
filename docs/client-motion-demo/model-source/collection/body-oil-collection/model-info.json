@@ -1,0 +1,117 @@
+{
+  "id": "body-oil-collection",
+  "state": "local-review",
+  "productCount": 1,
+  "bottleCount": 1,
+  "height": 2.9,
+  "components": [
+    "Body",
+    "Closure",
+    "InnerSeal",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.664527952671051,
+        -0.664527952671051,
+        0.0
+      ],
+      "max": [
+        0.664527952671051,
+        0.664527952671051,
+        2.445462942123413
+      ]
+    },
+    "Closure": {
+      "min": [
+        -0.34156736731529236,
+        -0.34156736731529236,
+        2.4388177394866943
+      ],
+      "max": [
+        0.34156736731529236,
+        0.34156736731529236,
+        2.8999998569488525
+      ]
+    },
+    "InnerSeal": {
+      "min": [
+        -0.21663612127304077,
+        -0.21663612127304077,
+        2.453437089920044
+      ],
+      "max": [
+        0.21663612127304077,
+        0.21663612127304077,
+        2.4813473224639893
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.41200733184814453,
+        -0.6663886308670044,
+        0.651237428188324
+      ],
+      "max": [
+        0.41200733184814453,
+        -0.5232505202293396,
+        1.342346429824829
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.41200733184814453,
+        -0.6674518585205078,
+        0.651237428188324
+      ],
+      "max": [
+        0.41200733184814453,
+        -0.524313747882843,
+        1.342346429824829
+      ]
+    },
+    "ProductPrint": {
+      "min": [
+        -0.41200733184814453,
+        -0.668515145778656,
+        0.651237428188324
+      ],
+      "max": [
+        0.41200733184814453,
+        -0.5253769755363464,
+        1.342346429824829
+      ]
+    }
+  },
+  "singleClosedHeightToWidth": 2.182,
+  "glassHeightToWidth": 1.84,
+  "glassBaseToWidth": 0.139,
+  "capDiameterToWidth": 0.514,
+  "capHeightToWidth": 0.347,
+  "bottlePositionsInDiameters": [
+    [
+      "02",
+      0,
+      0,
+      0
+    ]
+  ],
+  "normalizationScale": 1.3290559120073326,
+  "containsFormula": false,
+  "colorlessGlass": true,
+  "separateLabelBrandAndName": true,
+  "printIncludes": [
+    "liaose",
+    "BODY OIL",
+    "02"
+  ],
+  "illustrativeDimensions": true,
+  "hiddenStructure": "Seal, wall thickness, internal fit and circular depth inferred from one front image; not manufacturing dimensions. Transparent blank carrier illustrates separate printing; no paper edge is visible in the reference.",
+  "referenceSha256": "e78a40f295286e52f685b5d94c51740c9ebbd22f22acdab028ea753801a708dc",
+  "glbSha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e",
+  "glbBytes": 628084,
+  "generator": "build_body_oil_collection.py"
+}
