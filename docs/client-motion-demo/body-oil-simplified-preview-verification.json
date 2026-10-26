@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-26",
+  "product": "Body Oil Collection",
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "previousSixGroupVersionPublishedIn": "client1.20",
+  "newModelsPaused": true,
+  "revision": "Keep the seal with the complete cap; physically separate only the cap and empty glass bottle.",
+  "previewUrl": "http://127.0.0.1:8784/review/body-oil-collection/",
+  "productCount": 1,
+  "bottleCount": 1,
+  "containsFormula": false,
+  "modelSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+  "modelBytes": 627980,
+  "components": [
+    "Body",
+    "Closure",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "nestedChild": {
+    "Closure": [
+      "InnerSeal"
+    ]
+  },
+  "testsAndGeometry": {
+    "scope": "Body Oil local preview only; no production verification performed",
+    "baseline": {
+      "gitCommit": "5293d04a22886e510940aa22710c2e63cb409e0f",
+      "sha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e",
+      "bytes": 628084
+    },
+    "candidate": {
+      "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+      "bytes": 627980,
+      "rootNodes": [
+        "Body",
+        "Closure",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
+      ]
+    },
+    "tests": {
+      "frontend": {
+        "passed": 78,
+        "failed": 0,
+        "log": "simplify-frontend-tests.log",
+        "command": "/Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test docs/client-motion-demo/tests/packaging-loading.test.mjs docs/client-motion-demo/tests/body-oil-review.test.mjs docs/client-motion-demo/tests/daily-emulsion-review.test.mjs"
+      },
+      "geometry": {
+        "passed": 7,
+        "failed": 0,
+        "log": "simplify-geometry-tests.log",
+        "command": "/Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B -m unittest discover -s tests -p test_body_oil_collection_model.py -v"
+      },
+      "rigidAssemblyProgressSamples": [
+        0,
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        1,
+        0.5,
+        0
+      ]
+    },
+    "worldGeometryComparison": [
+      {
+        "name": "Body Oil 02 hollow long-shoulder glass bottle",
+        "vertexCount": 9025,
+        "sortedWorldVertexMaximumDifference": 0.0,
+        "boundsIdentical": true,
+        "materialIdentical": true,
+        "orientedTrianglesIdentical": true
+      },
+      {
+        "name": "Body Oil 02 hollow satin ivory cap",
+        "vertexCount": 2234,
+        "sortedWorldVertexMaximumDifference": 0.0,
+        "boundsIdentical": true,
+        "materialIdentical": true,
+        "orientedTrianglesIdentical": true
+      },
+      {
+        "name": "Body Oil 02 internal seal illustration",
+        "vertexCount": 746,
+        "sortedWorldVertexMaximumDifference": 0.0,
+        "boundsIdentical": true,
+        "materialIdentical": true,
+        "orientedTrianglesIdentical": true
+      },
+      {
+        "name": "Body Oil 02 blank curved transparent carrier",
+        "vertexCount": 845,
+        "sortedWorldVertexMaximumDifference": 0.0,
+        "boundsIdentical": true,
+        "materialIdentical": true,
+        "orientedTrianglesIdentical": true
+      },
+      {
+        "name": "Body Oil 02 liaose only",
+        "vertexCount": 845,
+        "sortedWorldVertexMaximumDifference": 0.0,
+        "boundsIdentical": true,
+        "materialIdentical": true,
+        "orientedTrianglesIdentical": true
+      },
+      {
+        "name": "Body Oil 02 BODY OIL and 02",
+        "vertexCount": 845,
+        "sortedWorldVertexMaximumDifference": 0.0,
+        "boundsIdentical": true,
+        "materialIdentical": true,
+        "orientedTrianglesIdentical": true
+      }
+    ],
+    "measurements": {
+      "units": "normalized model scene units",
+      "fullCapToNeckGap": 1.3933546970083994,
+      "closedSealToNeckGap": 0.007974202963325183,
+      "sealToCapCeilingGap": 0.37745192908410274,
+      "viewport": [
+        1200,
+        800
+      ],
+      "headroomProgressSamples": 101,
+      "minimumCapTopHeadroom": 0.2539967600092572,
+      "halfOpenCapTopHeadroom": 0.31444651002352697
+    }
+  },
+  "preservationAndLocalHttp": {
+    "protectedCount": 888,
+    "changedProtectedFiles": [],
+    "publicDistHttpMatch": true,
+    "files": [
+      {
+        "file": "index.html",
+        "status": 200,
+        "bytes": 2930,
+        "sha256": "ebdc26ee73657b212ae93defec1cb12e8941c201ad922283fe7266bd15e52ecf"
+      },
+      {
+        "file": "style.css",
+        "status": 200,
+        "bytes": 4648,
+        "sha256": "9b77c2e973f5bd3d6ef983668d62c2e3fc002b2d34cb0441c6b4e412bbc745e6"
+      },
+      {
+        "file": "main.js",
+        "status": 200,
+        "bytes": 629508,
+        "sha256": "8d33829f4fb0e117252c5ddb37eb0d09ed051fdfe95fb02737a5c4ed7c7297e4"
+      },
+      {
+        "file": "review-config.json",
+        "status": 200,
+        "bytes": 5488,
+        "sha256": "ff2e9d5401f55459814ce5586e6bc586a7f1c405d2150f7cdd6b6031da5c3db3"
+      },
+      {
+        "file": "body-oil-collection.glb",
+        "status": 200,
+        "bytes": 627980,
+        "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
+      },
+      {
+        "file": "reference.png",
+        "status": 200,
+        "bytes": 2062752,
+        "sha256": "e78a40f295286e52f685b5d94c51740c9ebbd22f22acdab028ea753801a708dc"
+      }
+    ]
+  },
+  "browser": {
+    "native": "Google Chrome",
+    "visuallyCheckedProgress": [
+      0,
+      0.5,
+      1
+    ],
+    "noDetachedLiner": true,
+    "leftOpenAtProgress": 1,
+    "ego": {
+      "returned": {
+        "progress": "100",
+        "enabled": true
+      },
+      "reset": {
+        "progress": "0",
+        "zoom": "1"
+      },
+      "mobile": {
+        "width": 393,
+        "scrollWidth": 393,
+        "canvas": true,
+        "progress": "100",
+        "controlsEnabled": true
+      },
+      "referenceLoaded": true,
+      "rotationControlWorked": true
+    }
+  },
+  "aestheticReview": {
+    "method": "Impeccable distill and craft-floor, detector and independent native Chrome screenshot review",
+    "detectorExitCode": 0,
+    "blockingFindings": 0
+  },
+  "screenshots": [
+    {
+      "file": "review-evidence/body-oil-collection/simplified-cap/closed.png",
+      "bytes": 329535,
+      "sha256": "0bd8a23dc1e96380404d566b6e3ad43f5d9e04393b1cb66e75359fb84eab8440"
+    },
+    {
+      "file": "review-evidence/body-oil-collection/simplified-cap/half.png",
+      "bytes": 336785,
+      "sha256": "ec3370905373b9e844ca80e6fbf6cf8390a5135e1150982dfbad776e35c1d37e"
+    },
+    {
+      "file": "review-evidence/body-oil-collection/simplified-cap/open.png",
+      "bytes": 326709,
+      "sha256": "6076cd7c38682b6783a3fe833a0d295a0d7215031c7bfa879d9eceb2be0c8079"
+    }
+  ],
+  "commitSubject": "Keep Body Oil seal inside complete cap during expansion",
+  "limits": [
+    "Five-group revision is local only; production Body Oil remains the prior six-group model.",
+    "Physical dimensions and hidden fit are illustrative; mobile check uses a browser viewport.",
+    "Other old models remain pending individual review."
+  ]
+}

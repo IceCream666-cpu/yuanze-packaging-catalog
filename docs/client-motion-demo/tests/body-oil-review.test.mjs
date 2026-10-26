@@ -13,7 +13,7 @@ const source = readFileSync(new URL('main.js', sourceDirectory), 'utf8')
 const {code} = transformSync(source, {loader: 'js', format: 'cjs'});
 const config = {
   product: {file: 'body-oil-collection.glb', parts: [
-    {key:'closure', node:'Closure'}, {key:'liner', node:'InnerSeal'}, {key:'body', node:'Body'},
+    {key:'closure', node:'Closure'}, {key:'body', node:'Body'},
     {key:'label', node:'PaperLabel'}, {key:'print', node:'LogoPrint'}, {key:'name', node:'ProductPrint'},
   ]},
   design: {name: 'Body Oil Collection', background: '#e9dfcf', ink: '#30251f'},
@@ -81,7 +81,7 @@ test('single empty body oil bottle supports opening, slider, wheel, bounded zoom
     assert.equal(env.timers.size, 0);
     assert.equal(env.$('#show-liquid'), null);
     assert.match(env.$('.subtitle').textContent, /单瓶身体油空瓶/);
-    assert.deepEqual(env.mounts[0].product.parts.map(part => part.node), ['Closure','InnerSeal','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.deepEqual(env.mounts[0].product.parts.map(part => part.node), ['Closure','Body','PaperLabel','LogoPrint','ProductPrint']);
     env.$('#open-model').click();
     assert.equal(env.api.calls.progress.at(-1), 1);
     assert.equal(env.$('#opening-value').value, '100%');

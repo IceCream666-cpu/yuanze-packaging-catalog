@@ -5,8 +5,8 @@
   "files": [
     {
       "file": "index.html",
-      "bytes": 2924,
-      "sha256": "d2d36e385360ddafaba6a1adaf5753a20cd4b52055629fcd51057b5992ff32ce"
+      "bytes": 2930,
+      "sha256": "ebdc26ee73657b212ae93defec1cb12e8941c201ad922283fe7266bd15e52ecf"
     },
     {
       "file": "style.css",
@@ -15,18 +15,18 @@
     },
     {
       "file": "main.js",
-      "bytes": 629457,
-      "sha256": "1f900cde8d3ed1c13ffd371eb1a336e8d776c3b04794b0eb405796f6e21a0029"
+      "bytes": 629508,
+      "sha256": "8d33829f4fb0e117252c5ddb37eb0d09ed051fdfe95fb02737a5c4ed7c7297e4"
     },
     {
       "file": "review-config.json",
-      "bytes": 6289,
-      "sha256": "6b246c17d617af19f47aaee43fe79ef6b1644fb93c1217f9d9a03a894f7f5faf"
+      "bytes": 5488,
+      "sha256": "ff2e9d5401f55459814ce5586e6bc586a7f1c405d2150f7cdd6b6031da5c3db3"
     },
     {
       "file": "body-oil-collection.glb",
-      "bytes": 628084,
-      "sha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e"
+      "bytes": 627980,
+      "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
     },
     {
       "file": "reference.png",

@@ -13,9 +13,9 @@ const require = createRequire(resolve(client, 'package.json'));
 const {build} = createRequire(require.resolve('tsx/package.json'))('esbuild');
 const config = JSON.parse(await readFile(resolve(source, 'review-config.json'), 'utf8'));
 if (config.product?.file !== 'body-oil-collection.glb' || !Array.isArray(config.product.parts) || !config.design?.name) throw new Error('Invalid Body Oil review configuration');
-const expectedParts = {closure:'Closure', liner:'InnerSeal', body:'Body', label:'PaperLabel', print:'LogoPrint', name:'ProductPrint'};
+const expectedParts = {closure:'Closure', body:'Body', label:'PaperLabel', print:'LogoPrint', name:'ProductPrint'};
 if (JSON.stringify(config.product.parts.map(part => part.key).sort()) !== JSON.stringify(Object.keys(expectedParts).sort())
-    || config.product.parts.some(part => part.node !== expectedParts[part.key])) throw new Error('Body Oil preview requires the six reviewed empty-bottle component groups');
+    || config.product.parts.some(part => part.node !== expectedParts[part.key])) throw new Error('Body Oil preview requires five groups with one complete cap');
 
 // The model builder owns these files; this build only packages this review directory.
 const model = await readFile(resolve(output, config.product.file));

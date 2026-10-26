@@ -55,21 +55,49 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
 
-test('local Body Oil single empty bottle has six parts and restores independent lettering and zoom',async()=>{
+test('local Body Oil keeps its exported seal in the complete cap and restores five parts, lettering and zoom',async()=>{
   const {product}=JSON.parse(readFileSync(new URL('../review-source/body-oil-collection/review-config.json',import.meta.url),'utf8'));
-  const env=harness({product});let api;
+  const bytes=readFileSync(new URL('../public/review/body-oil-collection/body-oil-collection.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
   try {
     Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
     api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();
+    const closure=loaded.scene.getObjectByName('Closure'),seal=loaded.scene.getObjectByName('InnerSeal');
+    assert.equal(seal.parent,closure);
+    const pieces=[loaded.scene.getObjectByName('Body Oil 02 hollow satin ivory cap'),seal];
+    const restClosure=closure.getWorldPosition(new Three.Vector3());
+    const restPieces=pieces.map(piece=>({position:piece.getWorldPosition(new Three.Vector3()),matrix:piece.matrix.toArray()}));
     const rest=api.getState().partStates;
-    for(const value of [.5,1,0]){
+    for(const value of [0,.1,.25,.5,.75,1,.5,0]){
       api.setProgress(value);flush();const state=api.getState();
       assert.equal(state.renderedProgress,value);
+      assert.ok(Math.abs(state.partStates.closure.offset[1]-1.4*value)<1e-9);
+      const displacement=closure.getWorldPosition(new Three.Vector3()).sub(restClosure);
+      pieces.forEach((piece,i)=>{
+        assert.deepEqual(piece.matrix.toArray(),restPieces[i].matrix,'cap shell and seal keep their local transforms');
+        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(restPieces[i].position).distanceTo(displacement)<1e-9,'the seal and shell move together');
+      });
       for(const key of ['print','name'])assert.ok(state.partStates[key].offset[2]-state.partStates.label.offset[2]>=1.14*value);
       if(!value)assert.deepEqual(state.partStates,rest);
     }
-    assert.deepEqual(Object.keys(rest).sort(),['body','closure','label','liner','name','print']);
+    assert.deepEqual(Object.keys(rest).sort(),['body','closure','label','name','print']);
     assert.equal(Object.hasOwn(product.review.appearance,'liquid'),false);
     assert.equal(Object.hasOwn(rest,'liquid'),false);
     assert.equal(api.setPartVisible,undefined);
