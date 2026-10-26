@@ -183,7 +183,63 @@ test('loader starts one authenticated model request beside both modules and abor
   } finally {await env.close();}
 });
 
-test('module timeout cancels the pending model, keeps poster escape and ignores a late module', async t => {
+test('a detail module arriving after 45 seconds still mounts without retrying the model', async t => {
+  const env = setup(), detail = deferred(); let mounts = 0, calls = 0, signal;
+  t.mock.timers.enable({apis: ['setTimeout']});
+  globalThis.fetch = async (url, options) => {
+    calls++; signal = options.signal;
+    return {ok: true, arrayBuffer: async () => new ArrayBuffer(12)};
+  };
+  function Detail() {useEffect(() => {mounts++;}, []); return <div>Loaded detail</div>;}
+  const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {loadDetail: () => detail.promise}});
+  try {
+    await act(async () => env.root.render(<Loader {...defaultProps}/>));
+    await act(async () => t.mock.timers.tick(45000));
+    assert.equal(signal.aborted, false); assert.equal(calls, 1);
+    assert.equal(document.querySelector('.packaging-shell').getAttribute('aria-busy'), 'true');
+    assert.equal(byText('重新加载'), undefined);
+    await act(async () => detail.resolve({default: Detail}));
+    assert.equal(mounts, 1); assert.equal(document.getElementById('root').textContent, 'Loaded detail');
+    await act(async () => t.mock.timers.tick(300000));
+    assert.equal(signal.aborted, false); assert.equal(calls, 1);
+    assert.equal(document.getElementById('root').textContent, 'Loaded detail');
+  } finally {await env.close(); t.mock.timers.reset();}
+});
+
+test('a model body arriving after 90 seconds reaches a ready scene without retry or stale deadline', async t => {
+  const env = setup(), bytes = deferred(); let fetches = 0, mounts = 0, signal, sceneSignal, disposals = 0;
+  t.mock.timers.enable({apis: ['setTimeout']});
+  globalThis.fetch = async (url, options) => {
+    fetches++; signal = options.signal;
+    signal.addEventListener('abort', () => bytes.reject(signal.reason), {once: true});
+    return {ok: true, arrayBuffer: () => bytes.promise};
+  };
+  const api = {dispose() {disposals++;}, setProgress() {}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
+  const scene = {mountPackagingScene: async (host, {modelRequest, signal, onReady}) => {
+    mounts++; sceneSignal = signal;
+    assert.equal((await modelRequest.promise).byteLength, 20);
+    onReady(); return api;
+  }};
+  const Detail = component('structure/PackagingDetail.jsx');
+  const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {
+    loadDetail: async () => ({default: Detail}), loadScene: async () => scene,
+  }});
+  try {
+    await act(async () => env.root.render(<Loader {...defaultProps}/>));
+    await act(async () => t.mock.timers.tick(90000));
+    assert.equal(signal.aborted, false); assert.equal(sceneSignal.aborted, false);
+    assert.equal(document.querySelector('.packaging-error'), null);
+    assert.equal(document.querySelector('#packaging-opening').disabled, true);
+    await act(async () => bytes.resolve(new ArrayBuffer(20)));
+    assert.equal(document.querySelector('#packaging-opening').disabled, false);
+    await act(async () => t.mock.timers.tick(300000));
+    assert.equal(signal.aborted, false); assert.equal(sceneSignal.aborted, false);
+    assert.equal(document.querySelector('#packaging-opening').disabled, false);
+    assert.equal(fetches, 1); assert.equal(mounts, 1); assert.equal(disposals, 0);
+  } finally {await env.close(); t.mock.timers.reset();}
+});
+
+test('two-minute module timeout cancels the pending model, keeps poster escape and ignores a late module', async t => {
   const env = setup(), detail = deferred(), response = deferred(); let signal;
   t.mock.timers.enable({apis: ['setTimeout']});
   globalThis.fetch = (url, options) => {
@@ -194,7 +250,10 @@ test('module timeout cancels the pending model, keeps poster escape and ignores 
   const Loader = component('structure/PackagingDetailLoader.jsx', {deps: {loadDetail: () => detail.promise}});
   try {
     await act(async () => env.root.render(<Loader {...defaultProps}/>));
-    await act(async () => t.mock.timers.tick(30000));
+    await act(async () => t.mock.timers.tick(119999));
+    assert.equal(signal.aborted, false);
+    assert.equal(document.querySelector('.packaging-shell').getAttribute('aria-busy'), 'true');
+    await act(async () => t.mock.timers.tick(1));
     assert.equal(signal.aborted, true); assert.equal(signal.reason.name, 'TimeoutError');
     assert.ok(byText('重新加载')); assert.ok(byText('查看原海报'));
     await act(async () => detail.resolve({default: () => <div>Stale detail</div>}));
@@ -202,7 +261,7 @@ test('module timeout cancels the pending model, keeps poster escape and ignores 
   } finally {await env.close(); t.mock.timers.reset();}
 });
 
-test('model deadline aborts its own request and a later attempt can fetch fresh bytes', async t => {
+test('five-minute model deadline aborts its own request and a later attempt can fetch fresh bytes', async t => {
   const env = setup(); t.mock.timers.enable({apis: ['setTimeout']});
   const {startPackagingModelRequest} = component('structure/PackagingDetailLoader.jsx', {allExports: true});
   let calls = 0;
@@ -213,9 +272,11 @@ test('model deadline aborts its own request and a later attempt can fetch fresh 
   };
   try {
     const first = startPackagingModelRequest();
-    await act(async () => t.mock.timers.tick(60000));
+    await act(async () => t.mock.timers.tick(299999));
+    assert.equal(first.signal.aborted, false); assert.equal(calls, 1);
+    await act(async () => t.mock.timers.tick(1));
     await assert.rejects(first.promise, error => error.name === 'TimeoutError');
-    assert.equal(first.signal.aborted, true);
+    assert.equal(first.signal.aborted, true); assert.equal(calls, 1, 'timeout does not retry automatically');
     const second = startPackagingModelRequest();
     assert.equal((await second.promise).byteLength, 20); assert.equal(calls, 2);
     assert.ok('fetchEnd' in second.timings); second.abort();
@@ -235,7 +296,7 @@ test('a rejected protected model response is never parsed or reused for another 
   } finally {await env.close();}
 });
 
-test('scene initialization has a deadline that aborts both scene work and the prefetched request', async t => {
+test('five-minute scene initialization deadline aborts both scene work and the prefetched request', async t => {
   const env = setup(), pending = deferred(), previousError = console.error; let signal, requestAborts = 0;
   console.error = () => {}; t.mock.timers.enable({apis: ['setTimeout']});
   const modelRequest = {mark() {}, abort() {requestAborts++;}};
@@ -245,7 +306,10 @@ test('scene initialization has a deadline that aborts both scene work and the pr
   }})}});
   try {
     await act(async () => env.root.render(<Detail {...defaultProps} getModelRequest={getModelRequest}/>));
-    await act(async () => t.mock.timers.tick(60000));
+    await act(async () => t.mock.timers.tick(299999));
+    assert.equal(signal.aborted, false); assert.equal(requestAborts, 0);
+    assert.equal(document.querySelector('.packaging-error'), null);
+    await act(async () => t.mock.timers.tick(1));
     assert.equal(signal.aborted, true); assert.equal(signal.reason.name, 'TimeoutError'); assert.equal(requestAborts, 1);
     assert.ok(document.querySelector('.packaging-error')); assert.ok(byText('重新加载'));
     let disposed = 0; await act(async () => pending.resolve({dispose() {disposed++;}}));

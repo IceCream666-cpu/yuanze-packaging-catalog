@@ -175,7 +175,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
       console.error('Packaging preview unavailable', error);
     };
 
-    initializationTimer = setTimeout(() => fail(new DOMException('Model preparation timed out', 'TimeoutError')), 60000);
+    initializationTimer = setTimeout(() => fail(new DOMException('Model preparation timed out', 'TimeoutError')), 300000);
     // Animation is optional: never hold the GLB or first frame behind its scripts.
     const animation = reducedMotion ? Promise.resolve(false) : loadAnimation(controller.signal).then(() => {
       mark('animationReady'); return true;

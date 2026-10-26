@@ -2,8 +2,8 @@ import {PACKAGING_PRODUCTS} from './packaging-products.js';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 let loadSequence = 0;
-const MODEL_TIMEOUT = 60000;
-const MODULE_TIMEOUT = 30000;
+const MODEL_TIMEOUT = 300000;
+const MODULE_TIMEOUT = 120000;
 
 // Keep only the bytes for this opening. Reopening still revalidates the protected
 // asset with the server; no model or GPU resources survive the dialog lifecycle.
