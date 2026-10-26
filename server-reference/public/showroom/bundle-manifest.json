@@ -768,34 +768,6 @@
       "bytes": 3191832,
       "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
     },
-    "assets/packaging/poster-072.glb": {
-      "bytes": 287108,
-      "sha256": "71f04ca1f50e18b09c8d675c0d59dced0b0e7ac1b482896c4307b05b400ddd66"
-    },
-    "assets/packaging/poster-073.glb": {
-      "bytes": 568208,
-      "sha256": "7f964ac1676a5e6af0cbdbc91b9ad89bedbc4b07a2935aa3789858c536715e5d"
-    },
-    "assets/packaging/poster-074.glb": {
-      "bytes": 268852,
-      "sha256": "f0c5bc5a68ef42cdeda0fd884c18fca995abd21121da86040ed90eef14bfe8a3"
-    },
-    "assets/packaging/poster-075.glb": {
-      "bytes": 228996,
-      "sha256": "8f53c6da074d89479c4cde7194df911101c28b030bb349a7a7d4632229b194db"
-    },
-    "assets/packaging/poster-076.glb": {
-      "bytes": 409536,
-      "sha256": "e01ef22b039984a584c25b59208c672e07361e68ebe4cd9652bb746b7d38aa43"
-    },
-    "assets/packaging/poster-077.glb": {
-      "bytes": 358588,
-      "sha256": "ba701f68f80584aa67b6a47010b8c1802649b98c88228d03f1fe41b7ecf4cdfe"
-    },
-    "assets/packaging/poster-078.glb": {
-      "bytes": 343560,
-      "sha256": "6f4e8c64fe9ed661c935367aa06a80b60af738afbfea05797591ac843827d5bb"
-    },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
       "sha256": "2bd8465ff3d2cc329bcd2bdb40ae50c8d3dcbb612aefd57eace6ab1258dbb887"
@@ -1898,15 +1870,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "c81d57704afcf952dca91dc85d5b0629f75c095ac3972e689f5bfc0c8e1a43e8"
+      "sha256": "383047eec166f6adf31330d09ddd59bb4d299e9fad62e0b59192f034d0bd482a"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 393644,
-      "sha256": "d8afbeb9c0b4c01af5b07fa2ca199dca3c517077cdf5e43e35bd315b2ee0cda4"
+      "bytes": 384896,
+      "sha256": "7f11c6297cceb129d2ae041ced6cc04182c67bf231da40614564e316f8542eff"
     },
     "product-posters.js": {
       "bytes": 21629,
@@ -1915,5 +1887,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.17"
+  "version": "client1.18"
 }

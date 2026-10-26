@@ -564,3 +564,24 @@ test('B5 Serum exposes the separate white base and keeps white lettering readabl
     assert.ok(1.05/(c[0]*.2126+c[1]*.7152+c[2]*.0722+.05)>4.5,'original white printing must remain legible away from the bottle');
   } finally {await env.close();}
 });
+
+
+test('withdrawn seven models open retained posters without loading any 3D', async () => {
+  const env = setup(); let requests = 0;
+  globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
+  const {App, counts} = appHarness();
+  try {
+    await act(async () => env.root.render(<App/>));
+    for (let n=72;n<=78;n++) {
+      const id=`poster-${n.toString().padStart(3,'0')}`;
+      const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
+      assert.equal(document.querySelector('.test-packaging'),null);
+      assert.ok(document.querySelector('dialog.image-modal').open);
+      assert.ok(document.querySelector(`a[download="${id}.webp"]`));
+      await click(document.querySelector('[aria-label="关闭"]'));
+      assert.equal(document.activeElement,trigger);
+    }
+    assert.deepEqual(counts(),{mounts:0,unmounts:0});
+    assert.equal(requests,0);
+  } finally {await env.close();}
+});

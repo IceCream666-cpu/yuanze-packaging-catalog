@@ -43,12 +43,12 @@ test('original poster assets and separately approved packaging assets match exac
  assert.equal(new Set(manifest.files.map(f=>f.target)).size,manifest.files.length);
  const declared=new Set(manifest.files.map(f=>f.target));
  assert.equal(packagingManifest.schema,1);
- assert.equal(packagingManifest.scope,'approved-client1.17-collection-packaging');
+ assert.equal(packagingManifest.scope,'approved-client1.18-collection-packaging');
  assert.equal(packagingManifest.posterId,'poster-012');
  assert.equal(packagingManifest.containsFormula,false);
  assert.deepEqual(packagingManifest.components,['Jar','OuterCap','InnerLid','LogoPrint']);
  const collection=json(resolve(base,'src/structure/collection-products.json'));
- assert.equal(Object.keys(collection).length,29);assert.equal(packagingManifest.publicationApproved,true);
+ assert.equal(Object.keys(collection).length,22);assert.equal(packagingManifest.publicationApproved,true);
  const packagingKinds={...Object.fromEntries(Object.values(collection).map(p=>[p.file,'model'])),'liaose-pump.glb':'model','beach-magic-packaging.glb':'model','gsap.min.js':'animation','ScrollTrigger.min.js':'scroll-animation'};
  assert.deepEqual(packagingManifest.files.map(entry=>entry.name).sort(),Object.keys(packagingKinds).sort());
  const packagingDeclared=new Set(packagingManifest.files.map(entry=>entry.productionTarget));

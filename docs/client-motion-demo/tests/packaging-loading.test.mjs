@@ -405,14 +405,15 @@ test('B5 pipette remains visible through the empty bottle and preserves the orig
 
 
 test('new clear overcaps retain neutral transmission without changing prior finishes', async () => {
-  for(const id of ['poster-072','poster-074','poster-076','poster-066']) {
-    const product=PACKAGING_PRODUCTS[id];let loaded,api;
+  for(const toneMapped of [false,true]) {
+    const base=PACKAGING_PRODUCTS['poster-066'];
+    const product={...base,review:{...base.review,appearance:{...base.review.appearance,overcapToneMapped:toneMapped}}};let loaded,api;
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try {
       loaded=env.model();const cap=loaded.scene.getObjectByName(product.parts.find(p=>p.key==='overcap').node);
       cap.material.transmission=1;cap.material.roughness=.035;
       api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-      assert.equal(cap.material.toneMapped,id==='poster-066');
+      assert.equal(cap.material.toneMapped,toneMapped);
       assert.equal(cap.material.transmission,1);
     } finally {api?.dispose();env.close();}
   }

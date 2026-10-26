@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.17-collection-packaging",
+  "scope": "approved-client1.18-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -217,62 +217,6 @@
       "productionTarget": "assets/packaging/poster-070.glb",
       "bytes": 3191832,
       "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
-    },
-    {
-      "name": "poster-072.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-072.glb",
-      "productionTarget": "assets/packaging/poster-072.glb",
-      "bytes": 287108,
-      "sha256": "71f04ca1f50e18b09c8d675c0d59dced0b0e7ac1b482896c4307b05b400ddd66"
-    },
-    {
-      "name": "poster-073.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-073.glb",
-      "productionTarget": "assets/packaging/poster-073.glb",
-      "bytes": 568208,
-      "sha256": "7f964ac1676a5e6af0cbdbc91b9ad89bedbc4b07a2935aa3789858c536715e5d"
-    },
-    {
-      "name": "poster-074.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-074.glb",
-      "productionTarget": "assets/packaging/poster-074.glb",
-      "bytes": 268852,
-      "sha256": "f0c5bc5a68ef42cdeda0fd884c18fca995abd21121da86040ed90eef14bfe8a3"
-    },
-    {
-      "name": "poster-075.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-075.glb",
-      "productionTarget": "assets/packaging/poster-075.glb",
-      "bytes": 228996,
-      "sha256": "8f53c6da074d89479c4cde7194df911101c28b030bb349a7a7d4632229b194db"
-    },
-    {
-      "name": "poster-076.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-076.glb",
-      "productionTarget": "assets/packaging/poster-076.glb",
-      "bytes": 409536,
-      "sha256": "e01ef22b039984a584c25b59208c672e07361e68ebe4cd9652bb746b7d38aa43"
-    },
-    {
-      "name": "poster-077.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-077.glb",
-      "productionTarget": "assets/packaging/poster-077.glb",
-      "bytes": 358588,
-      "sha256": "ba701f68f80584aa67b6a47010b8c1802649b98c88228d03f1fe41b7ecf4cdfe"
-    },
-    {
-      "name": "poster-078.glb",
-      "kind": "model",
-      "file": "packaging-assets/poster-078.glb",
-      "productionTarget": "assets/packaging/poster-078.glb",
-      "bytes": 343560,
-      "sha256": "6f4e8c64fe9ed661c935367aa06a80b60af738afbfea05797591ac843827d5bb"
     }
   ],
   "additionalProducts": [
@@ -543,84 +487,6 @@
       "components": [
         "Closure",
         "CapWrap",
-        "Body",
-        "PaperLabel",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-072",
-      "file": "poster-072.glb",
-      "components": [
-        "Closure",
-        "PumpStem",
-        "Actuator",
-        "Overcap",
-        "Body",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-073",
-      "file": "poster-073.glb",
-      "components": [
-        "Closure",
-        "Body",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-074",
-      "file": "poster-074.glb",
-      "components": [
-        "Closure",
-        "PumpStem",
-        "Actuator",
-        "Overcap",
-        "Piston",
-        "Body",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-075",
-      "file": "poster-075.glb",
-      "components": [
-        "Closure",
-        "PumpStem",
-        "Actuator",
-        "Body",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-076",
-      "file": "poster-076.glb",
-      "components": [
-        "Closure",
-        "Overcap",
-        "Body",
-        "PaperLabel",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-077",
-      "file": "poster-077.glb",
-      "components": [
-        "NeckInsert",
-        "RollerSeat",
-        "RollerBall",
-        "Closure",
-        "Body",
-        "LogoPrint"
-      ]
-    },
-    {
-      "posterId": "poster-078",
-      "file": "poster-078.glb",
-      "components": [
-        "Closure",
         "Body",
         "PaperLabel",
         "LogoPrint"
