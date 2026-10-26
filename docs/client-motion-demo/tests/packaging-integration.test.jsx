@@ -593,7 +593,7 @@ test('Body Oil opens from the poster library without joining featured and return
   } finally {await env.close();}
 });
 
-test('non-featured Body Oil uses its complete design fallback and all six independent controls', async () => {
+test('non-featured Body Oil uses its complete design fallback and all five independent controls', async () => {
   const env=setup(); let mounted,focused,url;
   const bodyOil={...item,id:'poster-073',title:{zh:'身体油系列',en:'Body Oil Collection'}};
   globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
@@ -608,14 +608,14 @@ test('non-featured Body Oil uses its complete design fallback and all six indepe
     await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil}/>));
     assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
     assert.equal(document.querySelector('.packaging-intro').textContent,'身体护理 · 单瓶身体油空包材');
-    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','InnerSeal','Body','PaperLabel','LogoPrint','ProductPrint']);
-    assert.equal(document.querySelectorAll('.packaging-part').length,6);
-    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,6);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,5);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,5);
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#eadbc5');
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-ink'),'#3e2b1d');
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-accent'),'#eee3d1');
     assert.equal(Object.hasOwn(mounted.product.review.appearance,'liquid'),false);
-    await click(document.querySelectorAll('.packaging-mobile-parts button')[5]);
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[4]);
     assert.equal(focused,'name');
     await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil} lang="en"/>));
     const english=document.querySelector('.packaging-intro').textContent;

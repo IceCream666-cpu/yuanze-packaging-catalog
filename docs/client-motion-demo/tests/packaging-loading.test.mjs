@@ -55,32 +55,58 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
 
-test('published Body Oil single empty bottle has six parts and restores both independent lettering layers',async()=>{
+test('published Body Oil keeps its seal inside the complete cap and restores five independent parts',async()=>{
   const product=PACKAGING_PRODUCTS['poster-073'];
-  let loaded,api;const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  const bytes=readFileSync(new URL('../packaging-assets/poster-073.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
   try {
     Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
-    loaded=env.model();
-    const parts=Object.fromEntries(product.parts.map(p=>[p.key,loaded.scene.getObjectByName(p.node)]));
-    const rest=Object.fromEntries(Object.entries(parts).map(([key,p])=>[key,{position:p.position.clone(),scale:p.scale.clone()}]));
     api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
-    for(const value of [.5,1,0]){
+    const flush=()=>{const frames=[...env.frames.values()];env.frames.clear();frames.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();
+    const parts=Object.fromEntries(product.parts.map(p=>[p.key,loaded.scene.getObjectByName(p.node)]));
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,p])=>[key,{position:p.position.clone(),scale:p.scale.clone(),quaternion:p.quaternion.clone()}]));
+    const seal=loaded.scene.getObjectByName('InnerSeal'),shell=loaded.scene.getObjectByName('Body Oil 02 hollow satin ivory cap');
+    assert.equal(seal.parent,parts.closure);
+    const pieces=[shell,seal],closureRest=parts.closure.getWorldPosition(new Three.Vector3());
+    const pieceRest=pieces.map(piece=>({matrix:piece.matrix.toArray(),position:piece.getWorldPosition(new Three.Vector3())}));
+    for(const value of [0,.1,.25,.5,.75,1,.5,0]){
       api.setProgress(value);flush();
       assert.equal(api.getState().renderedProgress,value);
       const offset=key=>parts[key].position.clone().sub(rest[key].position);
+      assert.ok(offset('closure').distanceTo(new Three.Vector3(0,1.4*value,0))<1e-9);
+      const displacement=parts.closure.getWorldPosition(new Three.Vector3()).sub(closureRest);
+      pieces.forEach((piece,i)=>{
+        assert.deepEqual(piece.matrix.toArray(),pieceRest[i].matrix,'the shell and seal keep their fitted local transforms');
+        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(pieceRest[i].position).distanceTo(displacement)<1e-9,'the seal travels with the cap');
+      });
       for(const key of ['print','name']){
         assert.ok(offset(key).z-offset('label').z>=1.14*value);
         assert.ok(Math.abs(offset(key).y-product.review.explosion.offsets[key][1]*value)<1e-9);
-        assert.ok(Math.abs(parts[key].scale.x-(1+.3*value))<1e-9);
+        assert.ok(Math.abs(parts[key].scale.x/rest[key].scale.x-(1+.3*value))<1e-9);
       }
-      if(value)assert.notEqual(parts.print.position.y,parts.name.position.y);
-      else for(const [key,p] of Object.entries(parts)){
+      if(!value)for(const [key,p] of Object.entries(parts)){
         assert.ok(p.position.distanceTo(rest[key].position)<1e-9);
         assert.ok(p.scale.distanceTo(rest[key].scale)<1e-9);
+        assert.ok(1-Math.abs(p.quaternion.dot(rest[key].quaternion))<1e-9);
       }
     }
-    assert.deepEqual(Object.keys(parts).sort(),['body','closure','label','liner','name','print']);
+    assert.deepEqual(Object.keys(parts).sort(),['body','closure','label','name','print']);
     assert.equal(Object.hasOwn(product.review.appearance,'liquid'),false);
     assert.equal(loaded.scene.getObjectByName('Liquid'),undefined);
   }finally{api?.dispose();env.close();}

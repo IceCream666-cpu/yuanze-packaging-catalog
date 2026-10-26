@@ -7,7 +7,6 @@
   "components": [
     "Body",
     "Closure",
-    "InnerSeal",
     "PaperLabel",
     "LogoPrint",
     "ProductPrint"
@@ -35,18 +34,6 @@
         0.34156736731529236,
         0.34156736731529236,
         2.8999998569488525
-      ]
-    },
-    "InnerSeal": {
-      "min": [
-        -0.21663612127304077,
-        -0.21663612127304077,
-        2.453437089920044
-      ],
-      "max": [
-        0.21663612127304077,
-        0.21663612127304077,
-        2.4813473224639893
       ]
     },
     "PaperLabel": {
@@ -111,7 +98,7 @@
   "illustrativeDimensions": true,
   "hiddenStructure": "Seal, wall thickness, internal fit and circular depth inferred from one front image; not manufacturing dimensions. Transparent blank carrier illustrates separate printing; no paper edge is visible in the reference.",
   "referenceSha256": "e78a40f295286e52f685b5d94c51740c9ebbd22f22acdab028ea753801a708dc",
-  "glbSha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e",
-  "glbBytes": 628084,
+  "glbSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+  "glbBytes": 627980,
   "generator": "build_body_oil_collection.py"
 }

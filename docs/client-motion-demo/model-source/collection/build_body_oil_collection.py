@@ -68,24 +68,33 @@ for name,g in m.groups.items():
  points=[o.matrix_world@v.co for o in g.children for v in o.data.vertices]
  bounds[name]={'min':[min(p[i] for p in points) for i in range(3)],'max':[max(p[i] for p in points) for i in range(3)]}
 assert abs(max(b['max'][2] for b in bounds.values())-2.9)<1e-6
+# Keep the concealed seal with the complete cap without changing its fitted position.
+seal = m.groups.pop('InnerSeal')
+fitted = seal.matrix_world.copy()
+seal.parent = m.groups['Closure']
+seal.matrix_world = fitted
+bpy.context.view_layer.update()
+seal_bounds = bounds.pop('InnerSeal')
+cap_bounds = bounds['Closure']
+bounds['Closure'] = {'min':[min(cap_bounds['min'][i],seal_bounds['min'][i]) for i in range(3)],
+                     'max':[max(cap_bounds['max'][i],seal_bounds['max'][i]) for i in range(3)]}
 glb=PUBLIC/(ID+'.glb')
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(glb),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/(ID+'.blend')))
 shutil.copy2(OUT/'reference.png',PUBLIC/'reference.png')
 parts=[
- part('closure','Closure','米白瓶盖','Ivory caps','光滑圆筒盖向上分离。','The satin cylindrical cap lifts away.'),
- part('liner','InnerSeal','密封垫','Seals','盖内薄垫单独分离，隐藏结构为示意。','Illustrative concealed seals separate.'),
+ part('closure','Closure','完整米白瓶盖','Complete ivory cap','瓶盖与盖内密封垫保持组装，作为整体向上移开。','The satin cap and its internal seal stay assembled and lift together.'),
  part('body','Body','透明玻璃瓶','Clear glass','取原图02号同型空瓶，保留长肩、短颈与圆润厚底。','One representative empty long-shoulder bottle with a thick glass base.'),
  part('label','PaperLabel','透明底材','Clear carriers','无字薄膜示意，不添加原图没有的纸标。','Unprinted clear carriers, without an invented paper label.'),
  part('print','LogoPrint','品牌字','Brand lettering','liaose独立向外展开。','The liaose mark moves outward independently.'),
  part('name','ProductPrint','产品名与编号','Names and numbers','BODY OIL及02比标贴更向外展开。','BODY OIL and 02 move farther out than the carriers.'),
 ]
-review={'parts':parts,'appearance':{'glass':True,'frosted':False,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'closure':[0,2.8,0],'liner':[0,1.35,0],'label':[-.65,.02,.70],'print':[-1.50,.23,1.85],'name':[-1.50,-.18,1.85]},'scales':{'label':1.08,'print':1.3,'name':1.3},'timing':{'closure':[0,.8],'liner':[.16,1]},'camera':{'centerY':[1.45,2.65],'centerX':[0,-.75],'height':[3.7,6.35],'width':[2.1,4.4]}}}
+review={'parts':parts,'appearance':{'glass':True,'frosted':False,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'closure':[0,1.4,0],'label':[-.65,.02,.70],'print':[-1.50,.23,1.85],'name':[-1.50,-.18,1.85]},'scales':{'label':1.08,'print':1.3,'name':1.3},'camera':{'centerY':[1.45,2.10],'centerX':[0,-.75],'height':[3.7,4.95],'width':[2.1,4.0]}}}
 config={'product':{'file':ID+'.glb','kind':'collection','scale':1,'parts':parts,'review':review},'design':{'name':'Body Oil Collection','background':'#eadbc5','ink':'#3e2b1d'}}
 source=CLIENT/'review-source'/ID;source.mkdir(parents=True,exist_ok=True)
 (source/'review-config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n')
 (OUT/'review-config.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
 info={'id':ID,'state':'local-review','productCount':1,'bottleCount':1,'height':2.9,'components':list(m.groups),'componentBoundsBlenderXYZ':bounds,'singleClosedHeightToWidth':2.182,'glassHeightToWidth':1.840,'glassBaseToWidth':.139,'capDiameterToWidth':.514,'capHeightToWidth':.347,'bottlePositionsInDiameters':positions,'normalizationScale':scale,'containsFormula':False,'colorlessGlass':True,'separateLabelBrandAndName':True,'printIncludes':['liaose','BODY OIL','02'],'illustrativeDimensions':True,'hiddenStructure':'Seal, wall thickness, internal fit and circular depth inferred from one front image; not manufacturing dimensions. Transparent blank carrier illustrates separate printing; no paper edge is visible in the reference.','referenceSha256':hashlib.sha256((OUT/'reference.png').read_bytes()).hexdigest(),'glbSha256':hashlib.sha256(glb.read_bytes()).hexdigest(),'glbBytes':glb.stat().st_size,'generator':Path(__file__).name}
 (OUT/'model-info.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n')
-print('Body Oil Collection: 1 empty bottle, 6 independent groups,',glb.stat().st_size,'bytes')
+print('Body Oil Collection: 1 empty bottle, 5 groups with one complete cap,',glb.stat().st_size,'bytes')

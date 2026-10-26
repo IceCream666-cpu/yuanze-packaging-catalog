@@ -20,12 +20,12 @@ ASSET_PATH = re.compile(r'[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg|webp|svg|pdf)')
 CLIENT = ROOT / 'docs/client-apple-demo'
 MOTION_CLIENT = ROOT / 'docs/client-motion-demo'
 CLIENT_ENTRYPOINTS = ('index.html', 'preview.js', 'preview.css')
-CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6', 'client17': 'client1.7', 'client18': 'client1.8', 'client19': 'client1.9', 'client110': 'client1.10', 'client111': 'client1.11', 'client112': 'client1.12', 'client113': 'client1.13', 'client114': 'client1.14', 'client115': 'client1.15', 'client116': 'client1.16', 'client117': 'client1.17', 'client118': 'client1.18', 'client119': 'client1.19', 'client120': 'client1.20', 'client121': 'client1.21'}
-MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114', 'client115', 'client116', 'client117', 'client118', 'client119', 'client120', 'client121'))
-REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53), 'client17': (23, 53), 'client18': (24, 54), 'client19': (24, 54), 'client110': (24, 54), 'client111': (24, 54), 'client112': (24, 54), 'client113': (24, 54), 'client114': (24, 54), 'client115': (24, 54), 'client116': (24, 54), 'client117': (31, 61), 'client118': (31, 61), 'client119': (24, 61), 'client120': (24, 61), 'client121': (24, 61)}
+CLIENT_EDITIONS = {'client1': 'client1.0', 'client12': 'client1.2', 'client13': 'client1.3', 'client14': 'client1.4', 'client15': 'client1.5', 'client16': 'client1.6', 'client17': 'client1.7', 'client18': 'client1.8', 'client19': 'client1.9', 'client110': 'client1.10', 'client111': 'client1.11', 'client112': 'client1.12', 'client113': 'client1.13', 'client114': 'client1.14', 'client115': 'client1.15', 'client116': 'client1.16', 'client117': 'client1.17', 'client118': 'client1.18', 'client119': 'client1.19', 'client120': 'client1.20', 'client121': 'client1.21', 'client122': 'client1.22'}
+MOTION_EDITIONS = frozenset(('client12', 'client13', 'client14', 'client15', 'client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114', 'client115', 'client116', 'client117', 'client118', 'client119', 'client120', 'client121', 'client122'))
+REVIEWED_COUNTS = {'client12': (8, 38), 'client13': (8, 38), 'client14': (23, 53), 'client15': (23, 53), 'client16': (23, 53), 'client17': (23, 53), 'client18': (24, 54), 'client19': (24, 54), 'client110': (24, 54), 'client111': (24, 54), 'client112': (24, 54), 'client113': (24, 54), 'client114': (24, 54), 'client115': (24, 54), 'client116': (24, 54), 'client117': (31, 61), 'client118': (31, 61), 'client119': (24, 61), 'client120': (24, 61), 'client121': (24, 61), 'client122': (24, 61)}
 FEATURED_APPROVAL_VERSIONS = {'client12': 'client1.2', 'client13': 'client1.2',
-                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4', 'client17': 'client1.4', 'client18': 'client1.8', 'client19': 'client1.8', 'client110': 'client1.8', 'client111': 'client1.8', 'client112': 'client1.8', 'client113': 'client1.8', 'client114': 'client1.8', 'client115': 'client1.8', 'client116': 'client1.8', 'client117': 'client1.17', 'client118': 'client1.17', 'client119': 'client1.19', 'client120': 'client1.19', 'client121': 'client1.19'}
-PACKAGING_EDITIONS = frozenset(('client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114', 'client115', 'client116', 'client117', 'client118', 'client119', 'client120', 'client121'))
+                             'client14': 'client1.4', 'client15': 'client1.4', 'client16': 'client1.4', 'client17': 'client1.4', 'client18': 'client1.8', 'client19': 'client1.8', 'client110': 'client1.8', 'client111': 'client1.8', 'client112': 'client1.8', 'client113': 'client1.8', 'client114': 'client1.8', 'client115': 'client1.8', 'client116': 'client1.8', 'client117': 'client1.17', 'client118': 'client1.17', 'client119': 'client1.19', 'client120': 'client1.19', 'client121': 'client1.19', 'client122': 'client1.19'}
+PACKAGING_EDITIONS = frozenset(('client16', 'client17', 'client18', 'client19', 'client110', 'client111', 'client112', 'client113', 'client114', 'client115', 'client116', 'client117', 'client118', 'client119', 'client120', 'client121', 'client122'))
 COLLECTION_MODELS = json.loads((MOTION_CLIENT / 'src/structure/collection-products.json').read_text())
 assert all(re.fullmatch(r'poster-\d{3}', key) and value['file'] == key + '.glb' for key, value in COLLECTION_MODELS.items())
 PACKAGING_ASSETS = {'liaose-pump.glb': 'model', 'beach-magic-packaging.glb': 'model', 'gsap.min.js': 'animation',
@@ -126,7 +126,7 @@ def stamp_client_release(edition='client1'):
 def packaging_files(files, client):
     """Add all 26 approved models and two animation scripts, with fixed routes."""
     manifest = json.loads(source_file(client, 'packaging-manifest.json').read_text())
-    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.21-collection-packaging' or manifest.get('publicationApproved') is not True
+    if (manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client1.22-collection-packaging' or manifest.get('publicationApproved') is not True
             or manifest.get('posterId') != 'poster-012'
             or manifest.get('components') != ['Jar', 'OuterCap', 'InnerLid', 'LogoPrint']
             or manifest.get('additionalProducts') != ([{'posterId':'poster-071','file':'liaose-pump.glb','components':['BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint']}]
@@ -169,7 +169,7 @@ def prepare_packaging_assets(client):
     return len(files)
 
 
-def featured_files(files, client, edition='client121'):
+def featured_files(files, client, edition='client122'):
     """Add the edition's complete approved set without replacing source posters."""
     manifest = json.loads(source_file(client, 'featured-manifest.json').read_text())
     approval_version = FEATURED_APPROVAL_VERSIONS[edition]
@@ -218,7 +218,7 @@ def featured_files(files, client, edition='client121'):
             files[f'assets/featured/{name}'] = data
 
 
-def optimized_display_files(files, client, edition='client121'):
+def optimized_display_files(files, client, edition='client122'):
     """Validate every display derivative against an existing approved original."""
     manifest = json.loads(source_file(client, 'display-derivatives.json').read_text())
     if manifest.get('schema') != 1 or manifest.get('scope') != 'approved-client-display-optimization':
@@ -411,8 +411,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     parser.add_argument('--output', type=Path, default=DESTINATION)
-    parser.add_argument('--edition', choices=('client121', 'client120', 'client119', 'client118', 'client117', 'client116', 'client115', 'client114', 'client113', 'client112', 'client111', 'client110', 'client19', 'client18', 'client17', 'client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client121',
-                        help='client121 is current; older editions require their matching source and release stamp')
+    parser.add_argument('--edition', choices=('client122', 'client121', 'client120', 'client119', 'client118', 'client117', 'client116', 'client115', 'client114', 'client113', 'client112', 'client111', 'client110', 'client19', 'client18', 'client17', 'client16', 'client15', 'client14', 'client13', 'client12', 'client1', 'legacy'), default='client122',
+                        help='client122 is current; older editions require their matching source and release stamp')
     parser.add_argument('--stamp-client', action='store_true',
                         help='Record hashes after vite build --mode showroom')
     args = parser.parse_args()
