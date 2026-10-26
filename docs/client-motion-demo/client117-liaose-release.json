@@ -1,0 +1,255 @@
+{
+  "version": "client1.17",
+  "patch": "seven-liaose-posters-and-layered-3d",
+  "publishedAt": "2026-10-26T16:28:46+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "9c314bab63b7781bcc294dfaca4bc0c8dfadb5465d4d9d3788c9acee1955f3c6",
+  "backup": "/opt/yuanze-reference/backups/client1.17-liaose-seven-20261026",
+  "baselineManifestSha256": "0eef1fdf9141d35404e084a6beb7452b15638a9a2ef5f4613e5cce0b2d1fea11",
+  "verifiedFiles": 478,
+  "changed": [
+    "assets/featured/poster-072-1024.webp",
+    "assets/featured/poster-072-640.webp",
+    "assets/featured/poster-072.png",
+    "assets/featured/poster-073-1024.webp",
+    "assets/featured/poster-073-640.webp",
+    "assets/featured/poster-073.png",
+    "assets/featured/poster-074-1024.webp",
+    "assets/featured/poster-074-640.webp",
+    "assets/featured/poster-074.png",
+    "assets/featured/poster-075-1024.webp",
+    "assets/featured/poster-075-640.webp",
+    "assets/featured/poster-075.png",
+    "assets/featured/poster-076-1024.webp",
+    "assets/featured/poster-076-640.webp",
+    "assets/featured/poster-076.png",
+    "assets/featured/poster-077-1024.webp",
+    "assets/featured/poster-077-640.webp",
+    "assets/featured/poster-077.png",
+    "assets/featured/poster-078-1024.webp",
+    "assets/featured/poster-078-640.webp",
+    "assets/featured/poster-078.png",
+    "assets/optimized/poster-072-strip.webp",
+    "assets/optimized/poster-073-strip.webp",
+    "assets/optimized/poster-074-strip.webp",
+    "assets/optimized/poster-075-strip.webp",
+    "assets/optimized/poster-076-strip.webp",
+    "assets/optimized/poster-077-strip.webp",
+    "assets/optimized/poster-078-strip.webp",
+    "assets/packaging/PackagingDetail-B2a3grRu.js",
+    "assets/packaging/packaging-scene-BilyoBwZ.js",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-074.glb",
+    "assets/packaging/poster-075.glb",
+    "assets/packaging/poster-076.glb",
+    "assets/packaging/poster-077.glb",
+    "assets/packaging/poster-078.glb",
+    "assets/posters/poster-072-thumb.webp",
+    "assets/posters/poster-072.webp",
+    "assets/posters/poster-073-thumb.webp",
+    "assets/posters/poster-073.webp",
+    "assets/posters/poster-074-thumb.webp",
+    "assets/posters/poster-074.webp",
+    "assets/posters/poster-075-thumb.webp",
+    "assets/posters/poster-075.webp",
+    "assets/posters/poster-076-thumb.webp",
+    "assets/posters/poster-076.webp",
+    "assets/posters/poster-077-thumb.webp",
+    "assets/posters/poster-077.webp",
+    "assets/posters/poster-078-thumb.webp",
+    "assets/posters/poster-078.webp",
+    "assets/previews/posters/poster-072-1280.webp",
+    "assets/previews/posters/poster-072-512.webp",
+    "assets/previews/posters/poster-073-1280.webp",
+    "assets/previews/posters/poster-073-512.webp",
+    "assets/previews/posters/poster-074-1280.webp",
+    "assets/previews/posters/poster-074-512.webp",
+    "assets/previews/posters/poster-075-1280.webp",
+    "assets/previews/posters/poster-075-512.webp",
+    "assets/previews/posters/poster-076-1280.webp",
+    "assets/previews/posters/poster-076-512.webp",
+    "assets/previews/posters/poster-077-1280.webp",
+    "assets/previews/posters/poster-077-512.webp",
+    "assets/previews/posters/poster-078-1280.webp",
+    "assets/previews/posters/poster-078-512.webp",
+    "index.html",
+    "preview.js",
+    "product-posters.js",
+    "bundle-manifest.json"
+  ],
+  "removedObsoleteChunks": [
+    "assets/packaging/PackagingDetail-BowRiOxp.js",
+    "assets/packaging/packaging-scene-G1XS22wk.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "sourceCommit": "4b61c9e6f0e7bf4b70c3ccd27a1cdcd8d49c4860",
+  "featuredCount": 31,
+  "posterCount": 61,
+  "modelCount": 31,
+  "newPosters": [
+    "poster-072",
+    "poster-073",
+    "poster-074",
+    "poster-075",
+    "poster-076",
+    "poster-077",
+    "poster-078"
+  ],
+  "preservedExistingModels": 24,
+  "preservedExistingImages": 377,
+  "browserAcceptance": {
+    "status": "passed",
+    "desktopCases": 7,
+    "mobileCases": 7,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        393,
+        852
+      ]
+    ],
+    "cases": [
+      {
+        "id": "poster-072",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-073",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-074",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-075",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-076",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-077",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-078",
+        "mode": "desktop",
+        "status": "passed"
+      },
+      {
+        "id": "poster-072",
+        "mode": "mobile",
+        "status": "passed"
+      },
+      {
+        "id": "poster-073",
+        "mode": "mobile",
+        "status": "passed"
+      },
+      {
+        "id": "poster-074",
+        "mode": "mobile",
+        "status": "passed"
+      },
+      {
+        "id": "poster-075",
+        "mode": "mobile",
+        "status": "passed"
+      },
+      {
+        "id": "poster-076",
+        "mode": "mobile",
+        "status": "passed"
+      },
+      {
+        "id": "poster-077",
+        "mode": "mobile",
+        "status": "passed"
+      },
+      {
+        "id": "poster-078",
+        "mode": "mobile",
+        "status": "passed"
+      }
+    ],
+    "rotationAndBottomView": "passed",
+    "previewSha256": "d8afbeb9c0b4c01af5b07fa2ca199dca3c517077cdf5e43e35bd315b2ee0cda4"
+  },
+  "httpsAcceptance": {
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "checkedAt": "2026-10-26T16:34:02+08:00",
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true,
+    "originalDownload": true,
+    "loginAllFilesVerified": true,
+    "modelRanges": 31,
+    "newModelFullHashes": 7,
+    "newPosterFullHashes": 7,
+    "connection": "Origin IP with normal hostname and TLS certificate validation; public browser verified separately"
+  },
+  "regression": {
+    "root": {
+      "tests": 316,
+      "skipped": 3,
+      "passed": true
+    },
+    "backend": {
+      "tests": 258,
+      "passed": true
+    },
+    "deployment": {
+      "tests": 32,
+      "passed": true
+    },
+    "sharedFrontend": true,
+    "historicalClient": true,
+    "motionAndPackaging": true,
+    "clientDOM": true,
+    "login": {
+      "tests": 12,
+      "passed": true
+    },
+    "showroomBuildMatches": true,
+    "loginBuildMatches": true,
+    "diffCheck": true,
+    "note": "All checks from scripts/verify.py completed. Continued after restoring ignored dependency links and historical preview assets; no failed checks remain."
+  },
+  "limits": [
+    "Browser viewport testing, not physical mobile device testing",
+    "Poster-derived illustrative packaging; no production dimensions or fit/sealing verification"
+  ]
+}
