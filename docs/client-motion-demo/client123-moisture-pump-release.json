@@ -58,7 +58,7 @@
   "businessDataWrites": 0,
   "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
   "sourceCommit": "8f7ac21b74a66707a4fc6021904a8975665e1acd",
-  "status": "published-https-verified-awaiting-browser",
+  "status": "published-live-browser-verified",
   "approvedModel": {
     "posterId": "poster-049",
     "sourceApprovalCommit": "36ce81c8d2295fba29414dd57f8c49df778e1200",
@@ -708,5 +708,68 @@
     "packagingAccessControlled": true,
     "logoutVerified": true,
     "loginUnchanged": true
+  },
+  "browser": {
+    "version": "client1.23",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "browser": "Codex IAB",
+    "titleVerified": true,
+    "productId": "poster-049",
+    "entry": "Homepage Moisture Shampoo product selection",
+    "verifiedAt": "2026-10-26T23:12:41+08:00",
+    "desktop": {
+      "width": 1280,
+      "height": 720,
+      "verifiedProgress": [
+        0,
+        50,
+        100
+      ],
+      "rotationDegrees": 90,
+      "returnToFrontVerified": true,
+      "finalReturnProgress": 0,
+      "completePumpAssemblyPreserved": true,
+      "controlsVisible": 4,
+      "screenshotsVisuallyInspected": true
+    },
+    "mobile": {
+      "productionViewportVerifiedThisRelease": false,
+      "approvedLocalVersionPreviouslyVerified": true,
+      "localEvidence": "moisture-simplified-preview-verification.json"
+    },
+    "screenshots": [
+      {
+        "file": "review-evidence/moisture/client123/desktop-closed.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 43122,
+        "sha256": "69745f915516d97f444595bab22796a665209b831468d5939950509e93043fa8"
+      },
+      {
+        "file": "review-evidence/moisture/client123/desktop-half.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 43665,
+        "sha256": "b11437084bf42878ff00ed1cd495f3b48bbcd7e29d29eac2d5e45efe4e9f2f30"
+      },
+      {
+        "file": "review-evidence/moisture/client123/desktop-open.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 44108,
+        "sha256": "9c4e49f379b0d5e6fcf498f0accdabecb188e27a1e3029bf3de8b0c461f94191"
+      },
+      {
+        "file": "review-evidence/moisture/client123/desktop-rotated.png",
+        "width": 1280,
+        "height": 720,
+        "bytes": 41810,
+        "sha256": "3f689ec790b82a5c6cbc098f2ed7f5d5bcf3fb6a8b016618a42213cffb88a674"
+      }
+    ],
+    "limits": [
+      "This production browser check used Codex IAB, not Ego or Chrome.",
+      "No production mobile viewport screenshot or physical phone verification was performed in this release; prior local approval is separate evidence."
+    ]
   }
 }

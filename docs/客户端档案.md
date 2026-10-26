@@ -8,7 +8,7 @@
 
 源码8f7ac21b74a66707a4fc6021904a8975665e1acd已自动同步。根测试332项（3跳过）、后端258、部署32、客户端104、DOM44、旧客户端18、登录12及其余前端/构建/diff检查全部通过；独立审计已核452资源摘要、批准源、精确变更集合、现场基线与发布/回退保护。22:45:23原子发布，6820项展厅外文件、网关与服务PID33772保持，无重启或业务数据写入。备份 /opt/yuanze-reference/backups/client1.23-moisture-complete-pump-20261026。
 
-22:48:44正式HTTPS验收通过：049完整文件200及大小/SHA一致；旧模型ETag条件请求返回200新文件且ETag变化；26模型Range、三角色权限、匿名拒绝、5撤回模型404、21撤回精选图404、原图下载、登录与退出全部通过。正式清单7bcdd63133c711c6b5871db1faab34cdf54ded10f29dca0ac26dcaa78c9959c0，回执[client123-moisture-pump-release.json](client-motion-demo/client123-moisture-pump-release.json)。正式浏览器截图验收待补充，HTTP验证不替代视觉确认。结构仍为海报外观与隐藏装配示意，不代表生产尺寸确认。
+22:48:44正式HTTPS验收通过：049完整文件200及大小/SHA一致；旧模型ETag条件请求返回200新文件且ETag变化；26模型Range、三角色权限、匿名拒绝、5撤回模型404、21撤回精选图404、原图下载、登录与退出全部通过。正式清单7bcdd63133c711c6b5871db1faab34cdf54ded10f29dca0ac26dcaa78c9959c0，回执[client123-moisture-pump-release.json](client-motion-demo/client123-moisture-pump-release.json)。正式浏览器验收已补齐：Codex内置浏览器IAB确认client1.23，从首页Moisture Shampoo进入后显示四组件；1280×720桌面合拢0%、半开50%、全开100%、90°侧转、回正及再次合拢0%均实际通过。四张正式桌面截图逐张审阅并归档于review-evidence/moisture/client123/。本轮使用既有登录会话，未使用Ego或Chrome进行正式站验收；未做本轮正式手机视口截图，之前获批本地版本的手机检查单独留存，不等同于正式手机验收。结构仍为海报外观与隐藏装配示意，不代表生产尺寸确认。
 
 ## client1.22 Body Oil 完整瓶盖（2026-10-26 20:43:43 已上线）
 
