@@ -681,5 +681,6 @@
     "Two cord-end mesh triangle arrays changed order only; oriented triangle multisets are identical.",
     "Clear carrier remains subtle on the pale background.",
     "Small product text on a fully expanded mobile view and edge-on planar print at 90 degrees are existing behavior."
-  ]
+  ],
+  "supersededBy": "pure-volume-dip-tube-preview-verification.json"
 }

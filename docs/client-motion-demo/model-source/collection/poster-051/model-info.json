@@ -17,7 +17,26 @@
       "Cord"
     ]
   },
-  "completePumpLift": 1.2,
+  "completePumpLift": 2.3,
+  "dipTube": {
+    "mesh": "Hollow milk-white pump dip tube",
+    "parent": "Closure",
+    "outerDiameterToWidth": 0.045,
+    "innerDiameterToWidth": 0.031,
+    "bottomToWidth": 0.1,
+    "topToWidth": 1.55,
+    "bodyInnerFloorToWidth": 0.06,
+    "bottomClearance": 0.06904761904761905,
+    "fullOpenBottleClearance": 0.4219047619047618,
+    "openAtBothEnds": true,
+    "dimensionsIllustrative": true
+  },
+  "camera": {
+    "closedCenter": 1.45,
+    "openCenter": 2.6,
+    "closedHeight": 4.2,
+    "openHeight": 6.5
+  },
   "cordStaysOnBottle": true,
   "height": 2.9,
   "width": 1.7261904761904763,
@@ -43,8 +62,8 @@
     "PURE VOLUME",
     "SHAMPOO"
   ],
-  "illustrativeHiddenStructure": "Inner pump seat and transparent label carrier are design illustrations; original has no visible paper boundary",
-  "material": "Opaque matte ivory packaging with dark green braided cord; not transparent glass",
-  "revision": "complete-pump-and-attached-cord-local-review-20261026",
+  "illustrativeHiddenStructure": "Inner pump seat, hollow dip tube dimensions and its actuator connection, and transparent label carrier are design illustrations; original has no visible paper boundary",
+  "material": "Opaque matte ivory packaging with dark green braided cord and a slightly translucent milk-white plastic dip tube; not transparent glass",
+  "revision": "complete-pump-with-hollow-dip-tube-local-review-20261027",
   "generator": "build_pure_volume.py"
 }

@@ -1,0 +1,199 @@
+{
+  "date": "2026-10-27",
+  "product": "Pure Volume",
+  "productId": "poster-051",
+  "selectionNumber": 6,
+  "state": "local-dip-tube-revision-awaiting-user",
+  "published": false,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-051",
+  "request": "Add the internal suction tube as part of the complete pump assembly; keep the client-facing four-group presentation.",
+  "previousRevision": "a504109d",
+  "components": [
+    "PumpAssembly",
+    "BottleAssembly",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "containsFormula": false,
+  "geometryAndScope": {
+    "model": "poster-051",
+    "bytes": 4134124,
+    "sha256": "f5bc5a528914c43f24d00d7d37ea0fc55fbd3782527b29d3fbe675f06e674c70",
+    "roots": [
+      "PaperLabel",
+      "LogoPrint",
+      "PumpAssembly",
+      "BottleAssembly"
+    ],
+    "meshCount": 58,
+    "preservedMeshCount": 57,
+    "artworkSha256": {
+      "label.svg": "760967122f0b46f3f6e1e3e3da86df67e3e034e388048136845446bd378a6541",
+      "label.png": "318bd6fe50b4b44c7f400a0bff525df295c98453bde4fb322e6e1114c1b5ae8d",
+      "print.svg": "a5670b6cc8224be22316dc9d258450c6fbabe887938c688bbe69c8ead366c386",
+      "print.png": "2a8752b9de0fcb113a3683ce5431ab6234ef7a6a1e17f3e27ed627345eb160f6"
+    },
+    "artworkBytesIdentical": true,
+    "otherAssetsConfigManifestUnchanged": true,
+    "newDipTube": {
+      "name": "Hollow milk-white pump dip tube",
+      "ancestor": "PumpAssembly",
+      "parent": "Closure",
+      "bounds": [
+        [
+          -0.03883928661899905,
+          0.1726191095120866,
+          -0.03883928661899905
+        ],
+        [
+          0.03883928661899905,
+          2.67559517394929,
+          0.03883928661899905
+        ]
+      ],
+      "outerDiameter": 0.0776785732379981,
+      "bodyInnerFloor": 0.10357142455343693,
+      "bottomClearance": 0.06904768495864966,
+      "fullyOpenBottleClearance": 0.42190492007349256,
+      "pumpLift": 2.3,
+      "solidWallWatertight": true,
+      "windingConsistent": true,
+      "centralBoreUnobstructed": true,
+      "material": {
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.23999999463558197
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        },
+        "name": "Pure Volume translucent milk-white dip tube",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.8549926280975342,
+            0.8227857351303101,
+            0.7454041838645935,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.2800000011920929
+        }
+      }
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.6
+      ],
+      "height": [
+        4.2,
+        6.5
+      ],
+      "centerX": [
+        0,
+        -0.75
+      ],
+      "width": [
+        3.8,
+        7.2
+      ]
+    },
+    "preservedMeshWorldCoordinatesIdentical": true
+  },
+  "animation": {
+    "pumpLift": 2.3,
+    "cameraCenterY": [
+      1.45,
+      2.6
+    ],
+    "cameraHeight": [
+      4.2,
+      6.5
+    ],
+    "paperOffset": [
+      -1.65,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -3.4,
+      0.18,
+      1.65
+    ],
+    "bottleAndCordStationary": true
+  },
+  "verification": {
+    "actualGlbTestsPassed": 8,
+    "frontendTestsPassed": 92,
+    "viteBuild": "passed",
+    "sourcePublicDistHttpIdentical": true,
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopStages": [
+      0,
+      50,
+      100
+    ],
+    "rotate90AndReset": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileScrollWidth": 393,
+    "mobileStages": [
+      0,
+      100
+    ],
+    "codexViewport": [
+      1314,
+      969
+    ],
+    "codexDeliveredAtProgress": 100,
+    "aestheticReview": "Impeccable source regex scan reported zero findings; independent review of six final desktop/mobile screenshots found no blocker.",
+    "physicalMobileDeviceTested": false,
+    "screenshots": [
+      {
+        "path": "review-evidence/pure-volume/dip-tube/codex-open.png",
+        "sha256": "782653ee36c1e74bd5a61e04bb71b5af8149a87b20c3135a224784a2a273b574"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-closed.png",
+        "sha256": "6cfafe0bacbfc705f529474d5dd756fa773e31235f9b5338f6deaa45c1b00d92"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-half.png",
+        "sha256": "b870f06672b4787bb982d3c263e4fdecf5545a90e1a87eb8713e6cff5cc055f8"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-open.png",
+        "sha256": "069d8eaa367d9130d3cd4910641dc0ad5a21c5ea07b8a11b9bbc8f82865092a8"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-rotated.png",
+        "sha256": "7e0731293f1d8eaa1aeef68dbb3a40c735ac6b0acda1c27288272bb728ce9783"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/mobile-closed.png",
+        "sha256": "7c7918a8a8054a52f357c272125fa0162a96990406db67b1a2e4864c40b9fbf1"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/mobile-open.png",
+        "sha256": "3e1109d2417ccfbb5e2a71ef5f3fb67db550b55409f23bbb00c4978615906e45"
+      }
+    ],
+    "galleryTestsPassed": 7
+  },
+  "nextProduct": {
+    "id": "poster-044",
+    "name": "Gentle Cleansing",
+    "state": "not-started"
+  },
+  "knownLimits": [
+    "Internal tube dimensions and pump connection are illustrative and require actual packaging confirmation.",
+    "Mobile full-expansion fine text and subtle clear film retain their existing limits."
+  ]
+}

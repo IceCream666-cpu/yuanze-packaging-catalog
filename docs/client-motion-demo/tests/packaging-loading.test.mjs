@@ -347,7 +347,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-039', {closure: 3.45, liner: 1.41}, null],
   ['poster-042', {closure: 1.2}, [-3.1, .18, 1.65]],
   ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
-  ['poster-051', {pump:1.2}, [-3.4,.18,1.65]],
+  ['poster-051', {pump:2.3}, [-3.4,.18,1.65]],
   ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
@@ -732,31 +732,36 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
     assert.deepEqual(Object.keys(parts).sort(),['jar','label','print','pump']);
     assert.equal(product.review,undefined,'keep the original matte body, gold line and green artwork treatment');
     const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
-    const fitted=['Closure','PumpStem','Actuator','Body','Cord'].map(name=>{
+    const fitted=['Closure','PumpStem','Actuator','Hollow milk-white pump dip tube','Body','Cord'].map(name=>{
       const part=loaded.scene.getObjectByName(name),key=['Body','Cord'].includes(name)?'jar':'pump';
-      assert.equal(part.parent,parts[key]);
+      assert.equal(part.parent,name==='Hollow milk-white pump dip tube' ? loaded.scene.getObjectByName('Closure') : parts[key]);
       return {part,key,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
     });
     const film=loaded.scene.getObjectByName('Illustrative transparent curved label carrier');
     for(const progress of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(progress);flush();
       assert.equal(api.getState().renderedProgress,progress);
-      assert.ok(parts.pump.position.clone().sub(rest.pump.position).distanceTo(new Three.Vector3(0,1.2*progress,0))<1e-9);
+      assert.ok(parts.pump.position.clone().sub(rest.pump.position).distanceTo(new Three.Vector3(0,2.3*progress,0))<1e-9);
       for(const {part,key,matrix,world} of fitted) {
         assert.deepEqual(part.matrix.toArray(),matrix,'the fitted pump and cord retain their local transforms');
         const displacement=parts[key].getWorldPosition(new Three.Vector3()).sub(rest[key].world);
         assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
         if(key==='jar')assert.ok(displacement.length()<1e-9,'the cord remains fixed to the stationary bottle');
       }
-      assert.ok(Math.abs(camera.position.y-1.05-(1.45+.6*progress))<1e-9);
-      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+.9*progress))<1e-9);
+      assert.ok(Math.abs(camera.position.y-1.05-(1.45+1.15*progress))<1e-9);
+      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+2.3*progress))<1e-9);
       assert.ok(Math.abs(camera.position.x+.75*progress)<1e-9);
       for(const [key,offset,growth] of [['label',[-1.65,.08,.65],.15],['print',[-3.4,.18,1.65],.45]]) {
         assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
         assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+growth*progress))<1e-9);
       }
       if(progress===0)assert.equal(film.material.opacity,.05,'the clear carrier leaves no visible patch when closed');
-      if(progress===1)assert.equal(film.material.opacity,1,'the translucent carrier is visible separately when open');
+      if(progress===1) {
+        assert.equal(film.material.opacity,1,'the translucent carrier is visible separately when open');
+        const tube=loaded.scene.getObjectByName('Hollow milk-white pump dip tube');
+        const tubeBounds=new Three.Box3().setFromObject(tube),bottleBounds=new Three.Box3().setFromObject(parts.jar);
+        assert.ok(tubeBounds.min.y-bottleBounds.max.y>.4,'the inlet fully clears the bottle opening');
+      }
       for(const mesh of nodes.filter(node=>node.isMesh)) {
         mesh.geometry.computeBoundingBox();
         const {min,max}=mesh.geometry.boundingBox;

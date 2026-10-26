@@ -2,6 +2,7 @@
 import io
 import json
 import math
+from collections import Counter
 from pathlib import Path
 import struct
 import unittest
@@ -15,6 +16,7 @@ BODY = 'Hollow ivory pouch body with soft gathered folds'
 FILM = 'Illustrative transparent curved label carrier'
 PRINT = 'Complete Pure Volume green lettering'
 LEVER = 'Left curved flattened dispensing lever'
+TUBE = 'Hollow milk-white pump dip tube'
 
 
 class PureVolumeModelTests(unittest.TestCase):
@@ -113,19 +115,19 @@ class PureVolumeModelTests(unittest.TestCase):
             self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
             self.assertEqual(assembly.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
             self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
-        self.assertEqual(len(self.mesh_names('PumpAssembly')), 7)
+        self.assertEqual(len(self.mesh_names('PumpAssembly')), 8)
         self.assertEqual(len(self.mesh_names('BottleAssembly')), 48)
         self.assertEqual(self.mesh_names('Body'), [BODY])
         self.assertEqual(self.mesh_names('PaperLabel'), [FILM])
         self.assertEqual(self.mesh_names('LogoPrint'), [PRINT])
-        self.assertEqual(len(self.mesh_names('Closure')), 3)
+        self.assertEqual(len(self.mesh_names('Closure')), 4)
         self.assertEqual(len(self.mesh_names('PumpStem')), 1)
         self.assertEqual(len(self.mesh_names('Actuator')), 3)
         self.assertEqual(len(self.mesh_names('Cord')), 47)
-        self.assertEqual(len(self.mesh_names()), 57)
+        self.assertEqual(len(self.mesh_names()), 58)
         pump_low = min(p[1] for name in self.mesh_names('PumpAssembly') for p in self.positions(name))
         bottle_high = max(p[1] for name in self.mesh_names('BottleAssembly') for p in self.positions(name))
-        self.assertGreater(pump_low + 1.2 - bottle_high, 1.1, 'The complete pump must clear the bottle and its fitted cord.')
+        self.assertGreater(pump_low + 2.3 - bottle_high, .4, 'The complete pump, including its tube, must clear the bottle.')
         self.assertTrue(all('uri' not in item for item in self.gltf['images'] + self.gltf['buffers']))
         self.assertFalse(self.gltf.get('animations'))
         self.assertFalse(self.gltf.get('cameras'))
@@ -159,7 +161,11 @@ class PureVolumeModelTests(unittest.TestCase):
     def test_ivory_body_and_pump_are_opaque_matte_polymer_with_only_one_gold_line(self):
         for name in self.mesh_names():
             material = self.material(name)
-            self.assertEqual(material.get('extensions', {}).get('KHR_materials_transmission', {}).get('transmissionFactor', 0), 0)
+            transmission = material.get('extensions', {}).get('KHR_materials_transmission', {}).get('transmissionFactor', 0)
+            if name == TUBE:
+                self.assertTrue(.15 <= transmission <= .35, 'Only the new dip tube has a milky translucent finish.')
+            else:
+                self.assertEqual(transmission, 0)
         body = self.material(BODY)
         pbr = body['pbrMetallicRoughness']
         rgb = pbr['baseColorFactor'][:3]
@@ -177,6 +183,47 @@ class PureVolumeModelTests(unittest.TestCase):
         width = self.body_width()
         self.assertTrue(.003 <= (high[1] - low[1]) / width <= .012, 'The gold detail is a fine line, not a broad collar.')
         self.assertAlmostEqual((high[0] - low[0]) / width, .33, delta=.015)
+
+    def test_hollow_dip_tube_stays_inside_the_cavity_and_moves_with_the_complete_pump(self):
+        self.assertEqual(self.ancestor(TUBE), 'PumpAssembly')
+        self.assertEqual(self.nodes[self.parents[self.named[TUBE]]]['name'], 'Closure')
+        width = self.body_width()
+        points = self.positions(TUBE)
+        low, high = self.bounds(points)
+        radii = [math.hypot(x, z) / width for x, y, z in points]
+        self.assertAlmostEqual(min(radii), .0155, delta=.0002)
+        self.assertAlmostEqual(max(radii), .0225, delta=.0002)
+        self.assertGreater(sum(abs(r-.0155) < 1e-5 for r in radii), 100, 'Retain a complete inner tube wall.')
+        self.assertGreater(sum(abs(r-.0225) < 1e-5 for r in radii), 100, 'Retain a complete outer tube wall.')
+        self.assertAlmostEqual(low[1] / width, .10, delta=.001)
+        self.assertAlmostEqual(high[1] / width, 1.55, delta=.001)
+        body = self.positions(BODY)
+        inner_floor = max(y for x, y, z in body if math.hypot(x, z) < 1e-6)
+        self.assertTrue(.03 < (low[1]-inner_floor)/width < .05, 'The inlet must stop above the actual inner floor.')
+        self.assertLess(low[1], self.bounds(body)[1][1], 'The tube must extend into the bottle when closed.')
+        indices = [row[0] for row in self.accessor(self.primitive(TUBE)['indices'])]
+        edges, volume = Counter(), 0
+        for offset in range(0, len(indices), 3):
+            triangle = [points[i] for i in indices[offset:offset+3]]
+            a, b, c = triangle
+            volume += (a[0]*(b[1]*c[2]-b[2]*c[1]) - a[1]*(b[0]*c[2]-b[2]*c[0]) + a[2]*(b[0]*c[1]-b[1]*c[0]))/6
+            welded = [tuple(round(v, 7) for v in p) for p in triangle]
+            self.assertEqual(len(set(welded)), 3, 'The tube must not contain collapsed faces.')
+            for i in range(3):
+                edges[tuple(sorted((welded[i], welded[(i+1)%3])))] += 1
+            # A vertical ray through the centre must pass through both mouths, not hit a disk.
+            determinant = (b[2]-c[2])*(a[0]-c[0]) + (c[0]-b[0])*(a[2]-c[2])
+            if abs(determinant) > 1e-12:
+                u = ((b[2]-c[2])*(-c[0]) + (c[0]-b[0])*(-c[2]))/determinant
+                v = ((c[2]-a[2])*(-c[0]) + (a[0]-c[0])*(-c[2]))/determinant
+                self.assertLess(min(u, v, 1-u-v), -1e-6, 'A face seals the intended open central bore.')
+        self.assertEqual(set(edges.values()), {2}, 'The annular tube wall must be a closed manifold surface.')
+        self.assertGreater(volume, 0, 'Tube face winding must point outward.')
+        material = self.material(TUBE)
+        pbr = material['pbrMetallicRoughness']
+        self.assertEqual(pbr.get('metallicFactor', 1), 0)
+        self.assertTrue(.2 <= pbr['roughnessFactor'] <= .35)
+        self.assertAlmostEqual(material['extensions']['KHR_materials_ior']['ior'], 1.46, delta=.02)
 
     def test_complete_pump_retains_the_broad_flat_curved_lever_and_fitted_stem(self):
         width = self.body_width()
