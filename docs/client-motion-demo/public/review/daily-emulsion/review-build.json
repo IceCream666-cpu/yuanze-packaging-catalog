@@ -1,0 +1,37 @@
+{
+  "scope": "local-review-only",
+  "publicationApproved": false,
+  "model": "Daily Emulsion",
+  "files": [
+    {
+      "file": "index.html",
+      "bytes": 2912,
+      "sha256": "5ae22316d045ae6222d143968b114db4656a318f993a583b9558d4e66d163bda"
+    },
+    {
+      "file": "style.css",
+      "bytes": 4648,
+      "sha256": "9b77c2e973f5bd3d6ef983668d62c2e3fc002b2d34cb0441c6b4e412bbc745e6"
+    },
+    {
+      "file": "main.js",
+      "bytes": 629503,
+      "sha256": "52c81d5bac19c9355dc138e6358f0f671a989fbe09c6c1040fd8aec9b7ec7804"
+    },
+    {
+      "file": "review-config.json",
+      "bytes": 8115,
+      "sha256": "d6e871b0763273b9de936f9a4e42a4ddd07d6e08468542d3d7c0beb24dad0192"
+    },
+    {
+      "file": "daily-emulsion.glb",
+      "bytes": 1162524,
+      "sha256": "fd76f2277225fd11b62e2d4a006eff5fac5357814159c6dbf98ed321529d6fe4"
+    },
+    {
+      "file": "reference.png",
+      "bytes": 1746623,
+      "sha256": "169066c2a83c6ad5df7b4b20079232222f4e19d6e642dfe5bf21d4716bbde4a2"
+    }
+  ]
+}

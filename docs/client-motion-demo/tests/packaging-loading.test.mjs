@@ -129,6 +129,28 @@ test('reviewed models preserve frosted glass, brushed metal and original glass t
   } finally {api?.dispose();env.close();}
 });
 
+test('an explicitly clear overcap keeps its smooth finish while the bottle and default covers remain frosted', async () => {
+  for (const clearOvercap of [true, false, undefined]) {
+    const product=structuredClone(PACKAGING_PRODUCTS['poster-066']);let loaded,api;
+    product.review.appearance.frosted=true;
+    if(clearOvercap===undefined) delete product.review.appearance.clearOvercap;
+    else product.review.appearance.clearOvercap=clearOvercap;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();
+      const body=loaded.scene.getObjectByName('Body'),cover=loaded.scene.getObjectByName('Overcap');
+      for(const mesh of [body,cover]) {mesh.material.transmission=.92;mesh.material.roughness=.045;}
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(body.material.roughness,.24,'the bottle remains frosted');
+      assert.equal(cover.material.roughness,clearOvercap===true?.045:.24);
+      assert.equal(cover.material.toneMapped,clearOvercap!==true);
+      assert.equal(cover.material.transmission,.92);
+      assert.equal(cover.material.thickness,.012);
+      assert.equal(cover.material.side,Three.FrontSide);
+    } finally {api?.dispose();env.close();}
+  }
+});
+
 test('phone framing preserves depth separation while compacting wide print pairs', async () => {
   const product=PACKAGING_PRODUCTS['poster-059'];let loaded,api;
   const env=harness({product,parse:()=>Promise.resolve(loaded)});

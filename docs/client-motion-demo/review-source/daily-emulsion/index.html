@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Daily Emulsion · 本地待审</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="review-app">
+    <header class="review-header">
+      <div>
+        <h1>Daily Emulsion</h1>
+        <p class="subtitle">单瓶乳液空包材 · 拖拽旋转，滚轮展开</p>
+      </div>
+      <div class="review-context">
+        <span class="review-state">第 2 款 · 本地待审</span>
+        <button id="reference-toggle" type="button" aria-pressed="false" aria-controls="reference-view">查看原海报</button>
+      </div>
+    </header>
+
+    <section class="review-stage" aria-label="包材模型与原海报对照" data-view="model">
+      <div id="model" class="model" aria-label="Daily Emulsion 单瓶空包材交互模型" aria-busy="true"></div>
+      <figure id="reference-view" class="reference-view" hidden>
+        <img src="./reference.png" alt="Daily Emulsion 乳液原海报">
+        <figcaption>原海报参考</figcaption>
+      </figure>
+      <div id="load-status" class="load-status" role="status" aria-live="polite">
+        <p id="load-message">正在准备产品结构…</p>
+        <button id="retry" type="button" hidden>重新加载模型</button>
+      </div>
+    </section>
+
+    <fieldset id="controls" class="controls" disabled>
+      <legend class="sr-only">模型展示控制</legend>
+      <div class="opening-control">
+        <div class="control-heading"><label for="opening">分层展开</label><output id="opening-value" for="opening">0%</output></div>
+        <input id="opening" type="range" min="0" max="100" step="1" value="0" aria-valuetext="合拢，0%">
+        <div class="presets" role="group" aria-label="展开状态">
+          <button id="close-model" type="button" aria-pressed="true">合拢</button>
+          <button id="open-model" type="button" aria-pressed="false">完全展开</button>
+        </div>
+      </div>
+      <div class="zoom-control">
+        <div class="control-heading"><label for="zoom">画面缩放</label><output id="zoom-value" for="zoom">100%</output></div>
+        <input id="zoom" type="range" min="0.7" max="1.7" step="0.01" value="1" aria-valuetext="100%">
+      </div>
+      <div class="view-control">
+        <button id="rotate-model" type="button" aria-label="顺时针旋转90度">旋转 90°</button>
+        <button id="reset-model" type="button">复位视角与展开</button>
+        <p>滑动分开透明罩、泵头、标贴和文字。<br>切换原海报后，模型状态会保留。</p>
+      </div>
+    </fieldset>
+    <footer>单瓶空包材 · 本地审阅模型，材质、隐藏结构与尺寸为展示示意。</footer>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

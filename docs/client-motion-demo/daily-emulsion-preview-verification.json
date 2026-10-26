@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-26",
+  "state": "local-review-awaiting-user",
+  "publicationApproved": false,
+  "product": "Daily Emulsion",
+  "sequence": 2,
+  "productCount": 1,
+  "bottleCount": 1,
+  "containsFormula": false,
+  "previewUrl": "http://127.0.0.1:8784/review/daily-emulsion/",
+  "modelSha256": "fd76f2277225fd11b62e2d4a006eff5fac5357814159c6dbf98ed321529d6fe4",
+  "modelBytes": 1162524,
+  "components": [
+    "Body",
+    "Closure",
+    "PumpStem",
+    "Actuator",
+    "Overcap",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "referenceProportions": {
+    "heightToWidth": 2.8,
+    "visibleGlassHeightToWidth": 1.84,
+    "bodyDepthToWidthIllustrative": 0.58,
+    "capDiameterToWidth": 0.69,
+    "clearCoverDiameterToWidth": 0.628
+  },
+  "frontendTests": {
+    "passed": 153,
+    "failed": 0,
+    "command": "node node_modules/tsx/dist/cli.mjs --test tests/*.test.*"
+  },
+  "actualGlbTests": {
+    "passed": 8,
+    "failed": 0,
+    "command": ".venv/bin/python -m unittest discover -s tests -p test_daily_emulsion_model.py -v"
+  },
+  "buildPreservation": {
+    "protectedCount": 894,
+    "changedProtectedFiles": [],
+    "allProtectedUnchanged": true,
+    "publicDistMatch": true,
+    "url": "http://127.0.0.1:8784/review/daily-emulsion/",
+    "modelSha256": "fd76f2277225fd11b62e2d4a006eff5fac5357814159c6dbf98ed321529d6fe4",
+    "modelBytes": 1162524
+  },
+  "localHttpVerification": {
+    "url": "http://127.0.0.1:8784/review/daily-emulsion/",
+    "files": [
+      {
+        "file": "index.html",
+        "bytes": 2912,
+        "sha256": "5ae22316d045ae6222d143968b114db4656a318f993a583b9558d4e66d163bda",
+        "status": 200
+      },
+      {
+        "file": "style.css",
+        "bytes": 4648,
+        "sha256": "9b77c2e973f5bd3d6ef983668d62c2e3fc002b2d34cb0441c6b4e412bbc745e6",
+        "status": 200
+      },
+      {
+        "file": "main.js",
+        "bytes": 629503,
+        "sha256": "52c81d5bac19c9355dc138e6358f0f671a989fbe09c6c1040fd8aec9b7ec7804",
+        "status": 200
+      },
+      {
+        "file": "review-config.json",
+        "bytes": 8115,
+        "sha256": "d6e871b0763273b9de936f9a4e42a4ddd07d6e08468542d3d7c0beb24dad0192",
+        "status": 200
+      },
+      {
+        "file": "daily-emulsion.glb",
+        "bytes": 1162524,
+        "sha256": "fd76f2277225fd11b62e2d4a006eff5fac5357814159c6dbf98ed321529d6fe4",
+        "status": 200
+      },
+      {
+        "file": "reference.png",
+        "bytes": 1746623,
+        "sha256": "169066c2a83c6ad5df7b4b20079232222f4e19d6e642dfe5bf21d4716bbde4a2",
+        "status": 200
+      }
+    ]
+  },
+  "browser": {
+    "desktop": {
+      "width": 1474,
+      "height": 722,
+      "canvas": true,
+      "overflow": false
+    },
+    "mobile": {
+      "width": 393,
+      "overflow": false,
+      "canvas": true
+    },
+    "complete": true,
+    "interactions": {
+      "fullyOpened": true,
+      "rotate90Control": true,
+      "originalReferenceLoaded": true,
+      "referenceDisablesControls": true,
+      "returnPreserves100Percent": true,
+      "resetToZeroAndZoomOne": true
+    },
+    "visual": {
+      "browser": "Google Chrome",
+      "closed": true,
+      "fullyOpened": true,
+      "screenshotDirectory": "/Users/icecream/Documents/Codex/2026-10-22/gen/outputs/Daily-Emulsion-单款预览",
+      "revisions": [
+        "clear overcap tone mapping",
+        "frosted empty glass transmission",
+        "product text ink width"
+      ]
+    },
+    "limits": [
+      "Mobile viewport only; no physical phone check",
+      "Mac locked after final Chrome screenshots; remaining DOM checks in Ego Lite"
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "review-evidence/daily-emulsion/closed-final.png",
+      "bytes": 332087,
+      "sha256": "2e2e0c14103e21a8ca3f581fcff666e15c121bd8c063e787b2fbf3cd09e9a78d"
+    },
+    {
+      "file": "review-evidence/daily-emulsion/open-final.png",
+      "bytes": 321809,
+      "sha256": "dc8448b4096a74fd5314d6f85fad26b4c3cbb93f271d7a71e7fb3f98f4000af2"
+    }
+  ],
+  "independentVisualReview": {
+    "method": "Direct view_image inspection of supplied reference and final native Chrome closed/open screenshots",
+    "result": "passed",
+    "blockingFindings": 0,
+    "notes": [
+      "Empty frosted glass, clear overcap, white pump and reference proportions verified.",
+      "All eight layers are within the frame; original brand, rule and product wording are present.",
+      "The transparent carrier and slender connector remain subtle at the complete-assembly scale; zoom is available."
+    ]
+  },
+  "source": "model-source/collection/daily-emulsion/",
+  "generator": "model-source/collection/build_daily_emulsion.py",
+  "commitSubject": "Add single empty Daily Emulsion bottle review",
+  "limits": [
+    "This product is local review only; it has not been added to production.",
+    "Depth, wall thickness, hidden connector fit and dispensing passage are illustrative, not manufacturing specifications.",
+    "The clear carrier is a structural explanation of direct printing; no white paper label or formula is added.",
+    "Mobile checks use a browser viewport, not a physical phone.",
+    "The native Chrome screenshot review does not establish a production deployment."
+  ]
+}

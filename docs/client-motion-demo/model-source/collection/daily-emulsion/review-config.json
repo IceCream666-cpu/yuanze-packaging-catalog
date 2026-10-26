@@ -1,0 +1,208 @@
+{
+  "parts": [
+    {
+      "key": "overcap",
+      "node": "Overcap",
+      "title": [
+        "透明保护罩",
+        "Clear cover"
+      ],
+      "short": [
+        "罩盖",
+        "Clear cover"
+      ],
+      "detail": [
+        "薄壁透明罩向上移开，保留圆顶和底沿。",
+        "A hollow clear cover lifts away."
+      ]
+    },
+    {
+      "key": "head",
+      "node": "Actuator",
+      "title": [
+        "白色短嘴泵头",
+        "White actuator"
+      ],
+      "short": [
+        "泵头",
+        "White actuator"
+      ],
+      "detail": [
+        "斜面按压头与朝右短嘴一起分离。",
+        "The sloped white actuator and short right-facing outlet separate."
+      ]
+    },
+    {
+      "key": "stem",
+      "node": "PumpStem",
+      "title": [
+        "连接泵杆",
+        "Connector"
+      ],
+      "short": [
+        "泵杆",
+        "Connector"
+      ],
+      "detail": [
+        "独立短连接杆，隐藏结构为示意。",
+        "An independent short connector; the concealed fit is illustrative."
+      ]
+    },
+    {
+      "key": "closure",
+      "node": "Closure",
+      "title": [
+        "白色盖座",
+        "White closure"
+      ],
+      "short": [
+        "盖座",
+        "White closure"
+      ],
+      "detail": [
+        "光滑宽盖座及泵头底座向上分离。",
+        "The wide smooth closure and stepped pump pedestal lift away."
+      ]
+    },
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "磨砂空玻璃瓶",
+        "Frosted glass"
+      ],
+      "short": [
+        "瓶身",
+        "Frosted glass"
+      ],
+      "detail": [
+        "扁圆角方形玻璃、短肩与厚底，不含乳液。",
+        "An empty flat rounded glass bottle with frosted walls and a thick base."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明底材",
+        "Clear carrier"
+      ],
+      "short": [
+        "标贴",
+        "Clear carrier"
+      ],
+      "detail": [
+        "无字透明膜示意，闭合时几乎不可见。",
+        "An unprinted transparent carrier, nearly invisible when closed."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "品牌字",
+        "Brand"
+      ],
+      "short": [
+        "品牌",
+        "Brand"
+      ],
+      "detail": [
+        "liaose独立离开瓶身，比底材更向外展开。",
+        "The liaose mark moves farther outward than the carrier."
+      ]
+    },
+    {
+      "key": "name",
+      "node": "ProductPrint",
+      "title": [
+        "产品名",
+        "Product name"
+      ],
+      "short": [
+        "品名",
+        "Product name"
+      ],
+      "detail": [
+        "横线、DAILY EMULSION及FACE CARE一同展开。",
+        "The rule, DAILY EMULSION and FACE CARE move as one print layer."
+      ]
+    }
+  ],
+  "appearance": {
+    "glass": true,
+    "frosted": true,
+    "clearOvercap": true,
+    "pipette": false,
+    "clearLabel": true,
+    "metal": false
+  },
+  "explosion": {
+    "offsets": {
+      "overcap": [
+        0,
+        4.55,
+        0
+      ],
+      "head": [
+        0,
+        2.65,
+        0
+      ],
+      "stem": [
+        0,
+        1.55,
+        0
+      ],
+      "closure": [
+        0,
+        0.8,
+        0
+      ],
+      "label": [
+        -0.85,
+        0.03,
+        0.7
+      ],
+      "print": [
+        -1.9,
+        0.3,
+        1.9
+      ],
+      "name": [
+        -1.9,
+        -0.12,
+        1.9
+      ]
+    },
+    "scales": {
+      "label": 1.1,
+      "print": 1.5,
+      "name": 1.55
+    },
+    "timing": {
+      "overcap": [
+        0,
+        0.65
+      ]
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        3.66
+      ],
+      "centerX": [
+        0,
+        -0.9
+      ],
+      "height": [
+        3.7,
+        8.05
+      ],
+      "width": [
+        2.1,
+        5.1
+      ]
+    }
+  }
+}

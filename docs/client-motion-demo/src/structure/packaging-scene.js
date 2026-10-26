@@ -164,7 +164,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         if (m.transmission > .5) {
           if (!review && !woodland && !(golden && m.name.includes('olive'))) m.color.set('#ffffff');
           if (!review) m.transmission=1;
-          m.roughness=review ? Math.max(appearance.frosted ? .24 : .012,m.roughness) : woodland ? .035 : golden && m.name.includes('olive') ? .035 : .012;
+          m.roughness=review ? Math.max(appearance.frosted && !(isReviewOvercap && appearance.clearOvercap === true) ? .24 : .012,m.roughness) : woodland ? .035 : golden && m.name.includes('olive') ? .035 : .012;
           m.ior=1.48; m.thickness=isReviewFilm ? .005 : isReviewOvercap || gentle && m.name.includes('cover') ? .012 : .08; m.envMapIntensity=.3;
           if(isReviewFilm) m.color.set('#ffffff');
           if ((woodland && m.name.includes('amber')) || (golden && m.name.includes('olive'))) {
@@ -173,7 +173,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           }
           if (appearance?.tintedGlass) {m.attenuationColor.copy(m.color);m.color.set('#ffffff');m.attenuationDistance=appearance.attenuationDistance;}
           // Match the untonemapped backdrop through the clear wall.
-          m.toneMapped=Boolean(isReviewOvercap); m.specularIntensity=review ? .35 : .7;
+          m.toneMapped=Boolean(isReviewOvercap && appearance.clearOvercap !== true); m.specularIntensity=review ? .35 : .7;
           m.transparent=false; m.opacity=1; m.side=isReviewOvercap || isReviewFilm || golden && m.name.includes('overcap') ? T.FrontSide : T.DoubleSide;
           // The same restrained rim correction used by the first approved glass jar.
           m.onBeforeCompile = shader => {
