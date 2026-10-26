@@ -646,7 +646,60 @@ test('a non-featured design retains its title and copy when appearance supplies 
   } finally {await env.close();}
 });
 
-test('all seven added posters stay outside featured and the six unapproved models stay inactive', async () => {
+test('Daily Emulsion opens from the unchanged poster library and returns from its original poster', async () => {
+  const env=setup();const {App,counts}=appHarness();
+  try {
+    await act(async()=>env.root.render(<App/>));
+    assert.equal(document.querySelectorAll('[data-open]').length,24);
+    assert.equal(document.querySelector('[data-open="poster-072"]'),null);
+    await click(document.querySelector('[data-testid="browse-all"]'));
+    await click(document.querySelector('.view-toggle button:nth-child(2)'));
+    assert.equal(document.querySelectorAll('.grid-image').length,61);
+    const trigger=[...document.querySelectorAll('.grid-image')].find(button=>button.querySelector('img')?.getAttribute('src').includes('poster-072'));
+    trigger.focus();await click(trigger);
+    assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-072');
+    await click(byText('Save structure'));await click(byText('Original poster'));
+    assert.equal(document.querySelector('.test-packaging'),null);
+    assert.ok(document.querySelector('a[download="poster-072.webp"]'));
+    await click(byText('返回结构展示'));
+    assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-072');
+    assert.equal(byText('Save structure').getAttribute('aria-pressed'),'true');
+    await click(byText('Close structure'));assert.equal(document.activeElement,trigger);
+    assert.deepEqual(counts(),{mounts:2,unmounts:2});
+  } finally {await env.close();}
+});
+
+test('Daily Emulsion exposes one complete pump and all six independent layer controls', async () => {
+  const env=setup();let mounted,focused,url;
+  const daily={...item,id:'poster-072',title:{zh:'日常乳液',en:'Daily Emulsion'}};
+  globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+  const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{
+    mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};
+  }})}});
+  try {
+    const request=startPackagingModelRequest(daily.id);await request.promise;request.abort();
+    assert.equal(url,'/assets/packaging/poster-072.glb');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={daily}/>));
+    assert.equal(document.querySelector('h1').textContent,'Daily Emulsion');
+    assert.equal(document.querySelector('.packaging-intro').textContent,'面部护理 · 单瓶乳液空包材');
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,6);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,6);
+    assert.equal(mounted.product.parts.some(p=>['head','stem','closure'].includes(p.key)),false);
+    assert.equal(mounted.product.review.appearance.clearOvercap,true);
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#e9e5d8');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-ink'),'#34372e');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-accent'),'#efeee6');
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[1]);assert.equal(focused,'pump');
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[5]);assert.equal(focused,'name');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={daily} lang="en"/>));
+    assert.equal(document.querySelector('.packaging-intro').textContent,'Face care · empty emulsion bottle');
+    assert.equal(document.querySelector('h1').textContent,'Daily Emulsion');
+  } finally {await env.close();}
+});
+
+test('all seven added posters stay outside featured and the five unapproved models stay inactive', async () => {
   const env = setup(); let requests = 0;
   globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
   const {App, counts} = appHarness();
@@ -657,7 +710,7 @@ test('all seven added posters stay outside featured and the six unapproved model
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
     assert.equal(document.querySelectorAll('.grid-image').length,61);
-    for (const n of [72,74,75,76,77,78]) {
+    for (const n of [74,75,76,77,78]) {
       const id=`poster-${n.toString().padStart(3,'0')}`;
       const trigger=[...document.querySelectorAll(".grid-image")].find(button=>button.querySelector("img")?.getAttribute("src").includes(id));trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging'),null);

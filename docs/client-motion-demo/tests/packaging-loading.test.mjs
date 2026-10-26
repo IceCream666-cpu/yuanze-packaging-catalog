@@ -86,6 +86,80 @@ test('published Body Oil single empty bottle has six parts and restores both ind
   }finally{api?.dispose();env.close();}
 });
 
+test('Daily Emulsion moves the complete pump without changing its internal fitted transforms',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-072'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    loaded=env.model();
+    const placeholder=loaded.scene.getObjectByName('PumpAssembly');loaded.scene.remove(placeholder);
+    const pump=new Three.Group();pump.name='PumpAssembly';pump.position.set(.10,1.89,.02);loaded.scene.add(pump);
+    for(const [i,name] of ['Closure','PumpStem','Actuator'].entries()) {
+      const child=new Three.Mesh(new Three.BoxGeometry(.2,.2,.2),new Three.MeshPhysicalMaterial());child.name=name;
+      child.position.set(.03*i,.21*i,-.02*i);child.quaternion.setFromEuler(new Three.Euler(.02*i,-.01*i,.03*i));child.scale.set(1+.1*i,1+.05*i,1);
+      pump.add(child);
+    }
+    const rest=Object.fromEntries(pump.children.map(child=>[child.name,{p:child.position.clone(),q:child.quaternion.clone(),s:child.scale.clone()}]));
+    const pumpRest={p:pump.position.clone(),s:pump.scale.clone()};
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const frames=[...env.frames.values()];env.frames.clear();frames.forEach(fn=>fn(16));};
+    for(const progress of [.25,.5,1,0,1,0]) {
+      api.setProgress(progress);flush();loaded.scene.updateMatrixWorld(true);
+      assert.ok(pump.position.distanceTo(pumpRest.p.clone().add(new Three.Vector3(0,1.05*progress,0)))<1e-9);
+      assert.ok(pump.scale.distanceTo(pumpRest.s)<1e-9);
+      for(const child of pump.children) {
+        assert.equal(child.parent,pump);
+        assert.ok(child.position.distanceTo(rest[child.name].p)<1e-9);
+        assert.ok(child.scale.distanceTo(rest[child.name].s)<1e-9);
+        assert.ok(1-Math.abs(child.quaternion.dot(rest[child.name].q))<1e-9);
+        const relative=child.getWorldPosition(new Three.Vector3()).sub(pump.getWorldPosition(new Three.Vector3()));
+        assert.ok(relative.distanceTo(rest[child.name].p)<1e-9,'the actual Three hierarchy keeps fitted pump pieces together');
+      }
+      assert.ok(Math.abs(loaded.scene.getObjectByName('Overcap').position.y-2.35*progress)<1e-9);
+    }
+    assert.deepEqual(product.parts.map(p=>p.node),['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.equal(loaded.scene.getObjectByName('Liquid'),undefined);
+  } finally {api?.dispose();env.close();}
+});
+
+test('Daily phone layout compacts brand and product name together without reducing depth separation',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-072'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:393},clientHeight:{value:450}});loaded=env.model();
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const frames=[...env.frames.values()];env.frames.clear();frames.forEach(fn=>fn(16));};
+    for(const progress of [.5,1,0]) {
+      api.setProgress(progress);flush();
+      for(const key of ['label','print','name']) {
+        const part=loaded.scene.getObjectByName(product.parts.find(p=>p.key===key).node),offset=product.review.explosion.offsets[key];
+        assert.ok(Math.abs(part.position.x-offset[0]*.5*progress)<1e-9);
+        assert.ok(Math.abs(part.position.z-offset[2]*progress)<1e-9);
+        assert.ok(Math.abs(part.scale.x-(1+(product.review.explosion.scales[key]-1)*progress))<1e-9);
+      }
+      assert.equal(loaded.scene.getObjectByName('LogoPrint').position.x,loaded.scene.getObjectByName('ProductPrint').position.x);
+    }
+  } finally {api?.dispose();env.close();}
+});
+
+test('the Daily clear-cover flag preserves smooth transparent cover and leaves default frosted covers unchanged',async()=>{
+  for(const [clearOvercap,overcapToneMapped] of [[true,undefined],[false,undefined],[undefined,undefined],[undefined,false]]) {
+    const product=structuredClone(PACKAGING_PRODUCTS['poster-072']);let loaded,api;
+    if(clearOvercap===undefined)delete product.review.appearance.clearOvercap;else product.review.appearance.clearOvercap=clearOvercap;
+    if(overcapToneMapped!==undefined)product.review.appearance.overcapToneMapped=overcapToneMapped;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded=env.model();const body=loaded.scene.getObjectByName('Body'),cover=loaded.scene.getObjectByName('Overcap');
+      for(const mesh of [body,cover]){mesh.material.transmission=1;mesh.material.roughness=.035;}
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      assert.equal(body.material.roughness,.24);assert.equal(body.material.toneMapped,false);
+      assert.equal(cover.material.roughness,clearOvercap===true?.035:.24);
+      assert.equal(cover.material.toneMapped,clearOvercap!==true&&overcapToneMapped!==false);
+      assert.equal(cover.material.transmission,1);assert.equal(cover.material.thickness,.012);assert.equal(cover.material.side,Three.FrontSide);
+    } finally {api?.dispose();env.close();}
+  }
+});
+
 for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review)) {
   test(`${id} separates all printing and restores imported transforms`, async () => {
     let loaded, api;
@@ -107,7 +181,8 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
           assert.ok(print.x<label.x-.8*value,'lettering must also move farther sideways');
           assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
           } else assert.ok(print.length()>.5*value,'direct printing must separate from the container');
-          assert.ok(parts.closure.position.y-rest.closure.p.y>.7*value,'cap separation must remain substantial');
+          const capKey=parts.closure?'closure':'pump';
+          assert.ok(parts[capKey].position.y-rest[capKey].p.y>.7*value,'cap or complete pump separation must remain substantial');
           for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
             if(value===1) parts[key].position.clone().sub(rest[key].p).toArray().forEach((n,i)=>assert.ok(Math.abs(n-offset[i])<1e-9));
           }

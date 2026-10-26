@@ -1,0 +1,147 @@
+{
+  "id": "daily-emulsion",
+  "state": "local-review",
+  "productCount": 1,
+  "bottleCount": 1,
+  "height": 2.9,
+  "components": [
+    "Body",
+    "Overcap",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint",
+    "PumpAssembly"
+  ],
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.5178571343421936,
+        -0.3003571331501007,
+        0.0
+      ],
+      "max": [
+        0.5178571343421936,
+        0.3003571331501007,
+        2.042428493499756
+      ]
+    },
+    "Overcap": {
+      "min": [
+        -0.32521429657936096,
+        -0.32521429657936096,
+        2.1915712356567383
+      ],
+      "max": [
+        0.32521429657936096,
+        0.32521429657936096,
+        2.8999998569488525
+      ]
+    },
+    "PaperLabel": {
+      "min": [
+        -0.341785728931427,
+        -0.30180713534355164,
+        0.7249999642372131
+      ],
+      "max": [
+        0.341785728931427,
+        -0.30180713534355164,
+        1.6571428775787354
+      ]
+    },
+    "LogoPrint": {
+      "min": [
+        -0.341785728931427,
+        -0.30263569951057434,
+        0.7249999642372131
+      ],
+      "max": [
+        0.341785728931427,
+        -0.30263569951057434,
+        1.6571428775787354
+      ]
+    },
+    "ProductPrint": {
+      "min": [
+        -0.341785728931427,
+        -0.30346429347991943,
+        0.7249999642372131
+      ],
+      "max": [
+        0.341785728931427,
+        -0.30346429347991943,
+        1.6571428775787354
+      ]
+    },
+    "PumpAssembly": {
+      "min": [
+        -0.3573214113712311,
+        -0.3573214113712311,
+        1.8932856321334839
+      ],
+      "max": [
+        0.3573214113712311,
+        0.3573214113712311,
+        2.775569438934326
+      ]
+    }
+  },
+  "normalizationScale": 1.0357142857142858,
+  "closedHeightToWidth": 2.8,
+  "bodyDepthToWidth": 0.58,
+  "visibleGlassHeightToWidth": 1.84,
+  "actualGlassHeightToWidth": 1.972,
+  "glassBaseToWidth": 0.14,
+  "closureDiameterToWidth": 0.69,
+  "visibleClosureHeightToWidth": 0.3,
+  "coverDiameterToWidth": 0.628,
+  "coverHeightToWidth": 0.684,
+  "containsFormula": false,
+  "bodyFrosted": true,
+  "coverClear": true,
+  "colorlessGlass": true,
+  "separateLabelBrandAndName": true,
+  "printIncludes": [
+    "liaose",
+    "horizontal rule",
+    "DAILY EMULSION",
+    "FACE CARE"
+  ],
+  "noInventedCapacity": true,
+  "illustrativeDimensions": true,
+  "hiddenStructure": "Depth, glass wall, screw fit and short connector are indicative; no liquid, long dip tube or unseen elaborate mechanism. The visible actuator outlet is a shallow recess. The transparent unprinted carrier explains separated print layers; the reference has no paper-label border.",
+  "solidChecks": {
+    "Daily hollow flat rounded glass bottle": {
+      "manifold": true,
+      "positiveVolume": true,
+      "minimumFaceArea": 0.0001003481520456262
+    },
+    "Daily wide smooth white closure and stepped pedestal": {
+      "manifold": true,
+      "positiveVolume": true,
+      "minimumFaceArea": 0.00011801083019236103
+    },
+    "Daily short hollow pump connector illustration": {
+      "manifold": true,
+      "positiveVolume": true,
+      "minimumFaceArea": 2.6471971068531275e-05
+    },
+    "Daily sloped press head with short right nozzle": {
+      "manifold": true,
+      "positiveVolume": true,
+      "minimumFaceArea": 5.21464744451805e-06
+    },
+    "Daily hollow clear overcap with soft top and mould dimple": {
+      "manifold": true,
+      "positiveVolume": true,
+      "minimumFaceArea": 1.0232790373265743e-05
+    }
+  },
+  "referenceSha256": "169066c2a83c6ad5df7b4b20079232222f4e19d6e642dfe5bf21d4716bbde4a2",
+  "glbSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+  "glbBytes": 1162568,
+  "generator": "build_daily_emulsion.py",
+  "generatorDependencies": [
+    "tail_model_helpers.py"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.20-collection-packaging",
+  "scope": "approved-client1.21-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -225,6 +225,14 @@
       "productionTarget": "assets/packaging/poster-073.glb",
       "bytes": 628084,
       "sha256": "f79696304f2407d684070120b16fb246515885056a810f0b7ffd78d8c6fb631e"
+    },
+    {
+      "name": "poster-072.glb",
+      "file": "packaging-assets/poster-072.glb",
+      "productionTarget": "assets/packaging/poster-072.glb",
+      "kind": "model",
+      "bytes": 1162568,
+      "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
     }
   ],
   "additionalProducts": [
@@ -506,6 +514,18 @@
       "components": [
         "Closure",
         "InnerSeal",
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
+      ]
+    },
+    {
+      "posterId": "poster-072",
+      "file": "poster-072.glb",
+      "components": [
+        "Overcap",
+        "PumpAssembly",
         "Body",
         "PaperLabel",
         "LogoPrint",
