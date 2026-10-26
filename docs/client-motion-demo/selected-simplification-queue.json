@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-26",
+  "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
+  "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
+  "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
+  "deployment": "Not authorized by this selection; keep changes local for review.",
+  "items": [
+    {
+      "selectionNumber": 4,
+      "posterId": "poster-049",
+      "name": "Moisture Shampoo",
+      "status": "local-awaiting-user"
+    },
+    {
+      "selectionNumber": 5,
+      "posterId": "poster-042",
+      "name": "Woodland",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 6,
+      "posterId": "poster-051",
+      "name": "Pure Volume",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 7,
+      "posterId": "poster-044",
+      "name": "Gentle Cleansing",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 9,
+      "posterId": "poster-056",
+      "name": "Golden Face Oil",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 10,
+      "posterId": "poster-057",
+      "name": "B5 Serum",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 11,
+      "posterId": "poster-058",
+      "name": "Luminous Face Oil",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 12,
+      "posterId": "poster-059",
+      "name": "Essence Oil Duo",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 13,
+      "posterId": "poster-060",
+      "name": "AHA Body Mist",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 14,
+      "posterId": "poster-061",
+      "name": "Oil-Infused Body Cream",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 17,
+      "posterId": "poster-064",
+      "name": "Aromatic Body Lotion",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 18,
+      "posterId": "poster-065",
+      "name": "Tea Tree Shampoo",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 19,
+      "posterId": "poster-066",
+      "name": "Rose Hair Oil",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 20,
+      "posterId": "poster-067",
+      "name": "Amber Ginger Shampoo",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 21,
+      "posterId": "poster-068",
+      "name": "Essence Water",
+      "status": "queued"
+    },
+    {
+      "selectionNumber": 23,
+      "posterId": "poster-071",
+      "name": "Sculptural Pump",
+      "status": "queued"
+    }
+  ]
+}

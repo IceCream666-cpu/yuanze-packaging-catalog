@@ -1,5 +1,16 @@
 # 源泽版本记录
 
+## Moisture Shampoo 完整泵头修订（2026-10-26，本地待审）
+
+用户从23款待复查图中选定16款，确认继续逐款停下检查。顺序为04、05、06、07、09、10、11、12、13、14、17、18、19、20、21、23；编号映射见 `client-motion-demo/selected-simplification-queue.json`，其中23是poster-071长颈泵瓶，Daylight不在本次选单内。
+
+本轮只修改04 / poster-049 Moisture Shampoo：Closure、PumpStem与Actuator保持原装配坐标归入PumpAssembly，整体上移1.25。显示四组为完整银色泵头、瓶身、乳白标贴、Logo与产品名。保留旧款的材质、灯光和空包材表现；纸标位移[-1.25,.08,.65]、文字位移[-2.65,.18,1.65]及缩放不变。闭合相机不变，全开取景中心2.075、高5.05，以适配完整泵结构。
+
+6项实际GLB和80项相关前端测试通过；12个网格和旧版比较，最大世界顶点差2.3842e-7，全部材质及嵌入纹理一致。整泵多个进度刚性同移，回零恢复。桌面0/50/100、旋转、原海报往返和393px手机视口验证通过；回到结构展示会按既有行为回到0%。Codex内实际打开并显示100%，独立审美复核无裁切或遮挡。63个受保护资源未变，source/dist/HTTP的049模型逐字节一致。
+
+入口：http://127.0.0.1:8784/?model=poster-049 。本地待审、未部署；其余15款尚未修改，下一款05 Woodland。Daylight仍本地待审，已上线Daily与Body状态保持。回执 `client-motion-demo/moisture-simplified-preview-verification.json`，证据在 `client-motion-demo/review-evidence/moisture/simplified-pump/`。对应提交标题“Keep Moisture Shampoo pump assembled during expansion”。未验收实体手机或生产装配尺寸。
+
+
 ## Daylight 整体瓶盖修订（2026-10-26，本地待审）
 
 按制作审阅顺序继续倒序回看 poster-070 Daylight Essential Oil。金属盖、内侧密封件、压纹套纸与右侧延伸边保持组装，完整瓶盖整体上移；不再单独拆出套纸。保留原锥形磨砂空玻璃、比例、香槟色金属、压纹纹理和 liaose／DAYLIGHT／ESSENTIAL OIL 原印刷。物理主件为完整瓶盖与瓶身；透明底材和完整印刷继续分层外展，文字比底材更靠外。

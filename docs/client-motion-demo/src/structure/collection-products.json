@@ -232,51 +232,19 @@
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
+        "key": "pump",
+        "node": "PumpAssembly",
         "title": [
-          "扁嘴按压头",
-          "Flat-spout actuator"
+          "完整银色泵头",
+          "Complete silver pump"
         ],
         "short": [
-          "泵头",
-          "Head"
+          "整泵头",
+          "Pump"
         ],
         "detail": [
-          "宽扁压板与下折出液嘴。",
-          "Broad flat press plate with a downturned outlet."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "台阶泵座",
-          "Stepped pump housing"
-        ],
-        "short": [
-          "泵座",
-          "Housing"
-        ],
-        "detail": [
-          "圆筒泵座与上方台阶连接套。",
-          "Cylindrical housing and stepped connector."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "宽口银色旋盖",
-          "Wide silver closure"
-        ],
-        "short": [
-          "旋盖",
-          "Closure"
-        ],
-        "detail": [
-          "上部密集竖纹，下方双道环纹。",
-          "Fine upper flutes and two lower bands."
+          "扁嘴按压头、台阶泵座和宽口旋盖保持组装，整体抬起。",
+          "The flat-spout actuator, stepped housing and wide closure stay assembled and lift together."
         ]
       },
       {

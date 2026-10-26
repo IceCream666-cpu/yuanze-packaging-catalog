@@ -45,6 +45,10 @@
 - 058–061 也会读取本款已有 `print.svg`；不要先清空单款源目录再运行。保留 SVG、纸张、软木和法线等配套贴图。
 - 使用 Blender 4.5 系列的 `bpy`、`bmesh`、`mathutils`；部分脚本依赖 Blender 自带 NumPy。SVG 栅格化调用 Node.js 与 Sharp，并使用本机字体。脚本当前记录了 Codex 运行时的绝对路径，迁移电脑时须同步检查这些路径及字体，避免排版漂移。
 
+## Moisture Shampoo 整泵简化修订
+
+2026-10-26：poster-049 将原Closure、PumpStem、Actuator嵌套进PumpAssembly，保持闭合世界坐标。纸标与完整印刷独立，空瓶几何、材质和贴图不变。本款沿用原Moisture专属场景分支，不新增review配置；整体位移及取景由packaging-scene.js维护。仅本地待审，按用户选单先做04，确认后才继续05。
+
 ## Daylight 整盖简化修订
 
 2026-10-26：poster-070 的压纹套纸与右侧延伸边并入 Closure，连同金属盖与内侧密封件整体移动。四个展示组为 Closure、Body、PaperLabel、LogoPrint；本次四组修订仅本地待审，正式线上原五组状态以独立发布记录为准。生成器保持原几何/贴图，标贴与完整印刷外展不变。

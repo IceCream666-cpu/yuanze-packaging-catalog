@@ -43,18 +43,16 @@
     "background": "#d8e5da"
   },
   "poster-049": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-049-closed.webp",
-      "open": "/review-assets/poster-049-open.webp"
+      "closed": "/review-assets/poster-049-simplified-closed.png",
+      "open": "/review-assets/poster-049-simplified-open.png"
     },
     "background": "#e0e4e7"
   },

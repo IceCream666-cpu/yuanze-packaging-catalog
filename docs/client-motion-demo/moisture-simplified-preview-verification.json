@@ -1,0 +1,250 @@
+{
+  "date": "2026-10-26",
+  "product": "Moisture Shampoo",
+  "productId": "poster-049",
+  "selectionNumber": 4,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "User explicitly confirmed stop after each product for inspection.",
+  "nextProduct": {
+    "selectionNumber": 5,
+    "id": "poster-042",
+    "name": "Woodland",
+    "status": "not-started"
+  },
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-049",
+  "components": [
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": [
+    "Closure",
+    "PumpStem",
+    "Actuator"
+  ],
+  "containsFormula": false,
+  "testsAndGeometry": {
+    "scope": "Moisture Shampoo poster-049 local complete-pump review",
+    "baseline": {
+      "sha256": "4ee3fb74b2b80a71d9e63dbd1d0f56e3831a67bb81a368d914979ed56b5e5732",
+      "bytes": 1577088
+    },
+    "candidate": {
+      "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+      "bytes": 1577136,
+      "roots": [
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "PumpAssembly"
+      ]
+    },
+    "meshComparisons": [
+      {
+        "mesh": "Clear wide-mouth bottle",
+        "vertexCount": 6914,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Body",
+        "newRoot": "Body"
+      },
+      {
+        "mesh": "Glass neck bead",
+        "vertexCount": 768,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Body",
+        "newRoot": "Body"
+      },
+      {
+        "mesh": "Visible bottle thread",
+        "vertexCount": 2456,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Body",
+        "newRoot": "Body"
+      },
+      {
+        "mesh": "Fine vertical collar flutes",
+        "vertexCount": 4224,
+        "maximumWorldVertexDifference": 2.384185791015625e-07,
+        "boundsIdentical": false,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Closure",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Inner closure polymer seat",
+        "vertexCount": 2304,
+        "maximumWorldVertexDifference": 2.384185791015625e-07,
+        "boundsIdentical": false,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Closure",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Silver wide screw collar",
+        "vertexCount": 5376,
+        "maximumWorldVertexDifference": 2.384185791015625e-07,
+        "boundsIdentical": false,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Closure",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Silver stepped pump housing",
+        "vertexCount": 4048,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "PumpStem",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Flattened dispensing lever",
+        "vertexCount": 446,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Actuator",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Recessed dispensing outlet",
+        "vertexCount": 40,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Actuator",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Silver actuator shaft",
+        "vertexCount": 1436,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Actuator",
+        "newRoot": "PumpAssembly"
+      },
+      {
+        "mesh": "Ivory paper label",
+        "vertexCount": 6305,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "PaperLabel",
+        "newRoot": "PaperLabel"
+      },
+      {
+        "mesh": "Complete shampoo print",
+        "vertexCount": 6305,
+        "maximumWorldVertexDifference": 0.0,
+        "boundsIdentical": true,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "LogoPrint",
+        "newRoot": "LogoPrint"
+      }
+    ],
+    "measurements": {
+      "units": "normalized scene units",
+      "fullPumpToBottleGap": 1.1659589311468324,
+      "framingViewport": [
+        1200,
+        800
+      ],
+      "frames": [
+        {
+          "progress": 0,
+          "minimumVerticalMargin": 0.6152834922987382,
+          "minimumHorizontalMargin": 2.5404081639100102
+        },
+        {
+          "progress": 0.5,
+          "minimumVerticalMargin": 0.5169920339535135,
+          "minimumHorizontalMargin": 1.8814999825805425
+        },
+        {
+          "progress": 1,
+          "minimumVerticalMargin": 0.41870057560828844,
+          "minimumHorizontalMargin": 1.0923877344830908
+        }
+      ]
+    },
+    "tests": {
+      "geometryPassed": 6,
+      "frontendPassed": 80,
+      "failed": 0,
+      "logs": [
+        "geometry-tests.log",
+        "frontend-tests.log"
+      ],
+      "rigidMotionProgress": [
+        0,
+        0.25,
+        0.5,
+        0.75,
+        1,
+        0.5,
+        0
+      ]
+    }
+  },
+  "preservation": {
+    "protectedUnchanged": 63,
+    "sourceDistHttpMatch": true,
+    "bytes": 1577136,
+    "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c"
+  },
+  "browser": {
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopProgress": [
+      0,
+      0.5,
+      1
+    ],
+    "rotation90": "passed",
+    "originalPosterOpened": true,
+    "originalPosterReturnProgress": 0,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileScrollWidth": 393,
+    "mobileProgress": [
+      0,
+      1
+    ],
+    "codexActualPreview": {
+      "opened": true,
+      "leftAtProgress": 1,
+      "screenshot": "review-evidence/moisture/simplified-pump/codex-open.png"
+    }
+  },
+  "visualReview": {
+    "originalPosterCompared": true,
+    "independentReview": "Passed: complete pump, unchanged empty bottle/materials, separated paper and complete print, no clipping/overlap. Mobile fine print remains small.",
+    "impeccableStaticScan": "No findings; JavaScript regex scan only, not a parsed-page contrast audit."
+  },
+  "sourceCommitBaseline": "f5d956be",
+  "evidenceDirectory": "review-evidence/moisture/simplified-pump/",
+  "limits": [
+    "Physical phones and production assembly dimensions not checked.",
+    "This turn did not connect to or deploy production.",
+    "Other 15 selected products remain queued for one-at-a-time review."
+  ],
+  "galleryTests": {
+    "passed": 7,
+    "failed": 0
+  }
+}

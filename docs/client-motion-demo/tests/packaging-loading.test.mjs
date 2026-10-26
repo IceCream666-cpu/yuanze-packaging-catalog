@@ -351,7 +351,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
-  ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
+  ['poster-049', {pump: 1.25}, [-2.65, .18, 1.65]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
   ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
@@ -383,7 +383,7 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
@@ -567,6 +567,58 @@ test('Daylight keeps both embossed wrap meshes and the seal attached to its comp
       });
       assert.ok(state.partStates.print.offset[2]-state.partStates.label.offset[2]>=.99*progress);
       if(progress>0) assert.ok(state.partStates.print.offset[0]<state.partStates.label.offset[0]-.8*progress);
+      assert.deepEqual(state.partStates.jar,rest.jar);
+      if(progress===0) assert.deepEqual(state.partStates,rest);
+    }
+  } finally {api?.dispose();env.close();}
+});
+
+test('Moisture Shampoo moves its exported pump as one unit and preserves independent paper and print', async () => {
+  const product=PACKAGING_PRODUCTS['poster-049'];
+  assert.equal(product.review,undefined,'Moisture retains its existing material and lighting branch');
+  const bytes=readFileSync(new URL('../packaging-assets/poster-049.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();
+    const pump=loaded.scene.getObjectByName('PumpAssembly');
+    const pieces=['Closure','PumpStem','Actuator'].map(name=>loaded.scene.getObjectByName(name));
+    pieces.forEach(piece=>assert.equal(piece.parent,pump));
+    const rest=api.getState().partStates;
+    assert.deepEqual(Object.keys(rest).sort(),['jar','label','print','pump']);
+    const restPump=pump.getWorldPosition(new Three.Vector3());
+    const restPieces=pieces.map(piece=>({position:piece.getWorldPosition(new Three.Vector3()),matrix:piece.matrix.toArray()}));
+    for(const progress of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(progress);flush();
+      const state=api.getState();
+      assert.equal(state.renderedProgress,progress);
+      assert.ok(Math.abs(state.partStates.pump.offset[1]-1.25*progress)<1e-9);
+      const displacement=pump.getWorldPosition(new Three.Vector3()).sub(restPump);
+      pieces.forEach((piece,i)=>{
+        assert.deepEqual(piece.matrix.toArray(),restPieces[i].matrix,'the three pump parts retain their assembled transforms');
+        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(restPieces[i].position).distanceTo(displacement)<1e-9,'every pump part moves with the assembly');
+      });
+      for(const [key,offset,scale] of [['label',[-1.25,.08,.65],1.15],['print',[-2.65,.18,1.65],1.45]]) {
+        state.partStates[key].offset.forEach((value,i)=>assert.ok(Math.abs(value-offset[i]*progress)<1e-9));
+        state.partStates[key].scale.forEach((value,i)=>assert.ok(Math.abs(value-rest[key].scale[i]*(1+(scale-1)*progress))<1e-9));
+      }
       assert.deepEqual(state.partStates.jar,rest.jar);
       if(progress===0) assert.deepEqual(state.partStates,rest);
     }
