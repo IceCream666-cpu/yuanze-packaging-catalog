@@ -1,0 +1,88 @@
+{
+  "baseline": {
+    "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/work/daylight-review/before/poster-070.glb",
+    "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+    "bytes": 3191832
+  },
+  "candidate": {
+    "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f",
+    "bytes": 3191692,
+    "roots": [
+      "Body",
+      "Closure",
+      "PaperLabel",
+      "LogoPrint"
+    ]
+  },
+  "meshComparisons": [
+    {
+      "mesh": "Hollow tapered frosted cone bottle with thick rounded base",
+      "vertices": 5265,
+      "maximumSortedWorldVertexDifference": 0.0,
+      "maximumBoundsDifference": 0.0,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "Body",
+      "newRoot": "Body"
+    },
+    {
+      "mesh": "Champagne cylindrical metal screw cap",
+      "vertices": 2342,
+      "maximumSortedWorldVertexDifference": 0.0,
+      "maximumBoundsDifference": 0.0,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "Closure",
+      "newRoot": "Closure"
+    },
+    {
+      "mesh": "Hidden cap seal",
+      "vertices": 498,
+      "maximumSortedWorldVertexDifference": 0.0,
+      "maximumBoundsDifference": 0.0,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "Closure",
+      "newRoot": "Closure"
+    },
+    {
+      "mesh": "Embossed sleeve around the cap",
+      "vertices": 9338,
+      "maximumSortedWorldVertexDifference": 1.0154229812542326e-07,
+      "maximumBoundsDifference": 1.0154229812542326e-07,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "CapWrap",
+      "newRoot": "Closure"
+    },
+    {
+      "mesh": "Original loose embossed wrap extension at right",
+      "vertices": 1682,
+      "maximumSortedWorldVertexDifference": 1.0154229812542326e-07,
+      "maximumBoundsDifference": 1.0154229812542326e-07,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "CapWrap",
+      "newRoot": "Closure"
+    },
+    {
+      "mesh": "Unprinted clear demonstration print carrier",
+      "vertices": 3185,
+      "maximumSortedWorldVertexDifference": 0.0,
+      "maximumBoundsDifference": 0.0,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "PaperLabel",
+      "newRoot": "PaperLabel"
+    },
+    {
+      "mesh": "Complete Daylight Essential Oil black lettering",
+      "vertices": 3185,
+      "maximumSortedWorldVertexDifference": 0.0,
+      "maximumBoundsDifference": 0.0,
+      "materialAndEmbeddedTexturesIdentical": true,
+      "oldRoot": "LogoPrint",
+      "newRoot": "LogoPrint"
+    }
+  ],
+  "proceduralAssets": {
+    "embossed-wrap.png": true,
+    "embossed-wrap-normal.png": true,
+    "label.png": true,
+    "print.png": true
+  }
+}

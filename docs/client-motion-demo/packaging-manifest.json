@@ -215,8 +215,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-070.glb",
       "productionTarget": "assets/packaging/poster-070.glb",
-      "bytes": 3191832,
-      "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
+      "bytes": 3191692,
+      "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f"
     }
   ],
   "additionalProducts": [
@@ -486,7 +486,6 @@
       "file": "poster-070.glb",
       "components": [
         "Closure",
-        "CapWrap",
         "Body",
         "PaperLabel",
         "LogoPrint"

@@ -523,3 +523,52 @@ test('Daily Emulsion moves the exported pump assembly rigidly and restores all s
     }
   } finally {api?.dispose();env.close();}
 });
+
+test('Daylight keeps both embossed wrap meshes and the seal attached to its complete cap', async () => {
+  const product=PACKAGING_PRODUCTS['poster-070'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-070.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();
+    const closure=loaded.scene.getObjectByName('Closure');
+    const pieces=['Champagne cylindrical metal screw cap','Hidden cap seal','Embossed sleeve around the cap','Original loose embossed wrap extension at right'].map(name=>loaded.scene.getObjectByName(name));
+    pieces.forEach(piece=>assert.equal(piece.parent,closure));
+    const rest=api.getState().partStates;
+    assert.deepEqual(Object.keys(rest).sort(),['closure','jar','label','print']);
+    const restClosure=closure.getWorldPosition(new Three.Vector3());
+    const restPieces=pieces.map(piece=>({position:piece.getWorldPosition(new Three.Vector3()),matrix:piece.matrix.toArray()}));
+    for(const progress of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(progress);flush();
+      const state=api.getState();
+      assert.equal(state.renderedProgress,progress);
+      assert.ok(Math.abs(state.partStates.closure.offset[1]-1.35*progress)<1e-9);
+      const displacement=closure.getWorldPosition(new Three.Vector3()).sub(restClosure);
+      pieces.forEach((piece,i)=>{
+        assert.deepEqual(piece.matrix.toArray(),restPieces[i].matrix,'cap subparts retain their local transforms');
+        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(restPieces[i].position).distanceTo(displacement)<1e-9,'both wrap meshes and seal move with the cap');
+      });
+      assert.ok(state.partStates.print.offset[2]-state.partStates.label.offset[2]>=.99*progress);
+      if(progress>0) assert.ok(state.partStates.print.offset[0]<state.partStates.label.offset[0]-.8*progress);
+      assert.deepEqual(state.partStates.jar,rest.jar);
+      if(progress===0) assert.deepEqual(state.partStates,rest);
+    }
+  } finally {api?.dispose();env.close();}
+});

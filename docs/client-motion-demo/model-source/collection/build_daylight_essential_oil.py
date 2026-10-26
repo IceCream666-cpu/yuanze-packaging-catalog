@@ -22,7 +22,7 @@ for j in range(ny+1):
   a=-.6-(math.tau-.17)*i/nx;r=.1795+.0013*math.sin(a*7+z*17);vs.append((r*math.cos(a),r*math.sin(a),z+.0005*math.sin(a*19)))
 for j in range(ny):
  for i in range(nx):a=j*(nx+1)+i;fs.append((a,a+1,a+nx+2,a+nx+1))
-o=m.mesh('Embossed sleeve around the cap',vs,fs,wrap,'CapWrap');uv=o.data.uv_layers.new()
+o=m.mesh('Embossed sleeve around the cap',vs,fs,wrap,'Closure');uv=o.data.uv_layers.new()
 for f in o.data.polygons:
  for li in f.loop_indices:k=o.data.loops[li].vertex_index;uv.data[li].uv=(k%(nx+1)/nx,k//(nx+1)/ny)
 solid=o.modifiers.new('Thin fibrous wrap','SOLIDIFY');solid.thickness=.0025;bpy.context.view_layer.objects.active=o;bpy.ops.object.modifier_apply(modifier=solid.name)
@@ -32,7 +32,7 @@ for j in range(ny+1):
   t=i/nx;vs.append((x0+(.325-x0)*t,y0-.013*math.sin(math.pi*t),1.035+.305*j/ny+.0012*math.sin(t*5)))
 for j in range(ny):
  for i in range(nx):a=j*(nx+1)+i;fs.append((a,a+1,a+nx+2,a+nx+1))
-o=m.mesh('Original loose embossed wrap extension at right',vs,fs,wrap,'CapWrap');uv=o.data.uv_layers.new()
+o=m.mesh('Original loose embossed wrap extension at right',vs,fs,wrap,'Closure');uv=o.data.uv_layers.new()
 for f in o.data.polygons:
  for li in f.loop_indices:k=o.data.loops[li].vertex_index;uv.data[li].uv=(.78+.22*(k%(nx+1)/nx),k//(nx+1)/ny)
 solid=o.modifiers.new('Thin fibrous flap','SOLIDIFY');solid.thickness=.0025;bpy.context.view_layer.objects.active=o;bpy.ops.object.modifier_apply(modifier=solid.name)
@@ -40,6 +40,6 @@ def radius(z):return .487+(z-.202)*(.224-.487)/(.84-.202)
 def front(x,z):return -math.sqrt(radius(z)**2-x*x)
 m.artwork(svg(470,320,'<rect x="2" y="2" width="466" height="316" rx="18" fill="#faf6eb" fill-opacity=".08"/>'),svg(470,320,logo(m,50,0,370,136,'#171917')+text(235,218,'DAYLIGHT',40,6,'#171917')+text(235,285,'ESSENTIAL OIL',26,6,'#171917')))
 for kind,parent,name in [('label','PaperLabel','Unprinted clear demonstration print carrier'),('print','LogoPrint','Complete Daylight Essential Oil black lettering')]:m.sheet(name,.47,.32,.23,front,m.texture('Daylight '+kind,kind+'.png',.25 if kind=='label' else .65),parent,offset=.0015 if kind=='label' else .0025)
-parts=[part('closure','Closure','金属盖','Cap','浅香槟银色圆筒旋盖。','Cylindrical screw cap in pale champagne silver.'),part('wrap','CapWrap','纹理套','Wrap','原图压纹套纸与右侧延伸边。','Embossed cap wrap with the loose right edge shown in the reference.'),part('jar','Body','磨砂瓶','Bottle','阔底锥形磨砂空玻璃。','Empty frosted glass with a broad base and tapered body.'),part('label','PaperLabel','透明膜','Carrier','无字透明承印膜。','Clear print carrier without any lettering.'),part('print','LogoPrint','黑印字','Print','liaose、DAYLIGHT、ESSENTIAL OIL 完整独立。','The complete liaose, DAYLIGHT and ESSENTIAL OIL print separates together.')]
-c=config(parts,{'closure':[0,2.8,0],'wrap':[1.5,1.0,.4],'label':[-1.6,.08,.65],'print':[-3.3,.18,1.65]},frosted=True,clear=True,metal=True);c['explosion']['camera'].update(width=[3.8,7.7])
-m.export(1.39,{'Body':0,'Closure':.98,'CapWrap':1.18,'PaperLabel':.39,'LogoPrint':.39},{'closedHeightToWidth':1.39,'bodyDepthToWidth':1,'glassHeightToWidth':.985,'capDiameterToWidth':.352,'capHeightToWidth':.42,'wrapExtensionToWidth':.325,'printIncludes':['liaose','DAYLIGHT','ESSENTIAL OIL'],'generator':'build_daylight_essential_oil.py','proceduralTextures':['embossed-wrap.png','embossed-wrap-normal.png'],'hiddenStructure':'Closure seal and transparent print carrier are illustrative. This is empty frosted glass, with no formula.'},c)
+parts=[part('closure','Closure','整瓶盖','Complete cap','浅香槟银色圆筒盖、密封垫及压纹套纸保持组装，连同右侧延伸边整体上移。','The champagne-silver cap, internal seal and embossed wrap with its loose right edge stay assembled and lift together.'),part('jar','Body','磨砂瓶','Bottle','阔底锥形磨砂空玻璃。','Empty frosted glass with a broad base and tapered body.'),part('label','PaperLabel','透明膜','Carrier','无字透明承印膜。','Clear print carrier without any lettering.'),part('print','LogoPrint','黑印字','Print','liaose、DAYLIGHT、ESSENTIAL OIL 完整独立。','The complete liaose, DAYLIGHT and ESSENTIAL OIL print separates together.')]
+c=config(parts,{'closure':[0,1.35,0],'label':[-1.6,.08,.65],'print':[-3.3,.18,1.65]},frosted=True,clear=True,metal=True);c['explosion']['camera'].update(centerY=[1.45,2.1],height=[4.2,5.3],width=[3.8,7.7])
+m.export(1.39,{'Body':0,'Closure':.98,'PaperLabel':.39,'LogoPrint':.39},{'closedHeightToWidth':1.39,'bodyDepthToWidth':1,'glassHeightToWidth':.985,'capDiameterToWidth':.352,'capHeightToWidth':.42,'wrapExtensionToWidth':.325,'presentationRevision':'complete-cap-20261026','completeCapIncludes':['metal cap','internal seal','embossed sleeve','loose wrap extension'],'printIncludes':['liaose','DAYLIGHT','ESSENTIAL OIL'],'generator':'build_daylight_essential_oil.py','proceduralTextures':['embossed-wrap.png','embossed-wrap-normal.png'],'hiddenStructure':'Closure seal and transparent print carrier are illustrative. This is empty frosted glass, with no formula.'},c)

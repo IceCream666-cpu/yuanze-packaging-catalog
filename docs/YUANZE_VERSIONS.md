@@ -1,5 +1,16 @@
 # 源泽版本记录
 
+## Daylight 整体瓶盖修订（2026-10-26，本地待审）
+
+按制作审阅顺序继续倒序回看 poster-070 Daylight Essential Oil。金属盖、内侧密封件、压纹套纸与右侧延伸边保持组装，完整瓶盖整体上移；不再单独拆出套纸。保留原锥形磨砂空玻璃、比例、香槟色金属、压纹纹理和 liaose／DAYLIGHT／ESSENTIAL OIL 原印刷。物理主件为完整瓶盖与瓶身；透明底材和完整印刷继续分层外展，文字比底材更靠外。
+
+四个根组 Body、Closure、PaperLabel、LogoPrint。盖上移1.35，全展开取景高度5.3。实际GLB的7个网格与旧版比对，5件世界坐标完全相同，两件套纸更换父级后的最大浮点差1.016e-7；材质、嵌入纹理及SVG/PNG保持。7项几何测试与79项前端测试通过，验证整盖刚性同移、回合拢和0/50/100构图。共享场景未改动，其他模型及88个受保护本地资源保持，source/dist/HTTP模型一致。
+
+预览：http://127.0.0.1:8784/?model=poster-070 。本地总览同步为四层待审并更新合拢/展开图。浏览器和审美复核见 `client-motion-demo/daylight-simplified-preview-verification.json`；高清Chrome截图保留于本任务outputs/Daylight-整体瓶盖修订。
+
+本轮只有Body Oil获批整盖版正式发布为client1.22（20:43:43，正式回执由隔离发布分支保存），此前Daily完整泵头保持client1.21。Daylight此修订尚未发布，线上070仍为原五层版。继续逐款审查，不开始新模型；未确认实体手机和制造尺寸。
+
+
 ## Body Oil 整体瓶盖修订（2026-10-26，本地待审，未上线）
 
 按用户“Daily上线后倒回按顺序简化”的要求，先回看紧邻的 Body Oil。InnerSeal 保持原有世界坐标归入 Closure，不再单独悬浮；盖壳和密封垫作为完整瓶盖移动。物理主件只有完整瓶盖与空玻璃瓶，无字透明底材、liaose、BODY OIL与02保留各自外展，字比底材更向前。

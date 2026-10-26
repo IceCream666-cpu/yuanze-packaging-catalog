@@ -5,6 +5,13 @@
   "capDiameterToWidth": 0.352,
   "capHeightToWidth": 0.42,
   "wrapExtensionToWidth": 0.325,
+  "presentationRevision": "complete-cap-20261026",
+  "completeCapIncludes": [
+    "metal cap",
+    "internal seal",
+    "embossed sleeve",
+    "loose wrap extension"
+  ],
   "printIncludes": [
     "liaose",
     "DAYLIGHT",
@@ -20,7 +27,6 @@
   "components": [
     "Body",
     "Closure",
-    "CapWrap",
     "PaperLabel",
     "LogoPrint"
   ],
@@ -42,26 +48,14 @@
     },
     "Closure": {
       "min": [
-        -0.3671942353248596,
-        -0.3671942353248596,
-        2.0237410068511963
-      ],
-      "max": [
-        0.3671942353248596,
-        0.3671942353248596,
-        2.8999998569488525
-      ]
-    },
-    "CapWrap": {
-      "min": [
         -0.3823132812976837,
         -0.38237640261650085,
-        2.1568548679351807
+        2.0237410068511963
       ],
       "max": [
         0.6780574917793274,
         0.3823833167552948,
-        2.798185348510742
+        2.8999998569488525
       ]
     },
     "PaperLabel": {
@@ -92,7 +86,6 @@
   "pivotsHeightToWidth": {
     "Body": 0,
     "Closure": 0.98,
-    "CapWrap": 1.18,
     "PaperLabel": 0.39,
     "LogoPrint": 0.39
   },

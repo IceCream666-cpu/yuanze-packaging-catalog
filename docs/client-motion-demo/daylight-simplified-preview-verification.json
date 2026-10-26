@@ -1,0 +1,200 @@
+{
+  "date": "2026-10-26",
+  "product": "Daylight Essential Oil",
+  "productId": "poster-070",
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-070",
+  "reviewGalleryUrl": "http://127.0.0.1:8784/model-review.html",
+  "revision": "Keep champagne cap shell, hidden seal, embossed sleeve and its right extension assembled as one cap; preserve separate carrier and farther-out lettering.",
+  "components": [
+    "Body",
+    "Closure",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "containsFormula": false,
+  "modelSha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f",
+  "modelBytes": 3191692,
+  "geometryComparison": {
+    "baseline": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/work/daylight-review/before/poster-070.glb",
+      "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+      "bytes": 3191832
+    },
+    "candidate": {
+      "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f",
+      "bytes": 3191692,
+      "roots": [
+        "Body",
+        "Closure",
+        "PaperLabel",
+        "LogoPrint"
+      ]
+    },
+    "meshComparisons": [
+      {
+        "mesh": "Hollow tapered frosted cone bottle with thick rounded base",
+        "vertices": 5265,
+        "maximumSortedWorldVertexDifference": 0.0,
+        "maximumBoundsDifference": 0.0,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Body",
+        "newRoot": "Body"
+      },
+      {
+        "mesh": "Champagne cylindrical metal screw cap",
+        "vertices": 2342,
+        "maximumSortedWorldVertexDifference": 0.0,
+        "maximumBoundsDifference": 0.0,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Closure",
+        "newRoot": "Closure"
+      },
+      {
+        "mesh": "Hidden cap seal",
+        "vertices": 498,
+        "maximumSortedWorldVertexDifference": 0.0,
+        "maximumBoundsDifference": 0.0,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "Closure",
+        "newRoot": "Closure"
+      },
+      {
+        "mesh": "Embossed sleeve around the cap",
+        "vertices": 9338,
+        "maximumSortedWorldVertexDifference": 1.0154229812542326e-07,
+        "maximumBoundsDifference": 1.0154229812542326e-07,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "CapWrap",
+        "newRoot": "Closure"
+      },
+      {
+        "mesh": "Original loose embossed wrap extension at right",
+        "vertices": 1682,
+        "maximumSortedWorldVertexDifference": 1.0154229812542326e-07,
+        "maximumBoundsDifference": 1.0154229812542326e-07,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "CapWrap",
+        "newRoot": "Closure"
+      },
+      {
+        "mesh": "Unprinted clear demonstration print carrier",
+        "vertices": 3185,
+        "maximumSortedWorldVertexDifference": 0.0,
+        "maximumBoundsDifference": 0.0,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "PaperLabel",
+        "newRoot": "PaperLabel"
+      },
+      {
+        "mesh": "Complete Daylight Essential Oil black lettering",
+        "vertices": 3185,
+        "maximumSortedWorldVertexDifference": 0.0,
+        "maximumBoundsDifference": 0.0,
+        "materialAndEmbeddedTexturesIdentical": true,
+        "oldRoot": "LogoPrint",
+        "newRoot": "LogoPrint"
+      }
+    ],
+    "proceduralAssets": {
+      "embossed-wrap.png": true,
+      "embossed-wrap-normal.png": true,
+      "label.png": true,
+      "print.png": true
+    }
+  },
+  "preservation": {
+    "protectedUnchanged": 88,
+    "sourceDistHttpMatch": true,
+    "bytes": 3191692,
+    "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f"
+  },
+  "tests": {
+    "geometry": {
+      "passed": 7,
+      "failed": 0
+    },
+    "relatedFrontend": {
+      "passed": 79,
+      "failed": 0
+    },
+    "gallery": {
+      "passed": 7,
+      "failed": 0
+    },
+    "viteBuild": "passed",
+    "rigidAssemblyProgressSamples": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1,
+      0.5,
+      0
+    ]
+  },
+  "browser": {
+    "ego": {
+      "desktopProgress": [
+        0,
+        50,
+        100
+      ],
+      "mobileViewport": {
+        "width": 393,
+        "height": 852,
+        "scrollWidth": 393
+      },
+      "mobileProgress": [
+        0,
+        100
+      ]
+    },
+    "chrome": {
+      "actuallyOpened": true,
+      "progressInspected": [
+        0,
+        100
+      ],
+      "leftAtProgress": 100,
+      "nativeScreenshotDimensions": [
+        3600,
+        2132
+      ],
+      "screenshotDirectory": "/Users/icecream/Documents/Codex/2026-10-22/gen/outputs/Daylight-整体瓶盖修订",
+      "fullPresetButtonVerified": false
+    }
+  },
+  "visualReview": {
+    "originalPosterCompared": true,
+    "capRemainsAssembled": true,
+    "materialAndProportionsPreserved": true,
+    "noClippingOrOverlappingPrint": true,
+    "independentDesktopMobileAndGalleryReview": "passed",
+    "impeccable": {
+      "command": "impeccable detect docs/client-motion-demo/src/structure/collection-products.json",
+      "exitCode": 0,
+      "findings": 0,
+      "scope": "Static regex detection on JSON only; does not replace screenshot review or contrast measurement."
+    }
+  },
+  "evidenceDirectory": "review-evidence/daylight/simplified-cap/",
+  "productionThisTurn": {
+    "product": "Body Oil Collection",
+    "productId": "poster-073",
+    "version": "client1.22",
+    "publishedAt": "2026-10-26T20:43:43+08:00",
+    "receipt": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/docs/client-motion-demo/client122-body-oil-cap-release.json",
+    "sourceCommit": "e36ad40d0f60cbdf94e52924c11619334f1d8b63",
+    "archiveCommit": "d4d2b00f8ad573d3e7750b509d71475368170d98",
+    "daylightIncluded": false
+  },
+  "limits": [
+    "Daylight revision remains local pending user review.",
+    "Physical phones and manufacturing dimensions not verified.",
+    "No new Daylight rotate/reference round-trip browser test; shared scene is unchanged and related frontend regression tests passed.",
+    "Chrome full preset button was not verified; actual slider movement to 100 percent and rendered result were verified."
+  ]
+}

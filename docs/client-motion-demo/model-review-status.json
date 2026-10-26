@@ -363,17 +363,16 @@
     "background": "#ddceba"
   },
   "poster-070": {
-    "state": "published",
+    "state": "complete",
     "components": [
       "Closure",
-      "CapWrap",
       "Body",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-070-closed.webp",
-      "open": "/review-assets/poster-070-open.webp"
+      "closed": "/review-assets/poster-070-simplified-closed.png",
+      "open": "/review-assets/poster-070-simplified-open.png"
     },
     "background": "#e4e1d7"
   }

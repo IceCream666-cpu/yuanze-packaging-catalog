@@ -4,32 +4,16 @@
       "key": "closure",
       "node": "Closure",
       "title": [
-        "金属盖",
-        "Cap"
+        "整瓶盖",
+        "Complete cap"
       ],
       "short": [
-        "金属盖",
-        "Cap"
+        "整瓶盖",
+        "Complete cap"
       ],
       "detail": [
-        "浅香槟银色圆筒旋盖。",
-        "Cylindrical screw cap in pale champagne silver."
-      ]
-    },
-    {
-      "key": "wrap",
-      "node": "CapWrap",
-      "title": [
-        "纹理套",
-        "Wrap"
-      ],
-      "short": [
-        "纹理套",
-        "Wrap"
-      ],
-      "detail": [
-        "原图压纹套纸与右侧延伸边。",
-        "Embossed cap wrap with the loose right edge shown in the reference."
+        "浅香槟银色圆筒盖、密封垫及压纹套纸保持组装，连同右侧延伸边整体上移。",
+        "The champagne-silver cap, internal seal and embossed wrap with its loose right edge stay assembled and lift together."
       ]
     },
     {
@@ -92,13 +76,8 @@
     "offsets": {
       "closure": [
         0,
-        2.8,
+        1.35,
         0
-      ],
-      "wrap": [
-        1.5,
-        1.0,
-        0.4
       ],
       "label": [
         -1.6,
@@ -118,11 +97,11 @@
     "camera": {
       "centerY": [
         1.45,
-        3.1
+        2.1
       ],
       "height": [
         4.2,
-        7.8
+        5.3
       ],
       "width": [
         3.8,
