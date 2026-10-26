@@ -3,19 +3,21 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Not authorized by this selection; keep changes local for review.",
+  "deployment": "Moisture Shampoo approved and published as client1.23; Woodland revision local for review; all remaining selected revisions require individual review.",
   "items": [
     {
       "selectionNumber": 4,
       "posterId": "poster-049",
       "name": "Moisture Shampoo",
-      "status": "local-awaiting-user"
+      "status": "published-live-verified",
+      "releaseVersion": "client1.23",
+      "releaseCommit": "ea6fa9d4ab201470def10dad481e912f09a3e00f"
     },
     {
       "selectionNumber": 5,
       "posterId": "poster-042",
       "name": "Woodland",
-      "status": "queued"
+      "status": "local-awaiting-user"
     },
     {
       "selectionNumber": 6,

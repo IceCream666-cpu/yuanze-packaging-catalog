@@ -305,34 +305,18 @@
     "parts": [
       {
         "key": "closure",
-        "node": "Closure",
+        "node": "CapAssembly",
         "title": [
-          "亮黑球形外盖",
-          "Gloss-black spherical cap"
+          "完整亮黑球盖",
+          "Complete glossy-black cap"
         ],
         "short": [
-          "球盖",
-          "Cap"
+          "整瓶盖",
+          "Complete cap"
         ],
         "detail": [
-          "截底球形轮廓，亮黑表面。",
-          "A flat-base sphere with a polished black finish."
-        ]
-      },
-      {
-        "key": "liner",
-        "node": "StopperInsert",
-        "title": [
-          "瓶口密封内塞",
-          "Neck insert"
-        ],
-        "short": [
-          "内塞",
-          "Insert"
-        ],
-        "detail": [
-          "内塞与外盖分离，内部结构为示意。",
-          "A separate insert; concealed structure is illustrative."
+          "亮黑球盖与盖内密封件保持组装，作为整体上移。",
+          "The glossy-black spherical cap and its fitted inner seal stay assembled and lift together."
         ]
       },
       {

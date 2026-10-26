@@ -1,5 +1,17 @@
 # 源泽版本记录
 
+## Woodland 完整瓶盖修订（2026-10-26，本地待审）
+
+按用户选单完成05 / poster-042 Woodland。原Closure与StopperInsert嵌入单位变换的CapAssembly，保留全部闭合坐标，球盖和内塞整体上移1.20。四层为完整亮黑球盖、琥珀色空玻璃瓶、木纹标贴、完整Logo/产品名/容量。标贴和印刷位移及缩放保持，文字仍比标贴更向外；未改变原比例、材质、灯光或添加料体。全开取景中心2.05、高5.1，Coastal和其他产品的动画保持。
+
+7项实际GLB、91项前端测试通过。8网格、26590顶点世界坐标差0；属性、三角索引、材质与5份SVG/PNG相同。其他25项包装资源和非目标配置不变，source/public/dist/本地HTTP返回模型摘要一致。Codex内置浏览器1280×720实际检查0%、50%、100%、90°侧视与回正/回合拢；四张截图经原海报对照和独立审美复核，无本轮阻断项。手机配置测试通过，本轮未做手机浏览器截图或实体手机验收。
+
+入口：http://127.0.0.1:8784/?model=poster-042 。修订仅本地待审，正式042仍为原五层版；下一款06 Pure Volume尚未开始，余14款排队。回执 `client-motion-demo/woodland-simplified-preview-verification.json`，截图 `client-motion-demo/review-evidence/woodland/simplified-cap/`。对应提交标题“Keep Woodland stopper inside complete cap during expansion”。隐藏配合及壁厚仍是展示示意。
+
+## client1.23 Moisture Shampoo 整体泵头（2026-10-26 22:45:23 已上线）
+
+用户批准04并授权上线。隔离发布分支只移入Moisture获批修订，保持原25款模型及412张图片，Daylight和本轮Woodland新稿未发布。完整HTTPS、旧ETag缓存更新、权限/匿名/登录退出验证通过；Codex内置浏览器1280×720合拢/半开/全开、90°旋转及回正回零实际通过。正式源提交8f7ac21b，最终发布与浏览器回执提交ea6fa9d4；正式回执 `docs/client-motion-demo/client123-moisture-pump-release.json` 在发布分支。完整回滚快照保留。本地预览历史记录如下，当前状态以本段与选单为准。
+
 ## Moisture Shampoo 完整泵头修订（2026-10-26，本地待审）
 
 用户从23款待复查图中选定16款，确认继续逐款停下检查。顺序为04、05、06、07、09、10、11、12、13、14、17、18、19、20、21、23；编号映射见 `client-motion-demo/selected-simplification-queue.json`，其中23是poster-071长颈泵瓶，Daylight不在本次选单内。

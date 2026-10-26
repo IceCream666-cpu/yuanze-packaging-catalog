@@ -45,6 +45,10 @@
 - 058–061 也会读取本款已有 `print.svg`；不要先清空单款源目录再运行。保留 SVG、纸张、软木和法线等配套贴图。
 - 使用 Blender 4.5 系列的 `bpy`、`bmesh`、`mathutils`；部分脚本依赖 Blender 自带 NumPy。SVG 栅格化调用 Node.js 与 Sharp，并使用本机字体。脚本当前记录了 Codex 运行时的绝对路径，迁移电脑时须同步检查这些路径及字体，避免排版漂移。
 
+## Woodland 整盖简化修订
+
+2026-10-26：poster-042新增单位变换CapAssembly，保留Closure与StopperInsert原变换并整体移动；8网格世界坐标和原材质/贴图完全相同。四组为CapAssembly、Body、PaperLabel、LogoPrint；沿用原Woodland专属场景，不新增review配置。整体升降1.20，全开相机中心2.05、视高5.1，纸标和完整印刷继续独立外展。仅本地待审，当前停在05；06尚未开始。04 Moisture已获批并单独发布client1.23，正式证据提交ea6fa9d4。
+
 ## Moisture Shampoo 整泵简化修订
 
 2026-10-26：poster-049 将原Closure、PumpStem、Actuator嵌套进PumpAssembly，保持闭合世界坐标。纸标与完整印刷独立，空瓶几何、材质和贴图不变。本款沿用原Moisture专属场景分支，不新增review配置；整体位移及取景由packaging-scene.js维护。仅本地待审，按用户选单先做04，确认后才继续05。

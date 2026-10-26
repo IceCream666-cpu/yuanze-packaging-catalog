@@ -2,11 +2,17 @@
   "id": "poster-042",
   "components": [
     "Body",
-    "Closure",
-    "StopperInsert",
+    "CapAssembly",
     "PaperLabel",
     "LogoPrint"
   ],
+  "assemblyChildren": {
+    "CapAssembly": [
+      "Closure",
+      "StopperInsert"
+    ]
+  },
+  "completeCapLift": 1.2,
   "height": 2.9,
   "width": 1.277533039647577,
   "depth": 0.8942731277533038,
@@ -33,6 +39,6 @@
     "350 ml"
   ],
   "hiddenStructure": "StopperInsert is an illustrative friction sleeve; verify against a physical sample",
-  "revision": "individual-reference-review-20261024",
+  "revision": "complete-cap-local-review-20261026",
   "generator": "build_woodland.py"
 }

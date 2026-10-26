@@ -126,10 +126,15 @@ for key,g in groups.items():
  pivot=Vector((0,0,pivots[key]))
  for child in g.children:child.location-=pivot
  g.location=pivot*scale;g.scale=(scale,scale,scale)
+# Keep the fitted cap and insert unchanged inside one identity assembly.
+cap_assembly=bpy.data.objects.new('CapAssembly',None)
+bpy.context.collection.objects.link(cap_assembly)
+for key in ('Closure','StopperInsert'):groups[key].parent=cap_assembly
+groups={'Body':groups['Body'],'CapAssembly':cap_assembly,'PaperLabel':groups['PaperLabel'],'LogoPrint':groups['LogoPrint']}
 assert abs(2.27*scale-2.9)<1e-9
 assert abs(.51/(1.0)-.51)<1e-9
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-042.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-042.blend'))
-(OUT/'model-info.json').write_text(json.dumps({'id':'poster-042','components':list(groups),'height':2.9,'width':scale,'depth':.7*scale,'closedHeightToWidth':2.27,'capDiameterToBodyWidth':.51,'capVisibleHeightToBodyWidth':.42,'mouthRingDiameterToBodyWidth':.564,'labelWidthToBodyWidth':.61,'labelHeightToBodyWidth':1.21,'labelBottomToBodyWidth':.14,'illustrativeDimensions':True,'containsFormula':False,'reference':'featured-assets/poster-042.png','editableArtwork':['label.svg','print.svg'],'proceduralTexture':'wood.png','separateLabelAndPrint':True,'printIncludes':['liaose','WOODLAND','BODY WASH','350 ml'],'hiddenStructure':'StopperInsert is an illustrative friction sleeve; verify against a physical sample','revision':'individual-reference-review-20261024','generator':'build_woodland.py'},indent=2)+'\n')
+(OUT/'model-info.json').write_text(json.dumps({'id':'poster-042','components':list(groups),'assemblyChildren':{'CapAssembly':['Closure','StopperInsert']},'completeCapLift':1.2,'height':2.9,'width':scale,'depth':.7*scale,'closedHeightToWidth':2.27,'capDiameterToBodyWidth':.51,'capVisibleHeightToBodyWidth':.42,'mouthRingDiameterToBodyWidth':.564,'labelWidthToBodyWidth':.61,'labelHeightToBodyWidth':1.21,'labelBottomToBodyWidth':.14,'illustrativeDimensions':True,'containsFormula':False,'reference':'featured-assets/poster-042.png','editableArtwork':['label.svg','print.svg'],'proceduralTexture':'wood.png','separateLabelAndPrint':True,'printIncludes':['liaose','WOODLAND','BODY WASH','350 ml'],'hiddenStructure':'StopperInsert is an illustrative friction sleeve; verify against a physical sample','revision':'complete-cap-local-review-20261026','generator':'build_woodland.py'},indent=2)+'\n')
 print('Woodland rebuilt:',len(groups),'independent groups')

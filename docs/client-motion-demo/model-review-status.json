@@ -43,7 +43,7 @@
     "background": "#d8e5da"
   },
   "poster-049": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "PumpAssembly",
       "Body",
@@ -57,17 +57,16 @@
     "background": "#e0e4e7"
   },
   "poster-042": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "Closure",
-      "StopperInsert",
+      "CapAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-042-closed.webp",
-      "open": "/review-assets/poster-042-open.webp"
+      "closed": "/review-assets/poster-042-simplified-closed.png",
+      "open": "/review-assets/poster-042-simplified-open.png"
     },
     "background": "#73523d"
   },
