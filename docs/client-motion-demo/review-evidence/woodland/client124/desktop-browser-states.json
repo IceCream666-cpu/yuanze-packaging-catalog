@@ -1,0 +1,132 @@
+[
+  {
+    "name": "closed",
+    "title": "源泽 · 客户海报展厅 — client1.24",
+    "viewport": [
+      1462,
+      853
+    ],
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  },
+  {
+    "name": "half",
+    "title": "源泽 · 客户海报展厅 — client1.24",
+    "viewport": [
+      1462,
+      853
+    ],
+    "state": {
+      "progress": 0.5,
+      "renderedProgress": 0.49980069006372174,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5493821391975375,
+        0.08996412421146993,
+        0.8246711386051409
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  },
+  {
+    "name": "open",
+    "title": "源泽 · 客户海报展厅 — client1.24",
+    "viewport": [
+      1462,
+      853
+    ],
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9998671235377188,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.0995880829669282,
+        0.1799760822367893,
+        1.649780753837236
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  },
+  {
+    "name": "rotated",
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9999999823157375,
+      "yaw": 1.570587272654526,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.0999999451787863,
+        0.17999999681683265,
+        1.6499999708209667
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  },
+  {
+    "name": "returned-closed",
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0.0003133125999356256,
+      "yaw": 9.643294213067394e-9,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.0009712690598004393,
+        0.00005639626798836783,
+        0.0005169657898937822
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  }
+]

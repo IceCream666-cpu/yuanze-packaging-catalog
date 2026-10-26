@@ -1,0 +1,60 @@
+[
+  {
+    "name": "closed",
+    "title": "源泽 · 客户海报展厅 — client1.24",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0.000005981679695091236,
+      "yaw": 1.8410717347450387e-10,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.000018543207054782833,
+        0.0000010767023451707658,
+        0.000009869771496900539
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  },
+  {
+    "name": "open",
+    "title": "源泽 · 客户海报展厅 — client1.24",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9997240143340717,
+      "yaw": 1.258780654079132e-17,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.0991444444356224,
+        0.17995032258013288,
+        1.6495446236512181
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 87562
+    }
+  }
+]
