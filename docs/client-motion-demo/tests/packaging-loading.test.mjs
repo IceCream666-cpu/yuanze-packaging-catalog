@@ -15,7 +15,7 @@ function deferred() {
   const promise = new Promise((yes, no) => {resolve = yes; reject = no;});
   return {promise, resolve, reject};
 }
-function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
+function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
   const dom = new JSDOM('<div id="host"></div>', {pretendToBeVisual: true});
   const events = [], frames = new Map(); let frameId = 0, rendererDisposals = 0, envDisposals = 0, observers = 0;
   Object.assign(globalThis, {window: dom.window, document: dom.window.document,
@@ -29,7 +29,7 @@ function harness({parse, renderError, product = PACKAGING_PRODUCTS['poster-012']
   class Renderer {
     constructor() {events.push('renderer'); this.domElement = document.createElement('canvas'); this.shadowMap = {}; this.capabilities = {getMaxAnisotropy: () => 8}; this.info = {render: {calls: 1, triangles: 12}};}
     setPixelRatio() {} setClearColor() {} setSize() {}
-    render() {events.push('render'); if (renderError) throw renderError;}
+    render(scene, camera) {events.push('render'); if (renderError) throw renderError; onRender?.(scene, camera);}
     dispose() {rendererDisposals++;}
   }
   class PMREM {
@@ -411,7 +411,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
-  ['poster-049', {closure: .85, stem: 1.75, head: 2.8}, [-2.65, .18, 1.65]],
+  ['poster-049', {pump: 1.25}, [-2.65, .18, 1.65]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
   ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
@@ -443,7 +443,7 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' ? 4 : id === 'poster-042' ? 5 : id === 'poster-051' || id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
@@ -549,4 +549,64 @@ test('new clear overcaps retain neutral transmission without changing prior fini
       assert.equal(cap.material.transmission,1);
     } finally {api?.dispose();env.close();}
   }
+});
+
+test('Moisture Shampoo moves its exported pump as one unit and preserves independent paper and print', async () => {
+  const product=PACKAGING_PRODUCTS['poster-049'];
+  assert.equal(product.review,undefined,'Moisture retains its existing material and lighting branch');
+  const bytes=readFileSync(new URL('../packaging-assets/poster-049.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  let camera;
+  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();
+    const pump=loaded.scene.getObjectByName('PumpAssembly');
+    const pieces=['Closure','PumpStem','Actuator'].map(name=>loaded.scene.getObjectByName(name));
+    pieces.forEach(piece=>assert.equal(piece.parent,pump));
+    const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone()}]));
+    assert.deepEqual(Object.keys(parts).sort(),['jar','label','print','pump']);
+    const restPump=pump.getWorldPosition(new Three.Vector3());
+    const restPieces=pieces.map(piece=>({position:piece.getWorldPosition(new Three.Vector3()),matrix:piece.matrix.toArray()}));
+    for(const progress of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(progress);flush();
+      const state=api.getState();
+      assert.equal(state.renderedProgress,progress);
+      assert.ok(Math.abs(camera.position.y-1.05-(1.45+.625*progress))<1e-9,'camera follows the compact pump assembly center');
+      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+.85*progress))<1e-9,'desktop framing reaches a 5.05-unit full-open height');
+      assert.ok(Math.abs(camera.position.x+.65*progress)<1e-9,'camera preserves the approved horizontal framing');
+      assert.ok(parts.pump.position.clone().sub(rest.pump.position).distanceTo(new Three.Vector3(0,1.25*progress,0))<1e-9);
+      const displacement=pump.getWorldPosition(new Three.Vector3()).sub(restPump);
+      pieces.forEach((piece,i)=>{
+        assert.deepEqual(piece.matrix.toArray(),restPieces[i].matrix,'the three pump parts retain their assembled transforms');
+        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(restPieces[i].position).distanceTo(displacement)<1e-9,'every pump part moves with the assembly');
+      });
+      for(const [key,offset,scale] of [['label',[-1.25,.08,.65],1.15],['print',[-2.65,.18,1.65],1.45]]) {
+        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
+        assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+(scale-1)*progress))<1e-9);
+      }
+      for(const key of progress===0 ? Object.keys(parts) : ['jar']) {
+        assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);
+        assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
+        assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
+      }
+    }
+  } finally {api?.dispose();env.close();}
 });

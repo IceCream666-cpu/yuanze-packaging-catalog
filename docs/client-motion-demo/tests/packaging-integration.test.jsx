@@ -482,6 +482,32 @@ test('pump fetches its own model and has five separate layers with its own headi
   } finally {await env.close();}
 });
 
+test('Moisture Shampoo exposes one complete pump and four independent layer controls', async () => {
+  const env=setup();let mounted,focused,url;
+  const moisture={...item,id:'poster-049',title:{zh:'保湿洗发露',en:'Moisture Shampoo'}};
+  globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+  const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{
+    mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};
+  }})}});
+  try {
+    const request=startPackagingModelRequest(moisture.id);await request.promise;request.abort();
+    assert.equal(url,'/assets/packaging/poster-049.glb');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={moisture}/>));
+    assert.equal(document.querySelector('h1').textContent,'Moisture Shampoo');
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['PumpAssembly','Body','PaperLabel','LogoPrint']);
+    assert.deepEqual(mounted.product.parts.map(p=>p.key),['pump','jar','label','print']);
+    assert.equal(mounted.product.review,undefined,'the established material branch remains in use');
+    for(const selector of ['.packaging-part','.packaging-mobile-parts button']) {
+      const buttons=[...document.querySelectorAll(selector)];
+      assert.equal(buttons.length,4);
+      for(const [i,key] of ['pump','jar','label','print'].entries()) {
+        await click(buttons[i]);assert.equal(focused,key);
+      }
+    }
+  } finally {await env.close();}
+});
+
 test('Woodland keeps ivory print readable against its separate warm studio and exposes all five layers', async () => {
   const env=setup(); let mounted;
   const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},dispose(){}};}})}});

@@ -61,18 +61,33 @@ class MoistureModelTests(unittest.TestCase):
                 for p in self.gltf['meshes'][self.nodes[index]['mesh']]['primitives']]
 
     def mesh_indices(self, root=None):
+        def belongs(index):
+            while True:
+                if self.nodes[index]['name'] == root:
+                    return True
+                if index not in self.parents:
+                    return False
+                index = self.parents[index]
         return [i for i, node in enumerate(self.nodes)
-                if 'mesh' in node and (root is None or self.ancestor(i) == root)]
+                if 'mesh' in node and (root is None or belongs(i))]
 
     @staticmethod
     def bounds(points):
         return ([min(p[j] for p in points) for j in range(3)],
                 [max(p[j] for p in points) for j in range(3)])
 
-    def test_six_independent_groups_and_embedded_editable_assets(self):
+    def test_four_groups_keep_all_three_pump_parts_in_one_assembly(self):
         roots = self.gltf['scenes'][self.gltf.get('scene', 0)]['nodes']
         self.assertEqual({self.nodes[i]['name'] for i in roots},
-                         {'Body', 'Closure', 'PumpStem', 'Actuator', 'PaperLabel', 'LogoPrint'})
+                         {'Body', 'PumpAssembly', 'PaperLabel', 'LogoPrint'})
+        assembly = self.named['PumpAssembly']
+        self.assertEqual({self.nodes[i]['name'] for i in self.nodes[assembly]['children']},
+                         {'Closure', 'PumpStem', 'Actuator'})
+        for name in ('Closure', 'PumpStem', 'Actuator'):
+            self.assertEqual(self.parents[self.named[name]], assembly)
+            self.assertTrue(self.mesh_indices(name), f'{name} retains its original meshes')
+        self.assertEqual(len(self.mesh_indices('PumpAssembly')), 7)
+        self.assertEqual(len(self.mesh_indices()), 12)
         self.assertTrue(all(self.nodes[i].get('children') for i in roots))
         self.assertTrue(all('uri' not in item for item in self.gltf.get('images', []) + self.gltf.get('buffers', [])))
         self.assertFalse(self.gltf.get('animations'))
@@ -101,11 +116,22 @@ class MoistureModelTests(unittest.TestCase):
         self.assertGreaterEqual(len(outer), 64)
         self.assertLess(max(outer) - min(outer), diameter * .005, 'The widest bottle ring must be circular.')
         all_low, all_high = self.bounds([p for i in self.mesh_indices() for p in self.positions(i)])
+        self.assertAlmostEqual(all_high[1] - all_low[1], 2.9, delta=.001)
         self.assertTrue(2.40 <= (all_high[1] - all_low[1]) / diameter <= 2.50,
                         'The full bottle must match the reference height-to-width ratio.')
         cap_low, cap_high = self.bounds([p for i in self.mesh_indices('Closure') for p in self.positions(i)])
         self.assertTrue(.86 <= (cap_high[0] - cap_low[0]) / diameter <= .92,
                         'The silver closure must retain the reference diameter relative to the body.')
+
+    def test_complete_pump_lift_clears_the_bottle_without_changing_internal_spacing(self):
+        bottle_top = max(p[1] for i in self.mesh_indices('Body') for p in self.positions(i))
+        pump_bottom = min(p[1] for i in self.mesh_indices('PumpAssembly') for p in self.positions(i))
+        self.assertGreater(pump_bottom + 1.25 - bottle_top, 1.1)
+        # All original pump meshes have one shared moving parent; no artwork is moved with it.
+        self.assertTrue(all(self.ancestor(i) == 'PumpAssembly'
+                            for name in ('Closure', 'PumpStem', 'Actuator') for i in self.mesh_indices(name)))
+        self.assertFalse(set(self.mesh_indices('PumpAssembly')) &
+                         set(self.mesh_indices('PaperLabel') + self.mesh_indices('LogoPrint')))
 
     def test_clear_neutral_glass_and_polished_silver_materials(self):
         glass = [m for m in self.gltf['materials']

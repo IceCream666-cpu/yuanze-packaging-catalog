@@ -179,6 +179,18 @@ for key,group in groups.items():
     group.scale=(scale,scale,scale)
 assert set(groups)==set(pivots)
 assert abs(2.45*scale-2.9)<1e-9
+# Keep the fitted pump assembly intact for a customer-facing exploded view.
+pump = bpy.data.objects.new('PumpAssembly', None)
+bpy.context.collection.objects.link(pump)
+pump.location = (0, 0, 1.74 * scale)
+bpy.context.view_layer.update()
+for name in ['Closure', 'PumpStem', 'Actuator']:
+    child = groups.pop(name)
+    fitted = child.matrix_world.copy()
+    child.parent = pump
+    child.matrix_world = fitted
+groups['PumpAssembly'] = pump
+bpy.context.view_layer.update()
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-049.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-049.blend'))
@@ -190,5 +202,6 @@ bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-049.blend'))
     'labelMovesWithPrint':False,
     'separateLabelAndPrint':True,
     'printIncludes':['liaose','WHIPPED MOISTURE','SHAMPOO','two separator rules'],
-    'revision':'individual-reference-review-20261024','generator':'build_moisture.py'
+    'revision':'complete-pump-20261026','generator':'build_moisture.py',
+    'completePumpIncludes':['Closure','PumpStem','Actuator']
 },indent=2)+'\n')
