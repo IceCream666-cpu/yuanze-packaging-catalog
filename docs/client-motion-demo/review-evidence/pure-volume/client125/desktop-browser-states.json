@@ -1,0 +1,106 @@
+{
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "title": "源泽 · 客户海报展厅 — client1.25",
+  "checkedAt": "2026-10-27T01:50:43.968Z",
+  "scope": "live HTTPS browser desktop",
+  "closed": {
+    "progress": 0,
+    "renderedProgress": 0,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0,
+      0,
+      0
+    ],
+    "components": [
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 116,
+    "triangles": 492438
+  },
+  "half": {
+    "progress": 0.5,
+    "renderedProgress": 0.49983621853076815,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.6994431430046117,
+      0.08997051933553823,
+      0.8247297605757674
+    ],
+    "components": [
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 116,
+    "triangles": 492438
+  },
+  "open": {
+    "progress": 1,
+    "renderedProgress": 0.9998334839536263,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -3.399433845442329,
+      0.17997002711165266,
+      1.6497252485234832
+    ],
+    "components": [
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 116,
+    "triangles": 492438
+  },
+  "rotated": {
+    "progress": 1,
+    "renderedProgress": 0.9999954310122594,
+    "yaw": 1.527695680843382,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -3.399984465441682,
+      0.17999917758220674,
+      1.649992461170228
+    ],
+    "components": [
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 116,
+    "triangles": 492438
+  },
+  "reset": {
+    "progress": 0,
+    "renderedProgress": 0.00010541941651907497,
+    "yaw": 8.542954726697509e-9,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.0003584260161648549,
+      0.000018975494973427764,
+      0.00017394203725647369
+    ],
+    "components": [
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 116,
+    "triangles": 492438
+  }
+}

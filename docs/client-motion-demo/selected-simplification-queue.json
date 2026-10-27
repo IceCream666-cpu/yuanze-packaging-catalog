@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo published as client1.23 and Woodland as client1.24; Pure Volume revision local for review; remaining selected revisions require individual review.",
+  "deployment": "Moisture Shampoo client1.23, Woodland client1.24 and Pure Volume client1.25 are published and live verified. Gentle Cleansing is local awaiting user review; remaining selected revisions require individual review.",
   "items": [
     {
       "selectionNumber": 4,
@@ -26,14 +26,23 @@
       "selectionNumber": 6,
       "posterId": "poster-051",
       "name": "Pure Volume",
-      "status": "local-awaiting-user",
-      "localRevisionReceipt": "pure-volume-dip-tube-preview-verification.json"
+      "status": "published-live-verified",
+      "localRevisionReceipt": "pure-volume-dip-tube-preview-verification.json",
+      "releaseVersion": "client1.25",
+      "releaseSourceCommit": "681fb753ce202e22c83410306a6818f2149aeee0",
+      "releaseHttpsVerification": "passed",
+      "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+      "releaseReceiptStatus": "complete",
+      "physicalMobileDeviceTested": false,
+      "releaseReceiptCommit": "5c1c3d93e8c3466117b5b01303225a056cd5c8ef",
+      "releaseReceipt": "client125-pure-volume-pump-release.json"
     },
     {
       "selectionNumber": 7,
       "posterId": "poster-044",
       "name": "Gentle Cleansing",
-      "status": "queued"
+      "status": "local-awaiting-user",
+      "localRevisionReceipt": "gentle-simplified-preview-verification.json"
     },
     {
       "selectionNumber": 9,

@@ -464,51 +464,19 @@
         ]
       },
       {
-        "key": "head",
-        "node": "Actuator",
+        "key": "pump",
+        "node": "PumpAssembly",
         "title": [
-          "短嘴泡沫泵头",
-          "Short foam actuator"
+          "完整泡沫泵头",
+          "Complete foam pump"
         ],
         "short": [
-          "泵头",
-          "Head"
+          "整泵头",
+          "Pump"
         ],
         "detail": [
-          "朝右出液短嘴与宽按压面。",
-          "Right-facing short nozzle and broad actuator."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "按压连接泵杆",
-          "Connecting pump stem"
-        ],
-        "short": [
-          "泵杆",
-          "Stem"
-        ],
-        "detail": [
-          "按压头下方的连接层。",
-          "Connection beneath the actuator."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "亮白宽旋盖",
-          "Glossy white collar"
-        ],
-        "short": [
-          "旋盖",
-          "Collar"
-        ],
-        "detail": [
-          "与瓶身近乎齐宽的光滑盖座。",
-          "Smooth collar close to the body diameter."
+          "短嘴按压头、连接泵杆、宽盖座与透明吸液管保持装配，整体向上移开。",
+          "The short actuator, connecting stem, wide collar and clear dip tube stay fitted and lift together."
         ]
       },
       {

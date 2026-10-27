@@ -71,7 +71,7 @@
     "background": "#73523d"
   },
   "poster-051": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "PumpAssembly",
       "BottleAssembly",
@@ -82,24 +82,31 @@
       "closed": "/review-assets/poster-051-dip-tube-closed.png",
       "open": "/review-assets/poster-051-dip-tube-open.png"
     },
-    "background": "#dce4d1"
+    "background": "#dce4d1",
+    "releaseVersion": "client1.25",
+    "releaseSourceCommit": "681fb753ce202e22c83410306a6818f2149aeee0",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "physicalMobileDeviceTested": false,
+    "releaseReceiptCommit": "5c1c3d93e8c3466117b5b01303225a056cd5c8ef",
+    "releaseReceipt": "client125-pure-volume-pump-release.json"
   },
   "poster-044": {
-    "state": "published",
+    "state": "complete",
     "components": [
       "Overcap",
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-044-closed.webp",
-      "open": "/review-assets/poster-044-open.webp"
+      "closed": "/review-assets/poster-044-simplified-closed.png",
+      "open": "/review-assets/poster-044-simplified-open.png"
     },
-    "background": "#e4d8d3"
+    "background": "#e4d8d3",
+    "reviewStatus": "local-awaiting-user",
+    "localRevisionReceipt": "gentle-simplified-preview-verification.json"
   },
   "poster-047": {
     "state": "published",

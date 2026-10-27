@@ -457,15 +457,17 @@ test('Pure Volume exposes the complete pump, bottle with cord, clear label and f
   } finally {await env.close();}
 });
 
-test('Gentle Cleansing exposes its cover, frosted oval and complete printing independently', async () => {
+test('Gentle Cleansing exposes its cover, complete pump, frosted oval and printing independently', async () => {
   const env=setup(); let mounted,focused;
   const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
   try {
     await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-044'}}/>));
-    assert.equal(document.querySelectorAll('.packaging-part').length,7);
-    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,7);
-    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Overcap','Actuator','PumpStem','Closure','Body','PaperLabel','LogoPrint']);
-    await click(document.querySelectorAll('.packaging-mobile-parts button')[5]);assert.equal(focused,'label');
+    assert.equal(document.querySelectorAll('.packaging-part').length,5);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,5);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint']);
+    assert.equal(mounted.product.parts.some(part=>['head','stem','closure'].includes(part.key)),false);
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[1]);assert.equal(focused,'pump');
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[3]);assert.equal(focused,'label');
     assert.match(document.querySelector('h1').textContent,/Gentle Cleansing/);
     assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#e8d6d3');
   } finally {await env.close();}

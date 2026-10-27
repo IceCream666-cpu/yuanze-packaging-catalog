@@ -2,13 +2,39 @@
   "id": "poster-044",
   "components": [
     "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
     "Overcap",
     "PaperLabel",
-    "LogoPrint"
+    "LogoPrint",
+    "PumpAssembly"
   ],
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "completePumpLift": 2.15,
+  "overcapLift": 3.15,
+  "camera": {
+    "closedCenter": 1.45,
+    "openCenter": 3.025,
+    "closedHeight": 4.2,
+    "openHeight": 7.2
+  },
+  "dipTube": {
+    "mesh": "Hollow clear Gentle pump dip tube",
+    "parent": "Closure",
+    "outerDiameterToBody": 0.07,
+    "innerDiameterToBody": 0.052,
+    "bottomToBody": 0.16,
+    "topToBody": 2.69,
+    "bodyInnerFloorToBody": 0.087,
+    "bottomClearance": 0.06154069767441861,
+    "fullyOpenBottleClearance": 0.357732558139535,
+    "openAtBothEnds": true,
+    "dimensionsIllustrative": true
+  },
   "height": 2.9,
   "width": 0.8430232558139534,
   "closedHeightToDiameter": 3.44,
@@ -38,8 +64,8 @@
   ],
   "proceduralTexture": "oval-frost.png",
   "separateLabelAndPrint": true,
-  "hiddenStructure": "Bottle neck and concealed short foamer stem are illustrative; top-cover dimple is not a through-hole",
+  "hiddenStructure": "Bottle neck, concealed short foamer stem, dip tube dimensions and actuator connection are illustrative; top-cover dimple is not a through-hole",
   "material": "Neutral clear empty bottle, separate thin clear protective cover, glossy white closure, translucent frosted oval",
-  "revision": "individual-reference-review-20261024",
+  "revision": "complete-foamer-with-clear-dip-tube-local-review-20261027",
   "generator": "build_gentle_cleansing.py"
 }

@@ -1,0 +1,464 @@
+{
+  "date": "2026-10-27",
+  "product": "Gentle Cleansing",
+  "productId": "poster-044",
+  "selectionNumber": 7,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "selectionNumber": 6,
+    "id": "poster-051",
+    "name": "Pure Volume",
+    "state": "published-live-browser-verified",
+    "version": "client1.25",
+    "releaseSourceCommit": "681fb753ce202e22c83410306a6818f2149aeee0",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "releaseReceiptCommit": "5c1c3d93e8c3466117b5b01303225a056cd5c8ef",
+    "releaseReceipt": "client125-pure-volume-pump-release.json"
+  },
+  "nextProduct": {
+    "selectionNumber": 9,
+    "id": "poster-056",
+    "name": "Golden Face Oil",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 12,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-044",
+  "components": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "dipTubeParent": "Closure"
+  },
+  "containsFormula": false,
+  "containsFoam": false,
+  "animation": {
+    "completePumpLift": 2.15,
+    "overcapLift": 3.15,
+    "cameraCenterY": [
+      1.45,
+      3.025
+    ],
+    "cameraHeight": [
+      4.2,
+      7.2
+    ],
+    "paperOffset": [
+      -1.25,
+      0.08,
+      0.65
+    ],
+    "paperScale": 1.15,
+    "printOffset": [
+      -2.65,
+      0.5,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "geometryAndScope": {
+    "model": "poster-044",
+    "bytes": 2377084,
+    "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+    "roots": [
+      "Body",
+      "Overcap",
+      "PaperLabel",
+      "LogoPrint",
+      "PumpAssembly"
+    ],
+    "meshCount": 16,
+    "preservedMeshCount": 15,
+    "meshes": [
+      {
+        "name": "Hollow straight clear bottle with rounded thick base",
+        "vertices": 4994,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Illustrative bottle neck retention bead",
+        "vertices": 768,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Clear overcap seating flange",
+        "vertices": 2112,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Hidden closure screw seat",
+        "vertices": 2304,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Wide smooth white screw closure",
+        "vertices": 3456,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Foamer stepped pump pedestal",
+        "vertices": 2496,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Illustrative short foamer connection",
+        "vertices": 1544,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Foamer actuator shaft",
+        "vertices": 784,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Recessed foamer outlet",
+        "vertices": 48,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short curved right dispensing spout",
+        "vertices": 351,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Tall rounded foamer actuator",
+        "vertices": 2135,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Clear lower overcap retention rim",
+        "vertices": 1920,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Hollow clear protective overcap with top dimple",
+        "vertices": 6317,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Translucent frosted white oval decoration",
+        "vertices": 9409,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      },
+      {
+        "name": "Complete Gentle Cleansing lettering",
+        "vertices": 9409,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesOrderIdentical": true,
+        "orientedTrianglesIdentical": true,
+        "materialIdentical": true
+      }
+    ],
+    "artworkSha256": {
+      "label.svg": "5ff8d7880eae70c7af10b17b1b9a8905023c0254f81685a9da776592ff5befa1",
+      "label.png": "3a2c2b2137ed6abb8ab601957f7a3effa1b25f7332a8973191ad02a15c496e75",
+      "print.svg": "c2d8ddf9d79fe1f43b3bf2a407496583d1c0469bbfa116838fbc554b8917c104",
+      "print.png": "2fecd7b4b3af4f3b60415b8d572913e22b3f0adcbebfdcdab3364b7140bfd118",
+      "oval-frost.png": "6ddc3b875ff6cb04690d9114b148eb40fe6c1a70a0102b68e35893593277e14d"
+    },
+    "artworkBytesIdentical": true,
+    "otherAssetsConfigManifestUnchanged": true,
+    "bounds": {
+      "Body": [
+        [
+          -0.42151162028312683,
+          0.0,
+          -0.42151162028312683
+        ],
+        [
+          0.42151162028312683,
+          1.9271511391900304,
+          0.42151162028312683
+        ]
+      ],
+      "Overcap": [
+        [
+          -0.3835755855122276,
+          2.1412789821624756,
+          -0.3835755855122276
+        ],
+        [
+          0.3835755855122276,
+          2.899999979069065,
+          0.3835755855122276
+        ]
+      ],
+      "PumpAssembly": [
+        [
+          -0.4139244083041369,
+          0.13488370420627938,
+          -0.4139244083041369
+        ],
+        [
+          0.4139244083041369,
+          2.800523099730185,
+          0.4139244083041369
+        ]
+      ],
+      "PaperLabel": [
+        [
+          -0.3034883786633955,
+          0.5100290664476006,
+          0.29378265650694146
+        ],
+        [
+          0.3034883786633955,
+          1.277180187223955,
+          0.42277616398764195
+        ]
+      ],
+      "LogoPrint": [
+        [
+          -0.34563952561727795,
+          0.2023255630391967,
+          0.2431125219170447
+        ],
+        [
+          0.34563952561727795,
+          1.5848836780703337,
+          0.42336627768333557
+        ]
+      ]
+    },
+    "tube": {
+      "name": "Hollow clear Gentle pump dip tube",
+      "ancestor": "PumpAssembly",
+      "parent": "Closure",
+      "bounds": [
+        [
+          -0.02950581354543913,
+          0.13488370420627938,
+          -0.02950581354543913
+        ],
+        [
+          0.02950581354543913,
+          2.267732554091964,
+          0.02950581354543913
+        ]
+      ],
+      "outerDiameter": 0.05901162790697675,
+      "innerDiameter": 0.043837209302325576,
+      "bodyInnerFloor": 0.07334301981884384,
+      "bottomClearance": 0.06154068438743554,
+      "fullyOpenBottleClearance": 0.35773256501624884,
+      "solidWallWatertight": true,
+      "windingConsistent": true,
+      "solidWallVolume": 0.002613352814561631,
+      "centralBoreUnobstructed": true,
+      "material": {
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9800000190734863
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        },
+        "name": "Gentle clear plastic dip tube",
+        "pbrMetallicRoughness": {
+          "metallicFactor": 0,
+          "roughnessFactor": 0.05999999865889549
+        }
+      }
+    },
+    "motion": {
+      "pumpLift": 2.15,
+      "overcapLift": 3.15,
+      "linear": true,
+      "fullyOpenCoverToPumpGap": 0.34075588243229094,
+      "cameraCenter": [
+        1.45,
+        3.025
+      ],
+      "cameraHeight": [
+        4.2,
+        7.2
+      ],
+      "labelAndPrintUnchanged": true
+    },
+    "maxWorldVertexDelta": 0.0,
+    "preservedVertexCount": 48047
+  },
+  "verification": {
+    "actualGlbTestsPassed": 8,
+    "frontendTestsPassed": 93,
+    "viteBuild": "passed",
+    "localSourcePublicDistGlbIdentical": true,
+    "desktopBrowser": "Ego Lite",
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopStages": [
+      0,
+      50,
+      100
+    ],
+    "rotate90AndReset": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileScrollWidth": 393,
+    "mobileStages": [
+      0,
+      100
+    ],
+    "codexBrowser": "Codex in-app browser (IAB)",
+    "codexViewport": [
+      1314,
+      969
+    ],
+    "codexDeliveredAtProgress": 100,
+    "physicalMobileDeviceTested": false,
+    "browserStateEvidence": [
+      "review-evidence/gentle/simplified-pump/desktop-states.json",
+      "review-evidence/gentle/simplified-pump/mobile-states.json"
+    ],
+    "screenshots": [
+      {
+        "path": "review-evidence/gentle/simplified-pump/desktop-closed.png",
+        "bytes": 116457,
+        "sha256": "93705191985d9c3931dd2e0b6844537322d1f9df525db7394d0ba20cc9b74506",
+        "dimensions": [
+          1474,
+          722
+        ]
+      },
+      {
+        "path": "review-evidence/gentle/simplified-pump/desktop-half.png",
+        "bytes": 112895,
+        "sha256": "be88b1348522e138d5afedc80459e79bf3e40e77862ba688866300b71e7b3993",
+        "dimensions": [
+          1474,
+          722
+        ]
+      },
+      {
+        "path": "review-evidence/gentle/simplified-pump/desktop-open.png",
+        "bytes": 108327,
+        "sha256": "49d7d81e7f634e70b08654deea618692f042d5dc18bbf48f7cebb2dac8849144",
+        "dimensions": [
+          1474,
+          722
+        ]
+      },
+      {
+        "path": "review-evidence/gentle/simplified-pump/desktop-rotated.png",
+        "bytes": 104065,
+        "sha256": "c7e6189e906154569d242909f2fd54ecb8c1fa3cf04c65747d83600db9fc9331",
+        "dimensions": [
+          1474,
+          722
+        ]
+      },
+      {
+        "path": "review-evidence/gentle/simplified-pump/mobile-closed.png",
+        "bytes": 52463,
+        "sha256": "e0b3df12657dfdced95363e12de6fe8be4b6d785762422911834a5d2bfe8ca1b",
+        "dimensions": [
+          393,
+          852
+        ]
+      },
+      {
+        "path": "review-evidence/gentle/simplified-pump/mobile-open.png",
+        "bytes": 47266,
+        "sha256": "94ed38df5c4676f4def47d6814eaee0d64fe254a1d6ca58fc4d4cbd91d814a95",
+        "dimensions": [
+          393,
+          852
+        ]
+      },
+      {
+        "path": "review-evidence/gentle/simplified-pump/codex-open.png",
+        "bytes": 47746,
+        "sha256": "e078ef0df61afe79a740f578dddfc69adcfbd11571f62c096b673b987d2b5a61",
+        "dimensions": [
+          1314,
+          969
+        ]
+      }
+    ],
+    "aestheticReview": "Independent review of all six desktop/mobile screenshots passed: the pump stays assembled, the cover separates, the tube remains connected, full expansion is in frame and print remains distinct from the frosted oval. Root also reviewed the actual Codex IAB 100% screenshot. Transparent tube contrast on the pale background and narrow edge-on print at 90 degrees remain known display limits.",
+    "galleryTestsPassed": 7,
+    "galleryPublicDistIdentical": true,
+    "codexScreenshotVisualReview": "passed"
+  },
+  "knownLimits": [
+    "Tube size, concealed pump connections and wall thickness are illustrative, not measured manufacturing dimensions.",
+    "The clear tube has subtle edge contrast on the pale background; small product text and near-edge-on print at 90 degrees are existing display limits.",
+    "Desktop and mobile viewport checks do not certify physical mobile devices."
+  ]
+}
