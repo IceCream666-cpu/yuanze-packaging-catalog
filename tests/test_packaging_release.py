@@ -1,4 +1,4 @@
-"""Client 1.24 updates only the approved Woodland complete cap and preserves the collection."""
+"""Client 1.25 updates only the approved Pure Volume complete pump and clear dip tube and preserves the collection."""
 import copy
 import hashlib
 import importlib.util

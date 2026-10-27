@@ -188,6 +188,16 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           o.castShadow=false;
         }
       }
+      if (pureVolume && m.name === 'Pure Volume clear plastic dip tube') {
+        m.toneMapped=false; m.thickness=.0155;
+        o.castShadow=false; o.receiveShadow=false;
+        m.onBeforeCompile = shader => {
+          shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
+            float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
+            gl_FragColor.rgb *= 1.0 - 0.18 * wallEdge;
+          `);
+        };
+      }
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
@@ -284,10 +294,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
       if (golden) parts.label.traverse(o => {if (o.isMesh) o.material.opacity=.05+.95*smooth(.03,.6,current);});
     } else if (pureVolume) {
-      parts.closure.position.copy(rest.closure.p).y += .9*current;
-      parts.stem.position.copy(rest.stem.p).y += 1.8*current;
-      parts.head.position.copy(rest.head.p).y += 2.8*current;
-      parts.cord.position.copy(rest.cord.p).addScaledVector(new T.Vector3(1.05,.30,.25),current);
+      parts.pump.position.copy(rest.pump.p).y += 2.3*current;
       parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.65,.08,.65),current);
       parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
       // The clear film should be readable in isolation without adding a paper patch at rest.
@@ -334,7 +341,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
     const interpolate = pair => pair[0]+(pair[1]-pair[0])*current;
-    const assemblyCenter = explosion ? interpolate(explosion.camera.centerY) : b5 ? 1.45+current*1.8 : golden ? 1.45+current*2.4+intermediateHeadroom*.8 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture ? 1.45+current*.625 : woodland ? 1.45+current*.60 : pureVolume || coastal ? 1.45+current*1.4 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = explosion ? interpolate(explosion.camera.centerY) : b5 ? 1.45+current*1.8 : golden ? 1.45+current*2.4+intermediateHeadroom*.8 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.8+intermediateHeadroom*.3 : moisture ? 1.45+current*.625 : woodland ? 1.45+current*.60 : pureVolume ? 1.45+current*1.15 : coastal ? 1.45+current*1.4 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;

@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-27",
+  "product": "Pure Volume",
+  "productId": "poster-051",
+  "selectionNumber": 6,
+  "state": "local-clear-thicker-dip-tube-awaiting-user",
+  "published": false,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-051",
+  "request": "Use the thicker colorless transparent tube shown in the user reference photograph, retaining its attachment to the complete pump.",
+  "previousRevision": "e4a21b89",
+  "components": [
+    "PumpAssembly",
+    "BottleAssembly",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "containsFormula": false,
+  "geometryAndScope": {
+    "model": "poster-051",
+    "bytes": 4132088,
+    "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+    "roots": [
+      "PaperLabel",
+      "LogoPrint",
+      "PumpAssembly",
+      "BottleAssembly"
+    ],
+    "meshCount": 58,
+    "preservedMeshCount": 57,
+    "artworkSha256": {
+      "label.svg": "760967122f0b46f3f6e1e3e3da86df67e3e034e388048136845446bd378a6541",
+      "label.png": "318bd6fe50b4b44c7f400a0bff525df295c98453bde4fb322e6e1114c1b5ae8d",
+      "print.svg": "a5670b6cc8224be22316dc9d258450c6fbabe887938c688bbe69c8ead366c386",
+      "print.png": "2a8752b9de0fcb113a3683ce5431ab6234ef7a6a1e17f3e27ed627345eb160f6"
+    },
+    "artworkBytesIdentical": true,
+    "otherAssetsConfigManifestUnchanged": true,
+    "sceneByteIdentical": false,
+    "tube": {
+      "name": "Hollow clear pump dip tube",
+      "previousName": "Hollow milk-white pump dip tube",
+      "ancestor": "PumpAssembly",
+      "parent": "Closure",
+      "bounds": [
+        [
+          -0.06904761636895795,
+          0.1726191095120866,
+          -0.06904761636895795
+        ],
+        [
+          0.06904761636895795,
+          2.67559517394929,
+          0.06904761636895795
+        ]
+      ],
+      "outerDiameter": 0.1380952380952381,
+      "innerDiameter": 0.10702380952380953,
+      "bodyInnerFloor": 0.10357142455343693,
+      "bottomClearance": 0.06904768495864966,
+      "fullyOpenBottleClearance": 0.42190492007349256,
+      "pumpLift": 2.3,
+      "solidWallWatertight": true,
+      "windingConsistent": true,
+      "solidWallVolume": 0.014961000779938683,
+      "centralBoreUnobstructed": true,
+      "material": {
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9800000190734863
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        },
+        "name": "Pure Volume clear plastic dip tube",
+        "pbrMetallicRoughness": {
+          "metallicFactor": 0,
+          "roughnessFactor": 0.05999999865889549
+        }
+      }
+    },
+    "sceneChange": {
+      "scope": "Only poster-051 clear plastic dip tube",
+      "allOtherSceneCodeIdentical": true,
+      "toneMapped": false,
+      "castShadow": false,
+      "receiveShadow": false,
+      "thickness": 0.0155,
+      "sourceMaterialPreserved": true,
+      "viewDependentEdgeCorrection": {
+        "existingGlassPattern": true,
+        "power": 9,
+        "maximumDarkening": 0.18
+      }
+    },
+    "preservedMeshWorldCoordinatesIdentical": true
+  },
+  "animation": {
+    "pumpLift": 2.3,
+    "cameraCenterY": [
+      1.45,
+      2.6
+    ],
+    "cameraHeight": [
+      4.2,
+      6.5
+    ],
+    "paperOffset": [
+      -1.65,
+      0.08,
+      0.65
+    ],
+    "printOffset": [
+      -3.4,
+      0.18,
+      1.65
+    ],
+    "bottleAndCordStationary": true
+  },
+  "verification": {
+    "actualGlbTestsPassed": 8,
+    "frontendTestsPassed": 92,
+    "viteBuild": "passed",
+    "sourcePublicDistHttpIdentical": true,
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopStages": [
+      0,
+      50,
+      100
+    ],
+    "rotate90AndReset": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileScrollWidth": 393,
+    "mobileStages": [
+      0,
+      100
+    ],
+    "codexViewport": [
+      1314,
+      969
+    ],
+    "codexDeliveredAtProgress": 100,
+    "aestheticReview": "Impeccable source regex scan: zero findings. Independent review of all six final desktop/mobile screenshots against user photo: no blocker; clear tube edge contrast is intentionally subtle on the pale background.",
+    "physicalMobileDeviceTested": false,
+    "screenshots": [
+      {
+        "path": "review-evidence/pure-volume/dip-tube/codex-open.png",
+        "sha256": "a0339d22581ed7185a5d8ad3cdcd96c415851701b3d7c0c49fbd389f570526ee"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-closed.png",
+        "sha256": "d57567bd4c5c3b527372062841ca17eb2ece054a941ed20c82b15c29e090bdd6"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-half.png",
+        "sha256": "15f1a29810385181ae9a62fc70bdfbf3994cc0c87e2480213c43e0fcba4d40dd"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-open.png",
+        "sha256": "1e336de9e19facd77f3cb7a7041c5d7fd169ba85274a90936492f5fd460e021d"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/desktop-rotated.png",
+        "sha256": "219fe8941acb052fc327a655db0a49c5ed975e15b1f8aa93e13033e029c40c28"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/mobile-closed.png",
+        "sha256": "b5706f7b4ca3d36745e7b0691b6ca23c1972ec7e2223562313706bf2b963c971"
+      },
+      {
+        "path": "review-evidence/pure-volume/dip-tube/mobile-open.png",
+        "sha256": "08c7f989f3a86b9fc6604a1785ee1fa9c309a9d35be178a5ee45f03097a334b9"
+      }
+    ]
+  },
+  "nextProduct": {
+    "id": "poster-044",
+    "name": "Gentle Cleansing",
+    "state": "not-started"
+  },
+  "knownLimits": [
+    "Tube dimensions and hidden connections are inferred for display, not measured manufacturing dimensions.",
+    "Fully expanded phone view has subtle transparent tube edges and small product text; no physical phone validation."
+  ],
+  "reference": {
+    "filename": "codex-clipboard-0735fb98-676c-48fb-93fb-f16deabdb671.jpg",
+    "sha256": "ac0cac37d5b2eba8b68640dd5a9dc72dfa091c72a5b2f15fb431569ee9f3e186",
+    "scope": "Tube appearance and relative diameter only; no measured production dimensions."
+  },
+  "runtimeTubeMaterial": {
+    "toneMapped": false,
+    "castShadow": false,
+    "receiveShadow": false,
+    "thickness": 0.0155,
+    "edgeCorrection": {
+      "power": 9,
+      "maxDarkening": 0.18
+    },
+    "otherMeshesUnchanged": true
+  }
+}

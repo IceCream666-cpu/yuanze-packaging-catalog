@@ -2,6 +2,7 @@
 import io
 import json
 import math
+from collections import Counter
 from pathlib import Path
 import struct
 import unittest
@@ -15,6 +16,7 @@ BODY = 'Hollow ivory pouch body with soft gathered folds'
 FILM = 'Illustrative transparent curved label carrier'
 PRINT = 'Complete Pure Volume green lettering'
 LEVER = 'Left curved flattened dispensing lever'
+TUBE = 'Hollow clear pump dip tube'
 
 
 class PureVolumeModelTests(unittest.TestCase):
@@ -43,7 +45,15 @@ class PureVolumeModelTests(unittest.TestCase):
         return self.nodes[index]['name']
 
     def mesh_names(self, group=None):
-        return [n['name'] for n in self.nodes if 'mesh' in n and (group is None or self.ancestor(n['name']) == group)]
+        def belongs(name):
+            index = self.named[name]
+            while True:
+                if self.nodes[index]['name'] == group:
+                    return True
+                if index not in self.parents:
+                    return False
+                index = self.parents[index]
+        return [n['name'] for n in self.nodes if 'mesh' in n and (group is None or belongs(n['name']))]
 
     def primitive(self, name):
         primitive, = self.gltf['meshes'][self.nodes[self.named[name]]['mesh']]['primitives']
@@ -93,18 +103,31 @@ class PureVolumeModelTests(unittest.TestCase):
         offset = view.get('byteOffset', 0)
         return Image.open(io.BytesIO(self.binary[offset:offset + view['byteLength']])).convert('RGBA')
 
-    def test_seven_independent_packaging_groups_without_formula_or_duplicate_artwork(self):
+    def test_four_groups_keep_the_pump_assembled_and_the_cord_on_the_bottle(self):
         roots = self.gltf['scenes'][self.gltf.get('scene', 0)]['nodes']
         self.assertEqual({self.nodes[i]['name'] for i in roots},
-                         {'Body', 'Closure', 'PumpStem', 'Actuator', 'Cord', 'PaperLabel', 'LogoPrint'})
+                         {'BottleAssembly', 'PumpAssembly', 'PaperLabel', 'LogoPrint'})
+        for name, children in {'PumpAssembly': {'Closure', 'PumpStem', 'Actuator'},
+                               'BottleAssembly': {'Body', 'Cord'}}.items():
+            assembly = self.nodes[self.named[name]]
+            self.assertEqual({self.nodes[i]['name'] for i in assembly['children']}, children)
+            self.assertNotIn('matrix', assembly)
+            self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
+            self.assertEqual(assembly.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
+            self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
+        self.assertEqual(len(self.mesh_names('PumpAssembly')), 8)
+        self.assertEqual(len(self.mesh_names('BottleAssembly')), 48)
         self.assertEqual(self.mesh_names('Body'), [BODY])
         self.assertEqual(self.mesh_names('PaperLabel'), [FILM])
         self.assertEqual(self.mesh_names('LogoPrint'), [PRINT])
-        self.assertEqual(len(self.mesh_names('Closure')), 3)
+        self.assertEqual(len(self.mesh_names('Closure')), 4)
         self.assertEqual(len(self.mesh_names('PumpStem')), 1)
         self.assertEqual(len(self.mesh_names('Actuator')), 3)
         self.assertEqual(len(self.mesh_names('Cord')), 47)
-        self.assertEqual(len(self.mesh_names()), 57)
+        self.assertEqual(len(self.mesh_names()), 58)
+        pump_low = min(p[1] for name in self.mesh_names('PumpAssembly') for p in self.positions(name))
+        bottle_high = max(p[1] for name in self.mesh_names('BottleAssembly') for p in self.positions(name))
+        self.assertGreater(pump_low + 2.3 - bottle_high, .4, 'The complete pump, including its tube, must clear the bottle.')
         self.assertTrue(all('uri' not in item for item in self.gltf['images'] + self.gltf['buffers']))
         self.assertFalse(self.gltf.get('animations'))
         self.assertFalse(self.gltf.get('cameras'))
@@ -118,6 +141,7 @@ class PureVolumeModelTests(unittest.TestCase):
         points = self.positions(BODY)
         low, high = self.bounds(points)
         all_low, all_high = self.bounds([p for name in self.mesh_names() for p in self.positions(name)])
+        self.assertAlmostEqual(all_high[1] - all_low[1], 2.9, delta=.001)
         self.assertAlmostEqual((all_high[1] - all_low[1]) / width, 1.68, delta=.04,
                                msg='Photographic tilt must not become an excessively tall upright bottle.')
         self.assertAlmostEqual((high[2] - low[2]) / width, .48, delta=.025)
@@ -137,7 +161,11 @@ class PureVolumeModelTests(unittest.TestCase):
     def test_ivory_body_and_pump_are_opaque_matte_polymer_with_only_one_gold_line(self):
         for name in self.mesh_names():
             material = self.material(name)
-            self.assertEqual(material.get('extensions', {}).get('KHR_materials_transmission', {}).get('transmissionFactor', 0), 0)
+            transmission = material.get('extensions', {}).get('KHR_materials_transmission', {}).get('transmissionFactor', 0)
+            if name == TUBE:
+                self.assertTrue(.95 <= transmission <= 1, 'The dip tube must remain clear while the fitted body and pump stay opaque.')
+            else:
+                self.assertEqual(transmission, 0)
         body = self.material(BODY)
         pbr = body['pbrMetallicRoughness']
         rgb = pbr['baseColorFactor'][:3]
@@ -156,7 +184,50 @@ class PureVolumeModelTests(unittest.TestCase):
         self.assertTrue(.003 <= (high[1] - low[1]) / width <= .012, 'The gold detail is a fine line, not a broad collar.')
         self.assertAlmostEqual((high[0] - low[0]) / width, .33, delta=.015)
 
-    def test_pump_retains_the_broad_flat_curved_lever_and_separate_stem(self):
+    def test_hollow_dip_tube_stays_inside_the_cavity_and_moves_with_the_complete_pump(self):
+        self.assertEqual(self.ancestor(TUBE), 'PumpAssembly')
+        self.assertEqual(self.nodes[self.parents[self.named[TUBE]]]['name'], 'Closure')
+        width = self.body_width()
+        points = self.positions(TUBE)
+        low, high = self.bounds(points)
+        radii = [math.hypot(x, z) / width for x, y, z in points]
+        self.assertAlmostEqual(min(radii), .031, delta=.0002)
+        self.assertAlmostEqual(max(radii), .04, delta=.0002)
+        self.assertGreater(sum(abs(r-.031) < 1e-5 for r in radii), 100, 'Retain a complete inner tube wall.')
+        self.assertGreater(sum(abs(r-.04) < 1e-5 for r in radii), 100, 'Retain a complete outer tube wall.')
+        self.assertAlmostEqual(low[1] / width, .10, delta=.001)
+        self.assertAlmostEqual(high[1] / width, 1.55, delta=.001)
+        body = self.positions(BODY)
+        inner_floor = max(y for x, y, z in body if math.hypot(x, z) < 1e-6)
+        self.assertTrue(.03 < (low[1]-inner_floor)/width < .05, 'The inlet must stop above the actual inner floor.')
+        self.assertLess(low[1], self.bounds(body)[1][1], 'The tube must extend into the bottle when closed.')
+        indices = [row[0] for row in self.accessor(self.primitive(TUBE)['indices'])]
+        edges, volume = Counter(), 0
+        for offset in range(0, len(indices), 3):
+            triangle = [points[i] for i in indices[offset:offset+3]]
+            a, b, c = triangle
+            volume += (a[0]*(b[1]*c[2]-b[2]*c[1]) - a[1]*(b[0]*c[2]-b[2]*c[0]) + a[2]*(b[0]*c[1]-b[1]*c[0]))/6
+            welded = [tuple(round(v, 7) for v in p) for p in triangle]
+            self.assertEqual(len(set(welded)), 3, 'The tube must not contain collapsed faces.')
+            for i in range(3):
+                edges[tuple(sorted((welded[i], welded[(i+1)%3])))] += 1
+            # A vertical ray through the centre must pass through both mouths, not hit a disk.
+            determinant = (b[2]-c[2])*(a[0]-c[0]) + (c[0]-b[0])*(a[2]-c[2])
+            if abs(determinant) > 1e-12:
+                u = ((b[2]-c[2])*(-c[0]) + (c[0]-b[0])*(-c[2]))/determinant
+                v = ((c[2]-a[2])*(-c[0]) + (a[0]-c[0])*(-c[2]))/determinant
+                self.assertLess(min(u, v, 1-u-v), -1e-6, 'A face seals the intended open central bore.')
+        self.assertEqual(set(edges.values()), {2}, 'The annular tube wall must be a closed manifold surface.')
+        self.assertGreater(volume, 0, 'Tube face winding must point outward.')
+        material = self.material(TUBE)
+        pbr = material['pbrMetallicRoughness']
+        self.assertEqual(pbr.get('metallicFactor', 1), 0)
+        self.assertTrue(.03 <= pbr['roughnessFactor'] <= .1, 'The clear plastic tube must not regain its previous milky roughness.')
+        self.assertEqual(pbr.get('baseColorFactor', [1, 1, 1, 1]), [1, 1, 1, 1])
+        self.assertFalse(material.get('doubleSided', False), 'The hollow tube has separate inner and outer walls, not duplicated double-sided surfaces.')
+        self.assertAlmostEqual(material['extensions']['KHR_materials_ior']['ior'], 1.46, delta=.02)
+
+    def test_complete_pump_retains_the_broad_flat_curved_lever_and_fitted_stem(self):
         width = self.body_width()
         low, high = self.bounds(self.positions('Broad ivory screw closure'))
         self.assertAlmostEqual((high[0] - low[0]) / width, .364, delta=.01)
@@ -174,7 +245,8 @@ class PureVolumeModelTests(unittest.TestCase):
         left_y = [p[1] for p in points if abs(p[0] - low[0]) < 1e-6]
         center_y = [p[1] for p in points if abs(p[0] / width - .055) < 1e-5]
         self.assertGreater((sum(left_y) / len(left_y) - sum(center_y) / len(center_y)) / width, .07)
-        self.assertEqual(self.ancestor('Independent ivory pump stem'), 'PumpStem')
+        self.assertEqual(self.ancestor('Independent ivory pump stem'), 'PumpAssembly')
+        self.assertEqual(self.nodes[self.parents[self.named['Independent ivory pump stem']]]['name'], 'PumpStem')
         outlet_low, outlet_high = self.bounds(self.positions('Recessed flattened outlet'))
         self.assertGreater(outlet_low[0], low[0], 'The dark outlet must be recessed inside the open nozzle.')
         self.assertLess((outlet_high[1] - outlet_low[1]) / width, .04)
@@ -184,7 +256,8 @@ class PureVolumeModelTests(unittest.TestCase):
         braid_names = ['Neck cord loop 1', 'Neck cord loop 2', 'Right hand tying knot', 'Short hanging tail', 'Long hanging tail']
         for prefix in braid_names:
             core = prefix + ' inner rope core'
-            self.assertEqual(self.ancestor(core), 'Cord')
+            self.assertEqual(self.ancestor(core), 'BottleAssembly')
+            self.assertEqual(self.nodes[self.parents[self.named[core]]]['name'], 'Cord')
             strands = [n for n in self.mesh_names('Cord') if n.startswith(prefix + ' woven')]
             self.assertEqual(len(strands), 8)
             self.assertEqual(len({tuple(self.positions(n)) for n in strands}), 8,

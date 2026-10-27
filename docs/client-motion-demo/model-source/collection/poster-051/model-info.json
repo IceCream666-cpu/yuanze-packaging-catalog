@@ -1,14 +1,44 @@
 {
   "id": "poster-051",
   "components": [
-    "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
-    "Cord",
+    "PumpAssembly",
+    "BottleAssembly",
     "PaperLabel",
     "LogoPrint"
   ],
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Cord"
+    ]
+  },
+  "completePumpLift": 2.3,
+  "dipTube": {
+    "mesh": "Hollow clear pump dip tube",
+    "parent": "Closure",
+    "outerDiameterToWidth": 0.08,
+    "innerDiameterToWidth": 0.062,
+    "appearanceReference": "User-provided clear thick dip tube photograph, 2026-10-27; no measured manufacturer dimensions",
+    "bottomToWidth": 0.1,
+    "topToWidth": 1.55,
+    "bodyInnerFloorToWidth": 0.06,
+    "bottomClearance": 0.06904761904761905,
+    "fullOpenBottleClearance": 0.4219047619047618,
+    "openAtBothEnds": true,
+    "dimensionsIllustrative": true
+  },
+  "camera": {
+    "closedCenter": 1.45,
+    "openCenter": 2.6,
+    "closedHeight": 4.2,
+    "openHeight": 6.5
+  },
+  "cordStaysOnBottle": true,
   "height": 2.9,
   "width": 1.7261904761904763,
   "depth": 0.8285714285714286,
@@ -33,8 +63,8 @@
     "PURE VOLUME",
     "SHAMPOO"
   ],
-  "illustrativeHiddenStructure": "Inner pump seat and transparent label carrier are design illustrations; original has no visible paper boundary",
-  "material": "Opaque matte ivory packaging with dark green braided cord; not transparent glass",
-  "revision": "individual-reference-review-20261024",
+  "illustrativeHiddenStructure": "Inner pump seat, hollow dip tube dimensions and its actuator connection, and transparent label carrier are design illustrations; original has no visible paper boundary",
+  "material": "Opaque matte ivory packaging with dark green braided cord and a thicker colorless transparent plastic dip tube; not transparent glass",
+  "revision": "complete-pump-with-thicker-clear-dip-tube-local-review-20261027",
   "generator": "build_pure_volume.py"
 }
