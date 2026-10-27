@@ -1,5 +1,13 @@
 # 精选包材模型：源文件与本地复建
 
+## 2026-10-27 Luminous Face Oil 完整滴管本地待审
+
+选单11 / poster-058由`build_luminous_face_oil.py`增加单位变换DropperAssembly，原白胶头、镜面银盖与透明短滴管保持连接，连同Body、无字PaperLabel和完整LogoPrint共四组。原6网格/22785顶点的世界坐标、属性、索引、材质及4份SVG/PNG逐项相同；不增加料体、悬滴或新管路。整滴管上移1.0，全开管口到瓶口净空0.40411；镜头中心1.8/视高5.2/宽5.2，原标贴和文字外展保持，复用既有review机制，不改共享场景。
+
+本款6项GLB及其余油雾保护15项共21项Python、96项前端、直接Vite构建通过，source/public/dist与本地HTTP模型一致。桌面/手机六图经根代理和独立审阅者实际查看通过，Codex319×1034合拢/100%全开两图已归档，tab12保留全开。手机全开文字右缘与纸标左缘略有投影重叠，文字在前且完整可读；90°时平面印刷侧隐，均如实记入`luminous-simplified-preview-verification.json`。证据在`review-evidence/luminous/simplified-dropper/`。
+
+058仅本地待用户检查，下一款选单12 Essence Oil Duo未开始，余9款排队。B5于10:48:25发布client1.28，HTTPS及正式桌面/模拟手机浏览器验证完成，最终回执`client128-b5-dropper-release.json`和提交`3441e9d7d74386a63cefb4aa6c537794fd1f3421`已归档。复建不部署；尺寸、壁厚与隐藏连接为展示示意，手机检查为模拟视口。以下保留各轮历史记录，当前发布状态以独立正式回执为准。
+
 ## 2026-10-27 B5 Serum 完整滴管本地待审
 
 选单10 / poster-057由`build_b5_serum.py`改为四组：DropperAssembly包含原胶头、白盖与玻璃管，BottleAssembly包含原瓶身与白底托，PaperLabel与完整LogoPrint继续独立。原8网格/63085顶点、全部材质及6份图文素材不变，不新增料体或管路。整滴管升1.95，全开瓶口净空0.33738，镜头2.2/6.3及宽5.8；原文字外展保留。8项GLB、94项前端、构建和六图独立审美通过，Codex1280×720合拢/100%全开新图也已审阅。回执`b5-simplified-preview-verification.json`与`review-evidence/b5/simplified-dropper/`记录当前版本，原单款制作回执保留历史。

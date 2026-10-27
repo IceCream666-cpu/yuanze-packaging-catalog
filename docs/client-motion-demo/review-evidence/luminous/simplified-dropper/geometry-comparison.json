@@ -1,0 +1,162 @@
+{
+  "model": "poster-058",
+  "bytes": 1953096,
+  "sha256": "3c6b6718c1bd62976e7e2846eac36c612f8b2be743861dc3084a33d89dbb6658",
+  "roots": [
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "DropperAssembly"
+  ],
+  "meshCount": 6,
+  "preservedMeshCount": 6,
+  "preservedVertexCount": 22785,
+  "meshes": [
+    {
+      "name": "Hollow slender flat Luminous glass bottle",
+      "vertices": 3815,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Mirror silver hollow cylindrical collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Hollow white Luminous dropper bulb",
+      "vertices": 13736,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Short hollow clear pipette without suspended formula",
+      "vertices": 1544,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Warm ivory unprinted paper label",
+      "vertices": 729,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Complete Luminous Face Oil print",
+      "vertices": 729,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "8203259ea96798ad2b67882c369ddd1c36be951ef4c3bfcba0be4cf59bf22211",
+    "label.png": "6a6e2a55d475e5b9ff208a532e27b2359880769d5c8e8d17e263c790c2d5a531",
+    "print.svg": "9f7a6ce54618d7c9c68c9558f886cad8d76929ee2cbbeb83e945742fe7f9a0e7",
+    "print.png": "57292db9db1477c1d51a6f19d2a657554fa8d6af57975d2b17e4246071721d84"
+  },
+  "artworkBytesIdentical": true,
+  "bounds": {
+    "Body": [
+      [
+        -0.39726027846336365,
+        0.0,
+        -0.15890411375320124
+      ],
+      [
+        0.39726027846336365,
+        2.1849315315485,
+        0.15890411375320124
+      ]
+    ],
+    "PaperLabel": [
+      [
+        -0.38931508047123486,
+        0.027808153337402386,
+        0.1414427520136723
+      ],
+      [
+        0.38931508047123486,
+        1.1520547791560212,
+        0.16001643768353002
+      ]
+    ],
+    "LogoPrint": [
+      [
+        -0.38931508047123486,
+        0.027808153337402386,
+        0.14207836737947144
+      ],
+      [
+        0.38931508047123486,
+        1.1520547791560212,
+        0.16065205304932917
+      ]
+    ],
+    "DropperAssembly": [
+      [
+        -0.24630137454157008,
+        1.5890409527902705,
+        -0.24630137454157008
+      ],
+      [
+        0.24630137454157008,
+        2.8999998813051064,
+        0.24630137454157008
+      ]
+    ]
+  },
+  "motion": {
+    "completeDropperLift": 1.0,
+    "tubeTipClosedY": 1.5890409527902705,
+    "bottleMouthY": 2.1849315315485,
+    "fullyOpenTubeToBottleGap": 0.4041094212417704,
+    "fullyOpenTopY": 3.8999998813051064,
+    "cameraCenterY": [
+      1.45,
+      1.8
+    ],
+    "cameraHeight": [
+      4.2,
+      5.2
+    ],
+    "cameraWidth": [
+      3.8,
+      5.2
+    ],
+    "cameraCenterX": [
+      0,
+      -1.6
+    ],
+    "labelOffset": [
+      -1.2,
+      0.08,
+      0.65
+    ],
+    "labelScale": 1.15,
+    "printOffset": [
+      -2.85,
+      0.15,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "scope": "Identity complete-dropper parent and058 review-config motion/camera/copy only. Original geometry, material and artwork preserved; no oil or suspended drop; shared scene unchanged.",
+  "otherGlbFilesUnchanged": 25,
+  "otherConfigAndManifestUnchanged": true,
+  "sourcePublicGlbIdentical": true,
+  "sharedSceneUnchanged": true,
+  "appearanceAndLabelPrintOffsetsScalesUnchanged": true
+}

@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26 and Golden Face Oil client1.27 are published and live verified. B5 Serum complete-dropper revision is local awaiting user review; ten later selected revisions remain queued.",
+  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26, Golden Face Oil client1.27 and B5 Serum client1.28 are published and live verified. Luminous Face Oil complete-dropper revision is local awaiting user review; nine later selected revisions remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -76,15 +76,28 @@
       "selectionNumber": 10,
       "posterId": "poster-057",
       "name": "B5 Serum",
-      "status": "local-awaiting-user",
+      "status": "published-live-verified",
       "localRevision": "complete-dropper-and-fitted-bottle-base",
-      "localRevisionReceipt": "b5-simplified-preview-verification.json"
+      "localRevisionReceipt": "b5-simplified-preview-verification.json",
+      "releaseVersion": "client1.28",
+      "releaseHttpsVerification": "passed",
+      "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+      "releaseReceiptStatus": "complete",
+      "releaseSourceCommit": "cd4a4c6431f2dd72d16f5f7d5220ccb54bfc76e4",
+      "releaseReceiptCommit": "3441e9d7d74386a63cefb4aa6c537794fd1f3421",
+      "releaseManifestSha256": "b1d3f9ae511ac12c1486808faf8fac309261feffd6d61a8406ed25225b3e018a",
+      "releasedAt": "2026-10-27T10:48:25+08:00",
+      "releaseHttpsVerifiedAt": "2026-10-27T10:50:37+08:00",
+      "physicalMobileDeviceTested": false,
+      "releaseReceipt": "client128-b5-dropper-release.json"
     },
     {
       "selectionNumber": 11,
       "posterId": "poster-058",
       "name": "Luminous Face Oil",
-      "status": "queued"
+      "status": "local-awaiting-user",
+      "localRevision": "complete-short-dropper",
+      "localRevisionReceipt": "luminous-simplified-preview-verification.json"
     },
     {
       "selectionNumber": 12,

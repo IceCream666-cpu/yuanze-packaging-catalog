@@ -154,7 +154,7 @@
     "releaseReceiptCommit": "f39ab4076e6feb134b36abcc07d43b2cf84d4710"
   },
   "poster-057": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "DropperAssembly",
       "BottleAssembly",
@@ -166,9 +166,20 @@
       "open": "/review-assets/poster-057-simplified-open.png"
     },
     "background": "#7f656b",
-    "reviewStatus": "local-awaiting-user",
+    "reviewStatus": "published-live-verified",
     "localRevision": "complete-dropper-and-fitted-bottle-base",
-    "localRevisionReceipt": "b5-simplified-preview-verification.json"
+    "localRevisionReceipt": "b5-simplified-preview-verification.json",
+    "releaseVersion": "client1.28",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "releaseSourceCommit": "cd4a4c6431f2dd72d16f5f7d5220ccb54bfc76e4",
+    "releaseReceiptCommit": "3441e9d7d74386a63cefb4aa6c537794fd1f3421",
+    "releaseManifestSha256": "b1d3f9ae511ac12c1486808faf8fac309261feffd6d61a8406ed25225b3e018a",
+    "releasedAt": "2026-10-27T10:48:25+08:00",
+    "releaseHttpsVerifiedAt": "2026-10-27T10:50:37+08:00",
+    "physicalMobileDeviceTested": false,
+    "releaseReceipt": "client128-b5-dropper-release.json"
   },
   "poster-013": {
     "state": "published",
@@ -186,20 +197,21 @@
     "background": "#cbe4e2"
   },
   "poster-058": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "DropperBulb",
-      "Pipette",
-      "Closure",
+      "DropperAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-058-closed.webp",
-      "open": "/review-assets/poster-058-open.webp"
+      "closed": "/review-assets/poster-058-simplified-closed.png",
+      "open": "/review-assets/poster-058-simplified-open.png"
     },
-    "background": "#d1b89c"
+    "background": "#d1b89c",
+    "reviewStatus": "local-awaiting-user",
+    "localRevision": "complete-short-dropper",
+    "localRevisionReceipt": "luminous-simplified-preview-verification.json"
   },
   "poster-059": {
     "state": "published",

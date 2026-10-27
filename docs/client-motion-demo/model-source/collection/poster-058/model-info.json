@@ -2,11 +2,9 @@
   "id": "poster-058",
   "components": [
     "Body",
-    "Closure",
-    "DropperBulb",
-    "Pipette",
     "PaperLabel",
-    "LogoPrint"
+    "LogoPrint",
+    "DropperAssembly"
   ],
   "height": 2.9,
   "nominalHeight": 2.9,
@@ -111,6 +109,18 @@
         -0.14207836985588074,
         1.152054786682129
       ]
+    },
+    "DropperAssembly": {
+      "min": [
+        -0.24630136787891388,
+        -0.24630136787891388,
+        1.5890411138534546
+      ],
+      "max": [
+        0.24630136787891388,
+        0.24630136787891388,
+        2.9000000953674316
+      ]
     }
   },
   "illustrativeDimensions": true,
@@ -131,6 +141,23 @@
   ],
   "hiddenStructure": "Neck, collar connection, wall thickness and bulb air path are illustrative; body depth cannot be measured exactly from one poster. Short pipette follows the visible reference. No oil or suspended liquid drop is included.",
   "material": "Neutral empty glass, mirror silver metal collar, opaque soft white hollow bulb, warm ivory paper",
-  "revision": "individual-reference-review-20261025",
+  "assemblyChildren": {
+    "DropperAssembly": [
+      "Closure",
+      "DropperBulb",
+      "Pipette"
+    ]
+  },
+  "completeDropperLift": 1.0,
+  "camera": {
+    "closedCenter": 1.45,
+    "openCenter": 1.8,
+    "closedHeight": 4.2,
+    "openHeight": 5.2,
+    "closedWidth": 3.8,
+    "openWidth": 5.2,
+    "openCenterX": -1.6
+  },
+  "revision": "complete-dropper-local-review-20261027",
   "generator": "build_luminous_face_oil.py"
 }

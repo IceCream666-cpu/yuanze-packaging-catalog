@@ -234,5 +234,18 @@
     "The 90-degree view makes flat printing nearly invisible edge-on, and small lettering is less legible on a phone viewport.",
     "Dropper tube length, concealed connections, wall thickness and base fit remain illustrative, not measured manufacturing specifications.",
     "The model depicts empty packaging; the original pink formula is not included. Mobile checks use simulated viewports, not physical phones."
-  ]
+  ],
+  "publication": {
+    "state": "published-live-browser-verified",
+    "version": "client1.28",
+    "publishedAt": "2026-10-27T10:48:25+08:00",
+    "releaseSourceCommit": "cd4a4c6431f2dd72d16f5f7d5220ccb54bfc76e4",
+    "releaseReceiptCommit": "3441e9d7d74386a63cefb4aa6c537794fd1f3421",
+    "releaseManifestSha256": "b1d3f9ae511ac12c1486808faf8fac309261feffd6d61a8406ed25225b3e018a",
+    "httpsVerification": "passed",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "releaseReceipt": "client128-b5-dropper-release.json"
+  }
 }

@@ -119,8 +119,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-058.glb",
       "productionTarget": "assets/packaging/poster-058.glb",
-      "bytes": 1953044,
-      "sha256": "844d3658442de322dfc490055d8e4c55bcd425da576ca08d17118215e8bc94d8"
+      "bytes": 1953096,
+      "sha256": "3c6b6718c1bd62976e7e2846eac36c612f8b2be743861dc3084a33d89dbb6658"
     },
     {
       "name": "poster-059.glb",
@@ -328,9 +328,7 @@
       "posterId": "poster-058",
       "file": "poster-058.glb",
       "components": [
-        "DropperBulb",
-        "Pipette",
-        "Closure",
+        "DropperAssembly",
         "Body",
         "PaperLabel",
         "LogoPrint"

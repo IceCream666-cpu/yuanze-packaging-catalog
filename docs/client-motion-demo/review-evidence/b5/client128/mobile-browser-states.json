@@ -1,0 +1,62 @@
+[
+  {
+    "stage": "closed",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.28",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0.00008311903450820115,
+      "yaw": 4.692788013778944e-9,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.0002576690069754236,
+        0.000008311903450852753,
+        0.00013714640693853188
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  },
+  {
+    "stage": "open",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.28",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9998605784846889,
+      "yaw": 8.65387856113034e-17,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.0995677933025356,
+        0.09998605784846881,
+        1.6497699544997366
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  }
+]

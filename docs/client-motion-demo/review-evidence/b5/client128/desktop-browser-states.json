@@ -1,0 +1,145 @@
+[
+  {
+    "stage": "closed",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.28",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  },
+  {
+    "stage": "half",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.28",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0.5,
+      "renderedProgress": 0.499833101661721,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5494826151513352,
+        0.04998331016617219,
+        0.8247246177418396
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  },
+  {
+    "stage": "open",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.28",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.999800560593766,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.0993817378406745,
+        0.09998005605937665,
+        1.6496709249797137
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  },
+  {
+    "stage": "rotated",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.28",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9999999349948991,
+      "yaw": 1.5702843428518791,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.0999997984841876,
+        0.09999999349948996,
+        1.6499998927415835
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  },
+  {
+    "stage": "reset",
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0.00018132186851462873,
+      "yaw": 1.0237186899921157e-8,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.0005620977923953491,
+        0.000018132186851427257,
+        0.00029918108304913737
+      ],
+      "components": [
+        "dropper",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 191450
+    }
+  }
+]

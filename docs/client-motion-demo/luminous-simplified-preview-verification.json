@@ -1,0 +1,252 @@
+{
+  "date": "2026-10-27",
+  "product": "Luminous Face Oil",
+  "productId": "poster-058",
+  "selectionNumber": 11,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "selectionNumber": 10,
+    "id": "poster-057",
+    "name": "B5 Serum",
+    "state": "published-live-browser-verified",
+    "version": "client1.28",
+    "publishedAt": "2026-10-27T10:48:25+08:00",
+    "httpsVerifiedAt": "2026-10-27T10:50:37+08:00",
+    "releaseSourceCommit": "cd4a4c6431f2dd72d16f5f7d5220ccb54bfc76e4",
+    "releaseReceiptCommit": "3441e9d7d74386a63cefb4aa6c537794fd1f3421",
+    "releaseManifestSha256": "b1d3f9ae511ac12c1486808faf8fac309261feffd6d61a8406ed25225b3e018a",
+    "httpsVerification": "passed",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "releaseReceipt": "client128-b5-dropper-release.json"
+  },
+  "nextProduct": {
+    "selectionNumber": 12,
+    "id": "poster-059",
+    "name": "Essence Oil Duo",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 9,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-058",
+  "components": [
+    "DropperAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "DropperAssembly": [
+      "Closure",
+      "DropperBulb",
+      "Pipette"
+    ]
+  },
+  "containsFormula": false,
+  "containsNewTube": false,
+  "animation": {
+    "completeDropperLift": 1.0,
+    "tubeTipClosedY": 1.5890409527902705,
+    "bottleMouthY": 2.1849315315485,
+    "fullyOpenTubeToBottleGap": 0.4041094212417704,
+    "fullyOpenTopY": 3.8999998813051064,
+    "cameraCenterY": [
+      1.45,
+      1.8
+    ],
+    "cameraHeight": [
+      4.2,
+      5.2
+    ],
+    "cameraWidth": [
+      3.8,
+      5.2
+    ],
+    "cameraCenterX": [
+      0,
+      -1.6
+    ],
+    "labelOffset": [
+      -1.2,
+      0.08,
+      0.65
+    ],
+    "labelScale": 1.15,
+    "printOffset": [
+      -2.85,
+      0.15,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "geometryAndScope": {
+    "bytes": 1953096,
+    "sha256": "3c6b6718c1bd62976e7e2846eac36c612f8b2be743861dc3084a33d89dbb6658",
+    "preservedMeshCount": 6,
+    "preservedVertexCount": 22785,
+    "maxWorldVertexDelta": 0,
+    "allAttributesIndicesMaterialsIdentical": true,
+    "artworkBytesIdentical": true,
+    "artworkFileCount": 4,
+    "otherGlbFilesUnchanged": 25,
+    "otherConfigAndManifestUnchanged": true,
+    "sharedSceneUnchanged": true,
+    "comparison": "review-evidence/luminous/simplified-dropper/geometry-comparison.json",
+    "workComparison": "work/luminous-simplified-review/geometry-comparison.json"
+  },
+  "verification": {
+    "actualGlbTestsPassed": 6,
+    "pythonTestsPassed": 21,
+    "pythonOtherProductRegressionTestsPassed": 15,
+    "frontendTestsPassed": 96,
+    "viteBuild": "passed-direct-vite-build",
+    "buildReadyAt": "2026-10-27T10:48:57+08:00",
+    "localSourcePublicDistGlbIdentical": true,
+    "localHttpGlbVerification": "passed-by-root",
+    "desktopBrowser": "Ego Lite",
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopStages": [
+      0,
+      50,
+      100
+    ],
+    "rotate90AndReset": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileStages": [
+      0,
+      100
+    ],
+    "mobileScrollWidth": 393,
+    "physicalMobileDeviceTested": false,
+    "browserStateEvidence": [
+      "review-evidence/luminous/simplified-dropper/desktop-states.json",
+      "review-evidence/luminous/simplified-dropper/mobile-states.json"
+    ],
+    "browserStateFiles": [
+      {
+        "path": "review-evidence/luminous/simplified-dropper/desktop-states.json",
+        "bytes": 10401,
+        "sha256": "58508902009ddaee20e06276d4773c6b1cff2c2e44ff60080594549bfe9667f7"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/mobile-states.json",
+        "bytes": 4352,
+        "sha256": "955a646f4a0864dcd3b186e6e89de8a174eb5627f3b69518cb71d12a50a301e8"
+      }
+    ],
+    "screenshots": [
+      {
+        "path": "review-evidence/luminous/simplified-dropper/desktop-closed.png",
+        "bytes": 100664,
+        "sha256": "709e99f5bc47e403d15ff8629f18c49b112fd581c0e57a0f16d634c7287284f7",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/desktop-half.png",
+        "bytes": 103356,
+        "sha256": "4db1934d8d61db0f64fa8c814fea83d7920139e21f3080821eff10a71328f032",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/desktop-open.png",
+        "bytes": 103243,
+        "sha256": "a31e397288c30b9b2607215eb8932092906e681c957fd9b619d5e334f68217a6",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/desktop-rotated.png",
+        "bytes": 92303,
+        "sha256": "3a16936303d243634e543e56f9b7419d1fb241576a34a6f7f3fab8b4bd40cf40",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/mobile-closed.png",
+        "bytes": 45832,
+        "sha256": "c50edf86503533c4fb1f5f5c18b8cd7a272cd0e913b29acad8c39af7aa1f4077",
+        "dimensions": [
+          393,
+          852
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/mobile-open.png",
+        "bytes": 48318,
+        "sha256": "9dd29f1c7b166540ef932baddae430734f0b06c420ad9ab5f552576c8d9d3511",
+        "dimensions": [
+          393,
+          852
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/codex-closed.jpg",
+        "bytes": 20003,
+        "sha256": "8c9a5ce8543d91083a6e796d0d6cc2e31249f55c6dcf4514706a95316a4c02ec",
+        "dimensions": [
+          319,
+          1034
+        ],
+        "mediaType": "image/jpeg"
+      },
+      {
+        "path": "review-evidence/luminous/simplified-dropper/codex-open.jpg",
+        "bytes": 20109,
+        "sha256": "ed18696a765659b141e4bdbd498a7da335d4ecdc3e2a99d13d819edebc9b42bc",
+        "dimensions": [
+          319,
+          1034
+        ],
+        "mediaType": "image/jpeg"
+      }
+    ],
+    "aestheticReview": "PASS. Root and the independent reviewer viewed all six current desktop/mobile images against the original full poster. The white bulb, silver collar and existing short clear pipette remain connected as one dropper and fully clear the bottle mouth. The neutral empty bottle, warm ivory blank paper label and complete separate printing retain the original appearance and remain in frame. On the phone viewport, the right edge of the text slightly overlaps the left edge of the paper label in projection; the text remains in front and fully readable. The 90-degree view makes flat printing nearly invisible edge-on. These are recorded non-blocking display limits, not geometry changes.",
+    "codexBrowser": "Codex in-app browser (IAB)",
+    "codexScreenshotDimensions": [
+      319,
+      1034
+    ],
+    "codexStages": [
+      0,
+      100
+    ],
+    "codexDeliveredAtProgress": 100,
+    "codexPreviewTab": "tab12",
+    "codexMarkedDeliverable": true,
+    "codexScreenshotVisualReview": "passed; root and archive agent actually viewed both current 0% and 100% screenshots",
+    "galleryTestsPassed": 7,
+    "galleryPublicDistIdentical": true
+  },
+  "knownLimits": [
+    "The phone layout retains the existing half-width horizontal separation: the print right edge and paper-label left edge slightly overlap in projection, while the text is in front and fully readable. Desktop layers are separated.",
+    "Flat printing becomes nearly invisible in the 90-degree edge-on view.",
+    "Existing short pipette length, concealed connections, wall thickness and dimensions remain illustrative, not measured manufacturing specifications.",
+    "Empty packaging contains no oil or suspended drop. Mobile checks use simulated viewports, not physical phones."
+  ]
+}

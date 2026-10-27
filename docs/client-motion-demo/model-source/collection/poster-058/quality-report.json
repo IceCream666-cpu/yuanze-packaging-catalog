@@ -1,7 +1,7 @@
 {
   "id": "poster-058",
-  "bytes": 1953044,
-  "sha256": "844d3658442de322dfc490055d8e4c55bcd425da576ca08d17118215e8bc94d8",
+  "bytes": 1953096,
+  "sha256": "3c6b6718c1bd62976e7e2846eac36c612f8b2be743861dc3084a33d89dbb6658",
   "meshes": [
     {
       "mesh": "Hollow slender flat Luminous glass bottle",
@@ -46,5 +46,6 @@
       "minimumFaceNormalDot": 0.9906270503997803
     }
   ],
-  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks."
+  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks.",
+  "assemblyOnlyRevision": "All actual POSITION/NORMAL/UV/index data and materials match the previously verified six meshes. Added identity parent changes no mesh topology or normals."
 }
