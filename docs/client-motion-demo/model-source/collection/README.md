@@ -2,9 +2,9 @@
 
 ## 2026-10-27 当前单款修订状态
 
-选单07 Gentle Cleansing（poster-044）已本地完成：`build_gentle_cleansing.py`保留原15网格与全部贴图，新增一根透明中空吸液管归Closure→PumpAssembly；外罩、整泵、瓶身、无字椭圆底材与完整文字共五组。整泵/外罩上移2.15/3.15，全开相机3.025/7.2，原标贴和印刷外展保持。8项GLB、93项前端及构建通过，桌面/手机和Codex100%截图见`gentle-simplified-preview-verification.json`。当前仅本地待用户检查，下一款选单09 Golden Face Oil尚未开始，余12款排队。
+选单09 Golden Face Oil（poster-056）按用户三张实物照片完成本地校准：`build_golden_face_oil.py`将瓶面改为中性透光磨砂（roughness .28），前后长U面板与短侧壁/顶面重建为一个连续罩体，保持原名义尺寸。除罩之外8个网格、11328顶点的世界坐标/属性/索引及4份贴图保持；瓶身仅材质改动，整泵与透明中空管、完整liaose印刷不变，不引入料液或LAN文字。仍为五组，原1.85/3.95整泵/罩升距、3.4275/8.0全开镜头及文字外展保持。11项GLB、94项前端、构建通过；桌面/手机八图经独立实物对照审查通过，位于`review-evidence/golden/real-reference/`，回执`golden-simplified-preview-verification.json`；Codex775×969合拢/100%全开新截图已审阅归档，预览保留全开。仅本地待用户检查，下一款选单10 B5 Serum未开始，余11款排队。
 
-Pure Volume（poster-051）透明粗管版已获批发布client1.25，正式源`681fb753ce202e22c83410306a6818f2149aeee0`，HTTPS与生产桌面/393×852手机模拟视口浏览器检查通过（非实体机），最终发布回执`client125-pure-volume-pump-release.json`及提交`5c1c3d93e8c3466117b5b01303225a056cd5c8ef`已归档。下文保留各版制作历史，发布前“本地待审”字样不替代本节当前状态。复建命令仍只写本地；吸管尺寸和内部连接是展示示意，不能用于制造确认。
+Gentle Cleansing（poster-044）已于2026-10-27 10:03:04发布client1.26，正式源`ff5d9cf1580c120674f527ee1f314358a1152b56`，HTTPS与正式桌面/手机模拟视口浏览器检查通过，最终回执`client126-gentle-pump-release.json`及归档提交`5060f19cd98e6cfe6f03811ddcea73bc197c16ad`已保存。本地历史回执保持并追加publication。复建命令只写本地；实物照片用于外观参考，吸管/隐藏连接/壁厚仍为展示示意，不能用于制造确认。
 
 本轮新增 14 款按原海报逐款校准的专用模型，并接入 24 款精选产品总览。**新增批次仅供本地预览；本目录的复建、接入和总览命令都不部署 production。** 既有款式的发布状态以独立发布记录为准。
 

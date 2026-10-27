@@ -103,8 +103,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-056.glb",
       "productionTarget": "assets/packaging/poster-056.glb",
-      "bytes": 520372,
-      "sha256": "2116cd76418f8017020943ff4cea15e85d6b6f4faf60bc17219d4c90beb92709"
+      "bytes": 529536,
+      "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d"
     },
     {
       "name": "poster-057.glb",
@@ -308,9 +308,7 @@
       "file": "poster-056.glb",
       "components": [
         "Overcap",
-        "Actuator",
-        "PumpStem",
-        "Closure",
+        "PumpAssembly",
         "Body",
         "PaperLabel",
         "LogoPrint"

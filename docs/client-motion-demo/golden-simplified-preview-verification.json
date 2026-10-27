@@ -1,0 +1,455 @@
+{
+  "date": "2026-10-27",
+  "product": "Golden Face Oil",
+  "productId": "poster-056",
+  "selectionNumber": 9,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "selectionNumber": 7,
+    "id": "poster-044",
+    "name": "Gentle Cleansing",
+    "state": "published-live-browser-verified",
+    "version": "client1.26",
+    "releasedAt": "2026-10-27T10:03:04+08:00",
+    "releaseSourceCommit": "ff5d9cf1580c120674f527ee1f314358a1152b56",
+    "releaseManifestSha256": "7b55bf7dce6d21782d576e76469e63bde12271a935b4882e99eb2b404e8544a4",
+    "releaseHttpsVerification": "passed",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "publishedAt": "2026-10-27T10:03:04+08:00",
+    "httpsVerification": "passed",
+    "releaseReceiptCommit": "5060f19cd98e6cfe6f03811ddcea73bc197c16ad",
+    "releaseReceipt": "client126-gentle-pump-release.json",
+    "historicalPreviewRecordPreserved": true
+  },
+  "nextProduct": {
+    "selectionNumber": 10,
+    "id": "poster-057",
+    "name": "B5 Serum",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 11,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-056",
+  "components": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "dipTubeParent": "Closure"
+  },
+  "containsFormula": false,
+  "containsFoam": false,
+  "animation": {
+    "completePumpLift": 1.85,
+    "overcapLift": 3.95,
+    "linear": true,
+    "cameraCenterY": [
+      1.45,
+      3.4275
+    ],
+    "cameraHeight": [
+      4.2,
+      8.0
+    ],
+    "paperOffset": [
+      -1.85,
+      0.08,
+      0.65
+    ],
+    "paperScale": 1.15,
+    "printOffset": [
+      -3.8,
+      0.18,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "geometryAndScope": {
+    "model": "poster-056",
+    "revision": "physical-reference-frosted-dual-u-20261027",
+    "bytes": 529536,
+    "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+    "roots": [
+      "Body",
+      "Overcap",
+      "PaperLabel",
+      "LogoPrint",
+      "PumpAssembly"
+    ],
+    "meshCount": 9,
+    "preservedGeometryMeshCount": 8,
+    "preservedVertexCount": 11328,
+    "meshes": [
+      {
+        "name": "Hollow rounded rectangular bottle with thick clear base",
+        "vertices": 3958,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": false,
+        "expectedMaterialChange": true
+      },
+      {
+        "name": "Transparent unprinted film carrier",
+        "vertices": 4,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      },
+      {
+        "name": "Complete Golden Face Oil lettering",
+        "vertices": 4,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      },
+      {
+        "name": "Subtle actuator top inset",
+        "vertices": 622,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      },
+      {
+        "name": "Tall cylindrical press actuator",
+        "vertices": 2008,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      },
+      {
+        "name": "Hollow clear Golden pump dip tube",
+        "vertices": 1488,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      },
+      {
+        "name": "Olive stepped pump collar",
+        "vertices": 2480,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      },
+      {
+        "name": "Short illustrative connecting stem",
+        "vertices": 764,
+        "maxWorldVertexDelta": 0.0,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "materialIdentical": true,
+        "expectedMaterialChange": false
+      }
+    ],
+    "bodyGeometryUnchanged": true,
+    "bodyOldMaterial": {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "Golden neutral clear thick glass",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.02500000037252903
+      }
+    },
+    "bodyNewMaterial": {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "Golden neutral frosted thick glass",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.2800000011920929
+      }
+    },
+    "cover": {
+      "name": "Hollow olive cover with matching front and rear U skirts",
+      "meshCount": 1,
+      "bounds": [
+        [
+          -0.6426208001251865,
+          1.0283687093071876,
+          -0.4586525085361295
+        ],
+        [
+          0.6426208001251865,
+          2.8999999124953035,
+          0.40517731291351566
+        ]
+      ],
+      "actualDepthToBodyWidth": 0.42000000178813934,
+      "nominalFrontRearProfileIdentical": true,
+      "profileCentreBlenderYToWidth": 0.013,
+      "frontGlassGap": 0.030851066146336592,
+      "rearGlassGap": 0.08432623112117099,
+      "crossSectionsGLTFZToWidth": {
+        "0.55": [
+          -0.223,
+          -0.211,
+          0.185,
+          0.197
+        ],
+        "0.7": [
+          -0.223,
+          -0.211,
+          0.185,
+          0.197
+        ],
+        "0.9": [
+          -0.223,
+          -0.211,
+          0.185,
+          0.197
+        ]
+      },
+      "connectedComponents": 1,
+      "solidWallWatertight": true,
+      "windingConsistent": true,
+      "weldToleranceToWidth": 1e-07,
+      "degenerateAfterWeld": 0,
+      "volume": 0.17788859641123234,
+      "materialIdentical": true,
+      "previousActualDepthToBodyWidth": 0.4248378679670136,
+      "previousActualHeight": 2.905068874359131,
+      "newActualHeight": 2.9000000953674316,
+      "nominalEnvelopePreserved": "Width .62W, height1.41W, depth .42W; old Boolean bevel overshoot at top and depth removed by the connected shell rebuild."
+    },
+    "artworkSha256": {
+      "label.svg": "3fb335906358b5e5a7c0b81889a89eeb999847317d727500ce8d2e8f2e246492",
+      "label.png": "af43de81cac737b73e97c70659d7ce9d325f4456157b571413fc5d7e9f1b0fee",
+      "print.svg": "b01637c86ab53fc7f93e59522dfc49306d578e4679da603539feb6f6d7ce86f2",
+      "print.png": "719933a6aa4b5f3b8f6c28447681288d0c5168c4b9f81f6a5c3afc0dd5661c21"
+    },
+    "artworkBytesIdentical": true,
+    "completePumpTubeGeometryAndMaterialUnchanged": true,
+    "motionCameraPrintSeparationUnchanged": true,
+    "scope": "Only056 cover geometry and body finish plus matching descriptive copy; no liquid, physical-reference branding or new components.",
+    "otherGlbFilesUnchanged": 25,
+    "otherConfigAndManifestUnchanged": true,
+    "sourcePublicGlbIdentical": true
+  },
+  "verification": {
+    "actualGlbTestsPassed": 11,
+    "frontendTestsPassed": 94,
+    "viteBuild": "passed",
+    "localSourcePublicDistGlbIdentical": true,
+    "desktopBrowser": "Ego Lite",
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopStages": [
+      0,
+      50,
+      100
+    ],
+    "rotate90AndReset": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileScrollWidth": 393,
+    "mobileStages": [
+      0,
+      100
+    ],
+    "codexBrowser": "Codex in-app browser (IAB)",
+    "physicalMobileDeviceTested": false,
+    "browserStateEvidence": [
+      "review-evidence/golden/real-reference/desktop-states.json",
+      "review-evidence/golden/real-reference/mobile-states.json"
+    ],
+    "screenshots": [
+      {
+        "path": "review-evidence/golden/real-reference/desktop-closed.png",
+        "bytes": 119901,
+        "sha256": "875ec5f1df3394a4880c543053241d7c8e2245b73d96fc2dcd1cf33092228f42",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/desktop-half.png",
+        "bytes": 114768,
+        "sha256": "8f7e9b49bb13a70cf59f6ac7b64faa0d2910cfe5b2ee192eb1874ac078fa9a00",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/desktop-open.png",
+        "bytes": 111276,
+        "sha256": "17e73f20d7d159fce4d64cde1f5dc22e5e3aed1f8c3aefcb98ec608ef0d2d627",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/desktop-side.png",
+        "bytes": 113456,
+        "sha256": "ca9194748920fc503de2cfa31d5c200ba32dbbfc89e03a2d150156edeadf8bfd",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/desktop-rear.png",
+        "bytes": 113477,
+        "sha256": "ff613c3f5e1cbf07ec9d729d7dc7a829d68c6eed4303189f8e3c3a711066742d",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/desktop-open-side.png",
+        "bytes": 104400,
+        "sha256": "70ae7843b1e28bc49a44f86a0e0906d92a76289fd0bb12186df20904900373d9",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/mobile-closed.png",
+        "bytes": 50557,
+        "sha256": "7810f17ea6d2794b98448c4dc549757628e5644dcf412470f905ec68a53560d8",
+        "dimensions": [
+          393,
+          852
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/mobile-open.png",
+        "bytes": 45538,
+        "sha256": "155d4db153659442e8809f8c2895c24b630a8254d0dc42795ebc003ec540b571",
+        "dimensions": [
+          393,
+          852
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/codex-closed.jpg",
+        "bytes": 28491,
+        "sha256": "4bd64d69c21ac630dd57d11b5985b4dafd129883ffc6081a44f29faaf50a05b3",
+        "dimensions": [
+          775,
+          969
+        ],
+        "mediaType": "image/jpeg"
+      },
+      {
+        "path": "review-evidence/golden/real-reference/codex-open.jpg",
+        "bytes": 26822,
+        "sha256": "e03c2e1c72beb0ac2490ab42cb22f56724c68bbfb23f91affd9dbe2d00b965a0",
+        "dimensions": [
+          775,
+          969
+        ],
+        "mediaType": "image/jpeg"
+      }
+    ],
+    "aestheticReview": "PASS: independent reviewer viewed all six desktop and two mobile final screenshots against the three physical references. Matching long front/rear U skirts, external clearances, short sides and one-piece top are visible. The glass is softly frosted and transmitting with a thick base. Complete pump/tube continuity and separate blank film/full print remain intact, with no desktop/mobile clipping. Partial pump occlusion at half expansion, edge-on lettering at 90 degrees, and subtle clear tube/film outlines are non-blocking display limits. This conclusion applies to the 304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d candidate and the current eight images. Current-build Codex IAB closed and 100% screenshots were also actually viewed: both are correct, with complete five-layer framing and frosted glass preserved.",
+    "galleryTestsPassed": 7,
+    "galleryPublicDistIdentical": true,
+    "codexScreenshotVisualReview": "passed-current-physical-reference-revision",
+    "desktopViews": [
+      "closed-front",
+      "closed-side-90-degrees",
+      "closed-rear-180-degrees",
+      "half-front",
+      "open-front",
+      "open-side-90-degrees",
+      "reset-closed-front"
+    ],
+    "codexViewport": [
+      775,
+      970
+    ],
+    "codexStages": [
+      0,
+      100
+    ],
+    "codexDeliveredAtProgress": 100,
+    "codexPreviewTab": "tab9",
+    "codexPreviewState": "left-fully-expanded-for-user-review",
+    "codexScreenshotDimensions": [
+      775,
+      969
+    ],
+    "codexViewportSource": "Root-reported browser viewport; native JPEG capture is one pixel shorter."
+  },
+  "knownLimits": [
+    "Tube size, concealed pump connections and wall thickness are illustrative, not measured manufacturing dimensions.",
+    "The clear tube and film have subtle contrast on the pale background; print is narrow or disappears edge-on at 90 degrees. The dark front/rear panels partially occlude the pump during intermediate expansion; full expansion separates all five layers.",
+    "The rear photo guides the cover shape only; no LAN branding, physical-reference capacity text or yellow formula is added.",
+    "Desktop and mobile viewport checks do not certify physical mobile devices."
+  ],
+  "revision": "physical-reference-frosted-glass-dual-u-cover-local-review-20261027",
+  "geometryComparisonFile": "work/golden-real-reference-review/geometry-comparison.json",
+  "referenceCorrection": {
+    "scope": [
+      "Body finish only: neutral frosted transmitting glass, roughness .28.",
+      "One connected olive hood with matching long U-shaped front and rear panels; short sides remain above the shoulder."
+    ],
+    "referenceFiles": [
+      "f115f9755d4125e0aa29da51445e39e6.jpg",
+      "b7d130f05e8e1d7b54012a283021203d.jpg",
+      "ad46e83363916961db71f99923582e77.jpg"
+    ],
+    "privateReferenceDirectory": "work/golden-real-reference-review/reference",
+    "publicReferenceImagesAdded": false,
+    "liaoseArtworkPreserved": true,
+    "physicalReferenceBrandingCopied": false,
+    "noFormula": true
+  }
+}

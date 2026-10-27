@@ -460,5 +460,121 @@
     "Tube size, concealed pump connections and wall thickness are illustrative, not measured manufacturing dimensions.",
     "The clear tube has subtle edge contrast on the pale background; small product text and near-edge-on print at 90 degrees are existing display limits.",
     "Desktop and mobile viewport checks do not certify physical mobile devices."
-  ]
+  ],
+  "publication": {
+    "state": "published-live-browser-verified",
+    "version": "client1.26",
+    "releasedAt": "2026-10-27T10:03:04+08:00",
+    "releaseSourceCommit": "ff5d9cf1580c120674f527ee1f314358a1152b56",
+    "releaseManifestSha256": "7b55bf7dce6d21782d576e76469e63bde12271a935b4882e99eb2b404e8544a4",
+    "releaseHttpsVerification": "passed",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "publishedAt": "2026-10-27T10:03:04+08:00",
+    "httpsVerification": "passed",
+    "releaseReceiptCommit": "5060f19cd98e6cfe6f03811ddcea73bc197c16ad",
+    "releaseReceipt": "client126-gentle-pump-release.json",
+    "historicalPreviewRecordPreserved": true,
+    "productionBrowser": {
+      "version": "client1.26",
+      "url": "https://bmt.yuanzebeauty.com/client",
+      "browser": "Ego Lite",
+      "titleVerified": true,
+      "productId": "poster-044",
+      "verifiedAt": "2026-10-27T10:06:40.193000+08:00",
+      "desktop": {
+        "width": 1462,
+        "height": 853,
+        "verifiedProgress": [
+          0,
+          50,
+          100
+        ],
+        "rotationControlDegrees": 90,
+        "capturedYawRadians": 1.54309340232166,
+        "returnToFrontVerified": true,
+        "finalReturnProgress": 0,
+        "renderedProgressAfterReturn": 0.0001781105711488654,
+        "completePumpAndTubePreserved": true,
+        "protectiveCoverIndependent": true,
+        "controlsVisible": 5,
+        "screenshotsVisuallyInspected": true
+      },
+      "mobile": {
+        "width": 393,
+        "height": 852,
+        "verifiedProgress": [
+          0,
+          100
+        ],
+        "scrollWidth": 393,
+        "controlsVisible": 5,
+        "screenshotsVisuallyInspected": true
+      },
+      "originalPosterRoundTrip": "not-tested-this-release",
+      "screenshots": [
+        {
+          "file": "review-evidence/gentle/client126/desktop-closed.png",
+          "bytes": 129078,
+          "sha256": "b1eb1021fef392245656f7b7c67a4332d5f1337c8106897f2b2ce5155e2abae5",
+          "width": 1462,
+          "height": 853
+        },
+        {
+          "file": "review-evidence/gentle/client126/desktop-half.png",
+          "bytes": 121577,
+          "sha256": "712adf996ce7f8bb19ffb3c32c0b68ba37583149a5ea78f85f96c05b6317c562",
+          "width": 1462,
+          "height": 853
+        },
+        {
+          "file": "review-evidence/gentle/client126/desktop-open.png",
+          "bytes": 115765,
+          "sha256": "5c70d89b1e86211358a134e250f953d3a33e9eee600ccecc0510443941dee2a3",
+          "width": 1462,
+          "height": 853
+        },
+        {
+          "file": "review-evidence/gentle/client126/desktop-rotated.png",
+          "bytes": 110073,
+          "sha256": "caa4982b0cba6bd5e8c4d6492721a862b4f180f7cf21ca7bf5a52182cebc4def",
+          "width": 1462,
+          "height": 853
+        },
+        {
+          "file": "review-evidence/gentle/client126/mobile-closed.png",
+          "bytes": 52471,
+          "sha256": "5fa52817dd5598dd604d7d69c2ec65b0cca5f5f4f04b8c7f132b4171953c8034",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "file": "review-evidence/gentle/client126/mobile-open.png",
+          "bytes": 47289,
+          "sha256": "1158a2e260ee7840ec5987f8067b1bf69ca44e1ea88fa62831a236f45daeda81",
+          "width": 393,
+          "height": 852
+        }
+      ],
+      "stateEvidence": [
+        {
+          "file": "review-evidence/gentle/client126/desktop-browser-states.json",
+          "bytes": 2122,
+          "sha256": "5a79c5bb7435e8ae0915a42d6cb6efcd6c60925ab3e4685dd2b3f9a5cf5fecbe"
+        },
+        {
+          "file": "review-evidence/gentle/client126/mobile-browser-states.json",
+          "bytes": 1092,
+          "sha256": "eda419508db995d8d3e106c52f6a2ecc708d48efaabfa5da89ee4ab3cfb89489"
+        }
+      ],
+      "limits": [
+        "Mobile validation uses a simulated 393 by 852 viewport; no physical phone verification.",
+        "This production browser check used Ego Lite; no Codex IAB or Chrome production pass is claimed.",
+        "Original-poster round-trip was not retested in the production browser during this release; HTTPS original-file download was verified separately.",
+        "Tube dimensions, wall thickness and hidden connections are illustrative rather than measured manufacturing dimensions."
+      ]
+    }
+  }
 }

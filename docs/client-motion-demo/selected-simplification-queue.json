@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo client1.23, Woodland client1.24 and Pure Volume client1.25 are published and live verified. Gentle Cleansing is local awaiting user review; remaining selected revisions require individual review.",
+  "deployment": "Moisture Shampoo client1.23, Woodland client1.24 and Pure Volume client1.25 are published and live verified. Gentle Cleansing client1.26 is published and live HTTPS/browser verified. Golden Face Oil physical-reference frosted-glass/dual-U-cover revision is local awaiting user review; eleven later selected revisions remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -41,14 +41,26 @@
       "selectionNumber": 7,
       "posterId": "poster-044",
       "name": "Gentle Cleansing",
-      "status": "local-awaiting-user",
-      "localRevisionReceipt": "gentle-simplified-preview-verification.json"
+      "status": "published-live-verified",
+      "localRevisionReceipt": "gentle-simplified-preview-verification.json",
+      "releaseVersion": "client1.26",
+      "releaseSourceCommit": "ff5d9cf1580c120674f527ee1f314358a1152b56",
+      "releaseManifestSha256": "7b55bf7dce6d21782d576e76469e63bde12271a935b4882e99eb2b404e8544a4",
+      "releasedAt": "2026-10-27T10:03:04+08:00",
+      "releaseHttpsVerification": "passed",
+      "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+      "releaseReceiptStatus": "complete",
+      "physicalMobileDeviceTested": false,
+      "releaseReceiptCommit": "5060f19cd98e6cfe6f03811ddcea73bc197c16ad",
+      "releaseReceipt": "client126-gentle-pump-release.json"
     },
     {
       "selectionNumber": 9,
       "posterId": "poster-056",
       "name": "Golden Face Oil",
-      "status": "queued"
+      "status": "local-awaiting-user",
+      "localRevisionReceipt": "golden-simplified-preview-verification.json",
+      "localRevision": "physical-reference-frosted-glass-dual-u-cover"
     },
     {
       "selectionNumber": 10,

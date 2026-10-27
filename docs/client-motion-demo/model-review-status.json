@@ -92,7 +92,7 @@
     "releaseReceipt": "client125-pure-volume-pump-release.json"
   },
   "poster-044": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Overcap",
       "PumpAssembly",
@@ -105,8 +105,18 @@
       "open": "/review-assets/poster-044-simplified-open.png"
     },
     "background": "#e4d8d3",
-    "reviewStatus": "local-awaiting-user",
-    "localRevisionReceipt": "gentle-simplified-preview-verification.json"
+    "reviewStatus": "published-live-verified",
+    "localRevisionReceipt": "gentle-simplified-preview-verification.json",
+    "releaseVersion": "client1.26",
+    "releaseSourceCommit": "ff5d9cf1580c120674f527ee1f314358a1152b56",
+    "releaseManifestSha256": "7b55bf7dce6d21782d576e76469e63bde12271a935b4882e99eb2b404e8544a4",
+    "releasedAt": "2026-10-27T10:03:04+08:00",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "releaseReceiptCommit": "5060f19cd98e6cfe6f03811ddcea73bc197c16ad",
+    "releaseReceipt": "client126-gentle-pump-release.json"
   },
   "poster-047": {
     "state": "published",
@@ -123,21 +133,22 @@
     "background": "#cedfe9"
   },
   "poster-056": {
-    "state": "published",
+    "state": "complete",
     "components": [
       "Overcap",
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-056-closed.webp",
-      "open": "/review-assets/poster-056-open.webp"
+      "closed": "/review-assets/poster-056-simplified-closed.png",
+      "open": "/review-assets/poster-056-simplified-open.png"
     },
-    "background": "#e5dfbd"
+    "background": "#e5dfbd",
+    "reviewStatus": "local-awaiting-user",
+    "localRevisionReceipt": "golden-simplified-preview-verification.json",
+    "localRevision": "physical-reference-frosted-glass-dual-u-cover"
   },
   "poster-057": {
     "state": "published",
