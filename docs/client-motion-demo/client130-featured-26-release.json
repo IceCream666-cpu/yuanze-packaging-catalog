@@ -1,0 +1,1553 @@
+{
+  "version": "client1.30",
+  "status": "published-live-browser-verified",
+  "scope": "Restore only existing approved Daily Emulsion and Body Oil homepage entries; preserve every model and full-library poster.",
+  "sourceCommit": "819e5bc2b9bb1ca9c4813672b483f112b6d0e311",
+  "baselineCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+  "publication": {
+    "version": "client1.30",
+    "patch": "restore-only-072-073-to-featured-preserve-all-models",
+    "publishedAt": "2026-10-27T16:41:08+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "backup": "/opt/yuanze-reference/backups/client1.30-restore-two-approved-featured-models-20261027",
+    "baselineManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "verifiedFiles": 458,
+    "changed": [
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-073-1024.webp",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073.png",
+      "index.html",
+      "preview.js",
+      "bundle-manifest.json"
+    ],
+    "removedChunks": [],
+    "added": [
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-073-1024.webp",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073.png"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "outsideUnchanged": 6820,
+    "service": "MainPID=33772\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42"
+  },
+  "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+  "counts": {
+    "before": {
+      "featured": 24,
+      "models": 26,
+      "posters": 61,
+      "images": 412,
+      "resources": 452
+    },
+    "after": {
+      "featured": 26,
+      "models": 26,
+      "posters": 61,
+      "images": 418,
+      "resources": 458
+    }
+  },
+  "restoredIds": [
+    "poster-072",
+    "poster-073"
+  ],
+  "homepageOrder": [
+    {
+      "id": "poster-012",
+      "name": "Beach Magic",
+      "kind": {
+        "zh": "身体护理 · 双色磨砂膏",
+        "en": "Body care · Dual-colour sugar scrub"
+      },
+      "description": {
+        "zh": "黄粉双色磨砂膏，搭配白色旋盖。",
+        "en": "Yellow and pink scrub with a white screw cap."
+      },
+      "background": "#f4c8d6",
+      "ink": "#3c1927",
+      "swatch": [
+        "#f5ce40",
+        "#ed77a5"
+      ]
+    },
+    {
+      "id": "poster-013",
+      "name": "Coral & Aqua",
+      "kind": {
+        "zh": "身体护理 · 双色磨砂膏",
+        "en": "Body care · Dual-colour sugar scrub"
+      },
+      "description": {
+        "zh": "珊瑚粉与水蓝色的双色组合。",
+        "en": "A two-tone combination of coral and aqua."
+      },
+      "background": "#bde2df",
+      "ink": "#163f3e",
+      "swatch": [
+        "#f48274",
+        "#42b5b7"
+      ]
+    },
+    {
+      "id": "poster-039",
+      "name": "PDRN Capsule Cream",
+      "kind": {
+        "zh": "面部护理 · 胶囊面霜",
+        "en": "Face care · Capsule cream"
+      },
+      "description": {
+        "zh": "通透罐身与薄荷绿色胶囊。",
+        "en": "A clear jar with mint-green capsules."
+      },
+      "background": "#d5e5d8",
+      "ink": "#243e31",
+      "swatch": [
+        "#dfe8db",
+        "#a4cbb5"
+      ]
+    },
+    {
+      "id": "poster-049",
+      "name": "Moisture Shampoo",
+      "kind": {
+        "zh": "头发护理 · 滋润洗发水",
+        "en": "Hair care · Moisture shampoo"
+      },
+      "description": {
+        "zh": "珠光白瓶身与银色泵头。",
+        "en": "A pearlescent white bottle with a silver-coloured pump."
+      },
+      "background": "#dfe4e8",
+      "ink": "#303942",
+      "swatch": [
+        "#efebe0",
+        "#b2bcc4"
+      ]
+    },
+    {
+      "id": "poster-042",
+      "name": "Woodland",
+      "kind": {
+        "zh": "身体护理 · 木质香氛沐浴露",
+        "en": "Body care · Woodland body wash"
+      },
+      "description": {
+        "zh": "琥珀色瓶身与深色木纹细节。",
+        "en": "An amber-coloured bottle with dark wood-grain details."
+      },
+      "background": "#c5a58b",
+      "ink": "#35241d",
+      "swatch": [
+        "#241e1a",
+        "#794124"
+      ]
+    },
+    {
+      "id": "poster-051",
+      "name": "Pure Volume",
+      "kind": {
+        "zh": "头发护理 · 蓬松洗发水",
+        "en": "Hair care · Pure volume shampoo"
+      },
+      "description": {
+        "zh": "柔白与绿色的包装配色。",
+        "en": "An off-white and green packaging palette."
+      },
+      "background": "#dce4cf",
+      "ink": "#34432c",
+      "swatch": [
+        "#ede9dc",
+        "#7c956c"
+      ]
+    },
+    {
+      "id": "poster-044",
+      "name": "Gentle Cleansing",
+      "kind": {
+        "zh": "面部护理 · 温和洁面泡沫",
+        "en": "Face care · Gentle cleansing foam"
+      },
+      "description": {
+        "zh": "简洁线条与通透包装细节。",
+        "en": "Simple lines and clear packaging details."
+      },
+      "background": "#e8d6d3",
+      "ink": "#503130",
+      "swatch": [
+        "#d6bdb2",
+        "#ebe6df"
+      ]
+    },
+    {
+      "id": "poster-047",
+      "name": "Coastal",
+      "kind": {
+        "zh": "香氛系列 · 海岸香水",
+        "en": "Fragrance · Coastal perfume"
+      },
+      "description": {
+        "zh": "透明瓶身，搭配浅棕色瓶盖。",
+        "en": "A clear bottle with a light brown cap."
+      },
+      "background": "#cbdfea",
+      "ink": "#2b3d43",
+      "swatch": [
+        "#d6c49b",
+        "#a2c4d9"
+      ]
+    },
+    {
+      "id": "poster-056",
+      "name": "Golden Face Oil",
+      "kind": {
+        "zh": "面部护理 · 金色面部护理油",
+        "en": "Face care · Golden Face Oil"
+      },
+      "description": {
+        "zh": "墨绿瓶盖与金色油液，呈现通透的方瓶轮廓。",
+        "en": "A deep green cap and golden oil in a clear square silhouette."
+      },
+      "background": "#e6dfb9",
+      "ink": "#3c4224",
+      "swatch": [
+        "#5a632d",
+        "#e5bd45"
+      ]
+    },
+    {
+      "id": "poster-057",
+      "name": "B5 Serum",
+      "kind": {
+        "zh": "面部护理 · B5 精华液",
+        "en": "Face care · B5 Serum"
+      },
+      "description": {
+        "zh": "粉色精华与白色滴管，在方瓶中形成轻柔对比。",
+        "en": "Pink serum and a white dropper in a softly contrasted square bottle."
+      },
+      "background": "#f1d8de",
+      "ink": "#54313e",
+      "swatch": [
+        "#edb8c7",
+        "#f2ece7"
+      ]
+    },
+    {
+      "id": "poster-058",
+      "name": "Luminous Face Oil",
+      "kind": {
+        "zh": "面部护理 · 柔光面部护理油",
+        "en": "Face care · Luminous Face Oil"
+      },
+      "description": {
+        "zh": "修长方瓶、银色瓶颈与柔粉油液，细节相映。",
+        "en": "A tall rectangular bottle pairs a silver neck with soft pink oil."
+      },
+      "background": "#eed9cc",
+      "ink": "#573c31",
+      "swatch": [
+        "#e7b5a1",
+        "#d9c9b3"
+      ]
+    },
+    {
+      "id": "poster-059",
+      "name": "Essence Oil Duo",
+      "kind": {
+        "zh": "面部护理 · 精华油双瓶组合",
+        "en": "Face care · Essence Oil Duo"
+      },
+      "description": {
+        "zh": "金色与透明双层油液，搭配成对的圆角滴管瓶。",
+        "en": "Golden oil and a clear two-phase fill in a pair of rounded dropper bottles."
+      },
+      "background": "#eadfbd",
+      "ink": "#4a3c20",
+      "swatch": [
+        "#e1b23c",
+        "#f1e8cf"
+      ]
+    },
+    {
+      "id": "poster-060",
+      "name": "AHA Body Mist",
+      "kind": {
+        "zh": "身体护理 · AHA 身体喷雾",
+        "en": "Body care · AHA Body Mist"
+      },
+      "description": {
+        "zh": "黑色喷头与银色标签，让通透瓶身更显利落。",
+        "en": "A black spray head and silver label bring definition to a clear bottle."
+      },
+      "background": "#dfddd5",
+      "ink": "#363634",
+      "swatch": [
+        "#c9c8c0",
+        "#393b39"
+      ]
+    },
+    {
+      "id": "poster-061",
+      "name": "Oil-Infused Body Cream",
+      "kind": {
+        "zh": "身体护理 · 精油身体霜",
+        "en": "Body care · Oil-Infused Body Cream"
+      },
+      "description": {
+        "zh": "柔白瓶身、黑色泵头与纸质外盒，层次简洁。",
+        "en": "Soft ivory bottles, black pumps and textured cartons form a simple set."
+      },
+      "background": "#e9e1d1",
+      "ink": "#40392e",
+      "swatch": [
+        "#e9dfc9",
+        "#292722"
+      ]
+    },
+    {
+      "id": "poster-062",
+      "name": "Micro Cream",
+      "kind": {
+        "zh": "面部护理 · 微珠保湿面霜",
+        "en": "Face care · Micro Cream"
+      },
+      "description": {
+        "zh": "冰蓝微珠与厚壁玻璃，映衬亮黑色方形瓶盖。",
+        "en": "Ice-blue beads and thick clear glass beneath a glossy black lid."
+      },
+      "background": "#d6e5e9",
+      "ink": "#253c45",
+      "swatch": [
+        "#b5d9e1",
+        "#242e31"
+      ]
+    },
+    {
+      "id": "poster-063",
+      "name": "Moisture Cream",
+      "kind": {
+        "zh": "面部护理 · 滋润面霜",
+        "en": "Face care · Moisture Cream"
+      },
+      "description": {
+        "zh": "磨砂玻璃与香槟金盖，保留柔和的膏体纹理。",
+        "en": "Frosted glass and a champagne lid frame a soft cream swirl."
+      },
+      "background": "#ead9cd",
+      "ink": "#553b31",
+      "swatch": [
+        "#c49e7c",
+        "#f1e6d7"
+      ]
+    },
+    {
+      "id": "poster-064",
+      "name": "Aromatic Body Lotion",
+      "kind": {
+        "zh": "身体护理 · 芳香身体乳",
+        "en": "Body care · Aromatic Body Lotion"
+      },
+      "description": {
+        "zh": "奶黄色泵瓶搭配编织绳结，带来温暖的自然质感。",
+        "en": "A buttery yellow pump bottle finished with a woven rope detail."
+      },
+      "background": "#ecdcb3",
+      "ink": "#514325",
+      "swatch": [
+        "#e9c875",
+        "#e9e0ca"
+      ]
+    },
+    {
+      "id": "poster-065",
+      "name": "Tea Tree Shampoo",
+      "kind": {
+        "zh": "头发护理 · 茶树洗发水与补充装",
+        "en": "Hair care · Tea Tree Shampoo"
+      },
+      "description": {
+        "zh": "深蓝标签与金色液体，让瓶装与补充装彼此呼应。",
+        "en": "Deep blue labels and golden liquid connect the bottle and refill pouch."
+      },
+      "background": "#e4d9bf",
+      "ink": "#24374c",
+      "swatch": [
+        "#223d66",
+        "#dbb35a"
+      ]
+    },
+    {
+      "id": "poster-066",
+      "name": "Rose Hair Oil",
+      "kind": {
+        "zh": "头发护理 · 玫瑰护发油",
+        "en": "Hair care · Rose Hair Oil"
+      },
+      "description": {
+        "zh": "花卉标签与金色泵头，在透明方瓶上留下细腻色彩。",
+        "en": "A floral label and golden pump add colour to a clear square bottle."
+      },
+      "background": "#eed6dc",
+      "ink": "#543540",
+      "swatch": [
+        "#dda5b8",
+        "#e6dbc5"
+      ]
+    },
+    {
+      "id": "poster-067",
+      "name": "Amber Ginger Shampoo",
+      "kind": {
+        "zh": "头发护理 · 琥珀生姜洗发水",
+        "en": "Hair care · Amber Ginger Shampoo"
+      },
+      "description": {
+        "zh": "琥珀色束口瓶与棕色绳结，延续植物灵感。",
+        "en": "An amber pouch-shaped bottle and brown cord draw on botanical details."
+      },
+      "background": "#dfd7b8",
+      "ink": "#3d4027",
+      "swatch": [
+        "#a37a30",
+        "#697644"
+      ]
+    },
+    {
+      "id": "poster-068",
+      "name": "Essence Water",
+      "kind": {
+        "zh": "面部护理 · 精华水",
+        "en": "Face care · Essence Water"
+      },
+      "description": {
+        "zh": "浅紫瓶盖、通透瓶身与同色外盒，呈现轻盈层次。",
+        "en": "A pale lavender cap, clear bottle and matching carton in quiet layers."
+      },
+      "background": "#e2dce9",
+      "ink": "#44394f",
+      "swatch": [
+        "#b9a7c0",
+        "#e9e3ed"
+      ]
+    },
+    {
+      "id": "poster-069",
+      "name": "Still Essential Oil",
+      "kind": {
+        "zh": "香氛系列 · STILL 精油",
+        "en": "Fragrance · Still Essential Oil"
+      },
+      "description": {
+        "zh": "天然软木盖与暖色纸盒，为细长玻璃瓶增添触感。",
+        "en": "Natural cork and a warm paper carton complement a slender glass bottle."
+      },
+      "background": "#dfcdb7",
+      "ink": "#4b3527",
+      "swatch": [
+        "#9c623d",
+        "#dcc6a7"
+      ]
+    },
+    {
+      "id": "poster-070",
+      "name": "Daylight Essential Oil",
+      "kind": {
+        "zh": "香氛系列 · DAYLIGHT 精油",
+        "en": "Fragrance · Daylight Essential Oil"
+      },
+      "description": {
+        "zh": "锥形磨砂瓶身与纹理瓶盖，让轮廓成为焦点。",
+        "en": "A frosted tapered bottle and textured cap bring the silhouette forward."
+      },
+      "background": "#e4e1d5",
+      "ink": "#403d32",
+      "swatch": [
+        "#eae3d2",
+        "#afa28e"
+      ]
+    },
+    {
+      "id": "poster-071",
+      "name": "Sculptural Pump",
+      "kind": {
+        "zh": "身体护理 · 长颈泵瓶",
+        "en": "Body care · Long-neck pump bottle"
+      },
+      "description": {
+        "zh": "乳白长颈、宽底轮廓，搭配左向长嘴泵头。",
+        "en": "An ivory long neck and broad base with a left-facing extended pump."
+      },
+      "background": "#e5e8d9",
+      "ink": "#25352b",
+      "swatch": [
+        "#eeece3",
+        "#b8c2a8"
+      ]
+    },
+    {
+      "id": "poster-072",
+      "name": "Daily Emulsion",
+      "kind": {
+        "zh": "面部护理 · 单瓶乳液空包材",
+        "en": "Face care · empty emulsion bottle"
+      },
+      "description": {
+        "zh": "磨砂方瓶、透明罩与完整白色泵头，展示已上线的单瓶空包材。",
+        "en": "An empty frosted rectangular bottle with a clear cover and complete white pump."
+      },
+      "background": "#e9e5d8",
+      "ink": "#34372e",
+      "swatch": [
+        "#efeee6",
+        "#34372e"
+      ]
+    },
+    {
+      "id": "poster-073",
+      "name": "Body Oil Collection",
+      "kind": {
+        "zh": "身体护理 · 单瓶身体油空包材",
+        "en": "Body care · empty glass bottle"
+      },
+      "description": {
+        "zh": "斜肩透明单瓶与象牙白完整旋盖，展示已上线的身体油空包材。",
+        "en": "One empty clear sloping-shoulder body-oil bottle with an intact ivory screw cap."
+      },
+      "background": "#eadbc5",
+      "ink": "#3e2b1d",
+      "swatch": [
+        "#eee3d1",
+        "#25180f"
+      ]
+    }
+  ],
+  "invariants": {
+    "original24EntriesAndOrderPreserved": true,
+    "all26ModelsByteIdentical": true,
+    "all61PostersByteIdentical": true,
+    "all412PreviousImagesByteIdentical": true,
+    "allSharedSceneAndLayoutCodeUnchanged": true,
+    "allLazyChunksAndCssUnchanged": true,
+    "noNewModels": true,
+    "noFurtherModelReview": true,
+    "poster074To078RemainOutsideFeaturedAndWithoutModels": true
+  },
+  "mediaCapture": {
+    "sourceCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+    "artifacts": [
+      {
+        "id": "poster-072",
+        "png": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/work/featured-26-capture/poster-072.png",
+        "bytes": 170295,
+        "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5",
+        "width": 1024,
+        "height": 1280,
+        "alpha": true,
+        "alphaBBox": [
+          316,
+          85,
+          708,
+          1193
+        ],
+        "transparentPixels": 934598,
+        "partialAlphaPixels": 2598,
+        "sourceGlbSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+        "method": "Approved production GLB and current packaging-scene materials/studio; closed single bottle. Source design background baked within unmodified geometry silhouette as alpha. No model or formula changes.",
+        "visualReview": "Root reviewed exact model structure and text; old metal-like assets excluded."
+      },
+      {
+        "id": "poster-073",
+        "png": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/work/featured-26-capture/poster-073.png",
+        "bytes": 196372,
+        "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb",
+        "width": 1024,
+        "height": 1280,
+        "alpha": true,
+        "alphaBBox": [
+          266,
+          95,
+          758,
+          1191
+        ],
+        "transparentPixels": 874135,
+        "partialAlphaPixels": 2495,
+        "sourceGlbSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+        "method": "Approved production GLB and current packaging-scene materials/studio; closed single bottle. Source design background baked within unmodified geometry silhouette as alpha. No model or formula changes.",
+        "visualReview": "Root reviewed exact model structure and text; old metal-like assets excluded."
+      }
+    ]
+  },
+  "mediaMethodLimit": "Transmission RGB inside the original geometry silhouette uses the approved design background; outside is transparent. Images are closed single-bottle captures, not changed GLBs.",
+  "publicationPlan": {
+    "version": "client1.30",
+    "baselineManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "changed": [
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-073-1024.webp",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073.png",
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-073-1024.webp",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073.png"
+    ],
+    "removed": [],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "resources": 458
+  },
+  "verification": {
+    "rootTests": 337,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 111,
+    "motionDOMTests": 46,
+    "legacyClientTests": 18,
+    "loginTests": 12,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true,
+    "targetedPythonTests": 36,
+    "targetedFrontendTests": 44
+  },
+  "independentAudit": {
+    "status": "passed",
+    "reviewer": "pdrn_review independent read-only agent",
+    "baselineCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+    "baselineManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "all458ResourceHashesVerified": true,
+    "savedPlanEqualsFreshLocalPlan": true,
+    "exactTarMembers": 9,
+    "changedExisting": [
+      "index.html",
+      "preview.js"
+    ],
+    "addedImages": 6,
+    "removedResources": 0,
+    "all26ModelsUnchanged": true,
+    "all412ExistingImagesUnchanged": true,
+    "all61PostersUnchanged": true,
+    "original24FeaturedEntriesUnchanged": true,
+    "onlyAppendedIds": [
+      "poster-072",
+      "poster-073"
+    ],
+    "currentSingleBottleCapturesAndDerivativesVerified": true,
+    "sharedSceneLayoutAndChunksUnchanged": true,
+    "publishRollbackAndPermissionsGuardsPreserved": true,
+    "remoteActionsByReviewer": false,
+    "checkedAt": "2026-10-27T16:22:48+08:00"
+  },
+  "candidateEvidence": "client130-featured-26-preview-verification.json",
+  "online": {
+    "version": "client1.30",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "assets/posters/poster-072.webp",
+      "assets/posters/poster-073.webp",
+      "assets/posters/poster-074.webp",
+      "assets/posters/poster-075.webp",
+      "assets/posters/poster-076.webp",
+      "assets/posters/poster-077.webp",
+      "assets/posters/poster-078.webp",
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/featured/poster-012-640.webp",
+      "assets/packaging/PackagingDetail-BFmoPEnE.js",
+      "assets/packaging/PackagingDetail-DKVlGnbY.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-N9MOtHI6.js",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-073.png",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073-1024.webp"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2395680,
+        "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2395680"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/996144"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-013.glb",
+        "bytes": 1064352,
+        "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1064352"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/914020"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-042.glb",
+        "bytes": 1639380,
+        "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1639380"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-044.glb",
+        "bytes": 2377084,
+        "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2377084"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-047.glb",
+        "bytes": 4731120,
+        "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/4731120"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-049.glb",
+        "bytes": 1577136,
+        "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1577136"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-051.glb",
+        "bytes": 4132088,
+        "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/4132088"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-056.glb",
+        "bytes": 529536,
+        "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/529536"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-057.glb",
+        "bytes": 2490520,
+        "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2490520"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-058.glb",
+        "bytes": 1953112,
+        "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1953112"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-059.glb",
+        "bytes": 1220536,
+        "sha256": "fd0ad9a323a5aad51982236bba6be5c80a868af50f773d1518d671f2c16fdcf5",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1220536"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-060.glb",
+        "bytes": 1111412,
+        "sha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1111412"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-061.glb",
+        "bytes": 1042708,
+        "sha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1042708"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-062.glb",
+        "bytes": 279060,
+        "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/279060"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-063.glb",
+        "bytes": 819544,
+        "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/819544"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-064.glb",
+        "bytes": 3598760,
+        "sha256": "1228bed596498239bebea597ff5511f81e8deb194927fc18d01b1d6e4bf475d6",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3598760"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-065.glb",
+        "bytes": 2726200,
+        "sha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2726200"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-066.glb",
+        "bytes": 4125864,
+        "sha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/4125864"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-067.glb",
+        "bytes": 3379404,
+        "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3379404"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-068.glb",
+        "bytes": 1458536,
+        "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1458536"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-069.glb",
+        "bytes": 3522180,
+        "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3522180"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-070.glb",
+        "bytes": 3191832,
+        "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3191832"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-072.glb",
+        "bytes": 1162568,
+        "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1162568"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-073.glb",
+        "bytes": 627980,
+        "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/627980"
+        },
+        "fullFileHashVerifiedOnServer": true
+      }
+    ],
+    "restoredFeaturedFullFiles": {
+      "assets/featured/poster-072.png": {
+        "status": 200,
+        "bytes": 170295,
+        "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5"
+      },
+      "assets/featured/poster-072-640.webp": {
+        "status": 200,
+        "bytes": 8168,
+        "sha256": "48266b886d0d601da85b3e62c8c22aa3f844a87f3e1f8aaa5f73f47da8d8a73e"
+      },
+      "assets/featured/poster-072-1024.webp": {
+        "status": 200,
+        "bytes": 13716,
+        "sha256": "f1f167a2148d2e83f89e0d357bdd3afb8fd62f676998400554adf9a76b614c1b"
+      },
+      "assets/featured/poster-073.png": {
+        "status": 200,
+        "bytes": 196372,
+        "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb"
+      },
+      "assets/featured/poster-073-640.webp": {
+        "status": 200,
+        "bytes": 11600,
+        "sha256": "2719ec80e3c281c31757558bf9b1947fced6f529d0ed270c58d7797aa3c56ab0"
+      },
+      "assets/featured/poster-073-1024.webp": {
+        "status": 200,
+        "bytes": 19008,
+        "sha256": "dfe857ea661e22030901364c359f246294e66902f374a477f0893b11c3bc8160"
+      }
+    },
+    "entryModelsFullFiles": {
+      "assets/packaging/poster-072.glb": {
+        "status": 200,
+        "bytes": 1162568,
+        "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
+      },
+      "assets/packaging/poster-073.glb": {
+        "status": 200,
+        "bytes": 627980,
+        "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
+      }
+    },
+    "withdrawnModels": [
+      "/showroom/assets/packaging/poster-074.glb",
+      "/showroom/assets/packaging/poster-075.glb",
+      "/showroom/assets/packaging/poster-076.glb",
+      "/showroom/assets/packaging/poster-077.glb",
+      "/showroom/assets/packaging/poster-078.glb"
+    ],
+    "withdrawnFeaturedImages": [
+      "/showroom/assets/featured/poster-074.png",
+      "/showroom/assets/featured/poster-074-640.webp",
+      "/showroom/assets/featured/poster-074-1024.webp",
+      "/showroom/assets/featured/poster-075.png",
+      "/showroom/assets/featured/poster-075-640.webp",
+      "/showroom/assets/featured/poster-075-1024.webp",
+      "/showroom/assets/featured/poster-076.png",
+      "/showroom/assets/featured/poster-076-640.webp",
+      "/showroom/assets/featured/poster-076-1024.webp",
+      "/showroom/assets/featured/poster-077.png",
+      "/showroom/assets/featured/poster-077-640.webp",
+      "/showroom/assets/featured/poster-077-1024.webp",
+      "/showroom/assets/featured/poster-078.png",
+      "/showroom/assets/featured/poster-078-640.webp",
+      "/showroom/assets/featured/poster-078-1024.webp"
+    ],
+    "all26ModelRanges": {
+      "assets/packaging/beach-magic-packaging.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2395680"
+      },
+      "assets/packaging/liaose-pump.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/996144"
+      },
+      "assets/packaging/poster-013.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1064352"
+      },
+      "assets/packaging/poster-039.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/914020"
+      },
+      "assets/packaging/poster-042.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1639380"
+      },
+      "assets/packaging/poster-044.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2377084"
+      },
+      "assets/packaging/poster-047.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4731120"
+      },
+      "assets/packaging/poster-049.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1577136"
+      },
+      "assets/packaging/poster-051.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4132088"
+      },
+      "assets/packaging/poster-056.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/529536"
+      },
+      "assets/packaging/poster-057.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2490520"
+      },
+      "assets/packaging/poster-058.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1953112"
+      },
+      "assets/packaging/poster-059.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1220536"
+      },
+      "assets/packaging/poster-060.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1111412"
+      },
+      "assets/packaging/poster-061.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1042708"
+      },
+      "assets/packaging/poster-062.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/279060"
+      },
+      "assets/packaging/poster-063.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/819544"
+      },
+      "assets/packaging/poster-064.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3598760"
+      },
+      "assets/packaging/poster-065.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2726200"
+      },
+      "assets/packaging/poster-066.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4125864"
+      },
+      "assets/packaging/poster-067.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3379404"
+      },
+      "assets/packaging/poster-068.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1458536"
+      },
+      "assets/packaging/poster-069.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3522180"
+      },
+      "assets/packaging/poster-070.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3191832"
+      },
+      "assets/packaging/poster-072.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1162568"
+      },
+      "assets/packaging/poster-073.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/627980"
+      }
+    },
+    "originalDownloads": {
+      "assets/posters/poster-072.webp": true,
+      "assets/posters/poster-073.webp": true
+    },
+    "adminRestoredFeaturedRanges": {
+      "assets/featured/poster-072.png": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/170295"
+      },
+      "assets/featured/poster-072-640.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/8168"
+      },
+      "assets/featured/poster-072-1024.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/13716"
+      },
+      "assets/featured/poster-073.png": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/196372"
+      },
+      "assets/featured/poster-073-640.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/11600"
+      },
+      "assets/featured/poster-073-1024.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/19008"
+      }
+    },
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginAllFilesVerified": true,
+    "videoRange": true,
+    "counts": {
+      "featured": 26,
+      "posters": 61,
+      "models": 26,
+      "images": 418,
+      "resources": 458
+    },
+    "checkedAt": "2026-10-27T16:44:31+08:00",
+    "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "publicHttps": true,
+    "certificateVerified": true,
+    "directOriginAddress": "47.79.233.3",
+    "tlsServerName": "bmt.yuanzebeauty.com",
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browser": {
+    "status": "pass",
+    "browser": "Ego Lite",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "version": "client1.30",
+    "desktopViewport": {
+      "width": 1474,
+      "height": 722
+    },
+    "desktop": {
+      "homepageImages": "visually reviewed after visible images finished loading",
+      "bothDetailsOpen": "pass",
+      "closedAndFullyExpanded": "state JSON checked",
+      "originalPosterAndReturn": "pass",
+      "wrap26To1": "pass"
+    },
+    "mobile": {
+      "type": "emulated viewport, not physical touch device",
+      "width": 393,
+      "height": 852,
+      "horizontalOverflow": false,
+      "screenshots": "both visually reviewed"
+    },
+    "sceneStates": {
+      "072": {
+        "closed": {
+          "progress": 0,
+          "renderedProgress": 0,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            0,
+            0,
+            0
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 16,
+          "triangles": 58870
+        },
+        "open": {
+          "progress": 1,
+          "renderedProgress": 0.9998642913161268,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -1.8997421535006407,
+            0.299959287394838,
+            1.8997421535006407
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 16,
+          "triangles": 58870
+        }
+      },
+      "073": {
+        "closed": {
+          "progress": 0,
+          "renderedProgress": 0,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            0,
+            0,
+            0
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 13,
+          "triangles": 49062
+        },
+        "open": {
+          "progress": 1,
+          "renderedProgress": 0.9998173616637125,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -1.4997260424955687,
+            0.22995799318265386,
+            1.8496621190778681
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 13,
+          "triangles": 49062
+        }
+      }
+    },
+    "originalPosters": {
+      "072": [
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-072-1280.webp",
+          "loaded": true,
+          "naturalWidth": 853
+        }
+      ],
+      "073": [
+        {
+          "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-073-1280.webp",
+          "loaded": true,
+          "naturalWidth": 853
+        }
+      ]
+    },
+    "featuredCount": 26,
+    "newProducts": [
+      "poster-072",
+      "poster-073"
+    ],
+    "physicalDeviceTested": false,
+    "nativeTouchTested": false,
+    "visualReview": "Root and release agent individually reviewed all six production screenshots; current single-bottle media, complete outlines and readable text matched the approved models. Neighbour previews cross the viewport edge as part of the existing carousel; the selected products remain visible.",
+    "evidence": [
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-home-072.png",
+        "bytes": 186520,
+        "sha256": "96b13a8e76d7b04e55e7a05ad499e10c5c46855d5977fb5330f1fb8dcaa42701",
+        "width": 1474,
+        "height": 722,
+        "visuallyReviewedBy": [
+          "root",
+          "deploy_scope_audit"
+        ]
+      },
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-home-073.png",
+        "bytes": 214553,
+        "sha256": "9b8dd75903350a4deb1ed810a8c345dd33279493c1c9b92f4fccb95ef28139fe",
+        "width": 1474,
+        "height": 722,
+        "visuallyReviewedBy": [
+          "root",
+          "deploy_scope_audit"
+        ]
+      },
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-072-exploded.png",
+        "bytes": 110636,
+        "sha256": "032c9da7e2ec86e8779f2a2efdf36b3cf59966ab84badcceae464d5db0c4af69",
+        "width": 1474,
+        "height": 722,
+        "visuallyReviewedBy": [
+          "root",
+          "deploy_scope_audit"
+        ]
+      },
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-073-exploded.png",
+        "bytes": 112864,
+        "sha256": "54acc28e4731b5009ebe9280c0c7df2127bd4ac915dca057a8eb333076904815",
+        "width": 1474,
+        "height": 722,
+        "visuallyReviewedBy": [
+          "root",
+          "deploy_scope_audit"
+        ]
+      },
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-mobile-072.png",
+        "bytes": 106774,
+        "sha256": "6cebece499b6882b0b86488cf34a78b4bb99ce6786f050e3687655a6c5f0040d",
+        "width": 393,
+        "height": 852,
+        "visuallyReviewedBy": [
+          "root",
+          "deploy_scope_audit"
+        ]
+      },
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-mobile-073.png",
+        "bytes": 126201,
+        "sha256": "b5f16786592bb35f37c9fb8e8cecb3274dd7207186e01ebcabcd76ec739cf739",
+        "width": 393,
+        "height": 852,
+        "visuallyReviewedBy": [
+          "root",
+          "deploy_scope_audit"
+        ]
+      },
+      {
+        "path": "docs/client-motion-demo/review-evidence/featured-26/client130/live-browser-verification.json",
+        "bytes": 2874,
+        "sha256": "d763ec2b84cd275c4d790ff0ae3773cc541f977a3573523ec7dc2197de35c9be"
+      }
+    ]
+  },
+  "rollback": {
+    "script": "work/featured-26-release/rollback.py --rollback",
+    "retainedBackup": "/opt/yuanze-reference/backups/client1.30-restore-two-approved-featured-models-20261027",
+    "currentNewManifestGuard": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "baselineManifestGuard": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "preventsOverwritingLaterPublication": true,
+    "executed": false
+  },
+  "limitations": [
+    "Native touchscreen and physical mobile hardware have not been tested.",
+    "The pre-existing models are unchanged; this release adds homepage access only."
+  ],
+  "finalizedAt": "2026-10-27T16:49:37+08:00"
+}
