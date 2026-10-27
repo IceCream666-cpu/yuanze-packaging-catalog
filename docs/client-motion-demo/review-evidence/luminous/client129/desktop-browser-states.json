@@ -1,0 +1,204 @@
+[
+  {
+    "name": "desktop-closed",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.29",
+    "width": 1474,
+    "height": 722,
+    "scrollWidth": 1474,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    }
+  },
+  {
+    "name": "desktop-half",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.29",
+    "width": 1474,
+    "height": 722,
+    "scrollWidth": 1474,
+    "state": {
+      "progress": 0.5,
+      "renderedProgress": 0.4998210581133903,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.4244900156231624,
+        0.07497315871700849,
+        0.824704745887094
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    }
+  },
+  {
+    "name": "desktop-open",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.29",
+    "width": 1474,
+    "height": 722,
+    "scrollWidth": 1474,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9998232677992631,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.8494963132279,
+        0.14997349016988948,
+        1.649708391868784
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    }
+  },
+  {
+    "name": "desktop-side",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.29",
+    "width": 1474,
+    "height": 722,
+    "scrollWidth": 1474,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 4.800717931121817e-8,
+      "yaw": 1.5702499585097658,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.3682046103697178e-7,
+        7.201076845930743e-9,
+        7.921184586350998e-8
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    }
+  },
+  {
+    "name": "desktop-back",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.29",
+    "width": 1474,
+    "height": 722,
+    "scrollWidth": 1474,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 5.833433990865433e-12,
+      "yaw": 3.1410281702429743,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.6625286873966485e-11,
+        8.749667657070859e-13,
+        9.625166084927964e-12
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    }
+  },
+  {
+    "name": "reset-front",
+    "state": {
+      "progress": 0,
+      "renderedProgress": 1.9368176114486595e-16,
+      "yaw": 0.0003080245846014745,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -5.519930192628679e-16,
+        0,
+        3.195749058890288e-16
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    }
+  },
+  {
+    "name": "poster-return",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.29",
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 12,
+      "triangles": 72922
+    },
+    "poster": [
+      {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-058-1024.webp",
+        "complete": true,
+        "width": 310,
+        "height": 464
+      },
+      {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-058-1280.webp",
+        "complete": true,
+        "width": 1280,
+        "height": 960
+      }
+    ]
+  }
+]
