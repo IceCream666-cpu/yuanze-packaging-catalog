@@ -1,13 +1,13 @@
 {
-  "version": "client1.26",
-  "sourceSha256": "bdac5a617740c7176c16a97bf5c61768863024ab4e0a5418a5a71c16af1df08a",
+  "version": "client1.27",
+  "sourceSha256": "fd5c59ff65500df617d94ec93d259524f09e2d60ed027b9f5410c6188d560800",
   "files": {
-    "assets/packaging/PackagingDetail-B6gdij34.js": "8afd2bb6c0e8bff280f2692e558371bae7e4bde194407484744ca203cc3b58a2",
     "assets/packaging/PackagingDetail-DKVlGnbY.css": "fd4e7f86885747e0a4dfa3bc41a85b9f9bb9682c7b65ca9e1f878c029e2396b9",
-    "assets/packaging/packaging-scene-C9DHEfgn.js": "fc20ea08223411576372b5bfccfbc03edf315e734ac854386c742d85fba8e239",
-    "index.html": "98ddfdd9fbdcb7bfac2746a584cc72b4d47a7b6b3bb679988e18bb8016261d10",
+    "assets/packaging/PackagingDetail-umd8mLCf.js": "914325afc0ff6ae385ec923831cebc578a3883ce212d9cfdbf959c0dfc3a683c",
+    "assets/packaging/packaging-scene-BdpD0lUa.js": "50376203a303ce501c3da83f74ad7e0faeda8b32e5497a6c7bf5dc76c02cd199",
+    "index.html": "97cd2ed7230def8a49ff92788af90793a377cdc8a6857cd6dae9e951953326f2",
     "preview.css": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5",
-    "preview.js": "36919ca517edc380dd00ba6cb415a4355f21e9d43ade29456f167567880780d8"
+    "preview.js": "20e93bfdbe8cd0023b306cf931f288bb569a6cd11a157998f3ea2e187dfe6446"
   },
-  "viteManifestSha256": "d4f5009cd42647ef0b217844af4415db80982e48f3cdbd9e9e2d5c325ba86c58"
+  "viteManifestSha256": "281180de7a36daab251a41cb48dbe07bd687c5e80047c43ae86a563e6d773c0e"
 }

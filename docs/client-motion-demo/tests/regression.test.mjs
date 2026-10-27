@@ -43,7 +43,7 @@ test('original poster assets and separately approved packaging assets match exac
  assert.equal(new Set(manifest.files.map(f=>f.target)).size,manifest.files.length);
  const declared=new Set(manifest.files.map(f=>f.target));
  assert.equal(packagingManifest.schema,1);
- assert.equal(packagingManifest.scope,'approved-client1.26-collection-packaging');
+ assert.equal(packagingManifest.scope,'approved-client1.27-collection-packaging');
  assert.equal(packagingManifest.posterId,'poster-012');
  assert.equal(packagingManifest.containsFormula,false);
  assert.deepEqual(packagingManifest.components,['Jar','OuterCap','InnerLid','LogoPrint']);

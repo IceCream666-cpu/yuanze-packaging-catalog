@@ -619,72 +619,40 @@
           "Cover"
         ],
         "detail": [
-          "半透明方罩，前片延伸至瓶肩以下。",
-          "A translucent square hood with a long front skirt."
+          "半透明罩盖，前后长U形面板轮廓一致，整体向上移开。",
+          "A translucent hood with matching long U-shaped front and rear panels that lift together."
         ]
       },
       {
-        "key": "head",
-        "node": "Actuator",
+        "key": "pump",
+        "node": "PumpAssembly",
         "title": [
-          "圆柱按压头",
-          "Cylindrical actuator"
+          "完整按压泵头",
+          "Complete press pump"
         ],
         "short": [
-          "压头",
-          "Head"
+          "整泵头",
+          "Pump"
         ],
         "detail": [
-          "罩内可见的短圆柱按压件。",
-          "The short cylindrical actuator visible inside the cover."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "短连接段",
-          "Short connector"
-        ],
-        "short": [
-          "连接",
-          "Stem"
-        ],
-        "detail": [
-          "按压件与瓶口之间的连接示意。",
-          "Illustrative connection between the actuator and neck."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "双圈瓶口座",
-          "Twin-ring collar"
-        ],
-        "short": [
-          "瓶口座",
-          "Collar"
-        ],
-        "detail": [
-          "双圈底座独立向上分离。",
-          "The twin-ring collar lifts separately."
+          "圆柱按压头、连接段、双圈瓶口座与透明吸液管保持装配，整体向上移开。",
+          "The cylindrical actuator, connector, twin-ring collar and clear dip tube stay fitted and lift together."
         ]
       },
       {
         "key": "jar",
         "node": "Body",
         "title": [
-          "厚底扁方玻璃瓶",
-          "Thick-base flat glass bottle"
+          "厚底扁方磨砂玻璃瓶",
+          "Thick-base frosted glass bottle"
         ],
         "short": [
           "瓶身",
           "Bottle"
         ],
         "detail": [
-          "圆角方肩、扁瓶深度与透明厚底。",
-          "Rounded shoulders, a shallow body and a clear thick base."
+          "圆角方肩与厚底，瓶面保留柔雾透光的磨砂质感。",
+          "Rounded shoulders and a thick base with a softly translucent frosted finish."
         ]
       },
       {

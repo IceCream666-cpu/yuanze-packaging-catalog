@@ -1,4 +1,4 @@
-"""Golden Face Oil 056: perspective-calibrated empty glass and an exterior U-skirt cover."""
+"""Golden Face Oil 056: frosted empty glass and a matching front/rear U-skirt cover."""
 import bpy, bmesh, math, json, subprocess, xml.etree.ElementTree as ET
 from pathlib import Path
 from mathutils import Vector
@@ -29,13 +29,16 @@ def mat(name,color,rough,transmission=0):
  b.inputs['IOR'].default_value=1.49
  return m
 
-glass=mat('Golden neutral clear thick glass','#ffffff',.025,1)
+glass=mat('Golden neutral frosted thick glass','#ffffff',.28,1)
 cover=mat('Golden translucent deep olive overcap','#4b5524',.065,.86)
 cover.node_tree.nodes.get('Principled BSDF').inputs['Coat Weight'].default_value=.28
 cover.node_tree.nodes.get('Principled BSDF').inputs['Coat Roughness'].default_value=.055
 closure=mat('Golden olive stepped closure','#38421b',.16)
 stem=mat('Golden olive pump stem','#657137',.24)
 actuator=mat('Golden olive cylindrical actuator','#414e1d',.12)
+dip_tube=mat('Golden clear plastic dip tube','#ffffff',.06,.98)
+dip_tube.node_tree.nodes.get('Principled BSDF').inputs['IOR'].default_value=1.46
+dip_tube.use_backface_culling=True
 
 def mesh(name,vertices,faces,material,parent,smooth=True):
  data=bpy.data.meshes.new(name);data.from_pydata(vertices,[],faces);data.update()
@@ -87,61 +90,60 @@ loft('Hollow rounded rectangular bottle with thick clear base',outer+inner,glass
 
 # The visible two-step seat and cylinder are retained; hidden pump mechanics are schematic.
 lathe('Olive stepped pump collar',[(.904,.082),(.904,.128),(.910,.144),(.918,.150),(.932,.150),(.936,.143),(.941,.143),(.946,.150),(.958,.150),(.965,.145),(.972,.141),(.986,.141),(.992,.132),(1.001,.128),(1.001,.074),(.904,.074),(.904,.082)],closure,'Closure')
+# The unseen tube is illustrative and remains open at both annular ends.
+lathe('Hollow clear Golden pump dip tube',[(.18,.026),(.1815,.0275),(.9885,.0275),(.99,.026),(.99,.021),(.9885,.0195),(.1815,.0195),(.18,.021),(.18,.026)],dip_tube,'Closure')
 lathe('Short illustrative connecting stem',[(.969,0),(.969,.062),(.976,.071),(1.044,.071),(1.053,.064),(1.053,0)],stem,'PumpStem')
 lathe('Tall cylindrical press actuator',[(1.035,.078),(1.035,.113),(1.042,.128),(1.055,.132),(1.318,.132),(1.335,.128),(1.346,.118),(1.350,.103),(1.350,0),(1.332,0),(1.332,.099),(1.315,.106),(1.068,.106),(1.052,.078),(1.035,.078)],actuator,'Actuator')
 lathe('Subtle actuator top inset',[(1.349,0),(1.349,.081),(1.350,.089),(1.351,.081),(1.351,0)],actuator,'Actuator')
 
-def extrude(name,outline,depth0,depth1,axis,material,parent):
- n=len(outline)
- convert=(lambda p,d:(p[0],d,p[1])) if axis=='y' else (lambda p,d:(p[0],p[1],d))
- vertices=[convert(p,d) for d in [depth0,depth1] for p in outline]
- # Outline is CCW in its 2D plane. XZ reverses the orientation against +Y.
- faces=[tuple(range(n-1,-1,-1)),tuple(range(n,n*2))]
- faces.extend((i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n))
- if axis=='y':faces=[tuple(reversed(f)) for f in faces]
- return mesh(name,vertices,faces,material,parent,False)
-
-def front_outline():
- points=[]
- # Rounded lower corners produce the long U silhouette seen in the reference.
- for cx,cz,r,start in [(.29,1.39,.02,0),(-.29,1.39,.02,90),(-.20,.61,.11,180),(.20,.61,.11,270)]:
-  for i in range(25):
-   a=math.radians(start+i*90/24);points.append((cx+r*math.cos(a),cz+r*math.sin(a)))
- return points
-
-front=extrude('Hollow olive cover with long rounded front skirt',front_outline(),-.197,-.185,'y',cover,'Overcap')
-# Side/back walls stop above the shoulder; only the exterior front sheet extends downward.
-outline=[(-.31,-.186),(-.31,.201)]
-for i in range(1,25):
- a=math.pi-i*math.pi/48;outline.append((-.288+.022*math.cos(a),.201+.022*math.sin(a)))
-outline.append((.288,.223))
-for i in range(1,25):
- a=math.pi/2-i*math.pi/48;outline.append((.288+.022*math.cos(a),.201+.022*math.sin(a)))
-outline.extend([(.31,-.186),(.298,-.186),(.298,.201)])
-for i in range(1,25):
- a=i*math.pi/48;outline.append((.288+.010*math.cos(a),.201+.010*math.sin(a)))
-outline.append((-.288,.211))
-for i in range(1,25):
- a=math.pi/2+i*math.pi/48;outline.append((-.288+.010*math.cos(a),.201+.010*math.sin(a)))
-outline.append((-.298,-.186))
-walls=extrude('Short shoulder-clearing side and rear cover walls',outline,.96,1.404,'z',cover,'Overcap')
-top_outline=[(x,y+.013) for x,y in ring(.31,.21,.021)]
-top=extrude('Thin rounded top of protective cover',top_outline,1.398,1.41,'z',cover,'Overcap')
-# Union the small overlap at the seams to avoid coincident transparent surfaces.
-bpy.context.view_layer.objects.active=front
-for part in [walls,top]:
- mod=front.modifiers.new('Joined physical cover seam','BOOLEAN');mod.operation='UNION';mod.solver='EXACT';mod.object=part
- bpy.ops.object.modifier_apply(modifier=mod.name)
- bpy.data.objects.remove(part,do_unlink=True)
+# One continuous shell avoids overlapping Boolean seams at the two rounded skirts.
+# Each horizontal ring has front/rear sheets; short sides join them above the shoulder.
+levels={.50,.61,.96,1.39,1.398,1.41}
+for i in range(25):
+ angle=i*math.pi/48
+ levels.add(.61-.11*math.cos(angle))
+ levels.add(1.39+.02*math.sin(angle))
+levels=sorted(levels)
+vertices=[]
+for z in levels:
+ half_width=.20+math.sqrt(max(0,.11**2-(z-.61)**2)) if z<.61 else .29+math.sqrt(max(0,.02**2-(z-1.39)**2)) if z>1.39 else .31
+ for x in [-half_width,-half_width+.012,half_width-.012,half_width]:
+  for y in [-.197,-.185,.211,.223]:vertices.append((x,y,z))
+faces=[]
+slabs=[]
+for lower,upper in zip(levels,levels[1:]):
+ middle=(lower+upper)/2
+ slabs.append({(x,y) for x in range(3) for y in range(3) if y in (0,2) or middle>=1.398 or (middle>=.96 and x in (0,2))})
+for layer,cells in enumerate(slabs):
+ for x,y in cells:
+  a=layer*16+x*4+y;b=a+4;c=b+1;d=a+1
+  A=a+16;B=b+16;C=c+16;D=d+16
+  if (x-1,y) not in cells:faces.append((a,d,D,A))
+  if (x+1,y) not in cells:faces.append((b,B,C,c))
+  if (x,y-1) not in cells:faces.append((a,A,B,b))
+  if (x,y+1) not in cells:faces.append((d,c,C,D))
+  if layer==0 or (x,y) not in slabs[layer-1]:faces.append((d,c,b,a))
+  if layer==len(slabs)-1 or (x,y) not in slabs[layer+1]:faces.append((A,B,C,D))
+front=mesh('Hollow olive cover with matching front and rear U skirts',vertices,faces,cover,'Overcap',False)
 bm=bmesh.new();bm.from_mesh(front.data)
-bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-5)
-bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-5)
-bmesh.ops.dissolve_limit(bm,angle_limit=.001,verts=list(bm.verts),edges=list(bm.edges))
+bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7)
+bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-7)
 bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+if bm.calc_volume(signed=True)<0:bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+assert all(edge.is_manifold for edge in bm.edges), 'The dual-skirt cover must be a closed solid'
 bm.to_mesh(front.data);bm.free();front.data.update()
+bpy.context.view_layer.objects.active=front
 bevel=front.modifiers.new('Soft polished cover edge','BEVEL');bevel.width=.0025;bevel.segments=4;bevel.limit_method='ANGLE'
 bevel.use_clamp_overlap=False
 bpy.ops.object.modifier_apply(modifier=bevel.name)
+bm=bmesh.new();bm.from_mesh(front.data)
+bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7)
+bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-7)
+bmesh.ops.triangulate(bm,faces=list(bm.faces),quad_method='BEAUTY',ngon_method='BEAUTY')
+bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+if bm.calc_volume(signed=True)<0:bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+assert all(edge.is_manifold for edge in bm.edges), 'The beveled cover must retain a closed solid'
+bm.to_mesh(front.data);bm.free();front.data.update()
 for f in front.data.polygons:f.use_smooth=True
 normal=front.modifiers.new('Flat panels with rounded highlight normals','WEIGHTED_NORMAL');normal.keep_sharp=True;normal.weight=50
 bpy.ops.object.modifier_apply(modifier=normal.name)
@@ -165,10 +167,14 @@ for name,group in groups.items():
  pivot=Vector((0,0,pivots[name]))
  for child in group.children:child.location-=pivot
  group.location=pivot*scale;group.scale=(scale,scale,scale)
+assembly=bpy.data.objects.new('PumpAssembly',None);bpy.context.collection.objects.link(assembly)
+for child in ('Closure','PumpStem','Actuator'):groups[child].parent=assembly
+groups={name:groups[name] for name in ('Body','Overcap','PaperLabel','LogoPrint')}
+groups['PumpAssembly']=assembly
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-056.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-056.blend'))
-info={'id':'poster-056','components':list(groups),'height':2.9,'width':scale,'depth':.34*scale,'closedHeightToWidth':1.41,'glassHeightToWidth':.92,'bodyDepthToWidth':.34,'glassInnerFloorToWidth':.14,'overcapWidthToBodyWidth':.62,'overcapDepthToBodyWidth':.42,'overcapTopToWidth':1.41,'overcapFrontSkirtBottomToWidth':.50,'overcapSkirtLowerCornerRadiusToWidth':.11,'overcapWallThicknessToWidth':.012,'overcapInnerFrontBlenderY':-.185,'bodyFrontBlenderY':-.17,'overcapFrontGapToWidth':.015,'overcapShortWallsBottomToWidth':.96,'overcapInnerTopToWidth':1.398,'actuatorTopToWidth':1.351,'labelWidthToBodyWidth':.62,'labelHeightToBodyWidth':.35,'labelCentreHeightToWidth':.30,'labelPlaneBlenderY':-.1714,'printPlaneBlenderY':-.1722,'illustrativeDimensions':True,'containsFormula':False,'reference':'../../mobile-client-preview/assets/posters/poster-056.webp','featuredReference':'featured-assets/poster-056.png','editableArtwork':['label.svg','print.svg'],'separateLabelAndPrint':True,'printIncludes':['liaose','GOLDEN FACE OIL'],'perspectiveCalibration':'Approximate orthographic deprojection: yaw 28 degrees, elevation 10 degrees; dimensions require physical measurement','hiddenStructure':'Short connecting stem, hidden actuator cavity and pump seat are illustrative. The transparent unprinted carrier is a layer illustration; no paper label boundary appears in the reference. No liquid, long nozzle or dropper is added.','coverConstruction':'The long front sheet sits outside the glass; short side and rear walls stop above the shoulder. It lifts upward without intersecting the bottle.','revision':'individual-reference-review-20261024','generator':'build_golden_face_oil.py'}
+info={'id':'poster-056','components':list(groups),'assemblyChildren':{'PumpAssembly':['Closure','PumpStem','Actuator']},'completePumpLift':1.85,'overcapLift':3.95,'camera':{'closedCenter':1.45,'openCenter':3.4275,'closedHeight':4.2,'openHeight':8.0},'dipTube':{'mesh':'Hollow clear Golden pump dip tube','parent':'Closure','outerDiameterToWidth':.055,'innerDiameterToWidth':.039,'bottomToWidth':.18,'topToWidth':.99,'bodyInnerFloorToWidth':.14,'bottomClearance':.04*scale,'fullyOpenBottleClearance':(.18-.92)*scale+1.85,'openAtBothEnds':True,'dimensionsIllustrative':True},'height':2.9,'width':scale,'depth':.34*scale,'closedHeightToWidth':1.41,'glassHeightToWidth':.92,'bodyDepthToWidth':.34,'glassInnerFloorToWidth':.14,'overcapWidthToBodyWidth':.62,'overcapDepthToBodyWidth':.42,'overcapTopToWidth':1.41,'overcapFrontSkirtBottomToWidth':.50,'overcapRearSkirtBottomToWidth':.50,'overcapSkirtLowerCornerRadiusToWidth':.11,'overcapWallThicknessToWidth':.012,'overcapInnerFrontBlenderY':-.185,'bodyFrontBlenderY':-.17,'overcapFrontGapToWidth':.015,'overcapInnerRearBlenderY':.211,'bodyRearBlenderY':.17,'overcapRearGapToWidth':.041,'coverProfileSymmetryCentreBlenderY':.013,'overcapShortWallsBottomToWidth':.96,'overcapInnerTopToWidth':1.398,'actuatorTopToWidth':1.351,'labelWidthToBodyWidth':.62,'labelHeightToBodyWidth':.35,'labelCentreHeightToWidth':.30,'labelPlaneBlenderY':-.1714,'printPlaneBlenderY':-.1722,'illustrativeDimensions':True,'containsFormula':False,'reference':'../../mobile-client-preview/assets/posters/poster-056.webp','featuredReference':'featured-assets/poster-056.png','editableArtwork':['label.svg','print.svg'],'separateLabelAndPrint':True,'printIncludes':['liaose','GOLDEN FACE OIL'],'perspectiveCalibration':'Approximate orthographic deprojection: yaw 28 degrees, elevation 10 degrees; dimensions require physical measurement','hiddenStructure':'Short connecting stem, hidden actuator cavity, pump seat, dip tube dimensions and connection are illustrative. The transparent unprinted carrier is a layer illustration; no paper label boundary appears in the reference. No liquid, long nozzle or dropper is added.','coverConstruction':'Matching long U-profile front and rear sheets sit outside both glass faces. They share one connected hood with short shoulder-clearing side walls and a top. Front/rear profiles match about the cover centre at Blender Y=.013, not about the bottle centre; clearances are .015W/.041W. The hood lifts without intersecting the bottle.','revision':'physical-reference-frosted-glass-dual-u-cover-local-review-20261027','glassFinish':{'name':'neutral frosted glass','transmission':1,'roughness':.28,'containsTintedLiquid':False},'physicalReferenceFiles':['f115f9755d4125e0aa29da51445e39e6.jpg','b7d130f05e8e1d7b54012a283021203d.jpg','ad46e83363916961db71f99923582e77.jpg'],'generator':'build_golden_face_oil.py'}
 bpy.context.view_layer.update()
 world_vertices=[obj.matrix_world @ vertex.co for obj in bpy.data.objects if obj.type=='MESH' for vertex in obj.data.vertices]
 cover_vertices=[obj.matrix_world @ vertex.co for obj in groups['Overcap'].children for vertex in obj.data.vertices]

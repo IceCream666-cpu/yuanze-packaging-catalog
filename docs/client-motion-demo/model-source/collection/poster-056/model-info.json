@@ -2,13 +2,39 @@
   "id": "poster-056",
   "components": [
     "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
     "Overcap",
     "PaperLabel",
-    "LogoPrint"
+    "LogoPrint",
+    "PumpAssembly"
   ],
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "completePumpLift": 1.85,
+  "overcapLift": 3.95,
+  "camera": {
+    "closedCenter": 1.45,
+    "openCenter": 3.4275,
+    "closedHeight": 4.2,
+    "openHeight": 8.0
+  },
+  "dipTube": {
+    "mesh": "Hollow clear Golden pump dip tube",
+    "parent": "Closure",
+    "outerDiameterToWidth": 0.055,
+    "innerDiameterToWidth": 0.039,
+    "bottomToWidth": 0.18,
+    "topToWidth": 0.99,
+    "bodyInnerFloorToWidth": 0.14,
+    "bottomClearance": 0.0822695035460993,
+    "fullyOpenBottleClearance": 0.3280141843971631,
+    "openAtBothEnds": true,
+    "dimensionsIllustrative": true
+  },
   "height": 2.9,
   "width": 2.0567375886524824,
   "depth": 0.6992907801418441,
@@ -20,11 +46,16 @@
   "overcapDepthToBodyWidth": 0.42,
   "overcapTopToWidth": 1.41,
   "overcapFrontSkirtBottomToWidth": 0.5,
+  "overcapRearSkirtBottomToWidth": 0.5,
   "overcapSkirtLowerCornerRadiusToWidth": 0.11,
   "overcapWallThicknessToWidth": 0.012,
   "overcapInnerFrontBlenderY": -0.185,
   "bodyFrontBlenderY": -0.17,
   "overcapFrontGapToWidth": 0.015,
+  "overcapInnerRearBlenderY": 0.211,
+  "bodyRearBlenderY": 0.17,
+  "overcapRearGapToWidth": 0.041,
+  "coverProfileSymmetryCentreBlenderY": 0.013,
   "overcapShortWallsBottomToWidth": 0.96,
   "overcapInnerTopToWidth": 1.398,
   "actuatorTopToWidth": 1.351,
@@ -47,38 +78,49 @@
     "GOLDEN FACE OIL"
   ],
   "perspectiveCalibration": "Approximate orthographic deprojection: yaw 28 degrees, elevation 10 degrees; dimensions require physical measurement",
-  "hiddenStructure": "Short connecting stem, hidden actuator cavity and pump seat are illustrative. The transparent unprinted carrier is a layer illustration; no paper label boundary appears in the reference. No liquid, long nozzle or dropper is added.",
-  "coverConstruction": "The long front sheet sits outside the glass; short side and rear walls stop above the shoulder. It lifts upward without intersecting the bottle.",
-  "revision": "individual-reference-review-20261024",
+  "hiddenStructure": "Short connecting stem, hidden actuator cavity, pump seat, dip tube dimensions and connection are illustrative. The transparent unprinted carrier is a layer illustration; no paper label boundary appears in the reference. No liquid, long nozzle or dropper is added.",
+  "coverConstruction": "Matching long U-profile front and rear sheets sit outside both glass faces. They share one connected hood with short shoulder-clearing side walls and a top. Front/rear profiles match about the cover centre at Blender Y=.013, not about the bottle centre; clearances are .015W/.041W. The hood lifts without intersecting the bottle.",
+  "revision": "physical-reference-frosted-glass-dual-u-cover-local-review-20261027",
+  "glassFinish": {
+    "name": "neutral frosted glass",
+    "transmission": 1,
+    "roughness": 0.28,
+    "containsTintedLiquid": false
+  },
+  "physicalReferenceFiles": [
+    "f115f9755d4125e0aa29da51445e39e6.jpg",
+    "b7d130f05e8e1d7b54012a283021203d.jpg",
+    "ad46e83363916961db71f99923582e77.jpg"
+  ],
   "generator": "build_golden_face_oil.py",
   "nominalHeight": 2.9,
-  "actualHeight": 2.905068874359131,
+  "actualHeight": 2.9000000953674316,
   "nominalOvercapWidthToBodyWidth": 0.62,
   "nominalOvercapDepthToBodyWidth": 0.42,
-  "actualOvercapWidthToBodyWidth": 0.624941322721284,
-  "actualOvercapDepthToBodyWidth": 0.4248378679670136,
+  "actualOvercapWidthToBodyWidth": 0.62489333152771,
+  "actualOvercapDepthToBodyWidth": 0.4200000165865339,
   "actualBoundsBlenderXYZ": [
     [
       -1.0283688306808472,
-      -0.4100908041000366,
+      -0.4051773250102997,
       0.0
     ],
     [
       1.0283688306808472,
-      0.4636892080307007,
-      2.905068874359131
+      0.4586524963378906,
+      2.9000000953674316
     ]
   ],
   "actualOvercapBoundsBlenderXYZ": [
     [
-      -0.6426701545715332,
-      -0.4100908041000366,
+      -0.6426208019256592,
+      -0.4051773250102997,
       1.0283688306808472
     ],
     [
-      0.6426701545715332,
-      0.4636892080307007,
-      2.905068874359131
+      0.6426208019256592,
+      0.4586524963378906,
+      2.9000000953674316
     ]
   ],
   "dimensionNote": "height and unsuffixed design ratios are nominal. Small corner-bevel envelope growth is reported separately in actual fields; this remains a reference-based visualization."

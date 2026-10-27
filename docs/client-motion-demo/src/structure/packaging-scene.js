@@ -192,6 +192,11 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         m.transmission=.98; m.roughness=.06; m.ior=1.46; m.thickness=.0076;
         m.side=T.FrontSide; m.envMapIntensity=.65;
       }
+      if (golden && m.name === 'Golden clear plastic dip tube') {
+        m.transmission=.98; m.roughness=.06; m.ior=1.46; m.thickness=.0165;
+        m.side=T.FrontSide; m.envMapIntensity=.65;
+      }
+      if (golden && m.name === 'Golden neutral frosted thick glass') m.roughness=.28;
       if (pureVolume && m.name === 'Pure Volume clear plastic dip tube') {
         m.toneMapped=false; m.thickness=.0155;
         o.castShadow=false; o.receiveShadow=false;
@@ -295,10 +300,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.25,.08,.65),current);
       parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
     } else if (golden) {
-      parts.overcap.position.copy(rest.overcap.p).y += 4.85*smooth(0,.65,current);
-      parts.head.position.copy(rest.head.p).y += 2.6*current;
-      parts.stem.position.copy(rest.stem.p).y += 1.5*current;
-      parts.closure.position.copy(rest.closure.p).y += .75*current;
+      parts.overcap.position.copy(rest.overcap.p).y += 3.95*current;
+      parts.pump.position.copy(rest.pump.p).y += 1.85*current;
       parts.label.position.copy(rest.label.p).addScaledVector(new T.Vector3(-1.85,.08,.65),current);
       parts.label.scale.copy(rest.label.s).multiplyScalar(1+.15*current);
       parts.label.traverse(o => {if (o.isMesh) o.material.opacity=.05+.95*smooth(.03,.6,current);});
@@ -350,7 +353,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     // the approved part poses, progress timing, rotation or scroll controls.
     const intermediateHeadroom = Math.sin(Math.PI * current);
     const interpolate = pair => pair[0]+(pair[1]-pair[0])*current;
-    const assemblyCenter = explosion ? interpolate(explosion.camera.centerY) : b5 ? 1.45+current*1.8 : golden ? 1.45+current*2.4+intermediateHeadroom*.8 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.575 : moisture ? 1.45+current*.625 : woodland ? 1.45+current*.60 : pureVolume ? 1.45+current*1.15 : coastal ? 1.45+current*1.4 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
+    const assemblyCenter = explosion ? interpolate(explosion.camera.centerY) : b5 ? 1.45+current*1.8 : golden ? 1.45+current*1.9775 : pdrn ? 1.45+current*1.85+intermediateHeadroom*.25 : gentle ? 1.45+current*1.575 : moisture ? 1.45+current*.625 : woodland ? 1.45+current*.60 : pureVolume ? 1.45+current*1.15 : coastal ? 1.45+current*1.4 : pump || collection ? 1.48 + current*.65 : 1.25 + current*1.22 + intermediateHeadroom*.25;
     // Turn the assembly about its centre, so looking underneath does not
     // swing the jar out of the frame. The two translations cancel at rest.
     root.position.y = assemblyCenter;
@@ -358,7 +361,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     root.rotation.set(pitch, yaw, 0);
     const tiltHeadroom = smooth(.2, 1.4, Math.abs(pitch)) * .7;
     shadow.material.opacity = 1 - smooth(.15, .7, Math.abs(pitch));
-    let viewHeight = explosion ? Math.max(interpolate(explosion.camera.height)+tiltHeadroom,interpolate(explosion.camera.width)/aspect) : Math.max((b5 ? 4.2+current*4.6 : golden ? 4.2+current*4.5+intermediateHeadroom*1.6 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.0 : moisture ? 4.2+current*.85 : woodland ? 4.2+current*.90 : pureVolume || coastal ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : b5 ? 3.8+current*3.6 : golden ? 3.9+current*3.4 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
+    let viewHeight = explosion ? Math.max(interpolate(explosion.camera.height)+tiltHeadroom,interpolate(explosion.camera.width)/aspect) : Math.max((b5 ? 4.2+current*4.6 : golden ? 4.2+current*3.8 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.0 : moisture ? 4.2+current*.85 : woodland ? 4.2+current*.90 : pureVolume || coastal ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : b5 ? 3.8+current*3.6 : golden ? 3.9+current*3.4 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
     let centerY = assemblyCenter + focus;
     let centerX = explosion ? interpolate(explosion.camera.centerX) : b5 ? -.4*current : golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
     if(narrowReview) {

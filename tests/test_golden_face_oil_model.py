@@ -17,9 +17,10 @@ COLLAR = 'Olive stepped pump collar'
 STEM = 'Short illustrative connecting stem'
 HEAD = 'Tall cylindrical press actuator'
 INSET = 'Subtle actuator top inset'
-COVER = 'Hollow olive cover with long rounded front skirt'
+COVER = 'Hollow olive cover with matching front and rear U skirts'
 FILM = 'Transparent unprinted film carrier'
 PRINT = 'Complete Golden Face Oil lettering'
+TUBE = 'Hollow clear Golden pump dip tube'
 
 
 class GoldenFaceOilModelTests(unittest.TestCase):
@@ -121,14 +122,21 @@ class GoldenFaceOilModelTests(unittest.TestCase):
                 heights.append(u * a[1] + v * b[1] + (1 - u - v) * c[1])
         return heights
 
-    def test_seven_independent_groups_have_only_the_reference_packaging_parts(self):
-        expected = {'Body': {BODY}, 'Closure': {COLLAR}, 'PumpStem': {STEM}, 'Actuator': {HEAD, INSET},
+    def test_five_groups_keep_the_complete_pump_and_reference_packaging_parts(self):
+        expected = {'Body': {BODY}, 'PumpAssembly': {COLLAR, STEM, HEAD, INSET, TUBE},
                     'Overcap': {COVER}, 'PaperLabel': {FILM}, 'LogoPrint': {PRINT}}
         roots = self.gltf['scenes'][self.gltf.get('scene', 0)]['nodes']
         self.assertEqual({self.nodes[i]['name'] for i in roots}, set(expected))
-        self.assertEqual(len(self.mesh_names()), 8, 'No formula, long nozzle, dropper or duplicate label may remain.')
+        self.assertEqual(len(self.mesh_names()), 9, 'Only the hollow pump tube is added to the original packaging.')
         for group, names in expected.items():
             self.assertEqual({n for n in self.mesh_names() if self.ancestor(n) == group}, names)
+        pump = self.nodes[self.named['PumpAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in pump['children']}, {'Closure', 'PumpStem', 'Actuator'})
+        self.assertNotIn('matrix', pump)
+        self.assertEqual(pump.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(pump.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
+        self.assertEqual(pump.get('scale', [1, 1, 1]), [1, 1, 1])
+        self.assertEqual(self.nodes[self.parents[self.named[TUBE]]]['name'], 'Closure')
         self.assertTrue(all('uri' not in item for item in self.gltf['images'] + self.gltf['buffers']))
         self.assertFalse(self.gltf.get('animations'))
         self.assertFalse(self.gltf.get('cameras'))
@@ -136,6 +144,44 @@ class GoldenFaceOilModelTests(unittest.TestCase):
         self.assertTrue(info['illustrativeDimensions'])
         self.assertFalse(info['containsFormula'])
         self.assertTrue((SOURCE / 'poster-056.blend').is_file())
+
+    def test_clear_hollow_dip_tube_stops_above_the_floor_and_fully_exits_with_the_pump(self):
+        width = self.width()
+        points = self.positions(TUBE)
+        low, high = self.bounds(points)
+        radii = [math.hypot(x, z) / width for x, y, z in points]
+        self.assertAlmostEqual(min(radii), .0195, delta=.0002)
+        self.assertAlmostEqual(max(radii), .0275, delta=.0002)
+        self.assertGreater(sum(abs(r-.0195) < 1e-5 for r in radii), 100)
+        self.assertGreater(sum(abs(r-.0275) < 1e-5 for r in radii), 100)
+        self.assertAlmostEqual(low[1] / width, .18, delta=.001)
+        self.assertAlmostEqual(high[1] / width, .99, delta=.001)
+        floor = max(self.vertical_intersections(BODY))
+        self.assertTrue(.03 < (low[1]-floor)/width < .05)
+        self.assertGreater(low[1]+1.85-self.bounds(self.positions(BODY))[1][1], .32)
+        head_top = max(p[1] for name in [HEAD, INSET] for p in self.positions(name))
+        self.assertGreater(self.bounds(self.positions(COVER))[0][1]+3.95-head_top-1.85, .34)
+        self.assertFalse(self.vertical_intersections(TUBE), 'The central bore must be open at both ends.')
+        indices = [row[0] for row in self.accessor(self.primitive(TUBE)['indices'])]
+        edges, volume = Counter(), 0
+        for offset in range(0, len(indices), 3):
+            triangle = [points[i] for i in indices[offset:offset+3]]
+            a, b, c = triangle
+            volume += (a[0]*(b[1]*c[2]-b[2]*c[1]) - a[1]*(b[0]*c[2]-b[2]*c[0]) + a[2]*(b[0]*c[1]-b[1]*c[0]))/6
+            welded = [tuple(round(v, 7) for v in p) for p in triangle]
+            self.assertEqual(len(set(welded)), 3)
+            for i in range(3):
+                edges[tuple(sorted((welded[i], welded[(i+1)%3])))] += 1
+        self.assertEqual(set(edges.values()), {2})
+        self.assertGreater(volume, 0)
+        material = self.material(TUBE)
+        pbr = material['pbrMetallicRoughness']
+        self.assertEqual(pbr.get('metallicFactor', 1), 0)
+        self.assertEqual(pbr.get('baseColorFactor', [1, 1, 1, 1]), [1, 1, 1, 1])
+        self.assertTrue(.03 <= pbr['roughnessFactor'] <= .1)
+        self.assertGreaterEqual(material['extensions']['KHR_materials_transmission']['transmissionFactor'], .95)
+        self.assertAlmostEqual(material['extensions']['KHR_materials_ior']['ior'], 1.46, delta=.02)
+        self.assertFalse(material.get('doubleSided', False))
 
     def test_deprojected_silhouette_retains_the_wide_flat_bottle_and_long_u_cover(self):
         width = self.width()
@@ -156,7 +202,11 @@ class GoldenFaceOilModelTests(unittest.TestCase):
         corners = [(abs(x) / width, y / width) for x, y, z in self.positions(COVER)
                    if y / width < .60 and abs(x) / width > .22]
         self.assertGreater(len(corners), 20)
-        self.assertLess(max(abs(math.hypot(x - .20, y - .61) - .11) for x, y in corners), .004,
+        outer_profile = {}
+        for x, y in corners:
+            level = round(y, 7)
+            outer_profile[level] = max(x, outer_profile.get(level, 0))
+        self.assertLess(max(abs(math.hypot(x - .20, y - .61) - .11) for y, x in outer_profile.items()), .004,
                         'The lower front corners must keep their broad U curve.')
 
     def test_exported_cover_has_a_real_edge_bevel_instead_of_a_clamped_hard_corner(self):
@@ -210,26 +260,83 @@ class GoldenFaceOilModelTests(unittest.TestCase):
             edges.update(tuple(sorted(pair)) for pair in [(a, b), (b, c), (c, a)])
         self.assertEqual(set(edges.values()), {2}, 'The exported inner and outer glass surfaces must have no open seam.')
 
-    def test_cover_skirt_and_short_walls_clear_the_glass_during_the_upward_sweep(self):
+    def test_both_cover_skirts_and_short_sidewalls_clear_the_glass_during_the_upward_sweep(self):
         width = self.width()
         body_low, body_high = self.bounds(self.positions(BODY))
         cover = self.positions(COVER)
         skirt = [p for p in cover if p[1] < body_high[1]]
         self.assertTrue(skirt)
-        self.assertGreaterEqual(min(p[2] for p in skirt) - body_high[2], .014 * width,
-                                'The long front sheet must sit outside the glass, not inside it.')
-        # All vertices outside that front sheet are above the shoulder; positive Y movement preserves this separation.
-        short_walls = [p for p in cover if p[2] <= body_high[2] + .01 * width]
-        self.assertGreater(min(p[1] for p in short_walls) - body_high[1], .038 * width)
+        front = [p for p in skirt if p[2] > body_high[2]]
+        back = [p for p in skirt if p[2] < body_low[2]]
+        self.assertTrue(front and back, 'Both the front and the rear must have a long U skirt.')
+        self.assertEqual(len(front) + len(back), len(skirt), 'Neither skirt may enter the glass body.')
+        self.assertGreaterEqual(min(p[2] for p in front) - body_high[2], .014 * width)
+        self.assertGreaterEqual(body_low[2] - max(p[2] for p in back), .040 * width)
+        self.assertAlmostEqual(min(p[1] for p in front), min(p[1] for p in back), delta=1e-6)
+        for side in [front, back]:
+            low, high = self.bounds(side)
+            self.assertAlmostEqual(low[1]/width, .50, delta=.003)
+            self.assertAlmostEqual((high[0]-low[0])/width, .62, delta=.005)
+        # The two long plates are external; the remaining short walls stay above the shoulder.
+        indices = [row[0] for row in self.accessor(self.primitive(COVER)['indices'])]
+        short_wall_heights = []
+        for offset in range(0, len(indices), 3):
+            triangle = [cover[i] for i in indices[offset:offset+3]]
+            for a, b in zip(triangle, triangle[1:] + triangle[:1]):
+                if a[2] * b[2] < 0:
+                    short_wall_heights.append(a[1] - a[2] * (b[1]-a[1])/(b[2]-a[2]))
+        self.assertTrue(short_wall_heights)
+        self.assertGreater(min(short_wall_heights) - body_high[1], .038 * width)
         film_top = self.bounds(self.positions(FILM))[1][1]
         self.assertGreater(min(p[1] for p in cover) - film_top, .020 * width,
                            'The closed U skirt must not cover the artwork area.')
         for progress in [0, .01, .04, .1, .5, 1]:
-            u = min(progress / .65, 1)
-            lift = 4.85 * u * u * (3 - 2 * u)
-            self.assertGreater(min(p[1] + lift for p in short_walls), body_high[1])
+            lift = 3.95 * progress
+            self.assertGreater(min(short_wall_heights) + lift, body_high[1])
 
-    def test_pump_clears_the_cover_roof_even_during_the_initial_smooth_acceleration(self):
+    def test_matching_u_skirts_form_one_connected_closed_cover_with_real_wall_thickness(self):
+        width = self.width()
+        points = self.positions(COVER)
+        indices = [row[0] for row in self.accessor(self.primitive(COVER)['indices'])]
+        edges, adjacency, volume = Counter(), {}, 0
+        for offset in range(0, len(indices), 3):
+            triangle = [points[i] for i in indices[offset:offset+3]]
+            a, b, c = triangle
+            volume += (a[0]*(b[1]*c[2]-b[2]*c[1]) - a[1]*(b[0]*c[2]-b[2]*c[0]) + a[2]*(b[0]*c[1]-b[1]*c[0]))/6
+            welded = [tuple(round(v, 7) for v in p) for p in triangle]
+            self.assertEqual(len(set(welded)), 3)
+            for i in range(3):
+                a, b = welded[i], welded[(i+1)%3]
+                edges[tuple(sorted((a, b)))] += 1
+                adjacency.setdefault(a, set()).add(b)
+                adjacency.setdefault(b, set()).add(a)
+        self.assertEqual(set(edges.values()), {2}, 'The joined cover walls must have no open seam.')
+        self.assertGreater(volume, 0)
+        pending, visited = [next(iter(adjacency))], set()
+        while pending:
+            vertex = pending.pop()
+            if vertex in visited:
+                continue
+            visited.add(vertex)
+            pending.extend(adjacency[vertex] - visited)
+        self.assertEqual(visited, set(adjacency), 'The rear plate must connect to the same top and side walls, not float as another shell.')
+        for level in [.55, .70, .90]:
+            section = []
+            for offset in range(0, len(indices), 3):
+                triangle = [points[i] for i in indices[offset:offset+3]]
+                for a, b in zip(triangle, triangle[1:] + triangle[:1]):
+                    if (a[1]/width-level)*(b[1]/width-level) < 0:
+                        t = (level*width-a[1])/(b[1]-a[1])
+                        section.append(tuple((a[j]+t*(b[j]-a[j]))/width for j in [0, 2]))
+            front, back = [p for p in section if p[1] > 0], [p for p in section if p[1] < 0]
+            self.assertTrue(front and back)
+            for side, inner, outer in [(front, .185, .197), (back, -.223, -.211)]:
+                self.assertAlmostEqual(min(p[1] for p in side), inner, delta=.0001)
+                self.assertAlmostEqual(max(p[1] for p in side), outer, delta=.0001)
+            self.assertAlmostEqual(min(p[0] for p in front), min(p[0] for p in back), delta=.0001)
+            self.assertAlmostEqual(max(p[0] for p in front), max(p[0] for p in back), delta=.0001)
+
+    def test_complete_pump_clears_the_cover_roof_throughout_linear_opening(self):
         width = self.width()
         inside = [p for name in [COLLAR, STEM, HEAD, INSET] for p in self.positions(name)]
         low, high = self.bounds(inside)
@@ -241,21 +348,20 @@ class GoldenFaceOilModelTests(unittest.TestCase):
         ceiling = min(roof)
         self.assertAlmostEqual(ceiling / width, 1.398, delta=.002)
         self.assertGreater(ceiling - high[1], .046 * width)
-        # Use the actual roof and head bounds with the reviewed motion; endpoint checks alone miss the early minimum.
+        # Use the actual inner roof and head bounds, not only the cover's outer box.
         gaps = []
         for step in range(501):
             progress = step / 500
-            u = min(progress / .65, 1)
-            cover_lift = 4.85 * u * u * (3 - 2 * u)
-            gaps.append(ceiling + cover_lift - (high[1] + 2.6 * progress))
-        self.assertGreater(min(gaps), .035, 'The pump must not penetrate the cover during smooth opening.')
+            cover_lift = 3.95 * progress
+            gaps.append(ceiling + cover_lift - (high[1] + 1.85 * progress))
+        self.assertGreater(min(gaps), .046 * width, 'The intact pump must not penetrate the protective roof.')
 
-    def test_clear_empty_glass_and_translucent_olive_parts_keep_distinct_materials(self):
+    def test_neutral_frosted_empty_glass_and_translucent_olive_parts_keep_distinct_materials(self):
         glass = self.material(BODY)
         pbr = glass['pbrMetallicRoughness']
         self.assertGreaterEqual(min(pbr.get('baseColorFactor', [1, 1, 1, 1])[:3]), .99)
         self.assertGreaterEqual(glass['extensions']['KHR_materials_transmission']['transmissionFactor'], .99)
-        self.assertLessEqual(pbr['roughnessFactor'], .04)
+        self.assertTrue(.24 <= pbr['roughnessFactor'] <= .34, 'The real bottle has a light-transmitting frosted finish, not polished clear glass.')
         self.assertAlmostEqual(glass['extensions']['KHR_materials_ior']['ior'], 1.49, delta=.02)
         self.assertNotIn('Texture', json.dumps(glass), 'No yellow liquid or duplicate lettering may be baked into the body.')
         hood = self.material(COVER)
