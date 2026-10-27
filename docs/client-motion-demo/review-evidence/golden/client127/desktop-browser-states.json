@@ -1,0 +1,212 @@
+{
+  "closed": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  },
+  "side": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 1.570642505229674,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  },
+  "rear": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 3.1414545517773718,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  },
+  "half": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0.5,
+      "renderedProgress": 0.4998142199953643,
+      "yaw": 1.0529932845135444e-10,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.8992940359823842,
+        0.08996655959916555,
+        0.824693462992351
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  },
+  "open": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9998393631860973,
+      "yaw": 1.2153686101438684e-16,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.7993895801071695,
+        0.17997108537349749,
+        1.6497349492570605
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  },
+  "rotated": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9999999842490406,
+      "yaw": 1.5706423051316036,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.7999999401463542,
+        0.17999999716482729,
+        1.6499999740109168
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  },
+  "reset": {
+    "title": "源泽 · 客户海报展厅 — client1.27",
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "viewport": [
+      1462,
+      853
+    ],
+    "scrollWidth": 1462,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0.00016505548688926632,
+      "yaw": 1.2780310739570606e-11,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.000627210850179212,
+        0.000029709987640069713,
+        0.0002723415533672894
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 36846
+    }
+  }
+}
