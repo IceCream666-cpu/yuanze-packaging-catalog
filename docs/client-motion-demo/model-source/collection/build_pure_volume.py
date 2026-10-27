@@ -21,10 +21,11 @@ green=mat('Pure Volume dark forest braided cord','#073d29',.24)
 green_hi=mat('Pure Volume cord raised strands','#10513a',.27)
 inside=mat('Pure Volume hidden warm polymer','#d8d1c4',.46)
 outlet=mat('Pure Volume recessed dispensing mouth','#57584b',.5)
-dip_tube=mat('Pure Volume translucent milk-white dip tube','#eeeae0',.28)
+dip_tube=mat('Pure Volume clear plastic dip tube','#ffffff',.06)
 dip_bsdf=dip_tube.node_tree.nodes.get('Principled BSDF')
-dip_bsdf.inputs['Transmission Weight'].default_value=.24
+dip_bsdf.inputs['Transmission Weight'].default_value=.98
 dip_bsdf.inputs['IOR'].default_value=1.46
+dip_tube.use_backface_culling=True
 def mesh(name,verts,faces,material,parent):
  data=bpy.data.meshes.new(name);data.from_pydata(verts,[],faces);data.update();o=bpy.data.objects.new(name,data);bpy.context.collection.objects.link(o);o.data.materials.append(material)
  if parent not in groups:groups[parent]=bpy.data.objects.new(parent,None);bpy.context.collection.objects.link(groups[parent])
@@ -79,7 +80,7 @@ lathe('Broad ivory screw closure',[(1.176,.143),(1.180,.161),(1.185,.176),(1.196
 lathe('Single fine gold closure line',[(1.232,.163),(1.234,.165),(1.238,.165),(1.240,.163)],gold,'Closure')
 lathe('Hidden closure screw seat',[(1.179,.138),(1.444,.138),(1.444,.077),(1.430,.077),(1.430,.124),(1.179,.124),(1.179,.138)],inside,'Closure')
 # Hidden tube dimensions are illustrative; its annular ends leave the central bore open.
-lathe('Hollow milk-white pump dip tube',[(.10,.021),(.1015,.0225),(1.5485,.0225),(1.55,.021),(1.55,.017),(1.5485,.0155),(.1015,.0155),(.10,.017),(.10,.021)],dip_tube,'Closure')
+lathe('Hollow clear pump dip tube',[(.10,.0385),(.1015,.040),(1.5485,.040),(1.55,.0385),(1.55,.0325),(1.5485,.031),(.1015,.031),(.10,.0325),(.10,.0385)],dip_tube,'Closure')
 lathe('Independent ivory pump stem',[(1.462,.063),(1.462,.078),(1.470,.082),(1.548,.082),(1.557,.076),(1.557,.063),(1.462,.063)],cap,'PumpStem')
 lathe('Actuator connection shaft',[(1.528,0),(1.528,.063),(1.538,.071),(1.575,.071),(1.585,.066),(1.585,0)],cap,'Actuator')
 # The flattened broad spout rises toward its open left outlet after photographic tilt is removed.
@@ -183,5 +184,5 @@ assert abs(1.68*scale-2.9)<1e-9
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-051.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-051.blend'))
-(OUT/'model-info.json').write_text(json.dumps({'id':'poster-051','components':list(groups),'assemblyChildren':{'PumpAssembly':['Closure','PumpStem','Actuator'],'BottleAssembly':['Body','Cord']},'completePumpLift':2.3,'dipTube':{'mesh':'Hollow milk-white pump dip tube','parent':'Closure','outerDiameterToWidth':.045,'innerDiameterToWidth':.031,'bottomToWidth':.10,'topToWidth':1.55,'bodyInnerFloorToWidth':.06,'bottomClearance':.04*scale,'fullOpenBottleClearance':(.10-1.188)*scale+2.3,'openAtBothEnds':True,'dimensionsIllustrative':True},'camera':{'closedCenter':1.45,'openCenter':2.60,'closedHeight':4.2,'openHeight':6.5},'cordStaysOnBottle':True,'height':2.9,'width':scale,'depth':.48*scale,'closedHeightToWidth':1.68,'bodyDepthToWidth':.48,'bodyPinchHeightToWidth':.92,'foldedNeckTopToWidth':1.188,'closureDiameterToWidth':.364,'pumpCylinderDiameterToWidth':.326,'cordDiameterToWidth':.0254,'nozzleSpanToWidth':.55,'illustrativeDimensions':True,'containsFormula':False,'reference':'featured-assets/poster-051.png','editableArtwork':['label.svg','print.svg'],'separateLabelAndPrint':True,'printIncludes':['liaose','PURE VOLUME','SHAMPOO'],'illustrativeHiddenStructure':'Inner pump seat, hollow dip tube dimensions and its actuator connection, and transparent label carrier are design illustrations; original has no visible paper boundary','material':'Opaque matte ivory packaging with dark green braided cord and a slightly translucent milk-white plastic dip tube; not transparent glass','revision':'complete-pump-with-hollow-dip-tube-local-review-20261027','generator':'build_pure_volume.py'},indent=2)+'\n')
+(OUT/'model-info.json').write_text(json.dumps({'id':'poster-051','components':list(groups),'assemblyChildren':{'PumpAssembly':['Closure','PumpStem','Actuator'],'BottleAssembly':['Body','Cord']},'completePumpLift':2.3,'dipTube':{'mesh':'Hollow clear pump dip tube','parent':'Closure','outerDiameterToWidth':.08,'innerDiameterToWidth':.062,'appearanceReference':'User-provided clear thick dip tube photograph, 2026-10-27; no measured manufacturer dimensions','bottomToWidth':.10,'topToWidth':1.55,'bodyInnerFloorToWidth':.06,'bottomClearance':.04*scale,'fullOpenBottleClearance':(.10-1.188)*scale+2.3,'openAtBothEnds':True,'dimensionsIllustrative':True},'camera':{'closedCenter':1.45,'openCenter':2.60,'closedHeight':4.2,'openHeight':6.5},'cordStaysOnBottle':True,'height':2.9,'width':scale,'depth':.48*scale,'closedHeightToWidth':1.68,'bodyDepthToWidth':.48,'bodyPinchHeightToWidth':.92,'foldedNeckTopToWidth':1.188,'closureDiameterToWidth':.364,'pumpCylinderDiameterToWidth':.326,'cordDiameterToWidth':.0254,'nozzleSpanToWidth':.55,'illustrativeDimensions':True,'containsFormula':False,'reference':'featured-assets/poster-051.png','editableArtwork':['label.svg','print.svg'],'separateLabelAndPrint':True,'printIncludes':['liaose','PURE VOLUME','SHAMPOO'],'illustrativeHiddenStructure':'Inner pump seat, hollow dip tube dimensions and its actuator connection, and transparent label carrier are design illustrations; original has no visible paper boundary','material':'Opaque matte ivory packaging with dark green braided cord and a thicker colorless transparent plastic dip tube; not transparent glass','revision':'complete-pump-with-thicker-clear-dip-tube-local-review-20261027','generator':'build_pure_volume.py'},indent=2)+'\n')
 print('Pure Volume rebuilt:',len(groups),'independent groups')

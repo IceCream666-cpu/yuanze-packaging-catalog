@@ -16,7 +16,7 @@ BODY = 'Hollow ivory pouch body with soft gathered folds'
 FILM = 'Illustrative transparent curved label carrier'
 PRINT = 'Complete Pure Volume green lettering'
 LEVER = 'Left curved flattened dispensing lever'
-TUBE = 'Hollow milk-white pump dip tube'
+TUBE = 'Hollow clear pump dip tube'
 
 
 class PureVolumeModelTests(unittest.TestCase):
@@ -163,7 +163,7 @@ class PureVolumeModelTests(unittest.TestCase):
             material = self.material(name)
             transmission = material.get('extensions', {}).get('KHR_materials_transmission', {}).get('transmissionFactor', 0)
             if name == TUBE:
-                self.assertTrue(.15 <= transmission <= .35, 'Only the new dip tube has a milky translucent finish.')
+                self.assertTrue(.95 <= transmission <= 1, 'The dip tube must remain clear while the fitted body and pump stay opaque.')
             else:
                 self.assertEqual(transmission, 0)
         body = self.material(BODY)
@@ -191,10 +191,10 @@ class PureVolumeModelTests(unittest.TestCase):
         points = self.positions(TUBE)
         low, high = self.bounds(points)
         radii = [math.hypot(x, z) / width for x, y, z in points]
-        self.assertAlmostEqual(min(radii), .0155, delta=.0002)
-        self.assertAlmostEqual(max(radii), .0225, delta=.0002)
-        self.assertGreater(sum(abs(r-.0155) < 1e-5 for r in radii), 100, 'Retain a complete inner tube wall.')
-        self.assertGreater(sum(abs(r-.0225) < 1e-5 for r in radii), 100, 'Retain a complete outer tube wall.')
+        self.assertAlmostEqual(min(radii), .031, delta=.0002)
+        self.assertAlmostEqual(max(radii), .04, delta=.0002)
+        self.assertGreater(sum(abs(r-.031) < 1e-5 for r in radii), 100, 'Retain a complete inner tube wall.')
+        self.assertGreater(sum(abs(r-.04) < 1e-5 for r in radii), 100, 'Retain a complete outer tube wall.')
         self.assertAlmostEqual(low[1] / width, .10, delta=.001)
         self.assertAlmostEqual(high[1] / width, 1.55, delta=.001)
         body = self.positions(BODY)
@@ -222,7 +222,9 @@ class PureVolumeModelTests(unittest.TestCase):
         material = self.material(TUBE)
         pbr = material['pbrMetallicRoughness']
         self.assertEqual(pbr.get('metallicFactor', 1), 0)
-        self.assertTrue(.2 <= pbr['roughnessFactor'] <= .35)
+        self.assertTrue(.03 <= pbr['roughnessFactor'] <= .1, 'The clear plastic tube must not regain its previous milky roughness.')
+        self.assertEqual(pbr.get('baseColorFactor', [1, 1, 1, 1]), [1, 1, 1, 1])
+        self.assertFalse(material.get('doubleSided', False), 'The hollow tube has separate inner and outer walls, not duplicated double-sided surfaces.')
         self.assertAlmostEqual(material['extensions']['KHR_materials_ior']['ior'], 1.46, delta=.02)
 
     def test_complete_pump_retains_the_broad_flat_curved_lever_and_fitted_stem(self):

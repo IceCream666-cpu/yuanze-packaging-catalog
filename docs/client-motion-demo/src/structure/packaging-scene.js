@@ -188,6 +188,16 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           o.castShadow=false;
         }
       }
+      if (pureVolume && m.name === 'Pure Volume clear plastic dip tube') {
+        m.toneMapped=false; m.thickness=.0155;
+        o.castShadow=false; o.receiveShadow=false;
+        m.onBeforeCompile = shader => {
+          shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
+            float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
+            gl_FragColor.rgb *= 1.0 - 0.18 * wallEdge;
+          `);
+        };
+      }
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}

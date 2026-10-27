@@ -701,6 +701,8 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
   const product=PACKAGING_PRODUCTS['poster-051'];
   const bytes=readFileSync(new URL('../packaging-assets/poster-051.glb',import.meta.url));
   const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const tubeName='Hollow clear pump dip tube';
+  let exportedTubeMaterial;
   const nodes=gltf.nodes.map(node=>{
     let object=new Three.Group();
     if('mesh' in node) {
@@ -708,6 +710,17 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
       const low=new Three.Vector3(...accessor.min),high=new Three.Vector3(...accessor.max);
       const size=high.clone().sub(low),center=high.clone().add(low).multiplyScalar(.5);
       object=new Three.Mesh(new Three.BoxGeometry(...size.toArray()).translate(...center.toArray()),new Three.MeshPhysicalMaterial());
+      if(node.name===tubeName) {
+        exportedTubeMaterial=gltf.materials[gltf.meshes[node.mesh].primitives[0].material];
+        const pbr=exportedTubeMaterial.pbrMetallicRoughness,extensions=exportedTubeMaterial.extensions;
+        object.material.name=exportedTubeMaterial.name;
+        object.material.color.fromArray(pbr.baseColorFactor??[1,1,1,1]);
+        object.material.metalness=pbr.metallicFactor??1;
+        object.material.roughness=pbr.roughnessFactor??1;
+        object.material.transmission=extensions.KHR_materials_transmission.transmissionFactor;
+        object.material.ior=extensions.KHR_materials_ior.ior;
+        object.material.side=exportedTubeMaterial.doubleSided?Three.DoubleSide:Three.FrontSide;
+      }
     }
     object.name=node.name;
     if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
@@ -731,10 +744,28 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
     const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
     assert.deepEqual(Object.keys(parts).sort(),['jar','label','print','pump']);
     assert.equal(product.review,undefined,'keep the original matte body, gold line and green artwork treatment');
+    const tube=loaded.scene.getObjectByName(tubeName);
+    assert.equal(tube.material.toneMapped,false,'the transparent wall must match the untonemapped backdrop');
+    assert.equal(tube.castShadow,false);
+    assert.equal(tube.receiveShadow,false);
+    assert.equal(tube.material.transmission,exportedTubeMaterial.extensions.KHR_materials_transmission.transmissionFactor);
+    assert.equal(tube.material.roughness,exportedTubeMaterial.pbrMetallicRoughness.roughnessFactor);
+    assert.equal(tube.material.ior,exportedTubeMaterial.extensions.KHR_materials_ior.ior);
+    assert.equal(tube.material.thickness,.0155,'transmission uses the thin plastic wall rather than a solid rod');
+    assert.equal(tube.material.side,Three.FrontSide);
+    assert.equal(loaded.scene.getObjectByName('Hollow ivory pouch body with soft gathered folds').material.toneMapped,true,'only the clear tube receives the backdrop correction');
+    for(const mesh of nodes.filter(node=>node.isMesh)) {
+      const fragmentShader='void main() {\n#include <dithering_fragment>\n}',shader={fragmentShader};
+      mesh.material.onBeforeCompile(shader);
+      if(mesh===tube) {
+        assert.match(shader.fragmentShader,/float wallEdge = pow\([^\n]+, 9\.0\);/,'the transparent tube retains a readable thin rim');
+        assert.match(shader.fragmentShader,/gl_FragColor\.rgb \*= 1\.0 - 0\.18 \* wallEdge/);
+      } else assert.equal(shader.fragmentShader,fragmentShader,`${mesh.name} keeps its original shading`);
+    }
     const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
-    const fitted=['Closure','PumpStem','Actuator','Hollow milk-white pump dip tube','Body','Cord'].map(name=>{
+    const fitted=['Closure','PumpStem','Actuator',tubeName,'Body','Cord'].map(name=>{
       const part=loaded.scene.getObjectByName(name),key=['Body','Cord'].includes(name)?'jar':'pump';
-      assert.equal(part.parent,name==='Hollow milk-white pump dip tube' ? loaded.scene.getObjectByName('Closure') : parts[key]);
+      assert.equal(part.parent,name===tubeName ? loaded.scene.getObjectByName('Closure') : parts[key]);
       return {part,key,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
     });
     const film=loaded.scene.getObjectByName('Illustrative transparent curved label carrier');
@@ -758,7 +789,6 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
       if(progress===0)assert.equal(film.material.opacity,.05,'the clear carrier leaves no visible patch when closed');
       if(progress===1) {
         assert.equal(film.material.opacity,1,'the translucent carrier is visible separately when open');
-        const tube=loaded.scene.getObjectByName('Hollow milk-white pump dip tube');
         const tubeBounds=new Three.Box3().setFromObject(tube),bottleBounds=new Three.Box3().setFromObject(parts.jar);
         assert.ok(tubeBounds.min.y-bottleBounds.max.y>.4,'the inlet fully clears the bottle opening');
       }

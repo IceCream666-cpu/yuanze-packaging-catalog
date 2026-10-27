@@ -47,6 +47,8 @@
 
 ## Pure Volume 吸液管修订
 
+同日按实物照片更新为无色透明粗管：外径/瓶宽0.08、内径0.062，原管长与组装动作不变。仅该管做薄壁透明边缘校正，其他网格和材质保留。最新回执仍为`pure-volume-dip-tube-preview-verification.json`，当前本地待审。下段保留首次补管历史。
+
 2026-10-27：补充单根中空吸液管归Closure→PumpAssembly，仍为四组。管体奶白微透，距实际内底0.06905展示单位；整泵上移2.30后整管露出，管末端至瓶口0.42190。全开镜头2.60/6.50，其他原网格与贴图不变。仅本地待审；尺寸、内连接是展示示意。当前回执为`pure-volume-dip-tube-preview-verification.json`。
 
 ## Pure Volume 整泵与固定编绳修订

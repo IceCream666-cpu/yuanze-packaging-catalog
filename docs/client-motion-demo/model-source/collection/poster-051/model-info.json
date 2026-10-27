@@ -19,10 +19,11 @@
   },
   "completePumpLift": 2.3,
   "dipTube": {
-    "mesh": "Hollow milk-white pump dip tube",
+    "mesh": "Hollow clear pump dip tube",
     "parent": "Closure",
-    "outerDiameterToWidth": 0.045,
-    "innerDiameterToWidth": 0.031,
+    "outerDiameterToWidth": 0.08,
+    "innerDiameterToWidth": 0.062,
+    "appearanceReference": "User-provided clear thick dip tube photograph, 2026-10-27; no measured manufacturer dimensions",
     "bottomToWidth": 0.1,
     "topToWidth": 1.55,
     "bodyInnerFloorToWidth": 0.06,
@@ -63,7 +64,7 @@
     "SHAMPOO"
   ],
   "illustrativeHiddenStructure": "Inner pump seat, hollow dip tube dimensions and its actuator connection, and transparent label carrier are design illustrations; original has no visible paper boundary",
-  "material": "Opaque matte ivory packaging with dark green braided cord and a slightly translucent milk-white plastic dip tube; not transparent glass",
-  "revision": "complete-pump-with-hollow-dip-tube-local-review-20261027",
+  "material": "Opaque matte ivory packaging with dark green braided cord and a thicker colorless transparent plastic dip tube; not transparent glass",
+  "revision": "complete-pump-with-thicker-clear-dip-tube-local-review-20261027",
   "generator": "build_pure_volume.py"
 }
