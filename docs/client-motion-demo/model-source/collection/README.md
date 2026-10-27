@@ -1,5 +1,11 @@
 # 精选包材模型：源文件与本地复建
 
+## 2026-10-27 client1.30：两款已有模型补入首页
+
+072 Daily Emulsion与073 Body Oil Collection于16:41:08恢复至首页末尾，16:44:31 HTTPS及正式Ego桌面/模拟手机验收通过；26个GLB均未修改。正式为26首页/26模型/61海报，本地仅补两款依赖，为26首页/26模型/56海报。两款源文件继续使用`daily-emulsion/`与`body-oil-collection/`，主库GLB为`poster-072.glb`、`poster-073.glb`；未重新建模。
+
+原24款顺序、模型和审查状态、070本地稿及旧队列保持。总览计数改为实际条数，两款既有上线记录追加在尾部；18项Python、37项主前端、7项总览测试通过。正式源`819e5bc2b9bb1ca9c4813672b483f112b6d0e311`、最终回执提交`2dbcfef2bd721d60b9ad6f6b825c0f69b967d07b`；正式回执`client130-featured-26-release.json`和本地同步记录`client130-local-sync-verification.json`保留上述数量差异。本轮不继续下一款，本地复建不部署生产。下文保留此前历史。
+
 ## 2026-10-27 Luminous client1.29 已发布，本轮停止
 
 poster-058完整长滴管获批版于11:20:43发布，HTTPS11:23:06通过，正式Ego桌面合/半/全开、侧/背/复位、原海报往返及393×852模拟视口按钮DOM点击合/全开通过。正式源`ce62fd4ab82df095ec4baff40f48fb710e2b40d2`，最终回执提交`09e4d317ab5238db68504ebaff4d1f974f3edf18`；回执`client129-luminous-dropper-release.json`、7图2状态在`review-evidence/luminous/client129/`。当前GLB为1953112字节/`0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8`，其他25模型与图文素材保持。

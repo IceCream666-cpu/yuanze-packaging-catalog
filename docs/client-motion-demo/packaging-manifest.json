@@ -217,6 +217,22 @@
       "productionTarget": "assets/packaging/poster-070.glb",
       "bytes": 3191692,
       "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f"
+    },
+    {
+      "name": "poster-072.glb",
+      "file": "packaging-assets/poster-072.glb",
+      "productionTarget": "assets/packaging/poster-072.glb",
+      "kind": "model",
+      "bytes": 1162568,
+      "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
+    },
+    {
+      "name": "poster-073.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-073.glb",
+      "productionTarget": "assets/packaging/poster-073.glb",
+      "bytes": 627980,
+      "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
     }
   ],
   "additionalProducts": [
@@ -474,6 +490,29 @@
         "Body",
         "PaperLabel",
         "LogoPrint"
+      ]
+    },
+    {
+      "posterId": "poster-072",
+      "file": "poster-072.glb",
+      "components": [
+        "Overcap",
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
+      ]
+    },
+    {
+      "posterId": "poster-073",
+      "file": "poster-073.glb",
+      "components": [
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
       ]
     }
   ],

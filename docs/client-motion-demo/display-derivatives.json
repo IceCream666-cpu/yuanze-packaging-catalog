@@ -666,6 +666,30 @@
       "width": 192,
       "height": 144,
       "posterId": "poster-071"
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-072-strip.webp",
+      "productionTarget": "assets/optimized/poster-072-strip.webp",
+      "approvedSource": "assets/posters/poster-072.webp",
+      "approvedSourceSha256": "05683d65e88c071c73536081167ddaa22724f260101d637c89f2d0521ccb55a3",
+      "posterId": "poster-072",
+      "bytes": 3954,
+      "sha256": "066e96ff543eaef5e9bc8221d5810ec932274eeaddd8cc6deaa43b3e171ce9b5",
+      "width": 128,
+      "height": 192
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-073-strip.webp",
+      "productionTarget": "assets/optimized/poster-073-strip.webp",
+      "approvedSource": "assets/posters/poster-073.webp",
+      "approvedSourceSha256": "158fed22b7761fced3fe19610211469a644d8fe47bbe7b0dd5b5a399f8503fa2",
+      "posterId": "poster-073",
+      "bytes": 5520,
+      "sha256": "6d805ccc1c79f3d266a3beecab813fc5c8dd19baf855646d5c7ec73f4a590388",
+      "width": 128,
+      "height": 192
     }
   ]
 }

@@ -60,12 +60,12 @@ function assertLocalAsset(route) {
   assert.ok(existsSync(resolve(base, 'public', route.slice(1))), `Missing preview asset ${route}`);
 }
 
-test('review generator preserves all 24 featured identities and their original poster links', t => {
+test('review generator preserves all current featured identities and their original poster links', t => {
   const {document, cards} = harness(t);
-  assert.equal(featured.length, 24);
-  assert.equal(new Set(featured.map(item => item.id)).size, 24);
-  assert.equal(cards.length, 24);
-  assert.equal(document.querySelector('section').getAttribute('aria-label'), '24款精选包材');
+  assert.equal(featured.length, 26);
+  assert.equal(new Set(featured.map(item => item.id)).size, featured.length);
+  assert.equal(cards.length, featured.length);
+  assert.equal(document.querySelector('section').getAttribute('aria-label'), `${featured.length}款精选包材`);
   cards.forEach((card, index) => {
     const item = featured[index], poster = posters[item.id];
     assert.ok(poster, `Missing poster record ${item.id}`);
@@ -131,7 +131,7 @@ test('search matches English names case-insensitively, trims whitespace and also
     search(query);
     const normalized = query.trim().toLocaleLowerCase();
     const expected = featured.filter(item => `${item.name} ${item.kind.zh}`.toLocaleLowerCase().includes(normalized));
-    assert.ok(expected.length > 0 && expected.length < 24);
+    assert.ok(expected.length > 0 && expected.length < featured.length);
     assert.deepEqual(cards.filter(card => !card.hidden).map(card => card.querySelector('h2').textContent), expected.map(item => item.name));
     assert.equal(document.querySelector('#empty').hidden, true);
   }

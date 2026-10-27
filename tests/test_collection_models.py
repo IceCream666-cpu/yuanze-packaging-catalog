@@ -1,4 +1,4 @@
-"""All 24 local review models must map to their own complete, self-contained GLB."""
+"""All 26 registered local models must map to their own complete, self-contained GLB."""
 import json,struct,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]/'docs/client-motion-demo'
@@ -96,7 +96,7 @@ class CollectionModelTests(unittest.TestCase):
   featured={p['id'] for p in json.loads((ROOT/'src/featured.json').read_text())}
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
   self.assertEqual(set(collection)|{'poster-012','poster-071'},featured)
-  self.assertEqual(len(featured),24)
+  self.assertEqual(len(featured),26)
   for id,p in collection.items():
    with self.subTest(id=id):
     self.assertEqual(p['file'],id+'.glb')
@@ -108,7 +108,8 @@ class CollectionModelTests(unittest.TestCase):
     self.assertTrue(all('uri' not in i for i in g.get('images',[])+g.get('buffers',[])))
     self.assertFalse(g.get('animations'));self.assertFalse(g.get('cameras'))
     for view in g['bufferViews']:self.assertLessEqual(view.get('byteOffset',0)+view['byteLength'],g['buffers'][0]['byteLength'])
-    self.assertTrue((ROOT/'model-source/collection'/id/(id+'.blend')).is_file())
+    source_id={'poster-072':'daily-emulsion','poster-073':'body-oil-collection'}.get(id,id)
+    self.assertTrue((ROOT/'model-source/collection'/source_id/(source_id+'.blend')).is_file())
  def test_preview_publication_requires_a_later_user_decision(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
   self.assertFalse(m['publicationApproved']);self.assertTrue(m['scope'].startswith('local-review-'))

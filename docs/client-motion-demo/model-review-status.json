@@ -415,5 +415,66 @@
       "open": "/review-assets/poster-070-simplified-open.png"
     },
     "background": "#e4e1d7"
+  },
+  "poster-072": {
+    "state": "published",
+    "components": [
+      "Overcap",
+      "PumpAssembly",
+      "Body",
+      "PaperLabel",
+      "LogoPrint",
+      "ProductPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-072-closed.png",
+      "open": "/review-assets/poster-072-open.png"
+    },
+    "background": "#e9e5d8",
+    "reviewStatus": "published-live-verified",
+    "modelAlreadyPublished": true,
+    "releaseVersion": "client1.30",
+    "publicationScope": "Only restores the existing approved model to the homepage; no model changes.",
+    "releaseSourceCommit": "819e5bc2b9bb1ca9c4813672b483f112b6d0e311",
+    "releaseManifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "releasedAt": "2026-10-27T16:41:08+08:00",
+    "releaseReceipt": "client130-featured-26-release.json",
+    "releaseReceiptCommit": "2dbcfef2bd721d60b9ad6f6b825c0f69b967d07b",
+    "releaseHttpsVerifiedAt": "2026-10-27T16:44:31+08:00",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-emulated-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "mobileNativeTouchTested": false
+  },
+  "poster-073": {
+    "state": "published",
+    "components": [
+      "Closure",
+      "Body",
+      "PaperLabel",
+      "LogoPrint",
+      "ProductPrint"
+    ],
+    "screenshots": {
+      "closed": "/review-assets/poster-073-closed.png",
+      "open": "/review-assets/poster-073-open.png"
+    },
+    "background": "#eadbc5",
+    "reviewStatus": "published-live-verified",
+    "modelAlreadyPublished": true,
+    "releaseVersion": "client1.30",
+    "publicationScope": "Only restores the existing approved model to the homepage; no model changes.",
+    "releaseSourceCommit": "819e5bc2b9bb1ca9c4813672b483f112b6d0e311",
+    "releaseManifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "releasedAt": "2026-10-27T16:41:08+08:00",
+    "releaseReceipt": "client130-featured-26-release.json",
+    "releaseReceiptCommit": "2dbcfef2bd721d60b9ad6f6b825c0f69b967d07b",
+    "releaseHttpsVerifiedAt": "2026-10-27T16:44:31+08:00",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-emulated-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "mobileNativeTouchTested": false
   }
 }

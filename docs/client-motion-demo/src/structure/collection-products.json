@@ -2866,5 +2866,519 @@
         }
       }
     }
+  },
+  "poster-072": {
+    "file": "poster-072.glb",
+    "kind": "collection",
+    "scale": 1,
+    "parts": [
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明保护罩",
+          "Clear cover"
+        ],
+        "short": [
+          "罩盖",
+          "Clear cover"
+        ],
+        "detail": [
+          "薄壁透明罩向上移开，保留圆顶和底沿。",
+          "A hollow clear cover lifts away."
+        ]
+      },
+      {
+        "key": "pump",
+        "node": "PumpAssembly",
+        "title": [
+          "完整泵头组件",
+          "Complete pump"
+        ],
+        "short": [
+          "泵头组件",
+          "Complete pump"
+        ],
+        "detail": [
+          "泵头、连接杆与盖座保持组装状态，作为整体与瓶身分离。",
+          "The actuator, connector and closure remain fitted and lift as one complete pump."
+        ]
+      },
+      {
+        "key": "body",
+        "node": "Body",
+        "title": [
+          "磨砂空玻璃瓶",
+          "Frosted glass"
+        ],
+        "short": [
+          "瓶身",
+          "Frosted glass"
+        ],
+        "detail": [
+          "扁圆角方形玻璃、短肩与厚底，不含乳液。",
+          "An empty flat rounded glass bottle with frosted walls and a thick base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明底材",
+          "Clear carrier"
+        ],
+        "short": [
+          "标贴",
+          "Clear carrier"
+        ],
+        "detail": [
+          "无字透明膜示意，闭合时几乎不可见。",
+          "An unprinted transparent carrier, nearly invisible when closed."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "品牌字",
+          "Brand"
+        ],
+        "short": [
+          "品牌",
+          "Brand"
+        ],
+        "detail": [
+          "liaose独立离开瓶身，比底材更向外展开。",
+          "The liaose mark moves farther outward than the carrier."
+        ]
+      },
+      {
+        "key": "name",
+        "node": "ProductPrint",
+        "title": [
+          "产品名",
+          "Product name"
+        ],
+        "short": [
+          "品名",
+          "Product name"
+        ],
+        "detail": [
+          "横线、DAILY EMULSION及FACE CARE一同展开。",
+          "The rule, DAILY EMULSION and FACE CARE move as one print layer."
+        ]
+      }
+    ],
+    "review": {
+      "parts": [
+        {
+          "key": "overcap",
+          "node": "Overcap",
+          "title": [
+            "透明保护罩",
+            "Clear cover"
+          ],
+          "short": [
+            "罩盖",
+            "Clear cover"
+          ],
+          "detail": [
+            "薄壁透明罩向上移开，保留圆顶和底沿。",
+            "A hollow clear cover lifts away."
+          ]
+        },
+        {
+          "key": "pump",
+          "node": "PumpAssembly",
+          "title": [
+            "完整泵头组件",
+            "Complete pump"
+          ],
+          "short": [
+            "泵头组件",
+            "Complete pump"
+          ],
+          "detail": [
+            "泵头、连接杆与盖座保持组装状态，作为整体与瓶身分离。",
+            "The actuator, connector and closure remain fitted and lift as one complete pump."
+          ]
+        },
+        {
+          "key": "body",
+          "node": "Body",
+          "title": [
+            "磨砂空玻璃瓶",
+            "Frosted glass"
+          ],
+          "short": [
+            "瓶身",
+            "Frosted glass"
+          ],
+          "detail": [
+            "扁圆角方形玻璃、短肩与厚底，不含乳液。",
+            "An empty flat rounded glass bottle with frosted walls and a thick base."
+          ]
+        },
+        {
+          "key": "label",
+          "node": "PaperLabel",
+          "title": [
+            "透明底材",
+            "Clear carrier"
+          ],
+          "short": [
+            "标贴",
+            "Clear carrier"
+          ],
+          "detail": [
+            "无字透明膜示意，闭合时几乎不可见。",
+            "An unprinted transparent carrier, nearly invisible when closed."
+          ]
+        },
+        {
+          "key": "print",
+          "node": "LogoPrint",
+          "title": [
+            "品牌字",
+            "Brand"
+          ],
+          "short": [
+            "品牌",
+            "Brand"
+          ],
+          "detail": [
+            "liaose独立离开瓶身，比底材更向外展开。",
+            "The liaose mark moves farther outward than the carrier."
+          ]
+        },
+        {
+          "key": "name",
+          "node": "ProductPrint",
+          "title": [
+            "产品名",
+            "Product name"
+          ],
+          "short": [
+            "品名",
+            "Product name"
+          ],
+          "detail": [
+            "横线、DAILY EMULSION及FACE CARE一同展开。",
+            "The rule, DAILY EMULSION and FACE CARE move as one print layer."
+          ]
+        }
+      ],
+      "appearance": {
+        "glass": true,
+        "frosted": true,
+        "clearOvercap": true,
+        "pipette": false,
+        "clearLabel": true,
+        "metal": false
+      },
+      "explosion": {
+        "offsets": {
+          "overcap": [
+            0,
+            2.35,
+            0
+          ],
+          "pump": [
+            0,
+            1.05,
+            0
+          ],
+          "label": [
+            -0.85,
+            0.03,
+            0.7
+          ],
+          "print": [
+            -1.9,
+            0.3,
+            1.9
+          ],
+          "name": [
+            -1.9,
+            -0.12,
+            1.9
+          ]
+        },
+        "scales": {
+          "label": 1.1,
+          "print": 1.5,
+          "name": 1.55
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.62
+          ],
+          "centerX": [
+            0,
+            -0.9
+          ],
+          "height": [
+            3.7,
+            5.95
+          ],
+          "width": [
+            2.1,
+            4.5
+          ]
+        }
+      }
+    },
+    "design": {
+      "name": "Daily Emulsion",
+      "background": "#e9e5d8",
+      "ink": "#34372e",
+      "kind": {
+        "zh": "面部护理 · 单瓶乳液空包材",
+        "en": "Face care · empty emulsion bottle"
+      },
+      "swatch": [
+        "#efeee6",
+        "#34372e"
+      ]
+    }
+  },
+  "poster-073": {
+    "file": "poster-073.glb",
+    "kind": "collection",
+    "scale": 1,
+    "parts": [
+      {
+        "key": "closure",
+        "node": "Closure",
+        "title": [
+          "完整米白瓶盖",
+          "Complete ivory cap"
+        ],
+        "short": [
+          "完整米白瓶盖",
+          "Complete ivory cap"
+        ],
+        "detail": [
+          "瓶盖与盖内密封垫保持组装，作为整体向上移开。",
+          "The satin cap and its internal seal stay assembled and lift together."
+        ]
+      },
+      {
+        "key": "body",
+        "node": "Body",
+        "title": [
+          "透明玻璃瓶",
+          "Clear glass"
+        ],
+        "short": [
+          "透明玻璃瓶",
+          "Clear glass"
+        ],
+        "detail": [
+          "取原图02号同型空瓶，保留长肩、短颈与圆润厚底。",
+          "One representative empty long-shoulder bottle with a thick glass base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明底材",
+          "Clear carriers"
+        ],
+        "short": [
+          "透明底材",
+          "Clear carriers"
+        ],
+        "detail": [
+          "无字薄膜示意，不添加原图没有的纸标。",
+          "Unprinted clear carriers, without an invented paper label."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "品牌字",
+          "Brand lettering"
+        ],
+        "short": [
+          "品牌字",
+          "Brand lettering"
+        ],
+        "detail": [
+          "liaose独立向外展开。",
+          "The liaose mark moves outward independently."
+        ]
+      },
+      {
+        "key": "name",
+        "node": "ProductPrint",
+        "title": [
+          "产品名与编号",
+          "Names and numbers"
+        ],
+        "short": [
+          "产品名与编号",
+          "Names and numbers"
+        ],
+        "detail": [
+          "BODY OIL及02比标贴更向外展开。",
+          "BODY OIL and 02 move farther out than the carriers."
+        ]
+      }
+    ],
+    "review": {
+      "parts": [
+        {
+          "key": "closure",
+          "node": "Closure",
+          "title": [
+            "完整米白瓶盖",
+            "Complete ivory cap"
+          ],
+          "short": [
+            "完整米白瓶盖",
+            "Complete ivory cap"
+          ],
+          "detail": [
+            "瓶盖与盖内密封垫保持组装，作为整体向上移开。",
+            "The satin cap and its internal seal stay assembled and lift together."
+          ]
+        },
+        {
+          "key": "body",
+          "node": "Body",
+          "title": [
+            "透明玻璃瓶",
+            "Clear glass"
+          ],
+          "short": [
+            "透明玻璃瓶",
+            "Clear glass"
+          ],
+          "detail": [
+            "取原图02号同型空瓶，保留长肩、短颈与圆润厚底。",
+            "One representative empty long-shoulder bottle with a thick glass base."
+          ]
+        },
+        {
+          "key": "label",
+          "node": "PaperLabel",
+          "title": [
+            "透明底材",
+            "Clear carriers"
+          ],
+          "short": [
+            "透明底材",
+            "Clear carriers"
+          ],
+          "detail": [
+            "无字薄膜示意，不添加原图没有的纸标。",
+            "Unprinted clear carriers, without an invented paper label."
+          ]
+        },
+        {
+          "key": "print",
+          "node": "LogoPrint",
+          "title": [
+            "品牌字",
+            "Brand lettering"
+          ],
+          "short": [
+            "品牌字",
+            "Brand lettering"
+          ],
+          "detail": [
+            "liaose独立向外展开。",
+            "The liaose mark moves outward independently."
+          ]
+        },
+        {
+          "key": "name",
+          "node": "ProductPrint",
+          "title": [
+            "产品名与编号",
+            "Names and numbers"
+          ],
+          "short": [
+            "产品名与编号",
+            "Names and numbers"
+          ],
+          "detail": [
+            "BODY OIL及02比标贴更向外展开。",
+            "BODY OIL and 02 move farther out than the carriers."
+          ]
+        }
+      ],
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": true,
+        "metal": false
+      },
+      "explosion": {
+        "offsets": {
+          "closure": [
+            0,
+            1.4,
+            0
+          ],
+          "label": [
+            -0.65,
+            0.02,
+            0.7
+          ],
+          "print": [
+            -1.5,
+            0.23,
+            1.85
+          ],
+          "name": [
+            -1.5,
+            -0.18,
+            1.85
+          ]
+        },
+        "scales": {
+          "label": 1.08,
+          "print": 1.3,
+          "name": 1.3
+        },
+        "camera": {
+          "centerY": [
+            1.45,
+            2.1
+          ],
+          "centerX": [
+            0,
+            -0.75
+          ],
+          "height": [
+            3.7,
+            4.95
+          ],
+          "width": [
+            2.1,
+            4.0
+          ]
+        }
+      }
+    },
+    "design": {
+      "name": "Body Oil Collection",
+      "background": "#eadbc5",
+      "ink": "#3e2b1d",
+      "kind": {
+        "zh": "身体护理 · 单瓶身体油空包材",
+        "en": "Body care · empty glass bottle"
+      },
+      "swatch": [
+        "#eee3d1",
+        "#25180f"
+      ]
+    }
   }
 }

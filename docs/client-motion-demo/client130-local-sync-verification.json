@@ -1,0 +1,75 @@
+{
+  "status": "synchronized-to-published-client1.30",
+  "sourceCandidateManifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+  "featured": 26,
+  "activeModels": 26,
+  "localPosters": 56,
+  "productionPosters": 61,
+  "addedIds": [
+    "poster-072",
+    "poster-073"
+  ],
+  "unchangedExistingProtectedFiles": 131,
+  "existingModelsUnchanged": true,
+  "local070Preserved": true,
+  "unrelatedEntriesEqual": true,
+  "publicationApproved": false,
+  "checkedAt": "2026-10-27T16:33:10.724853+08:00",
+  "pythonTests": 18,
+  "frontendTests": 37,
+  "directViteBuild": true,
+  "http": [
+    {
+      "route": "assets/packaging/poster-072.glb",
+      "status": 200,
+      "bytes": 1162568,
+      "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
+    },
+    {
+      "route": "assets/packaging/poster-073.glb",
+      "status": 200,
+      "bytes": 627980,
+      "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
+    },
+    {
+      "route": "featured/poster-072-640.webp",
+      "status": 200,
+      "bytes": 8168,
+      "sha256": "48266b886d0d601da85b3e62c8c22aa3f844a87f3e1f8aaa5f73f47da8d8a73e"
+    },
+    {
+      "route": "featured/poster-073-640.webp",
+      "status": 200,
+      "bytes": 11600,
+      "sha256": "2719ec80e3c281c31757558bf9b1947fced6f529d0ed270c58d7797aa3c56ab0"
+    },
+    {
+      "route": "assets/poster-072-original.webp",
+      "status": 200,
+      "bytes": 1230416,
+      "sha256": "05683d65e88c071c73536081167ddaa22724f260101d637c89f2d0521ccb55a3"
+    },
+    {
+      "route": "assets/poster-073-original.webp",
+      "status": 200,
+      "bytes": 1519830,
+      "sha256": "158fed22b7761fced3fe19610211469a644d8fe47bbe7b0dd5b5a399f8503fa2"
+    }
+  ],
+  "geometryEdited": false,
+  "sharedSceneEdited": false,
+  "finalizedAt": "2026-10-27T16:51:48.222104+08:00",
+  "productionSourceCommit": "819e5bc2b9bb1ca9c4813672b483f112b6d0e311",
+  "productionReceiptCommit": "2dbcfef2bd721d60b9ad6f6b825c0f69b967d07b",
+  "productionReceipt": "client130-featured-26-release.json",
+  "productionReceiptSha256": "e77d437a92e556b95d2a84e900dd8716103c21461123cc0ac1d5dcc619e4e786",
+  "productionBrowserStatus": "pass",
+  "localBrowserEvidence": "review-evidence/featured-26/client130-local/browser-main-registration.json",
+  "localBrowserEvidenceSha256": "cdcfbb575c2188a933b9f858cd8ff6964facb5cc59aa46735e189bfabc019932",
+  "galleryTests": 7,
+  "galleryCount": 26,
+  "original24ReviewStatesUnchanged": true,
+  "reviewQueueUnchanged": true,
+  "nextModelStarted": false,
+  "localPreviewAssetsAreNotADeployableProductionMirror": true
+}

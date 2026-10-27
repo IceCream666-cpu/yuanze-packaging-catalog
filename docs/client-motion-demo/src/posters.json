@@ -1186,5 +1186,49 @@
     "original": "/assets/poster-071-original.webp",
     "width": 1447,
     "height": 1087
+  },
+  {
+    "id": "poster-072",
+    "title": {
+      "zh": "liaose 日常乳液",
+      "en": "liaose Daily Emulsion"
+    },
+    "category": "face",
+    "style": "natural",
+    "image": "/assets/poster-072.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-072-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-072-thumb.webp",
+    "stripThumb": "/assets/poster-072-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-072-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-073",
+    "title": {
+      "zh": "liaose 身体护理油三瓶组",
+      "en": "liaose Body Oil Collection"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-073.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-073-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-073-thumb.webp",
+    "stripThumb": "/assets/poster-073-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-073-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]

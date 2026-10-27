@@ -680,6 +680,30 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-071-thumb.webp",
       "width": 1447,
       "height": 1087
+    },
+    {
+      "id": "poster-072",
+      "category": "face",
+      "title": {
+        "zh": "liaose 日常乳液",
+        "en": "liaose Daily Emulsion"
+      },
+      "src": "assets/posters/poster-072.webp",
+      "thumbnail": "assets/posters/poster-072-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-073",
+      "category": "body",
+      "title": {
+        "zh": "liaose 身体护理油三瓶组",
+        "en": "liaose Body Oil Collection"
+      },
+      "src": "assets/posters/poster-073.webp",
+      "thumbnail": "assets/posters/poster-073-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

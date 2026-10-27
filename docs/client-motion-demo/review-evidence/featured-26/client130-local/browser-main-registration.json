@@ -1,0 +1,261 @@
+{
+  "status": "pass",
+  "url": "http://127.0.0.1:8784/",
+  "count": 26,
+  "method": "Wait for selected poster button before opening detail",
+  "result": [
+    {
+      "id": "poster-073",
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "zoom": 1,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "partStates": {
+          "closure": {
+            "visible": true,
+            "position": [
+              0,
+              2.9903757572174072,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.329055905342102,
+              1.329055905342102,
+              1.329055905342102
+            ]
+          },
+          "body": {
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.329055905342102,
+              1.329055905342102,
+              1.329055905342102
+            ]
+          },
+          "label": {
+            "visible": true,
+            "position": [
+              0,
+              1.5682859420776367,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.329055905342102,
+              1.329055905342102,
+              1.329055905342102
+            ]
+          },
+          "print": {
+            "visible": true,
+            "position": [
+              0,
+              1.5682859420776367,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.329055905342102,
+              1.329055905342102,
+              1.329055905342102
+            ]
+          },
+          "name": {
+            "visible": true,
+            "position": [
+              0,
+              1.5682859420776367,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.329055905342102,
+              1.329055905342102,
+              1.329055905342102
+            ]
+          }
+        },
+        "meshes": 13,
+        "triangles": 49062
+      }
+    },
+    {
+      "id": "poster-072",
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "zoom": 1,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "partStates": {
+          "overcap": {
+            "visible": true,
+            "position": [
+              0,
+              2.1915712356567383,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.0357142686843872,
+              1.0357142686843872,
+              1.0357142686843872
+            ]
+          },
+          "pump": {
+            "visible": true,
+            "position": [
+              0,
+              2.0403571128845215,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "body": {
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.0357142686843872,
+              1.0357142686843872,
+              1.0357142686843872
+            ]
+          },
+          "label": {
+            "visible": true,
+            "position": [
+              0,
+              1.1910713911056519,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.0357142686843872,
+              1.0357142686843872,
+              1.0357142686843872
+            ]
+          },
+          "print": {
+            "visible": true,
+            "position": [
+              0,
+              1.1910713911056519,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.0357142686843872,
+              1.0357142686843872,
+              1.0357142686843872
+            ]
+          },
+          "name": {
+            "visible": true,
+            "position": [
+              0,
+              1.1910713911056519,
+              0
+            ],
+            "offset": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1.0357142686843872,
+              1.0357142686843872,
+              1.0357142686843872
+            ]
+          }
+        },
+        "meshes": 16,
+        "triangles": 58870
+      }
+    }
+  ]
+}

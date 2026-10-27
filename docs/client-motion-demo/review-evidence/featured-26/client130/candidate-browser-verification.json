@@ -1,0 +1,117 @@
+{
+  "status": "pass",
+  "environment": "candidate",
+  "url": "http://127.0.0.1:8785/client",
+  "version": "client1.30",
+  "featuredCount": 26,
+  "newProducts": [
+    "poster-072",
+    "poster-073"
+  ],
+  "desktop": {
+    "homepageImages": "visually reviewed",
+    "bothDetailsOpen": "pass",
+    "closedAndFullyExpanded": "state JSON checked",
+    "wrap26To1": "pass",
+    "adjacentThemes": "no rectangular backgrounds or crop"
+  },
+  "mobile": {
+    "type": "emulated viewport, not physical touch device",
+    "width": 393,
+    "height": 852,
+    "horizontalOverflow": false,
+    "screenshots": "both reviewed after background transitions finished"
+  },
+  "observedSceneStates": {
+    "072": {
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 16,
+        "triangles": 58870
+      },
+      "open": {
+        "progress": 1,
+        "renderedProgress": 0.9998547073172704,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.8997239439028137,
+          0.299956412195181,
+          1.8997239439028137
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 16,
+        "triangles": 58870
+      }
+    },
+    "073": {
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 13,
+        "triangles": 49062
+      },
+      "open": {
+        "progress": 1,
+        "renderedProgress": 0.9998523735869881,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.499778560380482,
+          0.22996604592500725,
+          1.8497268911359281
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 13,
+        "triangles": 49062
+      }
+    }
+  }
+}

@@ -338,7 +338,7 @@ test('App opens featured models and preserves poster HD/download/favorites and r
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 24);
+    assert.equal(document.querySelectorAll('[data-open]').length, 26);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');
@@ -534,4 +534,86 @@ test('Luminous exposes four complete packaging layers through the existing revie
       for(const [i,key] of ['closure','body','label','print'].entries()) {await click(buttons[i]);assert.equal(focused,key);}
     }
   }finally{await env.close();}
+});
+
+test('the restored Daily and Body Oil homepage entries open their existing models and retain poster return focus', async () => {
+  const env=setup();const {App,counts}=appHarness();
+  try {
+    await act(async()=>env.root.render(<App/>));
+    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-2).map(button=>button.dataset.open),['poster-072','poster-073']);
+    for(const id of ['poster-072','poster-073']) {
+      const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
+      assert.equal(document.querySelector('.test-packaging').dataset.id,id);
+      await click(byText('Original poster'));
+      assert.equal(document.querySelector('.test-packaging'),null);
+      assert.ok(document.querySelector(`a[download="${id}.webp"]`));
+      await click(byText('返回结构展示'));
+      assert.equal(document.querySelector('.test-packaging').dataset.id,id);
+      await click(byText('Close structure'));
+      assert.equal(document.activeElement,trigger);
+    }
+    assert.deepEqual(counts(),{mounts:4,unmounts:4});
+  } finally {await env.close();}
+});
+
+test('featured Body Oil preserves its approved single-bottle theme and all five independent controls', async () => {
+  const env=setup(); let mounted,focused,url;
+  const bodyOil={...item,id:'poster-073',title:{zh:'身体油系列',en:'Body Oil Collection'}};
+  globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+  const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{
+    mounted=options; options.onReady(); return {setProgress(){},focusPart(key){focused=key;},dispose(){}};
+  }})}});
+  try {
+    assert.equal(JSON.parse(readFileSync(new URL('../src/featured.json',import.meta.url),'utf8')).some(p=>p.id==='poster-073'),true);
+    const request=startPackagingModelRequest(bodyOil.id);await request.promise;request.abort();
+    assert.equal(url,'/assets/packaging/poster-073.glb');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil}/>));
+    assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
+    assert.equal(document.querySelector('.packaging-intro').textContent,'身体护理 · 单瓶身体油空包材');
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Closure','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,5);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,5);
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#eadbc5');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-ink'),'#3e2b1d');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-accent'),'#eee3d1');
+    assert.equal(Object.hasOwn(mounted.product.review.appearance,'liquid'),false);
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[4]);
+    assert.equal(focused,'name');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil} lang="en"/>));
+    const english=document.querySelector('.packaging-intro').textContent;
+    assert.equal(english,mounted.design.kind.en);
+    assert.ok(/[A-Za-z]/.test(english));
+    assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
+  } finally {await env.close();}
+});
+
+test('Daily Emulsion exposes one complete pump and all six independent layer controls', async () => {
+  const env=setup();let mounted,focused,url;
+  const daily={...item,id:'poster-072',title:{zh:'日常乳液',en:'Daily Emulsion'}};
+  globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
+  const {startPackagingModelRequest}=component('structure/PackagingDetailLoader.jsx',{allExports:true});
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{
+    mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};
+  }})}});
+  try {
+    const request=startPackagingModelRequest(daily.id);await request.promise;request.abort();
+    assert.equal(url,'/assets/packaging/poster-072.glb');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={daily}/>));
+    assert.equal(document.querySelector('h1').textContent,'Daily Emulsion');
+    assert.equal(document.querySelector('.packaging-intro').textContent,'面部护理 · 单瓶乳液空包材');
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint','ProductPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,6);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,6);
+    assert.equal(mounted.product.parts.some(p=>['head','stem','closure'].includes(p.key)),false);
+    assert.equal(mounted.product.review.appearance.clearOvercap,true);
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-paper'),'#e9e5d8');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-ink'),'#34372e');
+    assert.equal(document.querySelector('.packaging-detail').style.getPropertyValue('--pack-accent'),'#efeee6');
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[1]);assert.equal(focused,'pump');
+    await click(document.querySelectorAll('.packaging-mobile-parts button')[5]);assert.equal(focused,'name');
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={daily} lang="en"/>));
+    assert.equal(document.querySelector('.packaging-intro').textContent,'Face care · empty emulsion bottle');
+    assert.equal(document.querySelector('h1').textContent,'Daily Emulsion');
+  } finally {await env.close();}
 });

@@ -430,5 +430,41 @@
       "#eeece3",
       "#b8c2a8"
     ]
+  },
+  {
+    "id": "poster-072",
+    "name": "Daily Emulsion",
+    "kind": {
+      "zh": "面部护理 · 单瓶乳液空包材",
+      "en": "Face care · empty emulsion bottle"
+    },
+    "description": {
+      "zh": "磨砂方瓶、透明罩与完整白色泵头，展示已上线的单瓶空包材。",
+      "en": "An empty frosted rectangular bottle with a clear cover and complete white pump."
+    },
+    "background": "#e9e5d8",
+    "ink": "#34372e",
+    "swatch": [
+      "#efeee6",
+      "#34372e"
+    ]
+  },
+  {
+    "id": "poster-073",
+    "name": "Body Oil Collection",
+    "kind": {
+      "zh": "身体护理 · 单瓶身体油空包材",
+      "en": "Body care · empty glass bottle"
+    },
+    "description": {
+      "zh": "斜肩透明单瓶与象牙白完整旋盖，展示已上线的身体油空包材。",
+      "en": "One empty clear sloping-shoulder body-oil bottle with an intact ivory screw cap."
+    },
+    "background": "#eadbc5",
+    "ink": "#3e2b1d",
+    "swatch": [
+      "#eee3d1",
+      "#25180f"
+    ]
   }
 ]

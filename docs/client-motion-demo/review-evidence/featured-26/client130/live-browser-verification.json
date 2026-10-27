@@ -1,0 +1,133 @@
+{
+  "status": "pass",
+  "environment": "production",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "version": "client1.30",
+  "featuredCount": 26,
+  "newProducts": [
+    "poster-072",
+    "poster-073"
+  ],
+  "desktop": {
+    "homepageImages": "visually reviewed after visible images finished loading",
+    "bothDetailsOpen": "pass",
+    "closedAndFullyExpanded": "state JSON checked",
+    "originalPosterAndReturn": "pass",
+    "wrap26To1": "pass"
+  },
+  "mobile": {
+    "type": "emulated viewport, not physical touch device",
+    "width": 393,
+    "height": 852,
+    "horizontalOverflow": false,
+    "screenshots": "both visually reviewed"
+  },
+  "sceneStates": {
+    "072": {
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 16,
+        "triangles": 58870
+      },
+      "open": {
+        "progress": 1,
+        "renderedProgress": 0.9998642913161268,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.8997421535006407,
+          0.299959287394838,
+          1.8997421535006407
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 16,
+        "triangles": 58870
+      }
+    },
+    "073": {
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 13,
+        "triangles": 49062
+      },
+      "open": {
+        "progress": 1,
+        "renderedProgress": 0.9998173616637125,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.4997260424955687,
+          0.22995799318265386,
+          1.8496621190778681
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 13,
+        "triangles": 49062
+      }
+    }
+  },
+  "originalPosters": {
+    "072": [
+      {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-072-1280.webp",
+        "loaded": true,
+        "naturalWidth": 853
+      }
+    ],
+    "073": [
+      {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-073-1280.webp",
+        "loaded": true,
+        "naturalWidth": 853
+      }
+    ]
+  }
+}
