@@ -1,0 +1,53 @@
+{
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "title": "源泽 · 客户海报展厅 — client1.26",
+  "checkedAt": "2026-10-27T02:06:40.193Z",
+  "scope": "live HTTPS simulated mobile",
+  "closed": {
+    "progress": 0,
+    "renderedProgress": 0.00008164695649164661,
+    "yaw": 2.4995195738186533e-9,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.00021636443470286353,
+      0.00004082347824585497,
+      0.0001347174782112169
+    ],
+    "components": [
+      "overcap",
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 32,
+    "triangles": 155614
+  },
+  "open": {
+    "progress": 1,
+    "renderedProgress": 0.9998834856374939,
+    "yaw": 2.985834543665201e-17,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -2.6496912369393586,
+      0.4999417428187469,
+      1.6498077513018647
+    ],
+    "components": [
+      "overcap",
+      "pump",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 32,
+    "triangles": 155614
+  },
+  "viewport": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393
+  }
+}
