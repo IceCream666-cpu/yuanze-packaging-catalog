@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26, Golden Face Oil client1.27 and B5 Serum client1.28 are published and live verified. Luminous Face Oil complete-dropper revision is local awaiting user review; nine later selected revisions remain queued.",
+  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26, Golden Face Oil client1.27 and B5 Serum client1.28 are published and live verified. Luminous Face Oil near-bottom complete-dropper revision is local awaiting user review; nine later selected revisions remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -96,7 +96,7 @@
       "posterId": "poster-058",
       "name": "Luminous Face Oil",
       "status": "local-awaiting-user",
-      "localRevision": "complete-short-dropper",
+      "localRevision": "complete-long-dropper-near-bottom",
       "localRevisionReceipt": "luminous-simplified-preview-verification.json"
     },
     {

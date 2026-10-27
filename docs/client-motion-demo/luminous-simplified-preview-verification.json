@@ -49,18 +49,18 @@
   "containsFormula": false,
   "containsNewTube": false,
   "animation": {
-    "completeDropperLift": 1.0,
-    "tubeTipClosedY": 1.5890409527902705,
+    "completeDropperLift": 2.4,
+    "tubeTipClosedY": 0.17479436051355357,
     "bottleMouthY": 2.1849315315485,
-    "fullyOpenTubeToBottleGap": 0.4041094212417704,
-    "fullyOpenTopY": 3.8999998813051064,
+    "fullyOpenTubeToBottleGap": 0.3898628289650534,
+    "fullyOpenTopY": 5.299999881305107,
     "cameraCenterY": [
       1.45,
-      1.8
+      2.45
     ],
     "cameraHeight": [
       4.2,
-      5.2
+      6.8
     ],
     "cameraWidth": [
       3.8,
@@ -84,19 +84,21 @@
     "printScale": 1.95
   },
   "geometryAndScope": {
-    "bytes": 1953096,
-    "sha256": "3c6b6718c1bd62976e7e2846eac36c612f8b2be743861dc3084a33d89dbb6658",
-    "preservedMeshCount": 6,
-    "preservedVertexCount": 22785,
+    "bytes": 1953112,
+    "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+    "changedMesh": "Long hollow clear pipette without suspended formula",
+    "preservedMeshCount": 5,
+    "preservedVertexCount": 21241,
     "maxWorldVertexDelta": 0,
-    "allAttributesIndicesMaterialsIdentical": true,
+    "preservedMeshAttributesIndicesMaterialsIdentical": true,
+    "allOriginalMaterialsIdentical": true,
     "artworkBytesIdentical": true,
     "artworkFileCount": 4,
     "otherGlbFilesUnchanged": 25,
     "otherConfigAndManifestUnchanged": true,
     "sharedSceneUnchanged": true,
-    "comparison": "review-evidence/luminous/simplified-dropper/geometry-comparison.json",
-    "workComparison": "work/luminous-simplified-review/geometry-comparison.json"
+    "comparison": "review-evidence/luminous/long-pipette/geometry-comparison.json",
+    "workComparison": "work/luminous-long-pipette-review/geometry-comparison.json"
   },
   "verification": {
     "actualGlbTestsPassed": 6,
@@ -104,9 +106,9 @@
     "pythonOtherProductRegressionTestsPassed": 15,
     "frontendTestsPassed": 96,
     "viteBuild": "passed-direct-vite-build",
-    "buildReadyAt": "2026-10-27T10:48:57+08:00",
+    "buildReadyAt": "2026-10-27T11:05:47+08:00",
     "localSourcePublicDistGlbIdentical": true,
-    "localHttpGlbVerification": "passed-by-root",
+    "localHttpGlbVerification": "HTTP200 and model SHA256 passed-by-root",
     "desktopBrowser": "Ego Lite",
     "desktopViewport": [
       1474,
@@ -129,26 +131,26 @@
     "mobileScrollWidth": 393,
     "physicalMobileDeviceTested": false,
     "browserStateEvidence": [
-      "review-evidence/luminous/simplified-dropper/desktop-states.json",
-      "review-evidence/luminous/simplified-dropper/mobile-states.json"
+      "review-evidence/luminous/long-pipette/desktop-states.json",
+      "review-evidence/luminous/long-pipette/mobile-states.json"
     ],
     "browserStateFiles": [
       {
-        "path": "review-evidence/luminous/simplified-dropper/desktop-states.json",
-        "bytes": 10401,
-        "sha256": "58508902009ddaee20e06276d4773c6b1cff2c2e44ff60080594549bfe9667f7"
+        "path": "review-evidence/luminous/long-pipette/desktop-states.json",
+        "bytes": 14759,
+        "sha256": "e0cdf22e1ed218576ded0943cfbd5425ec538385634916085e02b20d828637af"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/mobile-states.json",
-        "bytes": 4352,
-        "sha256": "955a646f4a0864dcd3b186e6e89de8a174eb5627f3b69518cb71d12a50a301e8"
+        "path": "review-evidence/luminous/long-pipette/mobile-states.json",
+        "bytes": 4349,
+        "sha256": "a175354b54b8847d0f0d7e5b3a00c9f5378a1eb88cde4336755bc968191a91cc"
       }
     ],
     "screenshots": [
       {
-        "path": "review-evidence/luminous/simplified-dropper/desktop-closed.png",
-        "bytes": 100664,
-        "sha256": "709e99f5bc47e403d15ff8629f18c49b112fd581c0e57a0f16d634c7287284f7",
+        "path": "review-evidence/luminous/long-pipette/desktop-closed.png",
+        "bytes": 101821,
+        "sha256": "3f0477033d59feb0ed1aa6b84f2c081ea8190d34d1ffafb98535f1b725525271",
         "dimensions": [
           1474,
           722
@@ -156,9 +158,9 @@
         "mediaType": "image/png"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/desktop-half.png",
-        "bytes": 103356,
-        "sha256": "4db1934d8d61db0f64fa8c814fea83d7920139e21f3080821eff10a71328f032",
+        "path": "review-evidence/luminous/long-pipette/desktop-half.png",
+        "bytes": 100134,
+        "sha256": "6d9f0fd1812bb29baf3b54741252b1ccc9ec61a4b9c823442a55e048fbe844e9",
         "dimensions": [
           1474,
           722
@@ -166,9 +168,9 @@
         "mediaType": "image/png"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/desktop-open.png",
-        "bytes": 103243,
-        "sha256": "a31e397288c30b9b2607215eb8932092906e681c957fd9b619d5e334f68217a6",
+        "path": "review-evidence/luminous/long-pipette/desktop-open.png",
+        "bytes": 98067,
+        "sha256": "a7396a746cba12ddec0d6e994d046535ac16da3317d7a98bc2cca6e7329d1e34",
         "dimensions": [
           1474,
           722
@@ -176,9 +178,9 @@
         "mediaType": "image/png"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/desktop-rotated.png",
-        "bytes": 92303,
-        "sha256": "3a16936303d243634e543e56f9b7419d1fb241576a34a6f7f3fab8b4bd40cf40",
+        "path": "review-evidence/luminous/long-pipette/desktop-side.png",
+        "bytes": 96519,
+        "sha256": "af49d3fa481527cc2caea3af64d0b9dea3d1383ce7a15ff40f3ea5ebebb723a6",
         "dimensions": [
           1474,
           722
@@ -186,9 +188,19 @@
         "mediaType": "image/png"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/mobile-closed.png",
-        "bytes": 45832,
-        "sha256": "c50edf86503533c4fb1f5f5c18b8cd7a272cd0e913b29acad8c39af7aa1f4077",
+        "path": "review-evidence/luminous/long-pipette/desktop-back.png",
+        "bytes": 102956,
+        "sha256": "7d5d1a2b093ec62ff740fa36973d696155c0ae919e0d8eaccbc38887fbffaba6",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/luminous/long-pipette/mobile-closed.png",
+        "bytes": 45778,
+        "sha256": "413bb3c00f6457f9ccc01ac26f944e116b9215d0b0b12cf5137bc35087acf59c",
         "dimensions": [
           393,
           852
@@ -196,9 +208,9 @@
         "mediaType": "image/png"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/mobile-open.png",
-        "bytes": 48318,
-        "sha256": "9dd29f1c7b166540ef932baddae430734f0b06c420ad9ab5f552576c8d9d3511",
+        "path": "review-evidence/luminous/long-pipette/mobile-open.png",
+        "bytes": 43046,
+        "sha256": "b077cd38caad2c0c388b9ee29213a840dd68b3be44a23fc036783f35f6230ac1",
         "dimensions": [
           393,
           852
@@ -206,9 +218,9 @@
         "mediaType": "image/png"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/codex-closed.jpg",
-        "bytes": 20003,
-        "sha256": "8c9a5ce8543d91083a6e796d0d6cc2e31249f55c6dcf4514706a95316a4c02ec",
+        "path": "review-evidence/luminous/long-pipette/codex-closed.jpg",
+        "bytes": 20085,
+        "sha256": "54e984ff09858dc83c2c8c20f52856b517404f9ba3e57c39662ff28a82811adb",
         "dimensions": [
           319,
           1034
@@ -216,9 +228,9 @@
         "mediaType": "image/jpeg"
       },
       {
-        "path": "review-evidence/luminous/simplified-dropper/codex-open.jpg",
-        "bytes": 20109,
-        "sha256": "ed18696a765659b141e4bdbd498a7da335d4ecdc3e2a99d13d819edebc9b42bc",
+        "path": "review-evidence/luminous/long-pipette/codex-open.jpg",
+        "bytes": 19660,
+        "sha256": "6d1fa77bf7caf964a91525fb89403163f3a1e4abfc0e29c7dd214ab1b3e8a223",
         "dimensions": [
           319,
           1034
@@ -226,7 +238,7 @@
         "mediaType": "image/jpeg"
       }
     ],
-    "aestheticReview": "PASS. Root and the independent reviewer viewed all six current desktop/mobile images against the original full poster. The white bulb, silver collar and existing short clear pipette remain connected as one dropper and fully clear the bottle mouth. The neutral empty bottle, warm ivory blank paper label and complete separate printing retain the original appearance and remain in frame. On the phone viewport, the right edge of the text slightly overlaps the left edge of the paper label in projection; the text remains in front and fully readable. The 90-degree view makes flat printing nearly invisible edge-on. These are recorded non-blocking display limits, not geometry changes.",
+    "aestheticReview": "PASS. Root and the independent reviewer actually viewed all seven current long-pipette desktop/mobile PNGs. The closed side view shows the pipette tip near the inner floor without penetrating it. Bulb, silver collar and pipette remain connected at half and full expansion; the complete long tube is exposed and clears the mouth. All parts remain in frame on desktop and phone, retaining the neutral empty glass, silver collar, warm paper and complete lettering. The original paper naturally hides the lower tube in front/rear views. The phone text slightly overlaps the paper edge in projection but stays in front and fully readable; flat printing is nearly invisible edge-on at90 degrees. These are non-blocking display limits.",
     "codexBrowser": "Codex in-app browser (IAB)",
     "codexScreenshotDimensions": [
       319,
@@ -239,14 +251,36 @@
     "codexDeliveredAtProgress": 100,
     "codexPreviewTab": "tab12",
     "codexMarkedDeliverable": true,
-    "codexScreenshotVisualReview": "passed; root and archive agent actually viewed both current 0% and 100% screenshots",
+    "codexScreenshotVisualReview": "passed; root and archive agent actually viewed both current long-pipette0% and100% JPEGs",
     "galleryTestsPassed": 7,
-    "galleryPublicDistIdentical": true
+    "galleryPublicDistIdentical": true,
+    "closedSide90AndRear180": true
   },
   "knownLimits": [
     "The phone layout retains the existing half-width horizontal separation: the print right edge and paper-label left edge slightly overlap in projection, while the text is in front and fully readable. Desktop layers are separated.",
     "Flat printing becomes nearly invisible in the 90-degree edge-on view.",
-    "Existing short pipette length, concealed connections, wall thickness and dimensions remain illustrative, not measured manufacturing specifications.",
+    "The original paper label hides the lower portion of the tube in front/rear closed views; the side view confirms near-bottom placement.",
+    "The revised near-bottom pipette length, concealed connections, wall thickness and floor clearance are illustrative, not measured manufacturing specifications.",
     "Empty packaging contains no oil or suspended drop. Mobile checks use simulated viewports, not physical phones."
-  ]
+  ],
+  "revision": "complete-long-dropper-near-bottom",
+  "revises": "The earlier short-pipette local revision remains in Git history and review-evidence/luminous/simplified-dropper/. This receipt describes the current near-bottom pipette.",
+  "existingTubeExtended": true,
+  "pipette": {
+    "oldName": "Short hollow clear pipette without suspended formula",
+    "newName": "Long hollow clear pipette without suspended formula",
+    "outerDiameterToWidth": 0.072,
+    "innerDiameterToWidth": 0.052,
+    "bottomToWidth": 0.2199997960904535,
+    "topToWidth": 3.229999816356033,
+    "innerFloorY": 0.09852054744877226,
+    "bottomY": 0.17479436051355357,
+    "closedFloorGap": 0.07627381306478132,
+    "materialIdentical": true,
+    "upperConnectionPositionsIdentical": true,
+    "tipShapeTranslatedWithoutScaling": true,
+    "axialPathOpen": true,
+    "hollowWallManifold": true,
+    "signedVolume": 0.002916128465518298
+  }
 }

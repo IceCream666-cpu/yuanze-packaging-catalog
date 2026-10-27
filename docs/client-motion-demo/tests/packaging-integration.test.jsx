@@ -527,7 +527,7 @@ test('Luminous exposes four complete packaging layers through the existing revie
   try {
     await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-058'}}/>));
     assert.deepEqual(mounted.product.parts.map(part=>part.node),['DropperAssembly','Body','PaperLabel','LogoPrint']);
-    assert.deepEqual(mounted.product.review.explosion.offsets.closure,[0,1,0]);
+    assert.deepEqual(mounted.product.review.explosion.offsets.closure,[0,2.4,0]);
     assert.match(document.querySelector('h1').textContent,/Luminous/);
     for(const selector of ['.packaging-part','.packaging-mobile-parts button']) {
       const buttons=[...document.querySelectorAll(selector)];assert.equal(buttons.length,4);

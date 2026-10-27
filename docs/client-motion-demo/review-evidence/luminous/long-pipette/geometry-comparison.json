@@ -1,0 +1,122 @@
+{
+  "model": "poster-058",
+  "bytes": 1953112,
+  "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+  "roots": [
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "DropperAssembly"
+  ],
+  "meshCount": 6,
+  "changedMesh": "Long hollow clear pipette without suspended formula",
+  "preservedMeshCount": 5,
+  "preservedVertexCount": 21241,
+  "meshes": [
+    {
+      "name": "Hollow slender flat Luminous glass bottle",
+      "vertices": 3815,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Warm ivory unprinted paper label",
+      "vertices": 729,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Complete Luminous Face Oil print",
+      "vertices": 729,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Mirror silver hollow cylindrical collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Hollow white Luminous dropper bulb",
+      "vertices": 13736,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "8203259ea96798ad2b67882c369ddd1c36be951ef4c3bfcba0be4cf59bf22211",
+    "label.png": "6a6e2a55d475e5b9ff208a532e27b2359880769d5c8e8d17e263c790c2d5a531",
+    "print.svg": "9f7a6ce54618d7c9c68c9558f886cad8d76929ee2cbbeb83e945742fe7f9a0e7",
+    "print.png": "57292db9db1477c1d51a6f19d2a657554fa8d6af57975d2b17e4246071721d84"
+  },
+  "artworkBytesIdentical": true,
+  "tube": {
+    "oldName": "Short hollow clear pipette without suspended formula",
+    "newName": "Long hollow clear pipette without suspended formula",
+    "outerDiameterToWidth": 0.072,
+    "innerDiameterToWidth": 0.052,
+    "bottomToWidth": 0.2199997960904535,
+    "topToWidth": 3.229999816356033,
+    "innerFloorY": 0.09852054744877226,
+    "bottomY": 0.17479436051355357,
+    "closedFloorGap": 0.07627381306478132,
+    "materialIdentical": true,
+    "upperConnectionPositionsIdentical": true,
+    "tipShapeTranslatedWithoutScaling": true,
+    "axialPathOpen": true,
+    "hollowWallManifold": true,
+    "signedVolume": 0.002916128465518298
+  },
+  "motion": {
+    "completeDropperLift": 2.4,
+    "tubeTipClosedY": 0.17479436051355357,
+    "bottleMouthY": 2.1849315315485,
+    "fullyOpenTubeToBottleGap": 0.3898628289650534,
+    "fullyOpenTopY": 5.299999881305107,
+    "cameraCenterY": [
+      1.45,
+      2.45
+    ],
+    "cameraHeight": [
+      4.2,
+      6.8
+    ],
+    "cameraWidth": [
+      3.8,
+      5.2
+    ],
+    "cameraCenterX": [
+      0,
+      -1.6
+    ],
+    "labelOffset": [
+      -1.2,
+      0.08,
+      0.65
+    ],
+    "labelScale": 1.15,
+    "printOffset": [
+      -2.85,
+      0.15,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "scope": "Only the existing hollow pipette is lengthened near the inner floor, preserving its tip profile, diameter, material and top connection; complete dropper lift/camera and copy updated for this058 revision only. No formula, suspended drop or new part.",
+  "otherGlbFilesUnchanged": 25,
+  "otherConfigAndManifestUnchanged": true,
+  "sharedSceneUnchanged": true,
+  "appearanceAndLabelPrintOffsetsScalesUnchanged": true,
+  "sourcePublicGlbIdentical": true
+}

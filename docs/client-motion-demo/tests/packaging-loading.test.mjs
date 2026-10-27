@@ -552,11 +552,11 @@ test('B5 keeps the exported dropper complete and white base attached with four r
   }
 });
 
-test('Luminous keeps its actual short dropper intact and frames all four review layers on desktop and phone',async()=>{
+test('Luminous keeps its actual long dropper intact and frames all four review layers on desktop and phone',async()=>{
   const product=PACKAGING_PRODUCTS['poster-058'];
   const bytes=readFileSync(new URL('../packaging-assets/poster-058.glb',import.meta.url));
   const jsonLength=bytes.readUInt32LE(12),gltf=JSON.parse(bytes.toString('utf8',20,20+jsonLength));
-  const pipeName='Short hollow clear pipette without suspended formula';
+  const pipeName='Long hollow clear pipette without suspended formula';
   for(const [width,height] of [[1200,800],[393,520]]) {
     const nodes=gltf.nodes.map(node=>{
       let object=new Three.Group();
@@ -595,7 +595,7 @@ test('Luminous keeps its actual short dropper intact and frames all four review 
       const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
       assert.deepEqual(Object.keys(parts).sort(),['body','closure','label','print']);
       assert.equal(parts.closure.name,'DropperAssembly');
-      assert.deepEqual(product.review.explosion.offsets.closure,[0,1,0]);
+      assert.deepEqual(product.review.explosion.offsets.closure,[0,2.4,0]);
       const pipe=loaded.scene.getObjectByName(pipeName),body=loaded.scene.getObjectByName('Hollow slender flat Luminous glass bottle');
       const silver=loaded.scene.getObjectByName('Mirror silver hollow cylindrical collar');
       assert.equal(body.material.transmission,1);assert.ok(Math.abs(body.material.roughness-.024)<1e-6);assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
@@ -609,9 +609,9 @@ test('Luminous keeps its actual short dropper intact and frames all four review 
       for(const progress of [0,.25,.5,.75,1,.5,0]) {
         api.setProgress(progress);flush();assert.equal(api.getState().renderedProgress,progress);
         const displacement=parts.closure.getWorldPosition(new Three.Vector3()).sub(rest.closure.world);
-        assert.ok(displacement.distanceTo(new Three.Vector3(0,progress,0))<1e-9);
+        assert.ok(displacement.distanceTo(new Three.Vector3(0,2.4*progress,0))<1e-9);
         for(const {part,matrix,world} of fitted) {
-          assert.deepEqual(part.matrix.toArray(),matrix,'bulb, silver collar and short pipette keep their fitted transforms');
+          assert.deepEqual(part.matrix.toArray(),matrix,'bulb, silver collar and long pipette keep their fitted transforms');
           assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
         }
         for(const [key,offset,growth] of [['label',[-1.2,.08,.65],.15],['print',[-2.85,.15,1.65],.95]]) {
@@ -621,11 +621,11 @@ test('Luminous keeps its actual short dropper intact and frames all four review 
         }
         assert.ok(Math.abs(parts.print.position.z-rest.print.position.z-(parts.label.position.z-rest.label.position.z)-progress)<1e-9);
         if(width>=768) {
-          assert.ok(Math.abs(camera.position.y-1.05-(1.45+.35*progress))<1e-9);
-          assert.ok(Math.abs(camera.top-camera.bottom-(4.2+progress))<1e-9);
+          assert.ok(Math.abs(camera.position.y-1.05-(1.45+progress))<1e-9);
+          assert.ok(Math.abs(camera.top-camera.bottom-(4.2+2.6*progress))<1e-9);
           assert.ok(Math.abs(camera.position.x+1.6*progress)<1e-9);
         }
-        if(progress===1)assert.ok(new Three.Box3().setFromObject(pipe).min.y-new Three.Box3().setFromObject(body).max.y>.40,'the complete short dropper clears the bottle mouth');
+        if(progress===1)assert.ok(new Three.Box3().setFromObject(pipe).min.y-new Three.Box3().setFromObject(body).max.y>.38,'the complete long dropper clears the bottle mouth');
         for(const mesh of nodes.filter(node=>node.isMesh)) {
           mesh.geometry.computeBoundingBox();const {min,max}=mesh.geometry.boundingBox;
           for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]) {
