@@ -348,7 +348,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-042', {closure: 1.2}, [-3.1, .18, 1.65]],
   ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
   ['poster-051', {pump:2.3}, [-3.4,.18,1.65]],
-  ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
+  ['poster-057', {dropper:1.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:3.95,pump:1.85}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.15,pump:2.15}, [-2.65,.50,1.65]],
   ['poster-049', {pump: 1.25}, [-2.65, .18, 1.65]],
@@ -383,18 +383,13 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' || id === 'poster-051' ? 4 : id === 'poster-044' || id === 'poster-056' ? 5 : id === 'poster-057' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-057' ? 4 : id === 'poster-044' || id === 'poster-056' ? 5 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
       labelDisplacement.toArray().forEach((value,i)=>near(value,[id === 'poster-057' ? -1.4 : id === 'poster-056' ? -1.85 : id === 'poster-042' || id === 'poster-047' ? -1.5 : id === 'poster-051' ? -1.65 : -1.25,.08,.65][i]*progress,'paper displacement'));
       sameVector(parts.label.scale,rest.label.scale.clone().multiplyScalar(1+.15*progress),'paper scale');
       near(printDisplacement.z-labelDisplacement.z,progress,'text must move farther forward than the paper');
-      if (id === 'poster-057') {
-        const t=Math.max(0,Math.min(1,(progress-.3)/.7)), drop=Math.max(0,Math.min(1,progress/.3));
-        const offset=[1.7*t*t*(3-2*t),-.8*drop*drop*(3-2*drop),.35*t*t*(3-2*t)];
-        parts.base.position.clone().sub(rest.base.position).toArray().forEach((v,i)=>near(v,offset[i],'base clears the sleeve before moving sideways'));
-      }
       if (id === 'poster-051' || id === 'poster-056' || id === 'poster-057') {
         if (progress === 0) near(parts.label.material.opacity,.05,'clear film leaves no paper patch at rest');
         if (progress === 1) near(parts.label.material.opacity,1,'separated film retains its translucent texture');
@@ -459,19 +454,102 @@ test('Golden keeps its olive cover tinted while only the neutral bottle stays fr
 });
 
 
-test('B5 pipette remains visible through the empty bottle and preserves the original white print', async () => {
-  const product=PACKAGING_PRODUCTS['poster-057'];let loaded;
-  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
-  try {
-    loaded=env.model();
-    const pipe=loaded.scene.getObjectByName('Pipette'),body=loaded.scene.getObjectByName('Body'),print=loaded.scene.getObjectByName('LogoPrint');
-    pipe.material.name='B5 clear glass pipette';pipe.material.transmission=1;
-    body.material.transmission=1;print.material.map=new Three.Texture();print.material.transparent=true;print.material.color.set('#ffffff');
-    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-    assert.equal(pipe.material.transmission,0);assert.equal(pipe.material.transparent,true);assert.equal(pipe.material.opacity,.38);assert.equal(pipe.material.depthWrite,false);
-    assert.equal(body.material.transmission,1);assert.equal(body.material.depthWrite,false);assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
-    assert.equal(print.renderOrder,3);assert.ok(print.material.color.equals(new Three.Color('#ffffff')));assert.equal(print.material.toneMapped,false);
-  } finally {api?.dispose();env.close();}
+test('B5 keeps the exported dropper complete and white base attached with four readable layers', async () => {
+  const product=PACKAGING_PRODUCTS['poster-057'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-057.glb',import.meta.url));
+  const jsonLength=bytes.readUInt32LE(12),gltf=JSON.parse(bytes.toString('utf8',20,20+jsonLength));
+  const tubeName='Hollow clear pipette with open tapered tip',bodyName='Hollow rounded flat B5 glass bottle';
+  for(const [width,height] of [[1200,800],[393,520]]) {
+    // Use actual exported positions, materials and parent transforms; no new production inspection API.
+    const nodes=gltf.nodes.map(node=>{
+      let object=new Three.Group();
+      if('mesh' in node) {
+        const primitive=gltf.meshes[node.mesh].primitives[0],accessor=gltf.accessors[primitive.attributes.POSITION];
+        const view=gltf.bufferViews[accessor.bufferView],offset=28+jsonLength+(view.byteOffset??0)+(accessor.byteOffset??0);
+        assert.equal(accessor.componentType,5126);assert.equal(accessor.type,'VEC3');
+        const coordinates=new Float32Array(accessor.count*3);
+        for(let i=0;i<accessor.count;i++)for(let axis=0;axis<3;axis++)coordinates[i*3+axis]=bytes.readFloatLE(offset+i*(view.byteStride??12)+axis*4);
+        const geometry=new Three.BufferGeometry();geometry.setAttribute('position',new Three.BufferAttribute(coordinates,3));
+        const source=gltf.materials[primitive.material],pbr=source.pbrMetallicRoughness,material=new Three.MeshPhysicalMaterial();
+        material.name=source.name;material.color.fromArray(pbr.baseColorFactor??[1,1,1,1]);
+        material.roughness=pbr.roughnessFactor;material.metalness=pbr.metallicFactor??1;
+        material.transmission=source.extensions?.KHR_materials_transmission?.transmissionFactor??0;
+        material.ior=source.extensions?.KHR_materials_ior?.ior??1.5;
+        material.transparent=source.alphaMode==='BLEND';material.opacity=pbr.baseColorFactor?.[3]??1;
+        if(pbr.baseColorTexture)material.map=new Three.Texture();
+        object=new Three.Mesh(geometry,material);
+      }
+      object.name=node.name;
+      if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+      else {
+        object.position.fromArray(node.translation??[0,0,0]);
+        object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+        object.scale.fromArray(node.scale??[1,1,1]);
+      }
+      return object;
+    });
+    gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+    const loaded={scene:new Three.Group()};gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+    let camera,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+    try {
+      Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:height}});
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};
+      flush();
+      const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
+      assert.deepEqual(Object.keys(parts).sort(),['dropper','jar','label','print']);
+      assert.equal(product.review,undefined,'retain the approved B5 material and lighting path');
+      const tube=loaded.scene.getObjectByName(tubeName),body=loaded.scene.getObjectByName(bodyName);
+      const print=loaded.scene.getObjectByName('Complete white B5 bottle printing'),relief=loaded.scene.getObjectByName('Raised liaose base lettering');
+      assert.equal(tube.material.transmission,0);assert.equal(tube.material.transparent,true);assert.equal(tube.material.opacity,.38);assert.equal(tube.material.depthWrite,false);
+      assert.equal(body.material.transmission,1);assert.equal(body.material.depthWrite,false);assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
+      assert.equal(print.renderOrder,3);assert.ok(print.material.color.equals(new Three.Color('#ffffff')));assert.equal(print.material.toneMapped,false);
+      assert.equal(print.parent,parts.print);assert.equal(relief.parent,parts.print);
+      const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
+      const fitted=[['dropper',['Closure','DropperBulb','Pipette']],['jar',['Body','Base']]].flatMap(([key,names])=>names.map(name=>{
+        const part=loaded.scene.getObjectByName(name);assert.equal(part.parent,parts[key]);
+        return {key,part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
+      }));
+      const film=loaded.scene.getObjectByName('Transparent unprinted B5 label film');
+      for(const progress of [0,.25,.5,.75,1,.5,0]) {
+        api.setProgress(progress);flush();
+        assert.equal(api.getState().renderedProgress,progress);
+        assert.ok(parts.dropper.position.clone().sub(rest.dropper.position).distanceTo(new Three.Vector3(0,1.95*progress,0))<1e-9);
+        for(const {key,part,matrix,world} of fitted) {
+          const displacement=parts[key].getWorldPosition(new Three.Vector3()).sub(rest[key].world);
+          assert.deepEqual(part.matrix.toArray(),matrix,'fitted dropper pieces and base keep their local transforms');
+          assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
+        }
+        assert.ok(Math.abs(camera.position.y-1.05-(1.45+.75*progress))<1e-9);
+        const viewHeight=Math.max(4.2+2.1*progress,(3.8+2*progress)/(width/height));
+        assert.ok(Math.abs(camera.top-camera.bottom-viewHeight)<1e-9);
+        assert.ok(Math.abs(camera.position.x+1.65*progress)<1e-9);
+        for(const [key,offset,growth] of [['label',[-1.4,.08,.65],.15],['print',[-3.1,.10,1.65],.95]]) {
+          assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
+          assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+growth*progress))<1e-9);
+        }
+        assert.ok(Math.abs((parts.print.position.z-rest.print.position.z)-(parts.label.position.z-rest.label.position.z)-progress)<1e-9);
+        if(progress===0)assert.equal(film.material.opacity,.05);
+        if(progress===1) {
+          assert.equal(film.material.opacity,1);
+          assert.ok(new Three.Box3().setFromObject(tube).min.y-new Three.Box3().setFromObject(body).max.y>.33,'the complete pipette fully clears the bottle neck');
+        }
+        for(const mesh of nodes.filter(node=>node.isMesh)) {
+          mesh.geometry.computeBoundingBox();const {min,max}=mesh.geometry.boundingBox;
+          for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]) {
+            const projected=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+            assert.ok(Math.abs(projected.x)<.98&&Math.abs(projected.y)<.98,`${mesh.name} stays in ${width}x${height} frame at ${progress}`);
+          }
+        }
+        for(const key of progress===0?Object.keys(parts):['jar']) {
+          assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);
+          assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
+          assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
+        }
+      }
+    } finally {api?.dispose();env.close();}
+  }
 });
 
 test('Daily Emulsion moves the exported pump assembly rigidly and restores all six review components', async () => {

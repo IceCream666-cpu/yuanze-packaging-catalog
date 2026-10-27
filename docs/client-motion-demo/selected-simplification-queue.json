@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo client1.23, Woodland client1.24 and Pure Volume client1.25 are published and live verified. Gentle Cleansing client1.26 is published and live HTTPS/browser verified. Golden Face Oil physical-reference frosted-glass/dual-U-cover revision is local awaiting user review; eleven later selected revisions remain queued.",
+  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26 and Golden Face Oil client1.27 are published and live verified. B5 Serum complete-dropper revision is local awaiting user review; ten later selected revisions remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -58,15 +58,27 @@
       "selectionNumber": 9,
       "posterId": "poster-056",
       "name": "Golden Face Oil",
-      "status": "local-awaiting-user",
+      "status": "published-live-verified",
       "localRevisionReceipt": "golden-simplified-preview-verification.json",
-      "localRevision": "physical-reference-frosted-glass-dual-u-cover"
+      "localRevision": "physical-reference-frosted-glass-dual-u-cover",
+      "releaseVersion": "client1.27",
+      "releaseSourceCommit": "9473be8b39990694473aa3a7b34db9173a6a0453",
+      "releaseReceiptCommit": "f39ab4076e6feb134b36abcc07d43b2cf84d4710",
+      "releaseReceipt": "client127-golden-pump-release.json",
+      "releaseManifestSha256": "22026a67059df425661da9504772378ba710f891bc6d0fbbb19445c61d7d23bd",
+      "releasedAt": "2026-10-27T10:36:01+08:00",
+      "releaseHttpsVerification": "passed",
+      "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+      "releaseReceiptStatus": "complete",
+      "physicalMobileDeviceTested": false
     },
     {
       "selectionNumber": 10,
       "posterId": "poster-057",
       "name": "B5 Serum",
-      "status": "queued"
+      "status": "local-awaiting-user",
+      "localRevision": "complete-dropper-and-fitted-bottle-base",
+      "localRevisionReceipt": "b5-simplified-preview-verification.json"
     },
     {
       "selectionNumber": 11,

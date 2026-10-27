@@ -133,7 +133,7 @@
     "background": "#cedfe9"
   },
   "poster-056": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Overcap",
       "PumpAssembly",
@@ -148,24 +148,27 @@
     "background": "#e5dfbd",
     "reviewStatus": "local-awaiting-user",
     "localRevisionReceipt": "golden-simplified-preview-verification.json",
-    "localRevision": "physical-reference-frosted-glass-dual-u-cover"
+    "localRevision": "physical-reference-frosted-glass-dual-u-cover",
+    "releaseVersion": "client1.27",
+    "releaseReceipt": "client127-golden-pump-release.json",
+    "releaseReceiptCommit": "f39ab4076e6feb134b36abcc07d43b2cf84d4710"
   },
   "poster-057": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "DropperBulb",
-      "Pipette",
-      "Closure",
-      "Body",
-      "Base",
+      "DropperAssembly",
+      "BottleAssembly",
       "PaperLabel",
       "LogoPrint"
     ],
     "screenshots": {
-      "closed": "/review-assets/poster-057-closed.webp",
-      "open": "/review-assets/poster-057-open.webp"
+      "closed": "/review-assets/poster-057-simplified-closed.png",
+      "open": "/review-assets/poster-057-simplified-open.png"
     },
-    "background": "#7f656b"
+    "background": "#7f656b",
+    "reviewStatus": "local-awaiting-user",
+    "localRevision": "complete-dropper-and-fitted-bottle-base",
+    "localRevisionReceipt": "b5-simplified-preview-verification.json"
   },
   "poster-013": {
     "state": "published",

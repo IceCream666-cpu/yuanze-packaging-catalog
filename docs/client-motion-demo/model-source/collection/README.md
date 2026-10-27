@@ -1,5 +1,11 @@
 # 精选包材模型：源文件与本地复建
 
+## 2026-10-27 B5 Serum 完整滴管本地待审
+
+选单10 / poster-057由`build_b5_serum.py`改为四组：DropperAssembly包含原胶头、白盖与玻璃管，BottleAssembly包含原瓶身与白底托，PaperLabel与完整LogoPrint继续独立。原8网格/63085顶点、全部材质及6份图文素材不变，不新增料体或管路。整滴管升1.95，全开瓶口净空0.33738，镜头2.2/6.3及宽5.8；原文字外展保留。8项GLB、94项前端、构建和六图独立审美通过，Codex1280×720合拢/100%全开新图也已审阅。回执`b5-simplified-preview-verification.json`与`review-evidence/b5/simplified-dropper/`记录当前版本，原单款制作回执保留历史。
+
+057仅本地待用户检查，下一款选单11 Luminous Face Oil尚未开始，余10款排队。复建不会部署；材质与尺寸是原图外观示意，未确认实物规格或实体手机表现。下文保留此前各款记录，正式发布须查对应独立回执。
+
 ## 2026-10-27 当前单款修订状态
 
 选单09 Golden Face Oil（poster-056）按用户三张实物照片完成本地校准：`build_golden_face_oil.py`将瓶面改为中性透光磨砂（roughness .28），前后长U面板与短侧壁/顶面重建为一个连续罩体，保持原名义尺寸。除罩之外8个网格、11328顶点的世界坐标/属性/索引及4份贴图保持；瓶身仅材质改动，整泵与透明中空管、完整liaose印刷不变，不引入料液或LAN文字。仍为五组，原1.85/3.95整泵/罩升距、3.4275/8.0全开镜头及文字外展保持。11项GLB、94项前端、构建通过；桌面/手机八图经独立实物对照审查通过，位于`review-evidence/golden/real-reference/`，回执`golden-simplified-preview-verification.json`；Codex775×969合拢/100%全开新截图已审阅归档，预览保留全开。仅本地待用户检查，下一款选单10 B5 Serum未开始，余11款排队。

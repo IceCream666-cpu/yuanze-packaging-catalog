@@ -1,0 +1,179 @@
+{
+  "model": "poster-057",
+  "bytes": 2490520,
+  "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+  "roots": [
+    "PaperLabel",
+    "LogoPrint",
+    "DropperAssembly",
+    "BottleAssembly"
+  ],
+  "meshCount": 8,
+  "preservedMeshCount": 8,
+  "preservedVertexCount": 63085,
+  "meshes": [
+    {
+      "name": "Hollow rounded flat B5 glass bottle",
+      "vertices": 4965,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Hollow matte white base cup with sealed floor",
+      "vertices": 2306,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smooth white open screw collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Hollow white elastomer dropper bulb",
+      "vertices": 16196,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Hollow clear pipette with open tapered tip",
+      "vertices": 1700,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Transparent unprinted B5 label film",
+      "vertices": 4,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Complete white B5 bottle printing",
+      "vertices": 4,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Raised liaose base lettering",
+      "vertices": 35678,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "6155069496a262b6164e309d64d6ed64a62a59ed361d8253ed871ca433049658",
+    "label.png": "9961e249d7d1e0526e63bb3c6e8f15e489f7df896452f10426a3933355d645ff",
+    "print.svg": "4306d492bb718435a15bec38c677581b076cda64dc81000045602e7a27e714bd",
+    "print.png": "d67dfe3faaa61a17ceb120edb019f6afb5507c13de2cadfed3b78b95f0fe0a43",
+    "base-logo.svg": "dddeeff6ee1238a23622dd9150e4547831ea4ba63bb3337b27ec919bb9a3caa2",
+    "base-logo.png": "8adc65a397da41fa283878cd739e872eb968efa412b68e9165708871596fad60"
+  },
+  "artworkBytesIdentical": true,
+  "bounds": {
+    "PaperLabel": [
+      [
+        -0.4878504946967155,
+        0.738551538569908,
+        0.2729252338999899
+      ],
+      [
+        0.4878504946967155,
+        1.632944112180553,
+        0.2729252338999899
+      ]
+    ],
+    "LogoPrint": [
+      [
+        -0.4878504946967155,
+        0.16939259199338608,
+        0.27400934422573187
+      ],
+      [
+        0.4878504946967155,
+        1.6329440760835325,
+        0.2900000068684605
+      ]
+    ],
+    "DropperAssembly": [
+      [
+        -0.3049065389922845,
+        0.23037396722308046,
+        -0.3049065389922845
+      ],
+      [
+        0.3049065389922845,
+        2.900000393724895,
+        0.3049065389922845
+      ]
+    ],
+    "BottleAssembly": [
+      [
+        -0.677570104598999,
+        0.0,
+        -0.284579435046588
+      ],
+      [
+        0.677570104598999,
+        1.8429907038947135,
+        0.284579435046588
+      ]
+    ]
+  },
+  "motion": {
+    "completeDropperLift": 1.95,
+    "bottleAndBaseStayFitted": true,
+    "tubeTipClosedY": 0.23037396722308046,
+    "bottleMouthY": 1.8429907038947135,
+    "fullyOpenTubeToBottleGap": 0.3373832633283671,
+    "fullyOpenTopY": 4.850000393724895,
+    "cameraCenterY": [
+      1.45,
+      2.2
+    ],
+    "cameraHeight": [
+      4.2,
+      6.3
+    ],
+    "cameraWidth": [
+      3.8,
+      5.8
+    ],
+    "cameraCenterX": [
+      0,
+      -1.65
+    ],
+    "labelOffset": [
+      -1.4,
+      0.08,
+      0.65
+    ],
+    "labelScale": 1.15,
+    "printOffset": [
+      -3.1,
+      0.1,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "scope": "Identity assembly grouping and057 motion/camera/copy only. All original geometry, material and artwork preserved; no liquid or new tube.",
+  "otherGlbFilesUnchanged": 25,
+  "otherConfigAndManifestUnchanged": true,
+  "sourcePublicGlbIdentical": true
+}

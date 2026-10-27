@@ -1,11 +1,8 @@
 {
   "id": "poster-057",
   "components": [
-    "Body",
-    "Base",
-    "Closure",
-    "DropperBulb",
-    "Pipette",
+    "DropperAssembly",
+    "BottleAssembly",
     "PaperLabel",
     "LogoPrint"
   ],
@@ -132,6 +129,30 @@
         -0.2740093469619751,
         1.6329439878463745
       ]
+    },
+    "DropperAssembly": {
+      "min": [
+        -0.30490654706954956,
+        -0.30490654706954956,
+        0.23037384450435638
+      ],
+      "max": [
+        0.30490654706954956,
+        0.30490654706954956,
+        2.9000000953674316
+      ]
+    },
+    "BottleAssembly": {
+      "min": [
+        -0.677570104598999,
+        -0.28457942605018616,
+        0.0
+      ],
+      "max": [
+        0.677570104598999,
+        0.28457942605018616,
+        1.842990756034851
+      ]
     }
   },
   "pivotsHeightToWidth": {
@@ -161,6 +182,28 @@
   ],
   "hiddenStructure": "Bottle heel concealed inside the open base cup, dropper air connection, tube length and wall dimensions are illustrative. The reference gives no visible paper label boundary; a transparent unprinted film carrier is provided for layer interaction. White base material is unspecified rather than asserted ceramic or paper.",
   "material": "Neutral empty glass, opaque white collar and hollow bulb, matte white base; no pink formula is modeled.",
-  "revision": "individual-reference-review-20261024",
+  "assemblyChildren": {
+    "DropperAssembly": [
+      "Closure",
+      "DropperBulb",
+      "Pipette"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Base"
+    ]
+  },
+  "completeDropperLift": 1.95,
+  "baseStaysFitted": true,
+  "camera": {
+    "closedCenter": 1.45,
+    "openCenter": 2.2,
+    "closedHeight": 4.2,
+    "openHeight": 6.3,
+    "closedWidth": 3.8,
+    "openWidth": 5.8,
+    "openCenterX": -1.65
+  },
+  "revision": "complete-dropper-and-fitted-bottle-base-local-review-20261027",
   "generator": "build_b5_serum.py"
 }

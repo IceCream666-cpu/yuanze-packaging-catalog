@@ -451,5 +451,18 @@
     "liaoseArtworkPreserved": true,
     "physicalReferenceBrandingCopied": false,
     "noFormula": true
+  },
+  "publication": {
+    "state": "published-live-browser-verified",
+    "version": "client1.27",
+    "publishedAt": "2026-10-27T10:36:01+08:00",
+    "releaseSourceCommit": "9473be8b39990694473aa3a7b34db9173a6a0453",
+    "releaseReceiptCommit": "f39ab4076e6feb134b36abcc07d43b2cf84d4710",
+    "releaseManifestSha256": "22026a67059df425661da9504772378ba710f891bc6d0fbbb19445c61d7d23bd",
+    "httpsVerification": "passed",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "releaseReceipt": "client127-golden-pump-release.json"
   }
 }
