@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.27-collection-packaging",
+  "scope": "approved-client1.28-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -111,8 +111,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-057.glb",
       "productionTarget": "assets/packaging/poster-057.glb",
-      "bytes": 2490440,
-      "sha256": "c42291192e6d59a27123a28ed59f89b5862605dedadc948bf7138040acc82f82"
+      "bytes": 2490520,
+      "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010"
     },
     {
       "name": "poster-058.glb",
@@ -334,11 +334,8 @@
       "posterId": "poster-057",
       "file": "poster-057.glb",
       "components": [
-        "DropperBulb",
-        "Pipette",
-        "Closure",
-        "Body",
-        "Base",
+        "DropperAssembly",
+        "BottleAssembly",
         "PaperLabel",
         "LogoPrint"
       ]

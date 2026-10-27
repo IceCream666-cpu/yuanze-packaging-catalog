@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-27",
+  "product": "B5 Serum",
+  "productId": "poster-057",
+  "selectionNumber": 10,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "selectionNumber": 9,
+    "id": "poster-056",
+    "name": "Golden Face Oil",
+    "state": "published-live-browser-verified",
+    "version": "client1.27",
+    "publishedAt": "2026-10-27T10:36:01+08:00",
+    "releaseSourceCommit": "9473be8b39990694473aa3a7b34db9173a6a0453",
+    "releaseReceiptCommit": "f39ab4076e6feb134b36abcc07d43b2cf84d4710",
+    "releaseManifestSha256": "22026a67059df425661da9504772378ba710f891bc6d0fbbb19445c61d7d23bd",
+    "httpsVerification": "passed",
+    "productionBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "releaseReceipt": "client127-golden-pump-release.json"
+  },
+  "nextProduct": {
+    "selectionNumber": 11,
+    "id": "poster-058",
+    "name": "Luminous Face Oil",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 10,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-057",
+  "components": [
+    "DropperAssembly",
+    "BottleAssembly",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "DropperAssembly": [
+      "Closure",
+      "DropperBulb",
+      "Pipette"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Base"
+    ]
+  },
+  "containsFormula": false,
+  "containsNewTube": false,
+  "animation": {
+    "completeDropperLift": 1.95,
+    "bottleAndBaseStayFitted": true,
+    "tubeTipClosedY": 0.23037396722308046,
+    "bottleMouthY": 1.8429907038947135,
+    "fullyOpenTubeToBottleGap": 0.3373832633283671,
+    "fullyOpenTopY": 4.850000393724895,
+    "cameraCenterY": [
+      1.45,
+      2.2
+    ],
+    "cameraHeight": [
+      4.2,
+      6.3
+    ],
+    "cameraWidth": [
+      3.8,
+      5.8
+    ],
+    "cameraCenterX": [
+      0,
+      -1.65
+    ],
+    "labelOffset": [
+      -1.4,
+      0.08,
+      0.65
+    ],
+    "labelScale": 1.15,
+    "printOffset": [
+      -3.1,
+      0.1,
+      1.65
+    ],
+    "printScale": 1.95
+  },
+  "geometryAndScope": {
+    "bytes": 2490520,
+    "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+    "preservedMeshCount": 8,
+    "preservedVertexCount": 63085,
+    "maxWorldVertexDelta": 0,
+    "allAttributesIndicesMaterialsIdentical": true,
+    "artworkBytesIdentical": true,
+    "artworkFileCount": 6,
+    "otherGlbFilesUnchanged": 25,
+    "otherConfigAndManifestUnchanged": true,
+    "comparison": "review-evidence/b5/simplified-dropper/geometry-comparison.json",
+    "workComparison": "work/b5-simplified-review/geometry-comparison.json"
+  },
+  "verification": {
+    "actualGlbTestsPassed": 8,
+    "frontendTestsPassed": 94,
+    "viteBuild": "passed",
+    "localSourcePublicDistGlbIdentical": true,
+    "localHttpGlbVerification": "passed-by-root",
+    "desktopBrowser": "Ego Lite",
+    "desktopViewport": [
+      1474,
+      722
+    ],
+    "desktopStages": [
+      0,
+      50,
+      100
+    ],
+    "rotate90AndReset": true,
+    "mobileViewport": [
+      393,
+      852
+    ],
+    "mobileStages": [
+      0,
+      100
+    ],
+    "mobileScrollWidth": 393,
+    "physicalMobileDeviceTested": false,
+    "browserStateEvidence": [
+      "review-evidence/b5/simplified-dropper/desktop-states.json",
+      "review-evidence/b5/simplified-dropper/mobile-states.json"
+    ],
+    "screenshots": [
+      {
+        "path": "review-evidence/b5/simplified-dropper/desktop-closed.png",
+        "bytes": 104795,
+        "sha256": "38abe3b316ac7909d52c37c61d0559a1adb85250bf98ca6eb369b2f24ae6efe5",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/desktop-half.png",
+        "bytes": 101666,
+        "sha256": "1cec328841cc63b5dab00de8491362ebb8c4dab1ece93501cac6151da41b55e8",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/desktop-open.png",
+        "bytes": 98209,
+        "sha256": "0e97c88fdd8952a0948766865a4402ee35009220fc36988b298fb3ea605ad360",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/desktop-rotated.png",
+        "bytes": 85356,
+        "sha256": "4c5f886ca7a5dca7b6104e3217eaadb563141bbc92e74e9daa376eaa85d50694",
+        "dimensions": [
+          1474,
+          722
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/mobile-closed.png",
+        "bytes": 50334,
+        "sha256": "80e6591a30b31faabe4ac3b2f73df965d0a7309c29fd55e21aea379fc1031d36",
+        "dimensions": [
+          393,
+          852
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/mobile-open.png",
+        "bytes": 46861,
+        "sha256": "07017a020783e432064b3dcb1471c9f3318e20f7d2f4b70fbfadac8733e52df6",
+        "dimensions": [
+          393,
+          852
+        ],
+        "mediaType": "image/png"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/codex-closed.jpg",
+        "bytes": 37358,
+        "sha256": "fa665dd0fe22a0050b2cc1a7fb0253b21c479d262d5b35e99934899298a507dc",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mediaType": "image/jpeg"
+      },
+      {
+        "path": "review-evidence/b5/simplified-dropper/codex-open.jpg",
+        "bytes": 37679,
+        "sha256": "2d5a7997e9f3f933a9ec54e990c02dd2d357e00fd330ea1da196a4339221adec",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "mediaType": "image/jpeg"
+      }
+    ],
+    "aestheticReview": "PASS. Root and the independent reviewer viewed the current six desktop/mobile images against the original full poster. The bulb, collar and pipette stay connected; the white base stays fitted; the tube tip fully clears the mouth. All four layers remain in frame, including the separate blank film, complete white bottle text and raised base logo. The two Codex images were actually viewed at 0% and 100% and also pass.",
+    "codexBrowser": "Codex in-app browser (IAB)",
+    "codexScreenshotDimensions": [
+      1280,
+      720
+    ],
+    "codexStages": [
+      0,
+      100
+    ],
+    "codexDeliveredAtProgress": 100,
+    "codexPreviewTab": "tab10",
+    "codexScreenshotVisualReview": "passed",
+    "galleryTestsPassed": 7,
+    "galleryPublicDistIdentical": true
+  },
+  "knownLimits": [
+    "The 90-degree view makes flat printing nearly invisible edge-on, and small lettering is less legible on a phone viewport.",
+    "Dropper tube length, concealed connections, wall thickness and base fit remain illustrative, not measured manufacturing specifications.",
+    "The model depicts empty packaging; the original pink formula is not included. Mobile checks use simulated viewports, not physical phones."
+  ]
+}

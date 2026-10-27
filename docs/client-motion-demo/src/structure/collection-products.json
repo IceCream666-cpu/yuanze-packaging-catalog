@@ -696,83 +696,35 @@
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "DropperBulb",
+        "key": "dropper",
+        "node": "DropperAssembly",
         "title": [
-          "白色滴管胶头",
-          "White dropper bulb"
+          "完整滴管组件",
+          "Complete dropper"
         ],
         "short": [
-          "胶头",
-          "Bulb"
+          "整滴管",
+          "Dropper"
         ],
         "detail": [
-          "圆顶软胶头独立向上分离。",
-          "The rounded bulb lifts separately."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "Pipette",
-        "title": [
-          "透明玻璃滴管",
-          "Clear glass pipette"
-        ],
-        "short": [
-          "滴管",
-          "Pipette"
-        ],
-        "detail": [
-          "细长玻璃管与胶头、旋盖分离。",
-          "The slender pipette separates from bulb and collar."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "白色圆筒旋盖",
-          "White cylindrical collar"
-        ],
-        "short": [
-          "旋盖",
-          "Collar"
-        ],
-        "detail": [
-          "圆筒旋盖与瓶口独立展开。",
-          "The smooth cylindrical collar lifts off the neck."
+          "白色胶头、圆筒旋盖与透明玻璃滴管保持连接，整体向上移开。",
+          "The white bulb, cylindrical collar and clear pipette stay connected and lift together."
         ]
       },
       {
         "key": "jar",
-        "node": "Body",
+        "node": "BottleAssembly",
         "title": [
-          "圆角扁方玻璃瓶",
-          "Rounded flat glass bottle"
+          "带底托玻璃瓶",
+          "Glass bottle with fitted base"
         ],
         "short": [
           "瓶身",
           "Bottle"
         ],
         "detail": [
-          "透明瓶壁、圆角肩与厚底。",
-          "Clear walls, rounded shoulders and a thick base."
-        ]
-      },
-      {
-        "key": "base",
-        "node": "Base",
-        "title": [
-          "哑光白色底座",
-          "Matte white base"
-        ],
-        "short": [
-          "底座",
-          "Base"
-        ],
-        "detail": [
-          "底座先向下脱开，再移向一侧。",
-          "The base lowers before moving aside."
+          "圆角扁方空瓶与白色底托保持贴合，整体展示。",
+          "The rounded flat empty bottle and white base stay fitted as one assembly."
         ]
       },
       {

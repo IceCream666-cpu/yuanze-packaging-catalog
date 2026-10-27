@@ -595,20 +595,21 @@ test('Golden Face Oil exposes the long cover, complete pump, clear film and lett
 });
 
 
-test('B5 Serum exposes the separate white base and keeps white lettering readable', async () => {
+test('B5 Serum exposes the complete dropper and fixed white base with four readable layers', async () => {
   const env=setup();let mounted,focused;
   const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
   try {
     await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-057'}}/>));
-    assert.equal(document.querySelectorAll('.packaging-part').length,7);assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,7);
-    assert.deepEqual(mounted.product.parts.map(p=>p.node),['DropperBulb','Pipette','Closure','Body','Base','PaperLabel','LogoPrint']);
-    await click(document.querySelectorAll('.packaging-mobile-parts button')[4]);assert.equal(focused,'base');
+    assert.equal(document.querySelectorAll('.packaging-part').length,4);assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,4);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['DropperAssembly','BottleAssembly','PaperLabel','LogoPrint']);
+    for(const [i,key] of ['dropper','jar','label','print'].entries()) {
+      await click(document.querySelectorAll('.packaging-mobile-parts button')[i]);assert.equal(focused,key);
+    }
     assert.match(document.querySelector('h1').textContent,/B5/);
     const c=mounted.design.background.match(/[a-f\d]{2}/gi).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);
     assert.ok(1.05/(c[0]*.2126+c[1]*.7152+c[2]*.0722+.05)>4.5,'original white printing must remain legible away from the bottle');
   } finally {await env.close();}
 });
-
 
 test('Body Oil opens from the poster library without joining featured and returns from the original poster', async () => {
   const env=setup(); const {App,counts}=appHarness();

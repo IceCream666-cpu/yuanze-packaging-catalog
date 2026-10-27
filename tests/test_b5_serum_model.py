@@ -115,19 +115,21 @@ class B5SerumModelTests(unittest.TestCase):
                 hits.append(s * p[direction] + t * q[direction] + (1 - s - t) * r[direction])
         return hits
 
-    @staticmethod
-    def smooth(a, b, value):
-        t = max(0, min((value - a) / (b - a), 1))
-        return t * t * (3 - 2 * t)
-
-    def test_seven_groups_keep_the_base_and_all_lettering_separate(self):
-        expected = {'Body': {BODY}, 'Base': {BASE}, 'Closure': {COLLAR}, 'DropperBulb': {BULB},
-                    'Pipette': {TUBE}, 'PaperLabel': {FILM}, 'LogoPrint': {PRINT, RELIEF}}
+    def test_four_groups_keep_the_dropper_complete_and_base_attached_without_duplicate_lettering(self):
+        expected = {'BottleAssembly': {BODY, BASE}, 'DropperAssembly': {COLLAR, BULB, TUBE},
+                    'PaperLabel': {FILM}, 'LogoPrint': {PRINT, RELIEF}}
         roots = self.gltf['scenes'][self.gltf.get('scene', 0)]['nodes']
         self.assertEqual({self.nodes[i]['name'] for i in roots}, set(expected))
         self.assertEqual(len(self.mesh_names()), 8, 'No pink formula, duplicate print or old draft geometry may remain.')
         for group, names in expected.items():
             self.assertEqual({n for n in self.mesh_names() if self.ancestor(n) == group}, names)
+        for group, children in [('DropperAssembly', {'Closure', 'DropperBulb', 'Pipette'}),
+                                ('BottleAssembly', {'Body', 'Base'})]:
+            node = self.nodes[self.named[group]]
+            self.assertEqual({self.nodes[i]['name'] for i in node['children']}, children)
+            self.assertEqual(node.get('translation', [0, 0, 0]), [0, 0, 0])
+            self.assertEqual(node.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
+            self.assertEqual(node.get('scale', [1, 1, 1]), [1, 1, 1])
         self.assertTrue(all('uri' not in item for item in self.gltf['images'] + self.gltf['buffers']))
         self.assertFalse(self.gltf.get('animations'))
         self.assertFalse(self.gltf.get('cameras'))
@@ -178,10 +180,9 @@ class B5SerumModelTests(unittest.TestCase):
         self.assertAlmostEqual(min(mouth), .089, delta=.002)
         self.assertAlmostEqual(max(mouth), .125, delta=.002)
 
-    def test_base_cup_clears_the_glass_at_rest_and_lowers_before_sliding_sideways(self):
+    def test_base_cup_keeps_its_fitted_clearance_inside_the_stationary_bottle_assembly(self):
         width = self.width()
         glass_low, _ = self.bounds(self.positions(BODY))
-        _, base_high = self.bounds(self.positions(BASE))
         # Horizontal rays across both axes and near each rounded corner catch a solid block or tight cup.
         minimum = float('inf')
         for level in [.071, .151, .301, .449, .479, .489, .499]:
@@ -196,23 +197,8 @@ class B5SerumModelTests(unittest.TestCase):
             minimum = min(minimum, (min(v for v in cup if v > 0) - max(glass)) / width)
         self.assertGreater(minimum, .0015, 'The white base must not penetrate the transparent bottle heel or lip.')
         self.assertGreater(glass_low[1] - .045 * width, .009 * width)
-        # Once horizontal/depth motion begins, the entire cup is already below the bottle.
-        for step in range(301, 1001):
-            p = step / 1000
-            lower = -.8 * self.smooth(0, .3, p)
-            self.assertLess(base_high[1] + lower, glass_low[1] - .10)
-        # Downward extraction increases the radial clearance before that second stage.
-        for p in [.02, .06, .12, .20]:
-            lower = -.8 * self.smooth(0, .3, p)
-            top = base_high[1] + lower
-            if top <= glass_low[1]:
-                continue
-            for fraction in [.1, .5, .9]:
-                level = glass_low[1] + (top - glass_low[1]) * fraction
-                for axis in [0, 2]:
-                    glass = self.ray_intersections(BODY, axis, level if axis == 0 else 0, 0 if axis == 0 else level)
-                    cup = self.ray_intersections(BASE, axis, level - lower if axis == 0 else 0, 0 if axis == 0 else level - lower)
-                    self.assertLess(max(glass), min(v for v in cup if v > 0))
+        self.assertEqual(self.ancestor(BASE), 'BottleAssembly')
+        self.assertEqual(self.ancestor(BODY), 'BottleAssembly')
 
     def test_dropper_is_a_hollow_domed_bulb_and_open_tapered_tube_with_clear_air_path(self):
         width = self.width()
@@ -231,12 +217,10 @@ class B5SerumModelTests(unittest.TestCase):
         self.assertAlmostEqual(max(roof) / width, 2.14, delta=.002)
         self.assertGreater(low[1] - max(self.ray_intersections(BODY)), .059 * width)
         self.assertGreater(.089 * width - max(math.hypot(x, z) for x, y, z in self.positions(TUBE)), .059 * width)
-        collar_top = self.bounds(self.positions(COLLAR))[1][1]
-        for step in range(501):
-            p = step / 500
-            self.assertGreater(min(roof) + 4.1 * p - (high[1] + 3.45 * p), .29 * width)
-        self.assertGreater(low[1] + 3.45 - (collar_top + .95), .30,
-                           'The fully extracted pipette tip must clear the raised collar.')
+        self.assertGreater(min(roof) - high[1], .29 * width,
+                           'The fitted pipette must retain its internal air space below the bulb roof.')
+        self.assertEqual(self.ancestor(TUBE), self.ancestor(COLLAR))
+        self.assertEqual(self.ancestor(TUBE), self.ancestor(BULB))
 
     def test_clear_empty_glass_and_opaque_white_components_keep_their_material_identity(self):
         for name in [BODY, TUBE]:
