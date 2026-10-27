@@ -95,7 +95,7 @@ class ReviewedPackagingChecks:
 class LuminousFaceOilModelTests(ReviewedPackagingChecks, ExportedModelReader):
     model_id = 'poster-058'
     body_name = 'Hollow slender flat Luminous glass bottle'
-    component_counts = {'Body': 1, 'Closure': 1, 'DropperBulb': 1, 'Pipette': 1, 'PaperLabel': 1, 'LogoPrint': 1}
+    component_counts = {'Body': 1, 'DropperAssembly': 3, 'PaperLabel': 1, 'LogoPrint': 1}
     floor_ratio = .124
     svg_copy = {'print.svg': ['LUMINOUS', 'FACE OIL', '50 ml']}
     complete_copy = ['liaose', 'LUMINOUS', 'FACE OIL', 'warm separator rule', '50 ml']
@@ -105,16 +105,70 @@ class LuminousFaceOilModelTests(ReviewedPackagingChecks, ExportedModelReader):
         self.assertAlmostEqual(2.9 / width, 3.65, delta=.01)
         low, high = self.bounds(self.positions(self.body_name))
         self.assertAlmostEqual((high[2] - low[2]) / width, .4, delta=.003)
-        collar = self.material(self.in_group('Closure')[0])['pbrMetallicRoughness']
+        collar_name = 'Mirror silver hollow cylindrical collar'
+        collar = self.material(collar_name)['pbrMetallicRoughness']
         self.assertEqual(collar.get('metallicFactor', 1), 1)
         self.assertLess(collar['roughnessFactor'], .1)
+        collar_low, collar_high = self.bounds(self.positions(collar_name))
+        self.assertAlmostEqual((collar_high[0] - collar_low[0]) / width, .62, delta=.003)
+        self.assertAlmostEqual((collar_high[1] - collar_low[1]) / width, .46, delta=.003)
         low, high = self.bounds(self.positions(self.in_group('PaperLabel')[0]))
         self.assertAlmostEqual((high[0] - low[0]) / width, .98, delta=.003)
         self.assertAlmostEqual((high[1] - low[1]) / width, 1.415, delta=.003)
         self.assertGreater((high[2] - low[2]) / width, .018)
         self.assertLess((high[2] - low[2]) / width, .030)
-        pipe = self.bounds(self.positions(self.in_group('Pipette')[0]))
-        self.assertAlmostEqual(pipe[0][1] / width, 2.0, delta=.002)
+        pipe = self.bounds(self.positions('Long hollow clear pipette without suspended formula'))
+        self.assertAlmostEqual(pipe[0][1] / width, .22, delta=.002)
+
+    def test_complete_dropper_retains_its_hollow_air_path_and_clears_the_bottle(self):
+        assembly = self.nodes[self.named['DropperAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in assembly['children']},
+                         {'Closure', 'DropperBulb', 'Pipette'})
+        self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(assembly.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
+        self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
+        width = self.width()
+        tube = 'Long hollow clear pipette without suspended formula'
+        bulb = 'Hollow white Luminous dropper bulb'
+        collar = 'Mirror silver hollow cylindrical collar'
+        self.assertEqual(set(self.in_group('DropperAssembly')), {tube, bulb, collar})
+        self.assertEqual(len(self.mesh_names()), 6, 'Only the existing pipette is lengthened, with no liquid drop or duplicate part.')
+        self.assertEqual(self.ray_intersections(tube), [], 'Both ends of the long pipette must stay open.')
+        self.assertEqual(self.ray_intersections(collar), [], 'The silver collar retains its central hole.')
+        roof = self.ray_intersections(bulb)
+        self.assertAlmostEqual(min(roof) / width, 3.628, delta=.002)
+        self.assertAlmostEqual(max(roof) / width, 3.65, delta=.002)
+        low, high = self.bounds(self.positions(tube))
+        self.assertAlmostEqual(high[1] / width, 3.23, delta=.002)
+        self.assertAlmostEqual((high[0] - low[0]) / width, .072, delta=.002)
+        top_opening = self.ray_intersections(tube, direction=0, a=3.2 * width, b=0)
+        self.assertAlmostEqual(min(value for value in top_opening if value > 0) * 2 / width, .052, delta=.002)
+        self.assertGreater(min(roof) - high[1], .39 * width)
+        self.assertAlmostEqual((low[1] - max(self.ray_intersections(self.body_name))) / width, .096, delta=.002,
+                               msg='The long pipette tip must stay above the inner glass floor.')
+        for level, inner, outer in [(.22, .014, .020), (.35, .026, .036), (3.2, .026, .036)]:
+            opening = self.ray_intersections(tube, direction=0, a=level * width, b=0)
+            positive = [value / width for value in opening if value > 0]
+            self.assertAlmostEqual(min(positive), inner, delta=.002)
+            self.assertAlmostEqual(max(positive), outer, delta=.002,
+                                   msg='Extending the stem must not scale the tapered tip or upper connection.')
+        self.assertGreater(low[1] + 2.4 - self.bounds(self.positions(self.body_name))[1][1], .38,
+                           'The whole long dropper must clear the neck after its 2.4-unit lift.')
+        material = self.material(tube)
+        self.assertEqual(material['extensions']['KHR_materials_transmission']['transmissionFactor'], 1)
+        self.assertLess(material['pbrMetallicRoughness']['roughnessFactor'], .04)
+        rubber = self.material(bulb)
+        self.assertAlmostEqual(rubber['pbrMetallicRoughness']['roughnessFactor'], .39, delta=.01)
+        self.assertEqual(rubber.get('extensions', {}).get('KHR_materials_transmission', {}).get('transmissionFactor', 0), 0)
+        for name in [tube, bulb, collar]:
+            points = [tuple(round(value / width, 6) for value in point) for point in self.positions(name)]
+            indices = [item[0] for item in self.accessor(self.primitive(name)['indices'])]
+            edges = Counter()
+            for i in range(0, len(indices), 3):
+                a, b, c = [points[j] for j in indices[i:i + 3]]
+                self.assertEqual(len({a, b, c}), 3)
+                edges.update(tuple(sorted(edge)) for edge in [(a, b), (b, c), (c, a)])
+            self.assertEqual(set(edges.values()), {2}, name)
 
 
 class EssenceOilDuoModelTests(ReviewedPackagingChecks, ExportedModelReader):

@@ -1079,3 +1079,93 @@ test('Golden lifts its complete pump and hollow tube beneath the intact long-ski
     }
   } finally {api?.dispose();env.close();}
 });
+
+test('Luminous keeps its actual long dropper intact and frames all four review layers on desktop and phone',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-058'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-058.glb',import.meta.url));
+  const jsonLength=bytes.readUInt32LE(12),gltf=JSON.parse(bytes.toString('utf8',20,20+jsonLength));
+  const pipeName='Long hollow clear pipette without suspended formula';
+  for(const [width,height] of [[1200,800],[393,520]]) {
+    const nodes=gltf.nodes.map(node=>{
+      let object=new Three.Group();
+      if('mesh' in node) {
+        const primitive=gltf.meshes[node.mesh].primitives[0],accessor=gltf.accessors[primitive.attributes.POSITION];
+        const view=gltf.bufferViews[accessor.bufferView],offset=28+jsonLength+(view.byteOffset??0)+(accessor.byteOffset??0);
+        assert.equal(accessor.componentType,5126);assert.equal(accessor.type,'VEC3');
+        const coordinates=new Float32Array(accessor.count*3);
+        for(let i=0;i<accessor.count;i++)for(let axis=0;axis<3;axis++)coordinates[i*3+axis]=bytes.readFloatLE(offset+i*(view.byteStride??12)+axis*4);
+        const geometry=new Three.BufferGeometry();geometry.setAttribute('position',new Three.BufferAttribute(coordinates,3));
+        const source=gltf.materials[primitive.material],pbr=source.pbrMetallicRoughness,material=new Three.MeshPhysicalMaterial();
+        material.name=source.name;material.color.fromArray(pbr.baseColorFactor??[1,1,1,1]);
+        material.roughness=pbr.roughnessFactor;material.metalness=pbr.metallicFactor??1;
+        material.transmission=source.extensions?.KHR_materials_transmission?.transmissionFactor??0;
+        material.ior=source.extensions?.KHR_materials_ior?.ior??1.5;
+        material.transparent=source.alphaMode==='BLEND';material.opacity=pbr.baseColorFactor?.[3]??1;
+        if(pbr.baseColorTexture)material.map=new Three.Texture();
+        object=new Three.Mesh(geometry,material);
+      }
+      object.name=node.name;
+      if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+      else {
+        object.position.fromArray(node.translation??[0,0,0]);object.quaternion.fromArray(node.rotation??[0,0,0,1]);object.scale.fromArray(node.scale??[1,1,1]);
+      }
+      return object;
+    });
+    gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+    const loaded={scene:new Three.Group()};gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+    let camera,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+    try {
+      Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:height}});
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};
+      flush();
+      const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
+      assert.deepEqual(Object.keys(parts).sort(),['body','closure','label','print']);
+      assert.equal(parts.closure.name,'DropperAssembly');
+      assert.deepEqual(product.review.explosion.offsets.closure,[0,2.4,0]);
+      const pipe=loaded.scene.getObjectByName(pipeName),body=loaded.scene.getObjectByName('Hollow slender flat Luminous glass bottle');
+      const silver=loaded.scene.getObjectByName('Mirror silver hollow cylindrical collar');
+      assert.equal(body.material.transmission,1);assert.ok(Math.abs(body.material.roughness-.024)<1e-6);assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
+      assert.equal(silver.material.metalness,1);assert.ok(Math.abs(silver.material.roughness-.075)<1e-6);
+      assert.equal(pipe.material.transmission,0);assert.equal(pipe.material.opacity,.38);assert.equal(pipe.material.depthWrite,false);
+      const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
+      const fitted=['Closure','DropperBulb','Pipette'].map(name=>{
+        const part=loaded.scene.getObjectByName(name);assert.equal(part.parent,parts.closure);
+        return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
+      });
+      for(const progress of [0,.25,.5,.75,1,.5,0]) {
+        api.setProgress(progress);flush();assert.equal(api.getState().renderedProgress,progress);
+        const displacement=parts.closure.getWorldPosition(new Three.Vector3()).sub(rest.closure.world);
+        assert.ok(displacement.distanceTo(new Three.Vector3(0,2.4*progress,0))<1e-9);
+        for(const {part,matrix,world} of fitted) {
+          assert.deepEqual(part.matrix.toArray(),matrix,'bulb, silver collar and long pipette keep their fitted transforms');
+          assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
+        }
+        for(const [key,offset,growth] of [['label',[-1.2,.08,.65],.15],['print',[-2.85,.15,1.65],.95]]) {
+          const travel=new Three.Vector3(...offset);if(width<768)travel.x*=.5;
+          assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(travel.multiplyScalar(progress))<1e-9);
+          assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+growth*progress))<1e-9);
+        }
+        assert.ok(Math.abs(parts.print.position.z-rest.print.position.z-(parts.label.position.z-rest.label.position.z)-progress)<1e-9);
+        if(width>=768) {
+          assert.ok(Math.abs(camera.position.y-1.05-(1.45+progress))<1e-9);
+          assert.ok(Math.abs(camera.top-camera.bottom-(4.2+2.6*progress))<1e-9);
+          assert.ok(Math.abs(camera.position.x+1.6*progress)<1e-9);
+        }
+        if(progress===1)assert.ok(new Three.Box3().setFromObject(pipe).min.y-new Three.Box3().setFromObject(body).max.y>.38,'the complete long dropper clears the bottle mouth');
+        for(const mesh of nodes.filter(node=>node.isMesh)) {
+          mesh.geometry.computeBoundingBox();const {min,max}=mesh.geometry.boundingBox;
+          for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]) {
+            const projected=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+            assert.ok(Math.abs(projected.x)<.98&&Math.abs(projected.y)<.98,`${mesh.name} stays in ${width}x${height} frame at ${progress}`);
+          }
+        }
+        for(const key of progress===0?Object.keys(parts):['body']) {
+          assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
+          assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
+        }
+      }
+    }finally{api?.dispose();env.close();}
+  }
+});

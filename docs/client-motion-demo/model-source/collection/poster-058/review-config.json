@@ -1,51 +1,19 @@
 {
   "parts": [
     {
-      "key": "head",
-      "node": "DropperBulb",
-      "title": [
-        "白色滴管胶头",
-        "White dropper bulb"
-      ],
-      "short": [
-        "胶头",
-        "Bulb"
-      ],
-      "detail": [
-        "空腔胶头独立向上分层。",
-        "The hollow bulb lifts independently."
-      ]
-    },
-    {
-      "key": "stem",
-      "node": "Pipette",
-      "title": [
-        "透明短滴管",
-        "Short glass pipette"
-      ],
-      "short": [
-        "滴管",
-        "Pipette"
-      ],
-      "detail": [
-        "细管两端贯通，不包含悬滴料液。",
-        "Both ends remain open; no liquid drop is included."
-      ]
-    },
-    {
       "key": "closure",
-      "node": "Closure",
+      "node": "DropperAssembly",
       "title": [
-        "镜面银色旋盖",
-        "Mirror silver collar"
+        "完整滴管组件",
+        "Complete dropper"
       ],
       "short": [
-        "旋盖",
-        "Collar"
+        "整滴管",
+        "Dropper"
       ],
       "detail": [
-        "银色圆筒盖与滴管胶头独立分离。",
-        "The silver collar separates from the dropper bulb."
+        "白色胶头、镜面银盖与接近瓶底的透明滴管保持连接，整体向上移开。",
+        "The white bulb, mirror silver collar and clear pipette reaching near the bottle floor stay connected and lift together."
       ]
     },
     {
@@ -110,19 +78,9 @@
   },
   "explosion": {
     "offsets": {
-      "head": [
-        0,
-        3.6,
-        0
-      ],
-      "stem": [
-        0,
-        2.6,
-        0
-      ],
       "closure": [
         0,
-        1,
+        2.4,
         0
       ],
       "label": [
@@ -143,19 +101,19 @@
     "camera": {
       "centerY": [
         1.45,
-        3.2
+        2.45
       ],
       "height": [
         4.2,
-        7.7
+        6.8
       ],
       "width": [
         3.8,
-        7
+        5.2
       ],
       "centerX": [
         0,
-        -0.8
+        -1.6
       ]
     }
   }
