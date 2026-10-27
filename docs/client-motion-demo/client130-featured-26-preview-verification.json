@@ -1,0 +1,341 @@
+{
+  "version": "client1.30",
+  "status": "candidate-verified-pending-publication",
+  "published": false,
+  "baselineCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+  "scope": "Append only existing approved poster-072 and poster-073 to homepage; retain original 24 entries, all 26 GLBs and 61 posters.",
+  "publicationPlan": {
+    "version": "client1.30",
+    "baselineManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "changed": [
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-073-1024.webp",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073.png",
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/featured/poster-072-1024.webp",
+      "assets/featured/poster-072-640.webp",
+      "assets/featured/poster-072.png",
+      "assets/featured/poster-073-1024.webp",
+      "assets/featured/poster-073-640.webp",
+      "assets/featured/poster-073.png"
+    ],
+    "removed": [],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "resources": 458
+  },
+  "verification": {
+    "rootTests": 337,
+    "rootSkipped": 3,
+    "backendTests": 258,
+    "deployTests": 32,
+    "motionTests": 111,
+    "motionDOMTests": 46,
+    "legacyClientTests": 18,
+    "loginTests": 12,
+    "allOtherFrontendSuites": true,
+    "buildChecks": true,
+    "diffChecks": true,
+    "targetedPythonTests": 36,
+    "targetedFrontendTests": 44
+  },
+  "independentAudit": {
+    "status": "passed",
+    "reviewer": "pdrn_review independent read-only agent",
+    "baselineCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+    "baselineManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "manifestSha256": "3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e",
+    "all458ResourceHashesVerified": true,
+    "savedPlanEqualsFreshLocalPlan": true,
+    "exactTarMembers": 9,
+    "changedExisting": [
+      "index.html",
+      "preview.js"
+    ],
+    "addedImages": 6,
+    "removedResources": 0,
+    "all26ModelsUnchanged": true,
+    "all412ExistingImagesUnchanged": true,
+    "all61PostersUnchanged": true,
+    "original24FeaturedEntriesUnchanged": true,
+    "onlyAppendedIds": [
+      "poster-072",
+      "poster-073"
+    ],
+    "currentSingleBottleCapturesAndDerivativesVerified": true,
+    "sharedSceneLayoutAndChunksUnchanged": true,
+    "publishRollbackAndPermissionsGuardsPreserved": true,
+    "remoteActionsByReviewer": false,
+    "checkedAt": "2026-10-27T16:22:48+08:00"
+  },
+  "browserCandidate": {
+    "status": "pass",
+    "environment": "candidate",
+    "url": "http://127.0.0.1:8785/client",
+    "version": "client1.30",
+    "featuredCount": 26,
+    "newProducts": [
+      "poster-072",
+      "poster-073"
+    ],
+    "desktop": {
+      "homepageImages": "visually reviewed",
+      "bothDetailsOpen": "pass",
+      "closedAndFullyExpanded": "state JSON checked",
+      "wrap26To1": "pass",
+      "adjacentThemes": "no rectangular backgrounds or crop"
+    },
+    "mobile": {
+      "type": "emulated viewport, not physical touch device",
+      "width": 393,
+      "height": 852,
+      "horizontalOverflow": false,
+      "screenshots": "both reviewed after background transitions finished"
+    },
+    "observedSceneStates": {
+      "072": {
+        "closed": {
+          "progress": 0,
+          "renderedProgress": 0,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            0,
+            0,
+            0
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 16,
+          "triangles": 58870
+        },
+        "open": {
+          "progress": 1,
+          "renderedProgress": 0.9998547073172704,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -1.8997239439028137,
+            0.299956412195181,
+            1.8997239439028137
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 16,
+          "triangles": 58870
+        }
+      },
+      "073": {
+        "closed": {
+          "progress": 0,
+          "renderedProgress": 0,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            0,
+            0,
+            0
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 13,
+          "triangles": 49062
+        },
+        "open": {
+          "progress": 1,
+          "renderedProgress": 0.9998523735869881,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -1.499778560380482,
+            0.22996604592500725,
+            1.8497268911359281
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 13,
+          "triangles": 49062
+        }
+      }
+    }
+  },
+  "screenshots": [
+    {
+      "path": "review-evidence/featured-26/client130/candidate-072-exploded.png",
+      "bytes": 110677,
+      "sha256": "75d5c33342d1c05c77b6d3f9844cdc9ec074dd141050cfb690e68435fdbf6452",
+      "dimensions": [
+        1474,
+        722
+      ],
+      "visuallyReviewedBy": "root agent"
+    },
+    {
+      "path": "review-evidence/featured-26/client130/candidate-073-exploded.png",
+      "bytes": 112853,
+      "sha256": "4d2443535941f7ae898dd00ebc717db35cb2fff220621438d0063cdeb381c8dc",
+      "dimensions": [
+        1474,
+        722
+      ],
+      "visuallyReviewedBy": "root agent"
+    },
+    {
+      "path": "review-evidence/featured-26/client130/candidate-home-072.png",
+      "bytes": 186520,
+      "sha256": "96b13a8e76d7b04e55e7a05ad499e10c5c46855d5977fb5330f1fb8dcaa42701",
+      "dimensions": [
+        1474,
+        722
+      ],
+      "visuallyReviewedBy": "root agent"
+    },
+    {
+      "path": "review-evidence/featured-26/client130/candidate-home-073.png",
+      "bytes": 213443,
+      "sha256": "5335e0acfb88b92e5760daca0ba76d896c994fdd3f16659f23a43637bac833ae",
+      "dimensions": [
+        1474,
+        722
+      ],
+      "visuallyReviewedBy": "root agent"
+    },
+    {
+      "path": "review-evidence/featured-26/client130/candidate-mobile-072.png",
+      "bytes": 108377,
+      "sha256": "c08afa12def06bc90399b67a61709a66d9a3b22da26a82da516bf199f1ac71e2",
+      "dimensions": [
+        393,
+        852
+      ],
+      "visuallyReviewedBy": "root agent"
+    },
+    {
+      "path": "review-evidence/featured-26/client130/candidate-mobile-073.png",
+      "bytes": 128018,
+      "sha256": "dc934b06640e5a04aa1e218a4b11ff4fb995e8e7a05ac05000d7f227f602f4c2",
+      "dimensions": [
+        393,
+        852
+      ],
+      "visuallyReviewedBy": "root agent"
+    },
+    {
+      "path": "review-evidence/featured-26/client130/candidate-wrap-26-to-01.png",
+      "bytes": 286006,
+      "sha256": "666314bcd18b9fc0ffd807dd5fe7e8537767dd87023487c57fd203e6ab64e39c",
+      "dimensions": [
+        1474,
+        722
+      ],
+      "visuallyReviewedBy": "root agent"
+    }
+  ],
+  "capture": {
+    "sourceCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+    "artifacts": [
+      {
+        "id": "poster-072",
+        "png": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/work/featured-26-capture/poster-072.png",
+        "bytes": 170295,
+        "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5",
+        "width": 1024,
+        "height": 1280,
+        "alpha": true,
+        "alphaBBox": [
+          316,
+          85,
+          708,
+          1193
+        ],
+        "transparentPixels": 934598,
+        "partialAlphaPixels": 2598,
+        "sourceGlbSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+        "method": "Approved production GLB and current packaging-scene materials/studio; closed single bottle. Source design background baked within unmodified geometry silhouette as alpha. No model or formula changes.",
+        "visualReview": "Root reviewed exact model structure and text; old metal-like assets excluded."
+      },
+      {
+        "id": "poster-073",
+        "png": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/work/featured-26-capture/poster-073.png",
+        "bytes": 196372,
+        "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb",
+        "width": 1024,
+        "height": 1280,
+        "alpha": true,
+        "alphaBBox": [
+          266,
+          95,
+          758,
+          1191
+        ],
+        "transparentPixels": 874135,
+        "partialAlphaPixels": 2495,
+        "sourceGlbSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+        "method": "Approved production GLB and current packaging-scene materials/studio; closed single bottle. Source design background baked within unmodified geometry silhouette as alpha. No model or formula changes.",
+        "visualReview": "Root reviewed exact model structure and text; old metal-like assets excluded."
+      }
+    ]
+  },
+  "checkedAt": "2026-10-27T16:40:34+08:00"
+}

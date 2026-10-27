@@ -403,7 +403,7 @@ test('App opens featured models and preserves poster HD/download/favorites and r
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 24);
+    assert.equal(document.querySelectorAll('[data-open]').length, 26);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');
@@ -611,12 +611,32 @@ test('B5 Serum exposes the complete dropper and fixed white base with four reada
   } finally {await env.close();}
 });
 
-test('Body Oil opens from the poster library without joining featured and returns from the original poster', async () => {
+test('the restored Daily and Body Oil homepage entries open their existing models and retain poster return focus', async () => {
+  const env=setup();const {App,counts}=appHarness();
+  try {
+    await act(async()=>env.root.render(<App/>));
+    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-2).map(button=>button.dataset.open),['poster-072','poster-073']);
+    for(const id of ['poster-072','poster-073']) {
+      const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
+      assert.equal(document.querySelector('.test-packaging').dataset.id,id);
+      await click(byText('Original poster'));
+      assert.equal(document.querySelector('.test-packaging'),null);
+      assert.ok(document.querySelector(`a[download="${id}.webp"]`));
+      await click(byText('返回结构展示'));
+      assert.equal(document.querySelector('.test-packaging').dataset.id,id);
+      await click(byText('Close structure'));
+      assert.equal(document.activeElement,trigger);
+    }
+    assert.deepEqual(counts(),{mounts:4,unmounts:4});
+  } finally {await env.close();}
+});
+
+test('Body Oil remains accessible from the poster library and returns from the original poster', async () => {
   const env=setup(); const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,24);
-    assert.equal(document.querySelector('[data-open="poster-073"]'),null);
+    assert.equal(document.querySelectorAll('[data-open]').length,26);
+    assert.ok(document.querySelector('[data-open="poster-073"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
     assert.equal(document.querySelectorAll('.grid-image').length,61);
@@ -637,7 +657,7 @@ test('Body Oil opens from the poster library without joining featured and return
   } finally {await env.close();}
 });
 
-test('non-featured Body Oil uses its complete design fallback and all five independent controls', async () => {
+test('featured Body Oil preserves its approved single-bottle theme and all five independent controls', async () => {
   const env=setup(); let mounted,focused,url;
   const bodyOil={...item,id:'poster-073',title:{zh:'身体油系列',en:'Body Oil Collection'}};
   globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
@@ -646,7 +666,7 @@ test('non-featured Body Oil uses its complete design fallback and all five indep
     mounted=options; options.onReady(); return {setProgress(){},focusPart(key){focused=key;},dispose(){}};
   }})}});
   try {
-    assert.equal(JSON.parse(readFileSync(new URL('../src/featured.json',import.meta.url),'utf8')).some(p=>p.id==='poster-073'),false);
+    assert.equal(JSON.parse(readFileSync(new URL('../src/featured.json',import.meta.url),'utf8')).some(p=>p.id==='poster-073'),true);
     const request=startPackagingModelRequest(bodyOil.id);await request.promise;request.abort();
     assert.equal(url,'/assets/packaging/poster-073.glb');
     await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil}/>));
@@ -675,11 +695,11 @@ test('a non-featured design retains its title and copy when appearance supplies 
   const original=collection['poster-073'];
   const product={...original,review:{...original.review,appearance:{...original.review.appearance,studio:{background:'#786047',ink:'#fff2db'}}}};
   const Detail=component('structure/PackagingDetail.jsx',{
-    mocks:{'./packaging-products.js':{PACKAGING_PRODUCTS:{'poster-073':product}}},
+    mocks:{'./packaging-products.js':{PACKAGING_PRODUCTS:{'poster-999':product}}},
     deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},dispose(){}};}})}
   });
   try {
-    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-073'}}/>));
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-999'}}/>));
     assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
     assert.equal(document.querySelector('.packaging-intro').textContent,original.design.kind.zh);
     assert.equal(mounted.design.background,'#786047');
@@ -694,8 +714,8 @@ test('Daily Emulsion opens from the unchanged poster library and returns from it
   const env=setup();const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,24);
-    assert.equal(document.querySelector('[data-open="poster-072"]'),null);
+    assert.equal(document.querySelectorAll('[data-open]').length,26);
+    assert.ok(document.querySelector('[data-open="poster-072"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
     assert.equal(document.querySelectorAll('.grid-image').length,61);
@@ -743,14 +763,14 @@ test('Daily Emulsion exposes one complete pump and all six independent layer con
   } finally {await env.close();}
 });
 
-test('all seven added posters stay outside featured and the five unapproved models stay inactive', async () => {
+test('the five unapproved posters remain outside featured and have no active 3D models', async () => {
   const env = setup(); let requests = 0;
   globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,24);
-    for (let n=72;n<=78;n++) assert.equal(document.querySelector(`[data-open="poster-${String(n).padStart(3,'0')}"]`),null);
+    assert.equal(document.querySelectorAll('[data-open]').length,26);
+    for (let n=74;n<=78;n++) assert.equal(document.querySelector(`[data-open="poster-${String(n).padStart(3,'0')}"]`),null);
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
     assert.equal(document.querySelectorAll('.grid-image').length,61);

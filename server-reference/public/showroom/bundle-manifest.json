@@ -320,6 +320,30 @@
       "bytes": 730604,
       "sha256": "7f67b0098b3e9be300b651ac66eb5a07ed5ce7c7cb5b077f167885d8dcaa06a7"
     },
+    "assets/featured/poster-072-1024.webp": {
+      "bytes": 13716,
+      "sha256": "f1f167a2148d2e83f89e0d357bdd3afb8fd62f676998400554adf9a76b614c1b"
+    },
+    "assets/featured/poster-072-640.webp": {
+      "bytes": 8168,
+      "sha256": "48266b886d0d601da85b3e62c8c22aa3f844a87f3e1f8aaa5f73f47da8d8a73e"
+    },
+    "assets/featured/poster-072.png": {
+      "bytes": 170295,
+      "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5"
+    },
+    "assets/featured/poster-073-1024.webp": {
+      "bytes": 19008,
+      "sha256": "dfe857ea661e22030901364c359f246294e66902f374a477f0893b11c3bc8160"
+    },
+    "assets/featured/poster-073-640.webp": {
+      "bytes": 11600,
+      "sha256": "2719ec80e3c281c31757558bf9b1947fced6f529d0ed270c58d7797aa3c56ab0"
+    },
+    "assets/featured/poster-073.png": {
+      "bytes": 196372,
+      "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb"
+    },
     "assets/optimized/poster-001-strip.webp": {
       "bytes": 4762,
       "sha256": "dc6fe7aecafdcab6089ec7331d236436ded7b3e0c1a39ae25a3adb28c1d006fd"
@@ -1794,15 +1818,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "90449e8c7c307cf8968c722d4ace7e191a91b400eae060e6ad97ba6bf9864692"
+      "sha256": "835dd4235e55e26dbb34f133eee37d82af771e16260f6bbf6d9306e040abf7b9"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 384064,
-      "sha256": "f73ac3bb76dd26ccbcdfa3c579eefde18d554a85d28d26a165f84320bb6dc960"
+      "bytes": 385773,
+      "sha256": "b27d200d13bf84abfd379b8d21dfa557d5b6c4b3efbd022f431b08a7a6fef051"
     },
     "product-posters.js": {
       "bytes": 21629,
@@ -1811,5 +1835,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.29"
+  "version": "client1.30"
 }

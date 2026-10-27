@@ -1,4 +1,4 @@
-"""Client 1.26 updates only the approved Gentle Cleansing complete pump and clear dip tube and preserves the collection."""
+"""Client 1.30 restores two reviewed homepage entries and preserves all 26 packaging models."""
 import copy
 import hashlib
 import importlib.util
@@ -24,9 +24,9 @@ class PackagingApprovalTests(unittest.TestCase):
         featured = json.loads((builder.MOTION_CLIENT / 'src/featured.json').read_text())
         approved_ids = [approval['posterId'], *(item['posterId'] for item in approval['additionalProducts'])]
         self.assertEqual(len(approved_ids), 26)
-        self.assertEqual(len(featured), 24)
-        self.assertFalse({f'poster-{n:03}' for n in range(72, 79)} & {item['id'] for item in featured})
-        self.assertEqual(set(approved_ids), {item['id'] for item in featured} | {'poster-072', 'poster-073'})
+        self.assertEqual(len(featured), 26)
+        self.assertFalse({f'poster-{n:03}' for n in range(74, 79)} & {item['id'] for item in featured})
+        self.assertEqual(set(approved_ids), {item['id'] for item in featured})
         self.assertFalse({'poster-074', 'poster-075', 'poster-076', 'poster-077', 'poster-078'} & set(approved_ids))
         files = {'unrelated.webp': b'preserved'}
         builder.packaging_files(files, builder.MOTION_CLIENT)

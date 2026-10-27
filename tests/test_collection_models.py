@@ -95,10 +95,10 @@ class CollectionModelTests(unittest.TestCase):
  def test_complete_featured_inventory_and_independent_print_layers(self):
   featured={p['id'] for p in json.loads((ROOT/'src/featured.json').read_text())}
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
-  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured|{'poster-072','poster-073'})
-  self.assertFalse({f'poster-{n:03}' for n in range(72,79)} & featured)
+  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured)
+  self.assertFalse({f'poster-{n:03}' for n in range(74,79)} & featured)
   self.assertEqual(len(collection),24)
-  self.assertEqual(len(featured),24)
+  self.assertEqual(len(featured),26)
   for id,p in collection.items():
    with self.subTest(id=id):
     self.assertEqual(p['file'],id+'.glb')
@@ -115,7 +115,7 @@ class CollectionModelTests(unittest.TestCase):
     self.assertTrue((source/(source_id+'.blend')).is_file())
  def test_collection_publication_matches_explicit_user_approval(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
-  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.29-collection-packaging')
+  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.30-collection-packaging')
 
  def test_five_withdrawn_liaose_models_remain_archived_and_inactive(self):
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())

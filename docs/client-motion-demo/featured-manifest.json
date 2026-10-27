@@ -1,7 +1,7 @@
 {
-  "version": "client1.19",
-  "scope": "approved-client1.19-display-derivatives",
-  "notes": "Withdraw seven new homepage renders while preserving all 61 original posters and the original 24 featured products.",
+  "version": "client1.30",
+  "scope": "approved-client1.30-display-derivatives",
+  "notes": "Append only the approved current Daily Emulsion and Body Oil single-bottle models to the original 24 homepage displays; retain all 61 posters and all 26 model files.",
   "files": [
     {
       "posterId": "poster-012",
@@ -463,10 +463,46 @@
         "date": "2026-10-24",
         "basis": "User requested updating client posters and adding this product to the homepage sliding showcase."
       }
+    },
+    {
+      "posterId": "poster-072",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-072.webp",
+      "approvedPosterSha256": "05683d65e88c071c73536081167ddaa22724f260101d637c89f2d0521ccb55a3",
+      "file": "featured-assets/poster-072.png",
+      "target": "featured/poster-072.png",
+      "productionTarget": "assets/featured/poster-072.png",
+      "bytes": 170295,
+      "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5",
+      "tool": "Three.js approved production model capture",
+      "scope": "User-authorized client1.30 restoration of an existing 3D model to the homepage",
+      "method": "Closed single-bottle view from unchanged production scene and GLB; current design background baked only inside the original geometry silhouette, transparent outside; no model or artwork edits",
+      "transmissionBackgroundBaked": true,
+      "compositingBackground": "#e9e5d8",
+      "sourceModel": "packaging-assets/poster-072.glb",
+      "sourceModelSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+      "sourceSceneSha256": "b20149bd6ee79bd030b7832ae4a8a1c13e4c3d51f2f2e6da14662eebcab616eb"
+    },
+    {
+      "posterId": "poster-073",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-073.webp",
+      "approvedPosterSha256": "158fed22b7761fced3fe19610211469a644d8fe47bbe7b0dd5b5a399f8503fa2",
+      "file": "featured-assets/poster-073.png",
+      "target": "featured/poster-073.png",
+      "productionTarget": "assets/featured/poster-073.png",
+      "bytes": 196372,
+      "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb",
+      "tool": "Three.js approved production model capture",
+      "scope": "User-authorized client1.30 restoration of an existing 3D model to the homepage",
+      "method": "Closed single-bottle view from unchanged production scene and GLB; current design background baked only inside the original geometry silhouette, transparent outside; no model or artwork edits",
+      "transmissionBackgroundBaked": true,
+      "compositingBackground": "#eadbc5",
+      "sourceModel": "packaging-assets/poster-073.glb",
+      "sourceModelSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+      "sourceSceneSha256": "b20149bd6ee79bd030b7832ae4a8a1c13e4c3d51f2f2e6da14662eebcab616eb"
     }
   ],
   "approval": {
-    "date": "2026-10-26",
-    "basis": "User requested publishing posters and matching 3D models."
+    "date": "2026-10-27",
+    "basis": "User requested adding products with existing 3D models to the homepage and leaving products without models unchanged."
   }
 }

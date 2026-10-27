@@ -4,29 +4,41 @@ import {readFileSync, readdirSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
+import {PACKAGING_PRODUCTS} from '../src/structure/packaging-products.js';
 
 const base=fileURLToPath(new URL('../',import.meta.url));
 const json=path=>JSON.parse(readFileSync(resolve(base,path),'utf8'));
 const featured=json('src/featured.json'),posters=json('src/posters.json'),manifest=json('featured-manifest.json');
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('featured additions retain the original eight products and map by stable ID to the approved collection',()=>{
- assert.ok(featured.length>=8);assert.equal(new Set(featured.map(p=>p.id)).size,featured.length);
- assert.deepEqual(featured.slice(0,8).map(p=>p.id),['poster-012','poster-013','poster-039','poster-049','poster-042','poster-051','poster-044','poster-047']);
+test('featured retains the exact original 24 order and appends only the two existing 3D products',()=>{
+ const original=[12,13,39,49,42,51,44,47,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71];
+ assert.deepEqual(featured.map(p=>p.id),[...original,72,73].map(n=>`poster-${String(n).padStart(3,'0')}`));
+ assert.equal(new Set(featured.map(p=>p.id)).size,26);
+ assert.deepEqual(Object.keys(PACKAGING_PRODUCTS).sort(),featured.map(p=>p.id).sort());
  assert.equal(featured[0].id,'poster-012');assert.equal(featured[0].background,'#f4c8d6');
  for(const item of featured){
   assert.ok(posters.some(p=>p.id===item.id));
+  assert.ok(PACKAGING_PRODUCTS[item.id].file);
   assert.ok(item.name&&item.kind.zh&&item.kind.en&&item.description.zh&&item.description.en);
   for(const colour of [item.background,item.ink,...item.swatch])assert.match(colour,/^#[0-9a-f]{6}$/);
   assert.equal(item.swatch.length,2);
  }
 });
 
+test('the two restored entries preserve the approved single-bottle detail identity and theme',()=>{
+ for(const id of ['poster-072','poster-073']){
+  const item=featured.find(p=>p.id===id),design=PACKAGING_PRODUCTS[id].design;
+  for(const key of ['name','kind','background','ink','swatch'])assert.deepEqual(item[key],design[key],`${id} ${key}`);
+  assert.match(item.kind.zh,/单瓶/);
+ }
+});
+
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{
- assert.match(manifest.version,/^client1\.\d+$/);
+ assert.equal(manifest.version,'client1.30');
  assert.equal(manifest.scope,`approved-${manifest.version}-display-derivatives`);
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
- const archived=Array.from({length:7},(_,i)=>`poster-${String(72+i).padStart(3,'0')}`);
+ const archived=Array.from({length:5},(_,i)=>`poster-${String(74+i).padStart(3,'0')}`);
  assert.ok(archived.every(id=>!featured.some(p=>p.id===id)));
  assert.deepEqual(readdirSync(resolve(base,'featured-assets')).sort(),[...featured.map(p=>`${p.id}.png`),...archived.map(id=>`${id}.png`)].sort());
  assert.deepEqual(readdirSync(resolve(base,'public/featured')).sort(),featured.flatMap(p=>[`${p.id}.png`,`${p.id}-640.webp`,`${p.id}-1024.webp`]).sort());

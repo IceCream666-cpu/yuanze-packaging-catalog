@@ -1,0 +1,45 @@
+{
+  "sourceCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+  "artifacts": [
+    {
+      "id": "poster-072",
+      "png": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/work/featured-26-capture/poster-072.png",
+      "bytes": 170295,
+      "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5",
+      "width": 1024,
+      "height": 1280,
+      "alpha": true,
+      "alphaBBox": [
+        316,
+        85,
+        708,
+        1193
+      ],
+      "transparentPixels": 934598,
+      "partialAlphaPixels": 2598,
+      "sourceGlbSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+      "method": "Approved production GLB and current packaging-scene materials/studio; closed single bottle. Source design background baked within unmodified geometry silhouette as alpha. No model or formula changes.",
+      "visualReview": "Root reviewed exact model structure and text; old metal-like assets excluded."
+    },
+    {
+      "id": "poster-073",
+      "png": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/daily-emulsion-live/work/featured-26-capture/poster-073.png",
+      "bytes": 196372,
+      "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb",
+      "width": 1024,
+      "height": 1280,
+      "alpha": true,
+      "alphaBBox": [
+        266,
+        95,
+        758,
+        1191
+      ],
+      "transparentPixels": 874135,
+      "partialAlphaPixels": 2495,
+      "sourceGlbSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+      "method": "Approved production GLB and current packaging-scene materials/studio; closed single bottle. Source design background baked within unmodified geometry silhouette as alpha. No model or formula changes.",
+      "visualReview": "Root reviewed exact model structure and text; old metal-like assets excluded."
+    }
+  ]
+}
