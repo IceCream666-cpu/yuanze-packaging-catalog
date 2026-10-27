@@ -27,6 +27,8 @@ white=mat('Gentle glossy neutral white closure','#f6f6f3',.23)
 headwhite=mat('Gentle satin white foamer head','#f5f5f1',.28)
 inner=mat('Gentle hidden pump polymer','#e2e4df',.42)
 dark=mat('Gentle recessed outlet interior','#b4b8b1',.45)
+dip_tube=mat('Gentle clear plastic dip tube','#ffffff',.06,.98,1.46)
+dip_tube.use_backface_culling=True
 def mesh(name,vs,fs,material,parent):
  data=bpy.data.meshes.new(name);data.from_pydata(vs,[],fs);data.update();o=bpy.data.objects.new(name,data);bpy.context.collection.objects.link(o);o.data.materials.append(material)
  if parent not in groups:groups[parent]=bpy.data.objects.new(parent,None);bpy.context.collection.objects.link(groups[parent])
@@ -48,6 +50,8 @@ lathe('Hollow straight clear bottle with rounded thick base',[(0,0),(0,.338),(.0
 lathe('Illustrative bottle neck retention bead',[(2.204,.428),(2.209,.436),(2.219,.436),(2.224,.428)],clear,'Body')
 lathe('Wide smooth white screw closure',[(2.170,.449),(2.170,.478),(2.181,.489),(2.198,.491),(2.471,.491),(2.494,.483),(2.510,.462),(2.520,.439),(2.520,.239),(2.494,.239),(2.494,.444),(2.190,.449),(2.170,.449)],white,'Closure')
 lathe('Hidden closure screw seat',[(2.183,.445),(2.480,.445),(2.480,.238),(2.460,.238),(2.460,.413),(2.183,.413),(2.183,.445)],inner,'Closure')
+# Concealed tube dimensions and connection are illustrative; both annular ends remain open.
+lathe('Hollow clear Gentle pump dip tube',[(.16,.0335),(.1615,.035),(2.6885,.035),(2.69,.0335),(2.69,.0275),(2.6885,.026),(.1615,.026),(.16,.0275),(.16,.0335)],dip_tube,'Closure')
 lathe('Clear overcap seating flange',[(2.514,.248),(2.514,.421),(2.520,.439),(2.535,.443),(2.545,.435),(2.550,.414),(2.550,.248),(2.514,.248)],cover,'Closure')
 lathe('Foamer stepped pump pedestal',[(2.503,.145),(2.503,.274),(2.516,.300),(2.541,.300),(2.555,.285),(2.602,.285),(2.614,.273),(2.630,.252),(2.683,.252),(2.697,.230),(2.702,.145),(2.503,.145)],headwhite,'PumpStem')
 # shortcut: the concealed short stem is illustrative until the physical foamer is supplied.
@@ -92,9 +96,13 @@ for name,g in groups.items():
  pivot=Vector((0,0,pivots[name]))
  for child in g.children:child.location-=pivot
  g.location=pivot*scale;g.scale=(scale,scale,scale)
+assembly=bpy.data.objects.new('PumpAssembly',None);bpy.context.collection.objects.link(assembly)
+for child in ('Closure','PumpStem','Actuator'):groups[child].parent=assembly
+groups={name:groups[name] for name in ('Body','Overcap','PaperLabel','LogoPrint')}
+groups['PumpAssembly']=assembly
 assert abs(scale*3.44-2.9)<1e-9
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-044.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-044.blend'))
-(OUT/'model-info.json').write_text(json.dumps({'id':'poster-044','components':list(groups),'height':2.9,'width':scale,'closedHeightToDiameter':3.44,'visibleBodyHeightToDiameter':2.17,'closureHeightToDiameter':.35,'closureDiameterToBody':.982,'overcapHeightToDiameter':.90,'overcapDiameterToBody':.91,'ovalWidthToBody':.72,'ovalHeightToBody':.91,'ovalBottomToBody':.605,'printIncludes':['liaose','GENTLE','CLEANSING FOAM','short separator rule','120 ml'],'illustrativeDimensions':True,'containsFormula':False,'containsFoam':False,'reference':'../../mobile-client-preview/assets/posters/poster-044.webp','featuredReference':'featured-assets/poster-044.png','editableArtwork':['label.svg','print.svg'],'proceduralTexture':'oval-frost.png','separateLabelAndPrint':True,'hiddenStructure':'Bottle neck and concealed short foamer stem are illustrative; top-cover dimple is not a through-hole','material':'Neutral clear empty bottle, separate thin clear protective cover, glossy white closure, translucent frosted oval','revision':'individual-reference-review-20261024','generator':'build_gentle_cleansing.py'},indent=2)+'\n')
+(OUT/'model-info.json').write_text(json.dumps({'id':'poster-044','components':list(groups),'assemblyChildren':{'PumpAssembly':['Closure','PumpStem','Actuator']},'completePumpLift':2.15,'overcapLift':3.15,'camera':{'closedCenter':1.45,'openCenter':3.025,'closedHeight':4.2,'openHeight':7.2},'dipTube':{'mesh':'Hollow clear Gentle pump dip tube','parent':'Closure','outerDiameterToBody':.07,'innerDiameterToBody':.052,'bottomToBody':.16,'topToBody':2.69,'bodyInnerFloorToBody':.087,'bottomClearance':(.16-.087)*scale,'fullyOpenBottleClearance':(.16-2.286)*scale+2.15,'openAtBothEnds':True,'dimensionsIllustrative':True},'height':2.9,'width':scale,'closedHeightToDiameter':3.44,'visibleBodyHeightToDiameter':2.17,'closureHeightToDiameter':.35,'closureDiameterToBody':.982,'overcapHeightToDiameter':.90,'overcapDiameterToBody':.91,'ovalWidthToBody':.72,'ovalHeightToBody':.91,'ovalBottomToBody':.605,'printIncludes':['liaose','GENTLE','CLEANSING FOAM','short separator rule','120 ml'],'illustrativeDimensions':True,'containsFormula':False,'containsFoam':False,'reference':'../../mobile-client-preview/assets/posters/poster-044.webp','featuredReference':'featured-assets/poster-044.png','editableArtwork':['label.svg','print.svg'],'proceduralTexture':'oval-frost.png','separateLabelAndPrint':True,'hiddenStructure':'Bottle neck, concealed short foamer stem, dip tube dimensions and actuator connection are illustrative; top-cover dimple is not a through-hole','material':'Neutral clear empty bottle, separate thin clear protective cover, glossy white closure, translucent frosted oval','revision':'complete-foamer-with-clear-dip-tube-local-review-20261027','generator':'build_gentle_cleansing.py'},indent=2)+'\n')
 print('Gentle Cleansing rebuilt:',len(groups),'independent groups')

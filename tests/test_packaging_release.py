@@ -1,4 +1,4 @@
-"""Client 1.25 updates only the approved Pure Volume complete pump and clear dip tube and preserves the collection."""
+"""Client 1.26 updates only the approved Gentle Cleansing complete pump and clear dip tube and preserves the collection."""
 import copy
 import hashlib
 import importlib.util

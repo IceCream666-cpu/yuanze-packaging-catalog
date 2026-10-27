@@ -2,6 +2,7 @@
 import io
 import json
 import math
+from collections import Counter
 from pathlib import Path
 import struct
 import unittest
@@ -16,6 +17,7 @@ COVER = 'Hollow clear protective overcap with top dimple'
 CLOSURE = 'Wide smooth white screw closure'
 OVAL = 'Translucent frosted white oval decoration'
 PRINT = 'Complete Gentle Cleansing lettering'
+TUBE = 'Hollow clear Gentle pump dip tube'
 
 
 class GentleCleansingModelTests(unittest.TestCase):
@@ -44,7 +46,15 @@ class GentleCleansingModelTests(unittest.TestCase):
         return self.nodes[index]['name']
 
     def mesh_names(self, group=None):
-        return [n['name'] for n in self.nodes if 'mesh' in n and (group is None or self.ancestor(n['name']) == group)]
+        def belongs(name):
+            index = self.named[name]
+            while True:
+                if self.nodes[index]['name'] == group:
+                    return True
+                if index not in self.parents:
+                    return False
+                index = self.parents[index]
+        return [n['name'] for n in self.nodes if 'mesh' in n and (group is None or belongs(n['name']))]
 
     def primitive(self, name):
         primitive, = self.gltf['meshes'][self.nodes[self.named[name]]['mesh']]['primitives']
@@ -109,12 +119,20 @@ class GentleCleansingModelTests(unittest.TestCase):
         indices = [item[0] for item in self.accessor(self.primitive(name)['indices'])]
         self.assertGreaterEqual(sum(i in axis for i in indices), 3, 'A loose axis vertex is not a sealing face.')
 
-    def test_seven_independent_groups_and_only_empty_packaging(self):
+    def test_five_groups_keep_the_complete_pump_and_only_empty_packaging(self):
         roots = self.gltf['scenes'][self.gltf.get('scene', 0)]['nodes']
-        counts = {'Body': 2, 'Closure': 3, 'PumpStem': 2, 'Actuator': 4, 'Overcap': 2, 'PaperLabel': 1, 'LogoPrint': 1}
+        counts = {'Body': 2, 'PumpAssembly': 10, 'Overcap': 2, 'PaperLabel': 1, 'LogoPrint': 1}
         self.assertEqual({self.nodes[i]['name'] for i in roots}, set(counts))
-        self.assertEqual(len(self.mesh_names()), 15, 'No formula, foam or duplicate artwork mesh may remain.')
+        self.assertEqual(len(self.mesh_names()), 16, 'Only the new hollow tube is added to the original packaging.')
         for group, count in counts.items():
+            self.assertEqual(len(self.mesh_names(group)), count)
+        pump = self.nodes[self.named['PumpAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in pump['children']}, {'Closure', 'PumpStem', 'Actuator'})
+        self.assertNotIn('matrix', pump)
+        self.assertEqual(pump.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(pump.get('rotation', [0, 0, 0, 1]), [0, 0, 0, 1])
+        self.assertEqual(pump.get('scale', [1, 1, 1]), [1, 1, 1])
+        for group, count in {'Closure': 4, 'PumpStem': 2, 'Actuator': 4}.items():
             self.assertEqual(len(self.mesh_names(group)), count)
         self.assertEqual(self.mesh_names('PaperLabel'), [OVAL])
         self.assertEqual(self.mesh_names('LogoPrint'), [PRINT])
@@ -126,6 +144,52 @@ class GentleCleansingModelTests(unittest.TestCase):
         self.assertFalse(info['containsFormula'])
         self.assertFalse(info['containsFoam'])
         self.assertTrue((SOURCE / 'poster-044.blend').is_file())
+
+    def test_clear_hollow_dip_tube_is_fitted_to_pump_and_clears_the_bottle(self):
+        self.assertEqual(self.ancestor(TUBE), 'PumpAssembly')
+        self.assertEqual(self.nodes[self.parents[self.named[TUBE]]]['name'], 'Closure')
+        diameter = self.diameter()
+        points = self.positions(TUBE)
+        low, high = self.bounds(points)
+        radii = [math.hypot(x, z) / diameter for x, y, z in points]
+        self.assertAlmostEqual(min(radii), .026, delta=.0002)
+        self.assertAlmostEqual(max(radii), .035, delta=.0002)
+        self.assertGreater(sum(abs(r-.026) < 1e-5 for r in radii), 100)
+        self.assertGreater(sum(abs(r-.035) < 1e-5 for r in radii), 100)
+        self.assertAlmostEqual(low[1] / diameter, .16, delta=.001)
+        self.assertAlmostEqual(high[1] / diameter, 2.69, delta=.001)
+        body = self.positions(BODY)
+        inner_floor = max(y for x, y, z in body if math.hypot(x, z) < 1e-6)
+        self.assertTrue(.06 < (low[1]-inner_floor)/diameter < .09)
+        self.assertGreater(low[1]+2.15-self.bounds(body)[1][1], .35, 'The inlet fully clears the bottle when the complete pump opens.')
+        cap_low = min(p[1] for name in self.mesh_names('Overcap') for p in self.positions(name))
+        head_high = max(p[1] for name in self.mesh_names('Actuator') for p in self.positions(name))
+        self.assertGreater(cap_low+3.15-head_high-2.15, .3, 'The protective cover must fully separate from the pump head.')
+        indices = [row[0] for row in self.accessor(self.primitive(TUBE)['indices'])]
+        edges, volume = Counter(), 0
+        for offset in range(0, len(indices), 3):
+            triangle = [points[i] for i in indices[offset:offset+3]]
+            a, b, c = triangle
+            volume += (a[0]*(b[1]*c[2]-b[2]*c[1]) - a[1]*(b[0]*c[2]-b[2]*c[0]) + a[2]*(b[0]*c[1]-b[1]*c[0]))/6
+            welded = [tuple(round(v, 7) for v in p) for p in triangle]
+            self.assertEqual(len(set(welded)), 3)
+            for i in range(3):
+                edges[tuple(sorted((welded[i], welded[(i+1)%3])))] += 1
+            determinant = (b[2]-c[2])*(a[0]-c[0]) + (c[0]-b[0])*(a[2]-c[2])
+            if abs(determinant) > 1e-12:
+                u = ((b[2]-c[2])*(-c[0]) + (c[0]-b[0])*(-c[2]))/determinant
+                v = ((c[2]-a[2])*(-c[0]) + (a[0]-c[0])*(-c[2]))/determinant
+                self.assertLess(min(u, v, 1-u-v), -1e-6, 'Both tube mouths must remain open along the central bore.')
+        self.assertEqual(set(edges.values()), {2})
+        self.assertGreater(volume, 0)
+        material = self.material(TUBE)
+        pbr = material['pbrMetallicRoughness']
+        self.assertEqual(pbr.get('metallicFactor', 1), 0)
+        self.assertEqual(pbr.get('baseColorFactor', [1, 1, 1, 1]), [1, 1, 1, 1])
+        self.assertTrue(.03 <= pbr['roughnessFactor'] <= .1)
+        self.assertGreaterEqual(material['extensions']['KHR_materials_transmission']['transmissionFactor'], .95)
+        self.assertAlmostEqual(material['extensions']['KHR_materials_ior']['ior'], 1.46, delta=.02)
+        self.assertFalse(material.get('doubleSided', False))
 
     def test_original_poster_height_round_body_wide_closure_and_short_right_nozzle(self):
         diameter = self.diameter()

@@ -410,7 +410,7 @@ for (const [id, lifts, printOffset] of [
   ['poster-051', {pump:2.3}, [-3.4,.18,1.65]],
   ['poster-057', {head:4.1,stem:3.45,closure:.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:4.85,head:2.6,stem:1.5,closure:.75}, [-3.8,.18,1.65]],
-  ['poster-044', {overcap:3.6,head:2.5,stem:1.5,closure:.75}, [-2.65,.50,1.65]],
+  ['poster-044', {overcap:3.15,pump:2.15}, [-2.65,.50,1.65]],
   ['poster-049', {pump: 1.25}, [-2.65, .18, 1.65]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
   ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
@@ -443,7 +443,7 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' || id === 'poster-051' ? 4 : id === 'poster-044' || id === 'poster-056' || id === 'poster-057' ? 7 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' || id === 'poster-051' ? 4 : id === 'poster-044' ? 5 : id === 'poster-056' || id === 'poster-057' ? 7 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
@@ -465,7 +465,7 @@ for (const [id, lifts, printOffset] of [
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
       if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') {
-        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(key==='overcap' && id==='poster-044' ? 3100/4913 : key==='overcap' && id==='poster-056' ? 1900/2197 : .5), `${key} half lift`);
+        for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*(key==='overcap' && id==='poster-056' ? 1900/2197 : .5), `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
         sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' || id==='poster-057' ? 1.475 : 1.225),'half print scale');
         checkSeparateLabel(.5);
@@ -778,6 +778,106 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
         assert.equal(film.material.opacity,1,'the translucent carrier is visible separately when open');
         const tubeBounds=new Three.Box3().setFromObject(tube),bottleBounds=new Three.Box3().setFromObject(parts.jar);
         assert.ok(tubeBounds.min.y-bottleBounds.max.y>.4,'the inlet fully clears the bottle opening');
+      }
+      for(const mesh of nodes.filter(node=>node.isMesh)) {
+        mesh.geometry.computeBoundingBox();
+        const {min,max}=mesh.geometry.boundingBox;
+        for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]) {
+          const projected=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+          assert.ok(Math.abs(projected.x)<.98 && Math.abs(projected.y)<.98,`${mesh.name} stays in frame at ${progress}`);
+        }
+      }
+      for(const key of progress===0 ? Object.keys(parts) : ['jar']) {
+        assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);
+        assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
+        assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
+      }
+    }
+  } finally {api?.dispose();env.close();}
+});
+
+test('Gentle lifts its complete pump and hollow tube beneath the separate protective cover',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-044'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-044.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const tubeName='Hollow clear Gentle pump dip tube';
+  const nodes=gltf.nodes.map(node=>{
+    let object=new Three.Group();
+    if('mesh' in node) {
+      const primitive=gltf.meshes[node.mesh].primitives[0],accessor=gltf.accessors[primitive.attributes.POSITION];
+      const low=new Three.Vector3(...accessor.min),high=new Three.Vector3(...accessor.max);
+      const size=high.clone().sub(low),center=high.clone().add(low).multiplyScalar(.5);
+      object=new Three.Mesh(new Three.BoxGeometry(...size.toArray()).translate(...center.toArray()),new Three.MeshPhysicalMaterial());
+      if(node.name===tubeName) {
+        const material=gltf.materials[primitive.material];
+        object.material.name=material.name;
+        object.material.transmission=material.extensions.KHR_materials_transmission.transmissionFactor;
+        object.material.roughness=material.pbrMetallicRoughness.roughnessFactor;
+        object.material.ior=material.extensions.KHR_materials_ior.ior;
+      }
+    }
+    object.name=node.name;
+    if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  let camera,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};
+    flush();
+    const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
+    assert.deepEqual(Object.keys(parts).sort(),['jar','label','overcap','print','pump']);
+    assert.equal(product.review,undefined,'retain the approved clear bottle and frosted oval treatment');
+    const tube=loaded.scene.getObjectByName(tubeName),head=loaded.scene.getObjectByName('Actuator');
+    assert.equal(tube.parent,loaded.scene.getObjectByName('Closure'));
+    assert.equal(tube.material.transmission,.98);
+    assert.equal(tube.material.roughness,.06);
+    assert.equal(tube.material.ior,1.46);
+    assert.equal(tube.material.thickness,.0076);
+    assert.equal(tube.material.side,Three.FrontSide);
+    assert.equal(Boolean(tube.material.toneMapped),false,'the production legacy falsy flag keeps tube tone mapping disabled');
+    assert.equal(tube.castShadow,false);
+    assert.equal(tube.receiveShadow,false);
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
+    const fitted=['Closure','PumpStem','Actuator',tubeName].map(name=>{
+      const part=loaded.scene.getObjectByName(name);
+      if(name!==tubeName)assert.equal(part.parent,parts.pump);
+      return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
+    });
+    const diameter=new Three.Box3().setFromObject(parts.jar).getSize(new Three.Vector3()).x;
+    for(const progress of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(progress);flush();
+      assert.equal(api.getState().renderedProgress,progress);
+      for(const [key,lift] of [['pump',2.15],['overcap',3.15]])
+        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(0,lift*progress,0))<1e-9);
+      const displacement=parts.pump.getWorldPosition(new Three.Vector3()).sub(rest.pump.world);
+      for(const {part,matrix,world} of fitted) {
+        assert.deepEqual(part.matrix.toArray(),matrix,'all fitted pump pieces retain their local transforms');
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
+      }
+      assert.ok(Math.abs(camera.position.y-1.05-(1.45+1.575*progress))<1e-9);
+      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+3*progress))<1e-9);
+      assert.ok(Math.abs(camera.position.x+.65*progress)<1e-9);
+      for(const [key,offset,growth] of [['label',[-1.25,.08,.65],.15],['print',[-2.65,.5,1.65],.95]]) {
+        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
+        assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+growth*progress))<1e-9);
+      }
+      const coverBounds=new Three.Box3().setFromObject(parts.overcap),headBounds=new Three.Box3().setFromObject(head);
+      assert.ok(coverBounds.max.y-.03*diameter>headBounds.max.y,'the cover ceiling never crosses the fitted pump head');
+      if(progress===1) {
+        const tubeBounds=new Three.Box3().setFromObject(tube),bottleBounds=new Three.Box3().setFromObject(parts.jar);
+        assert.ok(tubeBounds.min.y-bottleBounds.max.y>.35,'the tube inlet fully clears the bottle');
+        assert.ok(coverBounds.min.y-headBounds.max.y>.3,'the cover fully clears the intact pump');
       }
       for(const mesh of nodes.filter(node=>node.isMesh)) {
         mesh.geometry.computeBoundingBox();
