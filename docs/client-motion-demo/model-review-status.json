@@ -197,7 +197,7 @@
     "background": "#cbe4e2"
   },
   "poster-058": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "DropperAssembly",
       "Body",
@@ -209,9 +209,22 @@
       "open": "/review-assets/poster-058-simplified-open.png"
     },
     "background": "#d1b89c",
-    "reviewStatus": "local-awaiting-user",
+    "reviewStatus": "published-live-verified",
     "localRevision": "complete-long-dropper-near-bottom",
-    "localRevisionReceipt": "luminous-simplified-preview-verification.json"
+    "localRevisionReceipt": "luminous-simplified-preview-verification.json",
+    "releaseVersion": "client1.29",
+    "releaseSourceCommit": "ce62fd4ab82df095ec4baff40f48fb710e2b40d2",
+    "releaseReceiptCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+    "releaseManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+    "releasedAt": "2026-10-27T11:20:43+08:00",
+    "releaseHttpsVerifiedAt": "2026-10-27T11:23:06+08:00",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+    "releaseReceiptStatus": "complete",
+    "physicalMobileDeviceTested": false,
+    "mobileNativeTouchTested": false,
+    "mobileInteraction": "Observed stage button DOM click with scene initialized at 393x852; browser input emulation was not treated as a native touchscreen test.",
+    "releaseReceipt": "client129-luminous-dropper-release.json"
   },
   "poster-059": {
     "state": "published",

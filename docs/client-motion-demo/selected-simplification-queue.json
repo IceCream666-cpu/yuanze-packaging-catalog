@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26, Golden Face Oil client1.27 and B5 Serum client1.28 are published and live verified. Luminous Face Oil near-bottom complete-dropper revision is local awaiting user review; nine later selected revisions remain queued.",
+  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26, Golden Face Oil client1.27, B5 Serum client1.28 and Luminous Face Oil client1.29 are published and live verified. The user requested publication of 058 only and stopping afterward; the nine remaining selected revisions, including 059, are not started.",
   "items": [
     {
       "selectionNumber": 4,
@@ -95,9 +95,22 @@
       "selectionNumber": 11,
       "posterId": "poster-058",
       "name": "Luminous Face Oil",
-      "status": "local-awaiting-user",
+      "status": "published-live-verified",
       "localRevision": "complete-long-dropper-near-bottom",
-      "localRevisionReceipt": "luminous-simplified-preview-verification.json"
+      "localRevisionReceipt": "luminous-simplified-preview-verification.json",
+      "releaseVersion": "client1.29",
+      "releaseSourceCommit": "ce62fd4ab82df095ec4baff40f48fb710e2b40d2",
+      "releaseReceiptCommit": "09e4d317ab5238db68504ebaff4d1f974f3edf18",
+      "releaseManifestSha256": "00751076554de703a651cc60858c4992a4134644a6c2e4109d985225b93da0bf",
+      "releasedAt": "2026-10-27T11:20:43+08:00",
+      "releaseHttpsVerifiedAt": "2026-10-27T11:23:06+08:00",
+      "releaseHttpsVerification": "passed",
+      "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+      "releaseReceiptStatus": "complete",
+      "physicalMobileDeviceTested": false,
+      "mobileNativeTouchTested": false,
+      "mobileInteraction": "Observed stage button DOM click with scene initialized at 393x852; browser input emulation was not treated as a native touchscreen test.",
+      "releaseReceipt": "client129-luminous-dropper-release.json"
     },
     {
       "selectionNumber": 12,
@@ -154,5 +167,11 @@
       "status": "queued"
     }
   ],
-  "updated": "2026-10-27"
+  "updated": "2026-10-27",
+  "userScope": {
+    "authorizedProduct": "poster-058",
+    "instruction": "上线，不做下一个",
+    "stopAfterPublication": true,
+    "nextProductStarted": false
+  }
 }
