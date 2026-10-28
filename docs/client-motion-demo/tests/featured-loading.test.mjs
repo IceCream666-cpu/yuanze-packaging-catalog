@@ -5,25 +5,24 @@ import {createFeaturedLoadQueue} from '../src/featured-loading.js';
 const ids=['a','b','c','d','e','f','g','h'];
 const loading=queue=>Object.entries(queue.snapshot()).filter(([,value])=>value.status==='loading').map(([id])=>id);
 
-test('selection starts at most two images and gives a new current item the next slot',()=>{
+test('selection reserves one urgent slot and gives the latest current item the next freed slot',()=>{
  const queue=createFeaturedLoadQueue({ids});
  queue.select('a');assert.deepEqual(loading(queue),['a','b']);
  queue.select('e');queue.select('g');
- assert.deepEqual(loading(queue),['a','b']);
+ assert.deepEqual(loading(queue),['a','b','e']);
  assert.equal(queue.snapshot().a.enabled,true);
- queue.finish('a',1,'loaded');assert.deepEqual(loading(queue),['b','g']);
- queue.finish('b',1,'loaded');assert.deepEqual(loading(queue),['g','h']);
- assert.equal(queue.snapshot().e.enabled,false);
- queue.finish('g',1,'loaded');assert.deepEqual(loading(queue),['f','h']);
- queue.finish('h',1,'loaded');queue.finish('f',1,'loaded');queue.finish('e',1,'loaded');
+ queue.finish('a',1,'loaded');assert.deepEqual(loading(queue),['b','e','g']);
+ queue.finish('b',1,'loaded');assert.deepEqual(loading(queue),['e','g']);
+ queue.finish('g',1,'loaded');assert.deepEqual(loading(queue),['e','h']);
+ queue.finish('e',1,'loaded');assert.deepEqual(loading(queue),['f','h']);
+ queue.finish('h',1,'loaded');queue.finish('f',1,'loaded');
  assert.deepEqual(loading(queue),[]);assert.equal(queue.snapshot().d.enabled,false);
 });
 
 test('first-image failure does not block its neighbour and manual retry creates a fresh token',()=>{
  const queue=createFeaturedLoadQueue({ids});queue.select('a');
  queue.finish('a',1,'error');assert.deepEqual(loading(queue),['b','h']);
- queue.retry('a');assert.deepEqual(loading(queue),['b','h']);
- queue.finish('b',1,'loaded');assert.deepEqual(loading(queue),['a','h']);
+ queue.retry('a');assert.deepEqual(loading(queue),['a','b','h']);
  assert.equal(queue.snapshot().a.token,2);
  queue.finish('a',1,'loaded');assert.equal(queue.snapshot().a.status,'loading');
  queue.finish('a',2,'loaded');assert.equal(queue.snapshot().a.status,'loaded');
@@ -33,7 +32,7 @@ test('completed image sources remain enabled across fast changes without duplica
  const queue=createFeaturedLoadQueue({ids});queue.select('a');queue.finish('a',1,'loaded');
  for(const id of ['b','c','d','e','a'])queue.select(id);
  assert.equal(queue.snapshot().a.enabled,true);assert.equal(queue.snapshot().a.status,'loaded');
- assert.equal(queue.snapshot().a.token,1);assert.ok(loading(queue).length<=2);
+ assert.equal(queue.snapshot().a.token,1);assert.ok(loading(queue).length<=3);
  const prior=queue.snapshot();queue.dispose();queue.finish('b',1,'loaded');queue.select('e');
  assert.deepEqual(queue.snapshot(),prior);
 });
@@ -54,7 +53,20 @@ test('a 23-product collection still loads only five initial neighbours with at m
  }
  assert.deepEqual(Object.entries(queue.snapshot()).filter(([,state])=>state.enabled).map(([id])=>id),['p0','p1','p2','p21','p22']);
  queue.select('p12');assert.deepEqual(loading(queue),['p12','p13']);
- queue.select('p19');queue.finish('p12',1,'loaded');
+ queue.select('p19');assert.deepEqual(loading(queue),['p12','p13','p19']);
+ queue.finish('p12',1,'loaded');
  assert.deepEqual(loading(queue),['p13','p19']);
  assert.equal(queue.snapshot().p0.token,1);assert.equal(queue.snapshot().p0.status,'loaded');
+});
+
+test('rapid selections never grow the urgent slot into unbounded parallel downloads',()=>{
+ const queue=createFeaturedLoadQueue({ids});queue.select('a');
+ for(const id of ids){queue.select(id);assert.ok(loading(queue).length<=3);}
+ assert.equal(queue.snapshot().h.enabled,false);
+ queue.finish('a',1,'loaded');
+ assert.equal(queue.snapshot().h.status,'loading');
+ assert.equal(loading(queue).length,3);
+ assert.equal(queue.snapshot().e.enabled,false);
+ assert.equal(queue.snapshot().f.enabled,false);
+ assert.equal(queue.snapshot().g.enabled,false);
 });

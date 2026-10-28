@@ -13,7 +13,7 @@
     ]
   },
   "src/structure/PackagingDetail.jsx": {
-    "file": "assets/packaging/PackagingDetail-BFmoPEnE.js",
+    "file": "assets/packaging/PackagingDetail-CgRfD8AG.js",
     "name": "PackagingDetail",
     "src": "src/structure/PackagingDetail.jsx",
     "isDynamicEntry": true,
@@ -24,11 +24,11 @@
       "src/structure/packaging-scene.js"
     ],
     "css": [
-      "assets/packaging/PackagingDetail-DKVlGnbY.css"
+      "assets/packaging/PackagingDetail-BIRcW7nd.css"
     ]
   },
   "src/structure/packaging-scene.js": {
-    "file": "assets/packaging/packaging-scene-N9MOtHI6.js",
+    "file": "assets/packaging/packaging-scene-Dx0_pkVc.js",
     "name": "packaging-scene",
     "src": "src/structure/packaging-scene.js",
     "isDynamicEntry": true,

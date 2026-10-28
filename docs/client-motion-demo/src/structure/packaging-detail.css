@@ -29,6 +29,9 @@
 .packaging-header button:hover { opacity: .65; }
 .packaging-scroll { height: 100%; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #976578 transparent; }
 .packaging-track { height: 300svh; position: relative; }
+@media (max-width: 900px) and (pointer: coarse) {
+  .packaging-track { height: 200svh; }
+}
 .packaging-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .packaging-heading { position: absolute; z-index: 2; left: var(--pack-gutter); top: 26%; width: 26%; pointer-events: none; }
 .packaging-heading h1 { margin: 0; font-family: "Bodoni 72", Didot, "Times New Roman", serif; font-weight: 400; font-size: clamp(64px, 6.7vw, 96px); line-height: .92; letter-spacing: -.04em; }

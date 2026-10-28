@@ -15,17 +15,18 @@ function deferred() {
   const promise = new Promise((yes, no) => {resolve = yes; reject = no;});
   return {promise, resolve, reject};
 }
-function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
+function harness({parse, renderError, onRender, reduced = true, mobile = false, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
   const dom = new JSDOM('<div id="host"></div>', {pretendToBeVisual: true});
   const events = [], frames = new Map(); let frameId = 0, rendererDisposals = 0, envDisposals = 0, observers = 0;
   Object.assign(globalThis, {window: dom.window, document: dom.window.document,
-    matchMedia: () => ({matches: true}), requestAnimationFrame: callback => {frames.set(++frameId, callback); return frameId;},
+    matchMedia: query => ({matches: query.includes('pointer: coarse') ? mobile : reduced}), requestAnimationFrame: callback => {frames.set(++frameId, callback); return frameId;},
     cancelAnimationFrame: id => frames.delete(id), ResizeObserver: class {
       observe() {observers++;} disconnect() {observers--;}
     }});
   dom.window.HTMLCanvasElement.prototype.getContext = () => ({
     createRadialGradient: () => ({addColorStop() {}}), fillRect() {},
   });
+  dom.window.HTMLCanvasElement.prototype.setPointerCapture = () => {};
   class Renderer {
     constructor() {events.push('renderer'); this.domElement = document.createElement('canvas'); this.shadowMap = {}; this.capabilities = {getMaxAnisotropy: () => 8}; this.info = {render: {calls: 1, triangles: 12}};}
     setPixelRatio() {} setClearColor() {} setSize() {}
@@ -54,6 +55,49 @@ function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['po
   return {dom, host, events, frames, controller, request, model, mount: module.exports.mountPackagingScene,
     counts: () => ({rendererDisposals, envDisposals, observers}), close: () => dom.window.close()};
 }
+
+test('phone rotation follows the finger in one frame and vertical gestures remain scrolling', async () => {
+  const env = harness({reduced: false, mobile: true}); let api;
+  try {
+    api = await env.mount(env.host, {modelRequest: env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const canvas = env.host.querySelector('canvas');
+    const pointer = (type, x, y) => {
+      const event = new window.Event(type, {bubbles: true});
+      Object.assign(event, {pointerId: 1, pointerType: 'touch', button: 0, clientX: x, clientY: y});
+      canvas.dispatchEvent(event);
+    };
+    const flush = time => {const callbacks = [...env.frames.values()]; env.frames.clear(); callbacks.forEach(fn => fn(time));};
+    pointer('pointerdown', 40, 80); pointer('pointermove', 140, 82); flush(16);
+    assert.equal(api.getState().yaw, 2.25, '100px touch drag rotates 129 degrees without a smoothing tail');
+    pointer('pointerup', 140, 82); flush(32);
+    assert.equal(api.getState().yaw, 2.25, 'release does not spring back or continue drifting');
+    pointer('pointerdown', 40, 80); pointer('pointermove', 42, 150); flush(48);
+    assert.equal(api.getState().yaw, 2.25, 'vertical scrolling does not accidentally rotate the model');
+    pointer('pointercancel', 42, 150);
+    api.setProgress(.75); flush(64);
+    assert.equal(api.getState().renderedProgress, .75, 'scroll progress does not pass through a second easing layer');
+    api.setProgress(.2); flush(80);
+    assert.equal(api.getState().renderedProgress, .2, 'reversing immediately follows the new scroll position');
+  } finally {api?.dispose(); env.close();}
+});
+
+test('mouse rotation and desktop opening retain their existing gain and easing', async () => {
+  const env = harness({reduced: false, mobile: false}); let api;
+  try {
+    api = await env.mount(env.host, {modelRequest: env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const canvas = env.host.querySelector('canvas');
+    for (const [type, x] of [['pointerdown', 40], ['pointermove', 140]]) {
+      const event = new window.Event(type, {bubbles: true});
+      Object.assign(event, {pointerId: 2, pointerType: 'mouse', button: 0, clientX: x, clientY: 80});
+      canvas.dispatchEvent(event);
+    }
+    api.setProgress(.75);
+    const callbacks = [...env.frames.values()]; env.frames.clear(); callbacks.forEach(fn => fn(16));
+    const ease = 1 - Math.exp(-.016 * 13);
+    assert.ok(Math.abs(api.getState().yaw - 1.5 * ease) < 1e-12);
+    assert.ok(Math.abs(api.getState().renderedProgress - .75 * ease) < 1e-12);
+  } finally {api?.dispose(); env.close();}
+});
 
 test('published Body Oil keeps its seal inside the complete cap and restores five independent parts',async()=>{
   const product=PACKAGING_PRODUCTS['poster-073'];

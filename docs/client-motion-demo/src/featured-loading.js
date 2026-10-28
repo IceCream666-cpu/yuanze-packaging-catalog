@@ -11,6 +11,9 @@ export function createFeaturedLoadQueue({ids, onChange = () => {}, concurrency =
   };
   function pump() {
     let available = Math.max(1, concurrency) - Object.values(records).filter(item => item.status === 'loading').length;
+    // A newly selected product must not wait behind two older downloads.
+    // The extra slot is only for that current product, never more neighbours.
+    if (available === 0 && (records[selected]?.status === 'idle' || retries.has(selected))) available = 1;
     let changed = false;
     for (const id of candidates()) {
       const item = records[id];

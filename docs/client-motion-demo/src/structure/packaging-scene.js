@@ -255,6 +255,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const shadow = new T.Mesh(new T.PlaneGeometry(4.6, 4.6), new T.MeshBasicMaterial({map: shadowTexture, transparent: true, depthWrite: false})); // taste-skill-ignore: physical grounding under the model.
   shadow.rotation.x = -Math.PI/2; shadow.position.y = -.025; scene.add(shadow);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobileMotion = matchMedia('(max-width: 900px) and (pointer: coarse)').matches;
   let target = 0, current = 0, yaw = 0, pitch = 0, desiredYaw = 0, desiredPitch = 0, selected = null, focus = 0, width = 1, height = 1;
   const capTilt = new T.Quaternion(), linerTilt = new T.Quaternion();
   const rotationEuler = new T.Euler();
@@ -378,7 +379,9 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     if (disposed || document.hidden) return;
     const dt = Math.min((time-lastTime)/1000, .06) || .016; lastTime = time;
     const ease = reduced ? 1 : 1-Math.exp(-dt*13);
-    current += (target-current)*ease; yaw += (desiredYaw-yaw)*ease; pitch += (desiredPitch-pitch)*ease;
+    // Native phone scrolling already interpolates movement; do not delay it twice.
+    current = mobileMotion ? target : current + (target-current)*ease;
+    yaw = pointer?.touch ? desiredYaw : yaw + (desiredYaw-yaw)*ease; pitch += (desiredPitch-pitch)*ease;
     try {pose();} catch (error) {dispose(); onError?.(error); return;}
     if (Math.abs(target-current)+Math.abs(desiredYaw-yaw)+Math.abs(desiredPitch-pitch) > .0002) invalidate();
   }
@@ -397,11 +400,19 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   move = function(e) {
     if (!pointer || e.pointerId !== pointer.id) return;
     const dx = e.clientX-pointer.x, dy = e.clientY-pointer.y;
-    desiredYaw = pointer.yaw + dx*.015;
+    if (pointer.touch) {
+      if (!pointer.axis && Math.max(Math.abs(dx), Math.abs(dy)) < 5) return;
+      pointer.axis ||= Math.abs(dx) > Math.abs(dy) ? 'horizontal' : 'vertical';
+      if (pointer.axis === 'vertical') return;
+    }
+    desiredYaw = pointer.yaw + dx*(pointer.touch ? .0225 : .015);
     if (!pointer.touch) desiredPitch = clamp(pointer.pitch + dy*.006, -Math.PI*.75, Math.PI*.75);
     invalidate();
   }
-  up = function() { pointer = null; canvas.style.cursor = 'grab'; };
+  up = function() {
+    if (pointer?.touch) yaw = desiredYaw;
+    pointer = null; canvas.style.cursor = 'grab';
+  };
   lost = function(e) { e.preventDefault(); dispose(); onError?.(new Error('WebGL context lost')); };
   visible = function() { if (!document.hidden) { lastTime=0; invalidate(); } };
   canvas.style.cursor = 'grab';

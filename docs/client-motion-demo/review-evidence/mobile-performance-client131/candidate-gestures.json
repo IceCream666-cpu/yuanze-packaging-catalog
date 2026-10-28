@@ -1,0 +1,142 @@
+{
+  "initial": {
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "jar",
+        "print"
+      ],
+      "meshes": 21,
+      "triangles": 264066
+    },
+    "top": 0,
+    "range": 852,
+    "viewport": {
+      "width": 393,
+      "height": 852
+    }
+  },
+  "rotationEnd": {
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 2.6999999999999997,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "jar",
+        "print"
+      ],
+      "meshes": 21,
+      "triangles": 264066
+    },
+    "top": 0,
+    "range": 852,
+    "viewport": {
+      "width": 393,
+      "height": 852
+    }
+  },
+  "rotationSettled": {
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 2.6999999999999997,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "jar",
+        "print"
+      ],
+      "meshes": 21,
+      "triangles": 264066
+    },
+    "top": 0,
+    "range": 852,
+    "viewport": {
+      "width": 393,
+      "height": 852
+    }
+  },
+  "expansionEnd": {
+    "state": {
+      "progress": 0.264085,
+      "renderedProgress": 0.264085,
+      "yaw": 2.6999999999999997,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.006602125,
+        0.00105634,
+        0.009242975000000002
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "jar",
+        "print"
+      ],
+      "meshes": 21,
+      "triangles": 264066
+    },
+    "top": 225,
+    "range": 852,
+    "viewport": {
+      "width": 393,
+      "height": 852
+    }
+  },
+  "expansionSettled": {
+    "state": {
+      "progress": 0.264085,
+      "renderedProgress": 0.264085,
+      "yaw": 2.6999999999999997,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.006602125,
+        0.00105634,
+        0.009242975000000002
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "jar",
+        "print"
+      ],
+      "meshes": 21,
+      "triangles": 264066
+    },
+    "top": 225,
+    "range": 852,
+    "viewport": {
+      "width": 393,
+      "height": 852
+    }
+  }
+}

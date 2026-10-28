@@ -47,24 +47,32 @@ test('input hints keep whitespace and invisible-character protections', () => {
 });
 
 
-function setup({hidden=false, reduced=false, saveData=false, blocked=false}={}) {
+function setup({hidden=false, reduced=false, saveData=false, blocked=false, compact=false, legacyMedia=false, canvasError=false, drawError=false, videoFrames=false}={}) {
   const dom=new JSDOM('<div id="root"></div>',{url:'http://localhost:8772/login',pretendToBeVisual:true});
   const frames=new Map(); let serial=0,starts=0,draws=0,intersect;
   Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,IS_REACT_ACT_ENVIRONMENT:true,
     requestAnimationFrame:fn=>{frames.set(++serial,fn);return serial;},cancelAnimationFrame:id=>frames.delete(id),
     IntersectionObserver:class{constructor(fn){intersect=fn;}observe(){}disconnect(){}}});
   Object.defineProperty(document,'hidden',{configurable:true,value:hidden});
-  const listeners=new Set(),query={matches:reduced,addEventListener:(_,f)=>listeners.add(f),removeEventListener:(_,f)=>listeners.delete(f)};
-  window.matchMedia=()=>query;
+  const listeners=new Set();
+  const media=matches=>legacyMedia ? {matches,addListener:f=>listeners.add(f),removeListener:f=>listeners.delete(f)}
+    : {matches,addEventListener:(_,f)=>listeners.add(f),removeEventListener:(_,f)=>listeners.delete(f)};
+  const query=media(reduced),compactQuery=media(compact);
+  window.matchMedia=value=>value.includes('max-width') ? compactQuery : query;
   const previous=Object.getOwnPropertyDescriptor(navigator,'connection');
   const connection={saveData,addEventListener:(_,f)=>listeners.add(f),removeEventListener:(_,f)=>listeners.delete(f)};
   Object.defineProperty(navigator,'connection',{configurable:true,value:connection});
-  window.HTMLCanvasElement.prototype.getContext=()=>({drawImage(){draws++;}});
+  window.HTMLCanvasElement.prototype.getContext=()=>{if(canvasError)throw new Error('Canvas unavailable');return {drawImage(){if(drawError)throw new Error('Frame unavailable');draws++;}};};
+  if(videoFrames){
+    window.HTMLVideoElement.prototype.requestVideoFrameCallback=fn=>{frames.set(++serial,fn);return serial;};
+    window.HTMLVideoElement.prototype.cancelVideoFrameCallback=id=>frames.delete(id);
+  }
   const playing=new Set();
   window.HTMLMediaElement.prototype.play=async function(){starts++;if(blocked)throw new window.DOMException('Blocked','NotAllowedError');playing.add(this);};
   window.HTMLMediaElement.prototype.pause=function(){playing.delete(this);};
   const root=createRoot(document.getElementById('root'));
-  return {root,frames,playing,listeners,query,connection,get starts(){return starts;},get draws(){return draws;},unblock(){blocked=false;},
+  return {root,frames,playing,listeners,query,compactQuery,connection,get starts(){return starts;},get draws(){return draws;},unblock(){blocked=false;},
+    tick(now,mediaTime=now/1000){const video=document.querySelector('video');Object.defineProperty(video,'readyState',{configurable:true,value:4});video.currentTime=mediaTime;const callbacks=[...frames.values()];frames.clear();callbacks.forEach(fn=>fn(now,videoFrames?{mediaTime}:undefined));},
     async preference(){await act(async()=>listeners.forEach(f=>f()));},
     async visible(value){Object.defineProperty(document,'hidden',{configurable:true,value:!value});await act(async()=>document.dispatchEvent(new window.Event('visibilitychange')));},
     async inView(value){await act(async()=>intersect([{isIntersecting:value}]));},
@@ -119,4 +127,79 @@ test('autoplay denial preserves poster and login; genuine user gesture resumes, 
   await act(async()=>document.querySelector('form').dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true})));
   assert.deepEqual(calls.map(c=>c.route),['/api/login','/api/session']);assert.equal(calls[0].options.credentials,'same-origin');assert.equal(destination,'/');
  }finally{globalThis.fetch=originalFetch;await env.close();}
+});
+
+test('mobile mirrors fewer pixels and frames while retaining the original clear video',async()=>{
+ const measurements=[];
+ for(const compact of [false,true]){
+  const env=setup({compact,videoFrames:true});
+  try{
+   await act(async()=>env.root.render(<App/>));
+   for(let time=0;time<=1000;time+=50)env.tick(time);
+   const canvas=document.querySelector('canvas');
+   measurements.push({draws:env.draws,pixels:env.draws*canvas.width*canvas.height});
+   assert.equal(document.querySelector('video').getAttribute('src'),VIDEO_URL);
+   assert.equal(document.querySelectorAll('video').length,1);
+   assert.equal(env.starts,1,'Backdrop throttling must not restart the clear video');
+   assert.equal(document.querySelector('form')!==null,true);
+  }finally{await env.close();}
+ }
+ assert.deepEqual(measurements.map(value=>value.draws),[21,11]);
+ assert.ok(measurements[1].pixels<measurements[0].pixels/7);
+});
+
+test('a stalled video frame is not repeatedly copied by the animation-frame fallback',async()=>{
+ const env=setup();
+ try{
+  await act(async()=>env.root.render(<App/>));
+  for(let time=0;time<=500;time+=50)env.tick(time,0);
+  assert.equal(env.draws,1);
+  env.tick(550,.05);assert.equal(env.draws,2);
+  await env.visible(false);assert.equal(env.frames.size,0);
+ }finally{await env.close();}
+});
+
+test('an asynchronous video failure stops fallback frames and retains working login',async()=>{
+ const env=setup();const destinations=[];
+ try{
+  await act(async()=>env.root.render(<App transport={async()=>({role:'client'})} navigate={path=>destinations.push(path)}/>));
+  env.tick(100);assert.equal(env.draws,1);assert.equal(env.frames.size,1);
+  const video=document.querySelector('video');
+  Object.defineProperty(video,'error',{value:{code:3}});
+  await act(async()=>video.dispatchEvent(new window.Event('error')));
+  env.tick(150);
+  assert.equal(env.draws,1);
+  assert.equal(env.frames.size,0,'Do not keep polling a failed video');
+  assert.equal(document.querySelector('canvas').style.opacity,'0');
+  assert.equal(video.getAttribute('poster'),POSTER_URL);
+  await act(async()=>document.querySelector('form').dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true})));
+  assert.deepEqual(destinations,['/client']);
+ }finally{await env.close();}
+});
+
+test('legacy media listeners keep login mounted and react to reduced-motion changes',async()=>{
+ const env=setup({legacyMedia:true,compact:true});
+ try{
+  await act(async()=>env.root.render(<App/>));
+  assert.equal(document.querySelectorAll('form input').length,2);
+  env.query.matches=true;await env.preference();
+  assert.equal(document.querySelector('video').getAttribute('src'),null);
+  assert.equal(env.frames.size,0);
+  assert.equal(document.querySelector('button[type=submit]').disabled,false);
+ }finally{await env.close();}
+});
+
+test('canvas failures retain the poster and working account/password login',async()=>{
+ for(const failure of [{canvasError:true},{drawError:true}]){
+  const env=setup(failure);const destinations=[];
+  try{
+   await act(async()=>env.root.render(<App transport={async()=>({role:'client'})} navigate={path=>destinations.push(path)}/>));
+   env.tick(100);
+   assert.equal(document.querySelector('canvas').style.opacity,'0');
+   assert.equal(env.frames.size,0,'Do not keep scheduling a failed mirror');
+   assert.equal(document.querySelector('video').getAttribute('poster'),POSTER_URL);
+   await act(async()=>document.querySelector('form').dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true})));
+   assert.deepEqual(destinations,['/client']);
+  }finally{await env.close();}
+ }
 });

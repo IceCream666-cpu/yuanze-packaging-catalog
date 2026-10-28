@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "version": "yuanze2.0.3",
-  "sourceSha256": "18993745e73ce3b3718ac6610e22133558a81ff1c0d974959875f8c990a79dcf",
+  "sourceSha256": "f2067b1aeb3a257f6c3b3aa9d858577ecafa527c41851479dd69b63306b7889e",
   "files": {
     "assets/index-D0HF_jDm.css": {
       "sha256": "78ce2c999eabbaefacb3a2b76c2b02f2b79cdce055f61197fa5ec538fbc56d11",
@@ -20,8 +20,8 @@
       "bytes": 857
     },
     "login.js": {
-      "sha256": "cc43e1b0c5a50936de592309cb3e59ee71678b50d5e1357b28754b9afca4c922",
-      "bytes": 244452
+      "sha256": "92d69cec69d643cf1836102839b37b85dc9719f2260646ea4784ee2b785ef0c5",
+      "bytes": 244919
     }
   }
 }

@@ -95,7 +95,7 @@ export default function App({ transport = requestJSON, navigate = path => window
 
   return (
     <div data-login-motion={motion.playing ? 'playing' : 'paused'} className="relative isolate flex min-h-screen flex-col items-center justify-center bg-black px-4 py-7 text-[#17171b] sm:px-8 sm:py-12">
-      <MotionBackdrop canvasRef={motion.backdropRef} />
+      <MotionBackdrop canvasRef={motion.backdropRef} compact={motion.compact} />
       <div className="login-backdrop-shade pointer-events-none fixed inset-0 -z-10 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
 
       <main className="login-card relative z-10 flex w-full max-w-[1040px] flex-col rounded-[2.5rem] border border-gray-200 bg-white p-3 shadow-[0_32px_100px_rgba(0,0,0,0.48)] md:min-h-[650px] md:flex-row" aria-label="源泽登录">
@@ -153,6 +153,7 @@ export default function App({ transport = requestJSON, navigate = path => window
 function useLoginMotion() {
   const backdropRef = useRef(null), panelRef = useRef(null);
   const [enabled, setEnabled] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData);
+  const [compact, setCompact] = useState(() => window.matchMedia('(max-width: 767px)').matches);
   const [blocked, setBlocked] = useState(false);
   const [pageVisible, setPageVisible] = useState(() => !document.hidden);
   const [inView, setInView] = useState(true);
@@ -161,8 +162,12 @@ function useLoginMotion() {
   state.current = {enabled, blocked, pageVisible, inView};
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const compactQuery = window.matchMedia('(max-width: 767px)');
     const connection = navigator.connection;
-    const preference = () => setEnabled(!query.matches && !connection?.saveData);
+    const preference = () => {
+      setEnabled(!query.matches && !connection?.saveData);
+      setCompact(compactQuery.matches);
+    };
     const visibility = () => setPageVisible(!document.hidden);
     const gesture = () => {
       const current = state.current, video = panelRef.current;
@@ -173,7 +178,10 @@ function useLoginMotion() {
       setBlocked(false);
       video.play()?.catch(error => {if (error.name === 'NotAllowedError') setBlocked(true);});
     };
-    query.addEventListener('change', preference);
+    for (const media of [query, compactQuery]) {
+      if (media.addEventListener) media.addEventListener('change', preference);
+      else media.addListener?.(preference);
+    }
     connection?.addEventListener?.('change', preference);
     document.addEventListener('visibilitychange', visibility);
     document.addEventListener('pointerdown', gesture, {passive:true});
@@ -183,7 +191,10 @@ function useLoginMotion() {
     }) : null;
     if (panelRef.current) observer?.observe(panelRef.current);
     return () => {
-      query.removeEventListener('change', preference);
+      for (const media of [query, compactQuery]) {
+        if (media.removeEventListener) media.removeEventListener('change', preference);
+        else media.removeListener?.(preference);
+      }
       connection?.removeEventListener?.('change', preference);
       document.removeEventListener('visibilitychange', visibility);
       document.removeEventListener('pointerdown', gesture);
@@ -194,30 +205,34 @@ function useLoginMotion() {
   useEffect(() => {
     const video = panelRef.current, canvas = backdropRef.current;
     if (!video || !playing || video.error) {video?.pause(); return;}
-    let active = true, frame = 0, last = 0;
-    const context = canvas?.getContext('2d', {alpha:false});
-    const draw = now => {
+    let active = true, frame = 0, last = -Infinity, mediaTime = -1, context;
+    try { context = canvas?.getContext('2d', {alpha:false}); } catch { /* Keep the poster when canvas is unavailable. */ }
+    const draw = (now, metadata) => {
       if (!active) return;
-      if (context && video.readyState >= 2 && now - last >= 45) {
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        canvas.style.opacity = '1'; last = now;
+      if (video.error) { canvas.style.opacity = '0'; return; }
+      const nextTime = metadata?.mediaTime ?? video.currentTime;
+      // The blurred phone backdrop needs less work; the clear video stays at its original frame rate.
+      if (video.readyState >= 2 && now - last >= (compact ? 100 : 45) && nextTime !== mediaTime) {
+        try { context.drawImage(video, 0, 0, canvas.width, canvas.height); }
+        catch { canvas.style.opacity = '0'; return; }
+        canvas.style.opacity = '1'; last = now; mediaTime = nextTime;
       }
       frame = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
     };
     video.muted = true;
     video.play()?.catch(error => {if (active && error.name === 'NotAllowedError') setBlocked(true);});
-    frame = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
+    if (context) frame = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
     return () => {
       active = false; video.pause();
       if (video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(frame); else cancelAnimationFrame(frame);
     };
-  }, [playing]);
-  return {backdropRef, panelRef, playing, enabled};
+  }, [playing, compact]);
+  return {backdropRef, panelRef, playing, enabled, compact};
 }
 
-const MotionBackdrop = memo(function MotionBackdrop({canvasRef}) {
+const MotionBackdrop = memo(function MotionBackdrop({canvasRef, compact}) {
   return <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-black" aria-hidden="true" style={{backgroundImage:`url(${POSTER_URL})`, backgroundSize:'cover', backgroundPosition:'center'}}>
-    <canvas ref={canvasRef} data-login-backdrop width="384" height="512" style={{opacity:0}} className="h-full w-full scale-105 object-cover"/>
+    <canvas ref={canvasRef} data-login-backdrop width={compact ? 192 : 384} height={compact ? 256 : 512} style={{opacity:0}} className="h-full w-full scale-105 object-cover"/>
   </div>;
 });
 

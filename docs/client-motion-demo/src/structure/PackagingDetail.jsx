@@ -133,7 +133,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
       const top = trigger.start + (trigger.end - trigger.start) * retained;
       scrollRef.current?.scrollTo({ top, behavior: 'instant' });
       trigger.update();
-      trigger.getTween()?.progress(1);
+      trigger.getTween()?.progress?.(1);
       trigger.animation?.progress(retained);
       update(retained, true);
       refreshProgress = null;
@@ -211,7 +211,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
                 scroller: scrollRef.current,
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: .22,
+                scrub: window.matchMedia('(max-width: 900px) and (pointer: coarse)').matches ? true : .22,
                 invalidateOnRefresh: true,
                 onRefreshInit: () => {
                   refreshProgress = resizeProgress ?? progressRef.current;
@@ -264,7 +264,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
     scrollRef.current?.scrollTo({ top, behavior: smooth ? 'smooth' : 'instant' });
     if (!smooth) {
       trigger.update();
-      trigger.getTween()?.progress(1);
+      trigger.getTween()?.progress?.(1);
       updateRef.current?.(progress);
     }
   }
