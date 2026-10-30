@@ -270,10 +270,51 @@ class AHABodyMistModelTests(ReviewedPackagingChecks, ExportedModelReader):
 class OilInfusedBodyCreamModelTests(ReviewedPackagingChecks, ExportedModelReader):
     model_id = 'poster-061'
     body_name = 'Taller hollow frosted round-bottom bottle'
-    component_counts = {'Body': 2, 'Closure': 2, 'PumpStem': 2, 'Actuator': 4, 'PaperLabel': 2, 'LogoPrint': 2}
+    component_counts = {'Body': 2, 'PumpAssembly': 10, 'PaperLabel': 2, 'LogoPrint': 2}
     floor_ratio = .11
     svg_copy = {'print.svg': ['OIL-INFUSED', 'BODY CREAM']}
     complete_copy = ['liaose', 'OIL-INFUSED', 'BODY CREAM']
+
+    def test_complete_pumps_have_open_clear_tubes_fitted_above_the_glass_floor(self):
+        assembly = self.nodes[self.named['PumpAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in assembly['children']}, {'Closure', 'PumpStem', 'Actuator'})
+        self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
+        self.assertEqual(len(self.mesh_names()), 16)
+        product = json.loads((CLIENT / 'src/structure/collection-products.json').read_text())[self.model_id]
+        review = json.loads((self.source() / 'review-config.json').read_text())
+        self.assertEqual(review, {'parts': product['parts'], **product['review']})
+        manifest = json.loads((CLIENT / 'packaging-manifest.json').read_text())
+        entry = next(item for item in manifest['additionalProducts'] if item['posterId'] == self.model_id)
+        self.assertEqual(entry['components'], [part['node'] for part in product['parts']])
+        width = self.width()
+        for prefix, h in [('Smaller', 1.40), ('Taller', 1.52)]:
+            tube = prefix + ' hollow clear dip tube'
+            self.assertEqual(self.ancestor(tube), 'PumpAssembly')
+            low, high = self.bounds(self.positions(tube))
+            cx, cz = (low[0] + high[0]) / 2, (low[2] + high[2]) / 2
+            self.assertEqual(self.ray_intersections(tube, a=cx, b=cz), [], 'Both ends of the dip tube remain open.')
+            self.assertAlmostEqual(low[1] / width, .14, delta=.001)
+            self.assertAlmostEqual(high[1] / width, h - .035, delta=.001)
+            self.assertAlmostEqual((high[0] - low[0]) / width, .056, delta=.001)
+            opening = self.ray_intersections(tube, direction=0, a=.5 * width, b=cz)
+            self.assertAlmostEqual(min(x-cx for x in opening if x>cx) / width, .019, delta=.001)
+            floor = max(self.ray_intersections(prefix + ' hollow frosted round-bottom bottle', a=cx, b=cz))
+            self.assertAlmostEqual((low[1] - floor) / width, .03, delta=.001)
+            mouth = self.bounds(self.positions(prefix + ' hollow frosted round-bottom bottle'))[1][1]
+            self.assertGreater(low[1] + review['explosion']['offsets']['closure'][1] - mouth, .38)
+            self.assertEqual(self.material(tube)['extensions']['KHR_materials_transmission']['transmissionFactor'], 1)
+            self.assertLessEqual(self.material(tube)['pbrMetallicRoughness']['roughnessFactor'], .061)
+            points = self.positions(tube)
+            welded = [tuple(round(v / width, 6) for v in point) for point in points]
+            indices = [x[0] for x in self.accessor(self.primitive(tube)['indices'])]
+            edges = Counter()
+            for i in range(0, len(indices), 3):
+                a, b, c = [welded[j] for j in indices[i:i+3]]
+                self.assertEqual(len({a, b, c}), 3)
+                edges.update(tuple(sorted(e)) for e in [(a, b), (b, c), (c, a)])
+            self.assertEqual(set(edges.values()), {2}, 'The open bore must have a closed, manifold wall.')
+        self.assertGreater(review['explosion']['offsets']['print'][2], review['explosion']['offsets']['label'][2])
 
     def test_two_reference_heights_round_bases_and_open_right_facing_spouts(self):
         width = self.width()

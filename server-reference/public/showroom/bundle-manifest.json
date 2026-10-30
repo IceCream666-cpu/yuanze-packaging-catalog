@@ -592,13 +592,13 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
+    "assets/packaging/PackagingDetail-BLd6tQlv.js": {
+      "bytes": 12360,
+      "sha256": "81912759067be1802e79aa98d4e1873d1c5b412f4afab537cf0613d7f9306d43"
+    },
     "assets/packaging/PackagingDetail-DKVlGnbY.css": {
       "bytes": 12107,
       "sha256": "fd4e7f86885747e0a4dfa3bc41a85b9f9bb9682c7b65ca9e1f878c029e2396b9"
-    },
-    "assets/packaging/PackagingDetail-DVDxrEJs.js": {
-      "bytes": 12360,
-      "sha256": "b798ef76d61bd0800056558cf30a5303a0b9a409a64760425c48a5583fd887db"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
@@ -616,9 +616,9 @@
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
     },
-    "assets/packaging/packaging-scene-zi-Z7xmE.js": {
-      "bytes": 578136,
-      "sha256": "23a86282487b80964e464444aaa38d69eedfa1d82f91d680f59b491c7cf3fa52"
+    "assets/packaging/packaging-scene-DKSVoSXn.js": {
+      "bytes": 578662,
+      "sha256": "14126dcbba6e892de967bf7d1bb9738b32678dde4de659f88c9b63754f044d9d"
     },
     "assets/packaging/poster-013.glb": {
       "bytes": 1064352,
@@ -669,8 +669,8 @@
       "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b"
     },
     "assets/packaging/poster-061.glb": {
-      "bytes": 1042708,
-      "sha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a"
+      "bytes": 1103220,
+      "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485"
     },
     "assets/packaging/poster-062.glb": {
       "bytes": 279060,
@@ -1818,15 +1818,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "cc22bdcfa30487363a7308be27f7a00f3016c7b8f2b9c11b7c456ae102751251"
+      "sha256": "ddb8231962ed5d8aa924ea55130091fa2c3cb31c1a6d1c35cee3b96bd0c57c72"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 385143,
-      "sha256": "41b1253b6853062db55512ffdc5f0c65f649283506d0b88e5320a95fdf691380"
+      "bytes": 384759,
+      "sha256": "775b3af937107145e56be963048ed00ab58ed6bbe849c3dd9d2acf35f7b413a2"
     },
     "product-posters.js": {
       "bytes": 21629,
@@ -1835,5 +1835,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.35"
+  "version": "client1.36"
 }
