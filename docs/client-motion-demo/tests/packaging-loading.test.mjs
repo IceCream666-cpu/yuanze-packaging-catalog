@@ -1293,10 +1293,26 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
 }
  test('reference glass reflection tuning is limited to the two revised bottles',async()=>{
   for(const enabled of [true,false]){
-    const product=structuredClone(PACKAGING_PRODUCTS['poster-073']);product.review.appearance.referenceGlass=enabled;let loaded,api;
+    const product=structuredClone(PACKAGING_PRODUCTS['poster-072']);product.review.appearance.referenceGlass=enabled;let loaded,api;
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
   }
   assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-072','poster-073']);
  });
 
+ test('Body Oil glass refinement stays on the hollow bottle and preserves shared cap material',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-073'];let loaded,api;
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});
+  try{
+    loaded=env.model();const body=loaded.scene.getObjectByName('Body'),cap=loaded.scene.getObjectByName('Closure');
+    body.material.transmission=1;cap.material=body.material;
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    assert.notEqual(body.material,cap.material);assert.equal(body.material.side,Three.DoubleSide);
+    assert.equal(body.material.transmission,1);assert.equal(body.material.ior,1.52);
+    assert.equal(body.material.roughness,.018);assert.equal(body.material.thickness,.12);
+    assert.equal(cap.material.ior,1.48);assert.equal(cap.material.envMapIntensity,.75);
+    const shader={fragmentShader:'#include <dithering_fragment>'};body.material.onBeforeCompile(shader);
+    assert.ok(shader.fragmentShader.includes('1.0 - .08 * wallEdge'));
+    assert.deepEqual(api.getState().components.sort(),['body','closure','label','name','print']);
+  }finally{api?.dispose();env.close();}
+ });

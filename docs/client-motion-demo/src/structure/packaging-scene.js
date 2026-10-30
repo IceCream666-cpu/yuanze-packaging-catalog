@@ -24,9 +24,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const coastal = product.file === 'poster-047.glb';
   const golden = product.file === 'poster-056.glb';
   const b5 = product.file === 'poster-057.glb';
+  const bodyOil = product.file === 'poster-073.glb';
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
-  let renderer, canvas, scene, envTarget, key, observer, api, studio;
+  let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
   const mark = phase => modelRequest?.mark(phase);
   const signals = [signal, modelRequest?.signal].filter(Boolean);
@@ -44,7 +45,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     canvas?.removeEventListener('lostpointercapture', up); canvas?.removeEventListener('webglcontextlost', lost);
     document.removeEventListener('visibilitychange', visible);
     disposeObjects(scene, studio);
-    envTarget?.dispose(); key?.shadow.map?.dispose(); key?.shadow.mapPass?.dispose();
+    envTarget?.dispose(); oilEnvTarget?.dispose(); key?.shadow.map?.dispose(); key?.shadow.mapPass?.dispose();
     renderer?.dispose(); canvas?.remove();
     if (host.__packagingScene === api) delete host.__packagingScene;
   }
@@ -77,12 +78,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   studio.background = new T.Color('#858480');
   const cardGeometry = new T.PlaneGeometry(1, 1);
   const cardMaterials = [];
-  const reflectionCard = (position, scale, color, strength) => {
+  const reflectionCard = (position, scale, color, strength, target = studio) => {
     const material = new T.MeshBasicMaterial({ color, side: T.DoubleSide });
     material.color.multiplyScalar(strength); cardMaterials.push(material);
     const card = new T.Mesh(cardGeometry, material);
     card.position.set(...position); card.scale.set(...scale, 1); card.lookAt(0, 0, 0);
-    studio.add(card);
+    target.add(card);
   };
   reflectionCard([-5, 3, 4], [2.3, 7], '#fff8eb', 3.2);
   reflectionCard([5, 1, 1], [1.4, 6], '#edf4ff', 2.1);
@@ -110,7 +111,18 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   }
   const pmrem = new T.PMREMGenerator(renderer);
   mark('pmremStart');
-  try {envTarget = pmrem.fromScene(studio, .025);} finally {pmrem.dispose();}
+  try {
+    envTarget = pmrem.fromScene(studio, .025);
+    if (bodyOil) {
+      // A dedicated glass studio keeps the ivory cap on its approved lighting.
+      const glassStudio = new T.Scene(); glassStudio.background = new T.Color('#343638');
+      reflectionCard([-4, 2, 5], [.55, 8], '#ffffff', 4.2, glassStudio);
+      reflectionCard([4, 1, 3], [.28, 7], '#eef4ff', 3.2, glassStudio);
+      reflectionCard([0, 6, -2], [4, 2], '#ffffff', 2, glassStudio);
+      reflectionCard([-4, 1, -4], [2, 6], '#ffffff', 1.4, glassStudio);
+      oilEnvTarget = pmrem.fromScene(glassStudio, .012);
+    }
+  } finally {pmrem.dispose();}
   mark('pmremEnd');
   scene.environment = envTarget.texture;
   cardGeometry.dispose(); cardMaterials.forEach(m => m.dispose()); studio = null;
@@ -149,11 +161,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     let component=o; while(component.parent && component.parent!==model) component=component.parent;
     const isReviewOvercap=review && component===parts.overcap;
     const isReviewFilm=review && component===parts.refill;
+    const isOilGlass=bodyOil && component===parts.body && o.material.transmission>.5;
     o.frustumCulled = false;
     // GLTFLoader replaces spaces in object names; userData retains the source name.
     const isPullTongue = (o.userData.name || o.name).replaceAll('_', ' ').includes('short flexible pull tongue');
     // Component-specific finishes must not mutate another part sharing the GLB material.
-    if (isPullTongue || isReviewOvercap || isReviewFilm || (golden && o.material.name.includes('olive')) || (appearance?.tintedGlass && o.material.transmission>.5)) o.material = o.material.clone();
+    if (isOilGlass || isPullTongue || isReviewOvercap || isReviewFilm || (golden && o.material.name.includes('olive')) || (appearance?.tintedGlass && o.material.transmission>.5)) o.material = o.material.clone();
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
@@ -176,11 +189,16 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           m.toneMapped=isReviewOvercap && appearance?.overcapToneMapped !== false && appearance?.clearOvercap !== true; m.specularIntensity=review ? .35 : .7;
           if (appearance?.referenceGlass) {m.envMapIntensity=.75; m.specularIntensity=.8; m.thickness=isReviewOvercap ? .02 : .045;}
           m.transparent=false; m.opacity=1; m.side=isReviewOvercap || isReviewFilm || golden && m.name.includes('overcap') ? T.FrontSide : T.DoubleSide;
+          // Keep both hollow-wall interfaces; narrow studio reflections describe the clear glass.
+          if (isOilGlass) {
+            m.color.set('#ffffff'); m.transmission=1; m.roughness=.018; m.ior=1.52;
+            m.thickness=.12; m.envMap=oilEnvTarget.texture; m.envMapIntensity=1; m.specularIntensity=1;
+          }
           // The same restrained rim correction used by the first approved glass jar.
           m.onBeforeCompile = shader => {
             shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
               float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
-              gl_FragColor.rgb *= 1.0 - 0.18 * wallEdge;
+              gl_FragColor.rgb *= 1.0 - ${isOilGlass ? ".08" : ".18"} * wallEdge;
             `);
           };
           o.castShadow=false; o.receiveShadow=false;
