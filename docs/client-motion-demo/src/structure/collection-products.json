@@ -1706,51 +1706,19 @@
     "wide": true,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
+        "key": "closure",
+        "node": "PumpAssembly",
         "title": [
-          "深蓝长嘴泵头",
-          "Navy head"
+          "完整深蓝泵头与吸管",
+          "Complete navy pump and dip tube"
         ],
         "short": [
-          "泵头",
-          "Navy"
-        ],
-        "detail": [
-          "向左弯曲出液嘴与宽按压面。",
-          "Curved left-facing spout with a broad pressing surface."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "泵杆与吸管",
-          "Pump stem"
-        ],
-        "short": [
-          "泵杆",
+          "泵头总成",
           "Pump"
         ],
         "detail": [
-          "连接泵杆、内部泵芯与空心吸管。",
-          "Connecting stem, internal pump chamber and hollow dip tube."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "深蓝旋盖",
-          "Navy collar"
-        ],
-        "short": [
-          "外盖",
-          "Navy"
-        ],
-        "detail": [
-          "双层台阶圆筒盖座。",
-          "Cylindrical screw collar with two raised steps."
+          "长嘴按头、旋盖、泵芯与透明长吸管保持连接，整体上提。",
+          "The spout, collar, pump chamber and clear dip tube lift as one unit."
         ]
       },
       {
@@ -1832,19 +1800,9 @@
       },
       "explosion": {
         "offsets": {
-          "head": [
-            0,
-            4.5,
-            0
-          ],
-          "stem": [
-            0,
-            3.6,
-            0
-          ],
           "closure": [
             0,
-            1.0,
+            2.45,
             0
           ],
           "refill": [
@@ -1854,12 +1812,12 @@
           ],
           "label": [
             -2.55,
-            0.08,
+            0.65,
             0.65
           ],
           "print": [
             -4.8,
-            0.18,
+            -1.6,
             1.65
           ]
         },
@@ -1870,11 +1828,11 @@
         "camera": {
           "centerY": [
             1.45,
-            3.55
+            1.6
           ],
           "height": [
             4.3,
-            9.5
+            8.1
           ],
           "width": [
             4.7,

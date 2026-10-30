@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-30",
+  "product": "Tea Tree Shampoo and Refill",
+  "productId": "poster-065",
+  "selectionNumber": 18,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "selectedRevisionOrder": [
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23
+  ],
+  "selectedProgress": {
+    "revisionsPublished": 11,
+    "localAwaitingReview": 1,
+    "queued": 4
+  },
+  "nextProduct": {
+    "selectionNumber": 19,
+    "id": "poster-066",
+    "name": "Rose Hair Oil",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedSelections": [
+    19,
+    20,
+    21,
+    23
+  ],
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-065",
+  "components": [
+    "PumpAssembly",
+    "Body",
+    "RefillPouch",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "containsFormula": false,
+  "preservedGeometry": {
+    "nonTubeMeshesIdentical": 18,
+    "artworkFilesIdentical": 8,
+    "other25ModelsUnchanged": true
+  },
+  "animation": {
+    "offsets": {
+      "closure": [
+        0,
+        2.45,
+        0
+      ],
+      "refill": [
+        1.15,
+        0.05,
+        0
+      ],
+      "label": [
+        -2.55,
+        0.65,
+        0.65
+      ],
+      "print": [
+        -4.8,
+        -1.6,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        1.6
+      ],
+      "height": [
+        4.3,
+        8.1
+      ],
+      "width": [
+        4.7,
+        11.8
+      ],
+      "centerX": [
+        0.8,
+        -0.6
+      ]
+    }
+  },
+  "tube": {
+    "outerDiameterToWidth": 0.07,
+    "innerDiameterToWidth": 0.052,
+    "tipOuterDiameterToWidth": 0.048,
+    "tipInnerDiameterToWidth": 0.036,
+    "openAxialBore": true,
+    "closedInnerFloorGap": 0.02075136870732042,
+    "fullyOpenBottleMouthGap": 0.42674438025528705,
+    "pumpInsertion": {
+      "boreRadiusToBody": 0.02599999908088843,
+      "boreMaxAngularFaceWidth": 0.050670900000000074,
+      "tipMaximumRadialExtentToBody": 0.024000002605263665,
+      "minimumConservativeRadialGapToBody": 0.001991652416914135,
+      "minimumConservativeRadialGapWorld": 0.002066472862023054,
+      "chamberBottomToBody": 1.4000000001726476,
+      "tubeTopToBody": 1.4800000430879918,
+      "insertionDepthToBody": 0.08000004291534424,
+      "tipCentered": true,
+      "intersectsChamberWall": false
+    }
+  },
+  "model": {
+    "bytes": 2748700,
+    "sha256": "b1952717562fd2f22fea1b2364499f471b7abc68f93ce8c5414b98f01032976b"
+  },
+  "validation": {
+    "geometryTestsPassed": 8,
+    "integrationTestsPassed": 2,
+    "frontendTestsPassed": 177,
+    "reviewGalleryTestsPassed": 7,
+    "viteBuild": "passed",
+    "sourcePublicDistAndLocalHttpSha256": "identical",
+    "impeccableDetectorFindings": 0,
+    "independentGeometryReview": "passed-original-18-mesh-preservation-and-hollow-tube-fit",
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "rotated-90-degrees"
+      ],
+      "posterRoundtrip": "passed-1280x960"
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "emulated": true,
+      "physicalDevice": false,
+      "states": [
+        "closed",
+        "open"
+      ],
+      "horizontalOverflow": false
+    },
+    "independentVisualReview": "passed-all-six-final-screenshots"
+  },
+  "appearanceCorrection": {
+    "scope": "poster-065 clear plastic dip tube only; existing 061/064 parameters preserved",
+    "transmission": 1,
+    "roughness": 0.06,
+    "ior": 1.46,
+    "thickness": 0.01868,
+    "labelAndPrintCorrection": "Separated label substrates above and lettering below to resolve REFILL overlapping the other label in narrow front view. Original X/Z travel and scales preserved."
+  },
+  "evidence": "review-evidence/tea-tree-shampoo/simplified-pump/",
+  "limitations": [
+    "Mobile is a simulated viewport, not a physical device.",
+    "Small lettering remains small on narrow screens; clear tube edges are subtle against the gray-blue background.",
+    "Planar print and pouch become edge-on near 90-degree yaw.",
+    "Hidden dimensions and pump fit are illustrative, not manufacturing measurements."
+  ]
+}

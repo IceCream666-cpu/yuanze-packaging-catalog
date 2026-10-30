@@ -1226,7 +1226,7 @@ test('Essence Duo keeps both fitted droppers intact throughout desktop and phone
   }
 });
 
-for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45]]) {
+for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45],['poster-065',2.45]]) {
 test(`${id} keeps its complete pumps and clear tubes intact throughout desktop and phone motion`,async()=>{
   const product=PACKAGING_PRODUCTS[id];
   const bytes=readFileSync(new URL(`../packaging-assets/${id}.glb`,import.meta.url));
@@ -1235,7 +1235,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
   const nodes=gltf.nodes.map(node=>{
     const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
     object.name=node.name;
-    if ('mesh' in node && (id==='poster-061' || id==='poster-064')) {
+    if ('mesh' in node && (id==='poster-061' || id==='poster-064' || id==='poster-065')) {
       const exported=gltf.materials[gltf.meshes[node.mesh].primitives[0].material];
       object.material.name=exported.name;
       object.material.transmission=exported.extensions?.KHR_materials_transmission?.transmissionFactor??0;
@@ -1285,6 +1285,13 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
       assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.02918);assert.equal(tube.side,Three.FrontSide);
       const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
     }
+    if(id==='poster-065') {
+      const tube=loaded.scene.getObjectByName('Open hollow dip tube').material;
+      const body=loaded.scene.getObjectByName('Hollow round shampoo bottle with sloping shoulder').material;
+      assert.equal(body.transmission,1);assert.ok(Math.abs(body.roughness-.027)<.001);
+      assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.01868);assert.equal(tube.side,Three.FrontSide);
+      const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
+    }
     const rest=api.getState().partStates;
     for(const value of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
@@ -1298,7 +1305,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
       assert.ok(Math.abs(state.partStates.print.offset[2]-state.partStates.label.offset[2]-value)<1e-8);
       if(!value)assert.deepEqual(state.partStates,rest);
     }
-    assert.deepEqual(Object.keys(rest).sort(),id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
+    assert.deepEqual(Object.keys(rest).sort(),id==='poster-065' ? ['closure','jar','label','print','refill'] : id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
   }finally{api?.dispose();env.close();}
   }
 });

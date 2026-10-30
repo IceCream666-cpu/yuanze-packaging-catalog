@@ -275,7 +275,7 @@
     "mobilePhysicalDeviceTested": false
   },
   "poster-061": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "PumpAssembly",
       "Body",
@@ -287,10 +287,20 @@
       "open": "/review-assets/poster-061-open.webp"
     },
     "background": "#d7d0c0",
-    "revision": "complete-pumps-local-awaiting-review",
-    "publishedRevision": false,
+    "revision": "complete-pumps-published-live-verified",
+    "publishedRevision": true,
     "previousPublishedModelSha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a",
-    "localRevisionReceipt": "oil-cream-simplified-preview-verification.json"
+    "localRevisionReceipt": "oil-cream-simplified-preview-verification.json",
+    "releaseVersion": "client1.36",
+    "releasedAt": "2026-10-30T16:58:11+08:00",
+    "releaseSourceCommit": "8e9acf004c19088cd2bb4854b45198aa0334420f",
+    "releaseReceipt": "client136-oil-cream-release.json",
+    "releaseReceiptCommit": "3dca4dc53284df8a5e1f36d377460b182bdb7bd1",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-simulated-mobile-viewport",
+    "releaseHttpsVerifiedAt": "2026-10-30T17:13:26+08:00",
+    "releaseManifestSha256": "da7d4cf166dde106b7464acc2b7eef44e582dfc7cd4b3761fa98cdf724bb656c",
+    "mobilePhysicalDeviceTested": false
   },
   "poster-062": {
     "state": "published",
@@ -323,7 +333,7 @@
     "background": "#e6d9c9"
   },
   "poster-064": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "PumpAssembly",
       "BottleAssembly",
@@ -335,17 +345,25 @@
       "open": "/review-assets/poster-064-open.webp"
     },
     "background": "#e0d3ae",
-    "revision": "complete-pump-tied-cord-local-awaiting-review",
-    "publishedRevision": false,
+    "revision": "complete-pump-tied-cord-published-live-verified",
+    "publishedRevision": true,
     "previousPublishedModelSha256": "1228bed596498239bebea597ff5511f81e8deb194927fc18d01b1d6e4bf475d6",
-    "localRevisionReceipt": "aromatic-simplified-preview-verification.json"
+    "localRevisionReceipt": "aromatic-simplified-preview-verification.json",
+    "releaseVersion": "client1.37",
+    "releasedAt": "2026-10-30T17:16:01+08:00",
+    "releaseSourceCommit": "8b39ebd3b8f496ae8948c0819f979b7dfd1f87aa",
+    "releaseReceipt": "client137-aromatic-lotion-release.json",
+    "releaseReceiptCommit": "3dca4dc53284df8a5e1f36d377460b182bdb7bd1",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-simulated-mobile-viewport",
+    "releaseHttpsVerifiedAt": "2026-10-30T17:18:31+08:00",
+    "releaseManifestSha256": "7f817d1d3e7f85376bc8b1cd830a13c5587f0f19772a92659939cc4bcde1a64b",
+    "mobilePhysicalDeviceTested": false
   },
   "poster-065": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "RefillPouch",
       "PaperLabel",
@@ -355,7 +373,11 @@
       "closed": "/review-assets/poster-065-closed.webp",
       "open": "/review-assets/poster-065-open.webp"
     },
-    "background": "#646e7a"
+    "background": "#626d7c",
+    "revision": "complete-pump-clear-tube-local-awaiting-review",
+    "publishedRevision": false,
+    "previousPublishedModelSha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2",
+    "localRevisionReceipt": "tea-tree-simplified-preview-verification.json"
   },
   "poster-066": {
     "state": "published",

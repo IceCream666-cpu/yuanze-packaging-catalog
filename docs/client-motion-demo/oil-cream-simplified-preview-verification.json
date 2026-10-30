@@ -158,5 +158,14 @@
     "sourceCommit": "5d6e271ddbf58c8e5b0f735e046b9b2b5d88f25c",
     "receiptCommit": "700cf24454a55ece747cbd7aedc72d4007ca04b2",
     "receipt": "client133-aha-mist-release.json"
+  },
+  "publicationUpdate": {
+    "version": "client1.36",
+    "state": "published-and-live-verified",
+    "publishedAt": "2026-10-30T16:58:11+08:00",
+    "receipt": "client136-oil-cream-release.json",
+    "sourceCommit": "8e9acf004c19088cd2bb4854b45198aa0334420f",
+    "receiptCommit": "3dca4dc53284df8a5e1f36d377460b182bdb7bd1",
+    "note": "The preview and queue counts above describe the historical preview; this approved revision is now independently published and live verified."
   }
 }

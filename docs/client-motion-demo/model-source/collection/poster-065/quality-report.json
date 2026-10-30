@@ -1,0 +1,141 @@
+{
+  "id": "poster-065",
+  "bytes": 2748700,
+  "sha256": "b1952717562fd2f22fea1b2364499f471b7abc68f93ce8c5414b98f01032976b",
+  "meshes": [
+    {
+      "mesh": "Hollow round shampoo bottle with sloping shoulder",
+      "triangles": 7440,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9706270125564268
+    },
+    {
+      "mesh": "Bottom gusset seal",
+      "triangles": 576,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9855336882918411
+    },
+    {
+      "mesh": "Front thin refill pouch skin",
+      "triangles": 25216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5516896494985648
+    },
+    {
+      "mesh": "Left heat sealed pouch margin",
+      "triangles": 192,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9870009629249656
+    },
+    {
+      "mesh": "Rear thin refill pouch skin",
+      "triangles": 25216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5516896494985648
+    },
+    {
+      "mesh": "Right heat sealed pouch margin",
+      "triangles": 192,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.989976639007746
+    },
+    {
+      "mesh": "Wide top heat seal",
+      "triangles": 576,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.981072122970491
+    },
+    {
+      "mesh": "Blank navy bottle paper label",
+      "triangles": 1024,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9999011211313515
+    },
+    {
+      "mesh": "Blank navy refill pouch label",
+      "triangles": 1024,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9998704250449719
+    },
+    {
+      "mesh": "Complete Tea Tree bottle lettering",
+      "triangles": 1024,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9999013996052339
+    },
+    {
+      "mesh": "Complete Tea Tree refill lettering",
+      "triangles": 1024,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9998704251437938
+    },
+    {
+      "mesh": "Dark recessed nozzle opening",
+      "triangles": 30,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 1.0
+    },
+    {
+      "mesh": "Long curved navy dispensing head",
+      "triangles": 572,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.4837404390176137
+    },
+    {
+      "mesh": "Navy actuator hub",
+      "triangles": 992,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8448364522279022
+    },
+    {
+      "mesh": "Navy raised collar step",
+      "triangles": 1488,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.934821384053298
+    },
+    {
+      "mesh": "Navy smooth pump screw collar",
+      "triangles": 1984,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9540091078290541
+    },
+    {
+      "mesh": "Ivory internal pump chamber",
+      "triangles": 2232,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8925066735196663
+    },
+    {
+      "mesh": "Open hollow dip tube",
+      "triangles": 1472,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9899714757727625
+    },
+    {
+      "mesh": "Visible navy connecting pump stem",
+      "triangles": 1488,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9789415553250511
+    }
+  ],
+  "checks": "All19 exported meshes checked against triangle normals. Original18 non-tube meshes retained; existing dip tube made clear and thicker with a tapered centred tip. Label/print and pouch seams intentionally open."
+}

@@ -1,0 +1,781 @@
+{
+  "status": "pass",
+  "model": "poster-065",
+  "method": "Independent GLB decoding and baseline byte comparison; no production or browser mutation",
+  "beforeSha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2",
+  "afterSha256": "b1952717562fd2f22fea1b2364499f471b7abc68f93ce8c5414b98f01032976b",
+  "meshCount": 19,
+  "unchangedMeshes": 18,
+  "changedMesh": "Open hollow dip tube",
+  "nonTubeAttributesIndicesWorldVerticesMaterialsAndEmbeddedImagesExact": true,
+  "meshes": [
+    {
+      "name": "Blank navy bottle paper label",
+      "oldRoot": "PaperLabel",
+      "newRoot": "PaperLabel",
+      "oldVertexCount": 585,
+      "newVertexCount": 585,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true,
+        "TEXCOORD_0": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Blank navy refill pouch label",
+      "oldRoot": "PaperLabel",
+      "newRoot": "PaperLabel",
+      "oldVertexCount": 585,
+      "newVertexCount": 585,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true,
+        "TEXCOORD_0": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Bottom gusset seal",
+      "oldRoot": "RefillPouch",
+      "newRoot": "RefillPouch",
+      "oldVertexCount": 343,
+      "newVertexCount": 343,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Complete Tea Tree bottle lettering",
+      "oldRoot": "LogoPrint",
+      "newRoot": "LogoPrint",
+      "oldVertexCount": 585,
+      "newVertexCount": 585,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true,
+        "TEXCOORD_0": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Complete Tea Tree refill lettering",
+      "oldRoot": "LogoPrint",
+      "newRoot": "LogoPrint",
+      "oldVertexCount": 585,
+      "newVertexCount": 585,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true,
+        "TEXCOORD_0": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Dark recessed nozzle opening",
+      "oldRoot": "Actuator",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 32,
+      "newVertexCount": 32,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Front thin refill pouch skin",
+      "oldRoot": "RefillPouch",
+      "newRoot": "RefillPouch",
+      "oldVertexCount": 12870,
+      "newVertexCount": 12870,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Hollow round shampoo bottle with sloping shoulder",
+      "oldRoot": "Body",
+      "newRoot": "Body",
+      "oldVertexCount": 4218,
+      "newVertexCount": 4218,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Ivory internal pump chamber",
+      "oldRoot": "PumpStem",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 1664,
+      "newVertexCount": 1664,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Left heat sealed pouch margin",
+      "oldRoot": "RefillPouch",
+      "newRoot": "RefillPouch",
+      "oldVertexCount": 194,
+      "newVertexCount": 194,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Long curved navy dispensing head",
+      "oldRoot": "Actuator",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 303,
+      "newVertexCount": 303,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Navy actuator hub",
+      "oldRoot": "Actuator",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 794,
+      "newVertexCount": 794,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Navy raised collar step",
+      "oldRoot": "Closure",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 1240,
+      "newVertexCount": 1240,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Navy smooth pump screw collar",
+      "oldRoot": "Closure",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 1736,
+      "newVertexCount": 1736,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Open hollow dip tube",
+      "oldRoot": "PumpStem",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 504,
+      "newVertexCount": 1180,
+      "maxWorldPositionDelta": null,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": false,
+        "NORMAL": false
+      },
+      "indicesExact": false,
+      "materialAndTextureBytesExact": false,
+      "primitiveModeExact": true,
+      "allowedChange": true
+    },
+    {
+      "name": "Rear thin refill pouch skin",
+      "oldRoot": "RefillPouch",
+      "newRoot": "RefillPouch",
+      "oldVertexCount": 12870,
+      "newVertexCount": 12870,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Right heat sealed pouch margin",
+      "oldRoot": "RefillPouch",
+      "newRoot": "RefillPouch",
+      "oldVertexCount": 194,
+      "newVertexCount": 194,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Visible navy connecting pump stem",
+      "oldRoot": "PumpStem",
+      "newRoot": "PumpAssembly",
+      "oldVertexCount": 1300,
+      "newVertexCount": 1300,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    },
+    {
+      "name": "Wide top heat seal",
+      "oldRoot": "RefillPouch",
+      "newRoot": "RefillPouch",
+      "oldVertexCount": 343,
+      "newVertexCount": 343,
+      "maxWorldPositionDelta": 0.0,
+      "attributeNamesEqual": true,
+      "attributesExact": {
+        "POSITION": true,
+        "NORMAL": true
+      },
+      "indicesExact": true,
+      "materialAndTextureBytesExact": true,
+      "primitiveModeExact": true,
+      "allowedChange": false
+    }
+  ],
+  "scope": {
+    "otherGlbFilesUnchanged": 25,
+    "artworksUnchanged": 8,
+    "files": [
+      {
+        "path": "docs/client-motion-demo/packaging-assets/liaose-pump.glb",
+        "unchanged": true,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-068.glb",
+        "unchanged": true,
+        "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-069.glb",
+        "unchanged": true,
+        "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-057.glb",
+        "unchanged": true,
+        "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-056.glb",
+        "unchanged": true,
+        "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-042.glb",
+        "unchanged": true,
+        "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-047.glb",
+        "unchanged": true,
+        "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-051.glb",
+        "unchanged": true,
+        "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-044.glb",
+        "unchanged": true,
+        "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-049.glb",
+        "unchanged": true,
+        "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-061.glb",
+        "unchanged": true,
+        "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-060.glb",
+        "unchanged": true,
+        "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-062.glb",
+        "unchanged": true,
+        "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/beach-magic-packaging.glb",
+        "unchanged": true,
+        "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-063.glb",
+        "unchanged": true,
+        "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-067.glb",
+        "unchanged": true,
+        "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-073.glb",
+        "unchanged": true,
+        "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-072.glb",
+        "unchanged": true,
+        "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-066.glb",
+        "unchanged": true,
+        "sha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-070.glb",
+        "unchanged": true,
+        "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-064.glb",
+        "unchanged": true,
+        "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-058.glb",
+        "unchanged": true,
+        "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-059.glb",
+        "unchanged": true,
+        "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-065.glb",
+        "unchanged": false,
+        "sha256": "b1952717562fd2f22fea1b2364499f471b7abc68f93ce8c5414b98f01032976b"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-039.glb",
+        "unchanged": true,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+      },
+      {
+        "path": "docs/client-motion-demo/packaging-assets/poster-013.glb",
+        "unchanged": true,
+        "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/label.svg",
+        "unchanged": true,
+        "sha256": "e95a798902f6dd4c4b6d21a0d3b0f24baf90c22f39555e2991adfd949044fd9a"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/refill-print.svg",
+        "unchanged": true,
+        "sha256": "789e98fb5c91964adcee9c5de6bc80f13897cc8e94d308915544aeac568648d0"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/refill-label.svg",
+        "unchanged": true,
+        "sha256": "64a90dc7bc144aed8e09131e99d6c7a8ed3a25b9cb3eda7ae0ff19bbeef257ae"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/print.svg",
+        "unchanged": true,
+        "sha256": "c52d65a20a2b90c5a2a5ba7bd44b4dad7fb0ab44add7073aad41bd5cad432cf0"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/refill-print.png",
+        "unchanged": true,
+        "sha256": "cd48ba78a4286c2b5af7e6f28bc1501db27c32a17fe4611d00eede264f6be6bf"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/label.png",
+        "unchanged": true,
+        "sha256": "9fd75173cfb7ea8b2fc3bb8a89002d57c09f90d89b529c17ac3930c2ea83036e"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/print.png",
+        "unchanged": true,
+        "sha256": "797c84a0cc9924f9556cdafd1837cfd0bfde2841f0b6f8400e7945163a4a79ee"
+      },
+      {
+        "path": "docs/client-motion-demo/model-source/collection/poster-065/refill-label.png",
+        "unchanged": true,
+        "sha256": "fb2271742009fc7998ea369ffe43a0c641505503debe092c6570c90b9a17edfa"
+      }
+    ],
+    "changedCollectionProductKeys": [
+      "poster-065"
+    ],
+    "collectionConfigMatchesExportedReviewConfig": true
+  },
+  "assembly": {
+    "sceneRoots": [
+      "Body",
+      "LogoPrint",
+      "PaperLabel",
+      "PumpAssembly",
+      "RefillPouch"
+    ],
+    "pumpChildren": [
+      "Actuator",
+      "Closure",
+      "PumpStem"
+    ],
+    "completeLift": 2.45,
+    "fullOpenTubeToMouthClearance": 0.42674438025528705,
+    "config": {
+      "offsets": {
+        "closure": [
+          0,
+          2.45,
+          0
+        ],
+        "refill": [
+          1.15,
+          0.05,
+          0
+        ],
+        "label": [
+          -2.55,
+          0.65,
+          0.65
+        ],
+        "print": [
+          -4.8,
+          -1.6,
+          1.65
+        ]
+      },
+      "scales": {
+        "label": 1.15,
+        "print": 1.95
+      },
+      "camera": {
+        "centerY": [
+          1.45,
+          1.6
+        ],
+        "height": [
+          4.3,
+          8.1
+        ],
+        "width": [
+          4.7,
+          11.8
+        ],
+        "centerX": [
+          0.8,
+          -0.6
+        ]
+      }
+    }
+  },
+  "tube": {
+    "material": {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "Tea Tree clear plastic dip tube",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.05999999865889549
+      }
+    },
+    "rings": [
+      {
+        "yToBody": 0.09,
+        "actualYToBody": 0.09000002759078365,
+        "axisXToBody": 0.12158273160457611,
+        "axisZToBody": 0.0,
+        "innerRadiusToBody": 0.025999994011047176,
+        "outerRadiusToBody": 0.035000005636504704,
+        "uniquePoints": 184
+      },
+      {
+        "yToBody": 1.34,
+        "actualYToBody": 1.340000057393104,
+        "axisXToBody": 0.004676256328821182,
+        "axisZToBody": 0.0,
+        "innerRadiusToBody": 0.025999999009974867,
+        "outerRadiusToBody": 0.03500000048542931,
+        "uniquePoints": 184
+      },
+      {
+        "yToBody": 1.39,
+        "actualYToBody": 1.3900000097093876,
+        "axisXToBody": 1.862645149230957e-09,
+        "axisZToBody": 0.0,
+        "innerRadiusToBody": 0.017999998702487644,
+        "outerRadiusToBody": 0.02400000116204687,
+        "uniquePoints": 184
+      },
+      {
+        "yToBody": 1.48,
+        "actualYToBody": 1.480000043088003,
+        "axisXToBody": 0.0,
+        "axisZToBody": 0.0,
+        "innerRadiusToBody": 0.017999999130956585,
+        "outerRadiusToBody": 0.024000000850165917,
+        "uniquePoints": 184
+      }
+    ],
+    "topology": {
+      "weldedVertices": 736,
+      "edges": 2208,
+      "triangles": 1472,
+      "edgeIncidence": [
+        2
+      ],
+      "opposedEdgeDirections": true,
+      "connectedComponents": 1,
+      "eulerCharacteristic": 0,
+      "interpretation": "One continuous watertight tube wall enclosing an open central bore; annular end rims are not caps"
+    },
+    "ends": [
+      {
+        "yToBody": 0.09,
+        "annulusTriangles": 184,
+        "axisUncapped": true
+      },
+      {
+        "yToBody": 1.48,
+        "annulusTriangles": 184,
+        "axisUncapped": true
+      }
+    ],
+    "sections": [
+      {
+        "yToBody": 0.5,
+        "minimumSectionRadiusToBody": 0.025986631301720162,
+        "maximumSectionRadiusToBody": 0.03500000433260407,
+        "emptyCentralBore": true
+      },
+      {
+        "yToBody": 1.365,
+        "minimumSectionRadiusToBody": 0.021987600736676174,
+        "maximumSectionRadiusToBody": 0.029500010385131135,
+        "emptyCentralBore": true
+      },
+      {
+        "yToBody": 1.435,
+        "minimumSectionRadiusToBody": 0.017989504940360834,
+        "maximumSectionRadiusToBody": 0.0240000017277153,
+        "emptyCentralBore": true
+      }
+    ],
+    "pumpInsertion": {
+      "boreRadiusToBody": 0.02599999908088843,
+      "boreMaxAngularFaceWidth": 0.050670900000000074,
+      "tipMaximumRadialExtentToBody": 0.024000002605263665,
+      "minimumConservativeRadialGapToBody": 0.001991652416914135,
+      "minimumConservativeRadialGapWorld": 0.002066472862023054,
+      "chamberBottomToBody": 1.4000000001726476,
+      "tubeTopToBody": 1.4800000430879918,
+      "insertionDepthToBody": 0.08000004291534424,
+      "tipCentered": true,
+      "intersectsChamberWall": false
+    },
+    "floor": {
+      "innerFloorAtTubeAxisToBody": 0.07000000029802322,
+      "tubeBottomToBody": 0.09000002759078425,
+      "bottomClearanceToBody": 0.020000027292761027,
+      "bottomClearanceWorld": 0.02075136870732042
+    }
+  },
+  "notChecked": [
+    "Physical pump engineering tolerances",
+    "User approval or production publication",
+    "Live browser interactions by the independent reviewer; static final PNGs were visually inspected"
+  ],
+  "layout": {
+    "status": "static-projection-and-final-visual-pass",
+    "modelBytesUnchanged": true,
+    "modelSha256": "b1952717562fd2f22fea1b2364499f471b7abc68f93ce8c5414b98f01032976b",
+    "labelOffset": [
+      -2.55,
+      0.65,
+      0.65
+    ],
+    "printOffset": [
+      -4.8,
+      -1.6,
+      1.65
+    ],
+    "camera": {
+      "centerY": [
+        1.45,
+        1.6
+      ],
+      "height": [
+        4.3,
+        8.1
+      ],
+      "width": [
+        4.7,
+        11.8
+      ],
+      "centerX": [
+        0.8,
+        -0.6
+      ]
+    },
+    "method": "Actual GLB mesh vertices transformed with exported full-open offsets/scales; projected using current front camera up vector for camera rise 1.05 at distance 10. Model plane extents are conservative because lettering alpha occupies less than the full mesh.",
+    "projectionRangesByGroup": {
+      "Body": [
+        -0.035755138733903395,
+        2.1227251930542845
+      ],
+      "RefillPouch": [
+        0.1059958307504417,
+        2.9547826050658483
+      ],
+      "PaperLabel": [
+        0.7802468766614296,
+        2.2798526307279636
+      ],
+      "LogoPrint": [
+        -2.0678047327546363,
+        0.4750050272891133
+      ],
+      "PumpAssembly": [
+        2.5256833368755696,
+        5.214396943024293
+      ]
+    },
+    "paperToPrintProjectionGap": 0.30524184937231624,
+    "fullModelProjectedHeight": 7.282201675778929,
+    "desktopVerticalFraming": {
+      "projectedCameraCenter": 1.591252266727551,
+      "lower": -2.4587477332724488,
+      "upper": 5.641252266727551,
+      "bottomMargin": 0.3909430005178125,
+      "topMargin": 0.42685532370325774
+    },
+    "mobileNote": "Narrow-review X offset halving does not change front-view vertical separation. Mobile framing uses live bounds and still requires actual screenshot review.",
+    "finalScreenshotsReviewed": true,
+    "visualReview": "independent-visual-review.json",
+    "reviewedScreenshotFiles": [
+      "desktop-closed.png",
+      "desktop-half.png",
+      "desktop-open.png",
+      "desktop-rotated.png",
+      "mobile-closed.png",
+      "mobile-open.png"
+    ]
+  }
+}

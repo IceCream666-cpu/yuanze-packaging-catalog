@@ -1,0 +1,127 @@
+{
+  "model": "poster-065",
+  "reviewedAtUtc": "2026-10-30T09:34:26.062611+00:00",
+  "status": "pass-with-nonblocking-limitations",
+  "blockingFindings": [],
+  "method": "Independent direct visual inspection of every final PNG; compared with the earlier desktop/mobile open screenshots and the original Tea Tree reference poster. No browser operation or model/code edit.",
+  "screenshots": [
+    {
+      "file": "desktop-closed.png",
+      "width": 1622,
+      "height": 865,
+      "sha256": "dd7b5aeb647e8c6d21825a77a85d86d7a876d81130325878f0eb152987af4852",
+      "actuallyViewed": true,
+      "state": "closed",
+      "result": "pass",
+      "observations": [
+        "Pump stays assembled on the round-shouldered bottle; bottle and refill pouch remain empty.",
+        "Navy bottle and pouch labels carry the expected two separate artwork sets.",
+        "Product silhouettes and interface controls fit the viewport without clipping."
+      ]
+    },
+    {
+      "file": "desktop-half.png",
+      "width": 1622,
+      "height": 865,
+      "sha256": "87374a7061d3142028baa69e0786f99e50bec47ca7b8574d6033a1e0afa78944",
+      "actuallyViewed": true,
+      "state": "half-open",
+      "result": "pass",
+      "observations": [
+        "The complete pump, ivory mechanism and long clear dip tube rise together.",
+        "Blank label substrates and printed artwork separate progressively; the bottle and refill remain visible.",
+        "The transitional print layer can project across the clear bottle while opening; there is no separate head/stem/closure explosion."
+      ]
+    },
+    {
+      "file": "desktop-open.png",
+      "width": 1622,
+      "height": 865,
+      "sha256": "259ce6edab4d655fdca8be59dcbae025bdb6636d9ec2cf7562918f6c7eac38e2",
+      "actuallyViewed": true,
+      "state": "fully-open",
+      "result": "pass",
+      "observations": [
+        "Both blank navy labels occupy the upper label row; both complete lettering sets occupy a separate lower row.",
+        "The earlier appearance of refill text belonging to the wrong navy label is removed.",
+        "The entire raised pump and tube fit above the open bottle, with visible clearance between the tube end and bottle mouth.",
+        "Bottle 750 mL and pouch REFILL artwork are distinct and remain inside the visible scene."
+      ]
+    },
+    {
+      "file": "desktop-rotated.png",
+      "width": 1622,
+      "height": 865,
+      "sha256": "cdc0e0a74bcdd06a680a11fbe58185756ab95650558910b9f23c7028d6801780",
+      "actuallyViewed": true,
+      "state": "fully-open-side-view",
+      "result": "pass-with-existing-limitation",
+      "observations": [
+        "Pump, tube and bottle remain continuous and inside the frame after rotation.",
+        "The refill pouch and lettering surfaces are nearly edge-on, so their plane-like projection becomes thin and the artwork becomes difficult to see.",
+        "This side-view disappearance is the existing consequence of viewing thin artwork planes edge-on, not an introduced mesh or texture loss."
+      ]
+    },
+    {
+      "file": "mobile-closed.png",
+      "width": 393,
+      "height": 852,
+      "sha256": "094a9deae630cf4b7a785a428326f648c5816cfc3a7414530a09cdda97617a08",
+      "actuallyViewed": true,
+      "state": "closed",
+      "result": "pass",
+      "observations": [
+        "Both the bottle and refill pouch are fully framed in the simulated mobile viewport.",
+        "The assembled navy pump and both artwork layouts remain identifiable.",
+        "Product microcopy is small at this viewport width; structure and overall label layout are visible."
+      ]
+    },
+    {
+      "file": "mobile-open.png",
+      "width": 393,
+      "height": 852,
+      "sha256": "52aec2287d5b31b5c2c75b3afc7a925067367f8062015cf9f4ef2db17556334c",
+      "actuallyViewed": true,
+      "state": "fully-open",
+      "result": "pass-with-readability-limit",
+      "observations": [
+        "The earlier refill-lettering-over-navy-label projection is resolved: navy substrates sit above the separate lettering row.",
+        "The two lettering sets remain distinct, complete in layout, and within the scene frame.",
+        "The complete pump and clear tube rise together above the bottle, and the refill pouch remains visible.",
+        "Microcopy is still small at the simulated mobile size; this is suitable for the overall structure view rather than close reading of printed label details."
+      ]
+    }
+  ],
+  "resolvedFinding": {
+    "issue": "At the previous full-open pose the refill lettering projected across another navy label, especially on mobile.",
+    "resolution": "Final label Y +0.65 and print Y -1.6 place blank substrates above the complete lettering row. Final desktop-open and mobile-open screenshots confirm the overlap is removed.",
+    "status": "resolved"
+  },
+  "scopeChecks": [
+    "Five customer-facing component groups remain visible in the interface.",
+    "Complete pump lifts as one connected assembly.",
+    "Empty bottle and refill remain distinguishable.",
+    "Blank labels and their lettering are separate; lettering remains farther forward.",
+    "Final closed, half-open, fully open and rotated desktop states fit their screenshots."
+  ],
+  "nonblockingLimitations": [
+    {
+      "id": "small-mobile-microcopy",
+      "detail": "At the supplied 393-pixel-wide simulated mobile screenshot, printed label microcopy is small. The two text layouts are complete and separated, but this is not a claim of comfortable close reading at that size."
+    },
+    {
+      "id": "edge-on-artwork-planes",
+      "detail": "At a near-90-degree side view, planar artwork and the thin pouch become edge-on and partially disappear. This is existing behavior and not an introduced regression."
+    },
+    {
+      "id": "clear-tube-low-contrast",
+      "detail": "The transparent dip tube remains subtle against the grey-blue background, especially on mobile; its long continuous silhouette is visible, and the independent geometry report confirms its thicker hollow wall."
+    }
+  ],
+  "notChecked": [
+    "True-device interaction or rendering",
+    "New browser interactions by this independent reviewer",
+    "Physical packaging or pump engineering tolerances",
+    "Production deployment or live-site state"
+  ]
+}

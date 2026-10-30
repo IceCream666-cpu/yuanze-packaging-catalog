@@ -1,0 +1,33 @@
+{
+  "original": [
+    {
+      "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-061-1280.webp",
+      "complete": true,
+      "width": 1280,
+      "height": 960
+    }
+  ],
+  "returned": {
+    "title": "Oil-Infused Body Cream",
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 31,
+      "triangles": 99010
+    }
+  }
+}

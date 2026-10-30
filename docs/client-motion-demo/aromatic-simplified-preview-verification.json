@@ -183,5 +183,14 @@
       "strength": 0.24
     },
     "bottleMaterialUnchanged": true
+  },
+  "publicationUpdate": {
+    "version": "client1.37",
+    "state": "published-and-live-verified",
+    "publishedAt": "2026-10-30T17:16:01+08:00",
+    "receipt": "client137-aromatic-lotion-release.json",
+    "sourceCommit": "8b39ebd3b8f496ae8948c0819f979b7dfd1f87aa",
+    "receiptCommit": "3dca4dc53284df8a5e1f36d377460b182bdb7bd1",
+    "note": "The preview and queue counts above describe the historical preview; this approved revision is now independently published and live verified."
   }
 }
