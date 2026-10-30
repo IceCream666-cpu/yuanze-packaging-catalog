@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-30",
+  "posterId": "poster-073",
+  "status": "local-preview-awaiting-review",
+  "published": false,
+  "geometryChanged": false,
+  "modelSha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b",
+  "changes": [
+    "Dedicated narrow-card environment on glass body only; ivory cap keeps original environment",
+    "Neutral fully transmissive glass with IOR 1.52, roughness 0.018 and optical thickness 0.12",
+    "Preserve double-sided hollow wall and thick base; reduce supplemental rim darkening from 0.18 to 0.08"
+  ],
+  "preserved": [
+    "geometry",
+    "cap and inner seal",
+    "print",
+    "empty packaging",
+    "five-part explosion",
+    "all other products"
+  ],
+  "tests": {
+    "frontendPassed": 162,
+    "actualGlbPassed": 7,
+    "bundleCheck": true
+  },
+  "browser": {
+    "name": "Codex IAB",
+    "states": [
+      "closed",
+      "fully exploded",
+      "drag rotated",
+      "front reset"
+    ],
+    "consoleErrors": 0,
+    "physicalMobileTested": false
+  },
+  "previewUrl": "http://127.0.0.1:8797/client",
+  "limits": [
+    "Local preview only, no deployment",
+    "WebGL environment reflection approximation; no ray-traced multiple internal reflection",
+    "Material refinement belongs to the interactive renderer; unchanged standalone GLB does not contain this studio"
+  ]
+}
