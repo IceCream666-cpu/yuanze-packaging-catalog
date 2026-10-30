@@ -251,7 +251,7 @@
     "releaseReceiptCommit": "8a92c8639f5b673329a17c2ef2f75068c02f4a38"
   },
   "poster-060": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "PumpAssembly",
       "Body",
@@ -263,17 +263,21 @@
       "open": "/review-assets/poster-060-open.webp"
     },
     "background": "#bfb4a3",
-    "revision": "complete-spray-assembly-local-awaiting-review",
-    "publishedRevision": false,
+    "revision": "complete-spray-assembly-published-live-verified",
+    "publishedRevision": true,
     "previousPublishedModelSha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783",
-    "localRevisionReceipt": "aha-mist-simplified-preview-verification.json"
+    "localRevisionReceipt": "aha-mist-simplified-preview-verification.json",
+    "releaseVersion": "client1.33",
+    "releasedAt": "2026-10-30T14:20:39+08:00",
+    "releaseSourceCommit": "5d6e271ddbf58c8e5b0f735e046b9b2b5d88f25c",
+    "releaseReceipt": "client133-aha-mist-release.json",
+    "releaseReceiptCommit": "700cf24454a55ece747cbd7aedc72d4007ca04b2",
+    "mobilePhysicalDeviceTested": false
   },
   "poster-061": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
@@ -282,7 +286,11 @@
       "closed": "/review-assets/poster-061-closed.webp",
       "open": "/review-assets/poster-061-open.webp"
     },
-    "background": "#d7d0c0"
+    "background": "#d7d0c0",
+    "revision": "complete-pumps-local-awaiting-review",
+    "publishedRevision": false,
+    "previousPublishedModelSha256": "f30c16e1ae3e061d8cbe3b1d0b71fbafc13f88aa372f2c933b4e145149babc4a",
+    "localRevisionReceipt": "oil-cream-simplified-preview-verification.json"
   },
   "poster-062": {
     "state": "published",

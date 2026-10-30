@@ -1,0 +1,25 @@
+{
+  "auditor": "aha_release_review",
+  "status": "pass",
+  "files": 458,
+  "changed": [
+    "assets/packaging/poster-060.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "preserved": 455,
+  "approvedModelHash": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+  "guards": [
+    "current",
+    "manifest",
+    "6820 outside hashes",
+    "gateway",
+    "PID",
+    "flock",
+    "second guard",
+    "atomic renameat2",
+    "later-release rollback rejection"
+  ],
+  "next061Unchanged": true,
+  "localPerformance131NotIncluded": true
+}

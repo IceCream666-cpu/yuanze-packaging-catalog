@@ -2,11 +2,9 @@
   "id": "poster-061",
   "components": [
     "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
     "PaperLabel",
-    "LogoPrint"
+    "LogoPrint",
+    "PumpAssembly"
   ],
   "bottleCount": 2,
   "height": 2.9,
@@ -79,7 +77,7 @@
       "min": [
         -0.6687500476837158,
         -0.48124998807907104,
-        1.6812500953674316
+        0.17499999701976776
       ],
       "max": [
         0.6687500476837158,
@@ -122,6 +120,18 @@
         -0.043862201273441315,
         1.4875000715255737
       ]
+    },
+    "PumpAssembly": {
+      "min": [
+        -0.8250000476837158,
+        -0.637499988079071,
+        0.17499999701976776
+      ],
+      "max": [
+        1.1055042743682861,
+        0.637499988079071,
+        2.8999998569488525
+      ]
     }
   },
   "illustrativeDimensions": true,
@@ -137,8 +147,18 @@
     "OIL-INFUSED",
     "BODY CREAM"
   ],
-  "hiddenStructure": "The photograph shows two similar diameters with different body heights. Bottles stand on a common ground here; scene stones and cartons are excluded. Wall thickness, pump internal connector and open spout construction are illustrative, not a manufacturing design. No unseen dip tube or formula is added. Original direct printing is represented by a transparent unprinted carrier and separate full print.",
+  "hiddenStructure": "The photograph shows two similar diameters with different body heights. Bottles stand on a common ground here; scene stones and cartons are excluded. Wall thickness, pump internal connector and open spout construction are illustrative, not a manufacturing design. The added hollow transparent dip tubes follow the requested complete pump assembly and stop above each inner floor. Their hidden bore and connection are illustrative; no formula is added. Original direct printing is represented by a transparent unprinted carrier and separate full print.",
   "material": "Ivory frosted empty glass with opaque satin black pump parts",
-  "revision": "individual-reference-review-20261025",
+  "revision": "complete-pump-assembly-review-20261030",
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "dipTubeOuterDiameterToBody": 0.056,
+  "dipTubeInnerDiameterToBody": 0.038,
+  "dipTubeTipToBodyDiameter": 0.14,
   "generator": "build_oil_infused_body_cream.py"
 }

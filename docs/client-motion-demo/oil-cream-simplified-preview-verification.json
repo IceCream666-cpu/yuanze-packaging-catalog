@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-30",
+  "product": "Oil-Infused Body Cream",
+  "productId": "poster-061",
+  "selectionNumber": 14,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "nextProduct": {
+    "selectionNumber": 17,
+    "id": "poster-064",
+    "name": "Aromatic Body Lotion",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 6,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-061",
+  "components": [
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "bottleCount": 2,
+  "containsFormula": false,
+  "containsNewTube": true,
+  "addedMeshCount": 2,
+  "preservedGeometry": {
+    "preservedMeshCount": 14,
+    "preservedVertexCount": 29404,
+    "artworkBytesIdentical": true,
+    "other25ModelsUnchanged": true
+  },
+  "animation": {
+    "offsets": {
+      "closure": [
+        0,
+        2.2,
+        0
+      ],
+      "label": [
+        -2.5,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -5.5,
+        0.15,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.08,
+      "print": 1.5
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.5
+      ],
+      "height": [
+        4.2,
+        6.2
+      ],
+      "width": [
+        4.8,
+        10.5
+      ],
+      "centerX": [
+        0,
+        -2.7
+      ]
+    },
+    "tubeTipClosedY": 0.17499994114041328,
+    "bottleMouthY": 1.9875000417232513,
+    "fullyOpenTubeToBottleGap": 0.3874998994171621,
+    "completePumpLift": 2.2
+  },
+  "model": {
+    "bytes": 1103220,
+    "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485"
+  },
+  "validation": {
+    "geometryTestsPassed": 24,
+    "integrationTestsPassed": 2,
+    "frontendTestsPassed": 175,
+    "viteBuild": "passed",
+    "sourcePublicDistAndLocalHttpSha256": "identical",
+    "independentGeometryReview": "All14 original meshes identical. Two open-bore hollow clear tubes have positive volumes and manifold walls.",
+    "reviewGalleryTestsPassed": 7,
+    "impeccableDetectorFindings": 0,
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "rotated-90-degrees"
+      ],
+      "posterRoundtrip": "passed-1280x960"
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "emulated": true,
+      "physicalDevice": false,
+      "states": [
+        "closed",
+        "open"
+      ],
+      "horizontalOverflow": false
+    },
+    "independentVisualReview": "passed-all-six-final-screenshots-against-original-poster"
+  },
+  "evidence": "review-evidence/oil-infused-body-cream/simplified-pumps/",
+  "limitations": [
+    "Hidden tube bore, fit and packaging dimensions are illustrative rather than manufacturing measurements.",
+    "Physical phone not tested.",
+    "On the simulated narrow viewport the clear carrier and farther print have slight projected overlap; text remains readable."
+  ],
+  "selectedRevisionsPublished": 9,
+  "selectedRevisionsAwaitingReview": 1,
+  "appearanceCorrection": {
+    "scope": "Only poster-061 clear plastic dip tube material",
+    "transmission": 1,
+    "roughness": 0.06,
+    "ior": 1.46,
+    "thickness": 0.0225,
+    "envMapIntensity": 1.2,
+    "specularIntensity": 1,
+    "clearcoat": 0.2,
+    "edgeRim": {
+      "exponent": 3,
+      "strength": 0.24
+    },
+    "bottleMaterialUnchanged": true,
+    "result": "Visible transparent tube edges with clear centers; original frosted bottle remains unchanged."
+  },
+  "previousProductPublication": {
+    "id": "poster-060",
+    "version": "client1.33",
+    "verifiedLive": true,
+    "publishedAt": "2026-10-30T14:20:39+08:00",
+    "httpsVerifiedAt": "2026-10-30T14:26:23+08:00",
+    "sourceCommit": "5d6e271ddbf58c8e5b0f735e046b9b2b5d88f25c",
+    "receiptCommit": "700cf24454a55ece747cbd7aedc72d4007ca04b2",
+    "receipt": "client133-aha-mist-release.json"
+  }
+}

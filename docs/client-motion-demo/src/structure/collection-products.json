@@ -1146,51 +1146,19 @@
     "wide": true,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
-        "title": [
-          "双规格黑色泵头",
-          "Black pump heads"
-        ],
-        "short": [
-          "泵头",
-          "Head"
-        ],
-        "detail": [
-          "圆筒按头和向右弯曲的扁嘴同步上提。",
-          "The cylindrical heads and curved right-facing spouts lift together."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "黑色升降泵杆",
-          "Black rising pump stems"
-        ],
-        "short": [
-          "泵杆",
-          "Stem"
-        ],
-        "detail": [
-          "两只外露泵杆与连接座独立展开。",
-          "Both exposed stems separate with their connectors."
-        ]
-      },
-      {
         "key": "closure",
-        "node": "Closure",
+        "node": "PumpAssembly",
         "title": [
-          "黑色圆筒旋盖",
-          "Black cylindrical collars"
+          "完整泵头与透明吸管",
+          "Complete pumps and clear dip tubes"
         ],
         "short": [
-          "旋盖",
-          "Collar"
+          "泵头总成",
+          "Pump"
         ],
         "detail": [
-          "光滑黑盖独立于瓶身和泵杆。",
-          "The smooth collars separate from bottles and stems."
+          "按头、弯嘴、泵杆、旋盖和透明吸管保持连接，一起上提。",
+          "The heads, spouts, stems, collars and clear dip tubes lift together as fitted units."
         ]
       },
       {
@@ -1256,28 +1224,18 @@
       },
       "explosion": {
         "offsets": {
-          "head": [
-            0,
-            3.4,
-            0
-          ],
-          "stem": [
-            0,
-            1.9,
-            0
-          ],
           "closure": [
             0,
-            1,
+            2.2,
             0
           ],
           "label": [
-            -2.8,
+            -2.5,
             0.08,
             0.65
           ],
           "print": [
-            -5.9,
+            -5.5,
             0.15,
             1.65
           ]
@@ -1289,19 +1247,19 @@
         "camera": {
           "centerY": [
             1.45,
-            3.1
+            2.5
           ],
           "height": [
             4.2,
-            7.5
+            6.2
           ],
           "width": [
             4.8,
-            11.1
+            10.5
           ],
           "centerX": [
             0,
-            -2.1
+            -2.7
           ]
         }
       }

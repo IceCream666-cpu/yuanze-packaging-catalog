@@ -1,0 +1,68 @@
+{
+  "closed": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    },
+    "parts": [
+      "喷头组件",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  },
+  "open": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9994293536288368,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.4241868289210924,
+        0.14991440304432557,
+        1.6490584334875806
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    },
+    "parts": [
+      "喷头组件",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "rootTests": {
+    "count": 339,
+    "skipped": 3
+  },
+  "clientMotionTests": 160,
+  "commonFrontendPassed": true,
+  "buildPassed": true,
+  "diffCheck": true,
+  "scope": "approved060only"
+}

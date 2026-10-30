@@ -1226,14 +1226,21 @@ test('Essence Duo keeps both fitted droppers intact throughout desktop and phone
   }
 });
 
-test('AHA Mist keeps its spray head and curved tube intact throughout desktop and phone motion',async()=>{
-  const product=PACKAGING_PRODUCTS['poster-060'];
-  const bytes=readFileSync(new URL('../packaging-assets/poster-060.glb',import.meta.url));
+for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2]]) {
+test(`${id} keeps its complete pumps and clear tubes intact throughout desktop and phone motion`,async()=>{
+  const product=PACKAGING_PRODUCTS[id];
+  const bytes=readFileSync(new URL(`../packaging-assets/${id}.glb`,import.meta.url));
   const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
   for(const width of [1200,393]) {
   const nodes=gltf.nodes.map(node=>{
     const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
     object.name=node.name;
+    if ('mesh' in node && id==='poster-061') {
+      const exported=gltf.materials[gltf.meshes[node.mesh].primitives[0].material];
+      object.material.name=exported.name;
+      object.material.transmission=exported.extensions?.KHR_materials_transmission?.transmissionFactor??0;
+      object.material.roughness=exported.pbrMetallicRoughness.roughnessFactor;
+    }
     if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
     else {
       object.position.fromArray(node.translation??[0,0,0]);
@@ -1252,12 +1259,27 @@ test('AHA Mist keeps its spray head and curved tube intact throughout desktop an
     const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
     flush();const assembly=loaded.scene.getObjectByName('PumpAssembly');
     const fitted=['Closure','PumpStem','Actuator'].map(name=>{const part=loaded.scene.getObjectByName(name);assert.equal(part.parent,assembly);return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};});
+    if (id==='poster-061') {
+      const body=loaded.scene.getObjectByName('Taller hollow frosted round-bottom bottle').material;
+      assert.ok(Math.abs(body.transmission-.62)<.001 && Math.abs(body.roughness-.39)<.001);
+      for (const prefix of ['Smaller','Taller']) {
+        const tube=loaded.scene.getObjectByName(prefix+' hollow clear dip tube').material;
+        assert.notEqual(tube,body);
+        assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);
+        assert.equal(tube.ior,1.46);assert.equal(tube.thickness,.0225);assert.equal(tube.side,Three.FrontSide);
+        assert.equal(tube.specularIntensity,1);assert.equal(tube.envMapIntensity,1.2);
+        const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);
+        assert.match(shader.fragmentShader,/float tubeEdge = pow\([^\n]+, 3\.0\);/);
+        const bodyShader={fragmentShader:'#include <dithering_fragment>'};body.onBeforeCompile(bodyShader);
+        assert.match(bodyShader.fragmentShader,/float wallEdge = pow\([^\n]+, 9\.0\);/);
+      }
+    }
     const rest=api.getState().partStates;
     for(const value of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
       for(const {part,matrix,world} of fitted) {
         assert.deepEqual(part.matrix.toArray(),matrix);
-        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,2.65*value,0))<1e-8);
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,lift*value,0))<1e-8);
       }
       assert.ok(Math.abs(state.partStates.print.offset[2]-state.partStates.label.offset[2]-value)<1e-8);
       if(!value)assert.deepEqual(state.partStates,rest);
@@ -1266,3 +1288,5 @@ test('AHA Mist keeps its spray head and curved tube intact throughout desktop an
   }finally{api?.dispose();env.close();}
   }
 });
+
+}

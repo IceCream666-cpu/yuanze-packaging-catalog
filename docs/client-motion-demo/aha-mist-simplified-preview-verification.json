@@ -153,5 +153,17 @@
     "receiptCommit": "8a92c8639f5b673329a17c2ef2f75068c02f4a38"
   },
   "selectedRevisionsPublished": 8,
-  "selectedRevisionsAwaitingReview": 1
+  "selectedRevisionsAwaitingReview": 1,
+  "publication": {
+    "state": "published-live-browser-verified",
+    "version": "client1.33",
+    "sourceCommit": "5d6e271ddbf58c8e5b0f735e046b9b2b5d88f25c",
+    "receiptCommit": "700cf24454a55ece747cbd7aedc72d4007ca04b2",
+    "publishedAt": "2026-10-30T14:20:39+08:00",
+    "httpsVerifiedAt": "2026-10-30T14:26:23+08:00",
+    "manifestSha256": "d70aced5e47c4c26b5347de7a34c9bcd34a2d02df5a1d4a05e68a68208a610ab",
+    "releaseReceipt": "client133-aha-mist-release.json",
+    "browserEvidence": "review-evidence/aha-mist/client133/",
+    "physicalDeviceTested": false
+  }
 }

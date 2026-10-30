@@ -1,0 +1,142 @@
+{
+  "closed": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.33",
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    },
+    "parts": [
+      "完整喷雾头与吸管按头、喷孔、固定圈、连接段与透明弯吸管保持连接，整体提起。",
+      "圆肩透明玻璃瓶中性空心瓶壁保留厚底与圆肩。",
+      "拉丝银色标贴无字金属效果底材顺圆柱瓶身贴合。",
+      "完整品牌与容量印刷liaose、AHA、BODY MIST、横线与160 ml独立展开。"
+    ]
+  },
+  "half": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.33",
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 0.5,
+      "renderedProgress": 0.4992887532310851,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.4229729467085928,
+        0.07489331298466273,
+        0.8238264428312904
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    },
+    "parts": [
+      "完整喷雾头与吸管按头、喷孔、固定圈、连接段与透明弯吸管保持连接，整体提起。",
+      "圆肩透明玻璃瓶中性空心瓶壁保留厚底与圆肩。",
+      "拉丝银色标贴无字金属效果底材顺圆柱瓶身贴合。",
+      "完整品牌与容量印刷liaose、AHA、BODY MIST、横线与160 ml独立展开。"
+    ]
+  },
+  "open": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.33",
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.999291441560082,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.8479806084462336,
+        0.14989371623401238,
+        1.6488308785741352
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    },
+    "parts": [
+      "完整喷雾头与吸管按头、喷孔、固定圈、连接段与透明弯吸管保持连接，整体提起。",
+      "圆肩透明玻璃瓶中性空心瓶壁保留厚底与圆肩。",
+      "拉丝银色标贴无字金属效果底材顺圆柱瓶身贴合。",
+      "完整品牌与容量印刷liaose、AHA、BODY MIST、横线与160 ml独立展开。"
+    ]
+  },
+  "rotated": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.33",
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9999999207753238,
+      "yaw": 1.5701527165949558,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.849999774209673,
+        0.14999998811629855,
+        1.6499998692792843
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    },
+    "parts": [
+      "完整喷雾头与吸管按头、喷孔、固定圈、连接段与透明弯吸管保持连接，整体提起。",
+      "圆肩透明玻璃瓶中性空心瓶壁保留厚底与圆肩。",
+      "拉丝银色标贴无字金属效果底材顺圆柱瓶身贴合。",
+      "完整品牌与容量印刷liaose、AHA、BODY MIST、横线与160 ml独立展开。"
+    ]
+  }
+}

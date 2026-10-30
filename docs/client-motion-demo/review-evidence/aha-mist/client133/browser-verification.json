@@ -1,0 +1,78 @@
+{
+  "status": "pass",
+  "environment": "production HTTPS",
+  "version": "client1.33",
+  "product": "poster-060",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "desktop": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "states": [
+      "closed",
+      "half",
+      "open",
+      "rotated90",
+      "restored"
+    ],
+    "liveStateFile": "desktop-states.json",
+    "screenshotsVisuallyReviewed": true
+  },
+  "mobile": {
+    "type": "simulated viewport, not physical phone",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "closedAndOpen": "pass",
+    "fourPartControls": "pass",
+    "screenshotsVisuallyReviewed": true
+  },
+  "posterRoundtrip": {
+    "poster": [
+      {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-060-1280.webp",
+        "width": 1280,
+        "height": 960,
+        "complete": true
+      }
+    ],
+    "returned": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 16,
+      "triangles": 56354
+    }
+  },
+  "checkedAt": "2026-10-30T14:31:34+08:00",
+  "limitations": [
+    "No physical phone or native touch test",
+    "No Chrome or Codex in-app production verification",
+    "Curved flexible dip tube is displayed rigidly during lifting; intermediate motion is illustrative, not a verified physical assembly path",
+    "Small narrow-view lettering and slight label/bottle projection overlap are approved existing limitations",
+    "Hidden dimensions and connections remain illustrative"
+  ],
+  "independentVisualReview": {
+    "auditor": "aha_release_review",
+    "status": "pass",
+    "screenshots": 6,
+    "confirmedStableYaw": 1.5701527165949558,
+    "notes": "Complete sprayer and curved tube stay connected; open tip clears mouth; label and complete print are separate; all controls visible and no horizontal overflow."
+  }
+}

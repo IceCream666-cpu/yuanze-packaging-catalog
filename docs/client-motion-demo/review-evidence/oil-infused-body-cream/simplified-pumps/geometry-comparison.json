@@ -1,0 +1,147 @@
+{
+  "model": "poster-061",
+  "bytes": 1103220,
+  "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+  "roots": [
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "PumpAssembly"
+  ],
+  "meshCount": 16,
+  "preservedMeshCount": 14,
+  "newMeshes": [
+    "Smaller hollow clear dip tube",
+    "Taller hollow clear dip tube"
+  ],
+  "preservedVertexCount": 29404,
+  "meshes": [
+    {
+      "name": "Smaller hollow frosted round-bottom bottle",
+      "vertices": 4994,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller hollow frosted round-bottom bottle",
+      "vertices": 4994,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smaller hollow black pump collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller hollow black pump collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smaller visible black rising pump stem",
+      "vertices": 1644,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller visible black rising pump stem",
+      "vertices": 1620,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smaller curved hollow oval pump spout",
+      "vertices": 1968,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smaller cylindrical hollow press head",
+      "vertices": 1752,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller curved hollow oval pump spout",
+      "vertices": 1968,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller cylindrical hollow press head",
+      "vertices": 1788,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smaller transparent unprinted film",
+      "vertices": 1053,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller transparent unprinted film",
+      "vertices": 1053,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smaller complete dark body cream lettering",
+      "vertices": 1053,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Taller complete dark body cream lettering",
+      "vertices": 1053,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "207c70a2f12df38b3d48007e1fb7292443cf1b5cec5e04bee58bb00bdf6b7d08",
+    "print.svg": "91386aea93a3abfffd4a83fc513f421966d17c9923eb0e1916e679795f04c81c",
+    "label.png": "5eaf13a5ba457c5d762e171c72860603e35e60a36a82461e0e182fa65e2d8edb",
+    "print.png": "bad721010b39c7f69b9b33cb925e7e0694faa17ee6f3b0b63517609cfa948b3f"
+  },
+  "artworkBytesIdentical": true,
+  "other25ModelsUnchanged": true,
+  "motion": {
+    "tubeTipClosedY": 0.17499994114041328,
+    "bottleMouthY": 1.9875000417232513,
+    "fullyOpenTubeToBottleGap": 0.3874998994171621,
+    "completePumpLift": 2.2
+  },
+  "scope": "Complete pump hierarchy, two added hollow clear dip tubes, and061 interaction/targeted tube material config changed. All14 original meshes, attributes, indices, world positions, materials and artwork preserved."
+}

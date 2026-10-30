@@ -1,0 +1,202 @@
+{
+  "closed": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "zoom": 1,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "partStates": {
+        "closure": {
+          "visible": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "body": {
+          "visible": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            1.25
+          ]
+        },
+        "label": {
+          "visible": true,
+          "position": [
+            0,
+            0.9749999642372131,
+            0
+          ],
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            1.25
+          ]
+        },
+        "print": {
+          "visible": true,
+          "position": [
+            0,
+            0.9749999642372131,
+            0
+          ],
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            1.25
+          ]
+        }
+      },
+      "meshes": 31,
+      "triangles": 99010
+    }
+  },
+  "open": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9995683085790109,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "zoom": 1,
+      "printOffset": [
+        -2.74881284859228,
+        0.1499352462868515,
+        1.649287709155368
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "partStates": {
+        "closure": {
+          "visible": true,
+          "position": [
+            0,
+            2.199050278873824,
+            0
+          ],
+          "offset": [
+            0,
+            2.199050278873824,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "body": {
+          "visible": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            1.25
+          ]
+        },
+        "label": {
+          "visible": true,
+          "position": [
+            -1.2494603857237636,
+            1.054965428923534,
+            0.6497194005763571
+          ],
+          "offset": [
+            -1.2494603857237636,
+            0.07996546468632082,
+            0.6497194005763571
+          ],
+          "scale": [
+            1.3499568308579013,
+            1.3499568308579013,
+            1.3499568308579013
+          ]
+        },
+        "print": {
+          "visible": true,
+          "position": [
+            -2.74881284859228,
+            1.1249352105240646,
+            1.649287709155368
+          ],
+          "offset": [
+            -2.74881284859228,
+            0.1499352462868515,
+            1.649287709155368
+          ],
+          "scale": [
+            1.8747301928618818,
+            1.8747301928618818,
+            1.8747301928618818
+          ]
+        }
+      },
+      "meshes": 31,
+      "triangles": 99010
+    }
+  }
+}
