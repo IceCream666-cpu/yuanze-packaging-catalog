@@ -1,0 +1,128 @@
+{
+  "half": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 0.5,
+      "renderedProgress": 0.49986022591540785,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.1991054458586103,
+        -0.2749231242534743,
+        0.824769372760423
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    },
+    "parts": [
+      "双瓶完整滴管白色胶头、奶油色旋盖与透明玻璃管保持连接，整体上拔。",
+      "圆角扁方双瓶保留两只相同外形的空心玻璃瓶。",
+      "透明标贴底材无字薄膜底材独立于完整印刷。",
+      "双瓶完整产品印刷ESSENCE OIL 与 BIPHASE ESSENCE OIL 保留各自品牌字。"
+    ]
+  },
+  "open": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9992096241524718,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -6.39494159457582,
+        -0.5495652932838595,
+        1.6486958798515785
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    },
+    "parts": [
+      "双瓶完整滴管白色胶头、奶油色旋盖与透明玻璃管保持连接，整体上拔。",
+      "圆角扁方双瓶保留两只相同外形的空心玻璃瓶。",
+      "透明标贴底材无字薄膜底材独立于完整印刷。",
+      "双瓶完整产品印刷ESSENCE OIL 与 BIPHASE ESSENCE OIL 保留各自品牌字。"
+    ]
+  },
+  "rotated": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9999998912153139,
+      "yaw": 1.569804058763972,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -6.399999303778009,
+        -0.5499999401684227,
+        1.6499998205052677
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    }
+  },
+  "restored": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "scrollWidth": 1622,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0.0005106945892947673,
+      "yaw": 4.85951713778184e-8,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.003268445371486511,
+        -0.000280882024112028,
+        0.000842646072336366
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    },
+    "parts": [
+      "双瓶完整滴管白色胶头、奶油色旋盖与透明玻璃管保持连接，整体上拔。",
+      "圆角扁方双瓶保留两只相同外形的空心玻璃瓶。",
+      "透明标贴底材无字薄膜底材独立于完整印刷。",
+      "双瓶完整产品印刷ESSENCE OIL 与 BIPHASE ESSENCE OIL 保留各自品牌字。"
+    ]
+  }
+}
