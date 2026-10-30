@@ -174,10 +174,37 @@ class LuminousFaceOilModelTests(ReviewedPackagingChecks, ExportedModelReader):
 class EssenceOilDuoModelTests(ReviewedPackagingChecks, ExportedModelReader):
     model_id = 'poster-059'
     body_name = 'Essence hollow rounded rectangular glass'
-    component_counts = {'Body': 2, 'Closure': 2, 'DropperBulb': 2, 'Pipette': 2, 'PaperLabel': 2, 'LogoPrint': 2}
+    component_counts = {'Body': 2, 'DropperAssembly': 6, 'PaperLabel': 2, 'LogoPrint': 2}
     floor_ratio = .143
     svg_copy = {'print.svg': ['ESSENCE OIL'], 'print-biphase.svg': ['BIPHASE ESSENCE OIL']}
     complete_copy = ['liaose', 'ESSENCE OIL', 'liaose', 'BIPHASE ESSENCE OIL']
+
+    def test_complete_droppers_keep_their_fitted_tubes_and_clear_both_necks(self):
+        assembly = self.nodes[self.named['DropperAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in assembly['children']},
+                         {'Closure', 'DropperBulb', 'Pipette'})
+        self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
+        self.assertEqual(len(self.mesh_names()), 12)
+        product = json.loads((CLIENT / 'src/structure/collection-products.json').read_text())[self.model_id]
+        review = json.loads((self.source() / 'review-config.json').read_text())
+        self.assertEqual(review, {'parts': product['parts'], **product['review']})
+        manifest = json.loads((CLIENT / 'packaging-manifest.json').read_text())
+        entry = next(item for item in manifest['additionalProducts'] if item['posterId'] == self.model_id)
+        self.assertEqual(entry['components'], [part['node'] for part in product['parts']])
+        lift = product['review']['explosion']['offsets']['closure'][1]
+        for prefix in ['Essence', 'Biphase']:
+            pipe = prefix + ' hollow pipette without oil drop'
+            low, high = self.bounds(self.positions(pipe))
+            body_low, body_high = self.bounds(self.positions(prefix + ' hollow rounded rectangular glass'))
+            self.assertEqual(self.ancestor(pipe), 'DropperAssembly')
+            self.assertAlmostEqual(low[1] / self.width(), .43, delta=.002)
+            self.assertGreater(low[1] + lift - body_high[1], .49)
+            center_x = (low[0] + high[0]) / 2
+            self.assertEqual(self.ray_intersections(pipe, a=center_x, b=0), [])
+            self.assertEqual(self.material(pipe)['extensions']['KHR_materials_transmission']['transmissionFactor'], 1)
+        offsets = product['review']['explosion']['offsets']
+        self.assertGreater(offsets['print'][2], offsets['label'][2])
 
     def print_file(self, name):
         return 'print-biphase.png' if name.startswith('Biphase') else 'print.png'

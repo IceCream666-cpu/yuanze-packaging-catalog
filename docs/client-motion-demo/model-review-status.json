@@ -227,11 +227,9 @@
     "releaseReceipt": "client129-luminous-dropper-release.json"
   },
   "poster-059": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "DropperBulb",
-      "Pipette",
-      "Closure",
+      "DropperAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
@@ -240,7 +238,11 @@
       "closed": "/review-assets/poster-059-closed.webp",
       "open": "/review-assets/poster-059-open.webp"
     },
-    "background": "#ddcfb4"
+    "background": "#ddcfb4",
+    "revision": "complete-dropper-local-awaiting-review",
+    "publishedRevision": false,
+    "previousPublishedModelSha256": "fd0ad9a323a5aad51982236bba6be5c80a868af50f773d1518d671f2c16fdcf5",
+    "localRevisionReceipt": "essence-duo-simplified-preview-verification.json"
   },
   "poster-060": {
     "state": "published",

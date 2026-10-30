@@ -1,0 +1,128 @@
+{
+  "model": "poster-059",
+  "bytes": 1220564,
+  "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+  "roots": [
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "DropperAssembly"
+  ],
+  "meshCount": 12,
+  "preservedVertexCount": 36170,
+  "meshes": [
+    {
+      "name": "Biphase hollow rounded rectangular glass",
+      "vertices": 4457,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Essence hollow rounded rectangular glass",
+      "vertices": 4457,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Biphase hollow cream dropper collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Essence hollow cream dropper collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Biphase hollow soft white bulb",
+      "vertices": 9916,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Essence hollow soft white bulb",
+      "vertices": 9916,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Biphase hollow pipette without oil drop",
+      "vertices": 1472,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Essence hollow pipette without oil drop",
+      "vertices": 1472,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Biphase unprinted film carrier",
+      "vertices": 4,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Essence unprinted film carrier",
+      "vertices": 4,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Biphase complete bottle print",
+      "vertices": 4,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Essence complete bottle print",
+      "vertices": 4,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "c63009213ffedeb721957090fe936ba6eb5d335e367d42007f047150bab9272f",
+    "print-biphase.svg": "767993ece47818ee80855e99bd8edf4821468e3e58488afc5f519371d53a994e",
+    "print.svg": "afdf5f32abbd8dfe77b4e9e3292928340c9475c6b143263fc468099d933cc90d",
+    "label.png": "29510addd86dd4403935fa7b29ec3ed7b75928dcd60169f1235b83c0bad515b6",
+    "print.png": "35f26481a8592263476afea5b6a4124d7309ade8d22cc4493fbe76229c86316f",
+    "print-biphase.png": "c57f081bbc0df6f66c83f04884e85dd09e09fe5917876ce716bfbf5f8dcbdd5e"
+  },
+  "artworkBytesIdentical": true,
+  "other25ModelsUnchanged": true,
+  "motion": {
+    "completeDropperLift": 1.75,
+    "tubeTipClosedY": 0.5882075332695607,
+    "bottleMouthY": 1.8398585871817943,
+    "fullyOpenTubeToBottleGap": 0.49834894608776636
+  },
+  "scope": "Only hierarchy and059 interaction configuration changed. All 12 mesh world vertices, attributes, indices and materials identical; original pipette lengths retained to match visible solid ends, not suspended formula drops."
+}

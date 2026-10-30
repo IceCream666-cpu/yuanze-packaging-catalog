@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Moisture Shampoo client1.23, Woodland client1.24, Pure Volume client1.25, Gentle Cleansing client1.26, Golden Face Oil client1.27, B5 Serum client1.28 and Luminous Face Oil client1.29 are published and live verified. The user requested publication of 058 only and stopping afterward; the nine remaining selected revisions, including 059, are not started.",
+  "deployment": "The seven preceding selected revisions remain published. Selection12 / poster-059 is locally simplified and awaiting user review; eight following selections remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -116,7 +116,8 @@
       "selectionNumber": 12,
       "posterId": "poster-059",
       "name": "Essence Oil Duo",
-      "status": "queued"
+      "status": "local-awaiting-review",
+      "localRevisionReceipt": "essence-duo-simplified-preview-verification.json"
     },
     {
       "selectionNumber": 13,
@@ -167,11 +168,11 @@
       "status": "queued"
     }
   ],
-  "updated": "2026-10-27",
+  "updated": "2026-10-30",
   "userScope": {
-    "authorizedProduct": "poster-058",
-    "instruction": "上线，不做下一个",
-    "stopAfterPublication": true,
+    "authorizedProduct": "poster-059",
+    "instruction": "按顺序接着来吧。hit me",
+    "stopAfterLocalPreview": true,
     "nextProductStarted": false
   }
 }

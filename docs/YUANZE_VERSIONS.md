@@ -1,5 +1,13 @@
 # 源泽版本记录
 
+## Essence Oil Duo 完整双滴管（2026-10-30，本地待审）
+
+按用户“按顺序接着来吧”继续选单12 / poster-059，旧版胶头、奶油旋盖、透明玻璃管归入DropperAssembly，两只完整滴管同步整体上拔1.75；与双瓶Body、无字PaperLabel、完整LogoPrint形成四个展示组。原12网格、36170顶点的世界坐标、属性、索引、材质及6份SVG/PNG完全一致，其他25款模型与配置不变，无新增料体或管件。原管尖0.43W与海报实体管端吻合，悬滴不作为管长；全开管尖高于瓶口约0.49835。相机高度6.1、中心Y2.1；文字/底材保持原向外深度及横向幅度，Y偏移改-.55/-.25，避开页面副标题。
+
+22项实际GLB、12项资源准备及173项前端检查通过，直接Vite构建通过；source/public/dist与8784 HTTP模型摘要一致。通用测试修正既有072使用overcap而非closure的陈旧假设，未改该产品实现。Impeccable检测0项，桌面1622×865合拢/半开/全开/90°旋转/复位/原海报往返通过；393×852模拟手机合拢/全开及scrollWidth393通过。六张截图已逐张查看，移动端小字与90°印刷平面侧隐保留为显示限制，未测试实体手机。尺寸与隐藏连接仍为展示示意。
+
+预览 http://127.0.0.1:8784/?model=poster-059 。证据 [essence-duo-simplified-preview-verification.json](client-motion-demo/essence-duo-simplified-preview-verification.json)，图片及逐网格比较位于client-motion-demo/review-evidence/essence-duo/simplified-dropper/。当前本轮为7款已发布、1款本地待审、8款待修改；下一款13 / poster-060 AHA Body Mist未开始，新模型继续暂停。此修订未上线，不占用新正式版本号；此前线上059保留旧模型。
+
 ## client1.30｜已有模型恢复首页｜2026-10-27 已上线
 
 16:41:08 仅恢复072 Daily Emulsion、073 Body Oil Collection至首页末尾；原24顺序保持，26个GLB全部不变，不制作新模型，不恢复074–078。正式数量为26首页/26模型/61海报，资源452→458（新增6图）。16:44:31 HTTPS与正式Ego桌面/393×852模拟手机验收通过，原海报往返及26→1循环正常；未测试实体手机或原生触摸。正式源`819e5bc2b9bb1ca9c4813672b483f112b6d0e311`，最终回执提交`2dbcfef2bd721d60b9ad6f6b825c0f69b967d07b`，清单`3e71bc6f995b2cced7223f2e8f97a0295018eeb186c5c8ac26a78e7e99166f8e`，回执[client130-featured-26-release.json](client-motion-demo/client130-featured-26-release.json)。

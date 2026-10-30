@@ -894,51 +894,19 @@
     "wide": true,
     "parts": [
       {
-        "key": "head",
-        "node": "DropperBulb",
-        "title": [
-          "双瓶白色胶头",
-          "Two white dropper bulbs"
-        ],
-        "short": [
-          "胶头",
-          "Bulb"
-        ],
-        "detail": [
-          "两只空腔胶头同步上提。",
-          "Both hollow bulbs lift together."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "Pipette",
-        "title": [
-          "双瓶透明滴管",
-          "Two clear pipettes"
-        ],
-        "short": [
-          "滴管",
-          "Pipette"
-        ],
-        "detail": [
-          "细玻璃管独立分离，不包含油滴。",
-          "The glass tubes separate without liquid drops."
-        ]
-      },
-      {
         "key": "closure",
-        "node": "Closure",
+        "node": "DropperAssembly",
         "title": [
-          "奶油色圆筒盖",
-          "Cream cylindrical collars"
+          "双瓶完整滴管",
+          "Two complete droppers"
         ],
         "short": [
-          "旋盖",
-          "Collar"
+          "滴管组件",
+          "Droppers"
         ],
         "detail": [
-          "两只光滑圆盖独立展开。",
-          "Both smooth collars separate."
+          "白色胶头、奶油色旋盖与透明玻璃管保持连接，整体上拔。",
+          "Each bulb, cream collar and clear glass tube lifts as one complete dropper."
         ]
       },
       {
@@ -1004,29 +972,19 @@
       },
       "explosion": {
         "offsets": {
-          "head": [
-            0,
-            3.9,
-            0
-          ],
-          "stem": [
-            0,
-            3.05,
-            0
-          ],
           "closure": [
             0,
-            1.05,
+            1.75,
             0
           ],
           "label": [
             -3.0,
-            0.08,
+            -0.25,
             0.65
           ],
           "print": [
             -6.4,
-            0.15,
+            -0.55,
             1.65
           ]
         },
@@ -1037,11 +995,11 @@
         "camera": {
           "centerY": [
             1.45,
-            3.2
+            2.1
           ],
           "height": [
             4.2,
-            7.9
+            6.1
           ],
           "width": [
             5.2,

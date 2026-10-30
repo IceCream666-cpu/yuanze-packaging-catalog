@@ -1,7 +1,7 @@
 {
   "id": "poster-059",
-  "bytes": 1220536,
-  "sha256": "fd0ad9a323a5aad51982236bba6be5c80a868af50f773d1518d671f2c16fdcf5",
+  "bytes": 1220564,
+  "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
   "meshes": [
     {
       "mesh": "Biphase hollow rounded rectangular glass",
@@ -88,5 +88,7 @@
       "minimumFaceNormalDot": 1.0
     }
   ],
-  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks."
+  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks.",
+  "revision": "complete-dropper-review-20261030",
+  "geometryComparison": "../../../review-evidence/essence-duo/simplified-dropper/geometry-comparison.json"
 }

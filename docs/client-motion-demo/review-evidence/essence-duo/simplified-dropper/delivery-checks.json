@@ -1,0 +1,9 @@
+{
+  "hashes": {
+    "docs/client-motion-demo/packaging-assets/poster-059.glb": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+    "docs/client-motion-demo/public/assets/packaging/poster-059.glb": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+    "docs/client-motion-demo/dist/assets/packaging/poster-059.glb": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+    "localHTTP": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e"
+  },
+  "otherProductConfigAndManifestUnchanged": true
+}

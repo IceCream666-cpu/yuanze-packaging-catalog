@@ -2,11 +2,9 @@
   "id": "poster-059",
   "components": [
     "Body",
-    "Closure",
-    "DropperBulb",
-    "Pipette",
     "PaperLabel",
-    "LogoPrint"
+    "LogoPrint",
+    "DropperAssembly"
   ],
   "bottleCount": 2,
   "height": 2.9,
@@ -109,6 +107,18 @@
         -0.276594340801239,
         1.4363207817077637
       ]
+    },
+    "DropperAssembly": {
+      "min": [
+        -1.0669810771942139,
+        -0.3419811427593231,
+        0.5882076025009155
+      ],
+      "max": [
+        1.0669810771942139,
+        0.3419811427593231,
+        2.8999998569488525
+      ]
     }
   },
   "illustrativeDimensions": true,
@@ -128,6 +138,13 @@
   ],
   "hiddenStructure": "Bottle depth, concealed connection and wall dimensions are illustrative; the original has no paper-label boundary, so two transparent film carriers are provided. Dropper tubes stop at their visible solid ends; liquid globules and oil/water layers are excluded.",
   "material": "Two neutral empty clear bottles, opaque cream collars and white hollow bulbs",
-  "revision": "individual-reference-review-20261025",
+  "revision": "complete-dropper-review-20261030",
+  "nestedAssembly": {
+    "DropperAssembly": [
+      "Closure",
+      "DropperBulb",
+      "Pipette"
+    ]
+  },
   "generator": "build_essence_oil_duo.py"
 }

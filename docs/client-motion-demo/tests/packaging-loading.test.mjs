@@ -126,7 +126,8 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
           assert.ok(print.z-label.z>.45*value,'lettering must sit visibly in front of its label');
           assert.ok(print.x<label.x-.8*value,'lettering must also move farther sideways');
           assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
-          assert.ok(parts.closure.position.y-rest.closure.p.y>.7*value,'cap separation must remain substantial');
+          const capKey = parts.closure ? 'closure' : 'overcap';
+          assert.ok(parts[capKey].position.y-rest[capKey].p.y>.7*value,'cap separation must remain substantial');
           for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
             if(value===1) parts[key].position.clone().sub(rest[key].p).toArray().forEach((n,i)=>assert.ok(Math.abs(n-offset[i])<1e-9));
           }
@@ -1181,4 +1182,46 @@ test('Pure Volume lifts one complete pump while the fitted cord stays on the bot
       }
     }
   } finally {api?.dispose();env.close();}
+});
+
+
+test('Essence Duo keeps both fitted droppers intact throughout desktop and phone motion',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-059'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-059.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  for(const width of [1200,393]) {
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:700}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();const assembly=loaded.scene.getObjectByName('DropperAssembly');
+    const fitted=['Closure','DropperBulb','Pipette'].map(name=>{const part=loaded.scene.getObjectByName(name);assert.equal(part.parent,assembly);return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};});
+    const rest=api.getState().partStates;
+    for(const value of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
+      for(const {part,matrix,world} of fitted) {
+        assert.deepEqual(part.matrix.toArray(),matrix);
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,1.75*value,0))<1e-8);
+      }
+      assert.ok(Math.abs(state.partStates.print.offset[2]-state.partStates.label.offset[2]-value)<1e-8);
+      if(!value)assert.deepEqual(state.partStates,rest);
+    }
+    assert.deepEqual(Object.keys(rest).sort(),['body','closure','label','print']);
+  }finally{api?.dispose();env.close();}
+  }
 });
