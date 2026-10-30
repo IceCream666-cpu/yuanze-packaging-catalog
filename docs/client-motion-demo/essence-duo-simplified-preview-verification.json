@@ -147,5 +147,17 @@
     "Narrow-view product-name lettering remains small; both names are complete and distinct.",
     "At90-degree view the flat printing planes are edge-on.",
     "Wall thickness and hidden fit are display approximations, not manufacturing measurements."
-  ]
+  ],
+  "publication": {
+    "state": "published-live-browser-verified",
+    "version": "client1.32",
+    "sourceCommit": "02530311453d36e9f37302b5ed1d003028cae51b",
+    "publishedAt": "2026-10-30T13:41:10+08:00",
+    "httpsVerifiedAt": "2026-10-30T13:44:55+08:00",
+    "manifestSha256": "27ee9b3a01a72c46f126e2b706f4fd390e34f739631939d8a957ece24d72be1e",
+    "releaseReceipt": "client132-essence-duo-release.json",
+    "browserEvidence": "review-evidence/essence-duo/client132/",
+    "physicalDeviceTested": false,
+    "receiptCommit": "8a92c8639f5b673329a17c2ef2f75068c02f4a38"
+  }
 }

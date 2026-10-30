@@ -1,0 +1,69 @@
+{
+  "type": "simulated viewport, not physical device",
+  "closed": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    },
+    "buttons": [
+      "滴管组件",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  },
+  "open": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9995750840393207,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.1986402689258266,
+        -0.5497662962216264,
+        1.6492988886648792
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    },
+    "buttons": [
+      "滴管组件",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  }
+}

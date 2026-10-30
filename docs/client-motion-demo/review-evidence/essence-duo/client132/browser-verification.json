@@ -1,0 +1,73 @@
+{
+  "status": "pass",
+  "environment": "production HTTPS",
+  "version": "client1.32",
+  "product": "poster-059",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "desktop": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "states": [
+      "closed",
+      "half",
+      "open",
+      "rotated90",
+      "restored"
+    ],
+    "liveStateFile": "desktop-states.json",
+    "screenshotsVisuallyReviewed": true
+  },
+  "mobile": {
+    "type": "simulated viewport, not physical phone",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "closedAndOpen": "pass",
+    "fourPartControls": "pass",
+    "screenshotsVisuallyReviewed": true
+  },
+  "posterRoundtrip": {
+    "poster": [
+      {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-059-1280.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 960,
+        "complete": true
+      }
+    ],
+    "returned": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 113362
+    }
+  },
+  "checkedAt": "2026-10-30T13:49:55+08:00",
+  "limitations": [
+    "No physical phone or native touch test",
+    "No Chrome or Codex in-app production verification",
+    "Hidden dimensions and connections remain illustrative"
+  ],
+  "independentRootVisualReview": {
+    "status": "pass",
+    "screenshots": 6
+  }
+}

@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "Selection12 / poster-059 is approved and publishing; selection13 / poster-060 is locally simplified and awaiting user review; seven following selections remain queued.",
+  "deployment": "Eight selected revisions are published and live-verified. Selection13 / poster-060 is locally simplified and awaiting user review; seven following selections remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -116,8 +116,17 @@
       "selectionNumber": 12,
       "posterId": "poster-059",
       "name": "Essence Oil Duo",
-      "status": "local-awaiting-review",
-      "localRevisionReceipt": "essence-duo-simplified-preview-verification.json"
+      "status": "published-live-verified",
+      "localRevisionReceipt": "essence-duo-simplified-preview-verification.json",
+      "releaseVersion": "client1.32",
+      "releaseSourceCommit": "02530311453d36e9f37302b5ed1d003028cae51b",
+      "releaseReceipt": "client132-essence-duo-release.json",
+      "releasedAt": "2026-10-30T13:41:10+08:00",
+      "releaseManifestSha256": "27ee9b3a01a72c46f126e2b706f4fd390e34f739631939d8a957ece24d72be1e",
+      "releaseHttpsVerification": "passed",
+      "releaseBrowserVerification": "passed-desktop-and-mobile-viewport",
+      "physicalMobileDeviceTested": false,
+      "releaseReceiptCommit": "8a92c8639f5b673329a17c2ef2f75068c02f4a38"
     },
     {
       "selectionNumber": 13,

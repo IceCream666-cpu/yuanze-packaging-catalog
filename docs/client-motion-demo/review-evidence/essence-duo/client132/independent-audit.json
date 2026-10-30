@@ -1,0 +1,24 @@
+{
+  "auditor": "root",
+  "status": "pass",
+  "files": 458,
+  "changed": [
+    "assets/packaging/poster-059.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "preserved": 455,
+  "approvedModelHash": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+  "guards": [
+    "current",
+    "manifest",
+    "6820 outside hashes",
+    "gateway",
+    "PID",
+    "flock",
+    "second guard",
+    "atomic renameat2",
+    "later-release rollback rejection"
+  ],
+  "next060Unchanged": true
+}
