@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-30",
+  "scope": "Daily Emulsion only; original empty-packaging interactive scene; stop formula demo work",
+  "state": "existing-model-revalidated-in-Codex-awaiting-user-review",
+  "publishedThisTurn": false,
+  "geometryChangedThisTurn": false,
+  "historyRead": {
+    "title": "包材库3D",
+    "threadId": "01a16276-cda3-7831-a021-29bc094d12f2",
+    "method": "read_thread recent eight turns; older oversized turn read from local rollout user messages",
+    "lessons": [
+      "Match reference silhouette and material, not only model presence",
+      "One product at a time",
+      "Keep pump internals assembled",
+      "Separate label and artwork; text moves farther outward",
+      "Validate closed, half and fully exploded plus real rotation",
+      "Separate local review from production verification"
+    ]
+  },
+  "model": {
+    "id": "poster-072",
+    "bytes": 1163416,
+    "sha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1",
+    "containsFormula": false,
+    "roots": [
+      "Body",
+      "PumpAssembly",
+      "Overcap",
+      "PaperLabel",
+      "LogoPrint",
+      "ProductPrint"
+    ]
+  },
+  "preview": {
+    "url": "http://127.0.0.1:8797/client",
+    "baseline": "local client1.35 snapshot; not claimed to be the latest shared production release",
+    "browser": "Codex IAB",
+    "checks": [
+      "closed",
+      "half-open",
+      "fully-open",
+      "pointer drag",
+      "front reset",
+      "pump selection"
+    ],
+    "dragObserved": {
+      "yaw": 2.0212007504512974,
+      "pitch": 0.181623285602624
+    },
+    "fullOpenObserved": {
+      "progress": 1,
+      "renderedProgress": 0.9998014632321205
+    },
+    "simulatedViewport": {
+      "width": 393,
+      "height": 852,
+      "scrollWidth": 393,
+      "states": [
+        "closed",
+        "open"
+      ]
+    },
+    "temporaryViewportOverrideRestored": true
+  },
+  "tests": {
+    "actualGlb": {
+      "passed": 8,
+      "failed": 0
+    },
+    "targetedScene": {
+      "passed": 4,
+      "failed": 0
+    }
+  },
+  "aestheticReview": {
+    "method": "Impeccable polish workflow and actual rendered screenshots",
+    "findings": "Single bottle visible, assembled pump preserved, independent artwork and carrier, no clipping in verified normal and phone views; existing understated glass appearance retained."
+  },
+  "limits": [
+    "No new model geometry or publication in this turn",
+    "Body Oil is not advanced in this turn",
+    "Hidden connector dimensions remain illustrative; no manufacturing validation",
+    "No physical-phone test",
+    "1200x900 screenshot capture had Codex scaling/cropping inconsistency; excluded from visual acceptance",
+    "Local preview requires its running loopback server"
+  ],
+  "screenshots": [
+    {
+      "file": "codex-open.png",
+      "sha256": "eb2065d49942bb3a539883f05fd849522bfd8874b31da93ebfc96dcf95b8db0e"
+    },
+    {
+      "file": "phone-closed.png",
+      "sha256": "d7e96d7fdaa3deab63423494dc6a9943e0d65a6ddc67c19ae4ed86287416b949"
+    },
+    {
+      "file": "phone-open.png",
+      "sha256": "4dbfc79577ec65062b4e69f9c671f377359835b24a3ff716ea77f150e38b2601"
+    }
+  ]
+}
