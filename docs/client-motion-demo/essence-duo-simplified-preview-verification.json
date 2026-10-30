@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-30",
+  "product": "Essence Oil Duo",
+  "productId": "poster-059",
+  "selectionNumber": 12,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "previousProduct": {
+    "id": "poster-058",
+    "name": "Luminous Face Oil",
+    "state": "published-live-browser-verified",
+    "version": "client1.29",
+    "releaseReceipt": "client129-luminous-dropper-release.json"
+  },
+  "nextProduct": {
+    "selectionNumber": 13,
+    "id": "poster-060",
+    "name": "AHA Body Mist",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 8,
+  "selectedRevisionsPublished": 7,
+  "selectedRevisionsAwaitingReview": 1,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-059",
+  "components": [
+    "DropperAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "DropperAssembly": [
+      "Closure",
+      "DropperBulb",
+      "Pipette"
+    ]
+  },
+  "containsFormula": false,
+  "containsNewTube": false,
+  "pipetteLengthChanged": false,
+  "referenceDecision": "The visible solid pipe tips match0.43W above the external base. Hanging oil globules are formula, not part of the pipe. Keep both original pipe lengths.",
+  "preservedGeometry": {
+    "meshCount": 12,
+    "vertexCount": 36170,
+    "maxWorldVertexDelta": 0,
+    "allMeshAttributesAndIndicesIdentical": true,
+    "allMaterialsIdentical": true,
+    "allSixArtworkFilesIdentical": true,
+    "other25ModelsUnchanged": true
+  },
+  "animation": {
+    "completeDropperLift": 1.75,
+    "tubeTipClosedY": 0.5882075332695607,
+    "bottleMouthY": 1.8398585871817943,
+    "fullyOpenTubeToBottleGap": 0.49834894608776636,
+    "offsets": {
+      "closure": [
+        0,
+        1.75,
+        0
+      ],
+      "label": [
+        -3.0,
+        -0.25,
+        0.65
+      ],
+      "print": [
+        -6.4,
+        -0.55,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.08,
+      "print": 1.5
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.1
+      ],
+      "height": [
+        4.2,
+        6.1
+      ],
+      "width": [
+        5.2,
+        12.4
+      ],
+      "centerX": [
+        0,
+        -2.15
+      ]
+    }
+  },
+  "model": {
+    "bytes": 1220564,
+    "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e"
+  },
+  "validation": {
+    "geometryTestsPassed": 22,
+    "assetTestsPassed": 12,
+    "frontendTestsPassed": 173,
+    "viteBuild": "passed",
+    "sourcePublicDistAndLocalHttpSha256": "identical",
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "rotated90",
+        "front-reset",
+        "poster-round-trip"
+      ],
+      "passed": true
+    },
+    "mobile": {
+      "simulatedViewport": [
+        393,
+        852
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "scrollWidth": 393,
+      "physicalDeviceTested": false,
+      "passed": true
+    },
+    "visualReview": "Desktop and simulated mobile screenshots inspected. Fixed left print overlapping the subtitle by lowering only059 label/print trajectories. Original X/Z separation and print growth retained.",
+    "impeccableDetectorFindings": 0,
+    "preexistingTestRepair": "Generic shared regression now accepts072 overcap instead of assuming every product has a closure key; no072 product code changed.",
+    "independentReview": {
+      "result": "passed-no-blockers",
+      "reviewed": "All six final screenshots, actual GLB mesh/material/embedded texture equivalence, manifest/config consistency and local publication boundary."
+    }
+  },
+  "evidence": "review-evidence/essence-duo/simplified-dropper/",
+  "limitations": [
+    "Narrow-view product-name lettering remains small; both names are complete and distinct.",
+    "At90-degree view the flat printing planes are edge-on.",
+    "Wall thickness and hidden fit are display approximations, not manufacturing measurements."
+  ]
+}

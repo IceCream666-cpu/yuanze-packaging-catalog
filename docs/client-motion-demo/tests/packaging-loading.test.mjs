@@ -1169,3 +1169,46 @@ test('Luminous keeps its actual long dropper intact and frames all four review l
     }finally{api?.dispose();env.close();}
   }
 });
+
+test('Essence Duo keeps both fitted droppers intact throughout desktop and phone motion',async()=>{
+  const product=PACKAGING_PRODUCTS['poster-059'];
+  const bytes=readFileSync(new URL('../packaging-assets/poster-059.glb',import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  for(const width of [1200,393]) {
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;
+    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:700}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
+    flush();const assembly=loaded.scene.getObjectByName('DropperAssembly');
+    const fitted=['Closure','DropperBulb','Pipette'].map(name=>{const part=loaded.scene.getObjectByName(name);assert.equal(part.parent,assembly);return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};});
+    const printed=loaded.scene.getObjectByName('LogoPrint'),label=loaded.scene.getObjectByName('PaperLabel');
+    const printedRest=printed.position.clone(),labelRest=label.position.clone();
+    const rest=api.getState().components;
+    for(const value of [0,.25,.5,.75,1,.5,0]) {
+      api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
+      for(const {part,matrix,world} of fitted) {
+        assert.deepEqual(part.matrix.toArray(),matrix);
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,1.75*value,0))<1e-8);
+      }
+      assert.ok(Math.abs((printed.position.z-printedRest.z)-(label.position.z-labelRest.z)-value)<1e-8);
+      if(!value){assert.deepEqual(printed.position.toArray(),printedRest.toArray());assert.deepEqual(label.position.toArray(),labelRest.toArray());}
+    }
+    assert.deepEqual(rest.sort(),['body','closure','label','print']);
+  }finally{api?.dispose();env.close();}
+  }
+});

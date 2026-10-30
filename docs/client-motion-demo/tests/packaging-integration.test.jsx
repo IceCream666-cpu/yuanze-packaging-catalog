@@ -802,3 +802,18 @@ test('Luminous exposes four complete packaging layers through the existing revie
     }
   }finally{await env.close();}
 });
+
+test('Essence Duo exposes four complete packaging layers through the existing review configuration',async()=>{
+  const env=setup();let mounted,focused;
+  const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
+  try {
+    await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-059'}}/>));
+    assert.deepEqual(mounted.product.parts.map(part=>part.node),['DropperAssembly','Body','PaperLabel','LogoPrint']);
+    assert.deepEqual(mounted.product.review.explosion.offsets.closure,[0,1.75,0]);
+    assert.match(document.querySelector('h1').textContent,/Essence/);
+    for(const selector of ['.packaging-part','.packaging-mobile-parts button']) {
+      const buttons=[...document.querySelectorAll(selector)];assert.equal(buttons.length,4);
+      for(const [i,key] of ['closure','body','label','print'].entries()) {await click(buttons[i]);assert.equal(focused,key);}
+    }
+  }finally{await env.close();}
+});
