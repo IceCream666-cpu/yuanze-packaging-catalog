@@ -1,0 +1,28 @@
+<div id="liaose-interactive">
+  <div class="viz-row"><h3 id="name">__NAME__</h3></div>
+  <div id="stage" aria-label="可拖动旋转的产品 3D 模型"></div>
+  <div id="error" class="text-destructive" hidden>3D 加载失败，请重新打开。</div>
+  <div class="viz-controls">
+    <button class="btn" disabled data-filled="false" aria-pressed="false">空包材</button>
+    <button class="btn" disabled data-filled="true" aria-pressed="true">含料体</button>
+    <button class="btn" disabled id="rotate">旋转 90°</button>
+    <button class="btn" disabled id="reset">回到正面</button>
+  </div>
+  <div id="status" class="text-small text-muted" role="status" aria-live="polite">正在准备 3D 模型…</div>
+  <script id="models" type="application/json">__MODELS__</script>
+</div>
+<style>
+#liaose-interactive #stage{height:440px;width:100%;margin:12px 0;position:relative}
+#liaose-interactive canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#liaose-interactive canvas:active{cursor:grabbing}
+#liaose-interactive #status{margin-top:8px}
+@media(max-width:450px){#liaose-interactive #stage{height:360px}}
+</style>
+<script type="module">
+try {
+const source=Uint8Array.from(atob('__SCRIPT__'),c=>c.charCodeAt(0));
+const code=await new Response(new Blob([source]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+const url=URL.createObjectURL(new Blob([code],{type:'text/javascript'}));
+try {await import(url);} finally {URL.revokeObjectURL(url);}
+} catch(e){document.getElementById('liaose-interactive').querySelector('#status').textContent='3D 加载失败：'+e.message;}
+</script>

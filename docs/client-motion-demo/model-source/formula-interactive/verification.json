@@ -1,0 +1,30 @@
+{
+  "scope": "independent interactive formula demo; production client1.35 unchanged",
+  "verification": {
+    "bothModelsLoad": true,
+    "oilPointerDrag": {
+      "yawBefore": 1.571,
+      "yawAfter": 2.921,
+      "pitchAfter": 0.36
+    },
+    "oilWheelZoom": {
+      "before": 1,
+      "after": 1.197
+    },
+    "reset": {
+      "yaw": 0,
+      "pitch": 0,
+      "zoom": 1
+    },
+    "bothEmptyFilledToggles": true,
+    "dailyQuarterTurnYaw": 1.571,
+    "consoleErrorsObserved": 0,
+    "embeddedOriginalGlbsVerified": true,
+    "syntaxAndSizeChecks": true
+  },
+  "limitations": [
+    "Static formula volume rotates with packaging; no fluid dynamics.",
+    "Two-pass realtime refraction is approximate, not the earlier Cycles render.",
+    "No real mobile-device verification."
+  ]
+}

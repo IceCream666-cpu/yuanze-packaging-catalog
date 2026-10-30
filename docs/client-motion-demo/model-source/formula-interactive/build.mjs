@@ -1,0 +1,12 @@
+import {build} from '../../node_modules/vite/dist/node/index.js';
+import {readFile,writeFile} from 'node:fs/promises';
+import {dirname,resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const here=dirname(fileURLToPath(import.meta.url)),out=process.argv[2];
+if(!out)throw new Error('Pass the demo output directory.');
+const models={};for(const [key,name] of [['oil','body-oil-collection'],['daily','daily-emulsion']])models[key]=(await readFile(resolve(out,name+'-filled-demo.glb'))).toString('base64');
+const result=await build({configFile:false,root:here,logLevel:'error',build:{write:false,target:'es2022',minify:true,lib:{entry:resolve(here,'viewer.js'),formats:['es'],fileName:'viewer'},rollupOptions:{output:{codeSplitting:false}}}});
+const js=(Array.isArray(result)?result[0]:result).output.find(x=>x.type==='chunk').code;
+let template=await readFile(resolve(here,'template.html'),'utf8');template=template.replace('__MODELS__',JSON.stringify(models)).replace('<script>__VIEWER__</script>','<script type="module">'+js.replaceAll('</script','<\\/script')+'</script>');
+if(template.includes('__MODELS__')||template.includes('__VIEWER__'))throw new Error('Unfilled template');
+await writeFile(resolve(out,'交互式料体3D.html'),template);console.log('Built standalone interactive demo',template.length,'characters');
