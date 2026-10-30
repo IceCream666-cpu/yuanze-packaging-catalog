@@ -3,7 +3,7 @@
   "numberingSource": "outputs/旧模型待选图-20261026/待复查清单.json",
   "scope": "Selected existing products only. Keep customer-facing assemblies intact and preserve label/print separation.",
   "reviewCadence": "User confirmed one product at a time; stop after each local revision for inspection.",
-  "deployment": "The seven preceding selected revisions remain published. Selection12 / poster-059 is locally simplified and awaiting user review; eight following selections remain queued.",
+  "deployment": "Selection12 / poster-059 is approved and publishing; selection13 / poster-060 is locally simplified and awaiting user review; seven following selections remain queued.",
   "items": [
     {
       "selectionNumber": 4,
@@ -123,7 +123,8 @@
       "selectionNumber": 13,
       "posterId": "poster-060",
       "name": "AHA Body Mist",
-      "status": "queued"
+      "status": "local-awaiting-review",
+      "localRevisionReceipt": "aha-mist-simplified-preview-verification.json"
     },
     {
       "selectionNumber": 14,
@@ -171,8 +172,9 @@
   "updated": "2026-10-30",
   "userScope": {
     "authorizedProduct": "poster-059",
-    "instruction": "按顺序接着来吧。hit me",
+    "instruction": "上线，下一个",
     "stopAfterLocalPreview": true,
-    "nextProductStarted": false
+    "nextProductStarted": false,
+    "localPreviewProduct": "poster-060"
   }
 }

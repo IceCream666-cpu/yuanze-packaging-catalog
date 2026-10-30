@@ -2,11 +2,9 @@
   "id": "poster-060",
   "components": [
     "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
     "PaperLabel",
-    "LogoPrint"
+    "LogoPrint",
+    "PumpAssembly"
   ],
   "height": 2.9,
   "width": 0.821529745042493,
@@ -106,6 +104,18 @@
         -0.2691015303134918,
         1.9552408456802368
       ]
+    },
+    "PumpAssembly": {
+      "min": [
+        -0.2094900757074356,
+        -0.2094900757074356,
+        0.1643306165933609
+      ],
+      "max": [
+        0.24928760528564453,
+        0.2094900757074356,
+        2.9000000953674316
+      ]
     }
   },
   "illustrativeDimensions": true,
@@ -126,8 +136,15 @@
     "short separator rule",
     "160 ml"
   ],
-  "hiddenStructure": "Pump connector, internal tube bend and wall dimensions are illustrative. No fluid or mist is modeled. The visible spray insert is a shallow annular piece, not a functional engineered nozzle.",
+  "hiddenStructure": "Pump connector, internal tube bend and wall dimensions are illustrative. No fluid or mist is modeled. The curved flexible tube is shown as a rigid display shape; the lift is illustrative rather than a validated assembly path. The visible spray insert is a shallow annular piece, not a functional engineered nozzle.",
   "material": "Neutral clear bottle, black opaque atomizer, silver brushed foil label with independent dark printing",
-  "revision": "individual-reference-review-20261025",
+  "revision": "complete-spray-assembly-review-20261030",
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
   "generator": "build_aha_body_mist.py"
 }

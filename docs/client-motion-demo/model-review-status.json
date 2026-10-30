@@ -245,11 +245,9 @@
     "localRevisionReceipt": "essence-duo-simplified-preview-verification.json"
   },
   "poster-060": {
-    "state": "published",
+    "state": "complete",
     "components": [
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
@@ -258,7 +256,11 @@
       "closed": "/review-assets/poster-060-closed.webp",
       "open": "/review-assets/poster-060-open.webp"
     },
-    "background": "#bfb4a3"
+    "background": "#bfb4a3",
+    "revision": "complete-spray-assembly-local-awaiting-review",
+    "publishedRevision": false,
+    "previousPublishedModelSha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783",
+    "localRevisionReceipt": "aha-mist-simplified-preview-verification.json"
   },
   "poster-061": {
     "state": "published",

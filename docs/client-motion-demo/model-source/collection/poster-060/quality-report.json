@@ -1,7 +1,7 @@
 {
   "id": "poster-060",
-  "bytes": 1111412,
-  "sha256": "976e0d976c7f531d1ff6f1868aca69d23bb522177ea518b577ed3f3e9cf41783",
+  "bytes": 1111452,
+  "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
   "meshes": [
     {
       "mesh": "Hollow cylindrical glass with rounded shoulder and thick base",
@@ -60,5 +60,7 @@
       "minimumFaceNormalDot": 0.999901533126831
     }
   ],
-  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks."
+  "checks": "Closed solid topology and positive volumes checked in Blender; open label/print planes expected. Tiny pole triangles are excluded from normal-direction checks.",
+  "revision": "complete-spray-assembly-review-20261030",
+  "geometryComparison": "../../../review-evidence/aha-mist/simplified-sprayer/geometry-comparison.json"
 }
