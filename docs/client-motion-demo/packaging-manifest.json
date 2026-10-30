@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.38-collection-packaging",
+  "scope": "approved-client1.39-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -175,8 +175,8 @@
       "kind": "model",
       "file": "packaging-assets/poster-065.glb",
       "productionTarget": "assets/packaging/poster-065.glb",
-      "bytes": 2726200,
-      "sha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2"
+      "bytes": 2748824,
+      "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d"
     },
     {
       "name": "poster-066.glb",
@@ -416,9 +416,7 @@
       "posterId": "poster-065",
       "file": "poster-065.glb",
       "components": [
-        "Actuator",
-        "PumpStem",
-        "Closure",
+        "PumpAssembly",
         "Body",
         "RefillPouch",
         "PaperLabel",

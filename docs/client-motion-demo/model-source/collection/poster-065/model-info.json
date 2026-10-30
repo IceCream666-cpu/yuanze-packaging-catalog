@@ -18,10 +18,8 @@
   "generator": "build_tea_tree_shampoo.py",
   "id": "poster-065",
   "components": [
+    "PumpAssembly",
     "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
     "RefillPouch",
     "PaperLabel",
     "LogoPrint"
@@ -60,7 +58,7 @@
         0.09338103234767914
       ],
       "max": [
-        0.15158292651176453,
+        0.16246508061885834,
         0.09545616805553436,
         2.5949549674987793
       ]
@@ -112,10 +110,43 @@
         0.13686299324035645,
         1.597853183746338
       ]
+    },
+    "PumpAssembly": {
+      "min": [
+        -0.41502681374549866,
+        -0.2127012312412262,
+        0.09338103234767914
+      ],
+      "max": [
+        0.2127012312412262,
+        0.2127012312412262,
+        2.78794264793396
+      ]
     }
   },
   "illustrativeDimensions": true,
   "containsFormula": false,
   "reference": "../../mobile-client-preview/assets/posters/poster-065.webp",
-  "separateLabelAndPrint": true
+  "separateLabelAndPrint": true,
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "completePumpLift": 2.45,
+  "revision": "complete-pump-warm-ivory-pouch-review-20261030",
+  "dipTube": {
+    "mesh": "Open hollow dip tube",
+    "outerDiameterToBody": 0.07,
+    "innerDiameterToBody": 0.052,
+    "bottomToBody": 0.09,
+    "topToBody": 1.48,
+    "innerFloorToBody": 0.07,
+    "tipOuterDiameterToBody": 0.048,
+    "tipInnerDiameterToBody": 0.036,
+    "centredTipStartsAt": 1.39,
+    "illustrativeDimensions": true
+  }
 }
