@@ -1,5 +1,5 @@
 """Separate optical demo; never register these filled assets in the empty packaging library."""
-import bpy, sys, math, json
+import bpy, sys, math, json, struct
 from pathlib import Path
 from mathutils import Vector
 BASE=Path(__file__).resolve().parent
@@ -30,6 +30,17 @@ for id,total in [('daily-emulsion',2.8),('body-oil-collection',2.182)]:
  objects=list(bpy.context.scene.objects)
  bpy.ops.object.select_all(action='SELECT')
  bpy.ops.export_scene.gltf(filepath=str(OUT/(id+'-filled-demo.glb')),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
+ if not cream:
+  # Blender's generic Volume Absorption node needs a portable glTF volume extension.
+  glb=OUT/(id+'-filled-demo.glb');raw=glb.read_bytes();size=struct.unpack_from('<I',raw,12)[0];doc=json.loads(raw[20:20+size])
+  oil=next(mat for mat in doc['materials'] if mat['name']=='Demo golden body oil')
+  oil.setdefault('extensions',{})['KHR_materials_volume']={'thicknessFactor':.5,'attenuationColor':[1,math.exp(-2.8*.08),math.exp(-2.8*.985)],'attenuationDistance':1}
+  if 'KHR_materials_volume' not in doc.setdefault('extensionsUsed',[]):doc['extensionsUsed'].append('KHR_materials_volume')
+  payload=json.dumps(doc,separators=(',',':')).encode();payload+=b' '*((-len(payload))%4);binary=raw[20+size:]
+  rebuilt=struct.pack('<III',0x46546c67,2,20+len(payload)+len(binary))+struct.pack('<II',len(payload),0x4e4f534a)+payload+binary
+  assert struct.unpack_from('<I',rebuilt,8)[0]==len(rebuilt)
+  glb.write_bytes(rebuilt)
+
  carrier=bpy.data.objects.get('PaperLabel')
  for o in carrier.children:o.hide_render=True
  # Thin printed decals should not appear a second time through the inner wall.
