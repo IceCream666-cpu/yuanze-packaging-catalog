@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-30",
+  "product": "Tea Tree Shampoo and Refill",
+  "productId": "poster-065",
+  "selectionNumber": 18,
+  "state": "local-material-correction-awaiting-user",
+  "published": false,
+  "basePreviewCommit": "cfa8af1b97a22f281c8dab23085ec9e44cd5f989",
+  "basePreviewReceipt": "tea-tree-simplified-preview-verification.json",
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-065",
+  "userCorrection": "The refill pouch has a base tint in the original poster; it is not completely clear.",
+  "reference": "../mobile-client-preview/assets/posters/poster-065.webp",
+  "referenceObservation": "The empty area above the liquid line is warm ivory/champagne; preserve that film colour without adding the golden formula.",
+  "scope": [
+    "Only the front/rear refill film and sealed edge materials changed.",
+    "Visible refill part name and finish description now match warm ivory film.",
+    "All model geometry, transforms, assembly animation, print artwork and other 25 models are retained."
+  ],
+  "materials": {
+    "film": {
+      "baseColorSrgb": "#efd9b9",
+      "transmission": 0.28,
+      "roughness": 0.24,
+      "clearcoat": 0.24,
+      "clearcoatRoughness": 0.16
+    },
+    "sealedEdges": {
+      "baseColorSrgb": "#ecd8ba",
+      "transmission": 0.08,
+      "roughness": 0.32
+    }
+  },
+  "containsFormula": false,
+  "model": {
+    "bytes": 2748824,
+    "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d"
+  },
+  "validation": {
+    "geometryTestsPassed": 8,
+    "frontendTestsPassed": 177,
+    "viteBuild": "passed",
+    "sourcePublicDistAndHttpHashes": "identical",
+    "impeccableDetectorFindings": 0,
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "fully-open",
+        "rear-180-degrees"
+      ]
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "states": [
+        "closed",
+        "fully-open"
+      ],
+      "simulated": true,
+      "physicalDeviceTested": false,
+      "horizontalOverflow": false
+    },
+    "independentMaterialScopeReview": "passed-entire-BIN-identical-only-two-pouch-materials-changed",
+    "independentVisualReview": "passed-five-final-screenshots-against-original-poster"
+  },
+  "evidence": "review-evidence/tea-tree-shampoo/tinted-pouch/",
+  "limitations": [
+    "Colour and translucency are matched visually under the existing neutral scene lighting, not measured physical material values.",
+    "The existing 180-degree rear pose projects the pouch behind the heading; camera layout was not part of this material correction.",
+    "Small lettering and subtle clear tube contrast on mobile remain existing display limits."
+  ],
+  "reviewCadence": "Keep local for individual user inspection; no production deployment and no next product."
+}

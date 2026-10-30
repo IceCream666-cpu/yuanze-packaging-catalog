@@ -45,10 +45,14 @@ class TeaTreeShampooTests(ExportedModelReader):
   centre=[p for p in front if abs(p[0]/w-1.48)<1e-5 and abs(p[1]/w-1.415)<.02]
   rear=[p for p in back if abs(p[0]/w-1.48)<1e-5 and abs(p[1]/w-1.415)<.02]
   self.assertTrue(centre and rear);self.assertGreater(min(p[2] for p in centre)-max(p[2] for p in rear),.20*w)
- def test_clear_bottle_navy_pump_and_translucent_empty_film_materials(self):
+ def test_clear_bottle_navy_pump_and_warm_tinted_empty_film_materials(self):
   glass=self.material(self.body_name);self.assertEqual(glass['extensions']['KHR_materials_transmission']['transmissionFactor'],1);self.assertNotIn('Texture',json.dumps(glass))
   blue=self.material('Navy smooth pump screw collar')['pbrMetallicRoughness'];r,g,b=blue['baseColorFactor'][:3];self.assertTrue(r<g<b<.08);self.assertEqual(blue.get('metallicFactor',1),0)
-  film=self.material('Front thin refill pouch skin');self.assertGreater(film['extensions']['KHR_materials_transmission']['transmissionFactor'],.9);self.assertGreater(min(film['pbrMetallicRoughness']['baseColorFactor'][:3]),.75)
+  for name in ['Front thin refill pouch skin','Rear thin refill pouch skin']:
+   film=self.material(name);self.assertGreater(film['extensions']['KHR_materials_transmission']['transmissionFactor'],.1);self.assertLess(film['extensions']['KHR_materials_transmission']['transmissionFactor'],.3)
+   r,g,b=film['pbrMetallicRoughness']['baseColorFactor'][:3];self.assertGreater(r,g);self.assertGreater(g,b);self.assertGreater(r-b,.25)
+   self.assertGreater(film['pbrMetallicRoughness']['roughnessFactor'],.18);self.assertLess(film['pbrMetallicRoughness']['roughnessFactor'],.35)
+  self.assertLess(self.material('Wide top heat seal')['extensions']['KHR_materials_transmission']['transmissionFactor'],.15)
  def test_actuator_hub_connects_to_pressing_head(self):
   w=self.width();hub=self.ray_intersections('Navy actuator hub');head=self.ray_intersections('Long curved navy dispensing head')
   self.assertEqual(len({round(v/w,5) for v in hub}),2);self.assertEqual(len({round(v/w,5) for v in head}),2)

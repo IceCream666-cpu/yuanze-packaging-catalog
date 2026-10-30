@@ -374,10 +374,10 @@
       "open": "/review-assets/poster-065-open.webp"
     },
     "background": "#626d7c",
-    "revision": "complete-pump-clear-tube-local-awaiting-review",
+    "revision": "complete-pump-warm-ivory-pouch-local-awaiting-review",
     "publishedRevision": false,
     "previousPublishedModelSha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2",
-    "localRevisionReceipt": "tea-tree-simplified-preview-verification.json"
+    "localRevisionReceipt": "tea-tree-pouch-material-preview-verification.json"
   },
   "poster-066": {
     "state": "published",

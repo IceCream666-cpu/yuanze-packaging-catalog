@@ -1240,6 +1240,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
       object.material.name=exported.name;
       object.material.transmission=exported.extensions?.KHR_materials_transmission?.transmissionFactor??0;
       object.material.roughness=exported.pbrMetallicRoughness.roughnessFactor;
+      object.material.color.fromArray(exported.pbrMetallicRoughness.baseColorFactor??[1,1,1,1]);
     }
     if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
     else {
@@ -1286,6 +1287,12 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
       const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
     }
     if(id==='poster-065') {
+      for(const name of ['Front thin refill pouch skin','Rear thin refill pouch skin','Wide top heat seal']) {
+        const film=loaded.scene.getObjectByName(name).material;
+        assert.ok(film.transmission<.3,'Tinted pouch film must not become clear glass.');
+        assert.ok(film.color.r>film.color.g && film.color.g>film.color.b && film.color.r-film.color.b>.25,'Keep the warm pouch substrate colour in the renderer.');
+        assert.ok(film.roughness>.18 && film.roughness<.35);
+      }
       const tube=loaded.scene.getObjectByName('Open hollow dip tube').material;
       const body=loaded.scene.getObjectByName('Hollow round shampoo bottle with sloping shoulder').material;
       assert.equal(body.transmission,1);assert.ok(Math.abs(body.roughness-.027)<.001);

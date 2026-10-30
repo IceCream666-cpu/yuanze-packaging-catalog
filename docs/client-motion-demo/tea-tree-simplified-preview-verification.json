@@ -186,5 +186,14 @@
     "Small lettering remains small on narrow screens; clear tube edges are subtle against the gray-blue background.",
     "Planar print and pouch become edge-on near 90-degree yaw.",
     "Hidden dimensions and pump fit are illustrative, not manufacturing measurements."
-  ]
+  ],
+  "materialCorrectionUpdate": {
+    "receipt": "tea-tree-pouch-material-preview-verification.json",
+    "model": {
+      "bytes": 2748824,
+      "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d"
+    },
+    "state": "local-awaiting-user",
+    "note": "Earlier geometry and image checks above describe the pre-correction preview; latest evidence restores the warm ivory pouch substrate from the original poster."
+  }
 }

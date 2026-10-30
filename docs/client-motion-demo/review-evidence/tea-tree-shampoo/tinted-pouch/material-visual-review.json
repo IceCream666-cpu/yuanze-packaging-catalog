@@ -1,0 +1,72 @@
+{
+  "status": "passed-requested-pouch-material-correction-with-documented-limitations",
+  "checkedAt": "2026-10-30T17:57:37.482085+08:00",
+  "reference": "docs/mobile-client-preview/assets/posters/poster-065.webp",
+  "referenceActuallyViewed": true,
+  "referenceInterpretation": "The empty area above the reference liquid line has a warm cream/champagne film base and same-colored denser seals. The stronger gold below the liquid line is not copied into the empty pouch.",
+  "modelSha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+  "screenshots": [
+    {
+      "file": "desktop-closed.png",
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "75a6171117ab8c7c7e482502613017adee49498a881ca2cc9e799c6a5c355cc6",
+      "actuallyViewed": true,
+      "observation": "Warm cream/champagne base color remains visible across the pouch face instead of transmitting the gray-blue stage. Navy label and ivory lettering retain their contrast. Soft edge and bottom highlights remain; no liquid line, bubbles or golden formula have been added."
+    },
+    {
+      "file": "desktop-open.png",
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "b1e7642becb5f5214d0725245a11e5d59e455e43c67c8f534b757a1525296930",
+      "actuallyViewed": true,
+      "observation": "Pouch retains its warm base after the blank navy substrate and lettering separate. Whole pump and clear tube remain connected; the two print sets remain below the two blank substrates."
+    },
+    {
+      "file": "desktop-rear.png",
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "82b7a53939a7532b071fcce1a631b7c6641c2f73dc2bc81365bfbedd2b3fd06a",
+      "actuallyViewed": true,
+      "observation": "Rear pouch face has the same warm base and restrained edge highlights. Front lettering does not incorrectly appear on the rear. The rear-view pouch projects over the left title area; this is the pre-existing camera/layout limitation and is not an all-angle non-overlap pass."
+    },
+    {
+      "file": "mobile-closed.png",
+      "size": [
+        393,
+        852
+      ],
+      "sha256": "4fc384fa4e0449354854976c149a344600233c0dbba360bf686448ffe302f275",
+      "actuallyViewed": true,
+      "observation": "At 393x852 simulated viewport the pouch is visibly cream rather than background-gray, with dark label retained; main model and controls fit. Small printing remains small."
+    },
+    {
+      "file": "mobile-open.png",
+      "size": [
+        393,
+        852
+      ],
+      "sha256": "811537ac56dd3dedf382cd71ec27dec70415429e1e885f9f935e64ca70925f8a",
+      "actuallyViewed": true,
+      "observation": "At 393x852 simulated viewport the empty warm pouch remains distinct; whole pump, blank labels and complete lettering still separate as intended. No visible clipping in this front view."
+    }
+  ],
+  "blockingFindings": [],
+  "limitations": [
+    "Material is a restrained studio approximation; the poster has stronger folds and directional reflections, not reproduced by this material-only correction.",
+    "Rear 180-degree view overlaps the title at the left under the existing camera layout.",
+    "Mobile screenshots are simulated viewport evidence, not a physical-device test.",
+    "Small mobile printing and subtle transparent tube edges remain existing display limitations."
+  ],
+  "notPerformed": [
+    "No browser interaction or code changes by this reviewer",
+    "No physical material sample measurement",
+    "No production publication or user approval"
+  ]
+}

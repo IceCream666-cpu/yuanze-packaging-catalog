@@ -1,0 +1,261 @@
+{
+  "status": "passed-material-only-scope",
+  "checkedAt": "2026-10-30T17:56:16.377230+08:00",
+  "baselineCommit": "cfa8af1b97a22f281c8dab23085ec9e44cd5f989",
+  "sourceBefore": "work/tea-tree-tinted-pouch/before.glb",
+  "target": "docs/client-motion-demo/packaging-assets/poster-065.glb",
+  "beforeSha256": "b1952717562fd2f22fea1b2364499f471b7abc68f93ce8c5414b98f01032976b",
+  "afterSha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+  "modelBytes": 2748824,
+  "meshCount": 19,
+  "changedGltfRootKeys": [
+    "materials"
+  ],
+  "binaryChunkByteIdentical": true,
+  "binaryChunkSha256": "fc08e55799a88f10a29e58d33a2f4792ff5ffe731b3ae372be6fce189f501013",
+  "all19MeshDefinitionsAndAccessorDataUnchanged": true,
+  "allNodesTransformsAndHierarchyUnchanged": true,
+  "embeddedImagesAndArtworkByteIdentical": true,
+  "changedMaterials": [
+    {
+      "index": 1,
+      "before": {
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.44999998807907104
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        },
+        "name": "Tea Tree sealed ivory pouch edges",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.8069522380828857,
+            0.6938717365264893,
+            0.520995557308197,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.3499999940395355
+        }
+      },
+      "after": {
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.07999999821186066
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        },
+        "name": "Tea Tree sealed ivory pouch edges",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.838798999786377,
+            0.68668532371521,
+            0.4910208582878113,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.3199999928474426
+        }
+      },
+      "meshUsers": [
+        "Bottom gusset seal",
+        "Left heat sealed pouch margin",
+        "Right heat sealed pouch margin",
+        "Wide top heat seal"
+      ]
+    },
+    {
+      "index": 2,
+      "before": {
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9200000166893005
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        },
+        "name": "Tea Tree translucent refill film",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            1,
+            0.9301108717918396,
+            0.8069522380828857,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.18000000715255737
+        }
+      },
+      "after": {
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.23999999463558197,
+            "clearcoatRoughnessFactor": 0.1599999964237213
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.2800000011920929
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        },
+        "name": "Tea Tree warm ivory refill film",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.8631572127342224,
+            0.6938717365264893,
+            0.48514994978904724,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.23999999463558197
+        }
+      },
+      "meshUsers": [
+        "Front thin refill pouch skin",
+        "Rear thin refill pouch skin"
+      ]
+    }
+  ],
+  "other25Models": [
+    {
+      "path": "docs/client-motion-demo/packaging-assets/beach-magic-packaging.glb",
+      "unchanged": true,
+      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/liaose-pump.glb",
+      "unchanged": true,
+      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-013.glb",
+      "unchanged": true,
+      "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-039.glb",
+      "unchanged": true,
+      "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-042.glb",
+      "unchanged": true,
+      "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-044.glb",
+      "unchanged": true,
+      "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-047.glb",
+      "unchanged": true,
+      "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-049.glb",
+      "unchanged": true,
+      "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-051.glb",
+      "unchanged": true,
+      "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-056.glb",
+      "unchanged": true,
+      "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-057.glb",
+      "unchanged": true,
+      "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-058.glb",
+      "unchanged": true,
+      "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-059.glb",
+      "unchanged": true,
+      "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-060.glb",
+      "unchanged": true,
+      "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-061.glb",
+      "unchanged": true,
+      "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-062.glb",
+      "unchanged": true,
+      "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-063.glb",
+      "unchanged": true,
+      "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-064.glb",
+      "unchanged": true,
+      "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-066.glb",
+      "unchanged": true,
+      "sha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-067.glb",
+      "unchanged": true,
+      "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-068.glb",
+      "unchanged": true,
+      "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-069.glb",
+      "unchanged": true,
+      "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-070.glb",
+      "unchanged": true,
+      "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-072.glb",
+      "unchanged": true,
+      "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052"
+    },
+    {
+      "path": "docs/client-motion-demo/packaging-assets/poster-073.glb",
+      "unchanged": true,
+      "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e"
+    }
+  ],
+  "notChecked": [
+    "Browser appearance and motion in this report",
+    "Physical material sample match",
+    "Publication or user approval"
+  ]
+}
