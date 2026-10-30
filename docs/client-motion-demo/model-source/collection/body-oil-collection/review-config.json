@@ -84,6 +84,7 @@
   "appearance": {
     "glass": true,
     "frosted": false,
+    "referenceGlass": true,
     "pipette": false,
     "clearLabel": true,
     "metal": false

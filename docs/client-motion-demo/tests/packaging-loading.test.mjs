@@ -181,7 +181,7 @@ test('the Daily clear-cover flag preserves smooth transparent cover and leaves d
       assert.equal(body.material.roughness,.24);assert.equal(body.material.toneMapped,false);
       assert.equal(cover.material.roughness,clearOvercap===true?.035:.24);
       assert.equal(cover.material.toneMapped,clearOvercap!==true&&overcapToneMapped!==false);
-      assert.equal(cover.material.transmission,1);assert.equal(cover.material.thickness,.012);assert.equal(cover.material.side,Three.FrontSide);
+      assert.equal(cover.material.transmission,1);assert.equal(cover.material.thickness,.02);assert.equal(cover.material.side,Three.FrontSide);
     } finally {api?.dispose();env.close();}
   }
 });
@@ -1255,3 +1255,12 @@ test('AHA Mist keeps its spray head and curved tube intact throughout desktop an
   }finally{api?.dispose();env.close();}
   }
 });
+
+ test('reference glass reflection tuning is limited to the two revised bottles',async()=>{
+  for(const enabled of [true,false]){
+    const product=structuredClone(PACKAGING_PRODUCTS['poster-073']);product.review.appearance.referenceGlass=enabled;let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
+  }
+  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-072','poster-073']);
+ });

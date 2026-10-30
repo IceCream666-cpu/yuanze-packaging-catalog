@@ -39,7 +39,7 @@ class BodyOilCollectionTests(ExportedModelReader):
         d=self.width()
         lo,hi=self.bounds(self.positions(self.body_name))
         cl,ch=self.bounds(self.positions('Body Oil 02 hollow satin ivory cap'))
-        self.assertAlmostEqual((ch[0]-cl[0])/d,.514,delta=.002)
+        self.assertAlmostEqual((ch[0]-cl[0])/d,.504,delta=.002)
         self.assertAlmostEqual((ch[1]-cl[1])/d,.347,delta=.002)
         self.assertAlmostEqual((ch[1]-lo[1])/d,2.182,delta=.002)
         self.assertAlmostEqual((cl[0]+ch[0])/2,(lo[0]+hi[0])/2,delta=1e-6)
@@ -126,7 +126,7 @@ class BodyOilCollectionTests(ExportedModelReader):
         self.assertEqual(info['printIncludes'],['liaose','BODY OIL','02'])
         raw=(CLIENT/'packaging-assets/poster-073.glb').read_bytes()
         self.assertEqual(hashlib.sha256(raw).hexdigest(),info['glbSha256'])
-        self.assertEqual(hashlib.sha256(raw).hexdigest(),'169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e')
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),'7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b')
         self.assertTrue((self.source/'body-oil-collection.blend').is_file())
 
 

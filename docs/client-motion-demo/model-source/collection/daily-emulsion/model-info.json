@@ -27,13 +27,13 @@
     },
     "Overcap": {
       "min": [
-        -0.32521429657936096,
-        -0.32521429657936096,
+        -0.3158928453922272,
+        -0.3158928453922272,
         2.1915712356567383
       ],
       "max": [
-        0.32521429657936096,
-        0.32521429657936096,
+        0.3158928453922272,
+        0.3158928453922272,
         2.8999998569488525
       ]
     },
@@ -94,7 +94,7 @@
   "glassBaseToWidth": 0.14,
   "closureDiameterToWidth": 0.69,
   "visibleClosureHeightToWidth": 0.3,
-  "coverDiameterToWidth": 0.628,
+  "coverDiameterToWidth": 0.61,
   "coverHeightToWidth": 0.684,
   "containsFormula": false,
   "bodyFrosted": true,
@@ -134,12 +134,12 @@
     "Daily hollow clear overcap with soft top and mould dimple": {
       "manifold": true,
       "positiveVolume": true,
-      "minimumFaceArea": 1.0232790373265743e-05
+      "minimumFaceArea": 9.655052963353228e-06
     }
   },
   "referenceSha256": "169066c2a83c6ad5df7b4b20079232222f4e19d6e642dfe5bf21d4716bbde4a2",
-  "glbSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
-  "glbBytes": 1162568,
+  "glbSha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1",
+  "glbBytes": 1163416,
   "generator": "build_daily_emulsion.py",
   "generatorDependencies": [
     "tail_model_helpers.py"

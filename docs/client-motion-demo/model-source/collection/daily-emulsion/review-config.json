@@ -101,6 +101,7 @@
     "glass": true,
     "frosted": true,
     "clearOvercap": true,
+    "referenceGlass": true,
     "pipette": false,
     "clearLabel": true,
     "metal": false

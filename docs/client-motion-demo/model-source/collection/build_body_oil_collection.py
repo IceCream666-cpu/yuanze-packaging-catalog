@@ -30,7 +30,7 @@ for number in ['02']:
 for name,content in art.items():(OUT/(name+'.svg')).write_text(content)
 subprocess.run([NODE,'--input-type=module','-e',"import sharp from '/Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.mjs';import fs from 'node:fs/promises';for(const n of JSON.parse(process.argv[2]))await sharp(await fs.readFile(process.argv[1]+'/'+n+'.svg'),{density:192}).png().toFile(process.argv[1]+'/'+n+'.png');",str(OUT),json.dumps(list(art))],check=True)
 
-glass=m.mat('Body Oil colourless clear glass','#ffffff',.025,1)
+glass=m.mat('Body Oil colourless clear glass','#ffffff',.035,1)
 cap=m.mat('Body Oil warm ivory satin cap','#eee3d1',.30)
 liner=m.mat('Body Oil ivory seal illustration','#f4eadb',.46)
 film=m.texture('Body Oil unprinted transparent carrier','label.png',.24)
@@ -53,6 +53,10 @@ for number,x,y,z in positions:
  for o in set(bpy.data.objects)-before:
   if o.type=='MESH':
    for vertex in o.data.vertices:vertex.co+=Vector((x,y,z))
+
+# The poster cap is approximately half the bottle width; preserve the neck clearance.
+for obj in m.groups['Closure'].children:
+ for v in obj.data.vertices:v.co.x *= .504/.514;v.co.y *= .504/.514
 
 total=2.182
 scale=2.9/total
@@ -90,11 +94,11 @@ parts=[
  part('print','LogoPrint','品牌字','Brand lettering','liaose独立向外展开。','The liaose mark moves outward independently.'),
  part('name','ProductPrint','产品名与编号','Names and numbers','BODY OIL及02比标贴更向外展开。','BODY OIL and 02 move farther out than the carriers.'),
 ]
-review={'parts':parts,'appearance':{'glass':True,'frosted':False,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'closure':[0,1.4,0],'label':[-.65,.02,.70],'print':[-1.50,.23,1.85],'name':[-1.50,-.18,1.85]},'scales':{'label':1.08,'print':1.3,'name':1.3},'camera':{'centerY':[1.45,2.10],'centerX':[0,-.75],'height':[3.7,4.95],'width':[2.1,4.0]}}}
+review={'parts':parts,'appearance':{'glass':True,'frosted':False,'referenceGlass':True,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'closure':[0,1.4,0],'label':[-.65,.02,.70],'print':[-1.50,.23,1.85],'name':[-1.50,-.18,1.85]},'scales':{'label':1.08,'print':1.3,'name':1.3},'camera':{'centerY':[1.45,2.10],'centerX':[0,-.75],'height':[3.7,4.95],'width':[2.1,4.0]}}}
 config={'product':{'file':ID+'.glb','kind':'collection','scale':1,'parts':parts,'review':review},'design':{'name':'Body Oil Collection','background':'#eadbc5','ink':'#3e2b1d'}}
 source=CLIENT/'review-source'/ID;source.mkdir(parents=True,exist_ok=True)
 (source/'review-config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n')
 (OUT/'review-config.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
-info={'id':ID,'state':'local-review','productCount':1,'bottleCount':1,'height':2.9,'components':list(m.groups),'componentBoundsBlenderXYZ':bounds,'singleClosedHeightToWidth':2.182,'glassHeightToWidth':1.840,'glassBaseToWidth':.139,'capDiameterToWidth':.514,'capHeightToWidth':.347,'bottlePositionsInDiameters':positions,'normalizationScale':scale,'containsFormula':False,'colorlessGlass':True,'separateLabelBrandAndName':True,'printIncludes':['liaose','BODY OIL','02'],'illustrativeDimensions':True,'hiddenStructure':'Seal, wall thickness, internal fit and circular depth inferred from one front image; not manufacturing dimensions. Transparent blank carrier illustrates separate printing; no paper edge is visible in the reference.','referenceSha256':hashlib.sha256((OUT/'reference.png').read_bytes()).hexdigest(),'glbSha256':hashlib.sha256(glb.read_bytes()).hexdigest(),'glbBytes':glb.stat().st_size,'generator':Path(__file__).name}
+info={'id':ID,'state':'local-review','productCount':1,'bottleCount':1,'height':2.9,'components':list(m.groups),'componentBoundsBlenderXYZ':bounds,'singleClosedHeightToWidth':2.182,'glassHeightToWidth':1.840,'glassBaseToWidth':.139,'capDiameterToWidth':.504,'capHeightToWidth':.347,'bottlePositionsInDiameters':positions,'normalizationScale':scale,'containsFormula':False,'colorlessGlass':True,'separateLabelBrandAndName':True,'printIncludes':['liaose','BODY OIL','02'],'illustrativeDimensions':True,'hiddenStructure':'Seal, wall thickness, internal fit and circular depth inferred from one front image; not manufacturing dimensions. Transparent blank carrier illustrates separate printing; no paper edge is visible in the reference.','referenceSha256':hashlib.sha256((OUT/'reference.png').read_bytes()).hexdigest(),'glbSha256':hashlib.sha256(glb.read_bytes()).hexdigest(),'glbBytes':glb.stat().st_size,'generator':Path(__file__).name}
 (OUT/'model-info.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n')
 print('Body Oil Collection: 1 empty bottle, 5 groups with one complete cap,',glb.stat().st_size,'bytes')

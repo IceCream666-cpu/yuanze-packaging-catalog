@@ -56,7 +56,7 @@ class DailyEmulsionModelTests(ExportedModelReader):
         self.assertAlmostEqual(high[1] / width, 1.972, delta=.002)
         self.assertAlmostEqual((high[2] - low[2]) / width, .58, delta=.002)
         low, high = self.bounds(self.positions(self.cover_name))
-        self.assertAlmostEqual((high[0] - low[0]) / width, .628, delta=.002)
+        self.assertAlmostEqual((high[0] - low[0]) / width, .610, delta=.002)
         self.assertAlmostEqual((high[1] - low[1]) / width, .684, delta=.002)
         low, high = self.bounds(self.positions(self.group('Closure')[0]))
         self.assertAlmostEqual((high[0] - low[0]) / width, .69, delta=.002)

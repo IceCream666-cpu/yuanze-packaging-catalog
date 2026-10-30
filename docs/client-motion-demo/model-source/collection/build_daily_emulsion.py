@@ -34,7 +34,7 @@ for name, content in art.items():
     (OUT / (name + '.svg')).write_text(content)
 subprocess.run([NODE, '--input-type=module', '-e', "import sharp from '/Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.mjs';import fs from 'node:fs/promises';for(const n of ['label','print','name'])await sharp(await fs.readFile(process.argv[1]+'/'+n+'.svg'),{density:144}).png().toFile(process.argv[1]+'/'+n+'.png');", str(OUT)], check=True)
 
-glass = m.mat('Daily neutral frosted empty glass', '#ffffff', .28, 1)
+glass = m.mat('Daily neutral frosted empty glass', '#ffffff', .25, 1)
 cover = m.mat('Daily clear protective cover', '#ffffff', .035, 1)
 white = m.mat('Daily neutral white satin closure', '#f5f5ef', .24)
 headwhite = m.mat('Daily opaque white actuator', '#f7f7f2', .23)
@@ -173,6 +173,11 @@ lathe('Daily hollow clear overcap with soft top and mould dimple', [
     (2.765,.289),(2.747,.294),(2.151,.294),(2.116,.294)
 ],cover,'Overcap',192)
 
+# Match the narrower protective-cover silhouette in the supplied poster.
+for obj in m.groups['Overcap'].children:
+    for v in obj.data.vertices:
+        v.co.x *= .610/.628; v.co.y *= .610/.628
+
 surface=lambda x,z:-.290
 for name,mat,group,offset in [
     ('Daily blank transparent carrier',film,'PaperLabel',.0014),
@@ -234,12 +239,12 @@ parts=[
     part('name','ProductPrint','产品名','Product name','横线、DAILY EMULSION及FACE CARE一同展开。','The rule, DAILY EMULSION and FACE CARE move as one print layer.'),
 ]
 for p,short in zip(parts,['罩盖','泵头组件','瓶身','标贴','品牌','品名']):p['short'][0]=short
-review={'parts':parts,'appearance':{'glass':True,'frosted':True,'clearOvercap':True,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'overcap':[0,2.35,0],'pump':[0,1.05,0],'label':[-.85,.03,.70],'print':[-1.90,.30,1.90],'name':[-1.90,-.12,1.90]},'scales':{'label':1.10,'print':1.50,'name':1.55},'camera':{'centerY':[1.45,2.62],'centerX':[0,-.90],'height':[3.7,5.95],'width':[2.1,4.5]}}}
+review={'parts':parts,'appearance':{'glass':True,'frosted':True,'clearOvercap':True,'referenceGlass':True,'pipette':False,'clearLabel':True,'metal':False},'explosion':{'offsets':{'overcap':[0,2.35,0],'pump':[0,1.05,0],'label':[-.85,.03,.70],'print':[-1.90,.30,1.90],'name':[-1.90,-.12,1.90]},'scales':{'label':1.10,'print':1.50,'name':1.55},'camera':{'centerY':[1.45,2.62],'centerX':[0,-.90],'height':[3.7,5.95],'width':[2.1,4.5]}}}
 config={'product':{'file':ID+'.glb','kind':'collection','scale':1,'parts':parts,'review':review},'design':{'name':'Daily Emulsion','background':'#e9e5d8','ink':'#34372e'}}
 source=CLIENT/'review-source'/ID;source.mkdir(parents=True,exist_ok=True)
 (source/'review-config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n')
 (OUT/'review-config.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
-info={'id':ID,'state':'local-review','productCount':1,'bottleCount':1,'height':2.9,'components':list(m.groups),'componentBoundsBlenderXYZ':bounds,'normalizationScale':scale,'closedHeightToWidth':total,'bodyDepthToWidth':.58,'visibleGlassHeightToWidth':1.84,'actualGlassHeightToWidth':1.972,'glassBaseToWidth':.14,'closureDiameterToWidth':.69,'visibleClosureHeightToWidth':.30,'coverDiameterToWidth':.628,'coverHeightToWidth':.684,'containsFormula':False,'bodyFrosted':True,'coverClear':True,'colorlessGlass':True,'separateLabelBrandAndName':True,'printIncludes':['liaose','horizontal rule','DAILY EMULSION','FACE CARE'],'noInventedCapacity':True,'illustrativeDimensions':True,'hiddenStructure':'Depth, glass wall, screw fit and short connector are indicative; no liquid, long dip tube or unseen elaborate mechanism. The visible actuator outlet is a shallow recess. The transparent unprinted carrier explains separated print layers; the reference has no paper-label border.','solidChecks':solid_checks,'referenceSha256':hashlib.sha256((OUT/'reference.png').read_bytes()).hexdigest(),'glbSha256':hashlib.sha256(glb.read_bytes()).hexdigest(),'glbBytes':glb.stat().st_size,'generator':Path(__file__).name,'generatorDependencies':['tail_model_helpers.py']}
+info={'id':ID,'state':'local-review','productCount':1,'bottleCount':1,'height':2.9,'components':list(m.groups),'componentBoundsBlenderXYZ':bounds,'normalizationScale':scale,'closedHeightToWidth':total,'bodyDepthToWidth':.58,'visibleGlassHeightToWidth':1.84,'actualGlassHeightToWidth':1.972,'glassBaseToWidth':.14,'closureDiameterToWidth':.69,'visibleClosureHeightToWidth':.30,'coverDiameterToWidth':.610,'coverHeightToWidth':.684,'containsFormula':False,'bodyFrosted':True,'coverClear':True,'colorlessGlass':True,'separateLabelBrandAndName':True,'printIncludes':['liaose','horizontal rule','DAILY EMULSION','FACE CARE'],'noInventedCapacity':True,'illustrativeDimensions':True,'hiddenStructure':'Depth, glass wall, screw fit and short connector are indicative; no liquid, long dip tube or unseen elaborate mechanism. The visible actuator outlet is a shallow recess. The transparent unprinted carrier explains separated print layers; the reference has no paper-label border.','solidChecks':solid_checks,'referenceSha256':hashlib.sha256((OUT/'reference.png').read_bytes()).hexdigest(),'glbSha256':hashlib.sha256(glb.read_bytes()).hexdigest(),'glbBytes':glb.stat().st_size,'generator':Path(__file__).name,'generatorDependencies':['tail_model_helpers.py']}
 (OUT/'model-info.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n')
 (OUT/'README.md').write_text('''# Daily Emulsion — local single-bottle review
 

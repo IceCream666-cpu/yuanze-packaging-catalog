@@ -174,6 +174,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           if (appearance?.tintedGlass) {m.attenuationColor.copy(m.color);m.color.set('#ffffff');m.attenuationDistance=appearance.attenuationDistance;}
           // Match the untonemapped backdrop through the clear wall.
           m.toneMapped=isReviewOvercap && appearance?.overcapToneMapped !== false && appearance?.clearOvercap !== true; m.specularIntensity=review ? .35 : .7;
+          if (appearance?.referenceGlass) {m.envMapIntensity=.75; m.specularIntensity=.8; m.thickness=isReviewOvercap ? .02 : .045;}
           m.transparent=false; m.opacity=1; m.side=isReviewOvercap || isReviewFilm || golden && m.name.includes('overcap') ? T.FrontSide : T.DoubleSide;
           // The same restrained rim correction used by the first approved glass jar.
           m.onBeforeCompile = shader => {

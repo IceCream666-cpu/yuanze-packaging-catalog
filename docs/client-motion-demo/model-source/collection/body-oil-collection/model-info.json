@@ -26,13 +26,13 @@
     },
     "Closure": {
       "min": [
-        -0.34156736731529236,
-        -0.34156736731529236,
+        -0.33492210507392883,
+        -0.33492210507392883,
         2.4388177394866943
       ],
       "max": [
-        0.34156736731529236,
-        0.34156736731529236,
+        0.33492210507392883,
+        0.33492210507392883,
         2.8999998569488525
       ]
     },
@@ -76,7 +76,7 @@
   "singleClosedHeightToWidth": 2.182,
   "glassHeightToWidth": 1.84,
   "glassBaseToWidth": 0.139,
-  "capDiameterToWidth": 0.514,
+  "capDiameterToWidth": 0.504,
   "capHeightToWidth": 0.347,
   "bottlePositionsInDiameters": [
     [
@@ -98,7 +98,7 @@
   "illustrativeDimensions": true,
   "hiddenStructure": "Seal, wall thickness, internal fit and circular depth inferred from one front image; not manufacturing dimensions. Transparent blank carrier illustrates separate printing; no paper edge is visible in the reference.",
   "referenceSha256": "e78a40f295286e52f685b5d94c51740c9ebbd22f22acdab028ea753801a708dc",
-  "glbSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
-  "glbBytes": 627980,
+  "glbSha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b",
+  "glbBytes": 627764,
   "generator": "build_body_oil_collection.py"
 }

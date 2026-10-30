@@ -2978,7 +2978,8 @@
         "frosted": false,
         "pipette": false,
         "clearLabel": true,
-        "metal": false
+        "metal": false,
+        "referenceGlass": true
       },
       "explosion": {
         "offsets": {
@@ -3249,7 +3250,8 @@
         "clearOvercap": true,
         "pipette": false,
         "clearLabel": true,
-        "metal": false
+        "metal": false,
+        "referenceGlass": true
       },
       "explosion": {
         "offsets": {

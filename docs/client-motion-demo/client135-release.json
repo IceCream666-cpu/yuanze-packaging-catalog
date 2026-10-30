@@ -1,0 +1,34 @@
+{
+  "version": "client1.35",
+  "status": "candidate-validated",
+  "scope": "poster-072 and poster-073 empty 3D model fidelity",
+  "referencePostersAlreadyIncluded": true,
+  "singleProduct": true,
+  "containsFormula": false,
+  "changes": [
+    "Daily cover diameter/body width .628 → .610; neutral frosted glass roughness .28 → .25",
+    "Body Oil 02 cap diameter/body width .514 → .504; glass roughness .025 → .035",
+    "Scoped glass reflections and optical wall thickness, preserving other products",
+    "Separate static formula demo; not in production bundle"
+  ],
+  "tests": {
+    "frontend": 161,
+    "release": 34,
+    "modelGeometryAndMaterial": 15,
+    "collection": 4
+  },
+  "demo": {
+    "renderer": "Blender Cycles 96 samples",
+    "states": [
+      "empty",
+      "filled"
+    ],
+    "products": [
+      "daily-emulsion",
+      "body-oil-collection"
+    ],
+    "sameCameraLightingExposure": true,
+    "separateFormulaMesh": true,
+    "limitations": "Static liquid surface, no flow simulation; native Blender volume absorption is not equivalent to every GLB viewer."
+  }
+}
