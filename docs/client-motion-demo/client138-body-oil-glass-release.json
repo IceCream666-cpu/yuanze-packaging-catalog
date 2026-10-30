@@ -1,0 +1,125 @@
+{
+  "version": "client1.38",
+  "patch": "approved-body-oil-073-glass-only",
+  "publishedAt": "2026-10-30T18:22:35+08:00",
+  "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+  "manifestSha256": "95c6a3b985ca469b4e3feb26672ad279dab094ae626eb8162d0fc27be7e353c4",
+  "backup": "/opt/yuanze-reference/backups/client1.38-body-oil-clear-glass-20261030",
+  "baselineManifestSha256": "7f817d1d3e7f85376bc8b1cd830a13c5587f0f19772a92659939cc4bcde1a64b",
+  "verifiedFiles": 458,
+  "changed": [
+    "assets/packaging/PackagingDetail-CU6uTQ2R.js",
+    "assets/packaging/packaging-scene-LZvXzNcC.js",
+    "index.html",
+    "preview.js",
+    "bundle-manifest.json"
+  ],
+  "removedChunks": [
+    "assets/packaging/PackagingDetail-InElhT2w.js",
+    "assets/packaging/packaging-scene-Vzm6bX_p.js"
+  ],
+  "added": [
+    "assets/packaging/PackagingDetail-CU6uTQ2R.js",
+    "assets/packaging/packaging-scene-LZvXzNcC.js"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067.glb",
+    "assets/packaging/poster-068.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb"
+  ],
+  "outsideUnchanged": 6820,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42",
+  "https": {
+    "version": "client1.38",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "changed": [
+      "assets/packaging/PackagingDetail-CU6uTQ2R.js",
+      "assets/packaging/packaging-scene-LZvXzNcC.js",
+      "index.html",
+      "preview.js"
+    ],
+    "models": [
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "tlsVerified": true,
+    "checkedAt": "2026-10-30T18:23:57.063263+08:00",
+    "manifestSha256": "95c6a3b985ca469b4e3feb26672ad279dab094ae626eb8162d0fc27be7e353c4",
+    "anonymousDenied": true,
+    "logoutVerified": true
+  },
+  "browser": {
+    "browser": "Codex IAB",
+    "productionUrl": "https://bmt.yuanzebeauty.com/client",
+    "states": [
+      "closed",
+      "fullyOpen",
+      "rotate90",
+      "reset"
+    ],
+    "consoleErrors": 0,
+    "physicalPhoneTested": false
+  },
+  "tests": {
+    "frontend": 164,
+    "release": 19,
+    "model": 7
+  },
+  "status": "published-and-live-verified"
+}
