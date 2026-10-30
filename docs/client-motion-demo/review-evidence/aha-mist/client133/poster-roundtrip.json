@@ -1,0 +1,30 @@
+{
+  "poster": [
+    {
+      "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-060-1280.webp",
+      "width": 1280,
+      "height": 960,
+      "complete": true
+    }
+  ],
+  "returned": {
+    "progress": 0,
+    "renderedProgress": 0,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0,
+      0,
+      0
+    ],
+    "components": [
+      "closure",
+      "body",
+      "label",
+      "print"
+    ],
+    "meshes": 16,
+    "triangles": 56354
+  }
+}
