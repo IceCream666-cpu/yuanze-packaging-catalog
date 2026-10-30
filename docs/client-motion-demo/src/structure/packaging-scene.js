@@ -196,6 +196,16 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         m.transmission=.98; m.roughness=.06; m.ior=1.46; m.thickness=.0165;
         m.side=T.FrontSide; m.envMapIntensity=.65;
       }
+      if (product.file === 'poster-061.glb' && m.name === 'Body Cream clear plastic dip tube') {
+        m.transmission=1; m.roughness=.06; m.ior=1.46; m.thickness=.0225;
+        m.side=T.FrontSide; m.envMapIntensity=1.2; m.specularIntensity=1; m.clearcoat=.2; m.clearcoatRoughness=.06;
+        m.onBeforeCompile = shader => {
+          shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
+            float tubeEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 3.0);
+            gl_FragColor.rgb *= 1.0 - 0.24 * tubeEdge;
+          `);
+        };
+      }
       if (golden && m.name === 'Golden neutral frosted thick glass') m.roughness=.28;
       if (pureVolume && m.name === 'Pure Volume clear plastic dip tube') {
         m.toneMapped=false; m.thickness=.0155;
