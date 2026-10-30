@@ -1,0 +1,72 @@
+{
+  "closed": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.37",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 278,
+      "triangles": 241158
+    },
+    "mobileParts": [
+      "泵头总成",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  },
+  "open": {
+    "url": "https://bmt.yuanzebeauty.com/client",
+    "title": "源泽 · 客户海报展厅 — client1.37",
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9998805787418128,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.649802954923991,
+        0.17997850417352623,
+        1.649802954923991
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 278,
+      "triangles": 241158
+    },
+    "mobileParts": [
+      "泵头总成",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  }
+}

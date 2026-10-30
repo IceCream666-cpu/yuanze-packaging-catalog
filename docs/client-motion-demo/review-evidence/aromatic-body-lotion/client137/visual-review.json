@@ -1,0 +1,108 @@
+{
+  "status": "passed-with-approved-display-limitations",
+  "checkedAt": "2026-10-30T17:25:40+08:00",
+  "review": "Independent image-by-image visual inspection of six formal-release screenshots plus supplied desktop/mobile state JSON",
+  "version": "client1.37",
+  "files": {
+    "desktop-closed.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "12c8a34138e9c553c36eb7253e6c7e5015f82dbd7ded9d2550946bc3d04525ea",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Entire yellow stepped bottle, white pump and cotton cord remain visible. Cord wraps the neck and both tied/fringed ends stay by the bottle. Front paper label carries liaose, AROMATIC BODY LOTION and 300 ml. Heading, descriptions and controls are unobstructed."
+    },
+    "desktop-half.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "7a72cea013ad0b69af870491ddce1ee1c02b84a6d113437c2879ac86d79ac9a8",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "White pump head, stem, collar and transparent tube remain connected while raised. Cord stays at the bottle neck. Printing and warm-white paper substrate move independently; their screen projections touch or overlap locally in this intermediate view."
+    },
+    "desktop-open.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "cb80c6e7b0fe03dbe910f77bd6fe6633441cdeee3d7aa94699270cd3fcc32116",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Complete white pump-and-tube assembly clears the bottle. Cotton wraps and both hanging cord ends remain attached to the bottle assembly. Blank paper substrate and complete printing are separately visible to its left; no viewport clipping."
+    },
+    "desktop-rotated.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "c911cfc5e4af061bfe25d4b3e2a5b5fe931f017721a186127f8c9022b23b5771",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Approximately 90-degree view preserves connected white pump and clear tube above the narrow side of the yellow bottle, with neck cord still attached. Label and printing are edge-on and not legible from this angle, as expected; no clipping of the pump, tube or bottle."
+    },
+    "mobile-closed.png": {
+      "viewport": [
+        393,
+        852
+      ],
+      "sha256": "7889ed55343f32128c80e3ce62013020e5309085ea6ecf5b45832082c10dd7dd",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "At 393x852 simulated viewport, the complete white pump, yellow bottle, neck wraps and two hanging cord ends fit. Title, four component controls and bottom controls are visible; no horizontal overflow or crop."
+    },
+    "mobile-open.png": {
+      "viewport": [
+        393,
+        852
+      ],
+      "sha256": "898780441309499cc70ed0dd96b27db4abd3294089d060513ce775c460f35d55",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "At 393x852 simulated viewport, the raised complete pump with long transparent tube, bottle and attached cord remain inside the viewport. Printing lies farther outward than the paper substrate, with local projected overlap between the right portion of the lettering and left part of the paper. All four component controls and full-open controls remain visible."
+    }
+  },
+  "stateChecks": {
+    "desktopViewport": [
+      1610,
+      853
+    ],
+    "mobileSimulatedViewport": [
+      393,
+      852
+    ],
+    "desktopTargets": [
+      0,
+      0.5,
+      1
+    ],
+    "mobileTargets": [
+      0,
+      1
+    ],
+    "mobileOpenRenderedProgress": 0.9998805787418128,
+    "renderedProgressTolerance": 0.001,
+    "desktopYawRadians": 1.5701535527446007,
+    "horizontalOverflow": false,
+    "componentControls": [
+      "closure",
+      "jar",
+      "label",
+      "print"
+    ]
+  },
+  "blockingFindings": [],
+  "approvedDisplayLimitations": [
+    "Mobile full-open printing and warm-white paper label have local screen-space overlap. They are separate layers; this review records the approved display limitation without expanding the release scope.",
+    "Transparent tube contrast is subtle against the warm background, and small mobile package text is limited by display scale.",
+    "At approximately 90 degrees the front paper and lettering become edge-on and are not readable."
+  ],
+  "validationLimits": [
+    "393x852 is a simulated viewport, not physical-device or native-touch testing.",
+    "No browser or remote actions were performed by this reviewer.",
+    "HTTPS integrity and poster round-trip validation are recorded separately by the publisher."
+  ]
+}
