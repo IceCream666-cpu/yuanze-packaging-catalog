@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-30",
+  "status": "local-preview-awaiting-user",
+  "published": false,
+  "sourceBaseline": "f415b8bd client1.38 Body Oil live release",
+  "posterId": "poster-072",
+  "containsFormula": false,
+  "changes": [
+    "Independent soft reflection environment for Daily body and cover",
+    "Retain frosted glass roughness 0.25 and embedded grain map",
+    "Cover reflection intensity reduced while silhouette remains visible",
+    "Body optical thickness 0.065 and IOR 1.5; clear plastic cover IOR 1.46",
+    "Shader program keys separate cover, frosted body and approved oil glass"
+  ],
+  "unchanged": [
+    "All 26 GLBs byte-identical",
+    "Pump geometry, white finish and assembly motion",
+    "Reference lettering and six part groups",
+    "Body Oil approved material parameters and studio"
+  ],
+  "tests": {
+    "frontend": 165,
+    "actualDailyGlb": 8,
+    "bundleCheck": true
+  },
+  "browser": {
+    "name": "Codex IAB",
+    "url": "http://127.0.0.1:8799/client",
+    "desktopStates": [
+      "closed",
+      "half",
+      "full",
+      "drag rotation",
+      "90 degree rotation",
+      "reset"
+    ],
+    "dragYaw": 1.5295685128547443,
+    "dragPitch": 0.12466690477075401,
+    "simulatedViewport": {
+      "width": 393,
+      "height": 852,
+      "scrollWidth": 393,
+      "progress": 1,
+      "renderedProgress": 0.999818016993044
+    },
+    "mobileVisualAcceptance": false,
+    "mobileNote": "CDP screenshot scaling/cropping inconsistent; metrics and interaction confirmed, no claim of mobile visual acceptance. Override restored.",
+    "physicalPhoneTested": false
+  },
+  "aestheticReview": "Rendered desktop reviewed with Impeccable polish workflow; refined top reflection and preserved edge visibility",
+  "limitations": [
+    "Local only, not published",
+    "Interactive renderer material changes; standalone GLB unchanged",
+    "No physical sample calibration or measured manufacturing dimensions"
+  ]
+}

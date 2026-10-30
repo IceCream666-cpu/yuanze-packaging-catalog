@@ -1293,7 +1293,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
 }
  test('reference glass reflection tuning is limited to the two revised bottles',async()=>{
   for(const enabled of [true,false]){
-    const product=structuredClone(PACKAGING_PRODUCTS['poster-072']);product.review.appearance.referenceGlass=enabled;let loaded,api;
+    const product=structuredClone(PACKAGING_PRODUCTS['poster-072']);product.file='reference-check.glb';product.review.appearance.referenceGlass=enabled;let loaded,api;
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
   }
@@ -1316,3 +1316,21 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     assert.deepEqual(api.getState().components.sort(),['body','closure','label','name','print']);
   }finally{api?.dispose();env.close();}
  });
+
+test('Daily glass keeps frosting, clear cover and opaque pump with isolated reflections',async()=>{
+ const product=PACKAGING_PRODUCTS['poster-072'];let loaded,api;
+ const env=harness({product,parse:()=>Promise.resolve(loaded)});
+ try{
+  loaded=env.model();const body=loaded.scene.getObjectByName('Body'),cover=loaded.scene.getObjectByName('Overcap'),pump=loaded.scene.getObjectByName('PumpAssembly');
+  body.material.transmission=cover.material.transmission=1;body.material.roughness=.25;cover.material.roughness=.035;
+  const pumpColor=pump.material.color.getHex();
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  assert.equal(body.material.roughness,.25);assert.equal(cover.material.roughness,.035);
+  assert.equal(body.material.thickness,.065);assert.equal(cover.material.thickness,.02);
+  assert.equal(body.material.ior,1.5);assert.equal(cover.material.ior,1.46);
+  assert.equal(body.material.envMap,cover.material.envMap);assert.notEqual(body.material.envMap,pump.material.envMap);
+  assert.equal(pump.material.transmission,0);assert.equal(pump.material.color.getHex(),pumpColor);
+  assert.notEqual(body.material.customProgramCacheKey(),cover.material.customProgramCacheKey());
+  const shader={fragmentShader:'#include <dithering_fragment>'};cover.material.onBeforeCompile(shader);assert.ok(shader.fragmentShader.includes('1.0 - .16 * wallEdge'));
+ }finally{api?.dispose();assert.equal(env.counts().envDisposals,2);env.close();}
+});

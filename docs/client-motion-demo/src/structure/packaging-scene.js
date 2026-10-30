@@ -25,9 +25,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const golden = product.file === 'poster-056.glb';
   const b5 = product.file === 'poster-057.glb';
   const bodyOil = product.file === 'poster-073.glb';
+  const daily = product.file === 'poster-072.glb';
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
-  let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
+  let renderer, canvas, scene, envTarget, oilEnvTarget, dailyEnvTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
   const mark = phase => modelRequest?.mark(phase);
   const signals = [signal, modelRequest?.signal].filter(Boolean);
@@ -45,7 +46,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     canvas?.removeEventListener('lostpointercapture', up); canvas?.removeEventListener('webglcontextlost', lost);
     document.removeEventListener('visibilitychange', visible);
     disposeObjects(scene, studio);
-    envTarget?.dispose(); oilEnvTarget?.dispose(); key?.shadow.map?.dispose(); key?.shadow.mapPass?.dispose();
+    envTarget?.dispose(); oilEnvTarget?.dispose(); dailyEnvTarget?.dispose(); key?.shadow.map?.dispose(); key?.shadow.mapPass?.dispose();
     renderer?.dispose(); canvas?.remove();
     if (host.__packagingScene === api) delete host.__packagingScene;
   }
@@ -122,6 +123,15 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       reflectionCard([-4, 1, -4], [2, 6], '#ffffff', 1.4, glassStudio);
       oilEnvTarget = pmrem.fromScene(glassStudio, .012);
     }
+    if (daily) {
+      // Soft side reflections retain etched glass while a bright ceiling clears the protective cover.
+      const glassStudio = new T.Scene(); glassStudio.background = new T.Color('#b4b5b0');
+      reflectionCard([-4, 2, 5], [1.1, 8], '#ffffff', 2.2, glassStudio);
+      reflectionCard([4, 1, 3], [.55, 7], '#f5f7ff', 1.7, glassStudio);
+      reflectionCard([0, 7, -1], [6, 5], '#ffffff', 2.5, glassStudio);
+      reflectionCard([-2, 1, 5], [.35, 7], '#333631', .5, glassStudio);
+      dailyEnvTarget = pmrem.fromScene(glassStudio, .025);
+    }
   } finally {pmrem.dispose();}
   mark('pmremEnd');
   scene.environment = envTarget.texture;
@@ -162,11 +172,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     const isReviewOvercap=review && component===parts.overcap;
     const isReviewFilm=review && component===parts.refill;
     const isOilGlass=bodyOil && component===parts.body && o.material.transmission>.5;
+    const isDailyGlass=daily && (component===parts.body || isReviewOvercap) && o.material.transmission>.5;
     o.frustumCulled = false;
     // GLTFLoader replaces spaces in object names; userData retains the source name.
     const isPullTongue = (o.userData.name || o.name).replaceAll('_', ' ').includes('short flexible pull tongue');
     // Component-specific finishes must not mutate another part sharing the GLB material.
-    if (isOilGlass || isPullTongue || isReviewOvercap || isReviewFilm || (golden && o.material.name.includes('olive')) || (appearance?.tintedGlass && o.material.transmission>.5)) o.material = o.material.clone();
+    if (isDailyGlass || isOilGlass || isPullTongue || isReviewOvercap || isReviewFilm || (golden && o.material.name.includes('olive')) || (appearance?.tintedGlass && o.material.transmission>.5)) o.material = o.material.clone();
     const m = o.material;
     if (isPullTongue) m.color.multiplyScalar(.9);
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
@@ -194,11 +205,17 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
             m.color.set('#ffffff'); m.transmission=1; m.roughness=.018; m.ior=1.52;
             m.thickness=.12; m.envMap=oilEnvTarget.texture; m.envMapIntensity=1; m.specularIntensity=1;
           }
+          if (isDailyGlass) {
+            m.envMap=dailyEnvTarget.texture; m.envMapIntensity=isReviewOvercap ? .8 : .6;
+            m.ior=isReviewOvercap ? 1.46 : 1.5; m.thickness=isReviewOvercap ? .02 : .065;
+            m.specularIntensity=isReviewOvercap ? .45 : 1;
+          }
+          m.customProgramCacheKey=()=>isOilGlass ? 'oil-glass' : isDailyGlass ? (isReviewOvercap ? 'daily-cover' : 'daily-body') : 'reference-glass';
           // The same restrained rim correction used by the first approved glass jar.
           m.onBeforeCompile = shader => {
             shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
               float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
-              gl_FragColor.rgb *= 1.0 - ${isOilGlass ? ".08" : ".18"} * wallEdge;
+              gl_FragColor.rgb *= 1.0 - ${isOilGlass ? ".08" : isDailyGlass ? (isReviewOvercap ? ".16" : ".10") : ".18"} * wallEdge;
             `);
           };
           o.castShadow=false; o.receiveShadow=false;
