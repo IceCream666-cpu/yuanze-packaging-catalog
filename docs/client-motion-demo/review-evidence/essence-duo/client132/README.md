@@ -4,4 +4,4 @@
 
 本目录的发布脚本为执行内容留档；可执行原件及完整现场基线仍在 `work/essence-duo-release/`。回滚命令默认为只读计划，必须显式加 `--rollback`，并检查当前manifest及展厅外文件未漂移后才交换，不覆盖后续发布。
 
-正式来源与回执见 ../../../../client132-essence-duo-release.json。管路维持获批原长度，无料体，隐藏尺寸仍为示意。
+正式来源与回执见 ../../../client132-essence-duo-release.json。管路维持获批原长度，无料体，隐藏尺寸仍为示意。
