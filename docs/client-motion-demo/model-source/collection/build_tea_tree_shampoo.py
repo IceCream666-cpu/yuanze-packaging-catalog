@@ -1,5 +1,5 @@
 """Tea Tree Shampoo 065: separate empty pump bottle and sealed refill pouch."""
-import sys,math
+import sys,math,bpy,json
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from build_micro_cream import configure,mat,mesh,lathe,artwork,layer,part,finish
@@ -41,17 +41,20 @@ def build():
  glass=mat('Tea Tree neutral clear empty bottle','#ffffff',.027,trans=1)
  navy=mat('Tea Tree glossy navy pump','#071b3c',.21);navy.node_tree.nodes.get('Principled BSDF').inputs['Coat Weight'].default_value=.25
  inside=mat('Tea Tree ivory pump mechanism','#e8e3d5',.31)
- bag=mat('Tea Tree translucent refill film','#fff7e8',.18,trans=.92)
- seam=mat('Tea Tree sealed ivory pouch edges','#e8d9bf',.35,trans=.45)
+ clear_tube=mat('Tea Tree clear plastic dip tube','#ffffff',.06,trans=1)
+ bag=mat('Tea Tree warm ivory refill film','#efd9b9',.24,trans=.28)
+ bag.node_tree.nodes.get('Principled BSDF').inputs['Coat Weight'].default_value=.24
+ bag.node_tree.nodes.get('Principled BSDF').inputs['Coat Roughness'].default_value=.16
+ seam=mat('Tea Tree sealed ivory pouch edges','#ecd8ba',.32,trans=.08)
  recess=mat('Tea Tree dark nozzle opening','#020a18',.5)
  lathe('Hollow round shampoo bottle with sloping shoulder',[(0,0),(0,.33),(.008,.39),(.025,.434),(.060,.466),(.11,.488),(.20,.50),(1.25,.50),(1.38,.49),(1.50,.464),(1.61,.418),(1.72,.350),(1.82,.272),(1.90,.205),(1.955,.171),(1.990,.163),(2.040,.163),(2.040,.127),(1.985,.127),(1.94,.140),(1.87,.178),(1.79,.244),(1.69,.323),(1.58,.385),(1.47,.432),(1.35,.456),(1.23,.466),(.18,.466),(.12,.444),(.085,.404),(.070,.350),(.070,0)],glass,'Body')
  lathe('Navy smooth pump screw collar',[(2.010,.174),(2.010,.195),(2.024,.205),(2.235,.205),(2.250,.195),(2.250,.091),(2.228,.091),(2.228,.174),(2.010,.174)],navy,'Closure')
  lathe('Navy raised collar step',[(2.238,.096),(2.238,.161),(2.254,.164),(2.300,.164),(2.309,.153),(2.309,.096),(2.238,.096)],navy,'Closure')
  lathe('Visible navy connecting pump stem',[(2.286,.062),(2.286,.082),(2.304,.087),(2.487,.087),(2.501,.080),(2.501,.062),(2.286,.062)],navy,'PumpStem')
  lathe('Ivory internal pump chamber',[(1.40,.026),(1.40,.060),(1.44,.078),(1.73,.078),(1.75,.092),(1.82,.092),(1.84,.065),(2.285,.065),(2.285,.026),(1.40,.026)],inside,'PumpStem')
- dip=lathe('Open hollow dip tube',[(.090,.018),(.090,.024),(1.48,.024),(1.48,.018),(.090,.018)],inside,'PumpStem',64)
- # The reference tube is slightly inclined within the empty container.
- for vertex in dip.data.vertices:vertex.co.x+=.13*(1-vertex.co.z/1.48)
+ dip=lathe('Open hollow dip tube',[(.090,.026),(.090,.035),(1.34,.035),(1.39,.024),(1.48,.024),(1.48,.018),(1.39,.018),(1.34,.026),(.090,.026)],clear_tube,'PumpStem',96)
+ # Recenter the tapered tip before it enters the original narrow pump chamber.
+ for vertex in dip.data.vertices:vertex.co.x+=.13*max(0,1-vertex.co.z/1.39)
  lathe('Navy actuator hub',[(2.470,0),(2.470,.105),(2.481,.145),(2.625,.145),(2.640,.132),(2.640,0)],navy,'Actuator')
  sections=[(-.40,2.570,.046,.025),(-.370,2.588,.050,.025),(-.28,2.624,.062,.029),(-.14,2.649,.078,.030),(0,2.656,.108,.031),(.15,2.649,.092,.030),(.20,2.641,.045,.026)]
  ns=32;vs=[];fs=[]
@@ -90,7 +93,17 @@ def build():
  artwork(910,1080,(172.5,110,565,245),[('—',450,1,0,'Arial'),('TEA TREE',620,82,6,'Helvetica Neue,Arial,sans-serif'),('SHAMPOO',714,80,4.5,'Helvetica Neue,Arial,sans-serif'),('REFILL',940,62,7,'Helvetica Neue,Arial,sans-serif')],background='#12243e',ink='#fff1d6',name='refill-print',label_name='refill-label')
  for name,parent,file,offset in [('Blank navy refill pouch label','PaperLabel','refill-label',.0015),('Complete Tea Tree refill lettering','LogoPrint','refill-print',.0023)]:
   o=layer(name,parent,file,.91,.46,1.54,lambda x,z:pouch_front(x,z-.035),offset=offset);o.location.x=POUCH_X
- parts=[part('head','Actuator','深蓝长嘴泵头','Navy head','向左弯曲出液嘴与宽按压面。','Curved left-facing spout with a broad pressing surface.'),part('stem','PumpStem','泵杆与吸管','Pump stem','连接泵杆、内部泵芯与空心吸管。','Connecting stem, internal pump chamber and hollow dip tube.'),part('closure','Closure','深蓝旋盖','Navy collar','双层台阶圆筒盖座。','Cylindrical screw collar with two raised steps.'),part('jar','Body','透明洗发水瓶','Clear bottle','圆肩空瓶与加厚圆底。','Empty round-shouldered bottle with a thick circular base.'),part('refill','RefillPouch','透明补充袋','Refill pouch','独立薄膜前后壁、收边和封口。','Separate thin front and rear films with sealed edges.'),part('label','PaperLabel','双款深蓝标签','Navy labels','瓶标与补充袋标都保持无字。','Bottle and refill labels both remain blank.'),part('print','LogoPrint','两套完整文字','Lettering','瓶身750 mL与袋上REFILL分别完整展开。','Complete bottle 750 mL and pouch REFILL lettering move out together.')]
- finish({'Body':0,'Closure':2.02,'PumpStem':2.28,'Actuator':2.50,'RefillPouch':1.4,'PaperLabel':.90,'LogoPrint':.90},parts,{'glass':True,'frosted':False,'pipette':False,'clearLabel':False,'metal':False,'studio':{'background':'#626d7c','ink':'#fff4dd'}},{'offsets':{'head':[0,4.5,0],'stem':[0,3.6,0],'closure':[0,1.0,0],'refill':[1.15,.05,0],'label':[-2.55,.08,.65],'print':[-4.8,.18,1.65]},'scales':{'label':1.15,'print':1.95},'camera':{'centerY':[1.45,3.55],'height':[4.3,9.5],'width':[4.7,11.8],'centerX':[.8,-.6]}},{'bottleHeightToDiameter':2.687,'refillHeightToBottleDiameter':2.76,'refillMaxWidthToBottleDiameter':1.88,'pouchFilmThicknessToBottleDiameter':.0025,'printIncludes':['liaose','TEA TREE','SHAMPOO','750 mL','liaose','TEA TREE','SHAMPOO','REFILL','two fine rules'],'hiddenStructure':'Refill pouch is retained as packaging; no liquid, bubbles, herbs or platform. A shallow preformed empty pouch and pump internals are illustrative.','generator':'build_tea_tree_shampoo.py'})
+ parts=[part('closure','PumpAssembly','完整深蓝泵头与吸管','Complete navy pump and dip tube','长嘴按头、旋盖、泵芯与透明长吸管保持连接，整体上提。','The spout, collar, pump chamber and clear dip tube lift as one unit.'),part('jar','Body','透明洗发水瓶','Clear bottle','圆肩空瓶与加厚圆底。','Empty round-shouldered bottle with a thick circular base.'),part('refill','RefillPouch','暖米色补充袋','Warm ivory refill pouch','带暖米色底的半透袋膜，保留柔和光泽与封边。','Warm ivory tinted film with soft translucency, a satin finish and sealed edges.'),part('label','PaperLabel','双款深蓝标签','Navy labels','瓶标与补充袋标都保持无字。','Bottle and refill labels both remain blank.'),part('print','LogoPrint','两套完整文字','Lettering','瓶身750 mL与袋上REFILL分别完整展开。','Complete bottle 750 mL and pouch REFILL lettering move out together.')]
+ parts[0]['short']=['泵头总成','Pump']
+ finish({'Body':0,'Closure':2.02,'PumpStem':2.28,'Actuator':2.50,'RefillPouch':1.4,'PaperLabel':.90,'LogoPrint':.90},parts,{'glass':True,'frosted':False,'pipette':False,'clearLabel':False,'metal':False,'studio':{'background':'#626d7c','ink':'#fff4dd'}},{'offsets':{'closure':[0,2.45,0],'refill':[1.15,.05,0],'label':[-2.55,.65,.65],'print':[-4.8,-1.6,1.65]},'scales':{'label':1.15,'print':1.95},'camera':{'centerY':[1.45,1.6],'height':[4.3,8.1],'width':[4.7,11.8],'centerX':[.8,-.6]}},{'bottleHeightToDiameter':2.687,'refillHeightToBottleDiameter':2.76,'refillMaxWidthToBottleDiameter':1.88,'pouchFilmThicknessToBottleDiameter':.0025,'printIncludes':['liaose','TEA TREE','SHAMPOO','750 mL','liaose','TEA TREE','SHAMPOO','REFILL','two fine rules'],'hiddenStructure':'Refill pouch is retained as packaging; no liquid, bubbles, herbs or platform. A shallow preformed empty pouch and pump internals are illustrative.','generator':'build_tea_tree_shampoo.py'})
+ # Retain fitted child transforms while the complete pump moves as one group.
+ out=Path(__file__).resolve().parent/'poster-065';info=json.loads((out/'model-info.json').read_text());bounds=info['componentBoundsBlenderXYZ']
+ children=['Closure','PumpStem','Actuator'];assembly=bpy.data.objects.new('PumpAssembly',None);bpy.context.collection.objects.link(assembly)
+ for child in children:bpy.data.objects[child].parent=assembly
+ bounds['PumpAssembly']={'min':[min(bounds[child]['min'][i] for child in children) for i in range(3)],'max':[max(bounds[child]['max'][i] for child in children) for i in range(3)]}
+ info.update(components=['PumpAssembly','Body','RefillPouch','PaperLabel','LogoPrint'],assemblyChildren={'PumpAssembly':children},completePumpLift=2.45,revision='complete-pump-warm-ivory-pouch-review-20261030',dipTube={'mesh':'Open hollow dip tube','outerDiameterToBody':.07,'innerDiameterToBody':.052,'bottomToBody':.09,'topToBody':1.48,'innerFloorToBody':.07,'tipOuterDiameterToBody':.048,'tipInnerDiameterToBody':.036,'centredTipStartsAt':1.39,'illustrativeDimensions':True})
+ bpy.context.view_layer.update();bpy.ops.object.select_all(action='SELECT')
+ bpy.ops.export_scene.gltf(filepath=str(out.parents[2]/'packaging-assets/poster-065.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
+ bpy.ops.wm.save_as_mainfile(filepath=str(out/'poster-065.blend'));(out/'model-info.json').write_text(json.dumps(info,indent=2)+'\n')
 
 if __name__=='__main__':build()
