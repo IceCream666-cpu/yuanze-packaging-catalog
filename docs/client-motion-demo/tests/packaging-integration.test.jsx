@@ -683,7 +683,8 @@ test('featured Body Oil preserves its approved single-bottle theme and all five 
     assert.equal(focused,'name');
     await act(async()=>env.root.render(<Detail {...defaultProps} item={bodyOil} lang="en"/>));
     const english=document.querySelector('.packaging-intro').textContent;
-    assert.equal(english,mounted.design.kind.en);
+    assert.equal(english,mounted.product.design.kind.en);
+    assert.equal(english,'Body care · empty glass bottle');
     assert.ok(/[A-Za-z]/.test(english));
     assert.equal(document.querySelector('h1').textContent,'Body Oil Collection');
   } finally {await env.close();}

@@ -471,16 +471,17 @@
       "file": "featured-assets/poster-072.png",
       "target": "featured/poster-072.png",
       "productionTarget": "assets/featured/poster-072.png",
-      "bytes": 170295,
-      "sha256": "deedc97cdd19fecebf6277901538b7792c2840f3989756f85176e1f0e0daeaa5",
-      "tool": "Three.js approved production model capture",
-      "scope": "User-authorized client1.30 restoration of an existing 3D model to the homepage",
-      "method": "Closed single-bottle view from unchanged production scene and GLB; current design background baked only inside the original geometry silhouette, transparent outside; no model or artwork edits",
-      "transmissionBackgroundBaked": true,
-      "compositingBackground": "#e9e5d8",
-      "sourceModel": "packaging-assets/poster-072.glb",
-      "sourceModelSha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
-      "sourceSceneSha256": "b20149bd6ee79bd030b7832ae4a8a1c13e4c3d51f2f2e6da14662eebcab616eb"
+      "bytes": 1345797,
+      "sha256": "e0a9160a120641ba7d6484a400cf78d2e5ae2f613fa86becdfd3f910b8ad3eb2",
+      "tool": "Built-in image_gen",
+      "scope": "2026-10-30 local display revision; not deployed",
+      "method": "Reference-led single-product transparent extraction; AI-generated display derivative",
+      "productCount": 1,
+      "selectedObject": "Daily Emulsion single bottle",
+      "approval": {
+        "date": "2026-10-30",
+        "basis": "User requested matching supplied posters and displaying only one product for repeated identical bottles."
+      }
     },
     {
       "posterId": "poster-073",
@@ -489,20 +490,23 @@
       "file": "featured-assets/poster-073.png",
       "target": "featured/poster-073.png",
       "productionTarget": "assets/featured/poster-073.png",
-      "bytes": 196372,
-      "sha256": "a28654dcaa7f48ec54fdc3952657cb0cb158479c60e9e6c65d951fa69bde31cb",
-      "tool": "Three.js approved production model capture",
-      "scope": "User-authorized client1.30 restoration of an existing 3D model to the homepage",
-      "method": "Closed single-bottle view from unchanged production scene and GLB; current design background baked only inside the original geometry silhouette, transparent outside; no model or artwork edits",
-      "transmissionBackgroundBaked": true,
-      "compositingBackground": "#eadbc5",
-      "sourceModel": "packaging-assets/poster-073.glb",
-      "sourceModelSha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
-      "sourceSceneSha256": "b20149bd6ee79bd030b7832ae4a8a1c13e4c3d51f2f2e6da14662eebcab616eb"
+      "bytes": 1545024,
+      "sha256": "da9a144da8e10a81239b119ae77170c5fdcfb09323c1ecba588e2ece641f9bb6",
+      "tool": "Built-in image_gen",
+      "scope": "2026-10-30 local display revision; not deployed",
+      "method": "Reference-led single-product transparent extraction; AI-generated display derivative",
+      "productCount": 1,
+      "selectedObject": "Body Oil 02 center bottle only",
+      "approval": {
+        "date": "2026-10-30",
+        "basis": "User requested matching supplied posters and displaying only one product for repeated identical bottles."
+      }
     }
   ],
   "approval": {
     "date": "2026-10-27",
     "basis": "User requested adding products with existing 3D models to the homepage and leaving products without models unchanged."
-  }
+  },
+  "revision": "poster-fidelity-preview-20261030",
+  "status": "local-preview-not-deployed"
 }

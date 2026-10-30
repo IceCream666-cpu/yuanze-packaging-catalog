@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-30",
+  "state": "local-preview-not-deployed",
+  "baseCommit": "700cf24",
+  "referenceChecks": {
+    "poster-072": {
+      "httpStatus": 200,
+      "sameDecodedPixels": true,
+      "size": [
+        1024,
+        1536
+      ],
+      "meanAbsoluteRGBDifference": [
+        0,
+        0,
+        0
+      ],
+      "webpSha256": "05683d65e88c071c73536081167ddaa22724f260101d637c89f2d0521ccb55a3"
+    },
+    "poster-073": {
+      "httpStatus": 200,
+      "sameDecodedPixels": true,
+      "size": [
+        1024,
+        1536
+      ],
+      "meanAbsoluteRGBDifference": [
+        0,
+        0,
+        0
+      ],
+      "webpSha256": "158fed22b7761fced3fe19610211469a644d8fe47bbe7b0dd5b5a399f8503fa2"
+    }
+  },
+  "tests": {
+    "frontendPassed": 160,
+    "viteBuild": "passed",
+    "designDetectorFindings": 0,
+    "physicalDeviceTested": false
+  },
+  "modelsChanged": false,
+  "postersAdded": 0
+}

@@ -26,12 +26,18 @@ test('featured retains the exact original 24 order and appends only the two exis
  }
 });
 
-test('the two restored entries preserve the approved single-bottle detail identity and theme',()=>{
+test('poster-derived single bottles retain detail identity and theme without claiming empty contents',()=>{
  for(const id of ['poster-072','poster-073']){
   const item=featured.find(p=>p.id===id),design=PACKAGING_PRODUCTS[id].design;
-  for(const key of ['name','kind','background','ink','swatch'])assert.deepEqual(item[key],design[key],`${id} ${key}`);
+  for(const key of ['name','background','ink','swatch'])assert.deepEqual(item[key],design[key],`${id} ${key}`);
   assert.match(item.kind.zh,/单瓶/);
+  assert.doesNotMatch(JSON.stringify([item.kind,item.description]),/空包材|empty/);
+  const source=manifest.files.find(p=>p.posterId===id);
+  assert.equal(source.productCount,1);
+  assert.equal(source.sourceModel,undefined,'The display image is derived from the poster, not the empty GLB');
  }
+ assert.match(featured.find(p=>p.id==='poster-073').description.zh,/02号单瓶.*金琥珀色油液/);
+ assert.match(manifest.files.find(p=>p.posterId==='poster-073').selectedObject,/02.*only/);
 });
 
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{

@@ -312,7 +312,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
           <section className="packaging-stage" aria-labelledby="packaging-title">
             <div className="packaging-heading">
               <h1 id="packaging-title">{design.name.split(' ').map((word,i) => <React.Fragment key={i}>{i > 0 && ' '}<span className={i > 0 ? 'packaging-title-second' : undefined}>{word}</span></React.Fragment>)}</h1>
-              <p className="packaging-intro">{design.kind[lang]}</p>
+              <p className="packaging-intro">{(product.design?.kind || design.kind)[lang]}</p>
             </div>
 
             <div className="packaging-model" ref={hostRef} aria-label={zh ? '可拖拽旋转的分层包材模型' : 'Layered packaging model, drag to rotate or use the bottom view button'} />
