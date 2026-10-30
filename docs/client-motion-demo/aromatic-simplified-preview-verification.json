@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-30",
+  "product": "Aromatic Body Lotion",
+  "productId": "poster-064",
+  "selectionNumber": 17,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "nextProduct": {
+    "selectionNumber": 18,
+    "id": "poster-065",
+    "name": "Tea Tree Shampoo and Refill",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 5,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-064",
+  "components": [
+    "PumpAssembly",
+    "BottleAssembly",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Cord"
+    ]
+  },
+  "bottleCount": 1,
+  "containsFormula": false,
+  "containsNewTube": true,
+  "addedMeshCount": 1,
+  "preservedGeometry": {
+    "preservedMeshCount": 138,
+    "preservedVertexCount": 72091,
+    "artworkBytesIdentical": true,
+    "other25ModelsUnchanged": true
+  },
+  "animation": {
+    "offsets": {
+      "closure": [
+        0,
+        2.45,
+        0
+      ],
+      "label": [
+        -1.55,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -3.3,
+        0.18,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.675
+      ],
+      "height": [
+        4.2,
+        6.45
+      ],
+      "width": [
+        4.1,
+        8.2
+      ],
+      "centerX": [
+        0,
+        -0.7
+      ]
+    }
+  },
+  "tube": {
+    "triangles": 736,
+    "openAxialBore": true,
+    "wallEdgesAllUsedTwice": true,
+    "signedWorldVolume": 0.011341643499090224,
+    "signedReferenceVolume": 0.0026626434396169953,
+    "sideIntersectionRadiiToWidth": [
+      -0.035,
+      -0.026,
+      0.026,
+      0.035
+    ],
+    "outerDiameterToWidth": 0.07,
+    "innerDiameterToWidth": 0.052,
+    "bottomToWidth": 0.09000001816708483,
+    "topToWidth": 1.635000005054063,
+    "closedInnerFloorGap": 0.06159868651012168,
+    "fullyOpenBottleMouthGap": 0.44804354114896316,
+    "completePumpLift": 2.45,
+    "assembly": "PumpAssembly",
+    "material": {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "Aromatic clear plastic dip tube",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.05999999865889549
+      }
+    }
+  },
+  "model": {
+    "bytes": 3622216,
+    "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21"
+  },
+  "validation": {
+    "geometryTestsPassed": 8,
+    "integrationTestsPassed": 2,
+    "frontendTestsPassed": 176,
+    "reviewGalleryTestsPassed": 7,
+    "viteBuild": "passed",
+    "sourcePublicDistAndLocalHttpSha256": "identical",
+    "independentGeometryReview": "Original138 meshes and materials identical; one open-bore hollow clear tube added.",
+    "impeccableDetectorFindings": 0,
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "rotated-90-degrees"
+      ],
+      "posterRoundtrip": "passed-1280x960"
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "emulated": true,
+      "physicalDevice": false,
+      "states": [
+        "closed",
+        "open"
+      ],
+      "horizontalOverflow": false
+    },
+    "independentVisualReview": "passed-all-six-final-screenshots-against-original-poster"
+  },
+  "evidence": "review-evidence/aromatic-body-lotion/simplified-pump/",
+  "limitations": [
+    "Slight label/lettering projected overlap on narrow screen; all text remains readable.",
+    "Clear tube has low contrast against the pale backdrop but its edges remain visible.",
+    "Planar print becomes edge-on near 90-degree yaw.",
+    "Mobile view is emulated, not a physical device.",
+    "Hidden tube bore, fit and packaging dimensions are illustrative rather than manufacturing measurements."
+  ],
+  "appearanceCorrection": {
+    "scope": "Only poster-064 clear plastic dip tube material; existing 061 parameters preserved.",
+    "transmission": 1,
+    "roughness": 0.06,
+    "ior": 1.46,
+    "thickness": 0.02918,
+    "envMapIntensity": 1.2,
+    "clearcoat": 0.2,
+    "edgeRim": {
+      "exponent": 3,
+      "strength": 0.24
+    },
+    "bottleMaterialUnchanged": true
+  }
+}

@@ -1226,7 +1226,7 @@ test('Essence Duo keeps both fitted droppers intact throughout desktop and phone
   }
 });
 
-for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2]]) {
+for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45]]) {
 test(`${id} keeps its complete pumps and clear tubes intact throughout desktop and phone motion`,async()=>{
   const product=PACKAGING_PRODUCTS[id];
   const bytes=readFileSync(new URL(`../packaging-assets/${id}.glb`,import.meta.url));
@@ -1235,7 +1235,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
   const nodes=gltf.nodes.map(node=>{
     const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
     object.name=node.name;
-    if ('mesh' in node && id==='poster-061') {
+    if ('mesh' in node && (id==='poster-061' || id==='poster-064')) {
       const exported=gltf.materials[gltf.meshes[node.mesh].primitives[0].material];
       object.material.name=exported.name;
       object.material.transmission=exported.extensions?.KHR_materials_transmission?.transmissionFactor??0;
@@ -1274,6 +1274,17 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
         assert.match(bodyShader.fragmentShader,/float wallEdge = pow\([^\n]+, 9\.0\);/);
       }
     }
+    const tied = id==='poster-064' ? ['Body','Cord'].map(name=>{
+      const part=loaded.scene.getObjectByName(name);assert.equal(part.parent,loaded.scene.getObjectByName('BottleAssembly'));
+      return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
+    }) : [];
+    if(id==='poster-064') {
+      const tube=loaded.scene.getObjectByName('Hollow clear Aromatic dip tube').material;
+      const body=loaded.scene.getObjectByName('Hollow matte yellow stepped rectangular bottle').material;
+      assert.equal(body.transmission,0);assert.ok(Math.abs(body.roughness-.48)<.001);
+      assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.02918);assert.equal(tube.side,Three.FrontSide);
+      const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
+    }
     const rest=api.getState().partStates;
     for(const value of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
@@ -1281,10 +1292,13 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
         assert.deepEqual(part.matrix.toArray(),matrix);
         assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,lift*value,0))<1e-8);
       }
+      for(const {part,matrix,world} of tied) {
+        assert.deepEqual(part.matrix.toArray(),matrix);assert.ok(part.getWorldPosition(new Three.Vector3()).distanceTo(world)<1e-8,'cotton stays tied to the bottle throughout expansion');
+      }
       assert.ok(Math.abs(state.partStates.print.offset[2]-state.partStates.label.offset[2]-value)<1e-8);
       if(!value)assert.deepEqual(state.partStates,rest);
     }
-    assert.deepEqual(Object.keys(rest).sort(),['body','closure','label','print']);
+    assert.deepEqual(Object.keys(rest).sort(),id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
   }finally{api?.dispose();env.close();}
   }
 });

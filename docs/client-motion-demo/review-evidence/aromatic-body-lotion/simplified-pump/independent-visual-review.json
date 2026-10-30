@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "reviewer": "aromatic_reference_review",
+  "screenshotsActuallyViewed": [
+    "desktop-closed.png",
+    "desktop-half.png",
+    "desktop-open.png",
+    "desktop-rotated.png",
+    "mobile-closed.png",
+    "mobile-open.png"
+  ],
+  "originalPosterCompared": true,
+  "blockingFindings": [],
+  "checks": [
+    "Original matte opaque yellow bottle silhouette and material retained.",
+    "Pump, collar, stem and long hollow dip tube lift as one assembly.",
+    "Cotton wraps and tails remain tied to the bottle.",
+    "Full lettering preserved, farther out than blank label.",
+    "No clipping or UI overlap in six screenshots.",
+    "Only 064 dedicated tube material added to existing 061 branch; 061 values unchanged."
+  ],
+  "limitations": [
+    "Slight label/lettering projected overlap on narrow screen; all text remains readable.",
+    "Clear tube has low contrast against the pale backdrop but its edges remain visible.",
+    "Planar print becomes edge-on near 90-degree yaw.",
+    "Mobile view is emulated, not a physical device."
+  ]
+}

@@ -1,0 +1,1176 @@
+{
+  "model": "poster-064",
+  "reviewer": "aromatic_reference_review",
+  "status": "passed",
+  "bytes": 3622216,
+  "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+  "roots": [
+    "PaperLabel",
+    "LogoPrint",
+    "PumpAssembly",
+    "BottleAssembly"
+  ],
+  "meshCount": 139,
+  "preservedMeshCount": 138,
+  "preservedVertexCount": 72091,
+  "newMeshes": [
+    "Hollow clear Aromatic dip tube"
+  ],
+  "removedMeshes": [],
+  "meshes": [
+    {
+      "name": "Hollow matte yellow stepped rectangular bottle",
+      "vertices": 3566,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Smooth wide white screw collar",
+      "vertices": 1984,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Short independent white pump stem",
+      "vertices": 1240,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Flattened long left dispensing head with recessed opening",
+      "vertices": 325,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Shaded left nozzle recess",
+      "vertices": 32,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "White actuator cylindrical hub",
+      "vertices": 746,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 1",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 10",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 11",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 12",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 13",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 14",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 15",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 16",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 17",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 18",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 19",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 2",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 20",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 21",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 22",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 23",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 24",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 25",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 26",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 27",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 28",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 29",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 3",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 30",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 4",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 5",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 6",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 7",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 8",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 1 fibre 9",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 1",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 10",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 11",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 12",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 13",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 14",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 15",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 16",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 17",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 18",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 19",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 2",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 20",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 21",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 22",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 23",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 24",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 25",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 26",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 27",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 28",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 29",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 3",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 30",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 4",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 5",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 6",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 7",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 8",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton fringe 2 fibre 9",
+      "vertices": 65,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 cotton core",
+      "vertices": 976,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 ply 1 surface thread 1",
+      "vertices": 943,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 ply 1 surface thread 2",
+      "vertices": 913,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 ply 2 surface thread 1",
+      "vertices": 861,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 ply 2 surface thread 2",
+      "vertices": 856,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 ply 3 surface thread 1",
+      "vertices": 863,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 ply 3 surface thread 2",
+      "vertices": 855,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 twisted ply 1",
+      "vertices": 1000,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 twisted ply 2",
+      "vertices": 976,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 1 twisted ply 3",
+      "vertices": 976,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 cotton core",
+      "vertices": 856,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 ply 1 surface thread 1",
+      "vertices": 780,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 ply 1 surface thread 2",
+      "vertices": 765,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 ply 2 surface thread 1",
+      "vertices": 756,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 ply 2 surface thread 2",
+      "vertices": 738,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 ply 3 surface thread 1",
+      "vertices": 740,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 ply 3 surface thread 2",
+      "vertices": 749,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 twisted ply 1",
+      "vertices": 862,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 twisted ply 2",
+      "vertices": 856,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton hanging tail 2 twisted ply 3",
+      "vertices": 856,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 cotton core",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 ply 1 surface thread 1",
+      "vertices": 1177,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 ply 1 surface thread 2",
+      "vertices": 1165,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 ply 2 surface thread 1",
+      "vertices": 1114,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 ply 2 surface thread 2",
+      "vertices": 1206,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 ply 3 surface thread 1",
+      "vertices": 1122,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 ply 3 surface thread 2",
+      "vertices": 1191,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 twisted ply 1",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 twisted ply 2",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 1 twisted ply 3",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 cotton core",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 ply 1 surface thread 1",
+      "vertices": 1177,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 ply 1 surface thread 2",
+      "vertices": 1165,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 ply 2 surface thread 1",
+      "vertices": 1114,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 ply 2 surface thread 2",
+      "vertices": 1206,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 ply 3 surface thread 1",
+      "vertices": 1122,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 ply 3 surface thread 2",
+      "vertices": 1191,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 twisted ply 1",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 twisted ply 2",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 2 twisted ply 3",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 cotton core",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 ply 1 surface thread 1",
+      "vertices": 1177,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 ply 1 surface thread 2",
+      "vertices": 1165,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 ply 2 surface thread 1",
+      "vertices": 1114,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 ply 2 surface thread 2",
+      "vertices": 1206,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 ply 3 surface thread 1",
+      "vertices": 1122,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 ply 3 surface thread 2",
+      "vertices": 1191,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 twisted ply 1",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 twisted ply 2",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton neck wrap 3 twisted ply 3",
+      "vertices": 1304,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 cotton core",
+      "vertices": 328,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 ply 1 surface thread 1",
+      "vertices": 221,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 ply 1 surface thread 2",
+      "vertices": 220,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 ply 2 surface thread 1",
+      "vertices": 235,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 ply 2 surface thread 2",
+      "vertices": 232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 ply 3 surface thread 1",
+      "vertices": 221,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 ply 3 surface thread 2",
+      "vertices": 221,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 twisted ply 1",
+      "vertices": 340,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 twisted ply 2",
+      "vertices": 343,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 1 twisted ply 3",
+      "vertices": 328,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 cotton core",
+      "vertices": 328,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 ply 1 surface thread 1",
+      "vertices": 221,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 ply 1 surface thread 2",
+      "vertices": 220,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 ply 2 surface thread 1",
+      "vertices": 235,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 ply 2 surface thread 2",
+      "vertices": 232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 ply 3 surface thread 1",
+      "vertices": 221,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 ply 3 surface thread 2",
+      "vertices": 221,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 twisted ply 1",
+      "vertices": 340,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 twisted ply 2",
+      "vertices": 343,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Cotton tied end 2 twisted ply 3",
+      "vertices": 328,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Blank warm cream paper label",
+      "vertices": 585,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Complete Aromatic Body Lotion lettering",
+      "vertices": 585,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "a6e253ebfabb578177935e56a64d2468232085850bfcdacfd7eb4d030301c0cd",
+    "print.svg": "53b88388d028307119543d845a89eecb8dce6460bc68154dd7ee44f3802690e9",
+    "label.png": "3152942fba28e928d6c1b4c0beb159f40c07bfd437422939ac7858959d6d271c",
+    "print.png": "9506b9ffeeeafd6e64715444c55312d60074e48b83e036601e8806418e8f6628"
+  },
+  "artworkBytesIdentical": true,
+  "other25ModelsUnchanged": true,
+  "tube": {
+    "triangles": 736,
+    "openAxialBore": true,
+    "wallEdgesAllUsedTwice": true,
+    "signedWorldVolume": 0.011341643499090224,
+    "signedReferenceVolume": 0.0026626434396169953,
+    "sideIntersectionRadiiToWidth": [
+      -0.035,
+      -0.026,
+      0.026,
+      0.035
+    ],
+    "outerDiameterToWidth": 0.07,
+    "innerDiameterToWidth": 0.052,
+    "bottomToWidth": 0.09000001816708483,
+    "topToWidth": 1.635000005054063,
+    "closedInnerFloorGap": 0.06159868651012168,
+    "fullyOpenBottleMouthGap": 0.44804354114896316,
+    "completePumpLift": 2.45,
+    "assembly": "PumpAssembly",
+    "material": {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "Aromatic clear plastic dip tube",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.05999999865889549
+      }
+    }
+  },
+  "scope": "Only adds one hollow clear dip tube and regroups pump/cord as intact assemblies. All original mesh world coordinates, accessor attributes, triangle indices and material definitions identical. Four original artworks and other25 models byte-identical.",
+  "limitations": [
+    "Tube dimensions and concealed connector fit remain illustrative, not manufacturing measurements.",
+    "No browser or production validation performed by this reviewer."
+  ]
+}

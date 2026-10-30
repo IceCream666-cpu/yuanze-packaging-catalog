@@ -1,0 +1,10 @@
+{
+  "hashes": {
+    "docs/client-motion-demo/packaging-assets/poster-064.glb": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+    "docs/client-motion-demo/public/assets/packaging/poster-064.glb": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+    "docs/client-motion-demo/dist/assets/packaging/poster-064.glb": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+    "localHttp": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21"
+  },
+  "bytes": 3622216,
+  "identical": true
+}

@@ -1,0 +1,981 @@
+{
+  "id": "poster-064",
+  "bytes": 3622216,
+  "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+  "meshes": [
+    {
+      "mesh": "Blank warm cream paper label",
+      "triangles": 1024,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 1.0
+    },
+    {
+      "mesh": "Complete Aromatic Body Lotion lettering",
+      "triangles": 1024,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 1.0
+    },
+    {
+      "mesh": "Flattened long left dispensing head with recessed opening",
+      "triangles": 572,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6444356838862101
+    },
+    {
+      "mesh": "Shaded left nozzle recess",
+      "triangles": 30,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 1.0
+    },
+    {
+      "mesh": "White actuator cylindrical hub",
+      "triangles": 992,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.8639911981996352
+    },
+    {
+      "mesh": "Smooth wide white screw collar",
+      "triangles": 2480,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9444517478474599
+    },
+    {
+      "mesh": "Hollow clear Aromatic dip tube",
+      "triangles": 736,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.999415640310485
+    },
+    {
+      "mesh": "Short independent white pump stem",
+      "triangles": 1488,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9047117715953001
+    },
+    {
+      "mesh": "Hollow matte yellow stepped rectangular bottle",
+      "triangles": 6120,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.7976404837206578
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 1",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956679475324927
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 10",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956221214407953
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 11",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5948974533780503
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 12",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5932237014861187
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 13",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5950812846270086
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 14",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956922340013745
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 15",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5947090720915892
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 16",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5925388078762802
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 17",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5948070608608109
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 18",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956612891705187
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 19",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5954028817782389
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 2",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5953809791153685
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 20",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.593932757386548
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 21",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5936183766566179
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 22",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.595579670188426
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 23",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.595390489545315
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 24",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5939485421178631
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 25",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5939511088496693
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 26",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5955416593672589
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 27",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5955986377257168
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 28",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5943671171395962
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 29",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5918990916534549
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 3",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5943898475229792
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 30",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5950090309529674
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 4",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5944236008883484
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 5",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5955801982722713
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 6",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5954408491181017
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 7",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5922690094284958
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 8",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5927547782057514
+    },
+    {
+      "mesh": "Cotton fringe 1 fibre 9",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5954468661985304
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 1",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956697698349445
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 10",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956415432248667
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 11",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5949125330635736
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 12",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5937703131710184
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 13",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5950564444929658
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 14",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956810586284254
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 15",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5947090720915892
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 16",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5930044343964511
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 17",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5947974373593574
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 18",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956611648834714
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 19",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5953661900908364
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 2",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5953695281944223
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 20",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5938162052118049
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 21",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5936190460199323
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 22",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5955762146434279
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 23",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5953864356406515
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 24",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5939336127890921
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 25",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5939572357864024
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 26",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5955411020709782
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 27",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5956240833905998
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 28",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5943653067917348
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 29",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5907293392946367
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 3",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5943857129136829
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 30",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5950107774592656
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 4",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5942722121580681
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 5",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5955731159571455
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 6",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5954545629789415
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 7",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5930855167123106
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 8",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.5922722273084418
+    },
+    {
+      "mesh": "Cotton fringe 2 fibre 9",
+      "triangles": 126,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.595470682199535
+    },
+    {
+      "mesh": "Cotton hanging tail 1 cotton core",
+      "triangles": 1948,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6302312557135935
+    },
+    {
+      "mesh": "Cotton hanging tail 1 ply 1 surface thread 1",
+      "triangles": 1216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07082343907228962
+    },
+    {
+      "mesh": "Cotton hanging tail 1 ply 1 surface thread 2",
+      "triangles": 1216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06836908709499769
+    },
+    {
+      "mesh": "Cotton hanging tail 1 ply 2 surface thread 1",
+      "triangles": 1216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07144877709683621
+    },
+    {
+      "mesh": "Cotton hanging tail 1 ply 2 surface thread 2",
+      "triangles": 1216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06584779113913072
+    },
+    {
+      "mesh": "Cotton hanging tail 1 ply 3 surface thread 1",
+      "triangles": 1216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06572675779301207
+    },
+    {
+      "mesh": "Cotton hanging tail 1 ply 3 surface thread 2",
+      "triangles": 1216,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06377604418475114
+    },
+    {
+      "mesh": "Cotton hanging tail 1 twisted ply 1",
+      "triangles": 1948,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.600478549980673
+    },
+    {
+      "mesh": "Cotton hanging tail 1 twisted ply 2",
+      "triangles": 1948,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6267398502548758
+    },
+    {
+      "mesh": "Cotton hanging tail 1 twisted ply 3",
+      "triangles": 1948,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6271497079395486
+    },
+    {
+      "mesh": "Cotton hanging tail 2 cotton core",
+      "triangles": 1708,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6302235841691846
+    },
+    {
+      "mesh": "Cotton hanging tail 2 ply 1 surface thread 1",
+      "triangles": 1066,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06821994460716407
+    },
+    {
+      "mesh": "Cotton hanging tail 2 ply 1 surface thread 2",
+      "triangles": 1066,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06668524126885106
+    },
+    {
+      "mesh": "Cotton hanging tail 2 ply 2 surface thread 1",
+      "triangles": 1066,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07425723809846219
+    },
+    {
+      "mesh": "Cotton hanging tail 2 ply 2 surface thread 2",
+      "triangles": 1066,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07068747760483896
+    },
+    {
+      "mesh": "Cotton hanging tail 2 ply 3 surface thread 1",
+      "triangles": 1066,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06664725663718307
+    },
+    {
+      "mesh": "Cotton hanging tail 2 ply 3 surface thread 2",
+      "triangles": 1066,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06726029711218862
+    },
+    {
+      "mesh": "Cotton hanging tail 2 twisted ply 1",
+      "triangles": 1708,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6270464924334537
+    },
+    {
+      "mesh": "Cotton hanging tail 2 twisted ply 2",
+      "triangles": 1708,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6271491059521678
+    },
+    {
+      "mesh": "Cotton hanging tail 2 twisted ply 3",
+      "triangles": 1708,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6276194194482063
+    },
+    {
+      "mesh": "Cotton neck wrap 1 cotton core",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6300739321563963
+    },
+    {
+      "mesh": "Cotton neck wrap 1 ply 1 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06360886945619515
+    },
+    {
+      "mesh": "Cotton neck wrap 1 ply 1 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.0643276793005291
+    },
+    {
+      "mesh": "Cotton neck wrap 1 ply 2 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07048804422278696
+    },
+    {
+      "mesh": "Cotton neck wrap 1 ply 2 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06782426897005092
+    },
+    {
+      "mesh": "Cotton neck wrap 1 ply 3 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06785633818209746
+    },
+    {
+      "mesh": "Cotton neck wrap 1 ply 3 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07351779144596027
+    },
+    {
+      "mesh": "Cotton neck wrap 1 twisted ply 1",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6267107234314582
+    },
+    {
+      "mesh": "Cotton neck wrap 1 twisted ply 2",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6265201958789227
+    },
+    {
+      "mesh": "Cotton neck wrap 1 twisted ply 3",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6277630477034469
+    },
+    {
+      "mesh": "Cotton neck wrap 2 cotton core",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6300563058005486
+    },
+    {
+      "mesh": "Cotton neck wrap 2 ply 1 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06358139928786449
+    },
+    {
+      "mesh": "Cotton neck wrap 2 ply 1 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06439542579276525
+    },
+    {
+      "mesh": "Cotton neck wrap 2 ply 2 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07049810962712996
+    },
+    {
+      "mesh": "Cotton neck wrap 2 ply 2 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.0677992068000941
+    },
+    {
+      "mesh": "Cotton neck wrap 2 ply 3 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06787994186191845
+    },
+    {
+      "mesh": "Cotton neck wrap 2 ply 3 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07343437652543273
+    },
+    {
+      "mesh": "Cotton neck wrap 2 twisted ply 1",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.626548750419991
+    },
+    {
+      "mesh": "Cotton neck wrap 2 twisted ply 2",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6265465633770748
+    },
+    {
+      "mesh": "Cotton neck wrap 2 twisted ply 3",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6279163789751641
+    },
+    {
+      "mesh": "Cotton neck wrap 3 cotton core",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6300629615611872
+    },
+    {
+      "mesh": "Cotton neck wrap 3 ply 1 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06356207870099653
+    },
+    {
+      "mesh": "Cotton neck wrap 3 ply 1 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06436172635258841
+    },
+    {
+      "mesh": "Cotton neck wrap 3 ply 2 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07048955702569729
+    },
+    {
+      "mesh": "Cotton neck wrap 3 ply 2 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06786553852068478
+    },
+    {
+      "mesh": "Cotton neck wrap 3 ply 3 surface thread 1",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.06781188757186109
+    },
+    {
+      "mesh": "Cotton neck wrap 3 ply 3 surface thread 2",
+      "triangles": 1626,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07349741202116877
+    },
+    {
+      "mesh": "Cotton neck wrap 3 twisted ply 1",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6265358001873476
+    },
+    {
+      "mesh": "Cotton neck wrap 3 twisted ply 2",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6265248311666245
+    },
+    {
+      "mesh": "Cotton neck wrap 3 twisted ply 3",
+      "triangles": 2604,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6275590220665846
+    },
+    {
+      "mesh": "Cotton tied end 1 cotton core",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.629711779261281
+    },
+    {
+      "mesh": "Cotton tied end 1 ply 1 surface thread 1",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07538772227265034
+    },
+    {
+      "mesh": "Cotton tied end 1 ply 1 surface thread 2",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.08501069480566859
+    },
+    {
+      "mesh": "Cotton tied end 1 ply 2 surface thread 1",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.0759725542621607
+    },
+    {
+      "mesh": "Cotton tied end 1 ply 2 surface thread 2",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.05918685085217046
+    },
+    {
+      "mesh": "Cotton tied end 1 ply 3 surface thread 1",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.09362939847682239
+    },
+    {
+      "mesh": "Cotton tied end 1 ply 3 surface thread 2",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.053710272521370825
+    },
+    {
+      "mesh": "Cotton tied end 1 twisted ply 1",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6272958121017658
+    },
+    {
+      "mesh": "Cotton tied end 1 twisted ply 2",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.4457993203753946
+    },
+    {
+      "mesh": "Cotton tied end 1 twisted ply 3",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.2027491052611402
+    },
+    {
+      "mesh": "Cotton tied end 2 cotton core",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6297120339113438
+    },
+    {
+      "mesh": "Cotton tied end 2 ply 1 surface thread 1",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07536326732865734
+    },
+    {
+      "mesh": "Cotton tied end 2 ply 1 surface thread 2",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.08501601768130662
+    },
+    {
+      "mesh": "Cotton tied end 2 ply 2 surface thread 1",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.07598692462217185
+    },
+    {
+      "mesh": "Cotton tied end 2 ply 2 surface thread 2",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.059214962035166525
+    },
+    {
+      "mesh": "Cotton tied end 2 ply 3 surface thread 1",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.09361456663636061
+    },
+    {
+      "mesh": "Cotton tied end 2 ply 3 surface thread 2",
+      "triangles": 406,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.05369828404294773
+    },
+    {
+      "mesh": "Cotton tied end 2 twisted ply 1",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6271823410565955
+    },
+    {
+      "mesh": "Cotton tied end 2 twisted ply 2",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.44581358581828884
+    },
+    {
+      "mesh": "Cotton tied end 2 twisted ply 3",
+      "triangles": 652,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.20247505049803555
+    }
+  ],
+  "checks": "All139 exported meshes checked against triangle normals. Original138 meshes retained exactly; one added clear tube has a closed manifold wall, open axial bore and positive volume. Label/print planes intentionally open."
+}

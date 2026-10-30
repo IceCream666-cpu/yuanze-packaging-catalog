@@ -1,5 +1,5 @@
 """Aromatic Body Lotion 064: matte yellow stepped bottle and three-ply cotton cord."""
-import sys,math,bmesh
+import sys,math,bmesh,bpy,json
 from pathlib import Path
 from mathutils import Vector
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -52,6 +52,7 @@ def braid(name,points,cotton,light):
 
 def build():
  configure('poster-064')
+ clear_tube=mat('Aromatic clear plastic dip tube','#ffffff',.06,trans=1)
  yellow=mat('Aromatic soft matte warm yellow body','#e6bb60',.48)
  white=mat('Aromatic satin warm white pump','#f3ebdc',.30)
  cotton=mat('Aromatic natural cotton cord','#e5cfaa',.75);light=mat('Aromatic raised cotton fibres','#f5e7cd',.82)
@@ -60,6 +61,7 @@ def build():
  inside=[(1.325,.120,.120,.120),(1.275,.120,.120,.120),(1.115,.155,.120,.115),(1.080,.300,.140,.065),(1.040,.467,.242,.052),(.228,.467,.242,.052),(.202,.412,.213,.045),(.065,.398,.199,.043),(.052,.367,.168,.041),(.052,0,0,0)]
  loft('Hollow matte yellow stepped rectangular bottle',outer+inside,yellow,'Body')
  lathe('Smooth wide white screw collar',[(1.308,.166),(1.308,.198),(1.321,.210),(1.526,.210),(1.544,.202),(1.550,.187),(1.550,.092),(1.526,.092),(1.526,.175),(1.321,.175),(1.308,.166)],white,'Closure')
+ lathe('Hollow clear Aromatic dip tube',[(.09,.026),(.09,.035),(1.635,.035),(1.635,.026),(.09,.026)],clear_tube,'PumpStem',96)
  lathe('Short independent white pump stem',[(1.525,.070),(1.525,.084),(1.537,.088),(1.645,.088),(1.650,.079),(1.650,.070),(1.525,.070)],white,'PumpStem')
  lathe('White actuator cylindrical hub',[(1.620,0),(1.620,.092),(1.631,.125),(1.725,.125),(1.740,.116),(1.740,0)],white,'Actuator')
  sections=[(-.45,1.735,.048,.026),(-.424,1.740,.052,.026),(-.32,1.748,.067,.028),(-.16,1.756,.085,.030),(0,1.757,.12,.032),(.14,1.752,.103,.031),(.205,1.742,.048,.024)]
@@ -90,7 +92,20 @@ def build():
  artwork(650,700,(90,80,470,185),[('—',345,1,0,'Arial'),('AROMATIC',431,43,8,'Helvetica Neue,Arial,sans-serif'),('BODY LOTION',489,40,5.8,'Helvetica Neue,Arial,sans-serif'),('—',550,1,0,'Arial'),('300 ml',650,36,0,'Helvetica Neue,Arial,sans-serif')],background='#eee2c9',ink='#4b301d')
  layer('Blank warm cream paper label','PaperLabel','label',.65,.28,.98,lambda x,z:-.275,rough=.77,offset=.0015)
  layer('Complete Aromatic Body Lotion lettering','LogoPrint','print',.65,.28,.98,lambda x,z:-.275,offset=.0023)
- parts=[part('head','Actuator','长嘴白泵头','White pump','扁长左向出液嘴与凹入出口。','Flat elongated left-facing spout with a recessed outlet.'),part('stem','PumpStem','白色连接泵杆','Pump stem','独立向上拔出的连接段。','Connecting stem lifts out as an independent part.'),part('closure','Closure','白色宽旋盖','White collar','光滑圆筒宽盖座。','Wide smooth cylindrical screw collar.'),part('cord','Cord','天然棉编绳','Cotton cord','三圈股绳、两条长短尾与散纤维。','Three braided wraps, two unequal tails and fine fringe fibers.'),part('jar','Body','黄色阶梯瓶身','Yellow bottle','哑光不透明瓶壁与收窄底脚。','Opaque matte bottle with a narrower stepped foot.'),part('label','PaperLabel','暖白纸标','Paper label','保留无字纸质底材。','Blank warm paper label remains separate from the print.'),part('print','LogoPrint','完整印刷文字','Lettering','品牌、两道细线、产品名与300 ml一同展开。','Brand, two fine rules, product name and 300 ml move together.')]
- finish({'Body':0,'Closure':1.31,'PumpStem':1.55,'Actuator':1.65,'Cord':1.22,'PaperLabel':.63,'LogoPrint':.63},parts,{'glass':False,'frosted':False,'pipette':False,'clearLabel':False,'metal':False,'studio':{'background':'#e4d2ac','ink':'#4c351d'}},{'offsets':{'head':[0,2.9,0],'stem':[0,1.8,0],'closure':[0,.9,0],'cord':[1.35,.22,.35],'label':[-1.55,.08,.65],'print':[-3.3,.18,1.65]},'scales':{'label':1.15,'print':1.95},'camera':{'centerY':[1.45,2.9],'height':[4.2,7.1],'width':[4.1,8.2],'centerX':[0,-.7]}},{'closedHeightToBottleWidth':1.789,'bodyDepthToWidth':.55,'bodyMainShoulderHeight':1.083,'cordWrapCount':3,'cordPlyCount':3,'printIncludes':['liaose','AROMATIC','BODY LOTION','300 ml','two fine rules'],'hiddenStructure':'White pump internal connection and bottle inner wall are illustrative; no lotion.','generator':'build_aromatic_body_lotion.py'})
+ parts=[part('closure','PumpAssembly','完整白泵与透明吸管','Complete white pump and clear dip tube','长嘴按头、泵杆、旋盖与透明吸管保持连接，整体上提。','The long spout, stem, collar and clear dip tube lift as one assembly.'),part('jar','BottleAssembly','黄色瓶身与棉绳','Yellow bottle and cotton cord','保留哑光阶梯瓶身，棉绳始终系在瓶颈。','The matte stepped bottle retains its tied cotton cord.'),part('label','PaperLabel','暖白纸标','Paper label','无字纸质底材单独展开。','The blank paper label moves out separately.'),part('print','LogoPrint','完整印刷文字','Complete lettering','品牌、两道细线、产品名与300 ml在纸标外侧展开。','Brand, two rules, product name and 300 ml move farther out than the paper.')];parts[0]['short']=['泵头总成','Pump']
+
+ finish({'Body':0,'Closure':1.31,'PumpStem':1.55,'Actuator':1.65,'Cord':1.22,'PaperLabel':.63,'LogoPrint':.63},parts,{'glass':False,'frosted':False,'pipette':False,'clearLabel':False,'metal':False,'studio':{'background':'#e4d2ac','ink':'#4c351d'}},{'offsets':{'closure':[0,2.45,0],'label':[-1.55,.08,.65],'print':[-3.3,.18,1.65]},'scales':{'label':1.15,'print':1.95},'camera':{'centerY':[1.45,2.675],'height':[4.2,6.45],'width':[4.1,8.2],'centerX':[0,-.7]}},{'closedHeightToBottleWidth':1.789,'bodyDepthToWidth':.55,'bodyMainShoulderHeight':1.083,'cordWrapCount':3,'cordPlyCount':3,'printIncludes':['liaose','AROMATIC','BODY LOTION','300 ml','two fine rules'],'hiddenStructure':'White pump internal connection, clear dip tube bore and bottle inner wall are illustrative; no lotion. Cotton cord stays tied to the bottle.','generator':'build_aromatic_body_lotion.py'})
+ # Keep the original fitted group transforms; only the two complete assemblies move.
+ out=Path(__file__).resolve().parent/'poster-064';info=json.loads((out/'model-info.json').read_text());bounds=info['componentBoundsBlenderXYZ']
+ assemblies={'PumpAssembly':['Closure','PumpStem','Actuator'],'BottleAssembly':['Body','Cord']}
+ for name,children in assemblies.items():
+  assembly=bpy.data.objects.new(name,None);bpy.context.collection.objects.link(assembly)
+  for child in children:bpy.data.objects[child].parent=assembly
+  bounds[name]={'min':[min(bounds[child]['min'][i] for child in children) for i in range(3)],'max':[max(bounds[child]['max'][i] for child in children) for i in range(3)]}
+ info.update(components=['PumpAssembly','BottleAssembly','PaperLabel','LogoPrint'],assemblyChildren=assemblies,completePumpLift=2.45,revision='complete-pump-and-tied-cord-review-20261030',dipTube={'mesh':'Hollow clear Aromatic dip tube','outerDiameterToBody':.07,'innerDiameterToBody':.052,'bottomToBody':.09,'topToBody':1.635,'innerFloorToBody':.052,'illustrativeDimensions':True})
+ bpy.context.view_layer.update();bpy.ops.object.select_all(action='SELECT')
+ bpy.ops.export_scene.gltf(filepath=str(out.parents[2]/'packaging-assets/poster-064.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
+ bpy.ops.wm.save_as_mainfile(filepath=str(out/'poster-064.blend'));(out/'model-info.json').write_text(json.dumps(info,indent=2)+'\n')
+
 
 if __name__=='__main__':build()

@@ -1580,83 +1580,35 @@
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
+        "key": "closure",
+        "node": "PumpAssembly",
         "title": [
-          "长嘴白泵头",
-          "White pump"
+          "完整白泵与透明吸管",
+          "Complete white pump and clear dip tube"
         ],
         "short": [
-          "泵头",
-          "White"
-        ],
-        "detail": [
-          "扁长左向出液嘴与凹入出口。",
-          "Flat elongated left-facing spout with a recessed outlet."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "白色连接泵杆",
-          "Pump stem"
-        ],
-        "short": [
-          "泵杆",
+          "泵头总成",
           "Pump"
         ],
         "detail": [
-          "独立向上拔出的连接段。",
-          "Connecting stem lifts out as an independent part."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "白色宽旋盖",
-          "White collar"
-        ],
-        "short": [
-          "外盖",
-          "White"
-        ],
-        "detail": [
-          "光滑圆筒宽盖座。",
-          "Wide smooth cylindrical screw collar."
-        ]
-      },
-      {
-        "key": "cord",
-        "node": "Cord",
-        "title": [
-          "天然棉编绳",
-          "Cotton cord"
-        ],
-        "short": [
-          "编绳",
-          "Cotton"
-        ],
-        "detail": [
-          "三圈股绳、两条长短尾与散纤维。",
-          "Three braided wraps, two unequal tails and fine fringe fibers."
+          "长嘴按头、泵杆、旋盖与透明吸管保持连接，整体上提。",
+          "The long spout, stem, collar and clear dip tube lift as one assembly."
         ]
       },
       {
         "key": "jar",
-        "node": "Body",
+        "node": "BottleAssembly",
         "title": [
-          "黄色阶梯瓶身",
-          "Yellow bottle"
+          "黄色瓶身与棉绳",
+          "Yellow bottle and cotton cord"
         ],
         "short": [
           "瓶身",
           "Yellow"
         ],
         "detail": [
-          "哑光不透明瓶壁与收窄底脚。",
-          "Opaque matte bottle with a narrower stepped foot."
+          "保留哑光阶梯瓶身，棉绳始终系在瓶颈。",
+          "The matte stepped bottle retains its tied cotton cord."
         ]
       },
       {
@@ -1671,8 +1623,8 @@
           "Paper"
         ],
         "detail": [
-          "保留无字纸质底材。",
-          "Blank warm paper label remains separate from the print."
+          "无字纸质底材单独展开。",
+          "The blank paper label moves out separately."
         ]
       },
       {
@@ -1680,15 +1632,15 @@
         "node": "LogoPrint",
         "title": [
           "完整印刷文字",
-          "Lettering"
+          "Complete lettering"
         ],
         "short": [
           "文字",
-          "Lettering"
+          "Complete"
         ],
         "detail": [
-          "品牌、两道细线、产品名与300 ml一同展开。",
-          "Brand, two fine rules, product name and 300 ml move together."
+          "品牌、两道细线、产品名与300 ml在纸标外侧展开。",
+          "Brand, two rules, product name and 300 ml move farther out than the paper."
         ]
       }
     ],
@@ -1706,25 +1658,10 @@
       },
       "explosion": {
         "offsets": {
-          "head": [
-            0,
-            2.9,
-            0
-          ],
-          "stem": [
-            0,
-            1.8,
-            0
-          ],
           "closure": [
             0,
-            0.9,
+            2.45,
             0
-          ],
-          "cord": [
-            1.35,
-            0.22,
-            0.35
           ],
           "label": [
             -1.55,
@@ -1744,11 +1681,11 @@
         "camera": {
           "centerY": [
             1.45,
-            2.9
+            2.675
           ],
           "height": [
             4.2,
-            7.1
+            6.45
           ],
           "width": [
             4.1,
