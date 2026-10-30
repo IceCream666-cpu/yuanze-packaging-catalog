@@ -11,15 +11,12 @@
     "300 ml",
     "two fine rules"
   ],
-  "hiddenStructure": "White pump internal connection and bottle inner wall are illustrative; no lotion.",
+  "hiddenStructure": "White pump internal connection, clear dip tube bore and bottle inner wall are illustrative; no lotion. Cotton cord stays tied to the bottle.",
   "generator": "build_aromatic_body_lotion.py",
   "id": "poster-064",
   "components": [
-    "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
-    "Cord",
+    "PumpAssembly",
+    "BottleAssembly",
     "PaperLabel",
     "LogoPrint"
   ],
@@ -54,7 +51,7 @@
       "min": [
         -0.14264953136444092,
         -0.14264953136444092,
-        2.4720513820648193
+        0.14589156210422516
       ],
       "max": [
         0.14264953136444092,
@@ -109,10 +106,56 @@
         -0.44950810074806213,
         1.588597059249878
       ]
+    },
+    "PumpAssembly": {
+      "min": [
+        -0.7294577956199646,
+        -0.3404136300086975,
+        0.14589156210422516
+      ],
+      "max": [
+        0.3404136300086975,
+        0.3404136300086975,
+        2.9000000953674316
+      ]
+    },
+    "BottleAssembly": {
+      "min": [
+        -0.810508668422699,
+        -0.6022632122039795,
+        0.0
+      ],
+      "max": [
+        1.3334091901779175,
+        0.4457797706127167,
+        2.2181320190429688
+      ]
     }
   },
   "illustrativeDimensions": true,
   "containsFormula": false,
   "reference": "../../mobile-client-preview/assets/posters/poster-064.webp",
-  "separateLabelAndPrint": true
+  "separateLabelAndPrint": true,
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "BottleAssembly": [
+      "Body",
+      "Cord"
+    ]
+  },
+  "completePumpLift": 2.45,
+  "revision": "complete-pump-and-tied-cord-review-20261030",
+  "dipTube": {
+    "mesh": "Hollow clear Aromatic dip tube",
+    "outerDiameterToBody": 0.07,
+    "innerDiameterToBody": 0.052,
+    "bottomToBody": 0.09,
+    "topToBody": 1.635,
+    "innerFloorToBody": 0.052,
+    "illustrativeDimensions": true
+  }
 }
