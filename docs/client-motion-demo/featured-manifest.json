@@ -1,6 +1,6 @@
 {
-  "version": "client1.30",
-  "scope": "approved-client1.30-display-derivatives",
+  "version": "client1.34",
+  "scope": "approved-client1.34-display-derivatives",
   "notes": "Append only the approved current Daily Emulsion and Body Oil single-bottle models to the original 24 homepage displays; retain all 61 posters and all 26 model files.",
   "files": [
     {
@@ -474,7 +474,7 @@
       "bytes": 1345797,
       "sha256": "e0a9160a120641ba7d6484a400cf78d2e5ae2f613fa86becdfd3f910b8ad3eb2",
       "tool": "Built-in image_gen",
-      "scope": "2026-10-30 local display revision; not deployed",
+      "scope": "User-authorized client1.34 single-product poster-matching display",
       "method": "Reference-led single-product transparent extraction; AI-generated display derivative",
       "productCount": 1,
       "selectedObject": "Daily Emulsion single bottle",
@@ -493,7 +493,7 @@
       "bytes": 1545024,
       "sha256": "da9a144da8e10a81239b119ae77170c5fdcfb09323c1ecba588e2ece641f9bb6",
       "tool": "Built-in image_gen",
-      "scope": "2026-10-30 local display revision; not deployed",
+      "scope": "User-authorized client1.34 single-product poster-matching display",
       "method": "Reference-led single-product transparent extraction; AI-generated display derivative",
       "productCount": 1,
       "selectedObject": "Body Oil 02 center bottle only",
@@ -504,9 +504,9 @@
     }
   ],
   "approval": {
-    "date": "2026-10-27",
-    "basis": "User requested adding products with existing 3D models to the homepage and leaving products without models unchanged."
+    "date": "2026-10-30",
+    "basis": "User approved publishing corrected single-product Daily Emulsion and Body Oil 02 displays."
   },
   "revision": "poster-fidelity-preview-20261030",
-  "status": "local-preview-not-deployed"
+  "status": "publication-authorized"
 }
