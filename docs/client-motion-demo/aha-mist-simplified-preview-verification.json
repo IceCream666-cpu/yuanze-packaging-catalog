@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-30",
+  "product": "AHA Body Mist",
+  "productId": "poster-060",
+  "selectionNumber": 13,
+  "selectedCount": 16,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "nextProduct": {
+    "selectionNumber": 14,
+    "id": "poster-061",
+    "name": "Oil-Infused Body Cream",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedCount": 7,
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-060",
+  "components": [
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "containsFormula": false,
+  "containsNewTube": false,
+  "dipTubeLengthChanged": false,
+  "referenceDecision": "The reference has no independent overcap. Preserve exposed black spray head, white nozzle, silver label and original curved transparent dip tube near the inner floor.",
+  "preservedGeometry": {
+    "meshCount": 8,
+    "vertexCount": 19435,
+    "maxWorldVertexDelta": 0,
+    "allMeshAttributesAndIndicesIdentical": true,
+    "allMaterialsIdentical": true,
+    "allArtworkBytesIdentical": true,
+    "other25ModelsUnchanged": true
+  },
+  "animation": {
+    "completeSprayerLift": 2.65,
+    "tubeTipClosedY": 0.16433056258617995,
+    "bottleMouthY": 2.3824363419084307,
+    "fullyOpenTubeToBottleGap": 0.4318942206777492,
+    "offsets": {
+      "closure": [
+        0,
+        2.65,
+        0
+      ],
+      "label": [
+        -1.25,
+        0.08,
+        0.65
+      ],
+      "print": [
+        -2.85,
+        0.15,
+        1.65
+      ]
+    },
+    "scales": {
+      "label": 1.15,
+      "print": 1.95
+    },
+    "camera": {
+      "centerY": [
+        1.45,
+        2.65
+      ],
+      "height": [
+        4.2,
+        6.8
+      ],
+      "width": [
+        3.8,
+        5.6
+      ],
+      "centerX": [
+        0,
+        -1.45
+      ]
+    }
+  },
+  "model": {
+    "bytes": 1111452,
+    "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b"
+  },
+  "validation": {
+    "geometryTestsPassed": 23,
+    "integrationTestsPassed": 2,
+    "frontendTestsPassed": 174,
+    "viteBuild": "passed",
+    "sourcePublicDistAndLocalHttpSha256": "identical",
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "rotated90",
+        "front-reset",
+        "poster-round-trip"
+      ],
+      "passed": true
+    },
+    "mobile": {
+      "simulatedViewport": [
+        393,
+        852
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "scrollWidth": 393,
+      "physicalDeviceTested": false,
+      "passed": true
+    },
+    "visualReview": "Six actual screenshots inspected; no clipping, title overlap or missing print. Narrow view has slight label/bottle projection overlap, with print clearly outside.",
+    "impeccableDetectorFindings": 0,
+    "independentReview": {
+      "result": "passed-no-blockers",
+      "reviewed": "All6 actual desktop/mobile screenshots plus actualGLB nodes, geometry, UVs, normals, indices, materials and embedded textures checked independently."
+    }
+  },
+  "evidence": "review-evidence/aha-mist/simplified-sprayer/",
+  "limitations": [
+    "The flexible curved dip tube is displayed as a rigid shape during the lift; intermediate motion is illustrative, not a validated assembly path.",
+    "Narrow-view lettering is small and label/bottle projections overlap slightly.",
+    "Wall thickness, tube bore and hidden fit are illustrative rather than manufacturing measurements."
+  ]
+}

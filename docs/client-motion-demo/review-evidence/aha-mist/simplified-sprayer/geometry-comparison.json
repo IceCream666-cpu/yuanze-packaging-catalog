@@ -1,0 +1,95 @@
+{
+  "model": "poster-060",
+  "bytes": 1111452,
+  "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+  "roots": [
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "PumpAssembly"
+  ],
+  "meshCount": 8,
+  "preservedVertexCount": 19435,
+  "meshes": [
+    {
+      "name": "Hollow cylindrical glass with rounded shoulder and thick base",
+      "vertices": 6785,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Hollow glossy black atomizer collar",
+      "vertices": 2232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Curved hollow clear suction tube",
+      "vertices": 3232,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Opaque illustrative white pump connector",
+      "vertices": 1716,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Black cylindrical spray actuator",
+      "vertices": 1796,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "White circular recessed spray nozzle",
+      "vertices": 920,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Brushed silver unprinted label substrate",
+      "vertices": 1377,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "name": "Complete AHA Body Mist print",
+      "vertices": 1377,
+      "maxWorldVertexDelta": 0.0,
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "artworkSha256": {
+    "label.svg": "c7c7dd0b06abe1c31265436b8e717be2de89756b743539f22fb67a28d652ea6c",
+    "label.png": "314b8e8ff7fe0ff098605620ab0f6129d2f720f1e1441bf6e0a2c77f6307705f",
+    "print.png": "2c59b2fd63164368454b0962a114babe30b9bf181445df8195aab0d877f70aa9",
+    "brushed-silver.png": "b75f8cacaebe10f8e5f0dede6264ba0dea743e72e6e2b63ffd9a7e6123a13389",
+    "print.svg": "7ebbd349ff024d9d6d980e670bf198da913844269a1e80d52682ade7c62fa118"
+  },
+  "artworkBytesIdentical": true,
+  "other25ModelsUnchanged": true,
+  "motion": {
+    "completeSprayerLift": 2.65,
+    "tubeTipClosedY": 0.16433056258617995,
+    "bottleMouthY": 2.3824363419084307,
+    "fullyOpenTubeToBottleGap": 0.4318942206777492
+  },
+  "scope": "Only hierarchy and060 interaction configuration changed. All8 mesh world vertices, attributes, indices and materials identical; original curved clear tube and all artwork preserved."
+}

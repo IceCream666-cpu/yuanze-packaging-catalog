@@ -1020,51 +1020,19 @@
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
-        "title": [
-          "黑色喷雾按头",
-          "Black spray actuator"
-        ],
-        "short": [
-          "喷头",
-          "Head"
-        ],
-        "detail": [
-          "白色圆形喷孔与黑色按压头一起上移。",
-          "The white spray insert moves with the black actuator."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "内部连接与弯吸管",
-          "Connector and curved dip tube"
-        ],
-        "short": [
-          "吸管",
-          "Tube"
-        ],
-        "detail": [
-          "透明细管与连接段独立展开。",
-          "The hollow dip tube separates with its connector."
-        ]
-      },
-      {
         "key": "closure",
-        "node": "Closure",
+        "node": "PumpAssembly",
         "title": [
-          "黑色圆筒旋盖",
-          "Black cylindrical collar"
+          "完整喷雾头与吸管",
+          "Complete spray assembly and dip tube"
         ],
         "short": [
-          "旋盖",
-          "Collar"
+          "喷头组件",
+          "Sprayer"
         ],
         "detail": [
-          "光亮圆筒盖独立向上分离。",
-          "The glossy collar lifts independently."
+          "按头、喷孔、固定圈、连接段与透明弯吸管保持连接，整体提起。",
+          "The actuator, nozzle, collar, connector and clear curved tube lift together."
         ]
       },
       {
@@ -1130,19 +1098,9 @@
       },
       "explosion": {
         "offsets": {
-          "head": [
-            0,
-            5,
-            0
-          ],
-          "stem": [
-            0,
-            3.8,
-            0
-          ],
           "closure": [
             0,
-            1,
+            2.65,
             0
           ],
           "label": [
@@ -1163,19 +1121,19 @@
         "camera": {
           "centerY": [
             1.45,
-            3.95
+            2.65
           ],
           "height": [
             4.2,
-            9.1
+            6.8
           ],
           "width": [
             3.8,
-            8.8
+            5.6
           ],
           "centerX": [
             0,
-            -0.9
+            -1.45
           ]
         }
       }

@@ -225,10 +225,32 @@ class EssenceOilDuoModelTests(ReviewedPackagingChecks, ExportedModelReader):
 class AHABodyMistModelTests(ReviewedPackagingChecks, ExportedModelReader):
     model_id = 'poster-060'
     body_name = 'Hollow cylindrical glass with rounded shoulder and thick base'
-    component_counts = {'Body': 1, 'Closure': 1, 'PumpStem': 2, 'Actuator': 2, 'PaperLabel': 1, 'LogoPrint': 1}
+    component_counts = {'Body': 1, 'PumpAssembly': 5, 'PaperLabel': 1, 'LogoPrint': 1}
     floor_ratio = .18
     svg_copy = {'print.svg': ['AHA', 'BODY MIST', '160 ml']}
     complete_copy = ['liaose', 'AHA', 'BODY MIST', 'short separator rule', '160 ml']
+
+    def test_complete_sprayer_keeps_fitted_tube_and_clears_the_bottle(self):
+        assembly = self.nodes[self.named['PumpAssembly']]
+        self.assertEqual({self.nodes[i]['name'] for i in assembly['children']},
+                         {'Closure', 'PumpStem', 'Actuator'})
+        self.assertEqual(assembly.get('translation', [0, 0, 0]), [0, 0, 0])
+        self.assertEqual(assembly.get('scale', [1, 1, 1]), [1, 1, 1])
+        self.assertEqual(len(self.mesh_names()), 8)
+        product = json.loads((CLIENT / 'src/structure/collection-products.json').read_text())[self.model_id]
+        review = json.loads((self.source() / 'review-config.json').read_text())
+        self.assertEqual(review, {'parts': product['parts'], **product['review']})
+        manifest = json.loads((CLIENT / 'packaging-manifest.json').read_text())
+        entry = next(item for item in manifest['additionalProducts'] if item['posterId'] == self.model_id)
+        self.assertEqual(entry['components'], [part['node'] for part in product['parts']])
+        tube = 'Curved hollow clear suction tube'
+        self.assertEqual(self.ancestor(tube), 'PumpAssembly')
+        low, _ = self.bounds(self.positions(tube))
+        _, bottle_high = self.bounds(self.positions(self.body_name))
+        offsets = product['review']['explosion']['offsets']
+        self.assertGreater(low[1] + offsets['closure'][1] - bottle_high[1], .43)
+        self.assertGreater(offsets['print'][2], offsets['label'][2])
+        self.assertEqual(self.material(tube)['extensions']['KHR_materials_transmission']['transmissionFactor'], 1)
 
     def test_round_bottle_silver_brushed_foil_and_real_curved_tube(self):
         width = self.width()
