@@ -1,0 +1,190 @@
+{
+  "version": "client1.36",
+  "status": "published-and-browser-verified-https-final-check-running",
+  "scope": "poster-061 complete pumps only; preserve concurrent client1.35 bottle refinements",
+  "sourceCommit": "8e9acf004c19088cd2bb4854b45198aa0334420f",
+  "approvedPreviewCommit": "573a1e8c377e394f68bac27a0c5804d41ff83bc2",
+  "publishedAt": "2026-10-30T16:58:11+08:00",
+  "publication": {
+    "version": "client1.36",
+    "patch": "approved-oil-cream-061-complete-pumps-only",
+    "publishedAt": "2026-10-30T16:58:11+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "manifestSha256": "da7d4cf166dde106b7464acc2b7eef44e582dfc7cd4b3761fa98cdf724bb656c",
+    "backup": "/opt/yuanze-reference/backups/client1.36-oil-cream-complete-pumps-20261030",
+    "baselineManifestSha256": "9f7cc309ab0ee5d9f13cdc6280ae573d4ddcb39f79ab31262fb8ddec1ec1fa3d",
+    "verifiedFiles": 458,
+    "changed": [
+      "assets/packaging/PackagingDetail-BLd6tQlv.js",
+      "assets/packaging/packaging-scene-DKSVoSXn.js",
+      "assets/packaging/poster-061.glb",
+      "index.html",
+      "preview.js",
+      "bundle-manifest.json"
+    ],
+    "removedChunks": [
+      "assets/packaging/PackagingDetail-DVDxrEJs.js",
+      "assets/packaging/packaging-scene-zi-Z7xmE.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-BLd6tQlv.js",
+      "assets/packaging/packaging-scene-DKSVoSXn.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "outsideUnchanged": 6820,
+    "service": "MainPID=33772\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42"
+  },
+  "tests": {
+    "motion": 162,
+    "models": 154,
+    "release": 19,
+    "build": true,
+    "baselineCandidateRootTests": 340,
+    "baselineSkipped": 3
+  },
+  "independentAudit": {
+    "audit": "independent read-only rebased Oil-Infused Body Cream publication audit",
+    "checkedAt": "2026-10-30T16:57:34+08:00",
+    "status": "passed-for-guarded-publication",
+    "sourceCommit": "8e9acf004c19088cd2bb4854b45198aa0334420f",
+    "baselineGitCommit": "97d29f0",
+    "baselineManifestSha256": "9f7cc309ab0ee5d9f13cdc6280ae573d4ddcb39f79ab31262fb8ddec1ec1fa3d",
+    "candidateManifestSha256": "da7d4cf166dde106b7464acc2b7eef44e582dfc7cd4b3761fa98cdf724bb656c",
+    "baseline": {
+      "liveSnapshotMatchesGitManifest": true,
+      "actualGitFilesVerified": 458,
+      "actualGitBytesVerified": 190918862,
+      "hashFailures": 0,
+      "outsideFiles": 6820
+    },
+    "candidate": {
+      "actualFilesVerified": 458,
+      "imagesUnchanged": 418,
+      "otherModelsUnchanged": 25,
+      "modifiedExisting": [
+        "assets/packaging/poster-061.glb",
+        "index.html",
+        "preview.js"
+      ],
+      "added": [
+        "assets/packaging/PackagingDetail-BLd6tQlv.js",
+        "assets/packaging/packaging-scene-DKSVoSXn.js"
+      ],
+      "removed": [
+        "assets/packaging/PackagingDetail-DVDxrEJs.js",
+        "assets/packaging/packaging-scene-zi-Z7xmE.js"
+      ],
+      "poster061ApprovedSource": "573a1e8c377e394f68bac27a0c5804d41ff83bc2",
+      "poster061Bytes": 1103220,
+      "poster061Sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+      "poster061SourceAndConfigurationExact": true,
+      "poster064065070NewDraftsExcluded": true,
+      "poster072073ProductionModelsImagesConfigurationPreserved": true,
+      "referenceGlassSceneAndIsolationTestPreserved": true,
+      "copyVersionConsistent": "client1.36"
+    },
+    "reviewedTests": {
+      "frontend": 162,
+      "models": 154,
+      "release": 19,
+      "failures": 0,
+      "execution": "Reviewed existing task logs; independent custom assertions verified inventories, bytes, approved source/configuration, version labels and publication plan"
+    },
+    "publicationProtection": {
+      "lock": true,
+      "currentReleaseGuard": true,
+      "baselineManifestGuard": true,
+      "outsideFilesGuard": true,
+      "serviceAndGatewayGuard": true,
+      "immutableResourcesChecked": true,
+      "archiveMembershipAndHashChecked": true,
+      "noSymlinkAndPathTraversalChecked": true,
+      "atomicDirectoryExchange": true,
+      "guardedRollback": true,
+      "laterDeploymentProtected": true,
+      "scriptParseChecksPassed": true
+    },
+    "scriptSha256": {
+      "publish.py": "d37077f95cebfc9c89bfa67fdfbb0e25863026f8401b88faf96d9f75207a3f93",
+      "rollback.py": "e8c7b326e0536feec4e3172f321c7dd32fb3025de2fc28d663f36df691bc22f4",
+      "verify_online.py": "d71e54d1bdaf98f90c3e0b72ef6c50c2484db1ba2e5d6e987e3683cd52fdc279"
+    },
+    "resolvedFinding": "Stale footer and information-panel version fixed from client1.35 to client1.36 before final build.",
+    "documentationFollowup": "Committed candidate notes state 34 release tests; actual final log has 19. Publisher will correct both version records in the final release receipt update.",
+    "notPerformed": [
+      "No remote writes or browser operations by auditor",
+      "No repeated full test suite",
+      "Production HTTPS/browser acceptance remains publisher follow-up after atomic publication"
+    ]
+  },
+  "networkDiagnostic": {
+    "checkedAt": "2026-10-30T17:08:43.109704+08:00",
+    "unmodifiedPoster074": {
+      "expectedBytes": 1192724,
+      "externalFirstReceivedBytes": 736626,
+      "externalRetryFailedThreeTimes": true,
+      "serverLocalTlsBytes": 1192724,
+      "serverLocalTlsSha256": "d21aa72f1619b4bb946979b9aea63d2bd212bd549786b99d19e7233c8c98bc13",
+      "certificateVerified": true,
+      "host": "bmt.yuanzebeauty.com",
+      "tcpAddress": "127.0.0.1"
+    },
+    "target061ExternalHttps": {
+      "status": 200,
+      "bytes": 1103220,
+      "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485"
+    },
+    "interpretation": "Large unchanged poster download truncated on current external path; same file served fully through verified local TLS and matches original manifest. Target model full external response passed. No network or production configuration changed.",
+    "followup": "External acceptance verifies changed files fully and unchanged large media by byte ranges plus exact server hashes."
+  },
+  "browser": {
+    "desktop": [
+      1610,
+      853
+    ],
+    "simulatedMobile": [
+      393,
+      852
+    ],
+    "evidence": "review-evidence/oil-cream/client136",
+    "sixScreenshotsVisuallyVerified": true,
+    "originalPosterRoundtrip": true,
+    "realDevice": false
+  },
+  "model": {
+    "id": "poster-061",
+    "bytes": 1103220,
+    "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485"
+  }
+}

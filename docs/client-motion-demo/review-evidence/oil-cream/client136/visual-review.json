@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-30T17:07:26+08:00",
+  "review": "Independent image-by-image visual inspection of all six formal-release screenshots and supplied state JSON",
+  "version": "client1.36",
+  "files": {
+    "desktop-closed.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "0405908139ddb5d5a22063b9bab3c0701364f483b7cfd5da6d644d1ec7fbc4fb",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Two different-height frosted bottles and fitted black pumps are entirely visible. Both labels retain liaose and OIL-INFUSED BODY CREAM. Page heading, four descriptions and controls are unobstructed."
+    },
+    "desktop-half.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "d58ac64b4045a9cfa24a9c059b991d505b3c5ebe683296fe0468d185addcf2c2",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Both black pump assemblies rise together with their long clear tubes; bottles stay below. Two printing groups move farther left than the two transparent substrates. No viewport clipping."
+    },
+    "desktop-open.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "00f583ca06aec1d53cd4779859ad651b8abe29209c5f74b3646a91fb75b23fb7",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Two complete pump-and-tube assemblies, two empty bottles, two transparent label substrates and two complete printing groups remain visible with separation. Content does not collide with the heading or right descriptions."
+    },
+    "desktop-rotated.png": {
+      "viewport": [
+        1610,
+        853
+      ],
+      "sha256": "741712b621475fb37a58271b77353451b0a2351c785c35411eb66ece45b80213",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "The roughly 90-degree view preserves two connected pump-and-tube assemblies and both bottles. Labels and printing become edge-on as expected; all groups remain within the viewport."
+    },
+    "mobile-closed.png": {
+      "viewport": [
+        393,
+        852
+      ],
+      "sha256": "9551c4c98ea42f1c4829b99654361885b760b0a724904a1e73296e5fa6eefc5e",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "393x852 simulated viewport: both bottles and complete pumps fit, title and four component controls remain readable, and bottom controls are visible. No model or text clipping."
+    },
+    "mobile-open.png": {
+      "viewport": [
+        393,
+        852
+      ],
+      "sha256": "91ccdc086d29c61cc231e6eccb9f84e91d0a4446bc9f1d43b6e58cf2effe27fb",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "393x852 simulated viewport: both raised pumps, thin transparent tubes, both bottles and separated print groups remain inside the width. Four component controls and full-open progress controls are visible."
+    }
+  },
+  "stateChecks": {
+    "desktopViewport": [
+      1610,
+      853
+    ],
+    "mobileSimulatedViewport": [
+      393,
+      852
+    ],
+    "desktopTargets": [
+      0,
+      0.5,
+      1
+    ],
+    "mobileTargets": [
+      0,
+      1
+    ],
+    "renderedProgressTolerance": 0.001,
+    "desktopYawRadians": 1.568431657960802,
+    "horizontalOverflow": false,
+    "componentControls": [
+      "closure",
+      "body",
+      "label",
+      "print"
+    ]
+  },
+  "findings": [],
+  "limitations": [
+    "Transparent tubes and label substrates have deliberately subtle contrast; visibility matches their clear material, and no structural break was observed.",
+    "Small package printing is not comfortably readable at the simulated mobile full-open scale; it remains visible as part of the complete print layer.",
+    "Mobile checks are viewport simulation, not physical-device or native-touch validation.",
+    "The screenshots and state files do not by themselves verify every server resource; HTTPS body/hash verification belongs to the publisher report."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "closed": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 31,
+      "triangles": 99010
+    },
+    "mobileParts": [
+      "泵头总成",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  },
+  "open": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "scene": {
+      "progress": 1,
+      "renderedProgress": 0.9994170715696937,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.7483969468166576,
+        0.14991256073545411,
+        1.6490381680899946
+      ],
+      "components": [
+        "closure",
+        "body",
+        "label",
+        "print"
+      ],
+      "meshes": 31,
+      "triangles": 99010
+    },
+    "mobileParts": [
+      "泵头总成",
+      "瓶身",
+      "标贴",
+      "文字"
+    ]
+  }
+}

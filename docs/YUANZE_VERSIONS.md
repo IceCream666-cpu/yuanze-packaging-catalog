@@ -1,10 +1,10 @@
 # 源泽版本记录
 
-## client1.36 Oil-Infused Body Cream 完整泵组（2026-10-30 待发布）
+## client1.36 Oil-Infused Body Cream 完整泵组（2026-10-30 已上线，验收进行中）
 
 用户批准061并要求继续下一款。原client1.35候选未发布；现场已由另一发布更新到client1.35（97d29f0，manifest 9f7cc309ab0ee5d9f13cdc6280ae573d4ddcb39f79ab31262fb8ddec1ec1fa3d），故本次顺延client1.36。保留072/073最新空瓶、玻璃材质、展示图与文案，仅迁入批准源573a1e8c377e394f68bac27a0c5804d41ff83bc2的061：双瓶完整泵头/泵嘴/盖座/透明中空吸管为PumpAssembly整体抬升2.2，空瓶、标贴、完整印刷保持。GLB1103220字节，SHA256 f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485。
 
-458资源中仅061GLB、index/preview及两相关JS模块变化，其余25模型和418图逐字节保持。26首页、61海报不变，不夹带064/065/070新稿或client1.31性能稿。原候选340根测试（3跳过）通过；此次并发合并后162前端、154模型、34发布测试与构建检查通过，独立审计核对并发保留和发布保护。候选manifest da7d4cf166dde106b7464acc2b7eef44e582dfc7cd4b3761fa98cdf724bb656c。正式状态以发布回执和HTTPS/浏览器验收补记。
+458资源中仅061GLB、index/preview及两相关JS模块变化，其余25模型和418图逐字节保持。26首页、61海报不变，不夹带064/065/070新稿或client1.31性能稿。原候选340根测试（3跳过）通过；此次并发合并后162前端、154模型、19发布测试与构建检查通过，独立审计核对并发保留和发布保护。候选manifest da7d4cf166dde106b7464acc2b7eef44e582dfc7cd4b3761fa98cdf724bb656c。16:58:11原子发布，6820展厅外文件、PID33772及网关保持，无重启、无业务写入。正式Ego六图与原海报往返通过，并经独立逐图复核；桌面1610×853，模拟手机393×852、scrollWidth393。061外部HTTPS完整200摘要通过；未修改074大图外部多次截断而服务器本机TLS完整摘要通过，正在完成其余HTTPS权限/Range检查。回执client-motion-demo/client136-oil-cream-release.json。
 
 
 ## client1.33 AHA Body Mist 完整喷雾泵（2026-10-30 14:20:39 已上线）
