@@ -1,0 +1,1411 @@
+{
+  "date": "2026-10-31",
+  "sourceRelease": "client1.40",
+  "sourceCommit": "d736a61754579c03846835d2b8b9dc56d6916240",
+  "artifact": "源泽包材库作品集_含26款交互3D_Windows与Mac.zip",
+  "zipBytes": 123561623,
+  "zipSha256": "4d2c8190189533aac5c6d46bfaff5fd76920cbb91f72237275beb30ccc08542b",
+  "uncompressedBytes": 163336862,
+  "independentChecks": 537,
+  "independentPassed": true,
+  "frontendTests": 167,
+  "offlineAdapterTests": 1,
+  "browser": "macOS Ego Lite Chromium",
+  "protocol": "file:",
+  "offline": "CDP offline during every model batch",
+  "models": [
+    {
+      "index": 1,
+      "label": "查看 Beach Magic 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "cap",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 21,
+        "triangles": 264066
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998025636984598,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -0.024995064092461494,
+            0.003999210254793839,
+            0.03499308972944609
+          ],
+          "components": [
+            "cap",
+            "liner",
+            "jar",
+            "print"
+          ],
+          "meshes": 21,
+          "triangles": 264066
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 2,
+      "label": "查看 Coral & Aqua 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 24706
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998050653243216,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.6492884884337737,
+            0.17996491175837792,
+            1.6496783577851304
+          ],
+          "components": [
+            "closure",
+            "liner",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 17,
+          "triangles": 24706
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 3,
+      "label": "查看 PDRN Capsule Cream 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "print"
+        ],
+        "meshes": 21,
+        "triangles": 81346
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998375944060601,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -2.149650827973029,
+            0.09998375944060611,
+            1.0998213538466661
+          ],
+          "components": [
+            "closure",
+            "liner",
+            "jar",
+            "print"
+          ],
+          "meshes": 21,
+          "triangles": 81346
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 4,
+      "label": "查看 Moisture Shampoo 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "pump",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 25,
+        "triangles": 141438
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998094844425611,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -2.649495133772787,
+            0.17996570719966098,
+            1.6496856493302259
+          ],
+          "components": [
+            "pump",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 25,
+          "triangles": 141438
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 5,
+      "label": "查看 Woodland 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 87562
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998217728291069,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.0994474957702316,
+            0.17996791910923915,
+            1.6497059251680264
+          ],
+          "components": [
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 17,
+          "triangles": 87562
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 6,
+      "label": "查看 Pure Volume 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "pump",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 116,
+        "triangles": 492438
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998249263970924,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.399404749750114,
+            0.1799684867514766,
+            1.6497111285552024
+          ],
+          "components": [
+            "pump",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 116,
+          "triangles": 492438
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 7,
+      "label": "查看 Gentle Cleansing 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 32,
+        "triangles": 155614
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998137742785229,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -2.6495065018380854,
+            0.49990688713926135,
+            1.6496927275595628
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 32,
+          "triangles": 155614
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 8,
+      "label": "查看 Coastal 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 9,
+        "triangles": 167426
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.999850116232828,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.099535360321767,
+            0.17997302092190903,
+            1.6497526917841663
+          ],
+          "components": [
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 9,
+          "triangles": 167426
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 9,
+      "label": "查看 Golden Face Oil 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 36846
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998323968983279,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.799363108213646,
+            0.17996983144169898,
+            1.649723454882241
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 17,
+          "triangles": 36846
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 10,
+      "label": "查看 B5 Serum 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "dropper",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 16,
+        "triangles": 191450
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998337939262549,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.0994847611713903,
+            0.09998337939262547,
+            1.6497257599783206
+          ],
+          "components": [
+            "dropper",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 16,
+          "triangles": 191450
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 11,
+      "label": "查看 Luminous Face Oil 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print"
+        ],
+        "meshes": 12,
+        "triangles": 72922
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998133734796703,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -2.84946811441706,
+            0.1499720060219505,
+            1.6496920662414558
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print"
+          ],
+          "meshes": 12,
+          "triangles": 72922
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 12,
+      "label": "查看 Essence Oil Duo 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print"
+        ],
+        "meshes": 23,
+        "triangles": 113362
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998430325856277,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -6.398995408548018,
+            -0.5499136679220953,
+            1.6497410037662856
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print"
+          ],
+          "meshes": 23,
+          "triangles": 113362
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 13,
+      "label": "查看 AHA Body Mist 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print"
+        ],
+        "meshes": 16,
+        "triangles": 56354
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998045706950547,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -2.849443026480906,
+            0.1499706856042582,
+            1.64967754164684
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print"
+          ],
+          "meshes": 16,
+          "triangles": 56354
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 14,
+      "label": "查看 Oil-Infused Body Cream 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print"
+        ],
+        "meshes": 31,
+        "triangles": 99010
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998723980801025,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -5.499298189440564,
+            0.14998085971201536,
+            1.6497894568321692
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print"
+          ],
+          "meshes": 31,
+          "triangles": 99010
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 15,
+      "label": "查看 Micro Cream 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 13,
+        "triangles": 18962
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998348422327678,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -4.1993063373776245,
+            0.17997027160189827,
+            1.6497274896840668
+          ],
+          "components": [
+            "closure",
+            "liner",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 13,
+          "triangles": 18962
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 16,
+      "label": "查看 Moisture Cream 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 26946
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.99980234290143,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -4.099189605895862,
+            0.17996442172225735,
+            1.6496738657873593
+          ],
+          "components": [
+            "closure",
+            "liner",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 17,
+          "triangles": 26946
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 17,
+      "label": "查看 Aromatic Body Lotion 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 278,
+        "triangles": 241158
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998046418436497,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.299355318084044,
+            0.17996483553185705,
+            1.649677659042022
+          ],
+          "components": [
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 278,
+          "triangles": 241158
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 18,
+      "label": "查看 Tea Tree Shampoo 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "jar",
+          "refill",
+          "label",
+          "print"
+        ],
+        "meshes": 38,
+        "triangles": 146054
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998044830623458,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -4.79906151869926,
+            -1.5996871728997535,
+            1.6496773970528704
+          ],
+          "components": [
+            "closure",
+            "jar",
+            "refill",
+            "label",
+            "print"
+          ],
+          "meshes": 38,
+          "triangles": 146054
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 19,
+      "label": "查看 Rose Hair Oil 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998125274147379,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.299381340468635,
+            0.1799662549346528,
+            1.6496906702343175
+          ],
+          "components": [
+            "overcap",
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 17,
+          "triangles": 67074
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 20,
+      "label": "查看 Amber Ginger Shampoo 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "cord",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 107,
+        "triangles": 410658
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.999830734513901,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.2994414238958734,
+            0.17996953221250211,
+            1.6497207119479367
+          ],
+          "components": [
+            "head",
+            "stem",
+            "closure",
+            "cord",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 107,
+          "triangles": 410658
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 21,
+      "label": "查看 Essence Water 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "liner",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 13,
+        "triangles": 136658
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998045499123138,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.2993550147106356,
+            0.17996481898421646,
+            1.6496775073553178
+          ],
+          "components": [
+            "closure",
+            "liner",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 13,
+          "triangles": 136658
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 22,
+      "label": "查看 Still Essential Oil 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "seal",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 11,
+        "triangles": 104618
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998735157708809,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.099607898889731,
+            0.17997723283875855,
+            1.6497913010219534
+          ],
+          "components": [
+            "closure",
+            "seal",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 11,
+          "triangles": 104618
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 23,
+      "label": "查看 Daylight Essential Oil 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "wrap",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 15,
+        "triangles": 91794
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998337186016132,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -3.2994512713853235,
+            0.1799700693482904,
+            1.6497256356926617
+          ],
+          "components": [
+            "closure",
+            "wrap",
+            "jar",
+            "label",
+            "print"
+          ],
+          "meshes": 15,
+          "triangles": 91794
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 24,
+      "label": "查看 Sculptural Pump 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "head",
+          "stem",
+          "closure",
+          "jar",
+          "print"
+        ],
+        "meshes": 80,
+        "triangles": 48372
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998169210108669,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -0.6298846602368462,
+            0.0999816921010867,
+            0.8598425520693456
+          ],
+          "components": [
+            "head",
+            "stem",
+            "closure",
+            "jar",
+            "print"
+          ],
+          "meshes": 80,
+          "triangles": 48372
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 25,
+      "label": "查看 Daily Emulsion 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 16,
+        "triangles": 58870
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998437278844208,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -1.8997030829803994,
+            0.29995311836532634,
+            1.8997030829803994
+          ],
+          "components": [
+            "overcap",
+            "pump",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 16,
+          "triangles": 58870
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    },
+    {
+      "index": 26,
+      "label": "查看 Body Oil Collection 3D 模型",
+      "closed": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "closure",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 13,
+        "triangles": 49062
+      },
+      "open": {
+        "state": {
+          "progress": 1,
+          "renderedProgress": 0.9998025954179298,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            -1.4997038931268947,
+            0.22995459694612386,
+            1.8496348015231703
+          ],
+          "components": [
+            "closure",
+            "body",
+            "label",
+            "print",
+            "name"
+          ],
+          "meshes": 13,
+          "triangles": 49062
+        },
+        "offline": true,
+        "canvases": 1
+      }
+    }
+  ],
+  "extractedArchive": {
+    "state": {
+      "offline": true,
+      "protocol": "file:",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9997100494016464,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -3.299043163025433,
+          0.17994780889229633,
+          1.6495215815127164
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      }
+    },
+    "original": {
+      "protocol": "file:",
+      "width": 1448,
+      "height": 1086
+    },
+    "images": 61,
+    "source": "final ZIP extracted to a new directory with spaces and Chinese"
+  },
+  "visual": "Impeccable detector empty; independent desktop and 393x852 simulated mobile screenshot review no P1/P2",
+  "notTested": [
+    "Windows hardware",
+    "Safari",
+    "physical mobile devices"
+  ],
+  "inputCheck": {
+    "drag": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0.5811585681137216,
+      "pitch": 0.05071929321719753,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "overcap",
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 67074
+    },
+    "wheel": {
+      "progress": 0.562177,
+      "renderedProgress": 0.5258688626530689,
+      "yaw": 1.649959056795679,
+      "pitch": 0.14399642677489566,
+      "selected": null,
+      "printOffset": [
+        -1.735367246755127,
+        0.09465639527755243,
+        0.8676836233775636
+      ],
+      "components": [
+        "overcap",
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 67074
+    },
+    "selected": {
+      "progress": 0.996574,
+      "renderedProgress": 0.8904251384072936,
+      "yaw": 1.6499928466137508,
+      "pitch": 0.14399937570447283,
+      "selected": "closure",
+      "printOffset": [
+        -2.938402956744069,
+        0.1602765249133129,
+        1.4692014783720344
+      ],
+      "components": [
+        "overcap",
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 67074
+    },
+    "after": {
+      "canvases": 0,
+      "focus": "查看 Rose Hair Oil 3D 模型",
+      "offline": true
+    },
+    "rangeKeys": true
+  }
+}
