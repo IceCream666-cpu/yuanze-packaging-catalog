@@ -1,0 +1,15 @@
+{
+  "viewport": [
+    1280,
+    960
+  ],
+  "poster": [
+    {
+      "src": "http://127.0.0.1:8784/assets/poster-066.webp",
+      "complete": true,
+      "width": 1280,
+      "height": 960
+    }
+  ],
+  "returnedToModel": true
+}

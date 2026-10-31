@@ -361,7 +361,7 @@
     "mobilePhysicalDeviceTested": false
   },
   "poster-065": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "PumpAssembly",
       "Body",
@@ -374,18 +374,22 @@
       "open": "/review-assets/poster-065-open.webp"
     },
     "background": "#626d7c",
-    "revision": "complete-pump-warm-ivory-pouch-local-awaiting-review",
-    "publishedRevision": false,
+    "revision": "complete-pump-warm-ivory-pouch-published",
+    "publishedRevision": true,
     "previousPublishedModelSha256": "359c2463fbb7c8b0023959668aa72f43cdc9efb6b26b98572247efcfc8f7d8b2",
-    "localRevisionReceipt": "tea-tree-pouch-material-preview-verification.json"
+    "localRevisionReceipt": "tea-tree-pouch-material-preview-verification.json",
+    "releaseVersion": "client1.39",
+    "releaseReceipt": "client139-tea-tree-shampoo-release.json",
+    "releaseSourceCommit": "66397b3e7b6e45f7fc5ad705b0ca159bd5ce7a7d",
+    "publishedAt": "2026-10-30T18:32:36+08:00",
+    "releaseManifestSha256": "fec7acf67cc121ad40d4f16e4685a459927fe07e77c6719b1c80a2bf44b8a3be",
+    "mobilePhysicalDeviceTested": false
   },
   "poster-066": {
-    "state": "published",
+    "state": "complete",
     "components": [
       "Overcap",
-      "Actuator",
-      "PumpStem",
-      "Closure",
+      "PumpAssembly",
       "Body",
       "PaperLabel",
       "LogoPrint"
@@ -394,7 +398,11 @@
       "closed": "/review-assets/poster-066-closed.webp",
       "open": "/review-assets/poster-066-open.webp"
     },
-    "background": "#ead7db"
+    "background": "#ead7db",
+    "revision": "complete-pump-clear-dip-tube-local-awaiting-review",
+    "publishedRevision": false,
+    "previousPublishedModelSha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9",
+    "localRevisionReceipt": "rose-hair-oil-simplified-preview-verification.json"
   },
   "poster-067": {
     "state": "published",

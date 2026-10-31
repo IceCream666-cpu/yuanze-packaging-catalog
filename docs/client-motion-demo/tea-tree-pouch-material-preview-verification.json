@@ -74,5 +74,13 @@
     "The existing 180-degree rear pose projects the pouch behind the heading; camera layout was not part of this material correction.",
     "Small lettering and subtle clear tube contrast on mobile remain existing display limits."
   ],
-  "reviewCadence": "Keep local for individual user inspection; no production deployment and no next product."
+  "reviewCadence": "Keep local for individual user inspection; no production deployment and no next product.",
+  "publicationUpdate": {
+    "version": "client1.39",
+    "state": "published-and-live-verified",
+    "publishedAt": "2026-10-30T18:32:36+08:00",
+    "receipt": "client139-tea-tree-shampoo-release.json",
+    "sourceCommit": "66397b3e7b6e45f7fc5ad705b0ca159bd5ce7a7d",
+    "note": "The preview and queue counts above are historical. The subsequently approved warm ivory pouch revision is now published and independently live verified."
+  }
 }

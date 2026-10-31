@@ -1,0 +1,206 @@
+{
+  "model": "poster-066",
+  "product": "Rose Hair Oil",
+  "selectionNumber": 19,
+  "checkedAt": "2026-10-31T14:00:16+08:00",
+  "reviewer": "independent child agent rose_final_review",
+  "status": "local visual review passed with stated display limitations; awaiting user review; not publication proof",
+  "scope": "Actual visual inspection of the original poster plus four saved desktop and two saved simulated-mobile screenshots. State JSON used only to corroborate saved progress and viewport, not as a substitute for visual inspection.",
+  "modelSha256": "671a08d9124f5629f417845f4e90545eb321f0054b36790f06085297fd671a4c",
+  "reviewConfigSha256": "7ae057a550150b466f0762ec0adb95fd0f8d4264574b3b90abe5d93b879cf7c5",
+  "reference": {
+    "path": "docs/mobile-client-preview/assets/posters/poster-066.webp",
+    "sha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+    "visuallyInspected": true
+  },
+  "expectedGroups": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "confirmedPresentation": [
+    "泵嘴、金色泵座、连接杆与透明管作为完整泵总成展开",
+    "透明罩独立展开",
+    "空瓶保留，无新增料体",
+    "空白底纸与包含完整花纹和文字的印刷层分开",
+    "六张截图均未见主体越界或操作区遮挡主体"
+  ],
+  "evidence": [
+    {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/simplified-pump/desktop-closed.png",
+      "sha256": "cf3fbeeb7a2725932897fc8c323bfb9661daec5127f3b88c82fb2c8cba77f8c7",
+      "bytes": 156436,
+      "dimensions": [
+        1622,
+        865
+      ],
+      "visuallyInspected": true,
+      "blockingDefectFound": false,
+      "observations": [
+        "完整模型和全部控件在画面内；扁方厚底透明瓶、透明外罩、白色短嘴和金色泵壳与海报的主要比例和配色相符。",
+        "原玫瑰花纹、liaose、ROSE HAIR OIL 和容量字段均保留；无明显重复文字、悬空细零件或料体。"
+      ]
+    },
+    {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/simplified-pump/desktop-half.png",
+      "sha256": "e12373c9dbbfde264da8fb5e3f20a8197f92f3b6a60d9b58fd28702610355375",
+      "bytes": 152077,
+      "dimensions": [
+        1622,
+        865
+      ],
+      "visuallyInspected": true,
+      "blockingDefectFound": false,
+      "observations": [
+        "透明外罩未被顶部裁切；白色压头与金色泵壳保持完整，透明吸管连续连接在泵下。",
+        "外罩在中途仍局部包围压头，画面未见明显穿透；印花与底纸及瓶身在正视投影部分重叠，但能辨认不同层。"
+      ]
+    },
+    {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/simplified-pump/desktop-open.png",
+      "sha256": "ef1cdb050149b550536d62b470183960a4d2e78943b407f1fdd6961fcc5c7e5c",
+      "bytes": 152142,
+      "dimensions": [
+        1622,
+        865
+      ],
+      "visuallyInspected": true,
+      "blockingDefectFound": false,
+      "observations": [
+        "完全展开时透明罩、整泵含吸管、瓶身、空白底纸、完整印花文字五组均在画面内。",
+        "透明吸管下端可见且与瓶口之间留有间隙；没有再次拆成独立小连接杆。",
+        "花纹和全部黑字随同一印刷层向外展开，底纸无字，瓶身无重复印字。"
+      ]
+    },
+    {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/simplified-pump/desktop-side.png",
+      "sha256": "13df6e227ce2af47e51544c5dcc1ded663de28676d3c9e2560af9cfef999be78",
+      "bytes": 96230,
+      "dimensions": [
+        1622,
+        865
+      ],
+      "visuallyInspected": true,
+      "blockingDefectFound": false,
+      "observations": [
+        "约90度侧视能看出瓶身较薄的侧面、透明厚底和连续的整泵吸管；主体未裁切。",
+        "底纸和印刷层近乎侧对镜头，因此在此角度难以辨认，属于平面印刷层的侧视表现。"
+      ]
+    },
+    {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/simplified-pump/mobile-closed.png",
+      "sha256": "faebd510ee0f3a1a9038e987d3525032cb137ccfcc8a26b6d16dbf2a2158e86c",
+      "bytes": 70522,
+      "dimensions": [
+        393,
+        852
+      ],
+      "visuallyInspected": true,
+      "blockingDefectFound": false,
+      "observations": [
+        "393×852模拟视口中标题、完整瓶身、五个组件入口及底部操作均在截图内，未见横向裁切或控件重叠。",
+        "透明罩与白色压头仍可分辨；liaose可读，产品名和容量在默认缩放下很小，不能据此声称微小文字清晰可读。"
+      ]
+    },
+    {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/simplified-pump/mobile-open.png",
+      "sha256": "ec74eae1dd60e58ed06d4fb90919c8a5e8a4d8bdd311872490b9ee85b9508eec",
+      "bytes": 67714,
+      "dimensions": [
+        393,
+        852
+      ],
+      "visuallyInspected": true,
+      "blockingDefectFound": false,
+      "observations": [
+        "393×852模拟视口中完整展开的罩、泵总成含管、瓶身、底纸和花纹文字均在画面边界内；控制条未遮挡产品。",
+        "印刷层比底纸向外更远；为适应窄屏，其正视投影与底纸、瓶身有部分重叠。",
+        "透明管保持连接，因像素尺寸和浅色背景而对比偏弱；微小产品名和容量不适合在默认缩放下核验字形。"
+      ]
+    }
+  ],
+  "capturedStates": {
+    "desktop": [
+      {
+        "name": "closed",
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0
+      },
+      {
+        "name": "half",
+        "progress": 0.5,
+        "renderedProgress": 0.49984664923496647,
+        "yaw": 0
+      },
+      {
+        "name": "open",
+        "progress": 1,
+        "renderedProgress": 0.9998648872685908,
+        "yaw": 0
+      },
+      {
+        "name": "side",
+        "progress": 1,
+        "renderedProgress": 0.999999986768971,
+        "yaw": 1.570642505229674
+      }
+    ],
+    "mobile": [
+      {
+        "name": "closed",
+        "viewport": [
+          393,
+          852
+        ],
+        "scrollWidth": 393,
+        "progress": 0,
+        "renderedProgress": 0
+      },
+      {
+        "name": "open",
+        "viewport": [
+          393,
+          852
+        ],
+        "scrollWidth": 393,
+        "progress": 1,
+        "renderedProgress": 0.9998005898558945
+      }
+    ]
+  },
+  "blockingFindings": [],
+  "nonBlockingObservations": [
+    {
+      "topic": "Transparent-parts contrast",
+      "detail": "透明外罩和透明吸管在浅粉背景上较淡，尤其手机默认缩放下主要依靠细边缘辨识。截图证明存在和连接，不证明在所有屏幕、亮度条件下同样清楚。"
+    },
+    {
+      "topic": "Small print",
+      "detail": "桌面能辨认产品名及容量的位置；手机默认视图中的小字很小且略软。不可将此视为印刷级字形校对或小字阅读性通过。"
+    },
+    {
+      "topic": "Layer projection",
+      "detail": "手机完全展开和桌面中途展开的底纸、印刷层与瓶身在正视投影存在局部重叠；空间分层仍可见，未发现再次合并为同一层的迹象。"
+    },
+    {
+      "topic": "Side-on artwork",
+      "detail": "90度侧视时平面底纸和印刷层接近边缘视角，因此基本不可读。"
+    },
+    {
+      "topic": "Material appearance",
+      "detail": "模型金色泵壳高光比海报更强，白色压头细节受明亮高光影响，玻璃边缘也更简化；此次为原几何/画面资产的分组简化审查，并非摄影级材质一致性认证。"
+    }
+  ],
+  "limits": [
+    "Mobile inspection used saved 393×852 browser-simulated viewport captures, not a physical phone or native touch test.",
+    "No browser was operated by this reviewer; no interaction, network, live deployment, performance or device-specific rendering claim is made.",
+    "No independent source-geometry audit was repeated here; geometry preservation and continuous clearance belong to independent-geometry.json.",
+    "Static screenshots cannot establish collision-free motion at every intermediate frame or engineering/manufacturing tolerances."
+  ],
+  "physicalDeviceTested": false,
+  "liveSiteVerified": false,
+  "codeChangedByReviewer": false
+}

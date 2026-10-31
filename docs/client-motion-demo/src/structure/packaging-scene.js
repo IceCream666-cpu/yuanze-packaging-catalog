@@ -196,10 +196,11 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         m.transmission=.98; m.roughness=.06; m.ior=1.46; m.thickness=.0165;
         m.side=T.FrontSide; m.envMapIntensity=.65;
       }
-      if (product.file === 'poster-061.glb' && m.name === 'Body Cream clear plastic dip tube' || product.file === 'poster-064.glb' && m.name === 'Aromatic clear plastic dip tube' || product.file === 'poster-065.glb' && m.name === 'Tea Tree clear plastic dip tube') {
+      if (product.file === 'poster-061.glb' && m.name === 'Body Cream clear plastic dip tube' || product.file === 'poster-064.glb' && m.name === 'Aromatic clear plastic dip tube' || product.file === 'poster-065.glb' && m.name === 'Tea Tree clear plastic dip tube' || product.file === 'poster-066.glb' && m.name === 'Rose clear plastic dip tube') {
         m.transmission=1; m.roughness=.06; m.ior=1.46; m.thickness=.0225;
         if (product.file === 'poster-064.glb') m.thickness=.02918;
         if (product.file === 'poster-065.glb') m.thickness=.01868;
+        if (product.file === 'poster-066.glb') m.thickness=.02949;
         m.side=T.FrontSide; m.envMapIntensity=1.2; m.specularIntensity=1; m.clearcoat=.2; m.clearcoatRoughness=.06;
         m.onBeforeCompile = shader => {
           shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>

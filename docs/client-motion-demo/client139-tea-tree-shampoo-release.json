@@ -1,0 +1,1005 @@
+{
+  "version": "client1.39",
+  "status": "published-and-live-verified",
+  "scope": "poster-065 Tea Tree Shampoo approved complete pump and warm ivory refill pouch only",
+  "sourceCommit": "66397b3e7b6e45f7fc5ad705b0ca159bd5ce7a7d",
+  "approvedPreviewCommit": "69328bbe9545999f318aba22d64f9b794c2dbcec",
+  "publishedAt": "2026-10-30T18:32:36+08:00",
+  "urls": {
+    "client": "https://bmt.yuanzebeauty.com/client",
+    "model": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb",
+    "originalPoster": "https://bmt.yuanzebeauty.com/showroom/assets/posters/poster-065.webp",
+    "posterPreview": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-065-1280.webp"
+  },
+  "navigation": "Use visible next-product navigation to item18 Tea Tree Shampoo and open product details. The official entry does not select models from a model query parameter.",
+  "publication": {
+    "version": "client1.39",
+    "patch": "approved-tea-tree-065-complete-pumps-only",
+    "publishedAt": "2026-10-30T18:32:36+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "manifestSha256": "fec7acf67cc121ad40d4f16e4685a459927fe07e77c6719b1c80a2bf44b8a3be",
+    "backup": "/opt/yuanze-reference/backups/client1.39-tea-tree-complete-pumps-20261030",
+    "baselineManifestSha256": "95c6a3b985ca469b4e3feb26672ad279dab094ae626eb8162d0fc27be7e353c4",
+    "verifiedFiles": 458,
+    "changed": [
+      "assets/packaging/PackagingDetail-CEfoWWRm.js",
+      "assets/packaging/packaging-scene-SfEI-3_d.js",
+      "assets/packaging/poster-065.glb",
+      "index.html",
+      "preview.js",
+      "bundle-manifest.json"
+    ],
+    "removedChunks": [
+      "assets/packaging/PackagingDetail-CU6uTQ2R.js",
+      "assets/packaging/packaging-scene-LZvXzNcC.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-CEfoWWRm.js",
+      "assets/packaging/packaging-scene-SfEI-3_d.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "outsideUnchanged": 6820,
+    "service": "MainPID=33772\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42"
+  },
+  "tests": {
+    "motion": 165,
+    "models": 156,
+    "release": 19,
+    "build": true
+  },
+  "independentAudit": {
+    "status": "passed-for-guarded-publication",
+    "checkedAt": "2026-10-30T18:30:14+08:00",
+    "sourceHeadAtReview": "f415b8bde8dabc85929e692f6cf25393fb13384a",
+    "sourceChanges": "Exact independently audited client1.39 source and full candidate committed before publication.",
+    "baselineGitCommit": "f415b8bde8dabc85929e692f6cf25393fb13384a",
+    "baselineManifestSha256": "95c6a3b985ca469b4e3feb26672ad279dab094ae626eb8162d0fc27be7e353c4",
+    "candidateManifestSha256": "fec7acf67cc121ad40d4f16e4685a459927fe07e77c6719b1c80a2bf44b8a3be",
+    "candidate": {
+      "filesVerified": 458,
+      "imagesUnchanged": 418,
+      "otherModelsUnchanged": 25,
+      "modifiedExisting": [
+        "assets/packaging/poster-065.glb",
+        "index.html",
+        "preview.js"
+      ],
+      "added": [
+        "assets/packaging/PackagingDetail-CEfoWWRm.js",
+        "assets/packaging/packaging-scene-SfEI-3_d.js"
+      ],
+      "removed": [
+        "assets/packaging/PackagingDetail-CU6uTQ2R.js",
+        "assets/packaging/packaging-scene-LZvXzNcC.js"
+      ],
+      "approvedSource": "69328bbe9545999f318aba22d64f9b794c2dbcec",
+      "approved065Bytes": 2748824,
+      "approved065Sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+      "sourceAssetsAndConfigExact": true,
+      "sourceManifestsOnly065AndVersionChanged": true,
+      "otherSourceProductConfigsUnchanged": true,
+      "061064066070072073Preserved": true,
+      "sharedRuntimeOnly065TubeExtension": true,
+      "referenceGlassAndOvercapToneMappedPreserved": true,
+      "unrelatedZoomAndPartStatesNotImported": true,
+      "allPreviousFrontendTestsRetained": true,
+      "copyVersionConsistent": "client1.39",
+      "concurrent073GlassStudioAndFourReflectionCardsPreserved": true,
+      "concurrent073EnvironmentDisposalAndIsolationTestPreserved": true,
+      "referenceGlassTestStillUses072": true
+    },
+    "reviewedTests": {
+      "frontend": 165,
+      "models": 156,
+      "release": 19,
+      "failures": 0,
+      "execution": "Reviewed existing passing logs; independent assertions rehashed full inventory and compared exact approved source/configuration and minimal runtime diff."
+    },
+    "publicationProtection": {
+      "lock": true,
+      "currentReleaseAndManifestGuard": true,
+      "outsideFilesGuard": true,
+      "outsideFileCount": 6820,
+      "serviceAndGatewayGuard": true,
+      "immutableResourcesChecked": true,
+      "archiveMembershipAndHashChecked": true,
+      "noSymlinkAndPathTraversalChecked": true,
+      "atomicDirectoryExchange": true,
+      "guardedRollback": true,
+      "laterDeploymentProtected": true,
+      "scriptParseChecksPassed": true,
+      "oldModelETagMatchesBaseline": true
+    },
+    "httpsVerificationReview": {
+      "changed065Full200AndShaRequired": true,
+      "previousETagRequiresNew200AndSha": true,
+      "all26ModelsHaveRangeChecks": true,
+      "unchangedLargeAssetsRangePlusServerHash": true,
+      "threeRolesAndAnonymousAccessChecked": true
+    },
+    "sourceSha256": {
+      "docs/client-motion-demo/packaging-assets/poster-065.glb": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+      "docs/client-motion-demo/model-source/collection/build_tea_tree_shampoo.py": "1dfae33eddd51d00cca9423a0862d13d022b033dbd71b7073bea0ecdccd2cc4d",
+      "docs/client-motion-demo/model-source/collection/poster-065/model-info.json": "51fd8ce70ca78b6a9273e293f5c51729fe6f5bceb972e7ea804e95b66a9505af",
+      "docs/client-motion-demo/model-source/collection/poster-065/poster-065.blend": "8872d4fd76d7d926890832e0ca85d36e53ecadddf16d5be7e31f7d929dfa3a1f",
+      "docs/client-motion-demo/model-source/collection/poster-065/quality-report.json": "5329f732ee0a8978df13d8f5692ccc16032e0b3e36840393420ebfb492962405",
+      "docs/client-motion-demo/model-source/collection/poster-065/review-config.json": "fe5f2ca8bbc798de89a24ae3ac64636e38c6a5330597f2b5d120d145ab338c67",
+      "tests/test_tea_tree_shampoo_model.py": "32696ad8bdb383b8d32cf0f1638d6d97ba308e6d728527333acccc0f55b61356",
+      "docs/client-motion-demo/src/structure/packaging-scene.js": "04105f0f1887518b8f2a02d8345adaaa7fc78770ca2a67744dd51722a4428e59",
+      "docs/client-motion-demo/src/structure/collection-products.json": "ef2d55633b4e50614891ebd32c16c4d13c4f3ec3cf05c1e916664433201ebb5c",
+      "docs/client-motion-demo/packaging-manifest.json": "2e7e93c12bed82c769fefbb5b45b6fb04f1fb59ac6606bf1487d55da4fc190e3",
+      "docs/client-motion-demo/tests/packaging-loading.test.mjs": "d9a15ab45a21b10a310296831165461d779c5f74753db4384ba4a06c99dee498",
+      "docs/client-motion-demo/src/copy.js": "97ef2f92a1107aaeb6fe7b24c5fb7e2f5dc9cc5f0378676a11faa1878ab17f31"
+    },
+    "scriptSha256": {
+      "publish.py": "ad5acf3ca5e24483834c6c0fa6adff60dc0c58a468aba825c6015f280ac6d18d",
+      "rollback.py": "03e33029ac88d805a51f983d7ebf01cc2b16127206926877e228792f48f6001c",
+      "verify_online.py": "3c10b2e6242f105a9fa95ff4d4f13928d6d9b9614a4dbda339378c89df30bb23",
+      "cache_preflight.py": "9bdb9524fdebf60835fd201b92d884317772d40485da78ed14d6ad3ebc8ec093"
+    },
+    "findings": [],
+    "notPerformed": [
+      "No browser or remote operations",
+      "No repeated full test suite",
+      "Formal HTTPS and visual acceptance follow guarded publication"
+    ],
+    "rebaseReason": "Original 065/client1.38 publication was stopped by the baseline guard after concurrent Body Oil client1.38 release; candidate advanced to client1.39 on verified f415b8b baseline.",
+    "sourceCommit": "66397b3e7b6e45f7fc5ad705b0ca159bd5ce7a7d",
+    "finalCommitCheckedAt": "2026-10-30T18:30:38+08:00",
+    "worktreeCleanAtFinalCheck": true,
+    "finalSourceScriptsAnd458AssetsUnchanged": true
+  },
+  "model": {
+    "id": "poster-065",
+    "bytes": 2748824,
+    "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+    "components": [
+      "PumpAssembly",
+      "Body",
+      "RefillPouch",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "pumpLift": 2.45,
+    "warmIvoryFilmFrontAndBack": true,
+    "fullBottleAndRefillTypography": true,
+    "meshCount": 19,
+    "containsFormula": false
+  },
+  "counts": {
+    "featured": 26,
+    "posters": 61,
+    "models": 26,
+    "images": 418,
+    "resources": 458
+  },
+  "preservation": {
+    "other25ModelBytesUnchanged": true,
+    "all418ImageBytesUnchanged": true,
+    "latestClient138BodyOil073GlassStudioAndIsolationTestsPreserved": true,
+    "poster072DisplayAndGlassPreserved": true,
+    "poster061And064ApprovedLiveModelsPreserved": true,
+    "poster066And070LocalDraftsNotIncluded": true,
+    "client131PerformanceDraftNotIncluded": true,
+    "featured26AndPosters61Unchanged": true,
+    "initial138CandidateStoppedBeforeSwitchDueToConcurrent138Release": true,
+    "actualBaselineVersion": "client1.38",
+    "actualBaselineCommit": "f415b8b"
+  },
+  "checkedAt": "2026-10-30T18:34:29+08:00",
+  "https": {
+    "version": "client1.39",
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "resources": [
+      "assets/posters/poster-074.webp",
+      "assets/posters/poster-075.webp",
+      "assets/posters/poster-076.webp",
+      "assets/posters/poster-077.webp",
+      "assets/posters/poster-078.webp",
+      "preview.js",
+      "preview.css",
+      "index.html",
+      "product-posters.js",
+      "assets/featured/poster-012-640.webp",
+      "assets/packaging/PackagingDetail-CEfoWWRm.js",
+      "assets/packaging/PackagingDetail-DKVlGnbY.css",
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/packaging-scene-SfEI-3_d.js",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "packagingResources": [
+      {
+        "name": "assets/packaging/beach-magic-packaging.glb",
+        "bytes": 2395680,
+        "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2395680"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/liaose-pump.glb",
+        "bytes": 996144,
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/996144"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-013.glb",
+        "bytes": 1064352,
+        "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1064352"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-039.glb",
+        "bytes": 914020,
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/914020"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-042.glb",
+        "bytes": 1639380,
+        "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1639380"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-044.glb",
+        "bytes": 2377084,
+        "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2377084"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-047.glb",
+        "bytes": 4731120,
+        "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/4731120"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-049.glb",
+        "bytes": 1577136,
+        "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1577136"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-051.glb",
+        "bytes": 4132088,
+        "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/4132088"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-056.glb",
+        "bytes": 529536,
+        "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/529536"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-057.glb",
+        "bytes": 2490520,
+        "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2490520"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-058.glb",
+        "bytes": 1953112,
+        "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1953112"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-059.glb",
+        "bytes": 1220564,
+        "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1220564"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-060.glb",
+        "bytes": 1111452,
+        "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1111452"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-061.glb",
+        "bytes": 1103220,
+        "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1103220"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-062.glb",
+        "bytes": 279060,
+        "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/279060"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-063.glb",
+        "bytes": 819544,
+        "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/819544"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-064.glb",
+        "bytes": 3622216,
+        "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3622216"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-065.glb",
+        "bytes": 2748824,
+        "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/2748824"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-066.glb",
+        "bytes": 4125864,
+        "sha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/4125864"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-067.glb",
+        "bytes": 3379404,
+        "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3379404"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-068.glb",
+        "bytes": 1458536,
+        "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1458536"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-069.glb",
+        "bytes": 3522180,
+        "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3522180"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-070.glb",
+        "bytes": 3191832,
+        "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/3191832"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-072.glb",
+        "bytes": 1163416,
+        "sha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/1163416"
+        },
+        "fullFileHashVerifiedOnServer": true
+      },
+      {
+        "name": "assets/packaging/poster-073.glb",
+        "bytes": 627764,
+        "sha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b",
+        "httpsRange": {
+          "status": 206,
+          "bytes": 100,
+          "contentRange": "bytes 0-99/627764"
+        },
+        "fullFileHashVerifiedOnServer": true
+      }
+    ],
+    "withdrawnModels": [
+      "/showroom/assets/packaging/poster-074.glb",
+      "/showroom/assets/packaging/poster-075.glb",
+      "/showroom/assets/packaging/poster-076.glb",
+      "/showroom/assets/packaging/poster-077.glb",
+      "/showroom/assets/packaging/poster-078.glb"
+    ],
+    "withdrawnFeaturedImages": [
+      "/showroom/assets/featured/poster-074.png",
+      "/showroom/assets/featured/poster-074-640.webp",
+      "/showroom/assets/featured/poster-074-1024.webp",
+      "/showroom/assets/featured/poster-075.png",
+      "/showroom/assets/featured/poster-075-640.webp",
+      "/showroom/assets/featured/poster-075-1024.webp",
+      "/showroom/assets/featured/poster-076.png",
+      "/showroom/assets/featured/poster-076-640.webp",
+      "/showroom/assets/featured/poster-076-1024.webp",
+      "/showroom/assets/featured/poster-077.png",
+      "/showroom/assets/featured/poster-077-640.webp",
+      "/showroom/assets/featured/poster-077-1024.webp",
+      "/showroom/assets/featured/poster-078.png",
+      "/showroom/assets/featured/poster-078-640.webp",
+      "/showroom/assets/featured/poster-078-1024.webp"
+    ],
+    "unchangedPosterRanges": {
+      "assets/posters/poster-074.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1192724"
+      },
+      "assets/posters/poster-075.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1526366"
+      },
+      "assets/posters/poster-076.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1162382"
+      },
+      "assets/posters/poster-077.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1283928"
+      },
+      "assets/posters/poster-078.webp": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1354010"
+      }
+    },
+    "teaTreeFullFile": {
+      "name": "assets/packaging/poster-065.glb",
+      "status": 200,
+      "bytes": 2748824,
+      "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d"
+    },
+    "previousModelCacheRevalidated": {
+      "status": 200,
+      "bytes": 2748824,
+      "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+      "etagChanged": true
+    },
+    "all26ModelRanges": {
+      "assets/packaging/beach-magic-packaging.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2395680"
+      },
+      "assets/packaging/liaose-pump.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/996144"
+      },
+      "assets/packaging/poster-013.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1064352"
+      },
+      "assets/packaging/poster-039.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/914020"
+      },
+      "assets/packaging/poster-042.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1639380"
+      },
+      "assets/packaging/poster-044.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2377084"
+      },
+      "assets/packaging/poster-047.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4731120"
+      },
+      "assets/packaging/poster-049.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1577136"
+      },
+      "assets/packaging/poster-051.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4132088"
+      },
+      "assets/packaging/poster-056.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/529536"
+      },
+      "assets/packaging/poster-057.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2490520"
+      },
+      "assets/packaging/poster-058.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1953112"
+      },
+      "assets/packaging/poster-059.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1220564"
+      },
+      "assets/packaging/poster-060.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1111452"
+      },
+      "assets/packaging/poster-061.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1103220"
+      },
+      "assets/packaging/poster-062.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/279060"
+      },
+      "assets/packaging/poster-063.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/819544"
+      },
+      "assets/packaging/poster-064.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3622216"
+      },
+      "assets/packaging/poster-065.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2748824"
+      },
+      "assets/packaging/poster-066.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4125864"
+      },
+      "assets/packaging/poster-067.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3379404"
+      },
+      "assets/packaging/poster-068.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1458536"
+      },
+      "assets/packaging/poster-069.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3522180"
+      },
+      "assets/packaging/poster-070.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3191832"
+      },
+      "assets/packaging/poster-072.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1163416"
+      },
+      "assets/packaging/poster-073.glb": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/627764"
+      }
+    },
+    "modelRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2748824"
+    },
+    "originalDownload": {
+      "attachment": true,
+      "range": 206,
+      "fullFileHashVerifiedOnServer": true
+    },
+    "adminTeaTreeRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2748824"
+    },
+    "loginVideoRange": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/94773"
+    },
+    "loginVerification": {
+      "smallAssetsFullHttpsHash": true,
+      "videoHttpsRange": true,
+      "allLoginFileHashesUnchangedOnServer": true
+    },
+    "videoRange": true,
+    "counts": {
+      "featured": 26,
+      "posters": 61,
+      "models": 26,
+      "images": 418,
+      "resources": 458
+    },
+    "checkedAt": "2026-10-30T18:34:29+08:00",
+    "manifestSha256": "fec7acf67cc121ad40d4f16e4685a459927fe07e77c6719b1c80a2bf44b8a3be",
+    "publicHttps": true,
+    "certificateVerified": true,
+    "directOriginAddress": "47.79.233.3",
+    "tlsServerName": "bmt.yuanzebeauty.com",
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true
+  },
+  "browser": {
+    "checkedAt": "2026-10-30T10:34:12.868Z",
+    "desktop": [
+      1622,
+      865
+    ],
+    "simulatedMobile": [
+      393,
+      852
+    ],
+    "evidence": "review-evidence/tea-tree-shampoo/client139",
+    "desktopChecks": [
+      "closed",
+      "half",
+      "open",
+      "90-degree rotation",
+      "180-degree rear",
+      "return front"
+    ],
+    "mobileChecks": [
+      "closed",
+      "open",
+      "five component controls",
+      "scrollWidth393"
+    ],
+    "originalPoster": {
+      "poster": {
+        "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-065-1280.webp",
+        "width": 1280,
+        "height": 960,
+        "complete": true
+      },
+      "returned": {
+        "state": {
+          "progress": 0,
+          "renderedProgress": 0,
+          "yaw": 0,
+          "pitch": 0,
+          "selected": null,
+          "printOffset": [
+            0,
+            0,
+            0
+          ],
+          "components": [
+            "closure",
+            "jar",
+            "refill",
+            "label",
+            "print"
+          ],
+          "meshes": 38,
+          "triangles": 146054
+        },
+        "featuredTitle": "Tea Tree Shampoo",
+        "modelAccessibleName": "Tea Tree Shampoo 分层包材模型，可拖拽旋转",
+        "requestedModel": [
+          "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb",
+          "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb",
+          "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb"
+        ]
+      },
+      "checkedAt": "2026-10-30T10:34:12.868Z"
+    },
+    "screenshots": 7,
+    "publisherVisualReview": true,
+    "independentVisualReview": {
+      "status": "passed-with-approved-display-limitations",
+      "checkedAt": "2026-10-30T18:34:44+08:00",
+      "version": "client1.39",
+      "review": "Independent actual view_image inspection of all seven formal-release screenshots and supplied desktop/mobile state JSON",
+      "files": {
+        "desktop-closed.png": {
+          "size": [
+            1622,
+            865
+          ],
+          "sha256": "881c818464375d7964cf2af6c0de6a59009921948e6d8f98a9a7642945109aa0",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "The complete clear bottle and full-height warm ivory refill pouch are visible. Both navy label and lettering sets are retained, including bottle 750 mL and pouch REFILL. Navy pump, ivory chamber and clear tube are fitted; heading, descriptions and controls are clear of the product."
+        },
+        "desktop-half.png": {
+          "size": [
+            1622,
+            865
+          ],
+          "sha256": "db64ee7732b244ad63b708a58e02acdb32b69a959bd8b38cf2b14a6ba362cef6",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "Navy head, collar, ivory pump chamber and clear tube rise together. Warm ivory pouch stays distinct. Blank navy substrates and two complete print groups move separately; one substrate and print group locally project over the bottle during the intermediate state."
+        },
+        "desktop-open.png": {
+          "size": [
+            1622,
+            865
+          ],
+          "sha256": "b4dcd215f77d90c42f5d031a9f56d55c995e5fc637f45e0e33cd78607a473c67",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "Complete pump with clear tube is visibly raised above the open bottle. Warm ivory pouch remains visible as packaging. Two blank navy substrates and two separate lettering sets are inside the viewport. Some label projection approaches the bottle outline; no viewport clipping."
+        },
+        "desktop-rotated.png": {
+          "size": [
+            1622,
+            865
+          ],
+          "sha256": "14382233f58cda0693c7b97d19b3c1a13ed916724fe057bc225142de90cefef4",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "Approximately 90-degree view retains the connected navy pump/chamber/tube assembly, clear bottle and thin warm ivory pouch edge. Labels and lettering are edge-on, making them very narrow or unreadable; all structures remain within the viewport."
+        },
+        "desktop-rear.png": {
+          "size": [
+            1622,
+            865
+          ],
+          "sha256": "c5ce2be9d78624818310173309c3d811d13d0a68715db8a1a61017422046750f",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "Approximately 180-degree view confirms the rear pouch remains warm ivory with sealed borders and soft shading. The complete pump and tube remain connected above the bottle. Independent lettering is mirrored when seen from the rear, as expected for the reverse side of these layers."
+        },
+        "mobile-closed.png": {
+          "size": [
+            393,
+            852
+          ],
+          "sha256": "6d37be4fbe8d85ef8fbb7b6ce06bffe3d12929b9637044bf7164b66a27aea064",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "393x852 simulated viewport fits the full clear bottle, navy pump and warm ivory pouch without crop. All five component controls and bottom controls remain visible. Packaging microcopy is small at this scale."
+        },
+        "mobile-open.png": {
+          "size": [
+            393,
+            852
+          ],
+          "sha256": "4f152c46214bf54042b528854fdb2e01a78a02821089ac97fc36039c4a1404f7",
+          "visuallyInspected": true,
+          "pass": true,
+          "observation": "393x852 simulated viewport contains the raised navy pump, ivory chamber, long clear tube, bottle, pouch, two blank labels and both printing sets. One blank label locally overlaps the bottle projection, while printing remains independently separated. No horizontal overflow or clipped structure; all five component controls remain available."
+        }
+      },
+      "stateChecks": {
+        "desktopViewport": [
+          1622,
+          865
+        ],
+        "mobileSimulatedViewport": [
+          393,
+          852
+        ],
+        "horizontalOverflow": false,
+        "viewportClippingObserved": false,
+        "desktopProgressTargets": [
+          0,
+          0.5,
+          1
+        ],
+        "mobileProgressTargets": [
+          0,
+          1
+        ],
+        "renderedProgressTolerance": 0.001,
+        "mobileOpenRenderedProgress": 0.9998587040641503,
+        "rotationRadians": 1.5704292785623493,
+        "rearRadians": 3.1412544353687033,
+        "returnFrontYaw": 0.0006581254070013161,
+        "components": [
+          "closure",
+          "jar",
+          "refill",
+          "label",
+          "print"
+        ],
+        "allFiveControlsPresent": true
+      },
+      "verifiedVisualFeatures": [
+        "Front and rear pouch retain warm ivory tint and sealed borders rather than clear-glass appearance.",
+        "Navy pump head, collar, ivory chamber and clear long tube remain connected while raised.",
+        "Bottle and refill lettering retain independent complete layers and distinct blank navy substrates.",
+        "Both product assemblies remain inside desktop and simulated-mobile viewport boundaries."
+      ],
+      "blockingFindings": [],
+      "approvedDisplayLimitations": [
+        "Packaging small print is difficult to read at mobile scale, especially in the fully expanded composition.",
+        "At approximately 90 degrees the pouch, labels and lettering become edge-on and the printing is not readable.",
+        "Intermediate expansion and compact mobile framing allow some label/printing projections to touch or overlap the bottle silhouette; separate layers remain visible.",
+        "Rear lettering appears mirrored because its reverse side is being viewed.",
+        "Clear dip tube has subtle contrast against the gray-blue backdrop."
+      ],
+      "validationLimits": [
+        "393x852 is viewport simulation, not physical-device or native-touch verification.",
+        "Only saved screenshots and state JSON were reviewed; no browser or server operation was performed.",
+        "HTTPS full-file and cache verification are separate publisher evidence."
+      ]
+    },
+    "realDevice": false,
+    "nativeTouch": false
+  },
+  "limits": [
+    "Mobile validation used a 393x852 simulated viewport, not a physical phone or native touch.",
+    "Small package typography is limited by display scale; side-on labels are not readable and rear-view printing is mirrored.",
+    "At intermediate/phone views some projected part edges meet; the two complete printing groups remain separate.",
+    "Unchanged large posters and login video were checked by public HTTPS byte ranges and complete server-side hashes; the new065 model and its old-ETag response were both downloaded and hashed in full.",
+    "Hidden dimensions and packaging assembly are structural illustrations."
+  ]
+}

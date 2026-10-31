@@ -1869,51 +1869,19 @@
         ]
       },
       {
-        "key": "head",
-        "node": "Actuator",
-        "title": [
-          "按压头",
-          "Head"
-        ],
-        "short": [
-          "按压头",
-          "Head"
-        ],
-        "detail": [
-          "白色短嘴按压件。",
-          "White press head with a short dispensing spout."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "连接杆",
-          "Stem"
-        ],
-        "short": [
-          "连接杆",
-          "Stem"
-        ],
-        "detail": [
-          "独立泵连接层。",
-          "The pump connector separates from the head and seat."
-        ]
-      },
-      {
         "key": "closure",
-        "node": "Closure",
+        "node": "PumpAssembly",
         "title": [
-          "金泵座",
-          "Gold seat"
+          "完整金泵与透明吸管",
+          "Complete gold pump and clear dip tube"
         ],
         "short": [
-          "金泵座",
-          "Gold seat"
+          "泵总成",
+          "Pump"
         ],
         "detail": [
-          "浅香槟金阶梯泵座。",
-          "Stepped pump seat in pale champagne gold."
+          "白色短嘴按头、金色泵座、连接杆与透明长吸管保持连接，整体上提。",
+          "The white short-spout head, gold housing, stem and clear dip tube lift as one assembly."
         ]
       },
       {
@@ -1971,28 +1939,19 @@
         "frosted": false,
         "pipette": false,
         "clearLabel": false,
-        "metal": true
+        "metal": true,
+        "clearOvercap": true
       },
       "explosion": {
         "offsets": {
           "overcap": [
             0,
-            4.6,
-            0
-          ],
-          "head": [
-            0,
-            2.8,
-            0
-          ],
-          "stem": [
-            0,
-            1.6,
+            3.3,
             0
           ],
           "closure": [
             0,
-            0.8,
+            2.1,
             0
           ],
           "label": [
@@ -2013,11 +1972,11 @@
         "camera": {
           "centerY": [
             1.45,
-            3.6
+            3.0
           ],
           "height": [
             4.2,
-            8.8
+            7.2
           ],
           "width": [
             3.8,
@@ -2031,7 +1990,11 @@
         "timing": {
           "overcap": [
             0,
-            0.65
+            1
+          ],
+          "closure": [
+            0.1,
+            1
           ]
         }
       }

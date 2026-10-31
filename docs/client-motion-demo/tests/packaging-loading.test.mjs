@@ -228,7 +228,7 @@ test('the refill pouch keeps a thin transparent film instead of a thick coloured
 });
 
 for (const [id, node, thickness, toneMapped] of [
-  ['poster-066','Overcap',.012,true],
+  ['poster-066','Overcap',.012,false],
   ['poster-065','RefillPouch',.005,false],
 ]) test(`${id} isolates cover or film settings from shared bottle glass in either traversal order`, async () => {
   for (const bodyFirst of [true,false]) {
@@ -1226,7 +1226,7 @@ test('Essence Duo keeps both fitted droppers intact throughout desktop and phone
   }
 });
 
-for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45],['poster-065',2.45]]) {
+for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45],['poster-065',2.45],['poster-066',2.1]]) {
 test(`${id} keeps its complete pumps and clear tubes intact throughout desktop and phone motion`,async()=>{
   const product=PACKAGING_PRODUCTS[id];
   const bytes=readFileSync(new URL(`../packaging-assets/${id}.glb`,import.meta.url));
@@ -1235,7 +1235,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
   const nodes=gltf.nodes.map(node=>{
     const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
     object.name=node.name;
-    if ('mesh' in node && (id==='poster-061' || id==='poster-064' || id==='poster-065')) {
+    if ('mesh' in node && (id==='poster-061' || id==='poster-064' || id==='poster-065' || id==='poster-066')) {
       const exported=gltf.materials[gltf.meshes[node.mesh].primitives[0].material];
       object.material.name=exported.name;
       object.material.transmission=exported.extensions?.KHR_materials_transmission?.transmissionFactor??0;
@@ -1299,20 +1299,30 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
       assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.01868);assert.equal(tube.side,Three.FrontSide);
       const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
     }
+    if(id==='poster-066') {
+      const tube=loaded.scene.getObjectByName('Hollow clear Rose dip tube').material;
+      const body=loaded.scene.getObjectByName('Hollow flat rectangular rose bottle with thick base').material;
+      assert.equal(body.transmission,1);assert.ok(Math.abs(body.roughness-.024)<.001);
+      assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.02949);assert.equal(tube.side,Three.FrontSide);
+      const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
+    }
     const rest=api.getState().partStates;
     for(const value of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
+      const pumpTime=id==='poster-066' ? Math.max(0,Math.min(1,(value-.1)/.9)) : value;
+      const pumpProgress=id==='poster-066' ? pumpTime*pumpTime*(3-2*pumpTime) : value;
       for(const {part,matrix,world} of fitted) {
         assert.deepEqual(part.matrix.toArray(),matrix);
-        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,lift*value,0))<1e-8);
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,lift*pumpProgress,0))<1e-8);
       }
+      if(id==='poster-066') assert.ok(state.partStates.overcap.offset[1]>=state.partStates.closure.offset[1],'the cover starts first and never moves into the complete pump');
       for(const {part,matrix,world} of tied) {
         assert.deepEqual(part.matrix.toArray(),matrix);assert.ok(part.getWorldPosition(new Three.Vector3()).distanceTo(world)<1e-8,'cotton stays tied to the bottle throughout expansion');
       }
       assert.ok(Math.abs(state.partStates.print.offset[2]-state.partStates.label.offset[2]-value)<1e-8);
       if(!value)assert.deepEqual(state.partStates,rest);
     }
-    assert.deepEqual(Object.keys(rest).sort(),id==='poster-065' ? ['closure','jar','label','print','refill'] : id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
+    assert.deepEqual(Object.keys(rest).sort(),id==='poster-065' ? ['closure','jar','label','print','refill'] : id==='poster-066' ? ['closure','jar','label','overcap','print'] : id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
   }finally{api?.dispose();env.close();}
   }
 });

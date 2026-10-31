@@ -1,0 +1,333 @@
+{
+  "model": "poster-066",
+  "product": "Rose Hair Oil",
+  "selectionNumber": 19,
+  "status": "local independent geometry/scope check passed; not publication proof",
+  "baselineCommit": "69328bbe9545999f318aba22d64f9b794c2dbcec",
+  "checkedHead": "69328bbe9545999f318aba22d64f9b794c2dbcec",
+  "baselineSha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9",
+  "modelSha256": "671a08d9124f5629f417845f4e90545eb321f0054b36790f06085297fd671a4c",
+  "reviewConfigSha256": "7ae057a550150b466f0762ec0adb95fd0f8d4264574b3b90abe5d93b879cf7c5",
+  "preservation": {
+    "originalMeshCount": 8,
+    "newMeshCount": 9,
+    "originalMeshes": [
+      {
+        "name": "Hollow flat rectangular rose bottle with thick base",
+        "vertices": 3181,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "Gold base ring and tapered pump housing",
+        "vertices": 3100,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "Independent white connecting stem",
+        "vertices": 1160,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "Short white left dispensing lip",
+        "vertices": 668,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "White cylindrical press head",
+        "vertices": 2119,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "Thin transparent closed protective cover",
+        "vertices": 2308,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "Unprinted ivory rounded rose paper",
+        "vertices": 3185,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      },
+      {
+        "name": "Original watercolor roses and complete black lettering",
+        "vertices": 3185,
+        "attributesIdentical": true,
+        "indicesIdentical": true,
+        "worldCoordinateMaxDelta": 0.0,
+        "materialIdentical": true
+      }
+    ],
+    "addedMeshes": [
+      "Hollow clear Rose dip tube"
+    ],
+    "embeddedImageHashes": [
+      "f6bc54401a449e52274dd9e8341ea88e7e36f4ff6acd56bd71a80cbd6f9b8295",
+      "5e35ec0f91d91cbff96e4dc2d407c096c3d1f50fac1048017f107877a4b17565"
+    ],
+    "embeddedImagesByteIdentical": true,
+    "sourceArtwork": [
+      {
+        "file": "floral.png",
+        "sha256": "4c7ab1d3c963307b94b2f48f6772dbe0443d9875ee753f565b40f12f6902c350",
+        "unchanged": true
+      },
+      {
+        "file": "label.png",
+        "sha256": "f6bc54401a449e52274dd9e8341ea88e7e36f4ff6acd56bd71a80cbd6f9b8295",
+        "unchanged": true
+      },
+      {
+        "file": "label.svg",
+        "sha256": "d4042888cb3b71cf285556f115b7575c6bc145f45aad530e8f537ddee4dc7006",
+        "unchanged": true
+      },
+      {
+        "file": "print.png",
+        "sha256": "5e35ec0f91d91cbff96e4dc2d407c096c3d1f50fac1048017f107877a4b17565",
+        "unchanged": true
+      },
+      {
+        "file": "print.svg",
+        "sha256": "29c5dbde927efc423cd6becf717d27f7ed3650df0976f5ae28ac9f68e0a1c69a",
+        "unchanged": true
+      }
+    ],
+    "onlyChangedProductConfig": [
+      "poster-066"
+    ],
+    "other25Glbs": [
+      {
+        "file": "beach-magic-packaging.glb",
+        "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f",
+        "unchanged": true
+      },
+      {
+        "file": "liaose-pump.glb",
+        "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936",
+        "unchanged": true
+      },
+      {
+        "file": "poster-013.glb",
+        "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688",
+        "unchanged": true
+      },
+      {
+        "file": "poster-039.glb",
+        "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
+        "unchanged": true
+      },
+      {
+        "file": "poster-042.glb",
+        "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+        "unchanged": true
+      },
+      {
+        "file": "poster-044.glb",
+        "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+        "unchanged": true
+      },
+      {
+        "file": "poster-047.glb",
+        "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+        "unchanged": true
+      },
+      {
+        "file": "poster-049.glb",
+        "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+        "unchanged": true
+      },
+      {
+        "file": "poster-051.glb",
+        "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+        "unchanged": true
+      },
+      {
+        "file": "poster-056.glb",
+        "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+        "unchanged": true
+      },
+      {
+        "file": "poster-057.glb",
+        "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+        "unchanged": true
+      },
+      {
+        "file": "poster-058.glb",
+        "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+        "unchanged": true
+      },
+      {
+        "file": "poster-059.glb",
+        "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+        "unchanged": true
+      },
+      {
+        "file": "poster-060.glb",
+        "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+        "unchanged": true
+      },
+      {
+        "file": "poster-061.glb",
+        "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+        "unchanged": true
+      },
+      {
+        "file": "poster-062.glb",
+        "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34",
+        "unchanged": true
+      },
+      {
+        "file": "poster-063.glb",
+        "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a",
+        "unchanged": true
+      },
+      {
+        "file": "poster-064.glb",
+        "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+        "unchanged": true
+      },
+      {
+        "file": "poster-065.glb",
+        "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+        "unchanged": true
+      },
+      {
+        "file": "poster-067.glb",
+        "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e",
+        "unchanged": true
+      },
+      {
+        "file": "poster-068.glb",
+        "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3",
+        "unchanged": true
+      },
+      {
+        "file": "poster-069.glb",
+        "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157",
+        "unchanged": true
+      },
+      {
+        "file": "poster-070.glb",
+        "sha256": "cad06f5bdb5b6d26d1380ff899b55adadb45e66559cc59fd2a852bf7f1c1366f",
+        "unchanged": true
+      },
+      {
+        "file": "poster-072.glb",
+        "sha256": "c9d66d7c111fcf12db681c93b23de820395193a252cf1c1fc447352d82c58052",
+        "unchanged": true
+      },
+      {
+        "file": "poster-073.glb",
+        "sha256": "169b4090346106299dbac1b9479baf3aa59da36f6c27b6655c7c08ada1ee204e",
+        "unchanged": true
+      }
+    ]
+  },
+  "structure": {
+    "roots": [
+      "Body",
+      "Overcap",
+      "PaperLabel",
+      "LogoPrint",
+      "PumpAssembly"
+    ],
+    "pumpMeshes": [
+      "Short white left dispensing lip",
+      "White cylindrical press head",
+      "Gold base ring and tapered pump housing",
+      "Hollow clear Rose dip tube",
+      "Independent white connecting stem"
+    ],
+    "bottleWidth": 1.6384180784225464,
+    "noContentsAdded": true
+  },
+  "tube": {
+    "outerDiameterInBottleWidths": 0.07,
+    "innerDiameterInBottleWidths": 0.052,
+    "bottomInBottleWidths": 0.1200000349180452,
+    "topInBottleWidths": 1.5000000376002542,
+    "tipAboveActualInnerFloor": 0.040960511124066734,
+    "fullOpenTipAboveBottleMouth": 0.5238418376425567,
+    "connectorInsertionInBottleWidths": 0.08000004291534424,
+    "conservativeRadialBoreClearanceInBottleWidths": 0.005986840564417818,
+    "actualTriangleSections": [
+      {
+        "yInBottleWidths": 0.5,
+        "minRadiusInBottleWidths": 0.025984841786155656,
+        "maxRadiusInBottleWidths": 0.035000000485429304
+      },
+      {
+        "yInBottleWidths": 1,
+        "minRadiusInBottleWidths": 0.02598484178615565,
+        "maxRadiusInBottleWidths": 0.035000000485429304
+      },
+      {
+        "yInBottleWidths": 1.46,
+        "minRadiusInBottleWidths": 0.02598484178615565,
+        "maxRadiusInBottleWidths": 0.035000000485429304
+      }
+    ],
+    "axisRayHits": [],
+    "triangles": 736,
+    "weldedVertices": 368,
+    "weldedEdges": 1104,
+    "edgeFaceIncidence": [
+      2
+    ],
+    "opposingEdgeDirections": true,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 0
+  },
+  "overcapAndPumpMotion": {
+    "timing": {
+      "overcap": [
+        0,
+        1
+      ],
+      "closure": [
+        0.1,
+        1
+      ]
+    },
+    "capLift": 3.3,
+    "pumpLift": 2.1,
+    "samples": 10001,
+    "minimumCapMinusPumpLift": 0.0,
+    "minimumRoofClearance": 0.12451955592160857,
+    "initialRoofClearance": 0.12451955592160857,
+    "fullOpenCapLowerEdgeAbovePumpTop": 0.285762391075576,
+    "wideGoldFlangeTopInBottleWidths": 1.122,
+    "capLowerEdgeInBottleWidths": 1.1220000004439519,
+    "minimumCapInnerRadiusInBottleWidths": 0.205,
+    "maximumGoldRadiusAboveFlangeInBottleWidths": 0.19,
+    "conservativeRadialClearanceAboveFlangeInBottleWidths": 0.015,
+    "interpretation": "Cap relative lift never becomes negative. The broad gold flange ends at the original cap lower edge, so the cap moves away from it. Pump parts above that plane fit inside the minimum cap inner radius. White actuator may remain enclosed during intermediate progress; no collar/edge penetration is implied by this enclosure. Analytic monotonic smoothstep timing plus sampled path and actual bounds/radial sections support clearance; not a general-purpose continuous mesh collision solver."
+  },
+  "meshQualityReport": "docs/client-motion-demo/model-source/collection/poster-066/quality-report.json",
+  "limits": [
+    "No browser operations or visual screenshot review performed in this geometry scope task.",
+    "No exact manufacturing tolerance or production assembly certification inferred from this presentation model.",
+    "No deployment or live verification performed.",
+    "Reference artwork and existing geometry retained; new material rendering judged by parent browser QA."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-31",
+  "product": "Rose Hair Oil",
+  "productId": "poster-066",
+  "selectionNumber": 19,
+  "state": "local-simplified-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "reviewCadence": "Stop after each product for user inspection.",
+  "selectedRevisionOrder": [
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23
+  ],
+  "selectedProgress": {
+    "revisionsPublished": 12,
+    "localAwaitingReview": 1,
+    "queued": 3
+  },
+  "nextProduct": {
+    "selectionNumber": 20,
+    "id": "poster-067",
+    "name": "Amber Ginger Shampoo",
+    "state": "queued-not-started"
+  },
+  "remainingQueuedSelections": [
+    20,
+    21,
+    23
+  ],
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-066",
+  "components": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "PumpStemIncludes": "Hollow clear Rose dip tube"
+  },
+  "containsFormula": false,
+  "model": {
+    "bytes": 4148984,
+    "sha256": "671a08d9124f5629f417845f4e90545eb321f0054b36790f06085297fd671a4c"
+  },
+  "changes": [
+    "Complete pump head, connector, gold housing and new clear hollow dip tube lift together.",
+    "Original cap, broad flat glass body, floral art, typography and paper backing retained.",
+    "Cap display is transparent; cap lift starts before the complete pump and both fit at half/full expansion.",
+    "Blank paper and entire floral/lettering layer separate, printing moves farther outward and forward."
+  ],
+  "preservation": {
+    "originalMeshes": 8,
+    "worldCoordinateMaxDelta": 0,
+    "originalArtIdentical": true,
+    "other25ModelsUnchanged": true
+  },
+  "dipTube": {
+    "outsideDiameterInBottleWidth": 0.07,
+    "insideDiameterInBottleWidth": 0.052,
+    "tipAboveInnerFloor": 0.040960511,
+    "fullyOpenTipAboveBottleMouth": 0.523841838
+  },
+  "validation": {
+    "geometryTestsPassed": 7,
+    "frontendTestsPassed": 178,
+    "galleryTestsPassed": 7,
+    "viteBuild": "passed",
+    "sourcePublicDistAndHttpHashes": "identical",
+    "impeccableDetectorFindings": 0,
+    "independentGeometryReview": "passed",
+    "independentVisualReview": "passed-six-final-images",
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "side-90"
+      ]
+    },
+    "posterRoundtrip": {
+      "viewport": [
+        1280,
+        960
+      ],
+      "passed": true
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "simulated": true,
+      "physicalDeviceTested": false,
+      "horizontalOverflow": false
+    }
+  },
+  "evidence": "review-evidence/rose-hair-oil/simplified-pump/",
+  "limits": [
+    "Hidden connector dimensions and assembly are illustrative, not manufacturing dimensions.",
+    "The clear tube has subtle contrast; small package lettering is limited by mobile scale.",
+    "Layer projections partially overlap on narrow screens; side-on flat typography becomes edge-on.",
+    "Gold highlights under studio lights are stronger than the poster.",
+    "Mobile checks used viewport simulation; no physical phone or native-touch test."
+  ]
+}

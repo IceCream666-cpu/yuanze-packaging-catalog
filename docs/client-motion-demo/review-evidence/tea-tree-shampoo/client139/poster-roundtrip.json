@@ -1,0 +1,39 @@
+{
+  "poster": {
+    "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-065-1280.webp",
+    "width": 1280,
+    "height": 960,
+    "complete": true
+  },
+  "returned": {
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "refill",
+        "label",
+        "print"
+      ],
+      "meshes": 38,
+      "triangles": 146054
+    },
+    "featuredTitle": "Tea Tree Shampoo",
+    "modelAccessibleName": "Tea Tree Shampoo 分层包材模型，可拖拽旋转",
+    "requestedModel": [
+      "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb",
+      "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb",
+      "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-065.glb"
+    ]
+  },
+  "checkedAt": "2026-10-30T10:34:12.868Z"
+}

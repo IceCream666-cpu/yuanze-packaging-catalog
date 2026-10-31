@@ -1,0 +1,131 @@
+{
+  "status": "passed-with-approved-display-limitations",
+  "checkedAt": "2026-10-30T18:34:44+08:00",
+  "version": "client1.39",
+  "review": "Independent actual view_image inspection of all seven formal-release screenshots and supplied desktop/mobile state JSON",
+  "files": {
+    "desktop-closed.png": {
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "881c818464375d7964cf2af6c0de6a59009921948e6d8f98a9a7642945109aa0",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "The complete clear bottle and full-height warm ivory refill pouch are visible. Both navy label and lettering sets are retained, including bottle 750 mL and pouch REFILL. Navy pump, ivory chamber and clear tube are fitted; heading, descriptions and controls are clear of the product."
+    },
+    "desktop-half.png": {
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "db64ee7732b244ad63b708a58e02acdb32b69a959bd8b38cf2b14a6ba362cef6",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Navy head, collar, ivory pump chamber and clear tube rise together. Warm ivory pouch stays distinct. Blank navy substrates and two complete print groups move separately; one substrate and print group locally project over the bottle during the intermediate state."
+    },
+    "desktop-open.png": {
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "b4dcd215f77d90c42f5d031a9f56d55c995e5fc637f45e0e33cd78607a473c67",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Complete pump with clear tube is visibly raised above the open bottle. Warm ivory pouch remains visible as packaging. Two blank navy substrates and two separate lettering sets are inside the viewport. Some label projection approaches the bottle outline; no viewport clipping."
+    },
+    "desktop-rotated.png": {
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "14382233f58cda0693c7b97d19b3c1a13ed916724fe057bc225142de90cefef4",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Approximately 90-degree view retains the connected navy pump/chamber/tube assembly, clear bottle and thin warm ivory pouch edge. Labels and lettering are edge-on, making them very narrow or unreadable; all structures remain within the viewport."
+    },
+    "desktop-rear.png": {
+      "size": [
+        1622,
+        865
+      ],
+      "sha256": "c5ce2be9d78624818310173309c3d811d13d0a68715db8a1a61017422046750f",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "Approximately 180-degree view confirms the rear pouch remains warm ivory with sealed borders and soft shading. The complete pump and tube remain connected above the bottle. Independent lettering is mirrored when seen from the rear, as expected for the reverse side of these layers."
+    },
+    "mobile-closed.png": {
+      "size": [
+        393,
+        852
+      ],
+      "sha256": "6d37be4fbe8d85ef8fbb7b6ce06bffe3d12929b9637044bf7164b66a27aea064",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "393x852 simulated viewport fits the full clear bottle, navy pump and warm ivory pouch without crop. All five component controls and bottom controls remain visible. Packaging microcopy is small at this scale."
+    },
+    "mobile-open.png": {
+      "size": [
+        393,
+        852
+      ],
+      "sha256": "4f152c46214bf54042b528854fdb2e01a78a02821089ac97fc36039c4a1404f7",
+      "visuallyInspected": true,
+      "pass": true,
+      "observation": "393x852 simulated viewport contains the raised navy pump, ivory chamber, long clear tube, bottle, pouch, two blank labels and both printing sets. One blank label locally overlaps the bottle projection, while printing remains independently separated. No horizontal overflow or clipped structure; all five component controls remain available."
+    }
+  },
+  "stateChecks": {
+    "desktopViewport": [
+      1622,
+      865
+    ],
+    "mobileSimulatedViewport": [
+      393,
+      852
+    ],
+    "horizontalOverflow": false,
+    "viewportClippingObserved": false,
+    "desktopProgressTargets": [
+      0,
+      0.5,
+      1
+    ],
+    "mobileProgressTargets": [
+      0,
+      1
+    ],
+    "renderedProgressTolerance": 0.001,
+    "mobileOpenRenderedProgress": 0.9998587040641503,
+    "rotationRadians": 1.5704292785623493,
+    "rearRadians": 3.1412544353687033,
+    "returnFrontYaw": 0.0006581254070013161,
+    "components": [
+      "closure",
+      "jar",
+      "refill",
+      "label",
+      "print"
+    ],
+    "allFiveControlsPresent": true
+  },
+  "verifiedVisualFeatures": [
+    "Front and rear pouch retain warm ivory tint and sealed borders rather than clear-glass appearance.",
+    "Navy pump head, collar, ivory chamber and clear long tube remain connected while raised.",
+    "Bottle and refill lettering retain independent complete layers and distinct blank navy substrates.",
+    "Both product assemblies remain inside desktop and simulated-mobile viewport boundaries."
+  ],
+  "blockingFindings": [],
+  "approvedDisplayLimitations": [
+    "Packaging small print is difficult to read at mobile scale, especially in the fully expanded composition.",
+    "At approximately 90 degrees the pouch, labels and lettering become edge-on and the printing is not readable.",
+    "Intermediate expansion and compact mobile framing allow some label/printing projections to touch or overlap the bottle silhouette; separate layers remain visible.",
+    "Rear lettering appears mirrored because its reverse side is being viewed.",
+    "Clear dip tube has subtle contrast against the gray-blue backdrop."
+  ],
+  "validationLimits": [
+    "393x852 is viewport simulation, not physical-device or native-touch verification.",
+    "Only saved screenshots and state JSON were reviewed; no browser or server operation was performed.",
+    "HTTPS full-file and cache verification are separate publisher evidence."
+  ]
+}
