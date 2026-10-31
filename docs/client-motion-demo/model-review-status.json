@@ -386,7 +386,7 @@
     "mobilePhysicalDeviceTested": false
   },
   "poster-066": {
-    "state": "complete",
+    "state": "published",
     "components": [
       "Overcap",
       "PumpAssembly",
@@ -399,10 +399,18 @@
       "open": "/review-assets/poster-066-open.webp"
     },
     "background": "#ead7db",
-    "revision": "sharp-pump-edges-recessed-spout-local-awaiting-review",
-    "publishedRevision": false,
+    "revision": "sharp-complete-pump-published-live-verified",
+    "publishedRevision": true,
     "previousPublishedModelSha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9",
-    "localRevisionReceipt": "rose-pump-sharpness-preview-verification.json"
+    "localRevisionReceipt": "rose-pump-sharpness-preview-verification.json",
+    "releaseVersion": "client1.40",
+    "releaseSourceCommit": "843286b9b984c660cfb4e4ef415c038372292740",
+    "releaseReceipt": "client140-rose-hair-oil-release.json",
+    "publishedAt": "2026-10-31T14:53:38+08:00",
+    "releaseManifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
+    "releaseHttpsVerification": "passed",
+    "releaseBrowserVerification": "passed-desktop-and-simulated-mobile-viewport",
+    "mobilePhysicalDeviceTested": false
   },
   "poster-067": {
     "state": "published",

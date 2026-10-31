@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "blockingFindings": [],
+  "auditor": "independent child rose_pump_quality_audit",
+  "checkedAt": "2026-10-31T14:51:59+08:00",
+  "phase": "pre-publication",
+  "liveVerified": false,
+  "sourceCommit": "843286b9b984c660cfb4e4ef415c038372292740",
+  "baselineCommit": "bcc9980c91d98d3e3537833e50a26fd89e9a2b97",
+  "approvedSourceCommit": "a4224e52675a93150c9ad8849379afeb0257cdd3",
+  "baselineManifestSha256": "fec7acf67cc121ad40d4f16e4685a459927fe07e77c6719b1c80a2bf44b8a3be",
+  "candidateManifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
+  "candidateVersion": "client1.40",
+  "model": {
+    "file": "poster-066.glb",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+    "approvedSourceExact": true
+  },
+  "localChecks": {
+    "candidateActualInventoryAndAllDigests": 458,
+    "unchangedNonTargetModels": 25,
+    "unchangedImages": 418,
+    "snapshotMatchesTrackedProductionBaseline": true,
+    "outsideSnapshotFiles": 6820,
+    "approved066GeneratorBlendReviewConfigAndProductConfigExact": true,
+    "changedProductConfigIds": [
+      "poster-066"
+    ],
+    "sharedRendererIsolation": "Reversing the four exact poster-066 additions recovers baseline renderer byte-for-byte.",
+    "preserved072073GlassEnvironmentBranches": true,
+    "unapproved070SourceNotMigrated": true,
+    "noTemporaryZoomOrPartStatesChanges": true,
+    "changesInCommonManifestPaths": [
+      "assets/packaging/poster-066.glb",
+      "index.html",
+      "preview.js"
+    ],
+    "addedChunks": [
+      "assets/packaging/PackagingDetail-B113D0xE.js",
+      "assets/packaging/packaging-scene-3Ba1DY-u.js"
+    ],
+    "removedChunks": [
+      "assets/packaging/PackagingDetail-CEfoWWRm.js",
+      "assets/packaging/packaging-scene-SfEI-3_d.js"
+    ]
+  },
+  "runtimeReview": {
+    "dpr": "poster-066 max 2; all others retain max 1.75",
+    "pumpMaterialOverrides": "Rose gold env 0.65 and Rose white head env/specular 0.3 are product-066 guarded.",
+    "clearTubeShader": "Existing complete-pump tube branch extended only for Rose named material; thickness 0.02949.",
+    "assembly": "Approved five-part layout retains cap and complete pump; label and print remain separate.",
+    "materialCloneIsolation": "Existing clone and named-material paths retained."
+  },
+  "publicationProtection": {
+    "defaultLocalPlanOnly": true,
+    "exactAssetAllowlist": true,
+    "archiveHashAndTarMemberValidation": true,
+    "exclusiveDeployFlock": true,
+    "guardBeforeStagingAndImmediatelyBeforeSwitch": true,
+    "guardIncludes": [
+      "current symlink target",
+      "old manifest hash",
+      "6820 outside file digests",
+      "gateway hash",
+      "service PID and active state"
+    ],
+    "allStagedFilesValidatedAndServiceUserReadable": true,
+    "atomicSwitch": "renameat2 RENAME_EXCHANGE",
+    "retainedBackup": "/opt/yuanze-reference/backups/client1.40-rose-hair-oil-complete-pumps-20261031",
+    "rollback": "Requires exact current client1.40 manifest and saved baseline; verifies inventories/hashes and concurrent outside state before atomic exchange.",
+    "serviceRestart": false,
+    "businessDataWrites": false
+  },
+  "verificationScriptReview": {
+    "targetFullHttpsHash": true,
+    "priorETagMustRevalidateTo200NewBytes": true,
+    "all26ModelsByteRanges": true,
+    "clientEmployeeAdminAndAnonymousPermissions": true,
+    "originalPosterDownloadAndLoginPreservation": true,
+    "unpublished074To078ModelsAndHomepageDerivativesRemainUnavailable": true,
+    "tlsCertificateVerification": true
+  },
+  "existingValidationEvidence": {
+    "frontendTestsPassed": 167,
+    "modelTestsPassed": 158,
+    "releaseTestsReportedPassed": 19,
+    "build": "passed; bundle-size and use-client warnings observed"
+  },
+  "scriptSha256": {
+    "publish.py": "4a796185b909988b3f2ae9d3581f95e2a568eddca8f4fa3a4460abb8f499c42a",
+    "rollback.py": "3af2fe016fe7b820d235e1e2d946b4cb5cabfadfccd9151066bf332bd177f5e4",
+    "verify_online.py": "c34594221ee142c5142b4868d17e18b3b93232994da51fd79b7289110e34f0df",
+    "cache_preflight.py": "76d65e9b7d7d584ecb9bf492eb19d5b9d924653fd1bd9adea9dc82d1dec0da20"
+  },
+  "limits": [
+    "Read-only local audit only. Auditor did not run SSH, publish, rollback or browser, and did not repeat the complete test suites.",
+    "Production success remains contingent on the publisher executing the guards and authenticated live checks, plus root browser verification.",
+    "Post-exchange assertion failures require inspection and guarded manual rollback; automatic rollback is not implemented. Backup retention is present."
+  ],
+  "recommendation": "Proceed with user-authorized publication of this exact candidate, then complete live verification."
+}

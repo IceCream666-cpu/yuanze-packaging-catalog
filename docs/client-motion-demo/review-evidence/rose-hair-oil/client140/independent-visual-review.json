@@ -1,0 +1,262 @@
+{
+  "model": "poster-066",
+  "product": "Rose Hair Oil",
+  "selectionNumber": 19,
+  "release": "client1.40",
+  "checkedAt": "2026-10-31T15:02:46+08:00",
+  "reviewer": "independent child agent rose_final_review",
+  "verdict": "PASS: no visual blocking issue found in saved client1.40 release captures compared with approved pump-sharpness captures",
+  "scope": "Actual visual inspection of all six saved release screenshots against all six corresponding approved local screenshots, plus the original poster. Read-only evidence review; reviewer did not operate a browser, access a server, modify code or deploy.",
+  "reportedApprovedModelSha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+  "modelHashSource": "pump-sharpness/model-copy-hashes.json; live response bytes not independently fetched by this reviewer",
+  "originalPoster": {
+    "path": "docs/mobile-client-preview/assets/posters/poster-066.webp",
+    "sha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+    "actuallyViewed": true
+  },
+  "expectedGroups": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "imageComparisons": [
+    {
+      "releaseImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/desktop-closed.png",
+      "releaseSha256": "3871ef498741bccbc28220d5baf9c77c18522ef701980c9a96131975d6ccfc21",
+      "releaseDimensions": [
+        1622,
+        865
+      ],
+      "approvedImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/pump-sharpness/desktop-closed.png",
+      "approvedSha256": "605947c26166fabf85dbdd618f0e60fa817b346988f246a9fc4cc4e2a01c46eb",
+      "approvedDimensions": [
+        1622,
+        865
+      ],
+      "bothActuallyViewed": true,
+      "visuallyConsistent": true,
+      "newBlockingDefect": false,
+      "observations": [
+        "与获批本地合拢图的瓶型、比例、构图、白色压头、金色泵壳、透明罩及原玫瑰标贴一致。",
+        "瓶体和全部操作在画面内；未发现额外零件、重复印字或新增料体。"
+      ]
+    },
+    {
+      "releaseImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/desktop-half.png",
+      "releaseSha256": "2795514764903c7b274cfa05bc33e90f4a9cfba650eebf56ef95b8fb8b235638",
+      "releaseDimensions": [
+        1622,
+        865
+      ],
+      "approvedImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/pump-sharpness/desktop-half.png",
+      "approvedSha256": "b0d08a14927265f3d87e17c7b7fa1534b515edfe7b8128dd294ae34aaa42436a",
+      "approvedDimensions": [
+        1622,
+        865
+      ],
+      "bothActuallyViewed": true,
+      "visuallyConsistent": true,
+      "newBlockingDefect": false,
+      "observations": [
+        "与获批半展开图一致；外罩没有顶部裁切，白色压头、金色泵壳与透明管仍组成连续整体。",
+        "半展开时外罩局部包围压头，未见新的可见穿透；印刷层、底纸和瓶身的屏幕投影局部重叠与获批预览一致。"
+      ]
+    },
+    {
+      "releaseImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/desktop-open.png",
+      "releaseSha256": "55353f9c1455c46b168f33ab4b9ac2c77b86642eb059db32ad06a37e660c78ca",
+      "releaseDimensions": [
+        1622,
+        865
+      ],
+      "approvedImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/pump-sharpness/desktop-open.png",
+      "approvedSha256": "a0d16281ee1396714570c58926cd12b83249db4662dbefce449bb6268e7a6463",
+      "approvedDimensions": [
+        1622,
+        865
+      ],
+      "bothActuallyViewed": true,
+      "visuallyConsistent": true,
+      "newBlockingDefect": false,
+      "observations": [
+        "与获批完全展开图一致；透明罩、完整金泵含透明管、瓶身、空白底纸和完整印花文字五组均在画幅内。",
+        "吸管下端与瓶口有可见间隙，吸管仍接在整泵下；没有被重新拆成细碎小部件。",
+        "liaose、ROSE HAIR OIL、容量及玫瑰花纹随印刷层向外移，底纸保持空白。"
+      ]
+    },
+    {
+      "releaseImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/desktop-side.png",
+      "releaseSha256": "1c5b61dac049f5cf249a8f6eef2933d964adca4a624a5ae948c60fc96a056b94",
+      "releaseDimensions": [
+        1622,
+        865
+      ],
+      "approvedImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/pump-sharpness/desktop-side.png",
+      "approvedSha256": "f6a53e9052822214e7f0f21b874bd5d44778cae18b5e77bd5df56bc616737888",
+      "approvedDimensions": [
+        1622,
+        865
+      ],
+      "bothActuallyViewed": true,
+      "visuallyConsistent": true,
+      "newBlockingDefect": false,
+      "observations": [
+        "与获批约90度侧视图一致；扁方瓶深度、厚底以及完整泵管可见，主体未裁切。",
+        "印刷层和纸层接近侧对镜头而基本不可读，此已存在于获批预览。"
+      ]
+    },
+    {
+      "releaseImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/mobile-closed.png",
+      "releaseSha256": "49075808b5c70496ca1561cd8a9dd316c6d090be3324fa269f49960b976ed1a3",
+      "releaseDimensions": [
+        393,
+        852
+      ],
+      "approvedImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/pump-sharpness/mobile-closed.png",
+      "approvedSha256": "3ecefb8f34cbe57e76d83ebfeeebbf13018506dddc4d9f0253e068c65c9f48aa",
+      "approvedDimensions": [
+        393,
+        852
+      ],
+      "bothActuallyViewed": true,
+      "visuallyConsistent": true,
+      "newBlockingDefect": false,
+      "observations": [
+        "393×852模拟手机图与获批手机合拢图一致，完整瓶体、标题、五个组件入口和底部操作均在视口内。",
+        "未见新增横向裁切或控件遮挡；产品名及容量在默认尺寸下很小。"
+      ]
+    },
+    {
+      "releaseImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/mobile-open.png",
+      "releaseSha256": "54cc7ee21a762c0abb1e085bbb16b7cbdebc5f48e93d13444b6b2eaff26696ce",
+      "releaseDimensions": [
+        393,
+        852
+      ],
+      "approvedImage": "docs/client-motion-demo/review-evidence/rose-hair-oil/pump-sharpness/mobile-open.png",
+      "approvedSha256": "f6447dd197b8776b938ab9535d7f4faae5019bf1a00d15dba352f104b206bdb7",
+      "approvedDimensions": [
+        393,
+        852
+      ],
+      "bothActuallyViewed": true,
+      "visuallyConsistent": true,
+      "newBlockingDefect": false,
+      "observations": [
+        "393×852模拟手机图与获批手机完全展开图一致，透明罩、整泵含管、瓶身、底纸、印花五组均在视口内。",
+        "窄屏下印刷层、底纸和瓶身仍有局部投影重叠，顺序和间距与获批图一致；操作区未遮挡产品。",
+        "透明管在浅粉背景上对比偏弱，但连续连接轮廓可见，未发现断管或新裁切。"
+      ]
+    }
+  ],
+  "stateEvidence": {
+    "desktop": {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/desktop-states.json",
+      "sha256": "deb79a787dc091a7bb27b73f72b9d79b23bf7f8f44e5358917ef01640608e5bb",
+      "reportedPageTitle": "源泽 · 客户海报展厅 — client1.40",
+      "reportedModelRequests": [
+        "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-066.glb"
+      ],
+      "states": [
+        {
+          "name": "closed",
+          "progress": 0,
+          "renderedProgress": 0,
+          "yaw": 0,
+          "components": [
+            "overcap",
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ]
+        },
+        {
+          "name": "half",
+          "progress": 0.5,
+          "renderedProgress": 0.49949067915625106,
+          "yaw": 0,
+          "components": [
+            "overcap",
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ]
+        },
+        {
+          "name": "open",
+          "progress": 1,
+          "renderedProgress": 0.9993780981791879,
+          "yaw": 0,
+          "components": [
+            "overcap",
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ]
+        },
+        {
+          "name": "side-90",
+          "progress": 1,
+          "renderedProgress": 0.999999971496197,
+          "yaw": 1.5704676768249535,
+          "components": [
+            "overcap",
+            "closure",
+            "jar",
+            "label",
+            "print"
+          ]
+        }
+      ]
+    },
+    "mobile": {
+      "path": "docs/client-motion-demo/review-evidence/rose-hair-oil/client140/mobile-states.json",
+      "sha256": "f4d88189848f3fbf199680e674ac205df6c17eb2ea46c29e4e147da0ea993749",
+      "simulated": true,
+      "physicalDeviceTested": false,
+      "nativeTouchTested": false,
+      "states": [
+        {
+          "name": "closed",
+          "viewport": [
+            393,
+            852
+          ],
+          "scrollWidth": 393,
+          "progress": 0,
+          "renderedProgress": 0
+        },
+        {
+          "name": "open",
+          "viewport": [
+            393,
+            852
+          ],
+          "scrollWidth": 393,
+          "progress": 1,
+          "renderedProgress": 0.9997326048496971
+        }
+      ]
+    }
+  },
+  "blockingFindings": [],
+  "knownNonBlockingLimits": [
+    "保留获批预览的柔光表现：白色压头高光较亮，金色泵壳更偏明亮反射，玻璃边界与摄影海报相比简化；本次未发现发布后新增的材质变化。",
+    "透明外罩及透明吸管在浅粉背景上较淡，手机默认缩放下尤其依靠细边缘辨认。",
+    "手机默认缩放下的产品名和容量微字不适合逐字校验；本报告不是印刷级字形或标签内容认证。",
+    "窄屏完全展开及桌面中间状态存在分层的正视投影重叠，和获批布局一致。",
+    "约90度侧视时平面纸张及印刷内容接近边缘视角而难以辨认。",
+    "393×852是模拟浏览器视口，不是真机或原生触控验证。",
+    "审查员没有独立请求线上模型或复验服务器字节；上线来源与版本由保存的状态JSON及主代理发布证据支持。",
+    "静态截图不能单独证明所有中间帧无碰撞、运行帧率或制造装配公差。"
+  ],
+  "browserOperatedByReviewer": false,
+  "serverAccessedByReviewer": false,
+  "codeModifiedByReviewer": false,
+  "canAcceptSavedReleaseVisuals": true
+}

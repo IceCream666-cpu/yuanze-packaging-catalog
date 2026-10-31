@@ -114,5 +114,11 @@
     "The short outlet is a closed-back visual recess, not a validated functional fluid passage.",
     "No physical phone, native-touch, manufacturing-dimension or live-deployment verification in this local correction.",
     "On DPR >= 2 screens, poster-066 raster pixel work rises by approximately 31 percent from the old 1.75 cap; physical-device performance has not been measured."
-  ]
+  ],
+  "publicationUpdate": {
+    "version": "client1.40",
+    "publishedAt": "2026-10-31T14:53:38+08:00",
+    "receipt": "client140-rose-hair-oil-release.json",
+    "sourceCommit": "843286b9b984c660cfb4e4ef415c038372292740"
+  }
 }
