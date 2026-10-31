@@ -129,5 +129,10 @@
     "Layer projections partially overlap on narrow screens; side-on flat typography becomes edge-on.",
     "Gold highlights under studio lights are stronger than the poster.",
     "Mobile checks used viewport simulation; no physical phone or native-touch test."
-  ]
+  ],
+  "correctionUpdate": {
+    "date": "2026-10-31",
+    "receipt": "rose-pump-sharpness-preview-verification.json",
+    "note": "Pump-only sharpness revision supersedes the local model hash in this historical receipt; publication remains pending user review."
+  }
 }

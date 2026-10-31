@@ -28,3 +28,17 @@ class RoseHairOilModelTests(TailChecks,unittest.TestCase):
   self.assertEqual(set(edges.values()),{2},'The open bore has a closed manifold tube wall.')
   product=json.loads((self.source.parents[2]/'src/structure/collection-products.json').read_text())[self.ID]
   self.assertEqual(self.config,{'parts':product['parts'],**product['review']})
+ def test_pump_straight_walls_and_recessed_short_nozzle_are_real_geometry(self):
+  self.load();by_name={self.nodes[i]['name']:(i,p) for i,p in self.meshes()}
+  i,p=by_name['Gold base ring and tapered pump housing'];points=self.points(i,p);normals=self.accessor(p['attributes']['NORMAL']);w=self.info['width']
+  for level,radius in [(1.075,.240),(1.132,.190),(1.342,.190)]:
+   wall=[normal for point,normal in zip(points,normals) if abs(point[1]/w-level)<1e-5 and abs((point[0]**2+point[2]**2)**.5/w-radius)<1e-5]
+   self.assertGreater(len(wall),100);self.assertLess(max(abs(n[1]) for n in wall),.015)
+  gold=self.g['materials'][p['material']]['pbrMetallicRoughness'];self.assertAlmostEqual(gold['roughnessFactor'],.30,places=5)
+  i,p=by_name['Short white left dispensing lip'];points=[tuple(v/w for v in point) for point in self.points(i,p)]
+  front=[v for v in points if abs(v[0]+.180)<1e-5]
+  self.assertGreater(len(front),50)
+  # At the outlet face no vertex fills the hole; the closed recess ends behind it.
+  self.assertGreater(min(((v[1]-1.6335)**2+v[2]**2)**.5 for v in front),.007)
+  self.assertTrue(any(abs(x+.145)<1e-5 and abs(y-1.6335)<1e-5 and abs(z)<1e-5 for x,y,z in points))
+  self.assertGreaterEqual(min(x for x,y,z in points),-.18001);self.assertLessEqual(max(x for x,y,z in points),-.08499)

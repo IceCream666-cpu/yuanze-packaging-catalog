@@ -1,0 +1,23 @@
+[
+  {
+    "source": "packaging-assets/poster-066.glb",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
+  },
+  {
+    "source": "public/assets/packaging/poster-066.glb",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
+  },
+  {
+    "source": "dist/assets/packaging/poster-066.glb",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
+  },
+  {
+    "source": "http://127.0.0.1:8784/assets/packaging/poster-066.glb",
+    "status": 200,
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
+  }
+]

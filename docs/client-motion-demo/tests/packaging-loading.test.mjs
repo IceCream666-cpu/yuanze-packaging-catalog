@@ -28,7 +28,7 @@ function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['po
   });
   class Renderer {
     constructor() {events.push('renderer'); this.domElement = document.createElement('canvas'); this.shadowMap = {}; this.capabilities = {getMaxAnisotropy: () => 8}; this.info = {render: {calls: 1, triangles: 12}};}
-    setPixelRatio() {} setClearColor() {} setSize() {}
+    setPixelRatio(value) {events.push(['pixelRatio',value]);} setClearColor() {} setSize() {}
     render(scene,camera) {events.push('render'); if (renderError) throw renderError; onRender?.(scene,camera);}
     dispose() {rendererDisposals++;}
   }
@@ -1302,6 +1302,10 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     if(id==='poster-066') {
       const tube=loaded.scene.getObjectByName('Hollow clear Rose dip tube').material;
       const body=loaded.scene.getObjectByName('Hollow flat rectangular rose bottle with thick base').material;
+      const gold=loaded.scene.getObjectByName('Gold base ring and tapered pump housing').material;
+      const head=loaded.scene.getObjectByName('White cylindrical press head').material;
+      assert.ok(Math.abs(gold.roughness-.30)<.001);assert.equal(gold.envMapIntensity,.65);
+      assert.ok(Math.abs(head.roughness-.32)<.001);assert.equal(head.envMapIntensity,.3);assert.equal(head.specularIntensity,.3);
       assert.equal(body.transmission,1);assert.ok(Math.abs(body.roughness-.024)<.001);
       assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.02949);assert.equal(tube.side,Three.FrontSide);
       const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
@@ -1328,3 +1332,15 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
 });
 
 }
+
+test('Rose uses native 2x detail without increasing other model rendering budgets',async()=>{
+  for(const id of ['poster-066','poster-065']) {
+    const product=PACKAGING_PRODUCTS[id],h=harness({product});
+    Object.defineProperty(h.dom.window,'devicePixelRatio',{value:2});
+    try {
+      const api=await h.mount(h.host,{product,modelRequest:h.request(Promise.resolve(new ArrayBuffer(8)))});
+      assert.deepEqual(h.events.find(e=>Array.isArray(e)&&e[0]==='pixelRatio'),['pixelRatio',id==='poster-066'?2:1.75]);
+      api.dispose();
+    } finally {h.close();}
+  }
+});

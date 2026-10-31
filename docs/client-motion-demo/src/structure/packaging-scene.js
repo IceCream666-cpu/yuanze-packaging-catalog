@@ -55,7 +55,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   // The authenticated request already started in the lightweight detail loader.
   // Prepare the unchanged studio while its bytes travel over the network.
   renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, product.file === 'poster-066.glb' ? 2 : 1.75));
   renderer.toneMapping = T.ACESFilmicToneMapping;
   renderer.toneMappingExposure = .92;
   renderer.shadowMap.enabled = true;
@@ -187,6 +187,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           m.roughness=review ? Math.max(.06,m.roughness) : moisture ? .16 : .075; m.envMapIntensity=1;
           o.castShadow=false;
         }
+      }
+      if (product.file === 'poster-066.glb') {
+        if (m.name === 'Rose champagne gold pump seat') m.envMapIntensity=.65;
+        if (m.name === 'Rose satin white press head') {m.envMapIntensity=.3;m.specularIntensity=.3;}
       }
       if (gentle && m.name === 'Gentle clear plastic dip tube') {
         m.transmission=.98; m.roughness=.06; m.ior=1.46; m.thickness=.0076;

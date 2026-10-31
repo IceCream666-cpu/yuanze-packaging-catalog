@@ -399,10 +399,10 @@
       "open": "/review-assets/poster-066-open.webp"
     },
     "background": "#ead7db",
-    "revision": "complete-pump-clear-dip-tube-local-awaiting-review",
+    "revision": "sharp-pump-edges-recessed-spout-local-awaiting-review",
     "publishedRevision": false,
     "previousPublishedModelSha256": "ce4a4aed0fe8e6fafa752f04a7a59539763a0b08b607e47eee4be1c5b2db89e9",
-    "localRevisionReceipt": "rose-hair-oil-simplified-preview-verification.json"
+    "localRevisionReceipt": "rose-pump-sharpness-preview-verification.json"
   },
   "poster-067": {
     "state": "published",

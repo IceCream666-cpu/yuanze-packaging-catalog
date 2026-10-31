@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-31",
+  "product": "Rose Hair Oil",
+  "productId": "poster-066",
+  "selectionNumber": 19,
+  "state": "local-pump-sharpness-revision-awaiting-user",
+  "published": false,
+  "newModelsPaused": true,
+  "baselineCommit": "06967d38e93be858b41a5445c37469bfebbfefef",
+  "previousReceipt": "rose-hair-oil-simplified-preview-verification.json",
+  "previewUrl": "http://127.0.0.1:8784/?model=poster-066",
+  "model": {
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+    "previousLocalSha256": "671a08d9124f5629f417845f4e90545eb321f0054b36790f06085297fd671a4c"
+  },
+  "components": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint"
+  ],
+  "nestedAssembly": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ],
+    "PumpStemIncludes": "Hollow clear Rose dip tube"
+  },
+  "containsFormula": false,
+  "selectedProgress": {
+    "revisionsPublished": 12,
+    "localAwaitingReview": 1,
+    "queued": 3
+  },
+  "remainingQueuedSelections": [
+    20,
+    21,
+    23
+  ],
+  "nextProduct": {
+    "selectionNumber": 20,
+    "id": "poster-067",
+    "name": "Amber Ginger Shampoo",
+    "state": "queued-not-started"
+  },
+  "changes": [
+    "Rebuilt only gold pump housing, white press head and short dispensing lip with supported profiles and pump-only sharp-angle normals.",
+    "Added a shallow recessed outlet to the original-length short spout.",
+    "Adjusted pump roughness and product-specific environmental/specular response so straight walls and stepped edges are easier to read.",
+    "Raised only poster-066 rendering pixel-ratio cap from 1.75 to 2; other models keep 1.75."
+  ],
+  "preservation": {
+    "rebuiltPumpMeshes": 3,
+    "unchangedMeshes": 6,
+    "unchangedMeshWorldAttributesIndicesAndMaterials": true,
+    "originalArtIdentical": true,
+    "other25ModelsUnchanged": true,
+    "explosionConfigUnchanged": true,
+    "cameraConfigUnchanged": true,
+    "dipTubeUnchanged": true
+  },
+  "validation": {
+    "geometryTestsPassed": 8,
+    "frontendTestsPassed": 179,
+    "viteBuild": "passed",
+    "impeccableDetectorFindings": 0,
+    "independentGeometryReview": "passed",
+    "independentVisualReview": "passed-visible-improvement-with-display-limits",
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "side-90"
+      ],
+      "nativeDevicePixelRatio": 2,
+      "canvasPixels": [
+        3222,
+        1274
+      ]
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "simulated": true,
+      "physicalDeviceTested": false,
+      "canvasPixels": [
+        786,
+        858
+      ],
+      "horizontalOverflow": false
+    },
+    "galleryTestsPassed": 7,
+    "sourcePublicDistAndHttpHashes": "identical",
+    "sharedRendererScopeReview": "passed-poster-066-only"
+  },
+  "evidence": "review-evidence/rose-hair-oil/pump-sharpness/",
+  "limits": [
+    "The white actuator remains bright when seen through the transparent closed overcap; gold shoulder studio reflections remain soft.",
+    "The default expanded overview keeps the entire product in frame, so the pump occupies a small screen area; magnified screenshots do not prove more native detail at overview scale.",
+    "The short outlet is a closed-back visual recess, not a validated functional fluid passage.",
+    "No physical phone, native-touch, manufacturing-dimension or live-deployment verification in this local correction.",
+    "On DPR >= 2 screens, poster-066 raster pixel work rises by approximately 31 percent from the old 1.75 cap; physical-device performance has not been measured."
+  ]
+}

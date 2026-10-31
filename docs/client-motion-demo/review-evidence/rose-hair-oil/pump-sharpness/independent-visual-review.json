@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-31",
+  "productId": "poster-066",
+  "product": "Rose Hair Oil",
+  "selectionNumber": 19,
+  "status": "passed-visible-improvement-with-display-limits",
+  "reviewer": "independent-rose-pump-quality-audit",
+  "reference": "docs/mobile-client-preview/assets/posters/poster-066.webp",
+  "referenceActuallyViewed": true,
+  "screenshots": [
+    {
+      "file": "before-closed.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "7f302933d38032e11573a30a42b03bd1d1536a18e22b1df177c3a744f811f74c",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "before-focus.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "e8e1e78635b48fcf512c223f8199d8a2c7a3403acf2b4337356550f4d6ea3de1",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "desktop-closed.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "605947c26166fabf85dbdd618f0e60fa817b346988f246a9fc4cc4e2a01c46eb",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "desktop-half.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "b0d08a14927265f3d87e17c7b7fa1534b515edfe7b8128dd294ae34aaa42436a",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "desktop-open.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "a0d16281ee1396714570c58926cd12b83249db4662dbefce449bb6268e7a6463",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "desktop-side.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "f6a53e9052822214e7f0f21b874bd5d44778cae18b5e77bd5df56bc616737888",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "mobile-closed.png",
+      "pixels": [
+        393,
+        852
+      ],
+      "sha256": "3ecefb8f34cbe57e76d83ebfeeebbf13018506dddc4d9f0253e068c65c9f48aa",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "mobile-open.png",
+      "pixels": [
+        393,
+        852
+      ],
+      "sha256": "f6447dd197b8776b938ab9535d7f4faae5019bf1a00d15dba352f104b206bdb7",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "pump-detail-screen.png",
+      "pixels": [
+        1622,
+        865
+      ],
+      "sha256": "b6594288043f7d8f152a31041aede648cd311a75c68d03c211c93285227b2bfc",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "pump-detail.png",
+      "pixels": [
+        780,
+        1760
+      ],
+      "sha256": "1492d747c492c08ccbf968d6de8185ac3c3cdaeb25e4ac1723225271be50f279",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "before-closed-crop.png",
+      "pixels": [
+        690,
+        750
+      ],
+      "sha256": "ded24129e68894ba3dc87eda16f2e00a9c72e30be13f52e5eb35b9522bb6aed0",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "desktop-closed-crop.png",
+      "pixels": [
+        690,
+        750
+      ],
+      "sha256": "b55c886a66b6f6380a141c60c14ad4bde527ecc4b6f79e058f4d4572a2ce5d9e",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "before-focus-crop.png",
+      "pixels": [
+        700,
+        620
+      ],
+      "sha256": "8bfc47fe039b6bc431323466b33a7412a49e64cf4d2dca22cbbc3101ca173d1d",
+      "actualVisualInspection": true
+    },
+    {
+      "file": "desktop-open-crop.png",
+      "pixels": [
+        700,
+        620
+      ],
+      "sha256": "df8b7ad8064a54a014768c5c2c0af8a140240a04d22554d9238c18e673ba1799",
+      "actualVisualInspection": true
+    }
+  ],
+  "verifiedImprovements": [
+    "Gold lower collar now reads as a straight cylindrical band with bounded upper/lower edges; previous bulging ring reflections are removed.",
+    "Gold central wall produces straighter vertical light bands, and the shoulder-to-body transition follows the new rounded profile.",
+    "The open white actuator has discernible crown/side transitions; the close inspection image shows the shallow recessed short-spout opening.",
+    "Complete pump and transparent tube remain connected through closed, half and fully open states.",
+    "All five approved groups remain in the normal desktop and simulated-mobile compositions; no new viewport clipping or displaced part was observed.",
+    "Original flat glass bottle, blank paper backing and complete watercolor lettering layer remain visually consistent."
+  ],
+  "comparativeAssessment": {
+    "goldCollar": "Clearly improved in same-scale before/after closed and open screenshots.",
+    "goldMainWall": "Straighter and less inflated; studio reflections intentionally remain soft.",
+    "whiteActuatorOpen": "Small but visible improvement in the normal open view, clearer in the temporary detail view.",
+    "whiteActuatorClosed": "Still very bright through the transparent cap; tonal separation is weaker than the open view.",
+    "outlet": "Actual recess visible in close inspection; too small to judge at the normal fully expanded overview scale."
+  },
+  "desktop": {
+    "viewport": [
+      1622,
+      865
+    ],
+    "states": [
+      "closed",
+      "half",
+      "open",
+      "side-90"
+    ],
+    "standardFramingClipping": false
+  },
+  "mobile": {
+    "viewport": [
+      393,
+      852
+    ],
+    "simulated": true,
+    "physicalDeviceTested": false,
+    "states": [
+      "closed",
+      "open"
+    ],
+    "subjectAndControlsVisible": true
+  },
+  "blockingFindings": [],
+  "limits": [
+    "The closed white head remains very bright behind the clear overcap; do not claim all white-head clipping is eliminated.",
+    "At the normal fully expanded overview the pump occupies only a small screen area; magnified screenshot crops are comparison aids, not proof of native detail at that scale.",
+    "The temporary 1.7x pump-detail-screen image intentionally clips the bottle and overcap and is excluded from the standard-framing pass.",
+    "Gold shoulder reflections are softer and glossier than the photographic reference; they are still clearly metallic rather than a sharp-edged technical drawing.",
+    "Clear dip tube has low contrast against the pink backdrop; mobile package microcopy remains small.",
+    "At 90 degrees the planar printed layer becomes edge-on.",
+    "No physical device, native-touch, manufacturing, deployment or live-site validation is part of this visual review."
+  ]
+}

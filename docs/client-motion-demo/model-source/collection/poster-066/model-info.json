@@ -145,7 +145,7 @@
   "generatorDependencies": [
     "tail_model_helpers.py"
   ],
-  "revision": "complete-pump-and-clear-dip-tube-review-20261030",
+  "revision": "sharp-pump-edges-and-recessed-spout-review-20261031",
   "assemblyChildren": {
     "PumpAssembly": [
       "Closure",

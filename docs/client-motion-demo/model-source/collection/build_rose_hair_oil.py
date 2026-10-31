@@ -3,18 +3,23 @@ import sys,math,base64
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from tail_model_helpers import *
-m=Model('poster-066');glass=m.mat('Rose neutral clear bottle glass','#ffffff',.024,1);gold=m.mat('Rose champagne gold pump seat','#c9a374',.22,0,1);white=m.mat('Rose satin white press head','#f5f0e9',.25);inside=m.mat('Rose hidden pump connector','#e4dfd6',.38)
+m=Model('poster-066');glass=m.mat('Rose neutral clear bottle glass','#ffffff',.024,1);gold=m.mat('Rose champagne gold pump seat','#c9a374',.30,0,1);white=m.mat('Rose satin white press head','#e8e3da',.32);inside=m.mat('Rose hidden pump connector','#e4dfd6',.38)
 # Flat broad bottle silhouette, total 1.77W, body top 1.05W; no oil solid.
 outer=[(0,0,0,0),(0,.42,.16,.05),(.009,.466,.201,.055),(.026,.489,.224,.06),(.049,.5,.235,.063),(.975,.5,.235,.063),(1.005,.493,.227,.065),(1.023,.475,.208,.064),(1.038,.430,.172,.065),(1.047,.300,.130,.065),(1.055,.168,.130,.125),(1.082,.168,.168,.168)]
 inner=[(1.082,.120,.120,.120),(1.052,.120,.120,.120),(1.029,.264,.100,.065),(1.017,.396,.133,.05),(.990,.459,.193,.049),(.150,.459,.193,.049),(.116,.447,.180,.049),(.100,.414,.147,.049),(.095,0,0,0)]
 m.loft('Hollow flat rectangular rose bottle with thick base',outer+inner,glass,'Body')
-m.lathe('Gold base ring and tapered pump housing',[(1.066,.119),(1.066,.235),(1.075,.240),(1.116,.240),(1.122,.225),(1.122,.190),(1.350,.190),(1.374,.184),(1.392,.163),(1.423,.147),(1.458,.141),(1.476,.139),(1.479,.095),(1.456,.095),(1.456,.114),(1.411,.128),(1.369,.163),(1.100,.163),(1.090,.119),(1.066,.119)],gold,'Closure')
+housing=m.lathe('Gold base ring and tapered pump housing',[(1.066,.119),(1.066,.235),(1.067,.238),(1.070,.240),(1.075,.240),(1.113,.240),(1.117,.239),(1.120,.236),(1.122,.232),(1.122,.194),(1.125,.190),(1.132,.190),(1.342,.190),(1.350,.190),(1.354,.189),(1.360,.187),(1.370,.181),(1.382,.172),(1.395,.162),(1.410,.153),(1.425,.146),(1.440,.142),(1.454,.141),(1.469,.141),(1.474,.140),(1.477,.138),(1.479,.135),(1.479,.095),(1.456,.095),(1.456,.114),(1.411,.128),(1.369,.163),(1.100,.163),(1.090,.119),(1.066,.119)],gold,'Closure')
 m.lathe('Independent white connecting stem',[(1.420,.041),(1.420,.064),(1.540,.064),(1.548,.054),(1.548,.041),(1.420,.041)],inside,'PumpStem')
 clear_tube=m.mat('Rose clear plastic dip tube','#ffffff',.06,1)
 m.lathe('Hollow clear Rose dip tube',[(.120,.026),(.120,.035),(1.500,.035),(1.500,.026),(.120,.026)],clear_tube,'PumpStem',96)
-m.lathe('White cylindrical press head',[(1.470,.060),(1.470,.125),(1.480,.132),(1.625,.132),(1.662,.127),(1.676,.112),(1.680,0),(1.651,0),(1.651,.098),(1.480,.098),(1.480,.060),(1.470,.060)],white,'Actuator')
-# Short left-facing spout visible inside the transparent closed protective cap.
-m.loft('Short white left dispensing lip',[(1.615,0,0,0),(1.615,.075,.047,.022),(1.652,.075,.047,.022),(1.652,0,0,0)],white,'Actuator').location.x=-.105
+head=m.lathe('White cylindrical press head',[(1.470,.060),(1.470,.125),(1.472,.129),(1.476,.132),(1.484,.132),(1.643,.132),(1.651,.131),(1.660,.128),(1.667,.122),(1.673,.114),(1.677,.103),(1.679,.090),(1.680,.075),(1.680,0),(1.651,0),(1.651,.098),(1.480,.098),(1.480,.060),(1.470,.060)],white,'Actuator')
+# A shallow open mouth gives the original short spout a readable lip, without lengthening it.
+spout=m.loft('Short white left dispensing lip',[(-.085,0,0,0),(-.085,.047,.0185,.007),(-.170,.047,.0185,.007),(-.177,.046,.0175,.006),(-.180,.043,.0155,.005),(-.180,.032,.008,.004),(-.174,.032,.008,.004),(-.148,.031,.007,.003),(-.145,0,0,0)],white,'Actuator',64)
+for v in spout.data.vertices:v.co=Vector((v.co.z,v.co.x,v.co.y+1.6335))
+# Only pump faces get sharp creases; bottle, cover and artwork keep their approved normals.
+for obj in (housing,head,spout):
+ for face in obj.data.polygons:face.use_smooth=True
+ obj.data.update();obj.data.set_sharp_from_angle(angle=math.radians(35))
 m.lathe('Thin transparent closed protective cover',[(1.122,.217),(1.122,.229),(1.744,.229),(1.759,.225),(1.770,.212),(1.770,0),(1.756,0),(1.756,.205),(1.744,.215),(1.122,.215),(1.122,.217)],glass,'Overcap',192)
 floral=base64.b64encode((m.out/'floral.png').read_bytes()).decode()
 label=svg(810,800,'<rect x="2" y="2" width="806" height="796" rx="42" fill="#f7f3e8"/>')
@@ -30,7 +35,7 @@ info=json.loads((m.out/'model-info.json').read_text());bounds=info['componentBou
 assembly=bpy.data.objects.new('PumpAssembly',None);bpy.context.collection.objects.link(assembly)
 for child in children:bpy.data.objects[child].parent=assembly
 bounds['PumpAssembly']={'min':[min(bounds[child]['min'][i] for child in children) for i in range(3)],'max':[max(bounds[child]['max'][i] for child in children) for i in range(3)]}
-info.update(components=[p['node'] for p in parts],assemblyChildren={'PumpAssembly':children},completePumpLift=2.1,revision='complete-pump-and-clear-dip-tube-review-20261030',dipTube={'mesh':'Hollow clear Rose dip tube','outerDiameterToBody':.07,'innerDiameterToBody':.052,'bottomToBody':.12,'topToBody':1.5,'innerFloorToBody':.095,'illustrativeDimensions':True})
+info.update(components=[p['node'] for p in parts],assemblyChildren={'PumpAssembly':children},completePumpLift=2.1,revision='sharp-pump-edges-and-recessed-spout-review-20261031',dipTube={'mesh':'Hollow clear Rose dip tube','outerDiameterToBody':.07,'innerDiameterToBody':.052,'bottomToBody':.12,'topToBody':1.5,'innerFloorToBody':.095,'illustrativeDimensions':True})
 bpy.context.view_layer.update();bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets/poster-066.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(m.out/'poster-066.blend'));(m.out/'model-info.json').write_text(json.dumps(info,indent=2)+'\n')

@@ -1,0 +1,413 @@
+{
+  "date": "2026-10-31",
+  "model": "poster-066",
+  "selectionNumber": 19,
+  "status": "passed-local-independent-geometry-and-scope-review",
+  "baselineCommit": "06967d38e93be858b41a5445c37469bfebbfefef",
+  "baselineSha256": "671a08d9124f5629f417845f4e90545eb321f0054b36790f06085297fd671a4c",
+  "modelSha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+  "preservedMeshes": [
+    {
+      "mesh": "Hollow flat rectangular rose bottle with thick base",
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "worldCoordinatesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "mesh": "Thin transparent closed protective cover",
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "worldCoordinatesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "mesh": "Unprinted ivory rounded rose paper",
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "worldCoordinatesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "mesh": "Original watercolor roses and complete black lettering",
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "worldCoordinatesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "mesh": "Hollow clear Rose dip tube",
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "worldCoordinatesIdentical": true,
+      "materialIdentical": true
+    },
+    {
+      "mesh": "Independent white connecting stem",
+      "attributesIdentical": true,
+      "indicesIdentical": true,
+      "worldCoordinatesIdentical": true,
+      "materialIdentical": true
+    }
+  ],
+  "modifiedMeshes": [
+    "Gold base ring and tapered pump housing",
+    "White cylindrical press head",
+    "Short white left dispensing lip"
+  ],
+  "sourceMaterialChanges": [
+    {
+      "mesh": "Gold base ring and tapered pump housing",
+      "old": {
+        "doubleSided": true,
+        "name": "Rose champagne gold pump seat",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.5840784311294556,
+            0.366252601146698,
+            0.17464740574359894,
+            1
+          ],
+          "roughnessFactor": 0.2199999988079071
+        }
+      },
+      "new": {
+        "doubleSided": true,
+        "name": "Rose champagne gold pump seat",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.5840784311294556,
+            0.366252601146698,
+            0.17464740574359894,
+            1
+          ],
+          "roughnessFactor": 0.30000001192092896
+        }
+      }
+    },
+    {
+      "mesh": "White cylindrical press head",
+      "old": {
+        "doubleSided": true,
+        "name": "Rose satin white press head",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.9130986332893372,
+            0.8713670969009399,
+            0.8148465752601624,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.25
+        }
+      },
+      "new": {
+        "doubleSided": true,
+        "name": "Rose satin white press head",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.8069522380828857,
+            0.7681511640548706,
+            0.7011018991470337,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.3199999928474426
+        }
+      }
+    },
+    {
+      "mesh": "Short white left dispensing lip",
+      "old": {
+        "doubleSided": true,
+        "name": "Rose satin white press head",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.9130986332893372,
+            0.8713670969009399,
+            0.8148465752601624,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.25
+        }
+      },
+      "new": {
+        "doubleSided": true,
+        "name": "Rose satin white press head",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.8069522380828857,
+            0.7681511640548706,
+            0.7011018991470337,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.3199999928474426
+        }
+      }
+    }
+  ],
+  "normalChecks": {
+    "oldGoldBottomStraightWall": [
+      {
+        "heightInBottleWidth": 1.075,
+        "count": 124,
+        "normalVerticalMin": -0.24991029500961304,
+        "normalVerticalMax": -0.24988897144794464
+      },
+      {
+        "heightInBottleWidth": 1.116,
+        "count": 124,
+        "normalVerticalMin": 0.55646812915802,
+        "normalVerticalMax": 0.5565208792686462
+      }
+    ],
+    "newGoldStraightSupportRings": [
+      {
+        "heightInBottleWidth": 1.075,
+        "count": 124,
+        "normalVerticalMin": 0.0,
+        "normalVerticalMax": 0.0
+      },
+      {
+        "heightInBottleWidth": 1.132,
+        "count": 124,
+        "normalVerticalMin": 0.0,
+        "normalVerticalMax": 0.0
+      },
+      {
+        "heightInBottleWidth": 1.342,
+        "count": 124,
+        "normalVerticalMin": 0.0,
+        "normalVerticalMax": 0.0
+      }
+    ],
+    "newGoldFlangeUpperBevelStart": [
+      {
+        "heightInBottleWidth": 1.113,
+        "count": 124,
+        "normalVerticalMin": 0.12189452350139618,
+        "normalVerticalMax": 0.12190618366003036
+      }
+    ],
+    "newWhiteStraightSupportRing": [
+      {
+        "heightInBottleWidth": 1.484,
+        "count": 124,
+        "normalVerticalMin": 0.0,
+        "normalVerticalMax": 0.0
+      }
+    ]
+  },
+  "spout": {
+    "method": "Moller-Trumbore ray against actual exported triangles from negative X into the outlet",
+    "centerRayIntersectionsInBottleWidths": [
+      -0.1450001,
+      -0.085
+    ],
+    "rimRayIntersectionsInBottleWidths": [
+      -0.18,
+      -0.085
+    ],
+    "firstCenterHitInBottleWidths": -0.1450001,
+    "firstRimHitInBottleWidths": -0.18,
+    "recessDepthInBottleWidths": 0.0349999,
+    "centerRayUnobstructedUntilRecessBack": true,
+    "oldBoundsInBottleWidths": {
+      "min": [
+        -0.1799999996279848,
+        1.6150002577900886,
+        -0.04699999837135446
+      ],
+      "max": [
+        -0.029999993729180306,
+        1.6520001986470714,
+        0.04699999837135446
+      ]
+    },
+    "newBoundsInBottleWidths": {
+      "min": [
+        -0.1800000070785654,
+        1.6150002577900886,
+        -0.04699999837135446
+      ],
+      "max": [
+        -0.08500000085912902,
+        1.6520001986470714,
+        0.04699999837135446
+      ]
+    },
+    "interpretation": "A real recessed cavity with an open mouth and closed back, not a flat dark decal. It is a shallow visual outlet, not a validated through-passage to the pump."
+  },
+  "embeddedImageSha256": {
+    "label": "f6bc54401a449e52274dd9e8341ea88e7e36f4ff6acd56bd71a80cbd6f9b8295",
+    "print": "5e35ec0f91d91cbff96e4dc2d407c096c3d1f50fac1048017f107877a4b17565"
+  },
+  "unchangedSourceArtworkAndReviewConfig": [
+    {
+      "file": "floral.png",
+      "sha256": "4c7ab1d3c963307b94b2f48f6772dbe0443d9875ee753f565b40f12f6902c350"
+    },
+    {
+      "file": "label.png",
+      "sha256": "f6bc54401a449e52274dd9e8341ea88e7e36f4ff6acd56bd71a80cbd6f9b8295"
+    },
+    {
+      "file": "label.svg",
+      "sha256": "d4042888cb3b71cf285556f115b7575c6bc145f45aad530e8f537ddee4dc7006"
+    },
+    {
+      "file": "print.png",
+      "sha256": "5e35ec0f91d91cbff96e4dc2d407c096c3d1f50fac1048017f107877a4b17565"
+    },
+    {
+      "file": "print.svg",
+      "sha256": "29c5dbde927efc423cd6becf717d27f7ed3650df0976f5ae28ac9f68e0a1c69a"
+    },
+    {
+      "file": "review-config.json",
+      "sha256": "7ae057a550150b466f0762ec0adb95fd0f8d4264574b3b90abe5d93b879cf7c5"
+    }
+  ],
+  "otherModelAssetsUnchanged": [
+    "beach-magic-packaging.glb",
+    "liaose-pump.glb",
+    "poster-013.glb",
+    "poster-039.glb",
+    "poster-042.glb",
+    "poster-044.glb",
+    "poster-047.glb",
+    "poster-049.glb",
+    "poster-051.glb",
+    "poster-056.glb",
+    "poster-057.glb",
+    "poster-058.glb",
+    "poster-059.glb",
+    "poster-060.glb",
+    "poster-061.glb",
+    "poster-062.glb",
+    "poster-063.glb",
+    "poster-064.glb",
+    "poster-065.glb",
+    "poster-067.glb",
+    "poster-068.glb",
+    "poster-069.glb",
+    "poster-070.glb",
+    "poster-072.glb",
+    "poster-073.glb"
+  ],
+  "partCount": 5,
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "meshQuality": {
+    "id": "poster-066",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+    "meshes": [
+      {
+        "mesh": "Hollow flat rectangular rose bottle with thick base",
+        "triangles": 4840,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.6835276477607211,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      },
+      {
+        "mesh": "Thin transparent closed protective cover",
+        "triangles": 3008,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.9730165120419527,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      },
+      {
+        "mesh": "Unprinted ivory rounded rose paper",
+        "triangles": 6144,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 1,
+        "weldedEdgeFaceIncidence": [
+          1,
+          2
+        ]
+      },
+      {
+        "mesh": "Original watercolor roses and complete black lettering",
+        "triangles": 6144,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 1,
+        "weldedEdgeFaceIncidence": [
+          1,
+          2
+        ]
+      },
+      {
+        "mesh": "Short white left dispensing lip",
+        "triangles": 896,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.9779492709374888,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      },
+      {
+        "mesh": "White cylindrical press head",
+        "triangles": 3968,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.9876862916390798,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      },
+      {
+        "mesh": "Gold base ring and tapered pump housing",
+        "triangles": 8432,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.9802114899601047,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      },
+      {
+        "mesh": "Hollow clear Rose dip tube",
+        "triangles": 736,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.999934669468344,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      },
+      {
+        "mesh": "Independent white connecting stem",
+        "triangles": 1240,
+        "negativeInterpolatedNormals": 0,
+        "tinyTriangles": 0,
+        "minimumFaceNormalDot": 0.9548695986830404,
+        "weldedEdgeFaceIncidence": [
+          2
+        ]
+      }
+    ],
+    "checks": "All 9 actual exported meshes checked against triangle normals: no reversed interpolated normals or tiny triangles. All seven solid shells have welded manifold edge incidence 2; label and print sheets intentionally remain open. Three pump meshes rebuilt; the other six meshes and artwork remain attribute/world/material identical to local baseline 06967d3."
+  },
+  "limits": [
+    "No browser or lighting visual validation in this geometry task.",
+    "The new outlet is a presentation recess, not an engineering-qualified pump passage.",
+    "No deployment or physical sample measurement performed."
+  ]
+}
