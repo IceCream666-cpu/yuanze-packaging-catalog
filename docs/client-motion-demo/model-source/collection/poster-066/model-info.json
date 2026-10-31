@@ -21,11 +21,9 @@
   "hiddenStructure": "Pump stem, wall thickness and hidden nozzle mechanism are illustrative; no liquid is modeled.",
   "id": "poster-066",
   "components": [
-    "Body",
-    "Closure",
-    "PumpStem",
-    "Actuator",
     "Overcap",
+    "PumpAssembly",
+    "Body",
     "PaperLabel",
     "LogoPrint"
   ],
@@ -61,7 +59,7 @@
       "min": [
         -0.10485876351594925,
         -0.10485876351594925,
-        2.3265535831451416
+        0.19661016762256622
       ],
       "max": [
         0.10485876351594925,
@@ -116,6 +114,18 @@
         -0.39076271653175354,
         1.5564970970153809
       ]
+    },
+    "PumpAssembly": {
+      "min": [
+        -0.39322033524513245,
+        -0.39322033524513245,
+        0.19661016762256622
+      ],
+      "max": [
+        0.39322033524513245,
+        0.39322033524513245,
+        2.75254225730896
+      ]
     }
   },
   "pivotsHeightToWidth": {
@@ -135,5 +145,22 @@
   "generatorDependencies": [
     "tail_model_helpers.py"
   ],
-  "revision": "individual-reference-review-20261025"
+  "revision": "sharp-pump-edges-and-recessed-spout-review-20261031",
+  "assemblyChildren": {
+    "PumpAssembly": [
+      "Closure",
+      "PumpStem",
+      "Actuator"
+    ]
+  },
+  "completePumpLift": 2.1,
+  "dipTube": {
+    "mesh": "Hollow clear Rose dip tube",
+    "outerDiameterToBody": 0.07,
+    "innerDiameterToBody": 0.052,
+    "bottomToBody": 0.12,
+    "topToBody": 1.5,
+    "innerFloorToBody": 0.095,
+    "illustrativeDimensions": true
+  }
 }

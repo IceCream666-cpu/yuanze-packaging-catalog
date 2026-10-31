@@ -1,0 +1,100 @@
+{
+  "id": "poster-066",
+  "bytes": 4254124,
+  "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+  "meshes": [
+    {
+      "mesh": "Hollow flat rectangular rose bottle with thick base",
+      "triangles": 4840,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.6835276477607211,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    },
+    {
+      "mesh": "Thin transparent closed protective cover",
+      "triangles": 3008,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9730165120419527,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    },
+    {
+      "mesh": "Unprinted ivory rounded rose paper",
+      "triangles": 6144,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 1,
+      "weldedEdgeFaceIncidence": [
+        1,
+        2
+      ]
+    },
+    {
+      "mesh": "Original watercolor roses and complete black lettering",
+      "triangles": 6144,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 1,
+      "weldedEdgeFaceIncidence": [
+        1,
+        2
+      ]
+    },
+    {
+      "mesh": "Short white left dispensing lip",
+      "triangles": 896,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9779492709374888,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    },
+    {
+      "mesh": "White cylindrical press head",
+      "triangles": 3968,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9876862916390798,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    },
+    {
+      "mesh": "Gold base ring and tapered pump housing",
+      "triangles": 8432,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9802114899601047,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    },
+    {
+      "mesh": "Hollow clear Rose dip tube",
+      "triangles": 736,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.999934669468344,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    },
+    {
+      "mesh": "Independent white connecting stem",
+      "triangles": 1240,
+      "negativeInterpolatedNormals": 0,
+      "tinyTriangles": 0,
+      "minimumFaceNormalDot": 0.9548695986830404,
+      "weldedEdgeFaceIncidence": [
+        2
+      ]
+    }
+  ],
+  "checks": "All 9 actual exported meshes checked against triangle normals: no reversed interpolated normals or tiny triangles. All seven solid shells have welded manifold edge incidence 2; label and print sheets intentionally remain open. Three pump meshes rebuilt; the other six meshes and artwork remain attribute/world/material identical to local baseline 06967d3."
+}

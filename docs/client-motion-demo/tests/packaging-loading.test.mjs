@@ -28,7 +28,7 @@ function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['po
   });
   class Renderer {
     constructor() {events.push('renderer'); this.domElement = document.createElement('canvas'); this.shadowMap = {}; this.capabilities = {getMaxAnisotropy: () => 8}; this.info = {render: {calls: 1, triangles: 12}};}
-    setPixelRatio() {} setClearColor() {} setSize() {}
+    setPixelRatio(value) {events.push(['pixelRatio',value]);} setClearColor() {} setSize() {}
     render(scene, camera) {events.push('render'); if (renderError) throw renderError; onRender?.(scene, camera);}
     dispose() {rendererDisposals++;}
   }
@@ -287,7 +287,7 @@ test('the refill pouch keeps a thin transparent film instead of a thick coloured
 });
 
 for (const [id, node, thickness, toneMapped] of [
-  ['poster-066','Overcap',.012,true],
+  ['poster-066','Overcap',.012,false],
   ['poster-065','RefillPouch',.005,false],
 ]) test(`${id} isolates cover or film settings from shared bottle glass in either traversal order`, async () => {
   for (const bodyFirst of [true,false]) {
@@ -617,7 +617,7 @@ test('B5 keeps the exported dropper complete and white base attached with four r
 test('new clear overcaps retain neutral transmission without changing prior finishes', async () => {
   for(const toneMapped of [false,true]) {
     const base=PACKAGING_PRODUCTS['poster-066'];
-    const product={...base,review:{...base.review,appearance:{...base.review.appearance,overcapToneMapped:toneMapped}}};let loaded,api;
+    const product={...base,review:{...base.review,appearance:{...base.review.appearance,clearOvercap:false,overcapToneMapped:toneMapped}}};let loaded,api;
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try {
       loaded=env.model();const cap=loaded.scene.getObjectByName(product.parts.find(p=>p.key==='overcap').node);
@@ -1213,7 +1213,7 @@ test('Essence Duo keeps both fitted droppers intact throughout desktop and phone
   }
 });
 
-for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45],['poster-065',2.45]]) {
+for (const [id,lift] of [['poster-060',2.65],['poster-061',2.2],['poster-064',2.45],['poster-065',2.45],['poster-066',2.1]]) {
 test(`${id} keeps its complete pumps and clear tubes intact throughout desktop and phone motion`,async()=>{
   const product=PACKAGING_PRODUCTS[id];
   const bytes=readFileSync(new URL(`../packaging-assets/${id}.glb`,import.meta.url));
@@ -1222,7 +1222,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
   const nodes=gltf.nodes.map(node=>{
     const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
     object.name=node.name;
-    if ('mesh' in node && (id==='poster-061' || id==='poster-064' || id==='poster-065')) {
+    if ('mesh' in node && (id==='poster-061' || id==='poster-064' || id==='poster-065' || id==='poster-066')) {
       const exported=gltf.materials[gltf.meshes[node.mesh].primitives[0].material];
       object.material.name=exported.name;
       object.material.transmission=exported.extensions?.KHR_materials_transmission?.transmissionFactor??0;
@@ -1288,18 +1288,33 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
       assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.01868);assert.equal(tube.side,Three.FrontSide);
       const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
     }
+    if(id==='poster-066') {
+      const tube=loaded.scene.getObjectByName('Hollow clear Rose dip tube').material;
+      const body=loaded.scene.getObjectByName('Hollow flat rectangular rose bottle with thick base').material;
+      const gold=loaded.scene.getObjectByName('Gold base ring and tapered pump housing').material;
+      const head=loaded.scene.getObjectByName('White cylindrical press head').material;
+      assert.ok(Math.abs(gold.roughness-.30)<.001);assert.equal(gold.envMapIntensity,.65);
+      assert.ok(Math.abs(head.roughness-.32)<.001);assert.equal(head.envMapIntensity,.3);assert.equal(head.specularIntensity,.3);
+      assert.equal(body.transmission,1);assert.ok(Math.abs(body.roughness-.024)<.001);
+      assert.equal(tube.transmission,1);assert.equal(tube.roughness,.06);assert.equal(tube.thickness,.02949);assert.equal(tube.side,Three.FrontSide);
+      const shader={fragmentShader:'#include <dithering_fragment>'};tube.onBeforeCompile(shader);assert.match(shader.fragmentShader,/float tubeEdge/);
+    }
+    const overcap=loaded.scene.getObjectByName('Overcap');const overcapRest=overcap?.position.clone(),assemblyRest=assembly.position.clone();
     const rest=api.getState().components;
     for(const value of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(value);flush();const state=api.getState();assert.equal(state.renderedProgress,value);
+      const pumpTime=id==='poster-066' ? Math.max(0,Math.min(1,(value-.1)/.9)) : value;
+      const pumpProgress=id==='poster-066' ? pumpTime*pumpTime*(3-2*pumpTime) : value;
+      if(id==='poster-066') assert.ok(overcap.position.y-overcapRest.y>=assembly.position.y-assemblyRest.y,'cover leads complete pump');
       for(const {part,matrix,world} of fitted) {
         assert.deepEqual(part.matrix.toArray(),matrix);
-        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,lift*value,0))<1e-8);
+        assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(new Three.Vector3(0,lift*pumpProgress,0))<1e-8);
       }
       for(const {part,matrix,world} of tied) {assert.deepEqual(part.matrix.toArray(),matrix);assert.ok(part.getWorldPosition(new Three.Vector3()).distanceTo(world)<1e-8,'cord remains tied to bottle');}
       assert.ok(Math.abs((printed.position.z-printedRest.z)-(label.position.z-labelRest.z)-value)<1e-8);
       if(!value){assert.deepEqual(printed.position.toArray(),printedRest.toArray());assert.deepEqual(label.position.toArray(),labelRest.toArray());}
     }
-    assert.deepEqual(rest.sort(),id==='poster-065' ? ['closure','jar','label','print','refill'] : id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
+    assert.deepEqual(rest.sort(),id==='poster-066' ? ['closure','jar','label','overcap','print'] : id==='poster-065' ? ['closure','jar','label','print','refill'] : id==='poster-064' ? ['closure','jar','label','print'] : ['body','closure','label','print']);
   }finally{api?.dispose();env.close();}
   }
 });
@@ -1330,3 +1345,15 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     assert.deepEqual(api.getState().components.sort(),['body','closure','label','name','print']);
   }finally{api?.dispose();env.close();}
  });
+
+test('Rose uses native 2x detail without increasing other model rendering budgets',async()=>{
+  for(const id of ['poster-066','poster-065']) {
+    const product=PACKAGING_PRODUCTS[id],h=harness({product});
+    Object.defineProperty(h.dom.window,'devicePixelRatio',{value:2});
+    try {
+      const api=await h.mount(h.host,{product,modelRequest:h.request(Promise.resolve(new ArrayBuffer(8)))});
+      assert.deepEqual(h.events.find(e=>Array.isArray(e)&&e[0]==='pixelRatio'),['pixelRatio',id==='poster-066'?2:1.75]);
+      api.dispose();
+    } finally {h.close();}
+  }
+});
