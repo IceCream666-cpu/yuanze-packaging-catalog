@@ -189,8 +189,9 @@
     "rootActuallyViewedDesktopAndMobileOpen": true,
     "evidence": "review-evidence/rose-hair-oil/client140/",
     "independentVisualReview": {
-      "status": null,
-      "report": "review-evidence/rose-hair-oil/client140/independent-visual-review.json"
+      "status": "passed",
+      "report": "review-evidence/rose-hair-oil/client140/independent-visual-review.json",
+      "verdict": "PASS: no visual blocking issue found in saved client1.40 release captures compared with approved pump-sharpness captures"
     }
   },
   "selectedRevisionProgress": {

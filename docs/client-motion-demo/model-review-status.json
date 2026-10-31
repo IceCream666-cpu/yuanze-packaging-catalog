@@ -410,7 +410,8 @@
     "releaseManifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
     "releaseHttpsVerification": "passed",
     "releaseBrowserVerification": "passed-desktop-and-simulated-mobile-viewport",
-    "mobilePhysicalDeviceTested": false
+    "mobilePhysicalDeviceTested": false,
+    "releaseReceiptCommit": "08f113d9096c4dceacf2685f49f87e2d63b8b8f0"
   },
   "poster-067": {
     "state": "published",
