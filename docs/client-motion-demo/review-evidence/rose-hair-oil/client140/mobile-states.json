@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-31T06:57:23.779Z",
+  "simulated": true,
+  "physicalDevice": false,
+  "nativeTouch": false,
+  "states": [
+    {
+      "name": "closed",
+      "viewport": [
+        393,
+        852
+      ],
+      "scrollWidth": 393,
+      "canvas": [
+        786,
+        858
+      ],
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      }
+    },
+    {
+      "name": "open",
+      "viewport": [
+        393,
+        852
+      ],
+      "scrollWidth": 393,
+      "canvas": [
+        786,
+        858
+      ],
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9997326048496971,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.6495587980020001,
+          0.17995186887294556,
+          1.6495587980020001
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      }
+    }
+  ]
+}

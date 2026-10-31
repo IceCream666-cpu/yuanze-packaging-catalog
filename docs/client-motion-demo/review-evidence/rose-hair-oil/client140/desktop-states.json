@@ -1,0 +1,140 @@
+{
+  "checkedAt": "2026-10-31T06:56:39.984Z",
+  "states": [
+    {
+      "name": "closed",
+      "title": "源泽 · 客户海报展厅 — client1.40",
+      "viewport": [
+        1622,
+        865
+      ],
+      "scrollWidth": 1622,
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      },
+      "canvas": [
+        3222,
+        1274
+      ],
+      "modelRequests": [
+        "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-066.glb"
+      ]
+    },
+    {
+      "name": "half",
+      "title": "源泽 · 客户海报展厅 — client1.40",
+      "viewport": [
+        1622,
+        865
+      ],
+      "scrollWidth": 1622,
+      "state": {
+        "progress": 0.5,
+        "renderedProgress": 0.49949067915625106,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.6483192412156285,
+          0.08990832224812517,
+          0.8241596206078142
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      },
+      "canvas": [
+        3222,
+        1274
+      ],
+      "modelRequests": [
+        "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-066.glb"
+      ]
+    },
+    {
+      "name": "open",
+      "title": "源泽 · 客户海报展厅 — client1.40",
+      "viewport": [
+        1622,
+        865
+      ],
+      "scrollWidth": 1622,
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9993780981791879,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -3.29794772399132,
+          0.1798880576722537,
+          1.64897386199566
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      },
+      "canvas": [
+        3222,
+        1274
+      ],
+      "modelRequests": [
+        "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-066.glb"
+      ]
+    },
+    {
+      "name": "side-90",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.999999971496197,
+        "yaw": 1.5704676768249535,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -3.29999990593745,
+          0.1799999948693154,
+          1.649999952968725
+        ],
+        "components": [
+          "overcap",
+          "closure",
+          "jar",
+          "label",
+          "print"
+        ],
+        "meshes": 17,
+        "triangles": 67074
+      }
+    }
+  ]
+}

@@ -1,0 +1,577 @@
+{
+  "version": "client1.40",
+  "roles": {
+    "client": true,
+    "employee": true,
+    "admin": true
+  },
+  "resources": [
+    "assets/posters/poster-074.webp",
+    "assets/posters/poster-075.webp",
+    "assets/posters/poster-076.webp",
+    "assets/posters/poster-077.webp",
+    "assets/posters/poster-078.webp",
+    "preview.js",
+    "preview.css",
+    "index.html",
+    "product-posters.js",
+    "assets/featured/poster-012-640.webp",
+    "assets/packaging/PackagingDetail-B113D0xE.js",
+    "assets/packaging/PackagingDetail-DKVlGnbY.css",
+    "assets/packaging/ScrollTrigger.min.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/gsap.min.js",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/packaging-scene-3Ba1DY-u.js",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067.glb",
+    "assets/packaging/poster-068.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb"
+  ],
+  "packagingResources": [
+    {
+      "name": "assets/packaging/beach-magic-packaging.glb",
+      "bytes": 2395680,
+      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2395680"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/liaose-pump.glb",
+      "bytes": 996144,
+      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/996144"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-013.glb",
+      "bytes": 1064352,
+      "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1064352"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-039.glb",
+      "bytes": 914020,
+      "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/914020"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-042.glb",
+      "bytes": 1639380,
+      "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1639380"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-044.glb",
+      "bytes": 2377084,
+      "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2377084"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-047.glb",
+      "bytes": 4731120,
+      "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4731120"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-049.glb",
+      "bytes": 1577136,
+      "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1577136"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-051.glb",
+      "bytes": 4132088,
+      "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4132088"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-056.glb",
+      "bytes": 529536,
+      "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/529536"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-057.glb",
+      "bytes": 2490520,
+      "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2490520"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-058.glb",
+      "bytes": 1953112,
+      "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1953112"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-059.glb",
+      "bytes": 1220564,
+      "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1220564"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-060.glb",
+      "bytes": 1111452,
+      "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1111452"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-061.glb",
+      "bytes": 1103220,
+      "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1103220"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-062.glb",
+      "bytes": 279060,
+      "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/279060"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-063.glb",
+      "bytes": 819544,
+      "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/819544"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-064.glb",
+      "bytes": 3622216,
+      "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3622216"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-065.glb",
+      "bytes": 2748824,
+      "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/2748824"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-066.glb",
+      "bytes": 4254124,
+      "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/4254124"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-067.glb",
+      "bytes": 3379404,
+      "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3379404"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-068.glb",
+      "bytes": 1458536,
+      "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1458536"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-069.glb",
+      "bytes": 3522180,
+      "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3522180"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-070.glb",
+      "bytes": 3191832,
+      "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/3191832"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-072.glb",
+      "bytes": 1163416,
+      "sha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/1163416"
+      },
+      "fullFileHashVerifiedOnServer": true
+    },
+    {
+      "name": "assets/packaging/poster-073.glb",
+      "bytes": 627764,
+      "sha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b",
+      "httpsRange": {
+        "status": 206,
+        "bytes": 100,
+        "contentRange": "bytes 0-99/627764"
+      },
+      "fullFileHashVerifiedOnServer": true
+    }
+  ],
+  "withdrawnModels": [
+    "/showroom/assets/packaging/poster-074.glb",
+    "/showroom/assets/packaging/poster-075.glb",
+    "/showroom/assets/packaging/poster-076.glb",
+    "/showroom/assets/packaging/poster-077.glb",
+    "/showroom/assets/packaging/poster-078.glb"
+  ],
+  "withdrawnFeaturedImages": [
+    "/showroom/assets/featured/poster-074.png",
+    "/showroom/assets/featured/poster-074-640.webp",
+    "/showroom/assets/featured/poster-074-1024.webp",
+    "/showroom/assets/featured/poster-075.png",
+    "/showroom/assets/featured/poster-075-640.webp",
+    "/showroom/assets/featured/poster-075-1024.webp",
+    "/showroom/assets/featured/poster-076.png",
+    "/showroom/assets/featured/poster-076-640.webp",
+    "/showroom/assets/featured/poster-076-1024.webp",
+    "/showroom/assets/featured/poster-077.png",
+    "/showroom/assets/featured/poster-077-640.webp",
+    "/showroom/assets/featured/poster-077-1024.webp",
+    "/showroom/assets/featured/poster-078.png",
+    "/showroom/assets/featured/poster-078-640.webp",
+    "/showroom/assets/featured/poster-078-1024.webp"
+  ],
+  "unchangedPosterRanges": {
+    "assets/posters/poster-074.webp": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1192724"
+    },
+    "assets/posters/poster-075.webp": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1526366"
+    },
+    "assets/posters/poster-076.webp": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1162382"
+    },
+    "assets/posters/poster-077.webp": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1283928"
+    },
+    "assets/posters/poster-078.webp": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1354010"
+    }
+  },
+  "roseFullFile": {
+    "name": "assets/packaging/poster-066.glb",
+    "status": 200,
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
+  },
+  "previousModelCacheRevalidated": {
+    "status": 200,
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+    "etagChanged": true
+  },
+  "all26ModelRanges": {
+    "assets/packaging/beach-magic-packaging.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2395680"
+    },
+    "assets/packaging/liaose-pump.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/996144"
+    },
+    "assets/packaging/poster-013.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1064352"
+    },
+    "assets/packaging/poster-039.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/914020"
+    },
+    "assets/packaging/poster-042.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1639380"
+    },
+    "assets/packaging/poster-044.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2377084"
+    },
+    "assets/packaging/poster-047.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4731120"
+    },
+    "assets/packaging/poster-049.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1577136"
+    },
+    "assets/packaging/poster-051.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4132088"
+    },
+    "assets/packaging/poster-056.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/529536"
+    },
+    "assets/packaging/poster-057.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2490520"
+    },
+    "assets/packaging/poster-058.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1953112"
+    },
+    "assets/packaging/poster-059.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1220564"
+    },
+    "assets/packaging/poster-060.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1111452"
+    },
+    "assets/packaging/poster-061.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1103220"
+    },
+    "assets/packaging/poster-062.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/279060"
+    },
+    "assets/packaging/poster-063.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/819544"
+    },
+    "assets/packaging/poster-064.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3622216"
+    },
+    "assets/packaging/poster-065.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2748824"
+    },
+    "assets/packaging/poster-066.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4254124"
+    },
+    "assets/packaging/poster-067.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3379404"
+    },
+    "assets/packaging/poster-068.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1458536"
+    },
+    "assets/packaging/poster-069.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3522180"
+    },
+    "assets/packaging/poster-070.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3191832"
+    },
+    "assets/packaging/poster-072.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1163416"
+    },
+    "assets/packaging/poster-073.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/627764"
+    }
+  },
+  "modelRange": {
+    "status": 206,
+    "bytes": 100,
+    "contentRange": "bytes 0-99/4254124"
+  },
+  "originalDownload": {
+    "attachment": true,
+    "range": 206,
+    "fullFileHashVerifiedOnServer": true
+  },
+  "adminRoseRange": {
+    "status": 206,
+    "bytes": 100,
+    "contentRange": "bytes 0-99/4254124"
+  },
+  "loginVideoRange": {
+    "status": 206,
+    "bytes": 100,
+    "contentRange": "bytes 0-99/94773"
+  },
+  "loginVerification": {
+    "smallAssetsFullHttpsHash": true,
+    "videoHttpsRange": true,
+    "allLoginFileHashesUnchangedOnServer": true
+  },
+  "videoRange": true,
+  "counts": {
+    "featured": 26,
+    "posters": 61,
+    "models": 26,
+    "images": 418,
+    "resources": 458
+  },
+  "checkedAt": "2026-10-31T14:57:06+08:00",
+  "manifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
+  "publicHttps": true,
+  "certificateVerified": true,
+  "directOriginAddress": "47.79.233.3",
+  "tlsServerName": "bmt.yuanzebeauty.com",
+  "anonymousDenied": true,
+  "packagingAccessControlled": true,
+  "logoutVerified": true,
+  "loginUnchanged": true
+}

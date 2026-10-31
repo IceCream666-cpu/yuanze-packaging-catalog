@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-31T07:00:09.981Z",
+  "poster": [
+    {
+      "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-066-1280.webp",
+      "width": 1280,
+      "height": 960,
+      "complete": true
+    }
+  ],
+  "returned": {
+    "title": "源泽 · 客户海报展厅 — client1.40",
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.9997297177719411,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.2991080686474055,
+        0.17995134919894928,
+        1.6495540343237027
+      ],
+      "components": [
+        "overcap",
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 17,
+      "triangles": 67074
+    },
+    "featuredTitle": "Rose Hair Oil",
+    "modelAccessibleName": "Rose Hair Oil 分层包材模型，可拖拽旋转"
+  }
+}

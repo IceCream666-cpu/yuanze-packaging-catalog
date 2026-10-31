@@ -1,0 +1,218 @@
+{
+  "version": "client1.40",
+  "status": "published-and-live-verified",
+  "scope": "Selection19 poster-066 Rose Hair Oil approved complete pump and sharpness correction",
+  "sourceCommit": "843286b9b984c660cfb4e4ef415c038372292740",
+  "approvedPreviewCommit": "a4224e52675a93150c9ad8849379afeb0257cdd3",
+  "publishedAt": "2026-10-31T14:53:38+08:00",
+  "checkedAt": "2026-10-31T14:57:06+08:00",
+  "urls": {
+    "client": "https://bmt.yuanzebeauty.com/client",
+    "model": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-066.glb"
+  },
+  "navigation": "Select Rose Hair Oil in the featured carousel and open product details. Official entry does not select a product from a model query parameter.",
+  "model": {
+    "id": "poster-066",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+    "components": [
+      "Overcap",
+      "PumpAssembly",
+      "Body",
+      "PaperLabel",
+      "LogoPrint"
+    ],
+    "containsFormula": false,
+    "pumpLift": 2.1,
+    "capLift": 3.3,
+    "completeClearDipTube": true,
+    "sharpPumpGeometry": true,
+    "productSpecificPixelRatioCap": 2
+  },
+  "publication": {
+    "version": "client1.40",
+    "patch": "approved-rose-hair-oil-066-complete-pumps-only",
+    "publishedAt": "2026-10-31T14:53:38+08:00",
+    "release": "/opt/yuanze-reference/releases/20261013-client-hd-v1",
+    "manifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
+    "backup": "/opt/yuanze-reference/backups/client1.40-rose-hair-oil-complete-pumps-20261031",
+    "baselineManifestSha256": "fec7acf67cc121ad40d4f16e4685a459927fe07e77c6719b1c80a2bf44b8a3be",
+    "verifiedFiles": 458,
+    "changed": [
+      "assets/packaging/PackagingDetail-B113D0xE.js",
+      "assets/packaging/packaging-scene-3Ba1DY-u.js",
+      "assets/packaging/poster-066.glb",
+      "index.html",
+      "preview.js",
+      "bundle-manifest.json"
+    ],
+    "removedChunks": [
+      "assets/packaging/PackagingDetail-CEfoWWRm.js",
+      "assets/packaging/packaging-scene-SfEI-3_d.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-B113D0xE.js",
+      "assets/packaging/packaging-scene-3Ba1DY-u.js"
+    ],
+    "preservedPackaging": [
+      "assets/packaging/ScrollTrigger.min.js",
+      "assets/packaging/beach-magic-packaging.glb",
+      "assets/packaging/gsap.min.js",
+      "assets/packaging/liaose-pump.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-067.glb",
+      "assets/packaging/poster-068.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb"
+    ],
+    "outsideUnchanged": 6820,
+    "service": "MainPID=33772\nActiveState=active\n",
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "loginManifestSha256": "5add53fc3a2fa81bffaf4ff1cd8ac9ab03289d803053540c8f4316e835c5bf42"
+  },
+  "counts": {
+    "featured": 26,
+    "posters": 61,
+    "models": 26,
+    "images": 418,
+    "resources": 458
+  },
+  "tests": {
+    "frontend": 167,
+    "model": 158,
+    "release": 19,
+    "build": true
+  },
+  "independentAudit": {
+    "status": "passed",
+    "sourceCommit": "843286b9b984c660cfb4e4ef415c038372292740",
+    "manifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
+    "report": "review-evidence/rose-hair-oil/client140/independent-audit.json"
+  },
+  "preservation": {
+    "other25ModelsUnchanged": true,
+    "all418ImagesUnchanged": true,
+    "poster072And073GlassEnvironmentPreserved": true,
+    "unapproved070LocalDraftExcluded": true,
+    "businessDataWrites": 0,
+    "serviceRestart": false
+  },
+  "https": {
+    "checkedAt": "2026-10-31T14:57:06+08:00",
+    "roseFullFile": {
+      "name": "assets/packaging/poster-066.glb",
+      "status": 200,
+      "bytes": 4254124,
+      "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
+    },
+    "previousModelCacheRevalidated": {
+      "status": 200,
+      "bytes": 4254124,
+      "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+      "etagChanged": true
+    },
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "anonymousDenied": true,
+    "packagingAccessControlled": true,
+    "logoutVerified": true,
+    "loginUnchanged": true,
+    "originalDownload": {
+      "attachment": true,
+      "range": 206,
+      "fullFileHashVerifiedOnServer": true
+    },
+    "certificateVerified": true,
+    "manifestSha256": "2444cefc918a0a6e0d9fdfeda470a57c1ab157311e438d7e40c2446014f65ddc",
+    "modelRangeChecksPassed": 26,
+    "fullReport": "review-evidence/rose-hair-oil/client140/online-verification.json"
+  },
+  "browser": {
+    "checkedAt": "2026-10-31T07:00:09.981Z",
+    "desktop": {
+      "viewport": [
+        1622,
+        865
+      ],
+      "states": [
+        "closed",
+        "half",
+        "open",
+        "side-90"
+      ],
+      "passed": true
+    },
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "simulated": true,
+      "physicalDeviceTested": false,
+      "nativeTouchTested": false,
+      "horizontalOverflow": false
+    },
+    "posterRoundtrip": {
+      "loadedSize": [
+        1280,
+        960
+      ],
+      "returnedToCorrectModel": true
+    },
+    "screenshots": 6,
+    "rootActuallyViewedDesktopAndMobileOpen": true,
+    "evidence": "review-evidence/rose-hair-oil/client140/",
+    "independentVisualReview": {
+      "status": "passed",
+      "report": "review-evidence/rose-hair-oil/client140/independent-visual-review.json",
+      "verdict": "PASS: no visual blocking issue found in saved client1.40 release captures compared with approved pump-sharpness captures"
+    }
+  },
+  "selectedRevisionProgress": {
+    "published": 13,
+    "awaitingReview": 0,
+    "queuedSelections": [
+      20,
+      21,
+      23
+    ],
+    "nextProductStarted": false
+  },
+  "limits": [
+    "Mobile checks use a 393x852 simulated viewport, not a physical phone or native touch.",
+    "The white press head remains bright behind the clear closed cover; studio metal reflections remain soft, and small lettering is limited by screen scale.",
+    "Hidden pump dimensions and recessed outlet are display geometry, not verified production fluid paths.",
+    "Unchanged large media were checked with HTTPS byte ranges plus complete server-side hashes; the changed066 model and old-ETag response were downloaded and hashed in full."
+  ],
+  "localGalleryValidation": {
+    "testsPassed": 7,
+    "build": "passed",
+    "poster066State": "published"
+  }
+}
