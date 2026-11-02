@@ -250,6 +250,14 @@ class MotionReleaseTests(unittest.TestCase):
 
 
 class DisplayDerivativeTests(unittest.TestCase):
+
+    def test_body_care_duo_subject_fits_the_desktop_and_mobile_featured_slots(self):
+        with Image.open(builder.MOTION_CLIENT / 'featured-assets/poster-079.png') as photo:
+            left, top, right, bottom = photo.getchannel('A').point(lambda a: 255 if a >= 96 else 0).getbbox()
+            self.assertTrue(0 < left < right < photo.width and 0 < top < bottom < photo.height)
+            for width, height, min_subject_height in [(310, 433, 275), (240, 235, 200)]:
+                fit = min(width / photo.width, height / photo.height)
+                self.assertGreaterEqual((bottom - top) * fit, min_subject_height)
     @classmethod
     def setUpClass(cls):
         cls.previous = builder.expected_files(edition='client1')
