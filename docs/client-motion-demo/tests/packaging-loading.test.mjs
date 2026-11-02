@@ -15,11 +15,11 @@ function deferred() {
   const promise = new Promise((yes, no) => {resolve = yes; reject = no;});
   return {promise, resolve, reject};
 }
-function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
+function harness({parse, renderError, onRender, reduced = true, coarse = false, product = PACKAGING_PRODUCTS['poster-012']} = {}) {
   const dom = new JSDOM('<div id="host"></div>', {pretendToBeVisual: true});
   const events = [], frames = new Map(); let frameId = 0, rendererDisposals = 0, envDisposals = 0, observers = 0;
   Object.assign(globalThis, {window: dom.window, document: dom.window.document,
-    matchMedia: () => ({matches: true}), requestAnimationFrame: callback => {frames.set(++frameId, callback); return frameId;},
+    matchMedia: query => ({matches: query.includes('pointer: coarse') ? coarse : reduced}), requestAnimationFrame: callback => {frames.set(++frameId, callback); return frameId;},
     cancelAnimationFrame: id => frames.delete(id), ResizeObserver: class {
       observe() {observers++;} disconnect() {observers--;}
     }});
@@ -1356,4 +1356,86 @@ test('Rose uses native 2x detail without increasing other model rendering budget
       api.dispose();
     } finally {h.close();}
   }
+});
+
+
+test('one touch can flip, reverse and rotate diagonally, even across capture boundaries', async () => {
+  let cameraTop, shadowOpacity;
+  const env = harness({reduced: false, coarse: true, onRender(scene, camera) {
+    cameraTop = camera.top;
+    shadowOpacity = scene.children.find(o => o.isMesh && o.geometry.type === 'PlaneGeometry').material.opacity;
+  }});
+  let api;
+  try {
+    api = await env.mount(env.host, {modelRequest: env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const canvas = env.host.querySelector('canvas'), captures = [];
+    canvas.setPointerCapture = id => captures.push(id);
+    const send = (type, id, x, y, primary = true) => canvas.dispatchEvent(Object.assign(new window.Event(type), {
+      pointerId: id, pointerType: 'touch', isPrimary: primary, button: 0, clientX: x, clientY: y,
+    }));
+    const draw = () => {
+      const scheduled = [...env.frames.values()]; env.frames.clear();
+      scheduled.forEach(fn => fn(16));
+    };
+    const near = (actual, want) => assert.ok(Math.abs(actual - want) < 1e-8, actual + ' vs ' + want);
+    const startTop = cameraTop, startShadow = shadowOpacity;
+    send('pointerdown', 1, 10, 15);
+    send('pointermove', 1, 30, 65);
+    send('pointerdown', 2, 18, 19, false);
+    send('pointercancel', 2, 18, 19, false);
+    send('pointermove', 1, 130, 105);
+    assert.deepEqual(captures, [1]);
+    assert.equal(env.frames.size, 1, 'several moves share one pending draw');
+    draw();
+    near(api.getState().yaw, 3);
+    near(api.getState().pitch, Math.PI/2);
+    near(api.getState().progress, 0);
+    assert.equal(env.frames.size, 0, 'a finished drag frame schedules no easing tail');
+    send('pointermove', 1, 10, 285); draw();
+    near(api.getState().pitch, -Math.PI/2); // 270 degrees.
+    send('pointermove', 1, 10, 375); draw();
+    near(api.getState().pitch, 0);
+    near(cameraTop, startTop); near(shadowOpacity, startShadow);
+    send('pointermove', 1, 10, 374); draw();
+    near(api.getState().pitch, -Math.PI/180);
+    send('lostpointercapture', 1, 10, 374);
+    send('pointermove', 1, 99, 90);
+    assert.equal(env.frames.size, 0);
+    send('pointerdown', 3, 20, 20);
+    send('pointermove', 3, 20, -19); draw();
+    near(api.getState().pitch, -40*Math.PI/180);
+    send('pointercancel', 3, 20, -19);
+    send('pointermove', 3, 0, 0);
+    assert.equal(env.frames.size, 0);
+    api.setProgress(.5); draw();
+    near(api.getState().renderedProgress, .5);
+  } finally {api?.dispose(); env.close();}
+});
+
+test('mouse rotation retains the previous gains, pitch bounds and smoothing', async () => {
+  const env = harness({reduced: false});
+  let api;
+  try {
+    api = await env.mount(env.host, {modelRequest: env.request(Promise.resolve(new ArrayBuffer(12)))});
+    const canvas = env.host.querySelector('canvas');
+    canvas.setPointerCapture = () => {};
+    const send = (type, x, y) => canvas.dispatchEvent(Object.assign(new window.Event(type), {
+      pointerId: 1, pointerType: 'mouse', button: 0, clientX: x, clientY: y,
+    }));
+    let time = 0;
+    const draw = () => {
+      const scheduled = [...env.frames.values()]; env.frames.clear(); time += 16;
+      scheduled.forEach(fn => fn(time));
+    };
+    send('pointerdown', 0, 0);
+    send('pointermove', 120, 100); draw();
+    assert.ok(api.getState().yaw > 0 && api.getState().yaw < 1.8);
+    assert.ok(api.getState().pitch > 0 && api.getState().pitch < .6);
+    while (env.frames.size) draw();
+    assert.ok(Math.abs(api.getState().yaw - 1.8) < .001);
+    assert.ok(Math.abs(api.getState().pitch - .6) < .001);
+    send('pointermove', 120, 900); send('pointerup', 120, 900);
+    while (env.frames.size) draw();
+    assert.ok(Math.abs(api.getState().pitch - Math.PI*.75) < .001);
+  } finally {api?.dispose(); env.close();}
 });

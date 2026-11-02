@@ -608,13 +608,13 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-B113D0xE.js": {
-      "bytes": 12360,
-      "sha256": "4e3b595119b63b1efebdd659414516d2df41c77cc245617a14839b1c7ccbaf10"
+    "assets/packaging/PackagingDetail-B0fPcP3F.js": {
+      "bytes": 12503,
+      "sha256": "e832c0365e59e1a60eb1289eb83afb618b724a358d134116bd438749776fd2d3"
     },
-    "assets/packaging/PackagingDetail-DKVlGnbY.css": {
-      "bytes": 12107,
-      "sha256": "fd4e7f86885747e0a4dfa3bc41a85b9f9bb9682c7b65ca9e1f878c029e2396b9"
+    "assets/packaging/PackagingDetail-qb7H1i3-.css": {
+      "bytes": 13305,
+      "sha256": "7ad593397a51f804f743d0e2b2be2497b35c26e064a7ec6d08c8098f0f2e23c5"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
@@ -632,9 +632,9 @@
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
     },
-    "assets/packaging/packaging-scene-3Ba1DY-u.js": {
-      "bytes": 579679,
-      "sha256": "f82d211cb969bdd7394d06e92bc910279e9d8d60fe4d505ec51f1d012579e4b4"
+    "assets/packaging/packaging-scene-BNY2W0_S.js": {
+      "bytes": 579956,
+      "sha256": "4dceb08b1c2222a1e629d5caf7b8f54607ec0fe08b6f74ce440f694e1b0bf7b3"
     },
     "assets/packaging/poster-013.glb": {
       "bytes": 1064352,
@@ -1854,7 +1854,7 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "1a389a071892b447b370dc6163306850f39667f3533f4c26f55859a9c9965fb9"
+      "sha256": "bcb8c2d115acf8abadd5f407e70ad914c82f19f102354f47f395f5d0dc011cfe"
     },
     "preview.css": {
       "bytes": 51228,
@@ -1862,7 +1862,7 @@
     },
     "preview.js": {
       "bytes": 388490,
-      "sha256": "e2396946d98303639745064f0d7945ff15bd24407fd5cf4cc2299d29a33e313a"
+      "sha256": "55f96d73bfea7f252b029a251d5cba51d0fd6b251d92a1b3e2c6294509b70918"
     },
     "product-posters.js": {
       "bytes": 21980,
@@ -1871,5 +1871,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.41"
+  "version": "client1.42"
 }

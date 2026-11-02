@@ -1,4 +1,4 @@
-"""Client 1.30 restores two reviewed homepage entries and preserves all 26 packaging models."""
+"""Client 1.41 adds Body Care Duo to the 26 reviewed packaging models."""
 import copy
 import hashlib
 import importlib.util
@@ -17,14 +17,15 @@ spec.loader.exec_module(builder)
 
 
 class PackagingApprovalTests(unittest.TestCase):
-    def test_only_the_26_reviewed_models_and_two_animation_scripts_are_added(self):
-        self.assertEqual(len(builder.PACKAGING_ASSETS), 28)
-        self.assertEqual(sum(kind == 'model' for kind in builder.PACKAGING_ASSETS.values()), 26)
+    def test_only_the_27_reviewed_models_and_two_animation_scripts_are_added(self):
+        self.assertEqual(len(builder.PACKAGING_ASSETS), 29)
+        self.assertEqual(sum(kind == 'model' for kind in builder.PACKAGING_ASSETS.values()), 27)
         approval = json.loads((builder.MOTION_CLIENT / 'packaging-manifest.json').read_text())
         featured = json.loads((builder.MOTION_CLIENT / 'src/featured.json').read_text())
         approved_ids = [approval['posterId'], *(item['posterId'] for item in approval['additionalProducts'])]
-        self.assertEqual(len(approved_ids), 26)
-        self.assertEqual(len(featured), 26)
+        self.assertEqual(len(approved_ids), 27)
+        self.assertEqual(len(featured), 27)
+        self.assertEqual(featured[-1]['id'], 'poster-079')
         self.assertFalse({f'poster-{n:03}' for n in range(74, 79)} & {item['id'] for item in featured})
         self.assertEqual(set(approved_ids), {item['id'] for item in featured})
         self.assertFalse({'poster-074', 'poster-075', 'poster-076', 'poster-077', 'poster-078'} & set(approved_ids))
@@ -33,6 +34,8 @@ class PackagingApprovalTests(unittest.TestCase):
         self.assertEqual(files['unrelated.webp'], b'preserved')
         self.assertEqual(set(files) - {'unrelated.webp'},
                          {f'assets/packaging/{name}' for name in builder.PACKAGING_ASSETS})
+        self.assertEqual(hashlib.sha256(files['assets/packaging/poster-079.glb']).hexdigest(),
+                         '4423eb4a6c061f48a249320507d3d70fc09daf1073249cbb63c9d1f1a8cc3b27')
         glb = files['assets/packaging/beach-magic-packaging.glb']
         self.assertEqual(struct.unpack_from('<4sII', glb), (b'glTF', 2, len(glb)))
         json_length, chunk_type = struct.unpack_from('<II', glb, 12)

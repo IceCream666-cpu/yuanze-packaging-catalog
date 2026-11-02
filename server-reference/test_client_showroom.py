@@ -65,7 +65,9 @@ class ShowroomBuild(unittest.TestCase):
         for name in ['catalog.json', 'auth.json', 'preview_customer_showroom.py', 'assets/manifest.json']:
             self.assertNotIn(name, files)
         self.assertEqual(len([name for name in files if name.endswith('.pdf')]), 4)
-        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 122)
+        self.assertEqual(len([name for name in files if name.startswith('assets/posters/')]), 124)
+        self.assertIn('assets/posters/poster-079.webp', files)
+        self.assertIn('assets/posters/poster-079-thumb.webp', files)
         self.assertEqual({name for name in files if name.startswith('assets/poster-banners/')}, set(BANNER_PATHS))
         for path in BANNER_PATHS:
             self.assertIn('/showroom/' + path, files['company-content.js'].decode())

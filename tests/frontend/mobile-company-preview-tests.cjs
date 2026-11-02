@@ -123,7 +123,7 @@ function activeBanner(document) {
 test('legacy markup without the banner keeps poster viewing, downloads, languages and navigation usable', async () => {
   const {dom,window,document,errors}=setup('zh',false,{hash:'#/products',legacyBanner:true});
   assert.equal(document.getElementById('poster-banner'),null);
-  assert.equal(document.querySelectorAll('[data-poster-card]').length,61);
+  assert.equal(document.querySelectorAll('[data-poster-card]').length,62);
   assert.equal(document.getElementById('poster-view').hidden,false);
   document.querySelector('[data-poster-image=poster-001]').click();
   assert.equal(document.getElementById('photo-dialog').open,true);
@@ -156,7 +156,7 @@ test('the five banner images load only when selected on the poster page and do n
   assert.deepEqual(slides.map(image=>image.dataset.bannerSlide),['0','1','2','3','4']);
   assert.deepEqual(slides.map(image=>image.dataset.src),bannerFiles.map(name=>`assets/poster-banners/${name}.webp`));
   assert.equal(slides.some(image=>image.hasAttribute('src')),false);
-  assert.equal(window.YuanzeProductPosters.items.length,61);
+  assert.equal(window.YuanzeProductPosters.items.length,62);
   banner.advance(18000);
   assert.equal(slides.some(image=>image.hasAttribute('src')),false);
   document.querySelector('.bottom-nav [data-page-link=products]').click();
@@ -164,7 +164,7 @@ test('the five banner images load only when selected on the poster page and do n
   assert.equal(document.getElementById('banner-position').textContent,'1 / 5');
   assert.equal(slides[0].getAttribute('src'),lightURL('assets/poster-banners/01-pdrn-capsule-cream.webp',1280));
   assert.equal(slides.slice(1).some(image=>image.hasAttribute('src')),false);
-  assert.equal(document.querySelectorAll('[data-poster-card]').length,61);
+  assert.equal(document.querySelectorAll('[data-poster-card]').length,62);
   assert.equal(document.getElementById('catalog-frame').hasAttribute('src'),false);
   assert.deepEqual(errors,[]);dom.window.close();
 });
@@ -255,7 +255,7 @@ test('a failed banner shows its fallback and users can continue to an intact bac
 test('poster landing shows every active thumbnail without loading the catalogue or full artwork', () => {
   const {dom,window,document,errors} = setup('zh',false,{hash:'#/products'});
   const data=window.YuanzeProductPosters, frame=document.getElementById('catalog-frame');
-  assert.equal(data.items.length,61);
+  assert.equal(data.items.length,62);
   assert.equal(document.getElementById('poster-view').hidden,false);
   assert.equal(document.getElementById('catalog-view').hidden,true);
   assert.equal(frame.hasAttribute('src'),false);
@@ -711,11 +711,11 @@ test('home does not fetch poster thumbnails, and the gallery loads only nearby v
     };
   }});
   const cards=Array.from(document.querySelectorAll('[data-poster-card] img'));
-  assert.equal(cards.length,61);assert(cards.every(image=>!image.hasAttribute('src')));
+  assert.equal(cards.length,62);assert(cards.every(image=>!image.hasAttribute('src')));
   const observer=observers.find(item=>item.options.root?.id==='poster-view');
   assert.equal(observer.targets.size,0);
   document.querySelector('.bottom-nav [data-page-link=products]').click();
-  assert.equal(observer.targets.size,61);assert(cards.every(image=>!image.hasAttribute('src')));
+  assert.equal(observer.targets.size,62);assert(cards.every(image=>!image.hasAttribute('src')));
   assert.equal(observer.options.rootMargin,'120px 0px');
   observer.callback([{target:cards[0],isIntersecting:true},{target:cards[1],isIntersecting:false}]);
   assert.equal(cards[0].getAttribute('src'),lightURL(window.YuanzeProductPosters.items[0].src));

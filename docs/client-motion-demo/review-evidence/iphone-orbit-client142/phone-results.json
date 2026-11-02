@@ -1,0 +1,258 @@
+{
+  "before": {
+    "start": {
+      "yaw": 0,
+      "pitch": 0,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "horizontal": {
+      "yaw": 1.6035329151900464,
+      "pitch": 0,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "settled": {
+      "yaw": 1.7995914185329207,
+      "pitch": 0,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "vertical": {
+      "yaw": 1.8000002288818358,
+      "pitch": 0,
+      "progress": 0.09033163209228096,
+      "top": 175,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "released": {
+      "yaw": 1.800000228881836,
+      "pitch": 0,
+      "progress": 0.09368869602179515,
+      "top": 175,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    }
+  },
+  "after": {
+    "start": {
+      "yaw": 0,
+      "pitch": 0,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "horizontal": {
+      "yaw": 3.000000381469727,
+      "pitch": 0,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "settled": {
+      "yaw": 3.000000381469727,
+      "pitch": 0,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "vertical": {
+      "yaw": 3.000000381469727,
+      "pitch": 2.9670597283903604,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "released": {
+      "yaw": 3.000000381469727,
+      "pitch": 2.9670597283903604,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "diagonal": {
+      "yaw": 1.750000381469727,
+      "pitch": -2.1816615649929116,
+      "progress": 0,
+      "top": 0,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    },
+    "outside": {
+      "yaw": 1.750000381469727,
+      "pitch": -2.1816615649929116,
+      "progress": 0.080472,
+      "top": 75,
+      "rect": {
+        "x": 0,
+        "y": 205,
+        "width": 430,
+        "height": 509,
+        "top": 205,
+        "right": 430,
+        "bottom": 714,
+        "left": 0
+      },
+      "screen": [
+        430,
+        932
+      ],
+      "overflow": false
+    }
+  }
+}

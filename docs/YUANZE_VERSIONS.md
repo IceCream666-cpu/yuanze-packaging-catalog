@@ -1,5 +1,13 @@
 # 源泽版本记录
 
+## client1.42 · iPhone 模型自由翻转（2026-11-02 本地预览）
+
+从 client1.41 发布提交 e4cd9be 修复共享模型查看器。模型区域内单指横拖、竖拖、斜拖可以自由转动，包括连续翻过瓶底。松手保持当前角度。画布外上下滑动、滑杆和阶段按钮控制部件展开。短横屏改为左侧模型、右侧控件；电脑鼠标维持原旋转参数。
+
+Ego Lite 模拟 430×932 触摸。同样横拖120px，旧版转约103°，本版约172°。同样在模型上竖拖190px，旧版俯仰为0°且页面滚动175px，本版翻过半圈，页面滚动0px。另验斜拖、画布外展开、852×393和932×430横屏画布命中、阶段按钮及桌面鼠标两轴。Body Care Duo 单次受控拖动后额外绘制14帧→0帧。以上是模拟输入和渲染调用观测，实体iPhone待试用。
+
+467项展厅资源、27款精选、62张海报。已核对453份媒体哈希，其中包括27个GLB。完整 scripts/verify.py 通过，已按1.41的新增礼盒校准旧测试中的数量与审批摘要。候选分支为codex/client142-touch-orbit。本次提供同Wi-Fi限时手机预览，正式服务器未发布本版。[触摸前后对照](client-motion-demo/review-evidence/iphone-orbit-client142/phone-results.json) · [横屏与桌面对照](client-motion-demo/review-evidence/iphone-orbit-client142/layout-results.json) · [松手后渲染记录](client-motion-demo/review-evidence/iphone-orbit-client142/tail-results.json)
+
 ## client1.41 · Body Care Duo（2026-11-02 已上线）
 
 新增 poster-079 圆盒身体护理双瓶套装。首页第 27 款，海报库共 62 张。模型为礼盒、内托、两支空瓶、两个带管完整泵组及瓶身印字。正式服务文件校验通过；交互在本机 Ego Lite 验证。详见 client141-body-care-duo-release.json。

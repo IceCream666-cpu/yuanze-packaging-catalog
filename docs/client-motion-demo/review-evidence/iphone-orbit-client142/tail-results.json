@@ -1,0 +1,64 @@
+{
+  "before": {
+    "title": "Body Care Duo",
+    "endObserved": true,
+    "drawnFramesDuring": 33,
+    "drawnFramesAfter": 14,
+    "lastDrawAfterMs": 455,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 1.4998314370753978,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "lid",
+        "tray",
+        "cream",
+        "wash",
+        "cp",
+        "pump",
+        "ci",
+        "print"
+      ],
+      "meshes": 31,
+      "triangles": 78770
+    }
+  },
+  "after": {
+    "title": "Body Care Duo",
+    "endObserved": true,
+    "drawnFramesDuring": 16,
+    "drawnFramesAfter": 0,
+    "lastDrawAfterMs": 0,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 2.5,
+      "pitch": 0.05235987755982988,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "lid",
+        "tray",
+        "cream",
+        "wash",
+        "cp",
+        "pump",
+        "ci",
+        "print"
+      ],
+      "meshes": 31,
+      "triangles": 78770
+    }
+  }
+}

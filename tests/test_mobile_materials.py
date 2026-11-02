@@ -43,7 +43,7 @@ class CompanyMaterials(unittest.TestCase):
         manifest = json.loads((ASSETS / 'manifest.json').read_text())
         entries = {item['path']: item for item in manifest['files']}
         previews = [item for item in manifest['files'] if item['kind'] == 'showroom-preview']
-        self.assertEqual(len(previews), 144)
+        self.assertEqual(len(previews), 146)
         for item in previews:
             with self.subTest(path=item['path']):
                 original = entries[item['source']]
@@ -112,11 +112,12 @@ class CompanyMaterials(unittest.TestCase):
         generated_ids = {f'poster-{index:03d}' for index in range(71, 79)}
         expected_ids = archived_ids | attachment_ids | generated_ids
         removed_ids = {f'poster-{index:03d}' for index in range(15, 32)}
-        active_ids = expected_ids - removed_ids
+        # The October source inventory ends at 078. The November release added Body Care Duo.
+        active_ids = (expected_ids - removed_ids) | {'poster-079'}
         self.assertEqual((report['activeImageCount'], report['removedImageCount']), (61, 17))
         self.assertEqual(len(report['items']), 78)
         self.assertEqual({item['id'] for item in report['items']}, expected_ids)
-        self.assertEqual(len(catalog['items']), 61)
+        self.assertEqual(len(catalog['items']), 62)
         self.assertEqual({item['id'] for item in catalog['items']}, active_ids)
         customer_items = {item['id']: item for item in catalog['items']}
         self.assertEqual(len(catalog['categories']), len({category['id'] for category in catalog['categories']}))
@@ -126,6 +127,18 @@ class CompanyMaterials(unittest.TestCase):
             self.assertTrue(category['en'].strip())
 
         entries = {item['path']: item for item in manifest['files']}
+        self.assertEqual(customer_items['poster-079'], {
+            'id': 'poster-079', 'category': 'sets',
+            'title': {'zh': 'liaose 圆盒身体护理双瓶套装', 'en': 'liaose Body Care Duo'},
+            'src': 'assets/posters/poster-079.webp', 'thumbnail': 'assets/posters/poster-079-thumb.webp',
+            'width': 1024, 'height': 1536,
+        })
+        duo = entries['posters/poster-079.webp']
+        self.assertEqual(duo['originalSha256'], '3ba45666920db6fbed2fd7bf0a5d14bed99e5d28d5c5ddba55c9bdb37a6c6fe9')
+        self.assertEqual(duo['sha256'], 'd8e838c02df715bb60536d6f18c9dbbdb09f98d20e4c1c11dc9772cdd6c6da3f')
+        with Image.open(ASSETS / duo['path']) as image:
+            self.assertEqual(hashlib.sha256(image.convert('RGB').tobytes()).hexdigest(),
+                             'dc92aaf53d0df8d852a64c0078ee8dba9a13b596a153d9823c4c1322b06d19b0')
         expected_poster_paths = {f'posters/{poster_id}{suffix}.webp'
                                  for poster_id in active_ids for suffix in ('', '-thumb')}
         self.assertEqual({name for name,item in entries.items() if item['kind'] != 'showroom-preview'}, COMPANY_PATHS | expected_poster_paths | BANNER_PATHS)

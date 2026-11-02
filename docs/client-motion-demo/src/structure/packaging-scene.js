@@ -64,9 +64,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   renderer.setClearColor(design.background, 1);
   host.append(renderer.domElement);
   canvas = renderer.domElement;
-  canvas.setAttribute('aria-label', `${design.name} 分层包材模型，可拖拽旋转`);
+  canvas.setAttribute('aria-label', host.getAttribute('aria-label') || design.name);
   canvas.setAttribute('role', 'img');
-  canvas.style.touchAction = 'pan-y';
   scene = new T.Scene();
   scene.background = new T.Color(design.background);
   const camera = new T.OrthographicCamera(-3, 3, 3, -3, .01, 100);
@@ -294,9 +293,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   let target = 0, current = 0, yaw = 0, pitch = 0, desiredYaw = 0, desiredPitch = 0, selected = null, focus = 0, width = 1, height = 1;
   const capTilt = new T.Quaternion(), linerTilt = new T.Quaternion();
   const rotationEuler = new T.Euler();
-  let pointer = null;
-  function pose() {
-    const narrowReview=review && width>1 && width<768;
+  const coarsePointer = matchMedia('(pointer: coarse)');
+  const bounds = new T.Box3(), size = new T.Vector3(), center = new T.Vector3();
+  let pointer = null, posedProgress, posedNarrow;
+  function positionParts(narrowReview) {
     if (explosion) {
       for (const [key, offset] of Object.entries(explosion.offsets)) {
         const interval=explosion.timing?.[key];
@@ -381,6 +381,15 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     parts.print.position.z += (pdrn ? 1.10 : moisture || woodland || pureVolume || gentle || coastal || golden || b5 ? 1.65 : pump || collection ? .86 : .035)*current;
     parts.print.scale.copy(rest.print.s).multiplyScalar(1+(gentle || golden || b5 ? .95 : .45)*current);
     }
+  }
+  function pose() {
+    const narrowReview = Boolean(review && width > 1 && width < 768);
+    // Rotating the complete assembly does not move its parts relative to one another.
+    if (current !== posedProgress || narrowReview !== posedNarrow) {
+      positionParts(narrowReview);
+      posedProgress = current;
+      posedNarrow = narrowReview;
+    }
     const aspect = width/height;
     // At half-open the cap is already high; reserve headroom without changing
     // the approved part poses, progress timing, rotation or scroll controls.
@@ -399,7 +408,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     let centerX = explosion ? interpolate(explosion.camera.centerX) : b5 ? -1.65*current : golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
     if(narrowReview) {
       root.updateMatrixWorld(true);
-      const bounds=new T.Box3().setFromObject(root),size=bounds.getSize(new T.Vector3()),center=bounds.getCenter(new T.Vector3());
+      bounds.setFromObject(root); bounds.getSize(size); bounds.getCenter(center);
       centerX=center.x;centerY=center.y;
       viewHeight=Math.max(interpolate(explosion.camera.height),size.y+size.z*.105+.55,(size.x+.55)/aspect);
     }
@@ -414,7 +423,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     if (disposed || document.hidden) return;
     const dt = Math.min((time-lastTime)/1000, .06) || .016; lastTime = time;
     const ease = reduced ? 1 : 1-Math.exp(-dt*13);
-    current += (target-current)*ease; yaw += (desiredYaw-yaw)*ease; pitch += (desiredPitch-pitch)*ease;
+    current = coarsePointer.matches ? target : current + (target-current)*ease;
+    yaw += (desiredYaw-yaw)*ease; pitch += (desiredPitch-pitch)*ease;
     try {pose();} catch (error) {dispose(); onError?.(error); return;}
     if (Math.abs(target-current)+Math.abs(desiredYaw-yaw)+Math.abs(desiredPitch-pitch) > .0002) invalidate();
   }
@@ -425,19 +435,33 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   };
   observer = new ResizeObserver(resize); observer.observe(host); resize();
   down = function(e) {
-    if (e.button && e.button !== 0) return;
-    pointer = { id: e.pointerId, x: e.clientX, y: e.clientY, yaw: desiredYaw, pitch: desiredPitch, touch: e.pointerType==='touch' };
-    if (!pointer.touch) canvas.setPointerCapture(e.pointerId);
+    if (pointer || e.isPrimary === false || e.button !== 0) return;
+    const touch = e.pointerType === 'touch';
+    if (touch) { desiredYaw = yaw; desiredPitch = pitch; }
+    pointer = {id: e.pointerId, x: e.clientX, y: e.clientY, yaw: desiredYaw, pitch: desiredPitch, touch};
+    canvas.setPointerCapture(e.pointerId);
     canvas.style.cursor = 'grabbing';
-  }
+  };
   move = function(e) {
     if (!pointer || e.pointerId !== pointer.id) return;
-    const dx = e.clientX-pointer.x, dy = e.clientY-pointer.y;
-    desiredYaw = pointer.yaw + dx*.015;
-    if (!pointer.touch) desiredPitch = clamp(pointer.pitch + dy*.006, -Math.PI*.75, Math.PI*.75);
+    const dx = e.clientX - pointer.x, dy = e.clientY - pointer.y;
+    if (pointer.touch) {
+      const nextYaw = pointer.yaw + dx * .025;
+      const nextPitch = pointer.pitch + dy * Math.PI / 180;
+      // Equivalent angles keep a full turn upright and the return-to-front path short.
+      yaw = desiredYaw = Math.atan2(Math.sin(nextYaw), Math.cos(nextYaw));
+      pitch = desiredPitch = Math.atan2(Math.sin(nextPitch), Math.cos(nextPitch));
+    } else {
+      desiredYaw = pointer.yaw + dx * .015;
+      desiredPitch = clamp(pointer.pitch + dy * .006, -Math.PI * .75, Math.PI * .75);
+    }
     invalidate();
-  }
-  up = function() { pointer = null; canvas.style.cursor = 'grab'; };
+  };
+  up = function(e) {
+    if (pointer?.id !== e.pointerId) return;
+    pointer = null;
+    canvas.style.cursor = 'grab';
+  };
   lost = function(e) { e.preventDefault(); dispose(); onError?.(new Error('WebGL context lost')); };
   visible = function() { if (!document.hidden) { lastTime=0; invalidate(); } };
   canvas.style.cursor = 'grab';

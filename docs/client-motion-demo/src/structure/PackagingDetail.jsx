@@ -133,7 +133,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
       const top = trigger.start + (trigger.end - trigger.start) * retained;
       scrollRef.current?.scrollTo({ top, behavior: 'instant' });
       trigger.update();
-      trigger.getTween()?.progress(1);
+      trigger.getTween()?.progress?.(1);
       trigger.animation?.progress(retained);
       update(retained, true);
       refreshProgress = null;
@@ -211,7 +211,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
                 scroller: scrollRef.current,
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: .22,
+                scrub: window.matchMedia('(pointer: coarse)').matches || .22,
                 invalidateOnRefresh: true,
                 onRefreshInit: () => {
                   refreshProgress = resizeProgress ?? progressRef.current;
@@ -264,7 +264,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
     scrollRef.current?.scrollTo({ top, behavior: smooth ? 'smooth' : 'instant' });
     if (!smooth) {
       trigger.update();
-      trigger.getTween()?.progress(1);
+      trigger.getTween()?.progress?.(1);
       updateRef.current?.(progress);
     }
   }
@@ -307,7 +307,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
         </div>
       </header>
 
-      <div className="packaging-scroll" ref={scrollRef} tabIndex={0} aria-label={zh ? '产品结构展示；向下滚动展开，向上滚动合拢' : 'Product structure; scroll down to open and up to close'}>
+      <div className="packaging-scroll" ref={scrollRef} tabIndex={0} aria-label={zh ? '产品结构展示，在模型外上下滑动或使用滑杆展开和合拢' : 'Product structure. Scroll outside the model or use the slider to open and close.'}>
         <div className="packaging-track" ref={trackRef}>
           <section className="packaging-stage" aria-labelledby="packaging-title">
             <div className="packaging-heading">
@@ -315,7 +315,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
               <p className="packaging-intro">{(product.design?.kind || design.kind)[lang]}</p>
             </div>
 
-            <div className="packaging-model" ref={hostRef} aria-label={zh ? '可拖拽旋转的分层包材模型' : 'Layered packaging model, drag to rotate or use the bottom view button'} />
+            <div className="packaging-model" ref={hostRef} aria-label={zh ? '分层包材模型，可上下或左右拖动翻转' : 'Layered packaging model. Drag in any direction to rotate.'} />
 
             {!ready && !failed && (
               <div className="packaging-loading" role="status">
@@ -349,7 +349,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
                 {PARTS.map(part => <button key={part.key} disabled={controlsDisabled} onClick={() => choosePart(part.key)} aria-pressed={selected === part.key}>{part.short[languageIndex]}</button>)}
               </div>
               <div className="packaging-help" aria-live="polite">
-                {activePart ? <><span>{activePart.title[languageIndex]}</span><p>{activePart.detail[languageIndex]}</p></> : <><ArrowDown size={16} aria-hidden="true" /><p>{manualOnly ? (zh ? '选择阶段，查看包材结构' : 'Choose a stage to explore the structure') : (zh ? '滚动展开 · 拖拽旋转' : 'Scroll to open. Drag to rotate.')}</p></>}
+                {activePart ? <><span>{activePart.title[languageIndex]}</span><p>{activePart.detail[languageIndex]}</p></> : <><ArrowDown size={16} aria-hidden="true" /><p>{manualOnly ? (zh ? '选择阶段，查看包材结构' : 'Choose a stage to explore the structure') : (zh ? '拖模型翻转 · 滑动空白处或滑杆展开' : 'Drag to rotate. Scroll outside or use the slider to open.')}</p></>}
               </div>
               <div className="packaging-player">
                 <div className="packaging-presets" role="group" aria-label={zh ? '展开阶段' : 'Opening stages'}>

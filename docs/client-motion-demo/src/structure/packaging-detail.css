@@ -29,13 +29,16 @@
 .packaging-header button:hover { opacity: .65; }
 .packaging-scroll { height: 100%; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #976578 transparent; }
 .packaging-track { height: 300svh; position: relative; }
+@media (pointer: coarse) {
+  .packaging-track { height: 200svh; }
+}
 .packaging-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .packaging-heading { position: absolute; z-index: 2; left: var(--pack-gutter); top: 26%; width: 26%; pointer-events: none; }
 .packaging-heading h1 { margin: 0; font-family: "Bodoni 72", Didot, "Times New Roman", serif; font-weight: 400; font-size: clamp(64px, 6.7vw, 96px); line-height: .92; letter-spacing: -.04em; }
 .packaging-title-second { display: block; }
 .packaging-intro { margin: 24px 0 0; font-size: 16px; line-height: 1.6; }
 .packaging-model { position: absolute; inset: 80px 0 148px; }
-.packaging-model canvas { display: block; width: 100%; height: 100%; touch-action: pan-y; outline: none; }
+.packaging-model canvas { display: block; width: 100%; height: 100%; touch-action: none; outline: none; }
 .packaging-parts { position: absolute; z-index: 3; right: var(--pack-gutter); top: 19%; width: 18%; max-width: 252px; display: flex; flex-direction: column; gap: 8px; }
 .packaging-part { display: flex; gap: 13px; align-items: flex-start; text-align: left; padding: 12px 0; border: 0; background: transparent; }
 .packaging-part-focus { flex: 0 0 auto; margin-top: 4px; opacity: .65; }
@@ -198,4 +201,25 @@
   .packaging-detail--b5 .packaging-mobile-parts button,
   .packaging-detail--golden .packaging-mobile-parts button,
   .packaging-detail--gentle .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
+}
+
+/* Short phone landscape keeps the model and opening controls side by side. */
+@media (orientation: landscape) and (max-height: 540px) and (pointer: coarse) {
+  .packaging-detail { --pack-gutter: 16px; }
+  .packaging-header { height: 48px; }
+  .packaging-heading { left: 54%; top: 54px; width: 43%; }
+  .packaging-heading h1 { font-size: clamp(22px, 3vw, 30px); }
+  .packaging-title-second { display: inline; }
+  .packaging-intro { margin-top: 4px; font-size: 13px; line-height: 1.2; }
+  .packaging-model, .packaging-error { inset: 52px 48% 28px 12px; }
+  .packaging-loading { inset: 45% 52% auto 3%; }
+  .packaging-parts { display: none; }
+  .packaging-controls { display: flex; flex-direction: column; align-items: stretch; gap: 0; left: 54%; right: 16px; bottom: 6px; max-height: calc(100% - 126px); overflow-y: auto; }
+  .packaging-mobile-parts { display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 4px; overflow-x: auto; flex-shrink: 0; }
+  .packaging-mobile-parts button { flex: 0 0 auto; min-height: 44px; min-width: 44px; border: 0; background: none; font-size: 13px; }
+  .packaging-help { align-self: start; min-height: 0; max-width: none; font-size: 12px; line-height: 1.3; }
+  .packaging-help > svg { display: none; }
+  .packaging-presets { margin-bottom: 0; }
+  .packaging-view-actions { position: static; justify-content: flex-end; }
+  .packaging-footnote { left: 16px; bottom: 8px; max-width: 46%; }
 }

@@ -4,7 +4,13 @@ import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {JSDOM} from 'jsdom';
 import React, {act, useEffect} from 'react';
-import {createRoot} from 'react-dom/client';
+
+// React selects its input-event support during import. Give it a DOM then so
+// range-input tests exercise the real onChange event path, as browsers do.
+const bootstrapDOM = new JSDOM('');
+Object.assign(globalThis, {window: bootstrapDOM.window, document: bootstrapDOM.window.document});
+const {createRoot} = await import('react-dom/client');
+bootstrapDOM.window.close();
 
 // Compile the real component source with the already-installed tsx transformer.
 // Only CSS and asynchronous module boundaries are substituted: lifecycle, event
@@ -28,16 +34,16 @@ function deferred() {
   const promise = new Promise((yes, no) => {resolve = yes; reject = no;});
   return {promise, resolve, reject};
 }
-function setup({reduced = true} = {}) {
+function setup({reduced = true, mobile = false} = {}) {
   const dom = new JSDOM('<div id="root"></div>', {url: 'http://localhost/', pretendToBeVisual: true});
   const media = {matches: reduced, addEventListener() {}, removeEventListener() {}};
   const frames = new Map(); let id = 0;
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => ({ok: true, arrayBuffer: async () => new ArrayBuffer(12)});
   Object.assign(globalThis, {window: dom.window, document: dom.window.document, IS_REACT_ACT_ENVIRONMENT: true,
-    matchMedia: () => media, requestAnimationFrame: fn => {frames.set(++id, fn); return id;},
+    matchMedia: query => query.includes('pointer: coarse') ? {...media, matches: mobile} : media, requestAnimationFrame: fn => {frames.set(++id, fn); return id;},
     cancelAnimationFrame: key => frames.delete(key)});
-  window.matchMedia = () => media;
+  window.matchMedia = globalThis.matchMedia;
   window.scrollTo = () => {};
   window.HTMLElement.prototype.scrollTo = function(options) {this.scrollTop = options?.top || 0;};
   window.HTMLDialogElement.prototype.showModal = function() {
@@ -360,6 +366,52 @@ test('animation timeout enters manual mode and a later opening retries its scrip
     await act(async () => env.root.render(<Detail {...defaultProps}/>));
     const second = document.querySelector('script[src$="gsap.min.js"]'); assert.ok(second); assert.notEqual(second, first);
   } finally {await env.close(); t.mock.timers.reset();}
+});
+
+test('phone scroll expansion follows directly while desktop retains the existing scrub', async t => {
+  t.mock.timers.enable({apis: ['setTimeout']});
+  t.after(() => t.mock.timers.reset());
+  for (const mobile of [true, false]) {
+    const env = setup({reduced: false, mobile}); let config, clock, progress = 0, disposals = 0;
+    const api = {dispose() {disposals++;}, setProgress(value) {progress = value;}, focusPart() {}, resetView() {}, rotate() {}, viewBottom() {}};
+    const Detail = component('structure/PackagingDetail.jsx', {deps: {loadScene: async () => ({mountPackagingScene: async (host, {onReady}) => {onReady(); return api;}})}});
+    const trigger = {start: 0, end: 1000,
+      refresh() {config.scrollTrigger.onRefreshInit(); config.scrollTrigger.onRefresh(trigger);},
+      update() {clock.progress = document.querySelector('.packaging-scroll').scrollTop / (trigger.end - trigger.start); config.onUpdate();},
+      getTween: () => mobile ? false : {progress() {}},
+      animation: {progress(value) {clock.progress = value; config.onUpdate();}}};
+    window.gsap = {registerPlugin() {}, context(run) {run(); return {revert() {}};},
+      to(value, options) {clock = value; config = options; return {scrollTrigger: trigger};}};
+    window.ScrollTrigger = {};
+    try {
+      await act(async () => env.root.render(<Detail {...defaultProps}/>));
+      assert.equal(config.scrollTrigger.scrub, mobile ? true : .22);
+      await act(async () => {const callbacks = [...env.frames.values()]; env.frames.clear(); callbacks.forEach(fn => fn());});
+      assert.equal(disposals, 0, 'scrub:true returns false, so first refresh must not dispose the ready model');
+      assert.equal(document.querySelector('.packaging-error'), null);
+      await act(async () => {clock.progress = .8; config.onUpdate();});
+      assert.equal(progress, .8);
+      await act(async () => {window.dispatchEvent(new window.Event('resize')); trigger.end = 1600; t.mock.timers.tick(140);});
+      assert.equal(progress, .8, 'resize restores the current stage without requiring a scrub tween');
+      assert.equal(document.querySelector('.packaging-scroll').scrollTop, 1280);
+      await act(async () => {clock.progress = .15; config.onUpdate();});
+      assert.equal(progress, .15);
+      const range = document.querySelector('#packaging-opening');
+      await act(async () => {
+        Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set.call(range, '60');
+        range.dispatchEvent(new window.Event('input', {bubbles: true}));
+        range.dispatchEvent(new window.Event('change', {bubbles: true}));
+      });
+      assert.equal(progress, .6, 'range input takes the immediate jump path without a scrub tween');
+      await click(byText('半展开'));
+      await act(async () => trigger.update());
+      assert.equal(progress, .5);
+      await click(byText('合拢'));
+      await act(async () => trigger.update());
+      assert.equal(progress, 0, 'manual controls can still collapse after a scroll gesture');
+      assert.equal(disposals, 0);
+    } finally {await env.close(); assert.equal(disposals, 1);}
+  }
 });
 
 function appHarness({loader} = {}) {

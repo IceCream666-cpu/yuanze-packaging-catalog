@@ -1,13 +1,13 @@
 {
-  "version": "client1.41",
-  "sourceSha256": "329e90cd329fcd44cf8c3dbccd064923876806e0515d8fa3206b8cc900f244ec",
+  "version": "client1.42",
+  "sourceSha256": "6a9eafd5d03503585cb7f9fad7179673c4d7e70c58e5a226743ba5f5af1afd7f",
   "files": {
-    "assets/packaging/PackagingDetail-B113D0xE.js": "4e3b595119b63b1efebdd659414516d2df41c77cc245617a14839b1c7ccbaf10",
-    "assets/packaging/PackagingDetail-DKVlGnbY.css": "fd4e7f86885747e0a4dfa3bc41a85b9f9bb9682c7b65ca9e1f878c029e2396b9",
-    "assets/packaging/packaging-scene-3Ba1DY-u.js": "f82d211cb969bdd7394d06e92bc910279e9d8d60fe4d505ec51f1d012579e4b4",
-    "index.html": "1a389a071892b447b370dc6163306850f39667f3533f4c26f55859a9c9965fb9",
+    "assets/packaging/PackagingDetail-B0fPcP3F.js": "e832c0365e59e1a60eb1289eb83afb618b724a358d134116bd438749776fd2d3",
+    "assets/packaging/PackagingDetail-qb7H1i3-.css": "7ad593397a51f804f743d0e2b2be2497b35c26e064a7ec6d08c8098f0f2e23c5",
+    "assets/packaging/packaging-scene-BNY2W0_S.js": "4dceb08b1c2222a1e629d5caf7b8f54607ec0fe08b6f74ce440f694e1b0bf7b3",
+    "index.html": "bcb8c2d115acf8abadd5f407e70ad914c82f19f102354f47f395f5d0dc011cfe",
     "preview.css": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5",
-    "preview.js": "e2396946d98303639745064f0d7945ff15bd24407fd5cf4cc2299d29a33e313a"
+    "preview.js": "55f96d73bfea7f252b029a251d5cba51d0fd6b251d92a1b3e2c6294509b70918"
   },
-  "viteManifestSha256": "1c320ace46c069209a88ec1156c0c8a3dd085b24472553493c337107efce1ddf"
+  "viteManifestSha256": "e152a30c5e3f9b515911ae5635d8ee45b5941e53f1de8e0e30c1ad81c2db704f"
 }
