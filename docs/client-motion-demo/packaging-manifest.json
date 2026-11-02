@@ -239,8 +239,8 @@
       "file": "packaging-assets/poster-079.glb",
       "productionTarget": "assets/packaging/poster-079.glb",
       "kind": "model",
-      "bytes": 932208,
-      "sha256": "4423eb4a6c061f48a249320507d3d70fc09daf1073249cbb63c9d1f1a8cc3b27"
+      "bytes": 932312,
+      "sha256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a"
     }
   ],
   "additionalProducts": [
@@ -516,6 +516,7 @@
       "file": "poster-079.glb",
       "components": [
         "Lid",
+        "LidInk",
         "Tray",
         "Cream",
         "Wash",

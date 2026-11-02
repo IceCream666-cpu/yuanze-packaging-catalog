@@ -3158,6 +3158,22 @@
         ]
       },
       {
+        "key": "lidInk",
+        "node": "LidInk",
+        "title": [
+          "盒盖 Logo 印刷",
+          "Lid logo print"
+        ],
+        "short": [
+          "盒盖 Logo 印刷",
+          "Lid logo print"
+        ],
+        "detail": [
+          "盒盖 Logo 印刷",
+          "Lid logo print"
+        ]
+      },
+      {
         "key": "tray",
         "node": "Tray",
         "title": [
@@ -3286,6 +3302,22 @@
           "detail": [
             "圆盒盖",
             "Round lid"
+          ]
+        },
+        {
+          "key": "lidInk",
+          "node": "LidInk",
+          "title": [
+            "盒盖 Logo 印刷",
+            "Lid logo print"
+          ],
+          "short": [
+            "盒盖 Logo 印刷",
+            "Lid logo print"
+          ],
+          "detail": [
+            "盒盖 Logo 印刷",
+            "Lid logo print"
           ]
         },
         {
@@ -3418,6 +3450,11 @@
             -0.95,
             0,
             0.35
+          ],
+          "lidInk": [
+            -1.38,
+            2.0,
+            1.9
           ],
           "tray": [
             0,

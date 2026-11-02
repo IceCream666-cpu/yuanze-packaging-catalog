@@ -22,7 +22,7 @@ glass=m.mat('Frosted citron translucent wall','#d1d592',.34,.50); tube=m.mat('Tr
 # Case parts stand face-on, as in the overhead poster view.
 for name,x,profile,material in [('Lid',-1.48,[(0,0),(0,1.405),(.02,1.45),(.05,1.46),(.34,1.46),(.36,1.45),(.36,1.428),(.34,1.421),(.32,1.408),(.32,0)],board),('Tray',1.48,[(0,0),(0,1.41),(.025,1.45),(.05,1.46),(.55,1.46),(.57,1.45),(.57,1.425),(.55,1.413),(.13,1.413),(.09,1.39),(.09,0)],tray)]:
     pose(m.lathe(name+' profile',profile,material,name,160),x,.27,1.46,math.pi/2)
-pose(m.sheet('Lid signature',1.04,.48,0,lambda x,z:0,art('lidmark',''),'Lid'),-1.48,-.053,1.22)
+pose(m.sheet('Lid signature',1.04,.48,0,lambda x,z:0,art('lidmark',''),'LidInk'),-1.48,-.053,1.22)
 for idx,(sgn,x,body,words) in enumerate([(-1,.88,cream,'BODY CREAM'),(1,2.08,glass,'BODY WASH')]):
     g='Cream' if idx==0 else 'Wash'; rot=math.pi if sgn<0 else 0
     base=2.42 if sgn<0 else .49
@@ -37,8 +37,22 @@ for idx,(sgn,x,body,words) in enumerate([(-1,.88,cream,'BODY CREAM'),(1,2.08,gla
     sp.data.transform(Matrix.Translation((-.175,0,0)));place(sp)
     place(m.lathe(g+' attached hollow tube',[(.075,.03),(1.52,.03),(1.52,.021),(.075,.021),(.075,.03)],tube,p))
     pose(m.sheet(g+' direct print',.76,.36,0,lambda x,z:0,art(g+'Art',words),g+'Ink'),x,-.362,base+sgn*.69-.18)
-names=[('lid','Lid','圆盒盖','Round lid'),('tray','Tray','圆盒内托','Tray'),('cream','Cream','乳霜瓶','Cream bottle'),('wash','Wash','沐浴瓶','Wash bottle'),('cp','CreamPump','身体乳完整泵组','Cream pump'),('pump','WashPump','沐浴露完整泵组','Wash pump'),('ci','CreamInk','身体乳瓶身印字','Cream print'),('print','WashInk','沐浴露瓶身印字','Wash print')]
-cfg=config([part(k,n,zh,en,zh,en) for k,n,zh,en in names],{'lid':[-.95,0,.35],'tray':[0,0,-.8],'cream':[-.40,0,.6],'wash':[.51,0,.60],'cp':[-.40,-1.55,.6],'pump':[.51,1.55,.6],'ci':[-1.23,.17,1.65],'print':[1.53,-.18,1.65]},glass=False)
+names=[('lid','Lid','圆盒盖','Round lid'),('lidInk','LidInk','盒盖 Logo 印刷','Lid logo print'),('tray','Tray','圆盒内托','Tray'),('cream','Cream','乳霜瓶','Cream bottle'),('wash','Wash','沐浴瓶','Wash bottle'),('cp','CreamPump','身体乳完整泵组','Cream pump'),('pump','WashPump','沐浴露完整泵组','Wash pump'),('ci','CreamInk','身体乳瓶身印字','Cream print'),('print','WashInk','沐浴露瓶身印字','Wash print')]
+cfg=config([part(k,n,zh,en,zh,en) for k,n,zh,en in names],{'lid':[-.95,0,.35],'lidInk':[-1.38,2.00,1.90],'tray':[0,0,-.8],'cream':[-.40,0,.6],'wash':[.51,0,.60],'cp':[-.40,-1.55,.6],'pump':[.51,1.55,.6],'ci':[-1.23,.17,1.65],'print':[1.53,-.18,1.65]},glass=False)
 cfg['explosion'].update(scales={},camera={'centerX':[0,-.10],'centerY':[1.45,1.45],'height':[3.6,5.6],'width':[6.4,9.4]})
 cfg['appearance']['studio']={'background':'#e9e8df','ink':'#373c2e'}
+bpy.context.preferences.filepaths.save_version = 0
 m.export(2.92,{n:0 for _,n,_,_ in names},{'name':'Body Care Duo'},cfg)
+
+# Keep the editable Blender review synchronized with the web slider.
+scene = bpy.context.scene
+scene.frame_end = 61
+for key, node, _, _ in names:
+    group = m.groups[node]
+    rest = group.location.copy()
+    x, y, z = cfg['explosion']['offsets'][key]
+    for frame, amount in [(1, 0), (31, .5), (61, 1)]:
+        group.location = rest + Vector((x, -z, y)) * amount
+        group.keyframe_insert(data_path='location', frame=frame)
+scene.frame_set(1)
+bpy.ops.wm.save_as_mainfile(filepath=str(out / (ID+'.blend')))

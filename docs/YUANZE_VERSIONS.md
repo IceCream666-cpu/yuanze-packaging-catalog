@@ -1,5 +1,9 @@
 # 源泽版本记录
 
+## Body Care Duo 盒盖印刷 · 本地待审
+
+poster-079 整套重新由 Blender 导出。圆盒盖及其印字独立，正面、半展开与完全展开共用九个可选部件。正式版仍为 client1.41。
+
 ## client1.41 · Body Care Duo（2026-11-02 已上线）
 
 新增 poster-079 圆盒身体护理双瓶套装。首页第 27 款，海报库共 62 张。模型为礼盒、内托、两支空瓶、两个带管完整泵组及瓶身印字。正式服务文件校验通过；交互在本机 Ego Lite 验证。详见 client141-body-care-duo-release.json。

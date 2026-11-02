@@ -199,3 +199,7 @@
   .packaging-detail--golden .packaging-mobile-parts button,
   .packaging-detail--gentle .packaging-mobile-parts button {min-width:36px; padding:4px 2px; font-size:12px;}
 }
+
+@media (min-width: 901px) {
+  .packaging-stage[data-product="poster-079"] .packaging-model { left: 23%; right: 27%; }
+}

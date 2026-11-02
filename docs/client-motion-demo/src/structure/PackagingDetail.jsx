@@ -309,7 +309,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
 
       <div className="packaging-scroll" ref={scrollRef} tabIndex={0} aria-label={zh ? '产品结构展示；向下滚动展开，向上滚动合拢' : 'Product structure; scroll down to open and up to close'}>
         <div className="packaging-track" ref={trackRef}>
-          <section className="packaging-stage" aria-labelledby="packaging-title">
+          <section className="packaging-stage" data-product={item.id} aria-labelledby="packaging-title">
             <div className="packaging-heading">
               <h1 id="packaging-title">{design.name.split(' ').map((word,i) => <React.Fragment key={i}>{i > 0 && ' '}<span className={i > 0 ? 'packaging-title-second' : undefined}>{word}</span></React.Fragment>)}</h1>
               <p className="packaging-intro">{(product.design?.kind || design.kind)[lang]}</p>

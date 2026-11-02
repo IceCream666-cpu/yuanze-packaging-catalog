@@ -1357,3 +1357,14 @@ test('Rose uses native 2x detail without increasing other model rendering budget
     } finally {h.close();}
   }
 });
+
+test('Body Care Duo has one lid signature, independent of the bare paper lid', () => {
+  const bytes = readFileSync(new URL('../packaging-assets/poster-079.glb', import.meta.url));
+  const gltf = JSON.parse(bytes.toString('utf8', 20, 20 + bytes.readUInt32LE(12)));
+  const children = name => gltf.nodes.find(n => n.name === name).children.map(i => gltf.nodes[i].name);
+  assert.deepEqual(children('Lid'), ['Lid profile']);
+  assert.deepEqual(children('LidInk'), ['Lid signature']);
+  assert.equal(gltf.nodes.filter(n => n.name === 'Lid signature').length, 1);
+  const {lidInk, lid} = PACKAGING_PRODUCTS['poster-079'].review.explosion.offsets;
+  assert.ok(lidInk[1] - lid[1] > 1.5 && lidInk[2] - lid[2] > 1);
+});
