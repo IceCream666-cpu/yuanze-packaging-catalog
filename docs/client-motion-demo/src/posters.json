@@ -1340,5 +1340,27 @@
     "original": "/assets/poster-078-original.webp",
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "poster-079",
+    "title": {
+      "zh": "liaose 圆盒身体护理双瓶套装",
+      "en": "liaose Body Care Duo"
+    },
+    "category": "sets",
+    "style": "natural",
+    "image": "/assets/poster-079.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-079-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-079-thumb.webp",
+    "stripThumb": "/assets/poster-079-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-079-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]

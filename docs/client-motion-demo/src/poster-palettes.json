@@ -263,5 +263,10 @@
     "background": "#e4e1d5",
     "ink": "#403d32",
     "accent": "#eae3d2"
+  },
+  "poster-079": {
+    "background": "#e9e8df",
+    "ink": "#373c2e",
+    "accent": "#687049"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "version": "client1.41",
+  "status": "published",
+  "date": "2026-11-02",
+  "product": "poster-079",
+  "homepageCount": 27,
+  "posterCount": 62,
+  "modelCount": 27,
+  "releaseFilesVerified": 467,
+  "homepageSlot": 27,
+  "rollback": "/opt/yuanze-reference/backups/client1.40-before-body-care-duo-20261102",
+  "qa": {
+    "frontend": 169,
+    "release": 19,
+    "localBrowser": "Ego Lite closed, half open, fully exploded",
+    "productionAnonymousModelStatus": 401,
+    "productionBrowser": "login required; signed-in interaction not retested"
+  },
+  "manifestSha256": "e99bde51e5e0e6121bb3920e68e171a6213167b2d243b8bb19986f052d369a27"
+}

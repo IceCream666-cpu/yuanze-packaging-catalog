@@ -466,5 +466,23 @@
       "#eee3d1",
       "#25180f"
     ]
+  },
+  {
+    "id": "poster-079",
+    "name": "Body Care Duo",
+    "kind": {
+      "zh": "身体护理 · 圆盒双瓶套装",
+      "en": "Body care · boxed duo"
+    },
+    "background": "#e9e8df",
+    "ink": "#373c2e",
+    "swatch": [
+      "#d4c7a2",
+      "#afb67d"
+    ],
+    "description": {
+      "zh": "奶油白与淡青柠色扁圆泵瓶，反向嵌入圆形礼盒。",
+      "en": "Two pebble pump bottles nest head to toe in a round gift case."
+    }
   }
 ]

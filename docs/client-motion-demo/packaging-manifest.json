@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.40-collection-packaging",
+  "scope": "approved-client1.41-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -233,6 +233,14 @@
       "kind": "model",
       "bytes": 1163416,
       "sha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1"
+    },
+    {
+      "name": "poster-079.glb",
+      "file": "packaging-assets/poster-079.glb",
+      "productionTarget": "assets/packaging/poster-079.glb",
+      "kind": "model",
+      "bytes": 932208,
+      "sha256": "4423eb4a6c061f48a249320507d3d70fc09daf1073249cbb63c9d1f1a8cc3b27"
     }
   ],
   "additionalProducts": [
@@ -501,6 +509,20 @@
         "PaperLabel",
         "LogoPrint",
         "ProductPrint"
+      ]
+    },
+    {
+      "posterId": "poster-079",
+      "file": "poster-079.glb",
+      "components": [
+        "Lid",
+        "Tray",
+        "Cream",
+        "Wash",
+        "CreamPump",
+        "WashPump",
+        "CreamInk",
+        "WashInk"
       ]
     }
   ],

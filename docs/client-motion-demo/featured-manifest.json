@@ -1,7 +1,7 @@
 {
-  "version": "client1.34",
-  "scope": "approved-client1.34-display-derivatives",
-  "notes": "Append only the approved current Daily Emulsion and Body Oil single-bottle models to the original 24 homepage displays; retain all 61 posters and all 26 model files.",
+  "version": "client1.41",
+  "scope": "approved-client1.41-display-derivatives",
+  "notes": "27 homepage entries; Body Care Duo appended.",
   "files": [
     {
       "posterId": "poster-012",
@@ -501,12 +501,25 @@
         "date": "2026-10-30",
         "basis": "User requested matching supplied posters and displaying only one product for repeated identical bottles."
       }
+    },
+    {
+      "posterId": "poster-079",
+      "file": "featured-assets/poster-079.png",
+      "target": "featured/poster-079.png",
+      "productionTarget": "assets/featured/poster-079.png",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-079.webp",
+      "approvedPosterSha256": "d8e838c02df715bb60536d6f18c9dbbdb09f98d20e4c1c11dc9772cdd6c6da3f",
+      "tool": "Blender",
+      "method": "Rendered from the corresponding interactive gift set model",
+      "scope": "Body Care Duo",
+      "bytes": 818188,
+      "sha256": "aca0e8eef734b28ea03fecbe6712906d0f29fa2602bdd8c10ee6ebbd1ff8d141"
     }
   ],
   "approval": {
-    "date": "2026-10-30",
-    "basis": "User approved publishing corrected single-product Daily Emulsion and Body Oil 02 displays."
+    "date": "2026-11-02",
+    "basis": "User requested packaging library release."
   },
-  "revision": "poster-fidelity-preview-20261030",
+  "revision": "body-care-duo-20261102",
   "status": "publication-authorized"
 }

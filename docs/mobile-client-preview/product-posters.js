@@ -764,6 +764,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-078-thumb.webp",
       "width": 1024,
       "height": 1536
+    },
+    {
+      "id": "poster-079",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 圆盒身体护理双瓶套装",
+        "en": "liaose Body Care Duo"
+      },
+      "src": "assets/posters/poster-079.webp",
+      "thumbnail": "assets/posters/poster-079-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

@@ -344,6 +344,18 @@
       "bytes": 1545024,
       "sha256": "da9a144da8e10a81239b119ae77170c5fdcfb09323c1ecba588e2ece641f9bb6"
     },
+    "assets/featured/poster-079-1024.webp": {
+      "bytes": 44874,
+      "sha256": "14df83bd0c2e3a46801c43bcdfce45862badcb810209ce629e8330a75c3ed18d"
+    },
+    "assets/featured/poster-079-640.webp": {
+      "bytes": 26402,
+      "sha256": "90d873331eb328cf5dbfb3cb0b0f59900240ac2fdd3966c500e3df1989cfb921"
+    },
+    "assets/featured/poster-079.png": {
+      "bytes": 818188,
+      "sha256": "aca0e8eef734b28ea03fecbe6712906d0f29fa2602bdd8c10ee6ebbd1ff8d141"
+    },
     "assets/optimized/poster-001-strip.webp": {
       "bytes": 4762,
       "sha256": "dc6fe7aecafdcab6089ec7331d236436ded7b3e0c1a39ae25a3adb28c1d006fd"
@@ -588,6 +600,10 @@
       "bytes": 4176,
       "sha256": "b53a11ce0bd82eedac2fa15174f64e2422aa257a438b95d5cff6a5bb5b9fb32e"
     },
+    "assets/optimized/poster-079-strip.webp": {
+      "bytes": 4400,
+      "sha256": "378446816476c5ef6404bff93977653d79233b41c7376ddabcc8cc8dabc630d1"
+    },
     "assets/optimized/yuanze-mark-compact.webp": {
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
@@ -715,6 +731,10 @@
     "assets/packaging/poster-073.glb": {
       "bytes": 627764,
       "sha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b"
+    },
+    "assets/packaging/poster-079.glb": {
+      "bytes": 932208,
+      "sha256": "4423eb4a6c061f48a249320507d3d70fc09daf1073249cbb63c9d1f1a8cc3b27"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1223,6 +1243,14 @@
     "assets/posters/poster-078.webp": {
       "bytes": 1354010,
       "sha256": "51582f16303114b30be7aa54281acc5a881a39b1960f402747595c0c27b0e441"
+    },
+    "assets/posters/poster-079-thumb.webp": {
+      "bytes": 21476,
+      "sha256": "d1d1ce2db96843a034781f17040b021a1444495a944d7719f2a1df307b76f3de"
+    },
+    "assets/posters/poster-079.webp": {
+      "bytes": 1060392,
+      "sha256": "d8e838c02df715bb60536d6f18c9dbbdb09f98d20e4c1c11dc9772cdd6c6da3f"
     },
     "assets/previews/certificates/gmpc-en-1280.webp": {
       "bytes": 93686,
@@ -1784,6 +1812,14 @@
       "bytes": 19218,
       "sha256": "6420b6cdf589e2d3a59c027c21051a155cf5177e28441a39b12f0dfd2cb7c636"
     },
+    "assets/previews/posters/poster-079-1280.webp": {
+      "bytes": 61054,
+      "sha256": "663b9b651a570426b65fc8423a3e3c2f277491a0c17681e451054355cb27c23a"
+    },
+    "assets/previews/posters/poster-079-512.webp": {
+      "bytes": 15776,
+      "sha256": "f6b2fa98535c83244232ce7c070f90f04cfc528ce0ca3269b18f8032ab6ea58a"
+    },
     "assets/previews/reception-1280.webp": {
       "bytes": 56848,
       "sha256": "c4660dccb8a60648eadb32212bcc4c805f3a9fe957fd74c6c55fd93665cf0535"
@@ -1818,22 +1854,22 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "3ce1b70d464725853a9c72b1363523ddb2274fdb6017bf956d0b18677c80c4a7"
+      "sha256": "1a389a071892b447b370dc6163306850f39667f3533f4c26f55859a9c9965fb9"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 383864,
-      "sha256": "50b696f49301eabcaa37a27ae7c66c8051a3b4f1e44bb6276e663eb6ea11dec8"
+      "bytes": 388490,
+      "sha256": "e2396946d98303639745064f0d7945ff15bd24407fd5cf4cc2299d29a33e313a"
     },
     "product-posters.js": {
-      "bytes": 21629,
-      "sha256": "2974802fb43408feca3b1eb4d0a660e9fe17ab1d5e145124b333dff458ffe780"
+      "bytes": 21980,
+      "sha256": "705bccd9d97721f7dfc92f5368a36d3ceb955ef1ddd2f93e7a3f93a34c174979"
     }
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.40"
+  "version": "client1.41"
 }

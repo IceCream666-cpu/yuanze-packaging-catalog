@@ -1,13 +1,13 @@
 {
-  "version": "client1.40",
-  "sourceSha256": "b5b811d9fe9f36fcd05918f1e406357e53870ac3f413ef9ded0c8c77b25480b4",
+  "version": "client1.41",
+  "sourceSha256": "329e90cd329fcd44cf8c3dbccd064923876806e0515d8fa3206b8cc900f244ec",
   "files": {
     "assets/packaging/PackagingDetail-B113D0xE.js": "4e3b595119b63b1efebdd659414516d2df41c77cc245617a14839b1c7ccbaf10",
     "assets/packaging/PackagingDetail-DKVlGnbY.css": "fd4e7f86885747e0a4dfa3bc41a85b9f9bb9682c7b65ca9e1f878c029e2396b9",
     "assets/packaging/packaging-scene-3Ba1DY-u.js": "f82d211cb969bdd7394d06e92bc910279e9d8d60fe4d505ec51f1d012579e4b4",
-    "index.html": "3ce1b70d464725853a9c72b1363523ddb2274fdb6017bf956d0b18677c80c4a7",
+    "index.html": "1a389a071892b447b370dc6163306850f39667f3533f4c26f55859a9c9965fb9",
     "preview.css": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5",
-    "preview.js": "50b696f49301eabcaa37a27ae7c66c8051a3b4f1e44bb6276e663eb6ea11dec8"
+    "preview.js": "e2396946d98303639745064f0d7945ff15bd24407fd5cf4cc2299d29a33e313a"
   },
   "viteManifestSha256": "1c320ace46c069209a88ec1156c0c8a3dd085b24472553493c337107efce1ddf"
 }

@@ -3135,5 +3135,359 @@
         "#34372e"
       ]
     }
+  },
+  "poster-079": {
+    "file": "poster-079.glb",
+    "kind": "collection",
+    "scale": 1,
+    "parts": [
+      {
+        "key": "lid",
+        "node": "Lid",
+        "title": [
+          "圆盒盖",
+          "Round lid"
+        ],
+        "short": [
+          "圆盒盖",
+          "Round lid"
+        ],
+        "detail": [
+          "圆盒盖",
+          "Round lid"
+        ]
+      },
+      {
+        "key": "tray",
+        "node": "Tray",
+        "title": [
+          "圆盒内托",
+          "Tray"
+        ],
+        "short": [
+          "圆盒内托",
+          "Tray"
+        ],
+        "detail": [
+          "圆盒内托",
+          "Tray"
+        ]
+      },
+      {
+        "key": "cream",
+        "node": "Cream",
+        "title": [
+          "乳霜瓶",
+          "Cream bottle"
+        ],
+        "short": [
+          "乳霜瓶",
+          "Cream bottle"
+        ],
+        "detail": [
+          "乳霜瓶",
+          "Cream bottle"
+        ]
+      },
+      {
+        "key": "wash",
+        "node": "Wash",
+        "title": [
+          "沐浴瓶",
+          "Wash bottle"
+        ],
+        "short": [
+          "沐浴瓶",
+          "Wash bottle"
+        ],
+        "detail": [
+          "沐浴瓶",
+          "Wash bottle"
+        ]
+      },
+      {
+        "key": "cp",
+        "node": "CreamPump",
+        "title": [
+          "身体乳完整泵组",
+          "Cream pump"
+        ],
+        "short": [
+          "身体乳完整泵组",
+          "Cream pump"
+        ],
+        "detail": [
+          "身体乳完整泵组",
+          "Cream pump"
+        ]
+      },
+      {
+        "key": "pump",
+        "node": "WashPump",
+        "title": [
+          "沐浴露完整泵组",
+          "Wash pump"
+        ],
+        "short": [
+          "沐浴露完整泵组",
+          "Wash pump"
+        ],
+        "detail": [
+          "沐浴露完整泵组",
+          "Wash pump"
+        ]
+      },
+      {
+        "key": "ci",
+        "node": "CreamInk",
+        "title": [
+          "身体乳瓶身印字",
+          "Cream print"
+        ],
+        "short": [
+          "身体乳瓶身印字",
+          "Cream print"
+        ],
+        "detail": [
+          "身体乳瓶身印字",
+          "Cream print"
+        ]
+      },
+      {
+        "key": "print",
+        "node": "WashInk",
+        "title": [
+          "沐浴露瓶身印字",
+          "Wash print"
+        ],
+        "short": [
+          "沐浴露瓶身印字",
+          "Wash print"
+        ],
+        "detail": [
+          "沐浴露瓶身印字",
+          "Wash print"
+        ]
+      }
+    ],
+    "review": {
+      "parts": [
+        {
+          "key": "lid",
+          "node": "Lid",
+          "title": [
+            "圆盒盖",
+            "Round lid"
+          ],
+          "short": [
+            "圆盒盖",
+            "Round lid"
+          ],
+          "detail": [
+            "圆盒盖",
+            "Round lid"
+          ]
+        },
+        {
+          "key": "tray",
+          "node": "Tray",
+          "title": [
+            "圆盒内托",
+            "Tray"
+          ],
+          "short": [
+            "圆盒内托",
+            "Tray"
+          ],
+          "detail": [
+            "圆盒内托",
+            "Tray"
+          ]
+        },
+        {
+          "key": "cream",
+          "node": "Cream",
+          "title": [
+            "乳霜瓶",
+            "Cream bottle"
+          ],
+          "short": [
+            "乳霜瓶",
+            "Cream bottle"
+          ],
+          "detail": [
+            "乳霜瓶",
+            "Cream bottle"
+          ]
+        },
+        {
+          "key": "wash",
+          "node": "Wash",
+          "title": [
+            "沐浴瓶",
+            "Wash bottle"
+          ],
+          "short": [
+            "沐浴瓶",
+            "Wash bottle"
+          ],
+          "detail": [
+            "沐浴瓶",
+            "Wash bottle"
+          ]
+        },
+        {
+          "key": "cp",
+          "node": "CreamPump",
+          "title": [
+            "身体乳完整泵组",
+            "Cream pump"
+          ],
+          "short": [
+            "身体乳完整泵组",
+            "Cream pump"
+          ],
+          "detail": [
+            "身体乳完整泵组",
+            "Cream pump"
+          ]
+        },
+        {
+          "key": "pump",
+          "node": "WashPump",
+          "title": [
+            "沐浴露完整泵组",
+            "Wash pump"
+          ],
+          "short": [
+            "沐浴露完整泵组",
+            "Wash pump"
+          ],
+          "detail": [
+            "沐浴露完整泵组",
+            "Wash pump"
+          ]
+        },
+        {
+          "key": "ci",
+          "node": "CreamInk",
+          "title": [
+            "身体乳瓶身印字",
+            "Cream print"
+          ],
+          "short": [
+            "身体乳瓶身印字",
+            "Cream print"
+          ],
+          "detail": [
+            "身体乳瓶身印字",
+            "Cream print"
+          ]
+        },
+        {
+          "key": "print",
+          "node": "WashInk",
+          "title": [
+            "沐浴露瓶身印字",
+            "Wash print"
+          ],
+          "short": [
+            "沐浴露瓶身印字",
+            "Wash print"
+          ],
+          "detail": [
+            "沐浴露瓶身印字",
+            "Wash print"
+          ]
+        }
+      ],
+      "appearance": {
+        "glass": false,
+        "frosted": false,
+        "pipette": false,
+        "clearLabel": false,
+        "metal": false,
+        "studio": {
+          "background": "#e9e8df",
+          "ink": "#373c2e"
+        }
+      },
+      "explosion": {
+        "offsets": {
+          "lid": [
+            -0.95,
+            0,
+            0.35
+          ],
+          "tray": [
+            0,
+            0,
+            -0.8
+          ],
+          "cream": [
+            -0.4,
+            0,
+            0.6
+          ],
+          "wash": [
+            0.51,
+            0,
+            0.6
+          ],
+          "cp": [
+            -0.4,
+            -1.55,
+            0.6
+          ],
+          "pump": [
+            0.51,
+            1.55,
+            0.6
+          ],
+          "ci": [
+            -1.23,
+            0.17,
+            1.65
+          ],
+          "print": [
+            1.53,
+            -0.18,
+            1.65
+          ]
+        },
+        "scales": {},
+        "camera": {
+          "centerX": [
+            0,
+            -0.1
+          ],
+          "centerY": [
+            1.45,
+            1.45
+          ],
+          "height": [
+            3.6,
+            5.6
+          ],
+          "width": [
+            6.4,
+            9.4
+          ]
+        }
+      }
+    },
+    "design": {
+      "name": "Body Care Duo",
+      "kind": {
+        "zh": "身体护理 · 圆盒双瓶套装",
+        "en": "Body care · boxed duo"
+      },
+      "background": "#e9e8df",
+      "ink": "#373c2e",
+      "swatch": [
+        "#d4c7a2",
+        "#afb67d"
+      ]
+    }
   }
 }
