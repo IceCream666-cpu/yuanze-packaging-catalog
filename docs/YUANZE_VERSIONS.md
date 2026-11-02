@@ -6,7 +6,7 @@
 
 Ego Lite 模拟 430×932 触摸。同样横拖120px，旧版转约103°，本版约172°。同样在模型上竖拖190px，旧版俯仰为0°且页面滚动175px，本版翻过半圈，页面滚动0px。另验斜拖、画布外展开、852×393和932×430横屏画布命中、阶段按钮及桌面鼠标两轴。Body Care Duo 单次受控拖动后额外绘制14帧→0帧。以上是模拟输入和渲染调用观测，实体iPhone待试用。
 
-467项展厅资源、27款精选、62张海报。已核对453份媒体哈希，其中包括27个GLB。完整 scripts/verify.py 通过，已按1.41的新增礼盒校准旧测试中的数量与审批摘要。候选分支为codex/client142-touch-orbit。本次提供同Wi-Fi限时手机预览，正式服务器未发布本版。[触摸前后对照](client-motion-demo/review-evidence/iphone-orbit-client142/phone-results.json) · [横屏与桌面对照](client-motion-demo/review-evidence/iphone-orbit-client142/layout-results.json) · [松手后渲染记录](client-motion-demo/review-evidence/iphone-orbit-client142/tail-results.json)
+467项展厅资源、27款精选、62张海报。已核对453份媒体哈希，其中包括27个GLB。完整 scripts/verify.py 通过，已按1.41的新增礼盒校准旧测试中的数量与审批摘要。源码提交3ea034e，已同步至codex/client142-touch-orbit分支。本次提供同Wi-Fi限时手机预览，正式服务器未发布本版。[触摸前后对照](client-motion-demo/review-evidence/iphone-orbit-client142/phone-results.json) · [横屏与桌面对照](client-motion-demo/review-evidence/iphone-orbit-client142/layout-results.json) · [松手后渲染记录](client-motion-demo/review-evidence/iphone-orbit-client142/tail-results.json)
 
 ## client1.41 · Body Care Duo（2026-11-02 已上线）
 
