@@ -1,8 +1,10 @@
 # 源泽版本记录
 
-## Body Care Duo 盒盖印刷 · 本地待审
+## client1.43 · Body Care Duo 首页比例与盒盖印刷（2026-11-03 已上线）
 
-poster-079 整套重新由 Blender 导出。圆盒盖及其印字独立，正面、半展开与完全展开共用九个可选部件。正式版仍为 client1.41。
+首页第 27 款使用 Blender 分层构图。桌面主体高度从约 148 px 调至 347 px，圆盒盖、内托和两支反向泵瓶的实物比例不变。详情页九个分组，含独立盒盖标识；新模型文件为 poster-079-v2.glb。本次不包含另行预览的 client1.42 手机手势改动。
+
+从正式 client1.41 原子切换，线上 467 项文件和旧版备份逐项校验。客户端入口匿名访问会跳转登录；真实交互在本地审查，未复测登录后的正式站交互。[发布记录](client-motion-demo/client143-body-care-duo-lid-release.json)。
 
 ## client1.41 · Body Care Duo（2026-11-02 已上线）
 

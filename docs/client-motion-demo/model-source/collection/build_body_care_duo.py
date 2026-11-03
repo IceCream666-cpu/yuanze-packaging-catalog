@@ -42,7 +42,7 @@ cfg=config([part(k,n,zh,en,zh,en) for k,n,zh,en in names],{'lid':[-.95,0,.35],'l
 cfg['explosion'].update(scales={},camera={'centerX':[0,-.10],'centerY':[1.45,1.45],'height':[3.6,5.6],'width':[6.4,9.4]})
 cfg['appearance']['studio']={'background':'#e9e8df','ink':'#373c2e'}
 bpy.context.preferences.filepaths.save_version = 0
-m.export(2.92,{n:0 for _,n,_,_ in names},{'name':'Body Care Duo'},cfg)
+m.export(2.92,{n:0 for _,n,_,_ in names},{'name':'Body Care Duo'},cfg,version='-v2')
 
 # Keep the editable Blender review synchronized with the web slider.
 scene = bpy.context.scene

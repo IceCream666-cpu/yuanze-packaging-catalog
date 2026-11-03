@@ -55,7 +55,7 @@ class Model:
    for li in f.loop_indices:
     v=o.data.loops[li].vertex_index;uv.data[li].uv=(v%(nx+1)/nx,v//(nx+1)/ny)
   return o
- def export(self,total,pivots,info,config):
+ def export(self,total,pivots,info,config,version=''):
   scale=2.9/total;assert set(pivots)==set(self.groups)
   for name,g in self.groups.items():
    pivot=Vector((0,0,pivots[name]))
@@ -65,7 +65,7 @@ class Model:
   for name,g in self.groups.items():
    points=[o.matrix_world@v.co for o in g.children for v in o.data.vertices];bounds[name]={'min':[min(p[i] for p in points) for i in range(3)],'max':[max(p[i] for p in points) for i in range(3)]}
   actual=max(v['max'][2] for v in bounds.values())-min(v['min'][2] for v in bounds.values());assert abs(actual-2.9)<.015,(actual,total)
-  bpy.ops.object.select_all(action='SELECT');bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets'/f'{self.id}.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
+  bpy.ops.object.select_all(action='SELECT');bpy.ops.export_scene.gltf(filepath=str(CLIENT/'packaging-assets'/f'{self.id}{version}.glb'),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True)
   bpy.ops.wm.save_as_mainfile(filepath=str(self.out/f'{self.id}.blend'))
   info.update(id=self.id,components=list(self.groups),height=2.9,actualHeight=actual,width=scale,componentBoundsBlenderXYZ=bounds,pivotsHeightToWidth=pivots,containsFormula=False,illustrativeDimensions=True,separateLabelAndPrint=True,reference=f'../../mobile-client-preview/assets/posters/{self.id}.webp',featuredReference=f'featured-assets/{self.id}.png',generatorDependencies=['tail_model_helpers.py'],revision='individual-reference-review-20261025')
   (self.out/'model-info.json').write_text(json.dumps(info,indent=2)+'\n');(self.out/'review-config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n');print(self.id,json.dumps({'bounds':bounds,'ratio':total}))

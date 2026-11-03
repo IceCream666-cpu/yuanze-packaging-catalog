@@ -345,16 +345,16 @@
       "sha256": "da9a144da8e10a81239b119ae77170c5fdcfb09323c1ecba588e2ece641f9bb6"
     },
     "assets/featured/poster-079-1024.webp": {
-      "bytes": 44874,
-      "sha256": "14df83bd0c2e3a46801c43bcdfce45862badcb810209ce629e8330a75c3ed18d"
+      "bytes": 51590,
+      "sha256": "00142e506adf8280105e61b8dc5d5f3cf6ebaa49374b887cc04692fa73233fea"
     },
     "assets/featured/poster-079-640.webp": {
-      "bytes": 26402,
-      "sha256": "90d873331eb328cf5dbfb3cb0b0f59900240ac2fdd3966c500e3df1989cfb921"
+      "bytes": 30230,
+      "sha256": "39a16b1b8e36f652487d3f730e44e57025ca644392435896f9fd3ab201756a69"
     },
     "assets/featured/poster-079.png": {
-      "bytes": 818188,
-      "sha256": "aca0e8eef734b28ea03fecbe6712906d0f29fa2602bdd8c10ee6ebbd1ff8d141"
+      "bytes": 1987945,
+      "sha256": "ee802885a86f0d32825250868edb3919efab36c4802c6e1a07e0048ea27bb685"
     },
     "assets/optimized/poster-001-strip.webp": {
       "bytes": 4762,
@@ -608,13 +608,13 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-B113D0xE.js": {
-      "bytes": 12360,
-      "sha256": "4e3b595119b63b1efebdd659414516d2df41c77cc245617a14839b1c7ccbaf10"
+    "assets/packaging/PackagingDetail-B99s82bq.js": {
+      "bytes": 12380,
+      "sha256": "ba6ef5fb47aa16e6863d0fee258ef0740060bc8afb2be330b2f4a4a923d682b1"
     },
-    "assets/packaging/PackagingDetail-DKVlGnbY.css": {
-      "bytes": 12107,
-      "sha256": "fd4e7f86885747e0a4dfa3bc41a85b9f9bb9682c7b65ca9e1f878c029e2396b9"
+    "assets/packaging/PackagingDetail-D0w62wZ7.css": {
+      "bytes": 12208,
+      "sha256": "fa0b627f3ac70db9357d91ab4f6d6c0e2664d79c2a6a7f2f2ea77a77e7507db1"
     },
     "assets/packaging/ScrollTrigger.min.js": {
       "bytes": 44157,
@@ -732,9 +732,9 @@
       "bytes": 627764,
       "sha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b"
     },
-    "assets/packaging/poster-079.glb": {
-      "bytes": 932208,
-      "sha256": "4423eb4a6c061f48a249320507d3d70fc09daf1073249cbb63c9d1f1a8cc3b27"
+    "assets/packaging/poster-079-v2.glb": {
+      "bytes": 932312,
+      "sha256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1854,15 +1854,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "1a389a071892b447b370dc6163306850f39667f3533f4c26f55859a9c9965fb9"
+      "sha256": "e2afc4473955dd67bc5b74dc502e72c4df32ce0450411cf216eab9a476298496"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 388490,
-      "sha256": "e2396946d98303639745064f0d7945ff15bd24407fd5cf4cc2299d29a33e313a"
+      "bytes": 388947,
+      "sha256": "c8cd90015f424b0a9625d85785c15af81128bb49c4dba376a78ae905ab610f31"
     },
     "product-posters.js": {
       "bytes": 21980,
@@ -1871,5 +1871,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.41"
+  "version": "client1.43"
 }

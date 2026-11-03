@@ -1,0 +1,32 @@
+{
+  "version": "client1.43",
+  "status": "published",
+  "date": "2026-11-03",
+  "product": "poster-079",
+  "reviewCommit": "f4912233",
+  "baseline": "client1.41",
+  "homepageSlot": 27,
+  "homepageCount": 27,
+  "posterCount": 62,
+  "modelCount": 27,
+  "modelFile": "assets/packaging/poster-079-v2.glb",
+  "modelSha256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a",
+  "featuredRevision": "layered-lid-v2",
+  "verifiedManifestFiles": 467,
+  "manifestSha256": "d6b1f5ab83ccfcbeebfa43b5d75c42ff963b5a8a7b3598d706442557ae1cae2d",
+  "rollback": "/opt/yuanze-reference/backups/client1.41-before-body-care-duo-lid-20261103",
+  "priorManifestSha256": "e99bde51e5e0e6121bb3920e68e171a6213167b2d243b8bb19986f052d369a27",
+  "qa": {
+    "frontend": 170,
+    "release": 20,
+    "localReview": "desktop and simulated 393x852 viewport; assembled, half open and fully open",
+    "productionFiles": "all declared files verified against expected manifest after cutover, previous release also verified",
+    "productionHTTPS": {
+      "client": 303,
+      "clientRedirect": "/login",
+      "anonymousModel": 401,
+      "anonymousFeatured": 401
+    },
+    "signedInProductionInteraction": "not retested"
+  }
+}

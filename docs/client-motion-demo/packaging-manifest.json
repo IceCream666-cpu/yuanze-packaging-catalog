@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.41-collection-packaging",
+  "scope": "approved-client1.43-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -235,9 +235,9 @@
       "sha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1"
     },
     {
-      "name": "poster-079.glb",
-      "file": "packaging-assets/poster-079.glb",
-      "productionTarget": "assets/packaging/poster-079.glb",
+      "name": "poster-079-v2.glb",
+      "file": "packaging-assets/poster-079-v2.glb",
+      "productionTarget": "assets/packaging/poster-079-v2.glb",
       "kind": "model",
       "bytes": 932312,
       "sha256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a"
@@ -513,7 +513,7 @@
     },
     {
       "posterId": "poster-079",
-      "file": "poster-079.glb",
+      "file": "poster-079-v2.glb",
       "components": [
         "Lid",
         "LidInk",

@@ -41,7 +41,7 @@ test('poster-derived single bottles retain detail identity and theme without cla
 });
 
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{
- assert.equal(manifest.version,'client1.41');
+ assert.equal(manifest.version,'client1.43');
  assert.equal(manifest.scope,`approved-${manifest.version}-display-derivatives`);
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
  const archived=Array.from({length:5},(_,i)=>`poster-${String(74+i).padStart(3,'0')}`);

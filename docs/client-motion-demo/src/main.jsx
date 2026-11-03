@@ -35,9 +35,10 @@ const posters = posterData.map(p => ({...p, image: assetURL(p.image), thumb: ass
 const featured = featuredData.map(p => {
   const media = featuredMedia[p.id];
   const prefix = `${import.meta.env.BASE_URL}${production ? 'assets/' : ''}featured/`;
+  const revision = p.displayRevision ? `?v=${p.displayRevision}` : '';
   return {...posters.find(item => item.id === p.id), ...p,
-    displayImage: `${prefix}${p.id}-1024.webp`, displayMobile: `${prefix}${p.id}-640.webp`,
-    displaySrcSet: imageCandidates(Object.values(media.files).map(f => [`${prefix}${f.file.split('/').pop()}`, f.width])),
+    displayImage: `${prefix}${p.id}-1024.webp${revision}`, displayMobile: `${prefix}${p.id}-640.webp${revision}`,
+    displaySrcSet: imageCandidates(Object.values(media.files).map(f => [`${prefix}${f.file.split('/').pop()}${revision}`, f.width])),
     displaySizes: FEATURED_SIZES, displayWidth: media.width, displayHeight: media.height};
 });
 const localStore = (() => {try {return window.localStorage;} catch {return null;}})();
