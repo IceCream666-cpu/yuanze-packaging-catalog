@@ -7,7 +7,7 @@ const MODULE_TIMEOUT = 120000;
 
 // Keep only the bytes for this opening. Reopening still revalidates the protected
 // asset with the server; no model or GPU resources survive the dialog lifecycle.
-export function startPackagingModelRequest(productId = 'poster-012') {
+export function startPackagingModelRequest(productId = 'poster-012', modelUrl) {
   const product = PACKAGING_PRODUCTS[productId];
   if (!Object.hasOwn(PACKAGING_PRODUCTS, productId)) throw new Error('Unsupported packaging product');
   const controller = new AbortController();
@@ -34,7 +34,7 @@ export function startPackagingModelRequest(productId = 'poster-012') {
   const timer = setTimeout(() => abort(new DOMException('Model request timed out', 'TimeoutError')), MODEL_TIMEOUT);
   const promise = (async () => {
     mark('fetchStart');
-    const response = await fetch(`${import.meta.env.BASE_URL}assets/packaging/${product.file}`, {
+    const response = await fetch(modelUrl || `${import.meta.env.BASE_URL}assets/packaging/${product.file}`, {
       credentials: 'same-origin', cache: 'no-cache', signal: controller.signal,
     });
     if (!response.ok) throw new Error(`Model request failed (${response.status})`);
@@ -56,9 +56,9 @@ export default function PackagingDetailLoader(props) {
   const modelRef = useRef(null);
   const sceneRef = useRef(null);
   const getModelRequest = useCallback(() => {
-    if (!modelRef.current || modelRef.current.signal.aborted) modelRef.current = startPackagingModelRequest(props.item.id);
+    if (!modelRef.current || modelRef.current.signal.aborted) modelRef.current = startPackagingModelRequest(props.item.id, props.modelUrl);
     return modelRef.current;
-  }, [props.item.id]);
+  }, [props.item.id, props.modelUrl]);
   const getSceneModule = useCallback(() => {
     if (!sceneRef.current) {
       const pending = import('./packaging-scene.js');

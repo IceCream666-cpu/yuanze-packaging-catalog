@@ -33,6 +33,9 @@
 .packaging-heading { position: absolute; z-index: 2; left: var(--pack-gutter); top: 26%; width: 26%; pointer-events: none; }
 .packaging-heading h1 { margin: 0; font-family: "Bodoni 72", Didot, "Times New Roman", serif; font-weight: 400; font-size: clamp(64px, 6.7vw, 96px); line-height: .92; letter-spacing: -.04em; }
 .packaging-title-second { display: block; }
+.packaging-finish { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 13px; pointer-events: auto; }
+.packaging-finish span { color: var(--pack-muted); }
+.packaging-finish select { min-height: 44px; padding: 0 6px; border: 0; border-bottom: 1px solid var(--pack-hairline); color: inherit; background: var(--pack-paper); font: inherit; cursor: pointer; }
 .packaging-intro { margin: 24px 0 0; font-size: 16px; line-height: 1.6; }
 .packaging-model { position: absolute; inset: 80px 0 148px; }
 .packaging-model canvas { display: block; width: 100%; height: 100%; touch-action: pan-y; outline: none; }
@@ -201,5 +204,5 @@
 }
 
 @media (min-width: 901px) {
-  .packaging-stage[data-product="poster-079"] .packaging-model { left: 23%; right: 27%; }
+  .packaging-stage:is([data-product="poster-079"], [data-product="poster-080"]) .packaging-model { left: 23%; right: 27%; }
 }

@@ -1,0 +1,27 @@
+{
+  "id": "poster-080",
+  "name": "Bath Trio",
+  "file": "poster-080-v1.glb",
+  "height": 2.9,
+  "width": 1.412,
+  "depth": 0.77,
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "source": "build_bath_trio.py",
+  "finishScenes": [
+    "after",
+    "soap",
+    "baby"
+  ],
+  "components": [
+    "Body",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "singleSharedBottleGeometry": true,
+  "attachedTube": true,
+  "separateLabelAndPrint": true,
+  "blenderVersion": "5.4.0 Alpha"
+}

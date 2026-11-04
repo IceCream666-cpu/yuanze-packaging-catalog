@@ -1,0 +1,183 @@
+{
+  "blender": "5.4.0 Alpha",
+  "openedBlend": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-080/poster-080.blend",
+  "sourceChecks": [
+    {
+      "scene": "after",
+      "roots": [
+        "Body_After",
+        "Pump_After",
+        "Label_After",
+        "LogoInk_After",
+        "NameInk_After"
+      ],
+      "bodyBounds": [
+        [
+          -0.7059999704360962,
+          0.7059999704360962
+        ],
+        [
+          -0.38499999046325684,
+          0.38499999046325684
+        ],
+        [
+          0.003000000026077032,
+          2.4110000133514404
+        ]
+      ],
+      "tubeClosedBounds": [
+        [
+          -0.03200000151991844,
+          0.16435053944587708
+        ],
+        [
+          -0.03200000151991844,
+          0.03358820825815201
+        ],
+        [
+          0.09867527335882187,
+          1.9800000190734863
+        ]
+      ],
+      "tubeLength": 1.8813247457146645,
+      "pumpChildCount": 6,
+      "tubeLocalTransformPreserved": true
+    },
+    {
+      "scene": "baby",
+      "roots": [
+        "Body_Baby",
+        "Pump_Baby",
+        "Label_Baby",
+        "LogoInk_Baby",
+        "NameInk_Baby"
+      ],
+      "bodyBounds": [
+        [
+          -0.7059999704360962,
+          0.7059999704360962
+        ],
+        [
+          -0.38499999046325684,
+          0.38499999046325684
+        ],
+        [
+          0.003000000026077032,
+          2.4110000133514404
+        ]
+      ],
+      "tubeClosedBounds": [
+        [
+          -0.03200000151991844,
+          0.16435053944587708
+        ],
+        [
+          -0.03200000151991844,
+          0.03358820825815201
+        ],
+        [
+          0.09867527335882187,
+          1.9800000190734863
+        ]
+      ],
+      "tubeLength": 1.8813247457146645,
+      "pumpChildCount": 6,
+      "tubeLocalTransformPreserved": true
+    },
+    {
+      "scene": "soap",
+      "roots": [
+        "Body_Soap",
+        "Pump_Soap",
+        "Label_Soap",
+        "LogoInk_Soap",
+        "NameInk_Soap"
+      ],
+      "bodyBounds": [
+        [
+          -0.7059999704360962,
+          0.7059999704360962
+        ],
+        [
+          -0.38499999046325684,
+          0.38499999046325684
+        ],
+        [
+          0.003000000026077032,
+          2.4110000133514404
+        ]
+      ],
+      "tubeClosedBounds": [
+        [
+          -0.03200000151991844,
+          0.16435053944587708
+        ],
+        [
+          -0.03200000151991844,
+          0.03358820825815201
+        ],
+        [
+          0.09867527335882187,
+          1.9800000190734863
+        ]
+      ],
+      "tubeLength": 1.8813247457146645,
+      "pumpChildCount": 6,
+      "tubeLocalTransformPreserved": true
+    }
+  ],
+  "passed": true,
+  "bytes": 717420,
+  "sha256": "67665dc7a8819c487e3a3272bd4bbb99a816a641a535d089c279d5cd56357e5b",
+  "glbScenes": [
+    "after",
+    "soap",
+    "baby"
+  ],
+  "sharedBodyPositionAccessor": 0,
+  "meshCount": 20,
+  "imageCount": 6,
+  "viewedScreenshots": [
+    "Bath-Trio-粗体liaose.png",
+    "前端-完全展开.png"
+  ],
+  "visualNotes": [
+    "Bold liaose and stacked product names match approved graphic direction.",
+    "Full pump with dip tube lifts as a single unit, bottle clear of duplicate print.",
+    "Clear film is low contrast in straight-on view; inspect angled view as primary three-plane evidence."
+  ],
+  "date": "2026-11-04",
+  "status": "local review only",
+  "deployed": false,
+  "reviewUrl": "http://127.0.0.1:8794/bath-trio.html",
+  "frontendTestsPassed": 173,
+  "reviewBuildPassed": true,
+  "desktopViewport": [
+    1561,
+    982
+  ],
+  "simulatedMobile": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "physicalDeviceTested": false
+  },
+  "browserChecks": [
+    "three finishes",
+    "closed / half / fully expanded",
+    "drag rotation",
+    "original poster and return",
+    "prior poster-079 still opens and expands"
+  ],
+  "aestheticReview": {
+    "tool": "impeccable",
+    "scopedDetectorFindings": 0,
+    "visualFixes": [
+      "removed opaque shadow from clear carrier",
+      "increased mobile print separation"
+    ],
+    "notes": [
+      "transparent print carrier is subtle against the neutral background"
+    ]
+  }
+}

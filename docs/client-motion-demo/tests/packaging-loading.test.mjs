@@ -1368,3 +1368,56 @@ test('Body Care Duo has one lid signature, independent of the bare paper lid', (
   const {lidInk, lid} = PACKAGING_PRODUCTS['poster-079'].review.explosion.offsets;
   assert.ok(lidInk[1] - lid[1] > 1.5 && lidInk[2] - lid[2] > 1);
 });
+
+for (const width of [393,850]) test(`Bath Trio retains its exploded pose and clear print layers at ${width}px`,async()=>{
+  const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-080/review-product.json',import.meta.url),'utf8'));
+  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const models=gltf.scenes.map(scene=>{
+    const group=new Three.Group();group.name=scene.name;
+    for(const index of scene.nodes) {
+      const node=gltf.nodes[index],part=new Three.Group();
+      part.userData={...node.extras};part.position.fromArray(node.translation);
+      part.name=node.name;group.add(part);
+      const material=new Three.MeshPhysicalMaterial();
+      if(node.extras.partKey==='Label') {material.transparent=true;material.opacity=.014;}
+      part.add(new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),material));
+    }
+    return group;
+  });
+  const loaded={scene:models[gltf.scene],scenes:models};
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));};
+    const part=(model,key)=>model.children.find(child=>child.userData.partKey===key);
+    const tubeY=part(models[0],'Pump').position.y, labelZ=part(models[0],'Label').position.z;
+    api.rotate();api.setProgress(1);flush();
+    for (const scene of ['soap','baby','after']) {
+      api.setFinish(scene);flush();
+      const active=models.find(m=>m.name===scene);
+      assert.deepEqual(models.filter(m=>m.parent),[active]);
+      assert.equal(api.getState().renderedProgress,1);
+      assert.equal(api.getState().yaw,Math.PI/2);
+      assert.equal(api.getState().finish,scene);
+      assert.ok(Math.abs(part(active,'Pump').position.y-(tubeY+product.review.explosion.offsets.pump[1]))<1e-8);
+      assert.ok(part(active,'Label').position.z>labelZ);
+      assert.ok(part(active,'NameInk').position.z>part(active,'LogoInk').position.z);
+      assert.ok(part(active,'LogoInk').position.z>part(active,'Label').position.z);
+      for(const key of ['label','logo','print']) {
+        const layer=part(active,product.parts.find(p=>p.key===key).node);
+        assert.equal(layer.children[0].castShadow,false);
+        assert.equal(layer.children[0].receiveShadow,false);
+        const x=product.review.explosion.offsets[key][0]*(width<768?.9:1);
+        assert.ok(Math.abs(layer.position.x-x)<1e-8);
+      }
+      assert.equal(part(active,'Body').children[0].castShadow,true);
+      assert.equal(part(active,'Label').children[0].material.opacity,.17);
+    }
+    api.setProgress(0);flush();
+    assert.equal(part(models[0],'Pump').position.y,tubeY);
+    assert.equal(part(models[0],'Label').children[0].material.opacity,.014);
+    assert.equal(env.events.filter(e=>e==='parse').length,1);
+  } finally {api?.dispose();env.close();}
+});

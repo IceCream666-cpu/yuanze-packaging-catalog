@@ -283,6 +283,26 @@ test('five-minute model deadline aborts its own request and a later attempt can 
   } finally {await env.close(); t.mock.timers.reset();}
 });
 
+test('a local preview model URL keeps product validation and authenticated abortable loading', async () => {
+  const env = setup(), requests = [];
+  const {startPackagingModelRequest} = component('structure/PackagingDetailLoader.jsx', {allExports: true});
+  globalThis.fetch = async (url, options) => {
+    requests.push({url, ...options});
+    return {ok: true, arrayBuffer: async () => new ArrayBuffer(16)};
+  };
+  try {
+    const request = startPackagingModelRequest('poster-012', '/preview/model.glb');
+    assert.equal((await request.promise).byteLength, 16);
+    assert.equal(requests[0].url, '/preview/model.glb');
+    assert.equal(requests[0].credentials, 'same-origin');
+    assert.equal(requests[0].cache, 'no-cache');
+    request.abort();
+    assert.equal(requests[0].signal.aborted, true);
+    assert.throws(() => startPackagingModelRequest('../../private', '/preview/model.glb'), /Unsupported/);
+    assert.equal(requests.length, 1);
+  } finally {await env.close();}
+});
+
 test('a rejected protected model response is never parsed or reused for another opening', async () => {
   const env = setup(); let calls = 0, bodyReads = 0;
   const {startPackagingModelRequest} = component('structure/PackagingDetailLoader.jsx', {allExports: true});

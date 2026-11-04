@@ -71,6 +71,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
   const progressRef = useRef(0);
   const stageRef = useRef(0);
   const [stage, setStage] = useState(0);
+  const [finish, setFinish] = useState(product.finishes?.[0].scene);
   const [selected, setSelected] = useState(null);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -105,6 +106,7 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
     setFailed(false);
     setManualOnly(reducedMotion);
     setSelected(null);
+    setFinish(product.finishes?.[0].scene);
 
     const update = (value, force = false) => {
       if (!active || failedDuringMount || (!force && (refreshing || resizeProgress !== null))) return;
@@ -313,6 +315,15 @@ export default function PackagingDetail({ item, lang, onClose, onOriginal, onFav
             <div className="packaging-heading">
               <h1 id="packaging-title">{design.name.split(' ').map((word,i) => <React.Fragment key={i}>{i > 0 && ' '}<span className={i > 0 ? 'packaging-title-second' : undefined}>{word}</span></React.Fragment>)}</h1>
               <p className="packaging-intro">{(product.design?.kind || design.kind)[lang]}</p>
+              {product.finishes && <label className="packaging-finish">
+                <span>{zh ? '瓶身款式' : 'Bottle finish'}</span>
+                <select value={finish} disabled={controlsDisabled} onChange={e => {
+                  apiRef.current?.setFinish(e.target.value);
+                  setFinish(e.target.value);
+                }}>
+                  {product.finishes.map(option => <option key={option.scene} value={option.scene}>{option.label}</option>)}
+                </select>
+              </label>}
             </div>
 
             <div className="packaging-model" ref={hostRef} aria-label={zh ? '可拖拽旋转的分层包材模型' : 'Layered packaging model, drag to rotate or use the bottom view button'} />

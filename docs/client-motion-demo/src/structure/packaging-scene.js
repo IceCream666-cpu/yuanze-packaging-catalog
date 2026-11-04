@@ -29,6 +29,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
   let down, move, up, lost, visible;
+  let modelScenes = [];
   const mark = phase => modelRequest?.mark(phase);
   const signals = [signal, modelRequest?.signal].filter(Boolean);
   const abortReason = () => signals.find(value => value.aborted)?.reason || new DOMException('Packaging view closed', 'AbortError');
@@ -44,7 +45,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     canvas?.removeEventListener('pointerup', up); canvas?.removeEventListener('pointercancel', up);
     canvas?.removeEventListener('lostpointercapture', up); canvas?.removeEventListener('webglcontextlost', lost);
     document.removeEventListener('visibilitychange', visible);
-    disposeObjects(scene, studio);
+    disposeObjects(scene, studio, ...modelScenes);
     envTarget?.dispose(); oilEnvTarget?.dispose(); key?.shadow.map?.dispose(); key?.shadow.mapPass?.dispose();
     renderer?.dispose(); canvas?.remove();
     if (host.__packagingScene === api) delete host.__packagingScene;
@@ -142,21 +143,27 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     mark('parseStart');
     return new GLTFLoader().parseAsync(bytes, '');
   }).then(gltf => {
-    if (disposed) {disposeObjects(gltf.scene); throw abortReason();}
+    const scenes = product.finishes ? gltf.scenes : [gltf.scene];
+    if (disposed) {disposeObjects(...scenes); throw abortReason();}
     mark('parseEnd');
-    return gltf.scene;
+    return scenes;
   });
-  const model = await Promise.race([parsed, aborted]);
-  root.add(model);
-  model.scale.setScalar(product.scale);
+  modelScenes = await Promise.race([parsed, aborted]);
   const collection = product.kind === 'collection';
   const pump = product.file === 'liaose-pump.glb';
-  const parts = Object.fromEntries(product.parts.map(part => [part.key, model.getObjectByName(part.node)]));
-  if (Object.values(parts).some(v => !v)) {
-    throw new Error('All approved packaging components are required.');
+  const assemblies = modelScenes.map(model => {
+    model.scale.setScalar(product.scale);
+    const parts = Object.fromEntries(product.parts.map(part => [part.key,
+      product.finishes ? model.children.find(node => node.userData.partKey === part.node) : model.getObjectByName(part.node)]));
+    if (Object.values(parts).some(v => !v)) throw new Error('All approved packaging components are required.');
+    const rest = Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, { p: value.position.clone(), q: value.quaternion.clone(), s: value.scale.clone() }]));
+    return {model, parts, rest};
+  });
+  if (product.finishes?.some(finish => !assemblies.some(a => a.model.name === finish.scene))) {
+    throw new Error('Missing packaging finish.');
   }
-  const rest = Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, { p: value.position.clone(), q: value.quaternion.clone(), s: value.scale.clone() }]));
-  model.traverse(o => {
+  let model, parts, rest;
+  function configureMesh(o) {
     if (!o.isMesh) return;
     let component=o; while(component.parent && component.parent!==model) component=component.parent;
     const isReviewOvercap=review && component===parts.overcap;
@@ -172,6 +179,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     if (m.map) { m.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); }
     if (pump || collection) {
       m.envMapIntensity = .65; o.castShadow = !m.map; o.receiveShadow = !m.map;
+      // WebGL shadow maps treat the nearly clear print carrier as an opaque sheet.
+      if (appearance?.carrierOpacity && [parts.label, parts.logo, parts.print].includes(component)) {
+        o.castShadow=false; o.receiveShadow=false;
+      }
       if (pdrn || moisture || woodland || gentle || coastal || golden || b5 || review) {
         if (m.map) {m.specularIntensity=.05; if (!review || m.metalness<.3) m.roughness=.7; m.envMapIntensity=.1;}
         if (m.transmission > .5) {
@@ -279,9 +290,20 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       }
     }
     m.needsUpdate = true;
-  });
-  // Keep the lettering above the translucent substrate at every viewing angle.
-  if (gentle || golden || b5 || review) parts.print.traverse(o => {if (o.isMesh) o.renderOrder=3;});
+  }
+  for (const assembly of assemblies) {
+    ({model, parts, rest} = assembly);
+    model.traverse(configureMesh);
+    // Keep the lettering above the translucent substrate at every viewing angle.
+    if (gentle || golden || b5 || review) parts.print.traverse(o => {if (o.isMesh) o.renderOrder=3;});
+    parts.logo?.traverse(o => {if (o.isMesh) o.renderOrder=3;});
+  }
+  function showAssembly(assembly) {
+    root.remove(model);
+    ({model, parts, rest} = assembly);
+    root.add(model);
+  }
+  showAssembly(product.finishes ? assemblies.find(a => a.model.name === product.finishes[0].scene) : assemblies[0]);
   const shadowCanvas = document.createElement('canvas'); shadowCanvas.width = shadowCanvas.height = 256;
   const context = shadowCanvas.getContext('2d');
   const gradient = context.createRadialGradient(128, 128, 4, 128, 128, 124);
@@ -303,7 +325,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
         const amount=interval ? smooth(...interval,current) : current;
         const travel=new T.Vector3(...offset);
         // Keep the same front-to-back separation while fitting wide print pairs on phones.
-        if(narrowReview && (key==='label' || key==='print' || key==='name')) travel.x*=.5;
+        if(narrowReview && (key==='label' || key==='print' || key==='name' || key==='logo')) travel.x*=explosion.mobilePrintSpread ?? .5;
         parts[key].position.copy(rest[key].p).addScaledVector(travel,amount);
         const scale=explosion.scales?.[key] ?? 1;
         parts[key].scale.copy(rest[key].s).multiplyScalar(1+(scale-1)*amount);
@@ -313,7 +335,11 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           capTilt.setFromEuler(rotationEuler); parts[key].quaternion.copy(rest[key].q).multiply(capTilt);
         }
       }
-      if (appearance.clearLabel) parts.label.traverse(o=>{if(o.isMesh)o.material.opacity=.05+.95*smooth(.03,.6,current);});
+      if (appearance.clearLabel || appearance.carrierOpacity) {
+        const [closed, open] = appearance.carrierOpacity || [.05, 1];
+        const opacity = closed + (open - closed) * smooth(.03, .6, current);
+        parts.label.traverse(o => {if (o.isMesh) o.material.opacity = opacity;});
+      }
     } else if (pdrn) {
       const capOpen=smooth(.02,.72,current), linerOpen=smooth(.25,1,current);
       parts.closure.position.copy(rest.closure.p).add(new T.Vector3(-.18,3.45,0).multiplyScalar(capOpen));
@@ -445,6 +471,11 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', up); canvas.addEventListener('lostpointercapture', up);
   canvas.addEventListener('webglcontextlost', lost); document.addEventListener('visibilitychange', visible);
   api = {
+    setFinish(sceneName) {
+      const assembly = assemblies.find(a => a.model.name === sceneName);
+      if (!assembly) return;
+      showAssembly(assembly); invalidate();
+    },
     setProgress(p) { target = clamp(Number(p)||0, 0, 1); invalidate(); },
     resetView() { desiredYaw=0; desiredPitch=0; selected=null; focus=0; invalidate(); },
     rotate() { desiredYaw += Math.PI/2; invalidate(); },
@@ -456,7 +487,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       selected=key; desiredYaw=0; desiredPitch=key==='liner'?.16:key==='cap'?-.15:0;
       focus=key==='cap'?.25:key==='jar'?-.12:0; invalidate();
     },
-    getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, printOffset:parts.print.position.clone().sub(rest.print.p).toArray(), components:Object.keys(parts), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
+    getState() { return {progress:target, renderedProgress:current, yaw, pitch, selected, finish:product.finishes ? model.name : undefined, printOffset:parts.print.position.clone().sub(rest.print.p).toArray(), components:Object.keys(parts), meshes:renderer.info.render.calls, triangles:renderer.info.render.triangles}; },
     dispose,
   };
   host.__packagingScene=api;
