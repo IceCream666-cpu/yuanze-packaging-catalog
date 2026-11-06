@@ -1,7 +1,7 @@
 {
   "id": "poster-080",
   "name": "Bath Trio",
-  "file": "poster-080-v1.glb",
+  "file": "poster-080-v2.glb",
   "height": 2.9,
   "width": 1.412,
   "depth": 0.77,
@@ -9,10 +9,11 @@
   "illustrativeDimensions": true,
   "source": "build_bath_trio.py",
   "finishScenes": [
-    "after",
     "soap",
+    "after",
     "baby"
   ],
+  "defaultFinish": "soap",
   "components": [
     "Body",
     "Pump",

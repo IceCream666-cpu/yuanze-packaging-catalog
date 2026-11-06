@@ -1373,6 +1373,8 @@ for (const width of [393,850]) test(`Bath Trio retains its exploded pose and cle
   const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-080/review-product.json',import.meta.url),'utf8'));
   const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
   const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  assert.equal(product.finishes[0].scene,'soap','review starts on the approved white bottle');
+  assert.equal(gltf.scenes[gltf.scene].name,'soap','standalone GLB also opens the white bottle');
   const models=gltf.scenes.map(scene=>{
     const group=new Three.Group();group.name=scene.name;
     for(const index of scene.nodes) {
@@ -1415,7 +1417,7 @@ for (const width of [393,850]) test(`Bath Trio retains its exploded pose and cle
       assert.equal(part(active,'Body').children[0].castShadow,true);
       assert.equal(part(active,'Label').children[0].material.opacity,.17);
     }
-    api.setProgress(0);flush();
+    api.setFinish(product.finishes[0].scene);api.setProgress(0);flush();
     assert.equal(part(models[0],'Pump').position.y,tubeY);
     assert.equal(part(models[0],'Label').children[0].material.opacity,.014);
     assert.equal(env.events.filter(e=>e==='parse').length,1);

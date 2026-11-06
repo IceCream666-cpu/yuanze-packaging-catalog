@@ -5,7 +5,7 @@ import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
 import './structure/packaging-shell.css';
 import product from '../model-source/collection/poster-080/review-product.json';
 import poster from '../model-source/collection/poster-080/bath-trio.webp';
-import modelUrl from '../packaging-assets/poster-080-v1.glb?url';
+import modelUrl from '../packaging-assets/poster-080-v2.glb?url';
 import logo from '../optimized-assets/yuanze-mark-compact.webp';
 
 const item = {id: 'poster-080', title: {zh: 'Bath Trio 沐浴护理三件组', en: 'Bath Trio'}, image: poster};

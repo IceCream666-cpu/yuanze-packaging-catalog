@@ -1,5 +1,11 @@
 # 源泽版本记录
 
+## Bath Trio 白色款 · poster-080（2026-11-06 本地预览）
+
+按用户指定，默认改为海报中间的 Soap Clean Soap 奶白瓶身及白色泵头。由本机 Blender 导出 poster-080-v2.glb / poster-080-v2.blend；保留粗体 liaose、完整泵头连长吸管、空瓶和独立印刷层。v1 资产保留，正式海报/首页清单未修改，未发布。
+
+173 项前端测试和独立预览构建通过；Ego Lite 验证默认白色、合拢/全开、拖拽旋转与款式切换，393×852 模拟手机无横向溢出。Impeccable 定向检查无发现，实际截图已目检。手机真机未测；展示尺寸和内部结构为示意。[白色款验证](client-motion-demo/model-source/collection/poster-080/review-verification-v2.json)。
+
 ## Bath Trio · poster-080（2026-11-04 本地预览，待用户审查）
 
 按已批准的粗体 liaose 海报，用本机 Blender 建立一个共用宽扁瓶型及 After Bath / Soap Clean Soap / Baby Blusher 三种款式。空瓶、带长中空吸管的完整泵组、透明印刷底层、Logo、品名容量五组；不含料体。独立审查入口为 client-motion-demo/bath-trio.html，未修改正式海报和首页清单，未发布，未占用新的正式版本号。

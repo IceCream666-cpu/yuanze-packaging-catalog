@@ -1,5 +1,5 @@
 {
-  "file": "poster-080-v1.glb",
+  "file": "poster-080-v2.glb",
   "kind": "collection",
   "scale": 1,
   "parts": [
@@ -165,12 +165,12 @@
   },
   "finishes": [
     {
-      "scene": "after",
-      "label": "After Bath"
-    },
-    {
       "scene": "soap",
       "label": "Soap Clean Soap"
+    },
+    {
+      "scene": "after",
+      "label": "After Bath"
     },
     {
       "scene": "baby",

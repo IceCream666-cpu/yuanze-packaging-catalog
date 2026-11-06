@@ -13,8 +13,8 @@ sys.path.insert(0, str(BASE))
 from tail_model_helpers import Model
 
 OUT = BASE / 'poster-080'
-GLB = BASE.parents[1] / 'packaging-assets/poster-080-v1.glb'
-FINISHES = ('after', 'soap', 'baby')
+GLB = BASE.parents[1] / 'packaging-assets/poster-080-v2.glb'
+FINISHES = ('soap', 'after', 'baby')
 GROUPS = ('Body', 'Pump', 'Label', 'LogoInk', 'NameInk')
 # Translations in the viewer's Y-up coordinates, with scale about each part's own centre.
 POSE = {'Body': ((0, 0, 0), 1), 'Pump': ((0, 2.62, 0), 1),
@@ -242,7 +242,7 @@ doc=split_gltf_scenes(GLB)
 for frame, opacity in [(1,.014),(31,.09),(61,.17)]:
     bsdf.inputs['Alpha'].default_value=opacity
     bsdf.inputs['Alpha'].keyframe_insert(data_path='default_value',frame=frame)
-# Give Blender reviewers independently selectable scenes as well. Opening the source shows only After Bath.
+# Give Blender reviewers independently selectable scenes; open on the approved white Soap finish.
 default_scene.name='after'
 for finish in FINISHES:
     sc=default_scene if finish=='after' else bpy.data.scenes.new(finish)
@@ -255,7 +255,7 @@ for finish in FINISHES:
         animate(group,key)
     sc.frame_end=61; sc.frame_set(1)
     sc.world=bpy.data.worlds.get('World') or bpy.data.worlds.new('World')
-bpy.context.window.scene=default_scene
+bpy.context.window.scene=bpy.data.scenes['soap']
 for screen in bpy.data.screens:
     for area in screen.areas:
         if area.type=='VIEW_3D':
@@ -266,10 +266,10 @@ for screen in bpy.data.screens:
             space.shading.type='MATERIAL'
 bpy.ops.object.select_all(action='DESELECT')
 default_scene.frame_set(1)
-bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-080.blend'),compress=True)
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'poster-080-v2.blend'),compress=True)
 info={'id':'poster-080','name':'Bath Trio','file':GLB.name,'height':2.9,'width':1.412,'depth':.77,
       'containsFormula':False,'illustrativeDimensions':True,'source':'build_bath_trio.py',
-      'finishScenes':list(FINISHES),'components':list(GROUPS),'singleSharedBottleGeometry':True,
+      'finishScenes':list(FINISHES),'defaultFinish':'soap','components':list(GROUPS),'singleSharedBottleGeometry':True,
       'attachedTube':True,'separateLabelAndPrint':True,'blenderVersion':bpy.app.version_string}
 (OUT/'model-info.json').write_text(json.dumps(info,indent=2)+'\n')
 print('Bath Trio:',len(doc['meshes']),'glTF meshes,',len(doc['accessors']),'accessors;',GLB.stat().st_size,'bytes')

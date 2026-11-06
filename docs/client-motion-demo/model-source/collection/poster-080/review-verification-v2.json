@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-06",
+  "status": "local review only",
+  "deployed": false,
+  "defaultFinish": "soap",
+  "file": "poster-080-v2.glb",
+  "bytes": 717420,
+  "sha256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4",
+  "openedBlend": "poster-080-v2.blend",
+  "sourceDefaultScene": "soap",
+  "preservedPreviousVersion": true,
+  "frontendTestsPassed": 173,
+  "reviewBuildPassed": true,
+  "reviewUrl": "http://127.0.0.1:8794/bath-trio.html",
+  "browser": "Ego Lite",
+  "desktopViewport": [
+    1561,
+    982
+  ],
+  "browserChecks": [
+    "white default on first load",
+    "complete pump and connected tube",
+    "full expansion",
+    "drag rotation",
+    "collapse",
+    "baby finish and return to soap"
+  ],
+  "simulatedMobile": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "physicalDeviceTested": false
+  },
+  "evidenceDirectory": "outputs/20261106-Bath-Trio-White",
+  "viewedScreenshots": [
+    "前端-白色合拢.png",
+    "前端-白色展开.png",
+    "前端-白色斜侧展开.png",
+    "手机模拟-白色展开.png"
+  ],
+  "aestheticReview": {
+    "tool": "impeccable",
+    "scopedDetectorFindings": 0,
+    "notes": [
+      "White silhouette and heavy black print match approved middle bottle.",
+      "Clear print carrier remains low contrast against neutral stage; geometry separation retained."
+    ]
+  },
+  "validationNote": "After clearing mobile emulation, first collapse was interrupted by viewport scroll restoration; after viewport settled, repeated UI collapse and finish switching passed."
+}
