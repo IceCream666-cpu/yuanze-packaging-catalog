@@ -1,5 +1,9 @@
 # 源泽版本记录
 
+## Exfoliating Hand Gel · poster-081（2026-11-06 海报待审）
+
+按八图顺序制作第 3 款净手凝露 2:3 海报，保留透明厚底圆柱瓶、黑色泵组、织物环标与侧边布标，替换为 liaose。英文与外观经过逐项目检及独立审美复查，未添加未知容量。当前仅海报预览，3D 未开始，未注册正式目录/首页、未部署。[素材与检查记录](client-motion-demo/model-source/collection/poster-081/README.md)。
+
 ## Bath Trio 白色款 · poster-080（2026-11-06 本地预览）
 
 按用户指定，默认改为海报中间的 Soap Clean Soap 奶白瓶身及白色泵头。由本机 Blender 导出 poster-080-v2.glb / poster-080-v2.blend；保留粗体 liaose、完整泵头连长吸管、空瓶和独立印刷层。v1 资产保留，正式海报/首页清单未修改，未发布。

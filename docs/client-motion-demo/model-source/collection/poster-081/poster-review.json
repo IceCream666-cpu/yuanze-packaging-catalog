@@ -1,0 +1,36 @@
+{
+  "id": "poster-081",
+  "name": "Exfoliating Hand Gel",
+  "batchPosition": 3,
+  "reference": "950cdc545d2a1a0892e5bd6f60977c9f.jpg",
+  "date": "2026-11-06",
+  "status": "poster review",
+  "image": "exfoliating-hand-gel-v1.png",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "sha256": "53cf22384bfb71cfa88d819dc8584a8d4acb5baebdd0c2c0ce7679251b12c34f",
+  "generationTool": "built-in image_gen",
+  "modelCreated": false,
+  "catalogRegistered": false,
+  "deployed": false,
+  "visualReview": {
+    "inspected": true,
+    "independentReview": "pass",
+    "checks": [
+      "cylindrical silhouette and clear thick base",
+      "black ribbed collar and connected pump",
+      "cream woven wrap and black fabric side tab",
+      "liaose spelling and English headings",
+      "no clipped pump or bottle",
+      "no invented volume or numeric claims"
+    ]
+  },
+  "modelConstraints": [
+    "No formula in future 3D model",
+    "Whole pump and long dip tube move together",
+    "Fabric label, logo and product name separate in depth",
+    "Frosting is not inferred from exfoliating product name"
+  ]
+}
