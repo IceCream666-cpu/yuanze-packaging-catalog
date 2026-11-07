@@ -1,0 +1,184 @@
+{
+  "file": "poster-082-v1.glb",
+  "kind": "collection",
+  "scale": 1,
+  "parts": [
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "奶白塑料容器",
+        "Ivory plastic containers"
+      ],
+      "short": [
+        "奶白塑料容器",
+        "Ivory plastic containers"
+      ],
+      "detail": [
+        "柔性软管与圆柱泵瓶，两件空包材。",
+        "An empty flexible tube beside an opaque cylindrical bottle."
+      ]
+    },
+    {
+      "key": "pump",
+      "node": "Pump",
+      "title": [
+        "完整圆盘泵头",
+        "Complete disc pump"
+      ],
+      "short": [
+        "完整圆盘泵头",
+        "Complete disc pump"
+      ],
+      "detail": [
+        "圆盘按压头、旋盖与粗透明中空长吸管整体展开。",
+        "The disc actuator, closure and long clear hollow dip tube lift as one assembly."
+      ]
+    },
+    {
+      "key": "cap",
+      "node": "TubeCap",
+      "title": [
+        "完整软管底盖",
+        "Complete tube cap"
+      ],
+      "short": [
+        "完整软管底盖",
+        "Complete tube cap"
+      ],
+      "detail": [
+        "浅蓝翻盖底盖作为完整组件分离。",
+        "The powder-blue flip-top closure separates as one complete component."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "Label",
+      "title": [
+        "条纹与印刷承载层",
+        "Stripes and print carrier"
+      ],
+      "short": [
+        "条纹与印刷承载层",
+        "Stripes and print carrier"
+      ],
+      "detail": [
+        "浅蓝条纹与透明印刷承载面向外展开，无实体纸标。",
+        "Blue pinstripes and transparent print surfaces separate; there is no paper label."
+      ]
+    },
+    {
+      "key": "logo",
+      "node": "LogoInk",
+      "title": [
+        "粗体 liaose 字标",
+        "Bold liaose wordmarks"
+      ],
+      "short": [
+        "粗体 liaose 字标",
+        "Bold liaose wordmarks"
+      ],
+      "detail": [
+        "两处粗体字标从印刷承载面进一步向外展开。",
+        "Both bold wordmarks lift farther forward than the print carrier."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "NameInk",
+      "title": [
+        "产品名与容量",
+        "Names and capacities"
+      ],
+      "short": [
+        "产品名与容量",
+        "Names and capacities"
+      ],
+      "detail": [
+        "SOAP CLEAN SOAP、用途与容量形成更外层文字。",
+        "The product names, uses and capacities form the outermost lettering layer."
+      ]
+    }
+  ],
+  "review": {
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "studio": {
+        "background": "#e6e9e6",
+        "ink": "#263b3a"
+      }
+    },
+    "explosion": {
+      "mobilePrintSpread": 1,
+      "offsets": {
+        "body": [
+          1,
+          0,
+          0
+        ],
+        "pump": [
+          1,
+          2.1,
+          0
+        ],
+        "cap": [
+          0.75,
+          -0.7,
+          0.15
+        ],
+        "label": [
+          -0.85,
+          0.05,
+          0.75
+        ],
+        "logo": [
+          -1.55,
+          0.25,
+          1.35
+        ],
+        "print": [
+          -1.6,
+          -0.05,
+          1.85
+        ]
+      },
+      "scales": {
+        "label": 1,
+        "logo": 1.08,
+        "print": 1.08
+      },
+      "camera": {
+        "centerX": [
+          -0.05,
+          0
+        ],
+        "centerY": [
+          1.55,
+          1.95
+        ],
+        "width": [
+          3.7,
+          6.4
+        ],
+        "height": [
+          3.75,
+          6.4
+        ]
+      }
+    }
+  },
+  "design": {
+    "name": "Soap Clean Duo",
+    "kind": {
+      "zh": "洗护组合 · 软管与圆盘泵瓶",
+      "en": "Hair care · Tube and disc pump bottle"
+    },
+    "background": "#e6e9e6",
+    "ink": "#263b3a",
+    "swatch": [
+      "#eeeadd",
+      "#9fc7db"
+    ]
+  }
+}

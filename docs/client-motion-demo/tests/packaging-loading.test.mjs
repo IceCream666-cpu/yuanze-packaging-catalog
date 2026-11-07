@@ -1459,3 +1459,48 @@ for (const width of [393,850]) test(`Bath Trio retains its exploded pose and cle
     assert.equal(env.events.filter(e=>e==='parse').length,1);
   } finally {api?.dispose();env.close();}
 });
+
+for (const width of [393,1200]) test(`Soap Duo moves complete assemblies and distinct print layers at ${width}px`,async()=>{
+  const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-082/review-product.json',import.meta.url),'utf8'));
+  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  const nodes=gltf.nodes.map(node=>{
+    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),new Three.MeshPhysicalMaterial()) : new Three.Group();
+    object.name=node.name;object.userData={...node.extras};
+    if(node.matrix)object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
+    else {
+      object.position.fromArray(node.translation??[0,0,0]);
+      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
+      object.scale.fromArray(node.scale??[1,1,1]);
+    }
+    return object;
+  });
+  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
+  const loaded={scene:new Three.Group()};
+  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
+  const env=harness({product,parse:()=>Promise.resolve(loaded)});let api;
+  try {
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:800}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes))});
+    const parts=Object.fromEntries(product.parts.map(p=>[p.key,loaded.scene.getObjectByName(p.node)]));
+    assert.equal(Object.keys(parts).length,6);
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,part.position.clone()]));
+    const pumpChildren=parts.pump.children.map(child=>child.position.toArray());
+    const flush=()=>{const frames=[...env.frames.values()];env.frames.clear();frames.forEach(fn=>fn(16));};
+    for(const progress of [.5,1,0]) {
+      api.setProgress(progress);flush();
+      assert.equal(api.getState().renderedProgress,progress);
+      for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
+        const expected=new Three.Vector3(...offset).multiplyScalar(progress);
+        if(width<768&&['label','logo','print'].includes(key))expected.x*=product.review.explosion.mobilePrintSpread;
+        assert.ok(parts[key].position.clone().sub(rest[key]).distanceTo(expected)<1e-8,`${key} movement`);
+      }
+      assert.deepEqual(parts.pump.children.map(child=>child.position.toArray()),pumpChildren,'dip tube and actuator remain a complete pump');
+      if(progress) {
+        const travel=key=>parts[key].position.z-rest[key].z;
+        assert.ok(travel('print')>travel('logo')&&travel('logo')>travel('label'),'names, logos and base printing occupy distinct depths');
+        assert.ok(parts.cap.position.y<rest.cap.y&&parts.pump.position.y>rest.pump.y);
+      }
+    }
+  } finally {api?.dispose();env.close();}
+});

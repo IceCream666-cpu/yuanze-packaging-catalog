@@ -1,0 +1,69 @@
+{
+  "status": "local-model-awaiting-user-review",
+  "verifiedAt": "2026-11-07T17:39:04.907509+08:00",
+  "url": "http://127.0.0.1:8794/soap-duo.html",
+  "tool": "Ego Lite",
+  "components": 6,
+  "checks": [
+    "closed / half / full",
+    "mouse drag rotates",
+    "90 degree side view",
+    "bottom view and front reset",
+    "1024x1536 original poster round trip",
+    "393x852 simulated viewport closed and full",
+    "no horizontal overflow at 393px",
+    "print layers move ahead of stripes",
+    "complete pump with long hollow dip tube",
+    "empty opaque plastic containers"
+  ],
+  "tests": {
+    "frontend": 181,
+    "passed": 181,
+    "postMobileAdjustmentFocused": 2,
+    "previewBuild": "passed",
+    "actualGlbVerification": "passed"
+  },
+  "visualReview": {
+    "independentReview": "passed desktop and simulated phone",
+    "fixed": [
+      "carrier and stripe shadows removed",
+      "clear hollow dip tube readability",
+      "desktop side view clear of explanation rail",
+      "mobile full expansion keeps bottle lettering off tube body"
+    ],
+    "impeccable": "Inherited beige loading background warning corrected to approved cool neutral #e6e9e6; rendered review completed."
+  },
+  "glbSha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f",
+  "evidence": [
+    {
+      "file": "previews/model-closed-desktop.png",
+      "sha256": "8942d21f28558ac954bf54c9a49f94fc3407de78dbf8c3665aeb0621fe26e808"
+    },
+    {
+      "file": "previews/model-half-desktop.png",
+      "sha256": "6e25e07199a6c2f99063b993a5c67af498748e12faa2e74270e02d2ec081daf2"
+    },
+    {
+      "file": "previews/model-exploded-desktop.png",
+      "sha256": "d444d63960f0377c48dbc9fbb6c7a5fe2ec45d9bfc269d4d1470c2d1b3ca2d99"
+    },
+    {
+      "file": "previews/model-exploded-side.png",
+      "sha256": "46a569d22ce2f5abb5b80a1d3a26cfb8042d8f6c70ddc4c654498a5cad9ecfa6"
+    },
+    {
+      "file": "previews/model-closed-mobile-simulated.png",
+      "sha256": "91824855149621a73397616a8d3140a7a509549c1e0be50ad267b7bacacead4c"
+    },
+    {
+      "file": "previews/model-exploded-mobile-simulated.png",
+      "sha256": "fdb2f9b56be7b01ffd94b9d9491e0f44a601b34e6c9e0b66924531bf53378733"
+    }
+  ],
+  "limitations": [
+    "Mobile checks use CDP simulated viewport and DOM stage activation, not physical device testing.",
+    "Dimensions and hidden structure inferred from reference, not manufacturing measurements.",
+    "Model and homepage registration await user review; only approved poster is online in client1.46.",
+    "Mobile capacity text is small in full expansion; inspect the closed model or poster for fine text."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "poster-082",
+  "name": "Soap Clean Duo",
+  "file": "poster-082-v1.glb",
+  "source": "build_soap_duo.py",
+  "blenderVersion": "5.4.0 Alpha",
+  "components": [
+    "Body",
+    "TubeCap",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -1.5299999713897705,
+        -0.574999988079071,
+        0.0
+      ],
+      "max": [
+        1.3250000476837158,
+        0.574999988079071,
+        3.1050000190734863
+      ]
+    },
+    "TubeCap": {
+      "min": [
+        -1.2300000190734863,
+        -0.30000001192092896,
+        0.0
+      ],
+      "max": [
+        -0.4300000071525574,
+        0.31200000643730164,
+        0.41600000858306885
+      ]
+    },
+    "Pump": {
+      "min": [
+        0.4480000138282776,
+        -0.3019999861717224,
+        0.09655000269412994
+      ],
+      "max": [
+        1.0520000457763672,
+        0.31200000643730164,
+        2.6545000076293945
+      ]
+    },
+    "Label": {
+      "min": [
+        -1.4716399908065796,
+        -0.5759999752044678,
+        0.2199999988079071
+      ],
+      "max": [
+        1.149999976158142,
+        -0.011885902844369411,
+        2.9800000190734863
+      ]
+    },
+    "LogoInk": {
+      "min": [
+        -1.0800000429153442,
+        -0.5789999961853027,
+        1.6549999713897705
+      ],
+      "max": [
+        0.9750000238418579,
+        -0.06783085316419601,
+        2.7809998989105225
+      ]
+    },
+    "NameInk": {
+      "min": [
+        -1.162500023841858,
+        -0.5789999961853027,
+        0.25
+      ],
+      "max": [
+        1.1074999570846558,
+        -0.1605719029903412,
+        1.9210000038146973
+      ]
+    }
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "materials": "opaque ivory and pale-blue plastic; transparent hollow polyethylene suction tube",
+  "tubeHeight": 3.105,
+  "bottleWithPumpHeight": 2.6545,
+  "bottleBodyDiameter": 1.15,
+  "tubeTailWidth": 1.4,
+  "tubeCapWidth": 0.8,
+  "centerSpacing": 1.58,
+  "capacitiesMl": {
+    "tube": 180,
+    "bottle": 300
+  },
+  "suctionTube": {
+    "outerDiameter": 0.082,
+    "innerDiameter": 0.058,
+    "topZ": 1.985,
+    "tipCenterZ": 0.115,
+    "containerInnerFloorZ": 0.089,
+    "parent": "Pump"
+  },
+  "separateLabelAndPrint": true,
+  "paperLabel": false,
+  "flatDiscPump": true,
+  "rearLipHeight": 0.031
+}

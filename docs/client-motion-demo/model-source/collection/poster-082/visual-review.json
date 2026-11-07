@@ -1,0 +1,47 @@
+{
+  "reviewedAt": "2026-11-07T17:37:29.123585+08:00",
+  "glbSha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f",
+  "blendSha256": "f6f61bf23bb017c39eff8785ab5475ecb65770866e23f99251713f814b199961",
+  "renders": [
+    {
+      "view": "front",
+      "file": "previews/front.png",
+      "pixels": [
+        1600,
+        1800
+      ],
+      "sha256": "e4fa10e0a9c8a741faa32d49d0946c1c2058bc75b2917bbf96dc510d06ffcb90"
+    },
+    {
+      "view": "side",
+      "file": "previews/side.png",
+      "pixels": [
+        1800,
+        1800
+      ],
+      "sha256": "3a40ddb178f96d358614d098a3aeeb0f2786f4598003b8cf24e2b1ee1552b391"
+    },
+    {
+      "view": "expanded",
+      "file": "previews/expanded.png",
+      "pixels": [
+        2200,
+        2000
+      ],
+      "sha256": "8d1c5d6c473c23925cf2a811ef2ebb166320569e70fef15a3772a2518d3ca80d"
+    }
+  ],
+  "checks": [
+    "two correctly proportioned empty opaque plastic containers",
+    "flat disc pump and low rear lip, no central peg",
+    "complete long hollow suction tube remains with pump",
+    "soft tube shape and flip top cap match poster",
+    "independent stripes, wordmarks and product lettering, no paper label",
+    "assembled, three-quarter side and full-expansion renders visually inspected"
+  ],
+  "limits": [
+    "Dimensions and unseen internals are inferred, not production CAD.",
+    "Browser interaction and simulated mobile acceptance recorded by primary agent.",
+    "Blender beauty render and WebGL use different transparency rendering."
+  ]
+}

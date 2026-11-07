@@ -1,0 +1,88 @@
+{
+  "scope": "Actual local Blender source and exported GLB structure; interaction verified separately by primary agent",
+  "verifiedAt": "2026-11-07T17:38:41.578536+08:00",
+  "blenderVersion": "5.4.0 Alpha",
+  "glbBytes": 1917000,
+  "glbSha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f",
+  "blendBytes": 1022553,
+  "blendSha256": "f6f61bf23bb017c39eff8785ab5475ecb65770866e23f99251713f814b199961",
+  "meshes": 21,
+  "triangles": 77470,
+  "embeddedImages": 6,
+  "groups": {
+    "Body": [
+      "Empty flexible tube | flat sealed tail and open nozzle",
+      "Empty ivory cylinder | low shoulder and hollow neck",
+      "Flattened heat-seal tail | 90 fine crimp ridges"
+    ],
+    "Label": [
+      "Bottle transparent print carrier",
+      "Pale blue pinstripes | direct printing, no paper",
+      "Tube transparent print carrier"
+    ],
+    "LogoInk": [
+      "Bottle bold liaose",
+      "Tube bold liaose"
+    ],
+    "NameInk": [
+      "Bottle SHAMPOO 300 ml",
+      "Bottle SOAP CLEAN SOAP",
+      "Tube HAIR TREATMENT 180 ml",
+      "Tube SOAP CLEAN SOAP"
+    ],
+    "Pump": [
+      "Disc pump | assembled actuator neck",
+      "Disc pump | internal socket, stays with head",
+      "Disc pump | low rear-edge dispensing lip",
+      "Disc pump | rounded closure barrel",
+      "Disc pump | wide flat circular pressing surface",
+      "Long clear hollow dip tube | near-bottom angled intake"
+    ],
+    "TubeCap": [
+      "Blue flip-top cap | complete closure sleeve",
+      "Blue flip-top cap | lower hinged lid",
+      "Blue flip-top rear hinge"
+    ]
+  },
+  "noFormula": true,
+  "opaquePlasticBodies": true,
+  "noPaperLabel": true,
+  "discTopFlat": true,
+  "pipeBoundsY": [
+    0.09655000269412994,
+    1.9850000143051147
+  ],
+  "pipeOuterDiameter": 0.082,
+  "pipeInnerDiameter": 0.058,
+  "ratioTubeToBottle": 1.1697118101337352,
+  "renderStatus": "front, side and full expansion inspected",
+  "renderEvidence": [
+    {
+      "view": "front",
+      "file": "previews/front.png",
+      "pixels": [
+        1600,
+        1800
+      ],
+      "sha256": "e4fa10e0a9c8a741faa32d49d0946c1c2058bc75b2917bbf96dc510d06ffcb90"
+    },
+    {
+      "view": "side",
+      "file": "previews/side.png",
+      "pixels": [
+        1800,
+        1800
+      ],
+      "sha256": "3a40ddb178f96d358614d098a3aeeb0f2786f4598003b8cf24e2b1ee1552b391"
+    },
+    {
+      "view": "expanded",
+      "file": "previews/expanded.png",
+      "pixels": [
+        2200,
+        2000
+      ],
+      "sha256": "8d1c5d6c473c23925cf2a811ef2ebb166320569e70fef15a3772a2518d3ca80d"
+    }
+  ]
+}
