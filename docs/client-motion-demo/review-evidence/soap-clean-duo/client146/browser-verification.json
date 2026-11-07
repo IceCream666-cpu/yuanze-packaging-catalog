@@ -1,0 +1,56 @@
+{
+  "version": "client1.46",
+  "browser": "Ego Lite",
+  "taskSpace": 33,
+  "page": "p2",
+  "verifiedBy": "parent agent through authenticated production UI",
+  "title": "client1.46",
+  "posters": 65,
+  "search": {
+    "term": "Soap Clean",
+    "results": 1,
+    "title": "liaose 净润洗护双件套"
+  },
+  "poster": {
+    "id": "poster-082",
+    "modalPreviewHeight": 1280,
+    "desktopVisual": true,
+    "mobileVisual": true,
+    "noCropping": true
+  },
+  "mobile": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "method": "CDP simulated viewport",
+    "physicalDeviceTest": false,
+    "nativeTouchTest": false
+  },
+  "homepageChoices": 29,
+  "no082HomeEntry": true,
+  "previous081Regression": {
+    "loaded": true,
+    "progress": 1,
+    "groups": 5
+  },
+  "screenshots": [
+    {
+      "file": "online-poster-desktop.png",
+      "bytes": 307211,
+      "sha256": "b7c0d274abe2b2fe812bb5a08b2e1b287cced738723559990a43ecb50e84796f"
+    },
+    {
+      "file": "online-poster-mobile-simulated.png",
+      "bytes": 185162,
+      "sha256": "78e02f3a95958a5118187257f7b3ff794f9cc801318d4c8a64c93fb8d09183a7"
+    },
+    {
+      "file": "online-081-regression.png",
+      "bytes": 173390,
+      "sha256": "7447ffedb260b742a28884d05aabd5ac2edbebdee96e76cdcccd7340bde4cb74"
+    }
+  ],
+  "visualReview": "Parent inspected desktop/mobile/original and 081; publication agent also inspected mobile screenshot."
+}
