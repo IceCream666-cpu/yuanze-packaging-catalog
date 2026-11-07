@@ -1,0 +1,14 @@
+[
+  {
+    "src": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-081-1024.webp?v=blender-empty-v1",
+    "width": 281,
+    "height": 362,
+    "parent": ""
+  },
+  {
+    "src": "https://bmt.yuanzebeauty.com/showroom/assets/previews/posters/poster-081-1280.webp",
+    "width": 853,
+    "height": 1280,
+    "parent": "responsive-media"
+  }
+]

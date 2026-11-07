@@ -14,6 +14,17 @@ class ReleasePlanTests(unittest.TestCase):
         self.assertEqual(len(plan['preservedPackaging']), 28)
         compile(publish.REMOTE_SCRIPT.replace('PAYLOAD', repr('{}')), 'remote-publication', 'exec')
 
+    def test_insufficient_disk_space_stops_before_staging_or_upload(self):
+        candidate = 200 * 1024 * 1024
+        required = candidate + 256 * 1024 * 1024
+        for available in (0, candidate, required - 1):
+            with self.subTest(available=available), self.assertRaisesRegex(RuntimeError, 'Insufficient service-user disk space'):
+                publish.require_disk_headroom(available, candidate)
+        self.assertEqual(publish.require_disk_headroom(required, candidate), required)
+        self.assertLess(publish.REMOTE_SCRIPT.index('require_disk_headroom(space.'), publish.REMOTE_SCRIPT.index('shutil.copytree(old,new)'))
+        source = Path(publish.__file__).read_text()
+        self.assertLess(source.index('capacity = ssh.remote'), source.index('upload = ssh.remote'))
+
     def test_rejects_stale_unapproved_or_changed_model(self):
         _, candidate, _ = publish.plan()
         original = Path.read_text

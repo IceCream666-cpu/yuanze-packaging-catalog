@@ -4,7 +4,7 @@
   "batchPosition": 3,
   "reference": "950cdc545d2a1a0892e5bd6f60977c9f.jpg",
   "date": "2026-11-06",
-  "status": "poster published; approved model prepared for publication",
+  "status": "poster, approved model and homepage published",
   "image": "exfoliating-hand-gel-v1.png",
   "dimensions": [
     1024,
@@ -37,6 +37,7 @@
   "publishedAt": "2026-11-07T16:49:36+08:00",
   "release": "client1.44",
   "modelRegistered": true,
-  "modelDeployed": false,
-  "modelReleaseCandidate": "client1.45"
+  "modelDeployed": true,
+  "modelRelease": "client1.45",
+  "modelPublishedAt": "2026-11-07T17:13:53+08:00"
 }

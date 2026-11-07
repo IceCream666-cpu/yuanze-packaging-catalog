@@ -1,0 +1,56 @@
+{
+  "physicalDevice": false,
+  "method": "CDP viewport and DOM control activation",
+  "expanded": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "state": {
+      "progress": 1,
+      "renderedProgress": 0.999999999999994,
+      "yaw": 8.651829860412542e-8,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.1069999999999878,
+        -0.07999999999999952,
+        2.0399999999999876
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 50298
+    }
+  },
+  "closed": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "state": {
+      "progress": 0,
+      "renderedProgress": 0.00028298579291380577,
+      "yaw": 7.504227242437507e-15,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.0005962510656693888,
+        -0.000022638863433011025,
+        0.0005772910175441638
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 50298
+    }
+  }
+}

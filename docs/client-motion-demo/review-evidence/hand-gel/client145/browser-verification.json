@@ -1,0 +1,33 @@
+{
+  "tool": "Ego Lite",
+  "environment": "formal authenticated client1.45",
+  "parentVerified": true,
+  "originalSessionRestored": true,
+  "homeChoices": 29,
+  "newModelIndex": 29,
+  "desktopChecks": [
+    "assembled",
+    "half expanded",
+    "fully expanded",
+    "90-degree rotation",
+    "reset",
+    "original poster and back"
+  ],
+  "partCount": 5,
+  "mobile": {
+    "viewport": "393x852",
+    "physicalDevice": false,
+    "nativeTouch": false,
+    "method": "CDP viewport and DOM control activation",
+    "horizontalOverflow": false,
+    "assembledAndExpanded": true
+  },
+  "originalPosterPreview": "853x1280",
+  "previousModelRegression": {
+    "id": "poster-080",
+    "finish": "soap",
+    "expanded": true
+  },
+  "visualReview": "parent inspection and independent mobile review passed",
+  "checkedAt": "2026-11-07T17:23:01+08:00"
+}

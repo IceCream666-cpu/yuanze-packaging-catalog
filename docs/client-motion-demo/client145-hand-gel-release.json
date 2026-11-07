@@ -1,0 +1,73 @@
+{
+  "version": "client1.45",
+  "sourceCommit": "c7a0d808",
+  "published": true,
+  "publishedAt": "2026-11-07T17:13:53+08:00",
+  "manifestSha256": "8c58fbcf33f13f577db12a457b5ab529b5020fca15580562a0d9ae67c0fdb1ca",
+  "baselineManifestSha256": "a3f0fb5a1e92f12c01349528b7e1373e60d6f241a07fd1f5ba38f091981bad33",
+  "counts": {
+    "posters": 64,
+    "featured": 29,
+    "models": 29
+  },
+  "publishedModel": {
+    "id": "poster-081",
+    "file": "poster-081-v1.glb",
+    "bytes": 4527020,
+    "sha256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132",
+    "blenderCreated": true,
+    "approvedModelPreserved": true
+  },
+  "coverage": {
+    "formalModelsInHome": 29,
+    "formalModelsMissingFromHome": 0,
+    "postersWithoutModel": 30,
+    "withdrawnModels": 5,
+    "postersWithoutActiveModel": 35
+  },
+  "validation": {
+    "frontendTests": 179,
+    "modelAndReleaseTests": 38,
+    "releasePlanTests": 3,
+    "verifiedServerFiles": 485,
+    "fullResourcesOverHttps": 6,
+    "modelRangeRequests": 29,
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "publicHttpsVerifiedAt": "2026-11-07T17:19:41+08:00",
+    "browserInteractionVerified": true,
+    "browserEvidence": "review-evidence/hand-gel/client145/browser-verification.json",
+    "homepageChoices": 29,
+    "originalSessionRestored": true,
+    "desktopModelStates": true,
+    "mobile": "393x852 simulated viewport, no physical device or native touch test",
+    "previous080WhiteFinishRegression": true
+  },
+  "storageRecovery": {
+    "reclaimedBytes": 817990118,
+    "serviceUserAvailableBytes": 670568448,
+    "recoveryEvidence": "review-evidence/hand-gel/client145/storage-recovery.json",
+    "retainedAllHistoricalBackups": true,
+    "addedPreflightDiskGuard": true
+  },
+  "evidence": "review-evidence/hand-gel/client145/",
+  "backup": "/opt/yuanze-reference/backups/client1.45-hand-gel-model-20261107",
+  "businessDataWrites": 0,
+  "serviceRestart": false,
+  "limitations": [
+    "No physical mobile device test",
+    "Display model dimensions are illustrative",
+    "Web dip tube uses transparent compositing instead of Blender offline refraction"
+  ],
+  "nextPoster": {
+    "id": "poster-082",
+    "name": "Soap Clean Duo",
+    "status": "local poster review only",
+    "sourceCommit": "d78f2fd0",
+    "deployed": false,
+    "modelCreated": false
+  }
+}

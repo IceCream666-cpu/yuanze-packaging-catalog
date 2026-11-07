@@ -3,7 +3,7 @@
   "checkedAt": "2026-11-07T17:13:02+08:00",
   "frontendTests": 179,
   "modelAndReleaseTests": 38,
-  "releasePlanTests": 2,
+  "releasePlanTests": 3,
   "releaseBuild": "pass",
   "releaseStamp": "pass",
   "bundleCheck": "pass",
@@ -21,5 +21,6 @@
   "buildWarnings": [
     "Existing large packaging scene chunk",
     "Existing lucide use client directive warning"
-  ]
+  ],
+  "diskHeadroomGuard": "Reject before upload and before staging if service-user free bytes cannot fit a complete copy plus 256 MiB"
 }

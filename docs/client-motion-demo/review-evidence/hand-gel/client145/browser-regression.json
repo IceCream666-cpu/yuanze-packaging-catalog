@@ -1,0 +1,23 @@
+{
+  "id": "poster-080",
+  "progress": 0.999998,
+  "renderedProgress": 0.9990492658652624,
+  "yaw": 0,
+  "pitch": 0,
+  "selected": null,
+  "finish": "soap",
+  "printOffset": [
+    -1.906185999270921,
+    -0.08991443392787368,
+    1.918174590461304
+  ],
+  "components": [
+    "body",
+    "pump",
+    "label",
+    "logo",
+    "print"
+  ],
+  "meshes": 20,
+  "triangles": 46866
+}

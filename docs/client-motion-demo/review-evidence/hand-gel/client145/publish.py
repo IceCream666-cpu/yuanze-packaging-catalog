@@ -7,6 +7,7 @@ from pathlib import Path
 import argparse
 import hashlib
 import importlib.util
+import inspect
 import io
 import json
 import re
@@ -71,7 +72,16 @@ def plan():
     return before, new, result
 
 
-REMOTE_SCRIPT = r'''
+def require_disk_headroom(available_bytes, candidate_bytes):
+    """Reserve a complete staging copy and 256 MiB for live session writes."""
+    required = candidate_bytes + 256 * 1024 * 1024
+    if available_bytes < required:
+        raise RuntimeError(f'Insufficient service-user disk space: {available_bytes} available; {required} required')
+    return required
+
+
+REMOTE_SCRIPT = inspect.getsource(require_disk_headroom) + r'''
+
 import pathlib,json,hashlib,shutil,tarfile,ctypes,os,subprocess,datetime
 p=json.loads(PAYLOAD)
 root=pathlib.Path('/opt/yuanze-reference/current').resolve()
@@ -101,6 +111,8 @@ def verify(directory, manifest):
 guard()
 assert not new.exists() and not backup.exists(),'Inspect previous publication before retry'
 old_manifest=json.loads((old/'bundle-manifest.json').read_text())
+space=os.statvfs(root)
+require_disk_headroom(space.f_bavail*space.f_frsize,p['candidateBytes'])
 verify(old,old_manifest)
 assert h(pathlib.Path(p['stage']))==p['archiveHash'],'Upload checksum mismatch'
 assert old_manifest['version']=='client1.44' and len(old_manifest['files'])==481
@@ -179,11 +191,14 @@ def main():
         for name in result['changed'] + ['bundle-manifest.json']:
             tf.add(LOCAL/name, arcname=name)
     archive = buf.getvalue()
+    disk_check = inspect.getsource(require_disk_headroom) + '\nimport os;v=os.statvfs("/opt/yuanze-reference");require_disk_headroom(v.f_bavail*v.f_frsize,' + str(len(archive) + sum(e['bytes'] for e in new['files'].values()) + (LOCAL/'bundle-manifest.json').stat().st_size) + ')'
+    capacity = ssh.remote(shlex.join(['python3','-c',disk_check]), timeout=30)
+    assert capacity.returncode == 0, capacity.stderr.decode()
     upload_code = 'import sys,pathlib;p=pathlib.Path(sys.argv[1]);assert p.parent.is_dir() and not p.exists();p.write_bytes(sys.stdin.buffer.read())'
     upload = ssh.remote(shlex.join(['python3','-c',upload_code,STAGE]), input=archive, timeout=180)
     assert upload.returncode == 0, 'Upload failed; inspect local stderr without sharing secrets'
     payload = {key: before[key] for key in ['current','manifestHash','gatewayHash','service']}
-    payload.update(stage=STAGE, archiveHash=digest(archive), changed=result['changed'], added=result['added'], removed=result['removed'], preservedPackaging=result['preservedPackaging'], newManifestHash=result['manifestSha256'], outsideHash=digest(json.dumps(before['outsideHashes'], sort_keys=True).encode()))
+    payload.update(candidateBytes=sum(e['bytes'] for e in new['files'].values()) + (LOCAL/'bundle-manifest.json').stat().st_size, stage=STAGE, archiveHash=digest(archive), changed=result['changed'], added=result['added'], removed=result['removed'], preservedPackaging=result['preservedPackaging'], newManifestHash=result['manifestSha256'], outsideHash=digest(json.dumps(before['outsideHashes'], sort_keys=True).encode()))
     response = ssh.remote(shlex.join(['flock','-w','10','/opt/yuanze-reference/deploy.lock','python3','-c',REMOTE_SCRIPT.replace('PAYLOAD',repr(json.dumps(payload)))]), timeout=180)
     assert response.returncode == 0, response.stderr.decode()
     (HERE/'publication.json').write_bytes(response.stdout)
