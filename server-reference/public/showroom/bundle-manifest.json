@@ -368,6 +368,18 @@
       "bytes": 1581809,
       "sha256": "e42889569a15ebf6efca6be572a67249340fbd671c4e4091e236b89a099cf848"
     },
+    "assets/featured/poster-081-1024.webp": {
+      "bytes": 47086,
+      "sha256": "be5601b2dcea7b4eac337f76feec3e6eb184d0d370f55e1ff8c0753f39c341aa"
+    },
+    "assets/featured/poster-081-640.webp": {
+      "bytes": 23856,
+      "sha256": "73c7c53b958679413e5665cad2833b2868020a12a5960158cfb13364c6d264e9"
+    },
+    "assets/featured/poster-081.png": {
+      "bytes": 2032679,
+      "sha256": "50721a1550e22a742fefb0f49145f4818cb9a999890d1b0504a0dc81af72c753"
+    },
     "assets/optimized/poster-001-strip.webp": {
       "bytes": 4762,
       "sha256": "dc6fe7aecafdcab6089ec7331d236436ded7b3e0c1a39ae25a3adb28c1d006fd"
@@ -759,6 +771,10 @@
     "assets/packaging/poster-080-v2.glb": {
       "bytes": 717420,
       "sha256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4"
+    },
+    "assets/packaging/poster-081-v1.glb": {
+      "bytes": 4527020,
+      "sha256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1910,15 +1926,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "863b62ac728a065bf129708c3f014490cfb4a0fdebd75761b1df26abba18c8e8"
+      "sha256": "a0935606c0cfe4cd2dd45efa21aee167b9eb9b5eaf30f7092b891f11854c13a7"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 393376,
-      "sha256": "0ce8423228407361c97f8e90f2a9c4fe6cf884fa12e0e780e30008234b10654d"
+      "bytes": 396260,
+      "sha256": "5773bbb4cf5f1839b0741895ae0928f331c228795b0d6d33db547fa2934dd72c"
     },
     "product-posters.js": {
       "bytes": 22664,
@@ -1927,5 +1943,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.44"
+  "version": "client1.45"
 }

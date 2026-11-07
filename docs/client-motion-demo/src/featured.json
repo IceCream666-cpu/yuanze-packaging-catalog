@@ -504,5 +504,24 @@
       "zh": "奶白色宽扁泵瓶，粗体字标与完整长管泵组。",
       "en": "An ivory oval bottle with bold lettering and a complete long-tube pump."
     }
+  },
+  {
+    "id": "poster-081",
+    "displayRevision": "blender-empty-v1",
+    "name": "Exfoliating Hand Gel",
+    "kind": {
+      "zh": "手部护理 · 织物标玻璃泵瓶",
+      "en": "Hand care · Woven-label glass pump bottle"
+    },
+    "background": "#e6e7dc",
+    "ink": "#243025",
+    "swatch": [
+      "#3e481b",
+      "#e7dfcc"
+    ],
+    "description": {
+      "zh": "透明厚底玻璃瓶、织物环标与完整黑色长管泵组。",
+      "en": "A clear thick-base glass bottle with a woven label and a complete black long-tube pump."
+    }
   }
 ]

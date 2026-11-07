@@ -586,5 +586,26 @@
         "sha256": "519fc479f01debfc56550f617b00de9bf09e6f615dcc723570e8bdde68dd61d6"
       }
     }
+  },
+  "poster-081": {
+    "sourceSha256": "50721a1550e22a742fefb0f49145f4818cb9a999890d1b0504a0dc81af72c753",
+    "width": 1400,
+    "height": 1800,
+    "files": {
+      "640": {
+        "file": "featured-optimized/poster-081-640.webp",
+        "bytes": 23856,
+        "sha256": "73c7c53b958679413e5665cad2833b2868020a12a5960158cfb13364c6d264e9",
+        "width": 498,
+        "height": 640
+      },
+      "1024": {
+        "file": "featured-optimized/poster-081-1024.webp",
+        "bytes": 47086,
+        "sha256": "be5601b2dcea7b4eac337f76feec3e6eb184d0d370f55e1ff8c0753f39c341aa",
+        "width": 796,
+        "height": 1024
+      }
+    }
   }
 }

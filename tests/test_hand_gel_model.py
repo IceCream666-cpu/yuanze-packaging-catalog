@@ -1,4 +1,4 @@
-"""Inspect the local Hand Gel GLB and keep its review separate from publication."""
+"""Inspect the approved Hand Gel GLB and its exact formal publication association."""
 import json
 from tests.test_micro_cream_model import CLIENT, ExportedModelReader
 
@@ -15,19 +15,17 @@ class HandGelModelTests(ExportedModelReader):
         cls.product = json.loads((cls.source / 'review-product.json').read_text())
         cls.info = json.loads((cls.source / 'model-info.json').read_text())
 
-    def test_preview_entry_and_model_stay_outside_the_main_release(self):
-        entry = (CLIENT / 'src/hand-gel-review.jsx').read_text()
-        self.assertIn('/src/hand-gel-review.jsx', (CLIENT / 'hand-gel.html').read_text())
-        self.assertIn("'../packaging-assets/poster-081-v1.glb?url'", entry)
-        self.assertIn("'../model-source/collection/poster-081/review-product.json'", entry)
-        self.assertIn('PACKAGING_PRODUCTS[item.id] = product', entry)
-        self.assertNotIn('poster-081', json.loads((CLIENT / 'src/structure/collection-products.json').read_text()))
+    def test_published_model_matches_the_approved_review(self):
+        collection = json.loads((CLIENT / 'src/structure/collection-products.json').read_text())
+        self.assertEqual(collection['poster-081'], self.product)
         featured = json.loads((CLIENT / 'src/featured.json').read_text())
-        self.assertNotIn('poster-081', [item['id'] for item in featured])
+        self.assertEqual([item['id'] for item in featured].count('poster-081'), 1)
         manifest = json.loads((CLIENT.parents[1] / 'server-reference/public/showroom/bundle-manifest.json').read_text())
+        self.assertIn('assets/packaging/poster-081-v1.glb', manifest['files'])
+        self.assertIn('assets/featured/poster-081.png', manifest['files'])
         for name in manifest['files']:
-            self.assertFalse('081' in name and (name.endswith('.glb') or '/featured/' in name), name)
-            self.assertNotIn('hand-gel', name)
+            self.assertNotIn('hand-gel.html', name)
+            self.assertNotIn('poster-082', name)
 
     def test_exactly_five_groups_preserve_the_reference_proportions(self):
         roots = {self.nodes[i]['name'] for i in self.gltf['scenes'][0]['nodes']}

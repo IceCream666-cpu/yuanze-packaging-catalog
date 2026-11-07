@@ -423,7 +423,7 @@ test('App opens featured models and preserves poster HD/download/favorites and r
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 28);
+    assert.equal(document.querySelectorAll('[data-open]').length, 29);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');
@@ -635,7 +635,7 @@ test('the restored Daily and Body Oil homepage entries open their existing model
   const env=setup();const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-3).map(button=>button.dataset.open),['poster-073','poster-079','poster-080']);
+    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-4).map(button=>button.dataset.open),['poster-073','poster-079','poster-080','poster-081']);
     for(const id of ['poster-072','poster-073']) {
       const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging').dataset.id,id);
@@ -655,7 +655,7 @@ test('Body Oil remains accessible from the poster library and returns from the o
   const env=setup(); const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,28);
+    assert.equal(document.querySelectorAll('[data-open]').length,29);
     assert.ok(document.querySelector('[data-open="poster-073"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
@@ -735,7 +735,7 @@ test('Daily Emulsion opens from the unchanged poster library and returns from it
   const env=setup();const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,28);
+    assert.equal(document.querySelectorAll('[data-open]').length,29);
     assert.ok(document.querySelector('[data-open="poster-072"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
@@ -790,7 +790,7 @@ test('the five unapproved posters remain outside featured and have no active 3D 
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,28);
+    assert.equal(document.querySelectorAll('[data-open]').length,29);
     for (let n=74;n<=78;n++) assert.equal(document.querySelector(`[data-open="poster-${String(n).padStart(3,'0')}"]`),null);
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));

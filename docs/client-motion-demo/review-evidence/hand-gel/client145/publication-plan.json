@@ -1,0 +1,57 @@
+{
+  "version": "client1.45",
+  "baselineManifestSha256": "a3f0fb5a1e92f12c01349528b7e1373e60d6f241a07fd1f5ba38f091981bad33",
+  "manifestSha256": "8c58fbcf33f13f577db12a457b5ab529b5020fca15580562a0d9ae67c0fdb1ca",
+  "changed": [
+    "assets/featured/poster-081-1024.webp",
+    "assets/featured/poster-081-640.webp",
+    "assets/featured/poster-081.png",
+    "assets/packaging/poster-081-v1.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "added": [
+    "assets/featured/poster-081-1024.webp",
+    "assets/featured/poster-081-640.webp",
+    "assets/featured/poster-081.png",
+    "assets/packaging/poster-081-v1.glb"
+  ],
+  "removed": [],
+  "preservedPackaging": [
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067.glb",
+    "assets/packaging/poster-068.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-079-v2.glb",
+    "assets/packaging/poster-080-v2.glb"
+  ],
+  "resources": 485,
+  "counts": {
+    "posters": 64,
+    "featured": 29,
+    "models": 29
+  },
+  "publishedModel": "poster-081"
+}

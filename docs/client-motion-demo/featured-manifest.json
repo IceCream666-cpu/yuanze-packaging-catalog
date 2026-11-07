@@ -1,7 +1,7 @@
 {
-  "version": "client1.44",
-  "scope": "approved-client1.44-display-derivatives",
-  "notes": "28 homepage entries; approved white Bath Trio appended.",
+  "version": "client1.45",
+  "scope": "approved-client1.45-display-derivatives",
+  "notes": "29 homepage entries; approved Exfoliating Hand Gel model appended.",
   "files": [
     {
       "posterId": "poster-012",
@@ -529,12 +529,27 @@
       "sourceModel": "packaging-assets/poster-080-v2.glb",
       "bytes": 1581809,
       "sha256": "e42889569a15ebf6efca6be572a67249340fbd671c4e4091e236b89a099cf848"
+    },
+    {
+      "posterId": "poster-081",
+      "file": "featured-assets/poster-081.png",
+      "target": "featured/poster-081.png",
+      "productionTarget": "assets/featured/poster-081.png",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-081.webp",
+      "approvedPosterSha256": "3501b672554739a1af75e48e9022c78049728e988485b25a1ffb3468cc0a574b",
+      "tool": "Blender",
+      "method": "Rendered from the approved empty Hand Gel model",
+      "scope": "Exfoliating Hand Gel",
+      "productCount": 1,
+      "sourceModel": "packaging-assets/poster-081-v1.glb",
+      "bytes": 2032679,
+      "sha256": "50721a1550e22a742fefb0f49145f4818cb9a999890d1b0504a0dc81af72c753"
     }
   ],
   "approval": {
-    "date": "2026-11-06",
-    "basis": "User approved the white model and requested existing models missing from the rotating homepage be added."
+    "date": "2026-11-07",
+    "basis": "User approved the Hand Gel 3D and requested publication before the next product."
   },
-  "revision": "bath-trio-white-20261106",
+  "revision": "hand-gel-approved-model-20261107",
   "status": "publication-authorized"
 }
