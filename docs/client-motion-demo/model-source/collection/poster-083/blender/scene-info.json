@@ -1,0 +1,17 @@
+{
+  "front": "negative Y",
+  "up": "positive Z",
+  "camera": [
+    0.25,
+    -12.0,
+    5.099999904632568
+  ],
+  "dimensions": {
+    "bodyDiameter": 2.15,
+    "bodyHeight": 2.89,
+    "totalHeight": 3.715
+  },
+  "source": "reference-05-matcha.jpg",
+  "containsFormula": false,
+  "realDimensions": false
+}

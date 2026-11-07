@@ -1,0 +1,50 @@
+{
+  "status": "pass",
+  "scope": "poster preview only",
+  "posterDimensions": [
+    2048,
+    3072
+  ],
+  "renderDimensions": [
+    2000,
+    2400
+  ],
+  "transparentProductBounds": [
+    455,
+    234,
+    1545,
+    2164
+  ],
+  "visualReview": "Root and independent aesthetic review passed after label intersection, sizing, shadow edge and grounding fixes.",
+  "checks": [
+    "Opaque2:3poster",
+    "TransparentRGBA product with margins",
+    "EditableBlend opened in local Blender; product, label, typography and camera assertions passed",
+    "Noformula;dimensionsreferenceinferred",
+    "Noappsource orpublishedasset changes"
+  ],
+  "interactiveModelTested": false,
+  "deployed": false,
+  "files": {
+    "matcha-shampoo-poster-v1.png": {
+      "bytes": 4299787,
+      "sha256": "53afd0b0caca47d4a6b5f9818a0179d1badb6861510775103212e606145eaafd"
+    },
+    "blender/matcha-shampoo.blend": {
+      "bytes": 509427,
+      "sha256": "63190d1b8bb4a22404a4c6eeff7cc2a279339a85e1102758e463d07e756fef9a"
+    },
+    "blender/matcha-product-final.png": {
+      "bytes": 2880621,
+      "sha256": "f0739d2f18e72d9e1c99f30f96fc3f08569a2f84b2ea2bb1dc55a1b070281756"
+    },
+    "compose_poster.py": {
+      "bytes": 3677,
+      "sha256": "0b509b9b3ded70b40b0042dcf2532cba45dceaf352bc52207f1360cdad7c82a5"
+    },
+    "blender/build_matcha.py": {
+      "bytes": 7936,
+      "sha256": "862ac0e72bf0c0ce031480be0f201cc513a9dd9af307d7ad4c6e087f216ad02e"
+    }
+  }
+}

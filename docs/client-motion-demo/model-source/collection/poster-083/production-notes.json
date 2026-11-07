@@ -1,0 +1,29 @@
+{
+  "productId": "poster-083",
+  "name": "Matcha Shampoo",
+  "batchIndex": 5,
+  "batchSize": 8,
+  "status": "poster-preview-awaiting-user-review",
+  "reference": "reference-05-matcha.jpg",
+  "sourceRecovery": "Exact user image attachment recovered from this chat because the original temporary WeChat path no longer exists.",
+  "imageServiceAttempts": [
+    {
+      "provider": "Krea",
+      "model": "openai/gpt-image-2",
+      "outcome": "Rejected: INSUFFICIENT_BALANCE. No image generated."
+    },
+    {
+      "provider": "Runway",
+      "outcome": "Authentication requires reconnect. No generation submitted."
+    }
+  ],
+  "actualProduction": "Local installed Blender render with separate Pillow typography and compositing.",
+  "dimensionsBasis": "Reference-inferred visual proportions; no measured production dimensions.",
+  "containsFormula": false,
+  "publication": "Not registered, not deployed. Poster review only; interactive model integration deferred.",
+  "resolution": [
+    2048,
+    3072
+  ],
+  "blender": "5.4.0 Alpha, local CPU Cycles 96 samples"
+}
