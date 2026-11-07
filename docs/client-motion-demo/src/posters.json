@@ -1406,5 +1406,27 @@
     "original": "/assets/poster-081-original.webp",
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "poster-082",
+    "title": {
+      "zh": "liaose 净润洗护双件套",
+      "en": "liaose Soap Clean Duo"
+    },
+    "category": "sets",
+    "style": "natural",
+    "image": "/assets/poster-082.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-082-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-082-thumb.webp",
+    "stripThumb": "/assets/poster-082-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-082-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]

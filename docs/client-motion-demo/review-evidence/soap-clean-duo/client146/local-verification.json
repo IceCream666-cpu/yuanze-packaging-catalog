@@ -1,0 +1,23 @@
+{
+  "version": "client1.46",
+  "status": "local-candidate",
+  "counts": {
+    "posters": 65,
+    "featured": 29,
+    "models": 29
+  },
+  "formalFrontend": {
+    "passed": 181,
+    "excludedPattern": null,
+    "includesLocalReviewTests": true,
+    "note": "Local 082 tests pass; production registry, homepage and GLB remain excluded"
+  },
+  "pythonTests": 40,
+  "releasePlanTests": 3,
+  "buildCheck": true,
+  "sourcePixelIdentity": true,
+  "sourceSha256": "616ab8db3a22d0c764e0ee47a4c31ef8d57cb575d5d75f24f33ff89a5672eb94",
+  "approvedPosterVisualReview": "Previously approved v2, re-inspected original before import; no image composition change",
+  "all29ModelsAndOldImagesPreserved": true,
+  "retainedServiceUserSpaceBytes": 670334976
+}

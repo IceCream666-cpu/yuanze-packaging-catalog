@@ -659,7 +659,7 @@ test('Body Oil remains accessible from the poster library and returns from the o
     assert.ok(document.querySelector('[data-open="poster-073"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
-    assert.equal(document.querySelectorAll('.grid-image').length,64);
+    assert.equal(document.querySelectorAll('.grid-image').length,65);
     const trigger=[...document.querySelectorAll('.grid-image')].find(button=>button.querySelector('img')?.getAttribute('src').includes('poster-073'));
     trigger.focus(); await click(trigger);
     assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-073');
@@ -739,7 +739,7 @@ test('Daily Emulsion opens from the unchanged poster library and returns from it
     assert.ok(document.querySelector('[data-open="poster-072"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
-    assert.equal(document.querySelectorAll('.grid-image').length,64);
+    assert.equal(document.querySelectorAll('.grid-image').length,65);
     const trigger=[...document.querySelectorAll('.grid-image')].find(button=>button.querySelector('img')?.getAttribute('src').includes('poster-072'));
     trigger.focus();await click(trigger);
     assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-072');
@@ -784,7 +784,7 @@ test('Daily Emulsion exposes one complete pump and all six independent layer con
   } finally {await env.close();}
 });
 
-test('the five unapproved posters remain outside featured and have no active 3D models', async () => {
+test('the five withdrawn models and poster-only Soap Duo use poster fallback without requesting 3D', async () => {
   const env = setup(); let requests = 0;
   globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
   const {App, counts} = appHarness();
@@ -794,8 +794,8 @@ test('the five unapproved posters remain outside featured and have no active 3D 
     for (let n=74;n<=78;n++) assert.equal(document.querySelector(`[data-open="poster-${String(n).padStart(3,'0')}"]`),null);
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
-    assert.equal(document.querySelectorAll('.grid-image').length,64);
-    for (const n of [74,75,76,77,78]) {
+    assert.equal(document.querySelectorAll('.grid-image').length,65);
+    for (const n of [74,75,76,77,78,82]) {
       const id=`poster-${n.toString().padStart(3,'0')}`;
       const trigger=[...document.querySelectorAll(".grid-image")].find(button=>button.querySelector("img")?.getAttribute("src").includes(id));trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging'),null);

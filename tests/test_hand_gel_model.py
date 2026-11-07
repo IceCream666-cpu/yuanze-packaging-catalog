@@ -25,7 +25,8 @@ class HandGelModelTests(ExportedModelReader):
         self.assertIn('assets/featured/poster-081.png', manifest['files'])
         for name in manifest['files']:
             self.assertNotIn('hand-gel.html', name)
-            self.assertNotIn('poster-082', name)
+            if name.startswith(('assets/packaging/', 'assets/featured/')):
+                self.assertNotIn('poster-082', name)
 
     def test_exactly_five_groups_preserve_the_reference_proportions(self):
         roots = {self.nodes[i]['name'] for i in self.gltf['scenes'][0]['nodes']}

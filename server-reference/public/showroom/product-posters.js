@@ -800,6 +800,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "/showroom/assets/posters/poster-081-thumb.webp",
       "width": 1024,
       "height": 1536
+    },
+    {
+      "id": "poster-082",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 净润洗护双件套",
+        "en": "liaose Soap Clean Duo"
+      },
+      "src": "/showroom/assets/posters/poster-082.webp",
+      "thumbnail": "/showroom/assets/posters/poster-082-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

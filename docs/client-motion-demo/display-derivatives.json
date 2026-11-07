@@ -786,6 +786,18 @@
       "height": 192,
       "bytes": 5420,
       "sha256": "08003985fbcdcc22f21fc02aeabf3207980bc81e4f67e47edb0cc96e81dd7d63"
+    },
+    {
+      "kind": "filmstrip",
+      "file": "optimized-assets/poster-082-strip.webp",
+      "productionTarget": "assets/optimized/poster-082-strip.webp",
+      "approvedSource": "assets/posters/poster-082.webp",
+      "approvedSourceSha256": "dd0192b2ed5e264d683dd51b5ee3a07ecc5a48f6ee574d508c61144510ccf9e5",
+      "sha256": "90306e0e1a29dfc0193a2f5b74a71a276b462b36b3a33bd531271808f2db67c7",
+      "bytes": 3258,
+      "width": 128,
+      "height": 192,
+      "posterId": "poster-082"
     }
   ]
 }
