@@ -1,0 +1,51 @@
+{
+  "version": "client1.44",
+  "sourceCommit": "e768c8be",
+  "published": true,
+  "publishedAt": "2026-11-07T16:49:36+08:00",
+  "manifestSha256": "a3f0fb5a1e92f12c01349528b7e1373e60d6f241a07fd1f5ba38f091981bad33",
+  "counts": {
+    "posters": 64,
+    "featured": 28,
+    "models": 28
+  },
+  "publishedPosters": [
+    "poster-080",
+    "poster-081"
+  ],
+  "publishedModel": "poster-080-v2.glb",
+  "previewOnlyModel": {
+    "id": "poster-081",
+    "file": "poster-081-v1.glb",
+    "url": "http://127.0.0.1:8794/hand-gel.html",
+    "blenderCreated": true,
+    "deployed": false
+  },
+  "coverage": {
+    "formalModelsInHome": 28,
+    "formalModelsMissingFromHome": 0,
+    "postersWithoutModel": 30,
+    "withdrawnModels": 5,
+    "newModelLocalReview": 1
+  },
+  "validation": {
+    "localChecks": 217,
+    "fullResourcesOverHttps": 20,
+    "modelRangeRequests": 28,
+    "homepageProductsViewedInBrowser": 28,
+    "newPosterViewedInBrowser": true,
+    "bathTrioWhiteExpandedAndRotatedInBrowser": true,
+    "mobile081": "393x852 simulated only"
+  },
+  "evidence": "review-evidence/hand-gel/client144/",
+  "modelEvidence": "model-source/collection/poster-081/browser-verification.json",
+  "backup": "/opt/yuanze-reference/backups/client1.44-bath-trio-hand-gel-20261107",
+  "businessDataWrites": 0,
+  "serviceRestart": false,
+  "limitations": [
+    "poster-081 model is local review only",
+    "No physical mobile device test",
+    "Display model dimensions are illustrative",
+    "Web dip tube uses transparent compositing instead of Blender offline refraction"
+  ]
+}

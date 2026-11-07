@@ -1,0 +1,202 @@
+{
+  "version": "client1.44",
+  "checkedAt": "2026-11-07T08:50:26.615Z",
+  "rows": [
+    {
+      "id": "poster-012",
+      "name": "Beach Magic",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-012-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-013",
+      "name": "Coral & Aqua",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-013-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-039",
+      "name": "PDRN Capsule Cream",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-039-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-049",
+      "name": "Moisture Shampoo",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-049-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-042",
+      "name": "Woodland",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-042-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-051",
+      "name": "Pure Volume",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-051-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-044",
+      "name": "Gentle Cleansing",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-044-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-047",
+      "name": "Coastal",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-047-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-056",
+      "name": "Golden Face Oil",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-056-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-057",
+      "name": "B5 Serum",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-057-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-058",
+      "name": "Luminous Face Oil",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-058-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-059",
+      "name": "Essence Oil Duo",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-059-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-060",
+      "name": "AHA Body Mist",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-060-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-061",
+      "name": "Oil-Infused Body Cream",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-061-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-062",
+      "name": "Micro Cream",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-062-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-063",
+      "name": "Moisture Cream",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-063-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-064",
+      "name": "Aromatic Body Lotion",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-064-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-065",
+      "name": "Tea Tree Shampoo",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-065-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-066",
+      "name": "Rose Hair Oil",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-066-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-067",
+      "name": "Amber Ginger Shampoo",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-067-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-068",
+      "name": "Essence Water",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-068-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-069",
+      "name": "Still Essential Oil",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-069-640.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-070",
+      "name": "Daylight Essential Oil",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-070-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-071",
+      "name": "Sculptural Pump",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-071-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-072",
+      "name": "Daily Emulsion",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-072-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-073",
+      "name": "Body Oil Collection",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-073-1024.webp",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-079",
+      "name": "Body Care Duo",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-079-1024.webp?v=layered-lid-v2",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    },
+    {
+      "id": "poster-080",
+      "name": "Bath Trio",
+      "image": "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-080-1024.webp?v=white-soap-v2",
+      "naturalWidth": 281,
+      "details": "查看产品详情"
+    }
+  ]
+}

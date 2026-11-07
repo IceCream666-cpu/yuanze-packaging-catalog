@@ -4,7 +4,7 @@
   "batchPosition": 3,
   "reference": "950cdc545d2a1a0892e5bd6f60977c9f.jpg",
   "date": "2026-11-06",
-  "status": "poster review",
+  "status": "poster published; model local review",
   "image": "exfoliating-hand-gel-v1.png",
   "dimensions": [
     1024,
@@ -12,9 +12,9 @@
   ],
   "sha256": "53cf22384bfb71cfa88d819dc8584a8d4acb5baebdd0c2c0ce7679251b12c34f",
   "generationTool": "built-in image_gen",
-  "modelCreated": false,
-  "catalogRegistered": false,
-  "deployed": false,
+  "modelCreated": true,
+  "catalogRegistered": true,
+  "deployed": true,
   "visualReview": {
     "inspected": true,
     "independentReview": "pass",
@@ -32,5 +32,10 @@
     "Whole pump and long dip tube move together",
     "Fabric label, logo and product name separate in depth",
     "Frosting is not inferred from exfoliating product name"
-  ]
+  ],
+  "approvedAt": "2026-11-07",
+  "publishedAt": "2026-11-07T16:49:36+08:00",
+  "release": "client1.44",
+  "modelRegistered": false,
+  "modelDeployed": false
 }
