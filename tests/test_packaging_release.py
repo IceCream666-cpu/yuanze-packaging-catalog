@@ -1,4 +1,4 @@
-"""Client 1.45 adds the approved Hand Gel model while preserving previous assets."""
+"""Client 1.47 replaces the homepage single bottle with the duo and preserves prior models."""
 import copy
 import hashlib
 import importlib.util
@@ -17,16 +17,16 @@ spec.loader.exec_module(builder)
 
 
 class PackagingApprovalTests(unittest.TestCase):
-    def test_only_the_29_reviewed_models_and_two_animation_scripts_are_added(self):
-        self.assertEqual(len(builder.PACKAGING_ASSETS), 31)
-        self.assertEqual(sum(kind == 'model' for kind in builder.PACKAGING_ASSETS.values()), 29)
+    def test_only_the_30_reviewed_models_and_two_animation_scripts_are_added(self):
+        self.assertEqual(len(builder.PACKAGING_ASSETS), 32)
+        self.assertEqual(sum(kind == 'model' for kind in builder.PACKAGING_ASSETS.values()), 30)
         approval = json.loads((builder.MOTION_CLIENT / 'packaging-manifest.json').read_text())
         featured = json.loads((builder.MOTION_CLIENT / 'src/featured.json').read_text())
         approved_ids = [approval['posterId'], *(item['posterId'] for item in approval['additionalProducts'])]
-        self.assertEqual(len(approved_ids), 29)
+        self.assertEqual(len(approved_ids), 30)
         self.assertEqual(len(featured), 29)
         self.assertFalse({f'poster-{n:03}' for n in range(74, 79)} & {item['id'] for item in featured})
-        self.assertEqual(set(approved_ids), {item['id'] for item in featured})
+        self.assertEqual(set(approved_ids), {item['id'] for item in featured} | {'poster-080'})
         self.assertFalse({'poster-074', 'poster-075', 'poster-076', 'poster-077', 'poster-078'} & set(approved_ids))
         files = {'unrelated.webp': b'preserved'}
         builder.packaging_files(files, builder.MOTION_CLIENT)

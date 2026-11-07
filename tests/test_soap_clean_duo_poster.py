@@ -1,4 +1,4 @@
-"""Approved poster source fidelity and poster-only release boundaries."""
+"""Approved poster source fidelity and approved model and homepage replacement boundaries."""
 import hashlib
 import json
 from pathlib import Path
@@ -31,7 +31,7 @@ class SoapCleanDuoPosterTests(unittest.TestCase):
                 self.assertEqual(hashlib.sha256((PUBLIC / path).read_bytes()).hexdigest(),
                                  manifest['files'][path]['sha256'])
 
-    def test_new_poster_is_unique_without_publishing_the_model_or_home_entry(self):
+    def test_duo_replaces_home_entry_while_preserving_the_single_bottle(self):
         posters = json.loads((CLIENT / 'src/posters.json').read_text())
         self.assertEqual(len(posters), 65)
         poster = [p for p in posters if p['id'] == 'poster-082']
@@ -40,15 +40,19 @@ class SoapCleanDuoPosterTests(unittest.TestCase):
         self.assertEqual(poster[0]['title']['en'], 'liaose Soap Clean Duo')
         featured = json.loads((CLIENT / 'src/featured.json').read_text())
         self.assertEqual(len(featured), 29)
-        self.assertNotIn('poster-082', {p['id'] for p in featured})
+        self.assertEqual(featured[27]['id'], 'poster-082')
+        self.assertNotIn('poster-080', {p['id'] for p in featured})
         collection = json.loads((CLIENT / 'src/structure/collection-products.json').read_text())
-        self.assertNotIn('poster-082', collection)
+        self.assertIn('poster-082', collection)
+        self.assertIn('poster-080', collection)
         manifest = json.loads((PUBLIC / 'bundle-manifest.json').read_text())
-        self.assertEqual(manifest['version'], 'client1.46')
-        self.assertEqual(sum(n.endswith('.glb') for n in manifest['files']), 29)
+        self.assertEqual(manifest['version'], 'client1.47')
+        self.assertEqual(sum(n.endswith('.glb') for n in manifest['files']), 30)
         self.assertFalse(any('soap-duo' in n or 'review-product' in n for n in manifest['files']))
-        self.assertFalse(any('poster-082' in n and n.startswith(('assets/featured/', 'assets/packaging/'))
-                             for n in manifest['files']))
+        self.assertIn('assets/packaging/poster-082-v1.glb', manifest['files'])
+        self.assertIn('assets/featured/poster-082.png', manifest['files'])
+        self.assertIn('assets/packaging/poster-080-v2.glb', manifest['files'])
+        self.assertIn('assets/posters/poster-080.webp', manifest['files'])
 
 
 if __name__ == '__main__':

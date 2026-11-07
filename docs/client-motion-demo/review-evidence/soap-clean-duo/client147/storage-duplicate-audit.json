@@ -1,0 +1,2354 @@
+{
+  "stagingRoot": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023",
+  "files": [
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/bundle-manifest.json",
+      "bytes": 61585,
+      "sha256": "1c296055281b1b929eaa576c1c0ac5c79ce38dc2eff65fc28d8849135aa50290",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "bundle-manifest.json"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/preview.js",
+      "bytes": 336943,
+      "sha256": "7c6fa3a41c30bfb53dd144ae63226459d9618f0a468ad1343c94d5503a91699b",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "preview.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/preview.css",
+      "bytes": 51228,
+      "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "preview.css"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/assets/packaging/packaging-scene-WX9CdaCv.js",
+      "bytes": 569698,
+      "sha256": "9ff21342ed2a34fecc53074a378a9c78792f0c417051b0bb828efa836ab4c8d9",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "assets/packaging/packaging-scene-WX9CdaCv.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/assets/packaging/PackagingDetail-qX33rcx_.css",
+      "bytes": 10346,
+      "sha256": "4f933a90f88aa780b693e40399ea4caef65d6521c488ae365b2ff4790215a76f",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "assets/packaging/PackagingDetail-qX33rcx_.css"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/assets/packaging/beach-magic-packaging.glb",
+      "bytes": 2394816,
+      "sha256": "e67f53751c841bbe90f9cb94cd4580245572d25c39f214e8f34f8378ae680e76",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "assets/packaging/beach-magic-packaging.glb"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate/assets/packaging/PackagingDetail-Cj4KWLwf.js",
+      "bytes": 11934,
+      "sha256": "43d31e465d0ee524cabf9b3f43354a7a52ec1312c1a053aeb7b73b10808f4fd3",
+      "retained": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/candidate.tar.gz",
+      "member": "assets/packaging/PackagingDetail-Cj4KWLwf.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/company-content.js",
+      "bytes": 14519,
+      "sha256": "50d34dd455e02d296ccf8992ed23ce324c3a33fc775f46fb7dab561bb1d6cfb3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/company-content.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/index.html",
+      "bytes": 783,
+      "sha256": "2be4d04f4acfb945489956c7f70b0c1dcabb0b6196df30e08b9c57699f28b54d",
+      "retained": "/opt/yuanze-reference/backups/client1.8-long-neck-20261024/index.html"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/product-posters.js",
+      "bytes": 18887,
+      "sha256": "2a930268d54202f6f9ec4f70e054ff56c52912a5dc8eb48c8c5e98c9d764b13f",
+      "retained": "/opt/yuanze-reference/backups/client1.7-arc-20261023/product-posters.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/showroom.png",
+      "bytes": 1980858,
+      "sha256": "922c7b8a397ef1055289f9a206c9ac86c6d83b455c81c8e1f0df70609cedcc2c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/showroom.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/reception.png",
+      "bytes": 1223532,
+      "sha256": "9f32b34e37731637fba6fb0c6dcbeb274779432d80c0086e583151a0c2a63e40",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/reception.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/yuanze-mark.svg",
+      "bytes": 297269,
+      "sha256": "838d484db8796c41baab4fd2b01f18d38d82b024d0973c1009753ebf297b3a62",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/yuanze-mark.svg"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/packaging/ScrollTrigger.min.js",
+      "bytes": 44157,
+      "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/packaging/ScrollTrigger.min.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/packaging/gsap.min.js",
+      "bytes": 72435,
+      "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/packaging/gsap.min.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/packaging/packaging-scene-uK9QnIWU.js",
+      "bytes": 568995,
+      "sha256": "db41b80dad394e6aa82a06322070677398a13f0096ef4d923212b525ea8135eb",
+      "retained": "/opt/yuanze-reference/backups/client1.7-arc-20261023/assets/packaging/packaging-scene-uK9QnIWU.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/packaging/PackagingDetail-DDyvL9Kd.js",
+      "bytes": 11100,
+      "sha256": "be2e92326f0f2f54b01341be151330af1cc6d94827dbc55ef370b520f3384285",
+      "retained": "/opt/yuanze-reference/backups/client1.7-arc-20261023/assets/packaging/PackagingDetail-DDyvL9Kd.js"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/packaging/beach-magic-packaging.glb",
+      "bytes": 2750324,
+      "sha256": "133e16571a1005e801e9dbdfc2a8faf5cd5bf10b61cb138acf287c1bcb709bd7",
+      "retained": "/opt/yuanze-reference/backups/client1.7-arc-20261023/assets/packaging/beach-magic-packaging.glb"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/packaging/PackagingDetail-Dt1YKAYF.css",
+      "bytes": 10318,
+      "sha256": "5660d7d4705d61c03f0c5a0ca7de0981a64b34d4a2cdbda0ce57336d6e286954",
+      "retained": "/opt/yuanze-reference/backups/client1.7-arc-20261023/assets/packaging/PackagingDetail-Dt1YKAYF.css"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-039-1024.webp",
+      "bytes": 141340,
+      "sha256": "bc93b5ca5d44712dbb8d6aac2e7842f79c8c574f6a89e42a3021584b05adfb3c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-039-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-058-640.webp",
+      "bytes": 19234,
+      "sha256": "11a26629bf35d318e3306e87e9e7820208ad9a5bb0bc9a7d2b7b3034cff48c75",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-058-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-057-1024.webp",
+      "bytes": 52842,
+      "sha256": "9c86e9ccbcb99aea6a0a5fd2eb7a3f762b9c3cbf46307cb17161ea6f240c1431",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-057-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-044-640.webp",
+      "bytes": 19350,
+      "sha256": "117ba7df2abb497448ac9193a3701908de9fb6388ccb42eacc34c58440fcb207",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-044-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-067.png",
+      "bytes": 708468,
+      "sha256": "13146a4ef2174e346b942aec7e350806d765fcd2d50d6b7a63ed5d67d07166c4",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-067.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-044.png",
+      "bytes": 1227252,
+      "sha256": "03858ca81f2ed4afb7e3e27a1568a42d2e672f947421ad92eb1d520cb4548f94",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-044.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-058-1024.webp",
+      "bytes": 38466,
+      "sha256": "54c41ba28f0122272bba69826efac803a32f99331e592817145de7ad05dca5c2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-058-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-044-1024.webp",
+      "bytes": 38636,
+      "sha256": "6e2b6c774dcf127b834c59bb9de56452c044fbfe3266c5cc930a1bcff9bb3c87",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-044-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-042-1024.webp",
+      "bytes": 85276,
+      "sha256": "7c9cf1baa03f165cd55e3b79ce7e714179d5b3ef3ac0cbacf01f915afde5ea46",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-042-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-012-1024.webp",
+      "bytes": 155576,
+      "sha256": "3d712b5e220162733e765c6f7eced8a598fa9bc730ee9303bb09c01c1b0acd27",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-012-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-051-640.webp",
+      "bytes": 38452,
+      "sha256": "e6d29409b7dddb100b5752f54aad6c5611785dcef8b15fc8ee27c47468ceb7a1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-051-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-064.png",
+      "bytes": 1419012,
+      "sha256": "ad47bd78fd4b284945b176929790f4847086cb04748fcdd6694288709c5dab33",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-064.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-066-640.webp",
+      "bytes": 46892,
+      "sha256": "2cc76a2a6012b324df7a298bd314c17fd46e1bd32a9063d270c454a122903ad0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-066-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-070.png",
+      "bytes": 1570058,
+      "sha256": "028abeb9a7781c70f9e7da35d5fbe7fa11b1df41aa3c6d29142ec9d4a4c708ea",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-070.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-069-1024.webp",
+      "bytes": 117072,
+      "sha256": "d8eb4cabe1c5cf92a4fda9c69a310ee67cc340e4cc1ab06421ed3b6b884e5a4e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-069-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-057-640.webp",
+      "bytes": 26426,
+      "sha256": "0f928295322c472713b21e7e5a6afcfd08264a54eba6b761e2255866fc0cac4b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-057-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-060-640.webp",
+      "bytes": 19690,
+      "sha256": "422da423cdae66a4bdb25e62e88f58993c1f761f9a706fc4cb695e61b7418960",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-060-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-059.png",
+      "bytes": 1239727,
+      "sha256": "7fe2640b19741423aa92d00a8ea4bdc4bac7fadd6035ae55c6228498c3dbd8ca",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-059.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-060.png",
+      "bytes": 1288795,
+      "sha256": "dd070dd32426e33d4835b372796b1838bc9fcd8d530902069e3236ce9130e334",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-060.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-056-640.webp",
+      "bytes": 28738,
+      "sha256": "466c2728c597b9c0ef02862254246e99edbe78011bd2173bb263107828000180",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-056-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-047-1024.webp",
+      "bytes": 118688,
+      "sha256": "816f6e2910e895088328907014ec13c30ad0219e0513b57685f660e2e51e2b96",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-047-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-062-1024.webp",
+      "bytes": 131358,
+      "sha256": "3dc55d0c6f395abf092afca4e089ba4dbb65fce9ea7fa4ea01041bb96068d255",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-062-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-068-640.webp",
+      "bytes": 54102,
+      "sha256": "4a575ba333086ccbfd7287fedbb39fec1f6b2f6d06afbe808a3fc534a4b739a6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-068-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-063.png",
+      "bytes": 1215486,
+      "sha256": "180479979e9bc9850d3720b54356fb87a65b941be7ceb6b79c02e926928d2135",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-063.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-060-1024.webp",
+      "bytes": 39466,
+      "sha256": "1a8ecaff57a95655bd6d30dd98c66b005b1f135d6f89fb2d20b965c3511c8174",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-060-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-039-640.webp",
+      "bytes": 71080,
+      "sha256": "5e9f83be83593285405098ba80460f038aecb62c95d310c78faf78d5f04f1605",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-039-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-012-640.webp",
+      "bytes": 75662,
+      "sha256": "d4ce81f02b661650439b15d132dcf9dc867c99402799dad5ef65bf01862eb744",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-012-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-013.png",
+      "bytes": 1936098,
+      "sha256": "4de1d98936452cc66c5c8b26b455b0f8b4d8341f0af3737f9bd23c72bbe2de12",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-013.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-066-1024.webp",
+      "bytes": 100478,
+      "sha256": "de71b024f1d362387344539ccb239ebcc2f7edf776b64df2e0ee3a2e6f0842ff",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-066-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-013-640.webp",
+      "bytes": 101376,
+      "sha256": "4409c9a1325cc1f371d5195e849d28c40bafdba29d53cc345c36841c52a7b922",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-013-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-047-640.webp",
+      "bytes": 54816,
+      "sha256": "73b932292633f22566186decd0f2df73f5de2bdcf8ba9ca4c49ce2cdef30bb0d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-047-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-064-1024.webp",
+      "bytes": 118554,
+      "sha256": "ab6b059a48d08e9441bb2f06e6c205b89630d302f05ee651b9acada7b91beb2b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-064-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-049-640.webp",
+      "bytes": 37374,
+      "sha256": "14099c1572118dcf9ebcdbfa427a57ba396282076a610a28d213c56354981e65",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-049-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-067-1024.webp",
+      "bytes": 94642,
+      "sha256": "8ee72becdd983de3239225e4749527dd1f10c357ca3145222a8952422fb126bd",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-067-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-063-1024.webp",
+      "bytes": 102132,
+      "sha256": "ec8a6721063143a3a95b45c7c06aaff16a1431110bf1b3e009af88161b0117c5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-063-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-051-1024.webp",
+      "bytes": 76416,
+      "sha256": "702d5ab174fa7f0806cb846710ea97f8240817fc9951fc6673ddf3b10973683e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-051-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-068.png",
+      "bytes": 1751929,
+      "sha256": "41ce1e7efbef60e3517a569de93051901c9e37cdb48d136be3a8184e4386648d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-068.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-065-1024.webp",
+      "bytes": 113040,
+      "sha256": "d3a20aacddfc37249e8d9db544ca342ba4da18fee67426b0f937e8bab8fc67d1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-065-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-068-1024.webp",
+      "bytes": 136590,
+      "sha256": "7ba82c184e97a42a0a7d4d7d81afbf59a4e0a1c6b48b8e00a607d9efb16d77f8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-068-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-066.png",
+      "bytes": 1115816,
+      "sha256": "bc424d94e10e0fb5ce4b844c3494a1d292d50ecbd68faa960b499a313be28f35",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-066.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-065-640.webp",
+      "bytes": 56922,
+      "sha256": "03edae572acd8cb67fa8a932838ea149474b4cbc8565c47d30ffd6c1ee4fca7e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-065-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-056.png",
+      "bytes": 784142,
+      "sha256": "b9ba4661e6e439b3ce06402bc2403c62386927294afd94fbf7258bb07873563d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-056.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-057.png",
+      "bytes": 1437952,
+      "sha256": "00901f9a68b5c521d2320113e28ad444fe2a1b4fccd82bac969c93eb588cd521",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-057.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-051.png",
+      "bytes": 890271,
+      "sha256": "2efbf821064393cd7c0429b2fc4e5444c862dbc44d65431e20b32d93cfa283ac",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-051.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-070-1024.webp",
+      "bytes": 99460,
+      "sha256": "0a341eaa6ca50031ef685dcf34c4832a23ba9894473614c4a0c4ed775dec4013",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-070-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-062-640.webp",
+      "bytes": 61774,
+      "sha256": "36f6f2d3c08a245997fdefa1caa0a05cf6c6c6410cfafb8e36db906e30ff5e4b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-062-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-067-640.webp",
+      "bytes": 46750,
+      "sha256": "8b9a3b10c54c4d268361d010f1aeebe6b81b9fe12923e9f64583d74191cf4e9a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-067-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-065.png",
+      "bytes": 1252152,
+      "sha256": "f73516367305afbb8bf4301bfa751af96f2a7ac6e849681421b89e065296df85",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-065.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-069-640.webp",
+      "bytes": 50844,
+      "sha256": "8116d340f695812da0f8b557961652491c680a282102c4da09a16bd10ac05edc",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-069-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-012.png",
+      "bytes": 1622337,
+      "sha256": "6b3236999bef9dc83ff2f983092e180a2ea6824433c54c3bb763c5259ed8b0e8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-012.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-013-1024.webp",
+      "bytes": 213934,
+      "sha256": "939fa42b6cf3e5144bb5c9c150b4c2709ede6df2d9881d74b4014e5d15291c06",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-013-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-063-640.webp",
+      "bytes": 44180,
+      "sha256": "fb749a13c090d43d95ea2bfd5913fe932bbca9a41067df7d59471c48e6535d56",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-063-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-047.png",
+      "bytes": 1351149,
+      "sha256": "66f12c52657654805151008b1db85616a50a708367743ff62089fcf38df5822a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-047.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-042-640.webp",
+      "bytes": 40222,
+      "sha256": "87e2cad7e999035c1e812adfab0c31675704d242f48dbb385b4fc7c9404973b8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-042-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-039.png",
+      "bytes": 1570242,
+      "sha256": "6345b60d409a983042dc4fd8c7bef5f78d70b2147b56d8880e0c3c64d84c772b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-039.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-070-640.webp",
+      "bytes": 43572,
+      "sha256": "bcff9a459139228c8b6dc3a26372ae2081227c2b1df35c2c733b638fea28e09a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-070-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-061-640.webp",
+      "bytes": 48550,
+      "sha256": "fee7389a099baa5a98e70d13cb402e73f1889b0cdca7f27261459800d1984e0c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-061-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-069.png",
+      "bytes": 1406561,
+      "sha256": "fb8b3a4f565f2221255ae1ee359cd9aa8cb67df44809971adbb3b4a66c92431c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-069.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-061-1024.webp",
+      "bytes": 105400,
+      "sha256": "d139e756d787aebe0d40f8800e635ecd57da0cf980f3a77169c1e9ca723ff580",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-061-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-061.png",
+      "bytes": 1565851,
+      "sha256": "6d7f4f9a7d2ff05e1d7dd140820be23a750ebcf8fec7c80dc709fb200b951ddb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-061.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-059-1024.webp",
+      "bytes": 135216,
+      "sha256": "878c224dac4e900fc237606fabd66dcdfdfe214f3c6ce6e457170fca1f3dc0c3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-059-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-062.png",
+      "bytes": 1400977,
+      "sha256": "8c90acc71518087154af7f050598c14ff4da1916c728f219a3c3887b2a230389",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-062.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-058.png",
+      "bytes": 1196381,
+      "sha256": "4b95bdbb5977bf777177e62b4a5ce5bb2bed1ef775ba0b64447cc64832f52ecc",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-058.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-056-1024.webp",
+      "bytes": 56214,
+      "sha256": "a4f42fc5b5287786945993c664329b0124fb90ac5ce48b697d18e421df4ca5a3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-056-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-049.png",
+      "bytes": 1797868,
+      "sha256": "59788897074464a77a4ea6a2e22631f000905754bb3836c8319bc2144580faa8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-049.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-049-1024.webp",
+      "bytes": 79208,
+      "sha256": "39667c8a1a998c65d67ca56e04f72aacb18524a66900bc498885c44ae2f5775e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-049-1024.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-059-640.webp",
+      "bytes": 64568,
+      "sha256": "4a27e5d56c1cd6d42a5d269d56198a6609a75102b5d976895944c1ce2b703f9b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-059-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-064-640.webp",
+      "bytes": 51840,
+      "sha256": "85954b621ac192b6b8a8d25d3cea1bab30e84356faebfe040fdd146f07f6ac44",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-064-640.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/featured/poster-042.png",
+      "bytes": 1571264,
+      "sha256": "0084d215fac8049cd3b387189d8384d27e2d701a474b5d4b0d9ffdd8c60210b7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/featured/poster-042.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/poster-banners/01-pdrn-capsule-cream.webp",
+      "bytes": 1135590,
+      "sha256": "2bd8465ff3d2cc329bcd2bdb40ae50c8d3dcbb612aefd57eace6ab1258dbb887",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/poster-banners/01-pdrn-capsule-cream.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/poster-banners/02-body-care-collection.webp",
+      "bytes": 1206400,
+      "sha256": "59253e74ad06d925d417cc604962b40f744d63d27c557bf6afd9e0d3480adc0c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/poster-banners/02-body-care-collection.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/poster-banners/05-daylight-still.webp",
+      "bytes": 1252680,
+      "sha256": "25c47724ca6dba3c298100e6e60a7f64ae2860a8128f382ab73e5ec6c234f9cf",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/poster-banners/05-daylight-still.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/poster-banners/03-cherry-blossom-gift-set.webp",
+      "bytes": 1296508,
+      "sha256": "e184ab973465ccd4aa9f6d61ec03c7351aae5603b286fc4e340ee4724486849f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/poster-banners/03-cherry-blossom-gift-set.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/poster-banners/04-hand-care-collection.webp",
+      "bytes": 1155548,
+      "sha256": "e598813a94800c4a91aaa80ac28bd469e99b0160fe442564cba13a58e1e8b464",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/poster-banners/04-hand-care-collection.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/gmpc-zh.png",
+      "bytes": 351782,
+      "sha256": "69ac1d75717da4717976f627eb61d75c65cc4ebe670239c4afd2bdc0b372caef",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/gmpc-zh.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/iso22716-en.png",
+      "bytes": 378281,
+      "sha256": "c0e5e58e8834b3411681bfd22a8f2b7a7f9782c0652c0f694afc8331deae40cb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/iso22716-en.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/gmpc-zh.pdf",
+      "bytes": 327506,
+      "sha256": "7ce0468424a4dd1f8686f9c5a32633160935f1008815408a41057db4b6b5a951",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/gmpc-zh.pdf"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/iso22716-zh.png",
+      "bytes": 352385,
+      "sha256": "a52d0606cfa05da829710ba645f98f43edc9fc67cfdbd651f7c67af91c711680",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/iso22716-zh.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/gmpc-en.pdf",
+      "bytes": 283549,
+      "sha256": "6f7ae0d2cfdb0ec15addaf682eb2948f890c8380aaad3ff4f27aac4e07c5e0f1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/gmpc-en.pdf"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/gmpc-en.png",
+      "bytes": 385420,
+      "sha256": "e893225993633f9ae6b73963a2fc28b16095be2e3fd8e9d133e8fbd9c5f7bcf0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/gmpc-en.png"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/iso22716-zh.pdf",
+      "bytes": 327493,
+      "sha256": "e05f80ff3a06e01aa63957f1f5e61b424af08cf9b09adb182c9f5ffe968fb86f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/iso22716-zh.pdf"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/certificates/iso22716-en.pdf",
+      "bytes": 285186,
+      "sha256": "0a9f7e3bc90a1622cd726916032cc18aa6095bb171500b0a6a745e1139d7bc02",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/certificates/iso22716-en.pdf"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-007-strip.webp",
+      "bytes": 1342,
+      "sha256": "cfde9a10f47cea2b0b206ce98e88ab2cedd9a5ded316ba65b91a02c03ee2f96d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-007-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-037-strip.webp",
+      "bytes": 5088,
+      "sha256": "35f4342b71685371dacf39187826a70e427111d77659645ca2d8c23f1c89b85d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-037-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-050-strip.webp",
+      "bytes": 4380,
+      "sha256": "8c89bb0c1ebb93d64b0a86c92375c2f9928bb368a995c0ab6a6e2e880b934447",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-050-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-046-strip.webp",
+      "bytes": 3210,
+      "sha256": "3851278c12430c9cedcfa2debb7373eb9a85cb10298fd09215ffd9ffe27eaac9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-046-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-060-strip.webp",
+      "bytes": 3186,
+      "sha256": "d5af82506a14ddb341eaf09f690b3cd206ca173e5f3d8328e63aba8d9e814893",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-060-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-056-strip.webp",
+      "bytes": 4336,
+      "sha256": "7afd6b3af701c181a900de9f711b847b956ed10073a702245d327706cb3937ac",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-056-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-042-strip.webp",
+      "bytes": 4454,
+      "sha256": "281938ec0dcd818a7dd47bbaac96ad4fcfcbe241d5b89631f989e2a6a1b88962",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-042-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-059-strip.webp",
+      "bytes": 4520,
+      "sha256": "d7586ea2c8d0903ac93a0747e023c0a254ce6eb8473aa637ca085ce3e7866b3d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-059-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-069-strip.webp",
+      "bytes": 2640,
+      "sha256": "b4480cad4d49c3ca761ea5e81936cb23aa867de69ffdc4ed930010939b34f726",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-069-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-012-strip.webp",
+      "bytes": 5038,
+      "sha256": "729989c8a417db10b968d8037ac36943964f07ecabe0027298a0740a2d1a5f9a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-012-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-010-strip.webp",
+      "bytes": 6680,
+      "sha256": "ce243cec15b3a60c4c7a23a728cdd067a505429f321db91e4987ad3435f1319a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-010-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-062-strip.webp",
+      "bytes": 4786,
+      "sha256": "7ff6a434e35322f5608b9f8a6068497815ff6fe969e6f64f8797aef7cfb69dba",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-062-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-002-strip.webp",
+      "bytes": 4478,
+      "sha256": "ff21074590a77ccb01d34e011a0eee8d51744dd83ae35bab54ac48f7ce3332fd",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-002-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-008-strip.webp",
+      "bytes": 5624,
+      "sha256": "a5184cbfd11e6bdc94e852816ae99c7170005068d3c50bf5e7f56ad70784f687",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-008-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-033-strip.webp",
+      "bytes": 1562,
+      "sha256": "addad74c3cbfc0cfdc957ce580086eb09d96c8ed204554aa3f1cd28602e072ea",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-033-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-039-strip.webp",
+      "bytes": 2832,
+      "sha256": "87e1a371f0e85427a1b47583e2bcf85ed817eb8a2765b782b92719d92a2a8006",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-039-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-004-strip.webp",
+      "bytes": 2762,
+      "sha256": "8fc6bb81c5f8f4e588fb306aa0bb8227f704260120a70394411eb9a2a7f8716f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-004-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-061-strip.webp",
+      "bytes": 4592,
+      "sha256": "3346a2981cee4ed8abb3d56f2903c96a0c6487f1410cf4929bd27cb5894db865",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-061-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-055-strip.webp",
+      "bytes": 4410,
+      "sha256": "d6d23d4f84d4d89e7857741601b90f2bb52b33b329546896a075601c6bf2e7a5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-055-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/yuanze-mark-compact.webp",
+      "bytes": 5184,
+      "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/yuanze-mark-compact.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-053-strip.webp",
+      "bytes": 4302,
+      "sha256": "76a1421c69a2c641aac07eeaa6473db7cb855a0e9326cb58ce44459d408d08b5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-053-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-006-strip.webp",
+      "bytes": 3034,
+      "sha256": "0e33d71d7704d8bdc1585cde518ffbb2c251f305d5601b42df9ec4970621719c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-006-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-005-strip.webp",
+      "bytes": 5570,
+      "sha256": "bebb5d69470631deabb89c60ec0914d806f04d15312e6ea95de9dd80c1d22d92",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-005-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-040-strip.webp",
+      "bytes": 7466,
+      "sha256": "a815380b5e7a4ecd4da2d6ddf37b2e3a04fc0bf156eb654c18d3721e3cc69c87",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-040-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-032-strip.webp",
+      "bytes": 2334,
+      "sha256": "7617085beb590173e43bc17301d71423223447b3fa5002d072d86e631c392660",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-032-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-014-strip.webp",
+      "bytes": 5570,
+      "sha256": "06086323cb909f3a998626a366d6c7b72cccc76ee6ee639d3c579cf39483a13f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-014-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-041-strip.webp",
+      "bytes": 5626,
+      "sha256": "688287e4ae81a8693f0921e93b5dcf178cd8aecef21385ac5847fafe0d39d4fc",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-041-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-058-strip.webp",
+      "bytes": 4208,
+      "sha256": "c60b4a5430da921c4bf171be420177807ee26a4f6a85bd223031a2d16a61f358",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-058-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-054-strip.webp",
+      "bytes": 4188,
+      "sha256": "8602b28517aad1465b99013f05bc444293d05220b72d85deb8d95428e267bbe7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-054-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-067-strip.webp",
+      "bytes": 5584,
+      "sha256": "7b3709da8a81aaedbf8c607f4f274e292d2fec34d5203795477a09ffbcb83941",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-067-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-009-strip.webp",
+      "bytes": 2942,
+      "sha256": "3bf258ae5ace9170f9156227ca1d471d2fa1aee85368b3ac15ce0f46c6a04098",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-009-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-057-strip.webp",
+      "bytes": 2856,
+      "sha256": "d6f7ab0e1e40fb34a4f3065593fb7060b85b36a70606190873ddde35c1b008ab",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-057-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-052-strip.webp",
+      "bytes": 4350,
+      "sha256": "9f6070c00c6f4470dcdf824750a71f248bb144b392812080e5a52501875b4ce5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-052-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-044-strip.webp",
+      "bytes": 4068,
+      "sha256": "d38cc867985ea479a77fed126e89c5d67f09988b283953a0a08d60db88cfb373",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-044-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-003-strip.webp",
+      "bytes": 4516,
+      "sha256": "2836a0a4141b7333a882042dc847e43385456115e35c02a8e67862bac09ae071",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-003-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-035-strip.webp",
+      "bytes": 4592,
+      "sha256": "775c5792024522ba2dc30edcde19fb8881e4ba62909e206201f412007d73671f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-035-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-070-strip.webp",
+      "bytes": 2322,
+      "sha256": "a277aeacd58df8b52a3fc6d1da8dc773bd2c1de96df8f7eef2e42e3cc3946095",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-070-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-064-strip.webp",
+      "bytes": 4830,
+      "sha256": "79a36f32245fa215d39310c4adef81b2820ab8f9dab8e3b94445dd8e4fdea6f5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-064-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-047-strip.webp",
+      "bytes": 3534,
+      "sha256": "71190f599b5b583b6b7197944f2ee31b87471047f372dcd04774295f6980ee80",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-047-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-066-strip.webp",
+      "bytes": 4354,
+      "sha256": "7df183cde31ca616b4d2c8218f22b8ec203977596314ff922eefc6c5d0e77cc2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-066-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-045-strip.webp",
+      "bytes": 4032,
+      "sha256": "d2b39a81d810f4120552655411170315e7ce5a7233ccdfcc8e2060bb09c7625c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-045-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-065-strip.webp",
+      "bytes": 4504,
+      "sha256": "ce1666ba6dd6d06836ba62dbc50d475f4b38bb63655bc599ae4920150c38c38e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-065-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-063-strip.webp",
+      "bytes": 3796,
+      "sha256": "afcf60edab6b0c0c1902e563f7db723f8f741359de2c3b4e41b5e0b1966a1ac3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-063-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-038-strip.webp",
+      "bytes": 2948,
+      "sha256": "be1ac0cc3816d649b51dc0cb7cc38b245b37786cf5bfbc86a77ecac655d6f74e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-038-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-013-strip.webp",
+      "bytes": 9094,
+      "sha256": "1d81bd60de2b2623bfc817efc81580c894dc4929d8d584d3702cd304e9fb270b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-013-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-034-strip.webp",
+      "bytes": 3630,
+      "sha256": "e4008d6dbc66d65c7ab30ecb78015bc560f980818befdd5b1ef6508862654f4f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-034-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-049-strip.webp",
+      "bytes": 3702,
+      "sha256": "847676d7f7a61b40f4fd96cfe9c4d80e5b18811c40df91f47c9826a1cfc65dd5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-049-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-068-strip.webp",
+      "bytes": 3656,
+      "sha256": "729d8edbb6592fc588a6d40b24141761e1b9c1afd57707db8548d5b470827f6a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-068-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-001-strip.webp",
+      "bytes": 4762,
+      "sha256": "dc6fe7aecafdcab6089ec7331d236436ded7b3e0c1a39ae25a3adb28c1d006fd",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-001-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-036-strip.webp",
+      "bytes": 3136,
+      "sha256": "6bf38904dd668749980f4f526f1273c217ee7f9c393a8f96478bd34af0f86776",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-036-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-043-strip.webp",
+      "bytes": 3718,
+      "sha256": "9bfc5479e1a548137fe2c2095f6f7da7e9de98869406862c897c5e9ae94c4150",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-043-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-051-strip.webp",
+      "bytes": 3316,
+      "sha256": "95c1950751d0006e91cbce8cbd8256d8edfb390be23f09f3058791b6cefc89ff",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-051-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-011-strip.webp",
+      "bytes": 7442,
+      "sha256": "898b55f6734ad127f804b60a376bc534b2ff91d724f17a8df0d795bf90fcebe2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-011-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/optimized/poster-048-strip.webp",
+      "bytes": 4850,
+      "sha256": "e09f53727981ed79651f4a261cb388587ddd41ccb06654a694025e67fcb93873",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/optimized/poster-048-strip.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-032-thumb.webp",
+      "bytes": 18412,
+      "sha256": "cafb15107a3030f203c07d83ce47c697e4621404650c188ded376469baa26af2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-032-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-058-thumb.webp",
+      "bytes": 25800,
+      "sha256": "35124afc778510bab74a44969728485282bdee02e38af938e4c66f5b47ce0fb7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-058-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-062.webp",
+      "bytes": 1238590,
+      "sha256": "4c0897800267078ebf6014937d85b4d076a7041ebae4e39ed5f5b8e28a3d9f97",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-062.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-064.webp",
+      "bytes": 1349200,
+      "sha256": "72a1269f427a3c29163201cce475fa54e0b6e6d22aed6edeb9d06169a47e549d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-064.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-041.webp",
+      "bytes": 1357462,
+      "sha256": "97830a29fd6d993977d1dc252c6a3b6580bfbda83c2ca7298cdb6e5d553d54cb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-041.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-059.webp",
+      "bytes": 1311410,
+      "sha256": "9a2e6aff984e9f2253fb50ad3bcf4d7d5946f471e70444d64d17f49c66815d2c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-059.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-052-thumb.webp",
+      "bytes": 29026,
+      "sha256": "97b184833cb76c676d1d9d90fca98c1460b8c84968a26d82ae6dd0b0b08e7794",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-052-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-042.webp",
+      "bytes": 1366318,
+      "sha256": "f433e657a24e286d406c54329431d8b73fc23535b281a876293bef9447372162",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-042.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-061.webp",
+      "bytes": 1457004,
+      "sha256": "61669fe7773532d7831f650c320cf4c5d401d0c008f864487338cf74f111b5ca",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-061.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-063.webp",
+      "bytes": 1258026,
+      "sha256": "065639ca28e814076bc8f76a8ce501fcd12584244c270c3e0fb80fc0b801280b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-063.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-037.webp",
+      "bytes": 1306858,
+      "sha256": "f55a26634ef573697de99a4bf03ffb8ac7a8cb6cb0be5e935ab831f7bef63c0b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-037.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-037-thumb.webp",
+      "bytes": 35042,
+      "sha256": "3f6033b1021230211628c7b52d4f2a72ec3a33bb9d9eae692459cc7056b961a8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-037-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-003-thumb.webp",
+      "bytes": 34998,
+      "sha256": "9241418d15620655332c9bc48c4816cc585b8892d214b7c590bafad85581354a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-003-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-040.webp",
+      "bytes": 1598966,
+      "sha256": "d6cb089611cd9b1d3a66edc70215a51868574ee94c280dc0d4cf75449319c3cd",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-040.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-033-thumb.webp",
+      "bytes": 12518,
+      "sha256": "da044fecc4d9f6f643ae9f3d2607811c9eebdac5fa5bff307662f9833b1141b2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-033-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-043.webp",
+      "bytes": 1232566,
+      "sha256": "bdd95808e2534f824e2fada17a55ae3396288bcc273b2742ca8de6ac297d825e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-043.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-069.webp",
+      "bytes": 1335864,
+      "sha256": "ba56936ec3df65208917b77cc5b748c25b30c7677e0ab00df52c3ce7024fa4fc",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-069.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-034.webp",
+      "bytes": 1169632,
+      "sha256": "8cbbba538bcf8ce76b48ce10aef6430638cec18853cdbceadd6c3e82a6118a00",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-034.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-065.webp",
+      "bytes": 1231226,
+      "sha256": "c10335129314ce657e31eb04884b5427473559dfa8c129119ece43c227c1b805",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-065.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-040-thumb.webp",
+      "bytes": 62860,
+      "sha256": "2c052329a956ef320bb41d593fec43ea1de2f55c4c4eb22133f65a0c483bf691",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-040-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-065-thumb.webp",
+      "bytes": 28430,
+      "sha256": "eb6e622a78acf4e8f2d9f27147b02ab023297e91cd988e8e252f962014e878f2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-065-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-036.webp",
+      "bytes": 1039064,
+      "sha256": "e1eb9b5867236797d0b6e26c236e7eddfaced4f228b83ecf3ef30c16f0c3384d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-036.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-042-thumb.webp",
+      "bytes": 33810,
+      "sha256": "08cd1e276bb0945d654cf1e251ac20f16a43a58d5f70a20bbe386d0115524c5e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-042-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-057-thumb.webp",
+      "bytes": 17468,
+      "sha256": "52bd570b80febca70154486f22fdd1643a8faf231850d101a6ba4cb194cd231f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-057-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-050-thumb.webp",
+      "bytes": 28624,
+      "sha256": "f8de8f05519633fb7ed212c4b6379210f020a7e6c6f66cf6023a701158a8906b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-050-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-033.webp",
+      "bytes": 1013880,
+      "sha256": "47b8bfa9f85f962a2a27ca8071ad9fec4597aa054add6ef7b044b0023a70bdac",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-033.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-008-thumb.webp",
+      "bytes": 46046,
+      "sha256": "fc124555f792719dad1b64b5c60d000d285ee0562338be1c70d994f2a361597b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-008-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-010.webp",
+      "bytes": 1465674,
+      "sha256": "d0c7b8503bf337f3146c66e89bd7f5b795e3e489fbe03a9cc6fc25e7a26d6c4e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-010.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-013-thumb.webp",
+      "bytes": 80382,
+      "sha256": "a5cd697932a664f7eaf9541bd4018d3defa406c8ac180e688e5722774ff9385d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-013-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-006.webp",
+      "bytes": 1359394,
+      "sha256": "dd72d7c1b620e23a8831fbf8903647171802fbd468c27f4461ed2d01c722e48d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-006.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-038-thumb.webp",
+      "bytes": 20490,
+      "sha256": "4a0f6f1cff577ea5719219a73b6cdafa507cc56ecd29d59974dd11b5be341b3d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-038-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-041-thumb.webp",
+      "bytes": 46336,
+      "sha256": "d959b4254b6f1854c8d07275d4a56550b81e6b04174e9dc282fff95fcffb160b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-041-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-044.webp",
+      "bytes": 1295682,
+      "sha256": "3677285f25a234a2900551e6905bba2ac1210da46972b65c42cfd872fc79ce82",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-044.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-014-thumb.webp",
+      "bytes": 46146,
+      "sha256": "7c8598937090c1bd9b206bb7419c7a00b898c829831c50befece05ee0215c56d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-014-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-056-thumb.webp",
+      "bytes": 27444,
+      "sha256": "0ced90c3cceca4bf71a1d31fbbf7b77b8c1e2610077fc9b42e12c8ee7ea4e0a4",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-056-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-002-thumb.webp",
+      "bytes": 33704,
+      "sha256": "ed3dd1d3fef18236b55104dca106c9dc9939973e5ea91572046bc576b4e7ce41",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-002-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-005.webp",
+      "bytes": 1291730,
+      "sha256": "77b95fc98560aab207c6912b855706c17f2dbf497c99de4c41adee770cb75a1f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-005.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-011.webp",
+      "bytes": 1357712,
+      "sha256": "b2b2a38105144fd5d845023e0045631a2810f8740c4cdfd98b6d73df572888ea",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-011.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-001-thumb.webp",
+      "bytes": 36902,
+      "sha256": "04ea78033c895e6a8b068e6c78228e288dca38942435a2bb163b57c7c15f4a88",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-001-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-044-thumb.webp",
+      "bytes": 26772,
+      "sha256": "0dacae2b46694202320d4989d72100fb990bf4756fe01166e8851c8086477446",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-044-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-039.webp",
+      "bytes": 1260026,
+      "sha256": "20f64a525352405eb3ac434efc586d2655a0a2103a4230a5ca46b50c4abf2fa0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-039.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-049-thumb.webp",
+      "bytes": 20238,
+      "sha256": "9b148caae0e7be7a58d9cd221605028a8e5c2690e80aebe43123c5921e699f57",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-049-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-062-thumb.webp",
+      "bytes": 29384,
+      "sha256": "1ef39a0fba63fc179d42c40ac7731ef7a09d4f8b93d370fd3aedf8fba20df7e0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-062-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-046-thumb.webp",
+      "bytes": 17138,
+      "sha256": "739dfe2f2c152d049cbbf1e0e7a913c9a392b5d314fc1686f3db76064cccc527",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-046-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-009.webp",
+      "bytes": 1167912,
+      "sha256": "8da379263e1639c0368dd06530ee8623a0eeda176d57d72551351000c409ae34",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-009.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-035.webp",
+      "bytes": 1358286,
+      "sha256": "1b7ff01bbb43db058c000568652f3a3b386bd72fb07bff6418796e388f354386",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-035.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-063-thumb.webp",
+      "bytes": 23310,
+      "sha256": "0b3cb9f3eb218ab3baf768b33a7336fe14f33087386668c2f4247440fa8744f6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-063-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-012-thumb.webp",
+      "bytes": 45136,
+      "sha256": "812bea20787d93fcb9cfbda4d029556822de7bdad74cd6fff8bdad995d7a4d7e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-012-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-066.webp",
+      "bytes": 1235888,
+      "sha256": "6010fffe29deaeb46ad8f661b333089661edad5b0e25c426d728b46b81d948a4",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-066.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-008.webp",
+      "bytes": 1328296,
+      "sha256": "8bbff7744122efe1ebea3bfaa8bc4e446afb5b282188e31180fa18816f5ee8d7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-008.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-056.webp",
+      "bytes": 1248326,
+      "sha256": "0cbe558deb7061da6163b7d96bbf55e81ca1d4bf15e3c05ac455108986d6a448",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-056.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-061-thumb.webp",
+      "bytes": 35428,
+      "sha256": "3560bd30ba71413e0cbf8f5d7302913fc76f987aa0c2e80790c2c485bf95f538",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-061-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-051.webp",
+      "bytes": 1142638,
+      "sha256": "77d4f8ea7cf74c6263025c49d27dee100f9a6e2da0220159a8f852ff9f3b8d08",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-051.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-064-thumb.webp",
+      "bytes": 29990,
+      "sha256": "52bc7eb7232eaa1f2249c997d1515704d4fb24dc96bbe7daaef5e779b6cda768",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-064-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-014.webp",
+      "bytes": 1503402,
+      "sha256": "1a3f6bcc0f2e70e5fb2dba2d54e6cf2abe1683e32e8c3faa5ad4a1590be8d616",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-014.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-047-thumb.webp",
+      "bytes": 28556,
+      "sha256": "eff44218264a9bd7b58ec4b8a9cb9b9537d7aeef66cabcba11b07eff15aef8bb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-047-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-004-thumb.webp",
+      "bytes": 21158,
+      "sha256": "5ba46f5778b2fae7b0963c3779f60d33a4065e30f741e5a2878c8da3a92b7a71",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-004-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-001.webp",
+      "bytes": 1143340,
+      "sha256": "3016b4d386c85f38a879cc564325e14c305e7fe2ab82bbc947e4f98e361377c5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-001.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-004.webp",
+      "bytes": 1213422,
+      "sha256": "5f5fb18d37b1458ccb3ac93dd3698f64a51ad60227d44de1f19fe98559417697",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-004.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-010-thumb.webp",
+      "bytes": 61682,
+      "sha256": "8b4696b8e4aeca9527aa7fc40c98f101b6e3d7180bd445cb752f4fafe0bbcb71",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-010-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-053-thumb.webp",
+      "bytes": 27378,
+      "sha256": "e45079f22877e9ac6ff3331d3d4c02b3ef78e198bcc1e695c30e9feb4e1a614f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-053-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-068.webp",
+      "bytes": 1296666,
+      "sha256": "50cc44a74ae1c7b311c9c195a8aee82fa13d36e2bc9a760802f9893d3b303db0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-068.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-006-thumb.webp",
+      "bytes": 25366,
+      "sha256": "9372f3a51af248af86ca690458dc365bd0835edadad708d1173001408f05f889",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-006-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-007.webp",
+      "bytes": 1068684,
+      "sha256": "5e934fd9f3876c35715da103a8bafaed1a68cef402c6fbb7182145cbfd5a7b20",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-007.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-068-thumb.webp",
+      "bytes": 22790,
+      "sha256": "f02194e947eeed0f6d9905fee03ce2600ab1ae0ed9fb72afee6e9ee3cc471306",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-068-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-051-thumb.webp",
+      "bytes": 22284,
+      "sha256": "c5f2186f1dde45d70f46954e93313e41056580a48eb97ee5573bac881bf3e6c7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-051-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-054.webp",
+      "bytes": 1225124,
+      "sha256": "eaf489eb39f5f29b2d1a756e92cc75edf811df085ac830715ae666bc8fdc0306",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-054.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-069-thumb.webp",
+      "bytes": 21812,
+      "sha256": "b7ee0b03f3c56edefbcdc3fa5f8889a110ff601bd01cded6966724bce769a4a5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-069-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-046.webp",
+      "bytes": 1158660,
+      "sha256": "34f7cbc93d7e504d7979b39d8b8eddb8a10d6566d30b526a6e7a90ae72b894f0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-046.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-032.webp",
+      "bytes": 1182054,
+      "sha256": "ce2be77b67da9f8da5e820191208be0f7e62c5e2222594d09c2529ccd4341ea9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-032.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-045.webp",
+      "bytes": 1204124,
+      "sha256": "8fadbf29baa470e4368cbe5692641a27f21eafcc6d9390141af26266f6a38c3d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-045.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-002.webp",
+      "bytes": 1111888,
+      "sha256": "0e633a47506abdf285613c62384d958b5dbb615957ad11fd58dbeb5f536dc103",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-002.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-036-thumb.webp",
+      "bytes": 20266,
+      "sha256": "03464e5bc7cb785ef72d6375584987ebbd17de13f8aceefcc094b96a7bb6988c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-036-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-057.webp",
+      "bytes": 1136454,
+      "sha256": "90ea93fdc4cffd57257673d8c6811f9de37841341ce58445da855b99aa7b4913",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-057.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-005-thumb.webp",
+      "bytes": 44504,
+      "sha256": "8d43fd35b83e31e3dc1e8cb5e364be75be42bf51b92fb0bf13161e9dfe29b1b5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-005-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-007-thumb.webp",
+      "bytes": 12562,
+      "sha256": "a4e7cde09bff41e81037f040c8a7346579d221ace66ba2a19ff301f2ab98c11f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-007-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-055-thumb.webp",
+      "bytes": 27612,
+      "sha256": "e6c3007ec9323075afc00f695047a480d862f4070724dbbe159522080c087af0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-055-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-059-thumb.webp",
+      "bytes": 30654,
+      "sha256": "482f6d76d4cbeaeae3cc71e98e55410a5c84b0ca154805cbbcd1afae8c38f072",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-059-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-048-thumb.webp",
+      "bytes": 31766,
+      "sha256": "97d792d56fe920dddc26cd39f941b9a6979dce4ee42b7eeef0d52e812086baef",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-048-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-058.webp",
+      "bytes": 1219830,
+      "sha256": "9a2940f544e1f238a3a2955a519859810416653c247b7ec4579d111a02926f72",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-058.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-066-thumb.webp",
+      "bytes": 25410,
+      "sha256": "5b40a0a946413454b8684c95a3a2ee3273caf47ff0c836be936e736558947cb5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-066-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-052.webp",
+      "bytes": 1267432,
+      "sha256": "ef00c2056586fa43075082ff262a0bc3d56ca4c243d5c9f7659f27b2bbf2b988",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-052.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-055.webp",
+      "bytes": 1282242,
+      "sha256": "adef75c90886349c5448db6d25cc16b1290ed9671ab19a0721882ef41c10d132",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-055.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-009-thumb.webp",
+      "bytes": 20892,
+      "sha256": "b5b9fb98c2b88a89c577f0468d4f97b7b9e730250328147b7963ca694002696e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-009-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-048.webp",
+      "bytes": 1364102,
+      "sha256": "246e9544076d2d64238c7bd235c5e5b3fe6ce23f988df6a3ca80b76c9f558fca",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-048.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-054-thumb.webp",
+      "bytes": 24486,
+      "sha256": "16c2e30066ae00ebace9cc0b74a03c43f8032bbc77072dc2dee97cbab1b2f2f6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-054-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-003.webp",
+      "bytes": 1121344,
+      "sha256": "6aecd1f3ae6fd6c381101b3ce82173c8217a844a44cb5e899e477e8f4f3c56d6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-003.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-043-thumb.webp",
+      "bytes": 24132,
+      "sha256": "75e615f1c043f6cb7b51b4beeb4b78436b867cb8611e3cefcea5f2715a1a9992",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-043-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-060.webp",
+      "bytes": 1207930,
+      "sha256": "4fef451dcefe43bf5264b19d1e44b4c34c82dc0bfbb5c90f3ebfbfb5d4f83b96",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-060.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-047.webp",
+      "bytes": 1411240,
+      "sha256": "bdfa73901daf1c27cc93dfe7a1791344c59031d5ef0d39a8ae33db68133ebdf6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-047.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-067-thumb.webp",
+      "bytes": 32928,
+      "sha256": "57b3e7e4b3cbff6959a2f76feaff94d8a467d5f3807b8e67785848dcd507e9fe",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-067-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-013.webp",
+      "bytes": 1577336,
+      "sha256": "6d13d07fbb3086ce3eb7b8708c5304dd97163d3dcc98cc1db6a4a9539c76e592",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-013.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-035-thumb.webp",
+      "bytes": 34700,
+      "sha256": "12ac2b8567338a293d0701866c24d67ba5ea64c8d6afff90cebb42e5c529506d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-035-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-034-thumb.webp",
+      "bytes": 29000,
+      "sha256": "149c197fd9dcdf688ea5e8920c3dfb0a3880543518b88a70cdc35da5b71c623b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-034-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-070-thumb.webp",
+      "bytes": 15828,
+      "sha256": "6f21777cd5285c1176b0f6b39772608e5b4bbc28e6b32169d593a5383cfea772",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-070-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-045-thumb.webp",
+      "bytes": 24552,
+      "sha256": "62e2d6f77e3f2f9b7c4141e4facced742cb7eb2cf8c6f8094a14f0c3381fa188",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-045-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-070.webp",
+      "bytes": 1070786,
+      "sha256": "eb2fe535a55164a76dc2496026bc3e62b57dd0e37c2d244bc0a075ecc29ab2c0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-070.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-067.webp",
+      "bytes": 1322218,
+      "sha256": "6640c4ace680b7f0189b486ce4a6383cc759e63135c2f2113f1edcb366fbcff1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-067.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-039-thumb.webp",
+      "bytes": 26362,
+      "sha256": "7e7f72b5d993dacdd2579f25b0334b014a59576ec02a7326632e3df0f79c5a49",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-039-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-053.webp",
+      "bytes": 1346440,
+      "sha256": "ac7e40e6ce872055ac3022a51012b0b070319d0545e0563e8b4e436370292782",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-053.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-060-thumb.webp",
+      "bytes": 22766,
+      "sha256": "00e9c1d0063e370d4fd1dbc3683c9718715e4da832780d0bef82a14838575934",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-060-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-011-thumb.webp",
+      "bytes": 56242,
+      "sha256": "52ab5c7714167c5c5d9e7fe504a768d36d5e727c20b35ef048e70cf13763b931",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-011-thumb.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-012.webp",
+      "bytes": 1222752,
+      "sha256": "a90d6370e3d051028c8445f03720f64fe5a808e003e85c5b200b514d920878bb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-012.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-049.webp",
+      "bytes": 1090612,
+      "sha256": "ea337ff75f5ef7d4f2d9ba90e35cc537d924534f93ef2c01477f34348d61efcc",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-049.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-038.webp",
+      "bytes": 899350,
+      "sha256": "c124a33237a1295572c18b48340417fde60f82ea6725d92643ebd5e52a089c16",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-038.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/posters/poster-050.webp",
+      "bytes": 1295614,
+      "sha256": "9be6d3a32e5436ba0d369d2f3a9b1e80f75209fd9079088b20c13d7f555a5936",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/posters/poster-050.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/showroom-512.webp",
+      "bytes": 29818,
+      "sha256": "2a67c6c6f395073ac7b101b4743c427b70a704252166892f394260d3975409a5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/showroom-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/reception-1280.webp",
+      "bytes": 56848,
+      "sha256": "c4660dccb8a60648eadb32212bcc4c805f3a9fe957fd74c6c55fd93665cf0535",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/reception-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/showroom-1280.webp",
+      "bytes": 134864,
+      "sha256": "b45a4a658d9f01fd17cdea1a329c550a6fbac3ba85daf34a3242bfef77da0065",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/showroom-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/reception-512.webp",
+      "bytes": 13322,
+      "sha256": "9de8bafbfa82c3b67620f81d849d12e9b4281967b0a60b69a8674ee7c9246ed6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/reception-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/03-cherry-blossom-gift-set-1280.webp",
+      "bytes": 55510,
+      "sha256": "ffb7a29db3d8a9c0ea09df51386f0b6a666126fdfac9f0ff07ce5a405e4c2fc1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/03-cherry-blossom-gift-set-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/01-pdrn-capsule-cream-1280.webp",
+      "bytes": 38950,
+      "sha256": "be997dcbae10b7a77428f81b1eba65fa62a0f771f1cb3f54609972c53b562ce7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/01-pdrn-capsule-cream-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/05-daylight-still-512.webp",
+      "bytes": 8996,
+      "sha256": "dde1b98c74aa7b61967dcd5345089369591157985934b3b060f1b1a6c2e35cd5",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/05-daylight-still-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/02-body-care-collection-512.webp",
+      "bytes": 9974,
+      "sha256": "1ead32b4cd4926c57837d007a9119aaee5d323eed7c96f8f6eb02ab394a1be54",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/02-body-care-collection-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/02-body-care-collection-1280.webp",
+      "bytes": 43158,
+      "sha256": "364a48d25339c7674a1340d1f03f69879cf44a43cf10f847f7c83df4d5064c8b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/02-body-care-collection-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/04-hand-care-collection-512.webp",
+      "bytes": 10510,
+      "sha256": "1f0df4a9484d7df6286d6f7f8b01045649ab8dba01c3add59b5d0870890152d9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/04-hand-care-collection-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/03-cherry-blossom-gift-set-512.webp",
+      "bytes": 12712,
+      "sha256": "49c19f36ad72020b2f1936703c4b34a899897d384662f6ba8af69327a0aa6723",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/03-cherry-blossom-gift-set-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/04-hand-care-collection-1280.webp",
+      "bytes": 45190,
+      "sha256": "d1810ec3ebc53308c967b9e47637b0a11c7d12eed3147b3a72f8232e972f0246",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/04-hand-care-collection-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/01-pdrn-capsule-cream-512.webp",
+      "bytes": 8786,
+      "sha256": "c03fdd816c5a0b2f47f55300d8a60a075684fcd86ed25e39c6f4f711ad6c9da4",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/01-pdrn-capsule-cream-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/poster-banners/05-daylight-still-1280.webp",
+      "bytes": 43828,
+      "sha256": "a84b594c95fa0799568905a358d841928a2e7e4f1ee24983b0f2f5b971033b03",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/poster-banners/05-daylight-still-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/gmpc-en-512.webp",
+      "bytes": 21590,
+      "sha256": "40f61d9466b49e2b04379b45772a70eb271c191925c3d8dd9f5363f46cbcd31a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/gmpc-en-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/gmpc-en-1280.webp",
+      "bytes": 93686,
+      "sha256": "1103f376eade7558d7551cc27719c5da2cc5b719a132c891c176c597eb8ef02a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/gmpc-en-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/iso22716-en-1280.webp",
+      "bytes": 92290,
+      "sha256": "69bf566aa9c22718dae0cffc32c7b3e9f2ca860688b9869e62ce325501c8b8eb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/iso22716-en-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/iso22716-zh-1280.webp",
+      "bytes": 78222,
+      "sha256": "4d47fca0f42a3fa68a3e9580c38cb8d024ee702ba171d57d6d0c80f603368b9f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/iso22716-zh-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/iso22716-en-512.webp",
+      "bytes": 21108,
+      "sha256": "62ea19b7d6b2cb82374933f6bff1ce52ac3c895c3663a35406932e8cdd7bbad2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/iso22716-en-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/iso22716-zh-512.webp",
+      "bytes": 17312,
+      "sha256": "65f2e97e9c3afd8487ef7bc8417c0d14f2e58469315e3f132db24621bae4e7ee",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/iso22716-zh-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/gmpc-zh-512.webp",
+      "bytes": 17942,
+      "sha256": "dbe0315a1a3cee1a9faef33cad25ddbdcfb7736b622f358ad2f71dd15f170c49",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/gmpc-zh-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/certificates/gmpc-zh-1280.webp",
+      "bytes": 79978,
+      "sha256": "b3692628a98ce1f275c88f5c8c31201b3e841205c1e19f51211f76861faa4083",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/certificates/gmpc-zh-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-055-1280.webp",
+      "bytes": 68186,
+      "sha256": "21a5d151b6739223fcd02471236121010f9ba4435d9277f88dee707e70fce30e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-055-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-059-512.webp",
+      "bytes": 19350,
+      "sha256": "4c004f305115e13b43244321c6ca044e83cecf64d92903da52f9257d52d05eca",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-059-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-035-512.webp",
+      "bytes": 18068,
+      "sha256": "1278caaf250690c5e6addf15c4c3fd256034cf6bfd470b0da435cbf38b7c6935",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-035-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-067-1280.webp",
+      "bytes": 81850,
+      "sha256": "b6210fb0e382cd9d356a88d030371596b5109408234f596d0b165710c36d8af2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-067-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-009-1280.webp",
+      "bytes": 44252,
+      "sha256": "f75a4e66f6ed290108bffcb886974ddd7696d7785c5cbd934d2c58a329eef65b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-009-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-054-512.webp",
+      "bytes": 16054,
+      "sha256": "9c1e6e5fc57ac5e03ef2e470bae45aa4a6f5501a508fb058a8ea751b1311722f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-054-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-005-512.webp",
+      "bytes": 24520,
+      "sha256": "f6898534b0eae67c902d08dbaa9a3c1779de270d9a0425980904fcc1d72dcbff",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-005-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-052-1280.webp",
+      "bytes": 72236,
+      "sha256": "4a26c513c5a2158616338cfccf0b104f5f4d6282c65c73bfdb1b46f0af8af96e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-052-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-068-512.webp",
+      "bytes": 14400,
+      "sha256": "af3c009e1add184d0d1986aedf3195f2ce4038fc1ebe2146b25cbe676e5b03f0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-068-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-051-1280.webp",
+      "bytes": 58472,
+      "sha256": "938f252dfd08e75166f02546ba3444036542f1c4f9298785d8f0024ca92196b0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-051-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-011-512.webp",
+      "bytes": 30568,
+      "sha256": "a96ee1883178c0addaddd4432bd3c382bca7e4ac61fbb2120b57ccc2006560a8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-011-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-038-1280.webp",
+      "bytes": 41614,
+      "sha256": "c3479094b445719054572cf5dc9c913b08fa01915b3d996e4cad8f0c88fb33f8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-038-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-047-512.webp",
+      "bytes": 16934,
+      "sha256": "45d63e75ffe0c04768ebea1271da872b2bba56e9f7fe4d153e48b62736b133bf",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-047-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-049-1280.webp",
+      "bytes": 47242,
+      "sha256": "6a618552ea023943258b629f1b3c108021db8f50b7e7101cb91647fd56c4a3dd",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-049-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-042-1280.webp",
+      "bytes": 93312,
+      "sha256": "cc33e40faa8073369b91189936b72f30ec9e70e1be57bee38f98e9a43f2d568b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-042-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-059-1280.webp",
+      "bytes": 79338,
+      "sha256": "d98e311f3a47b5f240609cf852ea3a6e58844eb1ab5b0b346f5e374a923c859c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-059-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-048-1280.webp",
+      "bytes": 80670,
+      "sha256": "6c4b6242a1f069bc8ac4c3cddd67f116696c94d40d0213dca475009b4090527a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-048-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-005-1280.webp",
+      "bytes": 94148,
+      "sha256": "97da8e324239acb2b077676b81b956a6610e9671f3a1cc33e0538c6d3d6e9fef",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-005-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-034-512.webp",
+      "bytes": 14908,
+      "sha256": "f1af128de44e70d1527dc2628d6751953453f9dc7b4515bc65b3d85675d39a29",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-034-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-058-1280.webp",
+      "bytes": 60984,
+      "sha256": "d0683a800cc2199e562149b34eefd93a78e843a23c11f13c7f3805134be52877",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-058-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-061-1280.webp",
+      "bytes": 98148,
+      "sha256": "695cb1c140fe4ada109976c16601920e89850080253c51fdd18b554efd02113f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-061-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-006-512.webp",
+      "bytes": 12490,
+      "sha256": "0b4fd91b4cb7fb46140632e858e84dfb502aafa1166e5a9a6b46a7853d6ecccf",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-006-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-038-512.webp",
+      "bytes": 11860,
+      "sha256": "f2938f818f1e0d95062127b815bb7f311275aeb92234b12dd112aa4a9d4c646b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-038-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-055-512.webp",
+      "bytes": 17638,
+      "sha256": "a534c2aeaeb2945beae1fde5ca4d7f0306ceff8cfda45fb66b7bedc5a3cb7674",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-055-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-054-1280.webp",
+      "bytes": 59106,
+      "sha256": "5f6503070c39cd9fdc06140d214199308db206ac12a3096537c1997dde457b4a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-054-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-070-1280.webp",
+      "bytes": 44114,
+      "sha256": "a4993a588b3ace7e3666730c7854cdf10a27b6e82d96f197cd9e50e8664f1f0f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-070-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-065-512.webp",
+      "bytes": 18604,
+      "sha256": "968b27799e0983778c0ef5a0d01b8b10584466141942a5c91e24f52a4c258f18",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-065-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-069-512.webp",
+      "bytes": 12768,
+      "sha256": "45b0d042cf6a12c19104b9d175c6cbe12be3529fcae85520792f4d0d12a382f9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-069-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-033-512.webp",
+      "bytes": 6536,
+      "sha256": "e06703fa304cd0ad25bc6ac6b0c3cdb5fd5243a1bffb25c2da3f671b6c4242e8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-033-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-035-1280.webp",
+      "bytes": 78672,
+      "sha256": "ad45e1aca5219258c123d131ac700d45ef66b7371e918e0ee6e068d6a9e68932",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-035-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-014-512.webp",
+      "bytes": 23566,
+      "sha256": "3a0dacec4e2b9816f28e64559ba4be091f04623a4f9aa1dee157e4e944af4e8c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-014-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-066-512.webp",
+      "bytes": 16892,
+      "sha256": "37bbee8b14a43002eb2d2f263dbd7665f218a216416360b145fd8ffc85b9855f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-066-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-004-512.webp",
+      "bytes": 11226,
+      "sha256": "12c0a7b739db700fda8fc0608ee8b6b57a79deefeeda8da30f7003e06d3cccae",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-004-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-057-512.webp",
+      "bytes": 11180,
+      "sha256": "d393f3fdf868926947b10db79a6da084fc2719be15705a9d76ca8ef7ee59c01b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-057-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-034-1280.webp",
+      "bytes": 60984,
+      "sha256": "a7ef62ea8e9535092930074ac09004398abdaf1b2dd20bef59f922d1620dcd15",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-034-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-037-1280.webp",
+      "bytes": 74554,
+      "sha256": "269dd7681254966a18ce2dffcf2ad76258bbc544d73571904293bec664f15913",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-037-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-004-1280.webp",
+      "bytes": 46976,
+      "sha256": "cdc9e6849deaafa784f5fff333ebb37f09bea2fef40d0fef488b222aabbfb48e",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-004-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-013-1280.webp",
+      "bytes": 158196,
+      "sha256": "fc85f5abeff3995a35538db7ef31af52c7ef71ef8b3e2d517b02c1f433a1958c",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-013-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-050-1280.webp",
+      "bytes": 73842,
+      "sha256": "8552f9eebd4e6c620cf8208471691a909fa9385a10e860fa426849d33f57e740",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-050-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-063-1280.webp",
+      "bytes": 62184,
+      "sha256": "73c4298eb2773c4ef3e1562dcb244e6d0e61a85cde526d637fc710c0e0c91e29",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-063-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-037-512.webp",
+      "bytes": 19032,
+      "sha256": "88b705a5667ebd41a64371842656c9e54c74308d6e49e5af59e73ba3c15e7d2a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-037-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-014-1280.webp",
+      "bytes": 103482,
+      "sha256": "8f1beabae2f6d0b9f8f5c35931506d85793495297fe68b4e4759f66cb0e3c0e8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-014-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-060-512.webp",
+      "bytes": 13592,
+      "sha256": "0530add8aab2d2df68ae67ee42da9458999c0c5d939357ddd10b207f5f5c6872",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-060-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-065-1280.webp",
+      "bytes": 73040,
+      "sha256": "6279f3990a6763809f06cfc125b3e1ba31b7b2e15b17b0715b48cb7071fd12f3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-065-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-050-512.webp",
+      "bytes": 18138,
+      "sha256": "30b55c30c57688380e08d7cda5d8b6f31d41eb964a4d835eb0069f061f291b13",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-050-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-053-1280.webp",
+      "bytes": 72334,
+      "sha256": "ac52ff0d6313c534f8b39391e835baca253c7c18e6b93725b4f15732abb903a9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-053-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-053-512.webp",
+      "bytes": 17698,
+      "sha256": "066832e0bc56f6e73a1b41be37c3021ea41c48d6326c8bcfe76903643e7728ca",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-053-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-013-512.webp",
+      "bytes": 41658,
+      "sha256": "01e127c18726a1d2dc45e5d508403696b566f0b970656d378463e0bb0826cad3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-013-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-002-1280.webp",
+      "bytes": 67960,
+      "sha256": "de86aa63469d4066656d8cb642c5c610ced6850091ec4ba9ab5086e03bb36df7",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-002-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-044-512.webp",
+      "bytes": 16888,
+      "sha256": "ad3b3f328f7e2ecad74cbada093c605da87a782dd510dc767ddf4db77a293554",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-044-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-048-512.webp",
+      "bytes": 19942,
+      "sha256": "aad04434b290922d00a853fdab02766182c54805c9c1e825584a40f7644029fc",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-048-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-007-1280.webp",
+      "bytes": 30748,
+      "sha256": "baad78fb198bd68507f49fd8276d1e03b821ac561673f39367a4fa4141212d26",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-007-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-063-512.webp",
+      "bytes": 14678,
+      "sha256": "fd996467413216bb590907b29b1c3d974823721201ed5d1fab115c0e6cc0957d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-063-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-032-512.webp",
+      "bytes": 8566,
+      "sha256": "ec5c73e9ca5df00912a285848956ac073dc7f88b80edc0853ebb5e6aff7f0e1f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-032-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-045-1280.webp",
+      "bytes": 65246,
+      "sha256": "6fae58b0e87c7512bab4f116689f9b09810f94d7da826a5d7c86fc27178f9ffd",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-045-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-012-512.webp",
+      "bytes": 23172,
+      "sha256": "9b1052dae70371211c09eecd3b68a9ff21183d48f7fe8dc874288b91588e40de",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-012-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-010-1280.webp",
+      "bytes": 117420,
+      "sha256": "d24ac4f6355a2ff7660828378173e5e38ac26cb699bc84bd22c468645e9125ca",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-010-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-052-512.webp",
+      "bytes": 18240,
+      "sha256": "02a16e32f4c7cbf6c0aa1758dd34d2e8ab5c7cfecd82d05acc5466f02947d89b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-052-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-068-1280.webp",
+      "bytes": 67456,
+      "sha256": "bd0cc86244969a2a511bdf476a71ff260800af9ef5f85d124f3c87f980952c52",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-068-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-003-1280.webp",
+      "bytes": 72174,
+      "sha256": "d46cdfcf112ccb520524535bdfcd8ffad92542796183000c77f1a51f057aeb82",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-003-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-003-512.webp",
+      "bytes": 18810,
+      "sha256": "42838260246c84d020bc5a023779fa87f3aeb304d244c02db756d4b50d5a61d0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-003-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-066-1280.webp",
+      "bytes": 63170,
+      "sha256": "5d974bf05562cc1ba9e629764ecd14b66c7f42d1778c60ae05cc20d77999d07d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-066-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-011-1280.webp",
+      "bytes": 111270,
+      "sha256": "779ff165ff9d03be7092dfaaa69dc2c7c75b3379a2675d2912b5bc5b78c24207",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-011-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-064-512.webp",
+      "bytes": 19280,
+      "sha256": "719cda5f8865963e88acb2371cc34994066063f0ddfff5215af72b5b62ddc005",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-064-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-067-512.webp",
+      "bytes": 21132,
+      "sha256": "334f000eb0cd70ca033b3790036f1f602c115940ba62e31844effc999143d8c1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-067-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-001-512.webp",
+      "bytes": 19688,
+      "sha256": "0bac13a3155cae9f2c9c51d60e5b34536a139ade25a09b609e94eff65cb38734",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-001-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-062-512.webp",
+      "bytes": 18956,
+      "sha256": "c5d34555c81caaaf370f0273383dcad2caf61e1768b55a98c51e31217b1de62b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-062-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-060-1280.webp",
+      "bytes": 63964,
+      "sha256": "f20fa2039fa0901f588135b5b9e0f14620cf05dec2571af83ea04dce200480ce",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-060-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-056-512.webp",
+      "bytes": 17474,
+      "sha256": "0a1bcac8a026858828636d4eccf62e781c9e127319e3005f6d3ba562fa315d0d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-056-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-046-1280.webp",
+      "bytes": 41868,
+      "sha256": "9a7c993c69c0fef59a9465494e6f148329a639a4740a133199fc40e2dccf9819",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-046-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-041-512.webp",
+      "bytes": 24022,
+      "sha256": "4ed206b65195a785595747160958bf6e8fd7904901012c95c71c2f9416ee0de1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-041-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-058-512.webp",
+      "bytes": 16338,
+      "sha256": "2b4e371738ce5a7f2b28fcadaa6f10d17c641d278723febf47f9a465e7e2171f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-058-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-043-512.webp",
+      "bytes": 14932,
+      "sha256": "38a7975bc1b8a48c34f67b7214ccc484a013af4c555c4038868162cdd3873eeb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-043-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-036-512.webp",
+      "bytes": 11330,
+      "sha256": "bd45755a026a905bdbc2e3662f6a5bdeec1a5dbeac1bfb5159e7d7b0eb6c4a05",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-036-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-044-1280.webp",
+      "bytes": 70370,
+      "sha256": "ca326dee8d35af543c096699bfc62332cad2b444a3b7b3fceddf39c5b43dab0b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-044-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-009-512.webp",
+      "bytes": 10984,
+      "sha256": "678f0c3dde3c3cd556c2aadf0fa4557055866044a5cf748e5830a56444b43dc0",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-009-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-046-512.webp",
+      "bytes": 11450,
+      "sha256": "dc8257c5ea5004a38b14175bffc98dc783be606b7e987147eba81f8754315c4a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-046-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-042-512.webp",
+      "bytes": 20244,
+      "sha256": "a51271008b5bf9859028b3ae2603610028e1febe65ca40b13dcd555c08c46dc8",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-042-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-047-1280.webp",
+      "bytes": 91860,
+      "sha256": "c08df4fcf9cdeef68ba33436292cdee3e24726658a5264bbec1c931f4b368b7f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-047-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-036-1280.webp",
+      "bytes": 40048,
+      "sha256": "ff398918c3cd11c90aba2a9d3759f27a46101b6f1a2aa75b61c1f653042afe65",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-036-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-040-1280.webp",
+      "bytes": 135662,
+      "sha256": "b34e624dbdd6742a4f4bb925e95571e2be422b4c26f9e6db6dcd4d10aaca4319",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-040-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-008-512.webp",
+      "bytes": 23046,
+      "sha256": "30703c8ed52b69979a1a8531ce784168fc1eecfe5fdab8a14c4ef3d036172d7d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-008-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-049-512.webp",
+      "bytes": 13524,
+      "sha256": "c1975a100e83bbda48291da1f36abe8a1b0ec78e6bf163112224c40b132a9de9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-049-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-012-1280.webp",
+      "bytes": 95834,
+      "sha256": "5548e86179a827ac2c65fd8130c7181fecd93c566269e679405f4f3633869b2f",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-012-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-039-512.webp",
+      "bytes": 13568,
+      "sha256": "2bda1c8bded742525a031288f0c7078354c00ea3a47cb4a20cc412a5fe222ae9",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-039-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-040-512.webp",
+      "bytes": 31670,
+      "sha256": "78c210d80cc6cdbec6be70703c30cf02b6e9bb3edbb6886a227f099426489752",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-040-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-008-1280.webp",
+      "bytes": 94242,
+      "sha256": "48fed4907631fc9d497111307a7497ca614e7d6551dc8cbcc17022e2e65b9970",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-008-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-043-1280.webp",
+      "bytes": 65722,
+      "sha256": "962eee4918832ec7950f2745e2e850fb45854a0be56b328177029f296908b31a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-043-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-007-512.webp",
+      "bytes": 5930,
+      "sha256": "f5f5770eb0b61e1c52f36b9554fc3f1880ec49d047b3eaf62967b0d6e0fc3ede",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-007-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-062-1280.webp",
+      "bytes": 72474,
+      "sha256": "2b3217322f10f71f0dc5003b7d1be8f6ca3c42c2754f8f586b306d414974878b",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-062-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-041-1280.webp",
+      "bytes": 94412,
+      "sha256": "0438146cdc37471f9c37b712e7e4693187b335a261dd401842adb754e0883ee1",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-041-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-010-512.webp",
+      "bytes": 30310,
+      "sha256": "098329f3cd2e3502420ef89ff6c78035300533ac4d3610cdd592584ff4c5bb7a",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-010-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-039-1280.webp",
+      "bytes": 63202,
+      "sha256": "00c8f2467edc5d60ce5e9365714495481b41181a60a38444dce965df9079aa90",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-039-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-051-512.webp",
+      "bytes": 14558,
+      "sha256": "efa377ab8043601c31604b1ef7e7d28fc3b274d9283f0857019c9d7435056f6d",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-051-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-045-512.webp",
+      "bytes": 15474,
+      "sha256": "9ca2af615f294738495de6ca647c6b434b387733ea65013854b0be70edcd0883",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-045-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-002-512.webp",
+      "bytes": 18230,
+      "sha256": "811eff68882e2c17d986feac6dc756bcbbada39e890c0957e0bc8be49afcedf2",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-002-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-057-1280.webp",
+      "bytes": 44228,
+      "sha256": "efc7cc332e5caf9dfa9266a1ff7f5c98e4bafe40a5526f4693feccfa98675008",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-057-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-032-1280.webp",
+      "bytes": 46240,
+      "sha256": "26dad3bb73801d098d0aad3b9cfed87cfc198e599113faae71567dba46ee5418",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-032-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-070-512.webp",
+      "bytes": 9764,
+      "sha256": "63ccd744d05b12827a5e3fb6222efa166b8a90434a83dc848955ed58cdeb4651",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-070-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-056-1280.webp",
+      "bytes": 68962,
+      "sha256": "4dd0252d32b0e6cbfbfee5f7c60f010bd2193946dc6a6e0199c444757c30f9bb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-056-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-069-1280.webp",
+      "bytes": 70548,
+      "sha256": "0aa3e513a833e17cffe2edc3abebe131e9acd8b9bded3b2c7a2fec08174473bf",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-069-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-064-1280.webp",
+      "bytes": 78050,
+      "sha256": "84d87cce1ce877e67fc6e76f57cf7e4cc07b8502ba2320461f66d5136ad3a8c3",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-064-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-001-1280.webp",
+      "bytes": 78452,
+      "sha256": "f2cf85caf9b6c62e28aa530f3e9479efc34cc7ff485858e82d81f0e5a9167c02",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-001-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-033-1280.webp",
+      "bytes": 26978,
+      "sha256": "8ea6994649dbdf6445bb1461ebe3d0c900770bce6213bc8ea012d0e79f6c2cf6",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-033-1280.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-061-512.webp",
+      "bytes": 21632,
+      "sha256": "f438f160b403ec355c0ce18435fbbbeee3fe441f77cd8b8042550783698698eb",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-061-512.webp"
+    },
+    {
+      "path": "/opt/yuanze-reference/staging/client1.7-loading-palette-20261023/showroom-candidate/assets/previews/posters/poster-006-1280.webp",
+      "bytes": 54390,
+      "sha256": "3deb55643437c97ac530453ab6804a6746a2500dc547566493c60912c0933f99",
+      "retained": "/opt/yuanze-reference/releases/20261013-client-hd-v1/public/showroom/assets/previews/posters/poster-006-1280.webp"
+    }
+  ],
+  "recoverableBytes": 128205387,
+  "unmatchedRetained": [
+    "bundle-manifest.json",
+    "preview.js",
+    "preview.css"
+  ],
+  "archiveSha256": "6ce5a9240dc621874542ea92bc6fe2d8c1383364a7541b16a30c727f7e9b7215",
+  "deleteAuthorized": false
+}

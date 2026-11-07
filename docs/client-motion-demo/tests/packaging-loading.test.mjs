@@ -207,7 +207,9 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
         if(value) {
           if(label) {
           assert.ok(print.z-label.z>.45*value,'lettering must sit visibly in front of its label');
-          assert.ok(print.x<label.x-.8*value,'lettering must also move farther sideways');
+          const sidewaysSpread=product.review.explosion.offsets.label[0]-product.review.explosion.offsets.print[0];
+          assert.ok(sidewaysSpread>=.7,'authored lettering must have a substantial sideways separation');
+          assert.ok(label.x-print.x>=sidewaysSpread*value-1e-9,'lettering must follow its approved sideways separation');
           assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
           } else assert.ok(print.length()>.5*value,'direct printing must separate from the container');
           const capKey=parts.closure?'closure':'pump';

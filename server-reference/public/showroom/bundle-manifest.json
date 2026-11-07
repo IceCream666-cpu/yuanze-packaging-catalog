@@ -356,18 +356,6 @@
       "bytes": 1987945,
       "sha256": "ee802885a86f0d32825250868edb3919efab36c4802c6e1a07e0048ea27bb685"
     },
-    "assets/featured/poster-080-1024.webp": {
-      "bytes": 28754,
-      "sha256": "519fc479f01debfc56550f617b00de9bf09e6f615dcc723570e8bdde68dd61d6"
-    },
-    "assets/featured/poster-080-640.webp": {
-      "bytes": 17306,
-      "sha256": "571a06f8e476d39c9b9e3d492a10d7b92208e408cd18085f717311883e76341d"
-    },
-    "assets/featured/poster-080.png": {
-      "bytes": 1581809,
-      "sha256": "e42889569a15ebf6efca6be572a67249340fbd671c4e4091e236b89a099cf848"
-    },
     "assets/featured/poster-081-1024.webp": {
       "bytes": 47086,
       "sha256": "be5601b2dcea7b4eac337f76feec3e6eb184d0d370f55e1ff8c0753f39c341aa"
@@ -379,6 +367,18 @@
     "assets/featured/poster-081.png": {
       "bytes": 2032679,
       "sha256": "50721a1550e22a742fefb0f49145f4818cb9a999890d1b0504a0dc81af72c753"
+    },
+    "assets/featured/poster-082-1024.webp": {
+      "bytes": 49694,
+      "sha256": "57af44c967e9df8ce80e5a4208f42226e11a88f7581b7f316aae233e31956bc4"
+    },
+    "assets/featured/poster-082-640.webp": {
+      "bytes": 29532,
+      "sha256": "ab2af4458a1ff841249386c6965bd2009f2cd2bd1a62ea7f15bffaa9d555d9c8"
+    },
+    "assets/featured/poster-082.png": {
+      "bytes": 2122868,
+      "sha256": "0d0b62cd6a25a29f225d9157288fe98a5fb7118bdaeaf256a4c2f151a31a1dde"
     },
     "assets/optimized/poster-001-strip.webp": {
       "bytes": 4762,
@@ -779,6 +779,10 @@
     "assets/packaging/poster-081-v1.glb": {
       "bytes": 4527020,
       "sha256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132"
+    },
+    "assets/packaging/poster-082-v1.glb": {
+      "bytes": 1917000,
+      "sha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1946,15 +1950,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "3e42ac7a4a4ca2d0d8a9bade71ff916ba2767e40896bd15caa890e6d16290811"
+      "sha256": "e3818b308f35b108b7e2aecac614a7af59e24be9a47d7109f8b89cdd849d2a8b"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 397147,
-      "sha256": "acf8e20ca3e8346916d6071d91bd9898a2b35ea36db8467b4888491c6beb3f4d"
+      "bytes": 399492,
+      "sha256": "d6162aa20b1bd67391bee02b1e2d5685fcd5b00cb358226ac94203fe35831c2c"
     },
     "product-posters.js": {
       "bytes": 23007,
@@ -1963,5 +1967,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.46"
+  "version": "client1.47"
 }

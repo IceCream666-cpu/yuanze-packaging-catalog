@@ -1,0 +1,64 @@
+{
+  "version": "client1.47",
+  "baselineManifestSha256": "a22fb0d70e3e2ef6678b5d012a5ccb1e0c612a59bd72a524b3cbc762ee829f95",
+  "manifestSha256": "dd6292d015a0d386c94a1a7f118e4c225f1a70d7c25ee4cb4cdfaec0afe31cdc",
+  "changed": [
+    "assets/featured/poster-082-1024.webp",
+    "assets/featured/poster-082-640.webp",
+    "assets/featured/poster-082.png",
+    "assets/packaging/poster-082-v1.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "added": [
+    "assets/featured/poster-082-1024.webp",
+    "assets/featured/poster-082-640.webp",
+    "assets/featured/poster-082.png",
+    "assets/packaging/poster-082-v1.glb"
+  ],
+  "removed": [
+    "assets/featured/poster-080-1024.webp",
+    "assets/featured/poster-080-640.webp",
+    "assets/featured/poster-080.png"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067.glb",
+    "assets/packaging/poster-068.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-079-v2.glb",
+    "assets/packaging/poster-080-v2.glb",
+    "assets/packaging/poster-081-v1.glb"
+  ],
+  "resources": 491,
+  "counts": {
+    "posters": 65,
+    "featured": 29,
+    "models": 30
+  },
+  "publishedModel": "poster-082",
+  "replacedFeatured": "poster-080",
+  "retainedOldModel": "poster-080"
+}

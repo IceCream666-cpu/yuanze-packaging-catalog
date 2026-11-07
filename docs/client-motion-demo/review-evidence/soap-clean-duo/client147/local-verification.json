@@ -1,0 +1,42 @@
+{
+  "release": "client1.47",
+  "scope": {
+    "homepageReplace": {
+      "from": "poster-080",
+      "to": "poster-082",
+      "index": 27
+    },
+    "featured": 29,
+    "posters": 65,
+    "models": 30,
+    "preservedArchivedProduct": "poster-080"
+  },
+  "checks": {
+    "frontend": {
+      "passed": 183,
+      "failed": 0
+    },
+    "pythonPackagingRelease": 13,
+    "pythonPosterReplacement": 2,
+    "serverPackagingAssets": 7,
+    "pythonImageBatch": 10,
+    "publicationGuards": 3,
+    "bundleCheck": true,
+    "diffCheck": true,
+    "aestheticDetectorFindings": []
+  },
+  "browser": {
+    "localDesktop": true,
+    "localMobileSimulated": {
+      "width": 393,
+      "height": 852,
+      "scrollWidth": 393
+    },
+    "states": [
+      "homepage",
+      "modelExpanded"
+    ],
+    "realDeviceTested": false
+  },
+  "bundleManifestSha256": "dd6292d015a0d386c94a1a7f118e4c225f1a70d7c25ee4cb4cdfaec0afe31cdc"
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.45-collection-packaging",
+  "scope": "approved-client1.47-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -257,6 +257,14 @@
       "kind": "model",
       "bytes": 4527020,
       "sha256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132"
+    },
+    {
+      "name": "poster-082-v1.glb",
+      "kind": "model",
+      "file": "packaging-assets/poster-082-v1.glb",
+      "productionTarget": "assets/packaging/poster-082-v1.glb",
+      "bytes": 1917000,
+      "sha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f"
     }
   ],
   "additionalProducts": [
@@ -559,6 +567,18 @@
       "components": [
         "Body",
         "Pump",
+        "Label",
+        "LogoInk",
+        "NameInk"
+      ]
+    },
+    {
+      "posterId": "poster-082",
+      "file": "poster-082-v1.glb",
+      "components": [
+        "Body",
+        "Pump",
+        "TubeCap",
         "Label",
         "LogoInk",
         "NameInk"

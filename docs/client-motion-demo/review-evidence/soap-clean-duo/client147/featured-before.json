@@ -1,0 +1,527 @@
+[
+  {
+    "id": "poster-012",
+    "name": "Beach Magic",
+    "kind": {
+      "zh": "身体护理 · 双色磨砂膏",
+      "en": "Body care · Dual-colour sugar scrub"
+    },
+    "description": {
+      "zh": "黄粉双色磨砂膏，搭配白色旋盖。",
+      "en": "Yellow and pink scrub with a white screw cap."
+    },
+    "background": "#f4c8d6",
+    "ink": "#3c1927",
+    "swatch": [
+      "#f5ce40",
+      "#ed77a5"
+    ]
+  },
+  {
+    "id": "poster-013",
+    "name": "Coral & Aqua",
+    "kind": {
+      "zh": "身体护理 · 双色磨砂膏",
+      "en": "Body care · Dual-colour sugar scrub"
+    },
+    "description": {
+      "zh": "珊瑚粉与水蓝色的双色组合。",
+      "en": "A two-tone combination of coral and aqua."
+    },
+    "background": "#bde2df",
+    "ink": "#163f3e",
+    "swatch": [
+      "#f48274",
+      "#42b5b7"
+    ]
+  },
+  {
+    "id": "poster-039",
+    "name": "PDRN Capsule Cream",
+    "kind": {
+      "zh": "面部护理 · 胶囊面霜",
+      "en": "Face care · Capsule cream"
+    },
+    "description": {
+      "zh": "通透罐身与薄荷绿色胶囊。",
+      "en": "A clear jar with mint-green capsules."
+    },
+    "background": "#d5e5d8",
+    "ink": "#243e31",
+    "swatch": [
+      "#dfe8db",
+      "#a4cbb5"
+    ]
+  },
+  {
+    "id": "poster-049",
+    "name": "Moisture Shampoo",
+    "kind": {
+      "zh": "头发护理 · 滋润洗发水",
+      "en": "Hair care · Moisture shampoo"
+    },
+    "description": {
+      "zh": "珠光白瓶身与银色泵头。",
+      "en": "A pearlescent white bottle with a silver-coloured pump."
+    },
+    "background": "#dfe4e8",
+    "ink": "#303942",
+    "swatch": [
+      "#efebe0",
+      "#b2bcc4"
+    ]
+  },
+  {
+    "id": "poster-042",
+    "name": "Woodland",
+    "kind": {
+      "zh": "身体护理 · 木质香氛沐浴露",
+      "en": "Body care · Woodland body wash"
+    },
+    "description": {
+      "zh": "琥珀色瓶身与深色木纹细节。",
+      "en": "An amber-coloured bottle with dark wood-grain details."
+    },
+    "background": "#c5a58b",
+    "ink": "#35241d",
+    "swatch": [
+      "#241e1a",
+      "#794124"
+    ]
+  },
+  {
+    "id": "poster-051",
+    "name": "Pure Volume",
+    "kind": {
+      "zh": "头发护理 · 蓬松洗发水",
+      "en": "Hair care · Pure volume shampoo"
+    },
+    "description": {
+      "zh": "柔白与绿色的包装配色。",
+      "en": "An off-white and green packaging palette."
+    },
+    "background": "#dce4cf",
+    "ink": "#34432c",
+    "swatch": [
+      "#ede9dc",
+      "#7c956c"
+    ]
+  },
+  {
+    "id": "poster-044",
+    "name": "Gentle Cleansing",
+    "kind": {
+      "zh": "面部护理 · 温和洁面泡沫",
+      "en": "Face care · Gentle cleansing foam"
+    },
+    "description": {
+      "zh": "简洁线条与通透包装细节。",
+      "en": "Simple lines and clear packaging details."
+    },
+    "background": "#e8d6d3",
+    "ink": "#503130",
+    "swatch": [
+      "#d6bdb2",
+      "#ebe6df"
+    ]
+  },
+  {
+    "id": "poster-047",
+    "name": "Coastal",
+    "kind": {
+      "zh": "香氛系列 · 海岸香水",
+      "en": "Fragrance · Coastal perfume"
+    },
+    "description": {
+      "zh": "透明瓶身，搭配浅棕色瓶盖。",
+      "en": "A clear bottle with a light brown cap."
+    },
+    "background": "#cbdfea",
+    "ink": "#2b3d43",
+    "swatch": [
+      "#d6c49b",
+      "#a2c4d9"
+    ]
+  },
+  {
+    "id": "poster-056",
+    "name": "Golden Face Oil",
+    "kind": {
+      "zh": "面部护理 · 金色面部护理油",
+      "en": "Face care · Golden Face Oil"
+    },
+    "description": {
+      "zh": "墨绿瓶盖与金色油液，呈现通透的方瓶轮廓。",
+      "en": "A deep green cap and golden oil in a clear square silhouette."
+    },
+    "background": "#e6dfb9",
+    "ink": "#3c4224",
+    "swatch": [
+      "#5a632d",
+      "#e5bd45"
+    ]
+  },
+  {
+    "id": "poster-057",
+    "name": "B5 Serum",
+    "kind": {
+      "zh": "面部护理 · B5 精华液",
+      "en": "Face care · B5 Serum"
+    },
+    "description": {
+      "zh": "粉色精华与白色滴管，在方瓶中形成轻柔对比。",
+      "en": "Pink serum and a white dropper in a softly contrasted square bottle."
+    },
+    "background": "#f1d8de",
+    "ink": "#54313e",
+    "swatch": [
+      "#edb8c7",
+      "#f2ece7"
+    ]
+  },
+  {
+    "id": "poster-058",
+    "name": "Luminous Face Oil",
+    "kind": {
+      "zh": "面部护理 · 柔光面部护理油",
+      "en": "Face care · Luminous Face Oil"
+    },
+    "description": {
+      "zh": "修长方瓶、银色瓶颈与柔粉油液，细节相映。",
+      "en": "A tall rectangular bottle pairs a silver neck with soft pink oil."
+    },
+    "background": "#eed9cc",
+    "ink": "#573c31",
+    "swatch": [
+      "#e7b5a1",
+      "#d9c9b3"
+    ]
+  },
+  {
+    "id": "poster-059",
+    "name": "Essence Oil Duo",
+    "kind": {
+      "zh": "面部护理 · 精华油双瓶组合",
+      "en": "Face care · Essence Oil Duo"
+    },
+    "description": {
+      "zh": "金色与透明双层油液，搭配成对的圆角滴管瓶。",
+      "en": "Golden oil and a clear two-phase fill in a pair of rounded dropper bottles."
+    },
+    "background": "#eadfbd",
+    "ink": "#4a3c20",
+    "swatch": [
+      "#e1b23c",
+      "#f1e8cf"
+    ]
+  },
+  {
+    "id": "poster-060",
+    "name": "AHA Body Mist",
+    "kind": {
+      "zh": "身体护理 · AHA 身体喷雾",
+      "en": "Body care · AHA Body Mist"
+    },
+    "description": {
+      "zh": "黑色喷头与银色标签，让通透瓶身更显利落。",
+      "en": "A black spray head and silver label bring definition to a clear bottle."
+    },
+    "background": "#dfddd5",
+    "ink": "#363634",
+    "swatch": [
+      "#c9c8c0",
+      "#393b39"
+    ]
+  },
+  {
+    "id": "poster-061",
+    "name": "Oil-Infused Body Cream",
+    "kind": {
+      "zh": "身体护理 · 精油身体霜",
+      "en": "Body care · Oil-Infused Body Cream"
+    },
+    "description": {
+      "zh": "柔白瓶身、黑色泵头与纸质外盒，层次简洁。",
+      "en": "Soft ivory bottles, black pumps and textured cartons form a simple set."
+    },
+    "background": "#e9e1d1",
+    "ink": "#40392e",
+    "swatch": [
+      "#e9dfc9",
+      "#292722"
+    ]
+  },
+  {
+    "id": "poster-062",
+    "name": "Micro Cream",
+    "kind": {
+      "zh": "面部护理 · 微珠保湿面霜",
+      "en": "Face care · Micro Cream"
+    },
+    "description": {
+      "zh": "冰蓝微珠与厚壁玻璃，映衬亮黑色方形瓶盖。",
+      "en": "Ice-blue beads and thick clear glass beneath a glossy black lid."
+    },
+    "background": "#d6e5e9",
+    "ink": "#253c45",
+    "swatch": [
+      "#b5d9e1",
+      "#242e31"
+    ]
+  },
+  {
+    "id": "poster-063",
+    "name": "Moisture Cream",
+    "kind": {
+      "zh": "面部护理 · 滋润面霜",
+      "en": "Face care · Moisture Cream"
+    },
+    "description": {
+      "zh": "磨砂玻璃与香槟金盖，保留柔和的膏体纹理。",
+      "en": "Frosted glass and a champagne lid frame a soft cream swirl."
+    },
+    "background": "#ead9cd",
+    "ink": "#553b31",
+    "swatch": [
+      "#c49e7c",
+      "#f1e6d7"
+    ]
+  },
+  {
+    "id": "poster-064",
+    "name": "Aromatic Body Lotion",
+    "kind": {
+      "zh": "身体护理 · 芳香身体乳",
+      "en": "Body care · Aromatic Body Lotion"
+    },
+    "description": {
+      "zh": "奶黄色泵瓶搭配编织绳结，带来温暖的自然质感。",
+      "en": "A buttery yellow pump bottle finished with a woven rope detail."
+    },
+    "background": "#ecdcb3",
+    "ink": "#514325",
+    "swatch": [
+      "#e9c875",
+      "#e9e0ca"
+    ]
+  },
+  {
+    "id": "poster-065",
+    "name": "Tea Tree Shampoo",
+    "kind": {
+      "zh": "头发护理 · 茶树洗发水与补充装",
+      "en": "Hair care · Tea Tree Shampoo"
+    },
+    "description": {
+      "zh": "深蓝标签与金色液体，让瓶装与补充装彼此呼应。",
+      "en": "Deep blue labels and golden liquid connect the bottle and refill pouch."
+    },
+    "background": "#e4d9bf",
+    "ink": "#24374c",
+    "swatch": [
+      "#223d66",
+      "#dbb35a"
+    ]
+  },
+  {
+    "id": "poster-066",
+    "name": "Rose Hair Oil",
+    "kind": {
+      "zh": "头发护理 · 玫瑰护发油",
+      "en": "Hair care · Rose Hair Oil"
+    },
+    "description": {
+      "zh": "花卉标签与金色泵头，在透明方瓶上留下细腻色彩。",
+      "en": "A floral label and golden pump add colour to a clear square bottle."
+    },
+    "background": "#eed6dc",
+    "ink": "#543540",
+    "swatch": [
+      "#dda5b8",
+      "#e6dbc5"
+    ]
+  },
+  {
+    "id": "poster-067",
+    "name": "Amber Ginger Shampoo",
+    "kind": {
+      "zh": "头发护理 · 琥珀生姜洗发水",
+      "en": "Hair care · Amber Ginger Shampoo"
+    },
+    "description": {
+      "zh": "琥珀色束口瓶与棕色绳结，延续植物灵感。",
+      "en": "An amber pouch-shaped bottle and brown cord draw on botanical details."
+    },
+    "background": "#dfd7b8",
+    "ink": "#3d4027",
+    "swatch": [
+      "#a37a30",
+      "#697644"
+    ]
+  },
+  {
+    "id": "poster-068",
+    "name": "Essence Water",
+    "kind": {
+      "zh": "面部护理 · 精华水",
+      "en": "Face care · Essence Water"
+    },
+    "description": {
+      "zh": "浅紫瓶盖、通透瓶身与同色外盒，呈现轻盈层次。",
+      "en": "A pale lavender cap, clear bottle and matching carton in quiet layers."
+    },
+    "background": "#e2dce9",
+    "ink": "#44394f",
+    "swatch": [
+      "#b9a7c0",
+      "#e9e3ed"
+    ]
+  },
+  {
+    "id": "poster-069",
+    "name": "Still Essential Oil",
+    "kind": {
+      "zh": "香氛系列 · STILL 精油",
+      "en": "Fragrance · Still Essential Oil"
+    },
+    "description": {
+      "zh": "天然软木盖与暖色纸盒，为细长玻璃瓶增添触感。",
+      "en": "Natural cork and a warm paper carton complement a slender glass bottle."
+    },
+    "background": "#dfcdb7",
+    "ink": "#4b3527",
+    "swatch": [
+      "#9c623d",
+      "#dcc6a7"
+    ]
+  },
+  {
+    "id": "poster-070",
+    "name": "Daylight Essential Oil",
+    "kind": {
+      "zh": "香氛系列 · DAYLIGHT 精油",
+      "en": "Fragrance · Daylight Essential Oil"
+    },
+    "description": {
+      "zh": "锥形磨砂瓶身与纹理瓶盖，让轮廓成为焦点。",
+      "en": "A frosted tapered bottle and textured cap bring the silhouette forward."
+    },
+    "background": "#e4e1d5",
+    "ink": "#403d32",
+    "swatch": [
+      "#eae3d2",
+      "#afa28e"
+    ]
+  },
+  {
+    "id": "poster-071",
+    "name": "Sculptural Pump",
+    "kind": {
+      "zh": "身体护理 · 长颈泵瓶",
+      "en": "Body care · Long-neck pump bottle"
+    },
+    "description": {
+      "zh": "乳白长颈、宽底轮廓，搭配左向长嘴泵头。",
+      "en": "An ivory long neck and broad base with a left-facing extended pump."
+    },
+    "background": "#e5e8d9",
+    "ink": "#25352b",
+    "swatch": [
+      "#eeece3",
+      "#b8c2a8"
+    ]
+  },
+  {
+    "id": "poster-072",
+    "name": "Daily Emulsion",
+    "kind": {
+      "zh": "面部护理 · 单瓶日常乳液",
+      "en": "Face care · Daily Emulsion"
+    },
+    "description": {
+      "zh": "磨砂玻璃方瓶、乳白色料体与透明泵罩，呈现原海报中的柔和质感。",
+      "en": "Frosted rectangular glass, ivory emulsion and a clear pump cover echo the original poster."
+    },
+    "background": "#e9e5d8",
+    "ink": "#34372e",
+    "swatch": [
+      "#efeee6",
+      "#34372e"
+    ]
+  },
+  {
+    "id": "poster-073",
+    "name": "Body Oil Collection",
+    "kind": {
+      "zh": "身体护理 · 单瓶身体护理油",
+      "en": "Body care · Body Oil 02"
+    },
+    "description": {
+      "zh": "选取原海报中的02号单瓶，保留透明玻璃、米白瓶盖与金琥珀色油液。",
+      "en": "The original poster’s 02 bottle, with clear glass, an ivory cap and golden amber oil."
+    },
+    "background": "#eadbc5",
+    "ink": "#3e2b1d",
+    "swatch": [
+      "#eee3d1",
+      "#25180f"
+    ]
+  },
+  {
+    "id": "poster-079",
+    "displayRevision": "layered-lid-v2",
+    "name": "Body Care Duo",
+    "kind": {
+      "zh": "身体护理 · 圆盒双瓶套装",
+      "en": "Body care · boxed duo"
+    },
+    "background": "#e9e8df",
+    "ink": "#373c2e",
+    "swatch": [
+      "#d4c7a2",
+      "#afb67d"
+    ],
+    "description": {
+      "zh": "奶油白与淡青柠色扁圆泵瓶，反向嵌入圆形礼盒。",
+      "en": "Two pebble pump bottles nest head to toe in a round gift case."
+    }
+  },
+  {
+    "id": "poster-080",
+    "displayRevision": "white-soap-v2",
+    "name": "Bath Trio",
+    "kind": {
+      "zh": "身体护理 · 300 ml 泵瓶",
+      "en": "Body care · 300 ml pump bottle"
+    },
+    "background": "#e6e2d9",
+    "ink": "#28252a",
+    "swatch": [
+      "#8696a2",
+      "#e5ddc9"
+    ],
+    "description": {
+      "zh": "奶白色宽扁泵瓶，粗体字标与完整长管泵组。",
+      "en": "An ivory oval bottle with bold lettering and a complete long-tube pump."
+    }
+  },
+  {
+    "id": "poster-081",
+    "displayRevision": "blender-empty-v1",
+    "name": "Exfoliating Hand Gel",
+    "kind": {
+      "zh": "手部护理 · 织物标玻璃泵瓶",
+      "en": "Hand care · Woven-label glass pump bottle"
+    },
+    "background": "#e6e7dc",
+    "ink": "#243025",
+    "swatch": [
+      "#3e481b",
+      "#e7dfcc"
+    ],
+    "description": {
+      "zh": "透明厚底玻璃瓶、织物环标与完整黑色长管泵组。",
+      "en": "A clear thick-base glass bottle with a woven label and a complete black long-tube pump."
+    }
+  }
+]

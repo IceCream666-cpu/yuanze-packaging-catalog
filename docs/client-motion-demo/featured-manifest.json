@@ -1,6 +1,6 @@
 {
-  "version": "client1.45",
-  "scope": "approved-client1.45-display-derivatives",
+  "version": "client1.47",
+  "scope": "approved-client1.47-display-derivatives",
   "notes": "29 homepage entries; approved Exfoliating Hand Gel model appended.",
   "files": [
     {
@@ -516,19 +516,19 @@
       "sha256": "ee802885a86f0d32825250868edb3919efab36c4802c6e1a07e0048ea27bb685"
     },
     {
-      "posterId": "poster-080",
-      "file": "featured-assets/poster-080.png",
-      "target": "featured/poster-080.png",
-      "productionTarget": "assets/featured/poster-080.png",
-      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-080.webp",
-      "approvedPosterSha256": "1dd1fa34b2427703a73458dce141641357d865601ccb662627dd9cd25c8fb2df",
+      "posterId": "poster-082",
+      "file": "featured-assets/poster-082.png",
+      "target": "featured/poster-082.png",
+      "productionTarget": "assets/featured/poster-082.png",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-082.webp",
+      "approvedPosterSha256": "dd0192b2ed5e264d683dd51b5ee3a07ecc5a48f6ee574d508c61144510ccf9e5",
       "tool": "Blender",
-      "method": "Rendered from the approved white Soap Clean Soap model",
-      "scope": "Bath Trio white bottle",
-      "productCount": 1,
-      "sourceModel": "packaging-assets/poster-080-v2.glb",
-      "bytes": 1581809,
-      "sha256": "e42889569a15ebf6efca6be572a67249340fbd671c4e4091e236b89a099cf848"
+      "method": "Rendered from the approved empty Soap Clean Duo model",
+      "scope": "Soap Clean Duo",
+      "productCount": 2,
+      "sourceModel": "packaging-assets/poster-082-v1.glb",
+      "bytes": 2122868,
+      "sha256": "0d0b62cd6a25a29f225d9157288fe98a5fb7118bdaeaf256a4c2f151a31a1dde"
     },
     {
       "posterId": "poster-081",
@@ -548,8 +548,8 @@
   ],
   "approval": {
     "date": "2026-11-07",
-    "basis": "User approved the Hand Gel 3D and requested publication before the next product."
+    "basis": "User requested replacing the existing single bottle homepage display with the approved Soap Clean Duo."
   },
-  "revision": "hand-gel-approved-model-20261107",
+  "revision": "soap-duo-replaces-single-bottle-20261107",
   "status": "publication-authorized"
 }

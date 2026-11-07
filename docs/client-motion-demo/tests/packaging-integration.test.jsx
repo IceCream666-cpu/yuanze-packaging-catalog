@@ -631,12 +631,12 @@ test('B5 Serum exposes the complete dropper and fixed white base with four reada
   } finally {await env.close();}
 });
 
-test('the restored Daily and Body Oil homepage entries open their existing models and retain poster return focus', async () => {
+test('the retained Daily and Body Oil plus replacement duo open the correct models and retain poster return focus', async () => {
   const env=setup();const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-4).map(button=>button.dataset.open),['poster-073','poster-079','poster-080','poster-081']);
-    for(const id of ['poster-072','poster-073']) {
+    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-4).map(button=>button.dataset.open),['poster-073','poster-079','poster-082','poster-081']);
+    for(const id of ['poster-072','poster-073','poster-082']) {
       const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging').dataset.id,id);
       await click(byText('Original poster'));
@@ -647,7 +647,7 @@ test('the restored Daily and Body Oil homepage entries open their existing model
       await click(byText('Close structure'));
       assert.equal(document.activeElement,trigger);
     }
-    assert.deepEqual(counts(),{mounts:4,unmounts:4});
+    assert.deepEqual(counts(),{mounts:6,unmounts:6});
   } finally {await env.close();}
 });
 
@@ -784,7 +784,7 @@ test('Daily Emulsion exposes one complete pump and all six independent layer con
   } finally {await env.close();}
 });
 
-test('the five withdrawn models and poster-only Soap Duo use poster fallback without requesting 3D', async () => {
+test('the five withdrawn models use poster fallback without requesting 3D', async () => {
   const env = setup(); let requests = 0;
   globalThis.fetch = async () => {requests++; throw new Error('3D must not load');};
   const {App, counts} = appHarness();
@@ -795,7 +795,7 @@ test('the five withdrawn models and poster-only Soap Duo use poster fallback wit
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
     assert.equal(document.querySelectorAll('.grid-image').length,65);
-    for (const n of [74,75,76,77,78,82]) {
+    for (const n of [74,75,76,77,78]) {
       const id=`poster-${n.toString().padStart(3,'0')}`;
       const trigger=[...document.querySelectorAll(".grid-image")].find(button=>button.querySelector("img")?.getAttribute("src").includes(id));trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging'),null);
