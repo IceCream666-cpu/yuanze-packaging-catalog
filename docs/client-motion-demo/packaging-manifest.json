@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.43-collection-packaging",
+  "scope": "approved-client1.44-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -241,6 +241,14 @@
       "kind": "model",
       "bytes": 932312,
       "sha256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a"
+    },
+    {
+      "name": "poster-080-v2.glb",
+      "file": "packaging-assets/poster-080-v2.glb",
+      "productionTarget": "assets/packaging/poster-080-v2.glb",
+      "kind": "model",
+      "bytes": 717420,
+      "sha256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4"
     }
   ],
   "additionalProducts": [
@@ -524,6 +532,17 @@
         "WashPump",
         "CreamInk",
         "WashInk"
+      ]
+    },
+    {
+      "posterId": "poster-080",
+      "file": "poster-080-v2.glb",
+      "components": [
+        "Body",
+        "Pump",
+        "Label",
+        "LogoInk",
+        "NameInk"
       ]
     }
   ],

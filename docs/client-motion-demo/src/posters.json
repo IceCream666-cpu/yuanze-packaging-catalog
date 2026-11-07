@@ -1362,5 +1362,49 @@
     "original": "/assets/poster-079-original.webp",
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "poster-080",
+    "title": {
+      "zh": "liaose 沐浴护理三件组",
+      "en": "liaose Bath Trio"
+    },
+    "category": "sets",
+    "style": "natural",
+    "image": "/assets/poster-080.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-080-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-080-thumb.webp",
+    "stripThumb": "/assets/poster-080-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-080-original.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "poster-081",
+    "title": {
+      "zh": "liaose 磨砂净手凝露",
+      "en": "liaose Exfoliating Hand Gel"
+    },
+    "category": "body",
+    "style": "natural",
+    "image": "/assets/poster-081.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-081-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-081-thumb.webp",
+    "stripThumb": "/assets/poster-081-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-081-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]

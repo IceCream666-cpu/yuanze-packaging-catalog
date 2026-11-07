@@ -485,5 +485,24 @@
       "zh": "奶油白与淡青柠色扁圆泵瓶，反向嵌入圆形礼盒。",
       "en": "Two pebble pump bottles nest head to toe in a round gift case."
     }
+  },
+  {
+    "id": "poster-080",
+    "displayRevision": "white-soap-v2",
+    "name": "Bath Trio",
+    "kind": {
+      "zh": "身体护理 · 300 ml 泵瓶",
+      "en": "Body care · 300 ml pump bottle"
+    },
+    "background": "#e6e2d9",
+    "ink": "#28252a",
+    "swatch": [
+      "#8696a2",
+      "#e5ddc9"
+    ],
+    "description": {
+      "zh": "奶白色宽扁泵瓶，粗体字标与完整长管泵组。",
+      "en": "An ivory oval bottle with bold lettering and a complete long-tube pump."
+    }
   }
 ]

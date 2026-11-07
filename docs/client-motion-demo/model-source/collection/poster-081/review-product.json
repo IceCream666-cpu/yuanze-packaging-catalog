@@ -1,0 +1,164 @@
+{
+  "file": "poster-081-v1.glb",
+  "kind": "collection",
+  "scale": 1,
+  "parts": [
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "通透玻璃瓶",
+        "Clear glass bottle"
+      ],
+      "short": [
+        "通透玻璃瓶",
+        "Clear glass bottle"
+      ],
+      "detail": [
+        "宽直壁、圆润肩沿和厚实玻璃底。空瓶展示。",
+        "Clear straight walls, a rounded rim and a thick base. Empty bottle."
+      ]
+    },
+    {
+      "key": "pump",
+      "node": "Pump",
+      "title": [
+        "完整泵头",
+        "Complete pump"
+      ],
+      "short": [
+        "完整泵头",
+        "Complete pump"
+      ],
+      "detail": [
+        "细齿旋盖、按压头与粗透明长吸管作为整体抬起。",
+        "The fluted collar, actuator and long clear dip tube lift together."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "Label",
+      "title": [
+        "织物环标与布标",
+        "Woven label and side flag"
+      ],
+      "short": [
+        "织物环标与布标",
+        "Woven label and side flag"
+      ],
+      "detail": [
+        "奶白织物环标与右侧黑布标及其白色字标作为整体展开。",
+        "The ivory woven sleeve, black side flag and its ivory wordmark move as one piece."
+      ]
+    },
+    {
+      "key": "logo",
+      "node": "LogoInk",
+      "title": [
+        "liaose 字标",
+        "liaose wordmark"
+      ],
+      "short": [
+        "liaose 字标",
+        "liaose wordmark"
+      ],
+      "detail": [
+        "正面 liaose 字标独立移到标贴前方；侧布标白字保留在黑布标上。",
+        "The front liaose wordmark lifts ahead of the label; the side wordmark stays on the black flag."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "NameInk",
+      "title": [
+        "产品名",
+        "Product name"
+      ],
+      "short": [
+        "产品名",
+        "Product name"
+      ],
+      "detail": [
+        "EXFOLIATING HAND GEL 展开到更外一层。",
+        "The product name separates into the outermost print layer."
+      ]
+    }
+  ],
+  "review": {
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "referenceGlass": true,
+      "studio": {
+        "background": "#e6e7dc",
+        "ink": "#243025"
+      }
+    },
+    "explosion": {
+      "mobilePrintSpread": 0.86,
+      "offsets": {
+        "body": [
+          0,
+          0,
+          0
+        ],
+        "pump": [
+          0,
+          2.3,
+          0
+        ],
+        "label": [
+          -1.2,
+          0.02,
+          0.72
+        ],
+        "logo": [
+          -2.45,
+          0.24,
+          1.62
+        ],
+        "print": [
+          -2.45,
+          -0.08,
+          2.04
+        ]
+      },
+      "scales": {
+        "label": 1.03,
+        "logo": 1.18,
+        "print": 1.18
+      },
+      "camera": {
+        "centerX": [
+          0,
+          -0.9
+        ],
+        "centerY": [
+          1.45,
+          2.62
+        ],
+        "width": [
+          2.85,
+          5.35
+        ],
+        "height": [
+          3.6,
+          6.05
+        ]
+      }
+    }
+  },
+  "design": {
+    "name": "Exfoliating Hand Gel",
+    "kind": {
+      "zh": "手部护理 · 织物标玻璃泵瓶",
+      "en": "Hand care · Woven-label glass pump bottle"
+    },
+    "background": "#e6e7dc",
+    "ink": "#243025",
+    "swatch": [
+      "#3e481b",
+      "#e7dfcc"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": "client1.44",
+  "frontend": {
+    "passed": 177,
+    "failed": 0
+  },
+  "modelAndRelease": {
+    "passed": 38,
+    "failed": 0
+  },
+  "publicationPlanTests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "viteBuild": true,
+  "manifestVerifiedFiles": 481,
+  "existingMediaBytePreserved": true,
+  "081Model": "local preview only",
+  "browser": "Ego Lite",
+  "realPhoneTested": false,
+  "impeccable": "JSX detector no findings, regex-only limits; desktop and simulated mobile images visually reviewed"
+}

@@ -11,10 +11,10 @@ const json=path=>JSON.parse(readFileSync(resolve(base,path),'utf8'));
 const featured=json('src/featured.json'),posters=json('src/posters.json'),manifest=json('featured-manifest.json');
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 
-test('featured retains the exact original 24 order and appends only the two existing 3D products',()=>{
+test('featured retains the exact original 24 order and appends the reviewed 3D products',()=>{
  const original=[12,13,39,49,42,51,44,47,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71];
- assert.deepEqual(featured.map(p=>p.id),[...original,72,73,79].map(n=>`poster-${String(n).padStart(3,'0')}`));
- assert.equal(new Set(featured.map(p=>p.id)).size,27);
+ assert.deepEqual(featured.map(p=>p.id),[...original,72,73,79,80].map(n=>`poster-${String(n).padStart(3,'0')}`));
+ assert.equal(new Set(featured.map(p=>p.id)).size,28);
  assert.deepEqual(Object.keys(PACKAGING_PRODUCTS).sort(),featured.map(p=>p.id).sort());
  assert.equal(featured[0].id,'poster-012');assert.equal(featured[0].background,'#f4c8d6');
  for(const item of featured){
@@ -41,7 +41,7 @@ test('poster-derived single bottles retain detail identity and theme without cla
 });
 
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{
- assert.equal(manifest.version,'client1.43');
+ assert.equal(manifest.version,'client1.44');
  assert.equal(manifest.scope,`approved-${manifest.version}-display-derivatives`);
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
  const archived=Array.from({length:5},(_,i)=>`poster-${String(74+i).padStart(3,'0')}`);
@@ -80,4 +80,19 @@ test('mobile display derivatives retain source identity and fit the first-screen
  const initial=[0,1,-1,2,-2].map(offset=>featured[(offset+featured.length)%featured.length].id);
  assert.ok(initial.reduce((sum,id)=>sum+media[id].files['640'].bytes,0)<500000,'Current product and four neighbours retain the initial mobile resource budget');
  assert.ok(media['poster-012'].files['640'].bytes<80000);
+});
+
+
+test('approved Bath Trio is on the homepage while new hand gel stays poster-only until model review',()=>{
+ const white=PACKAGING_PRODUCTS['poster-080'];
+ assert.equal(white.file,'poster-080-v2.glb');
+ assert.equal(white.finishes[0].scene,'soap');
+ assert.deepEqual(white,json('model-source/collection/poster-080/review-product.json'));
+ assert.ok(featured.some(p=>p.id==='poster-080'));
+ assert.ok(posters.some(p=>p.id==='poster-081'));
+ assert.equal(PACKAGING_PRODUCTS['poster-081'],undefined);
+ assert.ok(!featured.some(p=>p.id==='poster-081'));
+ const declared=new Set(json('packaging-manifest.json').files.map(f=>f.name));
+ assert.ok(declared.has('poster-080-v2.glb'));
+ assert.ok(!declared.has('poster-081-v1.glb'));
 });

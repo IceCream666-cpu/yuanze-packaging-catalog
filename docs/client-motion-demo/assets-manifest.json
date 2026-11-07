@@ -1,7 +1,7 @@
 {
   "scope": "local-demo-only",
   "styleTags": "editorial proposal, not product properties",
-  "count": 62,
+  "count": 64,
   "files": [
     {
       "source": "server-reference/public/showroom/assets/previews/posters/poster-051-1280.webp",
@@ -1862,6 +1862,66 @@
       "target": "assets/poster-079-original.webp",
       "sha256": "d8e838c02df715bb60536d6f18c9dbbdb09f98d20e4c1c11dc9772cdd6c6da3f",
       "bytes": 1060392
+    },
+    {
+      "source": "server-reference/public/showroom/assets/previews/posters/poster-080-1280.webp",
+      "target": "assets/poster-080.webp",
+      "sha256": "0e0f0f2c5d87cc0f79b797b6c5bd54a5cc23fbb8f77b34d272ce81b288484a21",
+      "bytes": 163894
+    },
+    {
+      "source": "server-reference/public/showroom/assets/previews/posters/poster-080-512.webp",
+      "target": "assets/poster-080-small.webp",
+      "sha256": "83bb186d52920dd7e3dbfcb6de6103f4cfa6a6651b600fc719e8fba6816473d2",
+      "bytes": 35302
+    },
+    {
+      "source": "server-reference/public/showroom/assets/posters/poster-080-thumb.webp",
+      "target": "assets/poster-080-thumb.webp",
+      "sha256": "b4b7c77da174ad20ab3f6054f480e5e3399b02cb5378e575e4516874dbc0841c",
+      "bytes": 52244
+    },
+    {
+      "source": "server-reference/public/showroom/assets/optimized/poster-080-strip.webp",
+      "target": "assets/poster-080-strip.webp",
+      "sha256": "5f26f4d0844f9a6270b531de62354e480b95814c6aa0e0f823c2767aa1fed098",
+      "bytes": 6962
+    },
+    {
+      "source": "server-reference/public/showroom/assets/posters/poster-080.webp",
+      "target": "assets/poster-080-original.webp",
+      "sha256": "1dd1fa34b2427703a73458dce141641357d865601ccb662627dd9cd25c8fb2df",
+      "bytes": 1456626
+    },
+    {
+      "source": "server-reference/public/showroom/assets/previews/posters/poster-081-1280.webp",
+      "target": "assets/poster-081.webp",
+      "sha256": "1163ba9ca1150d08eb336abee7dc6638998a2e39f58bea768549a680e37f789c",
+      "bytes": 132818
+    },
+    {
+      "source": "server-reference/public/showroom/assets/previews/posters/poster-081-512.webp",
+      "target": "assets/poster-081-small.webp",
+      "sha256": "ed8da38d3c76d17fee307e20fb25e28a07105d7b2ed684bb0c9d09a8ae3717a5",
+      "bytes": 25360
+    },
+    {
+      "source": "server-reference/public/showroom/assets/posters/poster-081-thumb.webp",
+      "target": "assets/poster-081-thumb.webp",
+      "sha256": "d7f63c301b45f181ae94a66bc0714f79a81abbb51bc4709cfeeff59e4122de18",
+      "bytes": 38638
+    },
+    {
+      "source": "server-reference/public/showroom/assets/optimized/poster-081-strip.webp",
+      "target": "assets/poster-081-strip.webp",
+      "sha256": "08003985fbcdcc22f21fc02aeabf3207980bc81e4f67e47edb0cc96e81dd7d63",
+      "bytes": 5420
+    },
+    {
+      "source": "server-reference/public/showroom/assets/posters/poster-081.webp",
+      "target": "assets/poster-081-original.webp",
+      "sha256": "3501b672554739a1af75e48e9022c78049728e988485b25a1ffb3468cc0a574b",
+      "bytes": 1423576
     },
     {
       "source": "server-reference/public/showroom/assets/yuanze-mark.svg",

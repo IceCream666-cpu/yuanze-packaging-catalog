@@ -25,6 +25,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const golden = product.file === 'poster-056.glb';
   const b5 = product.file === 'poster-057.glb';
   const bodyOil = product.file === 'poster-073.glb';
+  const handGel = product.file === 'poster-081-v1.glb';
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
@@ -257,6 +258,28 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
+      if (handGel) {
+        // The woven RGB textures have no cutouts; include their rear faces in the glass transmission pass.
+        if (m.name === 'Warm ivory woven label' || m.name === 'Black woven side flag') {
+          m.transparent=false; m.opacity=1; m.alphaTest=0;
+        }
+        if (component === parts.body) {
+          // The mesh already contains both hollow-wall interfaces; avoid Three's extra DoubleSide back-face pass.
+          m.side=T.FrontSide; m.depthWrite=false; m.thickness=.045;
+        }
+        if (m.name === 'Transparent polyethylene dip tube') {
+          // shortcut: composite the nested clear tube after glass; exact nested refraction needs a multipass renderer.
+          m.transmission=0; m.transparent=true; m.opacity=.55; m.depthWrite=false; m.side=T.FrontSide;
+          m.color.set('#e7ece8'); m.roughness=.06; m.specularIntensity=.8; m.envMapIntensity=.65;
+          o.renderOrder=1;
+          m.onBeforeCompile = shader => {
+            shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
+              float tubeEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 2.5);
+              gl_FragColor.a *= mix(.35, 1.0, tubeEdge);
+            `);
+          };
+        }
+      }
       if (b5 && m.map) m.toneMapped=false;
       if (m.map) {m.depthWrite=!m.transparent; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=m.transparent?2:0;}
       return;

@@ -1,0 +1,87 @@
+{
+  "id": "poster-081",
+  "name": "Exfoliating Hand Gel",
+  "file": "poster-081-v1.glb",
+  "source": "build_hand_gel.py",
+  "height": 2.913,
+  "width": 1.564,
+  "depth": 1.564,
+  "bodyHeight": 2.05,
+  "capacity": null,
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "components": [
+    "Body",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "attachedTube": true,
+  "separateLabelAndPrint": true,
+  "labelMaterial": "ivory woven textile with attached black side flag",
+  "bottleMaterial": "clear hollow glass, not frosted",
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.7820000052452087,
+        -0.7820000052452087,
+        0.0
+      ],
+      "max": [
+        0.7820000052452087,
+        0.7820000052452087,
+        2.194999933242798
+      ]
+    },
+    "Pump": {
+      "min": [
+        -0.7820000052452087,
+        -0.3084999918937683,
+        0.1678999960422516
+      ],
+      "max": [
+        0.3084999918937683,
+        0.3084999918937683,
+        2.9130001068115234
+      ]
+    },
+    "Label": {
+      "min": [
+        -0.7950000166893005,
+        -0.7950000166893005,
+        0.6980000138282776
+      ],
+      "max": [
+        0.9380000233650208,
+        0.7950000166893005,
+        1.722000002861023
+      ]
+    },
+    "LogoInk": {
+      "min": [
+        -0.5224999785423279,
+        -0.7990000247955322,
+        1.3270000219345093
+      ],
+      "max": [
+        0.5224999785423279,
+        -0.6031817197799683,
+        1.6770000457763672
+      ]
+    },
+    "NameInk": {
+      "min": [
+        -0.4975000023841858,
+        -0.7990000247955322,
+        0.9169999957084656
+      ],
+      "max": [
+        0.4975000023841858,
+        -0.6240957379341125,
+        1.2020000219345093
+      ]
+    }
+  },
+  "blenderVersion": "5.4.0 Alpha"
+}

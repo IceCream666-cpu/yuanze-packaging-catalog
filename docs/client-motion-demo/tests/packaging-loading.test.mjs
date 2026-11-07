@@ -37,12 +37,15 @@ function harness({parse, renderError, onRender, product = PACKAGING_PRODUCTS['po
     dispose() {}
   }
   function model() {
-    const scene = new Three.Group();
-    for (const name of product.parts.map(part => part.node)) {
-      const part = new Three.Mesh(new Three.BoxGeometry(), new Three.MeshPhysicalMaterial());
-      part.name = name; scene.add(part);
-    }
-    return {scene};
+    const scenes = (product.finishes || [{scene: 'default'}]).map(finish => {
+      const scene = new Three.Group(); scene.name = finish.scene;
+      for (const name of product.parts.map(part => part.node)) {
+        const part = new Three.Mesh(new Three.BoxGeometry(), new Three.MeshPhysicalMaterial());
+        part.name = name; part.userData.partKey = name; scene.add(part);
+      }
+      return scene;
+    });
+    return {scene: scenes[0], scenes};
   }
   const module = {exports: {}};
   new Function('require', 'module', 'exports', code)(id => id.includes('packaging-products') ? {PACKAGING_PRODUCTS} : id.includes('GLTFLoader')
@@ -1355,6 +1358,39 @@ test('Rose uses native 2x detail without increasing other model rendering budget
       assert.deepEqual(h.events.find(e=>Array.isArray(e)&&e[0]==='pixelRatio'),['pixelRatio',id==='poster-066'?2:1.75]);
       api.dispose();
     } finally {h.close();}
+  }
+});
+
+test('Hand Gel keeps the opaque woven sleeve in refraction and composites its nested clear tube only for 081',async()=>{
+  const template=JSON.parse(readFileSync(new URL('../model-source/collection/poster-081/review-product.json',import.meta.url),'utf8'));
+  for(const file of ['poster-081-v1.glb','unrelated-review.glb']) {
+    const product={...template,file};let loaded,api;
+    const env=harness({product,parse:()=>Promise.resolve(loaded)});
+    try {
+      loaded={scene:new Three.Group()};
+      const groups=Object.fromEntries(product.parts.map(part=>{const group=new Three.Group();group.name=part.node;loaded.scene.add(group);return [part.key,group];}));
+      const mesh=(key,name,values)=>{const m=new Three.MeshPhysicalMaterial(values);m.name=name;const o=new Three.Mesh(new Three.BoxGeometry(.2,.2,.2),m);groups[key].add(o);return o;};
+      const body=mesh('body','Crystal clear glass | thick heel',{transmission:1,roughness:.02});
+      const tube=mesh('pump','Transparent polyethylene dip tube',{transmission:.83,roughness:.12});
+      const sleeve=mesh('label','Warm ivory woven label',{map:new Three.Texture(),transparent:true});
+      const flag=mesh('label','Black woven side flag',{map:new Three.Texture(),transparent:true});
+      const sideInk=mesh('label','Ivory wordmark attached to black side flag',{map:new Three.Texture(),transparent:true});
+      api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+      const target=file==='poster-081-v1.glb';
+      assert.equal(body.material.transmission,1,'the hollow glass remains physically transmissive');
+      assert.equal(body.material.side,target?Three.FrontSide:Three.DoubleSide);
+      assert.equal(body.material.depthWrite,!target);
+      for(const cloth of [sleeve,flag]) {assert.equal(cloth.material.transparent,!target);assert.equal(cloth.material.depthWrite,target);}
+      assert.equal(sideInk.material.transparent,true,'the wordmark carrier keeps its transparent background');
+      assert.equal(tube.material.transmission,target?0:.83);
+      assert.equal(tube.material.transparent,target);
+      assert.equal(tube.material.depthWrite,!target);
+      if(target) {
+        assert.equal(tube.material.opacity,.55);assert.equal(tube.renderOrder,1);
+        const shader={fragmentShader:'#include <dithering_fragment>'};tube.material.onBeforeCompile(shader);
+        assert.match(shader.fragmentShader,/gl_FragColor\.a \*= mix\(\.35, 1\.0, tubeEdge\)/);
+      }
+    } finally {api?.dispose();env.close();}
   }
 });
 

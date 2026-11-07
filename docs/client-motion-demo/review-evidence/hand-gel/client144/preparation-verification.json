@@ -1,0 +1,21 @@
+{
+  "localPlan": true,
+  "pythonSyntax": true,
+  "remotePythonSyntax": true,
+  "tests": {
+    "run": 2,
+    "passed": 2,
+    "negativeScopes": [
+      "stale-version",
+      "unapproved-081-model",
+      "changed-approved-080-model",
+      "wrong-compiled-chunk-role",
+      "fixed-asset-replaced"
+    ]
+  },
+  "remoteWrites": false,
+  "httpsVerificationRun": false,
+  "committed": false,
+  "chunkHashesFlexible": true,
+  "fixedNewAssets": 14
+}

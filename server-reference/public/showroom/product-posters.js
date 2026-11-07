@@ -776,6 +776,30 @@ window.YuanzeProductPosters = {
       "thumbnail": "/showroom/assets/posters/poster-079-thumb.webp",
       "width": 1024,
       "height": 1536
+    },
+    {
+      "id": "poster-080",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 沐浴护理三件组",
+        "en": "liaose Bath Trio"
+      },
+      "src": "/showroom/assets/posters/poster-080.webp",
+      "thumbnail": "/showroom/assets/posters/poster-080-thumb.webp",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "poster-081",
+      "category": "body",
+      "title": {
+        "zh": "liaose 磨砂净手凝露",
+        "en": "liaose Exfoliating Hand Gel"
+      },
+      "src": "/showroom/assets/posters/poster-081.webp",
+      "thumbnail": "/showroom/assets/posters/poster-081-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

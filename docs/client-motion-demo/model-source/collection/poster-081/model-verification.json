@@ -1,0 +1,50 @@
+{
+  "scope": "local Blender source and actual exported GLB structural verification; browser verification owned by primary agent",
+  "verifiedAt": "2026-11-07T16:44:25.687001+08:00",
+  "blenderVersion": "5.4.0 Alpha",
+  "glbBytes": 4527020,
+  "glbSha256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132",
+  "blendBytes": 6112004,
+  "blendSha256": "1c4ba2984d23a04e7ee07cc06db4f4ccb19afdbb988ea8af8bbbaabe9e345c0a",
+  "meshes": 11,
+  "triangles": 35912,
+  "packedImages": 6,
+  "groups": [
+    "Body",
+    "Label",
+    "LogoInk",
+    "NameInk",
+    "Pump"
+  ],
+  "wholePumpMeshCount": 5,
+  "hollowTubeOuterDiameter": 0.076,
+  "hollowTubeInnerDiameter": 0.054,
+  "suctionTubeTipMinZ": 0.1678999960422516,
+  "suctionTubeTopMaxZ": 2.2100000381469727,
+  "sideWordmarkAttachedToFlag": true,
+  "neutralClearGlass": true,
+  "noFormula": true,
+  "capacityUnspecified": true,
+  "visualReview": {
+    "assembled": "passed: neutral clear hollow glass, visible internal long tube, crisp black pump, textile sleeve and readable attached side wordmark",
+    "exploded": "passed: complete pump and tube lift as one; ivory sleeve and black flag with ivory text remain together; main black wordmark and product title separate ahead of sleeve",
+    "cameraNoClipping": true,
+    "reviewedAt": "2026-11-07T16:45:08.448186+08:00",
+    "browser": "pending primary-agent verification"
+  },
+  "renderDirectory": "outputs/20261106-Citrus-Hand-Gel/3D",
+  "renderEvidence": {
+    "Hand-Gel-Blender-合拢.png": {
+      "sha256": "6f06318c614d447c767edd3bdd515f9e437f80b7a384bf82bec89e8ba853ea40",
+      "modifiedAt": "2026-11-07T16:44:06.653357+08:00"
+    },
+    "Hand-Gel-Blender-透明主图.png": {
+      "sha256": "50721a1550e22a742fefb0f49145f4818cb9a999890d1b0504a0dc81af72c753",
+      "modifiedAt": "2026-11-07T16:44:29.136039+08:00"
+    },
+    "Hand-Gel-Blender-完全展开.png": {
+      "sha256": "137793ae496bbccc16a3cfdd2f57e65dd0928f37045b1b3f5a6ae0e0a843ba30",
+      "modifiedAt": "2026-11-07T16:44:45.779468+08:00"
+    }
+  }
+}
