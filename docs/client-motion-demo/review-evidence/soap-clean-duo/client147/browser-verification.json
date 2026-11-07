@@ -1,0 +1,45 @@
+{
+  "version": "client1.47",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "checkedAt": "2026-11-07T09:57:59.094Z",
+  "browser": "Ego Lite",
+  "taskSpace": 34,
+  "homepage": {
+    "id": "poster-082",
+    "position": 28,
+    "total": 29,
+    "oldSingleAbsent": true
+  },
+  "model": {
+    "components": 6,
+    "closed": true,
+    "fullyExpanded": true,
+    "rotate90": true,
+    "restoreFront": true,
+    "originalPosterRoundTrip": true
+  },
+  "neighborRegression": {
+    "id": "poster-081",
+    "components": 5,
+    "fullyExpanded": true
+  },
+  "mobile": {
+    "width": 393,
+    "height": 852,
+    "scrollWidth": 393,
+    "homepage": true,
+    "expanded": true,
+    "simulated": true,
+    "realDevice": false
+  },
+  "visualReview": "passed",
+  "screenshots": [
+    "online-home.png",
+    "online-closed.png",
+    "online-expanded.png",
+    "online-rotated.png",
+    "online-original.png",
+    "online-expanded-mobile-simulated.png",
+    "online-home-mobile-simulated.png"
+  ]
+}

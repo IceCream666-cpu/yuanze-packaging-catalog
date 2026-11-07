@@ -1,0 +1,11 @@
+{
+  "manifestSha256": "dd6292d015a0d386c94a1a7f118e4c225f1a70d7c25ee4cb4cdfaec0afe31cdc",
+  "backupManifestSha256": "a22fb0d70e3e2ef6678b5d012a5ccb1e0c612a59bd72a524b3cbc762ee829f95",
+  "verifiedCurrentFiles": 491,
+  "verifiedBackupFiles": 490,
+  "serviceUserAvailableBytes": 372633600,
+  "readableAsServiceUser": true,
+  "service": "MainPID=33772\nActiveState=active\n",
+  "gatewayHash": "f0ccb2f82b426ca0df3d1d1b4057544b14e8ae5dc76efd18ccc4c8d6f4693368",
+  "outsideUnchanged": 6820
+}
