@@ -1,0 +1,27 @@
+{
+  "id": "poster-082",
+  "title": "Soap Clean Duo",
+  "date": "2026-11-07",
+  "source_batch_index": 4,
+  "status": "poster-local-review",
+  "published": false,
+  "model_created": false,
+  "tool": "built-in image_gen",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "final": "soap-clean-duo-v2.png",
+  "sha256": "616ab8db3a22d0c764e0ee47a4c31ef8d57cb575d5d75f24f33ff89a5672eb94",
+  "reference_sha256": "75b0aea22510c03c116aeb64bbb76d011a0be8d2b6126f1386a80d0fa1375dc6",
+  "reference": "/Users/icecream/Documents/Codex/2026-10-22/gen/outputs/20261107-Soap-Clean-Duo/原始参考-04.jpg",
+  "visual_review": {
+    "product_count": 2,
+    "brand": "bold lowercase liaose",
+    "tube": "ivory tapered tube, pale blue vertical pinstripes, blue flip cap, HAIR TREATMENT 180 ml",
+    "bottle": "ivory cylindrical shampoo bottle, pale blue circular pump, SHAMPOO 300 ml",
+    "revision": "removed incorrect central upright pump peg; restored low flat projection at rear rim",
+    "result": "passed root and independent visual review",
+    "limitation": "reference-led concept poster, no measured dimensions or manufacturing validation"
+  }
+}
