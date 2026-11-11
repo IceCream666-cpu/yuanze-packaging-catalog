@@ -1,0 +1,25 @@
+{
+  "id": "poster-084",
+  "file": "soft-body-duo-poster-v1.png",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGB",
+  "sha256": "72f3c837e86751405c96ea7668fdc94471d5b8d3487ea9537a5b3e16b8572742",
+  "referenceOrder": 6,
+  "posterOnly": true,
+  "published": false,
+  "generator": "built-in image_gen",
+  "visualReview": {
+    "productCount": 2,
+    "blueBodyLotion": true,
+    "pinkBodyWash": true,
+    "cylindricalShape": true,
+    "translucentPump": true,
+    "verticalWhiteLabels": true,
+    "liaoseBrand": true,
+    "noInventedCapacityOrFormulaClaims": true,
+    "layoutAndGroundingPassed": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "client1.48",
+  "poster": "poster-083",
+  "searched": "抹茶",
+  "matchingPosters": 1,
+  "originalDimensions": [
+    2048,
+    3072
+  ],
+  "homepageChoices": 29,
+  "desktopVisualPassed": true,
+  "mobile": {
+    "viewport": [
+      393,
+      852
+    ],
+    "scrollWidth": 393,
+    "visualPassed": true,
+    "physicalDevice": false
+  },
+  "aestheticDetectorFindings": 0,
+  "notes": "Initial wait selector used role=dialog but native dialog has no explicit role attribute; corrected by inspecting document.images. Original loaded successfully."
+}

@@ -1,0 +1,51 @@
+{
+  "version": "client1.48",
+  "sourceCommit": "c8063557",
+  "published": true,
+  "publishedAt": "2026-11-11T17:52:50+08:00",
+  "httpsVerifiedAt": "2026-11-11T17:57:35+08:00",
+  "manifestSha256": "0c7a3043098a8770d325807738fdfff631c4a9caccf2f74675263fd5b6419409",
+  "counts": {
+    "posters": 66,
+    "featured": 29,
+    "models": 30
+  },
+  "posterId": "poster-083",
+  "newDisplayResources": 5,
+  "verifiedFiles": 496,
+  "verifiedHttpsResources": 8,
+  "modelRanges": 30,
+  "roles": {
+    "client": true,
+    "employee": true,
+    "admin": true
+  },
+  "browser": {
+    "version": "client1.48",
+    "poster": "poster-083",
+    "searched": "抹茶",
+    "matchingPosters": 1,
+    "originalDimensions": [
+      2048,
+      3072
+    ],
+    "homepageChoices": 29,
+    "desktopVisualPassed": true,
+    "mobile": {
+      "viewport": [
+        393,
+        852
+      ],
+      "scrollWidth": 393,
+      "visualPassed": true,
+      "physicalDevice": false
+    },
+    "aestheticDetectorFindings": 0,
+    "notes": "Initial wait selector used role=dialog but native dialog has no explicit role attribute; corrected by inspecting document.images. Original loaded successfully."
+  },
+  "backup": "/opt/yuanze-reference/backups/client1.48-matcha-poster-20261111",
+  "outsideUnchanged": 6820,
+  "serviceRestart": false,
+  "businessDataWrites": 0,
+  "evidence": "review-evidence/matcha/client148/"
+}
