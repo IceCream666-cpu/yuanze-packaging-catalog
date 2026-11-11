@@ -33,7 +33,7 @@ class SoapCleanDuoPosterTests(unittest.TestCase):
 
     def test_duo_replaces_home_entry_while_preserving_the_single_bottle(self):
         posters = json.loads((CLIENT / 'src/posters.json').read_text())
-        self.assertEqual(len(posters), 65)
+        self.assertEqual(len(posters), 66)
         poster = [p for p in posters if p['id'] == 'poster-082']
         self.assertEqual(len(poster), 1)
         self.assertEqual(poster[0]['category'], 'sets')
@@ -46,7 +46,7 @@ class SoapCleanDuoPosterTests(unittest.TestCase):
         self.assertIn('poster-082', collection)
         self.assertIn('poster-080', collection)
         manifest = json.loads((PUBLIC / 'bundle-manifest.json').read_text())
-        self.assertEqual(manifest['version'], 'client1.47')
+        self.assertEqual(manifest['version'], 'client1.48')
         self.assertEqual(sum(n.endswith('.glb') for n in manifest['files']), 30)
         self.assertFalse(any('soap-duo' in n or 'review-product' in n for n in manifest['files']))
         self.assertIn('assets/packaging/poster-082-v1.glb', manifest['files'])

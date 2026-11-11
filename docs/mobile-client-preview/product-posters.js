@@ -812,6 +812,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-082-thumb.webp",
       "width": 1024,
       "height": 1536
+    },
+    {
+      "id": "poster-083",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 抹茶洗发水",
+        "en": "liaose Matcha Shampoo"
+      },
+      "src": "assets/posters/poster-083.webp",
+      "thumbnail": "assets/posters/poster-083-thumb.webp",
+      "width": 2048,
+      "height": 3072
     }
   ]
 };

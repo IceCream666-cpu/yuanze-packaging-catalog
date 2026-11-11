@@ -1,0 +1,11 @@
+{
+  "version": "client1.48",
+  "frontendTests": 183,
+  "resourceTests": 37,
+  "releaseGuards": 3,
+  "posters": 66,
+  "featured": 29,
+  "models": 30,
+  "builtAndChecked": true,
+  "published": false
+}

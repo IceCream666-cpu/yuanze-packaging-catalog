@@ -640,6 +640,10 @@
       "bytes": 3258,
       "sha256": "90306e0e1a29dfc0193a2f5b74a71a276b462b36b3a33bd531271808f2db67c7"
     },
+    "assets/optimized/poster-083-strip.webp": {
+      "bytes": 2144,
+      "sha256": "b97230913a574d1a1b4ede423862450e1213b3f61a3b7d2709353b40c66216b4"
+    },
     "assets/optimized/yuanze-mark-compact.webp": {
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
@@ -1324,6 +1328,14 @@
       "bytes": 1027568,
       "sha256": "dd0192b2ed5e264d683dd51b5ee3a07ecc5a48f6ee574d508c61144510ccf9e5"
     },
+    "assets/posters/poster-083-thumb.webp": {
+      "bytes": 12334,
+      "sha256": "55ca6b2ea1090b8c8331b8e7c4e609eee0405cc34ed5b8b5738e1b6f3617441f"
+    },
+    "assets/posters/poster-083.webp": {
+      "bytes": 2836700,
+      "sha256": "d8bc3766caa99a3929147fd6ac695389ca3c4289f784b39d419cd3d19429020a"
+    },
     "assets/previews/certificates/gmpc-en-1280.webp": {
       "bytes": 93686,
       "sha256": "1103f376eade7558d7551cc27719c5da2cc5b719a132c891c176c597eb8ef02a"
@@ -1916,6 +1928,14 @@
       "bytes": 12726,
       "sha256": "1b74188d19020a5dfaa6bfcaa993174060aa9aec62546eb6bb55e7f87fab2b77"
     },
+    "assets/previews/posters/poster-083-1280.webp": {
+      "bytes": 24164,
+      "sha256": "8714ad64371c7ce0fa7a6ff3da23c5678c96e02025ad7d661dae7da36ef005a2"
+    },
+    "assets/previews/posters/poster-083-512.webp": {
+      "bytes": 7502,
+      "sha256": "6e8f4104a4e071649942969ce882e6d18f85372fb0b968af7ad9e8d71cdd15f5"
+    },
     "assets/previews/reception-1280.webp": {
       "bytes": 56848,
       "sha256": "c4660dccb8a60648eadb32212bcc4c805f3a9fe957fd74c6c55fd93665cf0535"
@@ -1950,22 +1970,22 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "e3818b308f35b108b7e2aecac614a7af59e24be9a47d7109f8b89cdd849d2a8b"
+      "sha256": "67b1ff04b80a9f61db5332ac2f95e0972a2e389fcd1c067648ba194aac1708a1"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 399492,
-      "sha256": "d6162aa20b1bd67391bee02b1e2d5685fcd5b00cb358226ac94203fe35831c2c"
+      "bytes": 400373,
+      "sha256": "dcbf027c5d15a8d7a4113959bcd59c5c4e06ad7cad17e707ca01f3c6fda89e71"
     },
     "product-posters.js": {
-      "bytes": 23007,
-      "sha256": "68f1dfa823a1d594c51d5079dc460b29aff74a9a06f4585faa0d13daaef1ddc0"
+      "bytes": 23344,
+      "sha256": "8d71b15bef3829b6cda6024b77433eec2e8ae4fe91bcd06d5e676e91ddb5e020"
     }
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.47"
+  "version": "client1.48"
 }

@@ -29,3 +29,5 @@
 /Applications/Blender.app/Contents/MacOS/Blender -b --python-exit-code 1 --python blender/build_matcha.py -- --final
 /Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 compose_poster.py --product blender/matcha-product-final.png --output matcha-shampoo-poster-v1.png
 ```
+
+2026-11-11 用户批准海报发布；已完成client1.48候选，远端结果见review-evidence/matcha/client148。
