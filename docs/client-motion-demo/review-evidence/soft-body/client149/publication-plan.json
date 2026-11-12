@@ -1,0 +1,63 @@
+{
+  "version": "client1.49",
+  "baselineManifestSha256": "0c7a3043098a8770d325807738fdfff631c4a9caccf2f74675263fd5b6419409",
+  "manifestSha256": "a0da963ae0b811e018e064b242eb4192de641c2b8cde4026158dd3d99630b384",
+  "changed": [
+    "assets/optimized/poster-084-strip.webp",
+    "assets/posters/poster-084-thumb.webp",
+    "assets/posters/poster-084.webp",
+    "assets/previews/posters/poster-084-1280.webp",
+    "assets/previews/posters/poster-084-512.webp",
+    "index.html",
+    "preview.js",
+    "product-posters.js"
+  ],
+  "added": [
+    "assets/optimized/poster-084-strip.webp",
+    "assets/posters/poster-084-thumb.webp",
+    "assets/posters/poster-084.webp",
+    "assets/previews/posters/poster-084-1280.webp",
+    "assets/previews/posters/poster-084-512.webp"
+  ],
+  "removed": [],
+  "preservedPackaging": [
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067.glb",
+    "assets/packaging/poster-068.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-079-v2.glb",
+    "assets/packaging/poster-080-v2.glb",
+    "assets/packaging/poster-081-v1.glb",
+    "assets/packaging/poster-082-v1.glb"
+  ],
+  "resources": 501,
+  "counts": {
+    "posters": 67,
+    "featured": 29,
+    "models": 30
+  },
+  "publishedPoster": "poster-084",
+  "previewOnlyModel": null
+}

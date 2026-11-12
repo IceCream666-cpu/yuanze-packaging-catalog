@@ -824,6 +824,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-083-thumb.webp",
       "width": 2048,
       "height": 3072
+    },
+    {
+      "id": "poster-084",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 蓝粉身体护理组合",
+        "en": "liaose Soft Body Duo"
+      },
+      "src": "assets/posters/poster-084.webp",
+      "thumbnail": "assets/posters/poster-084-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

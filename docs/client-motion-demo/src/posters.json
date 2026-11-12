@@ -1450,5 +1450,27 @@
     "original": "/assets/poster-083-original.webp",
     "width": 2048,
     "height": 3072
+  },
+  {
+    "id": "poster-084",
+    "title": {
+      "zh": "liaose 蓝粉身体护理组合",
+      "en": "liaose Soft Body Duo"
+    },
+    "category": "sets",
+    "style": "clear",
+    "image": "/assets/poster-084.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-084-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-084-thumb.webp",
+    "stripThumb": "/assets/poster-084-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-084-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]
