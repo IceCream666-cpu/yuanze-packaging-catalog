@@ -5,5 +5,11 @@
   "closedHalfFullRotationReset": true,
   "mobile": "393x852 simulated viewport, not physical device",
   "containsFormula": false,
-  "aestheticReview": "Impeccable context and visual inspection; enlarged white logo; detector invocation awaiting correct CLI"
+  "aestheticReview": "Impeccable context, detector [] and manual visual review; white logo enlarged",
+  "tests": {
+    "frontend": 183,
+    "releaseBuild": 20,
+    "publicationGuards": 3,
+    "modelStructure": "passed"
+  }
 }
