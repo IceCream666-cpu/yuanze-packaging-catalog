@@ -484,7 +484,7 @@ test('App original-poster round trip unmounts 3D and resets HD status without lo
   } finally {await env.close();}
 });
 
-test('pump fetches its own model and has five separate layers with its own heading', async () => {
+test('pump fetches its approved v2 model with complete pump and four layer controls', async () => {
   const env = setup(); let url, mounted;
   const pump = {...item,id:'poster-071',title:{zh:'长颈泵瓶',en:'Sculptural Pump'}};
   globalThis.fetch = async value => {url=value; return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
@@ -493,12 +493,12 @@ test('pump fetches its own model and has five separate layers with its own headi
   const Detail = component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return api;}})}});
   try {
     const request=startPackagingModelRequest(pump.id); await request.promise; request.abort();
-    assert.equal(url,'/assets/packaging/liaose-pump.glb');
+    assert.equal(url,'/assets/packaging/poster-071-v2.glb');
     assert.throws(()=>startPackagingModelRequest('../../private'),/Unsupported/);
     await act(async()=>env.root.render(<Detail {...defaultProps} item={pump}/>));
     assert.match(document.querySelector('h1').textContent,/Sculptural Pump/);
-    assert.deepEqual(mounted.product.parts.map(p=>p.node),['PumpHead','PumpStem','Closure','BottleAssembly','LogoPrint']);
-    assert.equal(document.querySelectorAll('.packaging-part').length,5);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Body','PumpAssembly','Label','LogoInk']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,4);
   } finally {await env.close();}
 });
 

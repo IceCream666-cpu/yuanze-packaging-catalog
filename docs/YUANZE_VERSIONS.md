@@ -477,3 +477,7 @@ Amber Ginger Shampoo完整黑色泵头与较粗透明长吸管整体展开；编
 21/068 v3于16:16:15上线，16:18:27独立HTTPS验证；正式浏览器控流内塞、完整盖、标贴/Logo/产品文字、展开旋转复位通过。5项变更资源完整哈希、32模型范围、三角色及退出验证通过。68海报/31首页/32模型，6820项展厅外文件不变，无重启或业务写入。发布源码3e6680b1。以硬链接暂存并在写前解除链接实现差量发布，旧版完整回退保留，256MiB保护余量未降低。回执client-motion-demo/client155-release.json。
 
 23/071 v2仅本地待审：保留原瓶身与泵头，完整泵组含较粗中空长吸管；透明承印膜/liaose字标分层并检查接影。原图未印产品名，未添加。195测试、源档校验、隔离构建和桌面/模拟手机目检通过。预览http://127.0.0.1:8785/sculptural-pump.html，尚未替换线上071。详见client-motion-demo/review-evidence/sculptural-pump/v2/QA.md。
+
+
+## 2026-11-13 client1.56 — 长颈泵瓶完整泵组（待发布）
+用户已确认23/071 v2。正式注册切至Blender版本化模型：Body、完整PumpAssembly含长吸管、透明承印膜、LogoInk四组。仅替换071模型和index/preview入口，其他31模型及全部图片保持。195前端、13包材发布、4差量发布计划测试通过；68海报/31首页/32模型。源稿00c10af8；发布证据client-motion-demo/review-evidence/sculptural-pump/client156/。原选定16款到此为末款，下一款待用户指定。

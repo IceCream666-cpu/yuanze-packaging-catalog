@@ -700,10 +700,6 @@
       "bytes": 72435,
       "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
     },
-    "assets/packaging/liaose-pump.glb": {
-      "bytes": 996144,
-      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
-    },
     "assets/packaging/packaging-scene-ClmDjUs1.js": {
       "bytes": 581985,
       "sha256": "c8f09804f730bbcef37a9c4a84055b5925c813153d4631d6b02a372a4d8c00a5"
@@ -795,6 +791,10 @@
     "assets/packaging/poster-070.glb": {
       "bytes": 3191832,
       "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87"
+    },
+    "assets/packaging/poster-071-v2.glb": {
+      "bytes": 1592320,
+      "sha256": "624addecf5784e6daebcc937a0e96b51015dcb88c44d0ad02001383ee2d52649"
     },
     "assets/packaging/poster-072.glb": {
       "bytes": 1163416,
@@ -2042,15 +2042,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "e386a44fef68463b9636e722ac1fd7990bace81540bba556cf9f45d3bb4c074c"
+      "sha256": "6f4d113c10ce7f628c83e26c380b18df7e9af727ca3b22716eee241114f20a0f"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 408545,
-      "sha256": "3fc4efb8b914ee68d97f02ecf7eda4b3ddfe4cdf231f92d0b5821dea7bf16068"
+      "bytes": 409269,
+      "sha256": "1d9a52201288e811fef02e98ada6f2951355a02669f2f3d33e04caaa8fb53b8e"
     },
     "product-posters.js": {
       "bytes": 24032,
@@ -2059,5 +2059,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.55"
+  "version": "client1.56"
 }

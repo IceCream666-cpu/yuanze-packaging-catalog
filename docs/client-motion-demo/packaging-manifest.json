@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.55-collection-packaging",
+  "scope": "approved-client1.56-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -35,12 +35,12 @@
       "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
     },
     {
-      "name": "liaose-pump.glb",
+      "name": "poster-071-v2.glb",
       "kind": "model",
-      "file": "packaging-assets/liaose-pump.glb",
-      "productionTarget": "assets/packaging/liaose-pump.glb",
-      "bytes": 996144,
-      "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
+      "file": "packaging-assets/poster-071-v2.glb",
+      "productionTarget": "assets/packaging/poster-071-v2.glb",
+      "bytes": 1592320,
+      "sha256": "624addecf5784e6daebcc937a0e96b51015dcb88c44d0ad02001383ee2d52649"
     },
     {
       "name": "poster-013.glb",
@@ -284,17 +284,6 @@
     }
   ],
   "additionalProducts": [
-    {
-      "posterId": "poster-071",
-      "file": "liaose-pump.glb",
-      "components": [
-        "BottleAssembly",
-        "Closure",
-        "PumpStem",
-        "PumpHead",
-        "LogoPrint"
-      ]
-    },
     {
       "posterId": "poster-013",
       "file": "poster-013.glb",
@@ -620,6 +609,16 @@
         "Label",
         "LogoInk",
         "NameInk"
+      ]
+    },
+    {
+      "posterId": "poster-071",
+      "file": "poster-071-v2.glb",
+      "components": [
+        "Body",
+        "PumpAssembly",
+        "Label",
+        "LogoInk"
       ]
     }
   ],

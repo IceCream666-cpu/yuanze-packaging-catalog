@@ -418,7 +418,6 @@ for (const [id, lifts, printOffset] of [
   ['poster-044', {overcap:3.15,pump:2.15}, [-2.65,.50,1.65]],
   ['poster-049', {pump: 1.25}, [-2.65, .18, 1.65]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
-  ['poster-071', {closure: .38, stem: .84, head: 1.35}, [-.63, .10, .86]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
   const env = harness({product, parse: () => Promise.resolve(loaded)});
@@ -1692,5 +1691,5 @@ test('Sculptural Pump v2 keeps all pump pieces and long hollow tube fitted throu
    else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
   }
  }finally{api?.dispose();env.close();}
- assert.equal(PACKAGING_PRODUCTS['poster-071'].file,'liaose-pump.glb','v2 remains preview-only');
+ assert.deepEqual(PACKAGING_PRODUCTS['poster-071'],product,'approved v2 is registered without changing the reviewed configuration');
 });

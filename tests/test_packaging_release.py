@@ -1,4 +1,4 @@
-"""Client 1.47 replaces the homepage single bottle with the duo and preserves prior models."""
+"""Client 1.56 publishes the approved complete-pump model and preserves other assets."""
 import copy
 import hashlib
 import importlib.util
@@ -17,14 +17,14 @@ spec.loader.exec_module(builder)
 
 
 class PackagingApprovalTests(unittest.TestCase):
-    def test_only_the_30_reviewed_models_and_two_animation_scripts_are_added(self):
-        self.assertEqual(len(builder.PACKAGING_ASSETS), 32)
-        self.assertEqual(sum(kind == 'model' for kind in builder.PACKAGING_ASSETS.values()), 30)
+    def test_only_the_32_reviewed_models_and_two_animation_scripts_are_added(self):
+        self.assertEqual(len(builder.PACKAGING_ASSETS), 34)
+        self.assertEqual(sum(kind == 'model' for kind in builder.PACKAGING_ASSETS.values()), 32)
         approval = json.loads((builder.MOTION_CLIENT / 'packaging-manifest.json').read_text())
         featured = json.loads((builder.MOTION_CLIENT / 'src/featured.json').read_text())
         approved_ids = [approval['posterId'], *(item['posterId'] for item in approval['additionalProducts'])]
-        self.assertEqual(len(approved_ids), 30)
-        self.assertEqual(len(featured), 29)
+        self.assertEqual(len(approved_ids), 32)
+        self.assertEqual(len(featured), 31)
         self.assertFalse({f'poster-{n:03}' for n in range(74, 79)} & {item['id'] for item in featured})
         self.assertEqual(set(approved_ids), {item['id'] for item in featured} | {'poster-080'})
         self.assertFalse({'poster-074', 'poster-075', 'poster-076', 'poster-077', 'poster-078'} & set(approved_ids))
@@ -46,13 +46,13 @@ class PackagingApprovalTests(unittest.TestCase):
         self.assertNotIn('KHR_lights_punctual', model.get('extensions', {}))
         self.assertTrue(all('bufferView' in image and 'uri' not in image for image in model['images']))
 
-    def test_pump_is_preserved_and_beach_has_approved_independent_logo(self):
+    def test_complete_pump_is_published_and_beach_has_approved_independent_logo(self):
         files={};builder.packaging_files(files,builder.MOTION_CLIENT)
-        glb=files['assets/packaging/liaose-pump.glb']
-        self.assertEqual(hashlib.sha256(glb).hexdigest(),'d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936')
+        glb=files['assets/packaging/poster-071-v2.glb']
+        self.assertEqual(hashlib.sha256(glb).hexdigest(),'624addecf5784e6daebcc937a0e96b51015dcb88c44d0ad02001383ee2d52649')
         length=struct.unpack_from('<I',glb,12)[0];model=json.loads(glb[20:20+length])
         roots=model['scenes'][model.get('scene',0)]['nodes']
-        self.assertEqual({model['nodes'][i]['name'] for i in roots},{'BottleAssembly','Closure','PumpStem','PumpHead','LogoPrint'})
+        self.assertEqual({model['nodes'][i]['name'] for i in roots},{'Body','PumpAssembly','Label','LogoInk'})
         self.assertEqual(hashlib.sha256(files['assets/packaging/beach-magic-packaging.glb']).hexdigest(),'ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f')
 
     def test_approval_identity_path_hash_and_duplicate_changes_are_rejected(self):
