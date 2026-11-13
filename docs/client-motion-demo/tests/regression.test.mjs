@@ -123,3 +123,12 @@ test('unavailable or malformed local storage fails safely without losing current
  let write;assert.equal(persist({setItem(k,v){write=[k,v];}},FAVORITES_KEY,['poster-051']),true);
  assert.deepEqual(write,[FAVORITES_KEY,'["poster-051"]']);
 });
+
+// User withdrew both poster and model; retained authoring files must not leak into release.
+test('withdrawn Scalp Essence is absent from all public catalogue and model surfaces',()=>{
+ assert.ok(!posters.some(p=>p.id==='poster-086'));
+ assert.ok(!json(resolve(base,'src/featured.json')).some(p=>p.id==='poster-086'));
+ assert.equal(json(resolve(base,'src/structure/collection-products.json'))['poster-086'],undefined);
+ assert.ok(!Object.keys(approvedBundle.files).some(p=>p.includes('poster-086')));
+ assert.ok(statSync(resolve(base,'model-source/collection/poster-086/poster-086-v1.blend')).isFile());
+});
