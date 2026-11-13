@@ -2001,121 +2001,89 @@
     }
   },
   "poster-067": {
-    "file": "poster-067.glb",
+    "file": "poster-067-v2.glb",
     "scale": 1,
     "kind": "collection",
     "wide": false,
     "parts": [
       {
-        "key": "head",
-        "node": "Actuator",
-        "title": [
-          "黑泵头",
-          "Head"
-        ],
-        "short": [
-          "黑泵头",
-          "Head"
-        ],
-        "detail": [
-          "原图长弧形黑色泵嘴。",
-          "Long curved black dispensing head from the reference."
-        ]
-      },
-      {
-        "key": "stem",
-        "node": "PumpStem",
-        "title": [
-          "泵杆",
-          "Stem"
-        ],
-        "short": [
-          "泵杆",
-          "Stem"
-        ],
-        "detail": [
-          "短黑色连接杆独立上移。",
-          "The short black pump connector lifts independently."
-        ]
-      },
-      {
-        "key": "closure",
-        "node": "Closure",
-        "title": [
-          "旋盖",
-          "Closure"
-        ],
-        "short": [
-          "旋盖",
-          "Closure"
-        ],
-        "detail": [
-          "光面黑色长筒旋盖。",
-          "Tall cylindrical closure in glossy black."
-        ]
-      },
-      {
-        "key": "cord",
-        "node": "Cord",
-        "title": [
-          "编绳",
-          "Cord"
-        ],
-        "short": [
-          "编绳",
-          "Cord"
-        ],
-        "detail": [
-          "双圈棕色编绳及右侧长绳尾。",
-          "Two brown braided loops with a knot and long tails on the right."
-        ]
-      },
-      {
-        "key": "jar",
+        "key": "body",
         "node": "Body",
         "title": [
-          "玻璃瓶",
-          "Bottle"
+          "琥珀玻璃瓶与编绳",
+          "Amber glass and cord"
         ],
         "short": [
-          "玻璃瓶",
-          "Bottle"
+          "琥珀玻璃瓶与编绳",
+          "Amber glass and cord"
         ],
         "detail": [
-          "保留收腰轮廓与浅琥珀玻璃，空瓶无料液。",
-          "Empty light amber glass retains the gathered waist and rounded body."
+          "保留原收腰轮廓与双圈编绳，空瓶无料体。",
+          "Amber glass and cord"
+        ]
+      },
+      {
+        "key": "pump",
+        "node": "PumpAssembly",
+        "title": [
+          "完整黑色泵头与长吸管",
+          "Complete pump and long dip tube"
+        ],
+        "short": [
+          "完整黑色泵头与长吸管",
+          "Complete pump and long dip tube"
+        ],
+        "detail": [
+          "弧形泵嘴、泵杆、旋盖和较粗透明长吸管整体抬起。",
+          "Complete pump and long dip tube"
         ]
       },
       {
         "key": "label",
-        "node": "PaperLabel",
+        "node": "Label",
         "title": [
-          "透明膜",
-          "Carrier"
+          "透明标贴",
+          "Clear label"
         ],
         "short": [
-          "透明膜",
-          "Carrier"
+          "透明标贴",
+          "Clear label"
         ],
         "detail": [
-          "演示用无字透明承印膜。",
-          "An unprinted clear carrier illustrates the print layer."
+          "透明承印膜单独向外展开，保留原图通透外观。",
+          "Clear label"
+        ]
+      },
+      {
+        "key": "logo",
+        "node": "LogoInk",
+        "title": [
+          "liaose 字标",
+          "liaose wordmark"
+        ],
+        "short": [
+          "liaose 字标",
+          "liaose wordmark"
+        ],
+        "detail": [
+          "白色字标从标贴进一步向外展开。",
+          "liaose wordmark"
         ]
       },
       {
         "key": "print",
-        "node": "LogoPrint",
+        "node": "NameInk",
         "title": [
-          "白印字",
-          "Print"
+          "产品名文字",
+          "Product name"
         ],
         "short": [
-          "白印字",
-          "Print"
+          "产品名文字",
+          "Product name"
         ],
         "detail": [
-          "liaose 与 GINGER SHAMPOO 完整独立。",
-          "The complete liaose and GINGER SHAMPOO lettering forms one separate layer."
+          "GINGER SHAMPOO 作为最外层展开。",
+          "Product name"
         ]
       }
     ],
@@ -2124,68 +2092,72 @@
         "glass": true,
         "frosted": false,
         "pipette": false,
-        "clearLabel": true,
+        "clearLabel": false,
         "metal": false,
         "tintedGlass": true,
         "attenuationDistance": 0.3,
         "studio": {
           "background": "#786047",
           "ink": "#fff2db"
-        }
+        },
+        "labelShadows": true,
+        "thinFilmShadows": true,
+        "carrierOpacity": [
+          0.05,
+          1
+        ],
+        "referenceGlass": true
       },
       "explosion": {
+        "mobilePrintSpread": 1,
         "offsets": {
-          "closure": [
+          "body": [
+            0.55,
             0,
-            0.85,
             0
           ],
-          "stem": [
-            0,
-            1.75,
+          "pump": [
+            0.55,
+            2.25,
             0
-          ],
-          "head": [
-            0,
-            2.9,
-            0
-          ],
-          "cord": [
-            1.15,
-            0.2,
-            0.25
           ],
           "label": [
-            -1.6,
-            0.08,
-            0.65
+            -0.55,
+            0.06,
+            0.7
+          ],
+          "logo": [
+            -1.15,
+            0.14,
+            1.3
           ],
           "print": [
-            -3.3,
-            0.18,
-            1.65
+            -1.35,
+            -0.1,
+            1.85
           ]
         },
         "scales": {
-          "label": 1.15,
-          "print": 1.95
+          "label": 1.05,
+          "logo": 1.4,
+          "print": 1.65
         },
         "camera": {
-          "centerY": [
-            1.45,
-            3.1
-          ],
-          "height": [
-            4.2,
-            7.8
-          ],
-          "width": [
-            3.8,
-            7.6
-          ],
           "centerX": [
             0,
-            -0.9
+            -0.15
+          ],
+          "centerY": [
+            1.48,
+            2.5
+          ],
+          "height": [
+            3.6,
+            5.9
+          ],
+          "width": [
+            2.9,
+            4.7
           ]
         }
       }

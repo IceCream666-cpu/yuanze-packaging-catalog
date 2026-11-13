@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.51-collection-packaging",
+  "scope": "approved-client1.54-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -187,12 +187,12 @@
       "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2"
     },
     {
-      "name": "poster-067.glb",
+      "name": "poster-067-v2.glb",
       "kind": "model",
-      "file": "packaging-assets/poster-067.glb",
-      "productionTarget": "assets/packaging/poster-067.glb",
-      "bytes": 3379404,
-      "sha256": "88711a7dc5b7bba54e05cbf74f1cbb80207e882aae11dd1ef6dbad6b932a2a1e"
+      "file": "packaging-assets/poster-067-v2.glb",
+      "productionTarget": "assets/packaging/poster-067-v2.glb",
+      "bytes": 3973472,
+      "sha256": "87e147f13957983fb664c1f256914d2cca238639310a8964de36946ee383f6c9"
     },
     {
       "name": "poster-068.glb",
@@ -484,15 +484,13 @@
     },
     {
       "posterId": "poster-067",
-      "file": "poster-067.glb",
+      "file": "poster-067-v2.glb",
       "components": [
-        "Actuator",
-        "PumpStem",
-        "Closure",
-        "Cord",
         "Body",
-        "PaperLabel",
-        "LogoPrint"
+        "PumpAssembly",
+        "Label",
+        "LogoInk",
+        "NameInk"
       ]
     },
     {

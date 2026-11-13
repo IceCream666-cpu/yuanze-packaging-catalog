@@ -270,7 +270,7 @@ test('reviewed tinted glass uses absorption and frosted glass retains its origin
       body.material.transmission=.62;body.material.color.set('#b08040');const tint=body.material.color.clone();
       const other=new Three.Mesh(new Three.BoxGeometry(),body.material);body.add(other);
       api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-      assert.equal(body.material.transmission,.62);
+      assert.equal(body.material.transmission,id==='poster-067'?.94:.62);
       if(id==='poster-067') for(const mesh of [body,other]) {
         assert.ok(mesh.material.attenuationColor.equals(tint));assert.equal(mesh.material.attenuationDistance,.3);
         assert.ok(mesh.material.color.equals(new Three.Color('#ffffff')));
@@ -1331,7 +1331,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
   }
-  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-072','poster-073','poster-081','poster-084']);
+  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-067','poster-072','poster-073','poster-081','poster-084']);
  });
 
  test('Body Oil glass refinement stays on the hollow bottle and preserves shared cap material',async()=>{
@@ -1567,5 +1567,5 @@ test('Amber Ginger v2 keeps pump fitted, separates ink and preserves weak film s
   for(const k of ['logo','print'])parts[k].traverse(o=>{if(o.isMesh)assert.equal(o.castShadow,false);});
   let disposed=0;label.customDepthMaterial.addEventListener('dispose',()=>disposed++);api.dispose();api=null;assert.equal(disposed,1);
  }finally{api?.dispose();env.close();}
- assert.notEqual(PACKAGING_PRODUCTS['poster-067'].file,product.file,'preview does not replace published registry');
+ assert.equal(PACKAGING_PRODUCTS['poster-067'].file,product.file,'approved registry selects the reviewed version');
 });
