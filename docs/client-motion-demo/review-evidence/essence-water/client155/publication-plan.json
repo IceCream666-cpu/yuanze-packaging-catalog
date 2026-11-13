@@ -1,0 +1,63 @@
+{
+  "version": "client1.55",
+  "baselineManifestSha256": "559a306f972c51196ef531d49074f273996c2e97a7fb5495aa2c2768c9df582e",
+  "manifestSha256": "90548cd58f59cd0179aa2873d4b775bb98868989fc5a16135cc812d5f0977e1a",
+  "changed": [
+    "assets/packaging/PackagingDetail-DBFBlJkt.js",
+    "assets/packaging/packaging-scene-ClmDjUs1.js",
+    "assets/packaging/poster-068-v3.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "added": [
+    "assets/packaging/PackagingDetail-DBFBlJkt.js",
+    "assets/packaging/packaging-scene-ClmDjUs1.js",
+    "assets/packaging/poster-068-v3.glb"
+  ],
+  "removed": [
+    "assets/packaging/PackagingDetail-CW1a3sPr.js",
+    "assets/packaging/packaging-scene-CLouMkUo.js",
+    "assets/packaging/poster-068.glb"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067-v2.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-079-v2.glb",
+    "assets/packaging/poster-080-v2.glb",
+    "assets/packaging/poster-081-v1.glb",
+    "assets/packaging/poster-082-v1.glb",
+    "assets/packaging/poster-084-v2.glb",
+    "assets/packaging/poster-085-v2.glb"
+  ],
+  "resources": 514,
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "publishedModel": "poster-068",
+  "previewOnlyModel": null
+}

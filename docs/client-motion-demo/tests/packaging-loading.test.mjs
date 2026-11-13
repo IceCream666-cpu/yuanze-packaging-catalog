@@ -212,7 +212,7 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
           assert.ok(label.x-print.x>=sidewaysSpread*value-1e-9,'lettering must follow its approved sideways separation');
           assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
           } else assert.ok(print.length()>.5*value,'direct printing must separate from the container');
-          const capKey=parts.closure?'closure':'pump';
+          const capKey=parts.closure?'closure':parts.pump?'pump':'cap';
           assert.ok(parts[capKey].position.y-rest[capKey].p.y>.7*value,'cap or complete pump separation must remain substantial');
           for(const [key,offset] of Object.entries(product.review.explosion.offsets)) {
             if(value===1) parts[key].position.clone().sub(rest[key].p).toArray().forEach((n,i)=>assert.ok(Math.abs(n-offset[i])<1e-9));
@@ -1331,7 +1331,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
   }
-  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-067','poster-072','poster-073','poster-081','poster-084']);
+  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-067','poster-068','poster-072','poster-073','poster-081','poster-084']);
  });
 
  test('Body Oil glass refinement stays on the hollow bottle and preserves shared cap material',async()=>{
@@ -1607,7 +1607,7 @@ test('Essence Water v2 keeps cap fitted, separates ink and preserves weak film s
   for(const k of ['logo','print'])parts[k].traverse(o=>{if(o.isMesh)assert.equal(o.castShadow,false);});
   let disposed=0;label.customDepthMaterial.addEventListener('dispose',()=>disposed++);api.dispose();api=null;assert.equal(disposed,1);
  }finally{api?.dispose();env.close();}
- assert.notEqual(PACKAGING_PRODUCTS['poster-068'].file,product.file,'preview remains separate from the approved registry');
+ assert.notEqual(PACKAGING_PRODUCTS['poster-068'].file,product.file,'historical v2 is not the approved version');
 });
 
 test('Essence Water v3 keeps the collar on the bottle and opens the complete cap and reducer',async()=>{
@@ -1656,5 +1656,5 @@ test('Essence Water v3 keeps the collar on the bottle and opens the complete cap
   for(const k of ['logo','print'])parts[k].traverse(o=>{if(o.isMesh)assert.equal(o.castShadow,false);});
   let disposed=0;label.customDepthMaterial.addEventListener('dispose',()=>disposed++);api.dispose();api=null;assert.equal(disposed,1);
  }finally{api?.dispose();env.close();}
- assert.notEqual(PACKAGING_PRODUCTS['poster-068'].file,product.file,'preview remains separate from the approved registry');
+ assert.equal(PACKAGING_PRODUCTS['poster-068'].file,product.file,'approved v3 is registered for publication');
 });

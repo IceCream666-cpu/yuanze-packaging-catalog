@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.54-collection-packaging",
+  "scope": "approved-client1.55-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -195,12 +195,12 @@
       "sha256": "87e147f13957983fb664c1f256914d2cca238639310a8964de36946ee383f6c9"
     },
     {
-      "name": "poster-068.glb",
+      "name": "poster-068-v3.glb",
       "kind": "model",
-      "file": "packaging-assets/poster-068.glb",
-      "productionTarget": "assets/packaging/poster-068.glb",
-      "bytes": 1458536,
-      "sha256": "c468e4254a719b5ae4c2d2e1c8bcd03a527b398af3088ae28584b1d7946a1da3"
+      "file": "packaging-assets/poster-068-v3.glb",
+      "productionTarget": "assets/packaging/poster-068-v3.glb",
+      "bytes": 2327112,
+      "sha256": "1e7715f7f43d4c4cb5b380e3db204aaf4ba3bfb2c8d590834c47a1c1940b99fe"
     },
     {
       "name": "poster-069.glb",
@@ -495,13 +495,14 @@
     },
     {
       "posterId": "poster-068",
-      "file": "poster-068.glb",
+      "file": "poster-068-v3.glb",
       "components": [
-        "Closure",
-        "NeckInsert",
         "Body",
-        "PaperLabel",
-        "LogoPrint"
+        "CapAssembly",
+        "FlowReducer",
+        "Label",
+        "LogoInk",
+        "NameInk"
       ]
     },
     {
