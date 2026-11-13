@@ -449,3 +449,7 @@ Daily Hair Ritual 铜棕泵瓶＋玫瑰棕软管，空包材与完整泵头/吸�
 
 ## 2026-11-13 client1.53 — Scalp Essence 撤下与全库检查（已上线并验证）
 13:55:33 发布，13:59:47 独立 HTTPS 验证通过；源码 3e74dfdf。撤下086海报与五个派生资源；模型从未发布，保留本地源档。68海报、31首页、32正式模型；现有模型哈希全部保持，6820项展厅外文件不变，无重启和业务写入。191前端与3发布计划测试通过；全量海报缩略图、首页预览、模型读取及权限通过，正式浏览器085展开/旋转/合拢抽查通过。旧款067、068、071尚未完成简化；083仅有海报无正式模型。停止上新，未擅自重做旧模型。详见 `client-motion-demo/review-evidence/scalp-essence/client153/审查报告.md` 和 `client-motion-demo/client153-release.json`。
+
+
+## 2026-11-13 poster-067 v2 — 旧款20本地待审
+Amber Ginger Shampoo完整黑色泵头与较粗透明长吸管整体展开；编绳保留瓶身；透明承印膜、Logo、产品名分层。Blender源档/版本化GLB与独立amber-ginger.html预览；192测试、隔离构建、桌面/模拟窄屏视觉检查通过。透明膜弱投影已检查，实时透射接影使用少量表面响应；详见client-motion-demo/review-evidence/amber-ginger/v2/QA.md。未发布，正式client1.53与原注册不变。下一步21/068，再23/071，逐款停审。

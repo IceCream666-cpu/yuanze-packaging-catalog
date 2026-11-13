@@ -9,6 +9,7 @@ function disposeObjects(...objects) {
   const geometries = new Set(), materials = new Set(), textures = new Set();
   objects.forEach(object => object?.traverse(o => {
     if (o.geometry) geometries.add(o.geometry);
+    if (o.customDepthMaterial) materials.add(o.customDepthMaterial);
     if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => materials.add(m));
   }));
   materials.forEach(m => {Object.values(m).forEach(v => {if (v?.isTexture) textures.add(v);}); m.dispose();});
@@ -27,6 +28,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const bodyOil = product.file === 'poster-073.glb';
   const handGel = product.file === 'poster-081-v1.glb';
   const softBodyGlass = product.file === 'poster-084-v2.glb';
+  const amberGinger = product.file === 'poster-067-v2.glb';
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
@@ -259,16 +261,18 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
-      if (handGel || softBodyGlass) {
+      if (handGel || softBodyGlass || amberGinger) {
         // The woven RGB textures have no cutouts; include their rear faces in the glass transmission pass.
         if (m.name === 'Warm ivory woven label' || m.name === 'Black woven side flag') {
           m.transparent=false; m.opacity=1; m.alphaTest=0;
         }
-        if (component === parts.body) {
+        if (component === parts.body && (!amberGinger || m.transmission > .5)) {
           // The mesh already contains both hollow-wall interfaces; avoid Three's extra DoubleSide back-face pass.
-          m.side=T.FrontSide; m.depthWrite=false; m.thickness=.045;
+          m.side=T.FrontSide; m.depthWrite=false; m.thickness=amberGinger ? .12 : .045;
+          // shortcut: retain a small surface response for real-time shadows; full transmitted shadows need path tracing.
+          if (amberGinger) m.transmission=.94;
         }
-        if (m.name === 'Transparent polyethylene dip tube' || (softBodyGlass && m.name === 'Clear polyethylene hollow suction tube')) {
+        if (m.name === 'Transparent polyethylene dip tube' || (softBodyGlass && m.name === 'Clear polyethylene hollow suction tube') || (amberGinger && m.name === 'Amber clear polyethylene hollow dip tube')) {
           // shortcut: composite the nested clear tube after glass; exact nested refraction needs a multipass renderer.
           m.transmission=0; m.transparent=true; m.opacity=.55; m.depthWrite=false; m.side=T.FrontSide;
           m.color.set('#e7ece8'); m.roughness=.06; m.specularIntensity=.8; m.envMapIntensity=.65;
@@ -285,6 +289,12 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       if (appearance?.labelShadows && component === parts.label && !appearance.carrierOpacity && !m.transparent && m.opacity >= .99 && !(m.transmission > .5)) {
         o.castShadow=true; o.receiveShadow=true;
       }
+      if (appearance?.thinFilmShadows && component === parts.label) {
+        // Alpha-hashed depth preserves the clear film's weak shadow instead of an opaque rectangle.
+        o.customDepthMaterial=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,map:m.map,opacity:m.opacity,alphaHash:true});
+        o.castShadow=true;
+      }
+      if (appearance?.thinFilmShadows && component === parts.body) o.receiveShadow=true;
       if (b5 && m.map) m.toneMapped=false;
       if (m.map) {m.depthWrite=!m.transparent; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=m.transparent?2:0;}
       return;
@@ -366,7 +376,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       if (appearance.clearLabel || appearance.carrierOpacity) {
         const [closed, open] = appearance.carrierOpacity || [.05, 1];
         const opacity = closed + (open - closed) * smooth(.03, .6, current);
-        parts.label.traverse(o => {if (o.isMesh) o.material.opacity = opacity;});
+        parts.label.traverse(o => {if (o.isMesh) {o.material.opacity = opacity; if(o.customDepthMaterial) o.customDepthMaterial.opacity=opacity;}});
       }
     } else if (pdrn) {
       const capOpen=smooth(.02,.72,current), linerOpen=smooth(.25,1,current);

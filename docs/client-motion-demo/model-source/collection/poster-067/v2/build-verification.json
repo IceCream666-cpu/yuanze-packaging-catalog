@@ -1,0 +1,15 @@
+{
+  "roots": [
+    "Body",
+    "PumpAssembly",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "tubeOuterDiameterRelativeToBottleWidth": 0.064,
+  "tubeBottomClearance": 0.03589108910891088,
+  "oldBottleAndPumpMeshesPreserved": true,
+  "cordAttachedToBody": true,
+  "formula": false,
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-067/poster-067.blend"
+}
