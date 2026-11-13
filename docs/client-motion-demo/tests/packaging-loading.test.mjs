@@ -1569,3 +1569,43 @@ test('Amber Ginger v2 keeps pump fitted, separates ink and preserves weak film s
  }finally{api?.dispose();env.close();}
  assert.equal(PACKAGING_PRODUCTS['poster-067'].file,product.file,'approved registry selects the reviewed version');
 });
+
+test('Essence Water v2 keeps cap fitted, separates ink and preserves weak film shadows',async()=>{
+ const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-068/v2/review-product.json',import.meta.url),'utf8'));
+ const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+ const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+ const nodes=gltf.nodes.map(n=>{
+  const m=new Three.MeshPhysicalMaterial();m.name=gltf.materials?.[gltf.meshes?.[n.mesh]?.primitives[0]?.material]?.name??'';
+  if(/carrier|print|label/i.test(n.name)){m.map=new Three.Texture();m.transparent=true;}
+  const o='mesh' in n?new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),m):new Three.Group();o.name=n.name;
+  if(n.matrix)o.applyMatrix4(new Three.Matrix4().fromArray(n.matrix));else{o.position.fromArray(n.translation??[0,0,0]);o.quaternion.fromArray(n.rotation??[0,0,0,1]);o.scale.fromArray(n.scale??[1,1,1]);}return o;
+ });
+ gltf.nodes.forEach((n,i)=>n.children?.forEach(j=>nodes[i].add(nodes[j])));
+ const model=new Three.Group();gltf.scenes[gltf.scene??0].nodes.forEach(i=>model.add(nodes[i]));
+ const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+ assert.deepEqual(model.children.map(o=>o.name).sort(),product.parts.map(p=>p.node).sort());
+ const capPieces=[...parts.cap.children];assert.equal(capPieces.length,3);
+ assert.ok(capPieces.some(o=>/Silver neck/.test(o.name)));
+ assert.ok(capPieces.some(o=>/concealed/i.test(o.name)));
+ assert.ok(capPieces.some(o=>/Lavender cap/.test(o.name)));
+ const env=harness({product,parse:()=>Promise.resolve({scene:model})});let api;
+ try{
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes))});
+  const flush=()=>{const fs=[...env.frames.values()];env.frames.clear();fs.forEach(fn=>fn(16));model.updateWorldMatrix(true,true);};flush();
+  const rest=Object.fromEntries(Object.entries(parts).map(([k,p])=>[k,p.position.clone()]));
+  const fitted=capPieces.map(o=>o.matrix.toArray());
+  const label=parts.label.children.find(o=>o.isMesh);assert.equal(label.castShadow,true);assert.equal(label.customDepthMaterial.alphaHash,true);
+  assert.equal(label.customDepthMaterial.map,label.material.map);
+  for(const p of [0,.5,1,.5,0]){
+   api.setProgress(p);flush();
+   capPieces.forEach((o,i)=>assert.deepEqual(o.matrix.toArray(),fitted[i]));
+   assert.ok(Math.abs(parts.cap.position.y-rest.cap.y-1.4*p)<1e-8);
+   const z=k=>parts[k].position.z-rest[k].z;
+   if(p>0){assert.ok(z('print')>z('logo'));assert.ok(z('logo')>z('label'));}
+   assert.equal(label.customDepthMaterial.opacity,label.material.opacity);
+  }
+  for(const k of ['logo','print'])parts[k].traverse(o=>{if(o.isMesh)assert.equal(o.castShadow,false);});
+  let disposed=0;label.customDepthMaterial.addEventListener('dispose',()=>disposed++);api.dispose();api=null;assert.equal(disposed,1);
+ }finally{api?.dispose();env.close();}
+ assert.notEqual(PACKAGING_PRODUCTS['poster-068'].file,product.file,'preview remains separate from the approved registry');
+});

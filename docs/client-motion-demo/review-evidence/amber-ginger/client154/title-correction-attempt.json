@@ -1,0 +1,8 @@
+{
+  "status": "not-published",
+  "reason": "Capacity guard stopped before upload or remote writes",
+  "availableBytes": 314048512,
+  "requiredBytes": 494353139,
+  "resolution": "Retained published client1.54 bundle; restored local release to matching bundle. Inherited document title still reads client1.53.",
+  "modelPublicationAffected": false
+}

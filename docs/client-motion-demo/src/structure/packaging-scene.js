@@ -29,6 +29,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const handGel = product.file === 'poster-081-v1.glb';
   const softBodyGlass = product.file === 'poster-084-v2.glb';
   const amberGinger = product.file === 'poster-067-v2.glb';
+  const essenceWater = product.file === 'poster-068-v2.glb';
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
@@ -261,16 +262,16 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
-      if (handGel || softBodyGlass || amberGinger) {
+      if (handGel || softBodyGlass || amberGinger || essenceWater) {
         // The woven RGB textures have no cutouts; include their rear faces in the glass transmission pass.
         if (m.name === 'Warm ivory woven label' || m.name === 'Black woven side flag') {
           m.transparent=false; m.opacity=1; m.alphaTest=0;
         }
-        if (component === parts.body && (!amberGinger || m.transmission > .5)) {
+        if (component === parts.body && (!(amberGinger || essenceWater) || m.transmission > .5)) {
           // The mesh already contains both hollow-wall interfaces; avoid Three's extra DoubleSide back-face pass.
-          m.side=T.FrontSide; m.depthWrite=false; m.thickness=amberGinger ? .12 : .045;
+          m.side=T.FrontSide; m.depthWrite=false; m.thickness=(amberGinger || essenceWater) ? .12 : .045;
           // shortcut: retain a small surface response for real-time shadows; full transmitted shadows need path tracing.
-          if (amberGinger) m.transmission=.94;
+          if (amberGinger || essenceWater) m.transmission=.94;
         }
         if (m.name === 'Transparent polyethylene dip tube' || (softBodyGlass && m.name === 'Clear polyethylene hollow suction tube') || (amberGinger && m.name === 'Amber clear polyethylene hollow dip tube')) {
           // shortcut: composite the nested clear tube after glass; exact nested refraction needs a multipass renderer.

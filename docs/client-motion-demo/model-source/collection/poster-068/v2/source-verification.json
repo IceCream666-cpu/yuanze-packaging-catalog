@@ -1,0 +1,14 @@
+{
+  "originalGeometryWorldCoordinatesUnchanged": [
+    "Tall hollow rounded rectangular bottle and heavy glass base",
+    "Lavender cap with original U folded front",
+    "Concealed closing insert and center seal",
+    "Silver neck ring"
+  ],
+  "completeCapChildCount": 3,
+  "rigidClosedHalfFullReturn": true,
+  "physicalLabelCastsShadow": true,
+  "letterPlanesCastNoOpaqueShadows": true,
+  "renderEngine": "CYCLES",
+  "containsFormula": false
+}

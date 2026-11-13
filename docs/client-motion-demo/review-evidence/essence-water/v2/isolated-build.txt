@@ -1,0 +1,43 @@
+vite v8.3.4 building client environment for showroom...
+transforming...
+✓ 1955 modules transformed.
+
+(!) outDir /tmp/essence-water-build-check is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+rendering chunks...
+computing gzip size...
+../../../../../../../../../../tmp/essence-water-build-check/index.html                                       0.78 kB │ gzip:   0.46 kB
+../../../../../../../../../../tmp/essence-water-build-check/.vite/manifest.json                              0.92 kB │ gzip:   0.27 kB
+../../../../../../../../../../tmp/essence-water-build-check/assets/packaging/PackagingDetail-j1D-5bwl.css   12.59 kB │ gzip:   3.04 kB
+../../../../../../../../../../tmp/essence-water-build-check/preview.css                                     51.22 kB │ gzip:  10.59 kB
+../../../../../../../../../../tmp/essence-water-build-check/assets/packaging/PackagingDetail-CAYJ_kA8.js    12.78 kB │ gzip:   4.89 kB
+../../../../../../../../../../tmp/essence-water-build-check/preview.js                                     407.74 kB │ gzip: 117.02 kB
+../../../../../../../../../../tmp/essence-water-build-check/assets/packaging/packaging-scene-3tZYfXbk.js   581.95 kB │ gzip: 148.47 kB
+
+[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs:2:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs:2:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+
+✓ built in 370ms

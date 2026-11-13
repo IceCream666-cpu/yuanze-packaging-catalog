@@ -1,0 +1,17 @@
+{
+  "roots": [
+    "Body",
+    "CapAssembly",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "completeCapMeshes": [
+    "Concealed closing insert and center seal",
+    "Lavender cap with original U folded front",
+    "Silver neck ring"
+  ],
+  "originalGlassAndSculptedCapPreserved": true,
+  "formula": false,
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-068/poster-068.blend"
+}
