@@ -1331,7 +1331,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
   }
-  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-072','poster-073','poster-081']);
+  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-072','poster-073','poster-081','poster-084']);
  });
 
  test('Body Oil glass refinement stays on the hollow bottle and preserves shared cap material',async()=>{

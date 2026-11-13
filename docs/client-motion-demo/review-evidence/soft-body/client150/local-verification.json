@@ -1,0 +1,25 @@
+{
+  "stage": "local-verified-ready-to-publish",
+  "tests": {
+    "frontend": 185,
+    "resource": 20,
+    "publicationPlan": 3
+  },
+  "poster085": {
+    "status": "draft-only",
+    "visualQA": "Two products; bronze pump bottle with ivory base and matching squeeze tube; liaose logo and copy checked; no promotional or efficacy claims."
+  },
+  "model084": {
+    "status": "approved-clear-glass-v2",
+    "browser": "Ego Lite local desktop",
+    "components": [
+      "body",
+      "pump",
+      "label",
+      "logo",
+      "print"
+    ],
+    "fullExpansionVerified": true
+  },
+  "aestheticReview": "Visual review of poster and model proportions, glass, label separation, readability completed; no frontend visual lint findings."
+}

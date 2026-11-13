@@ -380,6 +380,18 @@
       "bytes": 2122868,
       "sha256": "0d0b62cd6a25a29f225d9157288fe98a5fb7118bdaeaf256a4c2f151a31a1dde"
     },
+    "assets/featured/poster-084-1024.webp": {
+      "bytes": 44674,
+      "sha256": "03c3ef0c02629e7712b9a940826c64b61e7bdfcfe7b60017c6e8620a98ae6148"
+    },
+    "assets/featured/poster-084-640.webp": {
+      "bytes": 22216,
+      "sha256": "4cf99d1f4e54371fa2a72df5e028387cd92a55622b9322e85209637d9ce725b2"
+    },
+    "assets/featured/poster-084.png": {
+      "bytes": 2030689,
+      "sha256": "20d7d1862c236bfa33d6bab050866202b39fde2e71d26bea1db8d22d05b52901"
+    },
     "assets/optimized/poster-001-strip.webp": {
       "bytes": 4762,
       "sha256": "dc6fe7aecafdcab6089ec7331d236436ded7b3e0c1a39ae25a3adb28c1d006fd"
@@ -652,9 +664,9 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-cpZ7-GdI.js": {
+    "assets/packaging/PackagingDetail-B_3DPi1e.js": {
       "bytes": 12788,
-      "sha256": "11dab4a63fc2e6a710a7e5fa3f05a4bb8edb74be810371a7627e208bc0993b09"
+      "sha256": "e09d59a3086f2d6f99565f842ee747a750e039714df9d06109b7dcfcdfac2539"
     },
     "assets/packaging/PackagingDetail-j1D-5bwl.css": {
       "bytes": 12596,
@@ -676,9 +688,9 @@
       "bytes": 996144,
       "sha256": "d5a1b4aa35806802b8b3022a2d5061ba2203c9a7164035d15ecfb6ef4876b936"
     },
-    "assets/packaging/packaging-scene-B85CxT-L.js": {
-      "bytes": 581195,
-      "sha256": "1d4dc184c8870bdbe105f138911cddb42a13859c13411e7d1eb8c02bb3d3b93c"
+    "assets/packaging/packaging-scene-Cahxbiuj.js": {
+      "bytes": 581270,
+      "sha256": "5d57d742b4cf725d251c4d8afb1a846b3c8f146b7908b3ebcdc98c4fef146bde"
     },
     "assets/packaging/poster-013.glb": {
       "bytes": 1064352,
@@ -791,6 +803,10 @@
     "assets/packaging/poster-082-v1.glb": {
       "bytes": 1917000,
       "sha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f"
+    },
+    "assets/packaging/poster-084-v2.glb": {
+      "bytes": 2393772,
+      "sha256": "47052273d6ec19f4ff8f5e25b451948487376b6428d622c1dc3722a8d4582792"
     },
     "assets/poster-banners/01-pdrn-capsule-cream.webp": {
       "bytes": 1135590,
@@ -1990,15 +2006,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "670d1e4a4569994bbe9f2b7531b921ed7469e2ca0304a90324937e1997ad7c4b"
+      "sha256": "64819ba6dd133235321fb21cb7113aac9b8e3afb68dc1978b4f80b948ca9dddf"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 401260,
-      "sha256": "1035b94cbf9835d23bab1a0c6160da66220e1e86c119338d1e2ff36bf10dba8b"
+      "bytes": 404113,
+      "sha256": "36cadfa5bae0990154a8b6686e1c10bffb4c65eae2d49bb9982644a39db1f032"
     },
     "product-posters.js": {
       "bytes": 23689,
@@ -2007,5 +2023,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.49"
+  "version": "client1.50"
 }

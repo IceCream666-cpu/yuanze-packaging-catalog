@@ -4054,5 +4054,169 @@
         "#9fc7db"
       ]
     }
+  },
+  "poster-084": {
+    "file": "poster-084-v2.glb",
+    "kind": "collection",
+    "scale": 1,
+    "parts": [
+      {
+        "key": "body",
+        "node": "Body",
+        "title": [
+          "透明玻璃空瓶",
+          "Clear glass bottles"
+        ],
+        "short": [
+          "透明玻璃空瓶",
+          "Clear glass bottles"
+        ],
+        "detail": [
+          "无色透明玻璃，保留瓶壁与厚底；蓝粉色来自海报中的料体，本模型不含料体。",
+          "Colorless glass with hollow walls and a thick base. Blue and pink in the poster are contents; this model is empty."
+        ]
+      },
+      {
+        "key": "pump",
+        "node": "Pump",
+        "title": [
+          "完整泵头与长吸管",
+          "Complete pump and dip tube"
+        ],
+        "short": [
+          "完整泵头与长吸管",
+          "Complete pump and dip tube"
+        ],
+        "detail": [
+          "泵头、螺盖和透明长吸管作为一组整体抬起。",
+          "The complete pump and long clear dip tube lift together."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "Label",
+        "title": [
+          "白色环绕标贴",
+          "White wrap labels"
+        ],
+        "short": [
+          "白色环绕标贴",
+          "White wrap labels"
+        ],
+        "detail": [
+          "白色标贴从瓶身分离，保留贴合曲面。",
+          "Curved white labels separate from the glass."
+        ]
+      },
+      {
+        "key": "logo",
+        "node": "LogoInk",
+        "title": [
+          "白色 liaose 字标",
+          "White liaose wordmarks"
+        ],
+        "short": [
+          "白色 liaose 字标",
+          "White liaose wordmarks"
+        ],
+        "detail": [
+          "瓶身白色字标向外移出并放大。",
+          "White ink moves outward and enlarges."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "NameInk",
+        "title": [
+          "竖排产品文字",
+          "Vertical product lettering"
+        ],
+        "short": [
+          "竖排产品文字",
+          "Vertical product lettering"
+        ],
+        "detail": [
+          "BODY LOTION / BODY WASH 等竖排文字向标贴外层展开。",
+          "Product lettering separates farther than the labels."
+        ]
+      }
+    ],
+    "review": {
+      "appearance": {
+        "glass": true,
+        "frosted": false,
+        "studio": {
+          "background": "#e6e9e6",
+          "ink": "#263b3a"
+        },
+        "referenceGlass": true
+      },
+      "explosion": {
+        "mobilePrintSpread": 1,
+        "offsets": {
+          "body": [
+            1,
+            0,
+            0
+          ],
+          "pump": [
+            1,
+            2.2,
+            0
+          ],
+          "label": [
+            -1,
+            0.05,
+            0.8
+          ],
+          "logo": [
+            -1.7,
+            0.1,
+            1.4
+          ],
+          "print": [
+            -1.7,
+            0.05,
+            1.9
+          ]
+        },
+        "scales": {
+          "label": 1,
+          "logo": 1.8,
+          "print": 1.08
+        },
+        "camera": {
+          "centerX": [
+            0,
+            0
+          ],
+          "centerY": [
+            1.5,
+            2.4
+          ],
+          "width": [
+            3.8,
+            7
+          ],
+          "height": [
+            3.7,
+            6
+          ]
+        }
+      }
+    },
+    "design": {
+      "name": "Soft Body Duo",
+      "kind": {
+        "zh": "透明玻璃双瓶 · 空包材",
+        "en": "Clear glass duo · empty packaging"
+      },
+      "background": "#e5e8ed",
+      "ink": "#263b3a",
+      "swatch": [
+        "#e4e9e8",
+        "#f1f0ed"
+      ]
+    }
   }
 }

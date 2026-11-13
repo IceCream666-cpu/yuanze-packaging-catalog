@@ -523,5 +523,24 @@
       "zh": "透明厚底玻璃瓶、织物环标与完整黑色长管泵组。",
       "en": "A clear thick-base glass bottle with a woven label and a complete black long-tube pump."
     }
+  },
+  {
+    "id": "poster-084",
+    "displayRevision": "clear-glass-v2",
+    "name": "Soft Body Duo",
+    "kind": {
+      "zh": "透明玻璃双瓶 · 空包材",
+      "en": "Clear glass duo · empty packaging"
+    },
+    "background": "#e5e8ed",
+    "ink": "#263b3a",
+    "swatch": [
+      "#e4e9e8",
+      "#f1f0ed"
+    ],
+    "description": {
+      "zh": "透明玻璃双瓶、白色环标与完整长管泵组，空包材展示。",
+      "en": "Clear glass duo, white wrap labels and complete long-tube pumps; empty packaging."
+    }
   }
 ]
