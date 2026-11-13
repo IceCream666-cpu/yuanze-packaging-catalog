@@ -29,7 +29,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const handGel = product.file === 'poster-081-v1.glb';
   const softBodyGlass = product.file === 'poster-084-v2.glb';
   const amberGinger = product.file === 'poster-067-v2.glb';
-  const essenceWater = product.file === 'poster-068-v2.glb';
+  const essenceWater = ['poster-068-v2.glb','poster-068-v3.glb'].includes(product.file);
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;

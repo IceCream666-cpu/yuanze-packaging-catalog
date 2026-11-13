@@ -1,0 +1,29 @@
+{
+  "roots": [
+    "Body",
+    "CapAssembly",
+    "FlowReducer",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "capChildren": [
+    "Captive annular sealing seat",
+    "Captive center sealing pin",
+    "Lavender cap with original U folded front",
+    "PP internal mating screw thread",
+    "PP threaded inner cap cup"
+  ],
+  "bottleChildren": [
+    "Glass external neck thread",
+    "Hollow glass bottle with open threaded neck",
+    "Silver neck ring"
+  ],
+  "reducerChildren": [
+    "PE reducer flange retention ribs and through-hole"
+  ],
+  "liquidPathOpen": true,
+  "illustrativeHiddenStructure": true,
+  "containsFormula": false,
+  "source": "../v2/poster-068-v2.blend"
+}

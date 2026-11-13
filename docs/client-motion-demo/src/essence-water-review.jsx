@@ -3,9 +3,9 @@ import {createRoot} from 'react-dom/client';
 import PackagingDetailLoader from './structure/PackagingDetailLoader.jsx';
 import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
 import './structure/packaging-shell.css';
-import product from '../model-source/collection/poster-068/v2/review-product.json';
+import product from '../model-source/collection/poster-068/v3/review-product.json';
 import poster from '../../mobile-client-preview/assets/posters/poster-068.webp';
-import modelUrl from '../packaging-assets/poster-068-v2.glb?url';
+import modelUrl from '../packaging-assets/poster-068-v3.glb?url';
 import logo from '../optimized-assets/yuanze-mark-compact.webp';
 
 const item = {id: 'poster-068', title: {zh: '精华水', en: 'Essence Water'}, image: poster};

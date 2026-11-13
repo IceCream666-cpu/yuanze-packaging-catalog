@@ -463,3 +463,7 @@ Amber Ginger Shampoo完整黑色泵头与较粗透明长吸管整体展开；编
 20/067 v2于15:06:06上线，15:08:39独立HTTPS验证；正式浏览器合拢/半展开/全展开/旋转复位通过。4项变更资源全哈希、32模型范围请求、三角色和退出通过；68海报/31首页/32模型、6820个展厅外文件不变，无重启或业务写入。发布源码9479c927。回执`client-motion-demo/client154-release.json`。页面继承标题仍为client1.53；额外标题修正被磁盘容量保护阻止（可用约314MB），未产生远端写入，保留稳定client1.54包，后续发布前应处理空间。
 
 21/068 v2仅本地待审：完整折面瓶盖组件、标贴/Logo/产品名三层，Blender及网页接影核验；193测试与隔离构建通过，Ego Lite桌面/手机模拟视口已目检。预览`http://127.0.0.1:8785/essence-water.html`。正式068注册未替换，23/071未修改。详见`client-motion-demo/review-evidence/essence-water/v2/QA.md`。
+
+
+## 2026-11-13 poster-068 v3 — 精华水瓶口结构补全（本地待审）
+补上开口螺纹瓶颈、贯通控流内塞、盖内螺纹与密封件；银圈固定瓶身，完整盖/内塞/瓶身三个机械组件，标贴Logo与文字分层接影。供应商资料仅支持通用结构方案，隐藏细节未获实物确认。194测试、隔离构建、Blender自检和Ego Lite交互/阴影差分通过，手机为模拟视口。独立essence-water.html已切换v3；正式注册与首页未换，未发布，071未动。详见client-motion-demo/review-evidence/essence-water/v3/QA.md。

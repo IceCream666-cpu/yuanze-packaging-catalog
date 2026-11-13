@@ -1,0 +1,6 @@
+00:00.225  blend            | Read blend: "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-068/v2/poster-068-v2.blend"
+00:00.259  blend            | Read blend: "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-068/v3/poster-068-v3.blend"
+VERIFIED: glass lower body and cap retained, open orifice, fixed collar, fitted cap, separated mechanical groups
+Blender 5.4.0 Alpha (hash 745ab9a3e3c5 built 2026-10-30 01:37:17)
+
+Blender quit
