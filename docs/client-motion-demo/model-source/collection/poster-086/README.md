@@ -1,10 +1,23 @@
 # poster-086 · Scalp Essence
 
-- 状态：海报 v2 本地待审，未发布、未注册首页、未创建3D。
-- 原顺序：用户八张参考的第8张；细长圆柱精华瓶。
-- 原附件路径已失效，reference-08.jpg 从本会话原始用户附件恢复（显示尺寸946×2048）；未以其他产品替代。
-- 风格：沿用085已确认的liaose脚本字标、暖米色背景与衬线标题；品牌替换，去掉原图功效和检测宣传。
-- 比例：v1偏细；v2加宽瓶身、拉长盖部，按参考观察比例修订。无实测尺寸，作为视觉方案，不是生产图。
-- 目检：单瓶、闭合盖、奶白上段/铜棕下段、字标及两处SCALP ESSENCE文字正确；接地阴影一致，边缘清晰、文字不遮挡瓶身。
-- 生成：内置Imagegen；提示词见prompts.md。v1留作历史，v2为当前预览。
-- 下一步：确认海报后用本机Blender建模；实体标贴推出接影、Logo及产品名独立层，并检查合拢/半展/全展/旋转。
+海报 v2 已发布 client1.52，并完成独立 HTTPS 与正式浏览器验证。3D v1 本地完成，待用户检查，未加入正式模型注册表或首页。
+
+## 参考与结构
+- 八张参考的第 8 张。reference-08.jpg 从会话附件恢复，未用其他产品替代。
+- 已确认海报：scalp-essence-poster-v2.png；奶白细长圆柱、长盖、铜棕下段。
+- 本机 Blender 5.4 Alpha 实际建模并保存 .blend，导出实际 GLB。Cycles 128 samples / Metal 渲染四种姿态。
+- 五组：Body、Cap、Label、LogoInk、NameInk。完整盖与内衬整体展开；空瓶，不加料体。
+- 实体弧形铜棕标贴推出投射瓶身阴影；Logo 和产品名为更外侧独立层。文字透明平面不产生整块矩形阴影。
+- 参考未露出内部出料结构；没有虚构隐藏泵芯。尺寸和结构为展示示意，不是制造 CAD。
+
+## 文件与预览
+- 本地交互：[scalp-essence.html](../../../scalp-essence.html)，运行时 http://127.0.0.1:8785/scalp-essence.html
+- 源文件：[poster-086-v1.blend](poster-086-v1.blend)
+- GLB：[poster-086-v1.glb](../../../packaging-assets/poster-086-v1.glb)，603120 bytes。
+- Blender 图：previews/Scalp-Essence-Blender-{closed,half,expanded,rotated}.png，1200×1500。
+- model-verification.json 校验实际 GLB 分组、边界、图片、层次与发布隔离。
+- shadow-verification.json 对照只关闭实体标贴阴影的同机位图，确认瓶身投影。
+- 浏览器、美学与模拟窄屏检查：../../../review-evidence/scalp-essence/visual-review.json。
+
+## 交付状态
+海报已上线；模型本地待审。190 项前端测试、3 项发布范围检查、正式包一致性检查通过。桌面合拢/半展/全展/旋转检查完成；393×852 为模拟视口，并非真机验证。

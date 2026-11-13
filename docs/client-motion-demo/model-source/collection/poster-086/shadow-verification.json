@@ -1,0 +1,11 @@
+{
+  "method": "same camera, materials and lights; disable only physical Label shadow for control",
+  "bottleROI": [
+    687,
+    980,
+    740,
+    1300
+  ],
+  "meanLuminanceDarkening255": 24.874174528301886,
+  "passed": true
+}

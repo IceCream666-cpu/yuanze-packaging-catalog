@@ -1,0 +1,24 @@
+{
+  "version": "client1.52",
+  "status": "published-and-online-verified",
+  "sourceCommit": "de3d51781307dc4508a1d04a83e4b126b06401c0",
+  "publishedAt": "2026-11-13T12:26:06+08:00",
+  "verifiedAt": "2026-11-13T12:28:32+08:00",
+  "counts": {
+    "posters": 69,
+    "featured": 31,
+    "models": 32
+  },
+  "publicationEvidence": "review-evidence/scalp-essence/client152/publication.json",
+  "httpsEvidence": "review-evidence/scalp-essence/client152/online-verification.json",
+  "browserEvidence": "review-evidence/scalp-essence/client152/browser-verification.json",
+  "backup": "/opt/yuanze-reference/backups/client1.52-scalp-essence-poster-20261113",
+  "localModel": {
+    "id": "poster-086",
+    "name": "Scalp Essence",
+    "status": "local-preview-awaiting-review",
+    "published": false,
+    "glb": "packaging-assets/poster-086-v1.glb",
+    "preview": "scalp-essence.html"
+  }
+}

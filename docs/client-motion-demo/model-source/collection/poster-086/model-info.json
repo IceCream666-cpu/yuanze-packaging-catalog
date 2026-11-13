@@ -1,0 +1,83 @@
+{
+  "id": "poster-086",
+  "file": "poster-086-v1.glb",
+  "blender": "5.4.0 Alpha",
+  "components": [
+    "Body",
+    "Cap",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "componentBoundsBlenderXYZ": {
+    "Body": {
+      "min": [
+        -0.5,
+        -0.5,
+        0.0
+      ],
+      "max": [
+        0.5,
+        0.5,
+        3.190000057220459
+      ]
+    },
+    "Cap": {
+      "min": [
+        -0.5,
+        -0.5,
+        3.0250000953674316
+      ],
+      "max": [
+        0.5,
+        0.5,
+        4.400000095367432
+      ]
+    },
+    "Label": {
+      "min": [
+        -0.5049999952316284,
+        -0.5049999952316284,
+        0.06499999761581421
+      ],
+      "max": [
+        0.5049999952316284,
+        0.35708892345428467,
+        1.649999976158142
+      ]
+    },
+    "LogoInk": {
+      "min": [
+        -0.3400000035762787,
+        -0.503000020980835,
+        2.3399999141693115
+      ],
+      "max": [
+        0.3400000035762787,
+        -0.36960604786872864,
+        2.5899999141693115
+      ]
+    },
+    "NameInk": {
+      "min": [
+        -0.36500000953674316,
+        -0.5080000162124634,
+        0.6399999856948853
+      ],
+      "max": [
+        0.36500000953674316,
+        -0.34972357749938965,
+        0.9319999814033508
+      ]
+    }
+  },
+  "containsFormula": false,
+  "illustrativeDimensions": true,
+  "heightToDiameter": 4.4,
+  "capHeightFraction": 0.31250000000000006,
+  "lowerCopperHeightFraction": 0.37499999999999994,
+  "labelCastsShadow": true,
+  "inkCastsShadow": false,
+  "sourcePoster": "scalp-essence-poster-v2.png",
+  "hiddenMechanism": "Not inferred from a closed reference; complete cap and empty bottle only."
+}

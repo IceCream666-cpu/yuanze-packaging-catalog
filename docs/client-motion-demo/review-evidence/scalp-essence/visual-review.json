@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-11-13T12:39:16+08:00",
+  "browser": "Ego Lite",
+  "desktopViewport": [
+    1225,
+    970
+  ],
+  "states": [
+    "closed 0%",
+    "half 50%",
+    "expanded 100%",
+    "rotated 90deg",
+    "returned to front and closed"
+  ],
+  "responsive": {
+    "method": "same-origin iframe with independent viewport; CDP override was reset by browser wrapper",
+    "viewport": [
+      393,
+      852
+    ],
+    "physicalDevice": false,
+    "expanded": 100,
+    "horizontalOverflow": false,
+    "screenshot": "browser-mobile-expanded.png"
+  },
+  "blenderRenders": [
+    "closed",
+    "half",
+    "expanded",
+    "rotated"
+  ],
+  "labelShadow": "visible on bottle in half pose; paired Cycles render isolates physical label contribution",
+  "inkShadow": "alpha text quads do not cast opaque rectangular shadows",
+  "aestheticReview": {
+    "tool": "impeccable",
+    "detectorFindings": [],
+    "fixed": "warm midtone preview background and enlarged expanded white product text improve readability; dark espresso logo",
+    "visualPass": true
+  },
+  "tests": {
+    "frontendPassed": 190,
+    "releaseScopePassed": 3,
+    "actualGlbValidation": true,
+    "formalBundleCheck": true
+  },
+  "modelPublished": false
+}

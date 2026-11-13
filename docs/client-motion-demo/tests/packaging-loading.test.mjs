@@ -1508,8 +1508,8 @@ for (const width of [393,1200]) test(`Soap Duo moves complete assemblies and dis
 });
 
 
-test('Daily Hair Ritual and future review models preserve physical label shadows without opaque ink quads',async()=>{
- const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-085/review-product.json',import.meta.url),'utf8'));
+for(const id of ['085','086']) test(`poster-${id} preserves physical label shadows without opaque ink quads`,async()=>{
+ const product=JSON.parse(readFileSync(new URL(`../model-source/collection/poster-${id}/review-product.json`,import.meta.url),'utf8'));
  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
  const model=new Three.Group(); const meshes={};

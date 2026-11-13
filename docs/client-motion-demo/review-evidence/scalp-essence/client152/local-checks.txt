@@ -1,1 +1,4 @@
-189 frontend tests passed; 3 release-plan tests passed; 519-file bundle matches reviewed source. Approved poster lossless pixel verification passed.
+Frontend: 190 passed, 0 failed, 0 skipped.
+Release plan: 3 passed.
+Actual GLB and label shadow control assertions passed.
+client152 reviewed source/bundle check passed.
