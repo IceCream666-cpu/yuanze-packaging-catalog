@@ -21,3 +21,8 @@
 - 正式工程为 `/Users/icecream/Desktop/包材库`，私有仓库为 `IceCream666-cpu/yuanze-packaging-catalog`。本机提交完成后由仓库专属钩子自动上传；不要把旧工程副本覆盖到正式工程。
 - 完成修改并通过测试后创建提交，检查上传结果。若上传失败，保留本地提交，排查连接或分支冲突后运行 `python3 scripts/github_sync.py` 重试；禁止强制推送。
 - 不向 GitHub 上传密钥、密码、运行数据库或被 `.gitignore` 排除的私有素材。新设备需运行 `python3 scripts/github_sync.py --install` 安装本地同步钩子。
+
+## 后续包材模型标贴投影（2026-11-13）
+- 从 poster-085 起，每款都必须检查实体标贴/装饰面推出后在瓶身上的对应阴影；Blender 源场景与网页实时模型均须验证，不能只凭离线渲染通过。
+- 完整泵头含长吸管；标贴、Logo、产品名分层。透明文字承载面不能产生整片不透明矩形阴影。
+- 每款至少检查合拢、半展开、完全展开及旋转；截图与结果写入该款 QA 记录。新款必须配置 review.appearance.labelShadows=true 并采用共享实体标贴投影规则，若玻璃透射限制需逐款处理和说明，不能漏检。

@@ -1472,5 +1472,27 @@
     "original": "/assets/poster-084-original.webp",
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "poster-085",
+    "title": {
+      "zh": "liaose 铜棕洗护组合",
+      "en": "liaose Daily Hair Ritual"
+    },
+    "category": "sets",
+    "style": "unclassified",
+    "image": "/assets/poster-085.webp",
+    "imageWidth": 853,
+    "imageHeight": 1280,
+    "smallImage": "/assets/poster-085-small.webp",
+    "smallWidth": 341,
+    "smallHeight": 512,
+    "thumb": "/assets/poster-085-thumb.webp",
+    "stripThumb": "/assets/poster-085-strip.webp",
+    "stripWidth": 128,
+    "stripHeight": 192,
+    "original": "/assets/poster-085-original.webp",
+    "width": 1024,
+    "height": 1536
   }
 ]

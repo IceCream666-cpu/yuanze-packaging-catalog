@@ -43,8 +43,9 @@ assert all('uri' not in b for b in doc['buffers'])
 ivory = next(m for m in doc['materials'] if m['name'] == 'Warm ivory satin molded polymer')
 assert ivory['pbrMetallicRoughness']['baseColorFactor'][3] == 1
 pipe_mat = next(m for m in doc['materials'] if m['name'] == 'Transparent hollow polyethylene suction tube')
-assert pipe_mat['alphaMode'] == 'BLEND'
-blend = HERE / 'poster-085-v1.blend'
+assert pipe_mat.get('alphaMode','OPAQUE') == 'OPAQUE'
+assert pipe_mat['extensions']['KHR_materials_transmission']['transmissionFactor'] > .9
+blend = HERE / cfg['file'].replace('.glb','.blend')
 report = {'glbSha256': hashlib.sha256(blob).hexdigest(), 'blendSha256': hashlib.sha256(blend.read_bytes()).hexdigest(),
           'glbBytes': len(blob), 'blendBytes': blend.stat().st_size, 'meshes': len(doc['meshes']),
           'triangles': sum(doc['accessors'][p['indices']]['count'] // 3 for m in doc['meshes'] for p in m['primitives']),

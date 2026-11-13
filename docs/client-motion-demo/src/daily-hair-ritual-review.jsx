@@ -5,7 +5,7 @@ import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
 import './structure/packaging-shell.css';
 import product from '../model-source/collection/poster-085/review-product.json';
 import poster from '../model-source/collection/poster-085/daily-hair-ritual-poster-v1.png';
-import modelUrl from '../packaging-assets/poster-085-v1.glb?url';
+import modelUrl from '../packaging-assets/poster-085-v2.glb?url';
 import logo from '../optimized-assets/yuanze-mark-compact.webp';
 
 const item = {id: 'poster-085', title: {zh: '铜棕洗护组合', en: 'Daily Hair Ritual'}, image: poster};

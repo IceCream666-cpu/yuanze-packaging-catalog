@@ -1,5 +1,5 @@
 {
-  "file": "poster-085-v1.glb",
+  "file": "poster-085-v2.glb",
   "kind": "collection",
   "scale": 1,
   "parts": [
@@ -107,7 +107,8 @@
       "studio": {
         "background": "#685b50",
         "ink": "#fff5e7"
-      }
+      },
+      "labelShadows": true
     },
     "explosion": {
       "mobilePrintSpread": 1,

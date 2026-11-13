@@ -439,3 +439,7 @@ Daily Hair Ritual 铜棕泵瓶＋玫瑰棕软管，空包材与完整泵头/吸�
 
 ## 2026-11-13 · poster-085 photographic-v2（本地写实渲染，未发布）
 在既有一瓶一管与六组展开模型上增加Cycles摄影场景：真实接影地面、随展开移动的无缝背景、四盏面积灯、85mm相机、微观材质及透明折射吸管。完成合拢和完全展开两张2400×3000、16位PNG；重开实际.blend验证及最终成片目检通过。详见 `client-motion-demo/model-source/collection/poster-085/photographic-v2/README.md`。本次未替换网页GLB、未修改正式注册与首页，正式版本仍client1.50；离线成片不等同实时网页质量。
+
+
+## 2026-11-13 client1.51 — Daily Hair Ritual（本地完成，待发布）
+085海报、Blender v2空包材与首页第31款。68海报/31首页/32模型。保留旧资产与首页前30款；新款实体标贴投影规则及逐款检查已加入AGENTS。证据 client-motion-demo/review-evidence/daily-hair/client151/。

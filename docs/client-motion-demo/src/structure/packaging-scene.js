@@ -281,6 +281,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           };
         }
       }
+      // Physical labels cast onto the container; transparent ink carriers must not cast opaque quads.
+      if (appearance?.labelShadows && component === parts.label && !appearance.carrierOpacity && !m.transparent && m.opacity >= .99 && !(m.transmission > .5)) {
+        o.castShadow=true; o.receiveShadow=true;
+      }
       if (b5 && m.map) m.toneMapped=false;
       if (m.map) {m.depthWrite=!m.transparent; m.polygonOffset=true; m.polygonOffsetFactor=-1; o.renderOrder=m.transparent?2:0;}
       return;

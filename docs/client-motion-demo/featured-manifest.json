@@ -1,7 +1,7 @@
 {
-  "version": "client1.50",
-  "scope": "approved-client1.50-display-derivatives",
-  "notes": "30 homepage entries; approved clear-glass Soft Body Duo appended.",
+  "version": "client1.51",
+  "scope": "approved-client1.51-display-derivatives",
+  "notes": "31 homepage entries; Daily Hair Ritual appended from approved Blender source.",
   "files": [
     {
       "posterId": "poster-012",
@@ -558,6 +558,19 @@
       "sourceModel": "poster-084-v2.blend",
       "productCount": 2,
       "method": "Approved empty clear-glass model rendered with transparent background"
+    },
+    {
+      "posterId": "poster-085",
+      "approvedPoster": "server-reference/public/showroom/assets/posters/poster-085.webp",
+      "approvedPosterSha256": "3b34e171a836614ffac2727a80c77969fcc74cedcc89a1ce1b3a489210348fe9",
+      "file": "featured-assets/poster-085.png",
+      "target": "featured/poster-085.png",
+      "productionTarget": "assets/featured/poster-085.png",
+      "sha256": "12381a721ac757d9f0c3916bed20e0fdd63edab23b8cae16e09b13c9770754ba",
+      "bytes": 1762050,
+      "tool": "Local Blender Cycles Metal",
+      "method": "Assembled approved v2 source rendered with transparent film",
+      "scope": "Approved client1.51 display derivative"
     }
   ],
   "approval": {

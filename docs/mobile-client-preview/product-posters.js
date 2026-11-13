@@ -836,6 +836,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "assets/posters/poster-084-thumb.webp",
       "width": 1024,
       "height": 1536
+    },
+    {
+      "id": "poster-085",
+      "category": "sets",
+      "title": {
+        "zh": "liaose 铜棕洗护组合",
+        "en": "liaose Daily Hair Ritual"
+      },
+      "src": "assets/posters/poster-085.webp",
+      "thumbnail": "assets/posters/poster-085-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };

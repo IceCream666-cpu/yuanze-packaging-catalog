@@ -18,3 +18,6 @@
 ## 2026-11-13 · Cycles 写实场景 v2
 
 新增独立 [photographic-v2 摄影场景](photographic-v2/README.md)，保留 v1 网页模型与原有分组。真实接影地面、无缝背景、四盏面积灯、85mm透视相机、微观材质纹理；源文件已重新打开并验证。2400×3000、16位合拢与完全展开图均已完成并目检；实际源文件及图片校验通过，详见photographic-v2/verification.json及visual-review.json。未发布，未替换网页GLB。
+
+## client1.51 网页 v2
+由摄影源场景导出 poster-085-v2.blend 与 GLB，保留6组及物理PBR基础材质、平滑泵嘴。实体装饰面在Blender开启投影，网页开启labelShadows；透明字标承载面不投整片矩形阴影。首页1600×2000透明Cycles渲染。离线程序微纹理与光线追踪不等同实时WebGL。188项基础前端测试及后续新款投影约束检查、GLB断言、发布范围和资源权限检查。

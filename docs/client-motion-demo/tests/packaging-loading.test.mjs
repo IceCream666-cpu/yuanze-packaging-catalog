@@ -1506,3 +1506,27 @@ for (const width of [393,1200]) test(`Soap Duo moves complete assemblies and dis
     }
   } finally {api?.dispose();env.close();}
 });
+
+
+test('Daily Hair Ritual and future review models preserve physical label shadows without opaque ink quads',async()=>{
+ const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-085/review-product.json',import.meta.url),'utf8'));
+ const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+ const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+ const model=new Three.Group(); const meshes={};
+ for(const part of product.parts){
+  const group=new Three.Group();group.name=part.node;model.add(group);
+  const node=gltf.nodes.find(n=>n.name===part.node);assert.ok(node);
+  if(node.translation)group.position.fromArray(node.translation);
+  const material=new Three.MeshPhysicalMaterial();
+  if(['label','logo','print'].includes(part.key))material.map=new Three.Texture();
+  if(['logo','print'].includes(part.key))material.transparent=true;
+  const mesh=new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),material);group.add(mesh);meshes[part.key]=mesh;
+ }
+ const env=harness({product,parse:()=>Promise.resolve({scene:model})});let api;
+ try{
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes))});
+  assert.equal(meshes.label.castShadow,true,'opaque image-textured physical label casts');
+  assert.equal(meshes.body.receiveShadow,true,'bottle receives label shadow');
+  assert.equal(meshes.logo.castShadow,false);assert.equal(meshes.print.castShadow,false);
+ }finally{api?.dispose();env.close();}
+});

@@ -1,10 +1,10 @@
 {
-  "glbSha256": "0fd89bfde7919a0dd9a8f338176baceff64a66ca0a30e1458e488475ee8125b3",
-  "blendSha256": "065f001acfa0d06059c8e44e7aed913e3046e716a04d476909e914898df1e29f",
-  "glbBytes": 2046632,
-  "blendBytes": 1115354,
+  "glbSha256": "a5335c7148c715720b1a81b6d181faae07d2e7f1d7e6af648846a1ec28aaea8d",
+  "blendSha256": "9bd9c0f4e33391c3fc82f85f5f723670358f55b046f59941c91a1ec7330d32f5",
+  "glbBytes": 2099732,
+  "blendBytes": 1103706,
   "meshes": 90,
-  "triangles": 105190,
+  "triangles": 108010,
   "groups": {
     "Body": [
       "Empty flexible tube | sealed tail and open dispensing nozzle",

@@ -542,5 +542,24 @@
       "zh": "透明玻璃双瓶、白色环标与完整长管泵组，空包材展示。",
       "en": "Clear glass duo, white wrap labels and complete long-tube pumps; empty packaging."
     }
+  },
+  {
+    "id": "poster-085",
+    "displayRevision": "blender-studio-v2",
+    "name": "Daily Hair Ritual",
+    "kind": {
+      "zh": "洗护组合 · 泵瓶与软管",
+      "en": "Hair care · Pump bottle and tube"
+    },
+    "background": "#685b50",
+    "ink": "#fff5e7",
+    "swatch": [
+      "#a56e48",
+      "#eee6d7"
+    ],
+    "description": {
+      "zh": "铜棕泵瓶与玫瑰棕软管，完整长管泵组与标贴、文字分层投影。",
+      "en": "Bronze pump bottle and rose tube, complete long-tube pump, separate decoration and printing."
+    }
   }
 ]

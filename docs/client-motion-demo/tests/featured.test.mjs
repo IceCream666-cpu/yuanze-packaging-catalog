@@ -13,8 +13,8 @@ const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 
 test('featured retains the exact original 24 order and replaces the single bottle with the approved duo in place',()=>{
  const original=[12,13,39,49,42,51,44,47,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71];
- assert.deepEqual(featured.map(p=>p.id),[...original,72,73,79,82,81,84].map(n=>`poster-${String(n).padStart(3,'0')}`));
- assert.equal(new Set(featured.map(p=>p.id)).size,30);
+ assert.deepEqual(featured.map(p=>p.id),[...original,72,73,79,82,81,84,85].map(n=>`poster-${String(n).padStart(3,'0')}`));
+ assert.equal(new Set(featured.map(p=>p.id)).size,31);
  assert.deepEqual(Object.keys(PACKAGING_PRODUCTS).sort(),[...featured.map(p=>p.id),'poster-080'].sort());
  assert.equal(featured[0].id,'poster-012');assert.equal(featured[0].background,'#f4c8d6');
  for(const item of featured){
@@ -41,7 +41,7 @@ test('poster-derived single bottles retain detail identity and theme without cla
 });
 
 test('derived cutouts are independently accounted for and cannot overwrite approved poster assets',()=>{
- assert.equal(manifest.version,'client1.50');
+ assert.equal(manifest.version,'client1.51');
  assert.equal(manifest.scope,`approved-${manifest.version}-display-derivatives`);
  assert.deepEqual(manifest.files.map(p=>p.posterId).sort(),featured.map(p=>p.id).sort());
  const archived=Array.from({length:5},(_,i)=>`poster-${String(74+i).padStart(3,'0')}`);
@@ -102,4 +102,11 @@ test('approved duo replaces the single bottle without losing its poster or model
  assert.deepEqual(PACKAGING_PRODUCTS['poster-082'],json('model-source/collection/poster-082/review-product.json'));
  assert.ok(declared.has('poster-082-v1.glb'));
  assert.deepEqual(PACKAGING_PRODUCTS['poster-082'].parts.map(p=>p.node),['Body','Pump','TubeCap','Label','LogoInk','NameInk']);
+});
+
+
+test('every new model from 085 opts into the required physical label shadows',()=>{
+ for(const [id,product] of Object.entries(PACKAGING_PRODUCTS)){
+  if(Number(id.slice(7))>=85)assert.equal(product.review?.appearance?.labelShadows,true,id);
+ }
 });

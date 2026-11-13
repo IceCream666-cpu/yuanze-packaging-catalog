@@ -1,0 +1,17 @@
+{
+  "product": "poster-085",
+  "model": "poster-085-v2.glb",
+  "blender": "5.4 Alpha Metal",
+  "scope": "local verified ready to publish",
+  "posterPixelsPreserved": true,
+  "labelShadowVisibleAtHalf": true,
+  "fullExpansionAndCollapse": true,
+  "rotation": true,
+  "homepageEntry": true,
+  "mobile": "simulated 393x852 only",
+  "aesthetic": "Impeccable detector no findings; visual inspection of proportions, grounding, half expansion shadows and separate lettering passed",
+  "limits": [
+    "Browser PBR does not reproduce full Cycles path tracing or procedural microtexture",
+    "No manufacturing dimension validation"
+  ]
+}

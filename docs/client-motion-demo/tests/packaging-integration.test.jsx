@@ -423,7 +423,7 @@ test('App opens featured models and preserves poster HD/download/favorites and r
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length, 30);
+    assert.equal(document.querySelectorAll('[data-open]').length, 31);
     assert.equal(counts().mounts, 0, 'collection first paint must not mount the 3D detail');
     const other = document.querySelector('[data-open="poster-013"]'); other.focus(); await click(other);
     assert.equal(document.querySelector('.test-packaging').dataset.id, 'poster-013');
@@ -635,7 +635,7 @@ test('the retained Daily and Body Oil plus replacement duo open the correct mode
   const env=setup();const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-5).map(button=>button.dataset.open),['poster-073','poster-079','poster-082','poster-081','poster-084']);
+    assert.deepEqual([...document.querySelectorAll('[data-open]')].slice(-6).map(button=>button.dataset.open),['poster-073','poster-079','poster-082','poster-081','poster-084','poster-085']);
     for(const id of ['poster-072','poster-073','poster-082','poster-084']) {
       const trigger=document.querySelector(`[data-open="${id}"]`);trigger.focus();await click(trigger);
       assert.equal(document.querySelector('.test-packaging').dataset.id,id);
@@ -655,11 +655,11 @@ test('Body Oil remains accessible from the poster library and returns from the o
   const env=setup(); const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,30);
+    assert.equal(document.querySelectorAll('[data-open]').length,31);
     assert.ok(document.querySelector('[data-open="poster-073"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
-    assert.equal(document.querySelectorAll('.grid-image').length,67);
+    assert.equal(document.querySelectorAll('.grid-image').length,68);
     const trigger=[...document.querySelectorAll('.grid-image')].find(button=>button.querySelector('img')?.getAttribute('src').includes('poster-073'));
     trigger.focus(); await click(trigger);
     assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-073');
@@ -735,11 +735,11 @@ test('Daily Emulsion opens from the unchanged poster library and returns from it
   const env=setup();const {App,counts}=appHarness();
   try {
     await act(async()=>env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,30);
+    assert.equal(document.querySelectorAll('[data-open]').length,31);
     assert.ok(document.querySelector('[data-open="poster-072"]'));
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
-    assert.equal(document.querySelectorAll('.grid-image').length,67);
+    assert.equal(document.querySelectorAll('.grid-image').length,68);
     const trigger=[...document.querySelectorAll('.grid-image')].find(button=>button.querySelector('img')?.getAttribute('src').includes('poster-072'));
     trigger.focus();await click(trigger);
     assert.equal(document.querySelector('.test-packaging').dataset.id,'poster-072');
@@ -790,11 +790,11 @@ test('the five withdrawn models use poster fallback without requesting 3D', asyn
   const {App, counts} = appHarness();
   try {
     await act(async () => env.root.render(<App/>));
-    assert.equal(document.querySelectorAll('[data-open]').length,30);
+    assert.equal(document.querySelectorAll('[data-open]').length,31);
     for (let n=74;n<=78;n++) assert.equal(document.querySelector(`[data-open="poster-${String(n).padStart(3,'0')}"]`),null);
     await click(document.querySelector('[data-testid="browse-all"]'));
     await click(document.querySelector('.view-toggle button:nth-child(2)'));
-    assert.equal(document.querySelectorAll('.grid-image').length,67);
+    assert.equal(document.querySelectorAll('.grid-image').length,68);
     for (const n of [74,75,76,77,78]) {
       const id=`poster-${n.toString().padStart(3,'0')}`;
       const trigger=[...document.querySelectorAll(".grid-image")].find(button=>button.querySelector("img")?.getAttribute("src").includes(id));trigger.focus();await click(trigger);
