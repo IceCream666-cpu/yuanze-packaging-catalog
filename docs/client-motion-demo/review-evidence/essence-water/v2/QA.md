@@ -14,7 +14,7 @@
 
 ## 文件与状态
 - 截图：closed.png、half.png、expanded.png、rotated.png、mobile-simulated.png。
-- 阴影：film-shadow-on.png、film-shadow-off.png、difference-x20.png、shadow-comparison.json。
+- 阴影：film-shadow-on.png、film-shadow-off.png、film-shadow-difference-x20.png、shadow-comparison.json。
 - 测试/构建：frontend-tests.txt、isolated-build.txt。
 - 独立预览入口：essence-water.html；正式collection-products.json、manifest及首页均未切换068。
 - 实时玻璃使用0.94透射率近似接影，不等同Cycles光线追踪；本款为展示模型，不提供生产尺寸依据。
