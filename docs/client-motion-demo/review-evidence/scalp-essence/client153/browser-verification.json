@@ -1,0 +1,20 @@
+{
+  "version": "client1.53",
+  "checkedAt": "2026-11-13T14:06:16+08:00",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "catalogueCount": 68,
+  "featuredCount": 31,
+  "withdrawnSearch": "Scalp Essence: no results",
+  "sample": "poster-085",
+  "expanded": 100,
+  "halfExpandedRotated": 50,
+  "collapseReset": 0,
+  "screenshots": [
+    "live-085-expanded.png",
+    "live-085-half-rotated.png",
+    "live-085-closed.png"
+  ],
+  "visualReview": "Desktop screenshots inspected: model renders, complete pump and long tube, separated decoration and text, cast shadow in half-expanded rotated view; no clipping in sampled viewport.",
+  "allModelsVisuallyReviewed": false,
+  "physicalMobileTest": false
+}

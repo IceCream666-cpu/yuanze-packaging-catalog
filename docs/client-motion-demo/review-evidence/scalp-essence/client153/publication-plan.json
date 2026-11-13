@@ -1,0 +1,60 @@
+{
+  "version": "client1.53",
+  "baselineManifestSha256": "7f2dcef191565c514d013095eb174154154e0737bfa353f826871c4680b89a79",
+  "manifestSha256": "800aad31f3a2521e76090ca79e1cedda46139c0566e75a78583fbb6d495c52ae",
+  "changed": [
+    "index.html",
+    "preview.js",
+    "product-posters.js"
+  ],
+  "added": [],
+  "removed": [
+    "assets/optimized/poster-086-strip.webp",
+    "assets/posters/poster-086-thumb.webp",
+    "assets/posters/poster-086.webp",
+    "assets/previews/posters/poster-086-1280.webp",
+    "assets/previews/posters/poster-086-512.webp"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/liaose-pump.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067.glb",
+    "assets/packaging/poster-068.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-079-v2.glb",
+    "assets/packaging/poster-080-v2.glb",
+    "assets/packaging/poster-081-v1.glb",
+    "assets/packaging/poster-082-v1.glb",
+    "assets/packaging/poster-084-v2.glb",
+    "assets/packaging/poster-085-v2.glb"
+  ],
+  "resources": 514,
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "withdrawnPoster": "poster-086",
+  "previewOnlyModel": null
+}

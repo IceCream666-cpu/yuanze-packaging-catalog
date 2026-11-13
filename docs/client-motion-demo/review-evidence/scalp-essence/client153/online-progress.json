@@ -1,0 +1,343 @@
+{
+  "version": "client1.53",
+  "roles": {
+    "client": true,
+    "employee": true,
+    "admin": true
+  },
+  "fullResources": [
+    {
+      "name": "index.html",
+      "status": 200,
+      "bytes": 784,
+      "sha256": "04495731f756d074f9f3f79af5b0d4a07ff97930b7cbb93c0580989e6925ad3d"
+    },
+    {
+      "name": "preview.js",
+      "status": 200,
+      "bytes": 407911,
+      "sha256": "47f57e83d8ac62602f4f5bbfb5dc7a2802006315519df9a56c0dc5ade93f0187"
+    },
+    {
+      "name": "product-posters.js",
+      "status": 200,
+      "bytes": 24032,
+      "sha256": "eb2d4224e1842c35c60b23d2a86f19302ca313e177216f3bbc4073df2529b6be"
+    }
+  ],
+  "modelRanges": {
+    "assets/packaging/beach-magic-packaging.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2395680"
+    },
+    "assets/packaging/liaose-pump.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/996144"
+    },
+    "assets/packaging/poster-013.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1064352"
+    },
+    "assets/packaging/poster-039.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/914020"
+    },
+    "assets/packaging/poster-042.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1639380"
+    },
+    "assets/packaging/poster-044.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2377084"
+    },
+    "assets/packaging/poster-047.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4731120"
+    },
+    "assets/packaging/poster-049.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1577136"
+    },
+    "assets/packaging/poster-051.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4132088"
+    },
+    "assets/packaging/poster-056.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/529536"
+    },
+    "assets/packaging/poster-057.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2490520"
+    },
+    "assets/packaging/poster-058.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1953112"
+    },
+    "assets/packaging/poster-059.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1220564"
+    },
+    "assets/packaging/poster-060.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1111452"
+    },
+    "assets/packaging/poster-061.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1103220"
+    },
+    "assets/packaging/poster-062.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/279060"
+    },
+    "assets/packaging/poster-063.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/819544"
+    },
+    "assets/packaging/poster-064.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3622216"
+    },
+    "assets/packaging/poster-065.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2748824"
+    },
+    "assets/packaging/poster-066.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4254124"
+    },
+    "assets/packaging/poster-067.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3379404"
+    },
+    "assets/packaging/poster-068.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1458536"
+    },
+    "assets/packaging/poster-069.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3522180"
+    },
+    "assets/packaging/poster-070.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3191832"
+    },
+    "assets/packaging/poster-072.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1163416"
+    },
+    "assets/packaging/poster-073.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/627764"
+    },
+    "assets/packaging/poster-079-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/932312"
+    },
+    "assets/packaging/poster-080-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/717420"
+    },
+    "assets/packaging/poster-081-v1.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4527020"
+    },
+    "assets/packaging/poster-082-v1.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1917000"
+    },
+    "assets/packaging/poster-084-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2393772"
+    },
+    "assets/packaging/poster-085-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2099732"
+    }
+  },
+  "excludedResources": [
+    "assets/packaging/poster-074.glb",
+    "assets/packaging/poster-074-v1.glb",
+    "assets/featured/poster-074.png",
+    "assets/featured/poster-074-640.webp",
+    "assets/featured/poster-074-1024.webp",
+    "assets/packaging/poster-075.glb",
+    "assets/packaging/poster-075-v1.glb",
+    "assets/featured/poster-075.png",
+    "assets/featured/poster-075-640.webp",
+    "assets/featured/poster-075-1024.webp",
+    "assets/packaging/poster-076.glb",
+    "assets/packaging/poster-076-v1.glb",
+    "assets/featured/poster-076.png",
+    "assets/featured/poster-076-640.webp",
+    "assets/featured/poster-076-1024.webp",
+    "assets/packaging/poster-077.glb",
+    "assets/packaging/poster-077-v1.glb",
+    "assets/featured/poster-077.png",
+    "assets/featured/poster-077-640.webp",
+    "assets/featured/poster-077-1024.webp",
+    "assets/packaging/poster-078.glb",
+    "assets/packaging/poster-078-v1.glb",
+    "assets/featured/poster-078.png",
+    "assets/featured/poster-078-640.webp",
+    "assets/featured/poster-078-1024.webp",
+    "assets/packaging/poster-083.glb",
+    "assets/packaging/poster-083-v1.glb",
+    "assets/featured/poster-083.png",
+    "assets/featured/poster-083-640.webp",
+    "assets/featured/poster-083-1024.webp",
+    "assets/packaging/poster-086.glb",
+    "assets/packaging/poster-086-v1.glb",
+    "assets/featured/poster-086.png",
+    "assets/featured/poster-086-640.webp",
+    "assets/featured/poster-086-1024.webp",
+    "assets/optimized/poster-086-strip.webp",
+    "assets/posters/poster-086-thumb.webp",
+    "assets/posters/poster-086.webp",
+    "assets/previews/posters/poster-086-1280.webp",
+    "assets/previews/posters/poster-086-512.webp"
+  ],
+  "posterThumbnails": [
+    "poster-001",
+    "poster-002",
+    "poster-003",
+    "poster-004",
+    "poster-005",
+    "poster-006",
+    "poster-007",
+    "poster-008",
+    "poster-009",
+    "poster-010",
+    "poster-011",
+    "poster-012",
+    "poster-013",
+    "poster-014",
+    "poster-032",
+    "poster-033",
+    "poster-034",
+    "poster-035",
+    "poster-036",
+    "poster-037",
+    "poster-038",
+    "poster-039",
+    "poster-040",
+    "poster-041",
+    "poster-042",
+    "poster-043",
+    "poster-044",
+    "poster-045",
+    "poster-046",
+    "poster-047",
+    "poster-048",
+    "poster-049",
+    "poster-050",
+    "poster-051",
+    "poster-052",
+    "poster-053",
+    "poster-054",
+    "poster-055",
+    "poster-056",
+    "poster-057",
+    "poster-058",
+    "poster-059",
+    "poster-060",
+    "poster-061",
+    "poster-062",
+    "poster-063",
+    "poster-064",
+    "poster-065",
+    "poster-066",
+    "poster-067",
+    "poster-068",
+    "poster-069",
+    "poster-070",
+    "poster-071",
+    "poster-072",
+    "poster-073",
+    "poster-074",
+    "poster-075",
+    "poster-076",
+    "poster-077",
+    "poster-078",
+    "poster-079",
+    "poster-080",
+    "poster-081",
+    "poster-082",
+    "poster-083",
+    "poster-084",
+    "poster-085"
+  ],
+  "featuredPreviews": [
+    "poster-012",
+    "poster-013",
+    "poster-039",
+    "poster-049",
+    "poster-042",
+    "poster-051",
+    "poster-044",
+    "poster-047",
+    "poster-056",
+    "poster-057",
+    "poster-058",
+    "poster-059",
+    "poster-060",
+    "poster-061",
+    "poster-062",
+    "poster-063",
+    "poster-064",
+    "poster-065",
+    "poster-066",
+    "poster-067",
+    "poster-068",
+    "poster-069",
+    "poster-070",
+    "poster-071",
+    "poster-072",
+    "poster-073",
+    "poster-079",
+    "poster-082",
+    "poster-081",
+    "poster-084",
+    "poster-085"
+  ],
+  "originalDownloads": [
+    85
+  ],
+  "adminModelRange": {
+    "status": 206,
+    "bytes": 100,
+    "contentRange": "bytes 0-99/4527020"
+  }
+}

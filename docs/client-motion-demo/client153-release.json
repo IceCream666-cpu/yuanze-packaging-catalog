@@ -1,0 +1,23 @@
+{
+  "version": "client1.53",
+  "status": "published-and-online-verified",
+  "sourceCommit": "3e74dfdfa07085b8be6926fc5ae1eb5b0cc42fa8",
+  "publishedAt": "2026-11-13T13:55:33+08:00",
+  "verifiedAt": "2026-11-13T13:59:47+08:00",
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "publicationEvidence": "review-evidence/scalp-essence/client153/publication.json",
+  "httpsEvidence": "review-evidence/scalp-essence/client153/online-verification.json",
+  "browserEvidence": "review-evidence/scalp-essence/client153/browser-verification.json",
+  "backup": "/opt/yuanze-reference/backups/client1.53-scalp-essence-poster-20261113",
+  "withdrawn": "poster-086",
+  "localModel": "retained, not approved for publication",
+  "auditPendingSimplification": [
+    "poster-067",
+    "poster-068",
+    "poster-071"
+  ]
+}

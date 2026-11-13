@@ -1,0 +1,496 @@
+{
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "allGlbChecksPassed": true,
+  "models": [
+    {
+      "id": "poster-013",
+      "file": "poster-013.glb",
+      "parts": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1064352,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-039",
+      "file": "poster-039.glb",
+      "parts": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 914020,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-049",
+      "file": "poster-049.glb",
+      "parts": [
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1577136,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-042",
+      "file": "poster-042.glb",
+      "parts": [
+        "CapAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1639380,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-051",
+      "file": "poster-051.glb",
+      "parts": [
+        "PumpAssembly",
+        "BottleAssembly",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 4132088,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-044",
+      "file": "poster-044.glb",
+      "parts": [
+        "Overcap",
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 2377084,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-047",
+      "file": "poster-047.glb",
+      "parts": [
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 4731120,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-056",
+      "file": "poster-056.glb",
+      "parts": [
+        "Overcap",
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 529536,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-057",
+      "file": "poster-057.glb",
+      "parts": [
+        "DropperAssembly",
+        "BottleAssembly",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 2490520,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-058",
+      "file": "poster-058.glb",
+      "parts": [
+        "DropperAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1953112,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-059",
+      "file": "poster-059.glb",
+      "parts": [
+        "DropperAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1220564,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-060",
+      "file": "poster-060.glb",
+      "parts": [
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1111452,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-061",
+      "file": "poster-061.glb",
+      "parts": [
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1103220,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-062",
+      "file": "poster-062.glb",
+      "parts": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 279060,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-063",
+      "file": "poster-063.glb",
+      "parts": [
+        "Closure",
+        "InnerLid",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 819544,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-064",
+      "file": "poster-064.glb",
+      "parts": [
+        "PumpAssembly",
+        "BottleAssembly",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 3622216,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-065",
+      "file": "poster-065.glb",
+      "parts": [
+        "PumpAssembly",
+        "Body",
+        "RefillPouch",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 2748824,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-066",
+      "file": "poster-066.glb",
+      "parts": [
+        "Overcap",
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 4254124,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-067",
+      "file": "poster-067.glb",
+      "parts": [
+        "Actuator",
+        "PumpStem",
+        "Closure",
+        "Cord",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 3379404,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-068",
+      "file": "poster-068.glb",
+      "parts": [
+        "Closure",
+        "NeckInsert",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1458536,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-069",
+      "file": "poster-069.glb",
+      "parts": [
+        "Closure",
+        "NeckSeal",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 3522180,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-070",
+      "file": "poster-070.glb",
+      "parts": [
+        "Closure",
+        "CapWrap",
+        "Body",
+        "PaperLabel",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 3191832,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-073",
+      "file": "poster-073.glb",
+      "parts": [
+        "Closure",
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
+      ],
+      "scenes": 1,
+      "bytes": 627764,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-072",
+      "file": "poster-072.glb",
+      "parts": [
+        "Overcap",
+        "PumpAssembly",
+        "Body",
+        "PaperLabel",
+        "LogoPrint",
+        "ProductPrint"
+      ],
+      "scenes": 1,
+      "bytes": 1163416,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-079",
+      "file": "poster-079-v2.glb",
+      "parts": [
+        "Lid",
+        "LidInk",
+        "Tray",
+        "Cream",
+        "Wash",
+        "CreamPump",
+        "WashPump",
+        "CreamInk",
+        "WashInk"
+      ],
+      "scenes": 1,
+      "bytes": 932312,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-080",
+      "file": "poster-080-v2.glb",
+      "parts": [
+        "Body",
+        "Pump",
+        "Label",
+        "LogoInk",
+        "NameInk"
+      ],
+      "scenes": 3,
+      "bytes": 717420,
+      "onHome": false,
+      "valid": true
+    },
+    {
+      "id": "poster-081",
+      "file": "poster-081-v1.glb",
+      "parts": [
+        "Body",
+        "Pump",
+        "Label",
+        "LogoInk",
+        "NameInk"
+      ],
+      "scenes": 1,
+      "bytes": 4527020,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-082",
+      "file": "poster-082-v1.glb",
+      "parts": [
+        "Body",
+        "Pump",
+        "TubeCap",
+        "Label",
+        "LogoInk",
+        "NameInk"
+      ],
+      "scenes": 1,
+      "bytes": 1917000,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-084",
+      "file": "poster-084-v2.glb",
+      "parts": [
+        "Body",
+        "Pump",
+        "Label",
+        "LogoInk",
+        "NameInk"
+      ],
+      "scenes": 1,
+      "bytes": 2393772,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-085",
+      "file": "poster-085-v2.glb",
+      "parts": [
+        "Body",
+        "Pump",
+        "TubeCap",
+        "Label",
+        "LogoInk",
+        "NameInk"
+      ],
+      "scenes": 1,
+      "bytes": 2099732,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-012",
+      "file": "beach-magic-packaging.glb",
+      "parts": [
+        "OuterCap",
+        "InnerLid",
+        "Jar",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 2395680,
+      "onHome": true,
+      "valid": true
+    },
+    {
+      "id": "poster-071",
+      "file": "liaose-pump.glb",
+      "parts": [
+        "PumpHead",
+        "PumpStem",
+        "Closure",
+        "BottleAssembly",
+        "LogoPrint"
+      ],
+      "scenes": 1,
+      "bytes": 996144,
+      "onHome": true,
+      "valid": true
+    }
+  ],
+  "intentionalHomeExclusion": {
+    "poster-080": "Replaced on homepage by approved poster-082 duo; retained in catalogue"
+  },
+  "unfinishedSimplification": [
+    "poster-067",
+    "poster-068",
+    "poster-071"
+  ],
+  "withdrawn": "poster-086"
+}
