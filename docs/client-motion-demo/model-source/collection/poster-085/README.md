@@ -1,4 +1,16 @@
-# Daily Hair Ritual · 预留 poster-085
+# Daily Hair Ritual · poster-085
 
-原八图第7张，liaose铜棕色洗护组合：长圆柱泵瓶与匹配软管。参考原图结构，去除促销及功效宣传。海报本地待审，未注册、未上线、未建模。
-1024×1536，内置image_gen参考图生成。原始参考及交付稿位于主工程outputs/20261113-Hair-Care-Duo。
+2026-11-13：本机 Blender 5.4 Alpha 制作，本地交互预览完成，待用户审查，未发布。
+
+- 参考：daily-hair-ritual-poster-v1.png（原八图第7张）。铜棕长圆柱泵瓶 + 玫瑰棕软管，一瓶一管、空包材。
+- 预览：http://127.0.0.1:8785/daily-hair-ritual.html
+- 源文件：poster-085-v1.blend；时间轴1合拢、31半展开、61完全展开。
+- 网页模型：../../../packaging-assets/poster-085-v1.glb，约2.05MB；3张文字纹理内嵌。
+- 制作脚本：build_hair_duo.py；渲染脚本：render_review.py；结构校验：verify_model.py。
+- 六组：容器、完整泵头与长吸管、完整软管底盖、装饰面、Logo、产品名。泵头内部不碎拆；无料体。
+- 泵管外径0.082、内径0.058，贴近容器内底；比例单位，非毫米。完全展开后管尖离开瓶口。
+- 暖灰棕背景用于提高白色独立印刷层的可见度；源海报保持不变。
+- 验证：185项前端测试、实际GLB结构断言、独立预览构建通过。Blender正面/侧面/展开及浏览器闭合/半展开/完全展开/旋转目检通过。
+- 手机仅393×852模拟视口，未做真机验证。材质、内部结构与尺寸为展示推定，不是生产CAD。
+
+详见 model-verification.json、visual-review.json 和 previews/。正式海报/模型注册、首页列表与client1.50发布资源未修改。

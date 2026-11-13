@@ -1,7 +1,7 @@
 # 指令记录索引
 
 ## 会话 01a16276-cda3-7831-a021-29bc094d12f2
-- Current: 084 clear-glass v2 published and online verified as client1.50; 085 Daily Hair Ritual poster is a local review draft.
+- Current: 084 clear-glass v2 published and online verified as client1.50; 085 Daily Hair Ritual poster and Blender v1 interactive model are local review drafts, not published.
 - 逐款审查，建模默认本机Blender；此次先海报。
 - [20261111-170433-指令记录规则](20261111-170433-指令记录规则.md)
 
@@ -22,3 +22,7 @@
 - 当前：[20261113-102459-084模型上线与下一款海报](20261113-102459-084模型上线与下一款海报.md)，发布084透明玻璃模型，制作第7张海报。
 
 - Final 2026-11-13: [client1.50 verified release](../client-motion-demo/client150-release.json); 085 poster awaiting review.
+
+- 当前：[20261113-103744-Daily-Hair-Ritual-3D](20261113-103744-Daily-Hair-Ritual-3D.md)：085 Blender交互模型制作，本地待审。
+
+- 085 Blender v1 本地完成：[本次记录](20261113-103744-Daily-Hair-Ritual-3D.md)。六组展开、长吸管；185项测试及视觉检查通过，待用户审查。

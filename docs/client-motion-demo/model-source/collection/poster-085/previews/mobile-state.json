@@ -1,0 +1,27 @@
+{
+  "width": 393,
+  "height": 852,
+  "overflow": false,
+  "state": {
+    "progress": 1,
+    "renderedProgress": 0.999855036681428,
+    "yaw": 4.149527905590114e-33,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.4997825550221422,
+      -0.09998550366814285,
+      2.049702825196927
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 91,
+    "triangles": 105192
+  }
+}

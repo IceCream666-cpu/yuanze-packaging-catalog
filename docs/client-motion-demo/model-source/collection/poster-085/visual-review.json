@@ -1,0 +1,40 @@
+{
+  "glbSha256": "0fd89bfde7919a0dd9a8f338176baceff64a66ca0a30e1458e488475ee8125b3",
+  "blendSha256": "065f001acfa0d06059c8e44e7aed913e3046e716a04d476909e914898df1e29f",
+  "reviewer": "primary agent",
+  "status": "local review complete, awaiting user review",
+  "renders": [
+    "previews/Daily-Hair-Ritual-Blender-front.png",
+    "previews/Daily-Hair-Ritual-Blender-side.png",
+    "previews/Daily-Hair-Ritual-Blender-expanded.png"
+  ],
+  "browser": "Ego Lite task space 38",
+  "checks": [
+    "reference proportions",
+    "empty packaging",
+    "complete pump with long hollow tube",
+    "three printing depths",
+    "closed",
+    "half",
+    "fully expanded",
+    "90 degree rotation",
+    "collapse",
+    "original poster dialog",
+    "393x852 simulated mobile, no overflow"
+  ],
+  "visualAdjustments": [
+    "dark warm studio improves white ink contrast",
+    "pump lift increased so intake clears bottle neck by 0.27655 model units"
+  ],
+  "testResults": {
+    "frontendPassed": 185,
+    "glbAssertions": "passed",
+    "isolatedPreviewBuild": "passed",
+    "impeccableDetectorFindings": 0
+  },
+  "limits": [
+    "not real mobile hardware",
+    "inferred dimensions and internal structure",
+    "not published"
+  ]
+}
