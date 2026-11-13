@@ -1,0 +1,41 @@
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 1937 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../../../../../tmp/sculptural-pump-preview-build/sculptural-pump.html                          0.81 kB │ gzip:   0.52 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/yuanze-mark-compact-CGnBq_vd.webp      5.18 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/poster-071-BQ6phj84.webp           1,203.45 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/poster-071-v2-DE4gApnm.glb         1,592.32 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/sculptural-pump-CdFFdSZ-.css           0.66 kB │ gzip:   0.37 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/PackagingDetail-j1D-5bwl.css          12.59 kB │ gzip:   3.04 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/PackagingDetail-B6YWD0jz.js           27.51 kB │ gzip:  10.64 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/sculptural-pump-oVH2P64j.js          278.05 kB │ gzip:  84.51 kB
+../../../../../../../../../../tmp/sculptural-pump-preview-build/assets/packaging-scene-AtpFDAOL.js          581.99 kB │ gzip: 148.50 kB
+
+[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs:2:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs:2:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+
+✓ built in 154ms

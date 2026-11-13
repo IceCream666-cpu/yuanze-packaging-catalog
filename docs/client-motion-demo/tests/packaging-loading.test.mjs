@@ -1658,3 +1658,39 @@ test('Essence Water v3 keeps the collar on the bottle and opens the complete cap
  }finally{api?.dispose();env.close();}
  assert.equal(PACKAGING_PRODUCTS['poster-068'].file,product.file,'approved v3 is registered for publication');
 });
+
+test('Sculptural Pump v2 keeps all pump pieces and long hollow tube fitted through expansion',async()=>{
+ const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-071/v2/review-product.json',import.meta.url),'utf8'));
+ const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+ const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+ const nodes=gltf.nodes.map(n=>{
+  const m=new Three.MeshPhysicalMaterial();m.name=gltf.materials?.[gltf.meshes?.[n.mesh]?.primitives[0]?.material]?.name??'';
+  if(/print/i.test(n.name)){m.map=new Three.Texture();m.transparent=true;}
+  const o='mesh' in n?new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),m):new Three.Group();o.name=n.name;
+  if(n.matrix)o.applyMatrix4(new Three.Matrix4().fromArray(n.matrix));else{o.position.fromArray(n.translation??[0,0,0]);o.quaternion.fromArray(n.rotation??[0,0,0,1]);o.scale.fromArray(n.scale??[1,1,1]);}return o;
+ });
+ gltf.nodes.forEach((n,i)=>n.children?.forEach(j=>nodes[i].add(nodes[j])));
+ const model=new Three.Group();gltf.scenes[gltf.scene??0].nodes.forEach(i=>model.add(nodes[i]));
+ const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+ assert.deepEqual(model.children.map(o=>o.name).sort(),product.parts.map(p=>p.node).sort());
+ const tube=model.getObjectByName('Long thick clear dip tube, open lower end');assert.equal(tube.parent,parts.pump);
+ assert.ok(parts.pump.children.length>70);assert.ok(model.getObjectByName('Curved dispensing spout'));assert.ok(model.getObjectByName('Nozzle lip'));
+ const node=gltf.nodes.find(n=>n.name===tube.name),accessor=gltf.accessors[gltf.meshes[node.mesh].primitives[0].attributes.POSITION];
+ assert.ok(Math.max(...accessor.max.map((v,i)=>v-accessor.min[i]))>1.9,'tube must reach near the bottle floor');
+ let api;const env=harness({product,parse:()=>Promise.resolve({scene:model})});
+ try{
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  const flush=()=>{const f=[...env.frames.values()];env.frames.clear();f.forEach(fn=>fn(16));};
+  const rest=Object.fromEntries(Object.entries(parts).map(([k,o])=>[k,o.position.clone()]));
+  const fitted=parts.pump.children.map(o=>o.matrix.toArray());const film=parts.label.children[0];
+  assert.equal(film.castShadow,true);assert.equal(film.customDepthMaterial.alphaHash,true);assert.equal(parts.print.children[0].castShadow,false);
+  for(const p of [0,.5,1,.5,0]){
+   api.setProgress(p);flush();parts.pump.children.forEach((o,i)=>assert.deepEqual(o.matrix.toArray(),fitted[i]));
+   assert.ok(Math.abs(parts.pump.position.y-rest.pump.y-2.1*p)<1e-8);
+   if(p===0 || p===1)assert.ok(Math.abs(film.material.opacity-(p===0?.035:.28))<1e-8);else assert.ok(film.material.opacity>.035 && film.material.opacity<.28);assert.equal(film.customDepthMaterial.opacity,film.material.opacity);
+   if(p)assert.ok(parts.print.position.z-rest.print.z>parts.label.position.z-rest.label.z);
+   else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
+  }
+ }finally{api?.dispose();env.close();}
+ assert.equal(PACKAGING_PRODUCTS['poster-071'].file,'liaose-pump.glb','v2 remains preview-only');
+});

@@ -1,0 +1,18 @@
+{
+  "roots": [
+    "Body",
+    "PumpAssembly",
+    "Label",
+    "LogoInk"
+  ],
+  "pumpMeshes": 77,
+  "preservedExteriorVertices": 13440,
+  "dipTubeOuterDiameter": 0.086,
+  "dipTubeInnerDiameter": 0.058,
+  "dipTubeBottomZ": 0.135,
+  "dipTubeTopZ": 2.045,
+  "containsFormula": false,
+  "newProductCopy": false,
+  "illustrativeInterior": true,
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/docs/long-neck-3d/liaose-pump.blend"
+}

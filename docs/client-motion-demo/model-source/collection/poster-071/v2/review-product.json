@@ -1,0 +1,138 @@
+{
+  "file": "poster-071-v2.glb",
+  "scale": 1,
+  "kind": "collection",
+  "wide": false,
+  "parts": [
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "乳白长颈瓶身",
+        "Ivory sculptural bottle"
+      ],
+      "short": [
+        "乳白长颈瓶身",
+        "Ivory sculptural bottle"
+      ],
+      "detail": [
+        "乳白缎面瓶身，长颈与宽肩造型，内部为空。",
+        "Ivory sculptural bottle"
+      ]
+    },
+    {
+      "key": "pump",
+      "node": "PumpAssembly",
+      "title": [
+        "完整泵头与长吸管",
+        "Complete pump and long dip tube"
+      ],
+      "short": [
+        "完整泵头与长吸管",
+        "Complete pump and long dip tube"
+      ],
+      "detail": [
+        "按压头、泵杆、细纹旋盖和透明长吸管始终保持组装关系。",
+        "Complete pump and long dip tube"
+      ]
+    },
+    {
+      "key": "label",
+      "node": "Label",
+      "title": [
+        "透明承印膜（展示层）",
+        "Clear print carrier"
+      ],
+      "short": [
+        "透明承印膜（展示层）",
+        "Clear print carrier"
+      ],
+      "detail": [
+        "用于展示印刷层次的透明承载面，推出后在瓶身留下轻微投影。",
+        "Clear print carrier"
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoInk",
+      "title": [
+        "liaose 字标",
+        "liaose wordmark"
+      ],
+      "short": [
+        "liaose 字标",
+        "liaose wordmark"
+      ],
+      "detail": [
+        "保留原手写字形，在透明承印膜外侧独立展开。",
+        "liaose wordmark"
+      ]
+    }
+  ],
+  "review": {
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "studio": {
+        "background": "#e7e6da",
+        "ink": "#29372f"
+      },
+      "labelShadows": true,
+      "thinFilmShadows": true,
+      "carrierOpacity": [
+        0.035,
+        0.28
+      ]
+    },
+    "explosion": {
+      "mobilePrintSpread": 1,
+      "offsets": {
+        "body": [
+          0.5,
+          0,
+          0
+        ],
+        "pump": [
+          0.5,
+          2.1,
+          0
+        ],
+        "label": [
+          -0.65,
+          0,
+          0.7
+        ],
+        "print": [
+          -1.55,
+          0.12,
+          1.45
+        ]
+      },
+      "scales": {
+        "label": 1.05,
+        "print": 1.6
+      },
+      "camera": {
+        "centerX": [
+          0,
+          -0.2
+        ],
+        "centerY": [
+          1.48,
+          2.55
+        ],
+        "height": [
+          3.65,
+          6.1
+        ],
+        "width": [
+          2.8,
+          4.8
+        ]
+      }
+    }
+  }
+}

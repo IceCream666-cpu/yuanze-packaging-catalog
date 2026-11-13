@@ -1,0 +1,6 @@
+00:00.370  blend            | Read blend: "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-071/v2/poster-071-v2.blend"
+00:00.401  blend            | Read blend: "/Users/icecream/Documents/Codex/2026-10-22/gen/work/client18/docs/long-neck-3d/liaose-pump.blend"
+VERIFIED: original exterior, complete pump, open long dip tube, separate film and ink, shadows
+Blender 5.4.0 Alpha (hash 745ab9a3e3c5 built 2026-10-30 01:37:17)
+
+Blender quit
