@@ -14,3 +14,7 @@
 - 手机仅393×852模拟视口，未做真机验证。材质、内部结构与尺寸为展示推定，不是生产CAD。
 
 详见 model-verification.json、visual-review.json 和 previews/。正式海报/模型注册、首页列表与client1.50发布资源未修改。
+
+## 2026-11-13 · Cycles 写实场景 v2
+
+新增独立 [photographic-v2 摄影场景](photographic-v2/README.md)，保留 v1 网页模型与原有分组。真实接影地面、无缝背景、四盏面积灯、85mm透视相机、微观材质纹理；源文件已重新打开并验证。2400×3000、16位合拢与完全展开图均已完成并目检；实际源文件及图片校验通过，详见photographic-v2/verification.json及visual-review.json。未发布，未替换网页GLB。

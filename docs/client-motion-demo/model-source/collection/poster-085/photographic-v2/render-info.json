@@ -1,0 +1,36 @@
+{
+  "engine": "CYCLES",
+  "device": "CPU assembled / Metal GPU expanded",
+  "blender": "5.4.0 Alpha",
+  "samples": 512,
+  "adaptiveThreshold": 0.006000000052154064,
+  "resolution": [
+    2400,
+    3000
+  ],
+  "bitDepth": 16,
+  "groundReceivesShadows": true,
+  "lights": 4,
+  "colorManagement": "AgX Medium High Contrast",
+  "closed": {
+    "frame": 1,
+    "camera": [
+      1.3126859664916992,
+      -10.691133499145508,
+      3.5889039039611816
+    ],
+    "focusDistance": 10.938444651964064
+  },
+  "expanded": {
+    "frame": 61,
+    "camera": [
+      3.124929189682007,
+      -21.85225486755371,
+      5.592589378356934
+    ],
+    "focusDistance": 21.230249191472673
+  },
+  "source": "poster-085-photographic-v2.blend",
+  "note": "Cycles offline rendering; browser real-time quality is separate",
+  "expandedBackdropFollowsFloor": true
+}

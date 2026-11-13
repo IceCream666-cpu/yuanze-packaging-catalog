@@ -1,0 +1,29 @@
+{
+  "savedSourceReopened": true,
+  "shadowReceivingGround": true,
+  "floorGap": 0.0020000000949949026,
+  "completePumpTravelZ": 2.950000286102295,
+  "componentGroups": [
+    "Body",
+    "Pump",
+    "TubeCap",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "embeddedTextures": true,
+  "sourceSha256": "0062af3a81d7e3bbfb17b4e39da460145cea231b5a871238e873d4410413451d",
+  "renders": [
+    {
+      "file": "Daily-Hair-Ritual-Cycles-2400x3000.png",
+      "bytes": 24897784,
+      "sha256": "5d6dc2badbea1b6b790744777a7793e8216ead334253170a197bc45fedfe78ca"
+    },
+    {
+      "file": "Daily-Hair-Ritual-Cycles-expanded-2400x3000.png",
+      "bytes": 22422064,
+      "sha256": "3a0e835a40c8186584edf6d91055f35ffc9e6f12c494c3a99cd0bf3f8aec60be"
+    }
+  ],
+  "scope": "Scene and output integrity; visual acceptance recorded separately"
+}

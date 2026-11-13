@@ -1,0 +1,22 @@
+{
+  "product": "poster-085 / Daily Hair Ritual",
+  "status": "local-review-ready; not published",
+  "reviewedAt": "2026-11-13T11:24:55.765705+08:00",
+  "method": "Visual inspection of both final Cycles PNGs and saved-scene assertion checks",
+  "checks": {
+    "assembled": "One pump bottle and one tube, readable original script logos and product names, no clipping; contact shadows and soft cast shadows visible; copper highlight retains detail.",
+    "expanded": "Complete pump with hollow transparent long dip tube; body, tube cap, decorative sleeves and white printing layers separated; all parts remain in frame; seamless backdrop after correction.",
+    "reference": "Retains copper/ivory bottle and rose/ivory tube proportions and approved lettering; no formula included.",
+    "source": "Reopened actual blend; six groups, three camera poses, packed textures, floor/backdrop synchronization and reset checked."
+  },
+  "corrections": [
+    "Reduced flat ambient lighting and tightened key reflection.",
+    "Added a curved seamless backdrop.",
+    "Fixed the dark backdrop gap during expansion by animating backdrop with the receiving floor."
+  ],
+  "limits": [
+    "Appearance inferred from reference artwork, not measured physical material or color calibration.",
+    "Floating white print has lower contrast against the warm studio background than on the closed copper surfaces.",
+    "Cycles offline output does not establish equivalent browser real-time quality; web v1 assets and production unchanged."
+  ]
+}

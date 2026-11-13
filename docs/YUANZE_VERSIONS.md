@@ -435,3 +435,7 @@ Published 2026-11-13T10:33:40+08:00; HTTPS verified 2026-11-13T10:35:55+08:00. F
 
 ## 2026-11-13 · poster-085-v1（独立本地预览）
 Daily Hair Ritual 铜棕泵瓶＋玫瑰棕软管，空包材与完整泵头/吸管、软管盖、装饰/Logo/产品名分层。预览 `/daily-hair-ritual.html`，仅本地8785。185项前端测试、GLB结构与隔离构建通过；Blender与Ego Lite目检通过，手机393×852为模拟视口。源档 `client-motion-demo/model-source/collection/poster-085/README.md`。未注册正式产品/模型，未发布，正式版本仍client1.50。
+
+
+## 2026-11-13 · poster-085 photographic-v2（本地写实渲染，未发布）
+在既有一瓶一管与六组展开模型上增加Cycles摄影场景：真实接影地面、随展开移动的无缝背景、四盏面积灯、85mm相机、微观材质及透明折射吸管。完成合拢和完全展开两张2400×3000、16位PNG；重开实际.blend验证及最终成片目检通过。详见 `client-motion-demo/model-source/collection/poster-085/photographic-v2/README.md`。本次未替换网页GLB、未修改正式注册与首页，正式版本仍client1.50；离线成片不等同实时网页质量。
