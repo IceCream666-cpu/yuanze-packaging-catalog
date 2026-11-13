@@ -1,0 +1,24 @@
+{
+  "version": "client1.51",
+  "status": "published-and-online-verified",
+  "sourceCommit": "e6d79a967ccb88b9104d61ef3a2450fecbd8c250",
+  "publishedAt": "2026-11-13T11:58:38+08:00",
+  "verifiedAt": "2026-11-13T12:03:55+08:00",
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "publicationEvidence": "review-evidence/daily-hair/client151/publication.json",
+  "httpsEvidence": "review-evidence/daily-hair/client151/online-verification.json",
+  "browserEvidence": "review-evidence/daily-hair/client151/browser-verification.json",
+  "backup": "/opt/yuanze-reference/backups/client1.51-daily-hair-model-20261113",
+  "nextPoster": {
+    "id": "poster-086",
+    "name": "Scalp Essence",
+    "status": "local-draft-awaiting-review",
+    "image": "model-source/collection/poster-086/scalp-essence-poster-v2.png",
+    "published": false,
+    "modelCreated": false
+  }
+}

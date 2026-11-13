@@ -1,0 +1,297 @@
+{
+  "version": "client1.51",
+  "roles": {
+    "client": true,
+    "employee": true,
+    "admin": true
+  },
+  "fullResources": [
+    {
+      "name": "assets/featured/poster-085-1024.webp",
+      "status": 200,
+      "bytes": 31120,
+      "sha256": "60231b2dcbf2c85ff722f832976aabcd0e7cd87c7650a3ac5b19d3cc8b663d86"
+    },
+    {
+      "name": "assets/featured/poster-085-640.webp",
+      "status": 200,
+      "bytes": 18308,
+      "sha256": "b0b7f6a109f1ecfc2e8a14ccd44abbd62212d6e2cedfd6defe8984ed7e6e46e5"
+    },
+    {
+      "name": "assets/featured/poster-085.png",
+      "status": 200,
+      "bytes": 1762050,
+      "sha256": "12381a721ac757d9f0c3916bed20e0fdd63edab23b8cae16e09b13c9770754ba"
+    },
+    {
+      "name": "assets/optimized/poster-085-strip.webp",
+      "status": 200,
+      "bytes": 2860,
+      "sha256": "6090ee47d70b9984c0501195809b4b112e7e71d3e89e672dcb60eede50b9ae66"
+    },
+    {
+      "name": "assets/packaging/PackagingDetail-OsDFhrw0.js",
+      "status": 200,
+      "bytes": 12788,
+      "sha256": "701f19e608b3ee31b567f7bc0c744000bf9ceb7fe9c4c6401484c04ad0e4053e"
+    },
+    {
+      "name": "assets/packaging/packaging-scene-BGnCwcnB.js",
+      "status": 200,
+      "bytes": 581410,
+      "sha256": "004d8e15f5d7304c600b43706e8d03dd5ef3dea0485097c1799b74560fa43647"
+    },
+    {
+      "name": "assets/packaging/poster-085-v2.glb",
+      "status": 200,
+      "bytes": 2099732,
+      "sha256": "a5335c7148c715720b1a81b6d181faae07d2e7f1d7e6af648846a1ec28aaea8d"
+    },
+    {
+      "name": "assets/posters/poster-085-thumb.webp",
+      "status": 200,
+      "bytes": 21894,
+      "sha256": "60e96b4327684e529bd37c63523e86292a434a74a8d802597a639714e81e0c2a"
+    },
+    {
+      "name": "assets/posters/poster-085.webp",
+      "status": 200,
+      "bytes": 1366112,
+      "sha256": "3b34e171a836614ffac2727a80c77969fcc74cedcc89a1ce1b3a489210348fe9"
+    },
+    {
+      "name": "assets/previews/posters/poster-085-1280.webp",
+      "status": 200,
+      "bytes": 55104,
+      "sha256": "a4c8e777bc599e6d64c8e1fa61b642ef47e745ab835abb030acd6edece716d53"
+    },
+    {
+      "name": "assets/previews/posters/poster-085-512.webp",
+      "status": 200,
+      "bytes": 11084,
+      "sha256": "ad4baa94ab541ee6d766dc40044bb8ac57d33f0d7a139536742b6b19aa1dcae8"
+    },
+    {
+      "name": "index.html",
+      "status": 200,
+      "bytes": 784,
+      "sha256": "ad5c919d5a608120b6f411209ab19b2f2d4c62b4c6b291acdbd6a1e246b48ee0"
+    },
+    {
+      "name": "preview.js",
+      "status": 200,
+      "bytes": 407911,
+      "sha256": "ef22f247947e6cc0ff551e1697ab9f20e4d9dd55808f39d10e59c4eb7ea3b718"
+    },
+    {
+      "name": "product-posters.js",
+      "status": 200,
+      "bytes": 24032,
+      "sha256": "eb2d4224e1842c35c60b23d2a86f19302ca313e177216f3bbc4073df2529b6be"
+    }
+  ],
+  "modelRanges": {
+    "assets/packaging/beach-magic-packaging.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2395680"
+    },
+    "assets/packaging/liaose-pump.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/996144"
+    },
+    "assets/packaging/poster-013.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1064352"
+    },
+    "assets/packaging/poster-039.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/914020"
+    },
+    "assets/packaging/poster-042.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1639380"
+    },
+    "assets/packaging/poster-044.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2377084"
+    },
+    "assets/packaging/poster-047.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4731120"
+    },
+    "assets/packaging/poster-049.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1577136"
+    },
+    "assets/packaging/poster-051.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4132088"
+    },
+    "assets/packaging/poster-056.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/529536"
+    },
+    "assets/packaging/poster-057.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2490520"
+    },
+    "assets/packaging/poster-058.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1953112"
+    },
+    "assets/packaging/poster-059.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1220564"
+    },
+    "assets/packaging/poster-060.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1111452"
+    },
+    "assets/packaging/poster-061.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1103220"
+    },
+    "assets/packaging/poster-062.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/279060"
+    },
+    "assets/packaging/poster-063.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/819544"
+    },
+    "assets/packaging/poster-064.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3622216"
+    },
+    "assets/packaging/poster-065.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2748824"
+    },
+    "assets/packaging/poster-066.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4254124"
+    },
+    "assets/packaging/poster-067.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3379404"
+    },
+    "assets/packaging/poster-068.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1458536"
+    },
+    "assets/packaging/poster-069.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3522180"
+    },
+    "assets/packaging/poster-070.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3191832"
+    },
+    "assets/packaging/poster-072.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1163416"
+    },
+    "assets/packaging/poster-073.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/627764"
+    },
+    "assets/packaging/poster-079-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/932312"
+    },
+    "assets/packaging/poster-080-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/717420"
+    },
+    "assets/packaging/poster-081-v1.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4527020"
+    },
+    "assets/packaging/poster-082-v1.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1917000"
+    },
+    "assets/packaging/poster-084-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2393772"
+    },
+    "assets/packaging/poster-085-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2099732"
+    }
+  },
+  "excludedResources": [
+    "assets/packaging/poster-074.glb",
+    "assets/packaging/poster-074-v1.glb",
+    "assets/featured/poster-074.png",
+    "assets/featured/poster-074-640.webp",
+    "assets/featured/poster-074-1024.webp",
+    "assets/packaging/poster-075.glb",
+    "assets/packaging/poster-075-v1.glb",
+    "assets/featured/poster-075.png",
+    "assets/featured/poster-075-640.webp",
+    "assets/featured/poster-075-1024.webp",
+    "assets/packaging/poster-076.glb",
+    "assets/packaging/poster-076-v1.glb",
+    "assets/featured/poster-076.png",
+    "assets/featured/poster-076-640.webp",
+    "assets/featured/poster-076-1024.webp",
+    "assets/packaging/poster-077.glb",
+    "assets/packaging/poster-077-v1.glb",
+    "assets/featured/poster-077.png",
+    "assets/featured/poster-077-640.webp",
+    "assets/featured/poster-077-1024.webp",
+    "assets/packaging/poster-078.glb",
+    "assets/packaging/poster-078-v1.glb",
+    "assets/featured/poster-078.png",
+    "assets/featured/poster-078-640.webp",
+    "assets/featured/poster-078-1024.webp",
+    "assets/packaging/poster-083.glb",
+    "assets/packaging/poster-083-v1.glb",
+    "assets/featured/poster-083.png",
+    "assets/featured/poster-083-640.webp",
+    "assets/featured/poster-083-1024.webp"
+  ],
+  "originalDownloads": [
+    82,
+    83
+  ],
+  "adminModelRange": {
+    "status": 206,
+    "bytes": 100,
+    "contentRange": "bytes 0-99/4527020"
+  }
+}

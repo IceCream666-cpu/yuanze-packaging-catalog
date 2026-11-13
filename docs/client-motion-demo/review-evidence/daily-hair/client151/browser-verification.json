@@ -1,0 +1,30 @@
+{
+  "version": "client1.51",
+  "verifiedAt": "2026-11-13T12:09:10+08:00",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "browser": "Ego Lite",
+  "title": "源泽 · 客户海报展厅 — client1.51",
+  "model": "poster-085-v2.glb",
+  "homeFeaturedCount": 31,
+  "checks": {
+    "homepage": true,
+    "halfExpandedLabelShadow": true,
+    "fullyExpanded": true,
+    "rotation90": true,
+    "collapsed": true,
+    "posterOpened": true
+  },
+  "posterPreviewSize": [
+    853,
+    1280
+  ],
+  "mobile": "local simulated viewport 393x852; not physical device",
+  "screenshots": [
+    "live-home.png",
+    "live-half-shadow.png",
+    "live-expanded.png",
+    "live-side.png",
+    "live-collapsed.png",
+    "live-poster.png"
+  ]
+}
