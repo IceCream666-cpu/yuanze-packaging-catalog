@@ -1,0 +1,30 @@
+{
+  "version": "client1.50",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "browser": "Ego Lite",
+  "verified": true,
+  "homepageCount": 30,
+  "product": "poster-084",
+  "modelMeshes": 421,
+  "triangles": 202834,
+  "components": [
+    "body",
+    "pump",
+    "label",
+    "logo",
+    "print"
+  ],
+  "fullExpansion": true,
+  "screenshots": [
+    "live-home.png",
+    "live-expanded.png"
+  ],
+  "simulatedMobileOnly": "393x852 local; not physical device",
+  "rotation90Verified": true,
+  "collapseVerified": true,
+  "returnedToFrontAndExpanded": true,
+  "keptBrowserPages": [
+    "online Soft Body Duo model",
+    "local Daily Hair Ritual poster"
+  ]
+}

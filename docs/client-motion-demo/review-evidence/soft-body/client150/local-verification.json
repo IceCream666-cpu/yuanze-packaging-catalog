@@ -1,5 +1,5 @@
 {
-  "stage": "local-verified-ready-to-publish",
+  "stage": "published-and-online-verified",
   "tests": {
     "frontend": 185,
     "resource": 20,
@@ -19,7 +19,14 @@
       "logo",
       "print"
     ],
-    "fullExpansionVerified": true
+    "fullExpansionVerified": true,
+    "simulatedMobile": {
+      "viewport": "393x852",
+      "overflow": false,
+      "fullExpansionVerified": true,
+      "physicalDevice": false
+    }
   },
-  "aestheticReview": "Visual review of poster and model proportions, glass, label separation, readability completed; no frontend visual lint findings."
+  "aestheticReview": "Visual review of poster and model proportions, glass, label separation, readability completed; no frontend visual lint findings.",
+  "sourceCommit": "ee0f0c1a"
 }

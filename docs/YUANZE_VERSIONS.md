@@ -426,6 +426,8 @@ client1.35 于 2026-10-30 15:39:38（北京时间）发布。26 个模型范围�
 2026-11-12 15:01:52 发布；15:08:15 正式 HTTPS 验证通过：8 项变更资源完整哈希、30 个旧模型范围请求、三角色及退出验证。6820 个展厅外文件不变，无服务重启。源码提交 1b468dd5 已推送 GitHub。084 模型仅本地预览。
 
 
-## 2026-11-13 client1.50 — Soft Body Duo 透明玻璃模型（本地验收，待发布）
+## 2026-11-13 client1.50 - Soft Body Duo (published and online verified)
 
 084 v2接入模型详情与首页第30款；67海报、30首页产品、31模型资源。原29款首页数据和全部旧海报/模型保持；085 Daily Hair Ritual仅海报待审，不在发布包。185前端、20资源与3发布计划测试通过。证据：client-motion-demo/review-evidence/soft-body/client150/。
+
+Published 2026-11-13T10:33:40+08:00; HTTPS verified 2026-11-13T10:35:55+08:00. Full hashes of 8 changed assets, 31 GLB range responses, three roles and logout passed. Live Ego Lite homepage and expansion/rotation/collapse passed. All 6820 outside files unchanged; no restart or business data writes. Source ee0f0c1a synced to GitHub. Mobile: simulated 393x852 only. Receipt: client-motion-demo/client150-release.json.

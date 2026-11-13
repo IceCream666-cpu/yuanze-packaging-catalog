@@ -1,0 +1,24 @@
+{
+  "version": "client1.50",
+  "status": "published-and-online-verified",
+  "sourceCommit": "ee0f0c1abbec0b2b74ed87c2da586ce578d17b5d",
+  "publishedAt": "2026-11-13T10:33:40+08:00",
+  "verifiedAt": "2026-11-13T10:35:55+08:00",
+  "counts": {
+    "posters": 67,
+    "featured": 30,
+    "models": 31
+  },
+  "publicationEvidence": "review-evidence/soft-body/client150/publication.json",
+  "httpsEvidence": "review-evidence/soft-body/client150/online-verification.json",
+  "browserEvidence": "review-evidence/soft-body/client150/browser-verification.json",
+  "backup": "/opt/yuanze-reference/backups/client1.50-soft-body-model-20261113",
+  "nextPoster": {
+    "id": "poster-085",
+    "name": "Daily Hair Ritual",
+    "status": "local-draft-awaiting-review",
+    "image": "model-source/collection/poster-085/daily-hair-ritual-poster-v1.png",
+    "published": false,
+    "modelCreated": false
+  }
+}
