@@ -26,6 +26,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const b5 = product.file === 'poster-057.glb';
   const bodyOil = product.file === 'poster-073.glb';
   const handGel = product.file === 'poster-081-v1.glb';
+  const softBodyGlass = product.file === 'poster-084-v2.glb';
   const review = product.review, appearance = review?.appearance, explosion = review?.explosion;
   let disposed = false, frame = 0, lastTime = 0;
   let renderer, canvas, scene, envTarget, oilEnvTarget, key, observer, api, studio;
@@ -258,7 +259,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
-      if (handGel) {
+      if (handGel || softBodyGlass) {
         // The woven RGB textures have no cutouts; include their rear faces in the glass transmission pass.
         if (m.name === 'Warm ivory woven label' || m.name === 'Black woven side flag') {
           m.transparent=false; m.opacity=1; m.alphaTest=0;
@@ -267,7 +268,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           // The mesh already contains both hollow-wall interfaces; avoid Three's extra DoubleSide back-face pass.
           m.side=T.FrontSide; m.depthWrite=false; m.thickness=.045;
         }
-        if (m.name === 'Transparent polyethylene dip tube') {
+        if (m.name === 'Transparent polyethylene dip tube' || (softBodyGlass && m.name === 'Clear polyethylene hollow suction tube')) {
           // shortcut: composite the nested clear tube after glass; exact nested refraction needs a multipass renderer.
           m.transmission=0; m.transparent=true; m.opacity=.55; m.depthWrite=false; m.side=T.FrontSide;
           m.color.set('#e7ece8'); m.roughness=.06; m.specularIntensity=.8; m.envMapIntensity=.65;

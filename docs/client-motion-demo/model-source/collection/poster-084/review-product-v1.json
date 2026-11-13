@@ -1,0 +1,163 @@
+{
+  "file": "poster-084-v1.glb",
+  "kind": "collection",
+  "scale": 1,
+  "parts": [
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "蓝粉空瓶",
+        "Ivory plastic containers"
+      ],
+      "short": [
+        "蓝粉空瓶",
+        "Ivory plastic containers"
+      ],
+      "detail": [
+        "蓝、粉哑光瓶身，空包材展示，不含料体。",
+        "Pastel empty packaging with assembled pumps and clear dip tubes."
+      ]
+    },
+    {
+      "key": "pump",
+      "node": "Pump",
+      "title": [
+        "完整泵头与长吸管",
+        "Complete disc pump"
+      ],
+      "short": [
+        "完整泵头与长吸管",
+        "Complete disc pump"
+      ],
+      "detail": [
+        "泵头、螺盖和透明长吸管作为一组整体抬起。",
+        "Pastel empty packaging with assembled pumps and clear dip tubes."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "Label",
+      "title": [
+        "白色环绕标贴",
+        "Stripes and print carrier"
+      ],
+      "short": [
+        "白色环绕标贴",
+        "Stripes and print carrier"
+      ],
+      "detail": [
+        "白色标贴从瓶身分离，保留贴合曲面。",
+        "Pastel empty packaging with assembled pumps and clear dip tubes."
+      ]
+    },
+    {
+      "key": "logo",
+      "node": "LogoInk",
+      "title": [
+        "白色 liaose 字标",
+        "Bold liaose wordmarks"
+      ],
+      "short": [
+        "白色 liaose 字标",
+        "Bold liaose wordmarks"
+      ],
+      "detail": [
+        "瓶身白色字标向外移出并放大。",
+        "Pastel empty packaging with assembled pumps and clear dip tubes."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "NameInk",
+      "title": [
+        "竖排产品文字",
+        "Names and capacities"
+      ],
+      "short": [
+        "竖排产品文字",
+        "Names and capacities"
+      ],
+      "detail": [
+        "BODY LOTION / BODY WASH 等竖排文字向标贴外层展开。",
+        "Pastel empty packaging with assembled pumps and clear dip tubes."
+      ]
+    }
+  ],
+  "review": {
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "studio": {
+        "background": "#e6e9e6",
+        "ink": "#263b3a"
+      }
+    },
+    "explosion": {
+      "mobilePrintSpread": 1,
+      "offsets": {
+        "body": [
+          1,
+          0,
+          0
+        ],
+        "pump": [
+          1,
+          2.2,
+          0
+        ],
+        "label": [
+          -1,
+          0.05,
+          0.8
+        ],
+        "logo": [
+          -1.7,
+          0.1,
+          1.4
+        ],
+        "print": [
+          -1.7,
+          0.05,
+          1.9
+        ]
+      },
+      "scales": {
+        "label": 1,
+        "logo": 1.8,
+        "print": 1.08
+      },
+      "camera": {
+        "centerX": [
+          0,
+          0
+        ],
+        "centerY": [
+          1.5,
+          2.4
+        ],
+        "width": [
+          3.8,
+          7
+        ],
+        "height": [
+          3.7,
+          6
+        ]
+      }
+    }
+  },
+  "design": {
+    "name": "Soft Body Duo",
+    "kind": {
+      "zh": "蓝粉双瓶 · 身体护理组合",
+      "en": "Pastel body care duo"
+    },
+    "background": "#e5e8ed",
+    "ink": "#263b3a",
+    "swatch": [
+      "#b3c9df",
+      "#e1c6d0"
+    ]
+  }
+}

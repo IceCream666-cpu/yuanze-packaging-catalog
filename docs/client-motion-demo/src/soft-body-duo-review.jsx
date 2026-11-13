@@ -5,7 +5,7 @@ import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
 import './structure/packaging-shell.css';
 import product from '../model-source/collection/poster-084/review-product.json';
 import poster from '../model-source/collection/poster-084/soft-body-duo-poster-v1.png';
-import modelUrl from '../packaging-assets/poster-084-v1.glb?url';
+import modelUrl from '../packaging-assets/poster-084-v2.glb?url';
 import logo from '../optimized-assets/yuanze-mark-compact.webp';
 
 const item = {id: 'poster-084', title: {zh: '蓝粉身体护理组合', en: 'Soft Body Duo'}, image: poster};
@@ -20,7 +20,7 @@ function Review() {
       onFavorite={() => {sessionStorage.setItem('soft-body-duo-saved', saved ? 'no' : 'yes'); setSaved(!saved);}}
       onOriginal={() => posterDialog.current.showModal()} onClose={() => location.assign('./')}/>
     <dialog ref={posterDialog} className="poster" aria-label="Soft Body Duo 原海报">
-      <img src={poster} alt="蓝粉身体护理组合，浅蓝条纹软管与乳白圆盘泵瓶" />
+      <img src={poster} alt="Soft Body Duo 原海报，透明玻璃瓶内呈蓝色和粉色料体" />
       <button onClick={() => posterDialog.current.close()}>返回模型</button>
     </dialog>
   </>;

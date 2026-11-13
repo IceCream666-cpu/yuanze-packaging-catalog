@@ -1,5 +1,5 @@
 {
-  "file": "poster-084-v1.glb",
+  "file": "poster-084-v2.glb",
   "kind": "collection",
   "scale": 1,
   "parts": [
@@ -7,16 +7,16 @@
       "key": "body",
       "node": "Body",
       "title": [
-        "蓝粉空瓶",
-        "Ivory plastic containers"
+        "透明玻璃空瓶",
+        "Clear glass bottles"
       ],
       "short": [
-        "蓝粉空瓶",
-        "Ivory plastic containers"
+        "透明玻璃空瓶",
+        "Clear glass bottles"
       ],
       "detail": [
-        "蓝、粉哑光瓶身，空包材展示，不含料体。",
-        "Pastel empty packaging with assembled pumps and clear dip tubes."
+        "无色透明玻璃，保留瓶壁与厚底；蓝粉色来自海报中的料体，本模型不含料体。",
+        "Colorless glass with hollow walls and a thick base. Blue and pink in the poster are contents; this model is empty."
       ]
     },
     {
@@ -24,15 +24,15 @@
       "node": "Pump",
       "title": [
         "完整泵头与长吸管",
-        "Complete disc pump"
+        "Complete pump and dip tube"
       ],
       "short": [
         "完整泵头与长吸管",
-        "Complete disc pump"
+        "Complete pump and dip tube"
       ],
       "detail": [
         "泵头、螺盖和透明长吸管作为一组整体抬起。",
-        "Pastel empty packaging with assembled pumps and clear dip tubes."
+        "The complete pump and long clear dip tube lift together."
       ]
     },
     {
@@ -40,15 +40,15 @@
       "node": "Label",
       "title": [
         "白色环绕标贴",
-        "Stripes and print carrier"
+        "White wrap labels"
       ],
       "short": [
         "白色环绕标贴",
-        "Stripes and print carrier"
+        "White wrap labels"
       ],
       "detail": [
         "白色标贴从瓶身分离，保留贴合曲面。",
-        "Pastel empty packaging with assembled pumps and clear dip tubes."
+        "Curved white labels separate from the glass."
       ]
     },
     {
@@ -56,15 +56,15 @@
       "node": "LogoInk",
       "title": [
         "白色 liaose 字标",
-        "Bold liaose wordmarks"
+        "White liaose wordmarks"
       ],
       "short": [
         "白色 liaose 字标",
-        "Bold liaose wordmarks"
+        "White liaose wordmarks"
       ],
       "detail": [
         "瓶身白色字标向外移出并放大。",
-        "Pastel empty packaging with assembled pumps and clear dip tubes."
+        "White ink moves outward and enlarges."
       ]
     },
     {
@@ -72,26 +72,27 @@
       "node": "NameInk",
       "title": [
         "竖排产品文字",
-        "Names and capacities"
+        "Vertical product lettering"
       ],
       "short": [
         "竖排产品文字",
-        "Names and capacities"
+        "Vertical product lettering"
       ],
       "detail": [
         "BODY LOTION / BODY WASH 等竖排文字向标贴外层展开。",
-        "Pastel empty packaging with assembled pumps and clear dip tubes."
+        "Product lettering separates farther than the labels."
       ]
     }
   ],
   "review": {
     "appearance": {
-      "glass": false,
+      "glass": true,
       "frosted": false,
       "studio": {
         "background": "#e6e9e6",
         "ink": "#263b3a"
-      }
+      },
+      "referenceGlass": true
     },
     "explosion": {
       "mobilePrintSpread": 1,
@@ -150,14 +151,14 @@
   "design": {
     "name": "Soft Body Duo",
     "kind": {
-      "zh": "蓝粉双瓶 · 身体护理组合",
-      "en": "Pastel body care duo"
+      "zh": "透明玻璃双瓶 · 空包材",
+      "en": "Clear glass duo · empty packaging"
     },
     "background": "#e5e8ed",
     "ink": "#263b3a",
     "swatch": [
-      "#b3c9df",
-      "#e1c6d0"
+      "#e4e9e8",
+      "#f1f0ed"
     ]
   }
 }
