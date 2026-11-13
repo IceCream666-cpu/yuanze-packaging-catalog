@@ -3385,6 +3385,50 @@
       "source": "posters/poster-085.webp",
       "sourceSha256": "3b34e171a836614ffac2727a80c77969fcc74cedcc89a1ce1b3a489210348fe9",
       "maxEdge": 1280
+    },
+    {
+      "path": "posters/poster-086.webp",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1147906,
+      "sha256": "92f693c4975125d3db8c4aee87c4edd0aaaf49b71fb61c6912d8c4641309964e",
+      "kind": "poster-lossless",
+      "posterId": "poster-086",
+      "originalSha256": "242ca4cd8faa7d99175073f5c97904ffc8328a8f4431795ca026fd35046e8b68",
+      "originalPixelsSha256": "7c6550ae86f3bcc95c6242afdaf8fbbab6ac63860bd16d68988e2ba4a57fb9fd"
+    },
+    {
+      "path": "posters/poster-086-thumb.webp",
+      "width": 427,
+      "height": 640,
+      "bytes": 16220,
+      "sha256": "b064f1c12365e1429492b001bf75a16ff72552a55bf6d133ec47e5ff1ba524ab",
+      "kind": "poster-thumbnail",
+      "posterId": "poster-086",
+      "sourceImage": "posters/poster-086.webp",
+      "originalSha256": "242ca4cd8faa7d99175073f5c97904ffc8328a8f4431795ca026fd35046e8b68"
+    },
+    {
+      "path": "previews/posters/poster-086-512.webp",
+      "width": 341,
+      "height": 512,
+      "bytes": 8544,
+      "sha256": "dd2f3a0fcad321b0f830cf01ace8827f0be27415071ea4b6effa925799add570",
+      "kind": "showroom-preview",
+      "source": "posters/poster-086.webp",
+      "sourceSha256": "92f693c4975125d3db8c4aee87c4edd0aaaf49b71fb61c6912d8c4641309964e",
+      "maxEdge": 512
+    },
+    {
+      "path": "previews/posters/poster-086-1280.webp",
+      "width": 853,
+      "height": 1280,
+      "bytes": 39328,
+      "sha256": "9d963d79f82a9136329cdf26e23c7cc98c70cdf78cf39c86471dd1b04c83952a",
+      "kind": "showroom-preview",
+      "source": "posters/poster-086.webp",
+      "sourceSha256": "92f693c4975125d3db8c4aee87c4edd0aaaf49b71fb61c6912d8c4641309964e",
+      "maxEdge": 1280
     }
   ],
   "updatedAt": "2026-10-07"

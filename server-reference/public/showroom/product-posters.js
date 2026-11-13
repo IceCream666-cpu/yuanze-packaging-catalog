@@ -848,6 +848,18 @@ window.YuanzeProductPosters = {
       "thumbnail": "/showroom/assets/posters/poster-085-thumb.webp",
       "width": 1024,
       "height": 1536
+    },
+    {
+      "id": "poster-086",
+      "category": "hair",
+      "title": {
+        "zh": "liaose 头皮精华瓶",
+        "en": "liaose Scalp Essence"
+      },
+      "src": "/showroom/assets/posters/poster-086.webp",
+      "thumbnail": "/showroom/assets/posters/poster-086-thumb.webp",
+      "width": 1024,
+      "height": 1536
     }
   ]
 };
