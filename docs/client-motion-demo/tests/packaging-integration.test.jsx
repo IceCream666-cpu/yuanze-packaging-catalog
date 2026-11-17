@@ -160,7 +160,7 @@ test('loader starts one authenticated model request beside both modules and abor
   let received, calls = 0, sceneCalls = 0, signal;
   globalThis.fetch = (url, options) => {
     calls++; signal = options.signal;
-    assert.equal(url, '/assets/packaging/beach-magic-packaging.glb');
+    assert.equal(url, '/assets/packaging/poster-012-v2.glb');
     assert.equal(options.credentials, 'same-origin'); assert.equal(options.cache, 'no-cache');
     signal.addEventListener('abort', () => bytes.reject(signal.reason), {once: true});
     return bytes.promise;

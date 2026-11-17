@@ -1,0 +1,53 @@
+{
+  "version": "client1.59",
+  "status": "prepared-local-not-deployed",
+  "sourceCommit": null,
+  "scope": "approved Beach Magic v2 model and six-layer viewer; 31 other models and all poster/homepage media preserved",
+  "publishedModel": "poster-012-v2",
+  "previewOnlyModels": [
+    "poster-072-v2",
+    "poster-056-v2"
+  ],
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "manifestSha256": "e31ee750721a42b1405ca06df3e3d0bca8a8cae0464df1321b6ce48a1ffd0a09",
+  "baselineManifestSha256": "c30552e997b0009d625985d1815627248fcb21c7654f17054ff38e6e3542c65f",
+  "changedResources": [
+    "assets/packaging/PackagingDetail-B5V961lc.js",
+    "assets/packaging/packaging-scene-4ZR48Lpr.js",
+    "assets/packaging/poster-012-v2.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "addedResources": [
+    "assets/packaging/PackagingDetail-B5V961lc.js",
+    "assets/packaging/packaging-scene-4ZR48Lpr.js",
+    "assets/packaging/poster-012-v2.glb"
+  ],
+  "removedResources": [
+    "assets/packaging/PackagingDetail-D3ZN8c53.js",
+    "assets/packaging/beach-magic-packaging.glb",
+    "assets/packaging/packaging-scene-ECoBdNC9.js"
+  ],
+  "plannedBackup": "/opt/yuanze-reference/backups/client1.59-beach-magic-quality-model-20261117",
+  "checks": {
+    "frontendTests": 202,
+    "packagingReleaseTests": 13,
+    "collectionModelTests": 4,
+    "publicationPlanTests": 5,
+    "localBuild": true,
+    "sourceStampCheck": true,
+    "unchangedOtherModels": 31,
+    "physicalMobileTested": false,
+    "onlineVerified": false
+  },
+  "evidence": "review-evidence/beach-magic/client159/",
+  "modelQA": "review-evidence/beach-magic/v2/QA.md",
+  "remainingQueue": [
+    "poster-056",
+    "poster-084"
+  ]
+}

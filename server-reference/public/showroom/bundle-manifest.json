@@ -680,9 +680,9 @@
       "bytes": 5184,
       "sha256": "224fb76c70bdf0991d79375425f5462b8a8045ae60e5683af683769f0a0e3af6"
     },
-    "assets/packaging/PackagingDetail-D3ZN8c53.js": {
+    "assets/packaging/PackagingDetail-B5V961lc.js": {
       "bytes": 12788,
-      "sha256": "5d8844176bce9b7ce0ecb52199a1ca602a9dc0d4378022bbdaa0bbc8624c59be"
+      "sha256": "dd5bad028108895bf1dc51778618b83769e99cf8c4731dc257160eadbe719468"
     },
     "assets/packaging/PackagingDetail-j1D-5bwl.css": {
       "bytes": 12596,
@@ -692,17 +692,17 @@
       "bytes": 44157,
       "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
     },
-    "assets/packaging/beach-magic-packaging.glb": {
-      "bytes": 2395680,
-      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
-    },
     "assets/packaging/gsap.min.js": {
       "bytes": 72435,
       "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
     },
-    "assets/packaging/packaging-scene-ECoBdNC9.js": {
-      "bytes": 582467,
-      "sha256": "cd1b1e3fcabb50e5f170df9ef3f768ded05b174fadd3866433f1f98533a142cd"
+    "assets/packaging/packaging-scene-4ZR48Lpr.js": {
+      "bytes": 582521,
+      "sha256": "2d8f5d4c2a32378781a9aec5a28ccc135f91fd77b3b64d4a45f18884007da98e"
+    },
+    "assets/packaging/poster-012-v2.glb": {
+      "bytes": 3626268,
+      "sha256": "1181aa8d8738901d12c6cee3790007fd09143f4007e3124cea8a0b398deda643"
     },
     "assets/packaging/poster-013.glb": {
       "bytes": 1064352,
@@ -2042,15 +2042,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "97f9ba56a9873778e64ce29dd6f7495fb5e333bd7eaa42af430620d6e9be945d"
+      "sha256": "b80b6742df76f4a5ffbbdbd261708be50a7a06d7205fd7bed553aff6f797fdb7"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 411000,
-      "sha256": "e6e501e46c7b8180f641b363b6b6d7c03857515905c42fa9bf4eb045f583459d"
+      "bytes": 412196,
+      "sha256": "68167b7f7032e405150db774e9b8323238490274bf83f2c12ff7c76f26b32f61"
     },
     "product-posters.js": {
       "bytes": 24032,
@@ -2059,5 +2059,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.58"
+  "version": "client1.59"
 }

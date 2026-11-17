@@ -33,14 +33,14 @@ class PackagingApprovalTests(unittest.TestCase):
         self.assertEqual(files['unrelated.webp'], b'preserved')
         self.assertEqual(set(files) - {'unrelated.webp'},
                          {f'assets/packaging/{name}' for name in builder.PACKAGING_ASSETS})
-        glb = files['assets/packaging/beach-magic-packaging.glb']
+        glb = files['assets/packaging/poster-012-v2.glb']
         self.assertEqual(struct.unpack_from('<4sII', glb), (b'glTF', 2, len(glb)))
         json_length, chunk_type = struct.unpack_from('<II', glb, 12)
         self.assertEqual(chunk_type, 0x4e4f534a)
         model = json.loads(glb[20:20 + json_length])
         roots = model['scenes'][model.get('scene', 0)]['nodes']
-        self.assertEqual({model['nodes'][index]['name'] for index in roots}, {'Jar', 'OuterCap', 'InnerLid', 'LogoPrint'})
-        self.assertEqual(len(model['meshes']), 10)
+        self.assertEqual({model['nodes'][index]['name'] for index in roots}, {'Jar', 'OuterCap', 'InnerLid', 'PaperLabel', 'LogoPrint', 'ProductPrint'})
+        self.assertEqual(len(model['meshes']), 11)
         self.assertFalse(model.get('animations'))
         self.assertFalse(model.get('cameras'))
         self.assertNotIn('KHR_lights_punctual', model.get('extensions', {}))
@@ -53,7 +53,7 @@ class PackagingApprovalTests(unittest.TestCase):
         length=struct.unpack_from('<I',glb,12)[0];model=json.loads(glb[20:20+length])
         roots=model['scenes'][model.get('scene',0)]['nodes']
         self.assertEqual({model['nodes'][i]['name'] for i in roots},{'Body','PumpAssembly','Label','LogoInk'})
-        self.assertEqual(hashlib.sha256(files['assets/packaging/beach-magic-packaging.glb']).hexdigest(),'ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f')
+        self.assertEqual(hashlib.sha256(files['assets/packaging/poster-012-v2.glb']).hexdigest(),'1181aa8d8738901d12c6cee3790007fd09143f4007e3124cea8a0b398deda643')
 
     def test_approval_identity_path_hash_and_duplicate_changes_are_rejected(self):
         approved = json.loads((builder.MOTION_CLIENT / 'packaging-manifest.json').read_text())
@@ -88,7 +88,7 @@ class PackagingApprovalTests(unittest.TestCase):
 
     def test_approved_model_cannot_replace_an_existing_route(self):
         with self.assertRaisesRegex(ValueError, 'cannot replace'):
-            builder.packaging_files({'assets/packaging/beach-magic-packaging.glb': b'existing'}, builder.MOTION_CLIENT)
+            builder.packaging_files({'assets/packaging/poster-012-v2.glb': b'existing'}, builder.MOTION_CLIENT)
 
     def test_preview_preparation_copies_only_validated_assets_to_the_production_routes(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -102,11 +102,11 @@ class PackagingApprovalTests(unittest.TestCase):
             for name in builder.PACKAGING_ASSETS:
                 self.assertEqual((base / 'public/assets/packaging' / name).read_bytes(),
                                  (base / 'packaging-assets' / name).read_bytes())
-            model = base / 'packaging-assets/beach-magic-packaging.glb'
+            model = base / 'packaging-assets/poster-012-v2.glb'
             model.write_bytes(b'tampered')
             with self.assertRaisesRegex(ValueError, 'checksum mismatch'):
                 builder.prepare_packaging_assets(base)
-            self.assertNotEqual((base / 'public/assets/packaging/beach-magic-packaging.glb').read_bytes(), b'tampered')
+            self.assertNotEqual((base / 'public/assets/packaging/poster-012-v2.glb').read_bytes(), b'tampered')
 
     def test_preview_preparation_rejects_symlinked_output_directories(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -231,7 +231,7 @@ class RecursiveSourceTests(unittest.TestCase):
             with patch.object(builder, 'client_directory', return_value=base):
                 before = builder.client_source_hash('client122')
                 for name in ['src/structure/vendor/three.module.js', 'src/structure/packaging-detail.css',
-                             'packaging-assets/beach-magic-packaging.glb', 'packaging-manifest.json']:
+                             'packaging-assets/poster-012-v2.glb', 'packaging-manifest.json']:
                     path = base / name
                     original = path.read_bytes()
                     path.write_bytes(original + b'changed')
@@ -270,13 +270,13 @@ class BuiltPackagingLazyLoadTests(unittest.TestCase):
         self.assertNotIn('src/structure/packaging-scene.js', visited)
         self.assertNotIn('src/structure/PackagingDetail.jsx', visited)
         self.assertTrue(all(not name.endswith('.glb') for name in initial))
-        glb = (client / 'packaging-assets/beach-magic-packaging.glb').read_bytes()
+        glb = (client / 'packaging-assets/poster-012-v2.glb').read_bytes()
         self.assertNotIn(glb, initial_bytes)
         self.assertNotIn(b'gsap.min.js', initial_bytes)
         self.assertNotIn(b'ScrollTrigger.min.js', initial_bytes)
         self.assertNotIn(b'.packaging-detail', initial_bytes)
         self.assertTrue(any(name.endswith('.css') for name in names - initial))
         html = (client / 'release/index.html').read_text()
-        self.assertNotIn('beach-magic-packaging.glb', html)
+        self.assertNotIn('poster-012-v2.glb', html)
         self.assertNotIn('gsap.min.js', html)
         self.assertNotIn('ScrollTrigger.min.js', html)

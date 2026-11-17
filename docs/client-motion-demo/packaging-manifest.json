@@ -1,22 +1,24 @@
 {
   "schema": 1,
-  "scope": "approved-client1.57-collection-packaging",
+  "scope": "approved-client1.59-collection-packaging",
   "posterId": "poster-012",
   "components": [
-    "Jar",
     "OuterCap",
     "InnerLid",
-    "LogoPrint"
+    "Jar",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
   ],
   "containsFormula": false,
   "files": [
     {
-      "name": "beach-magic-packaging.glb",
+      "name": "poster-012-v2.glb",
       "kind": "model",
-      "file": "packaging-assets/beach-magic-packaging.glb",
-      "productionTarget": "assets/packaging/beach-magic-packaging.glb",
-      "bytes": 2395680,
-      "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f"
+      "file": "packaging-assets/poster-012-v2.glb",
+      "productionTarget": "assets/packaging/poster-012-v2.glb",
+      "bytes": 3626268,
+      "sha256": "1181aa8d8738901d12c6cee3790007fd09143f4007e3124cea8a0b398deda643"
     },
     {
       "name": "gsap.min.js",

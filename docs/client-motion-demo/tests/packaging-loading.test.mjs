@@ -210,7 +210,7 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
           const sidewaysSpread=product.review.explosion.offsets.label[0]-product.review.explosion.offsets.print[0];
           assert.ok(sidewaysSpread>=.7,'authored lettering must have a substantial sideways separation');
           assert.ok(label.x-print.x>=sidewaysSpread*value-1e-9,'lettering must follow its approved sideways separation');
-          assert.ok(parts.print.scale.x/rest.print.s.x>parts.label.scale.x/rest.label.s.x);
+          assert.ok(Math.abs(parts.print.scale.x/rest.print.s.x-(1+((product.review.explosion.scales?.print??1)-1)*value))<1e-9,'lettering retains its approved scale');
           } else assert.ok(print.length()>.5*value,'direct printing must separate from the container');
           const capKey=parts.closure?'closure':parts.pump?'pump':'cap';
           assert.ok(parts[capKey].position.y-rest[capKey].p.y>.7*value,'cap or complete pump separation must remain substantial');
@@ -380,7 +380,7 @@ test('closing while parsing disposes a late model and never displays it', async 
     env.controller.abort(); await assert.rejects(mounting);
     const gltf = env.model(); gltf.scene.traverse(object => object.geometry?.addEventListener('dispose', () => geometryDisposals++));
     parsing.resolve(gltf); await Promise.resolve(); await Promise.resolve();
-    assert.equal(geometryDisposals, 4); assert.equal(ready, 0); assert.equal(env.host.__packagingScene, undefined);
+    assert.equal(geometryDisposals, PACKAGING_PRODUCTS['poster-012'].parts.length); assert.equal(ready, 0); assert.equal(env.host.__packagingScene, undefined);
     assert.deepEqual(env.counts(), {rendererDisposals: 1, envDisposals: 1, observers: 0});
   } finally {env.close();}
 });
@@ -416,7 +416,6 @@ for (const [id, lifts, printOffset] of [
   ['poster-057', {dropper:1.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:3.95,pump:1.85}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.15,pump:2.15}, [-2.65,.50,1.65]],
-  ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
   const env = harness({product, parse: () => Promise.resolve(loaded)});
@@ -1270,7 +1269,7 @@ test(`${id} keeps its complete pumps and clear tubes intact throughout desktop a
     const env=harness({product,parse:()=>Promise.resolve(loaded)});
     try{loaded=env.model();const body=loaded.scene.getObjectByName('Body');body.material.transmission=1;api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});assert.equal(body.material.envMapIntensity,enabled?.75:.3);assert.equal(body.material.specularIntensity,enabled?.8:.35);assert.equal(body.material.thickness,enabled?.045:.08);}finally{api?.dispose();env.close();}
   }
-  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-067','poster-068','poster-072','poster-073','poster-081','poster-084']);
+  assert.deepEqual(Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.review?.appearance.referenceGlass).map(([id])=>id).sort(),['poster-012','poster-067','poster-068','poster-072','poster-073','poster-081','poster-084']);
  });
 
  test('Body Oil glass refinement stays on the hollow bottle and preserves shared cap material',async()=>{
@@ -1723,4 +1722,39 @@ test('Daily Emulsion v2 preserves the fitted pump and clear cover, separates ink
   }
  }finally{api?.dispose();env.close();}
  assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb','072 remains local review only');
+});
+
+test('Beach Magic v2 publishes six fitted layers and casts only its physical paper shadow',async()=>{
+ const product=PACKAGING_PRODUCTS['poster-012'];
+ assert.deepEqual(product,JSON.parse(readFileSync(new URL('../model-source/collection/poster-012/v2/review-product.json',import.meta.url),'utf8')));
+ const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+ const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+ const nodes=gltf.nodes.map(n=>{
+  const spec=gltf.materials?.[gltf.meshes?.[n.mesh]?.primitives[0]?.material];
+  const m=new Three.MeshPhysicalMaterial();m.name=spec?.name??'';m.transmission=spec?.extensions?.KHR_materials_transmission?.transmissionFactor??0;
+  m.transparent=spec?.alphaMode==='BLEND';if(spec?.pbrMetallicRoughness?.baseColorTexture)m.map=new Three.Texture();
+  const o='mesh' in n?new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),m):new Three.Group();o.name=n.name;
+  if(n.matrix)o.applyMatrix4(new Three.Matrix4().fromArray(n.matrix));else{o.position.fromArray(n.translation??[0,0,0]);o.quaternion.fromArray(n.rotation??[0,0,0,1]);o.scale.fromArray(n.scale??[1,1,1]);}return o;
+ });
+ gltf.nodes.forEach((n,i)=>n.children?.forEach(j=>nodes[i].add(nodes[j])));
+ const model=new Three.Group();gltf.scenes[gltf.scene??0].nodes.forEach(i=>model.add(nodes[i]));
+ const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+ assert.deepEqual(model.children.map(o=>o.name).sort(),product.parts.map(p=>p.node).sort());
+ assert.equal(parts.cap.children.length,3);assert.equal(parts.liner.children.length,2);assert.equal(parts.body.children.length,3);
+ assert.ok(parts.print.isMesh && parts.name.isMesh,'root ink meshes must be checked too');
+ let api;const env=harness({product,parse:()=>Promise.resolve({scene:model})});
+ try {
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  const flush=()=>{const f=[...env.frames.values()];env.frames.clear();f.forEach(fn=>fn(16));};
+  const rest=Object.fromEntries(Object.entries(parts).map(([k,o])=>[k,o.position.clone()]));
+  const fitted=parts.cap.children.map(o=>o.matrix.toArray());
+  const paper=parts.label.children[0];assert.equal(paper.castShadow,true);assert.equal(paper.material.transparent,false);
+  for(const k of ['print','name'])assert.equal(parts[k].castShadow,false,'transparent ink carrier must not cast a rectangle');
+  parts.body.traverse(o=>{if(o.isMesh){assert.equal(o.receiveShadow,true);const shader={fragmentShader:'#include <shadowmap_pars_fragment>\n#include <dithering_fragment>'};o.material.onBeforeCompile(shader);assert.ok(shader.fragmentShader.includes('getShadowMask()'));}});
+  for(const p of [0,.5,1,.5,0]){
+   api.setProgress(p);flush();parts.cap.children.forEach((o,i)=>assert.deepEqual(o.matrix.toArray(),fitted[i]));
+   for(const [key,offset] of Object.entries(product.review.explosion.offsets))assert.ok(parts[key].position.clone().sub(rest[key]).distanceTo(new Three.Vector3(...offset).multiplyScalar(p))<1e-8);
+   if(p){assert.ok(parts.print.position.z-rest.print.z>parts.label.position.z-rest.label.z);assert.ok(parts.name.position.z-rest.name.z>parts.print.position.z-rest.print.z);}
+  }
+ }finally{api?.dispose();env.close();}
 });

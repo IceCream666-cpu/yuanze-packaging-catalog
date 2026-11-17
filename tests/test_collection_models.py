@@ -97,7 +97,7 @@ class CollectionModelTests(unittest.TestCase):
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
   self.assertEqual((set(collection)|{'poster-012'})-{'poster-080'},featured)
   self.assertFalse({f'poster-{n:03}' for n in range(74,79)} & featured)
-  self.assertEqual(len(collection),31)
+  self.assertEqual(len(collection),32)
   self.assertEqual(len(featured),31)
   for id,p in collection.items():
    with self.subTest(id=id):
@@ -108,7 +108,9 @@ class CollectionModelTests(unittest.TestCase):
     self.assertEqual(names,{part['node'] for part in p['parts']})
     print_parts=[part['node'] for part in p['parts'] if part['key'] in ('print','logo','name')]
     self.assertTrue(print_parts)
-    for name in print_parts:self.assertTrue(next(n for n in nodes if n['name']==(name+'_Soap' if p.get('finishes') else name)).get('children'))
+    for name in print_parts:
+     node=next(n for n in nodes if n['name']==(name+'_Soap' if p.get('finishes') else name))
+     self.assertTrue(node.get('children') or 'mesh' in node)
     self.assertTrue(all('uri' not in i for i in g.get('images',[])+g.get('buffers',[])))
     self.assertFalse(g.get('animations'));self.assertFalse(g.get('cameras'))
     for view in g['bufferViews']:self.assertLessEqual(view.get('byteOffset',0)+view['byteLength'],g['buffers'][0]['byteLength'])
@@ -122,7 +124,7 @@ class CollectionModelTests(unittest.TestCase):
      self.assertTrue((source/source_file).is_file())
  def test_collection_publication_matches_explicit_user_approval(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
-  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.57-collection-packaging')
+  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.59-collection-packaging')
 
  def test_five_withdrawn_liaose_models_remain_archived_and_inactive(self):
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
