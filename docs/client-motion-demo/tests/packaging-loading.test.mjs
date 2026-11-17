@@ -2005,6 +2005,7 @@ for (const [width,height] of [[1200,800],[393,520]]) test(`Soap Clean v2 keeps i
     assert.equal(api.getState().yaw,0);assert.equal(api.getState().pitch,0);
     for(const [key,part] of Object.entries(parts)){assert.ok(part.position.distanceTo(rest[key].p)<1e-8);assert.ok(part.scale.distanceTo(rest[key].s)<1e-8);assert.ok(1-Math.abs(part.quaternion.dot(rest[key].q))<1e-8);}
   }finally{api?.dispose();env.close();}
-  assert.equal(PACKAGING_PRODUCTS['poster-082'].file,'poster-082-v1.glb','082 v2 remains isolated from the approved production registry');
+  assert.deepEqual(PACKAGING_PRODUCTS['poster-082'],product,'approved 082 v2 configuration is registered');
+  assert.equal(PACKAGING_PRODUCTS['poster-085'].file,'poster-085-v2.glb','next 085 v3 stays local only');
   assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
 });

@@ -99,8 +99,8 @@ test('approved duo replaces the single bottle without losing its poster or model
  const declared=new Set(json('packaging-manifest.json').files.map(f=>f.name));
  assert.ok(declared.has('poster-080-v2.glb'));
  assert.ok(declared.has('poster-081-v2.glb'));
- assert.deepEqual(PACKAGING_PRODUCTS['poster-082'],json('model-source/collection/poster-082/review-product.json'));
- assert.ok(declared.has('poster-082-v1.glb'));
+ assert.deepEqual(PACKAGING_PRODUCTS['poster-082'],json('model-source/collection/poster-082/v2/review-product.json'));
+ assert.ok(declared.has('poster-082-v2.glb'));
  assert.deepEqual(PACKAGING_PRODUCTS['poster-082'].parts.map(p=>p.node),['Body','Pump','TubeCap','Label','LogoInk','NameInk']);
 });
 

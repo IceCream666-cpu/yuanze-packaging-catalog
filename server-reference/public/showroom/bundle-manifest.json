@@ -816,9 +816,9 @@
       "bytes": 2053332,
       "sha256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf"
     },
-    "assets/packaging/poster-082-v1.glb": {
-      "bytes": 1917000,
-      "sha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f"
+    "assets/packaging/poster-082-v2.glb": {
+      "bytes": 2782400,
+      "sha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b"
     },
     "assets/packaging/poster-084-v3.glb": {
       "bytes": 1855884,
@@ -2042,15 +2042,15 @@
     },
     "index.html": {
       "bytes": 784,
-      "sha256": "ae7053abf0daf04170da45155f3d47f6d981d1bfa1119f82a580ca53be596999"
+      "sha256": "e88e5cd269ea58bc723fb328940b3e16f30de8c8079afc3e8ece2838d5ed538c"
     },
     "preview.css": {
       "bytes": 51228,
       "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
     },
     "preview.js": {
-      "bytes": 413493,
-      "sha256": "336b1f69202d064a99da41184486baf11c05e00b9ed00e517de108747aef8a06"
+      "bytes": 413673,
+      "sha256": "1a37046a411145fe6601611407ecd62b9e490d5b0857d6e19bac5c86349b5400"
     },
     "product-posters.js": {
       "bytes": 24032,
@@ -2059,5 +2059,5 @@
   },
   "schema": 1,
   "source": "docs/client-motion-demo",
-  "version": "client1.62"
+  "version": "client1.63"
 }

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.62-collection-packaging",
+  "scope": "approved-client1.63-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "OuterCap",
@@ -261,12 +261,12 @@
       "sha256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf"
     },
     {
-      "name": "poster-082-v1.glb",
+      "name": "poster-082-v2.glb",
       "kind": "model",
-      "file": "packaging-assets/poster-082-v1.glb",
-      "productionTarget": "assets/packaging/poster-082-v1.glb",
-      "bytes": 1917000,
-      "sha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f"
+      "file": "packaging-assets/poster-082-v2.glb",
+      "productionTarget": "assets/packaging/poster-082-v2.glb",
+      "bytes": 2782400,
+      "sha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b"
     },
     {
       "name": "poster-084-v3.glb",
@@ -582,7 +582,7 @@
     },
     {
       "posterId": "poster-082",
-      "file": "poster-082-v1.glb",
+      "file": "poster-082-v2.glb",
       "components": [
         "Body",
         "Pump",

@@ -4248,7 +4248,7 @@
     }
   },
   "poster-082": {
-    "file": "poster-082-v1.glb",
+    "file": "poster-082-v2.glb",
     "kind": "collection",
     "scale": 1,
     "parts": [
@@ -4264,8 +4264,8 @@
           "Ivory plastic containers"
         ],
         "detail": [
-          "柔性软管与圆柱泵瓶，两件空包材。",
-          "An empty flexible tube beside an opaque cylindrical bottle."
+          "连续薄壁软管、细压纹封尾与乳白圆柱泵瓶，两件空包材。",
+          "An empty thin-wall tube with integrated fine heat sealing beside an ivory cylindrical bottle."
         ]
       },
       {
@@ -4312,8 +4312,8 @@
           "Stripes and print carrier"
         ],
         "detail": [
-          "浅蓝条纹与透明印刷承载面向外展开，无实体纸标。",
-          "Blue pinstripes and transparent print surfaces separate; there is no paper label."
+          "浅蓝直印条纹为薄实体装饰层，独立展开并投影；透明印刷载体不投整片阴影，无纸标。",
+          "Thin blue direct-print stripes separate and cast their own shadows; clear print carriers cast no rectangular shadows. No paper label."
         ]
       },
       {
@@ -4354,9 +4354,10 @@
         "glass": false,
         "frosted": false,
         "studio": {
-          "background": "#e6e9e6",
+          "background": "#cbd4d6",
           "ink": "#263b3a"
-        }
+        },
+        "labelShadows": true
       },
       "explosion": {
         "mobilePrintSpread": 1,
