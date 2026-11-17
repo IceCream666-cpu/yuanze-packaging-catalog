@@ -1,7 +1,7 @@
 {
   "version": "client1.61",
-  "status": "prepared-local-not-deployed",
-  "sourceCommit": null,
+  "status": "published-and-independently-verified",
+  "sourceCommit": "4ba62ffe",
   "baselineSourceCommit": "1776425",
   "scope": "approved Soft Body Duo v3 model and viewer; 31 other models and all poster/homepage media preserved",
   "publishedModel": "poster-084-v3",
@@ -42,8 +42,10 @@
     "sourceStampCheck": true,
     "unchangedOtherModels": 31,
     "physicalMobileTested": false,
-    "onlineVerified": false,
-    "browserInteractionVerified": false
+    "onlineVerified": true,
+    "browserInteractionVerified": true,
+    "all32ModelRanges": true,
+    "verifiedFullChangedResources": 5
   },
   "evidence": "review-evidence/soft-body/client161/",
   "modelQA": "review-evidence/soft-body/v3/QA.md",
@@ -54,5 +56,7 @@
     "availableBytesAtFreshBaseline": 293081088,
     "minimumHeadroomBytes": 268435456,
     "status": "no cleanup performed by preparation agent; publication rechecks current capacity before upload and staging"
-  }
+  },
+  "publishedAt": "2026-11-17T14:12:12+08:00",
+  "backup": "/opt/yuanze-reference/backups/client1.61-soft-body-quality-model-20261117"
 }

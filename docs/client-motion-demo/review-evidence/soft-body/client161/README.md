@@ -40,3 +40,7 @@ publish.py默认仅本地校验；`--publish`才调用现有临时SSH helper。�
 发布后运行verify_online.py验证HTTPS证书、5项变化资源完整SHA、32模型Range、三角色与匿名/退出、084原图和084/085首页预览；旧084v2、072v2、081v2以及撤下资源应不可读。主任务随后打开正式084复查半开接影、全开、旋转和复位，再更新发布回执。
 
 081后续本地制作使用隔离构建；不要重建或覆盖本次冻结release与server-reference/public/showroom包。
+
+## 正式发布与验收
+
+2026-11-17 14:12:12 已发布client1.61，14:14:06完成独立HTTPS验证。源提交4ba62ffe；5项变化资源完整摘要、32模型Range、三角色权限/匿名/退出通过；从正式首页Soft Body Duo进入084，合拢、半开、全开、90度旋转、复位及实际084v3请求通过，主任务逐图目检。其他31模型、6820项展厅外文件保持，服务未重启，业务写入0，回退完整。见publication.json、online-verification.json、browser-verification.json和online-*.png。

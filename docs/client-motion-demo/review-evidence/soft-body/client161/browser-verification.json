@@ -1,0 +1,101 @@
+{
+  "at": "2026-11-17T06:14:10.733Z",
+  "version": "client1.61",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "entry": "homepage Soft Body Duo dot -> 查看产品详情",
+  "states": [
+    {
+      "name": "closed",
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 225754
+    },
+    {
+      "name": "half",
+      "progress": 0.5,
+      "renderedProgress": 0.49981543567026154,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.8246954688559315,
+        0.0649760066371341,
+        0.8996677842064708
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 225754
+    },
+    {
+      "name": "open",
+      "progress": 1,
+      "renderedProgress": 0.9998136140461995,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.649692463176229,
+        0.129975769826006,
+        1.7996645052831592
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 225754
+    },
+    {
+      "name": "rotated",
+      "progress": 1,
+      "renderedProgress": 0.9999998822604687,
+      "yaw": 1.569804058763972,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.6499998057297731,
+        0.12999998469386087,
+        1.7999997880688436
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 225754
+    }
+  ],
+  "reset": true,
+  "resources": [
+    "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-084-v3.glb"
+  ],
+  "physicalMobileTested": false
+}
