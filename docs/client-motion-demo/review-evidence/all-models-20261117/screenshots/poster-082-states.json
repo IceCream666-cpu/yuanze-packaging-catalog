@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "id": "poster-082",
+    "file": "poster-082-v1.glb",
+    "config": {
+      "appearance": {
+        "glass": false,
+        "frosted": false,
+        "studio": {
+          "background": "#e6e9e6",
+          "ink": "#263b3a"
+        }
+      },
+      "explosion": {
+        "mobilePrintSpread": 1,
+        "offsets": {
+          "body": [
+            1,
+            0,
+            0
+          ],
+          "pump": [
+            1,
+            2.1,
+            0
+          ],
+          "cap": [
+            0.75,
+            -0.7,
+            0.15
+          ],
+          "label": [
+            -0.85,
+            0.05,
+            0.75
+          ],
+          "logo": [
+            -1.55,
+            0.25,
+            1.35
+          ],
+          "print": [
+            -1.6,
+            -0.05,
+            1.85
+          ]
+        },
+        "scales": {
+          "label": 1,
+          "logo": 1.08,
+          "print": 1.08
+        },
+        "camera": {
+          "centerX": [
+            -0.05,
+            0
+          ],
+          "centerY": [
+            1.55,
+            1.95
+          ],
+          "width": [
+            3.7,
+            6.4
+          ],
+          "height": [
+            3.75,
+            6.4
+          ]
+        }
+      }
+    }
+  },
+  "states": [
+    {
+      "name": "closed",
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 100048
+    },
+    {
+      "name": "half",
+      "progress": 0.5,
+      "renderedProgress": 0.4998698531566245,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.7997917650505992,
+        -0.02499349265783124,
+        0.9247592283397554
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 100048
+    },
+    {
+      "name": "expanded",
+      "progress": 1,
+      "renderedProgress": 0.9998165167032951,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5997064267252723,
+        -0.049990825835164676,
+        1.849660555901096
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 100048
+    },
+    {
+      "name": "rotated",
+      "progress": 1,
+      "renderedProgress": 0.9999999816068389,
+      "yaw": 1.5706388633613655,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5999999705709422,
+        -0.04999999908034192,
+        1.849999965972652
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 25,
+      "triangles": 100048
+    }
+  ]
+}

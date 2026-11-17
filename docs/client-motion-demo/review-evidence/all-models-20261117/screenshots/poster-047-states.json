@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "id": "poster-047",
+    "file": "poster-047.glb"
+  },
+  "states": [
+    {
+      "name": "closed",
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 9,
+      "triangles": 167426
+    },
+    {
+      "name": "half",
+      "progress": 0.5,
+      "renderedProgress": 0.49984017757144344,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5495045504714746,
+        0.08997123196285983,
+        0.8247362929928816
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 9,
+      "triangles": 167426
+    },
+    {
+      "name": "expanded",
+      "progress": 1,
+      "renderedProgress": 0.9998344152793338,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.099486687365935,
+        0.1799701947502801,
+        1.6497267852109008
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 9,
+      "triangles": 167426
+    },
+    {
+      "name": "rotated",
+      "progress": 1,
+      "renderedProgress": 0.9999999794299065,
+      "yaw": 1.5706011914755516,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -3.09999993623271,
+        0.17999999629738328,
+        1.6499999660593456
+      ],
+      "components": [
+        "closure",
+        "jar",
+        "label",
+        "print"
+      ],
+      "meshes": 9,
+      "triangles": 167426
+    }
+  ]
+}

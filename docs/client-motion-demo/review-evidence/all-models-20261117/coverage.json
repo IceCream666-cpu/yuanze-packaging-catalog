@@ -1,0 +1,2481 @@
+{
+  "schema": 1,
+  "verifiedAt": "2026-11-17T12:08:38.967876+08:00",
+  "version": "client1.59",
+  "scope": "Artifact coverage and metadata/integrity validation only; independent visual conclusions supplied by root.",
+  "passed": true,
+  "counts": {
+    "formalProducts": 32,
+    "stateFiles": 34,
+    "coveredScenes": 34,
+    "posesPerScene": 4,
+    "baseProductScreenshots": 128,
+    "additional080FinishScreenshots": 8,
+    "mainScreenshots": 136,
+    "extra061RecheckScreenshots": 1,
+    "totalPNG": 137,
+    "contactSheets": 9
+  },
+  "modelAndStateIdsMatchCurrentFormalRegistry": true,
+  "uniquePNGPixels": [
+    [
+      1557,
+      971
+    ]
+  ],
+  "checksDescription": [
+    "34 exact state-file entries, no missing or unexpected state IDs.",
+    "Each state has closed/half/expanded/rotated; target and settled progress and 90-degree yaw checked with0.02 tolerance.",
+    "Each state model file and root component keys match current formal registry;080 finishes checked individually.",
+    "All32 actual GLB bytes/SHA256 match current packaging manifest.",
+    "Every137 PNG checked for signature, all chunk CRCs, zlib decompression, expected scanline bytes, valid filter bytes and complete IEND.",
+    "9 JPEG contact sheets checked for SOI/EOI and hashed; no visual re-review by report editor."
+  ],
+  "evidenceLimits": [
+    "PNG integrity/pose metadata do not prove screenshot pixels show the intended model or visual correctness; root independently performed visual inspection.",
+    "State files store model filename/config but not an in-browser response-body digest; asset SHA is the current local formal artifact check.",
+    "Captured pixel dimensions are image dimensions, not a claim of CSS viewport or physical-device testing."
+  ],
+  "rootVisualReviewSource": "Parent agent supplied per-product independent image-review conclusions in task delegation; recorded in README without new aesthetic judgment.",
+  "entries": [
+    {
+      "key": "poster-012",
+      "id": "poster-012",
+      "finish": null,
+      "currentModelFile": "poster-012-v2.glb",
+      "currentModelSHA256": "1181aa8d8738901d12c6cee3790007fd09143f4007e3124cea8a0b398deda643",
+      "stateFile": "screenshots/poster-012-states.json",
+      "stateFileSHA256": "48cbb732312c665fe19cd64136d872df28a98d6d2fb03c75be7c440769776a3f",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-012-closed.png",
+          "bytes": 303592,
+          "sha256": "30d451ec0cdbe280fcd4dd8d5665671b711fdff9c9d099d41b412bc9d9899085",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-012-half.png",
+          "bytes": 209445,
+          "sha256": "dd5ba6421f51f59af442346e6ba9f69c0a89b45ca1eb37b216f0b588f3d8dfdf",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-012-expanded.png",
+          "bytes": 161625,
+          "sha256": "3a0b065f504723b9730e0f8d6aff287c51312b4c3a503dd1a5a0c928ecd4dae0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-012-rotated.png",
+          "bytes": 117169,
+          "sha256": "1ec9962b27fb5e8d4d4284d4a1199967a13c528a0c53d7cc2d696ffad800f9ce",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-013",
+      "id": "poster-013",
+      "finish": null,
+      "currentModelFile": "poster-013.glb",
+      "currentModelSHA256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688",
+      "stateFile": "screenshots/poster-013-states.json",
+      "stateFileSHA256": "a5229b82e4df352da2a2a706180ace5f9c38db7c13b486b7afe95e8f6ad56371",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-013-closed.png",
+          "bytes": 181073,
+          "sha256": "ab2707414f7218064534ebf47ca503e3417c7a0858dc7182658852477d006709",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-013-half.png",
+          "bytes": 158413,
+          "sha256": "c60808d7da0ac2383be2fd2c97ff0257ef9b929b3f50e480f131e2f86aea13bb",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-013-expanded.png",
+          "bytes": 128934,
+          "sha256": "fa05e5247169aea43537c48fd1ed2cbedcdd1a05d3b125a5de4a811f5c17ea6b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-013-rotated.png",
+          "bytes": 73509,
+          "sha256": "73f0ebead20084efedd297dd2032b8830007bd1da484caf52aa926207731b8f0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-039",
+      "id": "poster-039",
+      "finish": null,
+      "currentModelFile": "poster-039.glb",
+      "currentModelSHA256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
+      "stateFile": "screenshots/poster-039-states.json",
+      "stateFileSHA256": "ff87e63c76d2833e02daee33ab7c621be2f1e9196598ac6ebc5997f0639f9ee3",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-039-closed.png",
+          "bytes": 154045,
+          "sha256": "c7da4e2b63579eca777028e27e33a3798da151836c1eaa138e4735364f8218dc",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-039-half.png",
+          "bytes": 151399,
+          "sha256": "c80b2958635b9239b2e63bdc3b99efe4588dd73ac968cba1d874a548744f6367",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-039-expanded.png",
+          "bytes": 146904,
+          "sha256": "718868394e9a1192116058a11d91f49030638a9f18cd87cf9e7917d5ece11e61",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-039-rotated.png",
+          "bytes": 114351,
+          "sha256": "50253b7b53b35918cc8dbcc93af40494b9ba80c523fb593a0b60597699ab76e3",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-049",
+      "id": "poster-049",
+      "finish": null,
+      "currentModelFile": "poster-049-v2.glb",
+      "currentModelSHA256": "df68c13d48303cb76edcbdb8aadd1414583e61834803fa5dc1e4bc8d17bd7163",
+      "stateFile": "screenshots/poster-049-states.json",
+      "stateFileSHA256": "a619bda87bfaee56d29ee63df3ed606c487f8837468972aca10506322c80d0d7",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-049-closed.png",
+          "bytes": 169378,
+          "sha256": "eaf3317de428985ebea191c6a3db4ccf348a91709a17bf6b6578a18bbe1f9b1c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-049-half.png",
+          "bytes": 125027,
+          "sha256": "9ae166b9e62ef9fe4b53a338228c33e34eb5bc62565bfe1f8bb4f3caacfe4352",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-049-expanded.png",
+          "bytes": 95590,
+          "sha256": "1452c648415ab52124f8b90220ca43987974ab3669855e94f59712382c76aaa5",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-049-rotated.png",
+          "bytes": 75379,
+          "sha256": "47cd968d7f4002407f991614025e0d5eea3f611eedfc9dc383ca8ffa0c926147",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-042",
+      "id": "poster-042",
+      "finish": null,
+      "currentModelFile": "poster-042.glb",
+      "currentModelSHA256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+      "stateFile": "screenshots/poster-042-states.json",
+      "stateFileSHA256": "a7919e1c739a3ad5954c4ef3ee60b0e2f82546ceb7c46f5752543fc18924977e",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-042-closed.png",
+          "bytes": 147184,
+          "sha256": "1a024356dd0142adabcbd3aaf8b3736f7733959d188905c9cecb04f49e143c11",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-042-half.png",
+          "bytes": 142089,
+          "sha256": "9249bc6f1d641f93a9da9a048bcc8ee4c102dc770f68fbccffc89c68f05adb5c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-042-expanded.png",
+          "bytes": 135351,
+          "sha256": "78083ff2ad751859c71960f2f3318a3cdde0192520a0e14c50d2e6898a2d9dd3",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-042-rotated.png",
+          "bytes": 63448,
+          "sha256": "1f3559a944798c858f4162a746ac7bbe105724792b2605334c661e6b0f3ff94c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-051",
+      "id": "poster-051",
+      "finish": null,
+      "currentModelFile": "poster-051.glb",
+      "currentModelSHA256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+      "stateFile": "screenshots/poster-051-states.json",
+      "stateFileSHA256": "73b910f997fe829a85d16f99b9038311aa170ea2ea12e6786dbf552cda2cacbd",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-051-closed.png",
+          "bytes": 154222,
+          "sha256": "d175ec72472855414b234ff742faa160dffc356fe72707c677955f992881aff8",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-051-half.png",
+          "bytes": 114099,
+          "sha256": "30caa7e6265856fa42addc367e86ed63f268436d54d93225a32fe7f889bf2cb0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-051-expanded.png",
+          "bytes": 88618,
+          "sha256": "6060ef17379eaa400651ec2f78122d581f68f0aa83b77c544f84880a40ef8e5d",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-051-rotated.png",
+          "bytes": 54417,
+          "sha256": "c69d3d1909c77f8f52da4e15742643c7c326235d8c65a232ed9b1c1723dd0ffa",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-044",
+      "id": "poster-044",
+      "finish": null,
+      "currentModelFile": "poster-044.glb",
+      "currentModelSHA256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+      "stateFile": "screenshots/poster-044-states.json",
+      "stateFileSHA256": "11624c39d997e5ce2d43b5d503ba0b579143dd3903c13c04e64e9838515dedb0",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-044-closed.png",
+          "bytes": 91885,
+          "sha256": "878889cf12b46d2a1e6adfd783a6b388b9bb807178e6f92452c99f3ffb76114b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-044-half.png",
+          "bytes": 71480,
+          "sha256": "a7ad89565bb346588a0e0132515342f202d385e66f8339bcd6d48e4458bbb975",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-044-expanded.png",
+          "bytes": 58511,
+          "sha256": "a2020ae24c2c45573ae6005cbc72c5a0a1c1f3962b92bc64b41fa5e56912cc24",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-044-rotated.png",
+          "bytes": 46480,
+          "sha256": "bfd3c25615c120c6980a158aebdab11a0c8d0f33ae793875db223847d120af97",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-047",
+      "id": "poster-047",
+      "finish": null,
+      "currentModelFile": "poster-047.glb",
+      "currentModelSHA256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+      "stateFile": "screenshots/poster-047-states.json",
+      "stateFileSHA256": "5ea3441307af0bab1e4fbc7eeee90d2a2ca61b09ebb0027a6fc0d16aaed750aa",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-047-closed.png",
+          "bytes": 203835,
+          "sha256": "42bd15b875e24216a391076271e6d09ba6b6bd5d8c633f4046fa70ca01acaa83",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-047-half.png",
+          "bytes": 151266,
+          "sha256": "3f3cdadc209105eabfab4b5b75cf4e4b0f0b978db648ce9d6d483c6a3c3ea7e0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-047-expanded.png",
+          "bytes": 119038,
+          "sha256": "2ca45f869e65714e0f855e42f0730d59eaaabebff1530d0c3f11651f3899e8dd",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-047-rotated.png",
+          "bytes": 98765,
+          "sha256": "27004d95ebaf9b24ea2cf75ac2f58bd7348260017e88c19176ea6563752183cb",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-056",
+      "id": "poster-056",
+      "finish": null,
+      "currentModelFile": "poster-056.glb",
+      "currentModelSHA256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+      "stateFile": "screenshots/poster-056-states.json",
+      "stateFileSHA256": "846943caa6d59265cd2b5ac2afc10dff77d21123f577d7e8f7a7df2f3b215e49",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-056-closed.png",
+          "bytes": 79862,
+          "sha256": "61fd3bf18362fa7da607eeb8bb5ba59e664dbc240a5d0182218d0fb3d51b4a8b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-056-half.png",
+          "bytes": 58798,
+          "sha256": "2f46970f98647fd28b931c556354c2eea0be892966daec9ae46760a122b3ff3a",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-056-expanded.png",
+          "bytes": 50625,
+          "sha256": "1f97d2292db1bb0c20a024b494e1f7550ffa7ec29b3ed4a4f0faf5de83211340",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-056-rotated.png",
+          "bytes": 34018,
+          "sha256": "ff7fc4ccf7cb6a984e3cc957b41c8060c037578a9c70d32bf86a995737b19784",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-057",
+      "id": "poster-057",
+      "finish": null,
+      "currentModelFile": "poster-057.glb",
+      "currentModelSHA256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+      "stateFile": "screenshots/poster-057-states.json",
+      "stateFileSHA256": "4ee24b7f3c8f2294e36a24b14206dc932c8618e3faa32b5501d521d697acf334",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-057-closed.png",
+          "bytes": 97075,
+          "sha256": "fdc9acfec05c9395000f21116153150adb9215a1811f53a06e5172a21970aa79",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-057-half.png",
+          "bytes": 81681,
+          "sha256": "5f9fd859c1d6a108640c2c0f18ff6a9c23cc540f413c9a3cae066919e6aabf7e",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-057-expanded.png",
+          "bytes": 71154,
+          "sha256": "423e9bfa86a960bc6028f596ef5b4cd728e55c453976336ccc90b564640bc6b4",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-057-rotated.png",
+          "bytes": 37694,
+          "sha256": "abb57a615ea6b30ba4e6ead90ee43a3850361eb30864dfe2b3ec306cc4e6b639",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-058",
+      "id": "poster-058",
+      "finish": null,
+      "currentModelFile": "poster-058.glb",
+      "currentModelSHA256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+      "stateFile": "screenshots/poster-058-states.json",
+      "stateFileSHA256": "e5bec78406a30e67ccaa3b2b7152e00e88747d4910e98d1c02d45d7780997892",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-058-closed.png",
+          "bytes": 85040,
+          "sha256": "c84905ab069e7a02a705b082030192569369c60eb9d4beef379373cee9ea708b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-058-half.png",
+          "bytes": 65557,
+          "sha256": "adf320dd649aa0bf2893748716b8ac2c0b3fbe7e5b187e10a30e9877018f5eaa",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-058-expanded.png",
+          "bytes": 55845,
+          "sha256": "33e904637004be8fd34175b37b13cccbfc173d61e423f5a6a1ad00969e01fcc2",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-058-rotated.png",
+          "bytes": 29865,
+          "sha256": "691178c7bbace549605a23451091d6dbf709d9955ccfac274c56cae41bfbfca0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-059",
+      "id": "poster-059",
+      "finish": null,
+      "currentModelFile": "poster-059.glb",
+      "currentModelSHA256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+      "stateFile": "screenshots/poster-059-states.json",
+      "stateFileSHA256": "7aec68b0c8e736ae407e136089f704a6906084b18364d16967c253da5a9a5a38",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-059-closed.png",
+          "bytes": 131762,
+          "sha256": "7f9d480d43996de59e24b434edadf654b5fc06182f24f2ecd89667308a3e223f",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-059-half.png",
+          "bytes": 101652,
+          "sha256": "b687a0e879933e803e6d5728efedf6547adcce5cd9aa487948103cb812020412",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-059-expanded.png",
+          "bytes": 69844,
+          "sha256": "476034f9c823228390cb50f3bfc344354dab01bc8ffd9a5a7387fba346aef738",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-059-rotated.png",
+          "bytes": 34311,
+          "sha256": "b75487cf74459150af6b00d8f63f1c7668de67bc208fc448cd1e2c919e34bd84",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-060",
+      "id": "poster-060",
+      "finish": null,
+      "currentModelFile": "poster-060.glb",
+      "currentModelSHA256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+      "stateFile": "screenshots/poster-060-states.json",
+      "stateFileSHA256": "6193f3f9ccbe58c5898716761c5519c42a459d66aa61ee51e50f8f79824c59d5",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-060-closed.png",
+          "bytes": 110311,
+          "sha256": "4ee2c12796e9b06e532c257acbe513b2067e2c611dcda90ee5c8b0bcdda0259b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-060-half.png",
+          "bytes": 83620,
+          "sha256": "c353d2e6e9f2631c7ab84ec96bf9e2556fe5ecee548e34fd252080eef2c46f93",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-060-expanded.png",
+          "bytes": 68910,
+          "sha256": "559da61ef9b8d3c8f4c59d4679d84e1c414c44a3f9d6de8788f239765cd43c68",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-060-rotated.png",
+          "bytes": 45090,
+          "sha256": "92e9152608cc9172e73c46efa6dd1a96d0dd87cb3be994b96ae7109af10646bb",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-061",
+      "id": "poster-061",
+      "finish": null,
+      "currentModelFile": "poster-061.glb",
+      "currentModelSHA256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+      "stateFile": "screenshots/poster-061-states.json",
+      "stateFileSHA256": "a961cf1af1b6b1c7166d625477c211a8379f95aca41a5c61fae8beaea2407dee",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-061-closed.png",
+          "bytes": 153354,
+          "sha256": "1ef3633ad4a23e01c188736379e2b8ee03e2550a28019ebf0b948e9d5a7907c7",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-061-half.png",
+          "bytes": 130273,
+          "sha256": "c236c39d68078cf58ab0aa7b669d2197bde5c329f75121f69e5e44b1e24a6fe3",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-061-expanded.png",
+          "bytes": 103629,
+          "sha256": "d1bf0887863f037b111f005d18c3b167e2cb644d57dca17024b4afa7ad692047",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-061-rotated.png",
+          "bytes": 73780,
+          "sha256": "fc450fa13860f0718f049ad90141885b55594fc15494db6ed319977b3049fcaf",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-062",
+      "id": "poster-062",
+      "finish": null,
+      "currentModelFile": "poster-062.glb",
+      "currentModelSHA256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34",
+      "stateFile": "screenshots/poster-062-states.json",
+      "stateFileSHA256": "c106128fc630a44595410211557f0385dbb575c6848ee8096e20721adc91b47f",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-062-closed.png",
+          "bytes": 101585,
+          "sha256": "5dcb10f3a1f90b2ca15627865b9f2e3aceebf70f32aa83e69b6e80873c739ef6",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-062-half.png",
+          "bytes": 121110,
+          "sha256": "1420d997a751d59bda6b3390c2acf6469767a84733509d110d74957f709ddc02",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-062-expanded.png",
+          "bytes": 130283,
+          "sha256": "b35f9ab32e1273079eb1d7efd8714ad74aa4b4c8a90f34f6dda0ff08a289d029",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-062-rotated.png",
+          "bytes": 73930,
+          "sha256": "43c7ffb5293a22e637e662c4b59e58e7c7a1e0aff33feea2b31205d46761b7df",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-063",
+      "id": "poster-063",
+      "finish": null,
+      "currentModelFile": "poster-063.glb",
+      "currentModelSHA256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a",
+      "stateFile": "screenshots/poster-063-states.json",
+      "stateFileSHA256": "7724cb54fb2fcb1dfe2266e42464c8b7a59c6ca140c5ec8196277b5a8f9edd77",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-063-closed.png",
+          "bytes": 274836,
+          "sha256": "321e20e00b3c1edabdadf5672a42f3131a8d3f423503e17de8ae0f6e53baa3b1",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-063-half.png",
+          "bytes": 266760,
+          "sha256": "b7efcbe25cfb49afa4ba940540a63b7c74c4aef4874a16a9270de9ba923c98d8",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-063-expanded.png",
+          "bytes": 257032,
+          "sha256": "13ec599a78584ed7f38ef028656bde92515cc808efe7c51b5fefe05bbf413312",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-063-rotated.png",
+          "bytes": 172804,
+          "sha256": "c06ef2c0afa49915453673f5f79ecade0c67e532cf16ca880723f457630e32dc",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-064",
+      "id": "poster-064",
+      "finish": null,
+      "currentModelFile": "poster-064.glb",
+      "currentModelSHA256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+      "stateFile": "screenshots/poster-064-states.json",
+      "stateFileSHA256": "7a9547c6fa84b546fc66baa9c0f6e7648cce030c47af15e07a8f91bb078bbf6b",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-064-closed.png",
+          "bytes": 210903,
+          "sha256": "e0f9c13e17ffe5c32005dde9c42bca9894ccd3be9d6ac3b68a700ea734673aa8",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-064-half.png",
+          "bytes": 168907,
+          "sha256": "566618e5439e04873c1073cd8fede3207b764b8ef93bcec7ce0a8b777b7da9a8",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-064-expanded.png",
+          "bytes": 143410,
+          "sha256": "a72b7f5b7a85cb0b17e4f1134fcdb239af0122b0e15ac42565655e63ec05b5a6",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-064-rotated.png",
+          "bytes": 80356,
+          "sha256": "afd01043e1b38944dc600f17a71ed581e7a321eed1b0e35e00dc8886739d1378",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-065",
+      "id": "poster-065",
+      "finish": null,
+      "currentModelFile": "poster-065.glb",
+      "currentModelSHA256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+      "stateFile": "screenshots/poster-065-states.json",
+      "stateFileSHA256": "88f499612c06470373402806cbf3e0b0cbfc8e29220f52aa1cb90f09eced6098",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-065-closed.png",
+          "bytes": 199911,
+          "sha256": "0a1cd3f9a947acd6181ff1ba7495d162705d457e857ac0922d1d2d187d036bc4",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-065-half.png",
+          "bytes": 140867,
+          "sha256": "55ac6ba7717dc00de5bcb213d7874cea23c3cbf627c2d8e899033ea74e98f8cc",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-065-expanded.png",
+          "bytes": 100970,
+          "sha256": "63583d2384abd4b5bfc6cb1a1a3c911e2c3ebcebb97dfb1c18ad8b8e0281f6ba",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-065-rotated.png",
+          "bytes": 39579,
+          "sha256": "da26822b1edd8e0cb5666308683188601d90500a24322fcd0b7c3a2392f888aa",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-066",
+      "id": "poster-066",
+      "finish": null,
+      "currentModelFile": "poster-066.glb",
+      "currentModelSHA256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+      "stateFile": "screenshots/poster-066-states.json",
+      "stateFileSHA256": "1c6bfbb82b10dba130ea1dcf4794827b5fbc86003a777a1b2d4e6d8149249e42",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-066-closed.png",
+          "bytes": 153276,
+          "sha256": "e19afb08b421f2bc584024b198a3f57dfe3ac0002ff367ba92985e32ae900b81",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-066-half.png",
+          "bytes": 141809,
+          "sha256": "20355962380fa79631a9f7d238d5573934e07ac052fab7e50f8e4c667733989f",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-066-expanded.png",
+          "bytes": 143741,
+          "sha256": "e341a7f3d646144bd1347189e84a277163ad254e84e6bcab0e0cb0f3f0e31de1",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-066-rotated.png",
+          "bytes": 36088,
+          "sha256": "6fc91bb19ac19a1d25e83dc0f839b1a79387cc4700b2620334b08ecf780337cb",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-067",
+      "id": "poster-067",
+      "finish": null,
+      "currentModelFile": "poster-067-v2.glb",
+      "currentModelSHA256": "87e147f13957983fb664c1f256914d2cca238639310a8964de36946ee383f6c9",
+      "stateFile": "screenshots/poster-067-states.json",
+      "stateFileSHA256": "260bf86018fa645fa8856c65df133e948eaf7ec2e33682971381cc24fd8f42d8",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-067-closed.png",
+          "bytes": 191807,
+          "sha256": "d97d20d25d4029dd579dbedcf11c3b4213438193b13fefb5b35d997399520aff",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-067-half.png",
+          "bytes": 126574,
+          "sha256": "3c9b4042d28f91beae99a0b063756df5256c92c2745e5c1d4c80b6c225eeeff3",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-067-expanded.png",
+          "bytes": 94913,
+          "sha256": "d821d4784d27f7f2cc401d4a8d583e1d8931a4a7f810f415a8bbc90e27d2c79b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-067-rotated.png",
+          "bytes": 68484,
+          "sha256": "317037565237960dcb1c2133a3d1915da3325529d1b730ce239d056a2ad53249",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-068",
+      "id": "poster-068",
+      "finish": null,
+      "currentModelFile": "poster-068-v3.glb",
+      "currentModelSHA256": "1e7715f7f43d4c4cb5b380e3db204aaf4ba3bfb2c8d590834c47a1c1940b99fe",
+      "stateFile": "screenshots/poster-068-states.json",
+      "stateFileSHA256": "387f67321acebf0216d22dddb0f4671082031c4f2691e657c8f35d6d1efad266",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-068-closed.png",
+          "bytes": 115869,
+          "sha256": "fa10008bfae0ece50fab79f1998f3d60270522b06ff03291d524e0697c118951",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-068-half.png",
+          "bytes": 106790,
+          "sha256": "d311c8d951caed838d75f646ad5f1563a9ababd6172726ef498dd7b4379ca43d",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-068-expanded.png",
+          "bytes": 85318,
+          "sha256": "109253941b2e7e7ede1c3f2b343d36e6fa1524d4c2e8c9b1def137c1cde86556",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-068-rotated.png",
+          "bytes": 49986,
+          "sha256": "39982744bd266786c0fe25384d5648de1c9550cf5ab8a9ff03234e06fef97b43",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-069",
+      "id": "poster-069",
+      "finish": null,
+      "currentModelFile": "poster-069.glb",
+      "currentModelSHA256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157",
+      "stateFile": "screenshots/poster-069-states.json",
+      "stateFileSHA256": "ae75cea9c22c18a356f1b4b6d2e10c7fef9d16e26d20c977054f6c695a67f2c9",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-069-closed.png",
+          "bytes": 141797,
+          "sha256": "48dc85a6914007acf025d172b4c719885aba24d351df93109922fae8151f405a",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-069-half.png",
+          "bytes": 85503,
+          "sha256": "9aa7eb4154c372082b82c73f2079050aadc8298beb797ab4288943b8efb742c7",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-069-expanded.png",
+          "bytes": 63121,
+          "sha256": "1844563ee1bf32c4c4157889e40c7cc4f0ee39f4e7d46f8d9ea7ddebb755bf0b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-069-rotated.png",
+          "bytes": 51912,
+          "sha256": "d8e1d7ca5832719074c97dcbc6911efd96e06323b28071666df8dd3455baed96",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-070",
+      "id": "poster-070",
+      "finish": null,
+      "currentModelFile": "poster-070.glb",
+      "currentModelSHA256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+      "stateFile": "screenshots/poster-070-states.json",
+      "stateFileSHA256": "01207a8d3c73d12798c72575c154ab9f8d4d35e6e31bd6a2a12619188cbcbfd6",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-070-closed.png",
+          "bytes": 160459,
+          "sha256": "73c3fb5a673590e39dfcc686d56afe4fc8a8cd6ab0e08c3fa696606d53070389",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-070-half.png",
+          "bytes": 114009,
+          "sha256": "fd06819112c3e9d6f0cc72d0915b38d82c9e2ce85b89b989bca3f2fd4f2c9ae8",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-070-expanded.png",
+          "bytes": 83161,
+          "sha256": "0bb5b74b303d8a0e858c8483706ac99a2003a2475d32afef3d952eb828c64061",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-070-rotated.png",
+          "bytes": 69053,
+          "sha256": "9f9183355c00dccbe50439ba8327075b3f7a74c16a981fa61c9e701c395134c1",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-073",
+      "id": "poster-073",
+      "finish": null,
+      "currentModelFile": "poster-073.glb",
+      "currentModelSHA256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b",
+      "stateFile": "screenshots/poster-073-states.json",
+      "stateFileSHA256": "b26ba301dcafdae9e695b8e320b0761b7a7054523d8993ab405063d1db0c76df",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-073-closed.png",
+          "bytes": 112757,
+          "sha256": "6f48df690e0be51b0acb9a25ab122d594cc3b3821b3d9c5184e5c3f52818383c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-073-half.png",
+          "bytes": 93516,
+          "sha256": "8da046fbd84945c9821f40f389daca8690d369ee6ef4e4557ca2a2ccb18f8a17",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-073-expanded.png",
+          "bytes": 78465,
+          "sha256": "ca020793344874fe00556c819c72dac4df3a4b3d85fd74cc8af6739318f5de49",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-073-rotated.png",
+          "bytes": 70632,
+          "sha256": "0d6ba0d917c3cbffa3a21fcd5ba812caf379c7c68fbd607455b406cac434d75e",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-072",
+      "id": "poster-072",
+      "finish": null,
+      "currentModelFile": "poster-072.glb",
+      "currentModelSHA256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1",
+      "stateFile": "screenshots/poster-072-states.json",
+      "stateFileSHA256": "eb99cf3517f84720f86e9002188a5be9e44f72db82813860b2383c3051bf5be0",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-072-closed.png",
+          "bytes": 102298,
+          "sha256": "e85113b66d93a270a5a685d65b17ae935c165000b771220fa23ed5824cd6ba56",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-072-half.png",
+          "bytes": 77619,
+          "sha256": "8df6df4d7c6c3ebbec1c269a7acdea2e11d7e5f872b5063c0391a581c63a57ce",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-072-expanded.png",
+          "bytes": 59144,
+          "sha256": "8b8ef2f522990f90ae02725da0fbb1a56f0b7d21a9b2ed9cd7355ad9618cbee0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-072-rotated.png",
+          "bytes": 45325,
+          "sha256": "29627706f0426a6a5653d792361d8017e0e07df0d69c2dad8cadf7b95e614677",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-079",
+      "id": "poster-079",
+      "finish": null,
+      "currentModelFile": "poster-079-v2.glb",
+      "currentModelSHA256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a",
+      "stateFile": "screenshots/poster-079-states.json",
+      "stateFileSHA256": "3164da26725c34e1624c2f51924487c305d153c7c060e720a6710548cf70bba2",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-079-closed.png",
+          "bytes": 355311,
+          "sha256": "3e51045a0fb58aefda4f7ae011ffbe6fe1dc763636aa680e9482f42b88c0582a",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-079-half.png",
+          "bytes": 269967,
+          "sha256": "9908c77a768ab6e3cede11b6dc7dc681506b092094b7d6288bfaffa7ab5660e0",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-079-expanded.png",
+          "bytes": 228984,
+          "sha256": "7356abdfa75589475de9fe5edd4f350a9a08c35a460b91d58d7c43c0f879da3e",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-079-rotated.png",
+          "bytes": 75103,
+          "sha256": "8bef5f8ba8c574dc923df64db056465352a9c0fe34e69a786cba833f7cc4a5a2",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-080",
+      "id": "poster-080",
+      "finish": "soap",
+      "currentModelFile": "poster-080-v2.glb",
+      "currentModelSHA256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4",
+      "stateFile": "screenshots/poster-080-states.json",
+      "stateFileSHA256": "48c61bb6319de762aff268b6f9b79ff3d5f6bfa05fa6df7a79433b1ae8128031",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-080-closed.png",
+          "bytes": 166380,
+          "sha256": "752d41717d7ab5d80eea9bc9f76d0aad01208492571a212fffd35f22d19be0bc",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-080-half.png",
+          "bytes": 111172,
+          "sha256": "eeb6af8645a7029024fe0744a0f754397225be4bbbd2749ad772a72d72a7cb84",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-080-expanded.png",
+          "bytes": 86177,
+          "sha256": "8d6d9b19082fa8a25041c394fd3bf9dce0c707eaf042b4afce10069f12561203",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-080-rotated.png",
+          "bytes": 49043,
+          "sha256": "ee66aea3f4d5ba17b7e65e3f757861a363934c78ace63c2434ee8b609cd6e419",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-081",
+      "id": "poster-081",
+      "finish": null,
+      "currentModelFile": "poster-081-v1.glb",
+      "currentModelSHA256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132",
+      "stateFile": "screenshots/poster-081-states.json",
+      "stateFileSHA256": "cdeaa32a8195edbbd0359a6f3da9a6326bd7b5cc7cfc8172786aa74fac81ed12",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-081-closed.png",
+          "bytes": 287608,
+          "sha256": "a540400776a84e8472fad60ac8b4b7b9591f6be15e7b15c9fc2741ee03908315",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-081-half.png",
+          "bytes": 185235,
+          "sha256": "65a74af38d84e327e1d508a1b9fa0d6361a047cfed707226157aade7a09f97a1",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-081-expanded.png",
+          "bytes": 137243,
+          "sha256": "b0e989991882c12b1b83d167b65d6d58e55d2769d1c8fa92b604a922a1892a2c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-081-rotated.png",
+          "bytes": 114823,
+          "sha256": "52de8e29d15cdf27ff9a6906eb99d49fee281bd24a5b90027f54b65afe6629e7",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-082",
+      "id": "poster-082",
+      "finish": null,
+      "currentModelFile": "poster-082-v1.glb",
+      "currentModelSHA256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f",
+      "stateFile": "screenshots/poster-082-states.json",
+      "stateFileSHA256": "4788639a17e11fed249fdcd33d8e4c091fe738e1378a4a96c9d1a99ad9a9af11",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-082-closed.png",
+          "bytes": 226137,
+          "sha256": "c1d3c20f72c43b4c51417785305b8078a55eeca70e1859da0ed1d072f2b48f18",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-082-half.png",
+          "bytes": 172637,
+          "sha256": "b03598c46a2cbd6d83c2bcfbd2010c1d5cbe015a8909e2254e656f738dcde7ee",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-082-expanded.png",
+          "bytes": 137769,
+          "sha256": "b068bfa712b32cd0ce4d02eed2676afc5fbcbd6a723ee4e0fadf00def4d4fff8",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-082-rotated.png",
+          "bytes": 74400,
+          "sha256": "f09f34dac59af8a7baff800eb103d026be7019dc4e1ff7482b00ce3665087f78",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-084",
+      "id": "poster-084",
+      "finish": null,
+      "currentModelFile": "poster-084-v2.glb",
+      "currentModelSHA256": "47052273d6ec19f4ff8f5e25b451948487376b6428d622c1dc3722a8d4582792",
+      "stateFile": "screenshots/poster-084-states.json",
+      "stateFileSHA256": "37ecf6793b220567293b75758edcddfb95bd9aae1559ba7d721d00ac9ac5ffbe",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-084-closed.png",
+          "bytes": 160134,
+          "sha256": "2c91effd6642ce78433ee0b761925dbe5fafb77e81a9944f23e47a2d8506cf5f",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-084-half.png",
+          "bytes": 116306,
+          "sha256": "c60bd69e19d81afd590304758a94de4fb787f0578a830eac2c419b7635ef1a43",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-084-expanded.png",
+          "bytes": 92298,
+          "sha256": "ee3ac8385121da5a39b31b5d1e3baa54acc04eacdb6250aea997c4685fb093bc",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-084-rotated.png",
+          "bytes": 61440,
+          "sha256": "873205bb6bbd23103375c845e702f8548acc71e56d232e8818e7e2a46324a456",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-085",
+      "id": "poster-085",
+      "finish": null,
+      "currentModelFile": "poster-085-v2.glb",
+      "currentModelSHA256": "a5335c7148c715720b1a81b6d181faae07d2e7f1d7e6af648846a1ec28aaea8d",
+      "stateFile": "screenshots/poster-085-states.json",
+      "stateFileSHA256": "8161e6fa8bef37d2fc865614f4732a74596c3bed895a2e396489a5d28d576081",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-085-closed.png",
+          "bytes": 164155,
+          "sha256": "c9e9a48f8f639eb29a2ea9623fae324a17827fabd4b7d876c017628cb43ab8e7",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-085-half.png",
+          "bytes": 128339,
+          "sha256": "39dba261bc1d05d8d9641c55bc48cce1a8d7f976be46956e2a8bb5670aeb21bb",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-085-expanded.png",
+          "bytes": 83802,
+          "sha256": "aae751cb2aaa97f2a46e7aa1f0d67c8f1ccd7deb1d7ac496d95f640bb0500d2b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-085-rotated.png",
+          "bytes": 61365,
+          "sha256": "b96eb7ccaf3c53ffa263865d72da8d849f9d72b7d3f0bf81d8c7bd651e8fbb9b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-071",
+      "id": "poster-071",
+      "finish": null,
+      "currentModelFile": "poster-071-v2.glb",
+      "currentModelSHA256": "624addecf5784e6daebcc937a0e96b51015dcb88c44d0ad02001383ee2d52649",
+      "stateFile": "screenshots/poster-071-states.json",
+      "stateFileSHA256": "4b26c493ac482159f553b9b1a15f32f1b0ce1518784603959b3c1fd238c62e9a",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-071-closed.png",
+          "bytes": 123077,
+          "sha256": "8f8d2e362be35d7b6b7efc9d46edd82ab31f33f310d53fd9e30a918bec904f7d",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-071-half.png",
+          "bytes": 84881,
+          "sha256": "776400e3b66cd47cc6de64d3d78d8416b717980a507519566f899cddb1821367",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-071-expanded.png",
+          "bytes": 65918,
+          "sha256": "edb6ada98c8c9404c874c702c6ce8d47fd6df760476dd260d9912a5ec9f500fe",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-071-rotated.png",
+          "bytes": 50627,
+          "sha256": "2da43c33fb9f8e1bcf1582668e336ec108409b5b7a574c3579acc4a8ca61632c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-080-after",
+      "id": "poster-080",
+      "finish": "after",
+      "currentModelFile": "poster-080-v2.glb",
+      "currentModelSHA256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4",
+      "stateFile": "screenshots/poster-080-after-states.json",
+      "stateFileSHA256": "c2444a77ec86516ae0afedd7e3e2d6d7aa0cbc3b4855d78330efeb01032b23c9",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-080-after-closed.png",
+          "bytes": 193535,
+          "sha256": "e23807f752f92fe027456eb25928d0ce889a2f981d8b558bd1e490c42ea9e5c1",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-080-after-half.png",
+          "bytes": 126979,
+          "sha256": "71828487776d3c9707588694dc6c50d348eca4c4d07fd33b8548a3cfc90d219c",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-080-after-expanded.png",
+          "bytes": 97271,
+          "sha256": "f1269fbe70336511d42db6a09629cb2b446f7048c83d5d1d1885831c02ac4334",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-080-after-rotated.png",
+          "bytes": 55354,
+          "sha256": "8896d11d809990755e7c3f9d9b2d74d524f062981d534ffd02d4a5b7a2a5add2",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    },
+    {
+      "key": "poster-080-baby",
+      "id": "poster-080",
+      "finish": "baby",
+      "currentModelFile": "poster-080-v2.glb",
+      "currentModelSHA256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4",
+      "stateFile": "screenshots/poster-080-baby-states.json",
+      "stateFileSHA256": "07a53bdc139c5ed07475728cf71c81364d29e16411c68cabf797da8478d134a3",
+      "checks": {
+        "metaProductMatches": true,
+        "metaFileMatchesCurrentFormal": true,
+        "exactFourPoses": true,
+        "registeredComponentsMatch": true,
+        "targetsMatch": true,
+        "renderedProgressSettled": true,
+        "yawMatchesPose": true,
+        "finishMatches": true,
+        "currentModelMatchesManifest": true
+      },
+      "screenshots": [
+        {
+          "file": "screenshots/poster-080-baby-closed.png",
+          "bytes": 164207,
+          "sha256": "a80490ba0af9dd7a6415e7246eece4253c92e81ab0fd7e420c0b361a90517e9b",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "closed"
+        },
+        {
+          "file": "screenshots/poster-080-baby-half.png",
+          "bytes": 108477,
+          "sha256": "0e44c3f999fd01d8b29865b4f00665d47df2b6fa9976b7eb4aa03d9ea923d1e5",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "half"
+        },
+        {
+          "file": "screenshots/poster-080-baby-expanded.png",
+          "bytes": 83592,
+          "sha256": "c4b10b51457bab569251e223e2964bc0722db077ea764d73ae86819fa06d2f3f",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "expanded"
+        },
+        {
+          "file": "screenshots/poster-080-baby-rotated.png",
+          "bytes": 48086,
+          "sha256": "1f71b698752df228ce1f371e7862e302632802b63f5b344649e7754e4c7730b3",
+          "pixels": [
+            1557,
+            971
+          ],
+          "pngCRCValid": true,
+          "pngInflateAndRowSizeValid": true,
+          "pose": "rotated"
+        }
+      ]
+    }
+  ],
+  "extra061Recheck": {
+    "file": "screenshots/poster-061-closed-recheck.png",
+    "bytes": 153561,
+    "sha256": "f7f3830b0fe2212b384e77ed55a22d9d72eb3f7eaf7280d8d5d669fcd752bc38",
+    "pixels": [
+      1557,
+      971
+    ],
+    "pngCRCValid": true,
+    "pngInflateAndRowSizeValid": true
+  },
+  "contactSheets": [
+    {
+      "file": "contact-01.jpg",
+      "bytes": 292716,
+      "sha256": "5a9637cdb9cb1c9e5ffd6272f6c6385647ea50d788558876330dd1fee5651b16"
+    },
+    {
+      "file": "contact-02.jpg",
+      "bytes": 230920,
+      "sha256": "e501b2e966a807b984815b7136ad1182f8490487a0faba1dd447150f72a4e84b"
+    },
+    {
+      "file": "contact-03.jpg",
+      "bytes": 246823,
+      "sha256": "32f87a385b1c97c54a9f222e1a935591cf6ba6aa0e1ff0fe6c46f4d5e6b3741a"
+    },
+    {
+      "file": "contact-04.jpg",
+      "bytes": 281821,
+      "sha256": "860c04fe786293c3a85d3240134e0020836bb9ba764a4000118104c9dd39842d"
+    },
+    {
+      "file": "contact-05.jpg",
+      "bytes": 269274,
+      "sha256": "2b5906f4925878c407aa20cb8a5e25d7df7f02e04e5c49625a3c7f6d6633ac42"
+    },
+    {
+      "file": "contact-06.jpg",
+      "bytes": 198191,
+      "sha256": "91d5f0f554a829b33cfe4a63aab996d61ea6a04eb84134dccb2d971a9315af5e"
+    },
+    {
+      "file": "contact-07.jpg",
+      "bytes": 211652,
+      "sha256": "4d601bc2839a6b1fc6986275d188c75ee368c318a19bc526b4ececf4bb877e5d"
+    },
+    {
+      "file": "contact-08.jpg",
+      "bytes": 218313,
+      "sha256": "9003ca82f1bf8b68bdd98ffffcc962b43d12ea3da7df36e3f660a85457845a1d"
+    },
+    {
+      "file": "contact-09.jpg",
+      "bytes": 103971,
+      "sha256": "356dd55b5e8d3e5ecb27a16e1bf4181b4f923e4cefbc0bce09b54bbc37d4d87e"
+    }
+  ],
+  "errors": []
+}

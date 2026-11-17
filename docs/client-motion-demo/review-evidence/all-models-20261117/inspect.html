@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><title>全模型质量复查</title><body style="margin:0"><div id="model" style="width:100vw;height:100vh"></div><script type="module">
+import {mountPackagingScene} from '/src/structure/packaging-scene.js';
+import {PACKAGING_PRODUCTS} from '/src/structure/packaging-products.js';
+import featured from '/src/featured.json';
+let api;window.products=PACKAGING_PRODUCTS;
+window.show=async(id,finish)=>{api?.dispose();window.api=null;const product=PACKAGING_PRODUCTS[id];if(!product)throw Error(id);const base=featured.find(x=>x.id===id)||product.design;const design=product.review?.appearance?.studio?{...base,...product.review.appearance.studio}:id==='poster-042'?{...base,background:'#76513b'}:id==='poster-057'?{...base,background:'#87626b'}:base;const bytes=await(await fetch('/packaging-assets/'+product.file)).arrayBuffer();api=await mountPackagingScene(document.querySelector('#model'),{product,design,modelRequest:{promise:Promise.resolve(bytes),mark(){}}});window.api=api;if(finish)api.setFinish(finish);return {id,file:product.file,finish,config:product.review};};
+window.ready=true;
+</script></body></html>
