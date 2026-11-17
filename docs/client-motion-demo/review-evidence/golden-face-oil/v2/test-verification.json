@@ -1,0 +1,81 @@
+{
+  "startedAt": "2026-11-17T12:07:45.022056+08:00",
+  "completedAt": "2026-11-17T12:08:24.522528+08:00",
+  "frontendTests": {
+    "passed": 203,
+    "failed": 0,
+    "log": "/private/tmp/golden-quality-frontend-1117.log"
+  },
+  "formalCollectionStructureTests": {
+    "passed": 4,
+    "failed": 0,
+    "log": "/private/tmp/golden-quality-collection-1117.log"
+  },
+  "packagingReleaseTests": {
+    "passed": 13,
+    "failed": 0,
+    "log": "/private/tmp/golden-quality-packaging-1117.log"
+  },
+  "isolatedBuild": {
+    "passed": true,
+    "output": "/private/tmp/golden-quality-build-1117",
+    "mode": "showroom",
+    "log": "/private/tmp/golden-quality-build-1117.log",
+    "warnings": "existing lucide-react module-level use client directives and chunk size warnings"
+  },
+  "isolatedLocalEntryBuild": {
+    "passed": true,
+    "output": "/private/tmp/golden-quality-build-1117/local-preview",
+    "input": "golden-face-oil-quality.html",
+    "log": "/private/tmp/golden-quality-local-entry-1117.log"
+  },
+  "entrypointAssessment": "Vite dev serves the standalone HTML directly; no config registration needed. Default showroom production build intentionally only includes index.html. Isolated explicit-input build validates the local 056 dependencies without adding them to formal publication.",
+  "localModelChecks": {
+    "file": "poster-056-v2.glb",
+    "bytes": 609256,
+    "roots": [
+      "Body",
+      "LogoPrint",
+      "Overcap",
+      "PaperLabel",
+      "ProductPrint",
+      "PumpAssembly"
+    ],
+    "embeddedBuffersAndImages": true,
+    "noAnimationOrCamera": true,
+    "bufferBoundsValid": true,
+    "formalModelRemains": "poster-056.glb",
+    "newModelAbsentFromPublishedBundle": true
+  },
+  "sha256Before": {
+    "docs/client-motion-demo/src/structure/packaging-scene.js": "fd4622eb89aea83006b3cef8ccb50cb945b80b3d561a32d98460ff38204e0139",
+    "docs/client-motion-demo/tests/packaging-loading.test.mjs": "f7cba170b61c06defb72758a7b654868e5c252e914fb4f47e61fec214670de33",
+    "docs/client-motion-demo/src/golden-face-oil-quality-review.jsx": "5c870cab0bbf21e2da790b8a749a5aa400c7cbdd96b87373973f52d928c0f137",
+    "docs/client-motion-demo/golden-face-oil-quality.html": "7fb4b681f2b8207352129a495b73d4ed6ebf1fb4309423b0e4d5424074b39d7d",
+    "docs/client-motion-demo/model-source/collection/poster-056/v2/review-product.json": "430d85dc84fa015dc6ebfd6f4335c61b0adbfaec677bb1fd6b7ae492203a6453",
+    "docs/client-motion-demo/packaging-assets/poster-056-v2.glb": "dbb0a3ab019d78fe74ae6639b6809d5b4ec982c5919f2a8b2f4e65e0926d5a81",
+    "server-reference/public/showroom/bundle-manifest.json": "e31ee750721a42b1405ca06df3e3d0bca8a8cae0464df1321b6ce48a1ffd0a09",
+    "docs/client-motion-demo/release/build.json": "80b8b9253d8e22a01d1510ec494f46d9534f0b1882f9d31e5bbd63937ed4f817"
+  },
+  "sha256After": {
+    "docs/client-motion-demo/src/structure/packaging-scene.js": "fd4622eb89aea83006b3cef8ccb50cb945b80b3d561a32d98460ff38204e0139",
+    "docs/client-motion-demo/tests/packaging-loading.test.mjs": "f7cba170b61c06defb72758a7b654868e5c252e914fb4f47e61fec214670de33",
+    "docs/client-motion-demo/src/golden-face-oil-quality-review.jsx": "5c870cab0bbf21e2da790b8a749a5aa400c7cbdd96b87373973f52d928c0f137",
+    "docs/client-motion-demo/golden-face-oil-quality.html": "7fb4b681f2b8207352129a495b73d4ed6ebf1fb4309423b0e4d5424074b39d7d",
+    "docs/client-motion-demo/model-source/collection/poster-056/v2/review-product.json": "430d85dc84fa015dc6ebfd6f4335c61b0adbfaec677bb1fd6b7ae492203a6453",
+    "docs/client-motion-demo/packaging-assets/poster-056-v2.glb": "dbb0a3ab019d78fe74ae6639b6809d5b4ec982c5919f2a8b2f4e65e0926d5a81",
+    "server-reference/public/showroom/bundle-manifest.json": "e31ee750721a42b1405ca06df3e3d0bca8a8cae0464df1321b6ce48a1ffd0a09",
+    "docs/client-motion-demo/release/build.json": "80b8b9253d8e22a01d1510ec494f46d9534f0b1882f9d31e5bbd63937ed4f817"
+  },
+  "changedDuringVerification": [],
+  "frozenProductionUnchanged": true,
+  "receiptReviewFindings": [
+    "client159 receipt is published-and-independently-verified but checks.browserInteractionVerified remains false despite separate browserVisualChecked evidence.",
+    "client159 README contains both browser-pending and browser-completed sentences. Primary agent notified; not edited by this verification task."
+  ],
+  "notChecked": [
+    "No new Blender process or rendering; existing verify_source.py writes its own evidence and was left for the model owner.",
+    "No browser or physical mobile checks in this test task."
+  ],
+  "writes": "Only this JSON plus temporary test/build files; no prepare-assets, no production build overwrite, no Git commit."
+}

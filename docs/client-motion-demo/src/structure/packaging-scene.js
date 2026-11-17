@@ -22,7 +22,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const moistureV2 = product.file === 'poster-049-v2.glb';
   const dailyEmulsionV2 = product.file === 'poster-072-v2.glb';
   const beachMagicV2 = product.file === 'poster-012-v2.glb';
-  const glassLabelShadow = moistureV2 || dailyEmulsionV2 || beachMagicV2;
+  const goldenV2 = product.file === 'poster-056-v2.glb';
+  const glassLabelShadow = moistureV2 || dailyEmulsionV2 || beachMagicV2 || goldenV2;
   const woodland = product.file === 'poster-042.glb';
   const pureVolume = product.file === 'poster-051.glb';
   const gentle = product.file === 'poster-044.glb';
@@ -145,6 +146,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   key.shadow.normalBias = .004; key.shadow.bias = -.00015; key.shadow.radius = 3;
   const rim = new T.DirectionalLight(0xf2f5ff, 1.1); rim.position.set(4, 4, -3); scene.add(rim);
   const fill = new T.DirectionalLight(0xfff9ef, .16); fill.position.set(1, 1, 7); scene.add(fill);
+  if (goldenV2) {
+    const coverLight = new T.PointLight(0xfffaed, 18, 0, 2);
+    coverLight.position.set(-1.7, 3.2, 3); scene.add(coverLight);
+  }
   const bounce = new T.DirectionalLight(0xf3f0ea, 1.25); bounce.position.set(0, -3, 6); scene.add(bounce);
 
   const parsed = modelRequest.promise.then(bytes => {
@@ -218,7 +223,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           m.onBeforeCompile = shader => {
             shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
               float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
-              gl_FragColor.rgb *= 1.0 - ${isOilGlass || beachMagicV2 ? ".08" : ".18"} * wallEdge;
+              gl_FragColor.rgb *= 1.0 - ${isOilGlass || beachMagicV2 || goldenV2 ? ".08" : ".18"} * wallEdge;
             `);
           };
           o.castShadow=false; o.receiveShadow=false;
@@ -252,6 +257,10 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           `);
         };
       }
+      if (goldenV2 && component === parts.overcap) {
+        m.attenuationColor.copy(m.color); m.color.set('#bec990'); m.attenuationDistance=.09;
+        m.thickness=.10; m.roughness=.13; m.envMapIntensity=1.3; m.specularIntensity=.8;
+      }
       if (golden && m.name === 'Golden neutral frosted thick glass') m.roughness=.28;
       if (pureVolume && m.name === 'Pure Volume clear plastic dip tube') {
         m.toneMapped=false; m.thickness=.0155;
@@ -283,11 +292,11 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
             m.onBeforeCompile=shader=>{
               glassShader(shader);
               shader.fragmentShader=shader.fragmentShader.replace('#include <shadowmap_pars_fragment>', '#include <shadowmap_pars_fragment>\n#include <shadowmask_pars_fragment>')
-                .replace('#include <dithering_fragment>', `#include <dithering_fragment>\ngl_FragColor.rgb *= mix(${dailyEmulsionV2 ? '.97' : '.88'}, 1.0, getShadowMask());`);
+                .replace('#include <dithering_fragment>', `#include <dithering_fragment>\ngl_FragColor.rgb *= mix(${dailyEmulsionV2 || goldenV2 ? '.97' : '.88'}, 1.0, getShadowMask());`);
             };
           }
         }
-        if (m.name === 'Transparent polyethylene dip tube' || ((softBodyGlass || moistureV2 || dailyEmulsionV2) && m.name === 'Clear polyethylene hollow suction tube') || (amberGinger && m.name === 'Amber clear polyethylene hollow dip tube')) {
+        if ((goldenV2 && m.name === 'Golden clear plastic dip tube') || m.name === 'Transparent polyethylene dip tube' || ((softBodyGlass || moistureV2 || dailyEmulsionV2) && m.name === 'Clear polyethylene hollow suction tube') || (amberGinger && m.name === 'Amber clear polyethylene hollow dip tube')) {
           // shortcut: composite the nested clear tube after glass; exact nested refraction needs a multipass renderer.
           m.transmission=0; m.transparent=true; m.opacity=.55; m.depthWrite=false; m.side=T.FrontSide;
           m.color.set('#e7ece8'); m.roughness=.06; m.specularIntensity=.8; m.envMapIntensity=.65;
@@ -306,7 +315,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       }
       if (appearance?.thinFilmShadows && component === parts.label) {
         // Alpha-hashed depth preserves a weak film shadow; Daily's clear film needs reduced extinction in WebGL.
-        o.customDepthMaterial=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,map:m.map,opacity:m.opacity*(dailyEmulsionV2 ? .25 : 1),alphaHash:true});
+        o.customDepthMaterial=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,map:m.map,opacity:m.opacity*(dailyEmulsionV2 || goldenV2 ? .25 : 1),alphaHash:true});
         o.castShadow=true;
       }
       if (appearance?.thinFilmShadows && component === parts.body) o.receiveShadow=true;
@@ -391,7 +400,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       if (appearance.clearLabel || appearance.carrierOpacity) {
         const [closed, open] = appearance.carrierOpacity || [.05, 1];
         const opacity = closed + (open - closed) * smooth(.03, .6, current);
-        parts.label.traverse(o => {if (o.isMesh) {o.material.opacity = opacity; if(o.customDepthMaterial) o.customDepthMaterial.opacity=opacity*(dailyEmulsionV2 ? .25 : 1);}});
+        parts.label.traverse(o => {if (o.isMesh) {o.material.opacity = opacity; if(o.customDepthMaterial) o.customDepthMaterial.opacity=opacity*(dailyEmulsionV2 || goldenV2 ? .25 : 1);}});
       }
     } else if (pdrn) {
       const capOpen=smooth(.02,.72,current), linerOpen=smooth(.25,1,current);
@@ -476,7 +485,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     let viewHeight = explosion ? Math.max(interpolate(explosion.camera.height)+tiltHeadroom,interpolate(explosion.camera.width)/aspect) : Math.max((b5 ? 4.2+current*2.1 : golden ? 4.2+current*3.8 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.0 : moisture ? 4.2+current*.85 : woodland ? 4.2+current*.90 : pureVolume || coastal ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : b5 ? 3.8+current*2.0 : golden ? 3.9+current*3.4 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
     let centerY = assemblyCenter + focus;
     let centerX = explosion ? interpolate(explosion.camera.centerX) : b5 ? -1.65*current : golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
-    if(narrowReview || beachMagicV2) {
+    if(narrowReview || beachMagicV2 || goldenV2) {
       root.updateMatrixWorld(true);
       const bounds=new T.Box3().setFromObject(root),size=bounds.getSize(new T.Vector3()),center=bounds.getCenter(new T.Vector3());
       centerX=center.x;centerY=center.y;

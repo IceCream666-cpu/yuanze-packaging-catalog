@@ -1,0 +1,101 @@
+{
+  "engine": "Cycles",
+  "device": "Metal",
+  "samples": 64,
+  "resolution": [
+    1200,
+    1500
+  ],
+  "poses": [
+    {
+      "frame": 1,
+      "camera": [
+        2.0945215225219727,
+        -9.973912239074707,
+        2.5545542240142822
+      ],
+      "orthoScale": 3.587789297103882,
+      "projectedBounds": [
+        [
+          0.12933996319770813,
+          0.08333331346511841
+        ],
+        [
+          0.8706600666046143,
+          0.9166666269302368
+        ]
+      ],
+      "name": "closed"
+    },
+    {
+      "frame": 31,
+      "camera": [
+        1.3008443117141724,
+        -10.294652938842773,
+        4.094186782836914
+      ],
+      "orthoScale": 7.4187421798706055,
+      "projectedBounds": [
+        [
+          0.26513105630874634,
+          0.08333338797092438
+        ],
+        [
+          0.7348689436912537,
+          0.9166666865348816
+        ]
+      ],
+      "name": "half"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        1.2175827026367188,
+        -10.643706321716309,
+        4.552994251251221
+      ],
+      "orthoScale": 8.600945472717285,
+      "projectedBounds": [
+        [
+          0.2189820557832718,
+          0.08333341032266617
+        ],
+        [
+          0.7810179591178894,
+          0.9166666865348816
+        ]
+      ],
+      "name": "expanded"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        5.094727039337158,
+        -10.659708023071289,
+        5.254665851593018
+      ],
+      "orthoScale": 8.606822967529297,
+      "projectedBounds": [
+        [
+          0.2000778615474701,
+          0.08333331346511841
+        ],
+        [
+          0.7999221682548523,
+          0.9166666865348816
+        ]
+      ],
+      "name": "rotated"
+    }
+  ],
+  "pairedCarrierShadowControlRendered": true,
+  "transparentInkShadowDisabled": true,
+  "visualReviewPending": false,
+  "browserVerifiedSeparately": false,
+  "localVisualReviewedPoses": [
+    "closed",
+    "half",
+    "expanded",
+    "rotated"
+  ]
+}

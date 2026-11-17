@@ -1,0 +1,250 @@
+{
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-056/poster-056.blend",
+  "sourceSha256": "e9f3d15fcfa1de74f7515949cde65b6d2e011ca2eabf1820eaa2d8151ce0673a",
+  "coordinateScale": 2.0567375886524824,
+  "preservedGeometry": {
+    "Hollow rounded rectangular bottle with thick clear base": {
+      "vertices": 3190,
+      "polygons": 3320,
+      "maximumWorldError": 0.0
+    },
+    "Olive stepped pump collar": {
+      "vertices": 1984,
+      "polygons": 1984,
+      "maximumWorldError": 0.0
+    },
+    "Hollow clear Golden pump dip tube": {
+      "vertices": 992,
+      "polygons": 992,
+      "maximumWorldError": 0.0
+    },
+    "Subtle actuator top inset": {
+      "vertices": 374,
+      "polygons": 496,
+      "maximumWorldError": 0.0
+    },
+    "Olive protective cover with original continuous U skirts": {
+      "sourceMeshName": "Hollow olive cover with matching front and rear U skirts",
+      "vertices": 2440,
+      "polygons": 4740,
+      "maximumWorldError": 0.0
+    }
+  },
+  "initialNormalizationErrors": {
+    "Hollow rounded rectangular bottle with thick clear base": 0.0,
+    "Olive stepped pump collar": 0.0,
+    "Hollow clear Golden pump dip tube": 0.0,
+    "Short illustrative connecting stem": 0.0,
+    "Tall cylindrical press actuator": 0.0,
+    "Subtle actuator top inset": 0.0,
+    "Hollow olive cover with matching front and rear U skirts": 0.0,
+    "Transparent unprinted film carrier": 0.0,
+    "Complete Golden Face Oil lettering": 0.0
+  },
+  "roots": {
+    "Body": {
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Hollow rounded rectangular bottle with thick clear base",
+          "vertices": 3190,
+          "polygons": 3320,
+          "materials": [
+            "Golden frosted outer empty glass",
+            "Golden polished inner glass and thick base"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "Overcap": {
+      "location": [
+        0.0,
+        0.0,
+        1.9744681119918823
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Olive protective cover with original continuous U skirts",
+          "vertices": 2440,
+          "polygons": 4740,
+          "materials": [
+            "Golden deep olive translucent polished protective cover"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "PaperLabel": {
+      "location": [
+        0.0,
+        0.0,
+        0.6170213222503662
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Golden closed rounded transparent print carrier",
+          "vertices": 160,
+          "polygons": 316,
+          "materials": [
+            "Golden clear illustrative print carrier"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "LogoPrint": {
+      "location": [
+        0.0,
+        0.0,
+        0.6170213222503662
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Golden original liaose print layer",
+          "vertices": 4,
+          "polygons": 1,
+          "materials": [
+            "Golden original liaose alpha ink, no carrier shadow"
+          ],
+          "visibleShadow": false
+        }
+      ]
+    },
+    "PumpAssembly": {
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Hollow clear Golden pump dip tube",
+          "vertices": 992,
+          "polygons": 992,
+          "materials": [
+            "Golden clear plastic dip tube"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Hollow olive pump connector with tube socket",
+          "vertices": 1024,
+          "polygons": 1024,
+          "materials": [
+            "Golden olive pump stem"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Olive stepped pump collar",
+          "vertices": 1984,
+          "polygons": 1984,
+          "materials": [
+            "Golden olive stepped closure"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Subtle actuator top inset",
+          "vertices": 374,
+          "polygons": 496,
+          "materials": [
+            "Golden olive cylindrical actuator"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Tall cylindrical press actuator",
+          "vertices": 1630,
+          "polygons": 3260,
+          "materials": [
+            "Golden olive cylindrical actuator"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "ProductPrint": {
+      "location": [
+        0.0,
+        0.0,
+        0.6170213222503662
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Golden original product-name print layer",
+          "vertices": 4,
+          "polygons": 1,
+          "materials": [
+            "Golden original product-name alpha ink, no carrier shadow"
+          ],
+          "visibleShadow": false
+        }
+      ]
+    }
+  },
+  "bodyMaterialFaceCounts": {
+    "frostedOuter": 1276,
+    "polishedInnerAndBase": 2044
+  },
+  "coverClosedManifold": true,
+  "coverVolume": 0.17788867301846517,
+  "coverWallThickness": 0.02468085106382979,
+  "coverBevelWidth": 0.005141843971631206,
+  "carrierClosedManifold": true,
+  "carrierVolume": 0.0008241801061300005,
+  "carrierThickness": 0.0009,
+  "carrierInterpretation": "Illustrative clear layer for directly printed reference",
+  "carrierBackToBodyFrontGap": 0.001979432624113444,
+  "tubeBottomToInteriorFloorGap": 0.08226950354609926,
+  "tubeToConnectorSocketRadialClearance": 0.0010283687943262421,
+  "tubeToConnectorAxialEngagement": 0.04319148936170217,
+  "nominalGlassWallThickness": 0.06581560283687944,
+  "nominalGlassBaseThickness": 0.28794326241134754,
+  "containsFormula": false,
+  "hiddenPumpDetailsIllustrative": true,
+  "sourcePoseFrames": [
+    1,
+    31,
+    61
+  ],
+  "glbAnimationRequested": false,
+  "glbBytes": 609256,
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

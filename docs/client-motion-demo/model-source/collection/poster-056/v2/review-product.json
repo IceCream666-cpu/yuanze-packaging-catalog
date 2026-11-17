@@ -1,0 +1,185 @@
+{
+  "file": "poster-056-v2.glb",
+  "scale": 1,
+  "kind": "collection",
+  "wide": false,
+  "parts": [
+    {
+      "key": "overcap",
+      "node": "Overcap",
+      "title": [
+        "墨绿半透明保护盖",
+        "Translucent olive cover"
+      ],
+      "short": [
+        "保护盖",
+        "Cover"
+      ],
+      "detail": [
+        "前后匹配的 U 形长裙保护盖整体移开，保留真实薄壁与柔和亮边。",
+        "A complete hollow hood with matching U-shaped skirts, real wall thickness and polished edges."
+      ]
+    },
+    {
+      "key": "pump",
+      "node": "PumpAssembly",
+      "title": [
+        "完整泵头与中空长吸管",
+        "Complete pump and hollow dip tube"
+      ],
+      "short": [
+        "整泵头",
+        "Pump"
+      ],
+      "detail": [
+        "按压头、双圈泵座、连接段与中空长吸管保持组装，一起展开。",
+        "Actuator, stepped collar, connector and long hollow dip tube lift together."
+      ]
+    },
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "厚底扁方磨砂空玻璃瓶",
+        "Thick-base frosted glass bottle"
+      ],
+      "short": [
+        "玻璃瓶",
+        "Bottle"
+      ],
+      "detail": [
+        "保留原瓶型比例和厚底，外壁柔雾、内壁和底缘清透，不添加料体。",
+        "Original proportions and thick base, with frosted outer walls and polished inner surfaces; no formula added."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明承印层示意",
+        "Clear print-carrier illustration"
+      ],
+      "short": [
+        "透明底层",
+        "Clear layer"
+      ],
+      "detail": [
+        "原图为直印；薄透明圆角底层用于分层展示，保留柔和投影。",
+        "The reference is directly printed; a thin rounded clear carrier illustrates the separated layer and retains a soft shadow."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "liaose 品牌字标",
+        "liaose wordmark"
+      ],
+      "short": [
+        "品牌字",
+        "Logo"
+      ],
+      "detail": [
+        "保留原手写字形和橄榄绿油墨，独立于透明底层展开。",
+        "Original handwritten mark and olive ink separate from the clear carrier."
+      ]
+    },
+    {
+      "key": "name",
+      "node": "ProductPrint",
+      "title": [
+        "产品名称",
+        "Product lettering"
+      ],
+      "short": [
+        "产品名",
+        "Name"
+      ],
+      "detail": [
+        "GOLDEN FACE OIL 与品牌字标分层展开。",
+        "GOLDEN FACE OIL separates independently from the brand mark."
+      ]
+    }
+  ],
+  "review": {
+    "appearance": {
+      "glass": true,
+      "labelShadows": true,
+      "studio": {
+        "background": "#e6e0be",
+        "ink": "#333516"
+      },
+      "clearLabel": true,
+      "carrierOpacity": [
+        0.004,
+        0.16
+      ],
+      "thinFilmShadows": true
+    },
+    "explosion": {
+      "mobilePrintSpread": 0.55,
+      "offsets": {
+        "overcap": [
+          0.4,
+          4.15,
+          0
+        ],
+        "pump": [
+          0.4,
+          2.05,
+          0
+        ],
+        "body": [
+          0.4,
+          0,
+          0
+        ],
+        "label": [
+          -0.45,
+          0,
+          0.65
+        ],
+        "print": [
+          -1.45,
+          0.2,
+          1.25
+        ],
+        "name": [
+          -1.45,
+          -0.16,
+          1.35
+        ]
+      },
+      "rotations": {},
+      "scales": {
+        "label": 1,
+        "print": 1.12,
+        "name": 1.12
+      },
+      "camera": {
+        "centerX": [
+          0,
+          -0.22
+        ],
+        "centerY": [
+          1.45,
+          3.52
+        ],
+        "height": [
+          3.7,
+          8.4
+        ],
+        "width": [
+          2.8,
+          4.8
+        ]
+      },
+      "timing": {
+        "overcap": [
+          0,
+          0.72
+        ]
+      }
+    }
+  }
+}

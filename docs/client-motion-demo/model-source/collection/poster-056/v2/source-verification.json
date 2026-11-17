@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "roots": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "solidGeometry": {
+    "Olive protective cover with original continuous U skirts": {
+      "manifold": true,
+      "positiveVolume": 0.17788867301846517
+    },
+    "Hollow clear Golden pump dip tube": {
+      "manifold": true,
+      "positiveVolume": 0.008315183734324548
+    },
+    "Hollow olive pump connector with tube socket": {
+      "manifold": true,
+      "positiveVolume": 0.010015422644049213
+    },
+    "Olive stepped pump collar": {
+      "manifold": true,
+      "positiveVolume": 0.04018987280418237
+    },
+    "Subtle actuator top inset": {
+      "manifold": true,
+      "positiveVolume": 0.0003950798180377118
+    },
+    "Tall cylindrical press actuator": {
+      "manifold": true,
+      "positiveVolume": 0.060356555918167624
+    },
+    "Hollow rounded rectangular bottle with thick clear base": {
+      "manifold": true,
+      "positiveVolume": 1.029798069724339
+    },
+    "Golden closed rounded transparent print carrier": {
+      "manifold": true,
+      "positiveVolume": 0.0008241801061300005
+    }
+  },
+  "bodyDimensions": [
+    2.0567376613616943,
+    0.6992908120155334,
+    1.8921986818313599
+  ],
+  "bodyHeightToWidth": 0.9200000162289055,
+  "bodyDepthToWidth": 0.3400000034776226,
+  "filmThickness": 0.0009000003337860107,
+  "filmBackToBottleGap": 0.0019794106483459473,
+  "filmIsIllustrativeClearCarrier": true,
+  "transparentInkShadowDisabled": true,
+  "dipTubeOpenBoreRayPassed": true,
+  "connectorOpenBoreRayPassed": true,
+  "sideOutletOpenRayPassed": true,
+  "tubeBottomToInteriorFloorGap": 0.08226953093887218,
+  "fullyExpandedTubeExitGap": 0.528014063835144,
+  "completePumpRelativeTransformsPreserved": true,
+  "sourcePoses": [
+    {
+      "frame": 1,
+      "progress": 0,
+      "roots": {
+        "Overcap": [
+          0.0,
+          0.0,
+          1.9744681119918823
+        ],
+        "PumpAssembly": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Body": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "PaperLabel": [
+          0.0,
+          0.0,
+          0.6170213222503662
+        ],
+        "LogoPrint": [
+          0.0,
+          0.0,
+          0.6170213222503662
+        ],
+        "ProductPrint": [
+          0.0,
+          0.0,
+          0.6170213222503662
+        ]
+      }
+    },
+    {
+      "frame": 31,
+      "progress": 0.5,
+      "roots": {
+        "Overcap": [
+          0.31078532338142395,
+          0.0,
+          5.19886589050293
+        ],
+        "PumpAssembly": [
+          0.20000000298023224,
+          0.0,
+          1.024999976158142
+        ],
+        "Body": [
+          0.20000000298023224,
+          0.0,
+          0.0
+        ],
+        "PaperLabel": [
+          -0.22499999403953552,
+          -0.32499998807907104,
+          0.6170213222503662
+        ],
+        "LogoPrint": [
+          -0.7250000238418579,
+          -0.625,
+          0.7170213460922241
+        ],
+        "ProductPrint": [
+          -0.7250000238418579,
+          -0.675000011920929,
+          0.5370213389396667
+        ]
+      }
+    },
+    {
+      "frame": 61,
+      "progress": 1,
+      "roots": {
+        "Overcap": [
+          0.4000000059604645,
+          0.0,
+          6.1244683265686035
+        ],
+        "PumpAssembly": [
+          0.4000000059604645,
+          0.0,
+          2.049999952316284
+        ],
+        "Body": [
+          0.4000000059604645,
+          0.0,
+          0.0
+        ],
+        "PaperLabel": [
+          -0.44999998807907104,
+          -0.6499999761581421,
+          0.6170213222503662
+        ],
+        "LogoPrint": [
+          -1.4500000476837158,
+          -1.25,
+          0.8170213103294373
+        ],
+        "ProductPrint": [
+          -1.4500000476837158,
+          -1.350000023841858,
+          0.4570213258266449
+        ]
+      }
+    }
+  ],
+  "glbAnimations": 0,
+  "glbEmbeddedImages": 2,
+  "glbBytes": 609256,
+  "glbSha256": "dbb0a3ab019d78fe74ae6639b6809d5b4ec982c5919f2a8b2f4e65e0926d5a81",
+  "sourceBytes": 486144,
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

@@ -1678,8 +1678,8 @@ test('Moisture v2 retains the complete pump with a long hollow tube, separates i
  assert.deepEqual(PACKAGING_PRODUCTS['poster-049'],product,'approved v2 is registered for publication');
 });
 
-test('Daily Emulsion v2 preserves the fitted pump and clear cover, separates ink and casts a thin-film shadow',async()=>{
- const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-072/v2/review-product.json',import.meta.url),'utf8'));
+for (const [id, tubeName, minimumLength] of [['072','Daily long hollow dip tube with open inlet',1.8],['056','Hollow clear Golden pump dip tube',1.5]]) test(`${id} v2 preserves the fitted pump and cover, separates ink and casts a thin-film shadow`,async()=>{
+ const product=JSON.parse(readFileSync(new URL(`../model-source/collection/poster-${id}/v2/review-product.json`,import.meta.url),'utf8'));
  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
  const nodes=gltf.nodes.map(n=>{
@@ -1694,10 +1694,11 @@ test('Daily Emulsion v2 preserves the fitted pump and clear cover, separates ink
  const model=new Three.Group();gltf.scenes[gltf.scene??0].nodes.forEach(i=>model.add(nodes[i]));
  const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
  assert.deepEqual(model.children.map(o=>o.name).sort(),product.parts.map(p=>p.node).sort());
- const tube=model.getObjectByName('Daily long hollow dip tube with open inlet');assert.equal(tube.parent,parts.pump);
- for(const name of ['Closure','PumpStem','Actuator'])assert.equal(model.getObjectByName(name).parent,parts.pump);
+ const tube=model.getObjectByName(tubeName);assert.equal(tube.parent,parts.pump);
+ if(id==='072')for(const name of ['Closure','PumpStem','Actuator'])assert.equal(model.getObjectByName(name).parent,parts.pump);
+ assert.ok(parts.pump.children.length>=4,'complete pump contains more than a cosmetic nozzle');
  const node=gltf.nodes.find(n=>n.name===tube.name),accessor=gltf.accessors[gltf.meshes[node.mesh].primitives[0].attributes.POSITION];
- assert.ok(Math.max(...accessor.max.map((v,i)=>v-accessor.min[i]))>1.8,'long inlet reaches the bottle floor');
+ assert.ok(Math.max(...accessor.max.map((v,i)=>v-accessor.min[i]))>minimumLength,'long inlet reaches the bottle floor');
  let api;const env=harness({product,parse:()=>Promise.resolve({scene:model})});
  try{
   api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
@@ -1721,7 +1722,7 @@ test('Daily Emulsion v2 preserves the fitted pump and clear cover, separates ink
    else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
   }
  }finally{api?.dispose();env.close();}
- assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb','072 remains local review only');
+ assert.equal(PACKAGING_PRODUCTS[`poster-${id}`].file,`poster-${id}.glb`,'candidate remains local review only');
 });
 
 test('Beach Magic v2 publishes six fitted layers and casts only its physical paper shadow',async()=>{

@@ -1,0 +1,41 @@
+{
+  "visualReview": "Closed, half, expanded and rotated Cycles images viewed; no cap spikes, no closed white label block, no pinched outlet highlight; frame bounds verified by render script.",
+  "engine": "Cycles",
+  "device": "Metal",
+  "samples": 64,
+  "resolution": [
+    1200,
+    1500
+  ],
+  "pairedShadowControl": "Same half pose with only the transparent carrier shadow disabled.",
+  "bodyRoiPixels": [
+    450,
+    985,
+    880,
+    1370
+  ],
+  "bodyRoiMeanAbsoluteRGBDifference": [
+    0.21647236484445787,
+    0.22067049229839927,
+    0.2477076411960133
+  ],
+  "bodyRoiMaximumChannelDifference": [
+    3,
+    3,
+    3
+  ],
+  "bodyRoiPixelsAbove3Luma": 0,
+  "fullDifferenceBounds": [
+    0,
+    0,
+    1200,
+    1500
+  ],
+  "interpretation": "The transparent physical carrier produces a very weak Cycles shadow in the bottle region (maximum 3/255). This is not evidence of a prominent paper-label shadow. The source retains real carrier shadow participation and disables ink-carrier shadows; browser shadow visibility requires a separate check.",
+  "browserReview": "Handled independently by root",
+  "glbBytes": 609256,
+  "glbSha256": "dbb0a3ab019d78fe74ae6639b6809d5b4ec982c5919f2a8b2f4e65e0926d5a81",
+  "sourceBytes": 486144,
+  "productionRegistered": false,
+  "shadowStrength": "Very weak physical clear-film shadow; do not describe it as a strong paper-label shadow."
+}

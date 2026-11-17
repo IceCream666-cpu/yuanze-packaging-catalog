@@ -1,0 +1,21 @@
+{
+  "samePose": true,
+  "roi": [
+    670,
+    650,
+    970,
+    930
+  ],
+  "changedPixelsAbove3": 17457,
+  "differenceBounds": [
+    713,
+    825,
+    902,
+    922
+  ],
+  "bottleRoiChangedPixelsAbove3": 17457,
+  "bottleRoiMaxDifference": 11,
+  "bottleRoiMeanDifference": 1.5881150793650793,
+  "modelSha256": "dbb0a3ab019d78fe74ae6639b6809d5b4ec982c5919f2a8b2f4e65e0926d5a81",
+  "interpretation": "Only thinFilmShadows toggled at identical half-open pose; visible corresponding film shadow on lower bottle. Ink carrier casting disabled in regression test. WebGL uses an explicitly approximate transmitted-shadow response."
+}
