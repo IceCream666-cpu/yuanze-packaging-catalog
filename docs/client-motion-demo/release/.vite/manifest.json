@@ -5,8 +5,8 @@
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "src/structure/packaging-scene.js",
-      "src/structure/PackagingDetail.jsx"
+      "src/structure/PackagingDetail.jsx",
+      "src/structure/packaging-scene.js"
     ],
     "css": [
       "preview.css"
