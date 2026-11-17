@@ -1,7 +1,7 @@
 {
   "version": "client1.62",
-  "status": "prepared-local-not-deployed",
-  "sourceCommit": null,
+  "status": "published-and-independently-online-verified",
+  "sourceCommit": "1d94ef11",
   "baselineSourceCommit": "89c2d54",
   "scope": "approved Exfoliating Hand Gel v2 model and viewer; 31 other models and all poster/homepage media preserved",
   "publishedModel": "poster-081-v2",
@@ -42,8 +42,8 @@
     "sourceStampCheck": true,
     "unchangedOtherModels": 31,
     "physicalMobileTested": false,
-    "onlineVerified": false,
-    "browserInteractionVerified": false
+    "onlineVerified": true,
+    "browserInteractionVerified": true
   },
   "evidence": "review-evidence/hand-gel/client162/",
   "modelQA": "review-evidence/hand-gel/v2/QA.md",
@@ -58,5 +58,14 @@
     "availableAfterVerifiedStagingArchive": 306524160,
     "evidence": "review-evidence/hand-gel/client162/staging-cleanup.json",
     "status": "root archived and SHA256-verified 60 old staging uploads before removing remote duplicates; current release and rollback backups preserved; publication rechecks live capacity"
-  }
+  },
+  "publishedAt": "2026-11-17T17:28:20+08:00",
+  "onlineVerifiedAt": "2026-11-17T17:30:58+08:00",
+  "finalizedAt": "2026-11-17T17:45:31+08:00",
+  "backup": "/opt/yuanze-reference/backups/client1.62-hand-gel-quality-model-20261117",
+  "nextProductState": "v2-local-preview-complete-not-published",
+  "previewOnlyModels": [
+    "poster-072-v2",
+    "poster-082-v2"
+  ]
 }

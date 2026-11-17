@@ -1947,3 +1947,64 @@ for (const [width,height] of [[1200,800],[393,520]]) test(`Hand Gel v2 retains c
   assert.deepEqual(PACKAGING_PRODUCTS['poster-081'],product,'approved 081 v2 configuration is registered');
   assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
 });
+
+for (const [width,height] of [[1200,800],[393,520]]) test(`Soap Clean v2 keeps its complete closures and direct-print shadows in the ${width}px viewport`,async()=>{
+  const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-082/v2/review-product.json',import.meta.url),'utf8'));
+  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+  const loaded=await loadTexturedPackagingGlb(bytes),model=loaded.scene,meshes=[];
+  model.traverse(o=>{if(o.isMesh)meshes.push(o);});
+  const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+  assert.deepEqual(model.children.map(o=>o.name).sort(),['Body','Label','LogoInk','NameInk','Pump','TubeCap']);
+  assert.equal(meshes.length,20);assert.equal(parts.pump.children.length,6);assert.equal(parts.cap.children.length,3);
+  const name=o=>o.userData.name??o.name;
+  const dipTube=parts.pump.children.find(o=>/long clear hollow dip tube/i.test(name(o)));
+  const bottle=parts.body.children.find(o=>/empty ivory cylinder/i.test(name(o)));
+  const softTube=parts.body.children.find(o=>/flexible thin-wall tube/i.test(name(o)));
+  const stripes=parts.label.children.find(o=>/pale blue pinstripes/i.test(name(o)));
+  assert.ok(dipTube&&bottle&&softTube&&stripes);
+  model.updateMatrixWorld(true);
+  assert.ok(new Three.Box3().setFromObject(dipTube).getSize(new Three.Vector3()).y>new Three.Box3().setFromObject(bottle).getSize(new Three.Vector3()).y*.6,'the fitted hollow suction tube spans most of the bottle');
+  const artwork=meshes.filter(o=>o.material.map).map(o=>({mesh:o,map:o.material.map,uv:Array.from(o.geometry.attributes.uv.array)}));
+  let api,camera;
+  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+  try{
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:height}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes.buffer))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));model.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};flush();
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,o])=>[key,{p:o.position.clone(),s:o.scale.clone(),q:o.quaternion.clone()}]));
+    const assemblies=[...parts.pump.children,...parts.cap.children].map(o=>({mesh:o,parent:o.parent,matrix:o.matrix.toArray()}));
+    assert.equal(product.review.appearance.labelShadows,true);assert.equal(product.review.appearance.glass,false);
+    assert.equal(stripes.material.transparent,false);assert.equal(stripes.castShadow,true,'solid direct-print stripes must cast their own shaped shadow');
+    assert.equal(parts.label.children.filter(o=>o.castShadow).length,1,'transparent print carriers must not cast opaque rectangular shadows');
+    for(const carrier of parts.label.children.filter(o=>o!==stripes)){assert.equal(carrier.material.transparent,true);assert.equal(carrier.castShadow,false);}
+    for(const key of ['logo','print'])parts[key].traverse(o=>{if(o.isMesh){assert.equal(o.material.transparent,true);assert.equal(o.castShadow,false);assert.ok(o.material.map?.image?.width>0);}});
+    for(const body of [bottle,softTube]){assert.equal(body.receiveShadow,true);assert.equal(body.material.transparent,false);}
+    for(const {mesh,map,uv} of artwork){assert.equal(mesh.material.map,map);assert.deepEqual(Array.from(mesh.geometry.attributes.uv.array),uv);}
+    const inFrame=state=>{for(const mesh of meshes){
+      mesh.geometry.computeBoundingBox();const {min,max}=mesh.geometry.boundingBox;
+      for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]){
+        const point=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+        assert.ok(Math.abs(point.x)<.98&&Math.abs(point.y)<.98&&Math.abs(point.z)<1,`${name(mesh)} clips at ${state}: ${point.toArray()}`);
+      }
+    }};
+    for(const progress of [0,.5,1]){
+      api.resetView();api.setProgress(progress);flush();assert.equal(api.getState().renderedProgress,progress);
+      for(const key of ['body','pump','cap','label','logo','print'])assert.ok(parts[key].position.clone().sub(rest[key].p).distanceTo(new Three.Vector3(...product.review.explosion.offsets[key]).multiplyScalar(progress))<1e-8,`${key} follows its authored group motion`);
+      for(const key of ['logo','print'])if(progress)assert.ok(parts[key].position.z-rest[key].p.z>parts.label.position.z-rest.label.p.z,'lettering separates beyond its direct-print carrier');
+      if(progress===1){
+        assert.ok(new Three.Box3().setFromObject(dipTube).min.y>new Three.Box3().setFromObject(bottle).max.y,'the long suction tube clears the bottle mouth');
+        assert.ok(new Three.Box3().setFromObject(parts.cap).max.y<new Three.Box3().setFromObject(softTube).min.y,'the complete flip-top cap clears the tube nozzle');
+      }
+      for(let quarter=0;quarter<4;quarter++){
+        for(const {mesh,parent,matrix} of assemblies){assert.equal(mesh.parent,parent);assert.deepEqual(mesh.matrix.toArray(),matrix,'pump and flip-top pieces remain fitted together');}
+        inFrame(`progress ${progress}, quarter turn ${quarter}`);api.rotate();flush();
+      }
+      api.viewBottom();flush();inFrame(`progress ${progress}, bottom view`);
+    }
+    api.setProgress(0);api.resetView();flush();inFrame('reset');
+    assert.equal(api.getState().yaw,0);assert.equal(api.getState().pitch,0);
+    for(const [key,part] of Object.entries(parts)){assert.ok(part.position.distanceTo(rest[key].p)<1e-8);assert.ok(part.scale.distanceTo(rest[key].s)<1e-8);assert.ok(1-Math.abs(part.quaternion.dot(rest[key].q))<1e-8);}
+  }finally{api?.dispose();env.close();}
+  assert.equal(PACKAGING_PRODUCTS['poster-082'].file,'poster-082-v1.glb','082 v2 remains isolated from the approved production registry');
+  assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
+});

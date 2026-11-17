@@ -1,0 +1,33 @@
+{
+  "casters": [
+    "Pale blue pinstripes | thin solid direct-print decoration"
+  ],
+  "tubeBounds": [
+    631.3640435975174,
+    249.55262125397311,
+    836.3295573483547,
+    671.6338776274692
+  ],
+  "state": {
+    "progress": 0.5,
+    "renderedProgress": 0.5,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.8,
+      -0.02499999999999991,
+      0.925
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  }
+}

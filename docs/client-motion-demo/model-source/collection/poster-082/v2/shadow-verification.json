@@ -1,0 +1,83 @@
+{
+  "method": "Identical final frame31, camera, light, ground, material and seed82; only the thin opaque blue stripe object visible_shadow flag changed.",
+  "onFile": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-Blender-half.png",
+  "offFile": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-shadow-control.png",
+  "resolution": [
+    1600,
+    1600
+  ],
+  "onSha256": "141dd2a05c47a355e63827f502f52aea20e736ee4a7f10bdb34a138b519f91f1",
+  "offSha256": "31cd5746ac60a3244482aee2676548fc99f993fd2fdc8750bc6db58917e96e92",
+  "wholeImage": {
+    "bounds": [
+      0,
+      0,
+      1600,
+      1600
+    ],
+    "meanAbsoluteRGB_255": [
+      0.079741015625,
+      0.07605703125,
+      0.076463671875
+    ],
+    "maxChannelDifference_255": 23,
+    "pixelsOver3": 1198,
+    "fractionPixelsOver3": 0.00046796875,
+    "pixelsOver8": 254
+  },
+  "unprintedTubeUpperROI": {
+    "bounds": [
+      665,
+      425,
+      875,
+      720
+    ],
+    "meanAbsoluteRGB_255": [
+      0.5868280871670702,
+      0.5773042776432606,
+      0.6189184826472962
+    ],
+    "maxChannelDifference_255": 3,
+    "pixelsOver3": 0,
+    "fractionPixelsOver3": 0.0,
+    "pixelsOver8": 0
+  },
+  "unprintedTubeLowerROI": {
+    "bounds": [
+      650,
+      900,
+      680,
+      1160
+    ],
+    "meanAbsoluteRGB_255": [
+      1.8547435897435898,
+      1.808974358974359,
+      1.7953846153846154
+    ],
+    "maxChannelDifference_255": 4,
+    "pixelsOver3": 128,
+    "fractionPixelsOver3": 0.01641025641025641,
+    "pixelsOver8": 0
+  },
+  "bottleNegativeControlROI": {
+    "bounds": [
+      1100,
+      760,
+      1390,
+      1290
+    ],
+    "meanAbsoluteRGB_255": [
+      0.0036890045543266103,
+      0.004346128822381262,
+      0.00461288223812622
+    ],
+    "maxChannelDifference_255": 1,
+    "pixelsOver3": 0,
+    "fractionPixelsOver3": 0.0,
+    "pixelsOver8": 0
+  },
+  "doesNotEquateVisibleBlueStripesOrGroundShadowWithBodyShadow": true,
+  "physicalCaster": "Pale blue pinstripes | thin solid direct-print decoration",
+  "noPaperLabelOrOpaqueTransparentCarrier": true,
+  "interpretation": "This comparison isolates thin direct-print decoration shadowing. The two unprinted tube regions exclude blue stripes and floating typography; the undecorated right bottle is a negative control. Web shadow-map differences are evaluated independently."
+}

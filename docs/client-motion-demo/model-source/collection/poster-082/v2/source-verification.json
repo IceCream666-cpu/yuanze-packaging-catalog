@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "roots": [
+    "Body",
+    "Pump",
+    "TubeCap",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "meshObjects": 20,
+  "pumpMeshes": 6,
+  "capMeshes": 3,
+  "solidGeometry": {
+    "Empty ivory cylinder | low shoulder and hollow neck": {
+      "manifold": true,
+      "positiveVolume": 0.3253744491681454,
+      "connectedComponents": 1
+    },
+    "Flexible thin-wall tube | integrated embossed heat seal and open nozzle": {
+      "manifold": true,
+      "positiveVolume": 0.08713123140279817,
+      "connectedComponents": 1
+    },
+    "Disc pump | assembled actuator neck": {
+      "manifold": true,
+      "positiveVolume": 0.023433510590070143,
+      "connectedComponents": 1
+    },
+    "Disc pump | internal socket, stays with head": {
+      "manifold": true,
+      "positiveVolume": 0.0033010998374570465,
+      "connectedComponents": 1
+    },
+    "Disc pump | low rear-edge dispensing lip": {
+      "manifold": true,
+      "positiveVolume": 0.000419927832633975,
+      "connectedComponents": 1
+    },
+    "Disc pump | rounded closure barrel": {
+      "manifold": true,
+      "positiveVolume": 0.04250312009218822,
+      "connectedComponents": 1
+    },
+    "Disc pump | wide flat circular pressing surface": {
+      "manifold": true,
+      "positiveVolume": 0.0300520077927366,
+      "connectedComponents": 1
+    },
+    "Long clear hollow dip tube | near-bottom angled intake": {
+      "manifold": true,
+      "positiveVolume": 0.004924272849775259,
+      "connectedComponents": 1
+    },
+    "Blue flip-top cap | complete closure sleeve": {
+      "manifold": true,
+      "positiveVolume": 0.08551205383277102,
+      "connectedComponents": 1
+    },
+    "Blue flip-top cap | lower hinged lid": {
+      "manifold": true,
+      "positiveVolume": 0.05469050714443868,
+      "connectedComponents": 1
+    },
+    "Blue flip-top rear hinge": {
+      "manifold": true,
+      "positiveVolume": 0.0002619622979964374,
+      "connectedComponents": 1
+    },
+    "Pale blue pinstripes | thin solid direct-print decoration": {
+      "manifold": true,
+      "positiveVolume": 0.00010961002369980803,
+      "connectedComponents": 28
+    }
+  },
+  "preservedWorldVertexErrors": {
+    "Empty ivory cylinder | low shoulder and hollow neck": 0.0,
+    "Long clear hollow dip tube | near-bottom angled intake": 0.0,
+    "Blue flip-top cap | lower hinged lid": 0.0,
+    "Blue flip-top rear hinge": 0.0
+  },
+  "continuousHeatSealShell": true,
+  "actualTubeWallSamples": [
+    {
+      "z": 0.55,
+      "frontWallThickness": 0.012999952108224468
+    },
+    {
+      "z": 1.1,
+      "frontWallThickness": 0.01299998177181941
+    },
+    {
+      "z": 1.6,
+      "frontWallThickness": 0.013000011435346664
+    },
+    {
+      "z": 2.3,
+      "frontWallThickness": 0.012999996323746897
+    },
+    {
+      "z": 2.75,
+      "frontWallThickness": 0.013000011435346664
+    }
+  ],
+  "tubeDispensingNeckOpen": true,
+  "pumpSocketAndActuatorBoresOpen": true,
+  "rearLipHasRealRecessedOutlet": true,
+  "flipCapUpperPassageOpen": true,
+  "continuousDipTubeBoreOpen": true,
+  "angledIntakeOpen": true,
+  "intakeToInnerFloorGap": 0.007550002694129948,
+  "fullyExpandedTubeExitGap": 0.0415496826171875,
+  "fullyExpandedCapGap": 0.5539999902248383,
+  "wholePumpAndCapLocalTransformsPreserved": true,
+  "tubePrintingGap": {
+    "Tube bold liaose": {
+      "min": 0.0036040321472335076,
+      "max": 0.0037943870360239865
+    },
+    "Tube HAIR TREATMENT 180 ml": {
+      "min": 0.003603860794271549,
+      "max": 0.0038177967592650432
+    },
+    "Tube SOAP CLEAN SOAP": {
+      "min": 0.003550514622815258,
+      "max": 0.003912985338932522
+    }
+  },
+  "studioFloorBelowEveryPartAtAllThreeSourceFrames": true,
+  "allFourSvgAndPngBytesPreserved": true,
+  "eightTransparentCarriersShadowDisabled": true,
+  "onlyPhysicalBlueStripeDecorationCastsLabelShadow": true,
+  "opaqueIvoryAndBluePlastic": true,
+  "containsFormula": false,
+  "paperLabel": false,
+  "sourceFrames": [
+    {
+      "frame": 1,
+      "progress": 0
+    },
+    {
+      "frame": 31,
+      "progress": 0.5
+    },
+    {
+      "frame": 61,
+      "progress": 1
+    }
+  ],
+  "glbAnimations": 0,
+  "glbImages": 6,
+  "glbBytes": 2782400,
+  "oldGlbBytes": 1917000,
+  "glbSha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b",
+  "configSha256": "625c77e753cf9c11253010c3900a4cff2a6ccf8d6aa4deda52ae914a557dffd1",
+  "sourceBytes": 1734652,
+  "sourceSha256": "acee7089bd06fed1fcd08138fb48fccfc5abb35f7983226c0367755c4b96172a",
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

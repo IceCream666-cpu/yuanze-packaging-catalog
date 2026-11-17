@@ -1,0 +1,81 @@
+vite v8.3.4 building client environment for showroom...
+transforming...
+✓ 1955 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/index.html                                       0.78 kB │ gzip:   0.46 kB
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/.vite/manifest.json                              0.92 kB │ gzip:   0.27 kB
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/assets/packaging/PackagingDetail-j1D-5bwl.css   12.59 kB │ gzip:   3.04 kB
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/preview.css                                     51.22 kB │ gzip:  10.59 kB
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/assets/packaging/PackagingDetail-Cw0m57ur.js    12.78 kB │ gzip:   4.89 kB
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/preview.js                                     413.49 kB │ gzip: 119.05 kB
+../../../../../../../../../../private/tmp/soap-clean082-showroom-check/assets/packaging/packaging-scene-BCRknYCL.js   582.94 kB │ gzip: 148.73 kB
+
+[MODULE_LEVEL_DIRECTIVE] The semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs" may not be preserved when bundling.
+   ╭─[ ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs:2:1 ]
+   │
+ 2 │ "use client";
+   │ ──────┬──────
+   │       ╰──────── module level directive may not be preserved
+   │
+   │ Help: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+───╯
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[MODULE_LEVEL_DIRECTIVE] The semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs" may not be preserved when bundling.
+   ╭─[ ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs:2:1 ]
+   │
+ 2 │ "use client";
+   │ ──────┬──────
+   │       ╰──────── module level directive may not be preserved
+   │
+   │ Help: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+───╯
+
+✓ built in 262ms
+vite v8.3.4 building client environment for preview...
+transforming...
+✓ 1938 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/soap-clean-quality.html                       0.81 kB │ gzip:   0.52 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/yuanze-mark-compact-CGnBq_vd.webp      5.18 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/poster-082-6OxEEzc6.webp           1,027.56 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/poster-082-v2-BDNSdeYk.glb         2,782.40 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/soap-clean-quality-CdFFdSZ-.css        0.66 kB │ gzip:   0.37 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/PackagingDetail-j1D-5bwl.css          12.59 kB │ gzip:   3.04 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/PackagingDetail-nrv6Mjex.js           27.51 kB │ gzip:  10.64 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/soap-clean-quality-TcNkMzhi.js       283.21 kB │ gzip:  85.70 kB
+../../../../../../../../../../private/tmp/soap-clean082-preview-check/assets/packaging-scene-EktDaf4k.js          582.96 kB │ gzip: 148.75 kB
+
+[MODULE_LEVEL_DIRECTIVE] The semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs" may not be preserved when bundling.
+   ╭─[ ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/Icon.mjs:2:1 ]
+   │
+ 2 │ "use client";
+   │ ──────┬──────
+   │       ╰──────── module level directive may not be preserved
+   │
+   │ Help: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+───╯
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[MODULE_LEVEL_DIRECTIVE] The semantics of the module level directive "use client" in "../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs" may not be preserved when bundling.
+   ╭─[ ../../../../../../../../Desktop/包材库/docs/login-immersive-demo/node_modules/.pnpm/lucide-react@1.59.0_react@19.3.1/node_modules/lucide-react/dist/esm/context.mjs:2:1 ]
+   │
+ 2 │ "use client";
+   │ ──────┬──────
+   │       ╰──────── module level directive may not be preserved
+   │
+   │ Help: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+───╯
+
+✓ built in 224ms
+{"showroom":"/private/tmp/soap-clean082-showroom-check","preview":"/private/tmp/soap-clean082-preview-check","publicDir":false,"copyPublicDir":false,"passed":true}

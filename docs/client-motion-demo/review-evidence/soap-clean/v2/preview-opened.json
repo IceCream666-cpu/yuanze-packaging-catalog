@@ -1,0 +1,27 @@
+{
+  "url": "http://127.0.0.1:8785/soap-clean-quality.html",
+  "title": "Soap Clean Duo · 包材库模型预览",
+  "state": {
+    "progress": 0.5,
+    "renderedProgress": 0.49997073334275394,
+    "yaw": -0.4169656614438475,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.7999531733484063,
+      -0.024998536667137694,
+      0.9249458566840948
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  },
+  "physicalMobileTested": false
+}

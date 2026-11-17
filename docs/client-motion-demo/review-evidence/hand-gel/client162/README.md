@@ -43,3 +43,11 @@ python3 -m unittest discover -s docs/client-motion-demo/review-evidence/hand-gel
 发布后运行 `verify_online.py` 验证 HTTPS 证书、5 项变化资源完整 SHA、32 模型 Range、三角色/匿名/退出、081 原图和 081/085 首页预览；旧 081 v1、072 v2、082 v2 与撤下资源应不可读。主任务随后从正式首页进入 081，复查半开接影、全开、旋转和复位，再更新发布回执。
 
 082 后续本地制作使用隔离构建；不要重建或覆盖本次冻结 release 与 server-reference/public/showroom 包。
+
+
+## 已执行结果
+081v2已于2026-11-17 17:28:20发布为client1.62，17:30:58完成独立HTTPS验证，随后正式首页的合拢、半开、全开、旋转和回正已实测并逐图查看。源码提交1d94ef11。
+514资源核验；5项变更资源完整HTTPS哈希、32模型Range、三角色/匿名/退出及原图/首页资源检查通过。其他31模型、6820展厅外文件、网关和服务PID保持，无服务重启或业务数据写入。
+实际回退目录：/opt/yuanze-reference/backups/client1.62-hand-gel-quality-model-20261117。
+第一次发布遇到SSH控制连接过期，在上传前退出；恢复已授权连接后发布成功。浏览器首次点击过快打开邻款，以及原生dialog选择器等待失败，均检查实际状态后纠正，再完成081证据采集。
+082v2本地预览完成，未进入正式包；072v2继续保持本地。

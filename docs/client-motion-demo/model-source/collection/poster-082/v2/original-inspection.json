@@ -1,0 +1,1046 @@
+{
+  "objects": [
+    {
+      "name": "Empty flexible tube | flat sealed tail and open nozzle",
+      "type": "MESH",
+      "parent": "Body",
+      "location": [
+        0.0,
+        0.0,
+        -1.399999976158142
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 4352,
+      "faces": 4352,
+      "manifold": true,
+      "volume": 0.08039282296604894,
+      "materials": [
+        "Ivory opaque soft plastic"
+      ],
+      "bounds": [
+        [
+          -1.5299999713897705,
+          -0.30399999022483826,
+          0.27000001072883606
+        ],
+        [
+          -0.12999999523162842,
+          0.30399999022483826,
+          3.015000104904175
+        ]
+      ]
+    },
+    {
+      "name": "Body",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        0.0,
+        0.0,
+        1.399999976158142
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": true
+    },
+    {
+      "name": "Flattened heat-seal tail | 90 fine crimp ridges",
+      "type": "MESH",
+      "parent": "Body",
+      "location": [
+        0.0,
+        0.0,
+        -1.399999976158142
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 1448,
+      "faces": 1446,
+      "manifold": true,
+      "volume": 0.007202721812996933,
+      "materials": [
+        "Ivory opaque soft plastic"
+      ],
+      "bounds": [
+        [
+          -1.5299999713897705,
+          -0.022600000724196434,
+          2.986999988555908
+        ],
+        [
+          -0.12999999523162842,
+          0.022600000724196434,
+          3.1050000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Empty ivory cylinder | low shoulder and hollow neck",
+      "type": "MESH",
+      "parent": "Body",
+      "location": [
+        0.0,
+        0.0,
+        -1.399999976158142
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 3970,
+      "faces": 4092,
+      "manifold": true,
+      "volume": 0.3253744491681454,
+      "materials": [
+        "Ivory opaque soft plastic"
+      ],
+      "bounds": [
+        [
+          0.17500001192092896,
+          -0.574999988079071,
+          0.0
+        ],
+        [
+          1.3250000476837158,
+          0.574999988079071,
+          2.1549999713897705
+        ]
+      ]
+    },
+    {
+      "name": "Blue flip-top cap | lower hinged lid",
+      "type": "MESH",
+      "parent": "TubeCap",
+      "location": [
+        0.8299999833106995,
+        0.0,
+        -0.20000000298023224
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 770,
+      "faces": 896,
+      "manifold": true,
+      "volume": 0.05469050714443868,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          -1.2300000190734863,
+          -0.30000001192092896,
+          0.0
+        ],
+        [
+          -0.4300000071525574,
+          0.30000001192092896,
+          0.1509999930858612
+        ]
+      ]
+    },
+    {
+      "name": "TubeCap",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        -0.8299999833106995,
+        0.0,
+        0.20000000298023224
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": true
+    },
+    {
+      "name": "Blue flip-top cap | complete closure sleeve",
+      "type": "MESH",
+      "parent": "TubeCap",
+      "location": [
+        0.8299999833106995,
+        0.0,
+        -0.20000000298023224
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 1255,
+      "faces": 1340,
+      "manifold": true,
+      "volume": 0.08751181993217379,
+      "materials": [
+        "Powder blue molded plastic",
+        null
+      ],
+      "bounds": [
+        [
+          -1.2300000190734863,
+          -0.30000001192092896,
+          0.1550000011920929
+        ],
+        [
+          -0.4300000071525574,
+          0.30000001192092896,
+          0.41600000858306885
+        ]
+      ]
+    },
+    {
+      "name": "Blue flip-top rear hinge",
+      "type": "MESH",
+      "parent": "TubeCap",
+      "location": [
+        0.0,
+        0.2939999997615814,
+        -0.04399999976158142
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 152,
+      "faces": 150,
+      "manifold": true,
+      "volume": 0.0002619622979964374,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          -0.8899999856948853,
+          0.2759999930858612,
+          0.12250000238418579
+        ],
+        [
+          -0.7699999809265137,
+          0.31200000643730164,
+          0.18950000405311584
+        ]
+      ]
+    },
+    {
+      "name": "Disc pump | rounded closure barrel",
+      "type": "MESH",
+      "parent": "Pump",
+      "location": [
+        -0.75,
+        0.0,
+        -2.3399999141693115
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 746,
+      "faces": 868,
+      "manifold": true,
+      "volume": 0.062121632766282193,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          0.5099999904632568,
+          -0.23999999463558197,
+          1.9919999837875366
+        ],
+        [
+          0.9900000095367432,
+          0.23999999463558197,
+          2.3399999141693115
+        ]
+      ]
+    },
+    {
+      "name": "Pump",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        0.75,
+        0.0,
+        2.3399999141693115
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": true
+    },
+    {
+      "name": "Disc pump | assembled actuator neck",
+      "type": "MESH",
+      "parent": "Pump",
+      "location": [
+        -0.75,
+        0.0,
+        -2.3399999141693115
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 870,
+      "faces": 992,
+      "manifold": true,
+      "volume": 0.02410628281633664,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          0.5509999990463257,
+          -0.19900000095367432,
+          2.316999912261963
+        ],
+        [
+          0.9490000009536743,
+          0.19900000095367432,
+          2.5399999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Disc pump | wide flat circular pressing surface",
+      "type": "MESH",
+      "parent": "Pump",
+      "location": [
+        -0.75,
+        0.0,
+        -2.3399999141693115
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 746,
+      "faces": 868,
+      "manifold": true,
+      "volume": 0.0300520077927366,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          0.4480000138282776,
+          -0.3019999861717224,
+          2.5209999084472656
+        ],
+        [
+          1.0520000457763672,
+          0.3019999861717224,
+          2.628000020980835
+        ]
+      ]
+    },
+    {
+      "name": "Disc pump | low rear-edge dispensing lip",
+      "type": "MESH",
+      "parent": "Pump",
+      "location": [
+        0.0,
+        0.24799999594688416,
+        0.2990000247955322
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 152,
+      "faces": 150,
+      "manifold": true,
+      "volume": 0.00044764048519199505,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          0.690500020980835,
+          0.18399998545646667,
+          2.623499870300293
+        ],
+        [
+          0.809499979019165,
+          0.31200000643730164,
+          2.6545000076293945
+        ]
+      ]
+    },
+    {
+      "name": "Disc pump | internal socket, stays with head",
+      "type": "MESH",
+      "parent": "Pump",
+      "location": [
+        -0.75,
+        0.0,
+        -2.3399999141693115
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 622,
+      "faces": 744,
+      "manifold": true,
+      "volume": 0.004173937336898761,
+      "materials": [
+        "Powder blue molded plastic"
+      ],
+      "bounds": [
+        [
+          0.6449999809265137,
+          -0.10499999672174454,
+          1.8650000095367432
+        ],
+        [
+          0.8550000190734863,
+          0.10499999672174454,
+          2.0399999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Long clear hollow dip tube | near-bottom angled intake",
+      "type": "MESH",
+      "parent": "Pump",
+      "location": [
+        -0.75,
+        0.0,
+        -2.3399999141693115
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": false,
+      "vertices": 4704,
+      "faces": 4704,
+      "manifold": true,
+      "volume": 0.004924272849775259,
+      "materials": [
+        "Transparent hollow polyethylene suction tube"
+      ],
+      "bounds": [
+        [
+          0.7089999914169312,
+          -0.04100000113248825,
+          0.09655000269412994
+        ],
+        [
+          0.9359999895095825,
+          0.04100000113248825,
+          1.9850000143051147
+        ]
+      ]
+    },
+    {
+      "name": "Pale blue pinstripes | direct printing, no paper",
+      "type": "MESH",
+      "parent": "Label",
+      "location": [
+        0.0,
+        0.0,
+        -1.5
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 7264,
+      "faces": 1816,
+      "manifold": false,
+      "volume": 0.02663941167475001,
+      "materials": [
+        "Powder blue pinstripe ink"
+      ],
+      "bounds": [
+        [
+          -1.4716399908065796,
+          -0.30250295996665955,
+          0.4650000035762787
+        ],
+        [
+          -0.18836000561714172,
+          -0.011885902844369411,
+          2.9800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Label",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        0.0,
+        0.0,
+        1.5
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": true
+    },
+    {
+      "name": "Tube transparent print carrier",
+      "type": "MESH",
+      "parent": "Label",
+      "location": [
+        0.0,
+        0.0,
+        -1.5
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 6565,
+      "faces": 6400,
+      "manifold": false,
+      "volume": 0.2646509508937141,
+      "materials": [
+        "Transparent direct-print carrier | conceptual ink layer"
+      ],
+      "bounds": [
+        [
+          -1.215000033378601,
+          -0.30482399463653564,
+          0.46000000834465027
+        ],
+        [
+          -0.445000022649765,
+          -0.03888547047972679,
+          2.890000104904175
+        ]
+      ]
+    },
+    {
+      "name": "Bottle transparent print carrier",
+      "type": "MESH",
+      "parent": "Label",
+      "location": [
+        0.0,
+        0.0,
+        -1.5
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 3185,
+      "faces": 3072,
+      "manifold": false,
+      "volume": 0.2717158762462063,
+      "materials": [
+        "Transparent direct-print carrier | conceptual ink layer"
+      ],
+      "bounds": [
+        [
+          0.3499999940395355,
+          -0.5759999752044678,
+          0.2199999988079071
+        ],
+        [
+          1.149999976158142,
+          -0.414067804813385,
+          1.8200000524520874
+        ]
+      ]
+    },
+    {
+      "name": "Tube bold liaose",
+      "type": "MESH",
+      "parent": "LogoInk",
+      "location": [
+        0.0,
+        0.0,
+        -2.119999885559082
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 1365,
+      "faces": 1280,
+      "manifold": false,
+      "volume": 0.013265842832225358,
+      "materials": [
+        "Bold black liaose ink"
+      ],
+      "bounds": [
+        [
+          -1.0800000429153442,
+          -0.09820370376110077,
+          2.634999990463257
+        ],
+        [
+          -0.5799999833106995,
+          -0.06783085316419601,
+          2.7809998989105225
+        ]
+      ]
+    },
+    {
+      "name": "LogoInk",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        0.0,
+        0.0,
+        2.119999885559082
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": true
+    },
+    {
+      "name": "Bottle bold liaose",
+      "type": "MESH",
+      "parent": "LogoInk",
+      "location": [
+        0.0,
+        0.0,
+        -2.119999885559082
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 1365,
+      "faces": 1280,
+      "manifold": false,
+      "volume": 0.011687282892686774,
+      "materials": [
+        "Bold black liaose ink"
+      ],
+      "bounds": [
+        [
+          0.5249999761581421,
+          -0.5789999961853027,
+          1.6549999713897705
+        ],
+        [
+          0.9750000238418579,
+          -0.5331502556800842,
+          1.7860000133514404
+        ]
+      ]
+    },
+    {
+      "name": "Tube SOAP CLEAN SOAP",
+      "type": "MESH",
+      "parent": "NameInk",
+      "location": [
+        0.0,
+        0.0,
+        -1.1299999952316284
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 1365,
+      "faces": 1280,
+      "manifold": false,
+      "volume": 0.0422087346902151,
+      "materials": [
+        "Bold stacked SOAP CLEAN SOAP ink"
+      ],
+      "bounds": [
+        [
+          -1.162500023841858,
+          -0.25087499618530273,
+          1.4500000476837158
+        ],
+        [
+          -0.4975000023841858,
+          -0.1605719029903412,
+          1.9210000038146973
+        ]
+      ]
+    },
+    {
+      "name": "NameInk",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        0.0,
+        0.0,
+        1.1299999952316284
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": true,
+      "hasAnimation": true
+    },
+    {
+      "name": "Bottle SOAP CLEAN SOAP",
+      "type": "MESH",
+      "parent": "NameInk",
+      "location": [
+        0.0,
+        0.0,
+        -1.1299999952316284
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 1365,
+      "faces": 1280,
+      "manifold": false,
+      "volume": 0.07545851484519972,
+      "materials": [
+        "Bold stacked SOAP CLEAN SOAP ink"
+      ],
+      "bounds": [
+        [
+          0.39250001311302185,
+          -0.5789999961853027,
+          0.8100000023841858
+        ],
+        [
+          1.1074999570846558,
+          -0.45435401797294617,
+          1.3170000314712524
+        ]
+      ]
+    },
+    {
+      "name": "Tube HAIR TREATMENT 180 ml",
+      "type": "MESH",
+      "parent": "NameInk",
+      "location": [
+        0.0,
+        0.0,
+        -1.1299999952316284
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 1365,
+      "faces": 1280,
+      "manifold": false,
+      "volume": 0.015411487176909277,
+      "materials": [
+        "Hair treatment 180 ml ink"
+      ],
+      "bounds": [
+        [
+          -1.1425000429153442,
+          -0.3079058825969696,
+          0.5600000023841858
+        ],
+        [
+          -0.5174999833106995,
+          -0.20107179880142212,
+          0.7749999761581421
+        ]
+      ]
+    },
+    {
+      "name": "Bottle SHAMPOO 300 ml",
+      "type": "MESH",
+      "parent": "NameInk",
+      "location": [
+        0.0,
+        0.0,
+        -1.1299999952316284
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shadow": false,
+      "hasAnimation": false,
+      "vertices": 1365,
+      "faces": 1280,
+      "manifold": false,
+      "volume": 0.018635574481355433,
+      "materials": [
+        "Shampoo 300 ml ink"
+      ],
+      "bounds": [
+        [
+          0.49000000953674316,
+          -0.5789999961853027,
+          0.25
+        ],
+        [
+          1.0099999904632568,
+          -0.5168596506118774,
+          0.42899999022483826
+        ]
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "Bold black liaose ink",
+      "base": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 0.6800000071525574,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": [
+        {
+          "name": "logo.png",
+          "file": "//logo.png",
+          "packed": true,
+          "size": [
+            1024,
+            299
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bold stacked SOAP CLEAN SOAP ink",
+      "base": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 0.6800000071525574,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": [
+        {
+          "name": "soap-clean-soap.png",
+          "file": "//soap-clean-soap.png",
+          "packed": true,
+          "size": [
+            1024,
+            726
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hair treatment 180 ml ink",
+      "base": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 0.6800000071525574,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": [
+        {
+          "name": "spec-tube.png",
+          "file": "//spec-tube.png",
+          "packed": true,
+          "size": [
+            1280,
+            440
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ivory opaque soft plastic",
+      "base": [
+        0.8879231214523315,
+        0.8549926280975342,
+        0.7605245113372803,
+        1.0
+      ],
+      "roughness": 0.30000001192092896,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": []
+    },
+    {
+      "name": "Powder blue molded plastic",
+      "base": [
+        0.3967552185058594,
+        0.6239603757858276,
+        0.7379103899002075,
+        1.0
+      ],
+      "roughness": 0.2800000011920929,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": []
+    },
+    {
+      "name": "Powder blue pinstripe ink",
+      "base": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 0.6000000238418579,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": [
+        {
+          "name": "stripe.png",
+          "file": "//stripe.png",
+          "packed": true,
+          "size": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shampoo 300 ml ink",
+      "base": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 0.6800000071525574,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": [
+        {
+          "name": "spec-bottle.png",
+          "file": "//spec-bottle.png",
+          "packed": true,
+          "size": [
+            1280,
+            440
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transparent direct-print carrier | conceptual ink layer",
+      "base": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "roughness": 0.41999998688697815,
+      "transmission": 0.0,
+      "alpha": 1.0,
+      "images": [
+        {
+          "name": "carrier.png",
+          "file": "//carrier.png",
+          "packed": true,
+          "size": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transparent hollow polyethylene suction tube",
+      "base": [
+        0.6938717365264893,
+        0.8148465752601624,
+        0.8468732237815857,
+        1.0
+      ],
+      "roughness": 0.07999999821186066,
+      "transmission": 0.0,
+      "alpha": 0.3199999928474426,
+      "images": []
+    }
+  ],
+  "frameRange": [
+    1,
+    61
+  ]
+}

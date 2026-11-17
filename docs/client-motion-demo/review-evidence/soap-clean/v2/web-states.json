@@ -1,0 +1,134 @@
+{
+  "closed": {
+    "progress": 0,
+    "renderedProgress": 0,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0,
+      0,
+      0
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  },
+  "half": {
+    "progress": 0.5,
+    "renderedProgress": 0.5,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.8,
+      -0.02499999999999991,
+      0.925
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  },
+  "expanded": {
+    "progress": 1,
+    "renderedProgress": 1,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.6,
+      -0.050000000000000044,
+      1.85
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  },
+  "rotated": {
+    "progress": 1,
+    "renderedProgress": 0.9999999760532611,
+    "yaw": 1.5703313008203563,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.5999999616852179,
+      -0.04999999880266315,
+      1.8499999556985331
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  },
+  "bottom": {
+    "progress": 1,
+    "renderedProgress": 1,
+    "yaw": 0,
+    "pitch": -1.6754129844274162,
+    "selected": null,
+    "printOffset": [
+      -1.6,
+      -0.050000000000000044,
+      1.85
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  },
+  "reset": {
+    "progress": 0,
+    "renderedProgress": 0,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0,
+      0,
+      0
+    ],
+    "components": [
+      "body",
+      "pump",
+      "cap",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 23,
+    "triangles": 128684
+  }
+}

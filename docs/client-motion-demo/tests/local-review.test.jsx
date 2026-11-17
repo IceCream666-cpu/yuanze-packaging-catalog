@@ -20,6 +20,7 @@ const entries = [
   ['scalp-essence', '086', 'poster-086-v1.glb'],
   ['sculptural-pump', '071', 'poster-071-v2.glb'],
   ['soap-duo', '082', 'poster-082-v1.glb'],
+  ['soap-clean-quality', '082', 'poster-082-v2.glb'],
   ['soft-body-duo', '084', 'poster-084-v2.glb'],
 ];
 

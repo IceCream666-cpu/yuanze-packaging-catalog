@@ -1,0 +1,106 @@
+{
+  "productId": "poster-082",
+  "version": "v2",
+  "recordedAtBeijing": "2026-11-17T17:45:31+08:00",
+  "status": "local-visual-approved-preview-open-not-published",
+  "independentReviewer": "/root",
+  "reviewBasis": "Root explicitly reported independent visual approval of final four Cycles states, same-pose shadow control, original poster, and Web closed/half/full/90-degree views.",
+  "cycles": {
+    "passed": true,
+    "reviewer": "/root",
+    "images": [
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-Blender-closed.png",
+        "result": "Root independently reviewed and approved"
+      },
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-Blender-half.png",
+        "result": "Root independently reviewed and approved"
+      },
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-Blender-expanded.png",
+        "result": "Root independently reviewed and approved"
+      },
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-Blender-rotated.png",
+        "result": "Root independently reviewed and approved"
+      }
+    ],
+    "shadowControlImage": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/previews/Soap-Duo-shadow-control.png",
+      "result": "Root independently reviewed and approved"
+    },
+    "originalPoster": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/mobile-client-preview/assets/posters/poster-082.webp",
+      "result": "Root independently compared original approved poster"
+    },
+    "sourceShadowEvidence": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/shadow-verification.json",
+    "sourceShadowLimit": "Very thin direct-print blue stripes produce a weak physical shadow: bare lower tube ROI 128 pixels differ by more than 3/255, maximum 4/255. This is distinct from the stronger Web preview shadow."
+  },
+  "web": {
+    "desktopPassed": true,
+    "states": [
+      "closed",
+      "half",
+      "full",
+      "90-degree rotation",
+      "bottom",
+      "reset"
+    ],
+    "reviewer": "/root",
+    "shadowOnImage": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/web-shadow-on.png",
+    "shadowOffImage": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/web-shadow-off.png",
+    "shadowEvidence": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/web-shadow-verification.json",
+    "samePoseShadowComparison": {
+      "method": "same pose, only physical blue stripe castShadow toggled; restored after capture",
+      "roi": [
+        710,
+        310,
+        770,
+        420
+      ],
+      "pixelsAbove3": 362,
+      "maxChannelDifference": 10,
+      "meanChannelMaximumDifference": 0.3906060606060606,
+      "sourceImagesUnedited": true
+    },
+    "transparentCarrierQuadShadowsAbsent": true,
+    "mobileSimulatedViewport": {
+      "width": 390,
+      "height": 844,
+      "status": "passed",
+      "states": [
+        "closed",
+        "half",
+        "expanded"
+      ],
+      "documentOverflow": false,
+      "physicalDevice": false,
+      "evidence": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/mobile-states.json"
+    },
+    "previewOpened": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/preview-opened.json",
+    "previewScreenshot": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/preview-opened.png"
+  },
+  "frozenAssets": {
+    "glb": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/packaging-assets/poster-082-v2.glb",
+      "bytes": 2782400,
+      "sha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b"
+    },
+    "config": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/review-product.json",
+      "sha256": "625c77e753cf9c11253010c3900a4cff2a6ccf8d6aa4deda52ae914a557dffd1"
+    },
+    "blend": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-082/v2/poster-082-v2.blend",
+      "bytes": 1734652,
+      "sha256": "acee7089bd06fed1fcd08138fb48fccfc5abb35f7983226c0367755c4b96172a"
+    }
+  },
+  "metadataOnlyFinalization": true,
+  "formalRegistrationChangedByModelAgent": false,
+  "publishedByModelAgent": false,
+  "additionalModelRenderOrCheckAfterRootAcceptance": false,
+  "published": false,
+  "physicalMobileTested": false
+}

@@ -1,0 +1,13 @@
+{
+  "method": "same pose, only physical blue stripe castShadow toggled; restored after capture",
+  "roi": [
+    710,
+    310,
+    770,
+    420
+  ],
+  "pixelsAbove3": 362,
+  "maxChannelDifference": 10,
+  "meanChannelMaximumDifference": 0.3906060606060606,
+  "sourceImagesUnedited": true
+}

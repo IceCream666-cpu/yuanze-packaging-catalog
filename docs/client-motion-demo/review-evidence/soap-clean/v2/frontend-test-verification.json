@@ -1,0 +1,120 @@
+{
+  "verifiedAt": "2026-11-17T17:32:30+08:00",
+  "status": "passed-local-preview-regression",
+  "tests": {
+    "frontend": {
+      "passed": 210,
+      "failed": 0,
+      "skipped": 0,
+      "newSoapCleanGeometryTests": 2,
+      "localEntryIncludedInExistingControlTest": true
+    },
+    "collectionModels": {
+      "passed": 4,
+      "failed": 0
+    },
+    "packagingRelease": {
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "sha256": {
+    "src/structure/packaging-scene.js": "f0ea519910f2fe34a6f452992364f32d9ee5ebe8c7527851ed86c7f87fc28e5b",
+    "src/structure/collection-products.json": "80668be25345962565b3e813e1f4846b36cf8a66fd5f40cd130477908ab48112",
+    "packaging-assets/poster-082-v2.glb": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b",
+    "model-source/collection/poster-082/v2/review-product.json": "625c77e753cf9c11253010c3900a4cff2a6ccf8d6aa4deda52ae914a557dffd1",
+    "tests/packaging-loading.test.mjs": "972c057a042eb10e581c93da076a2b23384f805bbfe646421f23d1925988d9f7",
+    "tests/local-review.test.jsx": "39efa1b0c72f8dd5b2c282898f157b3b3b852808fca4bb63f19884745b81ee75",
+    "src/soap-clean-quality-review.jsx": "a880803749f1bece2ded004c7ab0787f1252b9abf34d9bdeedc22faef5d8b851",
+    "soap-clean-quality.html": "fe39189c65e651db184bb4d030251e27601acf2bdaf1a38fd971f1f59c453b97"
+  },
+  "sourceHashesMatchFrozenModel": true,
+  "viewports": [
+    {
+      "width": 1200,
+      "height": 800,
+      "type": "headless geometric projection"
+    },
+    {
+      "width": 393,
+      "height": 520,
+      "type": "simulated narrow viewport, not physical device"
+    }
+  ],
+  "states": [
+    "closed",
+    "half",
+    "full",
+    "four quarter-turns at each progress",
+    "bottom at each progress",
+    "reset"
+  ],
+  "checks": [
+    "actual GLTFLoader parses 20 meshes under the six original part roots",
+    "six complete pump pieces including long hollow tube and three flip-top cap pieces retain fitted local transforms",
+    "long dip tube clears bottle mouth and complete flip-top cap clears tube nozzle at full expansion",
+    "solid pale-blue direct-print stripe geometry casts its shaped shadow onto opaque receiving bottle and soft tube",
+    "two transparent print carriers and six artwork planes cannot cast opaque rectangular shadows",
+    "original embedded PNG artwork maps and authored UV arrays survive viewer setup",
+    "logo and product text separate farther than the stripe/carrier layer",
+    "all projected mesh bounds remain inside desktop and simulated narrow viewport at closed/half/full and four rotations/bottom/reset",
+    "formal 082 remains v1, formal 072 remains original and full 1.62 frozen package remains unchanged"
+  ],
+  "imageHandling": "Production GLTFLoader parses actual geometry/hierarchy/materials; only browser image decoding is replaced with embedded PNG signature/dimension validation. GPU appearance remains a separate root review.",
+  "imageInputs": [
+    "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/mobile-client-preview/assets/posters/poster-082.webp"
+  ],
+  "generatedImages": [],
+  "sharedViewerChanged": false,
+  "buildChecks": {
+    "passed": true,
+    "isolatedBuilds": [
+      {
+        "mode": "showroom",
+        "entry": "index.html",
+        "outDir": "/private/tmp/soap-clean082-showroom-check",
+        "publicDir": false,
+        "copyPublicDir": false
+      },
+      {
+        "mode": "preview",
+        "entry": "soap-clean-quality.html",
+        "outDir": "/private/tmp/soap-clean082-preview-check",
+        "publicDir": false,
+        "copyPublicDir": false,
+        "bundledModelSha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b",
+        "bundledModelPath": "/private/tmp/soap-clean082-preview-check/assets/poster-082-v2-BDNSdeYk.glb"
+      }
+    ],
+    "frozenClient162": {
+      "manifestSha256Before": "7db97fb7dc79ea20d79fec3a9f8875053ae17564831b472e0760612fb78c2adb",
+      "manifestSha256After": "7db97fb7dc79ea20d79fec3a9f8875053ae17564831b472e0760612fb78c2adb",
+      "all514ResourceHashesUnchanged": true,
+      "productionInventoryUnchanged": true,
+      "all8ReleaseFilesUnchanged": true,
+      "registryAndPackagingManifestUnchanged": true
+    },
+    "productionBuildOverwritten": false,
+    "warnings": [
+      "Existing lucide-react use client module directive warnings",
+      "Shared 3D chunk exceeds 500 kB advisory threshold"
+    ]
+  },
+  "physicalMobileTested": false,
+  "visualAcceptance": false,
+  "deployed": false,
+  "logs": {
+    "frontend": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/frontend-tests.log",
+    "builds": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/isolated-builds.log",
+    "operations": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soap-clean/v2/frontend-operations.json"
+  },
+  "commandRecovery": "Initial test shell wrapper attempted to set read-only zsh status after 210 passing tests; reran the full suite with a corrected wrapper and exit 0. No product-code failure.",
+  "buildLogNormalization": {
+    "changes": [
+      "removed ANSI color codes",
+      "removed trailing whitespace"
+    ],
+    "messageTextPreserved": true,
+    "rawLog": "/private/tmp/soap-clean082-builds-final.log"
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "engine": "Cycles",
+  "device": "Metal",
+  "samples": 96,
+  "resolution": [
+    1600,
+    1600
+  ],
+  "poses": [
+    {
+      "frame": 1,
+      "camera": [
+        0.6984722018241882,
+        -10.004590034484863,
+        2.7302660942077637
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 3.7900891304016113,
+      "projectedBounds": [
+        [
+          0.12427037209272385,
+          0.08333338797092438
+        ],
+        [
+          0.8757296204566956,
+          0.9166666269302368
+        ]
+      ],
+      "containerBounds": {
+        "Empty ivory cylinder | low shoulder and hollow neck": [
+          [
+            0.5723769068717957,
+            0.08333338797092438
+          ],
+          [
+            0.8757296204566956,
+            0.6668202877044678
+          ]
+        ],
+        "Flexible thin-wall tube | integrated embossed heat seal and open nozzle": [
+          [
+            0.12427037209272385,
+            0.16791601479053497
+          ],
+          [
+            0.4927380383014679,
+            0.9166666269302368
+          ]
+        ]
+      },
+      "name": "closed"
+    },
+    {
+      "frame": 31,
+      "camera": [
+        0.70181804895401,
+        -10.470413208007812,
+        2.9285902976989746
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 4.898570537567139,
+      "projectedBounds": [
+        [
+          0.10064506530761719,
+          0.08333330601453781
+        ],
+        [
+          0.8993549346923828,
+          0.9166666269302368
+        ]
+      ],
+      "containerBounds": {
+        "Empty ivory cylinder | low shoulder and hollow neck": [
+          [
+            0.6646469235420227,
+            0.14771805703639984
+          ],
+          [
+            0.8993549346923828,
+            0.5991696119308472
+          ]
+        ],
+        "Flexible thin-wall tube | integrated embossed heat seal and open nozzle": [
+          [
+            0.31794095039367676,
+            0.21316075325012207
+          ],
+          [
+            0.6030292510986328,
+            0.7924790382385254
+          ]
+        ]
+      },
+      "name": "half"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        0.5287606716156006,
+        -10.939008712768555,
+        3.3241684436798096
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 6.575913429260254,
+      "projectedBounds": [
+        [
+          0.09480145573616028,
+          0.08333335816860199
+        ],
+        [
+          0.9051985144615173,
+          0.9166666269302368
+        ]
+      ],
+      "containerBounds": {
+        "Empty ivory cylinder | low shoulder and hollow neck": [
+          [
+            0.730358362197876,
+            0.18531331419944763
+          ],
+          [
+            0.9051985144615173,
+            0.5216114521026611
+          ]
+        ],
+        "Flexible thin-wall tube | integrated embossed heat seal and open nozzle": [
+          [
+            0.4720879793167114,
+            0.2340633124113083
+          ],
+          [
+            0.6844577193260193,
+            0.6656126976013184
+          ]
+        ]
+      },
+      "name": "expanded"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        3.9255104064941406,
+        -10.944620132446289,
+        3.686129331588745
+      ],
+      "rotation": [
+        1.4243355989456177,
+        3.567934925285954e-08,
+        0.3976280093193054
+      ],
+      "orthoScale": 6.737553596496582,
+      "projectedBounds": [
+        [
+          0.08333338052034378,
+          0.09986574947834015
+        ],
+        [
+          0.9166666865348816,
+          0.900134265422821
+        ]
+      ],
+      "containerBounds": {
+        "Empty ivory cylinder | low shoulder and hollow neck": [
+          [
+            0.7459867000579834,
+            0.18598613142967224
+          ],
+          [
+            0.9166666865348816,
+            0.5155484080314636
+          ]
+        ],
+        "Flexible thin-wall tube | integrated embossed heat seal and open nozzle": [
+          [
+            0.5188505053520203,
+            0.24578291177749634
+          ],
+          [
+            0.711381196975708,
+            0.6707798838615417
+          ]
+        ]
+      },
+      "name": "rotated"
+    }
+  ],
+  "physicalLabelShadowControl": {
+    "frame": 31,
+    "seed": 82,
+    "camera": [
+      0.70181804895401,
+      -10.470413208007812,
+      2.9285902976989746
+    ],
+    "rotation": [
+      1.4517441987991333,
+      6.517151263096821e-10,
+      0.07982999086380005
+    ],
+    "orthoScale": 4.898570537567139,
+    "onlyChangedProperty": "Only the thin opaque blue stripe decoration visible_shadow; all transparent carriers and lettering stay shadow-disabled",
+    "shadowOn": "previews/Soap-Duo-Blender-half.png",
+    "shadowOff": "previews/Soap-Duo-shadow-control.png",
+    "containerBounds": {
+      "Empty ivory cylinder | low shoulder and hollow neck": [
+        [
+          0.6646469235420227,
+          0.14771805703639984
+        ],
+        [
+          0.8993549346923828,
+          0.5991696119308472
+        ]
+      ],
+      "Flexible thin-wall tube | integrated embossed heat seal and open nozzle": [
+        [
+          0.31794095039367676,
+          0.21316075325012207
+        ],
+        [
+          0.6030292510986328,
+          0.7924790382385254
+        ]
+      ]
+    }
+  },
+  "transparentInkShadowDisabled": true,
+  "visualReviewPending": true,
+  "browserVerifiedSeparately": false
+}

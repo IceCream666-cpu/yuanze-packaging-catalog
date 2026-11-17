@@ -1,0 +1,59 @@
+{
+  "roots": [
+    "Body",
+    "Pump",
+    "TubeCap",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "meshObjects": 20,
+  "preservedWorldVertexErrors": {
+    "Empty ivory cylinder | low shoulder and hollow neck": 0.0,
+    "Long clear hollow dip tube | near-bottom angled intake": 0.0,
+    "Blue flip-top cap | lower hinged lid": 0.0,
+    "Blue flip-top rear hinge": 0.0
+  },
+  "softTubeVolume": 0.08713123140279817,
+  "stripeVolume": 0.00010961002369980803,
+  "stripeRibbons": 28,
+  "stripeThickness": 0.0006,
+  "tubeWallNominal": 0.013,
+  "adaptiveTubeRows": 131,
+  "sampledLongitudinalChordError": 0.00019762077871818037,
+  "continuousHeatSeal": true,
+  "paperLabel": false,
+  "containsFormula": false,
+  "artwork": [
+    {
+      "name": "logo",
+      "svgSha256": "83b9ad9d4952f7e2cdaa0b7182395b90ca87e94be52571b32ab5167736c85054",
+      "pngSha256": "78164bece68deec5c36687a6cbf4bb59ca78e3b639da27cd9933fb5dcbf080d9"
+    },
+    {
+      "name": "soap-clean-soap",
+      "svgSha256": "8bdf41dea2b952798c28dbc4204feae63dca0fe99449c1e53081d20647c9948f",
+      "pngSha256": "cfbd3fa56e07c89de64e2dd7ec7c556e0bf2237efe5d24ad67f1dce1279cc613"
+    },
+    {
+      "name": "spec-tube",
+      "svgSha256": "76ebd3f796b9f557504638cd64910074d33745c4cbecf570a65263aece94a893",
+      "pngSha256": "6ae4242533ec3a3455375d2b0c0da7cc43a9646eec78fb06d8634f00bf1cef1d"
+    },
+    {
+      "name": "spec-bottle",
+      "svgSha256": "e6be5d36e27179f814036a99def3957df2c38f364f499a791893edfda74ae9e9",
+      "pngSha256": "8ce8a9087a82f2ff101c2a618e7c1e6902b4beb4e7048491e31d1f0f56b20b72"
+    }
+  ],
+  "sourceFrames": [
+    1,
+    31,
+    61
+  ],
+  "glbBytes": 2782400,
+  "glbSha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b",
+  "configSha256": "625c77e753cf9c11253010c3900a4cff2a6ccf8d6aa4deda52ae914a557dffd1",
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

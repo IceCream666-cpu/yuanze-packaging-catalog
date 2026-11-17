@@ -1,0 +1,114 @@
+{
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "title": "源泽 · 客户海报展厅 — client1.62",
+  "states": {
+    "closed": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "half": {
+      "progress": 0.5,
+      "renderedProgress": 0.4993829319669839,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.2234881833191107,
+        -0.03995063455735881,
+        1.0187411812126472
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "expanded": {
+      "progress": 1,
+      "renderedProgress": 0.9992477454945053,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.4481569764615383,
+        -0.07993981963956043,
+        2.038465400808791
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "rotated": {
+      "progress": 1,
+      "renderedProgress": 0.9999996945671399,
+      "yaw": 1.5678924752223582,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.449999251689493,
+        -0.0799999755653712,
+        2.0399993769169655
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "reset": {
+      "progress": 1,
+      "renderedProgress": 0.9999999998604134,
+      "yaw": 0.007869301913813352,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.4499999996580133,
+        -0.07999999998883311,
+        2.0399999997152434
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    }
+  },
+  "modelRequests": [
+    "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-081-v2.glb"
+  ]
+}
