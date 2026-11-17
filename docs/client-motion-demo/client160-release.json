@@ -1,7 +1,7 @@
 {
   "version": "client1.60",
-  "status": "prepared-local-not-deployed",
-  "sourceCommit": null,
+  "status": "published-and-independently-verified",
+  "sourceCommit": "5717bc39",
   "baselineSourceCommit": "0a8d937",
   "scope": "approved Golden Face Oil v2 model and six-layer viewer; 31 other models and all poster/homepage media preserved",
   "publishedModel": "poster-056-v2",
@@ -32,7 +32,6 @@
     "assets/packaging/packaging-scene-4ZR48Lpr.js",
     "assets/packaging/poster-056.glb"
   ],
-  "plannedBackup": "/opt/yuanze-reference/backups/client1.60-golden-face-oil-quality-model-20261117",
   "checks": {
     "frontendTests": 203,
     "packagingReleaseTests": 13,
@@ -42,8 +41,10 @@
     "sourceStampCheck": true,
     "unchangedOtherModels": 31,
     "physicalMobileTested": false,
-    "onlineVerified": false,
-    "browserInteractionVerified": false
+    "onlineVerified": true,
+    "browserInteractionVerified": true,
+    "all32ModelRanges": true,
+    "verifiedFullChangedResources": 5
   },
   "evidence": "review-evidence/golden-face-oil/client160/",
   "modelQA": "review-evidence/golden-face-oil/v2/QA.md",
@@ -54,6 +55,14 @@
     "reportedAvailableBytes": 225927168,
     "minimumHeadroomBytes": 268435456,
     "status": "primary agent reports approximately 296 MB after dnf cache cleanup; release rechecks exact free bytes with unchanged 256 MiB guard",
-    "cleanup": "dnf cache only; reported by primary agent; current release and all rollback directories retained"
-  }
+    "cleanup": "dnf cache only; reported by primary agent; current release and all rollback directories retained",
+    "action": "dnf clean all",
+    "beforeAvailableBytes": 225828864,
+    "afterAvailableBytes": 296071168,
+    "result": "19 files removed\n",
+    "preservedReleasesBackupsAndLogs": true,
+    "at": "2026-11-17T13:40:51.413037+08:00"
+  },
+  "publishedAt": "2026-11-17T13:46:59+08:00",
+  "backup": "/opt/yuanze-reference/backups/client1.60-golden-face-oil-quality-model-20261117"
 }

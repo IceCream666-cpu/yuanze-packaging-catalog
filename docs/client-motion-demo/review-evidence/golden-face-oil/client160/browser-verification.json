@@ -1,0 +1,108 @@
+{
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "title": "源泽 · 客户海报展厅 — client1.60",
+  "model": "poster-056-v2.glb",
+  "states": [
+    {
+      "pose": "online-closed",
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 20,
+        "triangles": 34098
+      }
+    },
+    {
+      "pose": "online-half",
+      "state": {
+        "progress": 0.5,
+        "renderedProgress": 0.5,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.725,
+          0.09999999999999998,
+          0.625
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 20,
+        "triangles": 34098
+      }
+    },
+    {
+      "pose": "online-open",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 1,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.45,
+          0.19999999999999996,
+          1.25
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 20,
+        "triangles": 34098
+      }
+    },
+    {
+      "pose": "rotated",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 1,
+        "yaw": 1.5707963267948966,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.45,
+          0.19999999999999996,
+          1.25
+        ],
+        "components": [
+          "overcap",
+          "pump",
+          "body",
+          "label",
+          "print",
+          "name"
+        ],
+        "meshes": 20,
+        "triangles": 34098
+      }
+    }
+  ],
+  "physicalMobileTested": false
+}

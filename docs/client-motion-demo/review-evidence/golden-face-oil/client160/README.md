@@ -1,6 +1,6 @@
-# client1.60 · Golden Face Oil v2 发布候选
+# client1.60 · Golden Face Oil v2 已发布
 
-状态：本地包、回归测试与差量发布计划已完成，未远端部署。基线源码 `0a8d937`；主任务负责提交、远端发布和线上验收，不能把本说明或候选文件当作线上完成证明。
+状态：2026-11-17 13:46:59（北京）已发布，13:48:59 完成独立 HTTPS 验证，随后完成正式网站首页进入056的交互视觉复查。发布源码 `5717bc39`，基线源码 `0a8d937`。
 
 ## 范围与依据
 
@@ -37,3 +37,10 @@ python3 -m unittest discover -s docs/client-motion-demo/review-evidence/golden-f
 计划回退目录：`/opt/yuanze-reference/backups/client1.60-golden-face-oil-quality-model-20261117`。仅成功切换并校验后才记为存在和可用。仅回退展厅，不回灌业务数据库。
 
 084后续预览源代码可能改变工作区源摘要；请使用隔离构建，不覆盖这次已冻结的release与server-reference/public/showroom包。
+
+## 本轮实际发布与线上验证
+
+- publication.json：514项文件完整校验；6820项展厅外文件摘要不变；其他31款模型不变；服务PID33772持续active；未重启服务，业务数据写入为0。
+- online-verification.json：校验证书的HTTPS完整核对5项变化资源，32/32模型Range；客户、员工、管理员三角色边界，匿名与退出，原图下载、首页缩略图通过。
+- browser-verification.json与online-*.png：从正式首页选择Golden Face Oil进入结构页，实际请求056v2；合拢、半/全展开、90度旋转、复位通过。主任务逐张检查无裁切，标贴薄影保留。手机本轮未重测，前次模拟视口证据保留于v2/QA.md，非真机。
+- 回退目录现已创建并逐文件验证，路径同上。正式包维持冻结，084v3接下来仅本地预览。
