@@ -1,0 +1,67 @@
+{
+  "version": "client1.58",
+  "status": "published-and-independently-verified",
+  "sourceCommit": "d4b07ee",
+  "scope": "frontend loading optimization and version entrypoint; no model or media replacement",
+  "publishedModel": null,
+  "previewOnlyModel": "poster-072-v2",
+  "publishedAt": "2026-11-17T11:22:21+08:00",
+  "verifiedAt": "2026-11-17T11:26:29+08:00",
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "manifestSha256": "c30552e997b0009d625985d1815627248fcb21c7654f17054ff38e6e3542c65f",
+  "baselineManifestSha256": "3be5fa41c17d98ae8df327532848d82bf47160036292d0eb3a88cefb0a0fbb8d",
+  "backup": "/opt/yuanze-reference/backups/client1.58-loading-optimization-20261117",
+  "changedResources": [
+    "index.html",
+    "preview.js"
+  ],
+  "addedResources": [],
+  "removedResources": [],
+  "checks": {
+    "httpsFullChangedResources": 2,
+    "modelRangeRequests": 32,
+    "excludedResourcesDenied": 37,
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginScriptUnchanged": true,
+    "browser": "Ego Lite",
+    "browserVersionTitle": "源泽 · 客户海报展厅 — client1.58",
+    "browserProduct": "poster-049",
+    "browserFromHome": true,
+    "browserPoses": [
+      "half",
+      "expanded-rotated-90-degrees"
+    ],
+    "modelRequestsForIntentOpening": 1,
+    "closeFocusRestored": true,
+    "modelRequestsAfterCloseIncrease": 0,
+    "closeObservationSeconds": 2,
+    "all32ModelBytesPreserved": true,
+    "allPostersAndFeaturedAssetsPreserved": true,
+    "sceneAndStylesUnchanged": true,
+    "outsideUnchanged": 6820,
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "frontendTests": 201,
+    "packagingReleaseTests": 13,
+    "publicationPlanTests": 5,
+    "physicalMobileTested": false
+  },
+  "evidence": "review-evidence/loading-20261117/client158/",
+  "performanceEvidence": "review-evidence/loading-20261117/QA.md",
+  "performanceMeasurementScope": "same-browser local comparison with simulated 4Mbps/80ms; not production real-user or physical-device measurements",
+  "remainingQueue": [
+    "poster-012",
+    "poster-056",
+    "poster-084"
+  ]
+}

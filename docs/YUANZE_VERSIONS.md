@@ -510,5 +510,7 @@ Amber Ginger Shampoo完整黑色泵头与较粗透明长吸管整体展开；编
 11个预览入口共用模板，产品代码减少183行；单款有界预取、关闭焦点恢复与触屏边界修复。201前端+13发布测试及隔离构建通过。模拟4Mbps/80ms、约1.2秒悬停后点击，首帧中位数3.12→1.91秒；非线上或真机指标。清理38个缓存文件约8.24MB，独立Vite缓存目录。正式client1.57资源、32模型与权限保持；072 v2仍本地，未部署。本轮不另分配发布版本。详见 [性能QA](client-motion-demo/review-evidence/loading-20261117/QA.md)。
 
 
-## 2026-11-17 client1.58 — 加载优化（发布准备）
-用户已批准性能候选上线。差量仅index.html、preview.js及manifest；全部32模型、68海报/31首页保持原摘要，072 v2仍本地预览。发布守卫核对实际client1.57基线、6820项展厅外文件和服务PID，保留旧版回退。计划及验证脚本见 client-motion-demo/review-evidence/loading-20261117/client158/。发布验收后继续012 Beach Magic本地Blender优化。
+## 2026-11-17 client1.58 — 加载优化（已上线并独立验证）
+11:22:21 原子发布，11:26:29 完成正式 HTTPS 验收；源提交 `d4b07ee`。仅 index.html、preview.js 及 manifest 改变；全部32模型、68海报/31首页、样式和3D场景分块保持原摘要，072 v2仍本地预览，086未注册。514项正式资源及旧版备份完整核验，6820项展厅外文件和PID33772保持，无服务重启、无业务数据写入。
+
+201前端、13包材发布、5发布计划测试通过；2项变化资源完整SHA、32模型Range、37条排除资源、三角色权限及匿名/退出检查通过。正式Ego Lite确认1.58标题，049预取打开消费1个GLB请求，半展开、完全展开后90°旋转正常；关闭焦点恢复后等待2秒，没有额外模型请求。此前约38.8%首帧改善为本地模拟网络实验，未作为线上或真机指标。回执 [client158-release.json](client-motion-demo/client158-release.json)，证据 [client158](client-motion-demo/review-evidence/loading-20261117/client158/)。服务器回退目录 `/opt/yuanze-reference/backups/client1.58-loading-optimization-20261117`。发布验收后继续012 Beach Magic本地Blender优化。

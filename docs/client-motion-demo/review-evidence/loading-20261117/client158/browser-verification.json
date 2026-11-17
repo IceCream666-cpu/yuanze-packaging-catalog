@@ -1,0 +1,87 @@
+{
+  "requestDelta": 1,
+  "version": "源泽 · 客户海报展厅 — client1.58",
+  "metrics": [
+    {
+      "id": 1,
+      "timings": {
+        "start": 0.09999999962747097,
+        "fetchStart": 0.5,
+        "fetchEnd": 123.79999999981374,
+        "aborted": 5026
+      }
+    },
+    {
+      "id": 2,
+      "timings": {
+        "start": 0,
+        "fetchStart": 0.10000000055879354,
+        "fetchEnd": 441.80000000074506,
+        "opened": 1090,
+        "detailModule": 1201.9000000003725,
+        "sceneModule": 1217.4000000003725,
+        "pmremStart": 1241.1000000005588,
+        "pmremEnd": 1268.6000000005588,
+        "parseStart": 1269.1000000005588,
+        "parseEnd": 1300.2000000001863,
+        "firstFrameStart": 1309.2000000001863,
+        "firstFrame": 1402.9000000003725,
+        "animationReady": 1406.5
+      }
+    }
+  ],
+  "state": {
+    "progress": 0.5,
+    "renderedProgress": 0.49938542206444436,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.699139590890222,
+      -0.07990166753031114,
+      0.7390904246553777
+    ],
+    "components": [
+      "pump",
+      "body",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 27,
+    "triangles": 226462
+  },
+  "glbCount": 2,
+  "rotated": {
+    "progress": 1,
+    "renderedProgress": 0.9994356695529801,
+    "yaw": 1.5697483745843124,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.3992099373741722,
+      -0.15990970712847685,
+      1.4791647909384107
+    ],
+    "components": [
+      "pump",
+      "body",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 27,
+    "triangles": 226462
+  },
+  "closeFocus": {
+    "restored": {
+      "active": "查看产品详情",
+      "metrics": 2,
+      "requests": 2
+    },
+    "after": {
+      "metrics": 2,
+      "requests": 2
+    }
+  }
+}
