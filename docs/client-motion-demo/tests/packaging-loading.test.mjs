@@ -1838,9 +1838,9 @@ for (const [width,height] of [[1200,800],[393,520]]) test(`Soft Body v3 keeps it
   }finally{api?.dispose();env.close();}
 });
 
-test('Soft Body v3 is approved while pending 072 and original 081 registration remain unchanged',()=>{
+test('Soft Body v3 and Hand Gel v2 are approved while pending 072 stays unchanged',()=>{
   assert.deepEqual(PACKAGING_PRODUCTS['poster-084'],JSON.parse(readFileSync(new URL('../model-source/collection/poster-084/v3/review-product.json',import.meta.url),'utf8')));
-  assert.equal(PACKAGING_PRODUCTS['poster-081'].file,'poster-081-v1.glb');
+  assert.equal(PACKAGING_PRODUCTS['poster-081'].file,'poster-081-v2.glb');
   assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
 });
 
@@ -1944,6 +1944,6 @@ for (const [width,height] of [[1200,800],[393,520]]) test(`Hand Gel v2 retains c
       assert.ok(part.position.distanceTo(rest[key].p)<1e-8);assert.ok(part.scale.distanceTo(rest[key].s)<1e-8);assert.ok(1-Math.abs(part.quaternion.dot(rest[key].q))<1e-8);
     }
   }finally{api?.dispose();env.close();}
-  assert.equal(PACKAGING_PRODUCTS['poster-081'].file,'poster-081-v1.glb','081 v2 is local preview only');
+  assert.deepEqual(PACKAGING_PRODUCTS['poster-081'],product,'approved 081 v2 configuration is registered');
   assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
 });

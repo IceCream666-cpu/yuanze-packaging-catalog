@@ -1,0 +1,63 @@
+{
+  "version": "client1.62",
+  "baselineManifestSha256": "23ab8089fd3bcd6c4c9cd6c14093660411a3d305e5d1682a83f4ffeb993ce080",
+  "manifestSha256": "7db97fb7dc79ea20d79fec3a9f8875053ae17564831b472e0760612fb78c2adb",
+  "changed": [
+    "assets/packaging/PackagingDetail-Cw0m57ur.js",
+    "assets/packaging/packaging-scene-BCRknYCL.js",
+    "assets/packaging/poster-081-v2.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "added": [
+    "assets/packaging/PackagingDetail-Cw0m57ur.js",
+    "assets/packaging/packaging-scene-BCRknYCL.js",
+    "assets/packaging/poster-081-v2.glb"
+  ],
+  "removed": [
+    "assets/packaging/PackagingDetail-BluZAaY2.js",
+    "assets/packaging/packaging-scene-CyMuL9MP.js",
+    "assets/packaging/poster-081-v1.glb"
+  ],
+  "preservedPackaging": [
+    "assets/packaging/poster-012-v2.glb",
+    "assets/packaging/poster-013.glb",
+    "assets/packaging/poster-039.glb",
+    "assets/packaging/poster-042.glb",
+    "assets/packaging/poster-044.glb",
+    "assets/packaging/poster-047.glb",
+    "assets/packaging/poster-049-v2.glb",
+    "assets/packaging/poster-051.glb",
+    "assets/packaging/poster-056-v2.glb",
+    "assets/packaging/poster-057.glb",
+    "assets/packaging/poster-058.glb",
+    "assets/packaging/poster-059.glb",
+    "assets/packaging/poster-060.glb",
+    "assets/packaging/poster-061.glb",
+    "assets/packaging/poster-062.glb",
+    "assets/packaging/poster-063.glb",
+    "assets/packaging/poster-064.glb",
+    "assets/packaging/poster-065.glb",
+    "assets/packaging/poster-066.glb",
+    "assets/packaging/poster-067-v2.glb",
+    "assets/packaging/poster-068-v3.glb",
+    "assets/packaging/poster-069.glb",
+    "assets/packaging/poster-070.glb",
+    "assets/packaging/poster-071-v2.glb",
+    "assets/packaging/poster-072.glb",
+    "assets/packaging/poster-073.glb",
+    "assets/packaging/poster-079-v2.glb",
+    "assets/packaging/poster-080-v2.glb",
+    "assets/packaging/poster-082-v1.glb",
+    "assets/packaging/poster-084-v3.glb",
+    "assets/packaging/poster-085-v2.glb"
+  ],
+  "resources": 514,
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "publishedModel": "poster-081-v2",
+  "previewOnlyModel": "poster-072-v2"
+}

@@ -4083,7 +4083,7 @@
     ]
   },
   "poster-081": {
-    "file": "poster-081-v1.glb",
+    "file": "poster-081-v2.glb",
     "kind": "collection",
     "scale": 1,
     "parts": [
@@ -4115,8 +4115,8 @@
           "Complete pump"
         ],
         "detail": [
-          "细齿旋盖、按压头与粗透明长吸管作为整体抬起。",
-          "The fluted collar, actuator and long clear dip tube lift together."
+          "96齿旋盖、弧形按压头、开放接口与中空长吸管整体抬起。",
+          "The 96-flute collar, arched actuator, open connector and long hollow dip tube lift as one complete pump."
         ]
       },
       {
@@ -4131,8 +4131,8 @@
           "Woven label and side flag"
         ],
         "detail": [
-          "奶白织物环标与右侧黑布标及其白色字标作为整体展开。",
-          "The ivory woven sleeve, black side flag and its ivory wordmark move as one piece."
+          "米白织物环标保留真实薄边、经纬织纹与投影，黑色侧旗及其白字一起展开。",
+          "The ivory woven sleeve retains thin rolled edges, yarn texture and physical shadows; its black flag and ivory mark remain attached."
         ]
       },
       {
@@ -4174,12 +4174,13 @@
         "frosted": false,
         "referenceGlass": true,
         "studio": {
-          "background": "#e6e7dc",
+          "background": "#d7d8ca",
           "ink": "#243025"
-        }
+        },
+        "labelShadows": true
       },
       "explosion": {
-        "mobilePrintSpread": 0.86,
+        "mobilePrintSpread": 1,
         "offsets": {
           "body": [
             0,
@@ -4192,9 +4193,9 @@
             0
           ],
           "label": [
-            -1.2,
+            -1.45,
             0.02,
-            0.72
+            0.9
           ],
           "logo": [
             -2.45,

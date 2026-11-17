@@ -1,0 +1,62 @@
+{
+  "version": "client1.62",
+  "status": "prepared-local-not-deployed",
+  "sourceCommit": null,
+  "baselineSourceCommit": "89c2d54",
+  "scope": "approved Exfoliating Hand Gel v2 model and viewer; 31 other models and all poster/homepage media preserved",
+  "publishedModel": "poster-081-v2",
+  "previewOnlyModel": "poster-072-v2",
+  "nextProduct": "poster-082",
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "resources": 514,
+  "manifestSha256": "7db97fb7dc79ea20d79fec3a9f8875053ae17564831b472e0760612fb78c2adb",
+  "baselineManifestSha256": "23ab8089fd3bcd6c4c9cd6c14093660411a3d305e5d1682a83f4ffeb993ce080",
+  "changedResources": [
+    "assets/packaging/PackagingDetail-Cw0m57ur.js",
+    "assets/packaging/packaging-scene-BCRknYCL.js",
+    "assets/packaging/poster-081-v2.glb",
+    "index.html",
+    "preview.js"
+  ],
+  "addedResources": [
+    "assets/packaging/PackagingDetail-Cw0m57ur.js",
+    "assets/packaging/packaging-scene-BCRknYCL.js",
+    "assets/packaging/poster-081-v2.glb"
+  ],
+  "removedResources": [
+    "assets/packaging/PackagingDetail-BluZAaY2.js",
+    "assets/packaging/packaging-scene-CyMuL9MP.js",
+    "assets/packaging/poster-081-v1.glb"
+  ],
+  "plannedBackup": "/opt/yuanze-reference/backups/client1.62-hand-gel-quality-model-20261117",
+  "checks": {
+    "frontendTests": 208,
+    "packagingReleaseTests": 13,
+    "collectionModelTests": 4,
+    "publicationPlanTests": 5,
+    "localBuild": true,
+    "sourceStampCheck": true,
+    "unchangedOtherModels": 31,
+    "physicalMobileTested": false,
+    "onlineVerified": false,
+    "browserInteractionVerified": false
+  },
+  "evidence": "review-evidence/hand-gel/client162/",
+  "modelQA": "review-evidence/hand-gel/v2/QA.md",
+  "remainingQueue": [
+    "poster-082"
+  ],
+  "storagePreparation": {
+    "availableBytesAtFreshBaseline": 216248320,
+    "minimumHeadroomBytes": 268435456,
+    "archivedOldStagingFiles": 60,
+    "archivedBytes": 98308917,
+    "availableAfterVerifiedStagingArchive": 306524160,
+    "evidence": "review-evidence/hand-gel/client162/staging-cleanup.json",
+    "status": "root archived and SHA256-verified 60 old staging uploads before removing remote duplicates; current release and rollback backups preserved; publication rechecks live capacity"
+  }
+}

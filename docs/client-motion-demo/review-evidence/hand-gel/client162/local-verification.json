@@ -1,0 +1,95 @@
+{
+  "verifiedAt": "2026-11-17T17:23:21+08:00",
+  "status": "frozen-local-candidate",
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "resources": 514,
+  "tests": {
+    "frontendTests": 208,
+    "packagingReleaseTests": 13,
+    "collectionModelTests": 4,
+    "publicationPlanTests": 5,
+    "localBuild": true,
+    "sourceStampCheck": true,
+    "unchangedOtherModels": 31,
+    "physicalMobileTested": false,
+    "onlineVerified": false,
+    "browserInteractionVerified": false
+  },
+  "sha256": {
+    "src/structure/packaging-scene.js": "f0ea519910f2fe34a6f452992364f32d9ee5ebe8c7527851ed86c7f87fc28e5b",
+    "src/structure/collection-products.json": "80668be25345962565b3e813e1f4846b36cf8a66fd5f40cd130477908ab48112",
+    "packaging-assets/poster-081-v2.glb": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf",
+    "model-source/collection/poster-081/v2/review-product.json": "a76fbe5e1c86fdab57c5c8cd3b958f9a1f4b82c1fccf465956e281de7a5756d3",
+    "tests/packaging-loading.test.mjs": "ae0a0b61dff45d8f16780715f99b48fcc14736d4bca682842f27fefbc2b135b8",
+    "tests/featured.test.mjs": "00337e0d4600982dd1645db4798f426e601a3e4b4f5492187c312f00e8e23769",
+    "release/build.json": "5d4d869cdf6c8a3af3457a8ba7b9b003ee871670364ec30458e4d273c077b5d1"
+  },
+  "manifestSha256": "7db97fb7dc79ea20d79fec3a9f8875053ae17564831b472e0760612fb78c2adb",
+  "baselineManifestSha256": "23ab8089fd3bcd6c4c9cd6c14093660411a3d305e5d1682a83f4ffeb993ce080",
+  "sourceStamp": "271261f50f51302a86814d883fc6667dcb222dafaf1b93b938e8e884ca427df8",
+  "baselineSourceCommit": "89c2d54",
+  "scope": {
+    "modified": [
+      "index.html",
+      "preview.js"
+    ],
+    "added": [
+      "assets/packaging/PackagingDetail-Cw0m57ur.js",
+      "assets/packaging/packaging-scene-BCRknYCL.js",
+      "assets/packaging/poster-081-v2.glb"
+    ],
+    "removed": [
+      "assets/packaging/PackagingDetail-BluZAaY2.js",
+      "assets/packaging/packaging-scene-CyMuL9MP.js",
+      "assets/packaging/poster-081-v1.glb"
+    ],
+    "preservedModels": [
+      "assets/packaging/poster-012-v2.glb",
+      "assets/packaging/poster-013.glb",
+      "assets/packaging/poster-039.glb",
+      "assets/packaging/poster-042.glb",
+      "assets/packaging/poster-044.glb",
+      "assets/packaging/poster-047.glb",
+      "assets/packaging/poster-049-v2.glb",
+      "assets/packaging/poster-051.glb",
+      "assets/packaging/poster-056-v2.glb",
+      "assets/packaging/poster-057.glb",
+      "assets/packaging/poster-058.glb",
+      "assets/packaging/poster-059.glb",
+      "assets/packaging/poster-060.glb",
+      "assets/packaging/poster-061.glb",
+      "assets/packaging/poster-062.glb",
+      "assets/packaging/poster-063.glb",
+      "assets/packaging/poster-064.glb",
+      "assets/packaging/poster-065.glb",
+      "assets/packaging/poster-066.glb",
+      "assets/packaging/poster-067-v2.glb",
+      "assets/packaging/poster-068-v3.glb",
+      "assets/packaging/poster-069.glb",
+      "assets/packaging/poster-070.glb",
+      "assets/packaging/poster-071-v2.glb",
+      "assets/packaging/poster-072.glb",
+      "assets/packaging/poster-073.glb",
+      "assets/packaging/poster-079-v2.glb",
+      "assets/packaging/poster-080-v2.glb",
+      "assets/packaging/poster-082-v1.glb",
+      "assets/packaging/poster-084-v3.glb",
+      "assets/packaging/poster-085-v2.glb"
+    ],
+    "allOtherResourcesUnchanged": true,
+    "registryChangedIds": [
+      "poster-081"
+    ],
+    "allSourceModelsPreserved": true
+  },
+  "buildWarnings": [
+    "Existing lucide-react use client module directive warnings",
+    "Shared 3D chunk exceeds the 500 kB advisory threshold"
+  ],
+  "frontendLog": "/private/tmp/client162-frontend-tests.log",
+  "buildLog": "/private/tmp/client162-build.log"
+}
