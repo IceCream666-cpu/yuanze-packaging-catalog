@@ -533,3 +533,5 @@ client1.58发布验收后完成012v2：完整外盖、带短舌内盖、透明�
 084v3／client1.61线上验收后，按全库审查明确缺口接续081。Blender完整泵及长吸管整体展开，实体织物薄边与512px平铺织纹、独立Logo／产品文字、玻璃对应接影；透明字膜不投矩形影。GLB2,053,332bytes，比旧版少54.64%。全开布环径向净距0.104977，模拟窄屏保持分离；半开仅为分层示意路径，不代表物理脱套。
 
 主任务逐图查看Cycles四态及同位阴影控制、Ego桌面四态／底视／复位及390×844模拟手机三态。208前端+4结构+13打包检查及两项隔离构建通过，client1.61的514资源、8个release文件和manifest不变，正式081仍v1／072仍原版。预览 http://127.0.0.1:8785/hand-gel-quality.html 已在Ego Lite打开。详见[081 QA](client-motion-demo/review-evidence/hand-gel/v2/QA.md)及[源档说明](client-motion-demo/model-source/collection/poster-081/v2/README.md)。本轮不分配新发布版本。
+
+081本地实现与验收提交：`5267ce21`，已自动上传GitHub。
