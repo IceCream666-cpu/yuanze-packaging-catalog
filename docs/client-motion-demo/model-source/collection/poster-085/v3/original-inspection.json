@@ -1,0 +1,3526 @@
+{
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/poster-085-v2.blend",
+  "blender": "5.4.0 Alpha",
+  "groups": {
+    "Body": {
+      "meshes": 75,
+      "rootLocation": [
+        0.0,
+        0.0,
+        1.399999976158142
+      ],
+      "animation": true
+    },
+    "Pump": {
+      "meshes": 6,
+      "rootLocation": [
+        0.6399999856948853,
+        0.0,
+        2.9000000953674316
+      ],
+      "animation": true
+    },
+    "TubeCap": {
+      "meshes": 3,
+      "rootLocation": [
+        -0.7200000286102295,
+        0.0,
+        0.17000000178813934
+      ],
+      "animation": true
+    },
+    "Label": {
+      "meshes": 2,
+      "rootLocation": [
+        0.0,
+        0.0,
+        1.399999976158142
+      ],
+      "animation": true
+    },
+    "LogoInk": {
+      "meshes": 2,
+      "rootLocation": [
+        0.0,
+        0.0,
+        1.850000023841858
+      ],
+      "animation": true
+    },
+    "NameInk": {
+      "meshes": 2,
+      "rootLocation": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "animation": true
+    }
+  },
+  "objects": [
+    {
+      "name": "Empty flexible tube | sealed tail and open dispensing nozzle",
+      "parent": "Body",
+      "verts": 3328,
+      "polygons": 3328,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.03332329837485194,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.100000023841858,
+          -0.1899999976158142,
+          0.18000000715255737
+        ],
+        [
+          -0.3400000035762787,
+          0.1899999976158142,
+          2.2100000381469727
+        ]
+      ]
+    },
+    {
+      "name": "Empty tall cylinder | ivory rounded heel and hollow threaded neck",
+      "parent": "Body",
+      "verts": 3226,
+      "polygons": 3348,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.38233204078705346,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          0.1300000101327896,
+          -0.5099999904632568,
+          0.0
+        ],
+        [
+          1.149999976158142,
+          0.5099999904632568,
+          2.7899999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Tube integrated flattened heat seal",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.0021662849960670484,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.1024999618530273,
+          -0.020500000566244125,
+          2.2099997997283936
+        ],
+        [
+          -0.33750003576278687,
+          0.020500000566244125,
+          2.2799999713897705
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 00",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0915000438690186,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0885000228881836,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 01",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0810774564743042,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0780774354934692,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 02",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0706549882888794,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0676549673080444,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 03",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.060232400894165,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.05723237991333,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 04",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0498098134994507,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0468097925186157,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 05",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0393873453140259,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.036387324333191,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 06",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0289647579193115,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0259647369384766,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 07",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0185422897338867,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0155422687530518,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 08",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0081197023391724,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -1.0051196813583374,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 09",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9976971745491028,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9946971535682678,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 10",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9872746467590332,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9842746257781982,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 11",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9768521189689636,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9738520979881287,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 12",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.966429591178894,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9634295701980591,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 13",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9560070633888245,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9530070424079895,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 14",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9455845355987549,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9425845146179199,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 15",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9351620078086853,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9321619868278503,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 16",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.924739420413971,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.921739399433136,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 17",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9143168926239014,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9113168716430664,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 18",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9038943648338318,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.9008943438529968,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 19",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8934718370437622,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8904718160629272,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 20",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8830493092536926,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8800492882728577,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 21",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.872626781463623,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8696267604827881,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 22",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8622042536735535,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8592042326927185,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 23",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8517817258834839,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8487817049026489,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 24",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8413591384887695,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8383591175079346,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 25",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8309366106987,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.827936589717865,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 26",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8205140829086304,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8175140619277954,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 27",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.8100915551185608,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.8070915341377258,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 28",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7996690273284912,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7966690063476562,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 29",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7892464995384216,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7862464785575867,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 30",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.778823971748352,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7758239507675171,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 31",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7684014439582825,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7654014229774475,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 32",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7579788565635681,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7549788355827332,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 33",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7475563287734985,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7445563077926636,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 34",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.737133800983429,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.734133780002594,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 35",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7267112731933594,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7237112522125244,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 36",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7162887454032898,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7132887244224548,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 37",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.7058662176132202,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.7028661966323853,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 38",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6954436898231506,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6924436688423157,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 39",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.685021162033081,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6820211410522461,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 40",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6745985746383667,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6715985536575317,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 41",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6641760468482971,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6611760258674622,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 42",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6537535190582275,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6507534980773926,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 43",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.643330991268158,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.640330970287323,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 44",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6329084634780884,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6299084424972534,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 45",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6224859356880188,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6194859147071838,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 46",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6120634078979492,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.6090633869171143,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 47",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.6016408801078796,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5986408591270447,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 48",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5912182927131653,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5882182717323303,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 49",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5807957649230957,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5777957439422607,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 50",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5703732371330261,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5673732161521912,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 51",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5599507093429565,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5569506883621216,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 52",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.549528181552887,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.546528160572052,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 53",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5391056537628174,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5361056327819824,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 54",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5286831259727478,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5256831049919128,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 55",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5182605981826782,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5152605772018433,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 56",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.5078380107879639,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.5048379898071289,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 57",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.4974155128002167,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.4944154918193817,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 58",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.4869929552078247,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.48399293422698975,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 59",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.4765704274177551,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.47357040643692017,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 60",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.46614789962768555,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.4631478786468506,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 61",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.45572537183761597,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.452725350856781,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 62",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.445302814245224,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.44230279326438904,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 63",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.4348802864551544,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.43188026547431946,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 64",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.42445775866508484,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.4214577376842499,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 65",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.41403523087501526,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.4110352098941803,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 66",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.4036126732826233,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.40061265230178833,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 67",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.3931901454925537,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.39019012451171875,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 68",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.38276761770248413,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.37976759672164917,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 69",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.37234508991241455,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.3693450689315796,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 70",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.3619225323200226,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.3589225113391876,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Tube seal ridge 71",
+      "parent": "Body",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 3.74797413788361e-07,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.351500004529953,
+          -0.023499999195337296,
+          2.2204999923706055
+        ],
+        [
+          -0.34849998354911804,
+          -0.020500000566244125,
+          2.2674999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Long clear hollow dip tube | near-bottom angled intake",
+      "parent": "Pump",
+      "verts": 4704,
+      "polygons": 4704,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.00651627434508155,
+      "materials": [
+        "Transparent hollow polyethylene suction tube"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          0.5989999771118164,
+          -0.04100000113248825,
+          0.11654999852180481
+        ],
+        [
+          0.8259999752044678,
+          0.04100000113248825,
+          2.609999895095825
+        ]
+      ]
+    },
+    {
+      "name": "Pump | actuator barrel and stem",
+      "parent": "Pump",
+      "verts": 994,
+      "polygons": 1116,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.0733760900311365,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          0.3799999952316284,
+          -0.25999999046325684,
+          2.759999990463257
+        ],
+        [
+          0.8999999761581421,
+          0.25999999046325684,
+          3.180000066757202
+        ]
+      ]
+    },
+    {
+      "name": "Pump | broad ivory shoulder collar",
+      "parent": "Pump",
+      "verts": 746,
+      "polygons": 868,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.13617242954269504,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          0.11799998581409454,
+          -0.5220000147819519,
+          2.615000009536743
+        ],
+        [
+          1.162000060081482,
+          0.5220000147819519,
+          2.7799999713897705
+        ]
+      ]
+    },
+    {
+      "name": "Pump | internal connector",
+      "parent": "Pump",
+      "verts": 622,
+      "polygons": 744,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.003999629134537946,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          0.5299999713897705,
+          -0.10999999940395355,
+          2.5299999713897705
+        ],
+        [
+          0.75,
+          0.10999999940395355,
+          2.7200000286102295
+        ]
+      ]
+    },
+    {
+      "name": "Pump | recessed dispensing outlet",
+      "parent": "Pump",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 1.3559317621215416e-05,
+      "materials": [
+        "Recessed pump outlet interior"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.020499974489212036,
+          -0.03449999913573265,
+          3.2249999046325684
+        ],
+        [
+          0.016500025987625122,
+          0.030499998480081558,
+          3.2309999465942383
+        ]
+      ]
+    },
+    {
+      "name": "Pump | wide flattened beak actuator",
+      "parent": "Pump",
+      "verts": 512,
+      "polygons": 450,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.035655904052211765,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [
+        [
+          "Continuous molded actuator surface",
+          "SUBSURF"
+        ]
+      ],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.03999999910593033,
+          -0.25099998712539673,
+          3.174999952316284
+        ],
+        [
+          1.0,
+          0.25099998712539673,
+          3.3289999961853027
+        ]
+      ]
+    },
+    {
+      "name": "Tube cap | closure sleeve",
+      "parent": "TubeCap",
+      "verts": 1113,
+      "polygons": 1198,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.022569019294478323,
+      "materials": [
+        "Warm ivory satin molded polymer",
+        null
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9700000286102295,
+          -0.18000000715255737,
+          0.11999999731779099
+        ],
+        [
+          -0.4699999988079071,
+          0.18000000715255737,
+          0.3149999976158142
+        ]
+      ]
+    },
+    {
+      "name": "Tube cap | lower hinged lid",
+      "parent": "TubeCap",
+      "verts": 514,
+      "polygons": 640,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 0.015343451062689343,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.9700000286102295,
+          -0.18000000715255737,
+          0.0
+        ],
+        [
+          -0.4699999988079071,
+          0.18000000715255737,
+          0.11599999666213989
+        ]
+      ]
+    },
+    {
+      "name": "Tube cap | rear hinge",
+      "parent": "TubeCap",
+      "verts": 152,
+      "polygons": 150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "volume": 9.046000138052724e-05,
+      "materials": [
+        "Warm ivory satin molded polymer"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -0.76500004529953,
+          0.1665000021457672,
+          0.09649999439716339
+        ],
+        [
+          -0.675000011920929,
+          0.18950000405311584,
+          0.14350000023841858
+        ]
+      ]
+    },
+    {
+      "name": "Bottle copper bronze decorative wrap",
+      "parent": "Label",
+      "verts": 10465,
+      "polygons": 10240,
+      "boundaryEdges": 448,
+      "nonManifoldEdges": 448,
+      "volume": 1.0538725973824004,
+      "materials": [
+        "Satin copper bronze decorative finish"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          0.12800000607967377,
+          -0.5120000243186951,
+          0.6899999976158142
+        ],
+        [
+          1.1519999504089355,
+          0.5120000243186951,
+          2.609999895095825
+        ]
+      ]
+    },
+    {
+      "name": "Tube rose bronze decorative wrap",
+      "parent": "Label",
+      "verts": 10465,
+      "polygons": 10240,
+      "boundaryEdges": 448,
+      "nonManifoldEdges": 448,
+      "volume": 0.1713447546320143,
+      "materials": [
+        "Muted rose bronze tube decoration"
+      ],
+      "uvLayers": [],
+      "modifiers": [],
+      "visibleShadow": true,
+      "bounds": [
+        [
+          -1.0858571529388428,
+          -0.1918083280324936,
+          0.5
+        ],
+        [
+          -0.35414284467697144,
+          0.1918083280324936,
+          1.8700000047683716
+        ]
+      ]
+    },
+    {
+      "name": "Bottle liaose",
+      "parent": "LogoInk",
+      "verts": 1365,
+      "polygons": 1280,
+      "boundaryEdges": 168,
+      "nonManifoldEdges": 168,
+      "volume": 0.030062888080187134,
+      "materials": [
+        "White script liaose ink"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": false,
+      "bounds": [
+        [
+          0.3099999725818634,
+          -0.5180000066757202,
+          1.9500000476837158
+        ],
+        [
+          0.9700000286102295,
+          -0.39746391773223877,
+          2.193000078201294
+        ]
+      ]
+    },
+    {
+      "name": "Tube liaose",
+      "parent": "LogoInk",
+      "verts": 1365,
+      "polygons": 1280,
+      "boundaryEdges": 168,
+      "nonManifoldEdges": 168,
+      "volume": 0.008278063379578211,
+      "materials": [
+        "White script liaose ink"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": false,
+      "bounds": [
+        [
+          -0.9599999785423279,
+          -0.13699999451637268,
+          1.4600000381469727
+        ],
+        [
+          -0.48000001907348633,
+          -0.08615758270025253,
+          1.6360000371932983
+        ]
+      ]
+    },
+    {
+      "name": "Bottle SHAMPOO",
+      "parent": "NameInk",
+      "verts": 1365,
+      "polygons": 1280,
+      "boundaryEdges": 168,
+      "nonManifoldEdges": 168,
+      "volume": 0.011925891628848188,
+      "materials": [
+        "White SHAMPOO product lettering"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": false,
+      "bounds": [
+        [
+          0.3199999928474426,
+          -0.5180000066757202,
+          1.1299999952316284
+        ],
+        [
+          0.9599999785423279,
+          -0.4056798815727234,
+          1.2300000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Tube HAIR TREATMENT",
+      "parent": "NameInk",
+      "verts": 1365,
+      "polygons": 1280,
+      "boundaryEdges": 168,
+      "nonManifoldEdges": 168,
+      "volume": 0.007740681532291194,
+      "materials": [
+        "White HAIR TREATMENT product lettering"
+      ],
+      "uvLayers": [
+        "UVMap"
+      ],
+      "modifiers": [],
+      "visibleShadow": false,
+      "bounds": [
+        [
+          -0.9350000023841858,
+          -0.18494285643100739,
+          0.8799999952316284
+        ],
+        [
+          -0.5049999952316284,
+          -0.12371968477964401,
+          1.0950000286102295
+        ]
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "Transparent hollow polyethylene suction tube",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL"
+      ],
+      "images": [],
+      "principled": {
+        "Base Color": {
+          "linked": false,
+          "value": [
+            0.9646862745285034,
+            0.9734452962875366,
+            0.9559733271598816,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.10000000149011612
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.9399999976158142
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.25
+        },
+        "Normal": {
+          "linked": false,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ]
+      ]
+    },
+    {
+      "name": "White script liaose ink",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL",
+        "TEX_IMAGE"
+      ],
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "logo.png",
+          "size": [
+            1360,
+            500
+          ],
+          "packed": true
+        }
+      ],
+      "principled": {
+        "Base Color": {
+          "linked": true,
+          "value": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.47999998927116394
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Alpha": {
+          "linked": true,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Normal": {
+          "linked": false,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ],
+        [
+          "Image Texture",
+          "Color",
+          "Principled BSDF",
+          "Base Color"
+        ],
+        [
+          "Image Texture",
+          "Alpha",
+          "Principled BSDF",
+          "Alpha"
+        ]
+      ]
+    },
+    {
+      "name": "Warm ivory satin molded polymer",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL",
+        "TEX_NOISE",
+        "TEX_COORD",
+        "MAP_RANGE",
+        "BUMP"
+      ],
+      "images": [],
+      "principled": {
+        "Base Color": {
+          "linked": false,
+          "value": [
+            0.8549926280975342,
+            0.7758222222328186,
+            0.6514056324958801,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.30000001192092896
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.10000000149011612
+        },
+        "Normal": {
+          "linked": true,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ],
+        [
+          "Texture Coordinate",
+          "Object",
+          "Microscopic molded surface variation",
+          "Vector"
+        ],
+        [
+          "Microscopic molded surface variation",
+          "Factor",
+          "Map Range",
+          "Value"
+        ],
+        [
+          "Map Range",
+          "Result",
+          "Principled BSDF",
+          "Roughness"
+        ],
+        [
+          "Microscopic molded surface variation",
+          "Factor",
+          "Bump",
+          "Height"
+        ],
+        [
+          "Bump",
+          "Normal",
+          "Principled BSDF",
+          "Normal"
+        ]
+      ]
+    },
+    {
+      "name": "Muted rose bronze tube decoration",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL",
+        "TEX_NOISE",
+        "TEX_COORD",
+        "MAP_RANGE",
+        "BUMP"
+      ],
+      "images": [],
+      "principled": {
+        "Base Color": {
+          "linked": false,
+          "value": [
+            0.4019777774810791,
+            0.20507873594760895,
+            0.15292614698410034,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.4300000071525574
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.18000000715255737
+        },
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.07999999821186066
+        },
+        "Normal": {
+          "linked": true,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ],
+        [
+          "Texture Coordinate",
+          "Object",
+          "Microscopic molded surface variation",
+          "Vector"
+        ],
+        [
+          "Microscopic molded surface variation",
+          "Factor",
+          "Map Range",
+          "Value"
+        ],
+        [
+          "Map Range",
+          "Result",
+          "Principled BSDF",
+          "Roughness"
+        ],
+        [
+          "Microscopic molded surface variation",
+          "Factor",
+          "Bump",
+          "Height"
+        ],
+        [
+          "Bump",
+          "Normal",
+          "Principled BSDF",
+          "Normal"
+        ]
+      ]
+    },
+    {
+      "name": "White SHAMPOO product lettering",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL",
+        "TEX_IMAGE"
+      ],
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "shampoo.png",
+          "size": [
+            1400,
+            220
+          ],
+          "packed": true
+        }
+      ],
+      "principled": {
+        "Base Color": {
+          "linked": true,
+          "value": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.47999998927116394
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Alpha": {
+          "linked": true,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Normal": {
+          "linked": false,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ],
+        [
+          "Image Texture",
+          "Color",
+          "Principled BSDF",
+          "Base Color"
+        ],
+        [
+          "Image Texture",
+          "Alpha",
+          "Principled BSDF",
+          "Alpha"
+        ]
+      ]
+    },
+    {
+      "name": "Recessed pump outlet interior",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL"
+      ],
+      "images": [],
+      "principled": {
+        "Base Color": {
+          "linked": false,
+          "value": [
+            0.13563333451747894,
+            0.109461709856987,
+            0.0802198201417923,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.6499999761581421
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Normal": {
+          "linked": false,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ]
+      ]
+    },
+    {
+      "name": "White HAIR TREATMENT product lettering",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL",
+        "TEX_IMAGE"
+      ],
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "treatment.png",
+          "size": [
+            900,
+            450
+          ],
+          "packed": true
+        }
+      ],
+      "principled": {
+        "Base Color": {
+          "linked": true,
+          "value": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.47999998927116394
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Alpha": {
+          "linked": true,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Normal": {
+          "linked": false,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ],
+        [
+          "Image Texture",
+          "Color",
+          "Principled BSDF",
+          "Base Color"
+        ],
+        [
+          "Image Texture",
+          "Alpha",
+          "Principled BSDF",
+          "Alpha"
+        ]
+      ]
+    },
+    {
+      "name": "Satin copper bronze decorative finish",
+      "surfaceRenderMethod": "DITHERED",
+      "nodeTypes": [
+        "BSDF_PRINCIPLED",
+        "OUTPUT_MATERIAL",
+        "TEX_NOISE",
+        "TEX_COORD",
+        "MAP_RANGE",
+        "BUMP"
+      ],
+      "images": [],
+      "principled": {
+        "Base Color": {
+          "linked": false,
+          "value": [
+            0.38642942905426025,
+            0.2015562504529953,
+            0.10224173218011856,
+            1.0
+          ]
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.3199999928474426
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.6800000071525574
+        },
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.11999999731779099
+        },
+        "Normal": {
+          "linked": true,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "links": [
+        [
+          "Principled BSDF",
+          "BSDF",
+          "Material Output",
+          "Surface"
+        ],
+        [
+          "Texture Coordinate",
+          "Object",
+          "Microscopic molded surface variation",
+          "Vector"
+        ],
+        [
+          "Microscopic molded surface variation",
+          "Factor",
+          "Map Range",
+          "Value"
+        ],
+        [
+          "Map Range",
+          "Result",
+          "Principled BSDF",
+          "Roughness"
+        ],
+        [
+          "Microscopic molded surface variation",
+          "Factor",
+          "Bump",
+          "Height"
+        ],
+        [
+          "Bump",
+          "Normal",
+          "Principled BSDF",
+          "Normal"
+        ]
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "roots": {
+        "Body": {
+          "location": [
+            0.0,
+            0.0,
+            1.399999976158142
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Pump": {
+          "location": [
+            0.6399999856948853,
+            0.0,
+            2.9000000953674316
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "TubeCap": {
+          "location": [
+            -0.7200000286102295,
+            0.0,
+            0.17000000178813934
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Label": {
+          "location": [
+            0.0,
+            0.0,
+            1.399999976158142
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "LogoInk": {
+          "location": [
+            0.0,
+            0.0,
+            1.850000023841858
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "NameInk": {
+          "location": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "frame": 31,
+      "roots": {
+        "Body": {
+          "location": [
+            0.5,
+            0.0,
+            1.399999976158142
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Pump": {
+          "location": [
+            1.1399999856948853,
+            0.0,
+            4.375
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "TubeCap": {
+          "location": [
+            -0.29500001668930054,
+            0.0,
+            -0.07999999821186066
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Label": {
+          "location": [
+            -0.36000001430511475,
+            -0.4000000059604645,
+            1.4399999380111694
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "LogoInk": {
+          "location": [
+            -0.6499999761581421,
+            -0.75,
+            1.909999966621399
+          ],
+          "scale": [
+            1.0700000524520874,
+            1.0700000524520874,
+            1.0700000524520874
+          ]
+        },
+        "NameInk": {
+          "location": [
+            -0.75,
+            -1.024999976158142,
+            0.949999988079071
+          ],
+          "scale": [
+            1.0700000524520874,
+            1.0700000524520874,
+            1.0700000524520874
+          ]
+        }
+      }
+    },
+    {
+      "frame": 61,
+      "roots": {
+        "Body": {
+          "location": [
+            1.0,
+            0.0,
+            1.399999976158142
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Pump": {
+          "location": [
+            1.6399999856948853,
+            0.0,
+            5.850000381469727
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "TubeCap": {
+          "location": [
+            0.12999999523162842,
+            0.0,
+            -0.32999998331069946
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Label": {
+          "location": [
+            -0.7200000286102295,
+            -0.800000011920929,
+            1.4800000190734863
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "LogoInk": {
+          "location": [
+            -1.2999999523162842,
+            -1.5,
+            1.9700000286102295
+          ],
+          "scale": [
+            1.1399999856948853,
+            1.1399999856948853,
+            1.1399999856948853
+          ]
+        },
+        "NameInk": {
+          "location": [
+            -1.5,
+            -2.049999952316284,
+            0.8999999761581421
+          ],
+          "scale": [
+            1.1399999856948853,
+            1.1399999856948853,
+            1.1399999856948853
+          ]
+        }
+      }
+    }
+  ],
+  "overallBounds": [
+    [
+      -1.1024999618530273,
+      -0.5220000147819519,
+      0.0
+    ],
+    [
+      1.162000060081482,
+      0.5220000147819519,
+      3.3289999961853027
+    ]
+  ],
+  "sceneSaved": false,
+  "rendered": false
+}

@@ -1,0 +1,178 @@
+{
+  "file": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/packaging-assets/poster-085-v2.glb",
+  "bytes": 2099732,
+  "meshDefinitions": 90,
+  "meshNodes": 90,
+  "primitives": 90,
+  "images": [
+    {
+      "bufferView": 236,
+      "mimeType": "image/png",
+      "name": "logo"
+    },
+    {
+      "bufferView": 243,
+      "mimeType": "image/png",
+      "name": "shampoo"
+    },
+    {
+      "bufferView": 247,
+      "mimeType": "image/png",
+      "name": "treatment"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.10000000149011612,
+          "clearcoatRoughnessFactor": 0.23000000417232513
+        }
+      },
+      "name": "Warm ivory satin molded polymer",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8549926280975342,
+          0.7758222222328186,
+          0.6514056324958801,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.11999999731779099,
+          "clearcoatRoughnessFactor": 0.30000001192092896
+        }
+      },
+      "name": "Satin copper bronze decorative finish",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.38642942905426025,
+          0.2015562504529953,
+          0.10224173218011856,
+          1
+        ],
+        "metallicFactor": 0.6800000071525574
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.07999999821186066
+        }
+      },
+      "name": "Muted rose bronze tube decoration",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4019777774810791,
+          0.20507873594760895,
+          0.15292614698410034,
+          1
+        ],
+        "metallicFactor": 0.18000000715255737
+      }
+    },
+    {
+      "alphaMode": "BLEND",
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.5
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "White script liaose ink",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.47999998927116394
+      }
+    },
+    {
+      "alphaMode": "BLEND",
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.5
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "White SHAMPOO product lettering",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.47999998927116394
+      }
+    },
+    {
+      "alphaMode": "BLEND",
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.5
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4900000095367432
+        }
+      },
+      "name": "White HAIR TREATMENT product lettering",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.47999998927116394
+      }
+    },
+    {
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.25
+        },
+        "KHR_materials_transmission": {
+          "transmissionFactor": 0.9399999976158142
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4600000381469727
+        }
+      },
+      "name": "Transparent hollow polyethylene suction tube",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9646862745285034,
+          0.9734452962875366,
+          0.9559733271598816,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.10000000149011612
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Recessed pump outlet interior",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.13563333451747894,
+          0.109461709856987,
+          0.0802198201417923,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.6499999761581421
+      }
+    }
+  ],
+  "animations": 0
+}

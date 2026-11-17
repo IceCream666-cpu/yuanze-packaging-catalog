@@ -1,0 +1,56 @@
+{
+  "method": "Same half-expanded pose/camera/lights/materials/ground/seed85; only the two physical decorative surfaces visible_shadow disabled in control. Original PNG pixels unedited.",
+  "onImage": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-half.png",
+  "offImage": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-shadow-control.png",
+  "onSha256": "1e27c690c4fe2c001a2bd7063b5d21df9f6388466c92e736f62a4f610531c19d",
+  "offSha256": "af06ec737135e887b0a0fb15c73980dfb1af4fee06aa45eaaf26fdbb312a34d4",
+  "resolution": [
+    1400,
+    1400
+  ],
+  "bareBottle": {
+    "roi": [
+      910,
+      720,
+      1010,
+      1110
+    ],
+    "pixelsAbove3": 39000,
+    "maxChannelDifference": 89,
+    "meanMaximumChannelDifference": 43.22058974358974
+  },
+  "bareTube": {
+    "roi": [
+      605,
+      850,
+      625,
+      1110
+    ],
+    "pixelsAbove3": 5167,
+    "maxChannelDifference": 87,
+    "meanMaximumChannelDifference": 63.47673076923077
+  },
+  "backgroundNegativeControl": {
+    "roi": [
+      20,
+      100,
+      250,
+      500
+    ],
+    "pixelsAbove3": 0,
+    "maxChannelDifference": 1,
+    "meanMaximumChannelDifference": 3.260869565217391e-05
+  },
+  "wholeImageIncludesOtherSurfaces": {
+    "roi": [
+      0,
+      0,
+      1400,
+      1400
+    ],
+    "pixelsAbove3": 230047,
+    "maxChannelDifference": 148,
+    "meanMaximumChannelDifference": 3.324987755102041
+  },
+  "sourceImagesUnedited": true
+}

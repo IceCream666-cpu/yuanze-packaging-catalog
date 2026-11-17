@@ -1,0 +1,208 @@
+{
+  "passed": true,
+  "product": "poster-085",
+  "version": "v3",
+  "meshObjects": 18,
+  "primitives": 18,
+  "pumpMeshes": 6,
+  "capMeshes": 3,
+  "solidGeometry": {
+    "Empty flexible tube | sealed tail and open dispensing nozzle": {
+      "manifold": true,
+      "positiveVolume": 0.03341779246492958,
+      "connectedComponents": 1
+    },
+    "Empty tall cylinder | ivory rounded heel and hollow threaded neck": {
+      "manifold": true,
+      "positiveVolume": 0.38233204078705346,
+      "connectedComponents": 1
+    },
+    "Tube heat seal | original 72 fine ridges merged": {
+      "manifold": true,
+      "positiveVolume": 0.0021932704230874372,
+      "connectedComponents": 73
+    },
+    "Long clear hollow dip tube | near-bottom angled intake": {
+      "manifold": true,
+      "positiveVolume": 0.00651627434508155,
+      "connectedComponents": 1
+    },
+    "Pump | actuator barrel and stem": {
+      "manifold": true,
+      "positiveVolume": 0.06805197898855951,
+      "connectedComponents": 1
+    },
+    "Pump | broad ivory shoulder collar": {
+      "manifold": true,
+      "positiveVolume": 0.1013083600354439,
+      "connectedComponents": 1
+    },
+    "Pump | internal connector": {
+      "manifold": true,
+      "positiveVolume": 0.0032295070013097222,
+      "connectedComponents": 1
+    },
+    "Pump | recessed dispensing outlet": {
+      "manifold": true,
+      "positiveVolume": 1.6043758544154893e-06,
+      "connectedComponents": 1
+    },
+    "Pump | wide flattened beak actuator": {
+      "manifold": true,
+      "positiveVolume": 0.03387177652708321,
+      "connectedComponents": 1
+    },
+    "Tube cap | closure sleeve": {
+      "manifold": true,
+      "positiveVolume": 0.021777902930519257,
+      "connectedComponents": 1
+    },
+    "Tube cap | lower hinged lid": {
+      "manifold": true,
+      "positiveVolume": 0.015343451062689343,
+      "connectedComponents": 1
+    },
+    "Tube cap | rear hinge": {
+      "manifold": true,
+      "positiveVolume": 9.046000138052724e-05,
+      "connectedComponents": 1
+    },
+    "Bottle copper bronze decorative wrap": {
+      "manifold": true,
+      "positiveVolume": 0.005551859996722896,
+      "connectedComponents": 1
+    },
+    "Tube rose bronze decorative wrap": {
+      "manifold": true,
+      "positiveVolume": 0.0018190668967348047,
+      "connectedComponents": 1
+    }
+  },
+  "preservedWorldVertexErrors": {
+    "Empty tall cylinder | ivory rounded heel and hollow threaded neck": 0.0,
+    "Long clear hollow dip tube | near-bottom angled intake": 0.0,
+    "Tube cap | lower hinged lid": 0.0,
+    "Tube cap | rear hinge": 0.0
+  },
+  "original72SealRidgesPreserved": true,
+  "maximumSealJoinWorldVertexError": 1.1920928955078125e-07,
+  "actualTubeWallSamples": [
+    {
+      "z": 0.45,
+      "thickness": 0.01200000930716854
+    },
+    {
+      "z": 0.75,
+      "thickness": 0.01200000930716854
+    },
+    {
+      "z": 1.1,
+      "thickness": 0.011999994755255775
+    },
+    {
+      "z": 1.5,
+      "thickness": 0.011999994755255775
+    },
+    {
+      "z": 1.9,
+      "thickness": 0.012000002031214364
+    }
+  ],
+  "pumpNeckSocketAndStemBoresOpen": true,
+  "realUndersideOutletRecess": true,
+  "flipCapApertureOpenWithClosedLowerLid": true,
+  "continuousDipTubeBoreOpen": true,
+  "intakeToInnerFloorGap": 0.016549998521804804,
+  "fullyExpandedTubeExitGap": 0.27655029296875,
+  "fullyExpandedCapGap": 0.36500000953674316,
+  "wholePumpAndCapLocalTransformsPreserved": true,
+  "tubePrintingGap": {
+    "Tube liaose": [
+      0.005986772386271463,
+      0.0061905011949645716
+    ],
+    "Tube HAIR TREATMENT": [
+      0.006013348765801581,
+      0.006245926103424331
+    ]
+  },
+  "allOriginalSvgPngBytesPreserved": true,
+  "fourTransparentInkPlanesShadowDisabled": true,
+  "twoPhysicalDecorativeSurfacesCastShadow": true,
+  "sourceFrames": [
+    {
+      "frame": 1,
+      "progress": 0
+    },
+    {
+      "frame": 31,
+      "progress": 0.5
+    },
+    {
+      "frame": 61,
+      "progress": 1
+    }
+  ],
+  "pbrTextureChain": {
+    "Warm ivory satin molded polymer": {
+      "normal": {
+        "index": 0,
+        "scale": 0.2199999988079071
+      },
+      "metallicRoughness": {
+        "baseColorFactor": [
+          0.8549926280975342,
+          0.7758222222328186,
+          0.6514056324958801,
+          1
+        ],
+        "metallicFactor": 0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    "Satin copper bronze decorative finish": {
+      "normal": {
+        "index": 2,
+        "scale": 0.2199999988079071
+      },
+      "metallicRoughness": {
+        "baseColorFactor": [
+          0.38642942905426025,
+          0.2015562504529953,
+          0.10224173218011856,
+          1
+        ],
+        "metallicFactor": 0.6800000071525574,
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      }
+    },
+    "Muted rose bronze tube decoration": {
+      "normal": {
+        "index": 4,
+        "scale": 0.2199999988079071
+      },
+      "metallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "metallicFactor": 0.18000000715255737,
+        "metallicRoughnessTexture": {
+          "index": 6
+        }
+      }
+    }
+  },
+  "glbAnimations": 0,
+  "glbImages": 10,
+  "glbBytes": 4316472,
+  "glbSha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+  "configSha256": "8e8bce6f321a00bae1490f42e8d20841480bad928b859675696e49458812abd3",
+  "sourceBytes": 3120235,
+  "sourceSha256": "121585926c4502094df508a2a79334280baf07bae5e355730ade1d072b11ca42",
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

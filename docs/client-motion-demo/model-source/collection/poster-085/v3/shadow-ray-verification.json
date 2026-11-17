@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "frame": 31,
+  "actualLamp": "Daily Hair tall left window",
+  "lampWorldLocation": [
+    -4.0,
+    -3.0,
+    4.5
+  ],
+  "method": "Actual surface ray hits followed by actual key-light-center segment intersections with physical Label meshes. Area-light penumbra is separately evaluated by the Cycles on/off render.",
+  "casters": [
+    "Bottle copper bronze decorative wrap",
+    "Tube rose bronze decorative wrap"
+  ],
+  "receivers": {
+    "bottle": {
+      "tested": 930,
+      "occludedByPhysicalDecoration": 755,
+      "examples": [
+        {
+          "receiver": [
+            0.7200000286102295,
+            -0.28920644521713257,
+            0.7599999904632568
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            -0.08874785900115967,
+            -0.7536870241165161,
+            1.4008299112319946
+          ]
+        },
+        {
+          "receiver": [
+            1.4479999542236328,
+            -0.4063607454299927,
+            1.044482707977295
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            0.5563036203384399,
+            -0.8308722972869873,
+            1.6100614070892334
+          ]
+        },
+        {
+          "receiver": [
+            1.1679999828338623,
+            -0.5091802477836609,
+            1.385862112045288
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            0.6406795978546143,
+            -0.763332724571228,
+            1.7036151885986328
+          ]
+        },
+        {
+          "receiver": [
+            1.027999997138977,
+            -0.4973933696746826,
+            1.7272413969039917
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            0.7287076711654663,
+            -0.6463614106178284,
+            1.8922902345657349
+          ]
+        },
+        {
+          "receiver": [
+            0.8880000114440918,
+            -0.44327014684677124,
+            2.0686206817626953
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            0.7824018001556396,
+            -0.498504638671875,
+            2.1211471557617188
+          ]
+        }
+      ]
+    },
+    "tube": {
+      "tested": 930,
+      "occludedByPhysicalDecoration": 469,
+      "examples": [
+        {
+          "receiver": [
+            -0.46000003814697266,
+            -0.08940237760543823,
+            0.550000011920929
+          ],
+          "occluder": "Tube rose bronze decorative wrap",
+          "point": [
+            -0.7902072668075562,
+            -0.3608996570110321,
+            0.9184515476226807
+          ]
+        },
+        {
+          "receiver": [
+            -0.171999990940094,
+            -0.17890632152557373,
+            0.8396551609039307
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            -0.18520253896713257,
+            -0.18863610923290253,
+            0.8522794842720032
+          ]
+        },
+        {
+          "receiver": [
+            -0.13999998569488525,
+            -0.16070717573165894,
+            1.081034541130066
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            -0.1887020319700241,
+            -0.19653084874153137,
+            1.1241719722747803
+          ]
+        },
+        {
+          "receiver": [
+            -0.12400001287460327,
+            -0.13940823078155518,
+            1.3224138021469116
+          ],
+          "occluder": "Bottle copper bronze decorative wrap",
+          "point": [
+            -0.18252867460250854,
+            -0.18260392546653748,
+            1.3703962564468384
+          ]
+        },
+        {
+          "receiver": [
+            -0.3479999899864197,
+            -0.11161869764328003,
+            1.5637930631637573
+          ],
+          "occluder": "Tube rose bronze decorative wrap",
+          "point": [
+            -0.717463493347168,
+            -0.40382885932922363,
+            1.8608415126800537
+          ]
+        }
+      ]
+    }
+  },
+  "fourTransparentInkPlanesShadowDisabled": true,
+  "sourceSaved": false,
+  "renderImagesChanged": false
+}

@@ -548,3 +548,10 @@ client1.58发布验收后完成012v2：完整外盖、带短舌内盖、透明�
 
 ## 2026-11-17 client1.63 — 082v2发布候选（尚未上线）
 用户已确认082v2。正式候选仅切换该款获批配置和GLB，变化3项：index.html、preview.js、poster-082-v2.glb；共享3D代码块、其他31模型及全部海报/首页图片保持。68海报/31首页/32模型、514资源；210前端+4结构+13打包+5发布计划测试及正式构建检查通过。新鲜1.62基线与本机旧manifest一致，候选manifest `3a86a3d62db42baa50a97be43a2fe0f10816db470c74ca27f177fccd014273f8`。保留256MiB容量门槛和完整回退，主任务待提交、部署和独立线上验证。正式085仍v2，085v3与072v2仅本地。详见[候选回执](client-motion-demo/client163-release.json)及[发布证据](client-motion-demo/review-evidence/soap-clean/client163/README.md)。
+
+
+## client1.63 实际上线与线上验收
+082v2 已于 2026-11-17T18:03:23+08:00 发布，源码 2a412982。514 文件校验通过；3 变化资源完整 HTTPS 哈希、32 模型 Range、三角色及匿名权限通过。首页第28款可进入082v2模型，正式浏览器合拢/半开/全开/90度旋转及四张截图独立视觉检查通过。其他31模型、472媒体和6820展厅外文件保持，未重启服务、未写业务数据。完整回退：`/opt/yuanze-reference/backups/client1.63-soap-clean-quality-model-20261117`。085v3正在本地Blender优化，未发布。
+
+### 2026-11-17 — 085v3 本地预览
+Daily Hair Ritual v3完成Blender材质、完整泵组/底盖与装饰文字分层优化；212+4+13检查与独立视觉验证通过。仅本地，正式client1.63/085v2不变。详见client-motion-demo/review-evidence/daily-hair/v3/QA.md。

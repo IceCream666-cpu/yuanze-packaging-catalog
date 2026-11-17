@@ -1,0 +1,223 @@
+{
+  "states": [
+    {
+      "name": "desktop-expanded",
+      "viewport": [
+        1557,
+        971
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9998114307568713,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.499717146135307,
+          -0.09998114307568717,
+          2.049613433051586
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    },
+    {
+      "name": "desktop-side",
+      "viewport": [
+        1557,
+        971
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9999999646279997,
+        "yaw": 1.57050167530633,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.4999999469419996,
+          -0.0999999964628,
+          2.049999927487399
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    },
+    {
+      "name": "desktop-bottom",
+      "viewport": [
+        1557,
+        971
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9999999999353701,
+        "yaw": 0.005497206497299241,
+        "pitch": -1.6695490840726328,
+        "selected": null,
+        "printOffset": [
+          -1.4999999999030553,
+          -0.09999999999353704,
+          2.0499999998675085
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    },
+    {
+      "name": "mobile-closed-simulated",
+      "viewport": [
+        390,
+        844
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    },
+    {
+      "name": "mobile-half-simulated",
+      "viewport": [
+        390,
+        844
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 0.5,
+        "renderedProgress": 0.4998435074646636,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.7497652611969954,
+          -0.049984350746466344,
+          1.0246791903025603
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    },
+    {
+      "name": "mobile-expanded-simulated",
+      "viewport": [
+        390,
+        844
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 1,
+        "renderedProgress": 0.9998701493374034,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.499805224006105,
+          -0.09998701493374029,
+          2.0497338061416768
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    },
+    {
+      "name": "desktop-half-final",
+      "viewport": [
+        1557,
+        971
+      ],
+      "horizontalOverflow": false,
+      "canvasCount": 1,
+      "state": {
+        "progress": 0.5,
+        "renderedProgress": 0.49987019109890196,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.7498052866483529,
+          -0.04998701910989023,
+          1.0247338917527489
+        ],
+        "components": [
+          "body",
+          "pump",
+          "cap",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 33,
+        "triangles": 200158
+      }
+    }
+  ],
+  "physicalMobileTested": false,
+  "deployed": false
+}

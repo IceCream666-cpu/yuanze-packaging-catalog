@@ -1,0 +1,235 @@
+{
+  "engine": "Cycles",
+  "device": "Metal",
+  "samples": 96,
+  "resolution": [
+    1400,
+    1400
+  ],
+  "poses": [
+    {
+      "frame": 1,
+      "camera": [
+        0.8301370739936829,
+        -10.002421379089355,
+        2.842179298400879
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 4.012889385223389,
+      "projectedBounds": [
+        [
+          0.21840913593769073,
+          0.08333336561918259
+        ],
+        [
+          0.7815908193588257,
+          0.9166666269302368
+        ]
+      ],
+      "containerBounds": {
+        "Empty flexible tube | sealed tail and open dispensing nozzle": [
+          [
+            0.21931828558444977,
+            0.13732780516147614
+          ],
+          [
+            0.4081048369407654,
+            0.6433818340301514
+          ]
+        ],
+        "Empty tall cylinder | ivory rounded heel and hollow threaded neck": [
+          [
+            0.5244790315628052,
+            0.08333336561918259
+          ],
+          [
+            0.7786011695861816,
+            0.7867833971977234
+          ]
+        ],
+        "Tube heat seal | original 72 fine ridges merged": [
+          [
+            0.21840913593769073,
+            0.6410230398178101
+          ],
+          [
+            0.4090139865875244,
+            0.660976231098175
+          ]
+        ]
+      },
+      "name": "closed"
+    },
+    {
+      "frame": 31,
+      "camera": [
+        0.7518436908721924,
+        -10.522705078125,
+        3.527113437652588
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 6.030315399169922,
+      "projectedBounds": [
+        [
+          0.210142120718956,
+          0.08333337306976318
+        ],
+        [
+          0.7898579239845276,
+          0.9166666269302368
+        ]
+      ],
+      "containerBounds": {
+        "Empty flexible tube | sealed tail and open dispensing nozzle": [
+          [
+            0.41569215059280396,
+            0.15518739819526672
+          ],
+          [
+            0.5413206815719604,
+            0.4919424057006836
+          ]
+        ],
+        "Empty tall cylinder | ivory rounded heel and hollow threaded neck": [
+          [
+            0.618762195110321,
+            0.11925666779279709
+          ],
+          [
+            0.7878684401512146,
+            0.5873693227767944
+          ]
+        ],
+        "Tube heat seal | original 72 fine ridges merged": [
+          [
+            0.41508713364601135,
+            0.4903727173805237
+          ],
+          [
+            0.5419256687164307,
+            0.5036506652832031
+          ]
+        ]
+      },
+      "name": "half"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        0.5946617126464844,
+        -11.04650592803955,
+        4.196160316467285
+      ],
+      "rotation": [
+        1.4517440795898438,
+        1.4860015440376628e-09,
+        0.07982998341321945
+      ],
+      "orthoScale": 8.084811210632324,
+      "projectedBounds": [
+        [
+          0.19760651886463165,
+          0.08333335071802139
+        ],
+        [
+          0.8023934364318848,
+          0.916666567325592
+        ]
+      ],
+      "containerBounds": {
+        "Empty flexible tube | sealed tail and open dispensing nozzle": [
+          [
+            0.5233099460601807,
+            0.1675434112548828
+          ],
+          [
+            0.6170139908790588,
+            0.41872286796569824
+          ]
+        ],
+        "Empty tall cylinder | ivory rounded heel and hollow threaded neck": [
+          [
+            0.6747762560844421,
+            0.14074331521987915
+          ],
+          [
+            0.8009095191955566,
+            0.4899001717567444
+          ]
+        ],
+        "Tube heat seal | original 72 fine ridges merged": [
+          [
+            0.5228586792945862,
+            0.41755208373069763
+          ],
+          [
+            0.6174652576446533,
+            0.427455872297287
+          ]
+        ]
+      },
+      "name": "expanded"
+    }
+  ],
+  "physicalLabelShadowControl": {
+    "frame": 31,
+    "seed": 85,
+    "camera": [
+      0.7518436908721924,
+      -10.522705078125,
+      3.527113437652588
+    ],
+    "rotation": [
+      1.4517441987991333,
+      6.517151263096821e-10,
+      0.07982999086380005
+    ],
+    "orthoScale": 6.030315399169922,
+    "onlyChangedProperty": "Only both thin physical decorative surfaces visible_shadow; four original transparent ink planes remain shadow-disabled",
+    "shadowOn": "previews/Daily-Hair-Blender-half.png",
+    "shadowOff": "previews/Daily-Hair-shadow-control.png",
+    "containerBounds": {
+      "Empty flexible tube | sealed tail and open dispensing nozzle": [
+        [
+          0.41569215059280396,
+          0.15518739819526672
+        ],
+        [
+          0.5413206815719604,
+          0.4919424057006836
+        ]
+      ],
+      "Empty tall cylinder | ivory rounded heel and hollow threaded neck": [
+        [
+          0.618762195110321,
+          0.11925666779279709
+        ],
+        [
+          0.7878684401512146,
+          0.5873693227767944
+        ]
+      ],
+      "Tube heat seal | original 72 fine ridges merged": [
+        [
+          0.41508713364601135,
+          0.4903727173805237
+        ],
+        [
+          0.5419256687164307,
+          0.5036506652832031
+        ]
+      ]
+    }
+  },
+  "transparentInkShadowDisabled": true,
+  "visualReviewPending": true,
+  "browserVerifiedSeparately": false
+}

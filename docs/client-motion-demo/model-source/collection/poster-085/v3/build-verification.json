@@ -1,0 +1,94 @@
+{
+  "product": "poster-085",
+  "version": "v3",
+  "roots": [
+    "Body",
+    "Pump",
+    "TubeCap",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "meshObjects": 18,
+  "groups": {
+    "Body": 3,
+    "Pump": 6,
+    "TubeCap": 3,
+    "Label": 2,
+    "LogoInk": 2,
+    "NameInk": 2
+  },
+  "preservedWorldVertexErrors": {
+    "Empty tall cylinder | ivory rounded heel and hollow threaded neck": 0.0,
+    "Long clear hollow dip tube | near-bottom angled intake": 0.0,
+    "Tube cap | lower hinged lid": 0.0,
+    "Tube cap | rear hinge": 0.0
+  },
+  "originalSealRidgesPreserved": 72,
+  "mergedSealVertexCount": 11096,
+  "labelVolumes": [
+    0.005551859996722896,
+    0.0018190668967348047
+  ],
+  "labelThickness": 0.0009,
+  "adaptiveTubeRows": 68,
+  "maximumSampledProfileError": 0.00019681192893298278,
+  "originalArtwork": [
+    {
+      "name": "logo",
+      "svgSha256": "2b192ff378838f7b830ae572ad839fbc8c892f51ceada74290f456f4f385b3f4",
+      "pngSha256": "dc16ca1ab5eb752eb73cdde75a1fefa8208f5ea03a15bc3055ff6c98f768a6e8"
+    },
+    {
+      "name": "shampoo",
+      "svgSha256": "8766331a30804abaeca3ba6485b5b0b14603daff24c8cd91cd871b9654c054a2",
+      "pngSha256": "18601fe4d690f212e838457ee8d0f07bdac32da6227103e65a4a0d3d3d338bad"
+    },
+    {
+      "name": "treatment",
+      "svgSha256": "d1c0d63ca263e7123eb8cdbe4f619f743c26530771bf66118ad2a9f6c87cb964",
+      "pngSha256": "7623e8b0fee2ddd06255f71edfe7f643931f657e595ce5b913de831027f01ea3"
+    }
+  ],
+  "materialTextures": [
+    {
+      "material": "Warm ivory satin molded polymer",
+      "size": 256,
+      "roughnessCenter": 0.3,
+      "metallic": 0,
+      "normalEncodedAmplitude": 0.045,
+      "normalMapStrength": 0.22,
+      "colorTexture": false
+    },
+    {
+      "material": "Satin copper bronze decorative finish",
+      "size": 512,
+      "roughnessCenter": 0.32,
+      "metallic": 0.68,
+      "normalEncodedAmplitude": 0.07,
+      "normalMapStrength": 0.22,
+      "colorTexture": false
+    },
+    {
+      "material": "Muted rose bronze tube decoration",
+      "size": 512,
+      "roughnessCenter": 0.43,
+      "metallic": 0.18,
+      "normalEncodedAmplitude": 0.045,
+      "normalMapStrength": 0.22,
+      "colorTexture": true
+    }
+  ],
+  "sourceFrames": [
+    1,
+    31,
+    61
+  ],
+  "containsFormula": false,
+  "paperLabel": false,
+  "glbBytes": 4316472,
+  "glbSha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+  "configSha256": "8e8bce6f321a00bae1490f42e8d20841480bad928b859675696e49458812abd3",
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

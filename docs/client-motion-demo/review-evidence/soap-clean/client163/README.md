@@ -41,3 +41,7 @@ publish.py 默认仅校验本地计划；只有显式 `--publish` 才调用主�
 计划回退目录 `/opt/yuanze-reference/backups/client1.63-soap-clean-quality-model-20261117`，仅发布成功核验后才记为实际可用。发布后运行 verify_online.py，核验3项变化资源完整SHA、32模型Range、三角色/匿名/退出、082原图与082/085首页图、旧082v1及未发布072v2/085v3和撤下款不可读。主任务随后进行正式浏览器多状态验收。
 
 085后续预览只使用隔离构建，不重建或覆盖此冻结release与server-reference/public/showroom包。
+
+
+## client1.63 实际上线与线上验收
+082v2 已于 2026-11-17T18:03:23+08:00 发布，源码 2a412982。514 文件校验通过；3 变化资源完整 HTTPS 哈希、32 模型 Range、三角色及匿名权限通过。首页第28款可进入082v2模型，正式浏览器合拢/半开/全开/90度旋转及四张截图独立视觉检查通过。其他31模型、472媒体和6820展厅外文件保持，未重启服务、未写业务数据。完整回退：`/opt/yuanze-reference/backups/client1.63-soap-clean-quality-model-20261117`。085v3正在本地Blender优化，未发布。

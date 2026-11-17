@@ -1,7 +1,7 @@
 {
   "version": "client1.63",
-  "status": "prepared-local-not-deployed",
-  "sourceCommit": null,
+  "status": "published-and-independently-verified",
+  "sourceCommit": "2a412982",
   "baselineSourceCommit": "8913c9b7",
   "scope": "approved Soap Clean Duo v2 model and configuration; 31 other models, shared viewer chunks and all poster/homepage media preserved",
   "publishedModel": "poster-082-v2",
@@ -39,8 +39,10 @@
     "sourceStampCheck": true,
     "unchangedOtherModels": 31,
     "physicalMobileTested": false,
-    "onlineVerified": false,
-    "browserInteractionVerified": false
+    "onlineVerified": true,
+    "browserInteractionVerified": true,
+    "liveVisualReviewed": true,
+    "httpsModelRanges": 32
   },
   "evidence": "review-evidence/soap-clean/client163/",
   "modelQA": "review-evidence/soap-clean/v2/QA.md",
@@ -48,5 +50,8 @@
     "availableBytesAtFreshBaseline": 291422208,
     "minimumHeadroomBytes": 268435456,
     "status": "fresh baseline supplied by root; no server cleanup performed in this preparation; publication rechecks current capacity before upload and staging"
-  }
+  },
+  "publishedAt": "2026-11-17T18:03:23+08:00",
+  "backup": "/opt/yuanze-reference/backups/client1.63-soap-clean-quality-model-20261117",
+  "liveUrl": "https://bmt.yuanzebeauty.com/client"
 }

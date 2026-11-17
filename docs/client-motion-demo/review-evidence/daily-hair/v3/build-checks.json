@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "outDirs": [
+    "/private/tmp/daily-hair085-showroom-check",
+    "/private/tmp/daily-hair085-preview-check"
+  ],
+  "publicDir": false,
+  "copyPublicDir": false,
+  "modelSha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+  "bundledModelPath": "/private/tmp/daily-hair085-preview-check/assets/poster-085-v3-CFw50NOX.glb",
+  "frozenManifestSha256": "3a86a3d62db42baa50a97be43a2fe0f10816db470c74ca27f177fccd014273f8",
+  "all514ResourcesAndManifestUnchanged": true,
+  "all8ReleaseFilesUnchanged": true,
+  "registryAndPackagingManifestUnchanged": true,
+  "productionBuildOverwritten": false
+}

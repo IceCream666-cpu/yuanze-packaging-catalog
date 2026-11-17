@@ -1,0 +1,107 @@
+{
+  "productId": "poster-085",
+  "version": "v3",
+  "recordedAtBeijing": "2026-11-17T18:24:14+08:00",
+  "status": "local-model-source-and-independent-Cycles-visual-verified; not-published",
+  "independentReviewer": "/root",
+  "cycles": {
+    "passed": true,
+    "images": [
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-closed.png",
+        "rootIndependentResult": "Passed: no clipping, original proportions, complete pump and long tube, complete cap and separable decorative/ink layers"
+      },
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-half.png",
+        "rootIndependentResult": "Passed: no clipping, original proportions, complete pump and long tube, complete cap and separable decorative/ink layers"
+      },
+      {
+        "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-expanded.png",
+        "rootIndependentResult": "Passed: no clipping, original proportions, complete pump and long tube, complete cap and separable decorative/ink layers"
+      }
+    ],
+    "shadowControlImage": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-shadow-control.png",
+      "rootIndependentResult": "Passed: same-pose physical decorative surfaces cast corresponding real container shadows"
+    },
+    "rayVerification": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/shadow-ray-verification.json",
+    "pixelVerification": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/shadow-verification.json",
+    "bareContainerShadowMetrics": {
+      "bareBottle": {
+        "roi": [
+          910,
+          720,
+          1010,
+          1110
+        ],
+        "pixelsAbove3": 39000,
+        "maxChannelDifference": 89,
+        "meanMaximumChannelDifference": 43.22058974358974
+      },
+      "bareTube": {
+        "roi": [
+          605,
+          850,
+          625,
+          1110
+        ],
+        "pixelsAbove3": 5167,
+        "maxChannelDifference": 87,
+        "meanMaximumChannelDifference": 63.47673076923077
+      },
+      "backgroundNegativeControl": {
+        "roi": [
+          20,
+          100,
+          250,
+          500
+        ],
+        "pixelsAbove3": 0,
+        "maxChannelDifference": 1,
+        "meanMaximumChannelDifference": 3.260869565217391e-05
+      }
+    },
+    "materialReview": "Root accepted visible satin copper grain; browser presentation is softer than the Cycles close-up."
+  },
+  "web": {
+    "revisedMaterialViewsRootAccepted": true,
+    "revisedMaterialImages": [
+      "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/screenshots/revised-closed.png",
+      "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/screenshots/revised-half.png"
+    ],
+    "finalCleanCanvasShadowQA": "Root performing independent final check at the time of this record",
+    "finalMobileSimulatedViewportQA": "Root performing independent final simulated viewport check; not physical-device validation",
+    "evidenceDirectory": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3"
+  },
+  "retainedVisualLimit": "Original white lettering has locally weak contrast when half-expanded in front projection over the ivory container. Fully expanded and rotated views distinguish the layers. Root explicitly retained original font shape and color.",
+  "frozenAssets": {
+    "glb": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/packaging-assets/poster-085-v3.glb",
+      "bytes": 4316472,
+      "sha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c"
+    },
+    "config": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/review-product.json",
+      "sha256": "8e8bce6f321a00bae1490f42e8d20841480bad928b859675696e49458812abd3"
+    },
+    "blend": {
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/poster-085-v3.blend",
+      "bytes": 3120235,
+      "sha256": "121585926c4502094df508a2a79334280baf07bae5e355730ade1d072b11ca42"
+    }
+  },
+  "sourceVerificationPassed": true,
+  "formalRegistrationChangedByModelAgent": false,
+  "publishedByModelAgent": false,
+  "metadataOnlyFinalization": true,
+  "rootFinalReview": {
+    "at": "2026-11-17T18:28:45+08:00",
+    "passed": true,
+    "browserStates": 7,
+    "cyclesImages": 4,
+    "webShadowControl": true,
+    "physicalMobileTested": false,
+    "deployed": false,
+    "report": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/QA.md"
+  }
+}

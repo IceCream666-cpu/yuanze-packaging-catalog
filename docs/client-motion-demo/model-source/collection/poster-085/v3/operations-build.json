@@ -1,0 +1,110 @@
+{
+  "phase": "initial model build",
+  "argv": [
+    "/Applications/Blender.app/Contents/MacOS/Blender",
+    "--background",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/build_v3.py"
+  ],
+  "sourceRead": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/poster-085-v2.blend",
+  "outputGlb": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/packaging-assets/poster-085-v3.glb",
+  "outputSource": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/poster-085-v3.blend",
+  "scriptSha256": "0c7026e62d522970cbe870fd1a7cd580ef888c1fe0d1c87b41f22edaa20faf05",
+  "formalRegistryChanged": false,
+  "commandsCompleted": [
+    {
+      "command": "/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python docs/client-motion-demo/model-source/collection/poster-085/v3/build_v3.py",
+      "runs": 3,
+      "changes": [
+        "initial PBR/thin shell/mechanics",
+        "preserving sampled profile within 0.0002 and removing collinear cylinder rows",
+        "normal-map scale 0.22 after root visual feedback"
+      ],
+      "exitCodes": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python docs/client-motion-demo/model-source/collection/poster-085/v3/verify_source.py",
+      "exitCodes": [
+        1,
+        0
+      ],
+      "reasonForFirstFailure": "rounded sorted seal vertices straddled floating rounding boundary; actual unique KD-tree correspondence under 1e-6 passed"
+    },
+    {
+      "command": "/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python docs/client-motion-demo/model-source/collection/poster-085/v3/render_studio.py",
+      "exitCode": 0,
+      "device": "METAL",
+      "resolution": [
+        1400,
+        1400
+      ],
+      "samples": 96,
+      "seed": 85,
+      "poses": [
+        "closed",
+        "half",
+        "expanded",
+        "same-half-only-Label-shadow-off"
+      ]
+    },
+    {
+      "command": "/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python docs/client-motion-demo/model-source/collection/poster-085/v3/verify_source.py",
+      "phase": "after final studio scene save",
+      "exitCode": 0
+    },
+    {
+      "command": "/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python docs/client-motion-demo/model-source/collection/poster-085/v3/verify_shadow_rays.py",
+      "exitCode": 0
+    },
+    {
+      "command": "/Users/icecream/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 docs/client-motion-demo/model-source/collection/poster-085/v3/measure_shadow.py",
+      "exitCode": 0
+    }
+  ],
+  "frozenGlbSha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+  "frozenConfigSha256": "8e8bce6f321a00bae1490f42e8d20841480bad928b859675696e49458812abd3",
+  "renderCommand": "/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python docs/client-motion-demo/model-source/collection/poster-085/v3/render_studio.py",
+  "viewImageActions": [
+    {
+      "tool": "tools.view_image",
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-closed.png",
+      "result": "No clipping, original proportions and lettering, copper grain more visible in Cycles close-up than Web; root final review pending"
+    },
+    {
+      "tool": "tools.view_image",
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-half.png",
+      "result": "Complete pump and cap; six layers and container shadows; some original white letters overlap pale background in front projection"
+    },
+    {
+      "tool": "tools.view_image",
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-Blender-expanded.png",
+      "result": "Pump tube clears bottle mouth, complete bottom cap separated, all parts within frame"
+    },
+    {
+      "tool": "tools.view_image",
+      "path": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-085/v3/previews/Daily-Hair-shadow-control.png",
+      "result": "Same pose; bare container darkening visibly reduced when only physical Label shadows disabled"
+    }
+  ],
+  "finalSource": {
+    "sourceBytes": 3120235,
+    "sourceSha256": "121585926c4502094df508a2a79334280baf07bae5e355730ade1d072b11ca42",
+    "glbBytes": 4316472,
+    "glbSha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+    "configSha256": "8e8bce6f321a00bae1490f42e8d20841480bad928b859675696e49458812abd3"
+  },
+  "status": "local-model-source-and-independent-Cycles-visual-verified; not-published",
+  "rootIndependentCyclesVisualPassed": true,
+  "finalMetadataWritten": [
+    "visual-qa.json",
+    "README.md",
+    "operations-build.json"
+  ],
+  "noModelConfigOrRenderChangeAtFinalization": true
+}

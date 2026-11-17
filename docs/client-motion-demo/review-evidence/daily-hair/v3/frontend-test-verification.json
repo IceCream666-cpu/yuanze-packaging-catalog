@@ -1,0 +1,121 @@
+{
+  "verifiedAt": "2026-11-17T18:17:12+08:00",
+  "status": "passed-local-preview-regression",
+  "tests": {
+    "frontend": {
+      "passed": 212,
+      "failed": 0,
+      "skipped": 0,
+      "newDailyHairGeometryTests": 2,
+      "localEntryIncludedInExistingControlTest": true
+    },
+    "collectionModels": {
+      "passed": 4,
+      "failed": 0
+    },
+    "packagingRelease": {
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "sha256": {
+    "src/structure/packaging-scene.js": "f0ea519910f2fe34a6f452992364f32d9ee5ebe8c7527851ed86c7f87fc28e5b",
+    "src/structure/collection-products.json": "de361288eb69c5e1d42df379215257613161d2b88c844e315053c29f565a2608",
+    "packaging-assets/poster-085-v3.glb": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+    "model-source/collection/poster-085/v3/review-product.json": "8e8bce6f321a00bae1490f42e8d20841480bad928b859675696e49458812abd3",
+    "tests/packaging-loading.test.mjs": "56f9369b4876837a52ba31dea94b2fa560d807be2ee55ea541383fafbdc2fa8e",
+    "tests/local-review.test.jsx": "4e244e59ea70ff9d8bccffc5bca421e9c82288fc7c61a0adaed450ee6d5bbe4d",
+    "src/daily-hair-quality-review.jsx": "90746e957ee9361b9a54f7aa006349179e3c9c16a7af845189a7712afd42241e",
+    "daily-hair-quality.html": "2bcc0f2781d432c71bc5808c98df483a19cea635dafd2e3e4e531c40fb9f9484"
+  },
+  "sourceHashesMatchFrozenModel": true,
+  "model": {
+    "bytes": 4316472,
+    "meshDefinitions": 18,
+    "logicalMeshNodes": 18,
+    "primitives": 18,
+    "rendererDrawCallsAreNotMeshCount": true
+  },
+  "viewports": [
+    {
+      "width": 1200,
+      "height": 800,
+      "type": "headless geometric projection"
+    },
+    {
+      "width": 393,
+      "height": 520,
+      "type": "simulated narrow viewport, not physical device"
+    }
+  ],
+  "states": [
+    "closed",
+    "half",
+    "full",
+    "four quarter-turns at each progress",
+    "bottom at each progress",
+    "reset"
+  ],
+  "checks": [
+    "actual GLTFLoader parses the six authored component groups",
+    "six complete pump pieces including long hollow tube and three flip-top cap pieces retain fitted local transforms",
+    "long dip tube clears bottle mouth and complete flip-top cap clears tube nozzle at full expansion",
+    "two opaque curved physical decorative surfaces cast shaped shadows onto the receiving bottle and soft tube",
+    "four transparent artwork planes do not cast rectangular carrier shadows",
+    "real embedded normal/roughness textures, authored UV arrays and normal scales survive viewer setup",
+    "logo and product name layers separate beyond the physical decorative surfaces",
+    "all projected model mesh bounds remain inside desktop and simulated narrow viewports through tested states",
+    "formal 085 stays v2 and formal 072 stays original"
+  ],
+  "imageHandling": "Production GLTFLoader parses actual geometry/hierarchy/materials; only browser image decoding is replaced by embedded PNG signature/dimension validation. GPU appearance and shadow pixel comparison remain separate root review.",
+  "imageInputs": [
+    "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/mobile-client-preview/assets/posters/poster-085.webp"
+  ],
+  "generatedImages": [],
+  "sharedViewerChanged": false,
+  "buildChecks": {
+    "passed": true,
+    "outDirs": [
+      "/private/tmp/daily-hair085-showroom-check",
+      "/private/tmp/daily-hair085-preview-check"
+    ],
+    "publicDir": false,
+    "copyPublicDir": false,
+    "modelSha256": "364855b8fd4fa4d44154e2a733e1fc484b5a3d15b7d9e85c69ee2e4c7e73745c",
+    "bundledModelPath": "/private/tmp/daily-hair085-preview-check/assets/poster-085-v3-CFw50NOX.glb",
+    "frozenManifestSha256": "3a86a3d62db42baa50a97be43a2fe0f10816db470c74ca27f177fccd014273f8",
+    "all514ResourcesAndManifestUnchanged": true,
+    "all8ReleaseFilesUnchanged": true,
+    "registryAndPackagingManifestUnchanged": true,
+    "productionBuildOverwritten": false
+  },
+  "aestheticCheck": {
+    "tool": "Impeccable detect --json",
+    "issues": 0,
+    "files": [
+      "daily-hair-quality.html",
+      "src/daily-hair-quality-review.jsx"
+    ],
+    "visualReviewOwnedByRoot": true
+  },
+  "physicalMobileTested": false,
+  "visualAcceptance": true,
+  "deployed": false,
+  "logs": {
+    "frontend": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/frontend-tests.log",
+    "structure": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/structure-tests.log",
+    "packaging": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/packaging-tests.log",
+    "builds": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/isolated-builds.log",
+    "operations": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/frontend-operations.json"
+  },
+  "rootFinalReview": {
+    "at": "2026-11-17T18:28:45+08:00",
+    "passed": true,
+    "browserStates": 7,
+    "cyclesImages": 4,
+    "webShadowControl": true,
+    "physicalMobileTested": false,
+    "deployed": false,
+    "report": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/daily-hair/v3/QA.md"
+  }
+}

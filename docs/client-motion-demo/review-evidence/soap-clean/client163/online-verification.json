@@ -1,0 +1,269 @@
+{
+  "version": "client1.63",
+  "roles": {
+    "client": true,
+    "employee": true,
+    "admin": true
+  },
+  "fullResources": [
+    {
+      "name": "assets/packaging/poster-082-v2.glb",
+      "status": 200,
+      "bytes": 2782400,
+      "sha256": "21fe3328200b394c3aa873989fb8f3db35512df2ee3c1f961310cf396eff6a0b"
+    },
+    {
+      "name": "index.html",
+      "status": 200,
+      "bytes": 784,
+      "sha256": "e88e5cd269ea58bc723fb328940b3e16f30de8c8079afc3e8ece2838d5ed538c"
+    },
+    {
+      "name": "preview.js",
+      "status": 200,
+      "bytes": 413673,
+      "sha256": "1a37046a411145fe6601611407ecd62b9e490d5b0857d6e19bac5c86349b5400"
+    }
+  ],
+  "modelRanges": {
+    "assets/packaging/poster-012-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3626268"
+    },
+    "assets/packaging/poster-013.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1064352"
+    },
+    "assets/packaging/poster-039.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/914020"
+    },
+    "assets/packaging/poster-042.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1639380"
+    },
+    "assets/packaging/poster-044.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2377084"
+    },
+    "assets/packaging/poster-047.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4731120"
+    },
+    "assets/packaging/poster-049-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2720964"
+    },
+    "assets/packaging/poster-051.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4132088"
+    },
+    "assets/packaging/poster-056-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/609256"
+    },
+    "assets/packaging/poster-057.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2490520"
+    },
+    "assets/packaging/poster-058.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1953112"
+    },
+    "assets/packaging/poster-059.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1220564"
+    },
+    "assets/packaging/poster-060.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1111452"
+    },
+    "assets/packaging/poster-061.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1103220"
+    },
+    "assets/packaging/poster-062.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/279060"
+    },
+    "assets/packaging/poster-063.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/819544"
+    },
+    "assets/packaging/poster-064.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3622216"
+    },
+    "assets/packaging/poster-065.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2748824"
+    },
+    "assets/packaging/poster-066.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/4254124"
+    },
+    "assets/packaging/poster-067-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3973472"
+    },
+    "assets/packaging/poster-068-v3.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2327112"
+    },
+    "assets/packaging/poster-069.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3522180"
+    },
+    "assets/packaging/poster-070.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/3191832"
+    },
+    "assets/packaging/poster-071-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1592320"
+    },
+    "assets/packaging/poster-072.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1163416"
+    },
+    "assets/packaging/poster-073.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/627764"
+    },
+    "assets/packaging/poster-079-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/932312"
+    },
+    "assets/packaging/poster-080-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/717420"
+    },
+    "assets/packaging/poster-081-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2053332"
+    },
+    "assets/packaging/poster-082-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2782400"
+    },
+    "assets/packaging/poster-084-v3.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/1855884"
+    },
+    "assets/packaging/poster-085-v2.glb": {
+      "status": 206,
+      "bytes": 100,
+      "contentRange": "bytes 0-99/2099732"
+    }
+  },
+  "excludedResources": [
+    "assets/packaging/poster-074.glb",
+    "assets/packaging/poster-074-v1.glb",
+    "assets/featured/poster-074.png",
+    "assets/featured/poster-074-640.webp",
+    "assets/featured/poster-074-1024.webp",
+    "assets/packaging/poster-075.glb",
+    "assets/packaging/poster-075-v1.glb",
+    "assets/featured/poster-075.png",
+    "assets/featured/poster-075-640.webp",
+    "assets/featured/poster-075-1024.webp",
+    "assets/packaging/poster-076.glb",
+    "assets/packaging/poster-076-v1.glb",
+    "assets/featured/poster-076.png",
+    "assets/featured/poster-076-640.webp",
+    "assets/featured/poster-076-1024.webp",
+    "assets/packaging/poster-077.glb",
+    "assets/packaging/poster-077-v1.glb",
+    "assets/featured/poster-077.png",
+    "assets/featured/poster-077-640.webp",
+    "assets/featured/poster-077-1024.webp",
+    "assets/packaging/poster-078.glb",
+    "assets/packaging/poster-078-v1.glb",
+    "assets/featured/poster-078.png",
+    "assets/featured/poster-078-640.webp",
+    "assets/featured/poster-078-1024.webp",
+    "assets/packaging/poster-083.glb",
+    "assets/packaging/poster-083-v1.glb",
+    "assets/featured/poster-083.png",
+    "assets/featured/poster-083-640.webp",
+    "assets/featured/poster-083-1024.webp",
+    "assets/packaging/poster-086.glb",
+    "assets/packaging/poster-086-v1.glb",
+    "assets/featured/poster-086.png",
+    "assets/featured/poster-086-640.webp",
+    "assets/featured/poster-086-1024.webp",
+    "assets/packaging/poster-082-v1.glb",
+    "assets/packaging/poster-072-v2.glb",
+    "assets/packaging/poster-085-v3.glb",
+    "assets/packaging/poster-086-v2.glb"
+  ],
+  "posterThumbnails": [
+    "poster-082",
+    "poster-085"
+  ],
+  "featuredPreviews": [
+    "poster-082",
+    "poster-085"
+  ],
+  "originalDownloads": [
+    82
+  ],
+  "adminModelRange": {
+    "status": 206,
+    "bytes": 100,
+    "contentRange": "bytes 0-99/2782400"
+  },
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "resources": 514,
+  "checkedAt": "2026-11-17T18:05:18+08:00",
+  "manifestSha256": "3a86a3d62db42baa50a97be43a2fe0f10816db470c74ca27f177fccd014273f8",
+  "publicHttps": true,
+  "certificateVerified": true,
+  "directOriginAddress": "47.79.233.3",
+  "tlsServerName": "bmt.yuanzebeauty.com",
+  "anonymousDenied": true,
+  "logoutVerified": true,
+  "loginScriptUnchanged": true,
+  "all32ModelRanges": true,
+  "oldModelFullHashesVerifiedOnServer": 31,
+  "withdrawnPoster": "poster-086",
+  "publishedModel": "poster-082-v2",
+  "previewOnlyModel": "poster-072-v2",
+  "featuredAdded": null,
+  "browserInteractionVerified": false
+}

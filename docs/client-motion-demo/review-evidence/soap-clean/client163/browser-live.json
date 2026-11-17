@@ -1,0 +1,102 @@
+{
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "title": "源泽 · 客户海报展厅 — client1.63",
+  "states": [
+    {
+      "name": "live-closed",
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 128684
+    },
+    {
+      "name": "live-half",
+      "progress": 0.5,
+      "renderedProgress": 0.49981214652788014,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.7996994344446082,
+        -0.02499060732639391,
+        0.9246524710765783
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 128684
+    },
+    {
+      "name": "live-expanded",
+      "progress": 1,
+      "renderedProgress": 0.9998118775873879,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5996990041398207,
+        -0.04999059387936944,
+        1.8496519735366677
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 128684
+    },
+    {
+      "name": "live-expanded-90",
+      "progress": 1,
+      "renderedProgress": 0.9999999771111896,
+      "yaw": 1.5706052083696738,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5999999633779034,
+        -0.0499999988555595,
+        1.849999957655701
+      ],
+      "components": [
+        "body",
+        "pump",
+        "cap",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 23,
+      "triangles": 128684
+    }
+  ],
+  "assets": [
+    "https://bmt.yuanzebeauty.com/showroom/assets/featured/poster-082-1024.webp?v=blender-empty-duo-v1",
+    "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-082-v2.glb"
+  ]
+}

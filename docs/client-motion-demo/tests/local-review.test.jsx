@@ -14,6 +14,7 @@ const entries = [
   ['beach-magic-quality', '012', 'poster-012-v2.glb'],
   ['daily-emulsion-quality', '072', 'poster-072-v2.glb'],
   ['daily-hair-ritual', '085', 'poster-085-v2.glb'],
+  ['daily-hair-quality', '085', 'poster-085-v3.glb'],
   ['essence-water', '068', 'poster-068-v3.glb'],
   ['hand-gel', '081', 'poster-081-v1.glb'],
   ['moisture-quality', '049', 'poster-049-v2.glb'],

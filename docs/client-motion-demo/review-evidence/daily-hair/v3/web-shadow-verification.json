@@ -1,0 +1,39 @@
+{
+  "method": "same pose; only two Label castShadow values changed",
+  "regions": {
+    "bareBottle": {
+      "box": [
+        930,
+        470,
+        970,
+        800
+      ],
+      "pixels": 13200,
+      "changedAbove3": 6382,
+      "maxDifference": 19
+    },
+    "bareTube": {
+      "box": [
+        700,
+        590,
+        720,
+        760
+      ],
+      "pixels": 3400,
+      "changedAbove3": 2691,
+      "maxDifference": 27
+    },
+    "background": {
+      "box": [
+        100,
+        100,
+        300,
+        300
+      ],
+      "pixels": 40000,
+      "changedAbove3": 0,
+      "maxDifference": 0
+    }
+  },
+  "passed": true
+}
