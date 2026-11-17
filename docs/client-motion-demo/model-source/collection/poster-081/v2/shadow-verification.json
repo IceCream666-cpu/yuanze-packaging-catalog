@@ -1,0 +1,84 @@
+{
+  "method": "Identical camera frame31, light, material and seed81; only two physical textile visible_shadow flags changed.",
+  "onFile": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-081/v2/previews/Hand-Gel-Blender-half.png",
+  "offFile": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-081/v2/previews/Hand-Gel-shadow-control.png",
+  "resolution": [
+    1600,
+    1600
+  ],
+  "onSha256": "a23cb063deda54f6ba6e34e0c13ef3f2aca8856c3f162e84e5c77af411737252",
+  "offSha256": "afb4a0e0c56b3867630240734131ccc41492f6efcf6490b323708323584880b0",
+  "wholeImage": {
+    "bounds": [
+      0,
+      0,
+      1600,
+      1600
+    ],
+    "meanAbsoluteRGB_255": [
+      0.32971328125,
+      0.325294921875,
+      0.344137109375
+    ],
+    "maxChannelDifference_255": 31,
+    "pixelsOver3": 73719,
+    "fractionPixelsOver3": 0.028796484375,
+    "pixelsOver8": 18447
+  },
+  "exposedGlassRegions": {
+    "rightExposedGlass": {
+      "bounds": [
+        1060,
+        920,
+        1190,
+        1290
+      ],
+      "meanAbsoluteRGB_255": [
+        0.1511018711018711,
+        0.1437006237006237,
+        0.1462993762993763
+      ],
+      "maxChannelDifference_255": 3,
+      "pixelsOver3": 0,
+      "fractionPixelsOver3": 0.0,
+      "pixelsOver8": 0
+    },
+    "lowerExposedGlass": {
+      "bounds": [
+        800,
+        1275,
+        1180,
+        1335
+      ],
+      "meanAbsoluteRGB_255": [
+        1.2019298245614034,
+        1.1920175438596492,
+        1.209298245614035
+      ],
+      "maxChannelDifference_255": 8,
+      "pixelsOver3": 2745,
+      "fractionPixelsOver3": 0.12039473684210526,
+      "pixelsOver8": 0
+    },
+    "upperExposedGlass": {
+      "bounds": [
+        840,
+        839,
+        1170,
+        865
+      ],
+      "meanAbsoluteRGB_255": [
+        0.106993006993007,
+        0.09568764568764569,
+        0.09067599067599068
+      ],
+      "maxChannelDifference_255": 2,
+      "pixelsOver3": 0,
+      "fractionPixelsOver3": 0.0,
+      "pixelsOver8": 0
+    }
+  },
+  "doesNotEquateClothOverlapOrReflectionsWithShadow": true,
+  "motionLimitation": "Frame31 is a layered comparison pose with a rigid circular sleeve, not a collision-free physical removal path. Fully expanded pose has independently measured positive radial clearance.",
+  "interpretation": "The pair isolates the physical textile shadow flag. Read the exposed-glass region differences separately from cloth self-shadow and ground shadow; the WebGL receiver is evaluated independently."
+}

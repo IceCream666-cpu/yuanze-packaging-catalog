@@ -1,0 +1,135 @@
+{
+  "reviewedAtBeijing": "2026-11-17T14:26:17.857860+08:00",
+  "status": "local-complete; not published by this modeling task",
+  "sourceChecksPassed": true,
+  "fourCyclesViews": [
+    "closed",
+    "half",
+    "expanded",
+    "rotated"
+  ],
+  "renderResolution": [
+    1600,
+    1600
+  ],
+  "renderEngine": "Cycles Metal",
+  "renderSamples": 96,
+  "independentVisualReviewer": "root",
+  "independentVisualAcceptance": "Root independently inspected all four final Cycles views plus the shadow-control frame, and accepted weave, thin textile edges, original white side-flag lettering, complete pump and clear empty glass. This is root acceptance, not a substituted modeling-agent review.",
+  "modelingAgentAlsoInspectedAllFour": true,
+  "preserved": {
+    "glassBodyWorldVerticesExact": true,
+    "blackPumpExteriorAndFlutesPreserved": true,
+    "longHollowDipTubePreserved": true,
+    "allOriginalSvgAndPngBytesUnchanged": true,
+    "sideFlagWhiteWordmarkAttached": true,
+    "physicalTextileShadows": true,
+    "transparentInkCarrierShadowsDisabled": true,
+    "containsFormula": false
+  },
+  "knownVisualLimits": [
+    "The circular sleeve animation is a layer-comparison path; intermediate positions are not a collision-free physical removal simulation. Final expanded sleeve radial clearance is 0.104977 scene units.",
+    "The glass physical shadow in Cycles is subtle: lower exposed glass shows max8/255, while right/upper glass is at most3/2. Do not equate cloth self-shadow, cloth overlap, reflections or ground shadow with a strong broad glass shadow. The WebGL receiver is evaluated separately."
+  ],
+  "physicalShadowReport": "shadow-verification.json",
+  "physicalExposedGlassDifferences": {
+    "rightExposedGlass": {
+      "bounds": [
+        1060,
+        920,
+        1190,
+        1290
+      ],
+      "meanAbsoluteRGB_255": [
+        0.1511018711018711,
+        0.1437006237006237,
+        0.1462993762993763
+      ],
+      "maxChannelDifference_255": 3,
+      "pixelsOver3": 0,
+      "fractionPixelsOver3": 0.0,
+      "pixelsOver8": 0
+    },
+    "lowerExposedGlass": {
+      "bounds": [
+        800,
+        1275,
+        1180,
+        1335
+      ],
+      "meanAbsoluteRGB_255": [
+        1.2019298245614034,
+        1.1920175438596492,
+        1.209298245614035
+      ],
+      "maxChannelDifference_255": 8,
+      "pixelsOver3": 2745,
+      "fractionPixelsOver3": 0.12039473684210526,
+      "pixelsOver8": 0
+    },
+    "upperExposedGlass": {
+      "bounds": [
+        840,
+        839,
+        1170,
+        865
+      ],
+      "meanAbsoluteRGB_255": [
+        0.106993006993007,
+        0.09568764568764569,
+        0.09067599067599068
+      ],
+      "maxChannelDifference_255": 2,
+      "pixelsOver3": 0,
+      "fractionPixelsOver3": 0.0,
+      "pixelsOver8": 0
+    }
+  },
+  "webVisualQAByRoot": {
+    "desktopFiveStates": true,
+    "simulatedViewport": [
+      390,
+      844
+    ],
+    "simulatedViewportThreeStates": true,
+    "physicalDeviceTest": false,
+    "webShadowControlEvidence": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/hand-gel/v2/web-shadow-control.json",
+    "onlyTwoPhysicalTextileCastersToggled": true,
+    "exposedGlassROI": {
+      "bounds": [
+        875,
+        550,
+        950,
+        715
+      ],
+      "rationale": "Exposed right glass wall excludes cloth, lettering and side flag",
+      "pixelsOver3": 11741,
+      "maxDifference255": 33,
+      "meanDifference255": 28.8269
+    }
+  },
+  "separateAutomatedFrontendRegression": {
+    "frontend": {
+      "passed": 208,
+      "failed": 0,
+      "skipped": 0,
+      "newHandGelTests": 2
+    },
+    "collectionModels": {
+      "passed": 4,
+      "failed": 0
+    },
+    "packagingRelease": {
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "glbBytes": 2053332,
+  "byteReductionPercentVsV1": 54.6427451170969,
+  "glbSha256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf",
+  "configSha256": "a76fbe5e1c86fdab57c5c8cd3b958f9a1f4b82c1fccf465956e281de7a5756d3",
+  "sourceBytes": 1521627,
+  "sourceSha256": "066aafbe72f79b1645d58a152140b499c946749732d7c7fba0e519bb2e66c054",
+  "rootHandlesRegistrationAndRelease": true,
+  "productionRegistered": false
+}

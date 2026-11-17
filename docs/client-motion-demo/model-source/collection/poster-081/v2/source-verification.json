@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "roots": [
+    "Body",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "meshObjects": 11,
+  "wholePumpMeshes": 5,
+  "solidGeometry": {
+    "Clear hollow cylinder | thick base and open neck": {
+      "manifold": true,
+      "positiveVolume": 0.7757673152123559
+    },
+    "96 fine grip flutes | rounded black closure": {
+      "manifold": true,
+      "positiveVolume": 0.027959272234029515
+    },
+    "Arched lever with recessed open pump outlet": {
+      "manifold": true,
+      "positiveVolume": 0.013780146326208222
+    },
+    "Complete dispenser barrel and tube socket": {
+      "manifold": true,
+      "positiveVolume": 0.019409526745887428
+    },
+    "Long clear hollow dip tube | angled pickup": {
+      "manifold": true,
+      "positiveVolume": 0.0045233718254139325
+    },
+    "Piston collar and actuator stem": {
+      "manifold": true,
+      "positiveVolume": 0.03186588694300586
+    },
+    "Black woven side flag": {
+      "manifold": true,
+      "positiveVolume": 0.0009441286450186227
+    },
+    "Ivory woven wrap sleeve | soft rolled edges": {
+      "manifold": true,
+      "positiveVolume": 0.050471984047036636
+    }
+  },
+  "preservedWorldVertexErrors": {
+    "Clear hollow cylinder | thick base and open neck": 0.0,
+    "96 fine grip flutes | rounded black closure": 0.0,
+    "Arched lever with recessed open pump outlet": 0.0,
+    "Long clear hollow dip tube | angled pickup": 0.0,
+    "Piston collar and actuator stem": 0.0
+  },
+  "clothMinimumSampledGap": 0.002096678813416797,
+  "flagMinimumVertexGap": 0.01280606769589232,
+  "clothNominalThickness": 0.01,
+  "wovenNormalTextureSize": [
+    512,
+    512
+  ],
+  "wovenMaterialsOpaque": true,
+  "allThreeOriginalSvgAndPngPreserved": true,
+  "allTransparentInkCarriersShadowDisabled": true,
+  "sideFlagInkRemainsAttached": true,
+  "openBottleCavity": true,
+  "connectorThroughBoreOpen": true,
+  "socketSideWallPresent": true,
+  "originalNozzleRecessOpen": true,
+  "continuousDipTubeBoreOpen": true,
+  "angledIntakeOpen": true,
+  "intakeToInnerFloorGap": 0.010899996042251586,
+  "fullyExpandedTubeExitGap": 0.272899866104126,
+  "fullyExpandedSleeveRadialGap": 0.10497718894571095,
+  "mobilePrintSpread": 1,
+  "motionScope": "Layer comparison path; intermediate rigid sleeve motion is illustrative, not a physical removal simulation. Fully expanded sleeve is clear of bottle.",
+  "completePumpRelativeTransformsPreserved": true,
+  "sourceFrames": [
+    {
+      "frame": 1,
+      "progress": 0,
+      "locations": {
+        "Body": [
+          0.0,
+          0.0,
+          1.0199999809265137
+        ],
+        "Pump": [
+          0.0,
+          0.0,
+          2.2300000190734863
+        ],
+        "Label": [
+          0.0,
+          0.0,
+          1.2100000381469727
+        ],
+        "LogoInk": [
+          0.0,
+          0.0,
+          1.4600000381469727
+        ],
+        "NameInk": [
+          0.0,
+          0.0,
+          1.0499999523162842
+        ]
+      }
+    },
+    {
+      "frame": 31,
+      "progress": 0.5,
+      "locations": {
+        "Body": [
+          0.0,
+          0.0,
+          1.0199999809265137
+        ],
+        "Pump": [
+          0.0,
+          0.0,
+          3.380000114440918
+        ],
+        "Label": [
+          -0.7250000238418579,
+          -0.44999998807907104,
+          1.2200000286102295
+        ],
+        "LogoInk": [
+          -1.225000023841858,
+          -0.8100000023841858,
+          1.5800000429153442
+        ],
+        "NameInk": [
+          -1.225000023841858,
+          -1.0199999809265137,
+          1.0099999904632568
+        ]
+      }
+    },
+    {
+      "frame": 61,
+      "progress": 1,
+      "locations": {
+        "Body": [
+          0.0,
+          0.0,
+          1.0199999809265137
+        ],
+        "Pump": [
+          0.0,
+          0.0,
+          4.529999732971191
+        ],
+        "Label": [
+          -1.4500000476837158,
+          -0.8999999761581421,
+          1.2300000190734863
+        ],
+        "LogoInk": [
+          -2.450000047683716,
+          -1.6200000047683716,
+          1.7000000476837158
+        ],
+        "NameInk": [
+          -2.450000047683716,
+          -2.0399999618530273,
+          0.9699999690055847
+        ]
+      }
+    }
+  ],
+  "containsFormula": false,
+  "glbAnimations": 0,
+  "glbEmbeddedImages": 6,
+  "glbBytes": 2053332,
+  "oldGlbBytes": 4527020,
+  "byteReductionPercent": 54.6427451170969,
+  "glbSha256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf",
+  "configSha256": "a76fbe5e1c86fdab57c5c8cd3b958f9a1f4b82c1fccf465956e281de7a5756d3",
+  "sourceBytes": 1521627,
+  "visualReviewPending": false,
+  "productionRegistered": false,
+  "independentVisualReviewer": "root",
+  "independentVisualAcceptedAtBeijing": "2026-11-17T14:26:17.857860+08:00",
+  "visualQaRecord": "visual-qa.json"
+}

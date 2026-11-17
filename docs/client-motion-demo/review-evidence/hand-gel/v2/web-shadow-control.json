@@ -1,0 +1,58 @@
+{
+  "casters": [
+    {
+      "name": "Black_woven_side_flag",
+      "material": "Black woven side flag",
+      "castShadow": true
+    },
+    {
+      "name": "Ivory_woven_wrap_sleeve_|_soft_rolled_edges",
+      "material": "Warm ivory woven label",
+      "castShadow": true
+    }
+  ],
+  "bodyBounds": {
+    "left": 727.3754396068,
+    "top": 414.42141452810193,
+    "right": 968.2152339683297,
+    "bottom": 775.7305793853551
+  },
+  "state": {
+    "progress": 0.5,
+    "renderedProgress": 0.5,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.225,
+      -0.040000000000000036,
+      1.02
+    ],
+    "components": [
+      "body",
+      "pump",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 18,
+    "triangles": 94106
+  },
+  "viewport": [
+    1557,
+    971
+  ],
+  "method": "Same final GLB, pose, camera, lighting and materials; toggle only physical opaque Label casters, restore after capture.",
+  "visibleGlassROI": {
+    "bounds": [
+      875,
+      550,
+      950,
+      715
+    ],
+    "rationale": "Exposed right glass wall excludes cloth, lettering and side flag",
+    "pixelsOver3": 11741,
+    "maxDifference255": 33,
+    "meanDifference255": 28.8269
+  }
+}

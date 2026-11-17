@@ -1,0 +1,68 @@
+{
+  "rootNames": [
+    "Body",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "meshObjects": 11,
+  "preservedWorldVertexErrors": {
+    "Clear hollow cylinder | thick base and open neck": 0.0,
+    "96 fine grip flutes | rounded black closure": 0.0,
+    "Arched lever with recessed open pump outlet": 0.0,
+    "Long clear hollow dip tube | angled pickup": 0.0,
+    "Piston collar and actuator stem": 0.0
+  },
+  "opaqueClothMaterialNames": [
+    "Warm ivory woven label",
+    "Black woven side flag"
+  ],
+  "clothVolume": 0.050471984047036636,
+  "flagVolume": 0.0009441286450186227,
+  "clothInnerRadius": 0.785,
+  "clothOuterRadius": 0.795,
+  "nominalClothThickness": 0.01,
+  "yarnPitch": 0.02081305133003238,
+  "weaveTileSize": [
+    512,
+    512
+  ],
+  "sideWordmarkAttachedToLabelRoot": true,
+  "sideWordmarkShadow": false,
+  "artwork": [
+    {
+      "name": "logo",
+      "svgUnchanged": true,
+      "pngUnchanged": true,
+      "svgSha256": "1b3aaf24f28324d38a14b53153a246057049d815d2477d7f884c0fb6a167abd9"
+    },
+    {
+      "name": "name",
+      "svgUnchanged": true,
+      "pngUnchanged": true,
+      "svgSha256": "f4a7d6df73687f74e08c671a29f66092934892f391d91a25d21a53f8f1fc61d9"
+    },
+    {
+      "name": "tag-logo",
+      "svgUnchanged": true,
+      "pngUnchanged": true,
+      "svgSha256": "02ab8ae8f1259c5df874f78e809b71846d055deed462b6b2611082dc976982b8"
+    }
+  ],
+  "wholePumpChildren": 5,
+  "containsFormula": false,
+  "sourceFrames": [
+    1,
+    31,
+    61
+  ],
+  "glbBytes": 2053332,
+  "glbSha256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf",
+  "configSha256": "a76fbe5e1c86fdab57c5c8cd3b958f9a1f4b82c1fccf465956e281de7a5756d3",
+  "productionRegistered": false,
+  "visualReviewPending": false,
+  "independentVisualReviewer": "root",
+  "independentVisualAcceptedAtBeijing": "2026-11-17T14:26:17.857860+08:00",
+  "visualQaRecord": "visual-qa.json"
+}

@@ -24,7 +24,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const beachMagicV2 = product.file === 'poster-012-v2.glb';
   const goldenV2 = product.file === 'poster-056-v2.glb';
   const softBodyV3 = product.file === 'poster-084-v3.glb';
-  const glassLabelShadow = moistureV2 || dailyEmulsionV2 || beachMagicV2 || goldenV2 || softBodyV3;
+  const handGelV2 = product.file === 'poster-081-v2.glb';
+  const glassLabelShadow = moistureV2 || dailyEmulsionV2 || beachMagicV2 || goldenV2 || softBodyV3 || handGelV2;
   const woodland = product.file === 'poster-042.glb';
   const pureVolume = product.file === 'poster-051.glb';
   const gentle = product.file === 'poster-044.glb';
@@ -32,7 +33,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const golden = product.file === 'poster-056.glb';
   const b5 = product.file === 'poster-057.glb';
   const bodyOil = product.file === 'poster-073.glb';
-  const handGel = product.file === 'poster-081-v1.glb';
+  const handGel = product.file === 'poster-081-v1.glb' || handGelV2;
   const softBodyGlass = product.file === 'poster-084-v2.glb' || softBodyV3;
   const amberGinger = product.file === 'poster-067-v2.glb';
   const essenceWater = ['poster-068-v2.glb','poster-068-v3.glb'].includes(product.file);

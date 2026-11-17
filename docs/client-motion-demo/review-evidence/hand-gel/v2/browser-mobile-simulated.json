@@ -1,0 +1,90 @@
+{
+  "simulated": true,
+  "device": "CDP viewport, not a physical phone",
+  "states": {
+    "closed": {
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 18,
+        "triangles": 94106
+      },
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    "half": {
+      "state": {
+        "progress": 0.5,
+        "renderedProgress": 0.5,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.225,
+          -0.040000000000000036,
+          1.02
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 18,
+        "triangles": 94106
+      },
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    "expanded": {
+      "state": {
+        "progress": 1,
+        "renderedProgress": 1,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -2.45,
+          -0.07999999999999996,
+          2.04
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 18,
+        "triangles": 94106
+      },
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "engine": "Cycles",
+  "device": "Metal",
+  "samples": 96,
+  "resolution": [
+    1600,
+    1600
+  ],
+  "poses": [
+    {
+      "frame": 1,
+      "camera": [
+        0.8628631830215454,
+        -10.006197929382324,
+        2.6262643337249756
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 3.577986240386963,
+      "projectedBounds": [
+        [
+          0.2602706551551819,
+          0.0833333432674408
+        ],
+        [
+          0.7397292852401733,
+          0.9166666269302368
+        ]
+      ],
+      "glassBounds": {
+        "Clear hollow cylinder | thick base and open neck": [
+          [
+            0.26408442854881287,
+            0.0833333432674408
+          ],
+          [
+            0.7011649012565613,
+            0.7209047079086304
+          ]
+        ]
+      },
+      "name": "closed"
+    },
+    {
+      "frame": 31,
+      "camera": [
+        0.28043505549430847,
+        -10.551902770996094,
+        3.260776996612549
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 4.948218822479248,
+      "projectedBounds": [
+        [
+          0.22841618955135345,
+          0.0833333432674408
+        ],
+        [
+          0.7715837359428406,
+          0.916666567325592
+        ]
+      ],
+      "glassBounds": {
+        "Clear hollow cylinder | thick base and open neck": [
+          [
+            0.4555371105670929,
+            0.0833333432674408
+          ],
+          [
+            0.7715837359428406,
+            0.544352114200592
+          ]
+        ]
+      },
+      "name": "half"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        -0.35007861256599426,
+        -11.090426445007324,
+        3.8939738273620605
+      ],
+      "rotation": [
+        1.4517441987991333,
+        6.517151263096821e-10,
+        0.07982999086380005
+      ],
+      "orthoScale": 6.318449974060059,
+      "projectedBounds": [
+        [
+          0.1810443252325058,
+          0.08333339542150497
+        ],
+        [
+          0.8189557790756226,
+          0.9166666865348816
+        ]
+      ],
+      "glassBounds": {
+        "Clear hollow cylinder | thick base and open neck": [
+          [
+            0.5714476108551025,
+            0.08333339542150497
+          ],
+          [
+            0.8189557790756226,
+            0.4443747401237488
+          ]
+        ]
+      },
+      "name": "expanded"
+    },
+    {
+      "frame": 61,
+      "camera": [
+        2.992718458175659,
+        -11.118879318237305,
+        4.261015892028809
+      ],
+      "rotation": [
+        1.4243355989456177,
+        1.6587872408990734e-08,
+        0.3976280093193054
+      ],
+      "orthoScale": 6.347919464111328,
+      "projectedBounds": [
+        [
+          0.13320983946323395,
+          0.0833333432674408
+        ],
+        [
+          0.8667900562286377,
+          0.9166666269302368
+        ]
+      ],
+      "glassBounds": {
+        "Clear hollow cylinder | thick base and open neck": [
+          [
+            0.6204115748405457,
+            0.0833333432674408
+          ],
+          [
+            0.8667900562286377,
+            0.44533053040504456
+          ]
+        ]
+      },
+      "name": "rotated"
+    }
+  ],
+  "physicalLabelShadowControl": {
+    "frame": 31,
+    "seed": 81,
+    "camera": [
+      0.28043505549430847,
+      -10.551902770996094,
+      3.260776996612549
+    ],
+    "rotation": [
+      1.4517441987991333,
+      6.517151263096821e-10,
+      0.07982999086380005
+    ],
+    "orthoScale": 4.948218822479248,
+    "onlyChangedProperty": "Two physical textile objects visible_shadow; attached transparent side ink stays shadow-disabled",
+    "shadowOn": "previews/Hand-Gel-Blender-half.png",
+    "shadowOff": "previews/Hand-Gel-shadow-control.png",
+    "glassBounds": {
+      "Clear hollow cylinder | thick base and open neck": [
+        [
+          0.4555371105670929,
+          0.0833333432674408
+        ],
+        [
+          0.7715837359428406,
+          0.544352114200592
+        ]
+      ]
+    }
+  },
+  "transparentInkShadowDisabled": true,
+  "visualReviewPending": false,
+  "browserVerifiedSeparately": true,
+  "independentVisualReviewer": "root",
+  "independentVisualAcceptedAtBeijing": "2026-11-17T14:26:17.857860+08:00",
+  "visualQaRecord": "visual-qa.json"
+}

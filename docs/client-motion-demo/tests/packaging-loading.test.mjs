@@ -1763,22 +1763,7 @@ test('Beach Magic v2 publishes six fitted layers and casts only its physical pap
 for (const [width,height] of [[1200,800],[393,520]]) test(`Soft Body v3 keeps its real fitted pump, shadows and all 12 meshes in the ${width}px viewport`,async()=>{
   const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-084/v3/review-product.json',import.meta.url),'utf8'));
   const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
-  const {GLTFLoader}=await import('../src/structure/vendor/GLTFLoader.js');
-  const loader=new GLTFLoader();
-  loader.register(parser=>{
-    // Node has no image decoder; keep the production loader for geometry, hierarchy and materials.
-    parser.loadImageSource=async index=>{
-      const image=parser.json.images[index];
-      assert.equal(image.mimeType,'image/png');assert.ok(Number.isInteger(image.bufferView));
-      const png=Buffer.from(await parser.getDependency('bufferView',image.bufferView));
-      assert.deepEqual([...png.subarray(0,8)],[137,80,78,71,13,10,26,10]);
-      const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
-      assert.ok(width>0&&height>0&&png.length>32);
-      return new Three.Texture({width,height});
-    };
-    return {name:'node_embedded_png_fixture'};
-  });
-  const loaded=await loader.parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
+  const loaded=await loadTexturedPackagingGlb(bytes);
   const model=loaded.scene,meshes=[];model.traverse(o=>{if(o.isMesh)meshes.push(o);});
   const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
   assert.deepEqual(model.children.map(o=>o.name).sort(),['Body','Label','LogoInk','NameInk','Pump']);
@@ -1856,5 +1841,109 @@ for (const [width,height] of [[1200,800],[393,520]]) test(`Soft Body v3 keeps it
 test('Soft Body v3 is approved while pending 072 and original 081 registration remain unchanged',()=>{
   assert.deepEqual(PACKAGING_PRODUCTS['poster-084'],JSON.parse(readFileSync(new URL('../model-source/collection/poster-084/v3/review-product.json',import.meta.url),'utf8')));
   assert.equal(PACKAGING_PRODUCTS['poster-081'].file,'poster-081-v1.glb');
+  assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
+});
+
+async function loadTexturedPackagingGlb(bytes) {
+  const {GLTFLoader}=await import('../src/structure/vendor/GLTFLoader.js');
+  const loader=new GLTFLoader();
+  loader.register(parser=>{
+    // Node has no image decoder; keep the production loader for geometry, hierarchy and materials.
+    parser.loadImageSource=async index=>{
+      const image=parser.json.images[index];
+      assert.equal(image.mimeType,'image/png');assert.ok(Number.isInteger(image.bufferView));
+      const png=Buffer.from(await parser.getDependency('bufferView',image.bufferView));
+      assert.deepEqual([...png.subarray(0,8)],[137,80,78,71,13,10,26,10]);
+      const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+      assert.ok(width>0&&height>0&&png.length>32);
+      return new Three.Texture({width,height});
+    };
+    return {name:'node_embedded_png_fixture'};
+  });
+  return loader.parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
+}
+
+for (const [width,height] of [[1200,800],[393,520]]) test(`Hand Gel v2 retains cloth UVs, fitted pump and real shadows in the ${width}px viewport`,async()=>{
+  const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-081/v2/review-product.json',import.meta.url),'utf8'));
+  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+  const loaded=await loadTexturedPackagingGlb(bytes),model=loaded.scene,meshes=[];
+  model.traverse(o=>{if(o.isMesh)meshes.push(o);});
+  const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+  assert.deepEqual(model.children.map(o=>o.name).sort(),['Body','Label','LogoInk','NameInk','Pump']);
+  assert.equal(meshes.length,11);
+  assert.equal(parts.pump.children.length,5,'the collar, actuator, spout, stem and long tube stay assembled');
+  const tube=parts.pump.children.find(o=>/long clear hollow dip tube/i.test(o.userData.name??o.name));
+  assert.ok(tube);assert.equal(tube.parent,parts.pump);
+  model.updateMatrixWorld(true);
+  assert.ok(new Three.Box3().setFromObject(tube).getSize(new Three.Vector3()).y>new Three.Box3().setFromObject(parts.body).getSize(new Three.Vector3()).y*.6,'the actual hollow tube reaches down through most of the bottle');
+  const fabrics=meshes.filter(o=>['Warm ivory woven label','Black woven side flag'].includes(o.material.name));
+  assert.equal(fabrics.length,2);
+  const fabricRest=fabrics.map(o=>{
+    assert.ok(o.geometry.attributes.uv,'woven surfaces retain authored UV coordinates');
+    assert.equal(o.material.normalMap?.image?.width,512);assert.equal(o.material.normalMap.image.height,512);
+    assert.equal(o.material.map?.image?.width,512);assert.equal(o.material.map.image.height,512);
+    return {uv:Array.from(o.geometry.attributes.uv.array),normalMap:o.material.normalMap,normalScale:o.material.normalScale.toArray()};
+  });
+  const sideInk=parts.label.children.find(o=>/liaose on black side flag/i.test(o.userData.name??o.name));
+  assert.ok(sideInk?.material.map,'the attached side-flag lettering keeps its artwork');
+  let api,camera;
+  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+  try{
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:height}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes.buffer))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));model.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};flush();
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,o])=>[key,{p:o.position.clone(),s:o.scale.clone(),q:o.quaternion.clone()}]));
+    const fitted=parts.pump.children.map(o=>o.matrix.toArray()),sideInkRest=sideInk.matrix.toArray();
+    assert.equal(product.review.appearance.labelShadows,true);
+    fabrics.forEach((o,i)=>{
+      assert.equal(o.material.transparent,false);assert.equal(o.castShadow,true);
+      assert.deepEqual(Array.from(o.geometry.attributes.uv.array),fabricRest[i].uv);
+      assert.equal(o.material.normalMap,fabricRest[i].normalMap);assert.deepEqual(o.material.normalScale.toArray(),fabricRest[i].normalScale);
+    });
+    parts.body.traverse(o=>{if(o.isMesh){
+      assert.equal(o.receiveShadow,true);
+      const shader={fragmentShader:'#include <shadowmap_pars_fragment>\n#include <dithering_fragment>'};o.material.onBeforeCompile(shader);
+      assert.match(shader.fragmentShader,/getShadowMask\(\)/,'the glass receives the fabric label shadow');
+    }});
+    assert.equal(sideInk.material.transparent,true);assert.equal(sideInk.castShadow,false,'side-flag lettering cannot cast an opaque carrier rectangle');
+    for(const key of ['logo','print'])parts[key].traverse(o=>{if(o.isMesh){assert.ok(o.material.map?.image?.width>0);assert.equal(o.castShadow,false);}});
+    assert.equal(tube.material.depthWrite,false);assert.equal(tube.castShadow,false);
+    const inFrame=state=>{for(const mesh of meshes){
+      mesh.geometry.computeBoundingBox();const {min,max}=mesh.geometry.boundingBox;
+      for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]){
+        const point=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+        assert.ok(Math.abs(point.x)<.98&&Math.abs(point.y)<.98&&Math.abs(point.z)<1,`${mesh.userData.name??mesh.name} clips at ${state}: ${point.toArray()}`);
+      }
+    }};
+    const radialEnvelope=group=>{
+      const points=[];group.traverse(o=>{if(o.isMesh){const vertices=o.geometry.attributes.position;for(let i=0;i<vertices.count;i++)points.push(new Three.Vector3().fromBufferAttribute(vertices,i).applyMatrix4(o.matrixWorld));}});
+      const center=new Three.Box3().setFromPoints(points).getCenter(new Three.Vector3());
+      return {center,radius:Math.max(...points.map(p=>Math.hypot(p.x-center.x,p.z-center.z)))};
+    };
+    for(const progress of [0,.5,1]){
+      api.resetView();api.setProgress(progress);flush();
+      assert.equal(api.getState().renderedProgress,progress);
+      assert.ok(parts.pump.position.clone().sub(rest.pump.p).distanceTo(new Three.Vector3(...product.review.explosion.offsets.pump).multiplyScalar(progress))<1e-8);
+      for(const key of ['logo','print'])if(progress)assert.ok(parts[key].position.z-rest[key].p.z>parts.label.position.z-rest.label.p.z,'front ink separates beyond the fabric label');
+      if(progress===1){
+        assert.ok(new Three.Box3().setFromObject(tube).min.y-new Three.Box3().setFromObject(parts.body).max.y>.1,'the long tube inlet clears the bottle mouth');
+        const bottle=radialEnvelope(parts.body),sleeve=radialEnvelope(fabrics.find(o=>o.material.name==='Warm ivory woven label'));
+        const gap=Math.hypot(bottle.center.x-sleeve.center.x,bottle.center.z-sleeve.center.z)-bottle.radius-sleeve.radius;
+        assert.ok(gap>0,`the expanded full fabric ring must clear the bottle radially in XZ; gap=${gap}, viewport=${width}`);
+      }
+      for(let quarter=0;quarter<4;quarter++){
+        parts.pump.children.forEach((piece,i)=>assert.deepEqual(piece.matrix.toArray(),fitted[i]));
+        assert.equal(sideInk.parent,parts.label);assert.deepEqual(sideInk.matrix.toArray(),sideInkRest,'the side wordmark stays fitted to its moving flag');
+        inFrame(`progress ${progress}, quarter turn ${quarter}`);api.rotate();flush();
+      }
+      api.viewBottom();flush();inFrame(`progress ${progress}, bottom view`);
+    }
+    api.setProgress(0);api.resetView();flush();inFrame('reset');
+    assert.equal(api.getState().yaw,0);assert.equal(api.getState().pitch,0);
+    for(const [key,part] of Object.entries(parts)){
+      assert.ok(part.position.distanceTo(rest[key].p)<1e-8);assert.ok(part.scale.distanceTo(rest[key].s)<1e-8);assert.ok(1-Math.abs(part.quaternion.dot(rest[key].q))<1e-8);
+    }
+  }finally{api?.dispose();env.close();}
+  assert.equal(PACKAGING_PRODUCTS['poster-081'].file,'poster-081-v1.glb','081 v2 is local preview only');
   assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
 });

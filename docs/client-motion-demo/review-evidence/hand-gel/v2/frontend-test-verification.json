@@ -1,0 +1,102 @@
+{
+  "verifiedAt": "2026-11-17T06:23:15.430937+00:00",
+  "status": "passed-local-preview-regression",
+  "tests": {
+    "frontend": {
+      "passed": 208,
+      "failed": 0,
+      "skipped": 0,
+      "newHandGelTests": 2
+    },
+    "collectionModels": {
+      "passed": 4,
+      "failed": 0
+    },
+    "packagingRelease": {
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "sha256": {
+    "src/structure/packaging-scene.js": "f0ea519910f2fe34a6f452992364f32d9ee5ebe8c7527851ed86c7f87fc28e5b",
+    "packaging-assets/poster-081-v2.glb": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf",
+    "model-source/collection/poster-081/v2/review-product.json": "a76fbe5e1c86fdab57c5c8cd3b958f9a1f4b82c1fccf465956e281de7a5756d3",
+    "tests/packaging-loading.test.mjs": "9ad8687ca013fdff29537d81c95bf0cb9e5d6eb9675f963f4fd1a36942780344",
+    "src/hand-gel-quality-review.jsx": "bfc60ba892fb45cfd1ebac3ea2798a7b97981dc0b412eeb459fcfc2025822e1b",
+    "hand-gel-quality.html": "38115e6368df4df5ffe837b8fe943cd2bcbca9996728370b83c87dd3e7392a34"
+  },
+  "sourceHashesStableDuringTests": true,
+  "viewports": [
+    {
+      "width": 1200,
+      "height": 800,
+      "type": "headless geometric projection"
+    },
+    {
+      "width": 393,
+      "height": 520,
+      "type": "simulated narrow viewport, not physical device"
+    }
+  ],
+  "states": [
+    "closed",
+    "half",
+    "full",
+    "four quarter-turns at each progress",
+    "bottom at each progress",
+    "reset"
+  ],
+  "checks": [
+    "actual GLTFLoader parses 11 meshes",
+    "five complete pump parts and long hollow tube retain fitted local transforms",
+    "tube inlet clears bottle mouth fully expanded",
+    "woven sleeve and black side flag retain original UVs, embedded 512px color/normal textures and normal scale",
+    "two physical fabrics cast shadows onto receiving glass",
+    "attached side-flag lettering stays fitted and does not cast a carrier rectangle",
+    "front Logo and product text separate with artwork and no rectangular shadows",
+    "all projected mesh bounds remain in frame",
+    "full fabric ring has positive XZ radial clearance from bottle on desktop and narrow view",
+    "formal poster-081 remains v1 and poster-072 remains original"
+  ],
+  "imageHandling": "Production GLTFLoader parses actual geometry/hierarchy/materials; only browser image decoding is replaced with embedded PNG signature/dimension validation. GPU visual quality remains a separate review.",
+  "radialClearanceMethod": "Use actual transformed mesh vertices, their XZ symmetry center and maximum radial distance; compare circle center distance minus sleeve and bottle radii, not AABB overlap.",
+  "buildChecks": {
+    "passed": true,
+    "isolatedBuilds": [
+      {
+        "mode": "showroom",
+        "entry": "index.html",
+        "outDir": "/private/tmp/hand-gel081-showroom-check",
+        "publicDir": false,
+        "copyPublicDir": false
+      },
+      {
+        "mode": "preview",
+        "entry": "hand-gel-quality.html",
+        "outDir": "/private/tmp/hand-gel081-preview-check",
+        "publicDir": false,
+        "copyPublicDir": false,
+        "bundledModelSha256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf"
+      }
+    ],
+    "frozenClient161": {
+      "manifestSha256Before": "23ab8089fd3bcd6c4c9cd6c14093660411a3d305e5d1682a83f4ffeb993ce080",
+      "manifestSha256After": "23ab8089fd3bcd6c4c9cd6c14093660411a3d305e5d1682a83f4ffeb993ce080",
+      "all514ResourceHashesUnchanged": true,
+      "productionInventoryUnchanged": true,
+      "all8ReleaseFilesUnchanged": true
+    },
+    "productionBuildOverwritten": false,
+    "warnings": [
+      "Existing lucide-react use client module directive warnings",
+      "Shared 3D chunk exceeds 500 kB advisory threshold"
+    ]
+  },
+  "physicalMobileTested": false,
+  "visualAcceptance": false,
+  "deployed": false,
+  "logs": {
+    "frontend": "/private/tmp/hand-gel081-frontend-tests-final.log",
+    "builds": "/private/tmp/hand-gel081-builds-final.log"
+  }
+}

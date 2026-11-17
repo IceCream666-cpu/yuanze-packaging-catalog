@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "url": "http://127.0.0.1:8785/hand-gel-quality.html",
+    "viewport": [
+      1557,
+      971
+    ],
+    "overflow": false,
+    "models": [
+      "http://127.0.0.1:8785/packaging-assets/poster-081-v2.glb"
+    ]
+  },
+  "states": {
+    "closed": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "half": {
+      "progress": 0.5,
+      "renderedProgress": 0.5,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.225,
+        -0.040000000000000036,
+        1.02
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "expanded": {
+      "progress": 1,
+      "renderedProgress": 1,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.45,
+        -0.07999999999999996,
+        2.04
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "rotated": {
+      "progress": 1,
+      "renderedProgress": 1,
+      "yaw": 1.5707963267948966,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.45,
+        -0.07999999999999996,
+        2.04
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "reset": {
+      "progress": 1,
+      "renderedProgress": 1,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -2.45,
+        -0.07999999999999996,
+        2.04
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    },
+    "bottom": {
+      "progress": 1,
+      "renderedProgress": 1,
+      "yaw": 0,
+      "pitch": -1.6754129844274162,
+      "selected": null,
+      "printOffset": [
+        -2.45,
+        -0.07999999999999996,
+        2.04
+      ],
+      "components": [
+        "body",
+        "pump",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 18,
+      "triangles": 94106
+    }
+  },
+  "glbSHA256": "ebf9e173e2cff88e67d4ea834aaafc1d6c0ec147252e0aca9c03d3cf1a16d4bf",
+  "configSHA256": "a76fbe5e1c86fdab57c5c8cd3b958f9a1f4b82c1fccf465956e281de7a5756d3"
+}
