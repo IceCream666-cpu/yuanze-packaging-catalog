@@ -1,0 +1,106 @@
+{
+  "verifiedAt": "2026-11-17T04:00:44.248Z",
+  "states": [
+    {
+      "name": "closed",
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 22,
+      "triangles": 329618
+    },
+    {
+      "name": "half",
+      "progress": 0.5,
+      "renderedProgress": 0.4998569895340531,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.799771183254485,
+        0.09997139790681063,
+        0.6748069358709717
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 22,
+      "triangles": 329618
+    },
+    {
+      "name": "expanded",
+      "progress": 1,
+      "renderedProgress": 0.999816366633771,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5997061866140339,
+        0.19996327332675423,
+        1.349752094955591
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 22,
+      "triangles": 329618
+    },
+    {
+      "name": "rotated",
+      "progress": 1,
+      "renderedProgress": 0.9999999821572642,
+      "yaw": 1.5706437003707732,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.5999999714516226,
+        0.19999999643145283,
+        1.3499999759123067
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 22,
+      "triangles": 329618
+    }
+  ],
+  "title": "源泽 · 客户海报展厅 — client1.59",
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "modelRequests": [
+    {
+      "url": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-012-v2.glb",
+      "bytes": 1785921
+    }
+  ],
+  "canvas": 1
+}

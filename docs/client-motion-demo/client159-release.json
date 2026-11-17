@@ -1,7 +1,7 @@
 {
   "version": "client1.59",
-  "status": "prepared-local-not-deployed",
-  "sourceCommit": null,
+  "status": "published-and-independently-verified",
+  "sourceCommit": "c5fe6795",
   "scope": "approved Beach Magic v2 model and six-layer viewer; 31 other models and all poster/homepage media preserved",
   "publishedModel": "poster-012-v2",
   "previewOnlyModels": [
@@ -32,7 +32,6 @@
     "assets/packaging/beach-magic-packaging.glb",
     "assets/packaging/packaging-scene-ECoBdNC9.js"
   ],
-  "plannedBackup": "/opt/yuanze-reference/backups/client1.59-beach-magic-quality-model-20261117",
   "checks": {
     "frontendTests": 202,
     "packagingReleaseTests": 13,
@@ -42,12 +41,58 @@
     "sourceStampCheck": true,
     "unchangedOtherModels": 31,
     "physicalMobileTested": false,
-    "onlineVerified": false
+    "onlineVerified": true,
+    "httpsFullChangedResources": 5,
+    "modelRangeRequests": 32,
+    "excludedResourcesDenied": 41,
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "anonymousDenied": true,
+    "logoutVerified": true,
+    "loginScriptUnchanged": true,
+    "outsideUnchanged": 6820,
+    "serviceRestart": false,
+    "businessDataWrites": 0,
+    "browserInteractionVerified": true,
+    "posterThumbnails": [
+      "poster-012",
+      "poster-085"
+    ],
+    "featuredPreviews": [
+      "poster-012",
+      "poster-085"
+    ],
+    "originalDownloads": [
+      12
+    ]
   },
   "evidence": "review-evidence/beach-magic/client159/",
   "modelQA": "review-evidence/beach-magic/v2/QA.md",
   "remainingQueue": [
     "poster-056",
     "poster-084"
+  ],
+  "publishedAt": "2026-11-17T11:58:53+08:00",
+  "verifiedAt": "2026-11-17T12:00:53+08:00",
+  "backup": "/opt/yuanze-reference/backups/client1.59-beach-magic-quality-model-20261117",
+  "resources": 514,
+  "storagePreparation": {
+    "initialAttempt": "capacity precheck rejected before upload",
+    "action": "dnf clean all",
+    "removedCacheFiles": 19,
+    "availableAfterCleanup": "approximately 310 MB",
+    "existingReleasesAndBackupsPreserved": true,
+    "evidenceSource": "primary agent execution report; publication script subsequently passed unchanged 256 MiB guard"
+  },
+  "browserVerification": "review-evidence/beach-magic/client159/browser-verification.json",
+  "browserVisualChecked": [
+    "homepage entry",
+    "closed",
+    "half: label shadow on bottle",
+    "fully exploded",
+    "90-degree rotation"
   ]
 }
