@@ -1,0 +1,139 @@
+{
+  "half": {
+    "progress": 0.5,
+    "renderedProgress": 0.4998809863600633,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.7998095781761013,
+      0.09997619727201267,
+      0.6748393315860854
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "expanded": {
+    "progress": 1,
+    "renderedProgress": 0.9996896791148717,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.599503486583795,
+      0.19993793582297437,
+      1.349581066805077
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "rotated": {
+    "progress": 1,
+    "renderedProgress": 0.9999996369784662,
+    "yaw": 1.5676364343699796,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -1.599999419165546,
+      0.19999992739569325,
+      1.3499995099209294
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "bottom": {
+    "progress": 1,
+    "renderedProgress": 1,
+    "yaw": 3.485076352926832e-19,
+    "pitch": -1.6752487065237949,
+    "selected": null,
+    "printOffset": [
+      -1.6,
+      0.2,
+      1.35
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "reset": {
+    "progress": 1,
+    "renderedProgress": 1,
+    "yaw": 6.545843872478995e-23,
+    "pitch": -0.000314653550452855,
+    "selected": null,
+    "printOffset": [
+      -1.6,
+      0.2,
+      1.35
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "mobile": {
+    "state": {
+      "progress": 0.5,
+      "renderedProgress": 0.5006590451209877,
+      "yaw": 1.0809989895806418e-26,
+      "pitch": -5.196276854960832e-8,
+      "selected": null,
+      "printOffset": [
+        -0.44057995970646924,
+        0.10013180902419755,
+        0.6758897109133334
+      ],
+      "components": [
+        "cap",
+        "liner",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 22,
+      "triangles": 329618
+    },
+    "width": 390,
+    "documentWidth": 390,
+    "height": 844
+  }
+}

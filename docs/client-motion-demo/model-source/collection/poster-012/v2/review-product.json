@@ -1,0 +1,185 @@
+{
+  "file": "poster-012-v2.glb",
+  "scale": 1,
+  "kind": "collection",
+  "wide": false,
+  "parts": [
+    {
+      "key": "cap",
+      "node": "OuterCap",
+      "title": [
+        "完整米白外盖",
+        "Complete ivory screw cap"
+      ],
+      "short": [
+        "外盖",
+        "Cap"
+      ],
+      "detail": [
+        "螺纹、外盖及内顶结构保持组装，一起展开。",
+        "Original cap shell, threads and roof remain one assembly."
+      ]
+    },
+    {
+      "key": "liner",
+      "node": "InnerLid",
+      "title": [
+        "带短舌内盖",
+        "Inner lid with pull tab"
+      ],
+      "short": [
+        "内盖",
+        "Liner"
+      ],
+      "detail": [
+        "原浅盘、裙边和短舌完整保留。",
+        "Original shallow disk, skirt and short pull tab remain intact."
+      ]
+    },
+    {
+      "key": "body",
+      "node": "Jar",
+      "title": [
+        "透明空罐",
+        "Clear empty jar"
+      ],
+      "short": [
+        "罐体",
+        "Jar"
+      ],
+      "detail": [
+        "保留原圆口螺纹、肩部和圆底；空包材不添加料体。",
+        "Original neck, threads, shoulder and rounded base; no formula added."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "实体圆角纸标",
+        "Physical rounded paper label"
+      ],
+      "short": [
+        "纸标",
+        "Label"
+      ],
+      "detail": [
+        "圆角纸标有真实厚度和封闭边缘，推出后可投射对应阴影。",
+        "A closed rounded paper surface with real thickness casts the corresponding shadow."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "liaose 字标",
+        "liaose wordmark"
+      ],
+      "short": [
+        "字标",
+        "Logo"
+      ],
+      "detail": [
+        "保留原始手写 Logo 路径，与纸标及产品文字分层。",
+        "Original handwritten logo paths separate from the paper and product lettering."
+      ]
+    },
+    {
+      "key": "name",
+      "node": "ProductPrint",
+      "title": [
+        "产品名称与说明",
+        "Product name and copy"
+      ],
+      "short": [
+        "文字",
+        "Print"
+      ],
+      "detail": [
+        "BEACH MAGIC、SUGAR SCRUB、底部说明及彩色分隔线独立展开。",
+        "Product title, subtitle, footer and coloured rule form a separate print layer."
+      ]
+    }
+  ],
+  "review": {
+    "appearance": {
+      "glass": true,
+      "labelShadows": true,
+      "studio": {
+        "background": "#f4c8d6",
+        "ink": "#491517"
+      },
+      "referenceGlass": true
+    },
+    "explosion": {
+      "mobilePrintSpread": 0.55,
+      "offsets": {
+        "cap": [
+          0.45,
+          2.8,
+          0
+        ],
+        "liner": [
+          0.45,
+          1.4,
+          0
+        ],
+        "body": [
+          0.45,
+          0,
+          0
+        ],
+        "label": [
+          -0.55,
+          0,
+          0.75
+        ],
+        "print": [
+          -1.6,
+          0.2,
+          1.35
+        ],
+        "name": [
+          -1.6,
+          -0.16,
+          1.45
+        ]
+      },
+      "rotations": {
+        "cap": [
+          -0.42,
+          -0.25,
+          -0.08
+        ],
+        "liner": [
+          0.12,
+          0.05,
+          -0.06
+        ]
+      },
+      "scales": {
+        "label": 1,
+        "print": 1,
+        "name": 1
+      },
+      "camera": {
+        "centerX": [
+          0,
+          -0.25
+        ],
+        "centerY": [
+          1.2,
+          2.7
+        ],
+        "height": [
+          3.2,
+          6.3
+        ],
+        "width": [
+          3.6,
+          5.6
+        ]
+      }
+    }
+  }
+}

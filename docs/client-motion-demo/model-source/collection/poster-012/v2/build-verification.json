@@ -1,0 +1,252 @@
+{
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/beach-magic/beach-magic.blend",
+  "coordinateScale": 30,
+  "sourceUp": "+Z",
+  "sourceFront": "-Y",
+  "exportUp": "+Y",
+  "originalMechanicalMeshVertexAndPolygonCountsPreserved": true,
+  "mechanicalWorldCoordinateMaxErrors": {
+    "Jar • illustrative helical neck thread": 0.0,
+    "Jar • lower neck shoulder bead": 0.0,
+    "Jar • wall, rounded base, shoulder and open mouth": 0.0,
+    "Cap • fluted shell and solid roof": 2.384185791015625e-07,
+    "Cap • illustrative internal thread": 2.384185791015625e-07,
+    "Cap • inner roof reinforcement": 0.0,
+    "Inner lid • shallow disk, press-in skirt and rolled perimeter": 2.384185791015625e-07,
+    "Inner lid • short flexible pull tongue": 2.384185791015625e-07
+  },
+  "roots": {
+    "OuterCap": {
+      "position": [
+        0.0,
+        0.0,
+        1.934999942779541
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Cap • fluted shell and solid roof",
+          "vertices": 24962,
+          "polygons": 49920,
+          "materials": [
+            "WarmWhiteCap"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Cap • illustrative internal thread",
+          "vertices": 4450,
+          "polygons": 8880,
+          "materials": [
+            "WarmWhiteCapInterior"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Cap • inner roof reinforcement",
+          "vertices": 1280,
+          "polygons": 2048,
+          "materials": [
+            "WarmWhiteCapInterior"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "InnerLid": {
+      "position": [
+        0.0,
+        0.0,
+        2.196000099182129
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Inner lid • shallow disk, press-in skirt and rolled perimeter",
+          "vertices": 13314,
+          "polygons": 26624,
+          "materials": [
+            "WarmWhiteInnerLid"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Inner lid • short flexible pull tongue",
+          "vertices": 1170,
+          "polygons": 2336,
+          "materials": [
+            "WarmWhiteInnerLid"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "Jar": {
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Jar • illustrative helical neck thread",
+          "vertices": 3970,
+          "polygons": 7920,
+          "materials": [
+            "Beach Magic neutral clear empty jar"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Jar • lower neck shoulder bead",
+          "vertices": 1280,
+          "polygons": 2048,
+          "materials": [
+            "Beach Magic neutral clear empty jar"
+          ],
+          "visibleShadow": true
+        },
+        {
+          "name": "Jar • wall, rounded base, shoulder and open mouth",
+          "vertices": 7938,
+          "polygons": 15872,
+          "materials": [
+            "Beach Magic neutral clear empty jar"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "PaperLabel": {
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "Beach Magic physical rounded paper label",
+          "vertices": 22850,
+          "polygons": 23324,
+          "materials": [
+            "Beach Magic ivory paper and gold border - opaque",
+            "Beach Magic unprinted ivory paper back and sealed edge"
+          ],
+          "visibleShadow": true
+        }
+      ]
+    },
+    "LogoPrint": {
+      "position": [
+        0.0,
+        -0.000750000006519258,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "LogoPrint",
+          "vertices": 4257,
+          "polygons": 8192,
+          "materials": [
+            "Beach Magic original logo ink - shadowless alpha"
+          ],
+          "visibleShadow": false
+        }
+      ]
+    },
+    "ProductPrint": {
+      "position": [
+        0.0,
+        -0.001500000013038516,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "meshes": [
+        {
+          "name": "ProductPrint",
+          "vertices": 4257,
+          "polygons": 8192,
+          "materials": [
+            "Beach Magic original product ink - shadowless alpha"
+          ],
+          "visibleShadow": false
+        }
+      ]
+    }
+  },
+  "worldBoundsClosed": {
+    "min": [
+      -1.3949999809265137,
+      -1.4010000228881836,
+      0.053999997675418854
+    ],
+    "max": [
+      1.3949999809265137,
+      1.3949999809265137,
+      2.3519999980926514
+    ],
+    "size": [
+      2.7899999618530273,
+      2.7960000038146973,
+      2.2980000004172325
+    ]
+  },
+  "paperThickness": 0.0012,
+  "paperVolume": 0.003477110344360703,
+  "paperClosedManifold": true,
+  "paperFrontRadius": 1.3994999899099874,
+  "paperBackRadius": 1.3982999899099873,
+  "paperBoundarySamples": 476,
+  "paperRadialRings": 24,
+  "paperMaxFrontTriangleAngleSpan": 0.044159095528957026,
+  "paperMaxFrontChordSagBound": 0.00034111876310157743,
+  "paperFrontBackNonintersectionRadialMargin": 0.0008588812368984225,
+  "labelOriginalAngleRange": [
+    -0.8200000245669112,
+    0.8200000245669112
+  ],
+  "labelOriginalZRange": [
+    0.2864999771118164,
+    1.5614999532699585
+  ],
+  "paperBackMinusJarOuterRadius": 0.0032999899099872554,
+  "printCarrierShadowDisabled": true,
+  "containsFormula": false,
+  "sourcePoseFrames": [
+    1,
+    31,
+    61
+  ],
+  "glbAssembled": true,
+  "glbAnimationsRequested": false,
+  "glbBytes": 3626268,
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

@@ -1,0 +1,29 @@
+{
+  "browser": {
+    "roi": [
+      790,
+      640,
+      930,
+      890
+    ],
+    "pixelsOver2": 1801,
+    "maxDifference": 32,
+    "meanDifference": 1.3621714285714286,
+    "width": 1237,
+    "height": 983
+  },
+  "blender": {
+    "roi": [
+      350,
+      1240,
+      1080,
+      1290
+    ],
+    "pixelsOver2": 25205,
+    "maxDifference": 82,
+    "meanDifference": 12.683917808219178,
+    "width": 1200,
+    "height": 1500
+  },
+  "method": "Same pose with paper casting disabled. Browser uses exact .5 pose via reduced motion; ROI is exposed right glass wall/base. Blender ROI is the exposed jar base below the paper; includes small Monte Carlo noise. No ink carrier casts a rectangular shadow."
+}

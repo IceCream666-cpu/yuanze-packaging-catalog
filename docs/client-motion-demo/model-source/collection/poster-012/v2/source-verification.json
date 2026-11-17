@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "mechanicsPreservedByBuildComparison": true,
+  "roots": [
+    "OuterCap",
+    "InnerLid",
+    "Jar",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "paperClosedManifold": true,
+  "paperVolume": 0.003477110344360703,
+  "paperThickness": 0.001200127876303858,
+  "paperJarMinimumRadialClearance": 0.0032998470140408465,
+  "paperMaxFrontTriangleAngleSpan": 0.044159095528957026,
+  "paperMaxFrontChordSagBound": 0.00034111877858483295,
+  "paperFrontBackNonintersectionRadialMargin": 0.0008590090977189657,
+  "paperBackAndEdgeUnprinted": true,
+  "paperFaceMaterialCounts": {
+    "printedFront": 11424,
+    "unprintedBackAndEdge": 11900
+  },
+  "logoAndProductMeshRootsVisible": true,
+  "inkClearanceFromPaper": {
+    "LogoPrint": 0.0005117873663313954,
+    "ProductPrint": 0.001023778857967006
+  },
+  "printCarrierShadowDisabled": true,
+  "packedRasterSize": [
+    2048,
+    1280
+  ],
+  "sourcePoses": [
+    {
+      "frame": 1,
+      "progress": 0,
+      "rootLocations": {
+        "OuterCap": [
+          0.0,
+          0.0,
+          1.934999942779541
+        ],
+        "InnerLid": [
+          0.0,
+          0.0,
+          2.196000099182129
+        ],
+        "Jar": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "PaperLabel": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "LogoPrint": [
+          0.0,
+          -0.000750000006519258,
+          0.0
+        ],
+        "ProductPrint": [
+          0.0,
+          -0.001500000013038516,
+          0.0
+        ]
+      }
+    },
+    {
+      "frame": 31,
+      "progress": 0.5,
+      "rootLocations": {
+        "OuterCap": [
+          0.22499999403953552,
+          0.0,
+          3.3350000381469727
+        ],
+        "InnerLid": [
+          0.22499999403953552,
+          0.0,
+          2.8960001468658447
+        ],
+        "Jar": [
+          0.22499999403953552,
+          0.0,
+          0.0
+        ],
+        "PaperLabel": [
+          -0.2750000059604645,
+          -0.375,
+          0.0
+        ],
+        "LogoPrint": [
+          -0.800000011920929,
+          -0.6757500171661377,
+          0.10000000149011612
+        ],
+        "ProductPrint": [
+          -0.800000011920929,
+          -0.7265000343322754,
+          -0.07999999821186066
+        ]
+      }
+    },
+    {
+      "frame": 61,
+      "progress": 1,
+      "rootLocations": {
+        "OuterCap": [
+          0.44999998807907104,
+          0.0,
+          4.734999656677246
+        ],
+        "InnerLid": [
+          0.44999998807907104,
+          0.0,
+          3.5960001945495605
+        ],
+        "Jar": [
+          0.44999998807907104,
+          0.0,
+          0.0
+        ],
+        "PaperLabel": [
+          -0.550000011920929,
+          -0.75,
+          0.0
+        ],
+        "LogoPrint": [
+          -1.600000023841858,
+          -1.3507499694824219,
+          0.20000000298023224
+        ],
+        "ProductPrint": [
+          -1.600000023841858,
+          -1.4515000581741333,
+          -0.1599999964237213
+        ]
+      }
+    }
+  ],
+  "glbRootNames": [
+    "OuterCap",
+    "InnerLid",
+    "Jar",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "glbAnimationCount": 0,
+  "glbEmbeddedImageCount": 3,
+  "glbBytes": 3626268,
+  "sourceBytes": 3738349,
+  "visualReviewPending": true,
+  "productionRegistered": false
+}

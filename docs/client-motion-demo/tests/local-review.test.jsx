@@ -11,6 +11,7 @@ const {transformSync} = createRequire(require.resolve('tsx/package.json'))('esbu
 const entries = [
   ['amber-ginger', '067', 'poster-067-v2.glb'],
   ['bath-trio', '080', 'poster-080-v2.glb'],
+  ['beach-magic-quality', '012', 'poster-012-v2.glb'],
   ['daily-emulsion-quality', '072', 'poster-072-v2.glb'],
   ['daily-hair-ritual', '085', 'poster-085-v2.glb'],
   ['essence-water', '068', 'poster-068-v3.glb'],

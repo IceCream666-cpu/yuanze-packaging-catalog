@@ -1,0 +1,47 @@
+{
+  "on": {
+    "progress": 0.5,
+    "renderedProgress": 0.5,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.8,
+      0.1,
+      0.675
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "off": {
+    "progress": 0.5,
+    "renderedProgress": 0.5,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.8,
+      0.1,
+      0.675
+    ],
+    "components": [
+      "cap",
+      "liner",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 22,
+    "triangles": 329618
+  },
+  "reducedMotionForIdenticalPose": true
+}

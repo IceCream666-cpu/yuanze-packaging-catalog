@@ -1,0 +1,66 @@
+{
+  "product": "poster-012",
+  "version": "v2",
+  "status": "local-preview-complete",
+  "productionRegistered": false,
+  "frontendTests": 201,
+  "isolatedBuild": true,
+  "blenderVisualPoses": [
+    "closed",
+    "half",
+    "expanded",
+    "rotated"
+  ],
+  "browserVisualPoses": [
+    "closed",
+    "half",
+    "expanded",
+    "rotated",
+    "bottom",
+    "reset"
+  ],
+  "simulatedMobile": [
+    390,
+    844
+  ],
+  "originalPosterRoundTrip": true,
+  "paperShadowPairedChecks": {
+    "browser": {
+      "roi": [
+        790,
+        640,
+        930,
+        890
+      ],
+      "pixelsOver2": 1801,
+      "maxDifference": 32,
+      "meanDifference": 1.3621714285714286,
+      "width": 1237,
+      "height": 983
+    },
+    "blender": {
+      "roi": [
+        350,
+        1240,
+        1080,
+        1290
+      ],
+      "pixelsOver2": 25205,
+      "maxDifference": 82,
+      "meanDifference": 12.683917808219178,
+      "width": 1200,
+      "height": 1500
+    },
+    "method": "Same pose with paper casting disabled. Browser uses exact .5 pose via reduced motion; ROI is exposed right glass wall/base. Blender ROI is the exposed jar base below the paper; includes small Monte Carlo noise. No ink carrier casts a rectangular shadow."
+  },
+  "files": {
+    "packaging-assets/poster-012-v2.glb": {
+      "bytes": 3626268,
+      "sha256": "1181aa8d8738901d12c6cee3790007fd09143f4007e3124cea8a0b398deda643"
+    },
+    "model-source/collection/poster-012/v2/poster-012-v2.blend": {
+      "bytes": 3738349,
+      "sha256": "8aae9ce3ef80fac6c4d28d45decf07cbd89ba326e5cd0188e84ea4a8b9610c42"
+    }
+  }
+}

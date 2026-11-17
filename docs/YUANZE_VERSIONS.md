@@ -514,3 +514,7 @@ Amber Ginger Shampoo完整黑色泵头与较粗透明长吸管整体展开；编
 11:22:21 原子发布，11:26:29 完成正式 HTTPS 验收；源提交 `d4b07ee`。仅 index.html、preview.js 及 manifest 改变；全部32模型、68海报/31首页、样式和3D场景分块保持原摘要，072 v2仍本地预览，086未注册。514项正式资源及旧版备份完整核验，6820项展厅外文件和PID33772保持，无服务重启、无业务数据写入。
 
 201前端、13包材发布、5发布计划测试通过；2项变化资源完整SHA、32模型Range、37条排除资源、三角色权限及匿名/退出检查通过。正式Ego Lite确认1.58标题，049预取打开消费1个GLB请求，半展开、完全展开后90°旋转正常；关闭焦点恢复后等待2秒，没有额外模型请求。此前约38.8%首帧改善为本地模拟网络实验，未作为线上或真机指标。回执 [client158-release.json](client-motion-demo/client158-release.json)，证据 [client158](client-motion-demo/review-evidence/loading-20261117/client158/)。服务器回退目录 `/opt/yuanze-reference/backups/client1.58-loading-optimization-20261117`。发布验收后继续012 Beach Magic本地Blender优化。
+
+
+## 2026-11-17 — 012 Beach Magic v2 本地完成
+client1.58发布验收后完成012v2：完整外盖、带短舌内盖、透明空罐、实体圆角纸标、Logo、产品文字六层。原机械结构保留；修复曲面三角明暗斑，背/边不印金框，Blender与网页纸标接影实测通过。四姿态、底视、复位和模拟手机检查完成，201前端测试通过。仅独立预览 http://127.0.0.1:8785/beach-magic-quality.html ，未换正式012资源；072v2仍本地。下一未做款056。详见 [012 QA](client-motion-demo/review-evidence/beach-magic/v2/QA.md)。

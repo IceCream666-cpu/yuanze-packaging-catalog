@@ -1,0 +1,43 @@
+{
+  "source": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/beach-magic/front.svg",
+  "sourceSha256": "2339eb4ac9404fac30fa1913bd14d2ba56955bd84fca792e7d816e322ebaf797",
+  "viewBox": "0 0 1600 1000",
+  "rasterSize": [
+    2048,
+    1280
+  ],
+  "layers": {
+    "paper": {
+      "sourceChildIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "pathCount": 0
+    },
+    "logo": {
+      "sourceChildIndices": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "pathCount": 1
+    },
+    "product": {
+      "sourceChildIndices": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9
+      ],
+      "pathCount": 48
+    }
+  },
+  "allSelectedVectorSubtreesUnchanged": true
+}

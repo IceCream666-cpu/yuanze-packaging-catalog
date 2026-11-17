@@ -21,6 +21,8 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
   const moisture = product.file === 'poster-049.glb';
   const moistureV2 = product.file === 'poster-049-v2.glb';
   const dailyEmulsionV2 = product.file === 'poster-072-v2.glb';
+  const beachMagicV2 = product.file === 'poster-012-v2.glb';
+  const glassLabelShadow = moistureV2 || dailyEmulsionV2 || beachMagicV2;
   const woodland = product.file === 'poster-042.glb';
   const pureVolume = product.file === 'poster-051.glb';
   const gentle = product.file === 'poster-044.glb';
@@ -216,7 +218,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
           m.onBeforeCompile = shader => {
             shader.fragmentShader = shader.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>
               float wallEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 9.0);
-              gl_FragColor.rgb *= 1.0 - ${isOilGlass ? ".08" : ".18"} * wallEdge;
+              gl_FragColor.rgb *= 1.0 - ${isOilGlass || beachMagicV2 ? ".08" : ".18"} * wallEdge;
             `);
           };
           o.castShadow=false; o.receiveShadow=false;
@@ -264,17 +266,17 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
-      if (handGel || softBodyGlass || amberGinger || essenceWater || moistureV2 || dailyEmulsionV2) {
+      if (handGel || softBodyGlass || amberGinger || essenceWater || glassLabelShadow) {
         // The woven RGB textures have no cutouts; include their rear faces in the glass transmission pass.
         if (m.name === 'Warm ivory woven label' || m.name === 'Black woven side flag') {
           m.transparent=false; m.opacity=1; m.alphaTest=0;
         }
-        if (component === parts.body && (!(amberGinger || essenceWater || moistureV2 || dailyEmulsionV2) || m.transmission > .5)) {
+        if (component === parts.body && (!(amberGinger || essenceWater || glassLabelShadow) || m.transmission > .5)) {
           // The mesh already contains both hollow-wall interfaces; avoid Three's extra DoubleSide back-face pass.
           m.side=T.FrontSide; m.depthWrite=false; m.thickness=(amberGinger || essenceWater) ? .12 : .045;
           // shortcut: retain a small surface response for real-time shadows; full transmitted shadows need path tracing.
-          if (amberGinger || essenceWater || moistureV2 || dailyEmulsionV2) m.transmission=.94;
-          if (moistureV2 || dailyEmulsionV2) {
+          if (amberGinger || essenceWater || glassLabelShadow) m.transmission=.94;
+          if (glassLabelShadow) {
             o.receiveShadow=true;
             const glassShader=m.onBeforeCompile;
             // shortcut: attenuate transmitted glass using the real label shadow map; full spectral transmission requires path tracing.
@@ -474,7 +476,7 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
     let viewHeight = explosion ? Math.max(interpolate(explosion.camera.height)+tiltHeadroom,interpolate(explosion.camera.width)/aspect) : Math.max((b5 ? 4.2+current*2.1 : golden ? 4.2+current*3.8 : pdrn ? 4.2+current*4.3+intermediateHeadroom*1.3 : gentle ? 4.2+current*3.0 : moisture ? 4.2+current*.85 : woodland ? 4.2+current*.90 : pureVolume || coastal ? 4.2+current*2.3 : pump || collection ? 4.2 + current*2.0 : 4.2 + current*3.05 + intermediateHeadroom*1.2) + tiltHeadroom, (pdrn ? 4.25 : b5 ? 3.8+current*2.0 : golden ? 3.9+current*3.4 : pureVolume ? 3.8+current*3.4 : woodland || coastal ? 3.65+current*2.75 : moisture || gentle ? 3.65+current*2.15 : product.wide ? 4.8 : 3.65)/aspect);
     let centerY = assemblyCenter + focus;
     let centerX = explosion ? interpolate(explosion.camera.centerX) : b5 ? -1.65*current : golden ? -1.45*current : pureVolume ? -.75*current : woodland || coastal ? -.85*current : moisture || gentle ? -.65*current : 0;
-    if(narrowReview) {
+    if(narrowReview || beachMagicV2) {
       root.updateMatrixWorld(true);
       const bounds=new T.Box3().setFromObject(root),size=bounds.getSize(new T.Vector3()),center=bounds.getCenter(new T.Vector3());
       centerX=center.x;centerY=center.y;
