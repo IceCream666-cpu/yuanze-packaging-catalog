@@ -1,0 +1,15 @@
+{
+  "candidate": "client1.57 local model review",
+  "product": "poster-049",
+  "file": "poster-049-v2.glb",
+  "sha256": "df68c13d48303cb76edcbdb8aadd1414583e61834803fa5dc1e4bc8d17bd7163",
+  "bytes": 2720964,
+  "embeddedResources": true,
+  "prior32ModelHashesUnchanged": true,
+  "frontendTests": 196,
+  "buildPassed": true,
+  "published": false,
+  "browserTaskSpace": 48,
+  "mobileViewport": "390x844 simulated",
+  "url": "http://127.0.0.1:8785/moisture-quality.html"
+}

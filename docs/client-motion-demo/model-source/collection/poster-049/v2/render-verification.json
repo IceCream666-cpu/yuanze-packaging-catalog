@@ -1,0 +1,51 @@
+{
+  "engine": "Cycles",
+  "device": "Metal",
+  "samples": 64,
+  "resolution": [
+    1200,
+    1500
+  ],
+  "poses": [
+    {
+      "name": "closed",
+      "frame": 1,
+      "camera": [
+        0.43947678804397583,
+        -10.004615783691406,
+        2.4353582859039307
+      ]
+    },
+    {
+      "name": "half",
+      "frame": 31,
+      "camera": [
+        0.2443268895149231,
+        -10.408398628234863,
+        2.9861559867858887
+      ]
+    },
+    {
+      "name": "expanded",
+      "frame": 61,
+      "camera": [
+        0.28612008690834045,
+        -10.814114570617676,
+        3.519752264022827
+      ]
+    },
+    {
+      "name": "rotated",
+      "frame": 61,
+      "camera": [
+        4.515161514282227,
+        -10.82863998413086,
+        4.498779296875
+      ]
+    }
+  ],
+  "physicalLabelShadow": true,
+  "inkShadowDisabled": true,
+  "pairedShadowControl": true,
+  "browserVerifiedSeparately": false
+}

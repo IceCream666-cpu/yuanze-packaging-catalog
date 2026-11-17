@@ -1,0 +1,23 @@
+{
+  "browser": {
+    "changedPixelsAbove3": 9117,
+    "maxDifference": 34,
+    "bounds": [
+      546,
+      489,
+      820,
+      907
+    ],
+    "control": "isolated single canvas, identical pose; opaque paper shadow off through carrierOpacity [1,1]"
+  },
+  "blender": {
+    "changedPixelsAbove3": 10547,
+    "maxDifference": 24,
+    "bounds": [
+      0,
+      0,
+      1200,
+      1500
+    ]
+  }
+}

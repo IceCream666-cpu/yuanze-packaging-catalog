@@ -1693,3 +1693,48 @@ test('Sculptural Pump v2 keeps all pump pieces and long hollow tube fitted throu
  }finally{api?.dispose();env.close();}
  assert.deepEqual(PACKAGING_PRODUCTS['poster-071'],product,'approved v2 is registered without changing the reviewed configuration');
 });
+
+test('Moisture v2 retains the complete pump with a long hollow tube, separates ink and receives label shadows',async()=>{
+ const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-049/v2/review-product.json',import.meta.url),'utf8'));
+ const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+ const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+ const nodes=gltf.nodes.map(n=>{
+  const spec=gltf.materials?.[gltf.meshes?.[n.mesh]?.primitives[0]?.material];
+  const m=new Three.MeshPhysicalMaterial();m.name=spec?.name??'';m.transmission=spec?.extensions?.KHR_materials_transmission?.transmissionFactor??0;
+  m.transparent=spec?.alphaMode==='BLEND';
+  if(spec?.pbrMetallicRoughness?.baseColorTexture)m.map=new Three.Texture();
+  const o='mesh' in n?new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),m):new Three.Group();o.name=n.name;
+  if(n.matrix)o.applyMatrix4(new Three.Matrix4().fromArray(n.matrix));else{o.position.fromArray(n.translation??[0,0,0]);o.quaternion.fromArray(n.rotation??[0,0,0,1]);o.scale.fromArray(n.scale??[1,1,1]);}return o;
+ });
+ gltf.nodes.forEach((n,i)=>n.children?.forEach(j=>nodes[i].add(nodes[j])));
+ const model=new Three.Group();gltf.scenes[gltf.scene??0].nodes.forEach(i=>model.add(nodes[i]));
+ const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+ assert.deepEqual(model.children.map(o=>o.name).sort(),product.parts.map(p=>p.node).sort());
+ const tube=model.getObjectByName('Long hollow dip tube with open inlet');assert.equal(tube.parent,parts.pump);
+ for(const name of ['Closure','PumpStem','Actuator'])assert.equal(model.getObjectByName(name).parent,parts.pump);
+ const node=gltf.nodes.find(n=>n.name===tube.name),accessor=gltf.accessors[gltf.meshes[node.mesh].primitives[0].attributes.POSITION];
+ assert.ok(Math.max(...accessor.max.map((v,i)=>v-accessor.min[i]))>1.8,'long inlet reaches the bottle floor');
+ let api;const env=harness({product,parse:()=>Promise.resolve({scene:model})});
+ try{
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  const flush=()=>{const f=[...env.frames.values()];env.frames.clear();f.forEach(fn=>fn(16));};
+  const rest=Object.fromEntries(Object.entries(parts).map(([k,o])=>[k,o.position.clone()]));
+  const fitted=parts.pump.children.map(o=>o.matrix.toArray());
+  const paper=parts.label.children[0];assert.equal(paper.castShadow,true);assert.equal(paper.receiveShadow,true);
+  parts.body.traverse(o=>{if(o.isMesh){
+   assert.equal(o.receiveShadow,true);
+   const shader={fragmentShader:'#include <shadowmap_pars_fragment>\n#include <dithering_fragment>'};o.material.onBeforeCompile(shader);
+   assert.ok(shader.fragmentShader.includes('getShadowMask()'),'actual label depth map must shade glass');
+   assert.ok(shader.fragmentShader.includes('wallEdge'),'keep the original glass edge treatment');
+  }});
+  for(const k of ['logo','print'])parts[k].traverse(o=>{if(o.isMesh)assert.equal(o.castShadow,false,'transparent ink carrier must not cast a rectangle');});
+  assert.equal(tube.material.transmission,0);assert.equal(tube.material.depthWrite,false);
+  for(const p of [0,.5,1,.5,0]){
+   api.setProgress(p);flush();parts.pump.children.forEach((o,i)=>assert.deepEqual(o.matrix.toArray(),fitted[i]));
+   assert.ok(Math.abs(parts.pump.position.y-rest.pump.y-2.05*p)<1e-8);
+   if(p)assert.ok(parts.print.position.z-rest.print.z>parts.label.position.z-rest.label.z);
+   else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
+  }
+ }finally{api?.dispose();env.close();}
+ assert.equal(PACKAGING_PRODUCTS['poster-049'].file,'poster-049.glb','candidate is local review only');
+});

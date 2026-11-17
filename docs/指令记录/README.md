@@ -68,3 +68,7 @@
 - [20261113-172142-独立审查模型](20261113-172142-独立审查模型.md)：用户选择独立审查。
 
 - 本会话最新（2026-11-17）：[32款模型审查报告](../client-motion-demo/review-evidence/all-models-20261113/审查报告.md)本地完成；128张主截图、8张对照图。仅审查，模型和线上版本未改；080另两配色视觉复核待补。
+
+- 本会话当前：[五款优化首款049](20261117-095252-五款优化首款049.md)：依序049→072→012→056→084，先完成049本地预览。
+
+- 2026-11-17: 049 v2 local preview complete, 1/5; 196 tests passed; not published. Next: 072. [QA](../client-motion-demo/review-evidence/moisture/v2/QA.md).

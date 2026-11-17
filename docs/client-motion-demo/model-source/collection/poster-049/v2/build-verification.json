@@ -1,0 +1,29 @@
+{
+  "roots": [
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoInk",
+    "ProductPrint"
+  ],
+  "preservedMeshes": [
+    "Clear wide-mouth bottle",
+    "Glass neck bead",
+    "Visible bottle thread",
+    "Silver wide screw collar",
+    "Fine vertical collar flutes",
+    "Inner closure polymer seat",
+    "Silver stepped pump housing",
+    "Silver actuator shaft",
+    "Flattened dispensing lever",
+    "Recessed dispensing outlet"
+  ],
+  "tubeBottomZ": 0.17163265306122447,
+  "tubeTopZ": 2.0477551020408162,
+  "tubeOuterDiameter": 0.08285714285714287,
+  "tubeInnerDiameter": 0.054448979591836734,
+  "openBore": true,
+  "containsFormula": false,
+  "illustrativeInterior": true,
+  "source": "../poster-049.blend"
+}

@@ -19,6 +19,7 @@ function disposeObjects(...objects) {
 export async function mountPackagingScene(host, { onError, onReady, modelRequest, signal, product = PACKAGING_PRODUCTS['poster-012'], design = {background:'#f4c8d6',name:'Beach Magic'} } = {}) {
   const pdrn = product.file === 'poster-039.glb';
   const moisture = product.file === 'poster-049.glb';
+  const moistureV2 = product.file === 'poster-049-v2.glb';
   const woodland = product.file === 'poster-042.glb';
   const pureVolume = product.file === 'poster-051.glb';
   const gentle = product.file === 'poster-044.glb';
@@ -262,18 +263,28 @@ export async function mountPackagingScene(host, { onError, onReady, modelRequest
       // shortcut: Blend the inner tube in WebGL's single transmission pass; use multipass rendering if accurate nested refraction is required.
       if ((b5 || appearance?.pipette) && m.transmission > .5) m.depthWrite=false;
       if ((b5 || appearance?.pipette) && m.name.toLowerCase().includes('pipette')) {m.transmission=0; m.transparent=true; m.opacity=.38; m.depthWrite=false; m.side=T.FrontSide; o.renderOrder=1;}
-      if (handGel || softBodyGlass || amberGinger || essenceWater) {
+      if (handGel || softBodyGlass || amberGinger || essenceWater || moistureV2) {
         // The woven RGB textures have no cutouts; include their rear faces in the glass transmission pass.
         if (m.name === 'Warm ivory woven label' || m.name === 'Black woven side flag') {
           m.transparent=false; m.opacity=1; m.alphaTest=0;
         }
-        if (component === parts.body && (!(amberGinger || essenceWater) || m.transmission > .5)) {
+        if (component === parts.body && (!(amberGinger || essenceWater || moistureV2) || m.transmission > .5)) {
           // The mesh already contains both hollow-wall interfaces; avoid Three's extra DoubleSide back-face pass.
           m.side=T.FrontSide; m.depthWrite=false; m.thickness=(amberGinger || essenceWater) ? .12 : .045;
           // shortcut: retain a small surface response for real-time shadows; full transmitted shadows need path tracing.
-          if (amberGinger || essenceWater) m.transmission=.94;
+          if (amberGinger || essenceWater || moistureV2) m.transmission=.94;
+          if (moistureV2) {
+            o.receiveShadow=true;
+            const glassShader=m.onBeforeCompile;
+            // shortcut: attenuate transmitted glass using the real label shadow map; full spectral transmission requires path tracing.
+            m.onBeforeCompile=shader=>{
+              glassShader(shader);
+              shader.fragmentShader=shader.fragmentShader.replace('#include <shadowmap_pars_fragment>', '#include <shadowmap_pars_fragment>\n#include <shadowmask_pars_fragment>')
+                .replace('#include <dithering_fragment>', '#include <dithering_fragment>\ngl_FragColor.rgb *= mix(.88, 1.0, getShadowMask());');
+            };
+          }
         }
-        if (m.name === 'Transparent polyethylene dip tube' || (softBodyGlass && m.name === 'Clear polyethylene hollow suction tube') || (amberGinger && m.name === 'Amber clear polyethylene hollow dip tube')) {
+        if (m.name === 'Transparent polyethylene dip tube' || ((softBodyGlass || moistureV2) && m.name === 'Clear polyethylene hollow suction tube') || (amberGinger && m.name === 'Amber clear polyethylene hollow dip tube')) {
           // shortcut: composite the nested clear tube after glass; exact nested refraction needs a multipass renderer.
           m.transmission=0; m.transparent=true; m.opacity=.55; m.depthWrite=false; m.side=T.FrontSide;
           m.color.set('#e7ece8'); m.roughness=.06; m.specularIntensity=.8; m.envMapIntensity=.65;
