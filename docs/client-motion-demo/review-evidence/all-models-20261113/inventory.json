@@ -1,0 +1,4180 @@
+[
+  {
+    "id": "poster-012",
+    "name": "Beach Magic",
+    "file": "beach-magic-packaging.glb",
+    "bytes": 2395680,
+    "sha256": "ffe114410d29b407fa579658bbdabc53781388ccf043e400d3fe734ed6244d6f",
+    "triangles": 132032,
+    "meshes": 10,
+    "nodes": 13,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label-without-logo",
+        "size": [
+          4096,
+          2560
+        ]
+      },
+      {
+        "name": "logo-only",
+        "size": [
+          4096,
+          2560
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "ClearPolymer",
+        "roughness": 0.054999999701976776,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.11999999731779099,
+            "clearcoatRoughnessFactor": 0.10000000149011612
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4700000286102295
+          }
+        }
+      },
+      {
+        "name": "BeachMagicLabel",
+        "roughness": 0.4000000059604645,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.07999999821186066,
+            "clearcoatRoughnessFactor": 0.30000001192092896
+          }
+        }
+      },
+      {
+        "name": "WarmWhiteCap",
+        "roughness": 0.28999999165534973,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.1599999964237213,
+            "clearcoatRoughnessFactor": 0.23999999463558197
+          }
+        }
+      },
+      {
+        "name": "WarmWhiteCapInterior",
+        "roughness": 0.3400000035762787,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "WarmWhiteInnerLid",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.07000000029802322,
+            "clearcoatRoughnessFactor": 0.28999999165534973
+          }
+        }
+      },
+      {
+        "name": "LogoPrintInk",
+        "roughness": 0.4000000059604645,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.07999999821186066,
+            "clearcoatRoughnessFactor": 0.30000001192092896
+          }
+        }
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-013",
+    "name": "Coral & Aqua",
+    "file": "poster-013.glb",
+    "bytes": 1064352,
+    "sha256": "26c00e9201d278fd085f243918ec108ba507ed48f5d7425aa7bf22da2b874688",
+    "triangles": 12352,
+    "meshes": 8,
+    "nodes": 13,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1600,
+          880
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1600,
+          880
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Coral Aqua neutral clear glass",
+        "roughness": 0.02800000086426735,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Smooth aqua polypropylene lid",
+        "roughness": 0.28999999165534973,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Cream lift-out liner",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Blank warm cream paper label material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Complete logo name and two-colour border material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "studio": {
+        "background": "#c5e5e3",
+        "ink": "#174c50"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-039",
+    "name": "PDRN Capsule Cream",
+    "file": "poster-039.glb",
+    "bytes": 914020,
+    "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec",
+    "triangles": 40672,
+    "meshes": 10,
+    "nodes": 14,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "print",
+        "size": [
+          1600,
+          992
+        ]
+      },
+      {
+        "name": "label",
+        "size": [
+          1600,
+          992
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "PDRN neutral clear glass",
+        "roughness": 0.02800000086426735,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "PDRN ivory polypropylene",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "PDRN polished silver",
+        "roughness": 0.07500000298023224,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "PDRN independent wordmark",
+        "roughness": 0.4399999976158142,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "PDRN product-name print",
+        "roughness": 0.4399999976158142,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-042",
+    "name": "Woodland",
+    "file": "poster-042.glb",
+    "bytes": 1639380,
+    "sha256": "ab88f9f06c4598dc4d2e000998bef79c4dac73dba6c680b8646c9021ecd9ae18",
+    "triangles": 43780,
+    "meshes": 8,
+    "nodes": 14,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          813,
+          1613
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1220,
+          2420
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Woodland clear thick mouth ring",
+        "roughness": 0.02500000037252903,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Woodland transparent amber glass",
+        "roughness": 0.03500000014901161,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Woodland black woodgrain substrate",
+        "roughness": 0.5600000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.2800000011920929
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Woodland warm ivory printing",
+        "roughness": 0.6700000166893005,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Woodland glossy black spherical cap",
+        "roughness": 0.07500000298023224,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.2800000011920929,
+            "clearcoatRoughnessFactor": 0.054999999701976776
+          }
+        }
+      },
+      {
+        "name": "Woodland dark polymer stopper insert",
+        "roughness": 0.3400000035762787,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-044",
+    "name": "Gentle Cleansing",
+    "file": "poster-044.glb",
+    "bytes": 2377084,
+    "sha256": "8e08907ec86c205350af19eab2184cb0c896c93f86dad89aa95a92a692e50868",
+    "triangles": 79342,
+    "meshes": 16,
+    "nodes": 24,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          900,
+          1138
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1640,
+          3280
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Gentle neutral clear bottle wall",
+        "roughness": 0.02500000037252903,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Gentle clear thin protective cover",
+        "roughness": 0.04500000178813934,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Gentle pearl white frosted oval",
+        "roughness": 0.7900000214576721,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.23999999463558197
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Gentle complete black printing",
+        "roughness": 0.6700000166893005,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Gentle satin white foamer head",
+        "roughness": 0.2800000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Gentle recessed outlet interior",
+        "roughness": 0.44999998807907104,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Gentle hidden pump polymer",
+        "roughness": 0.41999998688697815,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Gentle clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9800000190734863
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Gentle glossy neutral white closure",
+        "roughness": 0.23000000417232513,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-047",
+    "name": "Coastal",
+    "file": "poster-047.glb",
+    "bytes": 4731120,
+    "sha256": "b552317a24102df8e49eb13f6c8cd4f8a36a1ed1f8b3f910631050bc76e7421a",
+    "triangles": 83712,
+    "meshes": 4,
+    "nodes": 8,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "cork-normal",
+        "size": [
+          1536,
+          512
+        ]
+      },
+      {
+        "name": "cork-color",
+        "size": [
+          1536,
+          512
+        ]
+      },
+      {
+        "name": "label",
+        "size": [
+          1275,
+          1080
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1700,
+          1440
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Coastal neutral clear thick glass",
+        "roughness": 0.02500000037252903,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Coastal coarse natural cork",
+        "roughness": 0.8399999737739563,
+        "metalness": 0,
+        "normalMap": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.30000001192092896
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Coastal warm uncoated paper",
+        "roughness": 0.7599999904632568,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.11999999731779099
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Coastal complete dark print",
+        "roughness": 0.6600000262260437,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-049",
+    "name": "Moisture Shampoo",
+    "file": "poster-049.glb",
+    "bytes": 1577136,
+    "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+    "triangles": 70718,
+    "meshes": 12,
+    "nodes": 19,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1500,
+          1740
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1500,
+          1740
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Moisture neutral clear glass",
+        "roughness": 0.02500000037252903,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Moisture ivory paper stock",
+        "roughness": 0.7200000286102295,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.23999999463558197
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Moisture complete black print",
+        "roughness": 0.6600000262260437,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Moisture satin silver",
+        "roughness": 0.1599999964237213,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Moisture recessed nozzle interior",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Moisture hidden ivory insert",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-051",
+    "name": "Pure Volume",
+    "file": "poster-051.glb",
+    "bytes": 4132088,
+    "sha256": "5fe310043990af1800fa65f4531922308ef12828a0b528f709af08fca56ee7f2",
+    "triangles": 247242,
+    "meshes": 58,
+    "nodes": 67,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1540,
+          1240
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1540,
+          1240
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Pure Volume clear label carrier",
+        "roughness": 0.23000000417232513,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.699999988079071
+          }
+        }
+      },
+      {
+        "name": "Pure Volume forest green lettering",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          }
+        }
+      },
+      {
+        "name": "Pure Volume satin ivory pump",
+        "roughness": 0.3100000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Pure Volume recessed dispensing mouth",
+        "roughness": 0.5,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Pure Volume hidden warm polymer",
+        "roughness": 0.46000000834465027,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Pure Volume clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9800000190734863
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Pure Volume narrow brushed gold ring",
+        "roughness": 0.23999999463558197,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Pure Volume soft matte ivory body",
+        "roughness": 0.47999998927116394,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Pure Volume dark forest braided cord",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Pure Volume cord raised strands",
+        "roughness": 0.27000001072883606,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-056",
+    "name": "Golden Face Oil",
+    "file": "poster-056.glb",
+    "bytes": 529536,
+    "sha256": "304fcf4183c9ee1ab1e99083affbd36de7ec59837cd5f07a570bdd077d6c888d",
+    "triangles": 21784,
+    "meshes": 9,
+    "nodes": 17,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1240,
+          700
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1240,
+          700
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Golden neutral frosted thick glass",
+        "roughness": 0.2800000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Golden translucent deep olive overcap",
+        "roughness": 0.06499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.2800000011920929,
+            "clearcoatRoughnessFactor": 0.054999999701976776
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.8600000143051147
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Golden clear label film",
+        "roughness": 0.2199999988079071,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Golden dark olive complete print",
+        "roughness": 0.6399999856948853,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.029999999329447746
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Golden olive cylindrical actuator",
+        "roughness": 0.11999999731779099,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Golden clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9800000190734863
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Golden olive stepped closure",
+        "roughness": 0.1599999964237213,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Golden olive pump stem",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-057",
+    "name": "B5 Serum",
+    "file": "poster-057.glb",
+    "bytes": 2490520,
+    "sha256": "d85643b593324d6ad820b672d821ef03f7a326eecb5acfc5d87a80b512cc6010",
+    "triangles": 97012,
+    "meshes": 8,
+    "nodes": 17,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1440,
+          1320
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1440,
+          1320
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "B5 clear label film",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "B5 complete warm white bottle print",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.029999999329447746
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "B5 warm white raised base logo",
+        "roughness": 0.36000001430511475,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "B5 satin white closure",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "B5 soft white dropper bulb",
+        "roughness": 0.41999998688697815,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "B5 neutral clear pipette glass",
+        "roughness": 0.02800000086426735,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "B5 soft matte white base",
+        "roughness": 0.550000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "B5 neutral clear bottle glass",
+        "roughness": 0.024000000208616257,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {},
+    "finishes": []
+  },
+  {
+    "id": "poster-058",
+    "name": "Luminous Face Oil",
+    "file": "poster-058.glb",
+    "bytes": 1953112,
+    "sha256": "0af9b4727ad7b99637874187bcf586483486feb19645d10685b1254e36322dc8",
+    "triangles": 37564,
+    "meshes": 6,
+    "nodes": 13,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1307,
+          1887
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1960,
+          2830
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Luminous neutral clear bottle glass",
+        "roughness": 0.024000000208616257,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Luminous warm cream paper substrate",
+        "roughness": 0.6700000166893005,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.1599999964237213
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Luminous complete dark lettering",
+        "roughness": 0.6700000166893005,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Luminous mirror silver collar",
+        "roughness": 0.07500000298023224,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Luminous soft white dropper bulb",
+        "roughness": 0.38999998569488525,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Luminous neutral clear pipette glass",
+        "roughness": 0.026000000536441803,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": true,
+      "clearLabel": false,
+      "metal": true,
+      "studio": {
+        "background": "#d6b899",
+        "ink": "#4f352c"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-059",
+    "name": "Essence Oil Duo",
+    "file": "poster-059.glb",
+    "bytes": 1220564,
+    "sha256": "cd6bc980c92bc0f6efcebbaac0648755bf4fa8453cea0eddadbee082ec4d9a3e",
+    "triangles": 58888,
+    "meshes": 12,
+    "nodes": 19,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1640,
+          1160
+        ]
+      },
+      {
+        "name": "print-biphase",
+        "size": [
+          1640,
+          1160
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1640,
+          1160
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Essence Duo neutral clear glass",
+        "roughness": 0.026000000536441803,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Essence Duo transparent label film.001",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Essence Duo transparent label film",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Biphase complete dark lettering",
+        "roughness": 0.6600000262260437,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Essence complete dark lettering",
+        "roughness": 0.6600000262260437,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Essence Duo glossy cream collar",
+        "roughness": 0.1899999976158142,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Essence Duo soft white bulb",
+        "roughness": 0.4000000059604645,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Essence Duo clear pipette glass",
+        "roughness": 0.02800000086426735,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": true,
+      "clearLabel": true,
+      "metal": false,
+      "studio": {
+        "background": "#ded0af",
+        "ink": "#3c3426"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-060",
+    "name": "AHA Body Mist",
+    "file": "poster-060.glb",
+    "bytes": 1111452,
+    "sha256": "a6f94ab8bd9a6af46b70a8f4471fb20fbc32e8271084c54dd53728afeb29768b",
+    "triangles": 31408,
+    "meshes": 8,
+    "nodes": 15,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1013,
+          1467
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1520,
+          2200
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "AHA neutral clear cylindrical glass",
+        "roughness": 0.024000000208616257,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "AHA brushed silver label foil",
+        "roughness": 0.30000001192092896,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "AHA complete dark lettering",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "AHA polished black atomizer polymer",
+        "roughness": 0.12999999523162842,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "AHA ivory spray outlet and connector",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "AHA clear pipette dip tube",
+        "roughness": 0.03999999910593033,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": true,
+      "clearLabel": false,
+      "metal": true,
+      "studio": {
+        "background": "#c2b3a0",
+        "ink": "#302a22"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-061",
+    "name": "Oil-Infused Body Cream",
+    "file": "poster-061.glb",
+    "bytes": 1103220,
+    "sha256": "f8c1f4f276bb8d7d43cd342cb9c3a6751a757e9efddb0068cc15dd384c27b485",
+    "triangles": 50608,
+    "meshes": 16,
+    "nodes": 23,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1560,
+          1480
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1560,
+          1480
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Body Cream frosted ivory glass",
+        "roughness": 0.38999998569488525,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.6200000047683716
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Body Cream transparent label carrier",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Body Cream transparent label carrier.001",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Body Cream complete dark print",
+        "roughness": 0.6600000262260437,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Body Cream complete dark print.001",
+        "roughness": 0.6600000262260437,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      },
+      {
+        "name": "Body Cream satin black pump polymer",
+        "roughness": 0.23000000417232513,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Body Cream clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4800000190734863
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": true,
+      "pipette": false,
+      "clearLabel": true,
+      "metal": false,
+      "studio": {
+        "background": "#d9d0bd",
+        "ink": "#312d25"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-062",
+    "name": "Micro Cream",
+    "file": "poster-062.glb",
+    "bytes": 279060,
+    "sha256": "3a9ac3b7e4c8bbfe610a4e038999a51b950e734815a367b16c66ba4daa648b34",
+    "triangles": 9480,
+    "meshes": 6,
+    "nodes": 11,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1480,
+          500
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1480,
+          500
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Micro neutral clear glass",
+        "roughness": 0.02500000037252903,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Micro polished black lid",
+        "roughness": 0.10499999672174454,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.25
+          }
+        }
+      },
+      {
+        "name": "Micro warm white liner",
+        "roughness": 0.3499999940395355,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Blank transparent Micro carrier material",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Complete Micro logo and product name material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": true,
+      "metal": false,
+      "studio": {
+        "background": "#d5e5e6",
+        "ink": "#142c32"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-063",
+    "name": "Moisture Cream",
+    "file": "poster-063.glb",
+    "bytes": 819544,
+    "sha256": "e02dd0d14d752a7954fe6042b75fb86c3a5a4ea39a018a5b0ae323ea07da066a",
+    "triangles": 13472,
+    "meshes": 8,
+    "nodes": 13,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1640,
+          500
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1640,
+          500
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Moisture frosted neutral glass",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Moisture brushed champagne metal",
+        "roughness": 0.27000001072883606,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Moisture ivory inner liner",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Blank copper foil curved label material",
+        "roughness": 0.3199999928474426,
+        "metalness": 0.7200000286102295,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Complete Rich Moisture cream black lettering material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": true,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": true,
+      "studio": {
+        "background": "#e9d7c7",
+        "ink": "#3d2c23"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-064",
+    "name": "Aromatic Body Lotion",
+    "file": "poster-064.glb",
+    "bytes": 3622216,
+    "sha256": "5f4267ce8997169baf5032340496d21d49b570bb9aec36e2a00e302db0bfba21",
+    "triangles": 120946,
+    "meshes": 139,
+    "nodes": 148,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1300,
+          1400
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1300,
+          1400
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Blank warm cream paper label material",
+        "roughness": 0.7699999809265137,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Complete Aromatic Body Lotion lettering material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Aromatic satin warm white pump",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Aromatic recessed outlet",
+        "roughness": 0.550000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Aromatic clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Aromatic soft matte warm yellow body",
+        "roughness": 0.47999998927116394,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Aromatic raised cotton fibres",
+        "roughness": 0.8199999928474426,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Aromatic natural cotton cord",
+        "roughness": 0.75,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "studio": {
+        "background": "#e4d2ac",
+        "ink": "#4c351d"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-065",
+    "name": "Tea Tree Shampoo",
+    "file": "poster-065.glb",
+    "bytes": 2748824,
+    "sha256": "d4d2a06d19fb8f42d813e2423bf3468d051033053bcd1707ea129956f6d0aa0d",
+    "triangles": 73762,
+    "meshes": 19,
+    "nodes": 27,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1360,
+          1740
+        ]
+      },
+      {
+        "name": "refill-label",
+        "size": [
+          1820,
+          2160
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1360,
+          1740
+        ]
+      },
+      {
+        "name": "refill-print",
+        "size": [
+          1820,
+          2160
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Tea Tree neutral clear empty bottle",
+        "roughness": 0.027000000700354576,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Tea Tree sealed ivory pouch edges",
+        "roughness": 0.3199999928474426,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.07999999821186066
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Tea Tree warm ivory refill film",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.23999999463558197,
+            "clearcoatRoughnessFactor": 0.1599999964237213
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.2800000011920929
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Blank navy bottle paper label material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Blank navy refill pouch label material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.6000000238418579
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Complete Tea Tree bottle lettering material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Complete Tea Tree refill lettering material",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.03999999910593033
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Tea Tree dark nozzle opening",
+        "roughness": 0.5,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Tea Tree glossy navy pump",
+        "roughness": 0.20999999344348907,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.25
+          }
+        }
+      },
+      {
+        "name": "Tea Tree ivory pump mechanism",
+        "roughness": 0.3100000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Tea Tree clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "studio": {
+        "background": "#626d7c",
+        "ink": "#fff4dd"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-066",
+    "name": "Rose Hair Oil",
+    "file": "poster-066.glb",
+    "bytes": 4254124,
+    "sha256": "24a6de21d7a7cabaeaf30daa8b7e7f9eba35d192ed80bfeb3c03d3b04bd15fb2",
+    "triangles": 35408,
+    "meshes": 9,
+    "nodes": 17,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1620,
+          1600
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1620,
+          1600
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Rose neutral clear bottle glass",
+        "roughness": 0.024000000208616257,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Rose label",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Rose print",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Rose satin white press head",
+        "roughness": 0.3199999928474426,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Rose champagne gold pump seat",
+        "roughness": 0.30000001192092896,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Rose clear plastic dip tube",
+        "roughness": 0.05999999865889549,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Rose hidden pump connector",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": true,
+      "clearOvercap": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-067",
+    "name": "Amber Ginger Shampoo",
+    "file": "poster-067-v2.glb",
+    "bytes": 3973472,
+    "sha256": "87e147f13957983fb664c1f256914d2cca238639310a8964de36946ee383f6c9",
+    "triangles": 233616,
+    "meshes": 55,
+    "nodes": 60,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1320,
+          760
+        ]
+      },
+      {
+        "name": "logo",
+        "size": [
+          1980,
+          1140
+        ]
+      },
+      {
+        "name": "name",
+        "size": [
+          1980,
+          1140
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Ginger cinnamon cord core",
+        "roughness": 0.6200000047683716,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Ginger raised tan braid",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Ginger light amber empty glass",
+        "roughness": 0.02500000037252903,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Ginger label",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "LogoInk white print",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "NameInk white print",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Ginger glossy black pump",
+        "roughness": 0.15000000596046448,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Amber clear polyethylene hollow dip tube",
+        "roughness": 0.06499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Ginger outlet recess",
+        "roughness": 0.5600000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "tintedGlass": true,
+      "attenuationDistance": 0.3,
+      "studio": {
+        "background": "#786047",
+        "ink": "#fff2db"
+      },
+      "labelShadows": true,
+      "thinFilmShadows": true,
+      "carrierOpacity": [
+        0.05,
+        1
+      ],
+      "referenceGlass": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-068",
+    "name": "Essence Water",
+    "file": "poster-068-v3.glb",
+    "bytes": 2327112,
+    "sha256": "1e7715f7f43d4c4cb5b380e3db204aaf4ba3bfb2c8d590834c47a1c1940b99fe",
+    "triangles": 107104,
+    "meshes": 12,
+    "nodes": 18,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1360,
+          2680
+        ]
+      },
+      {
+        "name": "logo",
+        "size": [
+          1360,
+          2680
+        ]
+      },
+      {
+        "name": "name",
+        "size": [
+          1360,
+          2680
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Essence Water neutral empty glass",
+        "roughness": 0.017999999225139618,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Essence Water polished silver neck collar",
+        "roughness": 0.12999999523162842,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Soft PE sealing seat",
+        "roughness": 0.41999998688697815,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Essence Water satin lavender sculpted cover",
+        "roughness": 0.25,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Ivory PP inner screw cap",
+        "roughness": 0.28999999165534973,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Natural translucent PE flow reducer",
+        "roughness": 0.27000001072883606,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.1599999964237213
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Essence Water label",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "LogoInk original dark print",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "NameInk original dark print",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": true,
+      "tintedGlass": false,
+      "attenuationDistance": 0.3,
+      "studio": {
+        "background": "#d9d2df",
+        "ink": "#39313e"
+      },
+      "labelShadows": true,
+      "thinFilmShadows": true,
+      "carrierOpacity": [
+        1,
+        1
+      ],
+      "referenceGlass": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-069",
+    "name": "Still Essential Oil",
+    "file": "poster-069.glb",
+    "bytes": 3522180,
+    "sha256": "272bb5ff75d5048cf24a753a5a4a90ef02602331ea20946c73a204f64b642157",
+    "triangles": 52308,
+    "meshes": 5,
+    "nodes": 10,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "cork-normal",
+        "size": [
+          1024,
+          512
+        ]
+      },
+      {
+        "name": "cork-color",
+        "size": [
+          1024,
+          512
+        ]
+      },
+      {
+        "name": "paper",
+        "size": [
+          600,
+          960
+        ]
+      },
+      {
+        "name": "label",
+        "size": [
+          1800,
+          2920
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1800,
+          2920
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Still neutral clear empty glass",
+        "roughness": 0.02199999988079071,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Still coarse warm brown cork",
+        "roughness": 0.8199999928474426,
+        "metalness": 0,
+        "normalMap": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Still uncoated warm paper seal",
+        "roughness": 0.8199999928474426,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Still label",
+        "roughness": 0.7799999713897705,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Still print",
+        "roughness": 0.7799999713897705,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-070",
+    "name": "Daylight Essential Oil",
+    "file": "poster-070.glb",
+    "bytes": 3191832,
+    "sha256": "731ca44d3c629bd00cf4130d9c313abcae5f850457c81802418289ac9266dd87",
+    "triangles": 45896,
+    "meshes": 7,
+    "nodes": 12,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "embossed-wrap-normal",
+        "size": [
+          1024,
+          512
+        ]
+      },
+      {
+        "name": "embossed-wrap",
+        "size": [
+          1024,
+          512
+        ]
+      },
+      {
+        "name": "label",
+        "size": [
+          940,
+          640
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          940,
+          640
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Daylight neutral frosted empty glass",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daylight satin champagne silver cap",
+        "roughness": 0.2800000011920929,
+        "metalness": 1,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Daylight hidden inner closure seal",
+        "roughness": 0.44999998807907104,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Daylight embossed ivory fibrous cap wrap",
+        "roughness": 0.7799999713897705,
+        "metalness": 0,
+        "normalMap": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daylight label",
+        "roughness": 0.25,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daylight print",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": true,
+      "pipette": false,
+      "clearLabel": true,
+      "metal": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-071",
+    "name": "Sculptural Pump",
+    "file": "poster-071-v2.glb",
+    "bytes": 1592320,
+    "sha256": "624addecf5784e6daebcc937a0e96b51015dcb88c44d0ad02001383ee2d52649",
+    "triangles": 80306,
+    "meshes": 80,
+    "nodes": 84,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "liaose",
+        "size": [
+          1360,
+          500
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Ivory satin frosted finish",
+        "roughness": 0.4000000059604645,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Clear neutral print carrier",
+        "roughness": 0.3199999928474426,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "liaose printed wordmark",
+        "roughness": 0.5,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Warm ivory pump",
+        "roughness": 0.3100000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Sculptural clear hollow polyethylene dip tube",
+        "roughness": 0.054999999701976776,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9800000190734863
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Nozzle recess",
+        "roughness": 0.550000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "studio": {
+        "background": "#e7e6da",
+        "ink": "#29372f"
+      },
+      "labelShadows": true,
+      "thinFilmShadows": true,
+      "carrierOpacity": [
+        0.035,
+        0.28
+      ]
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-072",
+    "name": "Daily Emulsion",
+    "file": "poster-072.glb",
+    "bytes": 1163416,
+    "sha256": "77d727f48d750610be61fb50d2294b545271c4a60a846047e9908e7b2ca4e1a1",
+    "triangles": 32890,
+    "meshes": 8,
+    "nodes": 17,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "frost-normal",
+        "size": [
+          256,
+          256
+        ]
+      },
+      {
+        "name": "label",
+        "size": [
+          2000,
+          2728
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          2000,
+          2728
+        ]
+      },
+      {
+        "name": "name",
+        "size": [
+          2000,
+          2728
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Daily neutral frosted empty glass",
+        "roughness": 0.25,
+        "metalness": 0,
+        "normalMap": true,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daily clear protective cover",
+        "roughness": 0.03500000014901161,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daily unprinted transparent carrier",
+        "roughness": 0.23000000417232513,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daily independent liaose lettering",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daily rule product name and FACE CARE",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Daily opaque white actuator",
+        "roughness": 0.23000000417232513,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Daily neutral white satin closure",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Daily hidden short connector illustration",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": true,
+      "clearOvercap": true,
+      "pipette": false,
+      "clearLabel": true,
+      "metal": false,
+      "referenceGlass": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-073",
+    "name": "Body Oil Collection",
+    "file": "poster-073.glb",
+    "bytes": 627764,
+    "sha256": "7029bd11b6f6bbd7cfae47c2f35b0cef24ac6ac6889c4889f1d0bd97bd6ff68b",
+    "triangles": 24530,
+    "meshes": 6,
+    "nodes": 12,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "label",
+        "size": [
+          1653,
+          1387
+        ]
+      },
+      {
+        "name": "print",
+        "size": [
+          1653,
+          1387
+        ]
+      },
+      {
+        "name": "name-02",
+        "size": [
+          1653,
+          1387
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Body Oil colourless clear glass",
+        "roughness": 0.03500000014901161,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body Oil warm ivory satin cap",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Body Oil ivory seal illustration",
+        "roughness": 0.46000000834465027,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Body Oil unprinted transparent carrier",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body Oil independent liaose lettering",
+        "roughness": 0.6000000238418579,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body Oil name and number 02",
+        "roughness": 0.6000000238418579,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": true,
+      "metal": false,
+      "referenceGlass": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-079",
+    "name": "Body Care Duo",
+    "file": "poster-079-v2.glb",
+    "bytes": 932312,
+    "sha256": "8466e0629b11dbea47059a84ce054fa85ddf2a51975568f1176ad955f353a29a",
+    "triangles": 39384,
+    "meshes": 15,
+    "nodes": 24,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "CreamArt",
+        "size": [
+          700,
+          330
+        ]
+      },
+      {
+        "name": "lidmark",
+        "size": [
+          700,
+          330
+        ]
+      },
+      {
+        "name": "WashArt",
+        "size": [
+          700,
+          330
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Warm ivory satin",
+        "roughness": 0.3799999952316284,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "CreamArt",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Translucent dip tube",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.7400000095367432
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Ivory moulded pumps",
+        "roughness": 0.3100000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Fine straw paperboard",
+        "roughness": 0.6700000166893005,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "lidmark",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Warm pale moulded tray",
+        "roughness": 0.6399999856948853,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Frosted citron translucent wall",
+        "roughness": 0.3400000035762787,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.5
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "WashArt",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "pipette": false,
+      "clearLabel": false,
+      "metal": false,
+      "studio": {
+        "background": "#e9e8df",
+        "ink": "#373c2e"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-080",
+    "name": "Bath Trio",
+    "file": "poster-080-v2.glb",
+    "bytes": 717420,
+    "sha256": "786ed68343122383a792acf9071b6e16dee5e973d2b043011d8538b2f837f2b4",
+    "triangles": 43424,
+    "meshes": 20,
+    "nodes": 48,
+    "scenes": [
+      "soap",
+      "after",
+      "baby"
+    ],
+    "textures": [
+      {
+        "name": "logo",
+        "size": [
+          1024,
+          299
+        ]
+      },
+      {
+        "name": "after-bath",
+        "size": [
+          1024,
+          518
+        ]
+      },
+      {
+        "name": "spec-wash",
+        "size": [
+          560,
+          228
+        ]
+      },
+      {
+        "name": "baby-blusher",
+        "size": [
+          1024,
+          437
+        ]
+      },
+      {
+        "name": "spec-lotion",
+        "size": [
+          560,
+          228
+        ]
+      },
+      {
+        "name": "soap-clean-soap",
+        "size": [
+          1024,
+          726
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "After Bath | smoky slate satin",
+        "roughness": 0.3100000023841858,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.3100000023841858
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body lotion | opaque warm ivory satin",
+        "roughness": 0.3400000035762787,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Unprinted clear carrier",
+        "roughness": 0.3700000047683716,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.25999999046325684
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Heavy liaose wordmark",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "after | bold product typography",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body wash | small print",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "baby | bold product typography",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body lotion | small print",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "soap | bold product typography",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "After Bath | translucent pearl dispenser",
+        "roughness": 0.27000001072883606,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.6299999952316284
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Hollow clear polyethylene dip tube",
+        "roughness": 0.15000000596046448,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.800000011920929
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Body lotion | ivory dispenser",
+        "roughness": 0.2800000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "frosted": false,
+      "studio": {
+        "background": "#e6e2d9",
+        "ink": "#28252a"
+      },
+      "carrierOpacity": [
+        0.014,
+        0.17
+      ]
+    },
+    "finishes": [
+      {
+        "scene": "soap",
+        "label": "Soap Clean Soap"
+      },
+      {
+        "scene": "after",
+        "label": "After Bath"
+      },
+      {
+        "scene": "baby",
+        "label": "Baby Blusher"
+      }
+    ]
+  },
+  {
+    "id": "poster-081",
+    "name": "Exfoliating Hand Gel",
+    "file": "poster-081-v1.glb",
+    "bytes": 4527020,
+    "sha256": "8dc698ef18f767cd369a6a7c9de670d6058e78c66ec0428dab217c63df1b5132",
+    "triangles": 35912,
+    "meshes": 11,
+    "nodes": 16,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "linen-normal",
+        "size": [
+          2048,
+          512
+        ]
+      },
+      {
+        "name": "black-linen",
+        "size": [
+          2048,
+          512
+        ]
+      },
+      {
+        "name": "linen-color",
+        "size": [
+          2048,
+          512
+        ]
+      },
+      {
+        "name": "tag-logo",
+        "size": [
+          256,
+          896
+        ]
+      },
+      {
+        "name": "logo",
+        "size": [
+          1360,
+          500
+        ]
+      },
+      {
+        "name": "name",
+        "size": [
+          1440,
+          430
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Crystal clear glass | thick heel",
+        "roughness": 0.019999999552965164,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Black woven side flag",
+        "roughness": 0.8799999952316284,
+        "metalness": 0,
+        "normalMap": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Warm ivory woven label",
+        "roughness": 0.9200000166893005,
+        "metalness": 0,
+        "normalMap": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Ivory wordmark attached to black side flag",
+        "roughness": 0.7200000286102295,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Separate black liaose ink",
+        "roughness": 0.699999988079071,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Separate product name ink",
+        "roughness": 0.699999988079071,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Fine fluted black closure",
+        "roughness": 0.2800000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Gloss black assembled pump",
+        "roughness": 0.20000000298023224,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Transparent polyethylene dip tube",
+        "roughness": 0.11999999731779099,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.8299999833106995
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "referenceGlass": true,
+      "studio": {
+        "background": "#e6e7dc",
+        "ink": "#243025"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-082",
+    "name": "Soap Clean Duo",
+    "file": "poster-082-v1.glb",
+    "bytes": 1917000,
+    "sha256": "48fbe6389225089b12a4afa66f300d77c6b4de8f2965df492576c747216c639f",
+    "triangles": 77470,
+    "meshes": 21,
+    "nodes": 27,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "carrier",
+        "size": [
+          4,
+          4
+        ]
+      },
+      {
+        "name": "stripe",
+        "size": [
+          4,
+          4
+        ]
+      },
+      {
+        "name": "logo",
+        "size": [
+          1024,
+          299
+        ]
+      },
+      {
+        "name": "spec-bottle",
+        "size": [
+          1280,
+          440
+        ]
+      },
+      {
+        "name": "soap-clean-soap",
+        "size": [
+          1024,
+          726
+        ]
+      },
+      {
+        "name": "spec-tube",
+        "size": [
+          1280,
+          440
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Ivory opaque soft plastic",
+        "roughness": 0.30000001192092896,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Transparent direct-print carrier | conceptual ink layer",
+        "roughness": 0.41999998688697815,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Powder blue pinstripe ink",
+        "roughness": 0.6000000238418579,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Bold black liaose ink",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Shampoo 300 ml ink",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Bold stacked SOAP CLEAN SOAP ink",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Hair treatment 180 ml ink",
+        "roughness": 0.6800000071525574,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Powder blue molded plastic",
+        "roughness": 0.2800000011920929,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Transparent hollow polyethylene suction tube",
+        "roughness": 0.07999999821186066,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.2199999988079071,
+            "clearcoatRoughnessFactor": 0.07999999821186066
+          },
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1.399999976158142,
+              1.399999976158142,
+              1.399999976158142
+            ]
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "studio": {
+        "background": "#e6e9e6",
+        "ink": "#263b3a"
+      }
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-084",
+    "name": "Soft Body Duo",
+    "file": "poster-084-v2.glb",
+    "bytes": 2393772,
+    "sha256": "47052273d6ec19f4ff8f5e25b451948487376b6428d622c1dc3722a8d4582792",
+    "triangles": 118760,
+    "meshes": 212,
+    "nodes": 217,
+    "scenes": [
+      "Scene"
+    ],
+    "textures": [
+      {
+        "name": "liaose-white",
+        "size": [
+          1000,
+          190
+        ]
+      },
+      {
+        "name": "label-LOTION",
+        "size": [
+          1000,
+          600
+        ]
+      },
+      {
+        "name": "label-WASH",
+        "size": [
+          1000,
+          600
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Neutral clear glass | no blue or pink formula",
+        "roughness": 0.03500000014901161,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 1
+          },
+          "KHR_materials_ior": {
+            "ior": 1.5199999809265137
+          }
+        }
+      },
+      {
+        "name": "White satin wrap label",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "liaose-white",
+        "roughness": 0.6000000238418579,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "label-LOTION",
+        "roughness": 0.6000000238418579,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "label-WASH",
+        "roughness": 0.6000000238418579,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.05000000074505806
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Clear polyethylene hollow suction tube",
+        "roughness": 0.10000000149011612,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      },
+      {
+        "name": "Translucent pearl-white molded pump",
+        "roughness": 0.23999999463558197,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.15000000596046448
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": false,
+      "studio": {
+        "background": "#e6e9e6",
+        "ink": "#263b3a"
+      },
+      "referenceGlass": true
+    },
+    "finishes": []
+  },
+  {
+    "id": "poster-085",
+    "name": "Daily Hair Ritual",
+    "file": "poster-085-v2.glb",
+    "bytes": 2099732,
+    "sha256": "a5335c7148c715720b1a81b6d181faae07d2e7f1d7e6af648846a1ec28aaea8d",
+    "triangles": 108010,
+    "meshes": 90,
+    "nodes": 96,
+    "scenes": [
+      "Daily Hair Ritual | reference proportions"
+    ],
+    "textures": [
+      {
+        "name": "logo",
+        "size": [
+          1360,
+          500
+        ]
+      },
+      {
+        "name": "shampoo",
+        "size": [
+          1400,
+          220
+        ]
+      },
+      {
+        "name": "treatment",
+        "size": [
+          900,
+          450
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Warm ivory satin molded polymer",
+        "roughness": 1,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.10000000149011612,
+            "clearcoatRoughnessFactor": 0.23000000417232513
+          }
+        }
+      },
+      {
+        "name": "Satin copper bronze decorative finish",
+        "roughness": 1,
+        "metalness": 0.6800000071525574,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.11999999731779099,
+            "clearcoatRoughnessFactor": 0.30000001192092896
+          }
+        }
+      },
+      {
+        "name": "Muted rose bronze tube decoration",
+        "roughness": 1,
+        "metalness": 0.18000000715255737,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.07999999821186066
+          }
+        }
+      },
+      {
+        "name": "White script liaose ink",
+        "roughness": 0.47999998927116394,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.5
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "White SHAMPOO product lettering",
+        "roughness": 0.47999998927116394,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.5
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "White HAIR TREATMENT product lettering",
+        "roughness": 0.47999998927116394,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.5
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4900000095367432
+          }
+        }
+      },
+      {
+        "name": "Transparent hollow polyethylene suction tube",
+        "roughness": 0.10000000149011612,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.25
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9399999976158142
+          },
+          "KHR_materials_ior": {
+            "ior": 1.4600000381469727
+          }
+        }
+      },
+      {
+        "name": "Recessed pump outlet interior",
+        "roughness": 0.6499999761581421,
+        "metalness": 0,
+        "normalMap": false,
+        "extensions": {}
+      }
+    ],
+    "appearance": {
+      "glass": false,
+      "frosted": false,
+      "studio": {
+        "background": "#685b50",
+        "ink": "#fff5e7"
+      },
+      "labelShadows": true
+    },
+    "finishes": []
+  }
+]

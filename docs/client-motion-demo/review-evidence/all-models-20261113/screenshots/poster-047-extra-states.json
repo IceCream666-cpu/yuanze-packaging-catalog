@@ -1,0 +1,44 @@
+[
+  {
+    "name": "rear",
+    "progress": 1,
+    "renderedProgress": 0.9999999638865332,
+    "yaw": 3.1414282473488546,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -3.099999888048253,
+      0.17999999349957596,
+      1.6499999404127796
+    ],
+    "components": [
+      "closure",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 9,
+    "triangles": 167426
+  },
+  {
+    "name": "bottom",
+    "progress": 1,
+    "renderedProgress": 0.999999999998539,
+    "yaw": 0.00012708906124281222,
+    "pitch": -1.6753452042183457,
+    "selected": null,
+    "printOffset": [
+      -3.099999999995471,
+      0.17999999999973704,
+      1.6499999999975892
+    ],
+    "components": [
+      "closure",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 9,
+    "triangles": 167426
+  }
+]

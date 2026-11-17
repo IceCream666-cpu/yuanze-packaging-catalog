@@ -1,0 +1,24 @@
+{
+  "reportDate": "2026-11-17",
+  "captureDate": "2026-11-13",
+  "modelCount": 32,
+  "mainScreenshots": 128,
+  "all32LocalHashesUnchanged": true,
+  "priorities": {
+    "优先": 5,
+    "第二轮": 19,
+    "保留主体": 8
+  },
+  "productionFilesModified": false,
+  "liveRecheckOnReportDate": false,
+  "browserVariantsNotVisuallyChecked": [
+    "poster-080/after",
+    "poster-080/baby"
+  ],
+  "limitations": [
+    "No physical measurements",
+    "No mobile-device or performance testing",
+    "No all-source Blender re-render",
+    "Unified audit viewport is not complete product-page QA"
+  ]
+}

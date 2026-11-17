@@ -1,0 +1,90 @@
+[
+  {
+    "name": "closed",
+    "progress": 0,
+    "renderedProgress": 0,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0,
+      0,
+      0
+    ],
+    "components": [
+      "closure",
+      "liner",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 17,
+    "triangles": 26946
+  },
+  {
+    "name": "half",
+    "progress": 0.5,
+    "renderedProgress": 0.4998385067449484,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -2.0493378776542883,
+      0.08997093121409061,
+      0.8247335361291648
+    ],
+    "components": [
+      "closure",
+      "liner",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 17,
+    "triangles": 26946
+  },
+  {
+    "name": "expanded",
+    "progress": 1,
+    "renderedProgress": 0.9998200486904558,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -4.099262199630869,
+      0.17996760876428208,
+      1.649703080339252
+    ],
+    "components": [
+      "closure",
+      "liner",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 17,
+    "triangles": 26946
+  },
+  {
+    "name": "rotated",
+    "progress": 1,
+    "renderedProgress": 0.9999999819843362,
+    "yaw": 1.5706390679308302,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -4.099999926135778,
+      0.1799999967571806,
+      1.6499999702741546
+    ],
+    "components": [
+      "closure",
+      "liner",
+      "jar",
+      "label",
+      "print"
+    ],
+    "meshes": 17,
+    "triangles": 26946
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "name": "closed",
+    "progress": 0,
+    "renderedProgress": 0,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0,
+      0,
+      0
+    ],
+    "components": [
+      "lid",
+      "lidInk",
+      "tray",
+      "cream",
+      "wash",
+      "cp",
+      "pump",
+      "ci",
+      "print"
+    ],
+    "meshes": 31,
+    "triangles": 78770
+  },
+  {
+    "name": "half",
+    "progress": 0.5,
+    "renderedProgress": 0.4998201067935348,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      0.7647247633941082,
+      -0.08996761922283626,
+      0.8247031762093323
+    ],
+    "components": [
+      "lid",
+      "lidInk",
+      "tray",
+      "cream",
+      "wash",
+      "cp",
+      "pump",
+      "ci",
+      "print"
+    ],
+    "meshes": 31,
+    "triangles": 78770
+  },
+  {
+    "name": "expanded",
+    "progress": 1,
+    "renderedProgress": 0.9998202758637131,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      1.529725022071481,
+      -0.17996764965546835,
+      1.6497034551751266
+    ],
+    "components": [
+      "lid",
+      "lidInk",
+      "tray",
+      "cream",
+      "wash",
+      "cp",
+      "pump",
+      "ci",
+      "print"
+    ],
+    "meshes": 31,
+    "triangles": 78770
+  },
+  {
+    "name": "rotated",
+    "progress": 1,
+    "renderedProgress": 0.9999999823774668,
+    "yaw": 1.5706423051316036,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      1.5299999730375242,
+      -0.17999999682794401,
+      1.6499999709228201
+    ],
+    "components": [
+      "lid",
+      "lidInk",
+      "tray",
+      "cream",
+      "wash",
+      "cp",
+      "pump",
+      "ci",
+      "print"
+    ],
+    "meshes": 31,
+    "triangles": 78770
+  }
+]
