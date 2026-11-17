@@ -416,7 +416,6 @@ for (const [id, lifts, printOffset] of [
   ['poster-057', {dropper:1.95}, [-3.1,.10,1.65]],
   ['poster-056', {overcap:3.95,pump:1.85}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.15,pump:2.15}, [-2.65,.50,1.65]],
-  ['poster-049', {pump: 1.25}, [-2.65, .18, 1.65]],
   ['poster-012', {cap: .100, liner: .047}, [-.025, .004, .035]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
@@ -447,7 +446,7 @@ for (const [id, lifts, printOffset] of [
     };
 
     const checkSeparateLabel = progress => {
-      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-057' ? 4 : id === 'poster-044' || id === 'poster-056' ? 5 : 6);
+      assert.equal(product.parts.length, id === 'poster-047' || id === 'poster-042' || id === 'poster-051' || id === 'poster-057' ? 4 : id === 'poster-044' || id === 'poster-056' ? 5 : 6);
       assert.equal(product.parts.find(part => part.key === 'label').node, 'PaperLabel');
       const labelDisplacement = parts.label.position.clone().sub(rest.label.position);
       const printDisplacement = parts.print.position.clone().sub(rest.print.position);
@@ -464,7 +463,7 @@ for (const [id, lifts, printOffset] of [
 
     for (let cycle = 0; cycle < 2; cycle++) {
       api.setProgress(.5); flush();
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') {
+      if (id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') {
         for (const [key, lift] of Object.entries(lifts)) near(parts[key].position.y-rest[key].position.y, lift*.5, `${key} half lift`);
         parts.print.position.clone().sub(rest.print.position).toArray().forEach((value,i)=>near(value,printOffset[i]*.5,'half print displacement'));
         sameVector(parts.print.scale,rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' || id==='poster-057' ? 1.475 : 1.225),'half print scale');
@@ -484,7 +483,7 @@ for (const [id, lifts, printOffset] of [
         assert.ok(Math.abs(parts.closure.quaternion.dot(rest.closure.quaternion)) < .99, 'The open lid must turn to reveal its interior.');
       }
       sameVector(parts.print.scale, rest.print.scale.clone().multiplyScalar(id==='poster-044' || id==='poster-056' || id==='poster-057' ? 1.95 : 1.45), 'expanded print scale');
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') checkSeparateLabel(1);
+      if (id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') checkSeparateLabel(1);
       // Compare the visible distances after the Beach model's unit conversion, not its tiny source units.
       if (id === 'poster-012' || id === 'poster-039') {
         near((parts[id === 'poster-012' ? 'cap' : 'closure'].position.y-rest[id === 'poster-012' ? 'cap' : 'closure'].position.y)*product.scale, id === 'poster-039' ? 3.45 : 3, 'studio cap lift');
@@ -492,7 +491,7 @@ for (const [id, lifts, printOffset] of [
       }
       api.setProgress(0); flush();
       Object.keys(parts).forEach(unchanged);
-      if (id === 'poster-049' || id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') checkSeparateLabel(0);
+      if (id === 'poster-042' || id === 'poster-051' || id === 'poster-044' || id === 'poster-047' || id === 'poster-056' || id === 'poster-057') checkSeparateLabel(0);
     }
   } finally {api?.dispose(); env.close();}
 });
@@ -633,65 +632,6 @@ test('new clear overcaps retain neutral transmission without changing prior fini
   }
 });
 
-test('Moisture Shampoo moves its exported pump as one unit and preserves independent paper and print', async () => {
-  const product=PACKAGING_PRODUCTS['poster-049'];
-  assert.equal(product.review,undefined,'Moisture retains its existing material and lighting branch');
-  const bytes=readFileSync(new URL('../packaging-assets/poster-049.glb',import.meta.url));
-  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
-  const nodes=gltf.nodes.map(node=>{
-    const object='mesh' in node ? new Three.Mesh(new Three.BoxGeometry(),new Three.MeshPhysicalMaterial()) : new Three.Group();
-    object.name=node.name;
-    if(node.matrix) object.applyMatrix4(new Three.Matrix4().fromArray(node.matrix));
-    else {
-      object.position.fromArray(node.translation??[0,0,0]);
-      object.quaternion.fromArray(node.rotation??[0,0,0,1]);
-      object.scale.fromArray(node.scale??[1,1,1]);
-    }
-    return object;
-  });
-  gltf.nodes.forEach((node,i)=>node.children?.forEach(child=>nodes[i].add(nodes[child])));
-  const loaded={scene:new Three.Group()};
-  gltf.scenes[gltf.scene??0].nodes.forEach(i=>loaded.scene.add(nodes[i]));
-  let camera;
-  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});let api;
-  try {
-    Object.defineProperties(env.host,{clientWidth:{value:1200},clientHeight:{value:800}});
-    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
-    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);};
-    flush();
-    const pump=loaded.scene.getObjectByName('PumpAssembly');
-    const pieces=['Closure','PumpStem','Actuator'].map(name=>loaded.scene.getObjectByName(name));
-    pieces.forEach(piece=>assert.equal(piece.parent,pump));
-    const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
-    const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone()}]));
-    assert.deepEqual(Object.keys(parts).sort(),['jar','label','print','pump']);
-    const restPump=pump.getWorldPosition(new Three.Vector3());
-    const restPieces=pieces.map(piece=>({position:piece.getWorldPosition(new Three.Vector3()),matrix:piece.matrix.toArray()}));
-    for(const progress of [0,.25,.5,.75,1,.5,0]) {
-      api.setProgress(progress);flush();
-      const state=api.getState();
-      assert.equal(state.renderedProgress,progress);
-      assert.ok(Math.abs(camera.position.y-1.05-(1.45+.625*progress))<1e-9,'camera follows the compact pump assembly center');
-      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+.85*progress))<1e-9,'desktop framing reaches a 5.05-unit full-open height');
-      assert.ok(Math.abs(camera.position.x+.65*progress)<1e-9,'camera preserves the approved horizontal framing');
-      assert.ok(parts.pump.position.clone().sub(rest.pump.position).distanceTo(new Three.Vector3(0,1.25*progress,0))<1e-9);
-      const displacement=pump.getWorldPosition(new Three.Vector3()).sub(restPump);
-      pieces.forEach((piece,i)=>{
-        assert.deepEqual(piece.matrix.toArray(),restPieces[i].matrix,'the three pump parts retain their assembled transforms');
-        assert.ok(piece.getWorldPosition(new Three.Vector3()).sub(restPieces[i].position).distanceTo(displacement)<1e-9,'every pump part moves with the assembly');
-      });
-      for(const [key,offset,scale] of [['label',[-1.25,.08,.65],1.15],['print',[-2.65,.18,1.65],1.45]]) {
-        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
-        assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+(scale-1)*progress))<1e-9);
-      }
-      for(const key of progress===0 ? Object.keys(parts) : ['jar']) {
-        assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);
-        assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
-        assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
-      }
-    }
-  } finally {api?.dispose();env.close();}
-});
 
 for(const [id,lift,centerDelta,heightDelta] of [
   ['poster-042',1.2,.60,.90],
@@ -1736,5 +1676,51 @@ test('Moisture v2 retains the complete pump with a long hollow tube, separates i
    else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
   }
  }finally{api?.dispose();env.close();}
- assert.equal(PACKAGING_PRODUCTS['poster-049'].file,'poster-049.glb','candidate is local review only');
+ assert.deepEqual(PACKAGING_PRODUCTS['poster-049'],product,'approved v2 is registered for publication');
+});
+
+test('Daily Emulsion v2 preserves the fitted pump and clear cover, separates ink and casts a thin-film shadow',async()=>{
+ const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-072/v2/review-product.json',import.meta.url),'utf8'));
+ const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+ const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+ const nodes=gltf.nodes.map(n=>{
+  const spec=gltf.materials?.[gltf.meshes?.[n.mesh]?.primitives[0]?.material];
+  const m=new Three.MeshPhysicalMaterial();m.name=spec?.name??'';m.transmission=spec?.extensions?.KHR_materials_transmission?.transmissionFactor??0;
+  m.transparent=spec?.alphaMode==='BLEND';
+  if(spec?.pbrMetallicRoughness?.baseColorTexture)m.map=new Three.Texture();
+  const o='mesh' in n?new Three.Mesh(new Three.BoxGeometry(.1,.1,.1),m):new Three.Group();o.name=n.name;
+  if(n.matrix)o.applyMatrix4(new Three.Matrix4().fromArray(n.matrix));else{o.position.fromArray(n.translation??[0,0,0]);o.quaternion.fromArray(n.rotation??[0,0,0,1]);o.scale.fromArray(n.scale??[1,1,1]);}return o;
+ });
+ gltf.nodes.forEach((n,i)=>n.children?.forEach(j=>nodes[i].add(nodes[j])));
+ const model=new Three.Group();gltf.scenes[gltf.scene??0].nodes.forEach(i=>model.add(nodes[i]));
+ const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+ assert.deepEqual(model.children.map(o=>o.name).sort(),product.parts.map(p=>p.node).sort());
+ const tube=model.getObjectByName('Daily long hollow dip tube with open inlet');assert.equal(tube.parent,parts.pump);
+ for(const name of ['Closure','PumpStem','Actuator'])assert.equal(model.getObjectByName(name).parent,parts.pump);
+ const node=gltf.nodes.find(n=>n.name===tube.name),accessor=gltf.accessors[gltf.meshes[node.mesh].primitives[0].attributes.POSITION];
+ assert.ok(Math.max(...accessor.max.map((v,i)=>v-accessor.min[i]))>1.8,'long inlet reaches the bottle floor');
+ let api;const env=harness({product,parse:()=>Promise.resolve({scene:model})});
+ try{
+  api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
+  const flush=()=>{const f=[...env.frames.values()];env.frames.clear();f.forEach(fn=>fn(16));};
+  const rest=Object.fromEntries(Object.entries(parts).map(([k,o])=>[k,o.position.clone()]));
+  const fitted=parts.pump.children.map(o=>o.matrix.toArray());
+  const paper=parts.label.children[0];assert.equal(paper.castShadow,true);assert.equal(paper.customDepthMaterial.alphaHash,true);assert.ok(paper.customDepthMaterial.opacity<.3);
+  assert.equal(parts.overcap.children[0].material.side,Three.FrontSide);
+  parts.body.traverse(o=>{if(o.isMesh){
+   assert.equal(o.receiveShadow,true);
+   const shader={fragmentShader:'#include <shadowmap_pars_fragment>\n#include <dithering_fragment>'};o.material.onBeforeCompile(shader);
+   assert.ok(shader.fragmentShader.includes('getShadowMask()'),'actual label depth map must shade glass');
+   assert.ok(shader.fragmentShader.includes('wallEdge'),'keep the original glass edge treatment');
+  }});
+  for(const k of ['print','name'])parts[k].traverse(o=>{if(o.isMesh)assert.equal(o.castShadow,false,'transparent ink carrier must not cast a rectangle');});
+  assert.equal(tube.material.transmission,0);assert.equal(tube.material.depthWrite,false);
+  for(const p of [0,.5,1,.5,0]){
+   api.setProgress(p);flush();parts.pump.children.forEach((o,i)=>assert.deepEqual(o.matrix.toArray(),fitted[i]));
+   assert.ok(Math.abs(parts.pump.position.y-rest.pump.y-2.05*p)<1e-8);
+   if(p)assert.ok(parts.print.position.z-rest.print.z>parts.label.position.z-rest.label.z);
+   else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
+  }
+ }finally{api?.dispose();env.close();}
+ assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb','072 remains local review only');
 });

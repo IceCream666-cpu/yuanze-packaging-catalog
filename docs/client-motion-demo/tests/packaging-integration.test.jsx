@@ -502,7 +502,7 @@ test('pump fetches its approved v2 model with complete pump and four layer contr
   } finally {await env.close();}
 });
 
-test('Moisture Shampoo exposes one complete pump and four independent layer controls', async () => {
+test('Moisture Shampoo exposes one complete pump and five independent layer controls', async () => {
   const env=setup();let mounted,focused,url;
   const moisture={...item,id:'poster-049',title:{zh:'保湿洗发露',en:'Moisture Shampoo'}};
   globalThis.fetch=async value=>{url=value;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(12)};};
@@ -512,16 +512,16 @@ test('Moisture Shampoo exposes one complete pump and four independent layer cont
   }})}});
   try {
     const request=startPackagingModelRequest(moisture.id);await request.promise;request.abort();
-    assert.equal(url,'/assets/packaging/poster-049.glb');
+    assert.equal(url,'/assets/packaging/poster-049-v2.glb');
     await act(async()=>env.root.render(<Detail {...defaultProps} item={moisture}/>));
     assert.equal(document.querySelector('h1').textContent,'Moisture Shampoo');
-    assert.deepEqual(mounted.product.parts.map(p=>p.node),['PumpAssembly','Body','PaperLabel','LogoPrint']);
-    assert.deepEqual(mounted.product.parts.map(p=>p.key),['pump','jar','label','print']);
-    assert.equal(mounted.product.review,undefined,'the established material branch remains in use');
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['PumpAssembly','Body','PaperLabel','LogoInk','ProductPrint']);
+    assert.deepEqual(mounted.product.parts.map(p=>p.key),['pump','body','label','logo','print']);
+    assert.equal(mounted.product.review.appearance.labelShadows,true);
     for(const selector of ['.packaging-part','.packaging-mobile-parts button']) {
       const buttons=[...document.querySelectorAll(selector)];
-      assert.equal(buttons.length,4);
-      for(const [i,key] of ['pump','jar','label','print'].entries()) {
+      assert.equal(buttons.length,5);
+      for(const [i,key] of ['pump','body','label','logo','print'].entries()) {
         await click(buttons[i]);assert.equal(focused,key);
       }
     }

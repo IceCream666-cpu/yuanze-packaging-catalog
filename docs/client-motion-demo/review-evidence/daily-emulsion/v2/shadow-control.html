@@ -1,0 +1,7 @@
+<!doctype html><html><body style="margin:0"><div id="model" style="width:100vw;height:100vh"></div><script type="module">
+import {mountPackagingScene} from '/src/structure/packaging-scene.js';
+const cfg=await(await fetch('/model-source/collection/poster-072/v2/review-product.json')).json();
+const bytes=await(await fetch('/packaging-assets/poster-072-v2.glb')).arrayBuffer();let api;
+window.setup=async enabled=>{api?.dispose();const product=structuredClone(cfg);product.review.appearance.thinFilmShadows=enabled;
+api=await mountPackagingScene(document.querySelector('#model'),{product,design:{background:'#e9e5d8',name:'Daily Emulsion'},modelRequest:{promise:Promise.resolve(bytes),mark(){}}});window.api=api;api.setProgress(.5);};await setup(true);
+</script></body></html>

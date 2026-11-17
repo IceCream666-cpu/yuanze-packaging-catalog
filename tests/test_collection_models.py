@@ -95,27 +95,34 @@ class CollectionModelTests(unittest.TestCase):
  def test_complete_featured_inventory_and_independent_print_layers(self):
   featured={p['id'] for p in json.loads((ROOT/'src/featured.json').read_text())}
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())
-  self.assertEqual(set(collection)|{'poster-012','poster-071'},featured)
+  self.assertEqual((set(collection)|{'poster-012'})-{'poster-080'},featured)
   self.assertFalse({f'poster-{n:03}' for n in range(74,79)} & featured)
-  self.assertEqual(len(collection),24)
-  self.assertEqual(len(featured),26)
+  self.assertEqual(len(collection),31)
+  self.assertEqual(len(featured),31)
   for id,p in collection.items():
    with self.subTest(id=id):
-    self.assertEqual(p['file'],id+'.glb')
+    self.assertRegex(p['file'],r'^'+id+r'(?:-v[0-9]+)?\.glb$')
     raw=(ROOT/'packaging-assets'/p['file']).read_bytes();self.assertEqual(struct.unpack_from('<4sII',raw),(b'glTF',2,len(raw)))
     n=struct.unpack_from('<I',raw,12)[0];g=json.loads(raw[20:20+n]);nodes=g['nodes'];roots=g['scenes'][g.get('scene',0)]['nodes']
-    self.assertEqual({nodes[i]['name'] for i in roots},{part['node'] for part in p['parts']})
-    self.assertEqual(sum(n['name']=='LogoPrint' for n in nodes),1)
-    self.assertTrue(next(n for n in nodes if n['name']=='LogoPrint')['children'])
+    names={nodes[i]['name'].removesuffix('_Soap') if p.get('finishes') else nodes[i]['name'] for i in roots}
+    self.assertEqual(names,{part['node'] for part in p['parts']})
+    print_parts=[part['node'] for part in p['parts'] if part['key'] in ('print','logo','name')]
+    self.assertTrue(print_parts)
+    for name in print_parts:self.assertTrue(next(n for n in nodes if n['name']==(name+'_Soap' if p.get('finishes') else name)).get('children'))
     self.assertTrue(all('uri' not in i for i in g.get('images',[])+g.get('buffers',[])))
     self.assertFalse(g.get('animations'));self.assertFalse(g.get('cameras'))
     for view in g['bufferViews']:self.assertLessEqual(view.get('byteOffset',0)+view['byteLength'],g['buffers'][0]['byteLength'])
     source_id={'poster-072':'daily-emulsion','poster-073':'body-oil-collection'}.get(id,id)
     source=ROOT/'model-source/collection'/source_id
-    self.assertTrue((source/(source_id+'.blend')).is_file())
+    if '-v' in p['file'] and id not in ['poster-079','poster-080','poster-081','poster-082','poster-084','poster-085']:
+     version=p['file'].split('-')[-1].removesuffix('.glb');source=ROOT/'model-source/collection'/id/version
+     self.assertTrue((source/p['file'].replace('.glb','.blend')).is_file())
+    else:
+     source_file=(source_id+'.blend') if id=='poster-079' else p['file'].replace('.glb','.blend') if '-v' in p['file'] else source_id+'.blend'
+     self.assertTrue((source/source_file).is_file())
  def test_collection_publication_matches_explicit_user_approval(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
-  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.40-collection-packaging')
+  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.57-collection-packaging')
 
  def test_five_withdrawn_liaose_models_remain_archived_and_inactive(self):
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())

@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-17T10:25:45.814385+08:00",
+  "liveBaseline": "client1.56",
+  "publishedThisTurn": false,
+  "sshStatus": "existing key rejected; previous transient helper absent",
+  "checks": [
+    {
+      "path": "index.html",
+      "sha256": "6f4d113c10ce7f628c83e26c380b18df7e9af727ca3b22716eee241114f20a0f",
+      "bytes": 784
+    },
+    {
+      "path": "preview.js",
+      "sha256": "1d9a52201288e811fef02e98ada6f2951355a02669f2f3d33e04caaa8fb53b8e",
+      "bytes": 409269
+    },
+    {
+      "path": "assets/packaging/poster-049.glb",
+      "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c",
+      "bytes": 1577136
+    }
+  ]
+}

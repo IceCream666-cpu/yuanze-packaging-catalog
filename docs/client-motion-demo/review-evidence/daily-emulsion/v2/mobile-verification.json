@@ -1,0 +1,31 @@
+{
+  "simulated": true,
+  "viewport": [
+    390,
+    844
+  ],
+  "scrollWidth": 390,
+  "canvases": 1,
+  "state": {
+    "progress": 1,
+    "renderedProgress": 0.9998265601525461,
+    "yaw": 1.716135697672168e-19,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.6748829281029687,
+      0.21996184323356016,
+      1.2497832001906826
+    ],
+    "components": [
+      "overcap",
+      "pump",
+      "body",
+      "label",
+      "print",
+      "name"
+    ],
+    "meshes": 16,
+    "triangles": 58342
+  }
+}

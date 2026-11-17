@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "tubeBoundsZ": [
+    0.19160711765289307,
+    2.200892925262451
+  ],
+  "pumpChildTransformsStable": true,
+  "frames": [
+    1,
+    16,
+    31,
+    46,
+    61,
+    31,
+    1
+  ],
+  "fullExpansionClearances": true,
+  "inkShadowDisabled": true,
+  "filmShadowEnabled": true,
+  "cyclesSamples": 64,
+  "containsFormula": false
+}

@@ -1,0 +1,28 @@
+{
+  "localManifest": "/Users/icecream/Documents/Codex/2026-10-22/gen/outputs/服务器发布暂存归档-20261117/manifest.json",
+  "files": [
+    {
+      "name": "client1.4-products-20261022.tar.gz",
+      "sha256": "cf110856f7d2fd44e6dccd8d23145e1941848872ebca92aba8790d59d8f47f13",
+      "bytes": 40949253
+    },
+    {
+      "name": "client1.16-collection-20261026.tar.gz",
+      "sha256": "d50932a267e1df463e76b1e1401aea0666f67be6290c7351dbffcc08c690fd82",
+      "bytes": 24171832
+    },
+    {
+      "name": "posters-20261015.tar.gz",
+      "sha256": "26b6edc700fb46f176b0f9a9ab540ee49d949ca491241630ea8a37e7260d762e",
+      "bytes": 19138672
+    },
+    {
+      "name": "client1.17-liaose-seven-20261026.tar.gz",
+      "sha256": "add5eecb1e04dfcf8349096b7284cc29ed1f63e23c6db35bb24a36d54180626c",
+      "bytes": 17731261
+    }
+  ],
+  "archivedTemporaryUploads": 4,
+  "releasedBytes": 101991018,
+  "availableBytes": 299593728
+}

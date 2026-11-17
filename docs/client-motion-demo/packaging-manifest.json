@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "scope": "approved-client1.56-collection-packaging",
+  "scope": "approved-client1.57-collection-packaging",
   "posterId": "poster-012",
   "components": [
     "Jar",
@@ -59,12 +59,12 @@
       "sha256": "97331523b2faadce312babfb613a6200e0cf91dc1665bb7bf7221ab3ff03aaec"
     },
     {
-      "name": "poster-049.glb",
+      "name": "poster-049-v2.glb",
       "kind": "model",
-      "file": "packaging-assets/poster-049.glb",
-      "productionTarget": "assets/packaging/poster-049.glb",
-      "bytes": 1577136,
-      "sha256": "0e88752ad968445c03a4ad6137d0121823b890f4d3ca9caafd6ad6ffe65a104c"
+      "file": "packaging-assets/poster-049-v2.glb",
+      "productionTarget": "assets/packaging/poster-049-v2.glb",
+      "bytes": 2720964,
+      "sha256": "df68c13d48303cb76edcbdb8aadd1414583e61834803fa5dc1e4bc8d17bd7163"
     },
     {
       "name": "poster-042.glb",
@@ -307,12 +307,13 @@
     },
     {
       "posterId": "poster-049",
-      "file": "poster-049.glb",
+      "file": "poster-049-v2.glb",
       "components": [
         "PumpAssembly",
         "Body",
         "PaperLabel",
-        "LogoPrint"
+        "LogoInk",
+        "ProductPrint"
       ]
     },
     {

@@ -1,0 +1,292 @@
+{
+  "file": "poster-072-v2.glb",
+  "kind": "collection",
+  "scale": 1,
+  "parts": [
+    {
+      "key": "overcap",
+      "node": "Overcap",
+      "title": [
+        "透明保护罩",
+        "Clear cover"
+      ],
+      "short": [
+        "罩盖",
+        "Clear cover"
+      ],
+      "detail": [
+        "薄壁透明罩向上移开，保留圆顶和底沿。",
+        "A hollow clear cover lifts away."
+      ]
+    },
+    {
+      "key": "pump",
+      "node": "PumpAssembly",
+      "title": [
+        "完整泵头与中空长吸管",
+        "Complete pump and hollow dip tube"
+      ],
+      "short": [
+        "泵头组件",
+        "Complete pump"
+      ],
+      "detail": [
+        "按压头、泵座、旋盖及中空长吸管保持组装，一起抬起。",
+        "Actuator, housing, closure and hollow dip tube lift together."
+      ]
+    },
+    {
+      "key": "body",
+      "node": "Body",
+      "title": [
+        "磨砂空玻璃瓶",
+        "Frosted glass"
+      ],
+      "short": [
+        "瓶身",
+        "Frosted glass"
+      ],
+      "detail": [
+        "扁圆角方形玻璃、短肩与厚底，不含乳液。",
+        "An empty flat rounded glass bottle with frosted walls and a thick base."
+      ]
+    },
+    {
+      "key": "label",
+      "node": "PaperLabel",
+      "title": [
+        "透明底材",
+        "Clear carrier"
+      ],
+      "short": [
+        "标贴",
+        "Clear carrier"
+      ],
+      "detail": [
+        "透明承印膜独立展开，保留柔和投影。",
+        "A separate clear print carrier retains a soft shadow."
+      ]
+    },
+    {
+      "key": "print",
+      "node": "LogoPrint",
+      "title": [
+        "品牌字",
+        "Brand"
+      ],
+      "short": [
+        "品牌",
+        "Brand"
+      ],
+      "detail": [
+        "liaose独立离开瓶身，比底材更向外展开。",
+        "The liaose mark moves farther outward than the carrier."
+      ]
+    },
+    {
+      "key": "name",
+      "node": "ProductPrint",
+      "title": [
+        "产品名",
+        "Product name"
+      ],
+      "short": [
+        "品名",
+        "Product name"
+      ],
+      "detail": [
+        "横线、DAILY EMULSION及FACE CARE一同展开。",
+        "The rule, DAILY EMULSION and FACE CARE move as one print layer."
+      ]
+    }
+  ],
+  "review": {
+    "parts": [
+      {
+        "key": "overcap",
+        "node": "Overcap",
+        "title": [
+          "透明保护罩",
+          "Clear cover"
+        ],
+        "short": [
+          "罩盖",
+          "Clear cover"
+        ],
+        "detail": [
+          "薄壁透明罩向上移开，保留圆顶和底沿。",
+          "A hollow clear cover lifts away."
+        ]
+      },
+      {
+        "key": "pump",
+        "node": "PumpAssembly",
+        "title": [
+          "完整泵头与中空长吸管",
+          "Complete pump and hollow dip tube"
+        ],
+        "short": [
+          "泵头组件",
+          "Complete pump"
+        ],
+        "detail": [
+          "按压头、泵座、旋盖及中空长吸管保持组装，一起抬起。",
+          "Actuator, housing, closure and hollow dip tube lift together."
+        ]
+      },
+      {
+        "key": "body",
+        "node": "Body",
+        "title": [
+          "磨砂空玻璃瓶",
+          "Frosted glass"
+        ],
+        "short": [
+          "瓶身",
+          "Frosted glass"
+        ],
+        "detail": [
+          "扁圆角方形玻璃、短肩与厚底，不含乳液。",
+          "An empty flat rounded glass bottle with frosted walls and a thick base."
+        ]
+      },
+      {
+        "key": "label",
+        "node": "PaperLabel",
+        "title": [
+          "透明底材",
+          "Clear carrier"
+        ],
+        "short": [
+          "标贴",
+          "Clear carrier"
+        ],
+        "detail": [
+          "透明承印膜独立展开，保留柔和投影。",
+          "A separate clear print carrier retains a soft shadow."
+        ]
+      },
+      {
+        "key": "print",
+        "node": "LogoPrint",
+        "title": [
+          "品牌字",
+          "Brand"
+        ],
+        "short": [
+          "品牌",
+          "Brand"
+        ],
+        "detail": [
+          "liaose独立离开瓶身，比底材更向外展开。",
+          "The liaose mark moves farther outward than the carrier."
+        ]
+      },
+      {
+        "key": "name",
+        "node": "ProductPrint",
+        "title": [
+          "产品名",
+          "Product name"
+        ],
+        "short": [
+          "品名",
+          "Product name"
+        ],
+        "detail": [
+          "横线、DAILY EMULSION及FACE CARE一同展开。",
+          "The rule, DAILY EMULSION and FACE CARE move as one print layer."
+        ]
+      }
+    ],
+    "appearance": {
+      "glass": true,
+      "frosted": true,
+      "clearOvercap": true,
+      "pipette": false,
+      "clearLabel": true,
+      "metal": false,
+      "referenceGlass": true,
+      "labelShadows": true,
+      "thinFilmShadows": true,
+      "carrierOpacity": [
+        0.035,
+        0.28
+      ],
+      "studio": {
+        "background": "#e9e5d8",
+        "ink": "#34372e"
+      }
+    },
+    "explosion": {
+      "offsets": {
+        "body": [
+          0.35,
+          0,
+          0
+        ],
+        "pump": [
+          0.35,
+          2.05,
+          0
+        ],
+        "overcap": [
+          0.35,
+          2.85,
+          0
+        ],
+        "label": [
+          -0.45,
+          0,
+          0.6
+        ],
+        "print": [
+          -1.35,
+          0.22,
+          1.25
+        ],
+        "name": [
+          -1.35,
+          -0.1,
+          1.4
+        ]
+      },
+      "scales": {
+        "label": 1,
+        "print": 1.25,
+        "name": 1.25
+      },
+      "camera": {
+        "centerX": [
+          0,
+          -0.2
+        ],
+        "centerY": [
+          1.45,
+          2.88
+        ],
+        "height": [
+          3.6,
+          6.65
+        ],
+        "width": [
+          2.8,
+          4.5
+        ]
+      }
+    }
+  },
+  "design": {
+    "name": "Daily Emulsion",
+    "background": "#e9e5d8",
+    "ink": "#34372e",
+    "kind": {
+      "zh": "面部护理 · 单瓶乳液空包材",
+      "en": "Face care · empty emulsion bottle"
+    },
+    "swatch": [
+      "#efeee6",
+      "#34372e"
+    ]
+  }
+}

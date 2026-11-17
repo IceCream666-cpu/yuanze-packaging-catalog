@@ -494,3 +494,8 @@ Amber Ginger Shampoo完整黑色泵头与较粗透明长吸管整体展开；编
 
 
 [QA](client-motion-demo/review-evidence/moisture/v2/QA.md)
+
+
+## 2026-11-17 — client1.57 / client1.58 预览
+- client1.57：049 v2用户已确认；上线包本地完成，待发布及线上验证；证据client-motion-demo/review-evidence/moisture/client157/。
+- client1.58：072 v2仅本地预览，完整泵头与长吸管、透明罩、标贴/文字分层及投影，未注册上线。

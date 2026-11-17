@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-11-17T02:36:28.859Z",
+  "states": {
+    "closed": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 16,
+      "triangles": 58342
+    },
+    "half": {
+      "progress": 0.5,
+      "renderedProgress": 0.49980368411667175,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -0.6747349735575069,
+        0.10995681050566786,
+        0.6247546051458397
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 16,
+      "triangles": 58342
+    },
+    "expanded": {
+      "progress": 1,
+      "renderedProgress": 0.9997802771739538,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.3497033741848377,
+        0.2199516609782699,
+        1.2497253464674423
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 16,
+      "triangles": 58342
+    },
+    "rotated": {
+      "progress": 1,
+      "renderedProgress": 0.9999997713432092,
+      "yaw": 1.5689491877418609,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        -1.3499996913133325,
+        0.21999994969550607,
+        1.2499997141790113
+      ],
+      "components": [
+        "overcap",
+        "pump",
+        "body",
+        "label",
+        "print",
+        "name"
+      ],
+      "meshes": 16,
+      "triangles": 58342
+    }
+  }
+}

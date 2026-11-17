@@ -1,0 +1,27 @@
+{
+  "roots": [
+    "Overcap",
+    "PumpAssembly",
+    "Body",
+    "PaperLabel",
+    "LogoPrint",
+    "ProductPrint"
+  ],
+  "preservedMeshes": [
+    "Daily hollow flat rounded glass bottle",
+    "Daily wide smooth white closure and stepped pedestal",
+    "Daily short hollow pump connector illustration",
+    "Daily sloped press head with short right nozzle",
+    "Daily hollow clear overcap with soft top and mould dimple",
+    "Daily liaose independent brand",
+    "Daily rule DAILY EMULSION FACE CARE independent lettering"
+  ],
+  "tubeBottomZ": 0.19160714285714286,
+  "tubeTopZ": 2.200892857142857,
+  "tubeOuterDiameter": 0.05592857142857143,
+  "tubeInnerDiameter": 0.03521428571428572,
+  "openBore": true,
+  "containsFormula": false,
+  "illustrativeInterior": true,
+  "source": "../../daily-emulsion/daily-emulsion.blend"
+}

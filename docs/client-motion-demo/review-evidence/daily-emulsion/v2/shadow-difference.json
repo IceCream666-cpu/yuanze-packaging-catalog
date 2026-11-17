@@ -1,0 +1,38 @@
+{
+  "browser": {
+    "containerROI": [
+      575,
+      530,
+      775,
+      910
+    ],
+    "pixelsOver2": 10598,
+    "maxDifference": 37,
+    "meanDifference": 1.493328947368421,
+    "bbox": [
+      658,
+      716,
+      763,
+      875
+    ]
+  },
+  "blender": {
+    "containerROI": [
+      560,
+      820,
+      860,
+      1350
+    ],
+    "pixelsOver2": 61863,
+    "maxDifference": 7,
+    "meanDifference": 1.9202389937106918,
+    "bbox": [
+      560,
+      909,
+      807,
+      1217
+    ]
+  },
+  "browserSingleCanvas": true,
+  "blenderIncludesSamplingNoise": true
+}
