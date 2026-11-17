@@ -4,6 +4,51 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 let loadSequence = 0;
 const MODEL_TIMEOUT = 300000;
 const MODULE_TIMEOUT = 120000;
+const loadDetailModule = () => import('./PackagingDetail.jsx');
+let sceneModule;
+function loadSceneModule() {
+  if (!sceneModule) {
+    const pending = import('./packaging-scene.js');
+    sceneModule = pending;
+    pending.catch(() => {if (sceneModule === pending) sceneModule = undefined;});
+  }
+  return sceneModule;
+}
+let prepared;
+
+export function cancelPackagingPreload() {
+  if (!prepared) return;
+  clearTimeout(prepared.timer);
+  prepared.request.abort();
+  prepared = undefined;
+}
+
+// One short-lived request is handed to the dialog; never retain models after close.
+export function preloadPackagingProduct(productId, modelUrl) {
+  const connection = window.navigator.connection;
+  if (!Object.hasOwn(PACKAGING_PRODUCTS, productId) || connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '')) return;
+  if (prepared?.productId === productId && prepared.modelUrl === modelUrl) return;
+  cancelPackagingPreload();
+  const entry = {productId, modelUrl, request: startPackagingModelRequest(productId, modelUrl)};
+  prepared = entry;
+  entry.timer = setTimeout(cancelPackagingPreload, 5000);
+  entry.request.promise.catch(() => {if (prepared === entry) cancelPackagingPreload();});
+  loadDetailModule().catch(() => {});
+  loadSceneModule().catch(() => {});
+}
+
+function takePreparedRequest(productId, modelUrl) {
+  if (!prepared) return;
+  if (prepared.productId !== productId || prepared.modelUrl !== modelUrl) {
+    cancelPackagingPreload();
+    return;
+  }
+  const {request, timer} = prepared;
+  clearTimeout(timer);
+  prepared = undefined;
+  request.mark('opened');
+  return request;
+}
 
 // Keep only the bytes for this opening. Reopening still revalidates the protected
 // asset with the server; no model or GPU resources survive the dialog lifecycle.
@@ -54,36 +99,27 @@ export default function PackagingDetailLoader(props) {
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const modelRef = useRef(null);
-  const sceneRef = useRef(null);
   const getModelRequest = useCallback(() => {
-    if (!modelRef.current || modelRef.current.signal.aborted) modelRef.current = startPackagingModelRequest(props.item.id, props.modelUrl);
+    if (!modelRef.current || modelRef.current.signal.aborted) modelRef.current = takePreparedRequest(props.item.id, props.modelUrl) || startPackagingModelRequest(props.item.id, props.modelUrl);
     return modelRef.current;
   }, [props.item.id, props.modelUrl]);
-  const getSceneModule = useCallback(() => {
-    if (!sceneRef.current) {
-      const pending = import('./packaging-scene.js');
-      sceneRef.current = pending;
-      pending.catch(() => {if (sceneRef.current === pending) sceneRef.current = null;});
-    }
-    return sceneRef.current;
-  }, []);
   useEffect(() => {
     let active = true;
     let settled = false;
     setFailed(false);
     const request = getModelRequest();
-    getSceneModule();
+    loadSceneModule().catch(() => {});
     const timer = setTimeout(() => {
       settled = true;
       request.abort(new DOMException('Detail module timed out', 'TimeoutError'));
       if (active) setFailed(true);
     }, MODULE_TIMEOUT);
-    import('./PackagingDetail.jsx').then(module => {
+    loadDetailModule().then(module => {
       if (active && !settled) {request.mark('detailModule'); setDetail(() => module.default);}
     }).catch(() => {request.abort(); if (active && !settled) setFailed(true);}).finally(() => clearTimeout(timer));
     return () => {active = false; clearTimeout(timer); request.abort();};
-  }, [attempt, getModelRequest, getSceneModule]);
-  if (Detail) return <Detail {...props} getModelRequest={getModelRequest} getSceneModule={getSceneModule}/>;
+  }, [attempt, getModelRequest]);
+  if (Detail) return <Detail {...props} getModelRequest={getModelRequest} getSceneModule={loadSceneModule}/>;
   const zh = props.lang === 'zh';
   return <div className="packaging-shell" aria-busy={!failed}>
     <button className="packaging-shell-back" onClick={props.onClose}>{zh ? '返回产品' : 'Back to collection'}</button>

@@ -1,0 +1,175 @@
+{
+  "variant": "candidate",
+  "conditions": {
+    "latencyMs": 80,
+    "downloadBytesPerSecond": 500000,
+    "cacheDisabled": true,
+    "viewport": "1440x1000",
+    "hoverWaitMs": 500,
+    "scope": "model open only; main page loaded unthrottled; loopback gzip server"
+  },
+  "results": [
+    {
+      "run": 1,
+      "leadMs": 1077.7999999998137,
+      "clickToFrameMs": 2043.2999999998137,
+      "metrics": [
+        {
+          "id": 1,
+          "timings": {
+            "start": 0,
+            "fetchStart": 0.09999999962747097,
+            "opened": 1082.0999999996275,
+            "detailModule": 1137.4000000003725,
+            "sceneModule": 1143.5999999996275,
+            "pmremStart": 1150.7000000001863,
+            "pmremEnd": 1162.9000000003725,
+            "animationReady": 1507.7999999998137,
+            "fetchEnd": 2999.5999999996275,
+            "parseStart": 2999.7000000001863,
+            "parseEnd": 3035,
+            "firstFrameStart": 3049.7000000001863,
+            "firstFrame": 3123
+          }
+        }
+      ],
+      "models": [
+        {
+          "url": "http://127.0.0.1:8882/showroom/assets/packaging/poster-049-v2.glb",
+          "duration": 2992.7999999998137,
+          "encodedBytes": 1245069,
+          "transferBytes": 1245369
+        }
+      ],
+      "scene": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "pump",
+          "body",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 27,
+        "triangles": 226462
+      }
+    },
+    {
+      "run": 2,
+      "leadMs": 1188.9000000003725,
+      "clickToFrameMs": 1908.5,
+      "metrics": [
+        {
+          "id": 1,
+          "timings": {
+            "start": 0,
+            "fetchStart": 0.10000000055879354,
+            "opened": 1191.2000000001863,
+            "detailModule": 1247,
+            "sceneModule": 1251.2000000001863,
+            "pmremStart": 1257.2000000001863,
+            "pmremEnd": 1265.5,
+            "animationReady": 1612.1000000005588,
+            "fetchEnd": 2999,
+            "parseStart": 2999.100000000559,
+            "parseEnd": 3018.2000000001863,
+            "firstFrameStart": 3022.600000000559,
+            "firstFrame": 3098.4000000003725
+          }
+        }
+      ],
+      "models": [
+        {
+          "url": "http://127.0.0.1:8882/showroom/assets/packaging/poster-049-v2.glb",
+          "duration": 2992.9000000003725,
+          "encodedBytes": 1245069,
+          "transferBytes": 1245369
+        }
+      ],
+      "scene": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "pump",
+          "body",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 27,
+        "triangles": 226462
+      }
+    },
+    {
+      "run": 3,
+      "leadMs": 1178.7000000001863,
+      "clickToFrameMs": 1907.5999999996275,
+      "metrics": [
+        {
+          "id": 1,
+          "timings": {
+            "start": 0,
+            "fetchStart": 0.09999999962747097,
+            "opened": 1180.5,
+            "detailModule": 1235.2999999998137,
+            "sceneModule": 1240.7999999998137,
+            "pmremStart": 1246.3999999994412,
+            "pmremEnd": 1255,
+            "animationReady": 1601.7000000001863,
+            "fetchEnd": 2995.5,
+            "parseStart": 2995.5,
+            "parseEnd": 3008.2999999998137,
+            "firstFrameStart": 3011.899999999441,
+            "firstFrame": 3087.0999999996275
+          }
+        }
+      ],
+      "models": [
+        {
+          "url": "http://127.0.0.1:8882/showroom/assets/packaging/poster-049-v2.glb",
+          "duration": 2991.7999999998137,
+          "encodedBytes": 1245069,
+          "transferBytes": 1245369
+        }
+      ],
+      "scene": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "pump",
+          "body",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 27,
+        "triangles": 226462
+      }
+    }
+  ]
+}

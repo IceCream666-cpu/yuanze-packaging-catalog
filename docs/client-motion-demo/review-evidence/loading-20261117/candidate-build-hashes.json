@@ -1,0 +1,30 @@
+{
+  "index.html": {
+    "bytes": 784,
+    "sha256": "e055e1f5416967d585c4b523aa5beb1f6ea202b8d239efac5c8df90b6f059012"
+  },
+  "preview.css": {
+    "bytes": 51228,
+    "sha256": "8e7c9128d7132c82cef02d627621f1b3505f3f1f2feb4b909fcd74b84ffc75b5"
+  },
+  "preview.js": {
+    "bytes": 411000,
+    "sha256": "b98b15ce89d2634454e8507412fee5cffa63817db6d54053cbfd5126f693f2b4"
+  },
+  "assets/packaging/PackagingDetail-D3ZN8c53.js": {
+    "bytes": 12788,
+    "sha256": "5d8844176bce9b7ce0ecb52199a1ca602a9dc0d4378022bbdaa0bbc8624c59be"
+  },
+  "assets/packaging/PackagingDetail-j1D-5bwl.css": {
+    "bytes": 12596,
+    "sha256": "9d126b6e9ea04f7efb532d8941714db3a300b0d4c436820b0d46daa5afe29826"
+  },
+  "assets/packaging/packaging-scene-ECoBdNC9.js": {
+    "bytes": 582467,
+    "sha256": "cd1b1e3fcabb50e5f170df9ef3f768ded05b174fadd3866433f1f98533a142cd"
+  },
+  ".vite/manifest.json": {
+    "bytes": 926,
+    "sha256": "8e210c8697a55d587161fa3866e41ffaf32f7b1beb91e9e13c46b8b04a1f93af"
+  }
+}

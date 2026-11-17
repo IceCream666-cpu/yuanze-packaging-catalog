@@ -1,0 +1,53 @@
+[
+  {
+    "id": 2,
+    "timings": {
+      "start": 0,
+      "fetchStart": 0.20000000018626451,
+      "detailModule": 107.59999999962747,
+      "animationReady": 113.79999999981374,
+      "sceneModule": 113.79999999981374,
+      "pmremStart": 128.70000000018626,
+      "pmremEnd": 137.79999999981374,
+      "fetchEnd": 3177.2000000001863,
+      "parseStart": 3177.2999999998137,
+      "parseEnd": 3201.7000000001863,
+      "firstFrameStart": 3208.7000000001863,
+      "firstFrame": 3313.5999999996275
+    }
+  },
+  {
+    "id": 3,
+    "timings": {
+      "start": 0,
+      "fetchStart": 0.09999999962747097,
+      "detailModule": 113.8999999994412,
+      "animationReady": 118.5,
+      "sceneModule": 118.5,
+      "pmremStart": 129.79999999981374,
+      "pmremEnd": 137.79999999981374,
+      "fetchEnd": 2129,
+      "parseStart": 2129,
+      "parseEnd": 2159.399999999441,
+      "firstFrameStart": 2163.0999999996275,
+      "firstFrame": 2231.699999999255
+    }
+  },
+  {
+    "id": 4,
+    "timings": {
+      "start": 0,
+      "fetchStart": 0,
+      "detailModule": 114.09999999962747,
+      "animationReady": 122.3999999994412,
+      "sceneModule": 122.3999999994412,
+      "pmremStart": 133.19999999925494,
+      "pmremEnd": 141.29999999981374,
+      "fetchEnd": 141.3999999994412,
+      "parseStart": 141.3999999994412,
+      "parseEnd": 166,
+      "firstFrameStart": 173,
+      "firstFrame": 259.19999999925494
+    }
+  }
+]

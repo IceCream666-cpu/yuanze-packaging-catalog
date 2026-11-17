@@ -838,3 +838,88 @@ test('Essence Duo exposes four complete packaging layers through the existing re
     }
   }finally{await env.close();}
 });
+
+test('intent preload hands one authenticated request to the dialog and releases it on close', async t => {
+  const env=setup(); let calls=0, received;
+  t.mock.timers.enable({apis:['setTimeout']});
+  globalThis.fetch=async (url,options)=>{calls++; assert.equal(options.cache,'no-cache'); assert.equal(options.credentials,'same-origin'); return {ok:true,arrayBuffer:async()=>new ArrayBuffer(24)};};
+  const module=component('structure/PackagingDetailLoader.jsx',{allExports:true,deps:{loadDetail:async()=>({default:props=>{received=props;return <div>Loaded</div>;}})}});
+  const Loader=module.default;
+  try {
+    module.preloadPackagingProduct(item.id); module.preloadPackagingProduct(item.id);
+    await act(async()=>{}); assert.equal(calls,1);
+    await act(async()=>env.root.render(<Loader {...defaultProps}/>));
+    const request=received.getModelRequest(); assert.equal((await request.promise).byteLength,24);
+    assert.equal(calls,1); assert.ok('opened' in request.timings);
+    await act(async()=>t.mock.timers.tick(5001)); assert.equal(request.signal.aborted,false,'consuming a preload clears its expiry');
+    await act(async()=>env.root.render(<div>Closed</div>)); assert.equal(request.signal.aborted,true);
+    await act(async()=>env.root.render(<Loader {...defaultProps}/>)); assert.equal(calls,2,'closed dialogs retain no model request');
+  } finally {module.cancelPackagingPreload();await env.close();t.mock.timers.reset();}
+});
+
+test('intent preloads stay single, expire and cannot cross product or preview URL boundaries', async t => {
+  const env=setup(), signals=[];t.mock.timers.enable({apis:['setTimeout']});
+  globalThis.fetch=(url,{signal})=>{signals.push({url,signal});return new Promise((resolve,reject)=>signal.addEventListener('abort',()=>reject(signal.reason),{once:true}));};
+  const module=component('structure/PackagingDetailLoader.jsx',{allExports:true,deps:{loadDetail:async()=>({default:()=> <div>Loaded</div>})}}),Loader=module.default;
+  try {
+    module.preloadPackagingProduct(item.id);module.preloadPackagingProduct('poster-049');
+    assert.equal(signals[0].signal.aborted,true);assert.equal(signals[1].signal.aborted,false);
+    await act(async()=>t.mock.timers.tick(5000));assert.equal(signals[1].signal.aborted,true);
+    module.preloadPackagingProduct(item.id,'/old-preview.glb');
+    await act(async()=>env.root.render(<Loader {...defaultProps} modelUrl="/new-preview.glb"/>));
+    assert.equal(signals[2].signal.aborted,true);assert.equal(signals[3].url,'/new-preview.glb');
+    assert.equal(signals[3].signal.aborted,false);
+  } finally {module.cancelPackagingPreload();await env.close();t.mock.timers.reset();}
+});
+
+test('save-data and slow connections skip speculative models; failed preloads allow a fresh request', async()=>{
+  const env=setup();let calls=0;
+  const connection={saveData:true,effectiveType:'4g'};Object.defineProperty(window.navigator,'connection',{value:connection});
+  globalThis.fetch=async()=>{calls++;return {ok:false,status:401};};
+  const module=component('structure/PackagingDetailLoader.jsx',{allExports:true,deps:{loadDetail:async()=>({default:()=>null})}});
+  try {
+    module.preloadPackagingProduct(item.id);assert.equal(calls,0);
+    connection.saveData=false;connection.effectiveType='slow-2g';module.preloadPackagingProduct(item.id);assert.equal(calls,0);
+    connection.effectiveType='4g';module.preloadPackagingProduct('not-a-product');assert.equal(calls,0);
+    module.preloadPackagingProduct(item.id);await act(async()=>{});assert.equal(calls,1);
+    module.preloadPackagingProduct(item.id);await act(async()=>{});assert.equal(calls,2);
+    module.cancelPackagingPreload();module.cancelPackagingPreload();
+  } finally {module.cancelPackagingPreload();await env.close();}
+});
+
+test('home, grid and gallery intent handlers keep touch clicks single and do not prefetch on restored focus', async()=>{
+  const env=setup(), previousObserver=globalThis.ResizeObserver;let calls=0;
+  globalThis.ResizeObserver=class {observe() {} disconnect() {}};
+  globalThis.fetch=async()=>{calls++;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(24)};};
+  const loader=component('structure/PackagingDetailLoader.jsx',{allExports:true,deps:{loadDetail:async()=>({default:props=><button onClick={props.onClose}>Close model</button>})}});
+  const Showcase=component('FeaturedShowcase.jsx',{mocks:{'./structure/PackagingDetailLoader.jsx':loader,'./PosterStage.jsx':()=>null}});
+  const App=component('main.jsx',{main:true,mocks:{'./FeaturedShowcase.jsx':Showcase,'./structure/PackagingDetailLoader.jsx':loader}});
+  const pointer=async(button,type,pointerType)=>{
+    const event=new window.Event(type,{bubbles:true});Object.defineProperty(event,'pointerType',{value:pointerType});
+    await act(async()=>button.dispatchEvent(event));
+  };
+  try {
+    await act(async()=>env.root.render(<App/>));
+    for(const selector of ['.colour-poster','.grid-image','.poster-actions .primary-button']) {
+      if(selector==='.grid-image') await click(document.querySelector('.browse-collection'));
+      if(selector==='.poster-actions .primary-button') await click(document.querySelector('.view-toggle button'));
+      const button=document.querySelector(selector), before=calls;assert.ok(button,selector);
+      // JSDOM does not track pointer-versus-keyboard modality for :focus-visible.
+      const matches=button.matches;button.matches=function(value){return value===':focus-visible'?false:matches.call(this,value);};
+      await pointer(button,'pointerover','touch');await act(async()=>button.focus());
+      await pointer(button,'pointerout','touch');assert.equal(calls,before,'a touch entering/leaving a control is not speculative intent');
+      await click(button);assert.equal(calls,before+1,'a touch click starts exactly one request');
+      button.matches=function(value){return value===':focus-visible'?true:matches.call(this,value);};
+      await click(byText('Close model'));assert.equal(document.activeElement,button);assert.equal(calls,before+1,'automatic return focus must not start another request');
+
+      await act(async()=>{button.blur();button.focus();});assert.equal(calls,before+2,'intentional keyboard focus still preloads');
+      await click(button);assert.equal(calls,before+2,'opening consumes the keyboard preload');
+      await click(byText('Close model'));assert.equal(calls,before+2);
+
+      await pointer(button,'pointerover','mouse');assert.equal(calls,before+3,'mouse hover still preloads');
+      await click(button);assert.equal(calls,before+3,'opening consumes the mouse preload');
+      await click(byText('Close model'));assert.equal(calls,before+3);
+      button.matches=matches;
+    }
+  } finally {loader.cancelPackagingPreload();await env.close();globalThis.ResizeObserver=previousObserver;}
+});

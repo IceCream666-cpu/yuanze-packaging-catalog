@@ -1,0 +1,72 @@
+{
+  "url": "https://bmt.yuanzebeauty.com/client",
+  "title": "源泽 · 客户海报展厅 — client1.57",
+  "loads": [
+    {
+      "id": 1,
+      "timings": {
+        "start": 0,
+        "fetchStart": 0,
+        "detailModule": 2626,
+        "fetchEnd": 2638.899999999441,
+        "sceneModule": 2643.399999999441,
+        "pmremStart": 2661.7000000001863,
+        "pmremEnd": 2685.0999999996275,
+        "parseStart": 2685.399999999441,
+        "parseEnd": 2712.0999999996275,
+        "firstFrameStart": 2732.899999999441,
+        "firstFrame": 2824.2999999998137
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "https://bmt.yuanzebeauty.com/showroom/preview.js",
+      "start": 428.80000000074506,
+      "duration": 65.79999999981374,
+      "transfer": 300,
+      "encoded": 116124,
+      "decoded": 409861
+    },
+    {
+      "name": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/poster-049-v2.glb",
+      "start": 1774.800000000745,
+      "duration": 2631.7999999998137,
+      "transfer": 300,
+      "encoded": 1245069,
+      "decoded": 2720964
+    },
+    {
+      "name": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/PackagingDetail-D3ZN8c53.js",
+      "start": 1775.6000000005588,
+      "duration": 2621.899999999441,
+      "transfer": 300,
+      "encoded": 4860,
+      "decoded": 12788
+    },
+    {
+      "name": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/PackagingDetail-j1D-5bwl.css",
+      "start": 1775.7000000001863,
+      "duration": 2621.7000000001863,
+      "transfer": 300,
+      "encoded": 3040,
+      "decoded": 12596
+    },
+    {
+      "name": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/packaging-scene-ECoBdNC9.js",
+      "start": 1779.5,
+      "duration": 2622.300000000745,
+      "transfer": 300,
+      "encoded": 146556,
+      "decoded": 582467
+    },
+    {
+      "name": "https://bmt.yuanzebeauty.com/showroom/assets/packaging/gsap.min.js",
+      "start": 4408.5,
+      "duration": 98.30000000074506,
+      "transfer": 300,
+      "encoded": 28215,
+      "decoded": 72435
+    }
+  ]
+}

@@ -1,10 +1,11 @@
 import {PACKAGING_PRODUCTS} from './structure/packaging-products.js';
+import {preloadPackagingProduct, cancelPackagingPreload} from './structure/PackagingDetailLoader.jsx';
 import React, {useEffect, useRef, useState} from 'react';
 import {ArrowLeft, ArrowRight, ArrowUpRight, Heart, Info, LogOut, Pause, Play} from 'lucide-react';
 import PosterStage from './PosterStage.jsx';
 import {categories, styles} from './copy.js';
 
-export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse, onFavorites, onOpen, onInfo, onLanguage, lang, favorites, onFavorite, SafeImage, modalOpen, logo, production, onSignOut, signingOut}) {
+export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse, onFavorites, onOpen, onInfo, onLanguage, lang, favorites, onFavorite, SafeImage, modalOpen, logo, production, onSignOut, signingOut, onPrepareModel = preloadPackagingProduct}) {
   const [playing, setPlaying] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -103,7 +104,7 @@ export default function FeaturedShowcase({items, selectedId, onSelect, onBrowse,
           </div>
         </div>
         <div className="colour-product-actions">
-          <button className="colour-poster" onClick={() => onOpen(current)}>{PACKAGING_PRODUCTS[current.id] ? (zh ? '查看产品详情' : 'View product details') : (zh ? '查看产品海报' : 'View product poster')}<ArrowUpRight size={24} strokeWidth={1}/></button>
+          <button className="colour-poster" onPointerEnter={e => {if (e.pointerType === 'mouse') onPrepareModel(current.id);}} onFocus={e => {if (e.currentTarget.matches(':focus-visible')) onPrepareModel(current.id);}} onPointerLeave={cancelPackagingPreload} onBlur={cancelPackagingPreload} onClick={() => onOpen(current)}>{PACKAGING_PRODUCTS[current.id] ? (zh ? '查看产品详情' : 'View product details') : (zh ? '查看产品海报' : 'View product poster')}<ArrowUpRight size={24} strokeWidth={1}/></button>
           <button className="colour-save" aria-label={favorites.includes(current.id) ? (zh ? '取消收藏' : 'Remove favorite') : (zh ? '收藏此款' : 'Save favorite')} aria-pressed={favorites.includes(current.id)} onClick={() => onFavorite(current.id)}><Heart size={19} strokeWidth={1.4} fill={favorites.includes(current.id) ? 'currentColor' : 'none'}/></button>
         </div>
       </div>

@@ -1,0 +1,68 @@
+{
+  "close": {
+    "loads": 1,
+    "focused": "colour-poster",
+    "canvas": 0
+  },
+  "keyboard": {
+    "loads": 2,
+    "focused": "colour-poster",
+    "visible": true
+  },
+  "keyboardClose": {
+    "loads": 2,
+    "canvas": 0
+  },
+  "beforeTouch": {
+    "loads": 0,
+    "width": 390
+  },
+  "touch": {
+    "metrics": [
+      {
+        "id": 1,
+        "timings": {
+          "start": 0,
+          "fetchStart": 0.19999999925494194,
+          "detailModule": 21.5,
+          "sceneModule": 28.899999999441206,
+          "pmremStart": 308.09999999962747,
+          "pmremEnd": 318.29999999981374,
+          "fetchEnd": 328.3999999994412,
+          "parseStart": 328.59999999962747,
+          "animationReady": 336.69999999925494,
+          "parseEnd": 348,
+          "firstFrameStart": 351.29999999981374,
+          "firstFrame": 427.8999999994412
+        }
+      }
+    ],
+    "width": 390,
+    "overflow": false,
+    "scene": {
+      "progress": 0,
+      "renderedProgress": 0,
+      "yaw": 0,
+      "pitch": 0,
+      "selected": null,
+      "printOffset": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        "pump",
+        "body",
+        "label",
+        "logo",
+        "print"
+      ],
+      "meshes": 27,
+      "triangles": 226462
+    }
+  },
+  "touchClose": {
+    "loads": 1,
+    "canvas": 0
+  }
+}

@@ -1,6 +1,7 @@
 import {defineConfig} from 'vite';
 import {FEATURED_SIZES} from './src/media-policy.js';
 export default defineConfig(({mode}) => ({
+  cacheDir: '.cache/vite',
   base: mode === 'showroom' ? '/showroom/' : './',
   server: {host: '127.0.0.1', port: 8784, strictPort: true},
   preview: {host: '127.0.0.1', port: 8784, strictPort: true},

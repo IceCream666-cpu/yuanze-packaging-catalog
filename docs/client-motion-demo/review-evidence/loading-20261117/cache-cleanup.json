@@ -1,0 +1,48 @@
+{
+  "time": "2026-11-17T11:07:30.088068+08:00",
+  "removed": [
+    {
+      "path": "tests/__pycache__",
+      "files": 7,
+      "bytes": 136313
+    },
+    {
+      "path": "docs/client-motion-demo/__pycache__",
+      "files": 1,
+      "bytes": 7563
+    },
+    {
+      "path": "docs/client-motion-demo/model-source/collection/__pycache__",
+      "files": 1,
+      "bytes": 20898
+    },
+    {
+      "path": "server-reference/__pycache__",
+      "files": 15,
+      "bytes": 429328
+    },
+    {
+      "path": "scripts/__pycache__",
+      "files": 2,
+      "bytes": 60169
+    },
+    {
+      "path": "docs/client-motion-demo/.cache/vite",
+      "files": 11,
+      "bytes": 7578307
+    },
+    {
+      "path": "docs/client-motion-demo/model-source/collection/poster-085/.DS_Store",
+      "files": 1,
+      "bytes": 6148
+    }
+  ],
+  "totalBytes": 8238726,
+  "totalFiles": 38,
+  "preserved": [
+    "shared node_modules/.vite (outside working tree)",
+    "tracked release/.vite/manifest.json",
+    "Blender sources, GLB assets, posters, archives and release backups",
+    "personal browser state; no global cache/cookie clear"
+  ]
+}

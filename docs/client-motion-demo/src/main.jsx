@@ -9,7 +9,7 @@ import {loadSession, logoutSession} from './session.js';
 import {copy, categories, styles} from './copy.js';
 import PosterStage from './PosterStage.jsx';
 import FeaturedShowcase from './FeaturedShowcase.jsx';
-import PackagingDetailLoader from './structure/PackagingDetailLoader.jsx';
+import PackagingDetailLoader, {preloadPackagingProduct, cancelPackagingPreload} from './structure/PackagingDetailLoader.jsx';
 import './structure/packaging-shell.css';
 import featuredData from './featured.json';
 import featuredMedia from './featured-media.json';
@@ -63,7 +63,7 @@ function App() {
   const [imageAttempt, setImageAttempt] = useState(0);
   const [sessionState, setSessionState] = useState(production ? 'loading' : 'ready');
   const [signingOut, setSigningOut] = useState(false);
-  const sessionRef = useRef(null), dialogRef = useRef(null), triggerRef = useRef(null), searchRef = useRef(null), filmstripRef = useRef(null);
+  const sessionRef = useRef(null), dialogRef = useRef(null), triggerRef = useRef(null), restoringFocus = useRef(false), searchRef = useRef(null), filmstripRef = useRef(null);
   const t = copy[lang];
   const filtered = useMemo(() => filterPosters(posters, {query, category, style, favorites: section === 'favorites' ? favorites : null}), [query, category, style, section, favorites]);
   const index = Math.max(0, filtered.findIndex(p => p.id === selectedId));
@@ -86,7 +86,11 @@ function App() {
   useEffect(() => {if (toast) {const timer = setTimeout(() => setToast(''), 2500); return () => clearTimeout(timer);}}, [toast]);
   useEffect(() => {
     if (modal) {dialogRef.current?.showModal(); dialogRef.current?.querySelector('button')?.focus({preventScroll: true});}
-    else {dialogRef.current?.close(); triggerRef.current?.focus?.();}
+    else {
+      restoringFocus.current = true;
+      try {dialogRef.current?.close(); triggerRef.current?.focus?.();}
+      finally {restoringFocus.current = false;}
+    }
   }, [modal?.type]);
   useEffect(() => {
     if (modal) return lockPageScroll();
@@ -112,12 +116,14 @@ function App() {
     setHd(false); setZoom(false); setHdStatus('idle'); setImageAttempt(0); setModal({type: type === 'image' && PACKAGING_PRODUCTS[item?.id] ? 'packaging' : type, item});
   }
   function close() {setModal(null);}
+  function prepareModel(id) {if (!restoringFocus.current) preloadPackagingProduct(id);}
   function reset() {setCategory('all'); setStyle('all'); setQuery('');}
   function navigate(next) {setSection(next); reset();}
   function browse(next) {if (next) navigate(next); setPage('library'); window.scrollTo(0, 0);}
   function step(delta) {if (current) setSelectedId(filtered[stepIndex(index, delta, filtered.length)].id);}
   async function signOut() {
     if (signingOut) return;
+    cancelPackagingPreload();
     setSigningOut(true);
     try {await logoutSession(sessionRef.current); window.location.replace('/login');}
     catch (error) {if (error.status === 401) window.location.replace('/login'); else {setToast(t.logoutError); setSigningOut(false);}}
@@ -125,7 +131,7 @@ function App() {
 
   return <div className={`showroom ${page === 'home' ? 'home-page' : 'library-page'}`} style={{'--scene': palette.background, '--ink': palette.ink, '--accent': palette.accent || palette.ink}}>
     {sessionState === 'error' && <div className="session-error" role="alert">{t.sessionError}<button onClick={() => location.reload()}>{t.retry}</button></div>}
-    {page === 'home' ? <FeaturedShowcase items={featured} selectedId={featuredId} onSelect={setFeaturedId} onBrowse={() => browse()} onFavorites={() => browse('favorites')} onOpen={p => open('image', p)} onInfo={() => open('info')} onLanguage={() => setLang(lang === 'zh' ? 'en' : 'zh')} lang={lang} favorites={favorites} onFavorite={favorite} SafeImage={SafeImage} modalOpen={!!modal} logo={assetURL('/assets/yuanze-mark-compact.webp')} production={production} onSignOut={signOut} signingOut={signingOut || sessionState !== 'ready'}/> : <>
+    {page === 'home' ? <FeaturedShowcase items={featured} selectedId={featuredId} onSelect={setFeaturedId} onBrowse={() => browse()} onFavorites={() => browse('favorites')} onOpen={p => open('image', p)} onPrepareModel={prepareModel} onInfo={() => open('info')} onLanguage={() => setLang(lang === 'zh' ? 'en' : 'zh')} lang={lang} favorites={favorites} onFavorite={favorite} SafeImage={SafeImage} modalOpen={!!modal} logo={assetURL('/assets/yuanze-mark-compact.webp')} production={production} onSignOut={signOut} signingOut={signingOut || sessionState !== 'ready'}/> : <>
     <header className="topbar">
       <button className="brand" onClick={() => {setPage('home'); window.scrollTo(0, 0);}} aria-label={lang === 'zh' ? '返回精选首页' : 'Back to featured collection'}><img src={assetURL('/assets/yuanze-mark-compact.webp')} alt="YUANZE 源泽"/><span className="back-home-label"><ChevronLeft size={20} aria-hidden="true"/>{lang === 'zh' ? '返回精选' : 'Featured'}</span></button>
       <nav className="main-nav" aria-label={lang === 'zh' ? '主导航' : 'Main navigation'}>
@@ -147,11 +153,11 @@ function App() {
         <PosterStage key={stageKey} items={filtered} selectedId={current.id} onSelect={setSelectedId} onOpen={p => open('image', p)} lang={lang} SafeImage={SafeImage}/>
         <section className="poster-detail" aria-live="polite" aria-atomic="true">
           <div className="poster-title"><span className="category-label">{categoryName(current.category)}</span><h2>{current.title[lang].replace(/^liaose\s/i, '')}</h2></div>
-          <div className="poster-actions"><button className={`save-button ${favorites.includes(current.id) ? 'is-saved' : ''}`} aria-pressed={favorites.includes(current.id)} onClick={() => favorite(current.id)}><Heart size={19} fill={favorites.includes(current.id) ? 'currentColor' : 'none'}/><span>{favorites.includes(current.id) ? t.saved : t.save}</span></button><button className="primary-button" onClick={() => open('image', current)}>{t.zoom}<ArrowRight size={17}/></button></div>
+          <div className="poster-actions"><button className={`save-button ${favorites.includes(current.id) ? 'is-saved' : ''}`} aria-pressed={favorites.includes(current.id)} onClick={() => favorite(current.id)}><Heart size={19} fill={favorites.includes(current.id) ? 'currentColor' : 'none'}/><span>{favorites.includes(current.id) ? t.saved : t.save}</span></button><button className="primary-button" onPointerEnter={e => {if (e.pointerType === 'mouse') prepareModel(current.id);}} onFocus={e => {if (e.currentTarget.matches(':focus-visible')) prepareModel(current.id);}} onPointerLeave={cancelPackagingPreload} onBlur={cancelPackagingPreload} onClick={() => open('image', current)}>{t.zoom}<ArrowRight size={17}/></button></div>
           <div className="gallery-navigation"><button className="round-button" disabled={filtered.length < 2} onClick={() => step(-1)} aria-label={t.prev}><ChevronLeft size={22}/></button><span><strong>{String(index + 1).padStart(2, '0')}</strong><i>/</i>{String(filtered.length).padStart(2, '0')}</span><button className="round-button" disabled={filtered.length < 2} onClick={() => step(1)} aria-label={t.next}><ChevronRight size={22}/></button></div>
         </section>
         <div className="filmstrip" ref={filmstripRef} aria-label={t.select}>{filtered.map((p, i) => <button key={p.id} aria-label={p.title[lang]} aria-pressed={p.id === current.id} onClick={() => setSelectedId(p.id)}><SafeImage src={p.stripThumb} width={p.stripWidth} height={p.stripHeight} alt="" loading="lazy" fetchPriority="low"/><span>{String(i + 1).padStart(2, '0')}</span></button>)}</div>
-      </> : <section className="grid-section"><div className="grid-count">{filtered.length} {t.count}</div><div className="poster-grid">{filtered.map((p, position) => <article key={p.id}><button className="grid-image" style={{aspectRatio: `${p.imageWidth} / ${p.imageHeight}`}} onClick={() => open('image', p)} aria-label={`${t.openPoster}: ${p.title[lang]}`}><SafeImage src={p.image} srcSet={p.imageSrcSet} sizes={GRID_SIZES} width={p.imageWidth} height={p.imageHeight} loading={position === 0 ? "eager" : "lazy"} fetchPriority={position === 0 ? "high" : "low"} alt={p.title[lang]}/><span className="grid-expand"><Maximize2 size={18}/></span></button><div className="grid-caption"><div><span className="category-label">{categoryName(p.category)}</span><h2>{p.title[lang].replace(/^liaose\s/i, '')}</h2></div><button className="icon-button" onClick={() => favorite(p.id)} aria-label={favorites.includes(p.id) ? t.saved : t.save} aria-pressed={favorites.includes(p.id)}><Heart size={18} fill={favorites.includes(p.id) ? 'currentColor' : 'none'}/></button></div></article>)}</div></section>}
+      </> : <section className="grid-section"><div className="grid-count">{filtered.length} {t.count}</div><div className="poster-grid">{filtered.map((p, position) => <article key={p.id}><button className="grid-image" style={{aspectRatio: `${p.imageWidth} / ${p.imageHeight}`}} onPointerEnter={e => {if (e.pointerType === 'mouse') prepareModel(p.id);}} onFocus={e => {if (e.currentTarget.matches(':focus-visible')) prepareModel(p.id);}} onPointerLeave={cancelPackagingPreload} onBlur={cancelPackagingPreload} onClick={() => open('image', p)} aria-label={`${t.openPoster}: ${p.title[lang]}`}><SafeImage src={p.image} srcSet={p.imageSrcSet} sizes={GRID_SIZES} width={p.imageWidth} height={p.imageHeight} loading={position === 0 ? "eager" : "lazy"} fetchPriority={position === 0 ? "high" : "low"} alt={p.title[lang]}/><span className="grid-expand"><Maximize2 size={18}/></span></button><div className="grid-caption"><div><span className="category-label">{categoryName(p.category)}</span><h2>{p.title[lang].replace(/^liaose\s/i, '')}</h2></div><button className="icon-button" onClick={() => favorite(p.id)} aria-label={favorites.includes(p.id) ? t.saved : t.save} aria-pressed={favorites.includes(p.id)}><Heart size={18} fill={favorites.includes(p.id) ? 'currentColor' : 'none'}/></button></div></article>)}</div></section>}
     </main>
     <footer><span>YUANZE <b>·</b> {lang === 'zh' ? '产品海报' : 'Product posters'}</span><span>{t.version}{!production && (lang === 'zh' ? ' · 设计预览' : ' · Design preview')}</span></footer></>}
     <dialog ref={dialogRef} className={`modal ${modal?.type === 'packaging' ? 'packaging-modal' : modal?.type === 'image' ? 'image-modal' : 'info-modal'}`} aria-label={modal?.item ? modal.item.title[lang] : t.info} onCancel={e => {e.preventDefault(); close();}} onClick={e => {if (e.target === e.currentTarget) close();}}>
