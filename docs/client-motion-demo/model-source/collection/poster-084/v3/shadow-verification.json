@@ -1,0 +1,102 @@
+{
+  "method": "Identical camera frame31, lights, materials and seed84; only two Label.visible_shadow properties changed.",
+  "onFile": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-084/v3/previews/Soft-Body-Duo-Blender-half.png",
+  "offFile": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/model-source/collection/poster-084/v3/previews/Soft-Body-Duo-shadow-control.png",
+  "resolution": [
+    1600,
+    1600
+  ],
+  "onSha256": "4ebb8cff43f02b130e0afe3c8f39a343032c5a14e7b9f012bad56804c4da8dc7",
+  "offSha256": "7bb0a40145bcc86744e90aa64200c21812e5c0f981fae935c7303a11aaebb300",
+  "wholeImage": {
+    "bounds": [
+      0,
+      0,
+      1600,
+      1600
+    ],
+    "meanAbsoluteRGB_255": [
+      0.16500703125,
+      0.15556796875,
+      0.1478421875
+    ],
+    "maxChannelDifference_255": 31,
+    "pixelsOver3": 10990,
+    "fractionPixelsOver3": 0.00429296875,
+    "pixelsOver8": 3152
+  },
+  "visibleLowerGlassRegions": {
+    "LOTION hollow cylinder": {
+      "bounds": [
+        639,
+        1069,
+        925,
+        1351
+      ],
+      "meanAbsoluteRGB_255": [
+        0.34413281753707287,
+        0.33322174279621086,
+        0.29601249814015773
+      ],
+      "maxChannelDifference_255": 2,
+      "pixelsOver3": 0,
+      "fractionPixelsOver3": 0.0,
+      "pixelsOver8": 0
+    },
+    "WASH hollow cylinder": {
+      "bounds": [
+        1072,
+        1075,
+        1358,
+        1357
+      ],
+      "meanAbsoluteRGB_255": [
+        0.19075782373654715,
+        0.16814214154639687,
+        0.16268660417596587
+      ],
+      "maxChannelDifference_255": 1,
+      "pixelsOver3": 0,
+      "fractionPixelsOver3": 0.0,
+      "pixelsOver8": 0
+    }
+  },
+  "exposedUpperGlassStrips": {
+    "LOTION": {
+      "bounds": [
+        688,
+        870,
+        752,
+        1020
+      ],
+      "meanAbsoluteRGB_255": [
+        1.1752083333333334,
+        0.9651041666666667,
+        0.7916666666666666
+      ],
+      "maxChannelDifference_255": 13,
+      "pixelsOver3": 1068,
+      "fractionPixelsOver3": 0.11125,
+      "pixelsOver8": 160
+    },
+    "WASH": {
+      "bounds": [
+        1118,
+        886,
+        1220,
+        1040
+      ],
+      "meanAbsoluteRGB_255": [
+        0.1727782021899669,
+        0.13445378151260504,
+        0.11675579322638147
+      ],
+      "maxChannelDifference_255": 4,
+      "pixelsOver3": 10,
+      "fractionPixelsOver3": 0.0006366182836771072,
+      "pixelsOver8": 0
+    }
+  },
+  "doesNotEquateReflectionsOrPaperOverlapWithShadow": true,
+  "interpretation": "Paper physically casts in Cycles. Upper exposed glass shows localized differences; lower-glass regions change by at most 1-2/255 and do not establish a strong broad bottle shadow. This is much subtler than the dedicated WebGL receiver. No retouching or image enhancement used."
+}

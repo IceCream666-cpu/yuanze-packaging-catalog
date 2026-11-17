@@ -1758,3 +1758,102 @@ test('Beach Magic v2 publishes six fitted layers and casts only its physical pap
   }
  }finally{api?.dispose();env.close();}
 });
+
+// Soft Body Duo v3 quality regression: reuse the scene harness with the shipped GLTF loader.
+for (const [width,height] of [[1200,800],[393,520]]) test(`Soft Body v3 keeps its real fitted pump, shadows and all 12 meshes in the ${width}px viewport`,async()=>{
+  const product=JSON.parse(readFileSync(new URL('../model-source/collection/poster-084/v3/review-product.json',import.meta.url),'utf8'));
+  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
+  const {GLTFLoader}=await import('../src/structure/vendor/GLTFLoader.js');
+  const loader=new GLTFLoader();
+  loader.register(parser=>{
+    // Node has no image decoder; keep the production loader for geometry, hierarchy and materials.
+    parser.loadImageSource=async index=>{
+      const image=parser.json.images[index];
+      assert.equal(image.mimeType,'image/png');assert.ok(Number.isInteger(image.bufferView));
+      const png=Buffer.from(await parser.getDependency('bufferView',image.bufferView));
+      assert.deepEqual([...png.subarray(0,8)],[137,80,78,71,13,10,26,10]);
+      const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+      assert.ok(width>0&&height>0&&png.length>32);
+      return new Three.Texture({width,height});
+    };
+    return {name:'node_embedded_png_fixture'};
+  });
+  const loaded=await loader.parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
+  const model=loaded.scene,meshes=[];model.traverse(o=>{if(o.isMesh)meshes.push(o);});
+  const parts=Object.fromEntries(product.parts.map(p=>[p.key,model.getObjectByName(p.node)]));
+  assert.deepEqual(model.children.map(o=>o.name).sort(),['Body','Label','LogoInk','NameInk','Pump']);
+  const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
+  assert.ok(gltf.meshes.length<=12,'identical pump geometry may share a mesh definition');
+  assert.equal(gltf.nodes.filter(node=>Number.isInteger(node.mesh)).length,12,'buffer sharing preserves all twelve logical mesh instances');
+  assert.equal(meshes.length,14,'both sides of the two physical labels keep their exported material primitives');
+  assert.ok(meshes.every(o=>o.geometry.attributes.position.count>4),'use actual exported geometry, not bounding-box stand-ins');
+  const pumpPieces=parts.pump.children;
+  assert.equal(pumpPieces.length,4,'two complete white pumps and their two long hollow tubes stay in one movable group');
+  const whitePumps=pumpPieces.filter(o=>/complete white pump/i.test(o.userData.name??o.name));
+  assert.equal(whitePumps.length,2);assert.notEqual(whitePumps[0],whitePumps[1]);
+  assert.ok(whitePumps.every(o=>o.isMesh&&o.geometry.attributes.position.count>4),'both pump instances retain actual geometry when buffers are shared');
+  const tubes=pumpPieces.filter(o=>/hollow dip tube/i.test(o.userData.name??o.name));
+  assert.equal(tubes.length,2);
+  model.updateMatrixWorld(true);
+  const bottleBounds=new Three.Box3().setFromObject(parts.body),bottleHeight=bottleBounds.getSize(new Three.Vector3()).y;
+  for(const tube of tubes){
+    assert.equal(tube.parent,parts.pump);
+    assert.ok(new Three.Box3().setFromObject(tube).getSize(new Three.Vector3()).y>bottleHeight*.6,'each tube reaches down through most of its bottle');
+  }
+  let api,camera;
+  const env=harness({product,parse:()=>Promise.resolve(loaded),onRender:(_,value)=>{camera=value;}});
+  try{
+    Object.defineProperties(env.host,{clientWidth:{value:width},clientHeight:{value:height}});
+    api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(bytes.buffer))});
+    const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));model.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};
+    flush();
+    const rest=Object.fromEntries(Object.entries(parts).map(([key,o])=>[key,{p:o.position.clone(),s:o.scale.clone(),q:o.quaternion.clone()}]));
+    const fitted=pumpPieces.map(o=>o.matrix.toArray());
+    assert.equal(product.review.appearance.labelShadows,true);
+    assert.equal(parts.label.children.length,2);
+    parts.label.traverse(o=>{if(o.isMesh){assert.equal(o.castShadow,true);assert.equal(o.material.transparent,false,'white wrap labels remain physical opaque paper');}});
+    parts.body.traverse(o=>{if(o.isMesh){
+      assert.equal(o.receiveShadow,true);
+      const shader={fragmentShader:'#include <shadowmap_pars_fragment>\n#include <dithering_fragment>'};o.material.onBeforeCompile(shader);
+      assert.match(shader.fragmentShader,/getShadowMask\(\)/,'the glass receives the separated label shadow map');
+    }});
+    for(const key of ['logo','print'])parts[key].traverse(o=>{if(o.isMesh){
+      assert.ok(o.material.map?.image?.width>0,'each ink layer keeps its embedded artwork texture');
+      assert.equal(o.castShadow,false,'transparent ink carriers must not produce rectangular shadows');
+    }});
+    const inFrame=state=>{
+      for(const mesh of meshes){
+        mesh.geometry.computeBoundingBox();const {min,max}=mesh.geometry.boundingBox;
+        for(const x of [min.x,max.x])for(const y of [min.y,max.y])for(const z of [min.z,max.z]){
+          const point=new Three.Vector3(x,y,z).applyMatrix4(mesh.matrixWorld).project(camera);
+          assert.ok(Math.abs(point.x)<.98&&Math.abs(point.y)<.98&&Math.abs(point.z)<1,`${mesh.userData.name??mesh.name} clips at ${state}: ${point.toArray()}`);
+        }
+      }
+    };
+    for(const progress of [0,.5,1]){
+      api.resetView();api.setProgress(progress);flush();
+      assert.equal(api.getState().renderedProgress,progress);
+      const pumpOffset=new Three.Vector3(...product.review.explosion.offsets.pump).multiplyScalar(progress);
+      assert.ok(parts.pump.position.clone().sub(rest.pump.p).distanceTo(pumpOffset)<1e-8);
+      for(const key of ['logo','print'])if(progress)assert.ok(parts[key].position.z-rest[key].p.z>parts.label.position.z-rest.label.p.z,'ink separates farther than its physical label');
+      if(progress===1)for(const tube of tubes)assert.ok(new Three.Box3().setFromObject(tube).min.y-new Three.Box3().setFromObject(parts.body).max.y>.1,'the long tube inlet clears the bottle mouth');
+      for(let quarter=0;quarter<4;quarter++){
+        pumpPieces.forEach((piece,i)=>assert.deepEqual(piece.matrix.toArray(),fitted[i],'all merged pump pieces and both tubes retain their fitted local transforms'));
+        inFrame(`progress ${progress}, quarter turn ${quarter}`);api.rotate();flush();
+      }
+      api.viewBottom();flush();inFrame(`progress ${progress}, bottom view`);
+    }
+    api.setProgress(0);api.resetView();flush();inFrame('reset');
+    assert.equal(api.getState().yaw,0);assert.equal(api.getState().pitch,0);
+    for(const [key,part] of Object.entries(parts)){
+      assert.ok(part.position.distanceTo(rest[key].p)<1e-8);
+      assert.ok(part.scale.distanceTo(rest[key].s)<1e-8);
+      assert.ok(1-Math.abs(part.quaternion.dot(rest[key].q))<1e-8);
+    }
+  }finally{api?.dispose();env.close();}
+});
+
+test('Soft Body quality preview leaves approved 084 and pending 072 registration unchanged',()=>{
+  assert.equal(PACKAGING_PRODUCTS['poster-084'].file,'poster-084-v2.glb');
+  assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb');
+});

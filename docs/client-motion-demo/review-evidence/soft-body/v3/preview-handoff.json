@@ -1,0 +1,29 @@
+{
+  "at": "2026-11-17T06:03:40.374Z",
+  "url": "http://127.0.0.1:8785/soft-body-quality.html",
+  "page": "p1",
+  "spaceId": 48,
+  "state": {
+    "progress": 0.5,
+    "renderedProgress": 0.49999713890963166,
+    "yaw": -0.4743424773395377,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.8249952792008922,
+      0.0649996280582521,
+      0.899994850037337
+    ],
+    "components": [
+      "body",
+      "pump",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 25,
+    "triangles": 225754
+  },
+  "glbSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164",
+  "status": "local preview open for user; not published"
+}

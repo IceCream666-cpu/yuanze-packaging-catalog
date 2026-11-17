@@ -1,0 +1,128 @@
+{
+  "finalModelSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164",
+  "url": "http://127.0.0.1:8785/soft-body-quality.html",
+  "states": [
+    {
+      "pose": "closed",
+      "state": {
+        "progress": 0,
+        "renderedProgress": 0,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          0,
+          0,
+          0
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 25,
+        "triangles": 225754
+      }
+    },
+    {
+      "pose": "half",
+      "state": {
+        "progress": 0.5,
+        "renderedProgress": 0.5,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -0.825,
+          0.06499999999999995,
+          0.9
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 25,
+        "triangles": 225754
+      }
+    },
+    {
+      "pose": "open",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 1,
+        "yaw": 0,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.65,
+          0.1299999999999999,
+          1.8
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 25,
+        "triangles": 225754
+      }
+    },
+    {
+      "pose": "rotated",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 1,
+        "yaw": 1.5707963267948966,
+        "pitch": 0,
+        "selected": null,
+        "printOffset": [
+          -1.65,
+          0.1299999999999999,
+          1.8
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 25,
+        "triangles": 225754
+      }
+    },
+    {
+      "pose": "bottom",
+      "state": {
+        "progress": 1,
+        "renderedProgress": 1,
+        "yaw": 0,
+        "pitch": -1.6754129844274162,
+        "selected": null,
+        "printOffset": [
+          -1.65,
+          0.1299999999999999,
+          1.8
+        ],
+        "components": [
+          "body",
+          "pump",
+          "label",
+          "logo",
+          "print"
+        ],
+        "meshes": 25,
+        "triangles": 225754
+      }
+    }
+  ],
+  "resetVerified": true,
+  "physicalMobileTested": false
+}

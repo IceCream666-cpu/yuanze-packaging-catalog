@@ -1,0 +1,113 @@
+{
+  "reviewedAtBeijing": "2026-11-17T14:01:12.214679+08:00",
+  "status": "local-complete; not published by this modeling task",
+  "sourceChecksPassed": true,
+  "fourCyclesViews": [
+    "closed",
+    "half",
+    "expanded",
+    "rotated"
+  ],
+  "renderResolution": [
+    1600,
+    1600
+  ],
+  "renderEngine": "Cycles Metal",
+  "renderSamples": 96,
+  "independentVisualReviewer": "root",
+  "independentVisualAcceptance": "Root inspected all four final Cycles views and accepted glass thick base, pump ribs, layered structure and readable unchanged ink after cool-grey studio adjustment. This independent acceptance is from root, not substituted by the modeling agent.",
+  "modelingAgentAlsoInspectedAllFour": true,
+  "preserved": {
+    "glassBodyWorldVerticesExact": true,
+    "noColoredFormula": true,
+    "whiteLogoSvgUnchanged": true,
+    "verticalProductLetteringSvgUnchanged": true,
+    "twoCompletePumpsAndHollowDipTubes": true,
+    "physicalLabelShadows": true,
+    "transparentInkCarrierShadowsDisabled": true
+  },
+  "knownVisualLimits": [
+    "At frontal half/full expansion, paired vertical lettering can overlap adjacent paper in the projected image. These are separate 3D layers; a small view rotation exposes their depth.",
+    "Physical Cycles shadows on transparent glass are localized and much weaker than the WebGL receiver. Lower-glass ROI difference is at most 1-2/255; do not describe a strong broad physical shadow."
+  ],
+  "physicalShadowReport": "shadow-verification.json",
+  "physicalUpperGlassDifference": {
+    "LOTION": {
+      "bounds": [
+        688,
+        870,
+        752,
+        1020
+      ],
+      "meanAbsoluteRGB_255": [
+        1.1752083333333334,
+        0.9651041666666667,
+        0.7916666666666666
+      ],
+      "maxChannelDifference_255": 13,
+      "pixelsOver3": 1068,
+      "fractionPixelsOver3": 0.11125,
+      "pixelsOver8": 160
+    },
+    "WASH": {
+      "bounds": [
+        1118,
+        886,
+        1220,
+        1040
+      ],
+      "meanAbsoluteRGB_255": [
+        0.1727782021899669,
+        0.13445378151260504,
+        0.11675579322638147
+      ],
+      "maxChannelDifference_255": 4,
+      "pixelsOver3": 10,
+      "fractionPixelsOver3": 0.0006366182836771072,
+      "pixelsOver8": 0
+    }
+  },
+  "webVisualQAByRoot": {
+    "desktopFiveStates": true,
+    "simulatedViewport": [
+      390,
+      844
+    ],
+    "simulatedViewportThreeStates": true,
+    "physicalDeviceTest": false,
+    "webShadowControlEvidence": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo/review-evidence/soft-body/v3/web-shadow-control.json",
+    "pixelComparison": [
+      {
+        "name": "LOTION_hollow_cylinder",
+        "bounds": [
+          665,
+          431,
+          833,
+          760
+        ],
+        "pixelsAbove3": 13217,
+        "maxDifference": 33,
+        "meanDifference": 5.942
+      },
+      {
+        "name": "WASH_hollow_cylinder",
+        "bounds": [
+          869,
+          431,
+          1037,
+          760
+        ],
+        "pixelsAbove3": 12949,
+        "maxDifference": 33,
+        "meanDifference": 5.969
+      }
+    ]
+  },
+  "glbBytes": 1855884,
+  "byteReductionPercentVsV2": 22.47031045563237,
+  "glbSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164",
+  "configSha256": "bb912098346bd79a46a6c0f527b65dfe1fdb02154a5a9bf5e21495b0b543515f",
+  "sourceBytes": 1099664,
+  "sourceSha256": "a3a05718677ca97f87c5dc728abf3154489cc02354396efeb984aa955ad5d64d",
+  "rootHandlesFinalTestsRegistrationAndRelease": true
+}

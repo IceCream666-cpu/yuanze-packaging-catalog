@@ -1,0 +1,23 @@
+{
+  "sameTopologyAndSmoothing": true,
+  "maximumCenteredCoordinateError": 1.1920928955078125e-07,
+  "maximumWorldCoordinateErrors": {
+    "LOTION complete white pump": 2.9802322387695312e-08,
+    "WASH complete white pump": 1.1920928955078125e-07
+  },
+  "removedUnusedUV": {
+    "LOTION complete white pump": [
+      "UVMap"
+    ],
+    "WASH complete white pump": [
+      "UVMap"
+    ]
+  },
+  "sharedMeshUsers": 2,
+  "logicalWhitePumpObjects": 2,
+  "decimationUsed": false,
+  "geometryDifferenceIsFloat32TranslationRounding": true,
+  "glbBeforeBytes": 3041848,
+  "glbAfterBytes": 1855884,
+  "glbSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164"
+}

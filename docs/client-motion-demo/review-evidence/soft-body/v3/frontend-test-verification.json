@@ -1,0 +1,121 @@
+{
+  "verifiedAt": "2026-11-17T05:56:28.703554+00:00",
+  "status": "passed-local-structural-and-motion-regression",
+  "command": "node node_modules/tsx/dist/cli.mjs --test tests/*.test.*",
+  "cwd": "/Users/icecream/Documents/Codex/2026-10-22/gen/work/body-care-duo/docs/client-motion-demo",
+  "tests": {
+    "total": 206,
+    "passed": 206,
+    "failed": 0,
+    "skipped": 0,
+    "newSoftBodyTests": 3
+  },
+  "sha256": {
+    "src/structure/packaging-scene.js": "4d121d1a6dd136a6758bfd852c78f912938980325e652cf07e6f9c8bb613d296",
+    "packaging-assets/poster-084-v3.glb": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164",
+    "model-source/collection/poster-084/v3/review-product.json": "bb912098346bd79a46a6c0f527b65dfe1fdb02154a5a9bf5e21495b0b543515f",
+    "tests/packaging-loading.test.mjs": "c2df193139cbfba2a46a65f05b0a4d42e1ddf716a816f8e045f5198c9fbfabb7"
+  },
+  "sourceHashesStableDuringTest": true,
+  "model": {
+    "bytes": 1855884,
+    "meshDefinitions": 11,
+    "logicalMeshInstances": 12,
+    "renderPrimitives": 14,
+    "pumpInstances": 2,
+    "hollowDipTubes": 2
+  },
+  "viewports": [
+    {
+      "width": 1200,
+      "height": 800,
+      "type": "headless geometric projection"
+    },
+    {
+      "width": 393,
+      "height": 520,
+      "type": "simulated narrow viewport, not physical device"
+    }
+  ],
+  "states": [
+    "closed",
+    "half",
+    "full",
+    "four quarter-turns at each progress",
+    "bottom at each progress",
+    "reset"
+  ],
+  "checks": [
+    "complete pump and both tubes retain fitted local transforms",
+    "both tube inlets clear the bottle mouths at full expansion",
+    "physical paper labels cast shadows",
+    "glass receives the real shadow-map shader",
+    "embedded PNG artwork is preserved",
+    "transparent ink does not cast rectangular shadows",
+    "every actual mesh projected bound remains in frame",
+    "formal poster-084 remains v2 and poster-072 remains original"
+  ],
+  "imageHandling": "The production GLTFLoader parses actual geometry, hierarchy and materials; only browser image decoding is replaced with embedded PNG signature and dimension validation. GPU raster appearance is outside this test.",
+  "visualAcceptance": false,
+  "physicalMobileTested": false,
+  "buildRun": true,
+  "deployed": false,
+  "log": "/private/tmp/soft-body-v3-frontend-tests-final.log",
+  "buildChecks": {
+    "verifiedAt": "2026-11-17T05:59:48.771698+00:00",
+    "status": "passed",
+    "regressions": {
+      "collectionModelTests": {
+        "passed": 4,
+        "failed": 0,
+        "command": "python3 -m unittest discover -s tests -p test_collection_models.py -v"
+      },
+      "packagingReleaseTests": {
+        "passed": 13,
+        "failed": 0,
+        "command": "python3 -m unittest discover -s tests -p test_packaging_release.py -v"
+      }
+    },
+    "isolatedBuilds": [
+      {
+        "mode": "showroom",
+        "entry": "index.html",
+        "outDir": "/private/tmp/soft-body084-showroom-check",
+        "publicDir": false,
+        "copyPublicDir": false,
+        "passed": true
+      },
+      {
+        "mode": "preview",
+        "entry": "soft-body-quality.html",
+        "outDir": "/private/tmp/soft-body084-preview-check",
+        "publicDir": false,
+        "copyPublicDir": false,
+        "passed": true,
+        "bundledModelSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164"
+      }
+    ],
+    "viteApi": "build() with existing vite.config.js; only output/public-copy/cache options and standalone preview input overridden",
+    "warnings": [
+      "Existing lucide-react use client module directive warnings",
+      "Shared 3D chunk exceeds the 500 kB advisory threshold"
+    ],
+    "frozenClient160": {
+      "manifestSha256Before": "296e5f53a1f2e02f2bc756de244d2e218b176e7f3e1011f4ea46efb17cbfcd82",
+      "manifestSha256After": "296e5f53a1f2e02f2bc756de244d2e218b176e7f3e1011f4ea46efb17cbfcd82",
+      "resourceCount": 514,
+      "allResourceHashesMatchManifestBeforeAndAfter": true,
+      "productionInventoryUnchanged": true,
+      "releaseFileCount": 8,
+      "releaseAllFileHashesUnchanged": true
+    },
+    "productionBuildOverwritten": false,
+    "deployed": false
+  },
+  "rootVisualAcceptance": {
+    "passed": true,
+    "evidence": "QA.md",
+    "finalPreview": "web-preview-final.png",
+    "testVisualAcceptanceFieldMeaning": "visualAcceptance=false refers only to the structural test runner, not the separate root visual review"
+  }
+}

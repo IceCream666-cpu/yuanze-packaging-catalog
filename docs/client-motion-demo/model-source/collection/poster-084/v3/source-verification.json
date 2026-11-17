@@ -1,0 +1,219 @@
+{
+  "passed": true,
+  "roots": [
+    "Body",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "logicalMeshes": 12,
+  "meshDefinitions": 11,
+  "renderedPrimitiveInstances": 14,
+  "solidGeometry": {
+    "LOTION hollow cylinder": {
+      "manifold": true,
+      "positiveVolume": 0.3253744409327152
+    },
+    "WASH hollow cylinder": {
+      "manifold": true,
+      "positiveVolume": 0.32537444093271667
+    },
+    "LOTION complete white pump": {
+      "manifold": true,
+      "positiveVolume": 0.10238088751161661
+    },
+    "LOTION hollow dip tube": {
+      "manifold": true,
+      "positiveVolume": 0.004924272960654179
+    },
+    "WASH complete white pump": {
+      "manifold": true,
+      "positiveVolume": 0.10238088751161661
+    },
+    "WASH hollow dip tube": {
+      "manifold": true,
+      "positiveVolume": 0.0049242728558239355
+    },
+    "LOTION physical white wrap label": {
+      "manifold": true,
+      "positiveVolume": 0.0015999741481350087
+    },
+    "WASH physical white wrap label": {
+      "manifold": true,
+      "positiveVolume": 0.001599974148135269
+    }
+  },
+  "ink": {
+    "LOTION white liaose": {
+      "shadow": false,
+      "width": 2048,
+      "alphaImagePacked": true
+    },
+    "WASH white liaose": {
+      "shadow": false,
+      "width": 2048,
+      "alphaImagePacked": true
+    },
+    "LOTION rotated product lettering": {
+      "shadow": false,
+      "width": 2048,
+      "alphaImagePacked": true
+    },
+    "WASH rotated product lettering": {
+      "shadow": false,
+      "width": 2048,
+      "alphaImagePacked": true
+    }
+  },
+  "labels": {
+    "LOTION": {
+      "thickness": 0.002,
+      "sampledMinimumBackToCylinderGap": 0.0013094055226227086,
+      "sealedThinSolid": true,
+      "shadowEnabled": true,
+      "unprintedPaperBack": true
+    },
+    "WASH": {
+      "thickness": 0.002,
+      "sampledMinimumBackToCylinderGap": 0.0013094055226227086,
+      "sealedThinSolid": true,
+      "shadowEnabled": true,
+      "unprintedPaperBack": true
+    }
+  },
+  "bores": {
+    "LOTION": {
+      "glassCavityOpen": true,
+      "socketBoreOpen": true,
+      "socketWallPresent": true,
+      "closureUndersideOpen": true,
+      "nozzleOutletOpen": true,
+      "nozzleSideWallPresent": true,
+      "continuousDipTubeBoreOpen": true,
+      "angledIntakeOpen": true
+    },
+    "WASH": {
+      "glassCavityOpen": true,
+      "socketBoreOpen": true,
+      "socketWallPresent": true,
+      "closureUndersideOpen": true,
+      "nozzleOutletOpen": true,
+      "nozzleSideWallPresent": true,
+      "continuousDipTubeBoreOpen": true,
+      "angledIntakeOpen": true
+    }
+  },
+  "preservedRibsPerPump": 96,
+  "whitePumpMeshShared": true,
+  "wholePumpRelativeTransformsPreserved": true,
+  "poses": [
+    {
+      "frame": 1,
+      "amount": 0,
+      "rootLocations": {
+        "Body": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "Pump": [
+          0.0,
+          0.0,
+          2.4000000953674316
+        ],
+        "Label": [
+          0.0,
+          0.0,
+          1.7000000476837158
+        ],
+        "LogoInk": [
+          0.0,
+          0.0,
+          0.4000000059604645
+        ],
+        "NameInk": [
+          0.0,
+          0.0,
+          1.7000000476837158
+        ]
+      }
+    },
+    {
+      "frame": 31,
+      "amount": 0.5,
+      "rootLocations": {
+        "Body": [
+          0.375,
+          0.0,
+          1.0
+        ],
+        "Pump": [
+          0.375,
+          0.0,
+          3.6750001907348633
+        ],
+        "Label": [
+          -0.44999998807907104,
+          -0.4749999940395355,
+          1.75
+        ],
+        "LogoInk": [
+          -0.75,
+          -0.75,
+          0.42500001192092896
+        ],
+        "NameInk": [
+          -0.824999988079071,
+          -0.8999999761581421,
+          1.7650001049041748
+        ]
+      }
+    },
+    {
+      "frame": 61,
+      "amount": 1,
+      "rootLocations": {
+        "Body": [
+          0.75,
+          0.0,
+          1.0
+        ],
+        "Pump": [
+          0.75,
+          0.0,
+          4.949999809265137
+        ],
+        "Label": [
+          -0.8999999761581421,
+          -0.949999988079071,
+          1.8000000715255737
+        ],
+        "LogoInk": [
+          -1.5,
+          -1.5,
+          0.45000001788139343
+        ],
+        "NameInk": [
+          -1.649999976158142,
+          -1.7999999523162842,
+          1.8300000429153442
+        ]
+      }
+    }
+  ],
+  "fullyExpandedTubeExitGaps": {
+    "LOTION": 0.4915497303009033,
+    "WASH": 0.4915497303009033
+  },
+  "containsFormula": false,
+  "glbAnimations": 0,
+  "glbEmbeddedImages": 3,
+  "glbBytes": 1855884,
+  "oldGlbBytes": 2393772,
+  "byteReductionPercent": 22.47031045563237,
+  "glbSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164",
+  "configSha256": "bb912098346bd79a46a6c0f527b65dfe1fdb02154a5a9bf5e21495b0b543515f",
+  "sourceBytes": 1099664,
+  "browserVerifiedSeparately": false
+}

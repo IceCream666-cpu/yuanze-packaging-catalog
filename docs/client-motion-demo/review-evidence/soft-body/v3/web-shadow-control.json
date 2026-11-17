@@ -1,0 +1,74 @@
+{
+  "state": {
+    "progress": 0.5,
+    "renderedProgress": 0.5,
+    "yaw": 0,
+    "pitch": 0,
+    "selected": null,
+    "printOffset": [
+      -0.825,
+      0.06499999999999995,
+      0.9
+    ],
+    "components": [
+      "body",
+      "pump",
+      "label",
+      "logo",
+      "print"
+    ],
+    "meshes": 0,
+    "triangles": 0
+  },
+  "labelMeshCount": 4,
+  "labelsCast": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "bottleBounds": [
+    {
+      "name": "LOTION_hollow_cylinder",
+      "x0": 665.5931407283334,
+      "x1": 833.1323507702818,
+      "y0": 431.1611043943569,
+      "y1": 760.893969136542
+    },
+    {
+      "name": "WASH_hollow_cylinder",
+      "x0": 869.5539237395221,
+      "x1": 1037.0931337814707,
+      "y0": 431.1611043943569,
+      "y1": 760.893969136542
+    }
+  ],
+  "onlyChanged": "four physical Label material primitive castShadow flags; geometry, materials, lights and camera unchanged",
+  "pixelComparison": [
+    {
+      "name": "LOTION_hollow_cylinder",
+      "bounds": [
+        665,
+        431,
+        833,
+        760
+      ],
+      "pixelsAbove3": 13217,
+      "maxDifference": 33,
+      "meanDifference": 5.942
+    },
+    {
+      "name": "WASH_hollow_cylinder",
+      "bounds": [
+        869,
+        431,
+        1037,
+        760
+      ],
+      "pixelsAbove3": 12949,
+      "maxDifference": 33,
+      "meanDifference": 5.969
+    }
+  ],
+  "rendererCountersAtCapture": "captured at start of render before counters accumulate; use browser-states.json for final counters"
+}

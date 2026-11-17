@@ -1,0 +1,139 @@
+{
+  "originalMeshCount": 212,
+  "newMeshCount": 12,
+  "rootNames": [
+    "Body",
+    "Pump",
+    "Label",
+    "LogoInk",
+    "NameInk"
+  ],
+  "originalBodyWorldVertexError": {
+    "LOTION hollow cylinder": 0.0,
+    "WASH hollow cylinder": 0.0
+  },
+  "preservedRibGeometry": [
+    {
+      "kind": "LOTION",
+      "maximumPreservedRibVertexError": 0.0
+    },
+    {
+      "kind": "WASH",
+      "maximumPreservedRibVertexError": 0.0
+    }
+  ],
+  "mechanical": [
+    {
+      "kind": "LOTION",
+      "outletCenter": [
+        -0.135,
+        0,
+        2.8125
+      ],
+      "outletRadius": 0.027,
+      "socketBoreRadius": 0.03,
+      "closureInsideRadius": 0.185,
+      "sourceRibCount": 96
+    },
+    {
+      "kind": "WASH",
+      "outletCenter": [
+        1.265,
+        0,
+        2.8125
+      ],
+      "outletRadius": 0.027,
+      "socketBoreRadius": 0.03,
+      "closureInsideRadius": 0.185,
+      "sourceRibCount": 96
+    }
+  ],
+  "labels": [
+    {
+      "kind": "LOTION",
+      "vertices": 3250,
+      "faces": 3248,
+      "thickness": 0.002,
+      "minimumRadialGlassGap": 0.002,
+      "positiveVolume": 0.0015999741481350087,
+      "frontBackEdgesSealed": true,
+      "castsShadow": true
+    },
+    {
+      "kind": "WASH",
+      "vertices": 3250,
+      "faces": 3248,
+      "thickness": 0.002,
+      "minimumRadialGlassGap": 0.002,
+      "positiveVolume": 0.001599974148135269,
+      "frontBackEdgesSealed": true,
+      "castsShadow": true
+    }
+  ],
+  "artwork": [
+    {
+      "name": "label-LOTION",
+      "sourceSvgUnchanged": true,
+      "svgSha256": "cf6fc2ba2cc139f25c257fb3a337fa8bb8d6ff387f7ce9e600762667c424fb31",
+      "size": [
+        2048,
+        1229
+      ]
+    },
+    {
+      "name": "label-WASH",
+      "sourceSvgUnchanged": true,
+      "svgSha256": "e52bcfbbe7d06b5c8a660ca4112b7f9f10893e693d82dc56c648c3fa46514837",
+      "size": [
+        2048,
+        1229
+      ]
+    },
+    {
+      "name": "liaose-white",
+      "sourceSvgUnchanged": true,
+      "svgSha256": "9292022c2fca0f2ae5d437ffc2fe638c24473ed6bf8ce22c38c351d9d719c0b1",
+      "size": [
+        2048,
+        389
+      ]
+    }
+  ],
+  "containsFormula": false,
+  "glbBytes": 1855884,
+  "glbSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164",
+  "sourceFrames": [
+    1,
+    31,
+    61
+  ],
+  "glbHasAnimation": false,
+  "renderingPending": false,
+  "productionRegistered": false,
+  "meshOptimization": {
+    "sameTopologyAndSmoothing": true,
+    "maximumCenteredCoordinateError": 1.1920928955078125e-07,
+    "maximumWorldCoordinateErrors": {
+      "LOTION complete white pump": 2.9802322387695312e-08,
+      "WASH complete white pump": 1.1920928955078125e-07
+    },
+    "removedUnusedUV": {
+      "LOTION complete white pump": [
+        "UVMap"
+      ],
+      "WASH complete white pump": [
+        "UVMap"
+      ]
+    },
+    "sharedMeshUsers": 2,
+    "logicalWhitePumpObjects": 2,
+    "decimationUsed": false,
+    "geometryDifferenceIsFloat32TranslationRounding": true,
+    "glbBeforeBytes": 3041848,
+    "glbAfterBytes": 1855884,
+    "glbSha256": "764838f83f33676785fe70488957d992f5bd481a5c96a0b6ad1d5edfdf1bf164"
+  },
+  "visualReviewPending": false,
+  "independentVisualReviewer": "root",
+  "independentVisualAccepted": true
+}
