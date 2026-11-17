@@ -4431,7 +4431,7 @@
     }
   },
   "poster-084": {
-    "file": "poster-084-v2.glb",
+    "file": "poster-084-v3.glb",
     "kind": "collection",
     "scale": 1,
     "parts": [
@@ -4463,8 +4463,8 @@
           "Complete pump and dip tube"
         ],
         "detail": [
-          "泵头、螺盖和透明长吸管作为一组整体抬起。",
-          "The complete pump and long clear dip tube lift together."
+          "两套完整白色泵头、带出口的泵嘴、内腔接口与长空心吸管一起抬起。",
+          "Two complete white pumps, real nozzle openings, hollow connectors and long hollow dip tubes lift together."
         ]
       },
       {
@@ -4479,8 +4479,8 @@
           "White wrap labels"
         ],
         "detail": [
-          "白色标贴从瓶身分离，保留贴合曲面。",
-          "Curved white labels separate from the glass."
+          "实体薄纸标贴保留贴合曲面与封边，展开时在玻璃瓶上留下对应阴影。",
+          "Sealed thin paper labels retain their curvature and cast corresponding shadows on the glass."
         ]
       },
       {
@@ -4521,61 +4521,62 @@
         "glass": true,
         "frosted": false,
         "studio": {
-          "background": "#e6e9e6",
-          "ink": "#263b3a"
+          "background": "#aebbc6",
+          "ink": "#273744"
         },
-        "referenceGlass": true
+        "referenceGlass": true,
+        "labelShadows": true
       },
       "explosion": {
-        "mobilePrintSpread": 1,
+        "mobilePrintSpread": 0.75,
         "offsets": {
           "body": [
-            1,
+            0.75,
             0,
             0
           ],
           "pump": [
-            1,
-            2.2,
+            0.75,
+            2.55,
             0
           ],
           "label": [
-            -1,
-            0.05,
-            0.8
+            -0.9,
+            0.1,
+            0.95
           ],
           "logo": [
-            -1.7,
-            0.1,
-            1.4
+            -1.5,
+            0.05,
+            1.5
           ],
           "print": [
-            -1.7,
-            0.05,
-            1.9
+            -1.65,
+            0.13,
+            1.8
           ]
         },
         "scales": {
           "label": 1,
-          "logo": 1.8,
+          "logo": 1.65,
           "print": 1.08
         },
         "camera": {
           "centerX": [
             0,
-            0
+            -0.25
           ],
           "centerY": [
             1.5,
-            2.4
+            2.65
           ],
           "width": [
             3.8,
-            7
+            7.3
           ],
           "height": [
             3.7,
-            6
+            6.5
           ]
         }
       }
@@ -4586,7 +4587,7 @@
         "zh": "透明玻璃双瓶 · 空包材",
         "en": "Clear glass duo · empty packaging"
       },
-      "background": "#e5e8ed",
+      "background": "#aebbc6",
       "ink": "#263b3a",
       "swatch": [
         "#e4e9e8",
