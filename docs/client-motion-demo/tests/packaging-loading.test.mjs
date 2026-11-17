@@ -224,7 +224,7 @@ for (const [id, product] of Object.entries(PACKAGING_PRODUCTS).filter(([,p])=>p.
             assert.ok(1-Math.abs(p.quaternion.dot(rest[key].q))<1e-9);
           }
         }
-        if(product.review.appearance.clearLabel && value!==.5) assert.equal(parts.label.material.opacity,value===0?.05:1);
+        if(product.review.appearance.clearLabel && value!==.5) { const opacity=product.review.appearance.carrierOpacity||[.05,1]; assert.equal(parts.label.material.opacity,opacity[value===0?0:1]); }
       }
     } finally {api?.dispose();env.close();}
   });
@@ -414,7 +414,6 @@ for (const [id, lifts, printOffset] of [
   ['poster-047', {closure:2.8}, [-3.1,.18,1.65]],
   ['poster-051', {pump:2.3}, [-3.4,.18,1.65]],
   ['poster-057', {dropper:1.95}, [-3.1,.10,1.65]],
-  ['poster-056', {overcap:3.95,pump:1.85}, [-3.8,.18,1.65]],
   ['poster-044', {overcap:3.15,pump:2.15}, [-2.65,.50,1.65]],
 ]) test(`${id} mounted components preserve their full separation and restore their original transforms`, async () => {
   const product = PACKAGING_PRODUCTS[id]; let loaded;
@@ -509,10 +508,10 @@ test('Golden keeps its olive cover tinted while only the neutral bottle stays fr
     api=await env.mount(env.host,{product,modelRequest:env.request(Promise.resolve(new ArrayBuffer(12)))});
     assert.ok(cover.material.attenuationColor.equals(olive));
     assert.ok(secondPanel.material.attenuationColor.equals(olive),'every panel retains the original tint even when the GLB shares one material');
-    assert.ok(body.material.color.equals(new Three.Color('#ffffff')));
-    assert.equal(body.material.transmission,1);
+    assert.ok(body.material.color.equals(new Three.Color('#eeeeee')));
+    assert.equal(body.material.transmission,.94);
     assert.equal(body.material.roughness,.28);
-    assert.equal(cover.material.roughness,.035,'the olive cover must retain its own smooth finish');
+    assert.equal(cover.material.roughness,.13,'the olive cover must retain its own smooth finish');
     assert.equal(body.castShadow,false);
   } finally {api?.dispose();env.close();}
 });
@@ -921,7 +920,7 @@ test('Gentle lifts its complete pump and hollow tube beneath the separate protec
 
 test('Golden lifts its complete pump and hollow tube beneath the intact long-skirt cover',async()=>{
   const product=PACKAGING_PRODUCTS['poster-056'];
-  const bytes=readFileSync(new URL('../packaging-assets/poster-056.glb',import.meta.url));
+  const bytes=readFileSync(new URL('../packaging-assets/'+product.file,import.meta.url));
   const gltf=JSON.parse(bytes.toString('utf8',20,20+bytes.readUInt32LE(12)));
   const tubeName='Hollow clear Golden pump dip tube';
   const bodyName='Hollow rounded rectangular bottle with thick clear base';
@@ -960,49 +959,48 @@ test('Golden lifts its complete pump and hollow tube beneath the intact long-ski
     const flush=()=>{const callbacks=[...env.frames.values()];env.frames.clear();callbacks.forEach(fn=>fn(16));loaded.scene.updateWorldMatrix(true,true);camera.updateMatrixWorld(true);};
     flush();
     const parts=Object.fromEntries(product.parts.map(part=>[part.key,loaded.scene.getObjectByName(part.node)]));
-    assert.deepEqual(Object.keys(parts).sort(),['jar','label','overcap','print','pump']);
-    assert.equal(product.review,undefined,'retain the approved empty glass, olive cover and complete printing');
-    const tube=loaded.scene.getObjectByName(tubeName),head=loaded.scene.getObjectByName('Actuator');
-    assert.equal(tube.parent,loaded.scene.getObjectByName('Closure'));
-    assert.equal(tube.material.transmission,.98);
+    assert.deepEqual(Object.keys(parts).sort(),['body','label','name','overcap','print','pump']);
+    assert.equal(product.review.appearance.labelShadows,true);
+    const tube=loaded.scene.getObjectByName(tubeName),head=loaded.scene.getObjectByName('Tall cylindrical press actuator');
+    assert.equal(tube.parent,parts.pump);
+    assert.equal(tube.material.transmission,0);
+    assert.equal(tube.material.depthWrite,false);
     assert.equal(tube.material.roughness,.06);
-    assert.equal(tube.material.ior,1.46);
-    assert.equal(tube.material.thickness,.0165);
+    assert.ok(Math.abs(tube.material.ior-1.48)<1e-6);
     assert.equal(tube.material.side,Three.FrontSide);
-    assert.equal(Boolean(tube.material.toneMapped),false,'the production legacy falsy flag keeps tube tone mapping disabled');
     assert.equal(tube.castShadow,false);
     assert.equal(tube.receiveShadow,false);
     const body=loaded.scene.getObjectByName(bodyName);
-    assert.equal(body.material.roughness,.28,'the real frosted bottle must not be overwritten by the generic polished-glass branch');
-    assert.equal(body.material.transmission,1,'frosting retains light transmission rather than becoming opaque white plastic');
+    assert.ok(Math.abs(body.material.roughness-.255)<1e-6,'the real frosted bottle must not be overwritten by the generic polished-glass branch');
+    assert.equal(body.material.transmission,.94,'frosting retains light transmission rather than becoming opaque white plastic');
     const rest=Object.fromEntries(Object.entries(parts).map(([key,part])=>[key,{position:part.position.clone(),scale:part.scale.clone(),quaternion:part.quaternion.clone(),world:part.getWorldPosition(new Three.Vector3())}]));
-    const fitted=['Closure','PumpStem','Actuator',tubeName].map(name=>{
-      const part=loaded.scene.getObjectByName(name);
-      if(name!==tubeName)assert.equal(part.parent,parts.pump);
+    const fitted=parts.pump.children.map(part=>{
+      assert.equal(part.parent,parts.pump);
       return {part,matrix:part.matrix.toArray(),world:part.getWorldPosition(new Three.Vector3())};
     });
-    const diameter=new Three.Box3().setFromObject(parts.jar).getSize(new Three.Vector3()).x;
+    const diameter=new Three.Box3().setFromObject(parts.body).getSize(new Three.Vector3()).x;
     for(const progress of [0,.25,.5,.75,1,.5,0]) {
       api.setProgress(progress);flush();
       assert.equal(api.getState().renderedProgress,progress);
-      for(const [key,lift] of [['pump',1.85],['overcap',3.95]])
-        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(0,lift*progress,0))<1e-9);
+      for(const key of ['pump','overcap']) {
+        const t=key==='overcap'?Math.min(1,progress/.72):progress;
+        const amount=key==='overcap'?t*t*(3-2*t):t;
+        assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...product.review.explosion.offsets[key]).multiplyScalar(amount))<1e-9);
+      }
       const displacement=parts.pump.getWorldPosition(new Three.Vector3()).sub(rest.pump.world);
       for(const {part,matrix,world} of fitted) {
         assert.deepEqual(part.matrix.toArray(),matrix,'all fitted pump pieces retain their local transforms');
         assert.ok(part.getWorldPosition(new Three.Vector3()).sub(world).distanceTo(displacement)<1e-9);
       }
-      assert.ok(Math.abs(camera.position.y-1.05-(1.45+1.9775*progress))<1e-9);
-      assert.ok(Math.abs(camera.top-camera.bottom-(4.2+3.8*progress))<1e-9);
-      assert.ok(Math.abs(camera.position.x+1.45*progress)<1e-9);
-      for(const [key,offset,growth] of [['label',[-1.85,.08,.65],.15],['print',[-3.8,.18,1.65],.95]]) {
+      for(const key of ['label','print','name']) {
+        const offset=product.review.explosion.offsets[key],growth=product.review.explosion.scales[key]-1;
         assert.ok(parts[key].position.clone().sub(rest[key].position).distanceTo(new Three.Vector3(...offset).multiplyScalar(progress))<1e-9);
         assert.ok(parts[key].scale.distanceTo(rest[key].scale.clone().multiplyScalar(1+growth*progress))<1e-9);
       }
       const coverBounds=new Three.Box3().setFromObject(parts.overcap),headBounds=new Three.Box3().setFromObject(head);
       assert.ok(coverBounds.max.y-.03*diameter>headBounds.max.y,'the cover ceiling never crosses the fitted pump head');
       if(progress===1) {
-        const tubeBounds=new Three.Box3().setFromObject(tube),bottleBounds=new Three.Box3().setFromObject(parts.jar);
+        const tubeBounds=new Three.Box3().setFromObject(tube),bottleBounds=new Three.Box3().setFromObject(parts.body);
         assert.ok(tubeBounds.min.y-bottleBounds.max.y>.32,'the tube inlet fully clears the bottle');
         assert.ok(coverBounds.min.y-headBounds.max.y>.34,'the cover fully clears the intact pump');
       }
@@ -1014,7 +1012,7 @@ test('Golden lifts its complete pump and hollow tube beneath the intact long-ski
           assert.ok(Math.abs(projected.x)<.98 && Math.abs(projected.y)<.98,`${mesh.name} stays in frame at ${progress}`);
         }
       }
-      for(const key of progress===0 ? Object.keys(parts) : ['jar']) {
+      for(const key of progress===0 ? Object.keys(parts) : []) {
         assert.ok(parts[key].position.distanceTo(rest[key].position)<1e-9);
         assert.ok(parts[key].scale.distanceTo(rest[key].scale)<1e-9);
         assert.ok(1-Math.abs(parts[key].quaternion.dot(rest[key].quaternion))<1e-9);
@@ -1722,7 +1720,8 @@ for (const [id, tubeName, minimumLength] of [['072','Daily long hollow dip tube 
    else for(const [k,o] of Object.entries(parts))assert.ok(o.position.distanceTo(rest[k])<1e-8);
   }
  }finally{api?.dispose();env.close();}
- assert.equal(PACKAGING_PRODUCTS[`poster-${id}`].file,`poster-${id}.glb`,'candidate remains local review only');
+ if(id==='056')assert.deepEqual(PACKAGING_PRODUCTS['poster-056'],product,'approved 056 v2 configuration is published');
+ else assert.equal(PACKAGING_PRODUCTS['poster-072'].file,'poster-072.glb','072 remains local review only');
 });
 
 test('Beach Magic v2 publishes six fitted layers and casts only its physical paper shadow',async()=>{

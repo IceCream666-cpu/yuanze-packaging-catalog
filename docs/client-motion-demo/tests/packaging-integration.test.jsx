@@ -604,9 +604,9 @@ test('Golden Face Oil exposes the long cover, complete pump, clear film and lett
   const Detail=component('structure/PackagingDetail.jsx',{deps:{loadScene:async()=>({mountPackagingScene:async(host,options)=>{mounted=options;options.onReady();return {setProgress(){},focusPart(key){focused=key;},dispose(){}};}})}});
   try {
     await act(async()=>env.root.render(<Detail {...defaultProps} item={{...item,id:'poster-056'}}/>));
-    assert.equal(document.querySelectorAll('.packaging-part').length,5);
-    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,5);
-    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint']);
+    assert.equal(document.querySelectorAll('.packaging-part').length,6);
+    assert.equal(document.querySelectorAll('.packaging-mobile-parts button').length,6);
+    assert.deepEqual(mounted.product.parts.map(p=>p.node),['Overcap','PumpAssembly','Body','PaperLabel','LogoPrint','ProductPrint']);
     assert.equal(mounted.product.parts.some(part=>['head','stem','closure'].includes(part.key)),false);
     await click(document.querySelectorAll('.packaging-mobile-parts button')[1]);assert.equal(focused,'pump');
     await click(document.querySelectorAll('.packaging-mobile-parts button')[3]);assert.equal(focused,'label');

@@ -124,7 +124,7 @@ class CollectionModelTests(unittest.TestCase):
      self.assertTrue((source/source_file).is_file())
  def test_collection_publication_matches_explicit_user_approval(self):
   m=json.loads((ROOT/'packaging-manifest.json').read_text())
-  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.59-collection-packaging')
+  self.assertTrue(m['publicationApproved']);self.assertEqual(m['scope'],'approved-client1.60-collection-packaging')
 
  def test_five_withdrawn_liaose_models_remain_archived_and_inactive(self):
   collection=json.loads((ROOT/'src/structure/collection-products.json').read_text())

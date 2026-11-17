@@ -1,0 +1,1 @@
+{"action": "dnf clean all", "beforeAvailableBytes": 225828864, "afterAvailableBytes": 296071168, "result": "19 files removed\n", "preservedReleasesBackupsAndLogs": true, "at": "2026-11-17T13:40:51.413037+08:00"}
