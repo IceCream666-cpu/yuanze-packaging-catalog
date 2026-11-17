@@ -8,14 +8,14 @@
   "canvases": 1,
   "state": {
     "progress": 1,
-    "renderedProgress": 0.9998265601525461,
-    "yaw": 1.716135697672168e-19,
+    "renderedProgress": 0.9998637265176047,
+    "yaw": 0,
     "pitch": 0,
     "selected": null,
     "printOffset": [
-      -0.6748829281029687,
-      0.21996184323356016,
-      1.2497832001906826
+      -0.6749080153993832,
+      0.219970019833873,
+      1.2498296581470059
     ],
     "components": [
       "overcap",
@@ -27,5 +27,6 @@
     ],
     "meshes": 16,
     "triangles": 58342
-  }
+  },
+  "closedProgress": 0
 }

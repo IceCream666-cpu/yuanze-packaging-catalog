@@ -1,0 +1,43 @@
+{
+  "version": "client1.57",
+  "status": "published-and-independently-verified",
+  "sourceCommit": "9702e641",
+  "publishedModel": "poster-049-v2",
+  "previewOnlyModel": "poster-072-v2",
+  "publishedAt": "2026-11-17T10:37:42+08:00",
+  "verifiedAt": "2026-11-17T10:41:17+08:00",
+  "counts": {
+    "posters": 68,
+    "featured": 31,
+    "models": 32
+  },
+  "manifestSha256": "3be5fa41c17d98ae8df327532848d82bf47160036292d0eb3a88cefb0a0fbb8d",
+  "backup": "/opt/yuanze-reference/backups/client1.57-moisture-quality-model-20261117",
+  "checks": {
+    "httpsFullChangedResources": 5,
+    "modelRangeRequests": 32,
+    "roles": {
+      "client": true,
+      "employee": true,
+      "admin": true
+    },
+    "browserFromHome": true,
+    "browserPoses": [
+      "closed",
+      "half",
+      "expanded",
+      "rotated"
+    ],
+    "resetVerified": true,
+    "outsideUnchanged": 6820,
+    "serviceRestart": false,
+    "businessDataWrites": 0
+  },
+  "evidence": "review-evidence/moisture/client157/",
+  "nextPreview": "http://127.0.0.1:8785/daily-emulsion-quality.html",
+  "remainingQueue": [
+    "poster-012",
+    "poster-056",
+    "poster-084"
+  ]
+}

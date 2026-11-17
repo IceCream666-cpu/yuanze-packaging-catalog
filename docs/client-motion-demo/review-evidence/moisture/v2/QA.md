@@ -24,3 +24,5 @@
 网页使用真实标贴阴影图对玻璃透射做轻微衰减，属于实时近似，不声称与 Cycles 光追完全相同。空包材、隐藏泵芯为展示推定；未做真机帧率或实物尺寸验证。
 
 下一款：072 Daily Emulsion。
+
+2026-11-17更新：用户确认后已发布client1.57并线上验证，见../../moisture/client157/live-browser.json与../../../client157-release.json。
